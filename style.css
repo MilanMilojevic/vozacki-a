@@ -84,6 +84,9 @@ main { max-width: 880px; margin: 0 auto; padding: 16px 12px 60px; }
   background: var(--card); color: var(--ink); border: 1px solid var(--line); border-radius: 12px;
   padding: 14px 16px; z-index: 1001; box-shadow: 0 8px 30px rgba(0,0,0,.35); }
 .tourRow { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
+#updBar { position: fixed; bottom: 14px; left: 50%; transform: translateX(-50%); background: var(--card); color: var(--ink);
+  border: 1px solid var(--blue); border-radius: 12px; padding: 10px 16px; display: flex; gap: 12px; align-items: center;
+  z-index: 1200; box-shadow: 0 6px 24px rgba(0,0,0,.25); }
 .tourSpot { position: relative; z-index: 1000; box-shadow: 0 0 0 3px var(--blue), 0 0 0 8px rgba(44,106,160,.35) !important; border-radius: 12px; }
 
 .qProgress { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; color: var(--mut); font-size: .9rem; flex-wrap: wrap; gap: 6px; }

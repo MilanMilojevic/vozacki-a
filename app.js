@@ -96,6 +96,8 @@
     tourSkip: { l: 'Preskoči', c: 'Прескочи' },
     tourDone: { l: 'Završi', c: 'Заврши' },
     tourReplay: { l: 'Vodič kroz aplikaciju', c: 'Водич кроз апликацију' },
+    updNote: { l: 'Stigla je nova verzija aplikacije.', c: 'Стигла је нова верзија апликације.' },
+    updBtn: { l: 'Osveži', c: 'Освежи' },
     weakTitle: { l: 'Najslabije podoblasti (min. 3 odgovora)', c: 'Најслабије подобласти (мин. 3 одговора)' },
     thArea: { l: 'Oblast', c: 'Област' },
     thQ: { l: 'Pitanja', c: 'Питања' },
@@ -1562,6 +1564,28 @@
     el('btnSimReport').textContent = L('report');
     document.title = L('brand') + ' — ' + (S.script === 'l' ? 'vežbanje' : 'вежбање');
   }
+
+  // Dugoživeći tab: na povratak u tab (i na ~5 min) proveri da li postoji nova verzija fajlova.
+  const BOOT_V = window.APP_V || 0;
+  function checkVersion() {
+    if (!BOOT_V || document.getElementById('updBar')) return;
+    const sc = document.createElement('script');
+    sc.src = 'version.js?ts=' + Date.now();
+    sc.onload = () => {
+      sc.remove();
+      if (window.APP_V !== BOOT_V && !document.getElementById('updBar')) {
+        const b = document.createElement('div');
+        b.id = 'updBar';
+        b.innerHTML = `<span>${escapeHtml(L('updNote'))}</span><button class="primary" id="updBtn">${escapeHtml(L('updBtn'))}</button>`;
+        document.body.appendChild(b);
+        b.querySelector('#updBtn').addEventListener('click', () => location.reload());
+      }
+    };
+    sc.onerror = () => sc.remove();
+    document.head.appendChild(sc);
+  }
+  setInterval(checkVersion, 5 * 60 * 1000);
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) checkVersion(); });
 
   applyScript();
   applyTheme();
