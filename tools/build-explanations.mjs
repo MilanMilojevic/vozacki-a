@@ -231,6 +231,45 @@ CARDS['oznake-kolovoz'] = {
   <div class="vg vgHead"><b>strelice u traci</b></div><div class="vg" style="text-align:left">obavezan smer kretanja iz te trake</div>
   <div class="vg vgHead"><b>pešački prelaz ("zebra")</b></div><div class="vg" style="text-align:left">na njemu je zabranjeno zaustavljanje, preticanje i obilaženje</div>
 </div>
+<p style="margin-top:10px"><b>Uzdužne linije (Pravilnik čl. 63-64)</b> — kako izgledaju:</p>
+<svg viewBox="0 0 470 312" role="img" style="max-width:470px;width:100%;display:block;margin:4px auto">
+  <g font-size="10.5" text-anchor="middle" fill="#334">
+    <rect x="10" y="4" width="96" height="112" fill="#9aa7b4"/><line x1="58" y1="8" x2="58" y2="112" stroke="#fff" stroke-width="3.5" stroke-dasharray="14 10"/>
+    <text x="58" y="130">isprekidana</text><text x="58" y="142" fill="#667">sme preko</text>
+    <rect x="126" y="4" width="96" height="112" fill="#9aa7b4"/><line x1="174" y1="6" x2="174" y2="114" stroke="#fff" stroke-width="3.5"/>
+    <text x="174" y="130">neisprekidana</text><text x="174" y="142" fill="#667">ne sme preko</text>
+    <rect x="242" y="4" width="96" height="112" fill="#9aa7b4"/><line x1="284" y1="6" x2="284" y2="114" stroke="#fff" stroke-width="3.5"/><line x1="296" y1="6" x2="296" y2="114" stroke="#fff" stroke-width="3.5"/>
+    <text x="290" y="130">udvojena neisprekidana</text><text x="290" y="142" fill="#667">ne sme niko</text>
+    <rect x="358" y="4" width="96" height="112" fill="#9aa7b4"/><line x1="400" y1="8" x2="400" y2="112" stroke="#fff" stroke-width="3.5" stroke-dasharray="14 10"/><line x1="412" y1="8" x2="412" y2="112" stroke="#fff" stroke-width="3.5" stroke-dasharray="14 10"/>
+    <text x="406" y="130">udvojena isprekidana</text><text x="406" y="142" fill="#667">izmenljiv smer</text>
+    <rect x="10" y="160" width="96" height="112" fill="#9aa7b4"/><line x1="52" y1="162" x2="52" y2="270" stroke="#fff" stroke-width="3.5"/><line x1="64" y1="164" x2="64" y2="268" stroke="#fff" stroke-width="3.5" stroke-dasharray="14 10"/>
+    <text x="58" y="286">kombinovana</text><text x="58" y="298" fill="#667">važi linija bliža tebi</text>
+    <rect x="126" y="160" width="96" height="112" fill="#9aa7b4"/><line x1="174" y1="162" x2="174" y2="270" stroke="#fff" stroke-width="3.5" stroke-dasharray="24 6"/>
+    <text x="174" y="286">linija upozorenja</text><text x="174" y="298" fill="#667">najava pune linije</text>
+    <rect x="242" y="160" width="96" height="112" fill="#9aa7b4"/><line x1="252" y1="162" x2="252" y2="270" stroke="#fff" stroke-width="3.5"/><line x1="290" y1="164" x2="290" y2="268" stroke="#fff" stroke-width="3" stroke-dasharray="14 10"/>
+    <text x="290" y="286">ivična linija</text><text x="290" y="298" fill="#667">označava ivicu kolovoza</text>
+    <rect x="358" y="160" width="96" height="112" fill="#9aa7b4"/><line x1="400" y1="162" x2="400" y2="216" stroke="#fff" stroke-width="3.5" stroke-dasharray="14 10"/><line x1="400" y1="222" x2="400" y2="270" stroke="#fff" stroke-width="3.5"/><line x1="412" y1="162" x2="412" y2="216" stroke="#fff" stroke-width="2.5" stroke-dasharray="4 5"/>
+    <text x="406" y="286">linija vodilja</text><text x="406" y="298" fill="#667">kratka isprekidana, kroz raskrsnicu</text>
+  </g>
+</svg>
+<p style="margin-top:10px"><b>Poprečne i ostale oznake (čl. 65-67)</b>:</p>
+<svg viewBox="0 0 470 128" role="img" style="max-width:470px;width:100%;display:block;margin:4px auto">
+  <g font-size="9.5" text-anchor="middle" fill="#334">
+    <rect x="8" y="4" width="86" height="96" fill="#9aa7b4"/><rect x="14" y="24" width="74" height="9" fill="#fff"/>
+    <text x="51" y="60" fill="#fff" font-size="11" font-weight="bold">STOP</text>
+    <text x="51" y="114">linija zaustavljanja</text>
+    <rect x="122" y="4" width="86" height="96" fill="#9aa7b4"/>
+    <path d="M130 96 L170 12 M143 96 L183 12 M156 96 L196 12" stroke="#fff" stroke-width="5"/>
+    <text x="165" y="114">kosnik (zatvaranje trake)</text>
+    <rect x="236" y="4" width="86" height="96" fill="#9aa7b4"/>
+    <path d="M244 90 L314 90 M250 78 L308 78 M258 66 L300 66 M266 54 L292 54" stroke="#fff" stroke-width="4"/>
+    <text x="279" y="114">graničnik (zabranjen deo)</text>
+    <rect x="350" y="4" width="110" height="96" fill="#9aa7b4"/>
+    <path d="M362 92 L405 16 L448 92 Z" fill="none" stroke="#fff" stroke-width="4"/>
+    <path d="M382 92 L405 52 L428 92" fill="none" stroke="#fff" stroke-width="4"/>
+    <text x="405" y="114">polje za usmeravanje</text>
+  </g>
+</svg>
 <p><b>Boje (Pravilnik o signalizaciji čl. 59):</b> oznake su po pravilu BELE; ŽUTE su izuzeci — zona radova, javni prevoz (BUS traka), elektronska naplata putarine, površine za posebne namene (mesta zabrane zaustavljanja/parkiranja, stajališta, taksi) i invalidska parking mesta (čiji se delovi smeju obeležiti i plavom).</p>`,
 };
 
