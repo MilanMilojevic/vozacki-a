@@ -2,6 +2,20 @@
 (function () {
   'use strict';
 
+  // Svaka neuhvaćena greška se prikazuje u crvenoj traci na vrhu — umesto neme prazne stranice.
+  window.addEventListener('error', (e) => {
+    try {
+      let b = document.getElementById('errStrip');
+      if (!b) {
+        b = document.createElement('div');
+        b.id = 'errStrip';
+        b.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:9999;background:#b91c1c;color:#fff;padding:8px 14px;font:13px monospace;white-space:pre-wrap';
+        document.documentElement.appendChild(b);
+      }
+      b.textContent = 'Greška: ' + (e.message || e.type) + (e.filename ? '  @ ' + e.filename.split('/').pop() + ':' + e.lineno : '');
+    } catch (ignore) { /* ništa */ }
+  });
+
   const D = window.QUIZ;
   const Q = D.questions;                       // već sortirano: oblast → podoblast → qId
   const byId = new Map(Q.map((q) => [q.id, q]));
@@ -1287,7 +1301,7 @@
     };
     const next = () => { idx++; if (idx >= TOUR_STEPS.length) end(); else show(); };
     const onKey = (ev) => { if (ev.key === 'Escape') end(); else if (ev.key === 'Enter' || ev.key === 'ArrowRight') next(); };
-    dim.addEventListener('click', next);
+    window.addEventListener('hashchange', end, { once: true });
     document.addEventListener('keydown', onKey);
     show();
   }
@@ -1550,6 +1564,6 @@
   applyTheme();
   applyFont();
   curHash = location.hash || '#/';
-  try { routeTo(curHash); } catch (err) { goHomeReplace(); }
+  try { routeTo(curHash); } catch (err) { try { goHomeReplace(); renderHome(); } catch (e2) { /* errStrip će prikazati */ } }
   initBackup();
 })();
