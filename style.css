@@ -230,7 +230,7 @@ tr.totalRow td { border-top: 2px solid var(--blue); }
 @media (min-width: 1200px) {
   main { max-width: 1240px; }
   #view-home.active { display: grid; grid-template-columns: 1fr 1fr; column-gap: 18px; align-items: start; }
-  #view-home > #homeSummary, #view-home > #pojmovnikCard, #view-home > #faqCard { grid-column: 1 / -1; }
+  #view-home > #homeSummary, #view-home > #guideCard, #view-home > #pojmovnikCard, #view-home > #faqCard { grid-column: 1 / -1; }
   .hColL { grid-column: 1; } .hColR { grid-column: 2; }
   #view-question #qCard { display: grid; grid-template-columns: minmax(0, 1fr) 440px; column-gap: 26px; align-items: start; }
   #view-question #qCard > * { grid-column: 1; }
@@ -258,8 +258,14 @@ body.dark .linklike.danger { color: #ff8a80; }
   #view-home > #homeSummary { order: 1; }
   .hColL > .menuGrid { order: 2; }
   .hColR > .card { order: 3; }
+  #view-home > #guideCard { order: 35; }
   .hColL > #simHistory { order: 4; }
   #view-home > #pojmovnikCard { order: 5; }
   #view-home > #faqCard { order: 6; }
   .hColL > #dataTools { order: 7; }
 }
+
+/* Vodič za učenje */
+.guideHead { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.guideList { margin: 10px 0 0; padding-left: 22px; line-height: 1.5; }
+.guideList li { margin-bottom: 8px; }
