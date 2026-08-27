@@ -183,6 +183,33 @@ CARDS['znakovi-porodice'] = {
     <b>OBAVEŠTENJA</b><span>kvadrat/pravougaonik — informacija</span>
   </div>
 </div>
+<p style="margin-top:10px"><b>Zone i prestanak važenja</b> — jedan princip pokriva desetine znakova:</p>
+<div class="signRow lineRow">
+  <div class="signCell">
+    <svg viewBox="0 0 110 130"><rect x="4" y="4" width="102" height="122" rx="8" fill="#fff" stroke="#2c6aa0" stroke-width="5"/>
+      <circle cx="55" cy="52" r="30" fill="#fff" stroke="#c0392b" stroke-width="7"/><text x="55" y="63" text-anchor="middle" font-size="27" font-weight="bold" fill="#111">30</text>
+      <text x="55" y="107" text-anchor="middle" font-size="17" font-weight="bold" fill="#111">ZONA</text></svg>
+    <b>POČETAK ZONE</b><span>od ovog mesta važi režim zone (npr. 30 km/h)</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 110 130"><rect x="4" y="4" width="102" height="122" rx="8" fill="#fff" stroke="#7d8792" stroke-width="5"/>
+      <circle cx="55" cy="52" r="30" fill="#fff" stroke="#7d8792" stroke-width="7"/><text x="55" y="63" text-anchor="middle" font-size="27" font-weight="bold" fill="#5b636b">30</text>
+      <text x="55" y="107" text-anchor="middle" font-size="17" font-weight="bold" fill="#5b636b">ZONA</text>
+      <path d="M14 118 L98 16" stroke="#c0392b" stroke-width="7" stroke-linecap="round"/></svg>
+    <b>KRAJ ZONE</b><span>isti znak, precrtan kosom crtom = režim prestaje</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 110 110"><circle cx="55" cy="55" r="48" fill="#fff" stroke="#111" stroke-width="4"/>
+      <text x="55" y="70" text-anchor="middle" font-size="34" font-weight="bold" fill="#111">60</text>
+      <path d="M22 88 L88 22 M30 96 L96 30 M14 80 L80 14" stroke="#111" stroke-width="4"/></svg>
+    <b>PRESTANAK ZABRANE</b><span>bela podloga + kose crte preko znaka = ograničenje više ne važi</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 110 110"><rect x="4" y="18" width="102" height="74" rx="8" fill="#2c6aa0"/>
+      <path d="M22 76 L36 34 L50 76 M60 34 L60 76 M60 34 L88 34 M60 55 L82 55" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round"/></svg>
+    <b>AUTOPUT / MOTOPUT</b><span>početak — plava tabla; kraj — ista tabla precrtana crvenom crtom</span>
+  </div>
+</div>
 <p class="mut" style="text-align:center">Zabrane i obaveze su zajedno jedna zakonska porodica — znakovi IZRIČITIH NAREDBI (ZOBS čl. 135); porodice su dakle tri: opasnosti, izričite naredbe, obaveštenja.</p>
 <p style="text-align:center"><b>Dva oblika koja moraš da prepoznaš i naopako:</b></p>
 <div class="signRow" style="max-width:260px;margin:0 auto">
@@ -458,7 +485,33 @@ CARDS['pruga'] = {
   html: `
 <p><b>Gvozdeno pravilo (čl. 100):</b> šinsko vozilo UVEK propuštaš — voz ne može da stane.</p>
 <p><b>Približavanje prelazu:</b> brzina takva da možeš da staneš pred branikom/uređajem, odnosno pre pruge · spušten ili se spušta branik / crveno svetlo / zvučni signal = STOP · na prelazu je zabranjeno preticanje, obilaženje i zaustavljanje (+ 5 m zona za parkiranje).</p>
-<p><b>Prelaz bez branika i uredjaja:</b> zaustavi se, pogledaj oba smera, pređi tek kad si siguran da voz ne nailazi.</p>`,
+<p><b>Prelaz bez branika i uredjaja:</b> zaustavi se, pogledaj oba smera, pređi tek kad si siguran da voz ne nailazi.</p>
+<p style="margin-top:10px"><b>Šta ćeš videti na putu</b> — prepoznaj svaki znak:</p>
+<div class="signRow lineRow">
+  <div class="signCell">
+    <svg viewBox="0 0 120 120"><rect x="4" y="4" width="112" height="112" rx="8" fill="#fff" stroke="#c0392b" stroke-width="6"/>
+      <path d="M26 26 L94 94 M94 26 L26 94" stroke="#111" stroke-width="9" stroke-linecap="round"/></svg>
+    <b>ANDREJIN KRST — jedan kolosek</b><span>obeležava sam prelaz; postavlja se neposredno pred prugu</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 120 120"><rect x="4" y="4" width="112" height="112" rx="8" fill="#fff" stroke="#c0392b" stroke-width="6"/>
+      <path d="M26 34 L94 84 M94 34 L26 84 M26 56 L94 106 M94 56 L26 106" stroke="#111" stroke-width="8" stroke-linecap="round"/></svg>
+    <b>DVOSTRUKI KRST — dva ili više koloseka</b><span>posle prvog voza može naići i drugi iz suprotnog smera</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 120 120"><rect x="4" y="4" width="112" height="112" rx="8" fill="#fff" stroke="#c0392b" stroke-width="5"/>
+      <rect x="18" y="24" width="84" height="18" rx="4" fill="#fff" stroke="#c0392b" stroke-width="5"/>
+      <rect x="18" y="52" width="84" height="18" rx="4" fill="#fff" stroke="#c0392b" stroke-width="5"/>
+      <rect x="18" y="80" width="84" height="18" rx="4" fill="#fff" stroke="#c0392b" stroke-width="5"/></svg>
+    <b>KOSNICI — 240 · 160 · 80 m</b><span>tri crte = 240 m do pruge, dve = 160 m, jedna = 80 m (odbrojavanje)</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 120 120"><rect x="0" y="70" width="120" height="50" fill="#9aa7b4"/>
+      <rect x="10" y="30" width="100" height="12" rx="4" fill="#c0392b"/><rect x="10" y="30" width="25" height="12" fill="#fff"/><rect x="60" y="30" width="25" height="12" fill="#fff"/>
+      <circle cx="24" cy="58" r="9" fill="#c0392b"/><circle cx="52" cy="58" r="9" fill="#5a2320"/></svg>
+    <b>BRANIK + DVA CRVENA</b><span>spušten ili se spušta branik, odnosno naizmenično trepću crvena svetla = obavezno stajanje</span>
+  </div>
+</div>`,
 };
 
 CARDS['put-pojmovi'] = {
@@ -1576,6 +1629,86 @@ X[8418] = { x: "DETE MLAĐE OD 12 GODINA U KRILU vozača: mera se IZRIČE. Dete 
 X[8420] = { x: 'Ne zaustaviti se pred prugom kada svetlosni znak najavljuje voz (prelaz bez branika): mera se IZRIČE — trka sa vozom je izgubljena unapred, zato uz kaznu ide i zabrana.' };
 X[8421] = { x: 'ISTEKLA REGISTRACIONA NALEPNICA: kazna DA, zaštitna mera NE — administrativni propust bez neposredno opasne radnje. Uporedi: za vozilo koje uopšte NIJE registrovano mera se izriče.' };
 X[8422] = { x: "Dozvola istekla NAJVIŠE ŠEST meseci: kazna DA (blaga), zaštitna mera NE — do šest meseci zakon to tretira kao administrativni propust. Preko šest meseci u ispitnoj bazi ide i mera (po važećem zakonu ni tada nije obavezna — ali prekršaj jeste teži)." };
+
+
+// --- Kartica: dopunske table uz znak "Parkiralište" (princip mesto × položaj) ---
+CARDS['parking-table'] = {
+  title: 'Dopunske table uz znak "Parkiralište"',
+  html: `
+<p>Tabla ti kaže dve stvari odjednom: <b>GDE</b> se parkira (u odnosu na crtu ivičnjaka) i <b>KAKO</b> vozilo stoji.</p>
+<p class="mut">Crta na tabli je ivičnjak: <b>iznad crte = trotoar</b>, <b>ispod crte = kolovoz</b>, <b>preko crte = i trotoar i kolovoz</b>.</p>
+<div class="signRow lineRow">
+  <div class="signCell"><svg viewBox="0 0 96 96"><rect x="2" y="2" width="92" height="92" rx="6" fill="#fff" stroke="#111" stroke-width="3"/>
+    <line x1="8" y1="44" x2="88" y2="44" stroke="#111" stroke-width="3"/>
+    <g transform="translate(48 62) rotate(90) scale(0.85)">
+      <rect x="-9" y="-16" width="18" height="32" rx="6" fill="#111"/>
+      <rect x="-6" y="-10" width="12" height="7" rx="2" fill="#fff"/>
+    </g></svg><b>NA KOLOVOZU · paralelno</b><span>vozilo uz podužnu osu kolovoza, celo ispod crte</span></div>
+  <div class="signCell"><svg viewBox="0 0 96 96"><rect x="2" y="2" width="92" height="92" rx="6" fill="#fff" stroke="#111" stroke-width="3"/>
+    <line x1="8" y1="44" x2="88" y2="44" stroke="#111" stroke-width="3"/>
+    <g transform="translate(48 62) rotate(0) scale(0.85)">
+      <rect x="-9" y="-16" width="18" height="32" rx="6" fill="#111"/>
+      <rect x="-6" y="-10" width="12" height="7" rx="2" fill="#fff"/>
+    </g></svg><b>NA KOLOVOZU · upravno</b><span>vozilo pod pravim uglom na osu kolovoza</span></div>
+  <div class="signCell"><svg viewBox="0 0 96 96"><rect x="2" y="2" width="92" height="92" rx="6" fill="#fff" stroke="#111" stroke-width="3"/>
+    <line x1="8" y1="44" x2="88" y2="44" stroke="#111" stroke-width="3"/>
+    <g transform="translate(48 62) rotate(55) scale(0.85)">
+      <rect x="-9" y="-16" width="18" height="32" rx="6" fill="#111"/>
+      <rect x="-6" y="-10" width="12" height="7" rx="2" fill="#fff"/>
+    </g></svg><b>NA KOLOVOZU · pod uglom</b><span>vozilo koso u odnosu na osu kolovoza</span></div>
+</div>
+<div class="signRow lineRow">
+  <div class="signCell"><svg viewBox="0 0 96 96"><rect x="2" y="2" width="92" height="92" rx="6" fill="#fff" stroke="#111" stroke-width="3"/>
+    <line x1="8" y1="44" x2="88" y2="44" stroke="#111" stroke-width="3"/>
+    <g transform="translate(48 26) rotate(90) scale(0.85)">
+      <rect x="-9" y="-16" width="18" height="32" rx="6" fill="#111"/>
+      <rect x="-6" y="-10" width="12" height="7" rx="2" fill="#fff"/>
+    </g></svg><b>NA TROTOARU · paralelno</b><span>celo vozilo iznad crte</span></div>
+  <div class="signCell"><svg viewBox="0 0 96 96"><rect x="2" y="2" width="92" height="92" rx="6" fill="#fff" stroke="#111" stroke-width="3"/>
+    <line x1="8" y1="44" x2="88" y2="44" stroke="#111" stroke-width="3"/>
+    <g transform="translate(48 26) rotate(0) scale(0.85)">
+      <rect x="-9" y="-16" width="18" height="32" rx="6" fill="#111"/>
+      <rect x="-6" y="-10" width="12" height="7" rx="2" fill="#fff"/>
+    </g></svg><b>NA TROTOARU · upravno</b><span>celo vozilo iznad crte, pod pravim uglom</span></div>
+  <div class="signCell"><svg viewBox="0 0 96 96"><rect x="2" y="2" width="92" height="92" rx="6" fill="#fff" stroke="#111" stroke-width="3"/>
+    <line x1="8" y1="44" x2="88" y2="44" stroke="#111" stroke-width="3"/>
+    <g transform="translate(48 26) rotate(55) scale(0.85)">
+      <rect x="-9" y="-16" width="18" height="32" rx="6" fill="#111"/>
+      <rect x="-6" y="-10" width="12" height="7" rx="2" fill="#fff"/>
+    </g></svg><b>NA TROTOARU · pod uglom</b><span>celo vozilo iznad crte, koso</span></div>
+</div>
+<div class="signRow lineRow">
+  <div class="signCell"><svg viewBox="0 0 96 96"><rect x="2" y="2" width="92" height="92" rx="6" fill="#fff" stroke="#111" stroke-width="3"/>
+    <line x1="8" y1="44" x2="88" y2="44" stroke="#111" stroke-width="3"/>
+    <g transform="translate(48 44) rotate(90) scale(0.85)">
+      <rect x="-9" y="-16" width="18" height="32" rx="6" fill="#111"/>
+      <rect x="-6" y="-10" width="12" height="7" rx="2" fill="#fff"/>
+    </g></svg><b>TROTOAR I KOLOVOZ · paralelno</b><span>vozilo preseca crtu — pola gore, pola dole</span></div>
+  <div class="signCell"><svg viewBox="0 0 96 96"><rect x="2" y="2" width="92" height="92" rx="6" fill="#fff" stroke="#111" stroke-width="3"/>
+    <line x1="8" y1="44" x2="88" y2="44" stroke="#111" stroke-width="3"/>
+    <g transform="translate(48 44) rotate(0) scale(0.85)">
+      <rect x="-9" y="-16" width="18" height="32" rx="6" fill="#111"/>
+      <rect x="-6" y="-10" width="12" height="7" rx="2" fill="#fff"/>
+    </g></svg><b>TROTOAR I KOLOVOZ · upravno</b><span>preseca crtu, pod pravim uglom</span></div>
+  <div class="signCell"><svg viewBox="0 0 96 96"><rect x="2" y="2" width="92" height="92" rx="6" fill="#fff" stroke="#111" stroke-width="3"/>
+    <line x1="8" y1="44" x2="88" y2="44" stroke="#111" stroke-width="3"/>
+    <g transform="translate(48 44) rotate(55) scale(0.85)">
+      <rect x="-9" y="-16" width="18" height="32" rx="6" fill="#111"/>
+      <rect x="-6" y="-10" width="12" height="7" rx="2" fill="#fff"/>
+    </g></svg><b>TROTOAR I KOLOVOZ · pod uglom</b><span>preseca crtu, koso</span></div>
+</div>
+<p class="mut">Na trotoaru se parkira samo tamo gde je to signalizacijom dozvoljeno, i mora ostati slobodan prolaz za pešake najmanje 1,60 m (ZOBS čl. 66).</p>`,
+};
+X[9214] = { ...(X[9214]||{}), card: 'parking-table' };
+X[9215] = { ...(X[9215]||{}), card: 'parking-table' };
+X[9226] = { ...(X[9226]||{}), card: 'parking-table' };
+X[9227] = { ...(X[9227]||{}), card: 'parking-table' };
+X[9228] = { ...(X[9228]||{}), card: 'parking-table' };
+X[9229] = { ...(X[9229]||{}), card: 'parking-table' };
+X[9230] = { ...(X[9230]||{}), card: 'parking-table' };
+X[9234] = { ...(X[9234]||{}), card: 'parking-table' };
+X[9235] = { ...(X[9235]||{}), card: 'parking-table' };
+X[10614] = { ...(X[10614]||{}), card: 'parking-table' };
 
 // ---------------- transliteracija ----------------
 const MAP = { 'dž': 'џ', 'Dž': 'Џ', 'lj': 'љ', 'Lj': 'Љ', 'nj': 'њ', 'Nj': 'Њ', 'NJ': 'Њ', 'LJ': 'Љ', 'DŽ': 'Џ',
