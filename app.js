@@ -1425,7 +1425,10 @@
         + cardKeys.map((k) => `<div class="pojEntry"><button class="explCardBtn pojBtn">📖 ${escapeHtml(T(EX.cards[k].t))}</button><div class="explCard" style="display:none">${T(EX.cards[k].h)}</div></div>`).join('');
       pk.querySelectorAll('.explCardBtn').forEach((btn) => btn.addEventListener('click', () => {
         const cd = btn.nextElementSibling;
-        cd.style.display = cd.style.display === 'none' ? '' : 'none';
+        const otvaram = cd.style.display === 'none';
+        // akordeon: otvaranje jedne kartice sklapa prethodno otvorenu
+        pk.querySelectorAll('.explCard').forEach((x) => { x.style.display = 'none'; });
+        if (otvaram) { cd.style.display = ''; btn.scrollIntoView({ block: 'start', behavior: 'smooth' }); }
       }));
     }
 
