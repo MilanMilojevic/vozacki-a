@@ -12,6 +12,6 @@ http.createServer((req, res) => {
   if (p === '/') p = '/index.html';
   const f = path.join(root, p);
   if (!f.startsWith(root) || !fs.existsSync(f) || !fs.statSync(f).isFile()) { res.writeHead(404); res.end('404'); return; }
-  res.writeHead(200, { 'Content-Type': mime[path.extname(f)] || 'application/octet-stream' });
+  res.writeHead(200, { 'Content-Type': mime[path.extname(f)] || 'application/octet-stream', 'Cache-Control': 'no-cache' });
   fs.createReadStream(f).pipe(res);
 }).listen(8137, () => console.log('Vozački A → http://localhost:8137'));

@@ -1275,6 +1275,7 @@
         <button class="linklike" id="tourSkip">${escapeHtml(L('tourSkip'))}</button>
         <button class="primary" id="tourNext">${escapeHtml(idx === TOUR_STEPS.length - 1 ? L('tourDone') : L('tourNext'))}</button></div>`;
       requestAnimationFrame(() => {
+        if (!spot || !tip.isConnected) return;
         const r = spot.getBoundingClientRect();
         const th = tip.offsetHeight;
         let top = r.bottom + 10;
