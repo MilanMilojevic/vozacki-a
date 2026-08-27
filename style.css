@@ -229,7 +229,7 @@ tr.totalRow td { border-top: 2px solid var(--blue); }
 /* ---- Eksperiment: iskorišćenje širokih ekrana (>=1200px). Simulacija namerno netaknuta. ---- */
 @media (min-width: 1200px) {
   main { max-width: 1240px; }
-  #view-home { display: grid; grid-template-columns: 1fr 1fr; column-gap: 18px; align-items: start; }
+  #view-home.active { display: grid; grid-template-columns: 1fr 1fr; column-gap: 18px; align-items: start; }
   #view-home > #homeSummary, #view-home > #pojmovnikCard, #view-home > #faqCard { grid-column: 1 / -1; }
   .hColL { grid-column: 1; } .hColR { grid-column: 2; }
   #view-question #qCard { display: grid; grid-template-columns: minmax(0, 1fr) 440px; column-gap: 26px; align-items: start; }
@@ -253,7 +253,7 @@ body.dark .linklike.danger { color: #ff8a80; }
 
 /* Uski ekrani: omotači se "rastvaraju" — redosled kao pre uvođenja kolona */
 @media (max-width: 1199px) {
-  #view-home { display: flex; flex-direction: column; }
+  #view-home.active { display: flex; flex-direction: column; }
   .hCol { display: contents; }
   #view-home > #homeSummary { order: 1; }
   .hColL > .menuGrid { order: 2; }
