@@ -71,6 +71,7 @@ main { max-width: 880px; margin: 0 auto; padding: 16px 12px 60px; }
 .catBar .seen { position: absolute; inset: 0 auto 0 0; background: #9db8d2; }
 .catBar .good { position: absolute; inset: 0 auto 0 0; background: var(--blue); }
 .catCnt { flex: 0 0 90px; text-align: right; font-size: .8rem; color: var(--mut); }
+.signRow.wrapRow { grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); }
 .catSubRow { margin: 0; padding: 3px 0; border-bottom: 1px dashed var(--line); border-radius: 0; }
 .catSubRow.zebra { background: var(--optHover); }
 .catAllRow { border-bottom: 1px solid var(--line); padding: 4px 0; }

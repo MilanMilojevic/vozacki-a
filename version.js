@@ -1,1 +1,1 @@
-window.APP_V = 19;
+window.APP_V = 23;
