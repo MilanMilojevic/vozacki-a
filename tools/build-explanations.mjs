@@ -3,6 +3,22 @@
 import fs from 'node:fs/promises';
 
 // ---------------- IZVOR (latinica) ----------------
+const road = (w, h) => `<rect x="0" y="0" width="${w}" height="${h}" fill="#9aa7b4"/>`;
+const noSign = (x, y) => `<g transform="translate(${x} ${y})"><circle r="11" fill="#fff" stroke="#c0392b" stroke-width="3"/><path d="M-5 -5 L5 5 M5 -5 L-5 5" stroke="#c0392b" stroke-width="3" stroke-linecap="round"/></g>`;
+const yesSign = (x, y) => `<g transform="translate(${x} ${y})"><circle r="11" fill="#fff" stroke="#1f7a3f" stroke-width="3"/><path d="M-5 0 L-1 5 L5 -5" stroke="#1f7a3f" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>`;
+// crtež automobila iz ptičje perspektive (telo + vetrobran + zadnje staklo + točkovi)
+const carG = (x, y, color, rot = 0) => `<g transform="translate(${x} ${y}) rotate(${rot})">
+  <rect x="-11" y="-13" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="-13" width="4.5" height="8" rx="2" fill="#333"/>
+  <rect x="-11" y="6" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="6" width="4.5" height="8" rx="2" fill="#333"/>
+  <rect x="-9" y="-17" width="18" height="34" rx="7" fill="${color}"/>
+  <path d="M-6 -9 Q0 -13 6 -9 L6 -4 Q0 -7 -6 -4 Z" fill="#fff" opacity=".85"/>
+  <path d="M-6 9 Q0 12 6 9 L6 13 Q0 15 -6 13 Z" fill="#fff" opacity=".5"/>
+</g>`;
+const arr = (x1, y1, x2, y2, color, w = 3.5) => {
+  const ang = Math.atan2(y2 - y1, x2 - x1);
+  const hx = (a) => x2 - 9 * Math.cos(ang - a), hy = (a) => y2 - 9 * Math.sin(ang - a);
+  return `<path d="M${x1} ${y1} L${x2} ${y2} M${hx(0.45)} ${hy(0.45)} L${x2} ${y2} L${hx(-0.45)} ${hy(-0.45)}" stroke="${color}" stroke-width="${w}" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`;
+};
 const CARDS = {
   'kategorije-vozila': {
     title: 'Kategorije vozila (moped, tricikl, motocikl...)',
@@ -269,45 +285,86 @@ CARDS['oznake-kolovoz'] = {
   <div class="vg vgHead"><b>strelice u traci</b></div><div class="vg" style="text-align:left">obavezan smer kretanja iz te trake</div>
   <div class="vg vgHead"><b>pešački prelaz ("zebra")</b></div><div class="vg" style="text-align:left">na njemu je zabranjeno zaustavljanje, preticanje i obilaženje</div>
 </div>
-<p style="margin-top:10px"><b>Uzdužne linije (Pravilnik čl. 63-64)</b> — kako izgledaju:</p>
-<svg viewBox="0 0 470 312" role="img" style="max-width:470px;width:100%;display:block;margin:4px auto">
-  <g font-size="10.5" text-anchor="middle" fill="#334">
-    <rect x="10" y="4" width="96" height="112" fill="#9aa7b4"/><line x1="58" y1="8" x2="58" y2="112" stroke="#fff" stroke-width="3.5" stroke-dasharray="14 10"/>
-    <text x="58" y="130">isprekidana</text><text x="58" y="142" fill="#667">sme preko</text>
-    <rect x="126" y="4" width="96" height="112" fill="#9aa7b4"/><line x1="174" y1="6" x2="174" y2="114" stroke="#fff" stroke-width="3.5"/>
-    <text x="174" y="130">neisprekidana</text><text x="174" y="142" fill="#667">ne sme preko</text>
-    <rect x="242" y="4" width="96" height="112" fill="#9aa7b4"/><line x1="284" y1="6" x2="284" y2="114" stroke="#fff" stroke-width="3.5"/><line x1="296" y1="6" x2="296" y2="114" stroke="#fff" stroke-width="3.5"/>
-    <text x="290" y="130">udvojena neisprekidana</text><text x="290" y="142" fill="#667">ne sme niko</text>
-    <rect x="358" y="4" width="96" height="112" fill="#9aa7b4"/><line x1="400" y1="8" x2="400" y2="112" stroke="#fff" stroke-width="3.5" stroke-dasharray="14 10"/><line x1="412" y1="8" x2="412" y2="112" stroke="#fff" stroke-width="3.5" stroke-dasharray="14 10"/>
-    <text x="406" y="130">udvojena isprekidana</text><text x="406" y="142" fill="#667">izmenljiv smer</text>
-    <rect x="10" y="160" width="96" height="112" fill="#9aa7b4"/><line x1="52" y1="162" x2="52" y2="270" stroke="#fff" stroke-width="3.5"/><line x1="64" y1="164" x2="64" y2="268" stroke="#fff" stroke-width="3.5" stroke-dasharray="14 10"/>
-    <text x="58" y="286">kombinovana</text><text x="58" y="298" fill="#667">važi linija bliža tebi</text>
-    <rect x="126" y="160" width="96" height="112" fill="#9aa7b4"/><line x1="174" y1="162" x2="174" y2="270" stroke="#fff" stroke-width="3.5" stroke-dasharray="24 6"/>
-    <text x="174" y="286">linija upozorenja</text><text x="174" y="298" fill="#667">najava pune linije</text>
-    <rect x="242" y="160" width="96" height="112" fill="#9aa7b4"/><line x1="252" y1="162" x2="252" y2="270" stroke="#fff" stroke-width="3.5"/><line x1="290" y1="164" x2="290" y2="268" stroke="#fff" stroke-width="3" stroke-dasharray="14 10"/>
-    <text x="290" y="286">ivična linija</text><text x="290" y="298" fill="#667">označava ivicu kolovoza</text>
-    <rect x="358" y="160" width="96" height="112" fill="#9aa7b4"/><line x1="400" y1="162" x2="400" y2="216" stroke="#fff" stroke-width="3.5" stroke-dasharray="14 10"/><line x1="400" y1="222" x2="400" y2="270" stroke="#fff" stroke-width="3.5"/><line x1="412" y1="162" x2="412" y2="216" stroke="#fff" stroke-width="2.5" stroke-dasharray="4 5"/>
-    <text x="406" y="286">linija vodilja</text><text x="406" y="298" fill="#667">kratka isprekidana, kroz raskrsnicu</text>
-  </g>
-</svg>
-<p style="margin-top:10px"><b>Poprečne i ostale oznake (čl. 65-67)</b>:</p>
-<svg viewBox="0 0 470 128" role="img" style="max-width:470px;width:100%;display:block;margin:4px auto">
-  <g font-size="9.5" text-anchor="middle" fill="#334">
-    <rect x="8" y="4" width="86" height="96" fill="#9aa7b4"/><rect x="14" y="24" width="74" height="9" fill="#fff"/>
-    <text x="51" y="60" fill="#fff" font-size="11" font-weight="bold">STOP</text>
-    <text x="51" y="114">linija zaustavljanja</text>
-    <rect x="122" y="4" width="86" height="96" fill="#9aa7b4"/>
-    <path d="M130 96 L170 12 M143 96 L183 12 M156 96 L196 12" stroke="#fff" stroke-width="5"/>
-    <text x="165" y="114">kosnik (zatvaranje trake)</text>
-    <rect x="236" y="4" width="86" height="96" fill="#9aa7b4"/>
-    <path d="M244 90 L314 90 M250 78 L308 78 M258 66 L300 66 M266 54 L292 54" stroke="#fff" stroke-width="4"/>
-    <text x="279" y="114">graničnik (zabranjen deo)</text>
-    <rect x="350" y="4" width="110" height="96" fill="#9aa7b4"/>
-    <path d="M362 92 L405 16 L448 92 Z" fill="none" stroke="#fff" stroke-width="4"/>
-    <path d="M382 92 L405 52 L428 92" fill="none" stroke="#fff" stroke-width="4"/>
-    <text x="405" y="114">polje za usmeravanje</text>
-  </g>
-</svg>
+<p style="margin-top:12px"><b>Uzdužne linije (Pravilnik čl. 63-64)</b> — šta smeš, a šta ne:</p>
+<div class="signRow lineRow">
+  <div class="signCell">
+    <svg viewBox="0 0 120 150">${road(120, 150)}<line x1="60" y1="4" x2="60" y2="146" stroke="#fff" stroke-width="4" stroke-dasharray="16 12"/>
+      ${carG(34, 112, '#2c6aa0')}<path d="M34 92 Q34 66 86 56" stroke="#2c6aa0" stroke-width="3" fill="none" stroke-dasharray="6 5"/>${carG(86, 36, '#2c6aa0')}
+      ${yesSign(100, 128)}</svg>
+    <b>ISPREKIDANA</b><span>sme da se prelazi (uz ostala pravila)</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 120 150">${road(120, 150)}<line x1="60" y1="4" x2="60" y2="146" stroke="#fff" stroke-width="4"/>
+      ${carG(34, 100, '#2c6aa0')}<path d="M34 80 Q34 58 66 50" stroke="#c0392b" stroke-width="3" fill="none" stroke-dasharray="6 5"/>
+      ${noSign(78, 44)}</svg>
+    <b>NEISPREKIDANA</b><span>ne sme se prelaziti ni voziti po njoj</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 120 150">${road(120, 150)}<line x1="54" y1="4" x2="54" y2="146" stroke="#fff" stroke-width="4"/><line x1="66" y1="4" x2="66" y2="146" stroke="#fff" stroke-width="4"/>
+      ${carG(30, 104, '#2c6aa0')}${carG(92, 46, '#5f6d7a', 180)}${noSign(60, 128)}</svg>
+    <b>UDVOJENA NEISPREKIDANA</b><span>zabrana važi za oba smera</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 120 150">${road(120, 150)}<line x1="54" y1="6" x2="54" y2="144" stroke="#fff" stroke-width="4" stroke-dasharray="16 12"/><line x1="66" y1="6" x2="66" y2="144" stroke="#fff" stroke-width="4" stroke-dasharray="16 12"/>
+      <rect x="26" y="6" width="68" height="26" rx="6" fill="#2a333d"/><path d="M42 12 L56 26 M56 12 L42 26" stroke="#c0392b" stroke-width="4" stroke-linecap="round"/>
+      <path d="M74 12 L74 26 M74 26 L68 20 M74 26 L80 20" stroke="#1f9d55" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      ${carG(88, 100, '#2c6aa0')}</svg>
+    <b>UDVOJENA ISPREKIDANA</b><span>traka sa izmenljivim smerom — važi semafor iznad trake</span>
+  </div>
+</div>
+<div class="signRow lineRow">
+  <div class="signCell wide">
+    <svg viewBox="0 0 200 150">${road(200, 150)}<line x1="94" y1="4" x2="94" y2="146" stroke="#fff" stroke-width="4"/><line x1="106" y1="6" x2="106" y2="144" stroke="#fff" stroke-width="4" stroke-dasharray="16 12"/>
+      ${carG(58, 104, '#2c6aa0')}<path d="M58 84 Q58 62 84 54" stroke="#c0392b" stroke-width="3" fill="none" stroke-dasharray="6 5"/>${noSign(76, 40)}
+      ${carG(146, 46, '#1f7a3f', 180)}<path d="M146 66 Q146 92 120 102" stroke="#1f7a3f" stroke-width="3" fill="none" stroke-dasharray="6 5"/>${yesSign(126, 118)}</svg>
+    <b>KOMBINOVANA</b><span>gledaš liniju bliže SVOJOJ traci: <b>puna uz tebe = ne smeš</b> (levo vozilo) · <b>isprekidana uz tebe = smeš</b> (desno vozilo)</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 120 150">${road(120, 150)}
+      <line x1="60" y1="4" x2="60" y2="86" stroke="#fff" stroke-width="4" stroke-dasharray="26 8"/><line x1="60" y1="90" x2="60" y2="146" stroke="#fff" stroke-width="4"/>
+      ${carG(34, 118, '#2c6aa0')}<text x="60" y="80" text-anchor="middle" font-size="13" fill="#fff" font-weight="bold">▲</text></svg>
+    <b>LINIJA UPOZORENJA</b><span>duže crte = puna linija samo što nije počela; završi preticanje</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 120 150"><rect x="0" y="0" width="120" height="150" fill="#6b7f5e"/><rect x="16" y="0" width="104" height="150" fill="#9aa7b4"/>
+      <line x1="22" y1="4" x2="22" y2="146" stroke="#fff" stroke-width="4"/><line x1="70" y1="6" x2="70" y2="144" stroke="#fff" stroke-width="3" stroke-dasharray="16 12"/>
+      ${carG(46, 92, '#2c6aa0')}</svg>
+    <b>IVIČNA LINIJA</b><span>označava gde se kolovoz završava (dalje je bankina)</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 120 150">${road(120, 150)}<rect x="0" y="52" width="120" height="46" fill="#9aa7b4"/>
+      <line x1="60" y1="4" x2="60" y2="48" stroke="#fff" stroke-width="4"/><line x1="60" y1="102" x2="60" y2="146" stroke="#fff" stroke-width="4"/>
+      <line x1="36" y1="52" x2="36" y2="98" stroke="#fff" stroke-width="3" stroke-dasharray="6 6"/>
+      <path d="M60 100 Q60 74 96 74" stroke="#fff" stroke-width="3" fill="none" stroke-dasharray="6 6"/>
+      ${carG(60, 130, '#2c6aa0')}</svg>
+    <b>LINIJA VODILJA</b><span>kratka isprekidana — vodi te kroz raskrsnicu</span>
+  </div>
+</div>
+<p style="margin-top:12px"><b>Poprečne oznake (čl. 65-66)</b> — pružaju se popreko kolovoza:</p>
+<div class="signRow lineRow">
+  <div class="signCell">
+    <svg viewBox="0 0 120 150">${road(120, 150)}<rect x="6" y="60" width="108" height="10" fill="#fff"/>
+      <text x="60" y="96" text-anchor="middle" font-size="20" fill="#fff" font-weight="bold">STOP</text>${carG(60, 122, '#2c6aa0')}</svg>
+    <b>LINIJA ZAUSTAVLJANJA</b><span>mesto ispred koga se staje (uz znak ili crveno svetlo)</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 120 150">${road(120, 150)}<path d="M10 146 L58 20 M32 146 L80 20 M54 146 L102 20" stroke="#fff" stroke-width="7"/>
+      ${carG(30, 120, '#2c6aa0')}<path d="M30 100 Q30 74 78 66" stroke="#2c6aa0" stroke-width="3" fill="none" stroke-dasharray="6 5"/></svg>
+    <b>KOSNIK</b><span>traka se zatvara — pređi u susednu</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 120 150">${road(120, 150)}
+      <path d="M14 132 L106 132 M22 116 L98 116 M30 100 L90 100 M38 84 L82 84 M46 68 L74 68" stroke="#fff" stroke-width="6"/>
+      <path d="M104 40 Q84 52 70 62" stroke="#fff" stroke-width="3" fill="none" stroke-dasharray="6 5"/></svg>
+    <b>GRANIČNIK</b><span>deo kolovoza na kome je saobraćaj zabranjen (ulivanje sa prilaza)</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 120 150">${road(120, 150)}<path d="M18 142 L60 24 L102 142 Z" fill="none" stroke="#fff" stroke-width="5"/>
+      <path d="M40 142 L60 86 L80 142" fill="none" stroke="#fff" stroke-width="5"/>
+      ${carG(28, 96, '#2c6aa0')}${carG(92, 96, '#5f6d7a')}</svg>
+    <b>POLJE ZA USMERAVANJE</b><span>razdvaja tokove — po njemu se ne vozi ni ne parkira</span>
+  </div>
+</div>
 <p><b>Boje (Pravilnik o signalizaciji čl. 59):</b> oznake su po pravilu BELE; ŽUTE su izuzeci — zona radova, javni prevoz (BUS traka), elektronska naplata putarine, površine za posebne namene (mesta zabrane zaustavljanja/parkiranja, stajališta, taksi) i invalidska parking mesta (čiji se delovi smeju obeležiti i plavom).</p>`,
 };
 
@@ -1396,19 +1453,6 @@ X[8341] = { x: 'Kada vozač koji je učinio prekršaj NIJE identifikovan, vlasni
 
 // --- Kartica "Slični pojmovi" (Milanov zahtev): 4 radnje prolaženja, odstojanje/rastojanje,
 // vidljivost/preglednost, kolona — sve verbatim iz ZOBS čl. 7 (t. 71-79, 86-87) ---
-// crtež automobila iz ptičje perspektive (telo + vetrobran + zadnje staklo + točkovi)
-const carG = (x, y, color, rot = 0) => `<g transform="translate(${x} ${y}) rotate(${rot})">
-  <rect x="-11" y="-13" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="-13" width="4.5" height="8" rx="2" fill="#333"/>
-  <rect x="-11" y="6" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="6" width="4.5" height="8" rx="2" fill="#333"/>
-  <rect x="-9" y="-17" width="18" height="34" rx="7" fill="${color}"/>
-  <path d="M-6 -9 Q0 -13 6 -9 L6 -4 Q0 -7 -6 -4 Z" fill="#fff" opacity=".85"/>
-  <path d="M-6 9 Q0 12 6 9 L6 13 Q0 15 -6 13 Z" fill="#fff" opacity=".5"/>
-</g>`;
-const arr = (x1, y1, x2, y2, color, w = 3.5) => {
-  const ang = Math.atan2(y2 - y1, x2 - x1);
-  const hx = (a) => x2 - 9 * Math.cos(ang - a), hy = (a) => y2 - 9 * Math.sin(ang - a);
-  return `<path d="M${x1} ${y1} L${x2} ${y2} M${hx(0.45)} ${hy(0.45)} L${x2} ${y2} L${hx(-0.45)} ${hy(-0.45)}" stroke="${color}" stroke-width="${w}" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`;
-};
 CARDS['slicni-pojmovi'] = {
   title: 'Slični pojmovi — u čemu je razlika',
   html: `

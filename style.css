@@ -243,3 +243,10 @@ tr.totalRow td { border-top: 2px solid var(--blue); }
 /* naslov otklopljene kartice ostaje vidljiv ispod lepljive plave trake */
 .explCardBtn { scroll-margin-top: 74px; }
 .catRow, .statCatRow { scroll-margin-top: 74px; }
+
+/* veće sličice za linije/oznake — natpisi su HTML, ne SVG tekst */
+.signRow.lineRow { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; }
+.lineRow .signCell svg { width: 100%; max-width: 150px; height: auto; border-radius: 6px; }
+.lineRow .signCell.wide { grid-column: span 2; }
+.lineRow .signCell.wide svg { max-width: 260px; }
+.lineRow .signCell span { font-size: .8rem; }
