@@ -3,6 +3,9 @@
   'use strict';
 
   // Svaka neuhvaćena greška se prikazuje u crvenoj traci na vrhu — umesto neme prazne stranice.
+  window.addEventListener('unhandledrejection', (e) => {
+    window.dispatchEvent(new ErrorEvent('error', { message: 'Neuhvaćena greška: ' + (e.reason && e.reason.message || e.reason) }));
+  });
   window.addEventListener('error', (e) => {
     try {
       let b = document.getElementById('errStrip');
@@ -258,13 +261,18 @@
 
   // ---------- Hash rutiranje: strelice browsera napred/nazad + deep-link ----------
   let curHash = null;
+  const FILE_MODE = location.protocol === 'file:';
   function setHash(h) {
     curHash = h;
+    if (FILE_MODE) return;                   // file:// — adresa se ne dira (origin je "null")
     if (location.hash !== h) location.hash = h;
   }
   // mrtva adresa (#/vezba, ugašena simulacija, loš pregled) se zamenjuje u istoriji —
   // inače bi svaki "Nazad" ponovo sletao na nju i korisnik bi se vrteo u krug
-  function goHomeReplace() { location.replace('#/'); }
+  function goHomeReplace() {
+    if (FILE_MODE) { renderHome(); return; }
+    location.replace('#/');
+  }
   function routeTo(h) {
     if (!h || h === '#' || h === '#/') return renderHome();
     if (h === '#/sva') return browseAll();
@@ -1571,7 +1579,7 @@
   // Dugoživeći tab: na povratak u tab (i na ~5 min) proveri da li postoji nova verzija fajlova.
   const BOOT_V = window.APP_V || 0;
   function checkVersion() {
-    if (!BOOT_V || document.getElementById('updBar')) return;
+    if (!BOOT_V || FILE_MODE || document.getElementById('updBar')) return;
     const sc = document.createElement('script');
     sc.src = 'version.js?ts=' + Date.now();
     sc.onload = () => {
@@ -1593,7 +1601,7 @@
   applyScript();
   applyTheme();
   applyFont();
-  curHash = location.hash || '#/';
-  try { routeTo(curHash); } catch (err) { try { goHomeReplace(); renderHome(); } catch (e2) { /* errStrip će prikazati */ } }
+  curHash = FILE_MODE ? '#/' : (location.hash || '#/');
+  try { routeTo(curHash); } catch (err) { try { renderHome(); } catch (e2) { /* errStrip će prikazati */ } }
   initBackup();
 })();
