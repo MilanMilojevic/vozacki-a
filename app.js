@@ -1,0 +1,1489 @@
+/* Возачки А — локална вежбаоница над званичном базом (eUprava practice, GUID za A kategoriju). */
+(function () {
+  'use strict';
+
+  const D = window.QUIZ;
+  const Q = D.questions;                       // već sortirano: oblast → podoblast → qId
+  const byId = new Map(Q.map((q) => [q.id, q]));
+  const catName = new Map(D.cats.map((c) => [c.id, c]));
+  const CATS = D.cats.filter((c) => Q.some((q) => q.cat === c.id));
+  const DAY = 24 * 60 * 60 * 1000;
+  const one = (n) => n % 10 === 1 && n % 100 !== 11;   // srpski: 1, 21, 31... "pitanje/dan"
+  const localDay = () => { const d = new Date(); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
+
+  // ---------- Prevodi UI ----------
+  const STR = {
+    brand: { l: 'Vozački A', c: 'Возачки А' },
+    home: { l: 'Početna', c: 'Почетна' },
+    learn: { l: 'Učenje redom', c: 'Учење редом' },
+    learnSub: { l: 'sva pitanja, pamti gde si stao', c: 'сва питања, памти где си стао' },
+    drill: { l: 'Ponovi pogrešna', c: 'Понови погрешна' },
+    mixed: { l: 'Mešano ponavljanje', c: 'Мешано понављање' },
+    mixedSub: { l: 'sva pitanja, nasumičan redosled', c: 'сва питања, насумичан редослед' },
+    marked: { l: 'Obeležena pitanja', c: 'Обележена питања' },
+    markedSub: { l: 'tvoja ručna lista', c: 'твоја ручна листа' },
+    sim: { l: 'Simulacija ispita', c: 'Симулација испита' },
+    simSub: { l: '41 pitanje · 45 min · prag 85%', c: '41 питање · 45 мин · праг 85%' },
+    stats: { l: 'Statistika', c: 'Статистика' },
+    statsSub: { l: 'oblasti i najslabije tačke', c: 'области и најслабије тачке' },
+    cats: { l: 'Oblasti — klikni za spisak pitanja i vežbanje', c: 'Области — кликни за списак питања и вежбање' },
+    wholeCat: { l: 'Vežbaj celu oblast', c: 'Вежбај целу област' },
+    question: { l: 'Pitanje', c: 'Питање' },
+    qNumTip: { l: 'Zvanični broj pitanja u MUP bazi (isti broj važi i na eUpravi)', c: 'Званични број питања у МУП бази (исти број важи и на еУправи)' },
+    points: { l: 'poena', c: 'поена' },
+    chooseN: { l: 'Izaberite odgovora:', c: 'Изаберите одговора:' },
+    confirm: { l: 'Odgovori', c: 'Одговори' },
+    next: { l: 'Sledeće pitanje', c: 'Следеће питање' },
+    skip: { l: 'Preskoči', c: 'Прескочи' },
+    prev: { l: 'Prethodno', c: 'Претходно' },
+    correct: { l: 'Tačno!', c: 'Тачно!' },
+    wrong: { l: 'Netačno.', c: 'Нетачно.' },
+    correctIs: { l: 'Tačan odgovor je označen zelenim.', c: 'Тачан одговор је означен зеленим.' },
+    mark: { l: 'Obeleži pitanje', c: 'Обележи питање' },
+    seenTimes: { l: 'odgovarano', c: 'одговарано' },
+    wrongTimes: { l: 'pogrešno', c: 'погрешно' },
+    today: { l: 'danas', c: 'данас' },
+    yesterday: { l: 'juče', c: 'јуче' },
+    daysAgo: { l: 'pre # dana', c: 'пре # дана' },
+    ofQ: { l: 'od', c: 'од' },
+    inQueue: { l: 'za ponavljanje', c: 'за понављање' },
+    ready: { l: 'spremno', c: 'спремно' },
+    waiting: { l: 'čeka', c: 'чека' },
+    waitInfo: { l: 'Sva spremna pitanja si prošao. # pitanja čeka svoj termin (razmaknuto ponavljanje: sutra, pa za 3 dana).', c: 'Сва спремна питања си прошао. # питања чека свој термин (размакнуто понављање: сутра, па за 3 дана).' },
+    drillWaitingBtn: { l: 'Vežbaj i ona koja čekaju', c: 'Вежбај и она која чекају' },
+    drillEmpty: { l: 'Nema pitanja za ponavljanje — sve što si grešio je utvrđeno. 💪', c: 'Нема питања за понављање — све што си грешио је утврђено. 💪' },
+    markedEmpty: { l: 'Nema obeleženih pitanja. Obeleži pitanje kvačicom dok vežbaš.', c: 'Нема обележених питања. Обележи питање квачицом док вежбаш.' },
+    learnDone: { l: 'Prošao si SVA pitanja! Pređi na ponavljanje pogrešnih i simulacije.', c: 'Прошао си СВА питања! Пређи на понављање погрешних и симулације.' },
+    listDone: { l: 'Kraj liste.', c: 'Крај листе.' },
+    finishSim: { l: 'Završi ispit', c: 'Заврши испит' },
+    simConfirm: { l: 'Predati test? Neodgovorena pitanja nose 0 poena.', c: 'Предати тест? Неодговорена питања носе 0 поена.' },
+    simLeaveConfirm: { l: 'Napustiti simulaciju? Odgovori iz nje NEĆE biti sačuvani niti računati.', c: 'Напустити симулацију? Одговори из ње НЕЋЕ бити сачувани нити рачунати.' },
+    passed: { l: 'POLOŽIO', c: 'ПОЛОЖИО' },
+    failed: { l: 'NIJE POLOŽENO', c: 'НИЈЕ ПОЛОЖЕНО' },
+    threshold: { l: 'prag', c: 'праг' },
+    simWrongTitle: { l: 'Pogrešna i neodgovorena pitanja', c: 'Погрешна и неодговорена питања' },
+    perCat: { l: 'Po oblastima', c: 'По областима' },
+    backHome: { l: 'Na početnu', c: 'На почетну' },
+    newSim: { l: 'Nova simulacija', c: 'Нова симулација' },
+    history: { l: 'Simulacije do sada', c: 'Симулације до сада' },
+    noSims: { l: 'Još nijedna simulacija.', c: 'Још ниједна симулација.' },
+    statsTitle: { l: 'Tačnost po oblastima', c: 'Тачност по областима' },
+    statExpand: { l: 'Klikni za raspis po podoblastima', c: 'Кликни за распис по подобластима' },
+    catExpand: { l: 'Klikni za podoblasti', c: 'Кликни за подобласти' },
+    wholeCat: { l: 'Sva pitanja oblasti', c: 'Сва питања области' },
+    weakTitle: { l: 'Najslabije podoblasti (min. 3 odgovora)', c: 'Најслабије подобласти (мин. 3 одговора)' },
+    thArea: { l: 'Oblast', c: 'Област' },
+    thQ: { l: 'Pitanja', c: 'Питања' },
+    thSeen: { l: 'Odgovarano', c: 'Одговарано' },
+    thAcc: { l: 'Tačnost', c: 'Тачност' },
+    export: { l: 'Sačuvaj napredak (fajl)', c: 'Сачувај напредак (фајл)' },
+    import: { l: 'Učitaj napredak', c: 'Учитај напредак' },
+    reset: { l: 'Obriši sav napredak', c: 'Обриши сав напредак' },
+    resetConfirm: { l: 'Sigurno obrisati SAV napredak?', c: 'Сигурно обрисати САВ напредак?' },
+    dataInfo: { l: 'Baza: zvanična eUprava pitanja za A kategoriju', c: 'База: званична еУправа питања за А категорију' },
+    persistNote: { l: 'Napredak preživljava restart browsera i računara; briše ga samo „brisanje podataka pregledanja". Za svaki slučaj poveži fajl za automatski upis.', c: 'Напредак преживљава рестарт браузера и рачунара; брише га само „брисање података прегледања". За сваки случај повежи фајл за аутоматски упис.' },
+    backupConnect: { l: '🔗 Poveži fajl za automatsko čuvanje', c: '🔗 Повежи фајл за аутоматско чување' },
+    backupResume: { l: 'Nastavi automatsko čuvanje u fajl', c: 'Настави аутоматско чување у фајл' },
+    backupOn: { l: 'Automatski se čuva u', c: 'Аутоматски се чува у' },
+    backupNA: { l: '(automatski upis u fajl nije podržan u ovom browseru — koristi dugme za ručno čuvanje)', c: '(аутоматски упис у фајл није подржан у овом браузеру — користи дугме за ручно чување)' },
+    answered: { l: 'odgovoreno', c: 'одговорено' },
+    continueBtn: { l: 'Nastavi', c: 'Настави' },
+    startBtn: { l: 'Počni', c: 'Почни' },
+    goto: { l: 'Idi', c: 'Иди' },
+    podoblasti: { l: 'Podoblasti', c: 'Подобласти' },
+    allQuestions: { l: 'Pitanja', c: 'Питања' },
+    onlyWrong: { l: 'Samo pogrešna', c: 'Само погрешна' },
+    onlyUnseen: { l: 'Samo neodgovorena', c: 'Само неодговорена' },
+    correctNow: { l: 'utvrđeno', c: 'утврђено' },
+    kbHint: { l: 'Prečice: ← → kretanje · 1–9 odgovor · Enter potvrda', c: 'Пречице: ← → кретање · 1–9 одговор · Enter потврда' },
+    vezbaj: { l: 'Vežbaj', c: 'Вежбај' },
+    vezbajReady: { l: 'Vežbaj spremna', c: 'Вежбај спремна' },
+    dueTomorrow: { l: 'sutra', c: 'сутра' },
+    dueDays: { l: 'za # dana', c: 'за # дана' },
+    allPage: { l: 'Sva pitanja', c: 'Сва питања' },
+    allPageSub: { l: 'redom, filteri, spisak', c: 'редом, филтери, списак' },
+    fromStart: { l: 'Počni od 1.', c: 'Почни од 1.' },
+    shuffleLbl: { l: 'Izmešaj redosled', c: 'Измешај редослед' },
+    shuffled: { l: 'mešano', c: 'мешано' },
+    ukupno: { l: 'Ukupno', c: 'Укупно' },
+    backToList: { l: 'Spisak', c: 'Списак' },
+    yourAnswer: { l: 'tvoj odgovor', c: 'твој одговор' },
+    correctAnswer: { l: 'tačan odgovor', c: 'тачан одговор' },
+    notAnswered: { l: 'Nisi odgovorio na ovo pitanje.', c: 'Ниси одговорио на ово питање.' },
+    requiresN: { l: 'Traži # odgovora — priznaje se samo ako su označena SVA tačna.', c: 'Тражи # одговора — признаје се само ако су означена СВА тачна.' },
+    correctOnesTitle: { l: 'Tačno odgovorena pitanja', c: 'Тачно одговорена питања' },
+    reviewOldNote: { l: 'Starija simulacija — tvoji odgovori nisu bili sačuvani, prikazana su samo pogrešna pitanja sa tačnim odgovorima.', c: 'Старија симулација — твоји одговори нису били сачувани, приказана су само погрешна питања са тачним одговорима.' },
+    historyTip: { l: 'Klikni na pokušaj za ceo pregled: svako pitanje, tvoj i tačan odgovor.', c: 'Кликни на покушај за цео преглед: свако питање, твој и тачан одговор.' },
+    report: { l: 'Izveštaj', c: 'Извештај' },
+    repAnswered: { l: 'Odgovoreno', c: 'Одговорено' },
+    repMarked: { l: 'Obeleženo', c: 'Обележено' },
+    backToTest: { l: 'Nazad na test', c: 'Назад на тест' },
+    prevQ: { l: 'Prethodno pitanje', c: 'Претходно питање' },
+    nextQ: { l: 'Sledeće pitanje', c: 'Следеће питање' },
+    explTitle: { l: '💡 Objašnjenje', c: '💡 Објашњење' },
+    explNote: { l: 'nezvanično objašnjenje, osnov u ZOBS-u', c: 'незванично објашњење, основ у ЗОБС-у' },
+    pojmovnik: { l: 'Pojmovnik — tematske kartice', c: 'Појмовник — тематске картице' },
+    pojmovnikSub: { l: 'jedna kartica objašnjava celu grupu pitanja; iste kartice iskaču i uz pitanja', c: 'једна картица објашњава целу групу питања; исте картице искачу и уз питања' },
+    readyTitle: { l: '🎯 Spremnost za ispit (procena)', c: '🎯 Спремност за испит (процена)' },
+    readyNote: { l: 'Ukrštanje tvoje tačnosti sa zvaničnim šablonom testa (41 pitanje, 98 poena, prag 84). Procena je pouzdanija što više vežbaš.', c: 'Укрштање твоје тачности са званичним шаблоном теста (41 питање, 98 поена, праг 84). Процена је поузданија што више вежбаш.' },
+    readyLoss: { l: 'Najviše te košta', c: 'Највише те кошта' },
+    readyRough: { l: '⚠ gruba procena — još je malo odgovora', c: '⚠ груба процена — још је мало одговора' },
+    readyPts: { l: 'očekivanih poena', c: 'очекиваних поена' },
+    searchPh: { l: '🔎 Pretraga pitanja (tekst ili #broj)…', c: '🔎 Претрага питања (текст или #број)…' },
+    todayLbl: { l: 'Danas', c: 'Данас' },
+    okShort: { l: 'tačno', c: 'тачно' },
+    shufTip: { l: 'Vežbanje pokrenuto sa ove strane ide nasumičnim redosledom (ne znaš koje je sledeće). Spisak dole ostaje po redu, a „Nastavi" uvek ide redom. Klik na pitanje u spisku: počinje od njega, pa nastavlja izmešano.', c: 'Вежбање покренуто са ове стране иде насумичним редоследом (не знаш које је следеће). Списак доле остаје по реду, а „Настави" увек иде редом. Клик на питање у списку: почиње од њега, па наставља измешано.' },
+    queueTip: { l: 'Razmaknuto ponavljanje: pogrešiš → pitanje je odmah spremno; pogodiš ga → vraća se sutra; opet pogodiš → za 3 dana; treći pogodak zaredom → izlazi iz reda.', c: 'Размакнуто понављање: погрешиш → питање је одмах спремно; погодиш га → враћа се сутра; опет погодиш → за 3 дана; трећи погодак заредом → излази из реда.' },
+    legend: { l: '✓ utvrđeno · ✗ za ponavljanje · • neodgovoreno · 🔖 obeleženo · 🖼 sa slikom', c: '✓ утврђено · ✗ за понављање · • неодговорено · 🔖 обележено · 🖼 са сликом' },
+    contTip: { l: 'Nastavlja tačno od mesta gde si stao (uvek redom).', c: 'Наставља тачно од места где си стао (увек редом).' },
+    qOne: { l: 'pitanje', c: 'питање' },
+    waitInfoOne: { l: 'Sva spremna pitanja si prošao. # pitanje čeka svoj termin (razmaknuto ponavljanje: sutra, pa za 3 dana).', c: 'Сва спремна питања си прошао. # питање чека свој термин (размакнуто понављање: сутра, па за 3 дана).' },
+    daysAgoOne: { l: 'pre # dan', c: 'пре # дан' },
+    dueDaysOne: { l: 'za # dan', c: 'за # дан' },
+    simConfirm0: { l: 'Predati test?', c: 'Предати тест?' },
+    simConfirmN: { l: 'Predati test? Neodgovorenih: # (nose 0 poena).', c: 'Предати тест? Неодговорених: # (носе 0 поена).' },
+    importBad: { l: 'Fajl nije prepoznat kao ispravan napredak — ništa nije promenjeno.', c: 'Фајл није препознат као исправан напредак — ништа није промењено.' },
+    importConfirm: { l: 'Učitavanje će ZAMENITI postojeći napredak ovim iz fajla. Nastaviti?', c: 'Учитавање ће ЗАМЕНИТИ постојећи напредак овим из фајла. Наставити?' },
+    readyNoData: { l: 'Procena se prikazuje kada odgovoriš na bar 30 pitanja (do sada: #). Uradi prvi krug, pa se vrati ovde.', c: 'Процена се приказује када одговориш на бар 30 питања (до сада: #). Уради први круг, па се врати овде.' },
+  };
+
+  // ---------- Stanje ----------
+  const KEY = 'vozackiA.v1';
+  let S = load();
+  // Svako stanje (učitano ili uvezeno) prolazi kroz normalizaciju — nedostajuća polja
+  // dobijaju podrazumevane vrednosti, pa ni stari/oštećeni fajl ne može da obori aplikaciju.
+  function normalizeState(obj) {
+    if (!obj || typeof obj !== 'object' || !obj.q || typeof obj.q !== 'object' || Array.isArray(obj.q)) return null;
+    return {
+      script: obj.script === 'c' ? 'c' : 'l',
+      seqPos: Number.isInteger(obj.seqPos) && obj.seqPos >= 0 ? obj.seqPos : 0,
+      q: obj.q,
+      sims: Array.isArray(obj.sims) ? obj.sims : [],
+      secPos: obj.secPos && typeof obj.secPos === 'object' && !Array.isArray(obj.secPos) ? obj.secPos : {},
+      lastSec: typeof obj.lastSec === 'string' ? obj.lastSec : null,
+      theme: obj.theme === 'dark' || obj.theme === 'light' ? obj.theme : null,
+      fs: typeof obj.fs === 'number' && obj.fs >= 0.8 && obj.fs <= 1.4 ? obj.fs : 1,
+      day: obj.day && typeof obj.day === 'object' ? obj.day : null,
+    };
+  }
+  function load() {
+    try {
+      const raw = localStorage.getItem(KEY);
+      if (raw) { const norm = normalizeState(JSON.parse(raw)); if (norm) return norm; }
+    } catch (e) { /* korumpiran zapis — kreni ispočetka */ }
+    return normalizeState({ q: {} });
+  }
+  function save() { localStorage.setItem(KEY, JSON.stringify(S)); scheduleBackup(); }
+  function qs(id) { let r = S.q[id]; if (!r) { r = { a: 0, w: 0, streak: 0, marked: 0 }; S.q[id] = r; } return r; }
+
+  const L = (k) => STR[k][S.script];
+  const T = (obj) => obj[S.script];
+  const el = (id) => document.getElementById(id);
+  const catOf = (q) => T(catName.get(q.cat));
+  const nQ = (n) => n + ' ' + (one(n) ? L('qOne') : L('allQuestions').toLowerCase());
+  const subOf = (q) => T({ l: D.subs[q.sub].l, c: D.subs[q.sub].c });
+  function escapeHtml(s) { return s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c])); }
+  function relTime(ts) {
+    const sod = (t) => { const d = new Date(t); return new Date(d.getFullYear(), d.getMonth(), d.getDate()).getTime(); };
+    const days = Math.round((sod(Date.now()) - sod(ts)) / DAY);
+    if (days <= 0) return L('today');
+    if (days === 1) return L('yesterday');
+    return (one(days) ? L('daysAgoOne') : L('daysAgo')).replace('#', days);
+  }
+
+  // ---------- Beleženje rezultata + razmaknuto ponavljanje ----------
+  // Pogrešno → ulazi u red (due odmah). Tačno u redu: 1. put → sutra, 2. put → za 3 dana, 3. put → izlazi.
+  function record(id, ok) {
+    const r = qs(id);
+    r.a++; r.last = Date.now();
+    if (ok) {
+      r.streak++;
+      if (r.w > 0 && r.streak < 3) r.due = Date.now() + (r.streak === 1 ? 1 : 3) * DAY;
+    } else {
+      r.w++; r.streak = 0; r.due = Date.now();
+    }
+    const today = localDay();
+    if (!S.day || S.day.d !== today) S.day = { d: today, n: 0, ok: 0 };
+    S.day.n++; if (ok) S.day.ok++;
+    save();
+  }
+  const inQueue = (id) => { const r = S.q[id]; return r && r.w > 0 && r.streak < 3; };
+  function queueSplit() {
+    const now = Date.now();
+    const ready = [], waiting = [];
+    for (const q of Q) {
+      if (!inQueue(q.id)) continue;
+      ((S.q[q.id].due || 0) <= now ? ready : waiting).push(q.id);
+    }
+    const k = (id) => (S.q[id].streak * 1e15) + (S.q[id].due || 0);
+    ready.sort((a, b) => k(a) - k(b));
+    waiting.sort((a, b) => (S.q[a].due || 0) - (S.q[b].due || 0));
+    return { ready, waiting };
+  }
+  function markedIds() { return Q.filter((q) => S.q[q.id] && S.q[q.id].marked).map((q) => q.id); }
+
+  // ---------- Ruter + trenutni prikaz (za promenu pisma bez gubitka mesta) ----------
+  const views = ['home', 'question', 'sim', 'simresult', 'stats', 'browse'];
+  function show(v) { views.forEach((x) => el('view-' + x).classList.toggle('active', x === v)); window.scrollTo(0, 0); }
+  let current = { redraw: renderHome };
+
+  // ---------- Hash rutiranje: strelice browsera napred/nazad + deep-link ----------
+  let curHash = null;
+  function setHash(h) {
+    curHash = h;
+    if (location.hash !== h) location.hash = h;
+  }
+  // mrtva adresa (#/vezba, ugašena simulacija, loš pregled) se zamenjuje u istoriji —
+  // inače bi svaki "Nazad" ponovo sletao na nju i korisnik bi se vrteo u krug
+  function goHomeReplace() { location.replace('#/'); }
+  function routeTo(h) {
+    if (!h || h === '#' || h === '#/') return renderHome();
+    if (h === '#/sva') return browseAll();
+    if (h.startsWith('#/sek/')) return browse(h.slice(6));
+    if (h === '#/lista/wrong') return browseSet('wrong');
+    if (h === '#/lista/marked') return browseSet('marked');
+    if (h === '#/stats') return renderStats();
+    if (h === '#/uci') return startLearn();
+    if (h.startsWith('#/pregled/')) {
+      const i = parseInt(h.slice(10), 10);
+      if (S.sims[i]) return renderSimReview(S.sims[i], false);
+      return goHomeReplace();
+    }
+    if (h === '#/sim') {
+      if (sim) { show('sim'); sim.showReport ? renderSimReport() : renderSimQ(); return; }
+      return goHomeReplace();
+    }
+    return goHomeReplace();   // '#/vezba' i nepoznato: prolazna vežba se ne rekonstruiše
+  }
+  window.addEventListener('hashchange', () => {
+    const h = location.hash || '#/';
+    if (h === curHash) return;               // naš sopstveni upis, ne korisnikova strelica
+    if (sim) {
+      if (!confirm(L('simLeaveConfirm'))) { setHash('#/sim'); return; }
+      clearInterval(sim.timerId); sim = null;
+    }
+    curHash = h;
+    try { routeTo(h); } catch (err) { goHomeReplace(); }
+  });
+  // slučajan F5/zatvaranje taba usred simulacije ne sme tiho da uništi pokušaj
+  window.addEventListener('beforeunload', (e) => {
+    if (sim) { e.preventDefault(); e.returnValue = ''; }
+  });
+
+  // ---------- Traka napretka sa skokom na broj ----------
+  function renderProgress(title, pos, max, onJump, onBack) {
+    el('qProgress').innerHTML = `<span>${onBack ? `<a href="#" id="backToList" class="bcLink">‹ ${L('backToList')}</a> &nbsp; ` : ''}${escapeHtml(title)}: <b>${pos}</b> ${L('ofQ')} ${max}</span>
+      <span class="jumpBox"><input id="jumpN" type="number" min="1" max="${max}" placeholder="${pos}">
+      <button id="jumpGo" class="secondary sBtn">${L('goto')}</button></span>
+      <span class="mut kbNote">${L('kbHint')}</span>`;
+    if (onBack) el('backToList').addEventListener('click', (e) => { e.preventDefault(); onBack(); });
+    const doJump = () => {
+      const v = parseInt(el('jumpN').value, 10);
+      if (!isNaN(v) && v >= 1 && v <= max) onJump(v - 1);
+    };
+    el('jumpGo').addEventListener('click', doJump);
+    el('jumpN').addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); doJump(); } });
+  }
+
+  // ---------- Prikaz jednog pitanja (zajednički engine) ----------
+  // opts: {container, q, onAnswered, onNext, onPrev, nextLabelKey}
+  function renderQuestion(opts) {
+    const q = opts.q;
+    const c = opts.container;
+    c.dataset.qid = q.id;
+    const shuffled = q.ch.slice();
+    for (let i = shuffled.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]; }
+
+    const sel = new Set();
+    let answered = false;
+
+    c.innerHTML = '';
+    const meta = document.createElement('div'); meta.className = 'qMeta';
+    const hist = qs(q.id).a > 0
+      ? ` &nbsp;·&nbsp; ${S.q[q.id].a}× ${L('seenTimes')}${S.q[q.id].w ? `, ${S.q[q.id].w}× ${L('wrongTimes')}` : ''} (${relTime(S.q[q.id].last)})`
+      : '';
+    meta.innerHTML = `<span><a href="#" class="bcLink" data-bc="c${q.cat}">${escapeHtml(catOf(q))}</a> › <a href="#" class="bcLink" data-bc="s${q.sub}">${escapeHtml(subOf(q))}</a></span>
+      <span><span class="qNum" title="${escapeHtml(L('qNumTip'))}">#${q.id}</span> · ${q.pts} ${L('points')}${hist}</span>`;
+    meta.querySelectorAll('.bcLink').forEach((a) => a.addEventListener('click', (e) => { e.preventDefault(); browse(a.dataset.bc); }));
+    c.appendChild(meta);
+
+    const txt = document.createElement('div'); txt.className = 'qText'; txt.textContent = T(q.t);
+    c.appendChild(txt);
+
+    if (q.img) { const im = document.createElement('img'); im.className = 'qImg'; im.src = 'img/' + q.id + '.jpg'; im.alt = ''; c.appendChild(im); }
+
+    if (q.req > 1) {
+      const hint = document.createElement('div'); hint.className = 'mut'; hint.style.marginBottom = '8px';
+      hint.textContent = `${L('chooseN')} ${q.req}`;
+      c.appendChild(hint);
+    }
+
+    const btns = [];
+    for (const ch of shuffled) {
+      const b = document.createElement('button'); b.className = 'choice'; b.type = 'button';
+      b.textContent = T(ch.t); b.dataset.ok = ch.ok;
+      b.addEventListener('click', () => {
+        if (answered) return;
+        // klik samo bira; odgovor se uvek potvrđuje dugmetom (da ne bude zaletanja)
+        if (sel.has(ch.id)) { sel.delete(ch.id); b.classList.remove('sel'); }
+        else if (q.req === 1) { sel.clear(); btns.forEach((x) => x.classList.remove('sel')); sel.add(ch.id); b.classList.add('sel'); }
+        else if (sel.size < q.req) { sel.add(ch.id); b.classList.add('sel'); }
+        confirmBtn.disabled = sel.size !== q.req;
+      });
+      b._ch = ch;
+      btns.push(b); c.appendChild(b);
+    }
+
+    const actions = document.createElement('div'); actions.className = 'qActions';
+
+    // ← prethodno
+    if (opts.onPrev) {
+      const pb = document.createElement('button'); pb.className = 'secondary';
+      pb.textContent = '← ' + L('prev');
+      pb.addEventListener('click', opts.onPrev);
+      actions.appendChild(pb);
+    }
+
+    const confirmBtn = document.createElement('button');
+    confirmBtn.className = 'primary'; confirmBtn.disabled = true;
+    confirmBtn.textContent = L('confirm');
+    confirmBtn.addEventListener('click', () => { if (!answered && sel.size === q.req) finish(shuffled.filter((ch) => sel.has(ch.id))); });
+    actions.appendChild(confirmBtn);
+
+    // → preskoči (pre odgovora); posle odgovora postaje "Sledeće pitanje"
+    let nextBtn = null;
+    if (opts.onNext) {
+      nextBtn = document.createElement('button'); nextBtn.className = 'secondary';
+      nextBtn.textContent = L('skip') + ' →';
+      nextBtn.addEventListener('click', opts.onNext);
+      actions.appendChild(nextBtn);
+    }
+
+    const markWrap = document.createElement('label'); markWrap.className = 'markBox';
+    const cb = document.createElement('input'); cb.type = 'checkbox'; cb.checked = !!qs(q.id).marked;
+    cb.addEventListener('change', () => { qs(q.id).marked = cb.checked ? 1 : 0; save(); });
+    markWrap.appendChild(cb); markWrap.appendChild(document.createTextNode(' ' + L('mark')));
+    actions.appendChild(markWrap);
+    c.appendChild(actions);
+
+    function finish(chosen) {
+      answered = true;
+      const okSet = new Set(q.ch.filter((x) => x.ok).map((x) => x.id));
+      const ok = chosen.length === okSet.size && chosen.every((x) => okSet.has(x.id));
+      for (const b of btns) {
+        b.disabled = true;
+        const isChosen = chosen.includes(b._ch);
+        if (b._ch.ok) b.classList.add('ok');
+        else if (isChosen) b.classList.add('bad');
+        b.classList.remove('sel');
+        const parts = [];
+        if (b._ch.ok) parts.push(`<span class="chip chipOk">✓ ${L('correctAnswer')}</span>`);
+        if (isChosen) parts.push(`<span class="chip ${b._ch.ok ? 'chipYourOk' : 'chipYourBad'}">${L('yourAnswer')}</span>`);
+        if (parts.length) {
+          const w = document.createElement('span'); w.className = 'chipWrap'; w.innerHTML = parts.join(' ');
+          b.appendChild(w);
+        }
+      }
+      if (confirmBtn) confirmBtn.remove();
+      const v = document.createElement('div'); v.className = 'verdict ' + (ok ? 'ok' : 'bad');
+      v.textContent = ok ? L('correct') : L('wrong') + ' ' + L('correctIs');
+      c.insertBefore(v, actions);
+      const ex = explNode(q);
+      if (ex) c.insertBefore(ex, actions);
+      if (nextBtn) { nextBtn.className = 'primary'; nextBtn.textContent = L('next'); nextBtn.focus(); }
+      if (opts.recordKey && opts.recordKey === lastRecordKey) {
+        // isti prikaz istog pitanja (npr. ponovni render posle promene pisma) — ne beleži se dvaput
+      } else {
+        if (opts.recordKey) lastRecordKey = opts.recordKey;
+        opts.onAnswered(ok);
+      }
+    }
+  }
+
+  // ---------- Učenje redom ----------
+  function startLearn(fromPos) {
+    runSeq++;
+    if (typeof fromPos === 'number') { S.seqPos = fromPos; save(); }
+    if (S.seqPos > Q.length) S.seqPos = Q.length;   // tačno Q.length = sva pitanja završena
+    if (S.seqPos < 0) S.seqPos = 0;
+    current = { redraw: stepLearn };
+    setHash('#/uci');
+    show('question');
+    stepLearn();
+  }
+  function stepLearn() {
+    if (S.seqPos >= Q.length) {
+      endScreen(`🎉 ${L('learnDone')}`, browseAll);
+      return;
+    }
+    const q = Q[S.seqPos];
+    renderProgress(L('learn'), S.seqPos + 1, Q.length, (n) => { S.seqPos = n; save(); stepLearn(); }, browseAll);
+    renderQuestion({
+      container: el('qCard'), q,
+      recordKey: 'L' + runSeq + '|' + S.seqPos,
+      onAnswered: (ok) => record(q.id, ok),
+      onNext: () => { S.seqPos++; save(); stepLearn(); },
+      onPrev: S.seqPos > 0 ? () => { S.seqPos--; save(); stepLearn(); } : null,
+    });
+  }
+
+  // ---------- Liste (podoblast / oblast / pogrešna / obeležena / mešano) ----------
+  let listMode = null; // {ids, i, titleFn, kind, secKey, origin}
+  let runSeq = 0;              // raste sa svakim novim prolazom kroz pitanja
+  let lastRecordKey = null;    // "prolaz|pozicija" poslednjeg zabeleženog odgovora
+  function endScreen(msgHtml, origin, extraHtml) {
+    el('qProgress').textContent = '';
+    el('qCard').innerHTML = `<p class="qText">${msgHtml}</p>
+      <div class="qActions">${extraHtml || ''}
+        ${origin ? `<button class="secondary" id="bBackOrigin">‹ ${L('backToList')}</button>` : ''}
+        <button class="${origin || extraHtml ? 'linklike' : 'primary'}" data-nav="home">${L('backHome')}</button></div>`;
+    bindNav(el('qCard'));
+    const bo = el('bBackOrigin');
+    if (bo) bo.addEventListener('click', origin);
+  }
+  function startList(ids, titleFn, emptyMsgFn, kind, opts) {
+    opts = opts || {};
+    if (!ids.length) {
+      current = { redraw: () => startList(ids, titleFn, emptyMsgFn, kind, opts) };
+      show('question');
+      endScreen(emptyMsgFn ? emptyMsgFn() : '', opts.origin);
+      return;
+    }
+    let start = opts.startAt || 0;
+    if (start < 0 || start >= ids.length) start = 0;
+    runSeq++;
+    listMode = { ids, i: start, titleFn, kind, secKey: opts.secKey || null, origin: opts.origin || null };
+    current = { redraw: stepList };
+    setHash('#/vezba');
+    show('question');
+    stepList();
+  }
+  function stepList() {
+    const m = listMode;
+    const title = m.titleFn();
+    if (m.i >= m.ids.length) {
+      // pogrešna: red se ponovo računa — možda je nešto i dalje spremno
+      if (m.kind === 'drill') {
+        const { ready, waiting } = queueSplit();
+        if (ready.length) { runSeq++; listMode = { ...m, ids: ready, i: 0 }; stepList(); return; }
+        if (waiting.length) {
+          endScreen(`✅ ${(one(waiting.length) ? L('waitInfoOne') : L('waitInfo')).replace('#', waiting.length)}`, m.origin,
+            `<button class="primary" id="btnDrillWaiting">${L('drillWaitingBtn')}</button>`);
+          el('btnDrillWaiting').addEventListener('click', () => { runSeq++; listMode = { ...m, ids: waiting, i: 0, kind: 'drill-all' }; stepList(); });
+        } else {
+          endScreen(L('drillEmpty'), m.origin);
+        }
+        return;
+      }
+      if (m.secKey) { S.secPos[m.secKey] = 0; save(); }
+      endScreen(`✅ ${L('listDone')}`, m.origin);
+      return;
+    }
+    const q = byId.get(m.ids[m.i]);
+    if (m.secKey) { S.secPos[m.secKey] = m.i; S.lastSec = m.secKey; save(); }
+    renderProgress(title, m.i + 1, m.ids.length, (n) => { m.i = n; stepList(); }, m.origin);
+    renderQuestion({
+      container: el('qCard'), q,
+      recordKey: 'T' + runSeq + '|' + m.i,
+      onAnswered: (ok) => record(q.id, ok),
+      onNext: () => { m.i++; stepList(); },
+      onPrev: m.i > 0 ? () => { m.i--; stepList(); } : null,
+    });
+  }
+  // 🎲 prekidač na stranama: izmešan redosled za vežbanja pokrenuta sa te strane
+  let shuffleOn = false;
+  function maybeShuffle(ids) {
+    if (!shuffleOn) return ids;
+    const a = ids.slice();
+    for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+    return a;
+  }
+  function shuffleBoxHtml() {
+    return `<label class="markBox" style="margin-left:0" title="${escapeHtml(L('shufTip'))}"><input type="checkbox" id="shufBox"${shuffleOn ? ' checked' : ''}> 🎲 ${L('shuffleLbl')}</label>`;
+  }
+  const sfx = () => (shuffleOn ? ' 🎲' : '');
+  // klik na red u spisku: redom od te pozicije; sa 🎲 — počni od tog pitanja pa nastavi izmešano
+  function rowStart(ids, idx, titleFn, origin) {
+    if (shuffleOn) {
+      const id = ids[idx];
+      startList([id].concat(maybeShuffle(ids.filter((x) => x !== id))), shufTag(titleFn), null, 'filter', { origin });
+    } else {
+      startList(ids, titleFn, null, 'filter', { origin, startAt: idx });
+    }
+  }
+  const legendHtml = () => `<div class="mut" style="font-size:.8rem;margin:4px 0 8px">${L('legend')}</div>`;
+
+  // ---------- Objašnjenja (explanations.js, opciono prisutan) ----------
+  const EX = window.EXPLAIN || { cards: {}, byQ: {}, bySub: {} };
+  function explNode(q) {
+    const e = EX.byQ[q.id];
+    const cardKeys = [...new Set([e && e.card, (EX.bySub || {})[q.sub]].filter((k) => k && EX.cards[k]))];
+    if (!e && !cardKeys.length) return null;
+    const box = document.createElement('div');
+    box.className = 'explBox';
+    let inner = '';
+    if (e && e.x) inner += `<div class="explHead">${L('explTitle')} <span class="mut explSmall">(${L('explNote')})</span></div><p>${escapeHtml(T(e.x))}</p>`;
+    for (const k of cardKeys) {
+      const c = EX.cards[k];
+      inner += `<div><button class="linklike explCardBtn" data-card="${k}">📖 ${escapeHtml(T(c.t))}</button><div class="explCard" style="display:none">${T(c.h)}</div></div>`;
+    }
+    box.innerHTML = inner;
+    box.querySelectorAll('.explCardBtn').forEach((btn) => btn.addEventListener('click', () => {
+      const cd = btn.nextElementSibling;
+      cd.style.display = cd.style.display === 'none' ? '' : 'none';
+    }));
+    return box;
+  }
+  function bindShuffleBox(root) {
+    const sb = root.querySelector('#shufBox');
+    if (sb) sb.addEventListener('change', () => { shuffleOn = sb.checked; current.redraw(); });
+  }
+  const shufTag = (fn) => () => fn() + (shuffleOn ? ` — ${L('shuffled')}` : '');
+
+  // ---------- Simulacija ----------
+  const SIM_N = 41, SIM_PTS_MIN = 98, SIM_PTS_MAX = 99, SIM_SECONDS = 45 * 60;
+  let sim = null;
+
+  // Zvanični šablon testa za A kategoriju, izmeren iz 2 zvanične eUprava simulacije (2026-08-17):
+  // matrica oblast × poeni je u svakom izvlačenju identična (41 pitanje, 98 poena),
+  // nasumična su samo konkretna pitanja unutar svake ćelije. Posledice (38) nisu u testu.
+  const SIM_TEMPLATE = [
+    { cat: 30, pts: 2, n: 11 }, { cat: 30, pts: 3, n: 8 },   // Pravila saobraćaja: 19/46p
+    { cat: 32, pts: 2, n: 5 },  { cat: 32, pts: 3, n: 8 },   // Signalizacija: 13/34p
+    { cat: 29, pts: 2, n: 2 },                               // Vozilo: 2/4p
+    { cat: 25, pts: 1, n: 1 },  { cat: 26, pts: 3, n: 1 },
+    { cat: 28, pts: 2, n: 1 },  { cat: 33, pts: 2, n: 1 },
+    { cat: 34, pts: 2, n: 1 },  { cat: 35, pts: 2, n: 1 },
+    { cat: 36, pts: 2, n: 1 },
+  ];
+  // Finiji nalaz (3 zvanična izvlačenja, 2026-08-21): test je FIKSNA LISTA od 41 slota —
+  // na svakoj poziciji uvek ista podoblast i poeni (37/41), a 4 pozicije rotiraju podoblast
+  // unutar malog skupa. Redosled tema u testu je uvek isti; nasumično je samo konkretno pitanje.
+  const SIM_SLOTS = [
+    { p: 1, s: [91, 94] },
+    { p: 2, s: [146] }, { p: 2, s: [148] }, { p: 3, s: [103] }, { p: 2, s: [139, 142, 143] }, { p: 2, s: [156, 165] },
+    { p: 3, s: [157] }, { p: 3, s: [157] }, { p: 3, s: [158] }, { p: 3, s: [158] }, { p: 2, s: [159] }, { p: 2, s: [160] },
+    { p: 2, s: [161] }, { p: 2, s: [161] }, { p: 2, s: [133] }, { p: 3, s: [162] }, { p: 3, s: [162] }, { p: 3, s: [166] }, { p: 3, s: [166] },
+    { p: 2, s: [170] }, { p: 2, s: [172] }, { p: 2, s: [178] }, { p: 2, s: [175] }, { p: 2, s: [109, 115] }, { p: 2, s: [126, 127] }, { p: 2, s: [118] },
+    { p: 3, s: [134] }, { p: 3, s: [134] }, { p: 3, s: [134] }, { p: 3, s: [134] }, { p: 3, s: [134] },
+    { p: 2, s: [131] }, { p: 2, s: [132] }, { p: 3, s: [135] }, { p: 3, s: [135] }, { p: 3, s: [135] },
+    { p: 2, s: [136] }, { p: 2, s: [137] }, { p: 2, s: [140] }, { p: 2, s: [144] }, { p: 2, s: [145] },
+  ];
+  function buildSimSet() {
+    const used = new Set();
+    const pick = [];
+    for (const slot of SIM_SLOTS) {
+      const pool = Q.filter((q) => slot.s.includes(q.sub) && q.pts === slot.p && !used.has(q.id));
+      if (!pool.length) return buildSimSetCells();   // baza se promenila — grublji šablon
+      const q = pool[Math.floor(Math.random() * pool.length)];
+      used.add(q.id);
+      pick.push(q);
+    }
+    return pick;
+  }
+  function buildSimSetCells() {
+    const pick = [];
+    for (const cell of SIM_TEMPLATE) {
+      const pool = Q.filter((q) => q.cat === cell.cat && q.pts === cell.pts && !pick.includes(q));
+      if (pool.length < cell.n) return buildSimSetFallback();
+      for (let k = 0; k < cell.n; k++) {
+        const i = Math.floor(Math.random() * pool.length);
+        pick.push(pool.splice(i, 1)[0]);
+      }
+    }
+    return pick;
+  }
+  function buildSimSetFallback() {
+    const pool = Q.slice();
+    for (let i = pool.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [pool[i], pool[j]] = [pool[j], pool[i]]; }
+    let pick = pool.slice(0, SIM_N);
+    let rest = pool.slice(SIM_N);
+    let sum = pick.reduce((a, q) => a + q.pts, 0);
+    for (let guard = 0; guard < 4000 && (sum < SIM_PTS_MIN || sum > SIM_PTS_MAX); guard++) {
+      const i = Math.floor(Math.random() * pick.length);
+      const j = Math.floor(Math.random() * rest.length);
+      const delta = rest[j].pts - pick[i].pts;
+      if ((sum < SIM_PTS_MIN && delta > 0) || (sum > SIM_PTS_MAX && delta < 0)) {
+        const tmp = pick[i]; pick[i] = rest[j]; rest[j] = tmp; sum += delta;
+      }
+    }
+    return pick;
+  }
+
+  function startSim() {
+    if (sim) { clearInterval(sim.timerId); sim = null; }   // defanzivno: nikad dva tajmera
+    const set = buildSimSet();
+    sim = {
+      qs: set.map((q) => {
+        const order = q.ch.slice();
+        for (let i = order.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [order[i], order[j]] = [order[j], order[i]]; }
+        return { q, order, chosen: new Set(), marked: false };
+      }),
+      i: 0,
+      showReport: false,
+      deadline: Date.now() + SIM_SECONDS * 1000,
+      timerId: null,
+    };
+    current = { redraw: () => { applySimLabels(); sim.showReport ? renderSimReport() : renderSimQ(); } };
+    setHash('#/sim');
+    applySimLabels();
+    show('sim');
+    sim.timerId = setInterval(tickSim, 500);
+    tickSim();
+    renderSimQ();
+  }
+  function applySimLabels() {
+    el('btnFinishSim').textContent = L('finishSim');
+    el('btnSimReport').textContent = L('report');
+  }
+  function tickSim() {
+    if (!sim) return;
+    const left = Math.max(0, Math.round((sim.deadline - Date.now()) / 1000));
+    const mm = String(Math.floor(left / 60)).padStart(2, '0');
+    const ss = String(left % 60).padStart(2, '0');
+    const t = el('simTimer');
+    t.textContent = mm + ':' + ss;
+    t.classList.toggle('low', left < 300);
+    if (left <= 0) finishSim(true);
+  }
+  function renderSimQ() {
+    sim.showReport = false;
+    el('simReport').style.display = 'none';
+    const c = el('simQCard');
+    c.style.display = '';
+    const sq = sim.qs[sim.i];
+    const q = sq.q;
+    c.dataset.qid = q.id;
+    c.innerHTML = '';
+    const meta = document.createElement('div'); meta.className = 'qMeta';
+    meta.innerHTML = `<span>${L('question')} ${sim.i + 1} / ${SIM_N}</span><span>${q.pts} ${L('points')}${q.req > 1 ? ` · ${L('chooseN')} ${q.req}` : ''}</span>`;
+    c.appendChild(meta);
+    const txt = document.createElement('div'); txt.className = 'qText'; txt.textContent = T(q.t); c.appendChild(txt);
+    if (q.img) { const im = document.createElement('img'); im.className = 'qImg'; im.src = 'img/' + q.id + '.jpg'; im.alt = ''; c.appendChild(im); }
+    for (const ch of sq.order) {
+      const b = document.createElement('button'); b.className = 'choice' + (sq.chosen.has(ch.id) ? ' sel' : ''); b.type = 'button';
+      b.textContent = T(ch.t);
+      b.addEventListener('click', () => {
+        if (q.req === 1) { sq.chosen.clear(); sq.chosen.add(ch.id); }
+        else if (sq.chosen.has(ch.id)) sq.chosen.delete(ch.id);
+        else if (sq.chosen.size < q.req) sq.chosen.add(ch.id);
+        renderSimQ();
+      });
+      c.appendChild(b);
+    }
+    const actions = document.createElement('div'); actions.className = 'qActions';
+    if (sim.i > 0) { const p = document.createElement('button'); p.className = 'secondary'; p.textContent = '‹ ' + L('prevQ'); p.addEventListener('click', () => { sim.i--; renderSimQ(); }); actions.appendChild(p); }
+    if (sim.i < SIM_N - 1) { const n = document.createElement('button'); n.className = 'primary'; n.textContent = L('nextQ') + ' ›'; n.addEventListener('click', () => { sim.i++; renderSimQ(); }); actions.appendChild(n); }
+    // Obeležavanje pitanja postoji i na pravom ispitu
+    const markWrap = document.createElement('label'); markWrap.className = 'markBox';
+    const cb = document.createElement('input'); cb.type = 'checkbox'; cb.checked = sq.marked;
+    cb.addEventListener('change', () => { sq.marked = cb.checked; });
+    markWrap.appendChild(cb); markWrap.appendChild(document.createTextNode(' ' + L('mark')));
+    actions.appendChild(markWrap);
+    c.appendChild(actions);
+  }
+  // "Izveštaj" — kao na ispitu: tabela Pitanje / Odgovoreno / Obeleženo, klik vodi na pitanje
+  function renderSimReport() {
+    sim.showReport = true;
+    el('simQCard').style.display = 'none';
+    const rp = el('simReport');
+    rp.style.display = '';
+    rp.innerHTML = `<h3>${L('report')}</h3>
+      <table class="stats"><thead><tr><th>${L('question')}</th><th class="num">${L('repAnswered')}</th><th class="num">${L('repMarked')}</th></tr></thead>
+      <tbody>${sim.qs.map((sq, idx) =>
+        `<tr class="repRow" tabindex="0" data-i="${idx}"><td>${idx + 1}</td><td class="num">${sq.chosen.size ? '✓' : '—'}</td><td class="num">${sq.marked ? '🔖' : '—'}</td></tr>`).join('')}
+      </tbody></table>
+      <div class="qActions" style="margin-top:12px"><button class="primary" id="btnRepBack">‹ ${L('backToTest')}</button></div>`;
+    rp.querySelectorAll('.repRow').forEach((tr) => {
+      const go = () => { sim.i = +tr.dataset.i; renderSimQ(); };
+      tr.addEventListener('click', go);
+      tr.addEventListener('keydown', (ev) => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); go(); } });
+    });
+    el('btnRepBack').addEventListener('click', renderSimQ);
+  }
+  function finishSim(auto) {
+    if (!sim) return;
+    if (!auto) {
+      const unanswered = sim.qs.filter((sq) => !sq.chosen.size).length;
+      const msg = unanswered === 0 ? L('simConfirm0') : L('simConfirmN').replace('#', unanswered);
+      if (!confirm(msg)) return;
+    }
+    clearInterval(sim.timerId);
+    const total = sim.qs.reduce((a, sq) => a + sq.q.pts, 0);
+    let score = 0;
+    const wrong = [];
+    const perCat = {};
+    for (const sq of sim.qs) {
+      const okSet = new Set(sq.q.ch.filter((x) => x.ok).map((x) => x.id));
+      const ok = sq.chosen.size === okSet.size && [...sq.chosen].every((id) => okSet.has(id));
+      if (sq.marked) qs(sq.q.id).marked = 1;   // obeleženo u simulaciji ostaje u tvojoj listi
+      record(sq.q.id, ok);
+      const pc = perCat[sq.q.cat] || (perCat[sq.q.cat] = { n: 0, ok: 0, pts: 0, got: 0 });
+      pc.n++; pc.pts += sq.q.pts;
+      if (ok) { score += sq.q.pts; pc.ok++; pc.got += sq.q.pts; }
+      else wrong.push({ q: sq.q, chosen: new Set(sq.chosen) });
+    }
+    const threshold = Math.ceil(0.85 * total);
+    const passed = score >= threshold;
+    const rec = { d: Date.now(), score, total, passed, wrong: wrong.map((x) => x.q.id), qs: sim.qs.map((sq) => ({ id: sq.q.id, ch: [...sq.chosen] })) };
+    S.sims.push(rec);
+    save();
+    sim = null;
+    renderSimReview(rec, true);
+  }
+
+  // Pregled jedne simulacije — svež rezultat ili bilo koji pokušaj iz istorije.
+  function renderSimReview(rec, fresh) {
+    current = { redraw: () => renderSimReview(rec, fresh) };
+    setHash('#/pregled/' + S.sims.indexOf(rec));
+    const threshold = Math.ceil(0.85 * rec.total);
+    const items = (rec.qs || []).map((e) => ({ q: byId.get(e.id), chosen: new Set(e.ch) })).filter((x) => x.q);
+    const hasDetail = items.length > 0;
+    const isOk = (it) => {
+      const okSet = new Set(it.q.ch.filter((x) => x.ok).map((x) => x.id));
+      return it.chosen.size === okSet.size && [...it.chosen].every((id) => okSet.has(id));
+    };
+    const perCat = {};
+    for (const it of items) {
+      const pc = perCat[it.q.cat] || (perCat[it.q.cat] = { n: 0, ok: 0, pts: 0, got: 0 });
+      pc.n++; pc.pts += it.q.pts;
+      if (isOk(it)) { pc.ok++; pc.got += it.q.pts; }
+    }
+    const d = new Date(rec.d);
+    const ds = `${String(d.getDate()).padStart(2, '0')}.${String(d.getMonth() + 1).padStart(2, '0')}. ${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
+
+    const rc = el('simResultCard');
+    rc.innerHTML = `<h3>${L('sim')} <span class="mut" style="font-weight:normal">· ${ds}</span></h3>
+      <div class="bigScore ${rec.passed ? 'pass' : 'fail'}">${rec.score} / ${rec.total} ${L('points')}</div>
+      <p><span class="pill ${rec.passed ? 'pass' : 'fail'}">${rec.passed ? L('passed') : L('failed')}</span>
+      &nbsp; <span class="mut">${L('threshold')}: ${threshold} (85%)</span></p>
+      ${hasDetail ? `<h3 style="margin-top:14px">${L('perCat')}</h3>
+      <table class="stats"><thead><tr><th>${L('thArea')}</th><th class="num">${L('thQ')}</th><th class="num">${L('points')}</th></tr></thead>
+      <tbody>${Object.entries(perCat).map(([cid, pc]) =>
+        `<tr><td>${escapeHtml(T(catName.get(+cid)))}</td><td class="num">${pc.ok}/${pc.n}</td><td class="num">${pc.got}/${pc.pts}</td></tr>`).join('')}
+      </tbody></table>` : `<p class="mut">${L('reviewOldNote')}</p>`}
+      <div class="qActions" style="margin-top:14px">
+        ${fresh ? `<button class="primary" id="btnSimAgain">${L('newSim')}</button>` : ''}
+        <button class="secondary" data-nav="home">${L('backHome')}</button>
+      </div>`;
+    bindNav(rc);
+    const ba = rc.querySelector('#btnSimAgain');
+    if (ba) ba.addEventListener('click', startSim);
+
+    const wl = el('simWrongList');
+    wl.innerHTML = '';
+    const reviewCard = (q, chosen) => {
+      const card = document.createElement('div'); card.className = 'card';
+      const chips = (ch) => {
+        const parts = [];
+        if (ch.ok) parts.push(`<span class="chip chipOk">✓ ${L('correctAnswer')}</span>`);
+        if (chosen && chosen.has(ch.id)) parts.push(`<span class="chip ${ch.ok ? 'chipYourOk' : 'chipYourBad'}">${L('yourAnswer')}</span>`);
+        return parts.length ? `<span class="chipWrap">${parts.join(' ')}</span>` : '';
+      };
+      card.innerHTML = `<div class="qMeta"><span>${escapeHtml(catOf(q))}</span><span><span class="qNum" title="${escapeHtml(L('qNumTip'))}">#${q.id}</span> · ${q.pts} ${L('points')}</span></div>
+        <div class="qText">${escapeHtml(T(q.t))}</div>
+        ${q.req > 1 ? `<div class="reqNote">${L('requiresN').replace('#', q.req)}</div>` : ''}
+        ${chosen && chosen.size === 0 ? `<div class="noAnsw">${L('notAnswered')}</div>` : ''}
+        ${q.img ? `<img class="qImg" src="img/${q.id}.jpg" alt="">` : ''}
+        ${q.ch.map((ch) => `<div class="choice rev${ch.ok ? ' ok' : (chosen && chosen.has(ch.id) ? ' bad' : '')}">${escapeHtml(T(ch.t))}${chips(ch)}</div>`).join('')}`;
+      const ex = explNode(q);
+      if (ex) card.appendChild(ex);
+      return card;
+    };
+    if (hasDetail) {
+      const wrongItems = items.filter((it) => !isOk(it));
+      const okItems = items.filter(isOk);
+      if (wrongItems.length) {
+        const hw = document.createElement('div'); hw.className = 'card';
+        hw.innerHTML = `<h3>${L('simWrongTitle')} (${wrongItems.length})</h3>`;
+        wl.appendChild(hw);
+        for (const it of wrongItems) wl.appendChild(reviewCard(it.q, it.chosen));
+      }
+      if (okItems.length) {
+        const ho = document.createElement('div'); ho.className = 'card';
+        ho.innerHTML = `<h3>${L('correctOnesTitle')} (${okItems.length})</h3>`;
+        wl.appendChild(ho);
+        for (const it of okItems) wl.appendChild(reviewCard(it.q, it.chosen));
+      }
+    } else {
+      for (const id of rec.wrong || []) {
+        const q = byId.get(id);
+        if (q) wl.appendChild(reviewCard(q, null));
+      }
+    }
+    show('simresult');
+  }
+
+  // ---------- Spremnost za ispit: očekivani poeni po zvaničnom šablonu ----------
+  function readiness() {
+    let ta = 0, tw = 0;
+    for (const q of Q) { const r = S.q[q.id]; if (r) { ta += r.a; tw += r.w; } }
+    const overall = ta >= 20 ? (ta - tw) / ta : null;
+    const subAcc = {};
+    for (const q of Q) { const r = S.q[q.id]; if (r && r.a) { const s = subAcc[q.sub] = subAcc[q.sub] || { a: 0, w: 0 }; s.a += r.a; s.w += r.w; } }
+    const pOf = (q) => {
+      const r = S.q[q.id];
+      if (r && r.a) return (r.a - r.w + 1) / (r.a + 2);          // ublažena lična tačnost
+      const s = subAcc[q.sub];
+      if (s && s.a >= 5) return (s.a - s.w) / s.a;               // tačnost podoblasti
+      if (overall != null) return overall;                       // ukupna tačnost
+      return 0.45;                                               // nepoznato — konzervativno
+    };
+    let exp = 0;
+    const loss = {};   // subs-key -> {pts, subs}
+    for (const slot of SIM_SLOTS) {
+      const pool = Q.filter((q) => slot.s.includes(q.sub) && q.pts === slot.p);
+      if (!pool.length) continue;
+      const p = pool.reduce((a, q) => a + pOf(q), 0) / pool.length;
+      exp += slot.p * p;
+      const key = slot.s.join('/');
+      (loss[key] = loss[key] || { pts: 0, subs: slot.s }).pts += slot.p * (1 - p);
+    }
+    const answered = Q.filter((q) => S.q[q.id] && S.q[q.id].a > 0).length;
+    return { exp, loss, answered };
+  }
+  function renderReady() {
+    const { exp, loss, answered } = readiness();
+    if (answered < 30) {
+      el('readyCard').innerHTML = `<h3>${L('readyTitle')}</h3><p class="mut">${L('readyNoData').replace('#', answered)}</p>`;
+      return;
+    }
+    const e = Math.round(exp);
+    const pass = e >= 84;
+    const top = Object.values(loss).sort((a, b) => b.pts - a.pts).slice(0, 5);
+    const subName = (sid) => T({ l: D.subs[sid].l, c: D.subs[sid].c });
+    el('readyCard').innerHTML = `<h3>${L('readyTitle')}</h3>
+      <div class="bigScore ${pass ? 'pass' : 'fail'}">≈ ${e} / 98</div>
+      <p><span class="pill ${pass ? 'pass' : 'fail'}">${pass ? L('passed') : L('failed')}</span>
+      &nbsp;<span class="mut">${L('threshold')}: 84</span>
+      ${answered < 150 ? `&nbsp;<span class="mut">${L('readyRough')} (${answered}/${Q.length})</span>` : ''}</p>
+      <h3 style="margin-top:12px">${L('readyLoss')}</h3>
+      <table class="stats"><tbody>${top.map((t) =>
+        `<tr><td>${t.subs.map((s) => escapeHtml(subName(s).slice(0, 48))).join(' / ')}</td>
+         <td class="num accBad">−${t.pts.toFixed(1)} ${L('points')}</td></tr>`).join('')}
+      </tbody></table>
+      <p class="mut" style="margin-top:8px;font-size:.82rem">${L('readyNote')}</p>`;
+  }
+
+  // ---------- Statistika ----------
+  function renderStats() {
+    current = { redraw: renderStats };
+    setHash('#/stats');
+    renderReady();
+    const rows = CATS.map((c) => {
+      const qq = Q.filter((q) => q.cat === c.id);
+      let seen = 0, att = 0, wr = 0;
+      for (const q of qq) { const r = S.q[q.id]; if (r && r.a) { seen++; att += r.a; wr += r.w; } }
+      const acc = att ? Math.round(100 * (att - wr) / att) : null;
+      return { c, n: qq.length, seen, acc };
+    });
+    let tAtt = 0, tWr = 0, tSeen = 0;
+    for (const q of Q) { const r = S.q[q.id]; if (r && r.a) { tSeen++; tAtt += r.a; tWr += r.w; } }
+    const tAcc = tAtt ? Math.round(100 * (tAtt - tWr) / tAtt) : null;
+    el('statsCard').innerHTML = `<h3>${L('statsTitle')}</h3>
+      <table class="stats"><thead><tr><th>${L('thArea')}</th><th class="num">${L('thQ')}</th><th class="num">${L('thSeen')}</th><th class="num">${L('thAcc')}</th></tr></thead>
+      <tbody>${rows.map((r) => `<tr class="statCatRow" data-cat="${r.c.id}" tabindex="0" title="${escapeHtml(L('statExpand'))}"><td>▸ ${escapeHtml(T(r.c))}</td><td class="num">${r.n}</td><td class="num">${r.seen}</td>
+        <td class="num">${r.acc === null ? '—' : `<span class="${r.acc >= 90 ? 'accGood' : r.acc >= 75 ? 'accMid' : 'accBad'}">${r.acc}%</span>`}</td></tr>`).join('')}
+      <tr class="totalRow"><td><b>${L('ukupno')}</b></td><td class="num"><b>${Q.length}</b></td><td class="num"><b>${tSeen}</b></td>
+        <td class="num">${tAcc === null ? '—' : `<b><span class="${tAcc >= 90 ? 'accGood' : tAcc >= 75 ? 'accMid' : 'accBad'}">${tAcc}%</span></b>`}</td></tr>
+      </tbody></table>`;
+
+    // Raspis po PODOBLASTIMA: klik na red oblasti umetne redove podoblasti ispod njega
+    el('statsCard').querySelectorAll('.statCatRow').forEach((tr) => {
+      const toggle = () => {
+        const cid = +tr.dataset.cat;
+        const open = tr.classList.toggle('open');
+        tr.cells[0].textContent = (open ? '▾ ' : '▸ ') + T(catName.get(cid));
+        // ukloni postojeće sub-redove ove oblasti
+        let next = tr.nextElementSibling;
+        while (next && next.classList.contains('statSubRow')) { const rm = next; next = next.nextElementSibling; rm.remove(); }
+        if (!open) return;
+        const subIds = [...new Set(Q.filter((q) => q.cat === cid).map((q) => q.sub))];
+        let ref = tr;
+        for (const sid of subIds) {
+          const sq = Q.filter((q) => q.sub === sid);
+          let a = 0, w = 0, seen = 0;
+          for (const q of sq) { const r = S.q[q.id]; if (r && r.a) { seen++; a += r.a; w += r.w; } }
+          const acc = a ? Math.round(100 * (a - w) / a) : null;
+          const row = document.createElement('tr');
+          row.className = 'statSubRow';
+          row.title = T({ l: D.subs[sid].l, c: D.subs[sid].c });
+          row.innerHTML = `<td class="statSubName">${escapeHtml(subShortName(sid))}</td>
+            <td class="num">${sq.length}</td><td class="num">${seen}</td>
+            <td class="num">${acc === null ? '—' : `<span class="${acc >= 90 ? 'accGood' : acc >= 75 ? 'accMid' : 'accBad'}">${acc}%</span>`}</td>`;
+          ref.after(row); ref = row;
+        }
+      };
+      tr.addEventListener('click', toggle);
+      tr.addEventListener('keydown', (ev) => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); toggle(); } });
+    });
+
+    const bySub = {};
+    for (const q of Q) {
+      const r = S.q[q.id]; if (!r || !r.a) continue;
+      const s = bySub[q.sub] || (bySub[q.sub] = { att: 0, wr: 0, cat: q.cat });
+      s.att += r.a; s.wr += r.w;
+    }
+    const weak = Object.entries(bySub)
+      .filter(([, s]) => s.att >= 3)
+      .map(([sid, s]) => ({ sid: +sid, acc: Math.round(100 * (s.att - s.wr) / s.att), att: s.att, cat: s.cat }))
+      .sort((a, b) => a.acc - b.acc).slice(0, 10);
+    el('weakCard').innerHTML = `<h3>${L('weakTitle')}</h3>` + (weak.length
+      ? `<table class="stats"><tbody>${weak.map((w) =>
+          `<tr><td>${escapeHtml(T(catName.get(w.cat)))} › ${escapeHtml(T({ l: D.subs[w.sid].l, c: D.subs[w.sid].c }))}</td>
+           <td class="num"><span class="${w.acc >= 90 ? 'accGood' : w.acc >= 75 ? 'accMid' : 'accBad'}">${w.acc}%</span> <span class="mut">(${w.att})</span></td></tr>`).join('')}</tbody></table>`
+      : `<p class="mut">—</p>`);
+    show('stats');
+  }
+
+  // ---------- Strana oblasti / podoblasti ----------
+  // key: "c25" (oblast) ili "s91" (podoblast)
+  function subShortName(sid) {
+    let n = T({ l: D.subs[sid].l, c: D.subs[sid].c });
+    const cut = n.indexOf(' (');
+    if (cut > 0) n = n.slice(0, cut);
+    return n.replace(/[;\s]+$/, '');
+  }
+  function secInfo(key) {
+    const type = key[0], id = +key.slice(1);
+    const ids = (type === 'c' ? Q.filter((q) => q.cat === id) : Q.filter((q) => q.sub === id)).map((q) => q.id);
+    const name = type === 'c' ? T(catName.get(id)) : T({ l: D.subs[id].l, c: D.subs[id].c });
+    return { type, id, ids, name };
+  }
+  function secTitleFn(key) {
+    return () => secInfo(key).name;
+  }
+  function browse(key) {
+    current = { redraw: () => browse(key) };
+    setHash('#/sek/' + key);
+    const { type, id, ids, name } = secInfo(key);
+    let seen = 0, att = 0, wr = 0, inQ = 0, unseen = [], wrongNow = [];
+    for (const qid of ids) {
+      const r = S.q[qid];
+      if (r && r.a) { seen++; att += r.a; wr += r.w; } else unseen.push(qid);
+      if (inQueue(qid)) { inQ++; wrongNow.push(qid); }
+    }
+    const acc = att ? Math.round(100 * (att - wr) / att) : null;
+    const pos = S.secPos[key] || 0;
+
+    const head = el('browseHead');
+    const catQ = type === 's' ? byId.get(ids[0]) : null;
+    head.innerHTML = `
+      ${type === 's' ? `<div class="qMeta"><span><a href="#" class="bcLink" data-bc="c${catQ.cat}">‹ ${escapeHtml(catOf(catQ))}</a></span></div>` : ''}
+      <h3>${escapeHtml(name)}</h3>
+      <div class="mut" style="margin:6px 0 10px">${nQ(ids.length)} · ${seen} ${L('answered')}${acc !== null ? ` · ${L('thAcc').toLowerCase()}: ${acc}%` : ''} · <span title="${escapeHtml(L('queueTip'))}" style="cursor:help">${inQ} ${L('inQueue')}</span></div>
+      <div class="qActions">
+        <button class="primary" id="bStart" ${!shuffleOn && pos > 0 ? `title="${escapeHtml(L('contTip'))}"` : ''}>${pos > 0 && !shuffleOn ? `${L('continueBtn')} (${pos + 1}/${ids.length})` : L('startBtn') + sfx()}</button>
+        ${pos > 0 && !shuffleOn ? `<button class="secondary" id="bStartOver">${L('fromStart')}</button>` : ''}
+        ${wrongNow.length ? `<button class="secondary" id="bWrong">${L('onlyWrong')} (${wrongNow.length})${sfx()}</button>` : ''}
+        ${unseen.length && unseen.length < ids.length ? `<button class="secondary" id="bUnseen">${L('onlyUnseen')} (${unseen.length})${sfx()}</button>` : ''}
+        ${shuffleBoxHtml()}
+        <button class="linklike" data-nav="home">${L('backHome')}</button>
+      </div>`;
+    bindNav(head);
+    bindShuffleBox(head);
+    head.querySelectorAll('.bcLink').forEach((a) => a.addEventListener('click', (e) => { e.preventDefault(); browse(a.dataset.bc); }));
+    const origin = () => browse(key);
+    el('bStart').addEventListener('click', () => {
+      if (shuffleOn) startList(maybeShuffle(ids), shufTag(secTitleFn(key)), null, 'filter', { origin });
+      else startList(ids, secTitleFn(key), null, 'section', { secKey: key, startAt: S.secPos[key] || 0, origin });
+    });
+    const so = el('bStartOver'); if (so) so.addEventListener('click', () => startList(ids, secTitleFn(key), null, 'section', { secKey: key, startAt: 0, origin }));
+    const bw = el('bWrong'); if (bw) bw.addEventListener('click', () => startList(maybeShuffle(wrongNow), shufTag(() => `${secInfo(key).name} — ${L('onlyWrong').toLowerCase()}`), null, 'filter', { origin }));
+    const bu = el('bUnseen'); if (bu) bu.addEventListener('click', () => startList(maybeShuffle(unseen), shufTag(() => `${secInfo(key).name} — ${L('onlyUnseen').toLowerCase()}`), null, 'filter', { origin }));
+
+    const list = el('browseList');
+    list.innerHTML = '';
+    if (type === 'c') {
+      const subIds = [...new Set(Q.filter((q) => q.cat === id).map((q) => q.sub))];
+      const sh = document.createElement('h3'); sh.textContent = L('podoblasti'); list.appendChild(sh);
+      for (const sid of subIds) {
+        const sq = Q.filter((q) => q.sub === sid);
+        const sSeen = sq.filter((q) => S.q[q.id] && S.q[q.id].a > 0).length;
+        let sAtt = 0, sWr = 0;
+        for (const q of sq) { const r = S.q[q.id]; if (r) { sAtt += r.a; sWr += r.w; } }
+        const sAcc = sAtt ? Math.round(100 * (sAtt - sWr) / sAtt) : null;
+        const b = document.createElement('button'); b.className = 'subRow';
+        b.innerHTML = `${escapeHtml(T({ l: D.subs[sid].l, c: D.subs[sid].c }))}
+          <span class="mut">&nbsp;${sSeen}/${sq.length}${sAcc !== null ? ` · ${sAcc}%` : ''}</span>`;
+        b.addEventListener('click', () => browse('s' + sid));
+        list.appendChild(b);
+      }
+    }
+    const qh = document.createElement('h3'); qh.textContent = L('allQuestions'); qh.style.marginTop = '12px'; list.appendChild(qh);
+    list.insertAdjacentHTML('beforeend', legendHtml());
+    ids.forEach((qid, idx) => {
+      const q = byId.get(qid);
+      const r = S.q[qid];
+      const icon = !r || !r.a ? '<span class="qDot">•</span>'
+        : inQueue(qid) ? '<span class="qBad">✗</span>'
+        : '<span class="qOk">✓</span>';
+      const b = document.createElement('button'); b.className = 'qRow';
+      b.innerHTML = `<span class="qRowN">${idx + 1}.</span> ${icon} <span class="qRowT">${escapeHtml(T(q.t))}</span>${r && r.marked ? ' 🔖' : ''}${q.img ? ' 🖼' : ''}`;
+      b.addEventListener('click', () => {
+        if (shuffleOn) rowStart(ids, idx, secTitleFn(key), origin);
+        else startList(ids, secTitleFn(key), null, 'section', { secKey: key, startAt: idx, origin });
+      });
+      list.appendChild(b);
+    });
+    show('browse');
+  }
+
+  // ---------- Strana "Sva pitanja" (učenje redom + filteri + spisak) ----------
+  function browseAll() {
+    current = { redraw: browseAll };
+    setHash('#/sva');
+    let seen = 0, att = 0, wr = 0, inQ = 0;
+    const unseen = [], wrongNow = [];
+    for (const q of Q) {
+      const r = S.q[q.id];
+      if (r && r.a) { seen++; att += r.a; wr += r.w; } else unseen.push(q.id);
+      if (inQueue(q.id)) { inQ++; wrongNow.push(q.id); }
+    }
+    const acc = att ? Math.round(100 * (att - wr) / att) : null;
+    const head = el('browseHead');
+    head.innerHTML = `<h3>${L('allPage')}</h3>
+      <div class="mut" style="margin:6px 0 10px">${nQ(Q.length)} · ${seen} ${L('answered')}${acc !== null ? ` · ${L('thAcc').toLowerCase()}: ${acc}%` : ''} · <span title="${escapeHtml(L('queueTip'))}" style="cursor:help">${inQ} ${L('inQueue')}</span></div>
+      <div class="qActions">
+        <button class="primary" id="bCont" title="${escapeHtml(L('contTip'))}">${L('continueBtn')} (${Math.min(S.seqPos + 1, Q.length)}/${Q.length})</button>
+        <button class="secondary" id="bFrom1">${L('fromStart')}${sfx()}</button>
+        ${unseen.length && unseen.length < Q.length ? `<button class="secondary" id="bUnseen">${L('onlyUnseen')} (${unseen.length})${sfx()}</button>` : ''}
+        ${wrongNow.length ? `<button class="secondary" id="bWrong">${L('onlyWrong')} (${wrongNow.length})${sfx()}</button>` : ''}
+        ${shuffleBoxHtml()}
+        <button class="linklike" data-nav="home">${L('backHome')}</button>
+      </div>`;
+    bindNav(head);
+    bindShuffleBox(head);
+    el('bCont').addEventListener('click', () => startLearn());
+    el('bFrom1').addEventListener('click', () => {
+      if (shuffleOn) startList(maybeShuffle(Q.map((q) => q.id)), shufTag(() => L('allPage')), null, 'filter', { origin: browseAll });
+      else startLearn(0);
+    });
+    const bu = el('bUnseen'); if (bu) bu.addEventListener('click', () => startList(maybeShuffle(unseen), shufTag(() => `${L('allPage')} — ${L('onlyUnseen').toLowerCase()}`), null, 'filter', { origin: browseAll }));
+    const bw = el('bWrong'); if (bw) bw.addEventListener('click', () => startList(maybeShuffle(wrongNow), shufTag(() => `${L('allPage')} — ${L('onlyWrong').toLowerCase()}`), null, 'filter', { origin: browseAll }));
+
+    const list = el('browseList');
+    list.innerHTML = `<h3>${L('allQuestions')}</h3>
+      <input id="qSearch" type="search" class="searchBox" placeholder="${escapeHtml(L('searchPh'))}" aria-label="${escapeHtml(L('searchPh'))}">` + legendHtml();
+    const allIds = Q.map((q) => q.id);
+    Q.forEach((q, idx) => {
+      const r = S.q[q.id];
+      const icon = !r || !r.a ? '<span class="qDot">•</span>'
+        : inQueue(q.id) ? '<span class="qBad">✗</span>'
+        : '<span class="qOk">✓</span>';
+      const b = document.createElement('button'); b.className = 'qRow';
+      b.innerHTML = `<span class="qRowN">${idx + 1}.</span> ${icon} <span class="qRowT">${escapeHtml(T(q.t))}</span>${r && r.marked ? ' 🔖' : ''}${q.img ? ' 🖼' : ''}`;
+      b.addEventListener('click', () => {
+        if (shuffleOn) rowStart(allIds, idx, () => L('allPage'), browseAll);
+        else startLearn(idx);
+      });
+      b._search = (T(q.t) + ' ' + q.t.l + ' #' + q.id).toLowerCase();
+      list.appendChild(b);
+    });
+    const sb = el('qSearch');
+    sb.addEventListener('input', () => {
+      const v = sb.value.trim().toLowerCase();
+      list.querySelectorAll('.qRow').forEach((row) => {
+        row.style.display = !v || row._search.includes(v) ? '' : 'none';
+      });
+    });
+    show('browse');
+  }
+
+  // ---------- Strane "Pogrešna" i "Obeležena" (spisak + vežbanje) ----------
+  function browseSet(setKind) {
+    current = { redraw: () => browseSet(setKind) };
+    setHash('#/lista/' + (setKind === 'wrong' ? 'wrong' : 'marked'));
+    const isWrong = setKind === 'wrong';
+    const title = isWrong ? L('drill') : L('marked');
+    let ids, ready = [], waiting = [];
+    if (isWrong) { ({ ready, waiting } = queueSplit()); ids = ready.concat(waiting); }
+    else ids = markedIds();
+
+    const head = el('browseHead');
+    if (!ids.length) {
+      head.innerHTML = `<h3>${escapeHtml(title)}</h3>
+        <p class="qText" style="font-weight:normal">${isWrong ? L('drillEmpty') : L('markedEmpty')}</p>
+        <div class="qActions"><button class="primary" data-nav="home">${L('backHome')}</button></div>`;
+      bindNav(head);
+      el('browseList').innerHTML = '';
+      show('browse');
+      return;
+    }
+    const origin = () => browseSet(setKind);
+    head.innerHTML = `<h3>${escapeHtml(title)}</h3>
+      <div class="mut" style="margin:6px 0 10px">${isWrong
+        ? `<span title="${escapeHtml(L('queueTip'))}" style="cursor:help">${ready.length} ${L('ready')} · ${waiting.length} ${L('waiting')}</span>`
+        : `${ids.length}`}</div>
+      <div class="qActions">
+        ${isWrong
+          ? `${ready.length ? `<button class="primary" id="bReady">${L('vezbajReady')} (${ready.length})${sfx()}</button>` : ''}
+             ${waiting.length ? `<button class="secondary" id="bAll">${L('drillWaitingBtn')} (${ids.length})${sfx()}</button>` : ''}`
+          : `<button class="primary" id="bAllM">${L('vezbaj')} (${ids.length})${sfx()}</button>`}
+        ${shuffleBoxHtml()}
+        <button class="linklike" data-nav="home">${L('backHome')}</button>
+      </div>`;
+    bindNav(head);
+    bindShuffleBox(head);
+    const br = el('bReady'); if (br) br.addEventListener('click', () => startList(maybeShuffle(queueSplit().ready), shufTag(() => L('drill')), () => L('drillEmpty'), shuffleOn ? 'drill-all' : 'drill', { origin }));
+    const ba = el('bAll'); if (ba) ba.addEventListener('click', () => startList(maybeShuffle(ids), shufTag(() => L('drill')), null, 'drill-all', { origin }));
+    const bm = el('bAllM'); if (bm) bm.addEventListener('click', () => startList(maybeShuffle(ids), shufTag(() => L('marked')), null, 'filter', { origin }));
+
+    const list = el('browseList');
+    list.innerHTML = legendHtml();
+    const now = Date.now();
+    ids.forEach((qid, idx) => {
+      const q = byId.get(qid);
+      const r = S.q[qid];
+      const icon = !r || !r.a ? '<span class="qDot">•</span>'
+        : inQueue(qid) ? '<span class="qBad">✗</span>'
+        : '<span class="qOk">✓</span>';
+      let dueTag = '';
+      if (isWrong && r && (r.due || 0) > now) {
+        const days = Math.ceil((r.due - now) / DAY);
+        dueTag = ` <span class="mut">(${days <= 1 ? L('dueTomorrow') : (one(days) ? L('dueDaysOne') : L('dueDays')).replace('#', days)})</span>`;
+      }
+      const b = document.createElement('button'); b.className = 'qRow';
+      b.innerHTML = `<span class="qRowN">${idx + 1}.</span> ${icon} <span class="qRowT">${escapeHtml(T(q.t))}</span>${r && r.marked ? ' 🔖' : ''}${q.img ? ' 🖼' : ''}${dueTag}`;
+      b.addEventListener('click', () => {
+        if (shuffleOn) rowStart(ids, idx, () => title, origin);
+        else startList(ids, () => title, null, isWrong ? 'drill-all' : 'filter', { startAt: idx, origin });
+      });
+      list.appendChild(b);
+    });
+    show('browse');
+  }
+
+  // ---------- Automatski upis napretka u fajl (File System Access) ----------
+  let fsHandle = null;      // aktivna dozvola
+  let fsPending = null;     // sačuvan handle koji čeka klik za dozvolu
+  let backupTimer = null;
+  const FSA = 'showSaveFilePicker' in window;
+
+  function idb() {
+    return new Promise((res, rej) => {
+      const r = indexedDB.open('vozackiA-fs', 1);
+      r.onupgradeneeded = () => r.result.createObjectStore('kv');
+      r.onsuccess = () => res(r.result);
+      r.onerror = () => rej(r.error);
+    });
+  }
+  async function idbSet(k, v) { const db = await idb(); return new Promise((res, rej) => { const tx = db.transaction('kv', 'readwrite'); tx.objectStore('kv').put(v, k); tx.oncomplete = res; tx.onerror = () => rej(tx.error); }); }
+  async function idbGet(k) { const db = await idb(); return new Promise((res, rej) => { const tx = db.transaction('kv', 'readonly'); const g = tx.objectStore('kv').get(k); g.onsuccess = () => res(g.result); g.onerror = () => rej(g.error); }); }
+
+  function scheduleBackup() {
+    if (!fsHandle) return;
+    clearTimeout(backupTimer);
+    backupTimer = setTimeout(async () => {
+      try {
+        const w = await fsHandle.createWritable();
+        await w.write(JSON.stringify(S));
+        await w.close();
+      } catch (e) { /* dozvola istekla — dugme će se ponovo pojaviti */ fsPending = fsHandle; fsHandle = null; renderBackupLine(); }
+    }, 800);
+  }
+  async function connectBackup() {
+    try {
+      const h = await window.showSaveFilePicker({
+        suggestedName: 'vozacki-a-napredak.json',
+        types: [{ description: 'JSON', accept: { 'application/json': ['.json'] } }],
+      });
+      fsHandle = h; fsPending = null;
+      await idbSet('handle', h);
+      scheduleBackup();
+      renderBackupLine();
+    } catch (e) { /* korisnik odustao */ }
+  }
+  async function resumeBackup() {
+    if (!fsPending) return;
+    try {
+      const p = await fsPending.requestPermission({ mode: 'readwrite' });
+      if (p === 'granted') { fsHandle = fsPending; fsPending = null; scheduleBackup(); }
+    } catch (e) { /* ignore */ }
+    renderBackupLine();
+  }
+  async function initBackup() {
+    if (!FSA) return;
+    try {
+      const h = await idbGet('handle');
+      if (!h) return;
+      const p = await h.queryPermission({ mode: 'readwrite' });
+      if (p === 'granted') { fsHandle = h; scheduleBackup(); }
+      else fsPending = h;
+    } catch (e) { /* ignore */ }
+    renderBackupLine();
+  }
+  function renderBackupLine() {
+    const s = el('backupLine');
+    if (!s) return;
+    if (!FSA) { s.innerHTML = `<span class="mut">${L('backupNA')}</span>`; return; }
+    if (fsHandle) { s.innerHTML = `✅ ${L('backupOn')}: <b>${escapeHtml(fsHandle.name)}</b>`; return; }
+    if (fsPending) {
+      s.innerHTML = `<button class="secondary" id="btnResumeBackup">🔗 ${L('backupResume')} (${escapeHtml(fsPending.name)})</button>`;
+      el('btnResumeBackup').addEventListener('click', resumeBackup);
+      return;
+    }
+    s.innerHTML = `<button class="secondary" id="btnConnectBackup">${L('backupConnect')}</button>`;
+    el('btnConnectBackup').addEventListener('click', connectBackup);
+  }
+
+  // ---------- Početna ----------
+  function renderHome() {
+    current = { redraw: renderHome };
+    setHash('#/');
+    const answeredCnt = Q.filter((q) => S.q[q.id] && S.q[q.id].a > 0).length;
+    const { ready, waiting } = queueSplit();
+    const mk = markedIds().length;
+    let lastChip = '';
+    if (S.lastSec) {
+      const si = secInfo(S.lastSec);
+      const p = S.secPos[S.lastSec] || 0;
+      if (p > 0 && p < si.ids.length) {
+        lastChip = `<div style="margin-top:8px"><button class="primary" id="btnLastSec">▶ ${L('continueBtn')}: ${escapeHtml(si.name)} (${p + 1}/${si.ids.length})</button></div>`;
+      }
+    }
+    const today = localDay();
+    const dayLine = S.day && S.day.d === today && S.day.n > 0
+      ? ` · 📅 ${L('todayLbl')}: <b>${S.day.n}</b> (${L('okShort')} ${S.day.ok})` : '';
+    el('homeSummary').innerHTML = `<b>${answeredCnt}</b> / ${Q.length} ${L('answered')} · <span title="${escapeHtml(L('queueTip'))}" style="cursor:help"><b>${ready.length}</b> ${L('ready')} + ${waiting.length} ${L('waiting')}</span> · 🔖 ${mk}${dayLine}${lastChip}`;
+    const bls = el('btnLastSec');
+    if (bls) bls.addEventListener('click', () => {
+      const key = S.lastSec;
+      const si = secInfo(key);
+      startList(si.ids, secTitleFn(key), null, 'section', { secKey: key, startAt: S.secPos[key] || 0 });
+    });
+    el('mLearn').textContent = L('allPage');
+    el('mLearnSub').textContent = `${L('continueBtn')}: ${Math.min(S.seqPos + 1, Q.length)} ${L('ofQ')} ${Q.length} · ${L('allPageSub')}`;
+    el('mDrill').textContent = L('drill');
+    el('mDrillSub').textContent = `${ready.length} ${L('ready')} · ${waiting.length} ${L('waiting')}`;
+    el('mMarked').textContent = L('marked');
+    el('mMarkedSub').textContent = `${mk}`;
+    el('mSim').textContent = L('sim');
+    el('mSimSub').textContent = L('simSub');
+    el('mStats').textContent = L('stats');
+    el('mStatsSub').textContent = L('statsSub');
+    el('hCats').textContent = L('cats');
+
+    const cb = el('catBars'); cb.innerHTML = '';
+    {
+      const seenAll = Q.filter((q) => S.q[q.id] && S.q[q.id].a > 0).length;
+      const goodAll = Q.filter((q) => S.q[q.id] && S.q[q.id].a > 0 && S.q[q.id].streak >= 1).length;
+      const row = document.createElement('button'); row.type = 'button'; row.className = 'catRow catTotal';
+      row.innerHTML = `<span class="catName"><b>${L('ukupno')}</b></span>
+        <span class="catBar"><span class="seen" style="width:${100 * seenAll / Q.length}%"></span><span class="good" style="width:${100 * goodAll / Q.length}%"></span></span>
+        <span class="catCnt"><b>${seenAll}/${Q.length}</b></span>`;
+      row.addEventListener('click', () => browseAll());
+      cb.appendChild(row);
+    }
+    for (const c of CATS) {
+      const qq = Q.filter((q) => q.cat === c.id);
+      const seen = qq.filter((q) => S.q[q.id] && S.q[q.id].a > 0).length;
+      const good = qq.filter((q) => S.q[q.id] && S.q[q.id].a > 0 && S.q[q.id].streak >= 1).length;
+      const row = document.createElement('button'); row.type = 'button'; row.className = 'catRow';
+      row.title = L('catExpand');
+      row.innerHTML = `<span class="catName"><span class="catChev">▸</span>${escapeHtml(T(c))}</span>
+        <span class="catBar"><span class="seen" style="width:${100 * seen / qq.length}%"></span><span class="good" style="width:${100 * good / qq.length}%"></span></span>
+        <span class="catCnt">${seen}/${qq.length}</span>`;
+      row.addEventListener('click', () => {
+        const open = row.classList.toggle('open');
+        row.querySelector('.catChev').textContent = open ? '▾' : '▸';
+        let next = row.nextElementSibling;
+        while (next && next.classList.contains('catSubRow')) { const rm = next; next = next.nextElementSibling; rm.remove(); }
+        if (!open) return;
+        let ref = row, zi = 0;
+        const addSub = (labelHtml, key, sSeen, sTot, sGood, title) => {
+          const sr = document.createElement('button'); sr.type = 'button';
+          sr.className = 'catRow catSubRow' + (sTot === null ? ' catAllRow' : (zi++ % 2 ? ' zebra' : ''));
+          if (title) sr.title = title;
+          sr.innerHTML = sTot === null
+            ? `<span class="catName">${labelHtml}</span>`
+            : `<span class="catName">${labelHtml}</span>
+            <span class="catBar"><span class="seen" style="width:${sTot ? 100 * sSeen / sTot : 0}%"></span><span class="good" style="width:${sTot ? 100 * sGood / sTot : 0}%"></span></span>
+            <span class="catCnt">${sSeen}/${sTot}</span>`;
+          sr.addEventListener('click', () => browse(key));
+          ref.after(sr); ref = sr;
+        };
+        addSub(`<b>${escapeHtml(L('wholeCat'))} ›</b>`, 'c' + c.id, 0, null, 0);
+        for (const sid of [...new Set(qq.map((q) => q.sub))]) {
+          const sq = qq.filter((q) => q.sub === sid);
+          const sSeen = sq.filter((q) => S.q[q.id] && S.q[q.id].a > 0).length;
+          const sGood = sq.filter((q) => S.q[q.id] && S.q[q.id].a > 0 && S.q[q.id].streak >= 1).length;
+          addSub(escapeHtml(subShortName(sid)), 's' + sid, sSeen, sq.length, sGood, T({ l: D.subs[sid].l, c: D.subs[sid].c }));
+        }
+      });
+      cb.appendChild(row);
+    }
+
+    const sh = el('simHistory');
+    if (!S.sims.length) sh.innerHTML = `<h3>${L('history')}</h3><p class="mut">${L('noSims')}</p>`;
+    else {
+      sh.innerHTML = `<h3>${L('history')}</h3><p class="mut" style="font-size:.82rem;margin-bottom:6px">${L('historyTip')}</p>`
+        + S.sims.slice().reverse().map((s, ri) => {
+          const d = new Date(s.d);
+          const ds = `${String(d.getDate()).padStart(2, '0')}.${String(d.getMonth() + 1).padStart(2, '0')}. ${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
+          const wrongN = s.qs ? '' : ` <span class="mut">(${(s.wrong || []).length} ✗)</span>`;
+          return `<button class="histRow histBtn" data-sim="${S.sims.length - 1 - ri}"><span class="mut">${ds}</span><b>${s.score}/${s.total}</b>
+            <span class="pill ${s.passed ? 'pass' : 'fail'}">${s.passed ? L('passed') : L('failed')}</span>${wrongN}<span class="mut" style="margin-left:auto">›</span></button>`;
+        }).join('');
+      sh.querySelectorAll('.histBtn').forEach((b) => b.addEventListener('click', () => renderSimReview(S.sims[+b.dataset.sim], false)));
+    }
+
+    const fq = el('faqCard');
+    if (EX.cards && EX.cards.faq) {
+      fq.style.display = '';
+      fq.innerHTML = `<div><button class="linklike explCardBtn" style="font-size:1.05rem;font-weight:600">❓ ${escapeHtml(T(EX.cards.faq.t))}</button><div class="explCard" style="display:none">${T(EX.cards.faq.h)}</div></div>`;
+      const fb = fq.querySelector('.explCardBtn');
+      fb.addEventListener('click', () => {
+        const cd = fb.nextElementSibling;
+        cd.style.display = cd.style.display === 'none' ? '' : 'none';
+      });
+    } else fq.style.display = 'none';
+
+    const pk = el('pojmovnikCard');
+    const cardKeys = Object.keys(EX.cards || {}).filter((k) => k !== 'faq');
+    if (!cardKeys.length) pk.style.display = 'none';
+    else {
+      pk.style.display = '';
+      pk.innerHTML = `<h3>📖 ${L('pojmovnik')}</h3><p class="mut" style="font-size:.82rem;margin-bottom:6px">${L('pojmovnikSub')}</p>`
+        + cardKeys.map((k) => `<div class="pojEntry"><button class="explCardBtn pojBtn">📖 ${escapeHtml(T(EX.cards[k].t))}</button><div class="explCard" style="display:none">${T(EX.cards[k].h)}</div></div>`).join('');
+      pk.querySelectorAll('.explCardBtn').forEach((btn) => btn.addEventListener('click', () => {
+        const cd = btn.nextElementSibling;
+        cd.style.display = cd.style.display === 'none' ? '' : 'none';
+      }));
+    }
+
+    el('dataTools').innerHTML = `${L('dataInfo')} · ${D.generated} · ${Q.length}
+      <div class="mut" style="margin-top:6px">${L('persistNote')}</div>
+      <div id="backupLine" style="margin-top:8px"></div>
+      <div class="qActions" style="margin-top:8px">
+        <button class="secondary" id="btnExport">${L('export')}</button>
+        <button class="secondary" id="btnImport">${L('import')}</button>
+        <button class="linklike" id="btnReset">${L('reset')}</button>
+        <input type="file" id="fileImport" accept=".json" style="display:none">
+      </div>`;
+    renderBackupLine();
+    el('btnExport').addEventListener('click', () => {
+      const blob = new Blob([JSON.stringify(S)], { type: 'application/json' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'vozacki-a-napredak.json';
+      a.click();
+      URL.revokeObjectURL(a.href);
+    });
+    el('btnImport').addEventListener('click', () => el('fileImport').click());
+    el('fileImport').addEventListener('change', (e) => {
+      const f = e.target.files[0];
+      e.target.value = '';   // da ponovni izbor ISTOG fajla opet okine 'change'
+      if (!f) return;
+      const rd = new FileReader();
+      rd.onload = () => {
+        let norm = null;
+        try { norm = normalizeState(JSON.parse(rd.result)); } catch (err) { /* nevalidan JSON */ }
+        if (!norm) { alert(L('importBad')); return; }
+        const hasProgress = Object.keys(S.q).length > 0 || S.sims.length > 0;
+        if (hasProgress && !confirm(L('importConfirm'))) return;
+        S = norm;
+        applyScript(); applyTheme(); applyFont();
+        renderHome();
+        save();
+      };
+      rd.readAsText(f);
+    });
+    el('btnReset').addEventListener('click', () => {
+      if (confirm(L('resetConfirm'))) { S = normalizeState({ q: {}, script: S.script, theme: S.theme, fs: S.fs }); save(); renderHome(); }
+    });
+    show('home');
+  }
+
+  // ---------- Navigacija / init ----------
+  // Napuštanje aktivne simulacije traži potvrdu; napuštena se NE računa nigde.
+  function leaveSimOk() {
+    if (!sim) return true;
+    if (!confirm(L('simLeaveConfirm'))) return false;
+    clearInterval(sim.timerId);
+    sim = null;
+    return true;
+  }
+  function bindNav(root) {
+    root.querySelectorAll('[data-nav]').forEach((b) => {
+      if (b._navBound) return; b._navBound = true;
+      b.addEventListener('click', () => {
+        if (!leaveSimOk()) return;
+        const v = b.dataset.nav;
+        if (v === 'home') renderHome();
+        else if (v === 'learn') browseAll();
+        else if (v === 'drill') browseSet('wrong');
+        else if (v === 'marked') browseSet('marked');
+        else if (v === 'sim') startSim();
+        else if (v === 'stats') renderStats();
+      });
+    });
+  }
+  bindNav(document);
+  el('btnFinishSim').addEventListener('click', () => finishSim(false));
+  el('btnSimReport').addEventListener('click', () => { if (sim) (sim.showReport ? renderSimQ() : renderSimReport()); });
+
+  // Prečice: ← → kretanje, 1–9 izbor odgovora, Enter potvrda/sledeće
+  document.addEventListener('keydown', (e) => {
+    if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
+    if (e.ctrlKey || e.altKey || e.metaKey) return;
+    const qv = el('view-question').classList.contains('active');
+    const sv = el('view-sim').classList.contains('active');
+    if (!qv && !sv) return;
+    if (sv && sim && sim.showReport) return;   // dok je Izveštaj otvoren, prečice ne diraju pitanja
+    const root = qv ? el('qCard') : el('simQCard');
+    const actionBtns = [...root.querySelectorAll('.qActions button')];
+    if (e.key === 'ArrowRight') {
+      const b = actionBtns.find((x) => /→|Sledeće|Следеће|Preskoči|Прескочи/.test(x.textContent));
+      if (b) { b.click(); e.preventDefault(); }
+    } else if (e.key === 'ArrowLeft') {
+      const b = actionBtns.find((x) => /←|Prethodno|Претходно/.test(x.textContent));
+      if (b) { b.click(); e.preventDefault(); }
+    } else if (/^[1-9]$/.test(e.key)) {
+      const cs = [...root.querySelectorAll('.choice')].filter((x) => !x.disabled);
+      const c = cs[+e.key - 1];
+      if (c) { c.click(); e.preventDefault(); }
+    } else if (e.key === 'Enter') {
+      const b = actionBtns.find((x) => x.classList.contains('primary') && !x.disabled);
+      if (b && document.activeElement !== b) { b.click(); e.preventDefault(); }
+    }
+  });
+  el('btnScript').addEventListener('click', () => {
+    S.script = S.script === 'l' ? 'c' : 'l'; save();
+    applyScript();
+    current.redraw();          // ostani na istom ekranu, samo drugo pismo
+  });
+  // Tema: podrazumevano prati sistem; prekidač pamti izbor. Simulacija je uvek svetla (CSS).
+  function applyTheme() {
+    const dark = S.theme === 'dark' || (S.theme == null && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    document.body.classList.toggle('dark', dark);
+    el('btnTheme').textContent = dark ? '☀️' : '🌙';
+  }
+  el('btnTheme').addEventListener('click', () => {
+    const dark = document.body.classList.contains('dark');
+    S.theme = dark ? 'light' : 'dark'; save();
+    applyTheme();
+  });
+  // Veličina slova: 90–125%
+  function applyFont() {
+    document.documentElement.style.fontSize = Math.round(16 * (S.fs || 1)) + 'px';
+  }
+  el('btnFontMinus').addEventListener('click', () => { S.fs = Math.max(0.9, (S.fs || 1) - 0.08); save(); applyFont(); });
+  el('btnFontPlus').addEventListener('click', () => { S.fs = Math.min(1.25, (S.fs || 1) + 0.08); save(); applyFont(); });
+  function applyScript() {
+    el('btnScript').innerHTML =
+      `<span class="${S.script === 'c' ? 'segOn' : 'segOff'}">ЋИР</span><span class="segSep">|</span><span class="${S.script === 'l' ? 'segOn' : 'segOff'}">LAT</span>`;
+    el('brandTitle').textContent = L('brand');
+    el('btnHome').textContent = L('home');
+    el('btnFinishSim').textContent = L('finishSim');
+    el('btnSimReport').textContent = L('report');
+    document.title = L('brand') + ' — ' + (S.script === 'l' ? 'vežbanje' : 'вежбање');
+  }
+
+  applyScript();
+  applyTheme();
+  applyFont();
+  curHash = location.hash || '#/';
+  try { routeTo(curHash); } catch (err) { goHomeReplace(); }
+  initBackup();
+})();

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Возачки А — вежбање</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header id="topbar">
+  <div class="brand" data-nav="home" title="Почетна">🏍️ <span id="brandTitle">Возачки А</span></div>
+  <div class="topActions">
+    <button id="btnFontMinus" class="ghost" aria-label="Smanji slova" title="Smanji slova">A−</button>
+    <button id="btnFontPlus" class="ghost" aria-label="Povećaj slova" title="Povećaj slova">A+</button>
+    <button id="btnTheme" class="ghost" aria-label="Tamna/svetla tema" title="Tamna/svetla tema">🌙</button>
+    <button id="btnScript" class="ghost" aria-label="Promena pisma" title="Промени писмо">lat</button>
+    <button id="btnHome" class="ghost" data-nav="home">Почетна</button>
+  </div>
+</header>
+
+<main>
+  <!-- POČETNA -->
+  <section id="view-home" class="view">
+    <div class="card" id="homeSummary"></div>
+    <div class="menuGrid">
+      <button class="menuBtn" data-nav="learn"><span class="mIcon">📖</span><span class="mTitle" id="mLearn"></span><span class="mSub" id="mLearnSub"></span></button>
+      <button class="menuBtn" data-nav="drill"><span class="mIcon">🔁</span><span class="mTitle" id="mDrill"></span><span class="mSub" id="mDrillSub"></span></button>
+      <button class="menuBtn" data-nav="marked"><span class="mIcon">🔖</span><span class="mTitle" id="mMarked"></span><span class="mSub" id="mMarkedSub"></span></button>
+      <button class="menuBtn" data-nav="sim"><span class="mIcon">⏱️</span><span class="mTitle" id="mSim"></span><span class="mSub" id="mSimSub"></span></button>
+      <button class="menuBtn" data-nav="stats"><span class="mIcon">📊</span><span class="mTitle" id="mStats"></span><span class="mSub" id="mStatsSub"></span></button>
+    </div>
+    <div class="card">
+      <h3 id="hCats"></h3>
+      <div id="catBars"></div>
+    </div>
+    <div class="card" id="simHistory"></div>
+    <div class="card" id="pojmovnikCard"></div>
+    <div class="card" id="faqCard"></div>
+    <div class="card small" id="dataTools"></div>
+  </section>
+
+  <!-- UČENJE / DRILL / MARKED (zajednički prikaz pitanja) -->
+  <section id="view-question" class="view">
+    <div id="qProgress" class="qProgress"></div>
+    <div class="card" id="qCard"></div>
+  </section>
+
+  <!-- SIMULACIJA -->
+  <section id="view-sim" class="view">
+    <div class="simTop card">
+      <div id="simTimer" class="simTimer">45:00</div>
+      <div style="flex:1"></div>
+      <button id="btnSimReport" class="warn"></button>
+      <button id="btnFinishSim" class="danger"></button>
+    </div>
+    <div class="card" id="simQCard"></div>
+    <div class="card" id="simReport" style="display:none"></div>
+  </section>
+
+  <!-- REZULTAT SIMULACIJE -->
+  <section id="view-simresult" class="view">
+    <div class="card" id="simResultCard"></div>
+    <div id="simWrongList"></div>
+  </section>
+
+  <!-- OBLAST / PODOBLAST -->
+  <section id="view-browse" class="view">
+    <div class="card" id="browseHead"></div>
+    <div class="card" id="browseList"></div>
+  </section>
+
+  <!-- STATISTIKA -->
+  <section id="view-stats" class="view">
+    <div class="card" id="readyCard"></div>
+    <div class="card" id="statsCard"></div>
+    <div class="card" id="weakCard"></div>
+  </section>
+</main>
+
+<script src="data.js"></script>
+<script src="explanations.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

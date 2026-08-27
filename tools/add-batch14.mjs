@@ -1,0 +1,58 @@
+import fs from 'node:fs';
+let s = fs.readFileSync('build-explanations.mjs', 'utf8');
+const ti = s.indexOf('// ---------------- transliteracija');
+if (ti < 0) { console.log('no anchor'); process.exit(1); }
+const xBlock = `
+// --- Značenje izraza (sub 94), 46 pitanja — pisano pojedinačno (ZOBS čl. 7) ---
+X[7930] = { ...(X[7930]||{}), x: 'Saobraćaj je kretanje po PUTU — a put je površina koju učesnici koriste pod uslovima iz zakona (ZOBS čl. 7). Ulica, zemljani put i trotoar jesu put (i zaprega i pešak su učesnici); trkačka staza, njiva i površina koju vlasnik rezerviše za svoje NISU put, pa kretanje po njima nije saobraćaj.' };
+X[7931] = { ...(X[7931]||{}), x: 'Guranje bicikla pešačkom stazom JESTE saobraćaj (lice koje gura vozilo je PEŠAK — učesnik), kao i motokultivator zemljanim putem i bicikl stazom. Plato, trg i poligon za probne vožnje nisu put, pa kretanje po njima nije saobraćaj (ZOBS čl. 7).' };
+X[7932] = { ...(X[7932]||{}), x: 'VOZAČ je lice koje NA PUTU UPRAVLJA vozilom (ZOBS čl. 7) — nije dovoljno imati dozvolu (to je samo vozač po ispravi, ne u saobraćaju), a ko vozilo gura ili vuče sopstvenom snagom — taj je PEŠAK.' };
+X[7933] = { ...(X[7933]||{}), x: 'PEŠAK je i lice u dečjem prevoznom sredstvu ili kolicima za nemoćne koja pokreće sopstvenom snagom, i lice koje se kreće po putu, i lice koje sopstvenom snagom vuče/gura vozilo ili kolica (ZOBS čl. 7). Ko UPRAVLJA biciklom, zapregom ili motokultivatorom — taj je vozač, ne pešak.' };
+X[7934] = { ...(X[7934]||{}), x: 'Pešak je i onaj ko GURA bicikl (ne vozi ga!) i ko se kreće klizaljkama, skijama, sankama, koturaljkama ili skejtbordom (ZOBS čl. 7). Čim sedneš na bicikl i voziš — postaješ vozač.' };
+X[7936] = { ...(X[7936]||{}), x: 'ZAUSTAVLJANJE traži ISTOVREMENO tri uslova (ZOBS čl. 7): prekid do TRI minuta + nije nastupio po znaku ili pravilu + vozač NIJE napustio vozilo. Isključen motor, prazno vozilo ili "udaljio se 5 m" nisu deo definicije — to su mamci.' };
+X[7937] = { ...(X[7937]||{}), x: 'Dva minuta, vozač u vozilu → sva tri uslova zaustavljanja ispunjena (do 3 min, nije po znaku, nije napustio vozilo) — ZAUSTAVLJANJE (ZOBS čl. 7).' };
+X[7938] = { ...(X[7938]||{}), x: 'Dva minuta, ali je vozač NAPUSTIO vozilo → pao je uslov "nije napustio vozilo", pa to više nije zaustavljanje nego PARKIRANJE (ZOBS čl. 7) — trajanje ispod 3 minuta samo po sebi ne spasava.' };
+X[7940] = { ...(X[7940]||{}), x: 'Prolaženje pored učesnika koji dolazi IZ SUPROTNOG SMERA = MIMOILAŽENJE (ZOBS čl. 7). Preticanje je isti smer u kretanju, obilaženje je pored nepokretnog, propuštanje je radnja ustupanja.' };
+X[7942] = { ...(X[7942]||{}), x: 'Prolaženje pored učesnika koji se KREĆE istim kolovozom U ISTOM SMERU = PRETICANJE (ZOBS čl. 7). Ključ za razlikovanje: kreće se → preticanje; stoji → obilaženje; suprotni smer → mimoilaženje.' };
+X[7944] = { ...(X[7944]||{}), x: 'Prolaženje pored učesnika koji se NE POMERA (zaustavljeno vozilo, prepreka) = OBILAŽENJE (ZOBS čl. 7). Ako se pomera u istom smeru, to je preticanje.' };
+X[7948] = { ...(X[7948]||{}), x: 'Odstojanje na kome se KOLOVOZ JASNO VIDI = VIDLJIVOST (zavisi od svetla, padavina, magle). PREGLEDNOST je drugo — nju ograničavaju FIZIČKE prepreke (krivina, objekat, teren). ZOBS čl. 7.' };
+X[7953] = { ...(X[7953]||{}), x: 'Radnja kojom OMOGUĆAVAŠ kretanje drugog učesnika (ne menjajući naglo način vožnje) = PROPUŠTANJE (ZOBS čl. 7) — jedina od ponuđenih koja je "ustupanje", ostale su načini prolaženja.' };
+X[7954] = { ...(X[7954]||{}), x: 'Smanjena vidljivost VAN naselja: vidljivost manja od 200 m (ZOBS čl. 7). U naselju je prag 100 m. Par za pamćenje: van naselja 200 / u naselju 100.' };
+X[7957] = { ...(X[7957]||{}), x: 'ZAUSTAVLJENA kolona: niz od najmanje TRI vozila ZAUSTAVLJENA u istoj saobraćajnoj traci (ZOBS čl. 7). Dva vozila nisu kolona, a parkirana vozila nisu kolona (parkiranje nije deo saobraćajnog toka).' };
+X[7958] = { ...(X[7958]||{}), x: 'Kolona U KRETANJU traži tri uslova: najmanje TRI vozila + jedno iza drugog istom trakom u istom smeru + međusobno uslovljeno kretanje u koje drugo vozilo ne može ući bez ometanja (ZOBS čl. 7). Razmak koji dozvoljava ubacivanje = nije kolona.' };
+X[7962] = { ...(X[7962]||{}), x: 'Smanjena vidljivost U naselju: manja od 100 m (ZOBS čl. 7). Van naselja prag je 200 m — u naselju rasveta pomaže, pa je prag niži.' };
+X[7965] = { ...(X[7965]||{}), x: 'SAOBRAĆAJNA NEZGODA traži: dogodila se NA PUTU (ili je počela na putu), učestvovalo bar jedno vozilo U POKRETU, i nastala je šteta, povreda ili smrt (ZOBS čl. 7). Izletanje s puta i ruševina ograde ispunjava sve — šteta ne mora biti na samom putu niti mora biti povređenih.' };
+X[7966] = { ...(X[7966]||{}), x: 'Nezgoda u dvorištu/njivi NIJE saobraćajna nezgoda — falи ključni uslov: NA PUTU (ZOBS čl. 7). Povreda i šteta postoje, ali mesto nije put, pa ovo ide u druge propise (npr. o radu), ne u ZOBS.' };
+X[7974] = { ...(X[7974]||{}), x: 'Srednja brzina = pređeni put / vreme. 300 km za 2 sata = 150 km/h. Ne mešaj sa trenutnom brzinom (ono što pokazuje brzinomer u jednom trenutku).' };
+X[7977] = { ...(X[7977]||{}), x: 'UKUPNA masa = masa vozila + masa lica i tereta koji su NA njemu (stvarno stanje sada). NAJVEĆA DOZVOLJENA masa je gornja granica koju deklariše proizvođač — papirna vrednost, ne trenutna (ZOBS čl. 7).' };
+X[7982] = { ...(X[7982]||{}), x: 'REGISTROVANO vozilo = upisano u jedinstveni registar + izdate registarske tablice i nalepnica + izdata saobraćajna dozvola — sva tri (ZOBS čl. 7). Privremene tablice nisu registracija, a učestvovanje u saobraćaju je posledica, ne uslov.' };
+X[7983] = { ...(X[7983]||{}), x: 'Javna isprava (rešenje) koja s registracionom nalepnicom daje pravo korišćenja vozila = SAOBRAĆAJNA dozvola (za VOZILO). Vozačka je za tebe (lice), tablica je oznaka na vozilu — tri različite stvari.' };
+X[7984] = { ...(X[7984]||{}), x: 'Oznaka NA VOZILU da je upisano u registar = REGISTARSKA TABLICA (ZOBS čl. 7). Saobraćajna dozvola je isprava (papir/kartica), nalepnica označava rok važenja.' };
+X[7985] = { ...(X[7985]||{}), x: 'Oznaka kojom se određuje DA VOZILO SME U SAOBRAĆAJ U ODREĐENOM ROKU = REGISTRACIONA NALEPNICA (ZOBS čl. 7) — ona nosi rok; tablica nosi identitet, dozvola je isprava.' };
+X[7986] = { ...(X[7986]||{}), x: 'Javna isprava koja LICU daje pravo da upravlja vozilom = VOZAČKA dozvola (ZOBS čl. 7). Saobraćajna prati vozilo; uverenje o položenom ispitu nije dozvola — s njim se tek vadi dozvola.' };
+X[7987] = { ...(X[7987]||{}), x: 'Dovođenje vozila/uređaja u ISPRAVNO stanje = POPRAVKA (vraćanje na staro). PREPRAVKA je promena konstruktivnih karakteristika (menja se namena/vrsta). Tehnički pregled samo utvrđuje stanje (ZOBS čl. 7).' };
+X[7988] = { ...(X[7988]||{}), x: 'Promena KONSTRUKTIVNIH karakteristika (namena, vrsta vozila...) = PREPRAVKA (ZOBS čl. 7) — posle nje sledi ispitivanje vozila. Popravka samo vraća u ispravno stanje.' };
+X[7990] = { ...(X[7990]||{}), x: 'BICIKL: NAJMANJE dva točka + pokreće se SNAGOM VOZAČA (pedale/ručice) — ZOBS čl. 7. Zamke: "ima dva točka" je preusko (tricikl-bicikl postoji), a 45 km/h i 4 kW su granice MOPEDA, ne definicija bicikla.' };
+const klas = ' Ključ (kartica Kategorije vozila): do 45 km/h i do 50 cm³ / 4 kW = moped ili laki tricikl; PREKO bilo koje granice = motocikl (2-3 točka asimetrično) ili teški tricikl (3 točka simetrično).';
+X[7996] = { ...(X[7996]||{}), x: 'Brzina 40 km/h (≤45) + dva točka + benzinski motor do 50 cm³ = MOPED.' + klas };
+X[7997] = { ...(X[7997]||{}), x: 'Isto kao prethodna kombinacija: ≤45 km/h, dva točka, motor u granicama mopeda = MOPED — dizel/drugi pogon ne menja klasifikaciju dok su brzina i snaga u granicama.' + klas };
+X[7998] = { ...(X[7998]||{}), x: 'Električni pogon: snaga do 4 kW + brzina do 45 km/h + dva točka = MOPED (kod struje graniса je snaga umesto kubikaže).' + klas };
+X[8005] = { ...(X[8005]||{}), x: 'Benzinski motor: MOTOCIKL je vozilo sa 2 (ili 3 ASIMETRIČNA) točka čija brzina PRELAZI 45 km/h (ili kubikaža prelazi 50 cm³) — dovoljno je da JEDNA granica bude probijena. "Najmanje dva točka" i "do 50 cm³" su definicije drugih vozila.' };
+X[8006] = { ...(X[8006]||{}), x: 'Isti uslovi kao za benzin: preko 45 km/h + 2 ili 3 asimetrična točka = MOTOCIKL — vrsta goriva ne menja definiciju (kubikaža se kod ne-benzinskih ne gleda).' };
+X[8007] = { ...(X[8007]||{}), x: 'Električni MOTOCIKL: 2 ili 3 asimetrična točka + trajna nominalna snaga PREKO 4 kW (ZOBS čl. 7) — kod struje snaga igra ulogu kubikaže. Do 4 kW bio bi moped.' };
+X[8008] = { ...(X[8008]||{}), x: 'Tri točka ASIMETRIČNO (bočna prikolica) + brzina preko 45 km/h = MOTOCIKL (ne tricikl!). Simetričan raspored točkova pravi tricikl; asimetričan ostaje motocikl.' };
+X[8009] = { ...(X[8009]||{}), x: 'Ista logika: 50 km/h (>45) + tri ASIMETRIČNA točka = MOTOCIKL — asimetrija (bočno sedište) zadržava vozilo u klasi motocikla bez obzira na treći točak.' };
+X[8010] = { ...(X[8010]||{}), x: 'Električni, 5 kW (>4 kW granice mopeda) + dva točka = MOTOCIKL. Preko 4 kW struje = "preko 50 cm³" benzina.' };
+X[8011] = { ...(X[8011]||{}), x: 'TEŠKI TRICIKL (benzin): TRI SIMETRIČNA točka + brzina preko 45 km/h (ZOBS čl. 7). Simetrija ga deli od motocikla sa bočnim sedištem; "preko 4 kW" je kriterijum za električne, ne benzinske.' };
+X[8013] = { ...(X[8013]||{}), x: 'Električni: 5 kW (>4) + tri SIMETRIČNA točka = TEŠKI TRICIKL. Ista snaga sa dva točka dala bi motocikl — raspored točkova odlučuje.' };
+X[8015] = { ...(X[8015]||{}), x: '50 km/h (>45) + tri SIMETRIČNA točka = TEŠKI TRICIKL — preko granice brzine, pa nije laki; simetrija, pa nije motocikl.' };
+X[8016] = { ...(X[8016]||{}), x: 'Ista kombinacija (preko 45 km/h, tri simetrična točka) = TEŠKI TRICIKL, nezavisno od vrste motora.' };
+X[10406] = { ...(X[10406]||{}), x: 'Električni TEŠKI TRICIKL — tri uslova zajedno: tri SIMETRIČNA točka + brzina preko 45 km/h + trajna snaga PREKO 4 kW (ZOBS čl. 7). "Najmanje tri točka" je mamac — traži se tačno tri, simetrično.' };
+X[10613] = { ...(X[10613]||{}), x: 'Odstojanje ograničeno FIZIČKIM PREPREKAMA (krivina, objekat, breg) — i noću uz farove — je PREGLEDNOST (ZOBS čl. 7). Vidljivost zavisi od svetlosnih uslova; preglednost od geometrije puta.' };
+X[10683] = { ...(X[10683]||{}), x: 'MASA PRAZNOG VOZILA (deklariše proizvođač): neopterećeno vozilo sa karoserijom, propisanom opremom i tečnostima — bez lica i tereta. Kad dodaš putnike i teret dobijaš ukupnu masu (ZOBS čl. 7).' };
+X[10686] = { ...(X[10686]||{}), x: 'NAJVEĆU DOZVOLJENU masu deklariše PROIZVOĐAČ vozila (ZOBS čl. 7) — to je konstruktivna granica. Razlika NDM i mase vozila je NOSIVOST (to je prvi mamac).' };
+
+`;
+s = s.slice(0, ti) + xBlock + s.slice(ti);
+fs.writeFileSync('build-explanations.mjs', s);
+console.log('batch14 (izrazi, 46) inserted');
