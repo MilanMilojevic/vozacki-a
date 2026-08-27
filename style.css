@@ -239,3 +239,7 @@ tr.totalRow td { border-top: 2px solid var(--blue); }
   #view-question #qCard > * { grid-column: 1; }
   #view-question #qCard > .explBox { grid-column: 2; grid-row: 1 / span 30; position: sticky; top: 70px; }
 }
+
+/* naslov otklopljene kartice ostaje vidljiv ispod lepljive plave trake */
+.explCardBtn { scroll-margin-top: 74px; }
+.catRow, .statCatRow { scroll-margin-top: 74px; }
