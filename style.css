@@ -79,6 +79,12 @@ main { max-width: 880px; margin: 0 auto; padding: 16px 12px 60px; }
   display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .catSubRow:hover .catName { color: var(--blue); }
 .catChev { display: inline-block; width: 15px; color: var(--mut); }
+#tourDim { position: fixed; inset: 0; background: rgba(0,0,0,.55); z-index: 999; cursor: pointer; }
+#tourTip { position: fixed; left: 50%; transform: translateX(-50%); width: min(440px, calc(100vw - 32px));
+  background: var(--card); color: var(--ink); border: 1px solid var(--line); border-radius: 12px;
+  padding: 14px 16px; z-index: 1001; box-shadow: 0 8px 30px rgba(0,0,0,.35); }
+.tourRow { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
+.tourSpot { position: relative; z-index: 1000; box-shadow: 0 0 0 3px var(--blue), 0 0 0 8px rgba(44,106,160,.35) !important; border-radius: 12px; }
 
 .qProgress { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; color: var(--mut); font-size: .9rem; flex-wrap: wrap; gap: 6px; }
 .qMeta { font-size: .85rem; color: var(--mut); margin-bottom: 10px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; }
