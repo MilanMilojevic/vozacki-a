@@ -83,7 +83,8 @@
     noSims: { l: 'Još nijedna simulacija.', c: 'Још ниједна симулација.' },
     statsTitle: { l: 'Tačnost po oblastima', c: 'Тачност по областима' },
     statExpand: { l: 'Klikni za raspis po podoblastima', c: 'Кликни за распис по подобластима' },
-    catExpand: { l: 'Klikni za podoblasti', c: 'Кликни за подобласти' },
+    catExpand: { l: 'Prikaži podoblasti', c: 'Прикажи подобласти' },
+    catOpen: { l: 'Otvori oblast (spisak pitanja i vežbanje)', c: 'Отвори област (списак питања и вежбање)' },
     wholeCat: { l: 'Sva pitanja oblasti', c: 'Сва питања области' },
     tour1: { l: 'Tvoj napredak u brojkama: koliko si odgovorio, koliko pogrešnih čeka ponavljanje i koliko si obeležio.', c: 'Твој напредак у бројкама: колико си одговорио, колико погрешних чека понављање и колико си обележио.' },
     tour2: { l: 'Odavde kreće učenje: sva pitanja redom, sa objašnjenjem posle svakog odgovora.', c: 'Одавде креће учење: сва питања редом, са објашњењем после сваког одговора.' },
@@ -464,7 +465,7 @@
     el('qCard').innerHTML = `<p class="qText">${msgHtml}</p>
       <div class="qActions">${extraHtml || ''}
         ${origin ? `<button class="secondary" id="bBackOrigin">‹ ${L('backToList')}</button>` : ''}
-        <button class="${origin || extraHtml ? 'linklike' : 'primary'}" data-nav="home">${L('backHome')}</button></div>`;
+        <button class="linklike" data-nav="home">${L('backHome')}</button></div>`;
     bindNav(el('qCard'));
     const bo = el('bBackOrigin');
     if (bo) bo.addEventListener('click', origin);
@@ -792,7 +793,7 @@
       </tbody></table>` : `<p class="mut">${L('reviewOldNote')}</p>`}
       <div class="qActions" style="margin-top:14px">
         ${fresh ? `<button class="primary" id="btnSimAgain">${L('newSim')}</button>` : ''}
-        <button class="secondary" data-nav="home">${L('backHome')}</button>
+        <button class="linklike" data-nav="home">${L('backHome')}</button>
       </div>`;
     bindNav(rc);
     const ba = rc.querySelector('#btnSimAgain');
@@ -1132,7 +1133,7 @@
     if (!ids.length) {
       head.innerHTML = `<h3>${escapeHtml(title)}</h3>
         <p class="qText" style="font-weight:normal">${isWrong ? L('drillEmpty') : L('markedEmpty')}</p>
-        <div class="qActions"><button class="primary" data-nav="home">${L('backHome')}</button></div>`;
+        <div class="qActions"><button class="linklike" data-nav="home">${L('backHome')}</button></div>`;
       bindNav(head);
       el('browseList').innerHTML = '';
       show('browse');
@@ -1358,14 +1359,17 @@
       const qq = Q.filter((q) => q.cat === c.id);
       const seen = qq.filter((q) => S.q[q.id] && S.q[q.id].a > 0).length;
       const good = qq.filter((q) => S.q[q.id] && S.q[q.id].a > 0 && S.q[q.id].streak >= 1).length;
-      const row = document.createElement('button'); row.type = 'button'; row.className = 'catRow';
-      row.title = L('catExpand');
-      row.innerHTML = `<span class="catName"><span class="catChev">▸</span>${escapeHtml(T(c))}</span>
+      const row = document.createElement('div'); row.className = 'catRow';
+      row.innerHTML = `<button type="button" class="catChevBtn" aria-expanded="false" title="${escapeHtml(L('catExpand'))}" aria-label="${escapeHtml(L('catExpand'))}">▸</button>
+        <button type="button" class="catMain" title="${escapeHtml(L('catOpen'))}"><span class="catName">${escapeHtml(T(c))}</span>
         <span class="catBar"><span class="seen" style="width:${100 * seen / qq.length}%"></span><span class="good" style="width:${100 * good / qq.length}%"></span></span>
-        <span class="catCnt">${seen}/${qq.length}</span>`;
-      row.addEventListener('click', () => {
+        <span class="catCnt">${seen}/${qq.length}</span></button>`;
+      row.querySelector('.catMain').addEventListener('click', () => browse('c' + c.id));
+      row.querySelector('.catChevBtn').addEventListener('click', () => {
         const open = row.classList.toggle('open');
-        row.querySelector('.catChev').textContent = open ? '▾' : '▸';
+        const chev = row.querySelector('.catChevBtn');
+        chev.textContent = open ? '▾' : '▸';
+        chev.setAttribute('aria-expanded', open ? 'true' : 'false');
         let next = row.nextElementSibling;
         while (next && next.classList.contains('catSubRow')) { const rm = next; next = next.nextElementSibling; rm.remove(); }
         if (!open) return;
@@ -1382,7 +1386,6 @@
           sr.addEventListener('click', () => browse(key));
           ref.after(sr); ref = sr;
         };
-        addSub(`<b>${escapeHtml(L('wholeCat'))} ›</b>`, 'c' + c.id, 0, null, 0);
         for (const sid of [...new Set(qq.map((q) => q.sub))]) {
           const sq = qq.filter((q) => q.sub === sid);
           const sSeen = sq.filter((q) => S.q[q.id] && S.q[q.id].a > 0).length;
@@ -1441,7 +1444,7 @@
         <button class="secondary" id="btnExport">${L('export')}</button>
         <button class="secondary" id="btnImport">${L('import')}</button>
         <button class="linklike" id="btnTourReplay">${L('tourReplay')}</button>
-        <button class="linklike" id="btnReset">${L('reset')}</button>
+        <button class="linklike danger" id="btnReset">${L('reset')}</button>
         <input type="file" id="fileImport" accept=".json" style="display:none">
       </div>`;
     renderBackupLine();

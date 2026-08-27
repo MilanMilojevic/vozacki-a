@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Возачки А — вежбање</title>
-<link rel="stylesheet" href="style.css?v=26">
+<link rel="stylesheet" href="style.css?v=29">
 </head>
 <body>
 <header id="topbar">
@@ -22,6 +22,7 @@
   <!-- POČETNA -->
   <section id="view-home" class="view">
     <div class="card" id="homeSummary"></div>
+    <div class="hCol hColL">
     <div class="menuGrid">
       <button class="menuBtn" data-nav="learn"><span class="mIcon">📖</span><span class="mTitle" id="mLearn"></span><span class="mSub" id="mLearnSub"></span></button>
       <button class="menuBtn" data-nav="drill"><span class="mIcon">🔁</span><span class="mTitle" id="mDrill"></span><span class="mSub" id="mDrillSub"></span></button>
@@ -29,14 +30,17 @@
       <button class="menuBtn" data-nav="sim"><span class="mIcon">⏱️</span><span class="mTitle" id="mSim"></span><span class="mSub" id="mSimSub"></span></button>
       <button class="menuBtn" data-nav="stats"><span class="mIcon">📊</span><span class="mTitle" id="mStats"></span><span class="mSub" id="mStatsSub"></span></button>
     </div>
+    <div class="card" id="simHistory"></div>
+    <div class="card small" id="dataTools"></div>
+    </div>
+    <div class="hCol hColR">
     <div class="card">
       <h3 id="hCats"></h3>
       <div id="catBars"></div>
     </div>
-    <div class="card" id="simHistory"></div>
+    </div>
     <div class="card" id="pojmovnikCard"></div>
     <div class="card" id="faqCard"></div>
-    <div class="card small" id="dataTools"></div>
   </section>
 
   <!-- UČENJE / DRILL / MARKED (zajednički prikaz pitanja) -->
@@ -77,9 +81,9 @@
   </section>
 </main>
 
-<script src="version.js?v=26"></script>
-<script src="data.js?v=26"></script>
-<script src="explanations.js?v=26"></script>
-<script src="app.js?v=26"></script>
+<script src="version.js?v=29"></script>
+<script src="data.js?v=29"></script>
+<script src="explanations.js?v=29"></script>
+<script src="app.js?v=29"></script>
 </body>
 </html>

@@ -64,8 +64,11 @@ main { max-width: 880px; margin: 0 auto; padding: 16px 12px 60px; }
 .mTitle { font-weight: 600; font-size: 1.02rem; }
 .mSub { color: var(--mut); font-size: .85rem; }
 
-.catRow { display: flex; align-items: center; gap: 10px; margin: 7px 0; cursor: pointer; }
-.catRow:hover .catName { color: var(--blue); }
+.catRow { display: flex; align-items: center; gap: 6px; margin: 7px 0; }
+.catMain { display: flex; align-items: center; gap: 10px; flex: 1; background: none; border: none; padding: 2px 0; font: inherit; color: inherit; text-align: left; cursor: pointer; }
+.catMain:hover .catName { color: var(--blue); }
+.catChevBtn { background: none; border: none; color: var(--mut); font-size: .8rem; padding: 4px 6px; border-radius: 6px; cursor: pointer; line-height: 1; }
+.catChevBtn:hover { background: var(--optHover); color: var(--blue); }
 .catName { flex: 0 0 46%; font-size: .9rem; }
 .catBar { flex: 1; height: 14px; background: var(--bar); border-radius: 7px; overflow: hidden; position: relative; }
 .catBar .seen { position: absolute; inset: 0 auto 0 0; background: #9db8d2; }
@@ -226,15 +229,9 @@ tr.totalRow td { border-top: 2px solid var(--blue); }
 /* ---- Eksperiment: iskorišćenje širokih ekrana (>=1200px). Simulacija namerno netaknuta. ---- */
 @media (min-width: 1200px) {
   main { max-width: 1240px; }
-  #view-home { display: grid; grid-template-columns: 1fr 1fr; column-gap: 18px; align-items: start;
-    grid-template-areas: 'sum sum' 'menu cats' 'hist cats' 'tools cats' 'poj poj' 'faq faq'; }
-  #view-home > #homeSummary { grid-area: sum; }
-  #view-home > .menuGrid { grid-area: menu; }
-  #view-home > .card:has(#catBars) { grid-area: cats; }
-  #view-home > #simHistory { grid-area: hist; }
-  #view-home > #dataTools { grid-area: tools; }
-  #view-home > #pojmovnikCard { grid-area: poj; }
-  #view-home > #faqCard { grid-area: faq; }
+  #view-home { display: grid; grid-template-columns: 1fr 1fr; column-gap: 18px; align-items: start; }
+  #view-home > #homeSummary, #view-home > #pojmovnikCard, #view-home > #faqCard { grid-column: 1 / -1; }
+  .hColL { grid-column: 1; } .hColR { grid-column: 2; }
   #view-question #qCard { display: grid; grid-template-columns: minmax(0, 1fr) 440px; column-gap: 26px; align-items: start; }
   #view-question #qCard > * { grid-column: 1; }
   #view-question #qCard > .explBox { grid-column: 2; grid-row: 1 / span 30; position: sticky; top: 70px; }
@@ -242,6 +239,9 @@ tr.totalRow td { border-top: 2px solid var(--blue); }
 
 /* naslov otklopljene kartice ostaje vidljiv ispod lepljive plave trake */
 .explCardBtn { scroll-margin-top: 74px; }
+.linklike.danger { color: #c0392b; }
+.linklike.danger:hover { color: #96281b; }
+body.dark .linklike.danger { color: #ff8a80; }
 .catRow, .statCatRow { scroll-margin-top: 74px; }
 
 /* veće sličice za linije/oznake — natpisi su HTML, ne SVG tekst */
@@ -250,3 +250,16 @@ tr.totalRow td { border-top: 2px solid var(--blue); }
 .lineRow .signCell.wide { grid-column: span 2; }
 .lineRow .signCell.wide svg { max-width: 260px; }
 .lineRow .signCell span { font-size: .8rem; }
+
+/* Uski ekrani: omotači se "rastvaraju" — redosled kao pre uvođenja kolona */
+@media (max-width: 1199px) {
+  #view-home { display: flex; flex-direction: column; }
+  .hCol { display: contents; }
+  #view-home > #homeSummary { order: 1; }
+  .hColL > .menuGrid { order: 2; }
+  .hColR > .card { order: 3; }
+  .hColL > #simHistory { order: 4; }
+  #view-home > #pojmovnikCard { order: 5; }
+  #view-home > #faqCard { order: 6; }
+  .hColL > #dataTools { order: 7; }
+}
