@@ -18,3 +18,12 @@ desktop.ini
 *.tmp
 base-A-new.json
 draw-*.json
+
+# lični podaci i pristupni podaci — NIKADA u repozitorijum
+kredencijali*
+*kredencijali*
+*lozink*
+*password*
+*.env
+.env.*
+secrets*
