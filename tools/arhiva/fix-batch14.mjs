@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 
 // 0) verifikacija: tehnički pregled = čl. 254?
-const zobs = fs.readFileSync('C:/Users/milan/AppData/Local/Temp/claude/C--Users-milan-Desktop-zborapp/8990dfb3-e1f0-4953-85bf-4d493f56dfe2/scratchpad/zobs.txt', 'utf8');
+const zobs = fs.readFileSync('<radni-folder>/zobs.txt', 'utf8');
 const tp = zobs.indexOf('Na tehničkom pregledu');
 const hdr = zobs.lastIndexOf('Član', tp);
 const hdrTxt = zobs.slice(hdr, hdr + 12).replace(/\s+/g, ' ').trim();

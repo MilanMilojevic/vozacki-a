@@ -56,6 +56,7 @@ const badCorr = questions.filter((q) => q.ch.filter((c) => c.ok).length !== q.re
 console.log(`pitanja: ${questions.length} | bez cir teksta: ${missCyr} | ok!=req: ${badCorr}`);
 if (missCyr || badCorr) process.exit(1);
 
-const out = { generated: new Date().toISOString().slice(0, 10), practiceId: lat.practiceId, cats, subs: subName, questions };
+// practiceId se namerno NE upisuje u data.js — to je lični identifikator kandidata
+const out = { generated: new Date().toISOString().slice(0, 10), cats, subs: subName, questions };
 await fs.writeFile('../data.js', 'window.QUIZ = ' + JSON.stringify(out) + ';\n');
 console.log('-> ../data.js', Math.round(JSON.stringify(out).length / 1024) + ' KB');

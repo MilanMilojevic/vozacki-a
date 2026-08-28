@@ -4,7 +4,12 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 
 const BASE = 'https://servisi.euprava.gov.rs/autoskole';
-const GUID = '5f24e468-dd40-4056-a2e7-8fb55bc3c12f'; // A kategorija
+const GUID = process.argv[2];
+if (!GUID) {
+  console.error('Upotreba: node download-images.mjs <practice-GUID>');
+  console.error('GUID se dobija na eUprava profilu kandidata, na linku za vežbanje pitanja.');
+  process.exit(1);
+} // A kategorija
 const [, , srcFile = 'base-A.json', outDir = '../img'] = process.argv;
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));

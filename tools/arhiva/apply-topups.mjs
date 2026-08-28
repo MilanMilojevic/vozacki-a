@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import { pathToFileURL } from 'node:url';
-const SP = 'C:/Users/milan/AppData/Local/Temp/claude/C--Users-milan-Desktop-zborapp/8990dfb3-e1f0-4953-85bf-4d493f56dfe2/scratchpad/';
+const SP = '<radni-folder>/';
 const c1 = (await import(pathToFileURL(SP + 'topups-c1.mjs').href)).default;
 const c2 = (await import(pathToFileURL(SP + 'topups-c2.mjs').href)).default;
 const c3 = (await import(pathToFileURL(SP + 'topups-c3.mjs').href)).default;

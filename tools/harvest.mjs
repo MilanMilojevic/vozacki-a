@@ -1,7 +1,12 @@
 // Spike: harvest the eUprava autoskole question base for a given practiceId GUID.
 // Public endpoints, no auth. Gentle pacing.
 const BASE = 'https://servisi.euprava.gov.rs/autoskole';
-const PID = process.argv[2] || '5f24e468-dd40-4056-a2e7-8fb55bc3c12f';
+const PID = process.argv[2];
+if (!PID) {
+  console.error('Upotreba: node harvest.mjs <practice-GUID> [languageId] [izlaz.json]');
+  console.error('GUID se dobija na eUprava profilu kandidata, na linku za vežbanje pitanja.');
+  process.exit(1);
+}
 const LANG = process.argv[3] || '15'; // 15 = latinica, 9 = cirilica
 const OUT = process.argv[4] || 'base.json';
 const CATS = [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38];

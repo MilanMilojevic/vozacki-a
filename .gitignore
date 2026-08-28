@@ -1,2 +1,20 @@
+# зависности (апликација их нема, али алати могу)
 node_modules/
+
+# извоз напретка (лични подаци, не иде у репо)
+vozacki-a-napredak*.json
+
+# смеће оперативних система и уређивача
+Thumbs.db
+desktop.ini
+.DS_Store
+*.swp
+*~
+.vscode/
+.idea/
+
+# привремени фајлови
 *.log
+*.tmp
+base-A-new.json
+draw-*.json

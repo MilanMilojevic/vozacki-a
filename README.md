@@ -66,8 +66,8 @@ node serve.mjs
 
 ```
 cd tools
-node harvest.mjs 5f24e468-dd40-4056-a2e7-8fb55bc3c12f 15 base-A.json
-node harvest.mjs 5f24e468-dd40-4056-a2e7-8fb55bc3c12f 9 base-A-cyr.json
+node harvest.mjs <GUID-за-вежбање> 15 base-A.json
+node harvest.mjs <GUID-за-вежбање> 9 base-A-cyr.json
 node build-data.mjs
 node download-images.mjs base-A.json ../img
 ```
