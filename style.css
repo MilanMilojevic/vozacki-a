@@ -270,3 +270,7 @@ body.dark .linklike.danger { color: #ff8a80; }
 .guideHead { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
 .guideList { margin: 10px 0 0; padding-left: 22px; line-height: 1.5; }
 .guideList li { margin-bottom: 8px; }
+
+/* Grupe u pojmovniku */
+.pojGroup { margin: 14px 0 4px; font-size: .8rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--mut); border-bottom: 1px solid var(--line); padding-bottom: 4px; }
+.pojGroup:first-of-type { margin-top: 6px; }

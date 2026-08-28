@@ -103,6 +103,11 @@
     guideTitle: { l: '🎓 Kako da učiš — predloženi redosled', c: '🎓 Како да учиш — предложени редослед' },
     guideSub: { l: 'za one koji kreću iz početka; ako već imaš predznanje, slobodno preskoči', c: 'за оне који крећу из почетка; ако већ имаш предзнање, слободно прескочи' },
     guideOpen: { l: 'Prikaži', c: 'Прикажи' },
+    grp1: { l: '1 · Osnovni pojmovi — počni odavde', c: '1 · Основни појмови — почни одавде' },
+    grp2: { l: '2 · Ko ide prvi — prvenstvo i signalizacija', c: '2 · Ко иде први — првенство и сигнализација' },
+    grp3: { l: '3 · Radnje vozilom', c: '3 · Радње возилом' },
+    grp4: { l: '4 · Posebne situacije', c: '4 · Посебне ситуације' },
+    grp5: { l: '5 · Propisi, dozvole i posledice', c: '5 · Прописи, дозволе и последице' },
     guideHide: { l: 'Sakrij', c: 'Сакриј' },
     guideBody: { l: `<ol class="guideList">
       <li><b>Prvo pojmovi, pa pravila.</b> U Pojmovniku pročitaj redom: <i>Slični pojmovi</i> (šta je preticanje a šta obilaženje, odstojanje vs rastojanje), <i>Put, kolovoz, trake</i> i <i>Kategorije vozila</i>. Bez tih reči ostalo gradivo zvuči kao strani jezik.</li>
@@ -1470,8 +1475,26 @@
     if (!cardKeys.length) pk.style.display = 'none';
     else {
       pk.style.display = '';
-      pk.innerHTML = `<h3>📖 ${L('pojmovnik')}</h3><p class="mut" style="font-size:.82rem;margin-bottom:6px">${L('pojmovnikSub')}</p>`
-        + cardKeys.map((k) => `<div class="pojEntry"><button class="explCardBtn pojBtn">📖 ${escapeHtml(T(EX.cards[k].t))}</button><div class="explCard" style="display:none">${T(EX.cards[k].h)}</div></div>`).join('');
+      // Redosled kartica prati predloženi tok učenja iz vodiča (od pojmova ka posledicama)
+      const GRUPE = [
+        ['grp1', ['slicni-pojmovi', 'put-pojmovi', 'kategorije-vozila', 'brzine']],
+        ['grp2', ['prvenstvo-prolaza', 'znakovi-porodice', 'semafori', 'oznake-kolovoz']],
+        ['grp3', ['skretanje', 'preticanje', 'parkiranje', 'parking-table', 'pokazivaci', 'svetla']],
+        ['grp4', ['pesaci-bicikli', 'pruga', 'autoput', 'nezgoda', 'razno-pravila']],
+        ['grp5', ['dozvole', 'vozilo-tehnika', 'iskljucenje', 'kazne', 'kaznene-klase', 'zamke-odgovori']],
+      ];
+      const stavljene = new Set();
+      let html = `<h3>📖 ${L('pojmovnik')}</h3><p class="mut" style="font-size:.82rem;margin-bottom:6px">${L('pojmovnikSub')}</p>`;
+      const entry = (k) => `<div class="pojEntry"><button class="explCardBtn pojBtn">📖 ${escapeHtml(T(EX.cards[k].t))}</button><div class="explCard" style="display:none">${T(EX.cards[k].h)}</div></div>`;
+      for (const [gk, keys] of GRUPE) {
+        const imaju = keys.filter((k) => cardKeys.includes(k));
+        if (!imaju.length) continue;
+        html += `<div class="pojGroup">${escapeHtml(L(gk))}</div>`;
+        for (const k of imaju) { html += entry(k); stavljene.add(k); }
+      }
+      const ostatak = cardKeys.filter((k) => !stavljene.has(k));
+      for (const k of ostatak) html += entry(k);
+      pk.innerHTML = html;
       pk.querySelectorAll('.explCardBtn').forEach((btn) => btn.addEventListener('click', () => {
         const cd = btn.nextElementSibling;
         const otvaram = cd.style.display === 'none';
