@@ -35,6 +35,7 @@ body.dark #view-sim {
 /* WCAG AA kontrast u tamnoj temi: bela slova traže tamniju plavu podlogu */
 body.dark .primary { background: #2c6aa0; }
 body.dark .primary:hover { background: #1f4e78; }
+body.dark .primary:disabled, .primary:disabled:hover { background: #4a5560; color: #c9d1d9; cursor: default; }
 body.dark #topbar { background: #24587f; }
 body.dark .linklike { color: var(--blue-d); }
 button.catRow { width: 100%; background: none; border: none; padding: 0; font: inherit; color: inherit; text-align: left; }
@@ -43,7 +44,7 @@ body { font-family: "Segoe UI", system-ui, -apple-system, sans-serif; background
 
 #topbar { position: sticky; top: 0; z-index: 10; display: flex; justify-content: space-between; align-items: center;
   background: var(--blue); color: #fff; padding: 10px 16px; box-shadow: 0 2px 6px rgba(0,0,0,.15); }
-.brand { font-size: 1.1rem; font-weight: 600; cursor: pointer; }
+.brand { font-size: 1.1rem; font-weight: 600; cursor: pointer; background: none; border: none; color: inherit; font-family: inherit; padding: 0; }
 .topActions { display: flex; gap: 8px; }
 button { font: inherit; color: inherit; cursor: pointer; border: none; border-radius: 8px; }
 .ghost { background: rgba(255,255,255,.15); color: #fff; padding: 6px 12px; }
@@ -197,7 +198,7 @@ button.histBtn:hover { background: var(--optHover); }
 .kbNote { font-size: .75rem; }
 .searchBox { width: 100%; padding: 10px 12px; border: 1.5px solid var(--line); border-radius: 10px; font: inherit;
   background: var(--card); color: var(--ink); margin-bottom: 8px; }
-.searchBox:focus { border-color: var(--blue); outline: none; }
+.searchBox:focus { border-color: var(--blue); }   /* prsten fokusa dolazi iz globalnog :focus-visible */
 .qRow { display: block; width: 100%; text-align: left; background: none; border: none; border-bottom: 1px solid var(--line);
   padding: 7px 4px; font-size: .9rem; line-height: 1.35; border-radius: 0; }
 .qRow:hover { background: var(--optHover); }
@@ -233,7 +234,8 @@ tr.totalRow td { border-top: 2px solid var(--blue); }
   #view-home.active { display: grid; grid-template-columns: 1fr 1fr; column-gap: 18px; align-items: start; }
   #view-home > #homeSummary, #view-home > #guideCard, #view-home > #pojmovnikCard, #view-home > #faqCard { grid-column: 1 / -1; }
   .hColL { grid-column: 1; } .hColR { grid-column: 2; }
-  #view-question #qCard { display: grid; grid-template-columns: minmax(0, 1fr) 440px; column-gap: 26px; align-items: start; }
+  /* Desna kolona se otvara TEK kad postoji objašnjenje — dok se odgovara, pitanje ima punu širinu. */
+  #view-question #qCard:has(> .explBox) { display: grid; grid-template-columns: minmax(0, 1fr) 440px; column-gap: 26px; align-items: start; }
   #view-question #qCard > * { grid-column: 1; }
   #view-question #qCard > .explBox { grid-column: 2; grid-row: 1 / span 30; position: sticky; top: 70px; }
 }
@@ -259,11 +261,11 @@ body.dark .linklike.danger { color: #ff8a80; }
   #view-home > #homeSummary { order: 1; }
   .hColL > .menuGrid { order: 2; }
   .hColR > .card { order: 3; }
-  #view-home > #guideCard { order: 35; }
-  .hColL > #simHistory { order: 4; }
-  #view-home > #pojmovnikCard { order: 5; }
-  #view-home > #faqCard { order: 6; }
-  .hColL > #dataTools { order: 7; }
+  #view-home > #guideCard { order: 4; }
+  .hColL > #simHistory { order: 5; }
+  #view-home > #pojmovnikCard { order: 6; }
+  #view-home > #faqCard { order: 7; }
+  .hColL > #dataTools { order: 8; }
 }
 
 /* Vodič za učenje */

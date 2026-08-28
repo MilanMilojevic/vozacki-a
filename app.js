@@ -27,6 +27,9 @@
   const DAY = 24 * 60 * 60 * 1000;
   const one = (n) => n % 10 === 1 && n % 100 !== 11;   // srpski: 1, 21, 31... "pitanje/dan"
   const localDay = () => { const d = new Date(); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
+  // Ponavljanje se zakazuje za POČETAK dana (00:00), da bi "sutra" zaista značilo sutra ujutru,
+  // a ne 24 sata od trenutka odgovaranja.
+  const pocetakDanaZa = (zaDana) => { const d = new Date(); d.setHours(0, 0, 0, 0); d.setDate(d.getDate() + zaDana); return d.getTime(); };
 
   // ---------- Prevodi UI ----------
   const STR = {
@@ -103,6 +106,7 @@
     guideTitle: { l: '🎓 Kako da učiš — predloženi redosled', c: '🎓 Како да учиш — предложени редослед' },
     guideSub: { l: 'za one koji kreću iz početka; ako već imaš predznanje, slobodno preskoči', c: 'за оне који крећу из почетка; ако већ имаш предзнање, слободно прескочи' },
     guideOpen: { l: 'Prikaži', c: 'Прикажи' },
+    imgAlt: { l: 'Slika uz pitanje — saobraćajna situacija ili znak; pitanje se odnosi na ono što je na slici.', c: 'Слика уз питање — саобраћајна ситуација или знак; питање се односи на оно што је на слици.' },
     grp1: { l: '1 · Osnovni pojmovi — počni odavde', c: '1 · Основни појмови — почни одавде' },
     grp2: { l: '2 · Ko ide prvi — prvenstvo i signalizacija', c: '2 · Ко иде први — првенство и сигнализација' },
     grp3: { l: '3 · Radnje vozilom', c: '3 · Радње возилом' },
@@ -212,18 +216,74 @@
   let S = load();
   // Svako stanje (učitano ili uvezeno) prolazi kroz normalizaciju — nedostajuća polja
   // dobijaju podrazumevane vrednosti, pa ni stari/oštećeni fajl ne može da obori aplikaciju.
+  // Pomoćnici: iz nepouzdanog izvora (uvezeni fajl) uzimamo SAMO brojeve u očekivanom
+  // opsegu. Time nijedno polje ne može da nosi HTML koji bi se kasnije ispisao u prikaz.
+  // (deklaracije funkcija, da budu dostupne i pozivu load() iznad)
+  function nInt(v, min, max, def) { return Number.isInteger(v) && v >= min && v <= max ? v : def; }
+  function nNum(v, min, max, def) { return typeof v === 'number' && Number.isFinite(v) && v >= min && v <= max ? v : def; }
+  function maxTs() { return 4102444800000; }   // 1.1.2100 — gornja granica za vremenske oznake
+
   function normalizeState(obj) {
     if (!obj || typeof obj !== 'object' || !obj.q || typeof obj.q !== 'object' || Array.isArray(obj.q)) return null;
+
+    // napredak po pitanju: samo poznata pitanja i samo brojčana polja
+    const q = {};
+    for (const [id, r] of Object.entries(obj.q)) {
+      if (!/^\d+$/.test(id) || !byId.has(+id)) continue;
+      if (!r || typeof r !== 'object' || Array.isArray(r)) continue;
+      const rec = {
+        a: nInt(r.a, 0, 1e6, 0),
+        w: nInt(r.w, 0, 1e6, 0),
+        streak: nInt(r.streak, 0, 1e3, 0),
+        marked: r.marked ? 1 : 0,
+      };
+      const due = nNum(r.due, 0, maxTs(), null);
+      const last = nNum(r.last, 0, maxTs(), null);
+      if (due !== null) rec.due = due;
+      if (last !== null) rec.last = last;
+      q[id] = rec;
+    }
+
+    // simulacije: brojevi i liste identifikatora pitanja
+    const sims = (Array.isArray(obj.sims) ? obj.sims : []).slice(0, 500).map((s) => {
+      if (!s || typeof s !== 'object' || Array.isArray(s)) return null;
+      const ids = (x) => (Array.isArray(x) ? x.filter((v) => Number.isInteger(v) && byId.has(v)).slice(0, 200) : []);
+      return {
+        d: nNum(s.d, 0, maxTs(), 0),
+        score: nInt(s.score, 0, 1000, 0),
+        total: nInt(s.total, 0, 1000, 0),
+        passed: !!s.passed,
+        wrong: ids(s.wrong),
+        qs: Array.isArray(s.qs) ? s.qs.slice(0, 200).map((x) => (x && Number.isInteger(x.id) && byId.has(x.id)
+          ? { id: x.id, ch: ids(x.ch) } : null)).filter(Boolean) : undefined,
+      };
+    }).filter(Boolean);
+
+    // pozicije po oblastima: ključ mora biti postojeća oblast/podoblast
+    const secPos = {};
+    if (obj.secPos && typeof obj.secPos === 'object' && !Array.isArray(obj.secPos)) {
+      for (const [k, v] of Object.entries(obj.secPos)) {
+        if (!/^[cs]\d+$/.test(k)) continue;
+        const p = nInt(v, 0, 1e5, null);
+        if (p !== null) secPos[k] = p;
+      }
+    }
+
+    const dan = obj.day && typeof obj.day === 'object' && !Array.isArray(obj.day)
+      && typeof obj.day.d === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(obj.day.d)
+      ? { d: obj.day.d, n: nInt(obj.day.n, 0, 1e5, 0), ok: nInt(obj.day.ok, 0, 1e5, 0) }
+      : null;
+
     return {
       script: obj.script === 'c' ? 'c' : 'l',
-      seqPos: Number.isInteger(obj.seqPos) && obj.seqPos >= 0 ? obj.seqPos : 0,
-      q: obj.q,
-      sims: Array.isArray(obj.sims) ? obj.sims : [],
-      secPos: obj.secPos && typeof obj.secPos === 'object' && !Array.isArray(obj.secPos) ? obj.secPos : {},
-      lastSec: typeof obj.lastSec === 'string' ? obj.lastSec : null,
+      seqPos: nInt(obj.seqPos, 0, 1e5, 0),
+      q,
+      sims,
+      secPos,
+      lastSec: typeof obj.lastSec === 'string' && /^[cs]\d+$/.test(obj.lastSec) ? obj.lastSec : null,
       theme: obj.theme === 'dark' || obj.theme === 'light' ? obj.theme : null,
-      fs: typeof obj.fs === 'number' && obj.fs >= 0.8 && obj.fs <= 1.4 ? obj.fs : 1,
-      day: obj.day && typeof obj.day === 'object' ? obj.day : null,
+      fs: nNum(obj.fs, 0.8, 1.4, 1),
+      day: dan,
       tour: obj.tour === 1 ? 1 : 0,
       guide: obj.guide === 1 ? 1 : 0,
     };
@@ -260,7 +320,7 @@
     r.a++; r.last = Date.now();
     if (ok) {
       r.streak++;
-      if (r.w > 0 && r.streak < 3) r.due = Date.now() + (r.streak === 1 ? 1 : 3) * DAY;
+      if (r.w > 0 && r.streak < 3) r.due = pocetakDanaZa(r.streak === 1 ? 1 : 3);
     } else {
       r.w++; r.streak = 0; r.due = Date.now();
     }
@@ -377,7 +437,7 @@
     const txt = document.createElement('div'); txt.className = 'qText'; txt.textContent = T(q.t);
     c.appendChild(txt);
 
-    if (q.img) { const im = document.createElement('img'); im.className = 'qImg'; im.src = 'img/' + q.id + '.jpg'; im.alt = ''; c.appendChild(im); }
+    if (q.img) { const im = document.createElement('img'); im.className = 'qImg'; im.src = 'img/' + q.id + '.jpg'; im.alt = L('imgAlt'); c.appendChild(im); }
 
     if (q.req > 1) {
       const hint = document.createElement('div'); hint.className = 'mut'; hint.style.marginBottom = '8px';
@@ -484,13 +544,13 @@
       return;
     }
     const q = Q[S.seqPos];
-    renderProgress(L('learn'), S.seqPos + 1, Q.length, (n) => { S.seqPos = n; save(); stepLearn(); }, browseAll);
+    renderProgress(L('learn'), S.seqPos + 1, Q.length, (n) => { lastRecordKey = null; S.seqPos = n; save(); stepLearn(); }, browseAll);
     renderQuestion({
       container: el('qCard'), q,
       recordKey: 'L' + runSeq + '|' + S.seqPos,
       onAnswered: (ok) => record(q.id, ok),
-      onNext: () => { S.seqPos++; save(); stepLearn(); },
-      onPrev: S.seqPos > 0 ? () => { S.seqPos--; save(); stepLearn(); } : null,
+      onNext: () => { lastRecordKey = null; S.seqPos++; save(); stepLearn(); },
+      onPrev: S.seqPos > 0 ? () => { lastRecordKey = null; S.seqPos--; save(); stepLearn(); } : null,
     });
   }
 
@@ -553,8 +613,8 @@
       container: el('qCard'), q,
       recordKey: 'T' + runSeq + '|' + m.i,
       onAnswered: (ok) => record(q.id, ok),
-      onNext: () => { m.i++; stepList(); },
-      onPrev: m.i > 0 ? () => { m.i--; stepList(); } : null,
+      onNext: () => { lastRecordKey = null; m.i++; stepList(); },
+      onPrev: m.i > 0 ? () => { lastRecordKey = null; m.i--; stepList(); } : null,
     });
   }
   // 🎲 prekidač na stranama: izmešan redosled za vežbanja pokrenuta sa te strane
@@ -726,7 +786,7 @@
     meta.innerHTML = `<span>${L('question')} ${sim.i + 1} / ${SIM_N}</span><span>${q.pts} ${L('points')}${q.req > 1 ? ` · ${L('chooseN')} ${q.req}` : ''}</span>`;
     c.appendChild(meta);
     const txt = document.createElement('div'); txt.className = 'qText'; txt.textContent = T(q.t); c.appendChild(txt);
-    if (q.img) { const im = document.createElement('img'); im.className = 'qImg'; im.src = 'img/' + q.id + '.jpg'; im.alt = ''; c.appendChild(im); }
+    if (q.img) { const im = document.createElement('img'); im.className = 'qImg'; im.src = 'img/' + q.id + '.jpg'; im.alt = L('imgAlt'); c.appendChild(im); }
     for (const ch of sq.order) {
       const b = document.createElement('button'); b.className = 'choice' + (sq.chosen.has(ch.id) ? ' sel' : ''); b.type = 'button';
       b.textContent = T(ch.t);
@@ -851,7 +911,7 @@
         <div class="qText">${escapeHtml(T(q.t))}</div>
         ${q.req > 1 ? `<div class="reqNote">${L('requiresN').replace('#', q.req)}</div>` : ''}
         ${chosen && chosen.size === 0 ? `<div class="noAnsw">${L('notAnswered')}</div>` : ''}
-        ${q.img ? `<img class="qImg" src="img/${q.id}.jpg" alt="">` : ''}
+        ${q.img ? `<img class="qImg" src="img/${q.id}.jpg" alt="${escapeHtml(L('imgAlt'))}">` : ''}
         ${q.ch.map((ch) => `<div class="choice rev${ch.ok ? ' ok' : (chosen && chosen.has(ch.id) ? ' bad' : '')}">${escapeHtml(T(ch.t))}${chips(ch)}</div>`).join('')}`;
       const ex = explNode(q);
       if (ex) card.appendChild(ex);
@@ -1309,10 +1369,12 @@
     let idx = 0, spot = null;
     const dim = document.createElement('div'); dim.id = 'tourDim';
     const tip = document.createElement('div'); tip.id = 'tourTip';
+    tip.setAttribute('role', 'dialog'); tip.setAttribute('aria-modal', 'false'); tip.setAttribute('aria-label', L('tourReplay'));
     document.body.append(dim, tip);
     const clearSpot = () => { if (spot) { spot.classList.remove('tourSpot'); spot = null; } };
     const end = () => {
       clearSpot(); dim.remove(); tip.remove();
+      window.removeEventListener('hashchange', end);
       document.removeEventListener('keydown', onKey);
       S.tour = 1; save();
     };
@@ -1337,11 +1399,18 @@
         if (top + th > window.innerHeight - 10) top = Math.max(10, r.top - th - 10);
         tip.style.top = top + 'px';
       });
-      tip.querySelector('#tourNext').addEventListener('click', next);
+      const btnNext = tip.querySelector('#tourNext');
+      btnNext.addEventListener('click', next);
+      btnNext.focus();   // фокус улази у водич — тастатура ради одмах
       tip.querySelector('#tourSkip').addEventListener('click', end);
     };
     const next = () => { idx++; if (idx >= TOUR_STEPS.length) end(); else show(); };
-    const onKey = (ev) => { if (ev.key === 'Escape') end(); else if (ev.key === 'Enter' || ev.key === 'ArrowRight') next(); };
+    const onKey = (ev) => {
+      if (ev.key === 'Escape') { end(); return; }
+      // ako je fokus na dugmetu vodiča, pusti pregledač da ga aktivira (Enter/Space)
+      if (ev.target && ev.target.closest && ev.target.closest('#tourTip')) return;
+      if (ev.key === 'Enter' || ev.key === 'ArrowRight') next();
+    };
     window.addEventListener('hashchange', end, { once: true });
     document.addEventListener('keydown', onKey);
     show();
@@ -1516,7 +1585,10 @@
       </div>`;
     renderBackupLine();
     el('btnTourReplay').addEventListener('click', tourStart);
-    if (!S.tour && !window.__tourRan) { window.__tourRan = 1; setTimeout(tourStart, 600); }
+    if (!S.tour && !window.__tourRan) {
+      window.__tourRan = 1;
+      setTimeout(() => { if (el('view-home').classList.contains('active')) tourStart(); }, 600);
+    }
     el('btnExport').addEventListener('click', () => {
       const blob = new Blob([JSON.stringify(S)], { type: 'application/json' });
       const a = document.createElement('a');
@@ -1621,8 +1693,11 @@
   });
   // Veličina slova: 90–125%
   function applyFont() {
-    document.documentElement.style.fontSize = Math.round(16 * (S.fs || 1)) + 'px';
+    // osnova zavisi od širine ekrana (mali ekrani imaju manju osnovu), korisnički izbor je množilac
+    const osnova = window.matchMedia('(max-width: 560px)').matches ? 15 : 16;
+    document.documentElement.style.fontSize = Math.round(osnova * (S.fs || 1)) + 'px';
   }
+  window.matchMedia('(max-width: 560px)').addEventListener('change', applyFont);
   el('btnFontMinus').addEventListener('click', () => { S.fs = Math.max(0.9, (S.fs || 1) - 0.08); save(); applyFont(); });
   el('btnFontPlus').addEventListener('click', () => { S.fs = Math.min(1.25, (S.fs || 1) + 0.08); save(); applyFont(); });
   function applyScript() {
