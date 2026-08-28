@@ -276,3 +276,9 @@ body.dark .linklike.danger { color: #ff8a80; }
 /* Grupe u pojmovniku */
 .pojGroup { margin: 14px 0 4px; font-size: .8rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--mut); border-bottom: 1px solid var(--line); padding-bottom: 4px; }
 .pojGroup:first-of-type { margin-top: 6px; }
+
+/* posle odgovora ponude su zaključane, ali ostaju čitljive za čitače ekrana */
+.choice[aria-disabled="true"] { cursor: default; }
+.choice[aria-disabled="true"]:hover { border-color: var(--line); background: var(--card); }
+.choice[aria-disabled="true"].ok:hover { border-color: var(--okB); background: var(--okBg); }
+.choice[aria-disabled="true"].bad:hover { border-color: var(--badB); background: var(--badBg); }

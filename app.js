@@ -295,8 +295,15 @@
     } catch (e) { /* korumpiran zapis — kreni ispočetka */ }
     return normalizeState({ q: {} });
   }
-  function save() { localStorage.setItem(KEY, JSON.stringify(S)); scheduleBackup(); }
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify(S)); }
+    catch (e) { console.warn('Napredak nije mogao da se sačuva u pregledaču:', e); }
+    scheduleBackup();
+  }
   function qs(id) { let r = S.q[id]; if (!r) { r = { a: 0, w: 0, streak: 0, marked: 0 }; S.q[id] = r; } return r; }
+  // Samo ČITANJE napretka (za prikaz) — ne pravi prazan zapis kao qs().
+  const PRAZAN = Object.freeze({ a: 0, w: 0, streak: 0, marked: 0 });
+  const qr = (id) => S.q[id] || PRAZAN;
 
   const L = (k) => STR[k][S.script];
   const T = (obj) => obj[S.script];
@@ -426,7 +433,7 @@
 
     c.innerHTML = '';
     const meta = document.createElement('div'); meta.className = 'qMeta';
-    const hist = qs(q.id).a > 0
+    const hist = qr(q.id).a > 0
       ? ` &nbsp;·&nbsp; ${S.q[q.id].a}× ${L('seenTimes')}${S.q[q.id].w ? `, ${S.q[q.id].w}× ${L('wrongTimes')}` : ''} (${relTime(S.q[q.id].last)})`
       : '';
     meta.innerHTML = `<span><a href="#" class="bcLink" data-bc="c${q.cat}">${escapeHtml(catOf(q))}</a> › <a href="#" class="bcLink" data-bc="s${q.sub}">${escapeHtml(subOf(q))}</a></span>
@@ -487,7 +494,7 @@
     }
 
     const markWrap = document.createElement('label'); markWrap.className = 'markBox';
-    const cb = document.createElement('input'); cb.type = 'checkbox'; cb.checked = !!qs(q.id).marked;
+    const cb = document.createElement('input'); cb.type = 'checkbox'; cb.checked = !!qr(q.id).marked;
     cb.addEventListener('change', () => { qs(q.id).marked = cb.checked ? 1 : 0; save(); });
     markWrap.appendChild(cb); markWrap.appendChild(document.createTextNode(' ' + L('mark')));
     actions.appendChild(markWrap);
@@ -498,7 +505,7 @@
       const okSet = new Set(q.ch.filter((x) => x.ok).map((x) => x.id));
       const ok = chosen.length === okSet.size && chosen.every((x) => okSet.has(x.id));
       for (const b of btns) {
-        b.disabled = true;
+        b.setAttribute('aria-disabled', 'true');   // ostaje u redosledu čitanja; klik blokira čuvar iznad
         const isChosen = chosen.includes(b._ch);
         if (b._ch.ok) b.classList.add('ok');
         else if (isChosen) b.classList.add('bad');
@@ -512,7 +519,7 @@
         }
       }
       if (confirmBtn) confirmBtn.remove();
-      const v = document.createElement('div'); v.className = 'verdict ' + (ok ? 'ok' : 'bad');
+      const v = document.createElement('div'); v.className = 'verdict ' + (ok ? 'ok' : 'bad'); v.setAttribute('role', 'status');
       v.textContent = ok ? L('correct') : L('wrong') + ' ' + L('correctIs');
       c.insertBefore(v, actions);
       const ex = explNode(q);
@@ -854,8 +861,8 @@
     const passed = score >= threshold;
     const rec = { d: Date.now(), score, total, passed, wrong: wrong.map((x) => x.q.id), qs: sim.qs.map((sq) => ({ id: sq.q.id, ch: [...sq.chosen] })) };
     S.sims.push(rec);
+    sim = null;          // zatvori ispit PRE upisa — neuspeo upis ne sme da ga zaglavi
     save();
-    sim = null;
     renderSimReview(rec, true);
   }
 
@@ -1081,9 +1088,10 @@
     return () => secInfo(key).name;
   }
   function browse(key) {
+    const { type, id, ids, name } = secInfo(key);
+    if (!ids.length) return goHomeReplace();   // zastarela adresa posle osvežavanja baze
     current = { redraw: () => browse(key) };
     setHash('#/sek/' + key);
-    const { type, id, ids, name } = secInfo(key);
     let seen = 0, att = 0, wr = 0, inQ = 0, unseen = [], wrongNow = [];
     for (const qid of ids) {
       const r = S.q[qid];
@@ -1592,10 +1600,13 @@
     el('btnExport').addEventListener('click', () => {
       const blob = new Blob([JSON.stringify(S)], { type: 'application/json' });
       const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
+      const url = URL.createObjectURL(blob);
+      a.href = url;
       a.download = 'vozacki-a-napredak.json';
+      document.body.appendChild(a);
       a.click();
-      URL.revokeObjectURL(a.href);
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 10000);
     });
     el('btnImport').addEventListener('click', () => el('fileImport').click());
     el('fileImport').addEventListener('change', (e) => {

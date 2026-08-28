@@ -408,8 +408,8 @@ CARDS['skretanje'] = {
     <path d="M229 105 L229 35"/><path d="M229 35 L219 47 M229 35 L239 47"/>
     <path d="M316 105 L316 45 M316 45 L341 45"/><path d="M341 45 L331 35 M341 45 L331 55"/>
   </g>
-  <text x="143" y="134" text-anchor="middle" font-size="11" fill="#333" font-weight="bold">levo: krajnja leva</text>
-  <text x="316" y="134" text-anchor="middle" font-size="11" fill="#333" font-weight="bold">desno: krajnja desna</text>
+  <text x="143" y="134" text-anchor="middle" font-size="11" fill="currentColor" font-weight="bold">levo: krajnja leva</text>
+  <text x="316" y="134" text-anchor="middle" font-size="11" fill="currentColor" font-weight="bold">desno: krajnja desna</text>
 </svg>
 <p><b>Propuštanja pri skretanju (čl. 47):</b> sa zemljanog puta/parkinga propuštaš SVE · pri skretanju preko biciklističke staze propuštaš bicikle · pravilo desne strane kad ništa drugo ne reguliše · pri skretanju ULEVO propuštaš vozila iz suprotnog smera.</p>
 <p><b>Ne ulazi u raskrsnicu (čl. 49)</b> — ni kad imaš zeleno/prvenstvo — ako bi zbog gužve ostao na raskrsnici ili pešačkom prelazu i blokirao druge.</p>
@@ -1772,3 +1772,13 @@ const out = {
 await fs.writeFile('../explanations.js', 'window.EXPLAIN = ' + JSON.stringify(out) + ';\n');
 console.log('explanations.js:', Object.keys(out.byQ).length, 'pitanja,', Object.keys(out.cards).length, 'kartica');
 console.log('proba ćirilice:', toCyr('Vozač ne sme (ZOBS čl. 187) — 0,20 mg/ml, kategorije AM, A1, A2 i A; 1,5 m; 45 km/h'));
+
+// Мерена покривеност — да број у документацији не може да застари.
+try {
+  const baza = JSON.parse(await fs.readFile('base-A.json', 'utf8'));
+  const tekst = baza.questions.filter((q) => !q.HasImage);
+  const sa = tekst.filter((q) => out.byQ[q.qId] && out.byQ[q.qId].x).length;
+  const slika = baza.questions.length - tekst.length;
+  const slKart = baza.questions.filter((q) => q.HasImage && (out.bySub[q.subcategoryId] || (out.byQ[q.qId] && out.byQ[q.qId].card))).length;
+  console.log('pokrivenost: tekstualna ' + sa + '/' + tekst.length + ' | slikovna sa karticom ' + slKart + '/' + slika);
+} catch (e) { console.log('pokrivenost: base-A.json nije dostupan, preskočeno'); }
