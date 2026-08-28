@@ -144,7 +144,16 @@ table.stats td.num, table.stats th.num { text-align: right; font-variant-numeric
 .linklike { background: none; color: var(--blue); text-decoration: underline; padding: 2px 4px; }
 .pill { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: .8rem; font-weight: 600; }
 .pill.pass { background: var(--ok-bg); color: var(--ok); } .pill.fail { background: var(--bad-bg); color: var(--bad); }
-.histRow { display: flex; gap: 12px; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--line); font-size: .92rem; flex-wrap: wrap; }
+.histRow { display: grid; grid-template-columns: 7.5em 4.5em 1fr 3.5em 1em; gap: 10px; align-items: center;
+  padding: 6px 0; border-bottom: 1px solid var(--line); font-size: .92rem; }
+.histScore { text-align: right; font-variant-numeric: tabular-nums; }
+.histPill { justify-self: start; }
+.histWrong { text-align: right; font-variant-numeric: tabular-nums; }
+.histArrow { text-align: right; }
+@media (max-width: 460px) {
+  .histRow { grid-template-columns: 1fr auto auto; row-gap: 2px; }
+  .histDate { grid-column: 1 / -1; }
+}
 .histRow:last-child { border-bottom: none; }
 button.histBtn { width: 100%; background: none; text-align: left; border-radius: 6px; padding: 8px 6px; }
 button.histBtn:hover { background: var(--optHover); }
@@ -282,3 +291,10 @@ body.dark .linklike.danger { color: #ff8a80; }
 .choice[aria-disabled="true"]:hover { border-color: var(--line); background: var(--card); }
 .choice[aria-disabled="true"].ok:hover { border-color: var(--okB); background: var(--okBg); }
 .choice[aria-disabled="true"].bad:hover { border-color: var(--badB); background: var(--badBg); }
+
+/* Obaveštenje o novijoj verziji na repozitorijumu */
+#repoUpd { position: fixed; right: 16px; bottom: 16px; max-width: min(420px, calc(100vw - 32px));
+  background: var(--card); color: var(--ink); border: 1px solid var(--blue); border-radius: 12px;
+  padding: 14px 16px; z-index: 1200; box-shadow: 0 8px 30px rgba(0,0,0,.28); }
+.repoUpdBtns { display: flex; gap: 12px; align-items: center; margin-top: 10px; flex-wrap: wrap; }
+.repoUpdLink { text-decoration: none; display: inline-block; border-radius: 8px; }

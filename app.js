@@ -107,7 +107,7 @@
     guideSub: { l: 'za one koji kreću iz početka; ako već imaš predznanje, slobodno preskoči', c: 'за оне који крећу из почетка; ако већ имаш предзнање, слободно прескочи' },
     guideOpen: { l: 'Prikaži', c: 'Прикажи' },
     imgAlt: { l: 'Slika uz pitanje — saobraćajna situacija ili znak; pitanje se odnosi na ono što je na slici.', c: 'Слика уз питање — саобраћајна ситуација или знак; питање се односи на оно што је на слици.' },
-    grp1: { l: '1 · Osnovni pojmovi — počni odavde', c: '1 · Основни појмови — почни одавде' },
+    grp1: { l: '1 · Osnovni pojmovi', c: '1 · Основни појмови' },
     grp2: { l: '2 · Ko ide prvi — prvenstvo i signalizacija', c: '2 · Ко иде први — првенство и сигнализација' },
     grp3: { l: '3 · Radnje vozilom', c: '3 · Радње возилом' },
     grp4: { l: '4 · Posebne situacije', c: '4 · Посебне ситуације' },
@@ -135,6 +135,14 @@
     <p class="mut">Казнене мере учи последње и без учења износа напамет — у званичном испиту за А категорију те области нема.` },
     updNote: { l: 'Stigla je nova verzija aplikacije.', c: 'Стигла је нова верзија апликације.' },
     updBtn: { l: 'Osveži', c: 'Освежи' },
+    updRepoTitle: { l: 'Postoji novija verzija aplikacije', c: 'Постоји новија верзија апликације' },
+    updRepoBody: { l: 'Imaš verziju #A, a objavljena je #B. Preuzmi novu i prekopiraj preko postojeće fascikle — tvoj napredak ostaje netaknut (čuva se u pregledaču).', c: 'Имаш верзију #A, а објављена је #B. Преузми нову и прекопирај преко постојеће фасцикле — твој напредак остаје нетакнут (чува се у прегледачу).' },
+    updRepoGet: { l: 'Preuzmi novu verziju', c: 'Преузми нову верзију' },
+    updRepoLater: { l: 'Ne sad', c: 'Не сад' },
+    updRepoCheck: { l: 'Proveri ima li novije verzije', c: 'Провери има ли новије верзије' },
+    updRepoNone: { l: 'Imaš najnoviju verziju (#A).', c: 'Имаш најновију верзију (#A).' },
+    updRepoFail: { l: 'Provera nije uspela (nema veze sa internetom ili je izvor nedostupan).', c: 'Провера није успела (нема везе са интернетом или је извор недоступан).' },
+    updRepoOff: { l: 'Ne proveravaj automatski', c: 'Не проверавај аутоматски' },
     weakTitle: { l: 'Najslabije podoblasti (min. 3 odgovora)', c: 'Најслабије подобласти (мин. 3 одговора)' },
     thArea: { l: 'Oblast', c: 'Област' },
     thQ: { l: 'Pitanja', c: 'Питања' },
@@ -286,6 +294,9 @@
       day: dan,
       tour: obj.tour === 1 ? 1 : 0,
       guide: obj.guide === 1 ? 1 : 0,
+      noUpd: obj.noUpd === 1 ? 1 : 0,
+      updSeen: nInt(obj.updSeen, 0, 1e6, 0),
+      updAt: nNum(obj.updAt, 0, maxTs(), 0),
     };
   }
   function load() {
@@ -1518,9 +1529,13 @@
         + S.sims.slice().reverse().map((s, ri) => {
           const d = new Date(s.d);
           const ds = `${String(d.getDate()).padStart(2, '0')}.${String(d.getMonth() + 1).padStart(2, '0')}. ${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
-          const wrongN = s.qs ? '' : ` <span class="mut">(${(s.wrong || []).length} ✗)</span>`;
-          return `<button class="histRow histBtn" data-sim="${S.sims.length - 1 - ri}"><span class="mut">${ds}</span><b>${s.score}/${s.total}</b>
-            <span class="pill ${s.passed ? 'pass' : 'fail'}">${s.passed ? L('passed') : L('failed')}</span>${wrongN}<span class="mut" style="margin-left:auto">›</span></button>`;
+          const brGresaka = (s.wrong || []).length;
+          return `<button class="histRow histBtn" data-sim="${S.sims.length - 1 - ri}">
+            <span class="histDate mut">${ds}</span>
+            <b class="histScore">${s.score}/${s.total}</b>
+            <span class="histPill"><span class="pill ${s.passed ? 'pass' : 'fail'}">${s.passed ? L('passed') : L('failed')}</span></span>
+            <span class="histWrong mut">${brGresaka ? brGresaka + ' ✗' : ''}</span>
+            <span class="histArrow mut">›</span></button>`;
         }).join('');
       sh.querySelectorAll('.histBtn').forEach((b) => b.addEventListener('click', () => renderSimReview(S.sims[+b.dataset.sim], false)));
     }
@@ -1587,11 +1602,13 @@
       <div class="qActions" style="margin-top:8px">
         <button class="secondary" id="btnExport">${L('export')}</button>
         <button class="secondary" id="btnImport">${L('import')}</button>
+        <button class="linklike" id="btnCheckUpd">${L('updRepoCheck')}</button>
         <button class="linklike" id="btnTourReplay">${L('tourReplay')}</button>
         <button class="linklike danger" id="btnReset">${L('reset')}</button>
         <input type="file" id="fileImport" accept=".json" style="display:none">
       </div>`;
     renderBackupLine();
+    el('btnCheckUpd').addEventListener('click', () => { S.noUpd = 0; save(); proveriRepo(true); });
     el('btnTourReplay').addEventListener('click', tourStart);
     if (!S.tour && !window.__tourRan) {
       window.__tourRan = 1;
@@ -1740,6 +1757,60 @@
     sc.onerror = () => sc.remove();
     document.head.appendChild(sc);
   }
+  // ---------- Provera novije verzije na javnom repozitorijumu ----------
+  // Čita se isključivo BROJ verzije (obični tekst) i poredi sa lokalnim.
+  // Preuzeti sadržaj se NIKADA ne izvršava; ako nema interneta, tiho se odustaje.
+  const REPO = 'https://github.com/MilanMilojevic/vozacki-a';
+  const REPO_VER = 'https://raw.githubusercontent.com/MilanMilojevic/vozacki-a/main/version.js';
+  const REPO_ZIP = REPO + '/archive/refs/heads/main.zip';
+
+  async function dohvatiUdaljenuVerziju() {
+    const res = await fetch(REPO_VER + '?t=' + Date.now(), { cache: 'no-store' });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const tekst = (await res.text()).slice(0, 200);
+    const m = tekst.match(/APP_V\s*=\s*(\d{1,6})/);
+    if (!m) throw new Error('neočekivan sadržaj');
+    return parseInt(m[1], 10);
+  }
+
+  function prikaziNovuVerziju(nova, rucno) {
+    if (document.getElementById('repoUpd')) return;
+    const b = document.createElement('div');
+    b.id = 'repoUpd';
+    b.setAttribute('role', 'status');
+    b.innerHTML = `<div><b>${escapeHtml(L('updRepoTitle'))}</b>
+      <div class="mut" style="font-size:.86rem;margin-top:2px">${escapeHtml(L('updRepoBody').replace('#A', BOOT_V).replace('#B', nova))}</div></div>
+      <div class="repoUpdBtns">
+        <a class="primary repoUpdLink" href="${REPO_ZIP}" target="_blank" rel="noopener">${escapeHtml(L('updRepoGet'))}</a>
+        <button class="linklike" id="repoUpdLater">${escapeHtml(L('updRepoLater'))}</button>
+        <button class="linklike" id="repoUpdOff">${escapeHtml(L('updRepoOff'))}</button>
+      </div>`;
+    document.body.appendChild(b);
+    const zatvori = () => { S.updSeen = nova; save(); b.remove(); };
+    b.querySelector('#repoUpdLater').addEventListener('click', zatvori);
+    b.querySelector('#repoUpdOff').addEventListener('click', () => { S.noUpd = 1; zatvori(); renderHome(); });
+  }
+
+  async function proveriRepo(rucno) {
+    try {
+      const nova = await dohvatiUdaljenuVerziju();
+      if (nova > BOOT_V && (rucno || nova !== S.updSeen)) { prikaziNovuVerziju(nova, rucno); return; }
+      if (rucno) alert(L('updRepoNone').replace('#A', BOOT_V));
+    } catch (e) {
+      if (rucno) alert(L('updRepoFail'));
+    }
+  }
+
+  // automatska provera najviše jednom dnevno, i to samo ako korisnik nije isključio
+  function mozdaProveriRepo() {
+    if (S.noUpd || !BOOT_V) return;
+    const dan = 24 * 60 * 60 * 1000;
+    if (S.updAt && Date.now() - S.updAt < dan) return;
+    S.updAt = Date.now(); save();
+    setTimeout(() => proveriRepo(false), 2500);
+  }
+  mozdaProveriRepo();
+
   setInterval(checkVersion, 5 * 60 * 1000);
   document.addEventListener('visibilitychange', () => { if (!document.hidden) checkVersion(); });
 
