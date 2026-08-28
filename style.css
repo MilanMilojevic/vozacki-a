@@ -67,7 +67,8 @@ main { max-width: 880px; margin: 0 auto; padding: 16px 12px 60px; }
 .catRow { display: flex; align-items: center; gap: 6px; margin: 7px 0; }
 .catMain { display: flex; align-items: center; gap: 10px; flex: 1; background: none; border: none; padding: 2px 0; font: inherit; color: inherit; text-align: left; cursor: pointer; }
 .catMain:hover .catName { color: var(--blue); }
-.catChevBtn { background: none; border: none; color: var(--mut); font-size: .8rem; padding: 4px 6px; border-radius: 6px; cursor: pointer; line-height: 1; }
+.catChevBtn, .catChevSpacer { flex: 0 0 22px; width: 22px; box-sizing: border-box; }
+.catChevBtn { background: none; border: none; color: var(--mut); font-size: .8rem; padding: 4px 3px; border-radius: 6px; cursor: pointer; line-height: 1; text-align: center; }
 .catChevBtn:hover { background: var(--optHover); color: var(--blue); }
 .catName { flex: 0 0 46%; font-size: .9rem; }
 .catBar { flex: 1; height: 14px; background: var(--bar); border-radius: 7px; overflow: hidden; position: relative; }

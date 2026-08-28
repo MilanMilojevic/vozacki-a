@@ -1381,11 +1381,12 @@
     {
       const seenAll = Q.filter((q) => S.q[q.id] && S.q[q.id].a > 0).length;
       const goodAll = Q.filter((q) => S.q[q.id] && S.q[q.id].a > 0 && S.q[q.id].streak >= 1).length;
-      const row = document.createElement('button'); row.type = 'button'; row.className = 'catRow catTotal';
-      row.innerHTML = `<span class="catName"><b>${L('ukupno')}</b></span>
+      const row = document.createElement('div'); row.className = 'catRow catTotal';
+      row.innerHTML = `<span class="catChevSpacer"></span>
+        <button type="button" class="catMain"><span class="catName"><b>${L('ukupno')}</b></span>
         <span class="catBar"><span class="seen" style="width:${100 * seenAll / Q.length}%"></span><span class="good" style="width:${100 * goodAll / Q.length}%"></span></span>
-        <span class="catCnt"><b>${seenAll}/${Q.length}</b></span>`;
-      row.addEventListener('click', () => browseAll());
+        <span class="catCnt"><b>${seenAll}/${Q.length}</b></span></button>`;
+      row.querySelector('.catMain').addEventListener('click', () => browseAll());
       cb.appendChild(row);
     }
     for (const c of CATS) {
@@ -1408,15 +1409,14 @@
         if (!open) return;
         let ref = row, zi = 0;
         const addSub = (labelHtml, key, sSeen, sTot, sGood, title) => {
-          const sr = document.createElement('button'); sr.type = 'button';
-          sr.className = 'catRow catSubRow' + (sTot === null ? ' catAllRow' : (zi++ % 2 ? ' zebra' : ''));
+          const sr = document.createElement('div');
+          sr.className = 'catRow catSubRow' + (zi++ % 2 ? ' zebra' : '');
           if (title) sr.title = title;
-          sr.innerHTML = sTot === null
-            ? `<span class="catName">${labelHtml}</span>`
-            : `<span class="catName">${labelHtml}</span>
+          sr.innerHTML = `<span class="catChevSpacer"></span>
+            <button type="button" class="catMain"><span class="catName">${labelHtml}</span>
             <span class="catBar"><span class="seen" style="width:${sTot ? 100 * sSeen / sTot : 0}%"></span><span class="good" style="width:${sTot ? 100 * sGood / sTot : 0}%"></span></span>
-            <span class="catCnt">${sSeen}/${sTot}</span>`;
-          sr.addEventListener('click', () => browse(key));
+            <span class="catCnt">${sSeen}/${sTot}</span></button>`;
+          sr.querySelector('.catMain').addEventListener('click', () => browse(key));
           ref.after(sr); ref = sr;
         };
         for (const sid of [...new Set(qq.map((q) => q.sub))]) {
