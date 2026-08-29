@@ -1,0 +1,16 @@
+{
+  "name": "Возачки А — вежбаоница",
+  "short_name": "Возачки А",
+  "description": "Вежбање теоријског испита за А категорију — званична база, објашњења, симулација.",
+  "lang": "sr",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f7fa",
+  "theme_color": "#2c6aa0",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

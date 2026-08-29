@@ -1,1 +1,1 @@
-window.APP_V = 48;
+self.APP_V = 49;

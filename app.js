@@ -1812,6 +1812,14 @@
   mozdaProveriRepo();
 
   setInterval(checkVersion, 5 * 60 * 1000);
+
+  // ---------- Instalacija kao aplikacija (PWA) ----------
+  // Service worker daje rad bez interneta i mogućnost "Dodaj na početni ekran".
+  // updateViaCache: 'none' — worker i version.js se uvek proveravaju sveži, da
+  // ažuriranja nikad ne zaglave u kešu.
+  if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+    navigator.serviceWorker.register('./sw.js', { updateViaCache: 'none' }).catch(() => { /* nije presudno */ });
+  }
   document.addEventListener('visibilitychange', () => { if (!document.hidden) checkVersion(); });
 
   applyScript();
