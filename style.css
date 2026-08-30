@@ -219,8 +219,14 @@ button.histBtn:hover { background: var(--optHover); }
 .catTotal { padding-bottom: 6px; border-bottom: 1px solid var(--line); margin-bottom: 8px; }
 tr.totalRow td { border-top: 2px solid var(--blue); }
 .subBox { margin: 2px 0 10px 18px; display: flex; flex-direction: column; gap: 4px; }
-.subRow { text-align: left; background: var(--opt); border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; font-size: .88rem; }
-.subRow:hover { border-color: var(--blue); background: var(--optHover); }
+.subRow { display: grid; grid-template-columns: 1fr 5.5em 4em; gap: 10px; align-items: center;
+  width: 100%; text-align: left; background: none; border: none; border-bottom: 1px dashed var(--line);
+  border-radius: 0; padding: 7px 4px; font-size: .88rem; cursor: pointer; }
+.subRow .subName { color: var(--blue); }
+.subRow .subCnt, .subRow .subAcc { text-align: right; color: var(--mut); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.subRow:hover { background: var(--optHover); }
+.qDivider { margin: 16px 0 4px; padding-bottom: 4px; border-bottom: 2px solid var(--line);
+  font-size: .78rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--mut); }
 .subRow.subAll { font-weight: 600; color: var(--blue-d); }
 #btnScript .segOn { font-weight: 800; color: #fff; }
 #btnScript .segOff { color: rgba(255,255,255,.75); }

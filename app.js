@@ -1152,16 +1152,27 @@
         for (const q of sq) { const r = S.q[q.id]; if (r) { sAtt += r.a; sWr += r.w; } }
         const sAcc = sAtt ? Math.round(100 * (sAtt - sWr) / sAtt) : null;
         const b = document.createElement('button'); b.className = 'subRow';
-        b.innerHTML = `${escapeHtml(T({ l: D.subs[sid].l, c: D.subs[sid].c }))}
-          <span class="mut">&nbsp;${sSeen}/${sq.length}${sAcc !== null ? ` · ${sAcc}%` : ''}</span>`;
+        b.title = T({ l: D.subs[sid].l, c: D.subs[sid].c });
+        b.innerHTML = `<span class="subName">${escapeHtml(subShortName(sid))}</span>
+          <span class="subCnt">${sSeen}/${sq.length}</span>
+          <span class="subAcc">${sAcc !== null ? sAcc + '%' : ''}</span>`;
         b.addEventListener('click', () => browse('s' + sid));
         list.appendChild(b);
       }
     }
     const qh = document.createElement('h3'); qh.textContent = L('allQuestions'); qh.style.marginTop = '12px'; list.appendChild(qh);
     list.insertAdjacentHTML('beforeend', legendHtml());
+    let lastSub = null;
     ids.forEach((qid, idx) => {
       const q = byId.get(qid);
+      if (type === 'c' && q.sub !== lastSub) {
+        lastSub = q.sub;
+        const d = document.createElement('div');
+        d.className = 'qDivider';
+        d.title = T({ l: D.subs[q.sub].l, c: D.subs[q.sub].c });
+        d.textContent = subShortName(q.sub);
+        list.appendChild(d);
+      }
       const r = S.q[qid];
       const icon = !r || !r.a ? '<span class="qDot">•</span>'
         : inQueue(qid) ? '<span class="qBad">✗</span>'
@@ -1214,7 +1225,17 @@
     list.innerHTML = `<h3>${L('allQuestions')}</h3>
       <input id="qSearch" type="search" class="searchBox" placeholder="${escapeHtml(L('searchPh'))}" aria-label="${escapeHtml(L('searchPh'))}">` + legendHtml();
     const allIds = Q.map((q) => q.id);
+    let lastCat = null;
     Q.forEach((q, idx) => {
+      if (q.cat !== lastCat) {
+        lastCat = q.cat;
+        const cat = D.cats.find((x) => x.id === q.cat);
+        const d = document.createElement('div');
+        d.className = 'qDivider';
+        d.textContent = cat ? T({ l: cat.l, c: cat.c }) : '';
+        d._search = '';
+        list.appendChild(d);
+      }
       const r = S.q[q.id];
       const icon = !r || !r.a ? '<span class="qDot">•</span>'
         : inQueue(q.id) ? '<span class="qBad">✗</span>'
@@ -1234,6 +1255,8 @@
       list.querySelectorAll('.qRow').forEach((row) => {
         row.style.display = !v || row._search.includes(v) ? '' : 'none';
       });
+      // dok traje pretraga, naslovi oblasti se sklanjaju (rezultati su izmešani)
+      list.querySelectorAll('.qDivider').forEach((d) => { d.style.display = v ? 'none' : ''; });
     });
     show('browse');
   }
