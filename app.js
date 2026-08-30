@@ -106,6 +106,8 @@
     guideTitle: { l: '🎓 Kako da učiš — predloženi redosled', c: '🎓 Како да учиш — предложени редослед' },
     guideSub: { l: 'za one koji kreću iz početka; ako već imaš predznanje, slobodno preskoči', c: 'за оне који крећу из почетка; ако већ имаш предзнање, слободно прескочи' },
     guideOpen: { l: 'Prikaži', c: 'Прикажи' },
+    feedback: { l: 'Prijavi grešku ili predlog', c: 'Пријави грешку или предлог' },
+    bazaProverena: { l: 'Baza: zvanična eUprava, proverena 29.08.2026.', c: 'База: званична еУправа, проверена 29.08.2026.' },
     imgAlt: { l: 'Slika uz pitanje — saobraćajna situacija ili znak; pitanje se odnosi na ono što je na slici.', c: 'Слика уз питање — саобраћајна ситуација или знак; питање се односи на оно што је на слици.' },
     grp1: { l: '1 · Osnovni pojmovi', c: '1 · Основни појмови' },
     grp2: { l: '2 · Ko ide prvi — prvenstvo i signalizacija', c: '2 · Ко иде први — првенство и сигнализација' },
@@ -1606,7 +1608,9 @@
         <button class="linklike" id="btnTourReplay">${L('tourReplay')}</button>
         <button class="linklike danger" id="btnReset">${L('reset')}</button>
         <input type="file" id="fileImport" accept=".json" style="display:none">
-      </div>`;
+      </div>
+      <div class="mut" style="margin-top:10px;font-size:.82rem">${L('bazaProverena')} ·
+        <a href="https://github.com/MilanMilojevic/vozacki-a/issues" target="_blank" rel="noopener">${L('feedback')}</a></div>`;
     renderBackupLine();
     el('btnCheckUpd').addEventListener('click', () => { S.noUpd = 0; save(); proveriRepo(true); });
     el('btnTourReplay').addEventListener('click', tourStart);
@@ -1677,6 +1681,22 @@
   bindNav(document);
   el('btnFinishSim').addEventListener('click', () => finishSim(false));
   el('btnSimReport').addEventListener('click', () => { if (sim) (sim.showReport ? renderSimQ() : renderSimReport()); });
+
+  // Klik na sliku pitanja otvara uvećan prikaz preko celog ekrana; klik ili Escape zatvara.
+  document.addEventListener('click', (ev) => {
+    const slika = ev.target.closest && ev.target.closest('img.qImg');
+    if (!slika) return;
+    const z = document.createElement('div');
+    z.id = 'imgZoom';
+    const im = document.createElement('img');
+    im.src = slika.src; im.alt = slika.alt;
+    z.appendChild(im);
+    z.addEventListener('click', () => z.remove());
+    document.addEventListener('keydown', function esc(e2) {
+      if (e2.key === 'Escape') { z.remove(); document.removeEventListener('keydown', esc); }
+    });
+    document.body.appendChild(z);
+  });
 
   // Prečice: ← → kretanje, 1–9 izbor odgovora, Enter potvrda/sledeće
   document.addEventListener('keydown', (e) => {
