@@ -785,6 +785,210 @@ CARDS['znakovi-naredbi'] = {
 <p class="mut"><b>Taktika za slike:</b> prvo boja (crveno = ne smeš, plavo = moraš), pa simbol, pa <b>rep tačnog odgovora</b> — kod ovih pitanja gotovo svi odgovori počinju isto („put, odnosno deo puta na kome je zabranjen saobraćaj…"), a razlika je uvek na kraju rečenice: „osim…", „u kretanju", „stranu puta", „moraju/smeju/mogu".</p>`,
 };
 
+// --- znakovi-obavestenja (Tura 2; tri runde revizije, poslednja kontrola bez blokirajućih nalaza) ---
+CARDS['znakovi-obavestenja'] = {
+  title: 'Znakovi obaveštenja — precrtano znači kraj',
+  html: `
+<p><b>Šta rade znakovi obaveštenja:</b> po Pravilniku o saobraćajnoj signalizaciji (čl. 34) pružaju obaveštenja o putu kojim se krećeš, nazivima mesta i udaljenosti do njih, o <b>prestanku važenja znakova izričitih naredbi</b> i druga obaveštenja; postavljaju se tako da daju prethodna obaveštenja, obaveštenja o prestrojavanju i o skretanju, potvrdno obaveštenje o pravcu kretanja i da označe objekat, teren, ulicu, odnosno delove puta (čl. 51). Oblik im je <b>kvadrat, pravougaonik ili krug</b> (čl. 49) — okrugli su baš znakovi prestanka; sam Pravilnik navodi tri izuzetka od oblika: strelasti putokaz, znak „obilazak" i turistički strelasti putokaz. <b>Romb nije izuzetak</b> — to je kvadrat postavljen na vrh. Ovo je ubedljivo najveća grupa slikovnih pitanja (u banci ih je oko 146, sledeća grupa ima 68), ali skoro sva se rešavaju sa <b>četiri mehanizma i jednim ključem boja</b> — uči mehanizme, ne bubaj slike:</p>
+<div class="signRow">
+  <div class="signCell"><!-- SVG: zelena tabla sa simbolom autoputa preko koje ide debela crvena kosa traka --><b>CRVENA KOSA TRAKA</b><span>isti znak precrtan = KRAJ (autoputa, motoputa, naselja, staza, trake javnog prevoza, zone usporenog saobraćaja...) — znak zadržava svoju boju</span></div>
+  <div class="signCell"><!-- SVG: beli krug sa crnim brojem 60 i snopom tankih crnih kosih crta preko --><b>TANKE CRNE CRTE</b><span>PRESTANAK zabrane/ograničenja koje je uveo crveni krug</span></div>
+  <div class="signCell"><!-- SVG: bela tabla sa natpisom ZONA i umetnutim okruglim znakom 30 ispod natpisa --><b>TABLA „ZONA"</b><span>bela tabla + natpis + umetnut običan znak; ista tabla sa crnim kosim crtama i sivim umetkom = kraj zone</span></div>
+  <div class="signCell"><!-- SVG: dva slična znaka zatvaranja trake jedan pored drugog, prvi označen kao najava, drugi kao mesto --><b>PREDZNAK → ZNAK</b><span>ista šema postoji kao najava („približavanje/blizina/udaljenost") i kao „mesto"</span></div>
+</div>
+<table>
+<tr><th>Boja podloge</th><th>Šta ti kaže</th></tr>
+<tr><td><b>zelena</b></td><td>autoput — znak autoputa i znakovi <b>traka</b> na autoputu (čl. 43). <b>Pažnja:</b> znak „mesto izlaska sa autoputa" je <b>PLAVI</b> kvadrat sa belom kosom strelicom</td></tr>
+<tr><td><b>plava</b></td><td>motoput, ostali opšti znakovi obaveštenja, usluge, traka za spora vozila, znakovi zatvaranja/otvaranja/preusmeravanja traka</td></tr>
+<tr><td><b>žuta</b> sa crnim simbolima</td><td>znakovi za vođenje na ostalim putevima; <b>skretanje saobraćajnih traka i devijacija</b>; u zoni radova žutu osnovu dobijaju i znakovi zatvaranja/otvaranja/preusmeravanja traka i znak prestanka svih zabrana (čl. 45)</td></tr>
+<tr><td><b>bela</b></td><td>table „ZONA", naselje, naziv ulice, brojevi domaćih puteva (oznaka <b>evropskog</b> puta, npr. „E 75", je na <b>zelenoj</b> podlozi) — i, po čl. 43, znakovi za vođenje čije je odredište objekat, sadržaj ili deo naselja</td></tr>
+<tr><td><b>fluorescentna žuto-zelena</b></td><td>samo tri znaka: <b>blizina škole</b> (čl. 50 st. 2 t. 10), tabla <b>OPASNOST / PAZI DECA</b> (t. 17) i tabla <b>POGREŠAN SMER</b> (t. 18)</td></tr>
+</table>
+
+<p style="margin-top:10px"><b>1. Precrtano crvenom trakom = KRAJ.</b> Znak koji nešto otvara postoji i u verziji precrtanoj <b>crvenom kosom trakom</b> koja to zatvara (Pravilnik čl. 50 st. 2 t. 5). Podloga ostaje ista — crvena je samo traka:</p>
+<table>
+<tr><th>Znak</th><th>Znak početka</th><th>Znak kraja</th></tr>
+<tr><td>Autoput — <b>ZELENA</b> tabla, simbol autoputa (dve trake i nadvožnjak)</td><td>mesto odakle počinje autoput</td><td>mesto na kome se završava autoput</td></tr>
+<tr><td>Motoput — <b>PLAVA</b> tabla, simbol vozila spreda</td><td>mesto odakle počinje motoput</td><td>mesto na kome se završava motoput</td></tr>
+<tr><td>Tabla sa <b>siluetom</b> naselja (bela, crna silueta)</td><td>mesto od koga počinje <b>naselje</b></td><td>mesto na kome se završava naselje</td></tr>
+<tr><td>Tabla sa <b>nazivom</b> mesta</td><td>granica od koje počinje <b>naseljeno mesto</b> (naziv je na znaku)</td><td>granica od koje se naseljeno mesto završava</td></tr>
+<tr><td><b>Zona usporenog saobraćaja</b> — <b>PLAVA</b> tabla sa belim piktogramima: pešak, automobil, dete sa loptom i kuća (nema reči ZONA, nema umetnutog znaka)</td><td>mesto od kojeg počinje zona usporenog saobraćaja</td><td>ista plava tabla preko koje ide <b>debela crvena kosa traka</b> = mesto gde se završava zona usporenog saobraćaja</td></tr>
+<tr><td>Pešačka staza (plavi krug)</td><td>—</td><td>mesto na kome se pešačka staza završava</td></tr>
+<tr><td>Traka za javni prevoz</td><td>saobraćajna traka namenjena vozilima javnog prevoza putnika</td><td>mesto na kome se ta traka završava</td></tr>
+<tr><td>Traka za <b>spora vozila</b> — plava šema traka sa brzinom u <b>kružiću</b> unutar trake</td><td>početak trake kojom <b>moraju</b> da se kreću vozila sporija od brzine označene na znaku</td><td><b>IZUZETAK — nema nikakve crte.</b> Kraj je ista plava šema na kojoj se traka sa upisanom brzinom <b>uliva nazad</b> u kolovoz = mesto na kome se ta traka završava</td></tr>
+</table>
+<p><b>Zamka — autoput ili motoput?</b> Boja odlučuje: <b>zelena</b> tabla + dve trake sa nadvožnjakom = autoput; <b>plava</b> tabla + prednja silueta automobila = motoput. Mamac na slici autoputa je i „nadvožnjak na putu" — nadvožnjak je deo simbola, ne značenje znaka.</p>
+<p><b>Zamka — naselje ili naseljeno mesto?</b> Silueta grada bez naziva = „naselje". Tabla sa ispisanim nazivom = „naseljeno mesto". Na ispitu se nude jedno umesto drugog — gledaj da li na znaku piše ime.</p>
+<p><b>Zamka — zona usporenog saobraćaja je JEDINA zona iz ove tačke.</b> Njen kraj ide crvenom trakom, a kraj sve četiri table „ZONA" iz tačke 4 ide crnim kosim crtama. Ako na slici vidiš plavu tablu sa figurama i crvenu traku — to nije „završetak zone škole" ni „završetak pešačke zone", nego kraj zone usporenog saobraćaja; ta tri odgovora se nude jedan umesto drugog.</p>
+
+<p style="margin-top:10px"><b>2. Precrtano = PRESTANAK — ali postoje DVE porodice, razlikuje ih boja crte:</b></p>
+<table>
+<tr><th>Porodica</th><th>Kako izgleda</th><th>Šta je unutra</th></tr>
+<tr><td><b>(a) tanke CRNE kose crte</b> (čl. 50 st. 2 t. 6)</td><td><b>beli</b> krug, <b>crn</b> simbol, preko njega snop tankih <b>crnih</b> crta</td><td>truba · dva vozila · teretno + vozilo · crni broj · samo crte bez simbola</td></tr>
+<tr><td><b>(b) CRVENA kosa traka</b> (čl. 50 st. 2 t. 5)</td><td><b>plavi</b> znak (krug ili kvadrat) preko koga ide debela <b>crvena</b> traka</td><td>lanci · beli broj u plavom krugu · plavi kvadrat sa brojem</td></tr>
+</table>
+<table>
+<tr><th>Precrtani simbol</th><th>Porodica</th><th>Tačan odgovor</th></tr>
+<tr><td>truba</td><td>beli krug, crne crte</td><td>prestaje zabrana davanja zvučnih znakova upozorenja</td></tr>
+<tr><td>dva vozila</td><td>beli krug, crne crte</td><td>prestaje zabrana preticanja za motorna vozila</td></tr>
+<tr><td>teretno + vozilo</td><td>beli krug, crne crte</td><td>prestaje zabrana preticanja za teretna vozila najveće dozvoljene mase preko 3,5 t</td></tr>
+<tr><td><b>crni</b> broj u <b>belom</b> krugu</td><td>beli krug, crne crte</td><td>prestaje ograničenje brzine</td></tr>
+<tr><td>samo kose crte, bez simbola</td><td>beli krug, crne crte</td><td>mesto na putu odakle prestaju da važe prethodno postavljeni saobraćajni znakovi <b>zabrana, ograničenja i obaveza</b></td></tr>
+<tr><td>lanci na točku</td><td><b>plavi krug, crvena traka</b></td><td>prestaje obaveza nošenja lanaca za sneg</td></tr>
+<tr><td><b>beli</b> broj u <b>plavom</b> krugu</td><td><b>plavi krug, crvena traka</b></td><td>prestaje obaveza kretanja najmanje propisanom brzinom</td></tr>
+<tr><td><b>beli</b> broj u <b>plavom kvadratu</b></td><td><b>plavi kvadrat, crvena traka</b></td><td>prestaje <b>preporuka</b> brzine</td></tr>
+</table>
+<p><b>Zamka — reč „svi" je marker netačnog odgovora.</b> Kod znaka sa samim kosim crtama nude se tri odgovora, a dva netačna počinju sa „prestaju da važe SVI...": „svi saobraćajni znakovi opasnosti" i „svi saobraćajni znakovi". Tačan odgovor <b>nema reč „svi"</b> i taksativno nabraja tri vrste: <b>zabrana, ograničenja i obaveza</b>. Naziv znaka u Pravilniku jeste „prestanak svih zabrana", ali njegovo značenje po čl. 35 nije „svi znakovi".</p>
+<p><b>Zamka — tri znaka sa brojem</b> se stalno nude jedan umesto drugog. Prvo pogledaj <b>podlogu i boju crte</b>, pa tek onda broj. Beli krug + crne crte = prestanak <b>ograničenja</b>; plavi krug + crvena traka = prestanak <b>najmanje</b> brzine; plavi kvadrat + crvena traka = prestanak <b>preporuke</b>.</p>
+
+<p style="margin-top:10px"><b>3. Romb — kvadrat postavljen na vrh:</b></p>
+<div class="signRow" style="max-width:340px;margin:0 auto">
+  <div class="signCell"><!-- SVG: beli romb sa crnim rubom i žutim kvadratom unutra --><b>PUT SA PRVENSTVOM</b><span>put ili deo puta na kome vozila imaju prvenstvo prolaza u odnosu na vozila koja se kreću putevima koji se s njim ukrštaju. Unutrašnji kvadrat je <b>žut</b>, pojas oko njega <b>beo</b> (čl. 50 st. 2 t. 8)</span></div>
+  <div class="signCell"><!-- SVG: isti romb preko koga ide snop tankih crnih kosih crta --><b>ZAVRŠETAK</b><span>isti romb sa snopom tankih <b>crnih</b> kosih crta (porodica a, čl. 50 st. 2 t. 6) = mesto na kome se završava put ili deo puta sa prvenstvom prolaza</span></div>
+</div>
+<p class="mut">Mamci kod romba nisu drugi znakovi obaveštenja nego znakovi izričitih naredbi: „ustupi prvenstvo prolaza" i „obavezno zaustavljanje".</p>
+
+<p style="margin-top:10px"><b>4. Zone — bela tabla sa natpisom i umetnutim običnim znakom</b> (čl. 50 st. 2 t. 3); ista tabla sa <b>crnim</b> kosim crtama i umetnutim znakom u <b>crno-beloj (sivoj)</b> verziji = kraj zone (t. 4 — ovde nema crvene trake). Ovakvih tabli ima tačno četiri:</p>
+<table>
+<tr><th>Tabla</th><th>Šta je umetnuto</th><th>Početak znači</th><th>Precrtana crnim crtama</th></tr>
+<tr><td>ZONA</td><td>okrugli znak <b>30</b> u crvenom krugu</td><td>zona u kojoj je brzina vozila ograničena <b>do 30 km/h</b></td><td>završetak zone 30</td></tr>
+<tr><td>ZONA ŠKOLE</td><td><b>fluorescentni žuto-zeleni kvadrat</b> sa crnim figurama dece</td><td>mesto od kojeg počinje zona škole</td><td>završetak zone škole</td></tr>
+<tr><td>ZONA</td><td>plavi krug sa <b>figurom odraslog i deteta</b></td><td>početak zone namenjene kretanju pešaka</td><td>završetak pešačke zone</td></tr>
+<tr><td>ZONA</td><td>običan znak <b>zabranjeno parkiranje</b>: plavo polje, crveni rub, jedna crvena dijagonala — <b>slova P nema</b></td><td>početak zone u kojoj je zabranjeno parkiranje</td><td>završetak zone zabrane parkiranja</td></tr>
+</table>
+<p class="mut">Zona usporenog saobraćaja NIJE u ovoj grupi — vidi tačku 1. Koja pravila važe unutar zona (10 km/h, brzina pešaka, 30/50 km/h...) — kartica o pojmovima puta i zonama.</p>
+
+<p style="margin-top:10px"><b>5. Parovi koji se najčešće mešaju</b> — kvadratna tabla OBAVEŠTAVA, krug NAREĐUJE, trougao UPOZORAVA:</p>
+<table>
+<tr><th>Ovo je...</th><th>...a mamac je</th></tr>
+<tr><td><b>Jednosmerni put</b> — pravougaona/kvadratna tabla sa strelicom (postoji uspravna i položena varijanta)<!-- SVG: par — plava tabla sa strelicom nagore i plava tabla sa vodoravnom strelicom --></td><td>plavi <b>krug</b> sa strelicom = smer kojim se vozila <b>moraju</b> kretati (naredba); nudi se i „smer kojim nije dozvoljeno"</td></tr>
+<tr><td><b>Pešački prelaz</b> — plavi kvadrat: mesto na kome prelaz <b>jeste</b></td><td>trougao sa pešakom = opasnost, najava prelaza (druga porodica!)</td></tr>
+<tr><td>Varijante: pešački prelaz <b>i</b> prelaz biciklističke staze; samo prelaz biciklističke staze; figura na stepenicama = <b>podzemni/nadzemni</b> pešački prolaz</td><td>međusobno se nude kao mamci — broj figura i stepenice odlučuju</td></tr>
+<tr><td><b>Blizina škole</b> — <b>fluorescentni žuto-zeleni kvadrat</b> sa dvema crnim figurama dece sa torbama, bez ikakvog natpisa (čl. 50 st. 2 t. 10): mesto u čijoj se blizini nalazi škola i gde se može nalaziti pešački prelaz koji deca često koriste<!-- SVG: par — go fluorescentni žuto-zeleni kvadrat sa crnim figurama dece; pored bela tabla sa natpisom ZONA ŠKOLE i istim kvadratom umetnutim ispod natpisa --></td><td><b>isti fluorescentni kvadrat umetnut u belu tablu sa natpisom ZONA ŠKOLE</b> = zona škole (režim za celu zonu) i trougao „deca" = opasnost. Ključ: go kvadrat = blizina škole; kvadrat unutar bele table sa natpisom = zona škole</td></tr>
+<tr><td><b>Preporučena brzina</b> — plavi <b>kvadrat</b> sa brojem; sa crvenom trakom = prestanak preporuke</td><td>crveni krug = ograničenje (zabrana), plavi krug = obavezna najmanja brzina</td></tr>
+<tr><td><b>Suženje — plava kvadratna tabla</b> sa dve strelice: obaveštenje da na suženom delu <b>TI imaš prvenstvo</b> nad vozilima iz suprotnog smera. Po čl. 50 st. 2 t. 7 na ovoj tabli je <b>kraća strelica bela, a duža crvena</b> — crvena ide nadole i to je tuđi smer<!-- SVG: tri znaka uporedo — plava kvadratna tabla sa manjom belom strelicom nagore i većom crvenom strelicom nadole; okrugli beli znak sa crvenim rubom, crnom dužom strelicom nadole i crvenom kraćom strelicom nagore; trougao sa crvenim rubom i dve jednake crne strelice --></td><td><b>Tri znaka, tri odgovora.</b> Okrugli znak sa crvenim rubom = <b>zabrana stupanja</b> na suženje dok ne prođu vozila iz suprotnog smera (naredba). Trougao sa crvenim rubom i dve <b>jednake crne</b> strelice = mesto od koga počinje <b>dvosmeran saobraćaj</b> (opasnost) — i on se nudi kao treći odgovor. <b>Oblik odlučuje: tabla = tebi prednost; krug = suprotnom smeru; trougao = dvosmeran saobraćaj.</b> Nemoj da učiš „crvena strelica je veća": to važi samo na plavoj tabli. Na okruglom znaku su obe strelice <b>iste dužine</b>: crvena je okrenuta nagore — tamo crvena označava <b>tvoj</b> smer, onaj koji mora da čeka. Na trouglu su obe strelice crne i jednake</td></tr>
+<tr><td><b>Potvrda pravca kretanja posle prolaska raskrsnice</b> — tabla sa nazivima mesta koja stoji <b>posle</b> raskrsnice</td><td>„prethodno obaveštenje radi prestrojavanja" i „raskrsnica" (table <b>pre</b> raskrsnice)</td></tr>
+<tr><td><b>P varijante:</b> samo P = parkiralište · P sa satom = parkiranje <b>vremenski ograničeno</b> · P pod krovom = <b>garaža</b> sa parking mestima · P + simbol prevoznog sredstva = parkiraj, pa putovanje nastavi drugim prevoznim sredstvom</td><td>sve četiri se nude međusobno — gledaj dodatak uz slovo P</td></tr>
+<tr><td>Šema traka sa simbolom vozila <b>u crvenom krugu</b> iznad jedne trake = ta traka <b>NIJE namenjena</b> vrstama vozila čiji je simbol prikazan. Podloga je zelena na autoputu, plava na svim ostalim putevima (čl. 50 st. 2 t. 14)</td><td><b>traka javnog prevoza</b>: autobus u <b>običnom belom krugu, bez crvenog ruba</b>, uz tu traku ide <b>isprekidana žuta linija</b> (čl. 50 st. 2 t. 13) — značenje je suprotno („traka JESTE namenjena"). Crveni krug je jedina razlika u značenju; nudi se i „zabranjeno kretanje na deonici"</td></tr>
+</table>
+<p><b>Zamka nad zamkama:</b> „potvrda pravca kretanja" zvuči kao mamac, ali ovde, kao saobraćajni <b>znak</b>, ona postoji i JESTE tačan odgovor — za tablu koja stoji <b>posle</b> raskrsnice.</p>
+
+<p style="margin-top:10px"><b>6. Autoput — otvaranje i zatvaranje traka.</b> Svaka situacija ima dva znaka; odgovore razlikuje formulacija <b>„približavanje mestu"</b> (predznak, najava) protiv <b>„mesto"</b>:</p>
+<table>
+<tr><th>Situacija (ZELENI znakovi na autoputu)</th><th>Predznak — najava</th><th>Znak — mesto</th></tr>
+<tr><td>otvara se saobraćajna traka</td><td>približavanje mestu <b>na autoputu</b> gde se otvara</td><td>mesto <b>na autoputu</b> gde se otvara</td></tr>
+<tr><td>zatvara se saobraćajna traka</td><td>približavanje mestu <b>na autoputu</b> gde se zatvara</td><td>mesto <b>na autoputu</b> gde se zatvara</td></tr>
+<tr><td>zatvara se zaustavna traka</td><td>približavanje mestu <b>na autoputu</b> gde se zatvara</td><td>mesto <b>na autoputu</b> gde se zatvara</td></tr>
+<tr><td>autoput se spaja sa drugim autoputem</td><td>približavanje mestu spajanja</td><td>mesto spajanja</td></tr>
+</table>
+<p><b>Zamka — reči „na autoputu" su deo odgovora.</b> Iste situacije postoje i u plavoj verziji za obične puteve (tačka 7), pa se odgovori ukrštaju: uz <b>zeleni</b> znak ide „na autoputu", uz <b>plavi</b> ne ide. Ako na zelenom znaku vidiš najavu — traži „približavanje mestu na autoputu"; ako je plav — traži „udaljenost do mesta".</p>
+<p><b>Zamka:</b> stalni mamac u ovoj grupi je „traka za spora vozila". Razlikuj po dve stvari — boji i broju:<!-- SVG: tri znaka uporedo — zeleni predznak otvaranja trake sa natpisom 500 m ispod šeme, plavi znak trake za spora vozila sa brojem 30 u kružiću unutar trake, plavi znak na kome se ta traka uliva nazad u kolovoz --></p>
+<table>
+<tr><th></th><th>Otvaranje/zatvaranje/spajanje</th><th>Traka za spora vozila</th></tr>
+<tr><td>Boja</td><td><b>zelena</b> (na autoputu)</td><td><b>plava</b></td></tr>
+<tr><td>Broj na znaku</td><td>predznak nosi <b>udaljenost</b> ispod šeme, npr. „500 m"</td><td><b>brzina u kružiću</b> unutar same trake, npr. 30</td></tr>
+<tr><td>Značenje</td><td>najava, odnosno mesto otvaranja/zatvaranja trake</td><td>tom trakom se MORAJU kretati vozila sporija od brzine sa znaka; ista šema sa trakom koja se uliva nazad = kraj te trake</td></tr>
+</table>
+<p><b>Izlaz i odmorište:</b> mesto izlaska sa autoputa · <b>udaljenost do početka trake za izlaz</b> (znak sa brojem metara) · nailazak na odmorište čiji je sadržaj prikazan <b>piktogramima</b> · mesto izlaska sa puta <b>do odmorišta</b> — četiri različita znaka, nude se međusobno.</p>
+
+<p style="margin-top:10px"><b>7. Radovi i preusmeravanje — ovde boja deli grupu na dva dela.</b> Znakovi zatvaranja, otvaranja i preusmeravanja traka su <b>PLAVI</b> (čl. 50 st. 2 t. 16), a znakovi <b>skretanja saobraćajnih traka i devijacije su ŽUTI sa crnim strelicama</b> (čl. 44). U zoni radova i plavi znakovi traka dobijaju žutu osnovu sa crnim simbolima (čl. 45):</p>
+<table>
+<tr><th>Situacija</th><th>Najava</th><th>Mesto</th></tr>
+<tr><td>zatvara se saobraćajna traka (<b>plavi</b>)</td><td><b>udaljenost</b> do mesta zatvaranja</td><td>mesto gde <b>počinje</b> zatvaranje</td></tr>
+<tr><td>otvara se saobraćajna traka (<b>plavi</b>)</td><td>udaljenost do mesta otvaranja</td><td>mesto gde počinje otvaranje (traka za isti smer)</td></tr>
+<tr><td>dvosmerni saobraćaj sa fizički razdvojenih kolovoznih traka prelazi na kolovoz gde ih dele samo oznake (<b>plavi</b>)</td><td><b>blizina</b> mesta preusmeravanja</td><td>mesto preusmeravanja</td></tr>
+<tr><td>skretanje saobraćajnih traka, <b>broj traka ostaje isti</b> (<b>ŽUTI</b>, crne strelice)</td><td><b>blizina</b> mesta skretanja</td><td>mesto skretanja traka</td></tr>
+<tr><td>devijacija puta (<b>ŽUTI</b>, crne strelice)</td><td><b>približavanje</b> devijaciji</td><td>mesto devijacije</td></tr>
+</table>
+<p><b>Zamka — dva žuta znaka koja se najlakše zamene.</b> Boja ih ne razdvaja (oba su žuta sa crnim strelicama), ni broj metara (i jedan i drugi predznak nosi udaljenost, npr. „200 m"). Razdvajaju ih <b>smerovi strelica</b>:<!-- SVG: par žutih tabli sa crnim strelicama — levo obe strelice nagore sa bočnim pomakom u sredini; desno jedna talasasta strelica nadole i jedna talasasta nagore --></p>
+<table>
+<tr><th></th><th>Skretanje saobraćajnih traka</th><th>Devijacija puta</th></tr>
+<tr><td>Strelice</td><td><b>obe nagore</b>, sa bočnim pomakom (lomom) u sredini — saobraćaj ide u istom smeru, samo pomeren u stranu</td><td><b>jedna nadole, jedna nagore</b> — suprotni smerovi, obe talasaste</td></tr>
+<tr><td>Reč u odgovoru</td><td>„<b>blizinu</b> mesta gde se vrši skretanje..." / „mesto gde se vrši skretanje..."</td><td>„<b>približavanje</b> mestu na kome postoji devijacija" / „mesto devijacija na putu"</td></tr>
+<tr><td>Ostali mamci</td><td>trouglovi opasnosti: „približavanje krivini nadesno" i „deo puta sa više uzastopnih krivina"</td><td>„neravan kolovoz zbog opasne izbočine" i „skretanje saobraćajnih traka"</td></tr>
+</table>
+<p class="mut">Plavi znak preusmeravanja takođe ima jednu strelicu nadole i jednu nagore, ali je <b>plav</b> i na njemu su nacrtana i <b>šrafirana ostrva</b> — zato boja ostaje prvi filter.</p>
+<p>Još iz ove grupe: <b>predznak za obilazak</b> = smer i tok preusmerenog saobraćaja kada je put zatvoren · strelasto oblikovana tabla <b>„obilazak"</b> za usmeravanje vozila na obilazni put · obaveštenje da zbog radova/prepreka/oštećenja kolovoza saobraćaj regulišu <b>ovlašćena lica</b> · <b>poslednje upozorenje</b> da si na delu puta namenjenom vozilima iz suprotnog smera (fluorescentna žuto-zelena tabla sa natpisima STOP i POGREŠAN SMER, crnom šakom i znakom zabrane saobraćaja u jednom smeru) · mesto gde se zbog završetka trake ili suženja vozila <b>naizmenično uključuju</b> u jednu traku (patent-zatvarač).</p>
+
+<p style="margin-top:10px"><b>8. Vođenje saobraćaja — gledaj GDE tabla stoji:</b></p>
+<table>
+<tr><th>Položaj</th><th>Znak</th></tr>
+<tr><td><b>PRE</b> raskrsnice, šema puteva</td><td>„raskrsnica" — međusobni položaj, pravci puteva i nazivi mesta; kružna šema = raskrsnica sa kružnim tokom</td></tr>
+<tr><td><b>PRE</b> raskrsnice, strelice po trakama</td><td>prethodno obaveštenje radi <b>prestrojavanja</b> na putevima sa više traka; postoji i verzija za kružni tok</td></tr>
+<tr><td><b>NA</b> raskrsnici</td><td>pravac puta do naseljenog mesta · pravac kretanja do naseljenih mesta · udaljenost i pravac kretanja</td></tr>
+<tr><td><b>POSLE</b> raskrsnice</td><td><b>potvrda pravca</b> kretanja</td></tr>
+<tr><td>iznad kolovoza</td><td>obaveštenje o načinu korišćenja saobraćajne trake za kretanje do naseljenog mesta</td></tr>
+<tr><td>ostale table</td><td>udaljenost i putni pravci do naseljenih mesta · udaljenost do raskrsnice i pravci autoputeva · pravci autoputeva · naziv <b>petlje</b> na koju se nailazi</td></tr>
+</table>
+<p class="mut">Boja osnove znakova za vođenje (Pravilnik čl. 43): zelena = autoput, plava = motoput, žuta = ostali putevi, bela = znak čije je odredište objekat, sadržaj ili deo naselja. Isti ključ boja objašnjava i zašto su znakovi traka iz tačke 6 zeleni. Isto značenje ume da se pojavi i na zelenoj, i na žutoj i na plavoj podlozi — kod ovih znakova boja ti kaže KOJI je put, ne šta znak znači.</p>
+<p>Poseban znak: put kojim je <b>dozvoljeno</b> kretanje kada nameravaš da skreneš ulevo na raskrsnici na kojoj je skretanje ulevo <b>zabranjeno</b> (tabla ti crta obilazni put oko bloka).</p>
+
+<p style="margin-top:10px"><b>9. Usluge — simbol govori sve, mamci su uvek susedi iz iste grupe:</b><!-- SVG: mini-galerija plavih kvadrata sa belim poljem i crnim simbolom: šoljica na tacni, ukrštene kašika i viljuška, krevet, šator, prikolica, crveni krst, ključ, slušalica, pumpa --></p>
+<table>
+<tr><th>Znak</th><th>Kako ih razlikuješ</th></tr>
+<tr><td><b>šoljica na tacni</b> = kafana · <b>ukrštene kašika i viljuška</b> = restoran · <b>krevet</b> = hotel/motel</td><td>nude se međusobno; na znaku za restoran <b>nema noža</b> — ukrštene su kašika i viljuška</td></tr>
+<tr><td>šator = kampovanje <b>pod šatorima</b> · prikolica = boravak <b>u prikolicama</b> · šator + prikolica = <b>oba</b></td><td>odgovor mora tačno da pogodi simbole sa slike; mamci su i „izletnici" i „planinarski dom"</td></tr>
+<tr><td><b>kuća + jelka</b> = planinarski dom · <b>sto i klupa + jelka</b> = teren uređen za izletnike</td><td>oba imaju drvo — odlučuje ono <b>pored</b> drveta: kuća ili sto sa klupom. Mešaju se i sa kampovima</td></tr>
+<tr><td><b>crveni krst</b> na belom polju = stanica za prvu pomoć · <b>belo slovo H</b> i natpis BOLNICA = blizina bolnice i poruka da vozilom ne stvaraš buku</td><td>ovo su glavni mamci jedan drugom: krst = prva pomoć, slovo H = bolnica. Kod oba se nudi i „zdravstvena ustanova u kojoj se vrše pregledi vozača"</td></tr>
+<tr><td><b>radionica</b> za opravku vozila · služba za <b>pomoć u slučaju kvara</b></td><td>mamac kod oba: „objekat za tehnički pregled"</td></tr>
+<tr><td>slušalica = <b>telefonska govornica</b> · pumpa = <b>benzinska stanica</b></td><td>mamci: „turističke informacije", „telefon za vreme vožnje"</td></tr>
+<tr><td>stanica <b>policije</b> · služba za <b>gašenje požara</b></td><td>mamci: „prolaz uz odobrenje policajca", „raskrsnica koju reguliše policajac", „aparat za gašenje požara"</td></tr>
+<tr><td><b>autobusko stajalište</b> · <b>tramvajska stanica</b></td><td>nude se međusobno; kod tramvaja mamac je i „ukrštanje sa tramvajskom prugom" (trougao!)</td></tr>
+<tr><td><b>brod na vodi</b> (bez sidra) = luka, pristanište, trajekt · avion = aerodrom</td><td>mamci su znakovi opasnosti: pokretni most, rečna/morska obala, bočni vetar, niski letovi aviona</td></tr>
+</table>
+
+<p style="margin-top:10px"><b>10. Tunel — tri znaka za slučaj opasnosti:</b></p>
+<div class="signRow">
+  <div class="signCell"><!-- SVG: zeleni kvadrat, bela figura trči ka belom pravougaoniku (vratima) --><b>IZLAZ ZA PEŠAKE</b><span>izlaz za pešake u slučaju opasnosti (mamac: „objekat za rekreaciju i sport")</span></div>
+  <div class="signCell"><!-- SVG: zelena tabla oblikovana kao strelica (petougao) sa figurom, vodoravnom strelicom i natpisom 100 m --><b>SMER + UDALJENOST</b><span>smer u kome je izlaz za slučaj opasnosti i udaljenost do njega; tabla je <b>strelasto oblikovana</b> i pokazuje na stranu na kojoj je izlaz</span></div>
+  <div class="signCell"><!-- SVG: plava tabla sa belom šemom kolovoza i proširenja (niše) sa desne strane, bez ikakvih simbola --><b>SOS NIŠA</b><span>deo puta za zaustavljanje/parkiranje u hitnom slučaju; može biti opremljen telefonom za hitne pozive i aparatom za gašenje požara (mamac: „parking mesto"). Na samom znaku je samo šema niše — telefon i aparat se ne crtaju</span></div>
+</div>
+
+<p style="margin-top:10px"><b>11. Putarina, radar, kamere:</b></p>
+<table>
+<tr><th>Znak</th><th>Znači</th></tr>
+<tr><td>naplatna stanica (dve varijante znaka)</td><td>nailazak na objekat za naplatu putarine — mamac: „naredba da zaustaviš vozilo (naplatno mesto)"</td></tr>
+<tr><td>traka sa elektronskom naplatom</td><td>saobraćajna traka u kojoj se putarina naplaćuje <b>elektronskim putem</b></td></tr>
+<tr><td>kombinovana naplata</td><td>blizina mesta gde se putarina naplaćuje <b>i elektronski i ručno</b></td></tr>
+<tr><td>radar</td><td>početak deonice na kojoj se <b>često vrši radarska kontrola</b> brzine</td></tr>
+<tr><td>kamera</td><td>mesto na deonici od kojeg počinje <b>snimanje saobraćaja fiksnim tehničkim uređajima</b> — mamci: radarska kontrola, vozilo-presretač</td></tr>
+</table>
+
+<p style="margin-top:10px"><b>12. Tabla na granici:</b> plava tabla na kojoj je gore <b>zastava Srbije</b>, natpis „Srbija" i ovalna oznaka SRB, ispod nje <b>četiri reda</b> — crna silueta naselja, precrtana silueta naselja, <b>plavi</b> kvadrat sa automobilom (motoput) i <b>zeleni</b> kvadrat sa simbolom autoputa — i uz svaki red <b>ograničenje brzine u crvenom krugu</b> (50, 80, 100, 130), a na dnu <b>simbol svetlosnog snopa fara</b> sa oznakom „00-24".<!-- SVG: plava tabla sa zastavom, natpisom Srbija i oznakom SRB, ispod četiri bela reda sa siluetama i crvenim krugovima brzina, u dnu red sa simbolom fara i natpisom 00-24 --> Znači: <b>opšte ograničenje najveće dozvoljene brzine kretanja vozila prema kategoriji puta</b> i obaveza upotrebe <b>svetla</b> na teritoriji Republike Srbije. Mamci: „srednja brzina" i „preporučene brzine" — na tabli su opšta OGRANIČENJA, a brojevi stoje u crvenim krugovima, koji uvek znače zabranu.</p>
+
+<p style="margin-top:10px"><b>13. Razdelno ostrvo i oštra krivina (žuto-crno / crno-belo):</b> tabla na vrhu razdelnog ostrva ima dve varijante, a od varijante zavisi koji se znak postavlja iznad nje (Pravilnik čl. 35):</p>
+<table>
+<tr><th>Varijanta table (uspravna, uska)</th><th>Šta ide IZNAD nje</th></tr>
+<tr><td><b>vodoravna naizmenična crna i žuta polja</b> (kao pruge preko table)<!-- SVG: uska uspravna tabla sa vodoravnim naizmeničnim crnim i žutim poljima --></td><td>plavi krug sa <b>kosom belom strelicom nadole-udesno</b> ili <b>nadole-ulevo</b> = obavezno obilaženje s desne, odnosno s leve strane. Na pitanju sa četiri ponuđena znaka tačna su <b>OBA</b>, a mamci su plavi krug sa <b>vodoravnom</b> strelicom (obavezan smer) i znak kružnog toka</td></tr>
+<tr><td><b>žuti ševroni (strelaste crte) na crnoj podlozi</b>, okrenuti nagore<!-- SVG: uska uspravna tabla sa žutim ševronima na crnoj podlozi --></td><td>plavi krug sa <b>dve strelice koje se razilaze</b> ulevo i udesno = obilaženje sa obe strane. Ovde je tačan samo <b>jedan</b> znak</td></tr>
+</table>
+<p class="mut">Sama tabla, u obe varijante, upozorava vozače da nailaze na <b>razdelno ostrvo</b>. Mamci na tom pitanju: „ukrštanje puta i železničke pruge u nivou" i „stalne prepreke unutar gabarita slobodnog profila puta".</p>
+<table>
+<tr><th>Znak</th><th>Znači</th></tr>
+<tr><td>tabla sa <b>crnim strelicama na beloj podlozi</b> u krivini<!-- SVG: kvadratna tabla sa velikom crnom strelicom (šiljkom) na beloj podlozi, u varijantama usmerenim ulevo i udesno --></td><td>mesto gde se nailazi na <b>oštru krivinu</b> — više varijanti slike (jedna ili tri strelice, levo ili desno), uvek isti odgovor. Mamci su trouglovi: „približavanje krivini na levo/desno" i „više opasnih krivina"</td></tr>
+</table>
+
+<p style="margin-top:10px"><b>14. Brojevi, nazivi i sitnice koje ispadnu na ispitu:</b></p>
+<table>
+<tr><th>Znak</th><th>Znači</th></tr>
+<tr><td>tabla sa slovom E i brojem</td><td>broj <b>međunarodnog</b> puta</td></tr>
+<tr><td>mala tabla sa više brojeva</td><td>broj puta, broj deonice i stacionaža puta</td></tr>
+<tr><td><b>go broj</b> i ispod njega „m.n.m." — bez naziva i bez ikakvog simbola</td><td><b>broj serpentine sa nadmorskom visinom</b></td></tr>
+<tr><td>simbol nalik na dve zagrade okrenute leđima, ispod njega <b>naziv mesta</b> i „m.n.m."</td><td><b>planinski prevoj</b> sa nadmorskom visinom</td></tr>
+<tr><td><b>piktogram objekta</b> (tunel, most, vijadukt) u belom polju, ispod njega naziv i broj sa oznakom „m" (bez „n.m.")</td><td><b>naziv putnog objekta</b> — taj broj je dužina objekta; mamci su baš „nadmorska visina" i „udaljenost od saobraćajnog znaka"</td></tr>
+<tr><td>tabla na mostu</td><td>naziv <b>reke</b> preko koje put prelazi</td></tr>
+<tr><td>tabla OTVOREN/ZATVOREN</td><td>da li je put, odnosno prelaz preko planinskog vrha otvoren ili zatvoren</td></tr>
+<tr><td>naziv ulice</td><td>naziv ulice — ništa više od toga</td></tr>
+<tr><td>put koji se završava poprečnom crtom</td><td>blizina i položaj puta koji <b>nema izlaz</b> (slepi put)</td></tr>
+<tr><td>izbočina na plavom kvadratu</td><td><b>nailazak na mesto</b> gde su postavljena <b>tehnička sredstva za usporavanje</b> saobraćaja — mamci: „neravan kolovoz, izbočine/ulegnuća" (to je trougao opasnosti!)</td></tr>
+<tr><td>tabla OPASNOST — <b>fluorescentna žuto-zelena</b> podloga, crn natpis i upisan znak opasnosti (trougao sa uzvičnikom)</td><td>nailazak na <b>posebno opasnu deonicu</b> puta — mamci: „radovi na putu", „opasno mesto"</td></tr>
+</table>
+<p class="mut">Tri table sa nadmorskom visinom i dužinom se stalno mešaju. Zapamti redosled provere: ima li <b>simbol</b>? Ako nema — serpentina. Ako ima simbol prevoja i ime — planinski prevoj. Ako ima piktogram tunela/mosta — putni objekat, a broj je dužina.</p>
+
+<p><b>Taktika za sliku:</b> prvo <b>boja podloge</b> (zelena = autoput; plava = motoput, usluge, traka za spora vozila i znakovi zatvaranja/otvaranja/preusmeravanja traka; žuta = skretanje traka, devijacija i vođenje na ostalim putevima; bela = table „ZONA", naselje, brojevi i nazivi; fluorescentna žuto-zelena = blizina škole, OPASNOST, POGREŠAN SMER), pa mehanizam (crvena traka? crne kose crte? tabla „ZONA"? predznak ili mesto?), zatim porodica po obliku (tabla obaveštava — krug naređuje — trougao upozorava), pa tek onda simbol. Pazi: <b>beli KRUG sa crnim kosim crtama</b> znači prestanak zabrane, ali <b>bela TABLA</b> ne znači prestanak ničega — ona nosi zonu, naselje, naziv ili broj. Skoro svaki mamac je znak iz susedne kolone iste tabele.</p>
+`,
+};
+
 const BYSUB = {
   148: 'prvenstvo-prolaza',   // vozila pod pratnjom i sa pravom prvenstva (56 pitanja)
   136: 'prvenstvo-prolaza',   // prvenstvo prolaza
@@ -906,7 +1110,7 @@ BYSUB[155] = 'znakovi-porodice';
 BYSUB[156] = 'znakovi-porodice';
 BYSUB[157] = 'znakovi-opasnosti';
 BYSUB[158] = 'znakovi-naredbi';
-BYSUB[159] = 'znakovi-porodice';
+BYSUB[159] = 'znakovi-obavestenja';
 BYSUB[160] = 'znakovi-porodice';
 BYSUB[166] = 'prvenstvo-prolaza';   // znaci ovlašćenog lica — vrh hijerarhije
 BYSUB[131] = 'prvenstvo-prolaza';   // opšte odredbe (hijerarhija postupanja)

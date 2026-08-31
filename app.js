@@ -1755,7 +1755,7 @@
       // Redosled kartica prati predloženi tok učenja iz vodiča (od pojmova ka posledicama)
       const GRUPE = [
         ['grp1', ['slicni-pojmovi', 'put-pojmovi', 'kategorije-vozila', 'brzine']],
-        ['grp2', ['prvenstvo-prolaza', 'znakovi-porodice', 'znakovi-opasnosti', 'znakovi-naredbi', 'semafori', 'oznake-kolovoz']],
+        ['grp2', ['prvenstvo-prolaza', 'znakovi-porodice', 'znakovi-opasnosti', 'znakovi-naredbi', 'znakovi-obavestenja', 'semafori', 'oznake-kolovoz']],
         ['grp3', ['skretanje', 'preticanje', 'parkiranje', 'parking-table', 'pokazivaci', 'svetla']],
         ['grp4', ['pesaci-bicikli', 'pruga', 'autoput', 'nezgoda', 'razno-pravila']],
         ['grp5', ['dozvole', 'vozilo-tehnika', 'iskljucenje', 'kazne', 'kaznene-klase', 'zamke-odgovori']],
