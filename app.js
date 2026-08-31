@@ -142,6 +142,8 @@
     endQueue: { l: 'Ponavljanje čeka: # spremno', c: 'Понављање чека: # спремно' },
     endAllClear: { l: 'Red za ponavljanje je potpuno prazan — sve što si učio je utvrđeno. 🎉', c: 'Ред за понављање је потпуно празан — све што си учио је утврђено. 🎉' },
     endSimBtn: { l: '🏁 Simulacija ispita', c: '🏁 Симулација испита' },
+    naIspitu: { l: 'na ispitu: #', c: 'на испиту: #' },
+    naIspituTip: { l: 'Koliko pitanja iz ove podoblasti nosi svaki pravi ispit — izmereno iz pet zvaničnih izvlačenja simulacije.', c: 'Колико питања из ове подобласти носи сваки прави испит — измерено из пет званичних извлачења симулације.' },
     qNumTip2: { l: 'Klik: kopiraj adresu ovog pitanja', c: 'Клик: копирај адресу овог питања' },
     bazaProverena: { l: 'Baza: zvanična eUprava, proverena 29.08.2026.', c: 'База: званична еУправа, проверена 29.08.2026.' },
     imgAlt: { l: 'Slika uz pitanje — saobraćajna situacija ili znak; pitanje se odnosi na ono što je na slici.', c: 'Слика уз питање — саобраћајна ситуација или знак; питање се односи на оно што је на слици.' },
@@ -644,6 +646,16 @@
   let listMode = null; // {ids, i, titleFn, kind, secKey, origin}
   let runSeq = 0;              // raste sa svakim novim prolazom kroz pitanja
   let lastRecordKey = null;    // "prolaz|pozicija" poslednjeg zabeleženog odgovora
+  // Koliko pitanja podoblast nosi na PRAVOM ispitu — izmereno iz pet zvaničnih izvlačenja
+  // (fiksne vrednosti su bile identične u svih pet; "0–1" se smenjuju za slobodne slotove).
+  const NA_ISPITU = {
+    103: '1', 118: '1', 131: '1', 132: '1', 133: '1', 134: '5', 135: '3', 136: '1', 137: '1',
+    140: '1', 144: '1', 145: '1', 146: '1', 148: '1', 157: '2', 158: '2', 159: '1', 160: '1',
+    161: '2', 162: '2', 166: '2', 170: '1', 172: '1', 175: '1', 178: '1',
+    91: '0–1', 94: '0–1', 109: '0–1', 115: '0–1', 126: '0–1', 127: '0–1', 139: '0–1',
+    142: '0–1', 147: '0–1', 155: '0–1', 156: '0–1', 165: '0–1',
+  };
+
   // Redosled podoblasti prati redosled pitanja u bazi; vraća sledeću podoblast (ili prvu iz sledeće oblasti).
   function sledecaSekcija(secKey) {
     if (!secKey || secKey[0] !== 's') return null;
@@ -1252,7 +1264,8 @@
         const sAcc = sAtt ? Math.round(100 * (sAtt - sWr) / sAtt) : null;
         const b = document.createElement('button'); b.className = 'subRow';
         b.title = T({ l: D.subs[sid].l, c: D.subs[sid].c });
-        b.innerHTML = `<span class="subName">${escapeHtml(subShortName(sid))}</span>
+        const naIsp = NA_ISPITU[sid];
+        b.innerHTML = `<span class="subName">${escapeHtml(subShortName(sid))}${naIsp ? ` <span class="subExam" title="${escapeHtml(L('naIspituTip'))}">${L('naIspitu').replace('#', naIsp)}</span>` : ''}</span>
           <span class="subCnt">${sSeen}/${sq.length}</span>
           <span class="subAcc">${sAcc !== null ? sAcc + '%' : ''}</span>`;
         b.addEventListener('click', () => browse('s' + sid));

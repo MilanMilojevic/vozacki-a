@@ -336,3 +336,9 @@ body.dark #offlineStrip { background: #3d3420; color: #e8e0cc; }
 
 /* Kraj spiska: dugmad se lepo slažu i na telefonu */
 #qCard .qActions { flex-wrap: wrap; }
+
+/* "Na ispitu: N" — koliko pitanja podoblast nosi na pravom ispitu */
+.subExam { display: inline-block; font-size: .72rem; font-weight: 600; color: var(--blue-d);
+  background: var(--chipBg, rgba(44, 106, 160, .12)); border-radius: 999px; padding: 1px 8px;
+  margin-left: 6px; white-space: nowrap; vertical-align: 1px; cursor: help; }
+body.dark .subExam { background: rgba(95, 151, 201, .22); color: #9cc3e5; }
