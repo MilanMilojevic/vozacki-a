@@ -60,6 +60,23 @@ async function proveraBodovanja2() {
   ok('rok posle 1. pogotka = SUTRA u 00:00 (kalendarski)', r.due === sutra.getTime());
   ok('u redu za ponavljanje dok streak < 3', window.__dev.inQueue(q1.id) === true);
 
+  // ---- 1b) UTVRĐIVANJE: tačno IZ PRVE → druga potvrda za 3 dana; posle druge potvrde utvrđeno ----
+  klikni('ledeće', document.getElementById('qCard'));
+  const q2 = window.QUIZ.questions[1];
+  const tacni2 = new Set(q2.ch.filter((c) => c.ok).map((c) => c.t.l.trim()));
+  for (const b of document.querySelectorAll('#qCard .choice')) if (tacni2.has(b.textContent.trim())) b.click();
+  klikni('dgovori', document.getElementById('qCard'));
+  let r2 = S().q[q2.id];
+  const za3 = window.__dev.pocetakDanaZa(3);
+  ok('tačno iz prve: zakazana potvrda za 3 dana', r2 && r2.w === 0 && r2.streak === 1 && r2.due === za3);
+  ok('tačno iz prve: u redu za utvrđivanje', window.__dev.inQueue(q2.id) === true);
+  klikni('ledeće', document.getElementById('qCard'));
+  klikni('rethodno', document.getElementById('qCard'));
+  for (const b of document.querySelectorAll('#qCard .choice')) if (tacni2.has(b.textContent.trim())) b.click();
+  klikni('dgovori', document.getElementById('qCard'));
+  r2 = S().q[q2.id];
+  ok('druga potvrda: utvrđeno, van reda, bez roka', r2.streak === 2 && !r2.due && window.__dev.inQueue(q2.id) === false);
+
   // ---- 2) SIMULACIJA: svih 41 tačno → 98/98, položeno ----
   document.querySelector('[data-nav="home"]').click();
   document.querySelector('.menuBtn[data-nav="sim"]').click();

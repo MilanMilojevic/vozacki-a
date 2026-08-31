@@ -37,7 +37,7 @@
     home: { l: 'Početna', c: 'Почетна' },
     learn: { l: 'Učenje redom', c: 'Учење редом' },
     learnSub: { l: 'sva pitanja, pamti gde si stao', c: 'сва питања, памти где си стао' },
-    drill: { l: 'Ponovi pogrešna', c: 'Понови погрешна' },
+    drill: { l: 'Ponavljanje', c: 'Понављање' },
     mixed: { l: 'Mešano ponavljanje', c: 'Мешано понављање' },
     mixedSub: { l: 'sva pitanja, nasumičan redosled', c: 'сва питања, насумичан редослед' },
     marked: { l: 'Obeležena pitanja', c: 'Обележена питања' },
@@ -130,6 +130,9 @@
     examIn: { l: 'do ispita', c: 'до испита' },
     examDays: { l: 'dana', c: 'дана' },
     examPlan: { l: 'predlog tempa: ~# novih pitanja dnevno', c: 'предлог темпа: ~# нових питања дневно' },
+    planPonavljanja: { l: 'ponavljanja danas: #', c: 'понављања данас: #' },
+    planSim: { l: 'predlog: uradi simulaciju danas', c: 'предлог: уради симулацију данас' },
+    planSimNedelja: { l: 'poslednja nedelja — po jedna simulacija dnevno', c: 'последња недеља — по једна симулација дневно' },
     qNumTip2: { l: 'Klik: kopiraj adresu ovog pitanja', c: 'Клик: копирај адресу овог питања' },
     bazaProverena: { l: 'Baza: zvanična eUprava, proverena 29.08.2026.', c: 'База: званична еУправа, проверена 29.08.2026.' },
     imgAlt: { l: 'Slika uz pitanje — saobraćajna situacija ili znak; pitanje se odnosi na ono što je na slici.', c: 'Слика уз питање — саобраћајна ситуација или знак; питање се односи на оно што је на слици.' },
@@ -145,7 +148,7 @@
       <li><b>Radnje vozilom.</b> <i>Skretanje i prestrojavanje</i>, <i>Preticanje i obilaženje</i>, <i>Zaustavljanje i parkiranje</i>, <i>Pokazivači pravca</i>, <i>Upotreba svetala</i>.</li>
       <li><b>Posebne situacije.</b> <i>Pešaci i dvotočkaši</i>, <i>Prelaz preko pruge</i>, <i>Autoput i motoput</i>, <i>Vozila pod pratnjom</i>, <i>Postupak kod nezgode</i>.</li>
       <li><b>Tek onda pitanja.</b> Kreni na <i>Sva pitanja</i> i idi redom — posle svakog odgovora pročitaj objašnjenje, i kad pogrešiš i kad pogodiš.</li>
-      <li><b>Pusti aplikaciju da te vodi.</b> Pogrešna pitanja se sama vraćaju u <i>Ponovi pogrešna</i>: odmah, pa sutradan, pa za tri dana. Radi ih dok ne isprazniš red.</li>
+      <li><b>Pusti aplikaciju da te vodi.</b> U <i>Ponavljanje</i> se sama vraćaju pogrešna pitanja (odmah, pa sutradan, pa za tri dana) — ali i pitanja tačna iz prve, jednom posle tri dana: jedan pogodak još nije zapamćeno.</li>
       <li><b>Simulacije na kraju.</b> Kad u Statistici procena pređe prag, radi <i>Simulaciju ispita</i> — 41 pitanje, 45 minuta, kao pravi ispit. Posle svake pregledaj greške.</li>
     </ol>
     <p class="mut">Kaznene mere uči poslednje i bez učenja iznosa napamet — u zvaničnom ispitu za A kategoriju te oblasti nema.</p>`,
@@ -155,7 +158,7 @@
       <li><b>Радње возилом.</b> <i>Скретање и престројавање</i>, <i>Претицање и обилажење</i>, <i>Заустављање и паркирање</i>, <i>Показивачи правца</i>, <i>Употреба светала</i>.</li>
       <li><b>Посебне ситуације.</b> <i>Пешаци и двоточкаши</i>, <i>Прелаз преко пруге</i>, <i>Аутопут и мотопут</i>, <i>Возила под пратњом</i>, <i>Поступак код незгоде</i>.</li>
       <li><b>Тек онда питања.</b> Крени на <i>Сва питања</i> и иди редом — после сваког одговора прочитај објашњење, и кад погрешиш и кад погодиш.</li>
-      <li><b>Пусти апликацију да те води.</b> Погрешна питања се сама враћају у <i>Понови погрешна</i>: одмах, па сутрадан, па за три дана. Ради их док не испразниш ред.</li>
+      <li><b>Пусти апликацију да те води.</b> У <i>Понављање</i> се сама враћају погрешна питања (одмах, па сутрадан, па за три дана) — али и питања тачна из прве, једном после три дана: један погодак још није запамћено.</li>
       <li><b>Симулације на крају.</b> Кад у Статистици процена пређе праг, ради <i>Симулацију испита</i> — 41 питање, 45 минута, као прави испит. После сваке прегледај грешке.</li>
     </ol>
     <p class="mut">Казнене мере учи последње и без учења износа напамет — у званичном испиту за А категорију те области нема.` },
@@ -369,6 +372,8 @@
     if (ok) {
       r.streak++;
       if (r.w > 0 && r.streak < 3) r.due = pocetakDanaZa(r.streak === 1 ? 1 : 3);
+      else if (r.w === 0 && r.streak === 1) r.due = pocetakDanaZa(3);   // utvrđivanje: druga potvrda za 3 dana
+      else delete r.due;                                               // utvrđeno / izašlo iz reda
     } else {
       r.w++; r.streak = 0; r.due = Date.now();
     }
@@ -383,15 +388,28 @@
     }
     save();
   }
-  const inQueue = (id) => { const r = S.q[id]; return r && r.w > 0 && r.streak < 3; };
+  const inQueue = (id) => {
+    const r = S.q[id];
+    if (!r) return false;
+    if (r.w > 0) return r.streak < 3;                 // pogrešna: tri pogotka za izlaz
+    return r.a >= 1 && r.streak === 1;                // tačna iz prve: čeka JEDNU potvrdu
+  };
+  // rok pitanja u redu; stariji zapisi bez roka (tačni iz prve od ranije) dobijaju rok = poslednji put + 3 dana
+  const dueOf = (id) => {
+    const r = S.q[id];
+    if (!r) return 0;
+    if (r.due) return r.due;
+    if (r.w === 0 && r.streak === 1) return (r.last || 0) + 3 * 86400000;
+    return 0;
+  };
   function queueSplit() {
     const now = Date.now();
     const ready = [], waiting = [];
     for (const q of Q) {
       if (!inQueue(q.id)) continue;
-      ((S.q[q.id].due || 0) <= now ? ready : waiting).push(q.id);
+      (dueOf(q.id) <= now ? ready : waiting).push(q.id);
     }
-    const k = (id) => (S.q[id].streak * 1e15) + (S.q[id].due || 0);
+    const k = (id) => (S.q[id].streak * 1e15) + dueOf(id);
     ready.sort((a, b) => k(a) - k(b));
     waiting.sort((a, b) => (S.q[a].due || 0) - (S.q[b].due || 0));
     return { ready, waiting };
@@ -1501,6 +1519,26 @@
   function homeExtras() {
     const delovi = [];
     if (S.streakD === localDay() && S.streakN >= 2) delovi.push('🔥 ' + S.streakN + '. ' + L('streakDani'));
+    const spremno = queueSplit().ready.length;
+    if (spremno > 0) delovi.push('🔁 ' + L('planPonavljanja').replace('#', spremno));
+    {
+      // predlog simulacije: transparentno pravilo — pokrivenost ≥ 60% i nijedna simulacija danas;
+      // u poslednjih 7 dana pred ispit: po jedna dnevno.
+      const odgovoreno = Q.filter((q) => S.q[q.id] && S.q[q.id].a > 0).length;
+      const pokrivenost = odgovoreno / Q.length;
+      const zadnja = S.sims.length ? S.sims[S.sims.length - 1].d : 0;
+      const simDanas = zadnja && new Date(zadnja).toDateString() === new Date().toDateString();
+      let danaDoIspita = null;
+      if (S.examDate) {
+        const d0 = new Date(); d0.setHours(0, 0, 0, 0);
+        danaDoIspita = Math.round((new Date(S.examDate + 'T00:00:00') - d0) / 86400000);
+      }
+      if (danaDoIspita !== null && danaDoIspita >= 0 && danaDoIspita <= 7) {
+        if (!simDanas) delovi.push('🎯 ' + L('planSimNedelja'));
+      } else if (pokrivenost >= 0.6 && !simDanas && (!zadnja || Date.now() - zadnja > 2.5 * 86400000)) {
+        delovi.push('🎯 ' + L('planSim'));
+      }
+    }
     if (S.examDate) {
       const danas = new Date(); danas.setHours(0, 0, 0, 0);
       const ispit = new Date(S.examDate + 'T00:00:00');
