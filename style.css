@@ -250,10 +250,9 @@ tr.totalRow td { border-top: 2px solid var(--blue); }
   #view-home.active { display: grid; grid-template-columns: 1fr 1fr; column-gap: 18px; align-items: start; }
   #view-home > #homeSummary, #view-home > #guideCard, #view-home > #pojmovnikCard, #view-home > #faqCard { grid-column: 1 / -1; }
   .hColL { grid-column: 1; } .hColR { grid-column: 2; }
-  /* Desna kolona se otvara TEK kad postoji objašnjenje — dok se odgovara, pitanje ima punu širinu. */
-  #view-question #qCard:has(> .explBox) { display: grid; grid-template-columns: minmax(0, 1fr) 440px; column-gap: 26px; align-items: start; }
-  #view-question #qCard > * { grid-column: 1; }
-  #view-question #qCard > .explBox { grid-column: 2; grid-row: 1 / span 30; position: sticky; top: 70px; }
+  /* Objašnjenje ide ISPOD odgovora i na širokim ekranima (Milanova odluka) —
+     kartica pitanja je samo ograničena po širini radi čitljivosti redova. */
+  #view-question #qCard { max-width: 860px; margin-left: auto; margin-right: auto; }
 }
 
 /* naslov otklopljene kartice ostaje vidljiv ispod lepljive plave trake */
@@ -324,3 +323,13 @@ body.dark .linklike.danger { color: #ff8a80; }
 #offlineStrip { background: var(--mark, #fff3d6); color: var(--ink, #1c2733); border-bottom: 1px solid var(--line);
   padding: 8px 14px; font-size: .9rem; text-align: center; }
 body.dark #offlineStrip { background: #3d3420; color: #e8e0cc; }
+
+/* Korisnici koji su isključili animacije u sistemu — bez prelaza i glatkog skrola */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+/* Uvećanje slike pitanja na dodir/klik */
+.qImg { cursor: zoom-in; }
+#imgZoom { position: fixed; inset: 0; background: rgba(8, 14, 20, .92); z-index: 1500;
+  display: flex; align-items: center; justify-content: center; cursor: zoom-out; padding: 18px; }
+#imgZoom img { max-width: 100%; max-height: 100%; border-radius: 8px; }

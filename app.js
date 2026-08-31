@@ -1950,6 +1950,23 @@
 
   setInterval(checkVersion, 5 * 60 * 1000);
 
+  // ---------- Anonimna statistika poseta (GoatCounter — bez kolačića) ----------
+  // Broji samo posete i koji se delovi aplikacije koriste; nikakvi lični podaci ni napredak.
+  // Učitava se ISKLJUČIVO na javnoj adresi (nikad lokalno ni sa file://) i poštuje "Do Not Track".
+  if (location.protocol === 'https:' && location.hostname !== 'localhost' && navigator.doNotTrack !== '1') {
+    window.goatcounter = { no_onload: true };
+    const gs = document.createElement('script');
+    gs.async = true;
+    gs.src = 'https://gc.zgo.at/count.js';
+    gs.dataset.goatcounter = 'https://vozacki.goatcounter.com/count';
+    gs.addEventListener('load', () => {
+      const broji = () => { try { window.goatcounter.count({ path: '/' + (curHash || '#/') }); } catch (e) { /* statistika nije presudna */ } };
+      broji();
+      window.addEventListener('hashchange', broji);
+    });
+    document.head.appendChild(gs);
+  }
+
   // ---------- Nagoveštaj rada bez interneta ----------
   {
     const strip = el('offlineStrip');
@@ -1997,6 +2014,7 @@
   applyScript();
   applyTheme();
   applyFont();
+  if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => { /* nije podržano — u redu */ });
   curHash = FILE_MODE ? '#/' : (location.hash || '#/');
   try { routeTo(curHash); } catch (err) { try { renderHome(); } catch (e2) { /* errStrip će prikazati */ } }
   initBackup();
