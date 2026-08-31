@@ -2067,9 +2067,9 @@
   // Google forma, otvorena sa VEĆ POPUNJENIM tehničkim podacima — korisniku ostaje samo opis.
   // PODEŠAVANJE (jedino mesto): kad stigne "unapred popunjen link" forme, upiši adresu i imena polja.
   const PRIJAVA = {
-    url: '',            // npr. 'https://docs.google.com/forms/d/e/XXXX/viewform'
-    poljeOpis: '',      // npr. 'entry.123456789'  — polje "Opis greške ili predloga"
-    poljeKontekst: '',  // npr. 'entry.987654321'  — polje "Tehnički podaci (ne diraj)"
+    url: 'https://docs.google.com/forms/d/e/1FAIpQLSdgpVGqDeK5JvBKlLJc-zA7skfsQca985UC4NMZ548WMnS07Q/viewform',
+    poljeOpis: 'entry.506680323',      // "Opis greške ili predloga"
+    poljeKontekst: 'entry.1474170296', // "Tehnički podaci (ne diraj)"
   };
   const prijavaRadi = () => !!(PRIJAVA.url && PRIJAVA.poljeKontekst);
 
