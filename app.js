@@ -124,6 +124,12 @@
     iosHint: { l: '📲 Dodaj vežbaonicu na početni ekran: dugme <b>Deli</b> (kvadrat sa strelicom) → <b>Dodaj na početni ekran</b>. Radi i bez interneta.', c: '📲 Додај вежбаоницу на почетни екран: дугме <b>Дели</b> (квадрат са стрелицом) → <b>Додај на почетни екран</b>. Ради и без интернета.' },
     installBtn: { l: '📲 Instaliraj kao aplikaciju', c: '📲 Инсталирај као апликацију' },
     linkCopied: { l: 'kopirano ✓', c: 'копирано ✓' },
+    offline: { l: 'Bez interneta — vežbanje radi i dalje, sve je sačuvano na uređaju.', c: 'Без интернета — вежбање ради и даље, све је сачувано на уређају.' },
+    streakDani: { l: 'dan učenja zaredom', c: 'дан учења заредом' },
+    examDateLabel: { l: 'Datum ispita (za odbrojavanje):', c: 'Датум испита (за одбројавање):' },
+    examIn: { l: 'do ispita', c: 'до испита' },
+    examDays: { l: 'dana', c: 'дана' },
+    examPlan: { l: 'predlog tempa: ~# novih pitanja dnevno', c: 'предлог темпа: ~# нових питања дневно' },
     qNumTip2: { l: 'Klik: kopiraj adresu ovog pitanja', c: 'Клик: копирај адресу овог питања' },
     bazaProverena: { l: 'Baza: zvanična eUprava, proverena 29.08.2026.', c: 'База: званична еУправа, проверена 29.08.2026.' },
     imgAlt: { l: 'Slika uz pitanje — saobraćajna situacija ili znak; pitanje se odnosi na ono što je na slici.', c: 'Слика уз питање — саобраћајна ситуација или знак; питање се односи на оно што је на слици.' },
@@ -316,6 +322,9 @@
       guide: obj.guide === 1 ? 1 : 0,
       noUpd: obj.noUpd === 1 ? 1 : 0,
       iosSeen: obj.iosSeen === 1 ? 1 : 0,
+      streakD: typeof obj.streakD === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(obj.streakD) ? obj.streakD : null,
+      streakN: nInt(obj.streakN, 0, 10000, 0),
+      examDate: typeof obj.examDate === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(obj.examDate) ? obj.examDate : null,
       updSeen: nInt(obj.updSeen, 0, 1e6, 0),
       updAt: nNum(obj.updAt, 0, maxTs(), 0),
     };
@@ -366,6 +375,12 @@
     const today = localDay();
     if (!S.day || S.day.d !== today) S.day = { d: today, n: 0, ok: 0 };
     S.day.n++; if (ok) S.day.ok++;
+    if (S.streakD !== today) {
+      const juce = new Date(); juce.setDate(juce.getDate() - 1);
+      const juceStr = juce.getFullYear() + '-' + String(juce.getMonth() + 1).padStart(2, '0') + '-' + String(juce.getDate()).padStart(2, '0');
+      S.streakN = S.streakD === juceStr ? S.streakN + 1 : 1;
+      S.streakD = today;
+    }
     save();
   }
   const inQueue = (id) => { const r = S.q[id]; return r && r.w > 0 && r.streak < 3; };
@@ -1483,6 +1498,22 @@
     document.addEventListener('keydown', onKey);
     show();
   }
+  function homeExtras() {
+    const delovi = [];
+    if (S.streakD === localDay() && S.streakN >= 2) delovi.push('🔥 ' + S.streakN + '. ' + L('streakDani'));
+    if (S.examDate) {
+      const danas = new Date(); danas.setHours(0, 0, 0, 0);
+      const ispit = new Date(S.examDate + 'T00:00:00');
+      const dana = Math.round((ispit - danas) / 86400000);
+      if (dana >= 0) {
+        delovi.push('📅 ' + L('examIn') + ': ' + dana + ' ' + L('examDays'));
+        const neodg = Q.filter((q) => !S.q[q.id] || !S.q[q.id].a).length;
+        if (dana > 0 && neodg > 0) delovi.push(L('examPlan').replace('#', Math.ceil(neodg / dana)));
+      }
+    }
+    return delovi.length ? '<div class="homeExtras">' + delovi.join(' &nbsp;·&nbsp; ') + '</div>' : '';
+  }
+
   function renderHome() {
     current = { redraw: renderHome };
     setHash('#/');
@@ -1500,7 +1531,7 @@
     const today = localDay();
     const dayLine = S.day && S.day.d === today && S.day.n > 0
       ? ` · 📅 ${L('todayLbl')}: <b>${S.day.n}</b> (${L('okShort')} ${S.day.ok})` : '';
-    el('homeSummary').innerHTML = `<b>${answeredCnt}</b> / ${Q.length} ${L('answered')} · <span title="${escapeHtml(L('queueTip'))}" style="cursor:help"><b>${ready.length}</b> ${L('ready')} + ${waiting.length} ${L('waiting')}</span> · 🔖 ${mk}${dayLine}${lastChip}`;
+    el('homeSummary').innerHTML = `<b>${answeredCnt}</b> / ${Q.length} ${L('answered')} · <span title="${escapeHtml(L('queueTip'))}" style="cursor:help"><b>${ready.length}</b> ${L('ready')} + ${waiting.length} ${L('waiting')}</span> · 🔖 ${mk}${dayLine}${lastChip}` + homeExtras();
     const bls = el('btnLastSec');
     if (bls) bls.addEventListener('click', () => {
       const key = S.lastSec;
@@ -1667,6 +1698,8 @@
         <button class="linklike danger" id="btnReset">${L('reset')}</button>
         <input type="file" id="fileImport" accept=".json" style="display:none">
       </div>
+      <div style="margin-top:10px;font-size:.86rem"><label>${L('examDateLabel')}
+        <input type="date" id="examDate" value="${S.examDate || ''}" style="margin-left:6px"></label></div>
       <div class="mut" style="margin-top:10px;font-size:.82rem">${L('bazaProverena')} ·
         <a href="https://github.com/MilanMilojevic/vozacki-a/issues" target="_blank" rel="noopener">${L('feedback')}</a></div>`;
     renderBackupLine();
@@ -1680,6 +1713,11 @@
     });
     el('btnCheckUpd').addEventListener('click', () => { S.noUpd = 0; save(); proveriRepo(true); });
     el('btnTourReplay').addEventListener('click', tourStart);
+    el('examDate').addEventListener('change', () => {
+      const v = el('examDate').value;
+      S.examDate = /^\d{4}-\d{2}-\d{2}$/.test(v) ? v : null;
+      save(); renderHome();
+    });
     if (!S.tour && !window.__tourRan) {
       window.__tourRan = 1;
       setTimeout(() => { if (el('view-home').classList.contains('active')) tourStart(); }, 600);
@@ -1911,6 +1949,18 @@
   mozdaProveriRepo();
 
   setInterval(checkVersion, 5 * 60 * 1000);
+
+  // ---------- Nagoveštaj rada bez interneta ----------
+  {
+    const strip = el('offlineStrip');
+    if (strip) {
+      strip.textContent = L('offline');
+      const osveziStrip = () => { strip.hidden = navigator.onLine !== false; };
+      window.addEventListener('online', osveziStrip);
+      window.addEventListener('offline', osveziStrip);
+      osveziStrip();
+    }
+  }
 
   // ---------- Ponuda instalacije ----------
   // Android/Chromium: uhvati ponudu pregledača i prikaži diskretno dugme u alatima (van toka učenja).

@@ -68,8 +68,8 @@ main { max-width: 880px; margin: 0 auto; padding: 16px 12px 60px; }
 .catRow { display: flex; align-items: center; gap: 6px; margin: 7px 0; }
 .catMain { display: flex; align-items: center; gap: 10px; flex: 1; background: none; border: none; padding: 2px 0; font: inherit; color: inherit; text-align: left; cursor: pointer; }
 .catMain:hover .catName { color: var(--blue); }
-.catChevBtn, .catChevSpacer { flex: 0 0 22px; width: 22px; box-sizing: border-box; }
-.catChevBtn { background: none; border: none; color: var(--mut); font-size: .8rem; padding: 4px 3px; border-radius: 6px; cursor: pointer; line-height: 1; text-align: center; }
+.catChevBtn, .catChevSpacer { flex: 0 0 26px; width: 26px; box-sizing: border-box; }
+.catChevBtn { background: none; border: none; color: var(--mut); font-size: .8rem; padding: 8px 3px; border-radius: 6px; cursor: pointer; line-height: 1; text-align: center; min-height: 26px; }
 .catChevBtn:hover { background: var(--optHover); color: var(--blue); }
 .catName { flex: 0 0 46%; font-size: .9rem; }
 .catBar { flex: 1; height: 14px; background: var(--bar); border-radius: 7px; overflow: hidden; position: relative; }
@@ -198,7 +198,8 @@ button.histBtn:hover { background: var(--optHover); }
 .lplus { color: var(--mut); font-weight: 800; font-size: 1.1rem; }
 .mut { color: var(--mut); }
 
-.qNum { color: #94a3b8; font-size: .8rem; cursor: help; border-bottom: 1px dotted #cbd5e1; }
+.qNum { color: var(--mut); font-size: .8rem; cursor: pointer; border-bottom: 1px dotted var(--mut);
+  display: inline-block; padding: 4px 2px; margin: -4px -2px; }
 .bcLink { color: var(--mut); text-decoration: none; border-bottom: 1px dotted #b6c2d0; }
 .bcLink:hover { color: var(--blue); border-bottom-color: var(--blue); }
 .jumpBox { display: flex; gap: 5px; align-items: center; }
@@ -315,3 +316,11 @@ body.dark .linklike.danger { color: #ff8a80; }
   padding: 12px 14px; display: flex; gap: 10px; align-items: flex-start; font-size: .92rem;
   box-shadow: 0 8px 30px rgba(0,0,0,.25); }
 #iosHint button { flex: 0 0 auto; }
+
+/* Pregled na početnoj: niz i odbrojavanje */
+.homeExtras { margin-top: 6px; color: var(--mut); font-size: .92rem; }
+
+/* Nagoveštaj rada bez interneta */
+#offlineStrip { background: var(--mark, #fff3d6); color: var(--ink, #1c2733); border-bottom: 1px solid var(--line);
+  padding: 8px 14px; font-size: .9rem; text-align: center; }
+body.dark #offlineStrip { background: #3d3420; color: #e8e0cc; }
