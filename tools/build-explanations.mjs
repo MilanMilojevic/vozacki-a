@@ -205,9 +205,13 @@ CARDS['znakovi-porodice'] = {
     <b>PRESTANAK ZABRANE</b><span>bela podloga + kose crte preko znaka = ograničenje više ne važi</span>
   </div>
   <div class="signCell">
-    <svg viewBox="0 0 110 110"><rect x="4" y="18" width="102" height="74" rx="8" fill="#2c6aa0"/>
-      <path d="M22 76 L36 34 L50 76 M60 34 L60 76 M60 34 L88 34 M60 55 L82 55" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round"/></svg>
-    <b>AUTOPUT / MOTOPUT</b><span>početak — plava tabla; kraj — ista tabla precrtana crvenom crtom</span>
+    <svg viewBox="0 0 220 110">
+      <rect x="4" y="14" width="100" height="82" rx="8" fill="#1e8a3c"/>
+      <path d="M34 88 L44 40 M74 88 L64 40 M24 62 L84 62" stroke="#fff" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <rect x="116" y="14" width="100" height="82" rx="8" fill="#2c6aa0"/>
+      <path d="M140 74 L140 56 Q140 42 166 42 Q192 42 192 56 L192 74 Z" fill="#fff"/>
+      <circle cx="150" cy="72" r="6" fill="#2c6aa0"/><circle cx="182" cy="72" r="6" fill="#2c6aa0"/></svg>
+    <b>AUTOPUT / MOTOPUT</b><span>autoput — <b>ZELENA</b> tabla (dve trake i nadvožnjak); motoput — <b>PLAVA</b> tabla (automobil spreda). Kraj: ista tabla precrtana crvenom trakom</span>
   </div>
 </div>
 <p class="mut" style="text-align:center">Zabrane i obaveze su zajedno jedna zakonska porodica — znakovi IZRIČITIH NAREDBI (ZOBS čl. 135); porodice su dakle tri: opasnosti, izričite naredbe, obaveštenja.</p>
