@@ -107,6 +107,24 @@
     guideSub: { l: 'za one koji kreću iz početka; ako već imaš predznanje, slobodno preskoči', c: 'за оне који крећу из почетка; ако већ имаш предзнање, слободно прескочи' },
     guideOpen: { l: 'Prikaži', c: 'Прикажи' },
     feedback: { l: 'Prijavi grešku ili predlog', c: 'Пријави грешку или предлог' },
+    trustTitle: { l: '🛡️ Zašto verovati ovoj vežbaonici', c: '🛡️ Зашто веровати овој вежбаоници' },
+    trustBody: { l: `<ul class="trustList">
+      <li><b>Baza je zvanična.</b> Svih 1327 pitanja, odgovora i slika dolazi sa eUprava servisa za kandidate (MUP). Poslednja provera: <b>29. 8. 2026.</b> — nula izmena.</li>
+      <li><b>Simulacija je merena, ne "po osećaju".</b> Sastav testa je upoređen sa <b>šest zvaničnih izvlačenja</b> pravog ispita i identičan je do poslednjeg poena (41 pitanje, 98 poena, ista matrica oblasti).</li>
+      <li><b>Objašnjenja su pisana ručno</b>, uz doslovnu proveru ZOBS-a i Pravilnika, sa brojem člana — i nezavisno recenzirana. Tamo gde se ispitna baza razilazi sa važećim zakonom, to otvoreno piše.</li>
+      <li><b>Kôd je javan.</b> Sve što aplikacija radi može da se proveri: <a href="https://github.com/MilanMilojevic/vozacki-a" target="_blank" rel="noopener">github.com/MilanMilojevic/vozacki-a</a>.</li>
+      <li><b>Privatnost:</b> bez naloga, bez reklama; napredak ostaje samo na tvom uređaju. Meri se jedino anoniman broj poseta (bez kolačića; poštuje se „Do Not Track").</li>
+    </ul>`, c: `<ul class="trustList">
+      <li><b>База је званична.</b> Свих 1327 питања, одговора и слика долази са еУправа сервиса за кандидате (МУП). Последња провера: <b>29. 8. 2026.</b> — нула измена.</li>
+      <li><b>Симулација је мерена, не „по осећају".</b> Састав теста је упоређен са <b>шест званичних извлачења</b> правог испита и идентичан је до последњег поена (41 питање, 98 поена, иста матрица области).</li>
+      <li><b>Објашњења су писана ручно</b>, уз дословну проверу ЗОБС-а и Правилника, са бројем члана — и независно рецензирана. Тамо где се испитна база разилази са важећим законом, то отворено пише.</li>
+      <li><b>Кôд је јаван.</b> Све што апликација ради може да се провери: <a href="https://github.com/MilanMilojevic/vozacki-a" target="_blank" rel="noopener">github.com/MilanMilojevic/vozacki-a</a>.</li>
+      <li><b>Приватност:</b> без налога, без реклама; напредак остаје само на твом уређају. Мери се једино анониман број посета (без колачића; поштује се „Do Not Track").</li>
+    </ul>` },
+    iosHint: { l: '📲 Dodaj vežbaonicu na početni ekran: dugme <b>Deli</b> (kvadrat sa strelicom) → <b>Dodaj na početni ekran</b>. Radi i bez interneta.', c: '📲 Додај вежбаоницу на почетни екран: дугме <b>Дели</b> (квадрат са стрелицом) → <b>Додај на почетни екран</b>. Ради и без интернета.' },
+    installBtn: { l: '📲 Instaliraj kao aplikaciju', c: '📲 Инсталирај као апликацију' },
+    linkCopied: { l: 'kopirano ✓', c: 'копирано ✓' },
+    qNumTip2: { l: 'Klik: kopiraj adresu ovog pitanja', c: 'Клик: копирај адресу овог питања' },
     bazaProverena: { l: 'Baza: zvanična eUprava, proverena 29.08.2026.', c: 'База: званична еУправа, проверена 29.08.2026.' },
     imgAlt: { l: 'Slika uz pitanje — saobraćajna situacija ili znak; pitanje se odnosi na ono što je na slici.', c: 'Слика уз питање — саобраћајна ситуација или знак; питање се односи на оно што је на слици.' },
     grp1: { l: '1 · Osnovni pojmovi', c: '1 · Основни појмови' },
@@ -297,6 +315,7 @@
       tour: obj.tour === 1 ? 1 : 0,
       guide: obj.guide === 1 ? 1 : 0,
       noUpd: obj.noUpd === 1 ? 1 : 0,
+      iosSeen: obj.iosSeen === 1 ? 1 : 0,
       updSeen: nInt(obj.updSeen, 0, 1e6, 0),
       updAt: nNum(obj.updAt, 0, maxTs(), 0),
     };
@@ -391,6 +410,11 @@
     if (h === '#/lista/marked') return browseSet('marked');
     if (h === '#/stats') return renderStats();
     if (h === '#/uci') return startLearn();
+    if (h.startsWith('#/p/')) {
+      const qid = parseInt(h.slice(4), 10);
+      if (byId.has(qid)) return startList([qid], () => '#' + qid, null, 'filter', { origin: () => renderHome() });
+      return goHomeReplace();
+    }
     if (h.startsWith('#/pregled/')) {
       const i = parseInt(h.slice(10), 10);
       if (S.sims[i]) return renderSimReview(S.sims[i], false);
@@ -450,7 +474,7 @@
       ? ` &nbsp;·&nbsp; ${S.q[q.id].a}× ${L('seenTimes')}${S.q[q.id].w ? `, ${S.q[q.id].w}× ${L('wrongTimes')}` : ''} (${relTime(S.q[q.id].last)})`
       : '';
     meta.innerHTML = `<span><a href="#" class="bcLink" data-bc="c${q.cat}">${escapeHtml(catOf(q))}</a> › <a href="#" class="bcLink" data-bc="s${q.sub}">${escapeHtml(subOf(q))}</a></span>
-      <span><span class="qNum" title="${escapeHtml(L('qNumTip'))}">#${q.id}</span> · ${q.pts} ${L('points')}${hist}</span>`;
+      <span><span class="qNum" data-qid="${q.id}" title="${escapeHtml(FILE_MODE ? L('qNumTip') : L('qNumTip2'))}">#${q.id}</span> · ${q.pts} ${L('points')}${hist}</span>`;
     meta.querySelectorAll('.bcLink').forEach((a) => a.addEventListener('click', (e) => { e.preventDefault(); browse(a.dataset.bc); }));
     c.appendChild(meta);
 
@@ -1565,6 +1589,16 @@
       sh.querySelectorAll('.histBtn').forEach((b) => b.addEventListener('click', () => renderSimReview(S.sims[+b.dataset.sim], false)));
     }
 
+    const tc = el('trustCard');
+    if (tc) {
+      tc.innerHTML = `<div><button class="linklike explCardBtn" style="font-size:1.05rem;font-weight:600">${L('trustTitle')}</button><div class="explCard" style="display:none">${L('trustBody')}</div></div>`;
+      const tb = tc.querySelector('.explCardBtn');
+      tb.addEventListener('click', () => {
+        const cd = tb.nextElementSibling;
+        cd.style.display = cd.style.display === 'none' ? '' : 'none';
+      });
+    }
+
     const fq = el('faqCard');
     if (EX.cards && EX.cards.faq) {
       fq.style.display = '';
@@ -1627,6 +1661,7 @@
       <div class="qActions" style="margin-top:8px">
         <button class="secondary" id="btnExport">${L('export')}</button>
         <button class="secondary" id="btnImport">${L('import')}</button>
+        <button class="secondary" id="btnInstall" style="display:none">${L('installBtn')}</button>
         <button class="linklike" id="btnCheckUpd">${L('updRepoCheck')}</button>
         <button class="linklike" id="btnTourReplay">${L('tourReplay')}</button>
         <button class="linklike danger" id="btnReset">${L('reset')}</button>
@@ -1635,6 +1670,14 @@
       <div class="mut" style="margin-top:10px;font-size:.82rem">${L('bazaProverena')} ·
         <a href="https://github.com/MilanMilojevic/vozacki-a/issues" target="_blank" rel="noopener">${L('feedback')}</a></div>`;
     renderBackupLine();
+    if (installEvt) { const bi = el('btnInstall'); if (bi) bi.style.display = ''; }
+    el('btnInstall').addEventListener('click', async () => {
+      if (!installEvt) return;
+      installEvt.prompt();
+      await installEvt.userChoice.catch(() => {});
+      installEvt = null;
+      el('btnInstall').style.display = 'none';
+    });
     el('btnCheckUpd').addEventListener('click', () => { S.noUpd = 0; save(); proveriRepo(true); });
     el('btnTourReplay').addEventListener('click', tourStart);
     if (!S.tour && !window.__tourRan) {
@@ -1704,6 +1747,19 @@
   bindNav(document);
   el('btnFinishSim').addEventListener('click', () => finishSim(false));
   el('btnSimReport').addEventListener('click', () => { if (sim) (sim.showReport ? renderSimQ() : renderSimReport()); });
+
+  // Klik na kôd pitanja (#9557) kopira adresu tog pitanja — za deljenje u porukama/grupama.
+  document.addEventListener('click', (ev) => {
+    const qn = ev.target.closest && ev.target.closest('.qNum[data-qid]');
+    if (!qn || FILE_MODE) return;
+    const adresa = location.origin + location.pathname + '#/p/' + qn.dataset.qid;
+    const potvrdi = () => {
+      const staro = qn.textContent;
+      qn.textContent = L('linkCopied');
+      setTimeout(() => { qn.textContent = staro; }, 1200);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(adresa).then(potvrdi).catch(() => {});
+  });
 
   // Klik na sliku pitanja otvara uvećan prikaz preko celog ekrana; klik ili Escape zatvara.
   document.addEventListener('click', (ev) => {
@@ -1856,6 +1912,29 @@
 
   setInterval(checkVersion, 5 * 60 * 1000);
 
+  // ---------- Ponuda instalacije ----------
+  // Android/Chromium: uhvati ponudu pregledača i prikaži diskretno dugme u alatima (van toka učenja).
+  // iOS Safari: nema automatske ponude — jednokratni podsetnik kako se dodaje na početni ekran.
+  let installEvt = null;
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    installEvt = e;
+    const b = el('btnInstall');
+    if (b) b.style.display = '';
+  });
+  const jeStandalone = () => window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
+  function renderInstallHint() {
+    if (FILE_MODE || jeStandalone() || S.iosSeen) return;
+    const jeIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
+    if (!jeIOS) return;
+    const strip = document.createElement('div');
+    strip.id = 'iosHint';
+    strip.innerHTML = `<span>${L('iosHint')}</span><button class="linklike" id="iosHintX" aria-label="Zatvori">✕</button>`;
+    document.body.appendChild(strip);
+    el('iosHintX').addEventListener('click', () => { S.iosSeen = 1; save(); strip.remove(); });
+  }
+  renderInstallHint();
+
   // ---------- Instalacija kao aplikacija (PWA) ----------
   // Service worker daje rad bez interneta i mogućnost "Dodaj na početni ekran".
   // updateViaCache: 'none' — worker i version.js se uvek proveravaju sveži, da
@@ -1871,4 +1950,16 @@
   curHash = FILE_MODE ? '#/' : (location.hash || '#/');
   try { routeTo(curHash); } catch (err) { try { renderHome(); } catch (e2) { /* errStrip će prikazati */ } }
   initBackup();
+
+  // ---------- Razvojni prozor (SAMO localhost — za automatske provere bodovanja) ----------
+  if (location.hostname === 'localhost') {
+    window.__dev = {
+      get S() { return S; },
+      get sim() { return sim; },
+      normalizeState,
+      pocetakDanaZa,
+      record,
+      inQueue,
+    };
+  }
 })();

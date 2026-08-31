@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://milanmilojevic.github.io/vozacki-a/sitemap.xml

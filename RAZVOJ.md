@@ -124,6 +124,11 @@ cd tools && node bump-version.mjs
 
 ## Провера пре објављивања измене
 
+За сваку измену која дира УЧЕЊЕ, РЕД ПОНАВЉАЊА или СИМУЛАЦИЈУ обавезно и
+аутоматска провера бодовања: отвори http://localhost:8137, у конзоли налепи садржај
+`tools/provera-bodovanja.js` па позови `proveraBodovanja2()` — свих 11 ставки мора PASS
+(укључујући целу симулацију 41/41 → 98/98). Ради на привременом стању и врати твој напредак.
+
 ```bash
 node -e "new Function(require('fs').readFileSync('app.js','utf8'))"   # синтакса
 cd tools && node build-explanations.mjs                               # билд + скенер писма
