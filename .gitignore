@@ -27,3 +27,5 @@ kredencijali*
 *.env
 .env.*
 secrets*
+tools/q-dump.txt
+tools/*-dump.txt
