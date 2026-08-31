@@ -1,1 +1,1 @@
-self.APP_V = 58;
+self.APP_V = 59;

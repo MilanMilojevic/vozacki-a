@@ -116,7 +116,7 @@ CARDS['zamke-odgovori'] = {
 <tr><td>Kazneni poeni</td><td><b>10 poena</b></td><td>8×</td></tr>
 <tr><td>Rokovi</td><td><b>24 sata/časa</b></td><td>8×</td></tr>
 </table>
-<p><b>Večiti tekst-mamci</b> (nikad tačni u bazi): "potvrdu pravca kretanja posle prolaska raskrsnice" (11× — žmigavac se isključuje kad završiš radnju, ne služi za "potvrdu pravca") · "put sa jednosmernim saobraćajem" kao opis autoputa/motoputa (10×) · "laki tricikl" (9×) · "imate prednost u odnosu na oba vozila" (5×).</p>
+<p><b>Večiti tekst-mamci</b> (nikad tačni u bazi): "potvrdu pravca kretanja posle prolaska raskrsnice" — mamac SAMO kod pitanja o POKAZIVAČIMA PRAVCA (11×: žmigavac se isključuje kad završiš radnju). Pažnja: znak obaveštenja „Potvrda pravca" POSTOJI — kod pitanja #9176 to je tačan odgovor · "put sa jednosmernim saobraćajem" kao opis autoputa/motoputa (10×) · "laki tricikl" (9×) · "imate prednost u odnosu na oba vozila" (5×).</p>
 <p class="mut"><b>Važno:</b> ovo su tendencije za proveru intuicije, NE pravila za slepo zaokruživanje — izuzeci postoje ("uz povećanu opreznost" je 2 puta tačno!). Prvo znanje, pa tek onda ovaj filter.</p>`,
 };
 
@@ -377,7 +377,7 @@ CARDS['oznake-kolovoz'] = {
   <div class="signCell">
     <svg viewBox="0 0 120 150">${road(120, 150)}<path d="M10 146 L58 20 M32 146 L80 20 M54 146 L102 20" stroke="#fff" stroke-width="7"/>
       ${carG(30, 120, '#2c6aa0')}<path d="M30 100 Q30 74 78 66" stroke="#2c6aa0" stroke-width="3" fill="none" stroke-dasharray="6 5"/></svg>
-    <b>KOSNIK</b><span>traka se zatvara — pređi u susednu</span>
+    <b>KOSNIK</b><span>zatvaranje ILI otvaranje trake: ako se broj traka ispred SMANJUJE — tvoja se uliva u susednu (pređi); ako se POVEĆAVA — nastaje nova (npr. izlazna)</span>
   </div>
   <div class="signCell">
     <svg viewBox="0 0 120 150">${road(120, 150)}
@@ -543,7 +543,7 @@ CARDS['vozilo-tehnika'] = {
   html: `
 <p><b>U saobraćaju sme samo vozilo koje je:</b> REGISTROVANO (važeća registraciona nalepnica) + TEHNIČKI ISPRAVNO. Registracija važi godinu dana.</p>
 <p><b>Tehnički pregled:</b> redovni — pre izdavanja registracione nalepnice · vozilo mora imati ispravne propisane uređaje (kočnice, upravljač, svetla, pneumatike...).</p>
-<p><b>Pneumatici:</b> na istoj osovini ISTI (dimenzija, vrsta) · propisana dubina šare (motocikl: minimum 1 mm) · zimska oprema kad je propisana.</p>
+<p><b>Pneumatici:</b> na istoj osovini ISTI (dimenzija, vrsta) · dubina šare: dublja od TWI oznake, a bez TWI oznake NAJMANJE 1,6 mm (moped/motocikl) · zimska oprema kad je propisana.</p>
 <p><b>Za motocikl posebno:</b> ogledala, svetla i kočnice na oba točka su bezbednosno kritični — na testu se traži šta je OBAVEZNA oprema.</p>`,
 };
 
@@ -901,7 +901,7 @@ X[10474] = { x: 'Redosled "jačine" pri mimoilaženju na usponu (ko se teže zau
 const naglo = 'Nagla promena načina vožnje (kočenje, usporavanje, menjanje trake) dozvoljena je SAMO za izbegavanje neposredne opasnosti (ZOBS čl. 32) — sve ostalo mora postepeno i predvidivo.';
 X[9574] = { x: naglo };
 X[10456] = { x: naglo };
-const radnja = 'Redosled svake radnje vozilom (ZOBS čl. 32): 1) UVERI SE da možeš bezbedno, 2) DAJ ZNAK pokazivačem, 3) izvrši radnju — znak traje SVE VREME radnje i prestaje čim je završiš. Zato je "potvrda pravca posle raskrsnice" večiti netačan odgovor.';
+const radnja = 'Redosled svake radnje vozilom (ZOBS čl. 32): 1) UVERI SE da možeš bezbedno, 2) DAJ ZNAK pokazivačem, 3) izvrši radnju — znak traje SVE VREME radnje i prestaje čim je završiš. Zato je kod pitanja o pokazivačima "potvrda pravca posle raskrsnice" netačan odgovor — žmigavac tome ne služi (znak obaveštenja s tim imenom postoji, ali to je druga priča).';
 X[9580] = { x: radnja };
 X[9581] = { x: radnja };
 X[9582] = { x: radnja };
