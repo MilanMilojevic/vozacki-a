@@ -95,7 +95,18 @@ main { max-width: 880px; margin: 0 auto; padding: 16px 12px 60px; }
   z-index: 1200; box-shadow: 0 6px 24px rgba(0,0,0,.25); }
 .tourSpot { position: relative; z-index: 1000; box-shadow: 0 0 0 3px var(--blue), 0 0 0 8px rgba(44,106,160,.35) !important; border-radius: 12px; }
 
-.qProgress { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; color: var(--mut); font-size: .9rem; flex-wrap: wrap; gap: 6px; }
+/* Traka iznad pitanja: FIKSNA mreža — naslov (skraćen po potrebi) · brojač · Idi · prečice.
+   Kontrole ostaju na istom mestu bez obzira na dužinu naziva podoblasti. */
+.qProgress { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center;
+  column-gap: 14px; row-gap: 6px; margin-bottom: 10px; color: var(--mut); font-size: .9rem; }
+.qpTitle { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.qpPos { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.qProgress .jumpBox { justify-self: end; }
+.qProgress .kbNote { grid-column: 1 / -1; justify-self: end; }
+@media (max-width: 560px) {
+  .qProgress { grid-template-columns: minmax(0, 1fr) auto; }
+  .qProgress .jumpBox { grid-column: 2; }
+}
 .qMeta { font-size: .85rem; color: var(--mut); margin-bottom: 10px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; }
 .qText { font-size: 1.12rem; font-weight: 600; margin-bottom: 12px; line-height: 1.45; }
 .qImg { display: block; max-width: 100%; border: 1px solid var(--line); border-radius: 8px; padding: 4px; margin: 0 auto 14px; }
@@ -342,3 +353,12 @@ body.dark #offlineStrip { background: #3d3420; color: #e8e0cc; }
   background: var(--chipBg, rgba(44, 106, 160, .12)); border-radius: 999px; padding: 1px 8px;
   margin-left: 6px; white-space: nowrap; vertical-align: 1px; cursor: help; }
 body.dark .subExam { background: rgba(95, 151, 201, .22); color: #9cc3e5; }
+
+/* Prozor za prijavu greške/predloga */
+#fbBox { position: fixed; inset: 0; background: rgba(8, 14, 20, .55); z-index: 1400;
+  display: flex; align-items: center; justify-content: center; padding: 16px; }
+#fbBox .fbCard { background: var(--card); color: var(--ink); border: 1px solid var(--line);
+  border-radius: 12px; padding: 18px 20px; max-width: 560px; width: 100%; box-shadow: 0 12px 40px rgba(0,0,0,.3); }
+#fbBox textarea { padding: 10px 12px; border: 1.5px solid var(--line); border-radius: 10px;
+  font: inherit; background: var(--card); color: var(--ink); resize: vertical; }
+.fbMail { text-decoration: none; display: inline-block; border-radius: 8px; padding: 8px 14px; }

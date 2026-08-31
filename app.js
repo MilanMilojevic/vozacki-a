@@ -107,6 +107,13 @@
     guideSub: { l: 'za one koji kreću iz početka; ako već imaš predznanje, slobodno preskoči', c: 'за оне који крећу из почетка; ако већ имаш предзнање, слободно прескочи' },
     guideOpen: { l: 'Prikaži', c: 'Прикажи' },
     feedback: { l: 'Prijavi grešku ili predlog', c: 'Пријави грешку или предлог' },
+    fbTitle: { l: '✉️ Prijavi grešku ili predlog', c: '✉️ Пријави грешку или предлог' },
+    fbIntro: { l: 'Napiši šta ne valja ili šta bi dodao. Ako je u pitanju konkretno pitanje, ostavi njegov broj (npr. #9948) — najbrže se nađe.', c: 'Напиши шта не ваља или шта би додао. Ако је у питању конкретно питање, остави његов број (нпр. #9948) — најбрже се нађе.' },
+    fbPh: { l: 'Opis greške ili predloga…', c: 'Опис грешке или предлога…' },
+    fbCopy: { l: 'Kopiraj prijavu', c: 'Копирај пријаву' },
+    fbCopied: { l: 'Kopirano — nalepi u poruku i pošalji', c: 'Копирано — налепи у поруку и пошаљи' },
+    fbMail: { l: 'Pošalji e-poštom', c: 'Пошаљи е-поштом' },
+    fbClose: { l: 'Zatvori', c: 'Затвори' },
     trustTitle: { l: '🛡️ Zašto verovati ovoj vežbaonici', c: '🛡️ Зашто веровати овој вежбаоници' },
     trustBody: { l: `<ul class="trustList">
       <li><b>Baza je zvanična.</b> Svih 1327 pitanja, odgovora i slika dolazi sa eUprava servisa za kandidate (MUP). Poslednja provera: <b>29. 8. 2026.</b> — nula izmena.</li>
@@ -487,7 +494,8 @@
 
   // ---------- Traka napretka sa skokom na broj ----------
   function renderProgress(title, pos, max, onJump, onBack) {
-    el('qProgress').innerHTML = `<span>${onBack ? `<a href="#" id="backToList" class="bcLink">‹ ${L('backToList')}</a> &nbsp; ` : ''}${escapeHtml(title)}: <b>${pos}</b> ${L('ofQ')} ${max}</span>
+    el('qProgress').innerHTML = `<span class="qpTitle" title="${escapeHtml(title)}">${onBack ? `<a href="#" id="backToList" class="bcLink">‹ ${L('backToList')}</a> &nbsp; ` : ''}${escapeHtml(title)}</span>
+      <span class="qpPos"><b>${pos}</b> ${L('ofQ')} ${max}</span>
       <span class="jumpBox"><input id="jumpN" type="number" min="1" max="${max}" placeholder="${pos}">
       <button id="jumpGo" class="secondary sBtn">${L('goto')}</button></span>
       <span class="mut kbNote">${L('kbHint')}</span>`;
@@ -1794,7 +1802,7 @@
       <div style="margin-top:10px;font-size:.86rem"><label>${L('examDateLabel')}
         <input type="date" id="examDate" value="${S.examDate || ''}" style="margin-left:6px"></label></div>
       <div class="mut" style="margin-top:10px;font-size:.82rem">${L('bazaProverena')} ·
-        <a href="https://github.com/MilanMilojevic/vozacki-a/issues" target="_blank" rel="noopener">${L('feedback')}</a></div>`;
+        <button class="linklike" id="btnFeedback">${L('feedback')}</button></div>`;
     renderBackupLine();
     if (installEvt) { const bi = el('btnInstall'); if (bi) bi.style.display = ''; }
     el('btnInstall').addEventListener('click', async () => {
@@ -1806,6 +1814,7 @@
     });
     el('btnCheckUpd').addEventListener('click', () => { S.noUpd = 0; save(); proveriRepo(true); });
     el('btnTourReplay').addEventListener('click', tourStart);
+    el('btnFeedback').addEventListener('click', otvoriPrijavu);
     el('examDate').addEventListener('change', () => {
       const v = el('examDate').value;
       S.examDate = /^\d{4}-\d{2}-\d{2}$/.test(v) ? v : null;
@@ -2058,6 +2067,52 @@
       window.addEventListener('hashchange', broji);
     });
     document.head.appendChild(gs);
+  }
+
+  // ---------- Prijava greške/predloga (bez naloga i bez servera) ----------
+  function otvoriPrijavu() {
+    if (document.getElementById('fbBox')) return;
+    const box = document.createElement('div');
+    box.id = 'fbBox';
+    box.setAttribute('role', 'dialog');
+    box.setAttribute('aria-label', L('fbTitle'));
+    box.innerHTML = `<div class="fbCard">
+      <h3 style="margin:0 0 6px">${L('fbTitle')}</h3>
+      <p class="mut" style="font-size:.88rem;margin:0 0 8px">${L('fbIntro')}</p>
+      <textarea id="fbText" rows="5" placeholder="${escapeHtml(L('fbPh'))}" style="width:100%"></textarea>
+      <div class="qActions" style="margin-top:10px">
+        <button class="primary" id="fbCopy">${L('fbCopy')}</button>
+        <a class="secondary fbMail" id="fbMail" href="#">${L('fbMail')}</a>
+        <button class="linklike" id="fbClose">${L('fbClose')}</button>
+      </div>
+      <div class="mut" id="fbStatus" style="margin-top:8px;font-size:.85rem"></div>
+    </div>`;
+    document.body.appendChild(box);
+    const zatvori = () => box.remove();
+    const podaci = () => {
+      const t = el('fbText').value.trim();
+      const kontekst = '\n\n---\nverzija: ' + (window.APP_V || '?') + ' · stranica: ' + (curHash || '#/') +
+        ' · baza: ' + D.generated + ' · pregledač: ' + navigator.userAgent.slice(0, 120);
+      return t ? t + kontekst : '';
+    };
+    el('fbClose').addEventListener('click', zatvori);
+    box.addEventListener('click', (e) => { if (e.target === box) zatvori(); });
+    el('fbCopy').addEventListener('click', async () => {
+      const p = podaci();
+      if (!p) { el('fbText').focus(); return; }
+      try { await navigator.clipboard.writeText(p); el('fbStatus').textContent = L('fbCopied'); }
+      catch (e) { el('fbText').select(); }
+    });
+    el('fbMail').addEventListener('click', (e) => {
+      const p = podaci();
+      if (!p) { e.preventDefault(); el('fbText').focus(); return; }
+      el('fbMail').href = 'mailto:milanmilojevic93@gmail.com?subject=' +
+        encodeURIComponent('Vozacki A — prijava') + '&body=' + encodeURIComponent(p);
+    });
+    setTimeout(() => el('fbText').focus(), 50);
+    document.addEventListener('keydown', function esc(ev) {
+      if (ev.key === 'Escape') { zatvori(); document.removeEventListener('keydown', esc); }
+    });
   }
 
   // ---------- Nagoveštaj rada bez interneta ----------
