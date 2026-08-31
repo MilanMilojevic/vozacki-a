@@ -133,6 +133,15 @@
     planPonavljanja: { l: 'ponavljanja danas: #', c: 'понављања данас: #' },
     planSim: { l: 'predlog: uradi simulaciju danas', c: 'предлог: уради симулацију данас' },
     planSimNedelja: { l: 'poslednja nedelja — po jedna simulacija dnevno', c: 'последња недеља — по једна симулација дневно' },
+    endTitle: { l: 'Kraj spiska — prošao si # &.', c: 'Крај списка — прошао си # &.' },
+    pitanjeJd: { l: 'pitanje', c: 'питање' },
+    pitanjaMn: { l: 'pitanja', c: 'питања' },
+    endWrongBtn: { l: '🔁 Ponovi pogrešna iz ovog spiska (#)', c: '🔁 Понови погрешна из овог списка (#)' },
+    endNextSub: { l: 'Sledeća podoblast: #', c: 'Следећа подобласт: #' },
+    endNextCat: { l: 'Sledeća oblast: #', c: 'Следећа област: #' },
+    endQueue: { l: 'Ponavljanje čeka: # spremno', c: 'Понављање чека: # спремно' },
+    endAllClear: { l: 'Red za ponavljanje je potpuno prazan — sve što si učio je utvrđeno. 🎉', c: 'Ред за понављање је потпуно празан — све што си учио је утврђено. 🎉' },
+    endSimBtn: { l: '🏁 Simulacija ispita', c: '🏁 Симулација испита' },
     qNumTip2: { l: 'Klik: kopiraj adresu ovog pitanja', c: 'Клик: копирај адресу овог питања' },
     bazaProverena: { l: 'Baza: zvanična eUprava, proverena 29.08.2026.', c: 'База: званична еУправа, проверена 29.08.2026.' },
     imgAlt: { l: 'Slika uz pitanje — saobraćajna situacija ili znak; pitanje se odnosi na ono što je na slici.', c: 'Слика уз питање — саобраћајна ситуација или знак; питање се односи на оно што је на слици.' },
@@ -617,7 +626,7 @@
   }
   function stepLearn() {
     if (S.seqPos >= Q.length) {
-      endScreen(`🎉 ${L('learnDone')}`, browseAll);
+      krajSpiska({ ids: Q.map((q) => q.id), titleFn: () => L('learn'), secKey: null, origin: browseAll });
       return;
     }
     const q = Q[S.seqPos];
@@ -635,6 +644,38 @@
   let listMode = null; // {ids, i, titleFn, kind, secKey, origin}
   let runSeq = 0;              // raste sa svakim novim prolazom kroz pitanja
   let lastRecordKey = null;    // "prolaz|pozicija" poslednjeg zabeleženog odgovora
+  // Redosled podoblasti prati redosled pitanja u bazi; vraća sledeću podoblast (ili prvu iz sledeće oblasti).
+  function sledecaSekcija(secKey) {
+    if (!secKey || secKey[0] !== 's') return null;
+    const sada = +secKey.slice(1);
+    const redosled = [];
+    for (const q of Q) if (!redosled.includes(q.sub)) redosled.push(q.sub);
+    const i = redosled.indexOf(sada);
+    if (i < 0 || i + 1 >= redosled.length) return null;
+    const sledeci = redosled[i + 1];
+    const istaOblast = Q.find((q) => q.sub === sada).cat === Q.find((q) => q.sub === sledeci).cat;
+    return { key: 's' + sledeci, ime: subShortName(sledeci), istaOblast };
+  }
+
+  // Bogat kraj spiska: pogrešna iz OVOG spiska → sledeća podoblast → red ponavljanja → simulacija.
+  function krajSpiska(m) {
+    const pogresna = m.ids.filter((id) => inQueue(id) && S.q[id] && S.q[id].w > 0);
+    const dalje = sledecaSekcija(m.secKey || m.chainKey);
+    const spremno = queueSplit().ready.length;
+    const dugmad = [];
+    if (pogresna.length) dugmad.push('<button class="primary" id="bEndWrong">' + L('endWrongBtn').replace('#', pogresna.length) + '</button>');
+    if (dalje) dugmad.push('<button class="' + (pogresna.length ? 'secondary' : 'primary') + '" id="bEndNext">' + (dalje.istaOblast ? L('endNextSub') : L('endNextCat')).replace('#', escapeHtml(dalje.ime)) + ' ›</button>');
+    if (spremno) dugmad.push('<button class="secondary" data-nav="drill">' + L('endQueue').replace('#', spremno) + '</button>');
+    dugmad.push('<button class="secondary" data-nav="sim">' + L('endSimBtn') + '</button>');
+    const br = m.ids.length;
+    const recPitanje = (br % 10 === 1 && br % 100 !== 11) ? L('pitanjeJd') : L('pitanjaMn');
+    endScreen('✅ ' + L('endTitle').replace('#', br).replace('&', recPitanje), m.origin, dugmad.join(''));
+    const bw = el('bEndWrong');
+    if (bw) bw.addEventListener('click', () => startList(pogresna, () => m.titleFn() + ' — 🔁', null, 'filter', { origin: m.origin, chainKey: m.secKey || m.chainKey }));
+    const bn = el('bEndNext');
+    if (bn) bn.addEventListener('click', () => startList(Q.filter((q) => 's' + q.sub === dalje.key).map((q) => q.id), secTitleFn(dalje.key), null, 'section', { secKey: dalje.key, origin: () => browse(dalje.key) }));
+  }
+
   function endScreen(msgHtml, origin, extraHtml) {
     el('qProgress').textContent = '';
     el('qCard').innerHTML = `<p class="qText">${msgHtml}</p>
@@ -656,7 +697,7 @@
     let start = opts.startAt || 0;
     if (start < 0 || start >= ids.length) start = 0;
     runSeq++;
-    listMode = { ids, i: start, titleFn, kind, secKey: opts.secKey || null, origin: opts.origin || null };
+    listMode = { ids, i: start, titleFn, kind, secKey: opts.secKey || null, chainKey: opts.chainKey || null, origin: opts.origin || null };
     current = { redraw: stepList };
     setHash('#/vezba');
     show('question');
@@ -675,12 +716,13 @@
             `<button class="primary" id="btnDrillWaiting">${L('drillWaitingBtn')}</button>`);
           el('btnDrillWaiting').addEventListener('click', () => { runSeq++; listMode = { ...m, ids: waiting, i: 0, kind: 'drill-all' }; stepList(); });
         } else {
-          endScreen(L('drillEmpty'), m.origin);
+          endScreen('🎉 ' + L('endAllClear'), m.origin,
+            '<button class="secondary" data-nav="sim">' + L('endSimBtn') + '</button>');
         }
         return;
       }
       if (m.secKey) { S.secPos[m.secKey] = 0; save(); }
-      endScreen(`✅ ${L('listDone')}`, m.origin);
+      krajSpiska(m);
       return;
     }
     const q = byId.get(m.ids[m.i]);

@@ -333,3 +333,6 @@ body.dark #offlineStrip { background: #3d3420; color: #e8e0cc; }
 #imgZoom { position: fixed; inset: 0; background: rgba(8, 14, 20, .92); z-index: 1500;
   display: flex; align-items: center; justify-content: center; cursor: zoom-out; padding: 18px; }
 #imgZoom img { max-width: 100%; max-height: 100%; border-radius: 8px; }
+
+/* Kraj spiska: dugmad se lepo slažu i na telefonu */
+#qCard .qActions { flex-wrap: wrap; }
