@@ -620,6 +620,167 @@ X[8669] = { x: deca, card: 'kategorije-vozila' };
 for (const id of [8005, 8006, 8007, 8011, 10406]) X[id] = { card: 'kategorije-vozila' };
 
 // kartice zakačene na CELE podoblasti (prikazuju se uz svako pitanje te podoblasti)
+// --- znakovi-opasnosti (Tura 2 revizije pojmovnika; revizija bez primedbi) ---
+CARDS['znakovi-opasnosti'] = {
+  title: 'Znakovi opasnosti (trougao = najava, ne naredba)',
+  html: `
+<p><b>Ključ za slikovna pitanja:</b> znak opasnosti UPOZORAVA unapred, pa je tačan odgovor uvek NAJAVA — počinje sa <b>„nailazak na...", „približavanje...", „blizina...", „udaljenost...", „mesto od koga počinje..."</b>. Ako ponuđeni odgovor zvuči kao naredba („moraju se kretati", „zabranjeno je") ili kao opis izgrađenog objekta („posebno izgrađena staza", „mesto na kome se nalazi...") — to je zamka iz druge porodice znakova.</p>
+<p><b>Oblik i boja:</b> jednakostranični trougao sa vrhom naviše, bela osnova, crveni okvir, crni simboli (Pravilnik čl. 19 i 20). Samo tri znaka opasnosti NISU trougao nego pravougaonik: <b>Andrejin krst</b> (jednostruki i dvostruki) i <b>kosnici</b>. Jedini trougao sa <b>ŽUTOM</b> osnovom je „radovi na putu".</p>
+
+<p style="margin-top:10px"><b>Postavljanje — brojke koje se pitaju (Pravilnik čl. 22):</b></p>
+<table>
+<tr><th>Gde je znak postavljen</th><th>Pravilo</th></tr>
+<tr><td>Po pravilu</td><td>na udaljenosti od <b>150 m do 250 m</b> ispred opasnog mesta</td></tr>
+<tr><td>U naselju, bliže od 150 m</td><td>sme — <b>NE MORA</b> imati dopunsku tablu</td></tr>
+<tr><td>Van naselja, bliže od 150 m ILI dalje od 250 m</td><td><b>MORA</b> imati dopunsku tablu kojom se označava udaljenost do opasnog mesta</td></tr>
+</table>
+<p class="mut">Pamtilica: van naselja svako odstupanje od 150-250 traži tablu; u naselju sme bliže i bez table.</p>
+
+<p style="margin-top:10px"><b>Pruga — pet znakova, jedan sistem:</b></p>
+<!-- SVG: red znakova: trougao sa ogradom (branici), trougao sa lokomotivom (bez branika), trougao sa tramvajem, jednostruki Andrejin krst, dvostruki Andrejin krst, tri kosnika sa 3/2/1 crvenom crtom i upisanim 240/160/80 m -->
+<table>
+<tr><th>Na slici</th><th>Znači</th><th>Zamka — NIJE</th></tr>
+<tr><td>Trougao + <b>OGRADA</b></td><td>ukrštanje sa železničkom prugom <b>SA branicima</b> ili polubranicima</td><td>prelaz bez branika; tramvajska pruga</td></tr>
+<tr><td>Trougao + <b>LOKOMOTIVA</b></td><td>ukrštanje sa železničkom prugom <b>BEZ branika</b> i polubranika</td><td>prelaz sa branicima</td></tr>
+<tr><td>Trougao + <b>TRAMVAJ</b></td><td>ukrštanje puta sa <b>tramvajskom</b> prugom u nivou</td><td>„tramvajska stanica"; železnička pruga</td></tr>
+<tr><td><b>JEDAN</b> Andrejin krst</td><td>pruga sa <b>jednim kolosekom</b></td><td>dva ili više koloseka</td></tr>
+<tr><td><b>DVOSTRUKI</b> Andrejin krst</td><td>pruga sa <b>dva ili više koloseka</b></td><td>jedan kolosek; „prelaz bez branika"</td></tr>
+<tr><td>Kosnik (kose crvene crte)</td><td><b>udaljenost</b> do ukrštanja puta i pruge: <b>3 crte = 240 m, 2 crte = 160 m, 1 crta = 80 m</b></td><td>ponuđenih „280 m" ne postoji — računaj 80 × broj crta</td></tr>
+</table>
+<p class="mut">Iznad kosnika sa tri crte stoji trougao sa ogradom ili lokomotivom (Pravilnik čl. 23) — po NJEMU na pitanju „240 m" znaš da li je prelaz sa branicima ili bez njih.</p>
+
+<p style="margin-top:10px"><b>Raskrsnice — prati debljinu crta:</b> debela uspravna crta = TVOJ put (sa prvenstvom prolaza), tanka crta = sporedni put. Gledaj <b>sa koje strane</b> tanka crta dolazi (leve/desne) i <b>pod kojim uglom</b> (pravi, oštri, tupi) — simbol odgovara stvarnoj situaciji na putu.</p>
+<!-- SVG: red znakova: trougao sa krstom čiji su kraci iste debljine; debela uspravna + tanka poprečna crta koja prolazi skroz; spajanje tanke crte pod pravim uglom sa desne strane; pod oštrim uglom sa leve; pod tupim uglom sa desne -->
+<table>
+<tr><th>Na slici</th><th>Znači</th></tr>
+<tr><td>Krst — <b>sve crte iste debljine</b></td><td>blizina raskrsnice puteva od kojih <b>nijedan</b> nije put sa prvenstvom prolaza</td></tr>
+<tr><td>Tanka crta <b>preseca</b> debelu skroz</td><td>put sa prvenstvom se <b>UKRŠTA</b> sa sporednim putem</td></tr>
+<tr><td>Tanka crta se <b>uliva</b> u debelu</td><td>sporedni put se <b>SPAJA</b> — pod pravim / oštrim / tupim uglom, sa leve ili desne strane</td></tr>
+</table>
+<p class="mut">Zamke su uvek iste: „iste važnosti" i „ukršta se" — prvo prebroj debljine, pa proveri da li tanka crta prolazi skroz ili se samo uliva.</p>
+
+<p style="margin-top:10px"><b>Parovi-zamke: put i teren</b></p>
+<!-- SVG: tri para: izbočina / ulegnuće / izbočina+ulegnuće; prštanje kamenja (točak izbacuje kamenčiće) naspram odrona (kamenje pada niz kosinu); bankina (vozilo propada uz ivicu) -->
+<table>
+<tr><th>Na slici</th><th>Znači</th><th>Zamka — NIJE</th></tr>
+<tr><td>Savijena strelica</td><td>opasna KRIVINA <b>nalevo / nadesno</b> — kako strelica pokazuje</td><td>„smer kojim se vozila moraju kretati" (plavi krug) ni „jednosmerni put"</td></tr>
+<tr><td>Dvostruko izlomljena strelica</td><td>više <b>uzastopnih krivina</b> — odgovor po PRVOJ (nalevo/nadesno)</td><td>obična krivina</td></tr>
+<tr><td>Kosina sa procentom</td><td>opasna <b>NIZBRDICA</b> ili opasan <b>USPON</b> (procenat = nagib puta)</td><td>„tehnička sredstva za usporavanje saobraćaja"</td></tr>
+<tr><td>Ivice puta se skupljaju</td><td><b>SUŽENJE</b> kolovoza: obostrano / samo sa leve / samo sa desne strane</td><td>„radovi na putu" ni „naizmenično uključivanje vozila u jednu traku"</td></tr>
+<tr><td>Čovek sa lopatom, <b>žuta osnova</b></td><td><b>RADOVI</b> na putu</td><td>suženje</td></tr>
+<tr><td>Vozilo sa vijugavim tragovima</td><td>moguća pojava <b>KLIZAVOG</b> kolovoza</td><td>bankina ni obala</td></tr>
+<tr><td>Jedna grba / jedno udubljenje / grba i udubljenje</td><td>neravan kolovoz: <b>IZBOČINA</b> / <b>ULEGNUĆE</b> / <b>„izbočine i ulegnuća"</b> — čitaj sliku doslovno</td><td>međusobno se nude kao zamke — biraj tačno ono što je nacrtano</td></tr>
+<tr><td>Točak izbacuje kamenčiće</td><td>moguća pojava <b>PRŠTANJA</b> kamenja</td><td>odron ni bankina</td></tr>
+<tr><td>Kamenje pada niz kosinu</td><td><b>ODRON</b> kamenja — kosina je na strani sa koje kamenje preti: <b>sa leve ili sa desne</b> strane puta</td><td>prštanje ni bankina</td></tr>
+<tr><td>Vozilo propada uz ivicu kolovoza</td><td>opasna <b>BANKINA</b> uz kolovoz (simbol = strana puta)</td><td>odron ni prštanje</td></tr>
+<tr><td>Vozilo pada u vodu</td><td>put vodi do <b>OBALE</b>, odnosno pruža se u njenoj blizini</td><td>klizav kolovoz ni pokretni most</td></tr>
+<tr><td>Most se podiže</td><td>blizina <b>POKRETNOG MOSTA</b></td><td>obala</td></tr>
+<tr><td>Portal u trouglu</td><td>nailazak na <b>TUNEL</b></td><td>nadvožnjak ni podvožnjak</td></tr>
+</table>
+
+<p style="margin-top:10px"><b>Parovi-zamke: ljudi, životinje, saobraćaj</b></p>
+<!-- SVG: par: trougao sa pešakom na zebri (opasnost — najava prelaza) pored plavog kvadrata sa pešakom na zebri (obaveštenje — mesto prelaza); trojka za dvosmerni saobraćaj: trougao sa dve strelice gore-dole, plava tabla prvenstva na suženju, okrugli znak zabrane stupanja -->
+<table>
+<tr><th>Na slici</th><th>Znači</th><th>Zamka — NIJE</th></tr>
+<tr><td>Pešak na zebri u <b>TROUGLU</b></td><td>NAILAZAK na mesto gde je <b>obeležen pešački prelaz</b></td><td>„mesto na kome se nalazi pešački prelaz" (to je plavi KVADRAT) ni pešačka staza</td></tr>
+<tr><td>Deca u trku</td><td>deo puta gde se često kreću <b>DECA</b> (blizina škole, obdaništa, igrališta)</td><td>„mesto od kojeg počinje zona škole" (to je plava tabla)</td></tr>
+<tr><td>Pešak koji hoda</td><td>deo puta kojim se <b>PEŠACI često kreću</b></td><td>pešačka staza ni obeležen prelaz</td></tr>
+<tr><td>Biciklista</td><td><b>BICIKLISTI</b> se često kreću, odnosno prelaze put</td><td>biciklistička staza ni zabrana saobraćaja za bicikle</td></tr>
+<tr><td>Jelen u skoku</td><td>opasnost zbog prelaska <b>DIVLJAČI</b></td><td>domaće životinje ni „staza za jahanje"</td></tr>
+<tr><td>Krava</td><td><b>DOMAĆE životinje pod nadzorom</b> prelaze preko puta, odnosno kreću se duž puta</td><td>divljač ni „staza za jahanje"</td></tr>
+<tr><td>Dve strelice gore-dole</td><td>mesto od koga <b>POČINJE DVOSMERAN</b> saobraćaj</td><td>„prvenstvo na suženom delu" (plava tabla) ni „zabrana stupanja na suženi deo" (krug)</td></tr>
+<tr><td>Semafor u trouglu</td><td>najava mesta gde je saobraćaj <b>regulisan SEMAFORIMA</b></td><td>prelaz preko pruge sa semaforima ni „pristup vozila reguliše se semaforima"</td></tr>
+<tr><td>Avion</td><td>blizina piste: avioni preleću u <b>NISKOM LETU</b> pri sletanju, odnosno poletanju</td><td>„bočni vetar izazvan letom aviona" ni „blizina aerodroma" (to je obaveštenje)</td></tr>
+<tr><td>Vetrokaz (vreća na stubu)</td><td>učestala pojava jakog <b>BOČNOG VETRA</b> — simbol odgovara smeru vetra</td><td>avioni</td></tr>
+<tr><td>Vozila u nizu, crvena zadnja svetla</td><td>opasnost od <b>STVARANJA KOLONE</b> vozila (zastoj — vozila gledaš otpozadi)</td><td>„moraju se kretati u koloni" ni „zabranjeno kretanje u koloni"</td></tr>
+<tr><td>Kružne strelice u trouglu</td><td>nailazak na raskrsnicu sa <b>KRUŽNIM TOKOM</b></td><td>„obavezan smer obilaska ostrva" (plavi krug) ni zabrana polukružnog okretanja</td></tr>
+<tr><td>Uzvičnik</td><td>opasnost za koju <b>NIJE predviđen poseban znak</b></td><td>radovi ni „ustupi prvenstvo prolaza"</td></tr>
+</table>
+
+<p><b>Taktika:</b> prvo oblik (trougao = upozorenje), pa simbol, pa u odgovorima traži NAJAVU („nailazak", „približavanje"). Kod parova (levo/desno, sa/bez branika, jedan/dva koloseka, izbočina/ulegnuće) tačan odgovor je uvek DOSLOVNO ono što je nacrtano — ne biraj „logičniji", biraj nacrtani.</p>
+`,
+};
+
+// --- znakovi-naredbi (Tura 2 revizije pojmovnika; revizija bez primedbi) ---
+CARDS['znakovi-naredbi'] = {
+  title: 'Znakovi izričitih naredbi — zabrane i obaveze',
+  html: `<p><b>Svako pitanje iz ove podoblasti nosi 3 poena</b>, a 62 od 65 su slike. Dobra vest: ne bubaš 60 znakova napamet — <b>boja i oblik ti unapred kažu vrstu naredbe</b>, a razlika između sličnih znakova je uvek ista sitnica. Nauči parove, ne pojedinačne znakove.</p>
+
+<p><b>Kako se čita znak:</b></p>
+<table>
+<tr><th>Vidiš</th><th>Vrsta</th><th>Poruka</th></tr>
+<tr><td>beli krug, <b>crveni obod</b> (nekad i kose crvene crte)</td><td>zabrana / ograničenje</td><td>šta <b>NE SMEŠ</b></td></tr>
+<tr><td><b>plavi krug</b>, beli simbol</td><td>obaveza</td><td>šta <b>MORAŠ</b></td></tr>
+<tr><td>trougao <b>vrhom nadole</b></td><td>prvenstvo prolaza</td><td>moraš da <b>USTUPIŠ</b> prvenstvo vozilima na putu na koji nailaziš (i šinskom vozilu na pruzi)</td></tr>
+<tr><td>crveni <b>osmougao „STOP"</b></td><td>prvenstvo prolaza</td><td>moraš da <b>ZAUSTAVIŠ VOZILO</b> — PA da ustupiš prvenstvo (i pred prelazom preko pruge)</td></tr>
+</table>
+<!-- SVG: red od cetiri znaka u signRow: 1) beli krug sa crvenim obodom i brojem 40; 2) plavi krug sa belom strelicom nagore; 3) obrnuti trougao sa crvenim rubom, prazan; 4) crveni osmougao sa belim natpisom STOP -->
+<p class="mut">Sve je krug osim tri znaka: trougao (ustupanje), osmougao (STOP) i pravougaonik (obavezan smer za opasan teret) — Pravilnik o saobraćajnoj signalizaciji, čl. 28. <b>Trougao vs STOP:</b> trougao ne traži zaustavljanje, STOP uvek traži. Na slici sa numerisanim znakovima: trougao = „ustupanje prvenstva", osmougao = „obavezno zaustavljanje".</p>
+
+<p><b>Odakle dokle važi naredba</b> — četiri pitanja, četiri kratka odgovora:</p>
+<table>
+<tr><th>Pitanje</th><th>Odgovor</th><th>Mamac</th></tr>
+<tr><td>Od kada važi?</td><td>od <b>MESTA na kome je znak postavljen</b></td><td>„od 150 m", „od trenutka kada si znak uočio"</td></tr>
+<tr><td>Dokle važi?</td><td>do <b>PRVE naredne raskrsnice</b>, odnosno do znaka obaveštenja o prestanku te naredbe</td><td>„do znaka prestanka bez obzira na raskrsnicu" — NE: raskrsnica sama gasi naredbu</td></tr>
+<tr><td>Gde se postavlja?</td><td><b>NEPOSREDNO ispred</b> mesta odakle nastaje obaveza</td><td>„100 m" i „150–250 m ispred" — to je pravilo za znakove OPASNOSTI</td></tr>
+<tr><td>Dopunska tabla „200 m" (samo broj)</td><td>znak je postavljen unapred: naredba važi <b>NA UDALJENOSTI od 200 m</b> od znaka</td><td rowspan="2">isto pravilo kao kod svih dopunskih tabli: <b>samo broj = udaljenost</b> do početka, <b>strelice = dužina</b> važenja</td></tr>
+<tr><td>Dopunska tabla „200 m" sa strelicama</td><td>naredba važi <b>od znaka U DUŽINI od 200 m</b></td></tr>
+</table>
+<!-- SVG: dva ista znaka zabrane (npr. krug 40) jedan pored drugog; ispod levog dopunska tabla samo sa natpisom "200 m", ispod desnog tabla sa dve uspravne strelice i natpisom "200 m" -->
+<p class="mut">Ako naredba važi i posle raskrsnice, znak se iza raskrsnice ponovo postavlja (Pravilnik, čl. 32).</p>
+
+<p><b>MORAJU, SMEJU ili MOGU — plave zamke.</b> Pročitaj glagol u odgovoru i uporedi sa znakom:</p>
+<table>
+<tr><th>Znak</th><th>Znači</th><th>Ne mešaj sa</th></tr>
+<tr><td>plavi krug, <b>jedna</b> strelica</td><td>smer kojim se vozila <b>MORAJU</b> kretati</td><td>„jednosmerni put" i „obaveštenje o jednosmernom putu" su mamci — jednosmerni put je PRAVOUGAONI znak obaveštenja, plavi krug NIKAD</td></tr>
+<tr><td>plavi krug, <b>dva</b> ponuđena smera</td><td>smerovi u kojima se vozila <b>SMEJU</b> kretati</td><td>kad znak nudi izbor — „smeju"; kad ne nudi — „moraju"</td></tr>
+<tr><td>plavi krug, kosa strelica pored ostrva</td><td>kolovoz kojim se vozila <b>MORAJU</b> kretati prilikom obilaženja pešačkih ostrva, ostrva za usmeravanje saobraćaja, odnosno drugih objekata na kolovozu</td><td>strelice na <b>OBE</b> strane = kojim se <b>MOGU</b> kretati (obilaženje sa obe strane — jedini „mogu" u grupi)</td></tr>
+<tr><td>plavi krug, polukružna strelica</td><td><b>OBAVEZNO</b> polukružno okretanje</td><td>crveni krug sa precrtanom polukružnom strelicom = <b>ZABRANJENO</b> polukružno okretanje</td></tr>
+<tr><td><b>broj u plavom krugu</b></td><td><b>najmanja dozvoljena brzina</b> — obavezno kretanje brzinom ne manjom od označene</td><td>broj u <b>crvenom krugu</b> = ograničenje (najviše toliko); broj u plavom <b>KVADRATU</b> = samo preporuka (znak obaveštenja)</td></tr>
+</table>
+<!-- SVG: signRow parovi: plavi krug jedna strelica naspram plavog kruga sa strelicama pravo+desno; plavi krug kosa strelica nadole-levo naspram plavog kruga sa dve kose strelice na obe strane; plavi krug "30" naspram crvenog kruga "30" naspram plavog kvadrata "30" -->
+
+<p><b>Zabrane koje liče jedna na drugu:</b></p>
+<table>
+<tr><th>Par</th><th>Kako ih razdvojiš</th></tr>
+<tr><td><b>prazan krug</b> vs „cigla"</td><td>beli krug sa crvenim obodom <b>bez simbola</b> = zabranjen saobraćaj za <b>SVA vozila</b> (znak „zabrana saobraćaja za vozila u oba smera"); drugi znak iz para = zabranjen saobraćaj vozilima <b>iz smera prema kome je okrenuto lice znaka</b> („u jednom smeru" — s druge strane se prolazi)</td></tr>
+<tr><td>jedna kosa crta vs dve ukrštene</td><td>osnova ovih znakova je <b>plava</b> iako su zabrane (Pravilnik, čl. 29): <b>jedna crta = zabranjeno samo PARKIRANJE</b> (zaustaviti se smeš); <b>dve ukrštene crte = zabranjeno I ZAUSTAVLJANJE I PARKIRANJE</b>. Više crta — stroža zabrana. Tačan odgovor uvek počinje „STRANU puta…" — „deo puta" je mamac</td></tr>
+<tr><td>oznaka <b>I</b> vs oznaka <b>II</b></td><td>naizmenično parkiranje: <b>I = zabranjeno NEPARNIM danima</b>, <b>II = zabranjeno PARNIM danima</b>. Pamtilica: I je jedan (neparan broj), II je dva (paran)</td></tr>
+<tr><td>zabrana preticanja: auto vs kamion</td><td>od dva simbola vozila <b>levi je crven</b> (Pravilnik, čl. 29). Crven <b>auto</b> = zabrana preticanja za motorna vozila — ali <b>NE važi za motocikle sa dva točka bez prikolice i mopede</b>; crven <b>kamion</b> = zabrana preticanja za teretna vozila <b>čija najveća dozvoljena masa prelazi 3,5 t</b></td></tr>
+<tr><td>Znakovi sa natpisom STOP</td><td>krug sa crvenim obodom + natpis = naredba da <b>zaustaviš vozilo iz razloga označenog na znaku</b>: policija, naplatno mesto za putarinu, carinarnica — tri znaka, ista rečenica, menja se samo razlog u zagradi</td></tr>
+<tr><td>truba u krugu</td><td>zabrana davanja zvučnih znakova upozorenja — <b>OSIM u slučaju neposredne opasnosti</b></td></tr>
+<tr><td>suženje: krug vs plava tabla</td><td>u krugu <b>crvena strelica pokazuje zabranjen smer</b> (Pravilnik, čl. 29) — tvoj: <b>zabrana STUPANJA na suženi deo</b> dok ne prođu vozila iz suprotnog smera. Plava TABLA sa sličnim strelicama je obaveštenje da <b>TI imaš prvenstvo</b> na suženju. Krug — čekaš; tabla — prolaziš</td></tr>
+<tr><td>broj metara u crvenom krugu</td><td>najmanje <b>ODSTOJANJE</b> između vozila <b>u kretanju</b> — mamci: „rastojanje" i „najveće"</td></tr>
+<tr><td>precrtana strelica levo / desno</td><td>zabranjeno skretanje <b>levo</b>, odnosno <b>desno</b> — odgovor kaže „MESTO na putu", ne deonica</td></tr>
+</table>
+<!-- SVG: signRow parovi: prazan beli krug sa crvenim obodom naspram punog crvenog kruga sa belom vodoravnom crtom; plavi krug crveni obod jedna kosa crta naspram istog sa dve ukrstene crte; dva ista plava znaka sa belim I odnosno II; krug sa dva auta (levi crven) naspram kruga sa dva kamiona (levi crven); krug sa crvenom strelicom nagore i crnom nadole naspram plave table sa belom strelicom nagore i crvenom nadole -->
+
+<p><b>Kome je zabranjeno — životinjski svet vozila.</b> Znak zabranjuje tačno ono što je nacrtano (teretno vozilo, autobus, traktor, zaprežno vozilo, bicikl, ručna kolica, pešak…), ali četiri znaka nose skrivene repove:</p>
+<table>
+<tr><th>Na znaku</th><th>Zabranjeno za</th><th>Zamka</th></tr>
+<tr><td><b>motocikl</b></td><td>motocikle, <b>TEŠKE tricikle i TEŠKE četvorocikle</b></td><td><b>moped</b> na znaku = mopedi, <b>LAKI tricikli i LAKI četvorocikli</b>. Motocikl vuče sve „teško", moped sve „lako"</td></tr>
+<tr><td>samo <b>automobil</b></td><td>znak „zabrana saobraćaja za motorna vozila" — ali <b>NE važi za mopede i motocikle bez prikolice i bez bočnog sedišta</b></td><td>automobil <b>+ motocikl</b> = za <b>SVA motorna vozila</b>, bez izuzetka; automobil <b>+ zaprežno</b> = sva motorna <b>i zaprežna</b></td></tr>
+<tr><td>vozilo <b>sa prikolicom</b></td><td>zabrana vuče priključnog vozila <b>OSIM poluprikolice ili prikolice sa jednom osovinom</b></td><td>postoji i varijanta <b>bez izuzetka</b>: zabranjena vuča bilo kog priključnog vozila — dva slična znaka, dva različita repa</td></tr>
+<tr><td>točak <b>s lancem</b> (plavi krug)</td><td>lanci za sneg na pogonskim točkovima, <b>ako je na kolovozu sneg</b></td><td>obaveza <b>NE važi</b> za motocikle, mopede, tricikle, četvorocikle, radne mašine, traktore i motokultivatore — vozača A kategorije se ne tiče</td></tr>
+<tr><td><b>pešak</b> u crvenom krugu</td><td>zabranjen saobraćaj za pešake</td><td>pešak u <b>PLAVOM</b> krugu = <b>pešačka staza</b> — samo pešaci, svi ostali zabranjeni; <b>konj</b> u plavom = staza za jahače (samo jahači i vodiči životinja)</td></tr>
+<tr><td>opasan teret</td><td>tri zabrane: vozila koja prevoze <b>eksploziv ili lako zapaljive materije</b>; vozila koja prevoze <b>opasne terete</b>; vozila sa materijama koje mogu da <b>zagade vodu</b> (na tom znaku su dve PLAVE linije — voda; Pravilnik, čl. 29)</td><td>jedini <b>PRAVOUGAONIK</b> među naredbama: <b>obavezan smer kretanja za vozila koja prevoze opasan teret</b> — gore simbol tereta, dole obavezan smer</td></tr>
+</table>
+<p class="mut">Znak zabrane za teretna vozila + dopunska tabla sa masom → zabrana važi samo za teretna vozila preko te mase (Pravilnik, čl. 25).</p>
+
+<p><b>Brojevi i kote — gabariti i mase.</b> Gledaj gde stoje strelice, a u odgovoru da li piše „ukupna":</p>
+<table>
+<tr><th>Na znaku</th><th>Zabrana za vozila čija…</th></tr>
+<tr><td>broj (m) i kote <b>levo-desno</b></td><td><b>ŠIRINA</b> prelazi označenu (bez reči „ukupna")</td></tr>
+<tr><td>broj (m) i kote <b>gore-dole</b></td><td><b>ukupna VISINA</b> prelazi označenu</td></tr>
+<tr><td>silueta vozila + broj (m)</td><td><b>ukupna DUŽINA</b> prelazi označenu — važi i za skupove vozila</td></tr>
+<tr><td>broj <b>t</b> na silueti vozila</td><td><b>ukupna MASA</b> prelazi označenu — i za skupove vozila</td></tr>
+<tr><td>broj <b>t</b> na simbolu <b>osovine</b> (točkovi)</td><td><b>OSOVINSKO OPTEREĆENJE</b> veće od označenog</td></tr>
+</table>
+<!-- SVG: signRow pet krugova sa crvenim obodom: kote levo-desno "2m"; kote gore-dole "3,5m"; kamion sa kotama "10m"; silueta kamiona sa natpisom "5t"; osovina sa tockovima i natpisom "8t" -->
+
+<p class="mut"><b>Taktika za slike:</b> prvo boja (crveno = ne smeš, plavo = moraš), pa simbol, pa <b>rep tačnog odgovora</b> — kod ovih pitanja gotovo svi odgovori počinju isto („put, odnosno deo puta na kome je zabranjen saobraćaj…"), a razlika je uvek na kraju rečenice: „osim…", „u kretanju", „stranu puta", „moraju/smeju/mogu".</p>`,
+};
+
 const BYSUB = {
   148: 'prvenstvo-prolaza',   // vozila pod pratnjom i sa pravom prvenstva (56 pitanja)
   136: 'prvenstvo-prolaza',   // prvenstvo prolaza
@@ -739,8 +900,8 @@ BYSUB[134] = 'preticanje';
 // --- Porodice znakova (subs 155-160) + prvenstvo za 166 i 131 ---
 BYSUB[155] = 'znakovi-porodice';
 BYSUB[156] = 'znakovi-porodice';
-BYSUB[157] = 'znakovi-porodice';
-BYSUB[158] = 'znakovi-porodice';
+BYSUB[157] = 'znakovi-opasnosti';
+BYSUB[158] = 'znakovi-naredbi';
 BYSUB[159] = 'znakovi-porodice';
 BYSUB[160] = 'znakovi-porodice';
 BYSUB[166] = 'prvenstvo-prolaza';   // znaci ovlašćenog lica — vrh hijerarhije

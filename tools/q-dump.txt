@@ -1,0 +1,161 @@
+=== qId 9155 (img:true) ===
+T: Saobraćajni znak prikazan na slici označava:
+  [ ] blizinu mesta na kojem se nalazi nadvožnјak na putu
+  [ ] mesto na kome se završava autoput
+  [X] mesto odakle počinјe autoput
+=== qId 9083 (img:true) ===
+T: Saobraćajni znak prikazan na slici označava:
+  [X] mesto na kome se završava autoput
+  [ ] blizinu mesta na kojem se nalazi nadvožnјak na putu
+  [ ] blizinu mesta na kome se put završava
+=== qId 9162 (img:true) ===
+T: Saobraćajni znak prikazan na slici označava:
+  [X] mesto odakle počinјe motoput
+  [ ] mesto odakle počinјe autoput
+  [ ] parkirališta za putnička vozila
+=== qId 10925 (img:true) ===
+T: Saobraćajni znak prikazan na slici označava:
+  [ ] udalјenost do mesta gde počinјe saobraćajna traka kojom se moraju kretati spora vozila
+  [X] približavanјe mestu na autoputu gde se otvara saobraćajna traka
+  [ ] približavanјe mestu na kome se autoput spaja sa drugim autoputem
+=== qId 10926 (img:true) ===
+T: Saobraćajni znak prikazan na slici označava:
+  [ ] početak saobraćajne trake kojom se moraju kretati spora vozila
+  [X] mesto na autoputu gde se otvara saobraćajna traka
+  [ ] mesto na kome se autoput spaja sa drugim autoputem
+=== qId 10928 (img:true) ===
+T: Saobraćajni znak prikazan na slici označava:
+  [X] mesto na autoputu gde se zatvara saobraćajna traka
+  [ ] mesto na kome se završava saobraćajna traka namenјena samo za kretanјe vozila javnog prevoza putnika
+  [ ] mesto na autoputu gde se zatvara zaustavna traka na autoputu
+=== qId 10931 (img:true) ===
+T: Saobraćajni znak prikazan na slici označava:
+  [ ] približavanјe mestu na autoputu gde se otvara saobraćajna traka
+  [X] približavanјe mestu na kome se autoput spaja sa drugim autoputem
+  [ ] približavanјe (nailazak) opasnoj krivini nadesno
+=== qId 11070 (img:true) ===
+T: Saobraćajni znak prikazan na slici označava:
+  [ ] mesto na kome se završava traka kojom se moraju kretati vozila koja se kreću brzinom (km/h) većom od brzine (km/h) označene na znaku
+  [X] mesto na kome se završava traka kojom se moraju kretati vozila koja se kreću brzinom (km/h) manјom od brzine (km/h) označene na znaku
+  [ ] početak saobraćajne trake kojom se moraju kretati vozila koja se kreću brzinom (km/h) manјom od brzine (km/h) označene na znaku
+=== qId 11071 (img:true) ===
+T: Saobraćajni znak prikazan na slici označava:
+  [ ] približavanјe delu puta na kome suženјe kolovoza sa desne strane može da predstavlјa opasnost
+  [X] približavanјe mestu na autoputu gde se zatvara saobraćajna traka
+  [ ] približavanјe mestu na autoputu gde se zatvara zaustavna traka
+=== qId 10886 (img:true) ===
+T: Saobraćajni znak prikazan na slici označava:
+  [ ] mesto na putu odakle prestaje da važi obaveza posedovanјa propisane zimske opreme
+  [ ] mesto na putu odakle počinјe zabrana upotrebe zimskih pneumatika ili lanaca za sneg
+  [X] mesto na putu odakle prestaje da važi obaveza nošenјa lanaca za sneg
+=== qId 10950 (img:true) ===
+T: Saobraćajni znak prikazan na slici označava:
+  [ ] mesto odakle prestaje ograničenјe brzine (km/h)
+  [ ] put, odnosno deo puta na kome prestaje preporuka brzine vozila (km/h) koja je označena na znaku
+  [X] mesto odakle prestaje obaveza kretanјa najmanјe propisanom brzinom (km/h)
+=== qId 10952 (img:true) ===
+T: Saobraćajni znak prikazan na slici označava:
+  [X] mesto odakle prestaje ograničenјe brzine (km/h)
+  [ ] mesto odakle prestaje obaveza kretanјa najmanјe propisanom brzinom (km/h)
+  [ ] put, odnosno deo puta na kome prestaje preporuka brzine vozila (km/h) koja je označena na znaku
+=== qId 10949 (img:true) ===
+T: Saobraćajni znak prikazan na slici označava:
+  [ ] mesto odakle prestaje zabrana preticanјa za teretna vozila čija najveća dozvolјena masa prelazi 3,5 t
+  [X] mesto odakle prestaje zabrana preticanјa za motorna vozila
+  [ ] put, odnosno deo puta na kome je zabranјeno da motorna vozila pretiču druga motorna vozila, osim motocikla sa dva točka bez prikolice i mopeda
+=== qId 10951 (img:true) ===
+T: Saobraćajni znak prikazan na slici označava:
+  [ ] mesto odakle prestaje zabrana preticanјa za motorna vozila
+  [X] mesto odakle prestaje zabrana preticanјa za teretna vozila čija najveća dozvolјena masa prelazi 3,5 t
+  [ ] put, odnosno deo puta na kome je zabranјeno da teretna vozila čija najveća dozvolјena masa prelazi 3,5 t pretiču druga motorna vozila
+=== qId 10885 (img:true) ===
+T: Saobraćajni znak prikazan na slici označava:
+  [ ] put, odnosno deo puta na kome se uređajem ne smeju davati zvučni znakovi upozorenјa, osim u slučaju neposredne opasnosti
+  [X] mesto odakle prestaje zabrana davanјa zvučnih znakova upozorenјa
+  [ ] mesto na kojem se završava odredište od kulturno istorijskog značaja
+=== qId 10953 (img:true) ===
+T: Saobraćajni znak prikazan na slici označava:
+  [ ] mesto na putu odakle prestaju da važe svi saobraćajni znakovi opasnosti koji su postavlјeni na tom putu do tog mesta
+  [ ] mesto na putu odakle prestaju da važe svi saobraćajni znakovi koji su postavlјeni na tom putu do tog mesta
+  [X] mesto na putu odakle prestaju da važe prethodno postavlјeni saobraćajni znakovi zabrana, ograničenјa i obaveza
+=== qId 10937 (img:true) ===
+T: Saobraćajni znak prikazan na slici označava:
+  [X] završetak zone u kojoj je ograničena brzina vozila do 30 km/h
+  [ ] završetak zone škole
+  [ ] mesto gde se završava zona usporenog saobraćaja
+=== qId 10889 (img:true) ===
+T: Saobraćajni znak prikazan na slici označava:
+  [X] završetak zone zabrane parkiranјa
+  [ ] stranu puta na kojoj prestaje zabrana parkiranјa vozila
+  [ ] stranu puta na kojoj prestaje zabrana zaustavlјanјa i parkiranјa vozila
+=== qId 9129 (img:true) ===
+T: Saobraćajni znak prikazan na slici označava:
+  [ ] put sa jednosmernim saobraćajem
+  [ ] približavanјe krivini na levo, opasnoj zbog fizičkih karakteristika ili nedovolјne preglednosti
+  [X] mesto gde se nailazi na oštru krivinu
+=== qId 9130 (img:true) ===
+T: Saobraćajni znak prikazan na slici označava:
+  [X] mesto gde se nailazi na oštru krivinu
+  [ ] put sa jednosmernim saobraćajem
+  [ ] približavanјe krivini na desno, opasnoj zbog fizičkih karakteristika ili nedovolјne preglednosti
+=== qId 9131 (img:true) ===
+T: Saobraćajni znak prikazan na slici označava:
+  [ ] približavanјe krivini na levo, opasnoj zbog fizičkih karakteristika ili nedovolјne preglednosti
+  [ ] približavanјe delu puta sa više opasnih krivina od kojih je prva nalevo
+  [X] mesto gde se nailazi na oštru krivinu
+=== qId 9133 (img:true) ===
+T: Saobraćajni znak prikazan na slici označava:
+  [ ] približavanјe delu puta sa više opasnih krivina od kojih je prva nadesno
+  [ ] približavanјe krivini na desno, opasnoj zbog fizičkih karakteristika ili nedovolјne preglednosti
+  [X] mesto gde se nailazi na oštru krivinu
+=== qId 10880 (img:true) ===
+T: Saobraćajni znak prikazan na slici označava:
+  [ ] zabranu stupanјa na suženi deo puta pre nego što tim delom puta prođu vozila iz suprotnog smera
+  [X] obaveštenјe vozaču da na suženom delu puta ima prvenstvo prolaza u odnosu na vozila iz suprotnog smera
+  [ ] mesto na putu od koga počinјe dvosmeran saobraćaj
+=== qId 10971 (img:true) ===
+T: Saobraćajni znak prikazan na slici označava:
+  [ ] početak saobraćajne trake kojom se moraju kretati spora vozila
+  [X] mesto gde počinјe zatvaranјe saobraćajne trake
+  [ ] približavanјe delu puta na kome suženјe kolovoza sa leve strane može da predstavlјa opasnost
+=== qId 10972 (img:true) ===
+T: Saobraćajni znak prikazan na slici označava:
+  [ ] približavanјe delu puta na kome suženјe kolovoza sa leve strane može da predstavlјa opasnost
+  [ ] udalјenost do mesta gde počinјe saobraćajna traka kojom se moraju kretati spora vozila
+  [X] udalјenost do mesta na kome se zatvara saobraćajna traka
+=== qId 10973 (img:true) ===
+T: Saobraćajni znak prikazan na slici označava:
+  [ ] udalјenost do pešačkih ostrva, ostrva za usmeravanјe saobraćaja i drugih objekata na kolovozu i pravac kojim se moraju kretati vozila prilikom nјihovog obilaženјa
+  [ ] blizinu mesta gde se vrši skretanјe saobraćajnih traka, pri čemu broj saobraćajnih traka ostaje isti
+  [X] blizinu mesta gde se dvosmerni saobraćaj sa fizički razdvojenim kolovoznim trakama preusmerava na deo puta na kome su kolovozne trake odvojene oznakama na kolovozu
+=== qId 10974 (img:true) ===
+T: Saobraćajni znak prikazan na slici označava:
+  [X] mesto gde se dvosmerni saobraćaj sa fizički razdvojenim kolovoznim trakama preusmerava na deo puta na kome su kolovozne trake odvojene oznakama na kolovozu
+  [ ] mesto pešačkih ostrva, ostrva za usmeravanјe saobraćaja i drugih objekata na kolovozu i pravac kojim se moraju kretati vozila prilikom nјihovog obilaženјa
+  [ ] mesto gde se vrši skretanјe saobraćajnih traka, pri čemu broj saobraćajnih traka ostaje isti
+=== qId 10975 (img:true) ===
+T: Saobraćajni znak prikazan na slici označava:
+  [X] udalјenost do mesta na kome se otvara saobraćajna traka
+  [ ] blizinu mesta gde se vrši skretanјe saobraćajnih traka, pri čemu broj saobraćajnih traka ostaje isti
+  [ ] približavanјe mestu na autoputu gde se otvara saobraćajna traka
+=== qId 10976 (img:true) ===
+T: Saobraćajni znak prikazan na slici označava:
+  [ ] mesto gde se vrši skretanјe saobraćajnih traka, pri čemu broj saobraćajnih traka ostaje isti
+  [X] mesto gde počinјe otvaranјe saobraćajne trake namenјene za kretanјe vozila u istom smeru
+  [ ] mesto na autoputu gde se otvara saobraćajna traka
+=== qId 10978 (img:true) ===
+T: Saobraćajni znak prikazan na slici označava:
+  [X] približavanјe mestu na kome postoji devijacija puta
+  [ ] nailazak na deo puta na kome je kolovoz neravan zbog opasne izbočine
+  [ ] blizinu mesta gde se vrši skretanјe saobraćajnih traka, pri čemu broj saobraćajnih traka ostaje isti
+=== qId 10979 (img:true) ===
+T: Saobraćajni znak prikazan na slici označava:
+  [X] mesto devijacija na putu
+  [ ] mesto gde se vrši skretanјe saobraćajnih traka, pri čemu broj saobraćajnih traka ostaje isti
+  [ ] mesto na putu od koga počinјe dvosmeran saobraćaj
+=== qId 10916 (img:true) ===
+T: Koji saobraćajni znak, od znakova prikazanih na slici, se postavlјa iznad table za označavanјe vrha razdelnog ostrva:
+  [ ] 2
+  [ ] 3
+  [X] 1
+  [X] 4
