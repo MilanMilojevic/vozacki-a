@@ -1238,6 +1238,191 @@ CARDS['policajac-znaci'] = {
 `,
 };
 
+// --- uredjaji-oprema (Tura 4; kontrola bez blokirajućih nalaza) ---
+CARDS['uredjaji-oprema'] = {
+  title: 'Uređaji i oprema vozila',
+  html: `
+<p><b>Ova oblast je čista memorija brojeva.</b> Svako pitanje nosi <b>2 poena</b>, a ponuđeni odgovori razlikuju se samo po cifri ili po jednoj reči („najmanje" naspram „najviše", „bela" naspram „bela ili žuta"). Bliže uslove — dimenzije, uređaje, sklopove i opremu — propisuje <b>Pravilnik o podeli motornih i priključnih vozila i tehničkim uslovima za vozila u saobraćaju na putevima</b>. <span class="mut">Mamci: „Zakonom o bezbednosti saobraćaja na putevima" i „Pravilnikom o tehničkom pregledu vozila".</span> ZOBS (čl. 246) daje samo okvir: vozilo mora imati ispravne sve propisane uređaje i opremu, a napred ne sme davati ni odbijati <b>crvenu</b>, pozadi <b>belu</b> svetlost, osim izuzetaka koje predviđa taj pravilnik.</p>
+
+<p><b>Dometi svetala — tabela koja nosi najviše pitanja:</b></p>
+<table>
+<tr><th>Svetlo</th><th>Mora da osvetli</th><th>Šta je mamac</th></tr>
+<tr><td><b>Kratko svetlo</b> (sva motorna vozila osim traktora)</td><td><b>najmanje 40 m, najviše 80 m</b></td><td>„najmanje 40 m" bez gornje granice</td></tr>
+<tr><td><b>Kratko svetlo MOPEDA</b></td><td><b>najmanje 10 m, najviše 50 m</b></td><td>„najmanje 40 m", „20–60 m"</td></tr>
+<tr><td><b>Dugo svetlo</b> (osim traktora)</td><td><b>najmanje 100 m</b>, bez gornje granice</td><td>„najmanje 80 m", „najmanje 40 m"</td></tr>
+<tr><td><b>Svetlo za maglu</b></td><td><b>najviše 35 m</b>, bez donje granice</td><td>„<b>najmanje</b> 35 m" — ista cifra, obrnuta reč</td></tr>
+</table>
+<p class="mut">Logika iza brojki: kratko svetlo ima <i>obe</i> granice (mora da osvetli, a ne sme da zaslepi), dugo samo donju, a svetlo za maglu samo gornju — snop koji bi išao dalje odbijao bi se od magle nazad u oči. Moped je jedini sa sopstvenim, znatno kraćim rasponom.</p>
+<p><b>Oblik snopa:</b> kratko svetlo <b>traktora, mopeda, tricikla i četvorocikla</b> sme biti izvedeno kao simetrično <b>ili</b> desnosmerno asimetrično. <span class="mut">Motocikla u tom spisku nema.</span></p>
+
+<p><b>Boje — celo pravilo staje u dve reči: napred NIKAD crvena, nazad NIKAD bela.</b> Sve ostalo je spisak koji se uči napamet:</p>
+<table>
+<tr><th>Uređaj</th><th>Boja svetlosti</th><th>Zamka u odgovorima</th></tr>
+<tr><td>Glavni farovi</td><td><b>bela</b></td><td>„plave ili žute"</td></tr>
+<tr><td>Dnevna svetla</td><td><b>samo bela</b></td><td>„bela ili žuta" — to važi za maglu, ne za dnevna</td></tr>
+<tr><td>Svetla za maglu</td><td><b>bela ili žuta</b></td><td>„samo žuta"</td></tr>
+<tr><td>Pokazivači pravca</td><td><b>žuta</b></td><td>„žute ili crvene", „bele"</td></tr>
+<tr><td>Svetlo za vožnju unazad</td><td><b>bela</b></td><td>„crvene"</td></tr>
+<tr><td>Svetlo zadnje registarske tablice</td><td><b>bela</b></td><td>ne mora ga biti na četvorociklima, motokultivatorima i priključnim vozilima za traktor</td></tr>
+<tr><td>Zadnje poziciono svetlo na <b>mopedu i motociklu</b></td><td><b>crvena — jedno ili dva</b></td><td>„crvene <b>ili žute</b>", „ne moraju biti ugrađena"</td></tr>
+<tr><td>Zadnji katadiopteri</td><td><b>crvena</b></td><td>„žute ili crvene"</td></tr>
+</table>
+<p class="mut">Odgovor „boje određene od strane proizvođača vozila" ponuđen je uz skoro svako pitanje o boji i <b>nijednom nije tačan</b>. Boje su propisane, proizvođač ih ne bira.</p>
+<p><b>Bezuslovne zabrane.</b> Uređaji na vozilu koji daju ili odbijaju svetlost u bojama koje propisi ne predviđaju <b>nisu dozvoljeni</b> — bez „ako". <span class="mut">Oba mamca počinju sa „je dozvoljeno samo ako…" (ako ne ometaju druge; ako napred nisu crveni, a pozadi beli).</span> Udvojeni istovetni svetlosni uređaji na vozilu sa tri ili više točkova moraju biti <b>iste veličine i boje I dejstvovati ujednačenim intenzitetom</b> — sve troje zajedno, tako da je svaki odgovor sa „ne moraju" netačan.</p>
+
+<p><b>Kontrolne lampe na tabli:</b></p>
+<table>
+<tr><th>Kada uključiš</th><th>Šta mora da svetli</th></tr>
+<tr><td><b>Duga</b> svetla</td><td><b>plava</b> kontrolna lampa, automatski <span class="mut">(mamci: žuta, zelena)</span></td></tr>
+<tr><td><b>Kratka</b> svetla</td><td><b>ne mora biti uključena lampa bilo koje boje</b> <span class="mut">(mamci: žuta, zelena)</span></td></tr>
+</table>
+<p>Ugradnja te plave lampe na motociklima je <b>obavezna, osim na motociklima čija radna zapremina motora ne prelazi 50 cm³</b>; na <b>lakim četvorociklima nije obavezna</b>. Kod vozila prvi put registrovanih u Srbiji <b>pre 1. jula 2011.</b> kontrola uključenosti pokazivača pravca obezbeđuje se <b>optičkom ILI zvučnom</b> napravom. <span class="mut">Mamac je „optičkom I zvučnom" — razlika je jedno slovo.</span></p>
+
+<p><b>Kočenje — kod dvotočkaša manje funkcija, ali više točkova:</b></p>
+<table>
+<tr><th>Pitanje</th><th>Tačno</th><th>Mamac</th></tr>
+<tr><td>Kočni sistem mopeda i motocikla mora da ostvari funkcije</td><td><b>radnog kočenja</b>, i to je sve</td><td>odgovori koji dodaju pomoćno i parkirno kočenje</td></tr>
+<tr><td>Radno kočenje mopeda, motocikla, tricikla i četvorocikla dejstvuje</td><td><b>na SVE točkove</b></td><td>„najmanje na točkove pogonske osovine", „samo na gonjenu"</td></tr>
+<tr><td>Stop svetla se uključuju pri aktiviranju</td><td><b>radnog kočenja</b></td><td>parkirnog kočenja; dugotrajnog usporavanja</td></tr>
+<tr><td>Stop svetlo ne moraju imati vozila koja na ravnom putu ne mogu preko</td><td><b>25 km/h</b></td><td>30 km/h, 45 km/h</td></tr>
+</table>
+<p class="mut">Isto „na sve točkove" važi i za vozila za prevoz putnika, teretna i priključna vozila — izuzeti su samo traktori, radne mašine i priključna vozila za traktor.</p>
+
+<p><b>Zadnji katadiopteri</b> su uvek <b>crveni</b> i <b>nisu trouglasti</b> (trouglasti oblik je rezervisan za priključna vozila). Razlikuje se samo broj:</p>
+<table>
+<tr><th>Vozilo</th><th>Broj zadnjih katadioptera</th></tr>
+<tr><td>Motorno vozilo na <b>dva točka</b>, i ono na tri točka koje <b>nije šire od 1,3 m</b></td><td><b>jedan</b></td></tr>
+<tr><td><b>Motocikl sa tri točka</b></td><td><b>dva</b></td></tr>
+<tr><td><b>Četvorocikl širi od 1 m</b></td><td><b>dva</b></td></tr>
+</table>
+<p class="mut">Pre nego što izabereš broj, pročitaj širinu u pitanju — ona je jedini razlikovni podatak. Odgovor „ne moraju biti ugrađeni" nije tačan ni u jednom od ta tri pitanja.</p>
+
+<p><b>Dimenzije i registarska tablica:</b></p>
+<table>
+<tr><th>Šta se meri</th><th>Granica</th></tr>
+<tr><td>Najveća dozvoljena dužina mopeda, motocikla, tricikla i četvorocikla</td><td><b>4,00 m</b> <span class="mut">(mamci 5,00 i 3,00)</span></td></tr>
+<tr><td>Najveća dozvoljena visina istih vozila</td><td><b>2,50 m</b> <span class="mut">(mamci 1,50 i 2,00)</span></td></tr>
+<tr><td>Priključno vozilo koje vuče moped ili motocikl</td><td>ne sme biti šire od <b>jednog metra</b> <span class="mut">(mamac: „širine vozila koje ga vuče")</span></td></tr>
+<tr><td>Nagib registarske tablice u odnosu na ravan upravnu na podlogu</td><td>najviše <b>30° prema gore</b> i <b>15° prema dole</b></td></tr>
+</table>
+<p class="mut">Kod tablice je u bazi ispao znak za stepen, pa u odgovorima piše „300 prema gore" i „150 prema dole" — to su uglovi 30° i 15°. Redosled je zamka: veći ugao ide <b>nagore</b>.</p>
+
+<p><b>Oznaka pneumatika — razloži je jednom i pokrio si devet pitanja:</b></p>
+<table>
+<tr><th>Kod u oznaci <b>195/65 R 16 89 N</b></th><th>Šta znači</th><th>Kako to pitanje zove</th></tr>
+<tr><td><b>195</b></td><td>širina pneumatika</td><td>dimenzija</td></tr>
+<tr><td><b>65</b></td><td>odnos visine i širine, izražen u procentima</td><td>dimenzija</td></tr>
+<tr><td><b>R</b></td><td>pneumatik je radijalni</td><td><b>konstrukcija</b></td></tr>
+<tr><td><b>16</b></td><td>prečnik naplatka</td><td>dimenzija</td></tr>
+<tr><td><b>89</b></td><td>oznaka nosivosti</td><td><b>indeks nosivosti</b></td></tr>
+<tr><td><b>N</b></td><td>brzinska oznaka</td><td><b>indeks brzine</b></td></tr>
+</table>
+<p>Pitanje „dimenzije su iskazane kodovima" traži <b>dva</b> odgovora: <b>195/65 i 16</b>. R, 89 i N nisu dimenzije. Ista podela radi i na drugom primeru iz baze, 180/60 R 14 82 T.</p>
+<p><b>Istrošenost:</b> <b>TWI</b> označava <b>položaj indikatora istrošenosti pneumatika</b> <span class="mut">(mamci: indeks nosivosti, indeks brzine, „namenjen za letnju upotrebu", „može da se protektira")</span>. Dubina gazećeg sloja mora biti <b>veća od dubine označene TWI oznakama, odnosno najmanje 1,6 mm ako TWI oznaka nema</b>. <span class="mut">Pazi: goli odgovor „najmanje 1,6 mm" ponuđen je kao mamac — tačan odgovor uvek prvo pominje TWI, a tek onda cifru. Kad TWI oznake nema, granica je 1,6 mm, ne 2,0 ni 4,0.</span> Sami pneumatici moraju biti <b>dimenzija koje je deklarisao proizvođač vozila</b>, ne „najvećih koje mogu da stanu".</p>
+
+<p><b>Oprema i sirena.</b> Oprema za pružanje prve pomoći veličine „A" mora postojati u <b>motociklima, teškim triciklima i teškim četvorociklima</b> — <b>moped je ne mora imati</b>, a mamac je upravo odgovor koji moped ubacuje u spisak. Uređaj za davanje zvučnih znakova mora proizvoditi zvuk <b>čija je jačina u propisanim granicama</b>: ni „što veće jačine", ni „jačina nije propisana".</p>
+
+<p><b>Tri oznake koje dolaze kao slika</b> — pitanje je uvek isto, koju vrstu vozila označavaju:</p>
+<div class="signRow lineRow">
+  <div class="signCell"><svg viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="8" width="134" height="28" fill="#f3c000"/>
+    <g fill="#d81f26">
+      <polygon points="8,10 10,8 8,8"/>
+      <polygon points="8,20 8,30 30,8 20,8"/>
+      <polygon points="12,36 22,36 50,8 40,8"/>
+      <polygon points="32,36 42,36 70,8 60,8"/>
+      <polygon points="52,36 62,36 90,8 80,8"/>
+      <polygon points="72,36 82,36 110,8 100,8"/>
+      <polygon points="92,36 102,36 130,8 120,8"/>
+      <polygon points="140,8 112,36 122,36 142,16 142,8"/>
+      <polygon points="132,36 142,36 142,26"/>
+    </g>
+    <rect x="4" y="4" width="142" height="36" fill="none" stroke="#e8b400" stroke-width="4"/>
+  </svg><b>TEŠKA vozila</b><span>pravougaonik: naizmenične kose <b>crvene i žute</b> pruge preko celog polja, uz tanak žuti obod</span></div>
+  <div class="signCell"><svg viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="8" width="134" height="28" fill="#f3c000"/>
+    <rect x="5" y="5" width="140" height="34" fill="none" stroke="#d81f26" stroke-width="6"/>
+  </svg><b>DUGA vozila</b><span>isti pravougaonik i isti okvir, ali je polje čisto žuto, bez pruga</span></div>
+  <div class="signCell"><svg viewBox="0 0 150 140" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="53,20 97,20 137,116 127,130 23,130 13,116" fill="#d81f26" stroke="#111" stroke-width="3"/>
+    <polygon points="75,38 116,116 34,116" fill="#f0821c"/>
+  </svg><b>SPORA vozila</b><span>trougao zasečenih uglova: crveni okvir, narandžasta sredina</span></div>
+</div>
+<p class="mut">Razlikuj ih po polju, ne po obliku: dve pravougaone table imaju isti crveni okvir, pa je <b>pruge = teško, bez pruga = dugo</b>; jedina tabla u obliku trougla je ona za <b>spora</b> vozila.</p>
+
+<p class="mut"><b>Rezime mamaca u ovoj oblasti:</b> „najmanje" umesto „najviše" kod magle, 40 m umesto 10–50 m kod mopeda, „bela ili žuta" kod dnevnih svetala, „boju određuje proizvođač", „optička I zvučna", trouglasti katadiopteri, goli „1,6 mm" bez pominjanja TWI, i moped ubačen u spisak vozila koja moraju imati opremu prve pomoći.</p>
+`,
+};
+
+// --- vozac-zdravlje-alkohol (Tura 4; kontrola bez blokirajućih nalaza) ---
+CARDS['vozac-zdravlje-alkohol'] = {
+  title: 'Vozač — zdravlje, umor i alkohol',
+  html: `<p><b>Osam pitanja, i jedno od njih te sigurno čeka.</b> Po izmerenom zvaničnom šablonu testa za A kategoriju, ova oblast ima <b>fiksni slot</b> — jedno pitanje, uvek <b>3 poena</b>. U bazi postoji svega 8 takvih pitanja i <b>svih 8 vredi po tri poena</b>. Test ima 41 pitanje i 98 poena, a prolaz je 84 — smeš da izgubiš svega 14 poena, pa ti jedan promašaj ovde pojede više od petine cele rezerve. A celo gradivo staje u četiri pravila.</p>
+
+<table>
+<tr><th>Pravilo</th><th>Šta ti nude kao mamac</th></tr>
+<tr><td><b>1. Vozač A kategorije ne sme da ima alkohola u krvi</b> — nula <span class="mut">(zakon govori i o alkoholu u organizmu, ali odgovori u bazi glase „u krvi")</span></td><td>„sme najviše do 0,30 mg/ml", „sme najviše do 0,50 mg/ml"</td></tr>
+<tr><td><b>2. Umoran, bolestan ili u lošem psihičkom stanju — ne sme da vozi</b>, bez ijednog izuzetka</td><td>„na kratkom delu puta", „ako time ne ometa, odnosno ne ugrožava druge"</td></tr>
+<tr><td><b>3. Umor i bolest se utvrđuju stručnim pregledom</b></td><td>„neposrednim uvidom policijskog službenika", „pomoću odgovarajućih uređaja"</td></tr>
+<tr><td><b>4. Kontrolni zdravstveni pregled: osnov je SUMNJA, cena neodazivanja je ODUZIMANJE dozvole</b></td><td>„jer je učestvovao u nezgodi", „jer je učinio više prekršaja", „privremeno će mu se zabraniti upravljanje"</td></tr>
+</table>
+
+<p><b>1. Nula alkohola (ZOBS čl. 187).</b> Opšte pravilo kaže da je „pod dejstvom alkohola" onaj kome se utvrdi sadržaj <b>veći od 0,20 mg/ml</b>. Tebe to ne dodiruje: vozači kategorija <b>AM, A1, A2 i A</b> su na zakonskoj listi onih kojima nije dozvoljena nijedna kap.</p>
+
+<div class="vgrid" style="grid-template-columns:1fr 1fr">
+  <div class="vg vgFast"><b>TI — moped i motocikl (AM, A1, A2, A)</b></div><div class="vg vgSlow"><b>Ostali vozači (npr. B kategorija)</b></div>
+  <div class="vg">Ne sme da ima alkohola u organizmu — <b>0,00</b></div>
+  <div class="vg">Pod dejstvom alkohola je tek <b>preko 0,20 mg/ml</b></div>
+</div>
+<p class="mut">Ni ta granica od 0,20 nije „dozvoljena čašica" — ona samo definiše od kada si po zakonu pod dejstvom alkohola. Za tebe na dvotočkašu ni nje nema. Zato se 0,20 u bazi nikada i ne pojavljuje kao ponuđen odgovor, a odgovori tipa „sme najviše do 0,30 / 0,50 mg/ml" ponuđeni su četiri puta i nijednom nisu tačni.</p>
+
+<p><b>Ko sve mora imati nulu</b> — vredi pročitati celu listu iz istog člana, jer se pitanja prave tako što se iz nje neko izbaci ili se ubaci neko ko na njoj nije:</p>
+<table>
+<tr><td>Vozač vozila kategorija <b>AM, A1, A2 i A</b> — dakle <b>moped i motocikl</b></td></tr>
+<tr><td><b>Kandidat za vozača</b> tokom praktične obuke i polaganja praktičnog ispita</td></tr>
+<tr><td><b>Instruktor vožnje</b> kada obavlja praktičnu obuku i <b>ispitivač</b> na praktičnom ispitu</td></tr>
+<tr><td>Vozač sa <b>probnom vozačkom dozvolom</b> i lice koje ga nadzire</td></tr>
+<tr><td>Vozač vozila <b>pod pratnjom</b> i vozila <b>sa pravom prvenstva prolaza</b></td></tr>
+<tr><td>Javni prevoz lica ili stvari; vozilo registrovano za više od osam lica osim vozača, odnosno najveće dozvoljene mase preko 3.500 kg; prevoz opasnih materija i vanredni prevoz</td></tr>
+</table>
+<p><b>Dve zamke iz te liste:</b> na listi je vozač sa probnom <b>DOZVOLOM</b>, a ne „vozač vozila kojim se vrši <b>probna vožnja</b>" — to je netačan odgovor. Nema ni <b>vozača motokultivatora</b>. U pitanju sa dva tačna odgovora tražena su baš <b>kandidat tokom praktične obuke</b> i <b>vozač motocikla i mopeda</b>.</p>
+<p class="mut">Zabrana važi i pre polaska: pod dejstvom alkohola ili psihoaktivnih supstanci ne smeš ni da <b>počneš</b> da upravljaš, a smatra se da upravljaš vozilom onog trenutka kada si ga pokrenuo sa mesta na putu.</p>
+
+<p><b>2. Umor, bolest, psihičko stanje.</b> Ko nije sposoban da bezbedno upravlja — <b>ne sme da vozi, i tu se rečenica završava</b>. Ublažavajući nastavci („na kratkom delu puta", „ako time ne ometa, odnosno ne ugrožava druge učesnike") u zakonu ne postoje. „Na kratkom delu puta" je u celoj bazi ponuđen tri puta i nijednom nije tačan — a dva od ta tri puta su baš ovde. Isti obrazac imaš na kartici „Zamke u ponuđenim odgovorima".</p>
+
+<p><b>3. Čime se šta utvrđuje.</b> Ovo pitanje se najlakše promaši, jer se u ponuđenim odgovorima mešaju aparat i pregled:</p>
+<table>
+<tr><th>Šta se utvrđuje</th><th>Čime</th></tr>
+<tr><td>Umor, bolest, psihofizičko stanje</td><td><b>Stručnim pregledom</b> — ne neposrednim uvidom policajca i ne uređajem</td></tr>
+<tr><td>Alkohol i psihoaktivne supstance</td><td><b>Alkometrom, droga testom</b> i sličnim sredstvima na licu mesta; ako osporavaš rezultat, možeš tražiti analizu krvi, odnosno krvi i urina — pismeno, na licu mesta, u zapisnik</td></tr>
+</table>
+<p class="mut">Stručni pregled je po zakonu (čl. 281) pregled kojim se utvrđuju znaci poremećenosti u ponašanju koji mogu da prouzrokuju nebezbedno ponašanje u saobraćaju; na njemu stručno lice može odrediti i analizu telesnih materija. Pamti kratko: <b>aparat meri alkohol, stručno lice procenjuje stanje.</b></p>
+
+<p><b>Detalj koji se tiče baš dvotočkaša:</b> policijski službenik sme alkometru da podvrgne i <b>lice koje se prevozi</b> na biciklu, mopedu, triciklu odnosno motociklu (čl. 280) — a ti kao vozač mopeda, tricikla ili motocikla <b>ne smeš da prevoziš lice pod uticajem alkohola ni psihoaktivnih supstanci</b>. Za to odgovara <b>vozač</b> — putnikovo stanje postaje tvoja obaveza.</p>
+
+<p><b>4. Kontrolni zdravstveni pregled (čl. 191 i 192).</b> Osnov je jedan jedini: <b>sumnja</b> da zbog psihofizičkih smetnji, odnosno nedostataka, nisi u stanju bezbedno da upravljaš. Ni saobraćajna nezgoda, ni broj prekršaja u toku godine nisu zakonski osnov.</p>
+<table>
+<tr><th>Pitanje</th><th>Odgovor iz zakona</th></tr>
+<tr><td>Ko se upućuje?</td><td>Vozač (i instruktor vožnje) za koga se <b>posumnja</b> da zbog psihofizičkih smetnji, odnosno nedostataka, nije u stanju bezbedno da upravlja vozilom</td></tr>
+<tr><td>Ko može tražiti upućivanje?</td><td>Nadležna jedinica MUP, inspektor za drumski saobraćaj, javni tužilac, organ ovlašćen za vođenje prekršajnog postupka, poslodavac kod koga je vozač zaposlen, Agencija za bezbednost saobraćaja</td></tr>
+<tr><td>Šta stoji u rešenju?</td><td>Zdravstvena ustanova koja vrši pregled i <b>rok</b> za izvršenje; žalba na rešenje <b>ne odlaže</b> izvršenje</td></tr>
+<tr><td>Ne odazoveš se u roku?</td><td><b>Oduzima ti se vozačka dozvola</b></td></tr>
+<tr><td>Odazoveš se, ali pregled pokaže nesposobnost?</td><td>Takođe <b>oduzimanje</b> — ali samo za kategorije na koje se nesposobnost odnosi; za ostale ti se izdaje dozvola</td></tr>
+</table>
+<p class="mut">I lekar koji te pregleda ili leči, ako osnovano posumnja da nisi sposoban da upravljaš, dužan je da o tome pismeno obavesti nadležnu jedinicu MUP odmah, a najkasnije u roku od 15 dana (čl. 193).</p>
+
+<p><b>Ne mešaj tri mere</b> — test ih namerno nudi jednu umesto druge:</p>
+<table>
+<tr><th>Mera</th><th>Kad nastupa</th><th>Šta ti se dešava</th></tr>
+<tr><td>Privremeno <b>isključenje</b> vozača iz saobraćaja</td><td>Na licu mesta: očigledan umor ili bolest, alkohol, odbijanje ispitivanja ili stručnog pregleda</td><td>Ne smeš da voziš dok mera traje — <b>dozvola ostaje tvoja</b></td></tr>
+<tr><td><b>Oduzimanje dozvole</b> zbog zdravlja</td><td>Nisi se odazvao kontrolnom pregledu u roku, ili je na njemu utvrđena nesposobnost</td><td>Gubiš pravo da upravljaš vozilima tih kategorija</td></tr>
+<tr><td><b>Oduzimanje dozvole</b> zbog kaznenih poena</td><td>Kad skupiš zakonski prag poena</td><td>Vidi karticu o dozvolama</td></tr>
+</table>
+
+<p><b>Veza sa karticom „Vozačka dozvola, kazneni poeni i probna dozvola":</b> tamo, u tabeli probne dozvole, stoji red „Alkohol 0,00". Ovde vidiš odakle ta nula i zašto ti probna dozvola tu ništa ne dodaje — kao vozač <b>A kategorije</b> ti si na listi nulte tolerancije po sopstvenom osnovu, iz istog člana. Probna dozvola ti obara brzine, ne alkohol: alkohol ti je nula i sa njom i bez nje.</p>
+<p class="mut">Dalje: šta policija radi na licu mesta — kartica „Isključenje vozača iz saobraćaja i zadržavanje"; kolika je sankcija — kartica „Kaznene klase".</p>`,
+};
+
 const BYSUB = {
   148: 'prvenstvo-prolaza',   // vozila pod pratnjom i sa pravom prvenstva (56 pitanja)
   136: 'prvenstvo-prolaza',   // prvenstvo prolaza
@@ -1365,6 +1550,12 @@ BYSUB[166] = 'policajac-znaci';   // znaci ovlašćenog lica — vrh hijerarhije
 BYSUB[131] = 'prvenstvo-prolaza';   // opšte odredbe (hijerarhija postupanja)
 
 
+BYSUB[118] = 'uredjaji-oprema';        // sklopovi, uređaji i oprema vozila
+BYSUB[103] = 'vozac-zdravlje-alkohol'; // psihofizički uslovi, umor, alkohol
+BYSUB[91] = 'razno-pravila';           // ko reguliše i ko kontroliše saobraćaj
+BYSUB[163] = 'oznake-kolovoz';         // svetlosne oznake na putu
+BYSUB[168] = 'vozilo-tehnika';         // teret na vozilu
+BYSUB[170] = 'pesaci-bicikli';         // prevoz lica vozilima
 BYSUB[161] = 'oznake-kolovoz';
 BYSUB[162] = 'semafori';
 BYSUB[178] = 'iskljucenje';
@@ -1386,7 +1577,6 @@ BYSUB[115] = 'put-pojmovi';
 BYSUB[94]  = 'put-pojmovi';
 // BYSUB[91] uklonjen — pitanja o načelima imaju svoje tekstove, zbirna kartica tu ne pomaže
 BYSUB[147] = 'autoput';
-BYSUB[118] = 'vozilo-tehnika';
 BYSUB[126] = 'vozilo-tehnika';
 BYSUB[127] = 'vozilo-tehnika';
 BYSUB[138] = 'razno-pravila';

@@ -1754,11 +1754,11 @@
       pk.style.display = '';
       // Redosled kartica prati predloženi tok učenja iz vodiča (od pojmova ka posledicama)
       const GRUPE = [
-        ['grp1', ['slicni-pojmovi', 'put-pojmovi', 'kategorije-vozila', 'brzine']],
+        ['grp1', ['slicni-pojmovi', 'put-pojmovi', 'kategorije-vozila', 'brzine', 'vozac-zdravlje-alkohol']],
         ['grp2', ['prvenstvo-prolaza', 'policajac-znaci', 'znakovi-porodice', 'znakovi-opasnosti', 'znakovi-naredbi', 'znakovi-obavestenja', 'semafori', 'oznake-kolovoz']],
         ['grp3', ['skretanje', 'preticanje', 'parkiranje', 'parking-table', 'pokazivaci', 'svetla']],
         ['grp4', ['pesaci-bicikli', 'pruga', 'autoput', 'nezgoda', 'razno-pravila']],
-        ['grp5', ['dozvole', 'vozilo-tehnika', 'iskljucenje', 'kazne', 'kaznene-klase', 'zamke-odgovori']],
+        ['grp5', ['dozvole', 'vozilo-tehnika', 'uredjaji-oprema', 'iskljucenje', 'kazne', 'kaznene-klase', 'zamke-odgovori']],
       ];
       const stavljene = new Set();
       let html = `<h3>📖 ${L('pojmovnik')}</h3><p class="mut" style="font-size:.82rem;margin-bottom:6px">${L('pojmovnikSub')}</p>`;
