@@ -206,11 +206,11 @@ button.histBtn:hover { background: var(--optHover); }
 .podOpasno .podNaslov { color: var(--bad); }
 
 /* ---- Podnožje ---- */
-#podnozje { max-width: 880px; margin: 26px auto 0; padding: 18px 12px 34px;
+#podnozje { max-width: 880px; margin: 26px auto 0; padding: 18px 12px 34px; text-align: center;
   border-top: 1px solid var(--line); color: var(--mut); font-size: .84rem; line-height: 1.6; }
 .podnozjeRed { margin-bottom: 6px; }
 .podnozjeRed b { color: var(--ink); }
-.podnozjeAkcije { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin: 10px 0 8px; }
+.podnozjeAkcije { display: flex; gap: 14px; align-items: center; justify-content: center; flex-wrap: wrap; margin: 10px 0 8px; }
 .podnozjeAkcije a { color: var(--blue); text-decoration: underline; border: none; }
 .podnozjeAkcije a:hover { color: var(--blue-d); }
 body.uSimulaciji #podnozje { display: none; }
@@ -377,13 +377,15 @@ tr.totalRow td { border-top: 2px solid var(--blue); }
   .hCol { display: contents; }
   #view-home > #homeSummary { order: 1; }
   #view-home > .menuGrid { order: 2; }
-  .hColL > .card { order: 3; }            /* napredak po oblastima */
+  /* Redosled po ID-ju, NE po koloni — kolone su raspored za širok ekran i smeju da se
+     menjaju bez diranja ovog bloka. */
+  #view-home #oblastiCard { order: 3; }   /* napredak po oblastima */
   #view-home > #guideCard { order: 4; }
-  .hColR > #simHistory { order: 5; }
+  #view-home #simHistory { order: 5; }
   #view-home > #pojmovnikCard { order: 6; }
   #view-home > #faqCard { order: 7; }
   #view-home > #trustCard { order: 8; }
-  .hColR > #dataTools { order: 9; }       /* podešavanja na kraju */
+  #view-home #dataTools { order: 9; }     /* podešavanja na kraju */
 }
 
 /* Vodič za učenje */
