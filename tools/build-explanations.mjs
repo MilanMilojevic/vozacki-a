@@ -74,7 +74,72 @@ CARDS['prvenstvo-prolaza'] = {
 <tr><td><b>ko</b></td><td>vozila koja prati policija/vojska/BIA + samo policijsko/vojno vozilo kad daje te znake</td><td>policija, hitna pomoć, vatrogasci, vojska, BIA...</td></tr>
 <tr><td><b>tvoja obaveza</b></td><td colspan="2">propusti ga, omogući mimoilaženje/preticanje, po potrebi se skloni ili zaustavi (čl. 107 i 109)</td></tr>
 </table>
-<p><b>Za test zapamti:</b> rotacija NE gasi semafor — na semaforizovanoj raskrsnici prvenstvo je „regulisano semaforom"; semafor „gasi" samo saobraćajac. Obaveza propuštanja važi kad te takvo vozilo susretne ili sustigne na putu.</p>`,
+<p><b>Za test zapamti:</b> rotacija NE gasi semafor — na semaforizovanoj raskrsnici prvenstvo je „regulisano semaforom"; semafor „gasi" samo saobraćajac. Obaveza propuštanja važi kad te takvo vozilo susretne ili sustigne na putu.</p>
+<p><b>A) Nesignalisana raskrsnica — pet pravila (čl. 47)</b><br>
+Ovo je poslednja traka piramide, razvijena. Svih pet pravila je u istom članu i sva važe samo <b>ako prvenstvo prolaza nije regulisano na drugi način</b> — čim se pojavi saobraćajac, semafor, žuti romb, trougao ili STOP, pravilo pada.</p>
+<table>
+<tr><th>Pravilo</th><th>Šta se stvarno pita</th></tr>
+<tr><td><b>1. Tramvaj</b></td><td>Propuštaš ga u <b>SVIM slučajevima</b> — i kad ti dolazi <b>sleva</b>, i kad iz suprotnog smera skreće preko tvoje putanje. Ponuda „samo ako dolazi sa desne strane" je netačna. Zakon ima jedan izuzetak: ni tramvaj nema prednost kad preseca biciklističku stazu ili traku.</td></tr>
+<tr><td><b>2. Desna strana</b></td><td>Propuštaš vozilo koje ti dolazi <b>zdesna</b> — i na raskrsnici i pri susretu sa drugim vozilom.</td></tr>
+<tr><td><b>3. Levo skretanje</b></td><td>Kad skrećeš ulevo, propuštaš vozilo iz suprotnog smera koje <b>zadržava pravac ILI skreće udesno</b> — dakle oba. Zamka je ponuda koja ih razdvaja („onaj koji ide pravo ima prednost, a onaj koji skreće udesno nema"). Obrnuto važi isto: kad ti ideš pravo, a neko iz suprotnog smera skreće ulevo, prednost je tvoja.</td></tr>
+<tr><td><b>4. Zemljani put</b></td><td>Kad se uključuješ sa zemljanog puta (ili sa površine na kojoj se ne vrši javni saobraćaj — dvorište, parking) na put sa savremenim kolovoznim zastorom, propuštaš <b>SVA</b> vozila, <b>i onda kad taj put nije znakom označen kao put sa prvenstvom</b>. Netačno: „samo motorna vozila", „samo kada je to određeno znakom".</td></tr>
+<tr><td><b>5. Biciklistička staza i traka</b></td><td>Kad skretanjem presecaš stazu ili traku, propuštaš <b>sva</b> vozila koja se njome kreću — ne samo ona koja ti dolaze zdesna.</td></tr>
+</table>
+<p><b>Kako to izgleda na slici.</b> Skoro sva pitanja ove grupe su slikovna i rešavaju se u dva koraka: prvo <i>ima li znaka</i>, pa tek onda pravilo.</p>
+<table>
+<tr><th>Na slici vidiš</th><th>Tačan odgovor</th></tr>
+<tr><td>Tramvaj ti dolazi <b>iz suprotnog smera, tvojim putem</b>, i skreće preko tvoje putanje — svejedno da li pored puta stoji žuti romb</td><td>Propuštaš <b>tramvaj</b>. Romb tu ne pomaže: i ti i tramvaj ste na istom putu sa prvenstvom</td></tr>
+<tr><td>Tramvaj ti dolazi <b>sa poprečnog puta, sleva</b>, i nema nijednog znaka</td><td>Propuštaš <b>tramvaj</b> — „dolazi mi sleva" nije izgovor</td></tr>
+<tr><td>Tramvaj je na <b>poprečnom</b> putu, a uz tvoj put stoji <b>žuti romb</b> (put sa prvenstvom, obično uz plavi znak pešačkog prelaza)</td><td>Prednost je <b>tvoja</b>, i u odnosu na tramvaj. To je ono „ako znakom nije drugačije određeno"</td></tr>
+<tr><td>Tramvaj <b>i</b> putničko vozilo koje ti dolazi <b>zdesna</b>, bez ijednog znaka</td><td>Propuštaš <b>oba</b> (tramvaj po pravilu tramvaja, vozilo po pravilu desne strane)</td></tr>
+<tr><td>Vozilo iz suprotnog smera skreće ulevo preko tvoje putanje, a ti ideš pravo (na slici tvoj semafor svetli zeleno)</td><td>Prednost je <b>tvoja</b> — pravilo levog skretanja važi i na semaforu, kad obojica istovremeno dobijete zeleno</td></tr>
+<tr><td>Skrećeš udesno, a preko izlaza ide <b>biciklistički prelaz — dva reda belih kvadratića</b> (ne zebra), i bicikl mu prilazi</td><td>Propuštaš bicikl</td></tr>
+<tr><td>Stojiš na <b>neasfaltiranom, zemljanom prilazu</b>; sleva bicikl, zdesna autobus</td><td>Propuštaš <b>oba</b> — vrsta vozila i strana ne menjaju ništa</td></tr>
+<tr><td>Ispred tebe <b>trougao „ustupi prvenstvo"</b> (i beli trouglići na kolovozu) ili <b>STOP</b></td><td>Propuštaš <b>sve</b> — i bicikl sleva i taksi zdesna</td></tr>
+</table>
+<p><b>UPOZORENJE — vrsta vozila NE menja prvenstvo.</b> Traktor, autobus, kamion, bicikl: prvenstvo određuju samo <b>pravac</b> i <b>znak</b>. Kad ti traktor dolazi sa desne strane, tačan odgovor je „dužni ste da propustite oba vozila" — nikad „propustite putničko vozilo, a imate prvenstvo u odnosu na traktor". Ponude su namerno pisane tako da razdvajaju vozila po vrsti; ta razlika ne postoji. Isto važi i za bicikl: on nije „slabiji učesnik kome se ne daje prednost", nego vozilo kao i svako drugo.</p>
+<p><b>Kružni tok je jedino mesto gde je „sleva" tačan odgovor.</b> Prepoznaješ ga po paru znakova na ulazu: <b>trougao „ustupi prvenstvo" + plavi okrugli znak kružnog toka</b>. Kad tek ulaziš — propuštaš vozilo koje ti dolazi <b>sa leve strane</b>. Kad si već u krugu (razdelno ostrvo ti je s leve strane) — prednost je <b>tvoja</b> u odnosu na vozilo sleva. Pravilo desne strane ovde ne odlučuje ništa; odlučuje znak na ulazu.</p>
+<p><b>Kad se svi blokiraju.</b> Postoji i pitanje sa četiri vozila gde svako ima prednost u odnosu na ono sa svoje leve strane, pa niko ne može prvi. Tačan odgovor nije „pokažite odlučnost i prvi prođite", nego: <b>vizuelnim kontaktom i odgovarajućim znakom rukom</b> omogući prolaz onom vozilu koje ima prednost u odnosu na treće, a sam propusti vozilo koje tebi dolazi zdesna.</p>
+
+<p><b>B) Vozila pod pratnjom i sa pravom prvenstva — ono na čemu se pada</b><br>
+Tabela iznad je „ko je ko". Ostatak podoblasti (najveće u pravilima, sa preko pedeset pitanja) pita dve stvari: <b>šta za njih prestaje da važi</b> i <b>kad ni oni nemaju prednost</b>.</p>
+<p><b>Prvo pogledaj da li svetla GORE.</b> Bez uključenih posebnih znakova policijsko vozilo je obično vozilo i tačan odgovor je „nije vozilo pod pratnjom, ni vozilo sa pravom prvenstva prolaza". Na fotografijama se upaljena rampa vidi po <b>sjaju (oreolu)</b> oko lampi — ista slika sa ugašenom rampom daje suprotan odgovor. Na crtežima to su nacrtani bljesci oko vozila: <b>crveni + plavi = pod pratnjom</b>, <b>samo plavi = sa pravom prvenstva</b>, a <b>žuti bljesak je samo žmigavac</b> i ne znači ništa. Na slici sa tri vozila (dva policijska i vozilo hitne pomoći) vozilo sa prvenstvom prolaza je jedino ono kome plava svetla gore.</p>
+<div class="signRow" style="max-width:340px;margin:6px auto">
+  <div class="signCell">
+    <svg viewBox="0 0 120 46"><circle cx="45" cy="18" r="19" fill="#c0392b" opacity=".3"/><circle cx="75" cy="18" r="19" fill="#2c6aa0" opacity=".3"/><rect x="10" y="26" width="100" height="14" rx="7" fill="#4a5a6a"/><circle cx="45" cy="18" r="12" fill="#c0392b"/><circle cx="75" cy="18" r="12" fill="#2c6aa0"/></svg>
+    <span><b>SVETLA GORE</b><br>pod pratnjom / sa prvenstvom</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 120 46"><rect x="10" y="26" width="100" height="14" rx="7" fill="#4a5a6a"/><circle cx="45" cy="18" r="12" fill="#94a3b8"/><circle cx="75" cy="18" r="12" fill="#94a3b8"/></svg>
+    <span><b>SVETLA NE GORE</b><br>obično vozilo</span>
+  </div>
+</div>
+<table>
+<tr><th>NE primenjuje se na njih (čl. 106 i 108)</th><th>I dalje ih obavezuje</th></tr>
+<tr><td>ograničenje brzine<br>propuštanje pešaka<br>zabrana presecanja kolone pešaka<br>zabrana preticanja i obilaženja vozila</td><td>postupanje po svetlosnim saobraćajnim znakovima<br>dozvoljeni smer kretanja<br>upotreba svetala<br>i uvek: da ne ugroze bezbednost ostalih</td></tr>
+</table>
+<p class="mut">Leva kolona važi samo <b>pod uslovom da ne ugrožavaju bezbednost drugih učesnika u saobraćaju</b> — ta rečenica stoji u oba člana i u skoro svakom tačnom odgovoru. Vozač takvog vozila je i dalje dužan da vodi računa o bezbednosti ostalih, a ne o „efikasnosti izvršenja zadatka".</p>
+<p><b>Iste slike, jedina razlika je rotacija.</b> Policijsko vozilo u naselju (znak sa crnom siluetom grada pored puta) sa upaljenom rotacijom <b>sme</b> da se kreće brže od 50 km/h, tako da ne ugrožava druge; isto vozilo sa ugašenom rampom <b>ne sme</b>. Na pešačkom prelazu, sa upaljenim znacima <b>ne mora</b> da propusti pešaka (pod uslovom da ga ne ugrožava), a bez znakova <b>mora</b>. Preko pune razdelne linije, sa upaljenom plavom rotacijom preticanje <b>jeste</b> dozvoljeno, a kad gori samo žmigavac <b>nije</b>.</p>
+<p><b>Kad ni oni nemaju prednost.</b></p>
+<table>
+<tr><th>Raskrsnicom upravlja</th><th>Tačan odgovor</th></tr>
+<tr><td>Semafor</td><td>„prvenstvo prolaza je regulisano semaforom"</td></tr>
+<tr><td>Policajac</td><td>„prvenstvo prolaza je regulisano znakovima koje daje policijski službenik" — i kad iza njega stoji vozilo sa upaljenom rotacijom</td></tr>
+<tr><td>Saobraćajni znakovi i oznake na kolovozu</td><td>vozilo pod pratnjom / sa prvenstvom <b>ima</b> prednost — čak i kad na njegovom prilazu stoji STOP, a na poprečnom putu žuti romb</td></tr>
+<tr><td>Samo pravila saobraćaja</td><td>vozilo <b>ima</b> prednost; zamka je ponuda „prednost ima žuto vozilo, po pravilu desne strane"</td></tr>
+</table>
+<p>Međusobno: <b>pod pratnjom &gt; sa pravom prvenstva prolaza</b>. A kad se sretnu dva ista (dva vozila sa upaljenom rotacijom), njihovo međusobno prvenstvo rešava se po <b>opštim odredbama o prvenstvu prolaza</b> — dakle celom lestvicom: prvo policajac i semafor, pa <b>znakovi i oznake na kolovozu</b> (STOP, žuti romb, linija zaustavljanja), i tek ako ničega od toga nema — desna strana i levo skretanje. <span class="mut">Baza to proverava parovima skoro istih slika: bez ijednog znaka odlučuje desna strana, a čim se pojavi linija zaustavljanja ili STOP pred jednim vozilom — prednost ima drugo.</span></p>
+<p><b>Samo svetla, bez sirene.</b> Pravilo je da ta vozila <b>moraju</b> davati i zvučne i svetlosne znake; davanje samo svetlosnih je izuzetak i traži <b>sva tri</b> uslova istovremeno: dovoljna vidljivost tog vozila i bezbednost učesnika · vozilo se kreće brzinom dozvoljenom na tom delu puta · to je neophodno za neometano izvršenje službenog zadatka. „U naselju" i „van naselja" nisu uslovi.</p>
+<p><b>Uređaji za posebne znake</b> smeju se ugrađivati i postavljati <b>samo na vozila nadležnih državnih organa</b> — ne „uz dozvolu nadležnog organa" i ne „ako ih posle ugradnje ispita ovlašćena organizacija". Upotrebljavaju se samo dok se vrši pratnja, odnosno kad je to neophodno za efikasno i bezbedno izvršenje službene radnje koja ne trpi odlaganje — ne „kad se odstupa od pravila saobraćaja" i ne „noću i u uslovima smanjene vidljivosti".</p>
+<p><b>Tvoja obaveza je „po potrebi", nikad „obavezno" (čl. 107 i 109).</b> Ponude „obavezno zaustavite vozilo" i „obavezno pomerite vozilo sa kolovoza" su uvek netačne. Tačno je: propusti ta vozila, omogući im mimoilaženje i preticanje odnosno obilaženje, <b>po potrebi</b> zaustavi vozilo i <b>po potrebi</b> ga pomeri sa kolovoza, pridržavaj se naredbi lica iz pratnje i kreni tek kad prođu <b>sva</b> vozila. Kad vozilo sa prvenstvom obezbeđuje prolaz koloni iza sebe, prema celoj toj koloni postupaš kao prema vozilima sa prvenstvom — a ne tako što joj se i sam priključiš. I obrnuta zamka: preticanje <b>pojedinačnog</b> vozila sa prvenstvom prolaza jeste dozvoljeno, ako policijski službenik iz vozila ne daje druge znake i naredbe; <b>kolonu</b> vozila pod pratnjom ne smeš da pretičeš.</p>
+<p><b>Policija i naizmenična duga svetla (čl. 110) — dve situacije koje se lako pobrkaju:</b></p>
+<table>
+<tr><th>Gde si ti</th><th>Šta moraš</th></tr>
+<tr><td>Policijsko vozilo je <b>iza tebe</b>, uz rotaciju daje i svetlosni znak upozorenja (uzastopno ili naizmenično uključivanje dugih svetala)</td><td><b>Odmah bezbedno zaustavi</b> vozilo uz desnu ivicu kolovoza, po mogućnosti van kolovoza. Nije dovoljno usporiti niti se samo pomeriti udesno da bi ga propustio</td></tr>
+<tr><td>Ti se krećeš <b>neposredno iza</b> policijskog vozila koje daje posebne znake i iz kojeg policajac daje naredbe</td><td>Postupi po znacima i naredbama, <b>prati policijsko vozilo do pogodnog mesta</b> i bezbedno stani <b>iza njega</b>. Ne staješ odmah i ne uklanjaš vozilo sa kolovoza</td></tr>
+</table>
+<p class="mut">Mnemonik: <b>policija iza tebe — ti staješ desno; policija ispred tebe — ti je pratiš i staješ iza nje.</b></p>
+`,
 };
 
 CARDS['brzine'] = {
@@ -417,7 +482,69 @@ CARDS['skretanje'] = {
 </svg>
 <p><b>Propuštanja pri skretanju (čl. 47):</b> sa zemljanog puta/parkinga propuštaš SVE · pri skretanju preko biciklističke staze propuštaš bicikle · pravilo desne strane kad ništa drugo ne reguliše · pri skretanju ULEVO propuštaš vozila iz suprotnog smera.</p>
 <p><b>Ne ulazi u raskrsnicu (čl. 49)</b> — ni kad imaš zeleno/prvenstvo — ako bi zbog gužve ostao na raskrsnici ili pešačkom prelazu i blokirao druge.</p>
-<p><b>Polukružno okretanje ZABRANJENO (čl. 50):</b> tunel, most, vijadukt, podvožnjak, nadvožnjak, smanjena vidljivost, nedovoljna preglednost, nedovoljna širina puta. (Prepoznaješ listu? Skoro ista kao za preticanje — "opasna mesta".)</p>`,
+<p><b>Polukružno okretanje ZABRANJENO (čl. 50):</b> tunel, most, vijadukt, podvožnjak, nadvožnjak, smanjena vidljivost, nedovoljna preglednost, nedovoljna širina puta. (Prepoznaješ listu? Skoro ista kao za preticanje — "opasna mesta".)</p>
+<p style="margin-top:18px"><b>PRILAZ RASKRSNICI I PROLAZAK KROZ NJU (čl. 48 i 49)</b></p>
+<p><b>Brzina na prilazu (čl. 48, stav 1):</b> vozač je dužan da <b>prilagodi vožnju uslovima saobraćaja na raskrsnici</b>, a naročito da vozi <b>brzinom pri kojoj može da se zaustavi i propusti</b> vozila koja na raskrsnici imaju prvenstvo prolaza.</p>
+<p class="mut">Zamka: to pitanje traži <b>DVA</b> tačna odgovora, jer zakonska rečenica ima dva dela — „uslovima saobraćaja na raskrsnici" <b>i</b> „brzinom pri kojoj može da se zaustavi i propusti". Ako zaokružiš samo jedan, pitanje je netačno. Ponuđene zamke su „kako bi što pre stigao na odredište" i „da što pre prođe kroz raskrsnicu" — žurba nikad nije zakonski kriterijum.</p>
+<p><b>Prestrojavanje — zamka „neposredno pred raskrsnicom":</b> sva tri ponuđena odgovora zvuče razumno, razlika je u <b>jednoj sintagmi</b>.</p>
+<table>
+<tr><th>Ponuđeni odgovor</th><th>Presuda</th></tr>
+<tr><td>„može proći raskrsnicu u željenom smeru <b>bilo kojom trakom</b>, ako time ne ometa ili ugrožava"</td><td>Netačno — traka za smer nije stvar tvoje procene</td></tr>
+<tr><td>„može i <b>neposredno pred raskrsnicom</b> da zauzme položaj na traci"</td><td>Netačno — to je prekasno</td></tr>
+<tr><td>„dužan je da na <b>dovoljnom odstojanju</b> pred raskrsnicom izvrši prestrojavanje"</td><td><b>TAČNO</b> (čl. 48, stav 2)</td></tr>
+</table>
+<p><b>Ulazak na put sa prvenstvom prolaza:</b> propuštaš <b>SVA vozila</b> koja se kreću tim putem. Ne „samo ona zdesna", ne „samo ona sleva", ne „samo motorna". Tako glasi i sam znak <b>II-1 „ustupanje prvenstva prolaza"</b>: naredba vozaču da ustupi prvenstvo <b>vozilima koja se kreću putem na koji nailazi</b> (Pravilnik o saobraćajnoj signalizaciji, čl. 25).</p>
+<p class="mut">Zašto ovde ne odlučuje „pravilo desne strane"? Zato što se ono primenjuje tek kad prvenstvo <b>nije regulisano na drugi način</b>. Pažnja: na raskrsnici koja jeste regulisana (znakom, semaforom ili policajcem) pravila desne strane i levog skretanja i dalje važe — ali samo za <b>međusobno</b> prvenstvo onih koji istovremeno dobiju pravo prolaza. Čim stoji znak II-1 ili II-2, prvenstvo <b>jeste</b> regulisano — i ti propuštaš ceo taj put, a ne polovinu.</p>
+
+<p style="margin-top:16px"><b>Strelica u traci je naredba — slikovna pitanja</b></p>
+<p>Kad si se već zaustavio u traci, smeš <b>samo tamo gde strelica na asfaltu pokazuje</b>. Zeleno svetlo ti ne otvara drugi smer, i nema „popravnog" iz pogrešne trake — jedini ispravan postupak je da nastaviš kuda strelica kaže i da se vratiš kasnije.</p>
+<table>
+<tr><th>Šta se vidi na slici</th><th>Šta se sme</th></tr>
+<tr><td>Široka gradska ulica, pogled sa mopeda: <b>tri trake</b>, u levoj strelica savijena <b>ulevo</b>, u tvojoj (srednjoj) strelica <b>pravo</b>, u desnoj strelice savijene <b>udesno</b>. Ispred je pešački prelaz, semafor desno je <b>zelen</b>.</td><td>Samo <b>pravo</b>. Skretanje ulevo <b>nije dozvoljeno</b>, skretanje udesno <b>nije dozvoljeno</b> — bez obzira na zeleno.</td></tr>
+<tr><td>Raskrsnica sa kolonom vozila, pogled sa mopeda: u tvojoj traci <b>jedna strelica savijena ulevo</b>. Desno na stubu znak <b>ustupanje prvenstva prolaza</b> (trougao vrhom nadole) i semafor sa <b>zelenim</b> svetlom.</td><td>Skretanje ulevo <b>JESTE dozvoljeno</b> — stojiš u traci za levo.</td></tr>
+</table>
+<p><b>Zamka nad zamkama:</b> ista fotografija sa tri strelice pojavljuje se u <b>tri različita pitanja</b> — jednom te pitaju „šta možete", drugi put „da li vam je dozvoljeno ulevo", treći put „da li vam je dozvoljeno udesno". Ne pamti odgovor po slici, nego pročitaj <b>šta te pitaju</b>. I obrnuto: kod slike sa strelicom ulevo tačan odgovor je potvrdan („jeste dozvoljeno"), pa te navika da uvek odgovoriš „nije dozvoljeno" tu obara.</p>
+<p class="mut">Još jedna zamka iz istog seta: „nastaviti kretanje u sva tri smera, ukoliko ne ometate ili ugrožavate bezbednost saobraćaja". Netačno — oznaka na kolovozu se ne poništava time što nikoga ne ometaš.</p>
+
+<p style="margin-top:16px"><b>Ne ulazi u raskrsnicu ako ćeš u njoj ostati (čl. 49)</b></p>
+<p>Zakon kaže: vozač <b>ne sme</b> vozilom da uđe u raskrsnicu, <b>iako ima prvenstvo prolaza ili mu je semaforom to dozvoljeno</b>, ako će se zbog gustine saobraćaja zaustaviti <b>na raskrsnici ili pešačkom prelazu</b> i time ometati ili onemogućiti saobraćaj vozila, odnosno pešaka.</p>
+<p>U testu se to isto pravilo pojavljuje u <b>dva ruha</b> — jednom kao „imam zeleno", drugi put kao „ja sam na putu sa prvenstvom prolaza". Odgovor je oba puta isti: <b>staneš i čekaš da se izlaz oslobodi</b>.</p>
+<svg viewBox="0 0 460 226" role="img" style="max-width:460px;width:100%;display:block;margin:8px auto">
+  <rect x="160" y="0" width="140" height="220" fill="#9aa7b4"/>
+  <rect x="0" y="60" width="460" height="80" fill="#9aa7b4"/>
+  <line x1="230" y1="0" x2="230" y2="58" stroke="#fff" stroke-width="3" stroke-dasharray="10 8"/>
+  <line x1="230" y1="170" x2="230" y2="220" stroke="#fff" stroke-width="3" stroke-dasharray="10 8"/>
+  <line x1="0" y1="100" x2="158" y2="100" stroke="#fff" stroke-width="3" stroke-dasharray="10 8"/>
+  <line x1="302" y1="100" x2="460" y2="100" stroke="#fff" stroke-width="3" stroke-dasharray="10 8"/>
+  <g fill="#fff">
+    <rect x="164" y="144" width="11" height="20"/><rect x="181" y="144" width="11" height="20"/>
+    <rect x="198" y="144" width="11" height="20"/><rect x="215" y="144" width="11" height="20"/>
+    <rect x="232" y="144" width="11" height="20"/><rect x="249" y="144" width="11" height="20"/>
+    <rect x="266" y="144" width="11" height="20"/><rect x="283" y="144" width="11" height="20"/>
+  </g>
+  <rect x="160" y="60" width="140" height="80" fill="#c0392b" opacity=".3"/>
+  <text x="230" y="105" text-anchor="middle" font-size="13" font-weight="bold" fill="#7f1d1d">NE ULAZI</text>
+  <rect x="244" y="24" width="34" height="32" rx="6" fill="#e0c53a" stroke="#8a7a10" stroke-width="1.5"/>
+  <rect x="244" y="176" width="34" height="32" rx="6" fill="#c0392b" stroke="#7f1d1d" stroke-width="1.5"/>
+  <text x="261" y="197" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff">ti</text>
+  <rect x="128" y="176" width="20" height="30" rx="5" fill="#4a5560"/>
+  <circle cx="138" cy="191" r="7" fill="#22c55e"/>
+  <text x="120" y="194" text-anchor="end" font-size="10" fill="currentColor">zeleno svetlo</text>
+  <text x="308" y="44" font-size="10" fill="currentColor">vozilo ispred stoji</text>
+  <text x="308" y="158" font-size="10" fill="currentColor">pešački prelaz</text>
+</svg>
+<p class="mut" style="text-align:center;font-size:.85rem">imaš zeleno, ali izlaz iz raskrsnice je zauzet — ostaješ ispred zebre</p>
+<p><b>Četiri odgovora koji su ovde UVEK netačni</b> (vrte se kroz sva pitanja o gužvi na raskrsnici):</p>
+<table>
+<tr><th>Ponuđeno</th><th>Zašto pada</th></tr>
+<tr><td>„<b>mora</b> da uđe, bez obzira na gustinu, da ne bi ometao vozila koja se kreću iza njega"</td><td>Kolona iza tebe nije zakonski razlog ni za šta</td></tr>
+<tr><td>„može da uđe i stane na pešačkom prelazu, <b>ako je pešacima semaforom zabranjen prolaz</b>"</td><td>Crveno za pešake ne pretvara zebru u parking</td></tr>
+<tr><td>„može, jer se <b>kreće putem sa prvenstvom prolaza</b>"</td><td>Čl. 49 izričito pominje prvenstvo — i svejedno zabranjuje ulazak</td></tr>
+<tr><td>„može ako gustina dozvoljava da <b>ne stane na pešačkom prelazu</b>, iako time ometa saobraćaj vozila"</td><td>Zabrana pokriva i zebru <b>i</b> raskrsnicu; smetnja vozilima je isto smetnja</td></tr>
+</table>
+<p class="mut">Slikovne varijante su prepoznatljive: sa mopeda vidiš zebru tik ispred sebe, a iza nje kolonu koja stoji; ili je nacrtan pogled odozgo gde crveno vozilo ima <b>zeleno svetlo</b>, ali žuto vozilo odmah iza raskrsnice ne miče; ili crveno vozilo ide <b>putem sa prvenstvom prolaza</b> (žuti romb pored kolovoza), a ispred njega pešački prelaz i zaglavljena kolona. Situacija je različita, odgovor isti.</p>
+<p><b>Ključ za celu ovu podoblast:</b> na raskrsnici te uvek pitaju tri iste stvari — <b>možeš li da staneš</b> (brzina na prilazu), <b>jesi li u pravoj traci</b> (prestrojavanje i strelica), i <b>gde ćeš stati</b> (nikad u raskrsnici, nikad na zebri). Prvenstvo prolaza i zeleno svetlo daju ti <b>pravo da prođeš</b>, ali ti nikad ne daju <b>pravo da blokiraš</b>.</p>
+`,
 };
 
 CARDS['pokazivaci'] = {
@@ -989,10 +1116,132 @@ CARDS['znakovi-obavestenja'] = {
 `,
 };
 
+// --- policajac-znaci (Tura 3; kontrola + ručna provera slika 9457/9464) ---
+CARDS['policajac-znaci'] = {
+  title: 'Znaci i naredbe policijskog službenika',
+  html: `
+<p><b>Ovo je najjači znak na putu.</b> Znaci i naredbe ovlašćenog lica <b>imaju prvenstvo u odnosu na saobraćajnu signalizaciju i propisana pravila saobraćaja</b> (ZOBS čl. 166). Zato na slikama iz ove oblasti namerno stoje i STOP znak i zeleno svetlo na semaforu — dok policajac reguliše, oni se ne gledaju. Isto važi i za pravilo desne strane: odgovor „mogu pravo kad propustim vozila sa puta koji se ukršta" je uvek mamac.</p>
+
+<p><b>Čime se daju znaci:</b> rukama, odnosno <b>položajem tela</b>, uređajima za davanje svetlosnih i zvučnih znakova i <b>„stop tablicom"</b>. <span class="mut">Mamci: „zastavicom za regulisanje saobraćaja" — zastavice (crvena i zelena) idu uz regulisanje na mestu radova, gde saobraćaj regulišu najmanje dva radnika izvođača; „usmeno" — usmeno se daju <i>naredbe</i>, a ne znaci; „znakovima sa izmenljivim sadržajem poruka" — to je signalizacija na putu, ne znak policajca.</span></p>
+
+<p><b>Šest znakova rukama.</b> Leva kolona je ono što stvarno vidiš na fotografiji, srednja je formulacija kojom to pitanje zove:</p>
+<table>
+<tr><th>Šta vidiš na slici</th><th>Kako to zove pitanje</th><th>Značenje</th></tr>
+<tr><td>Ruka ispružena <b>pravo uvis</b>, otvorena šaka</td><td>ruka podignuta uvis</td><td><b>Obavezno zaustavljanje za SVE</b> učesnike — bez obzira na to da li mu vidiš prsa ili leđa. <span class="mut">Položaj tela je merilo samo kad su ruke spuštene ili odručene.</span></td></tr>
+<tr><td>Ruka ispružena <b>vodoravno napred</b>, šaka ravna, <b>dlan okrenut nadole</b></td><td>predručena ruka</td><td><b>Zabrana prolaza</b> za sve čiji smer kretanja <b>seče</b> smer te ruke</td></tr>
+<tr><td><b>Pun otvoren dlan uspravno okrenut ka tebi</b> (vidiš celu unutrašnjost šake), ruka ispružena ili savijena u laktu</td><td>znak kojim se naređuje zaustavljanje</td><td><b>Zaustaviš vozilo</b></td></tr>
+<tr><td>Ruka ispružena <b>vodoravno u stranu</b>, dlan nadole, pored šake <b>strelica gore-dole</b></td><td>lagano mahanje horizontalno odručenom rukom gore-dole, dlanom nadole</td><td><b>Smanjiš brzinu</b></td></tr>
+<tr><td>Podlaktica podignuta, otvorena šaka, oko šake <b>kružna strelica</b></td><td>predručena ruka savijena u laktu, kružno kretanje podlaktice i šake</td><td><b>Ubrzaš</b> kretanje</td></tr>
+<tr><td>Podlaktica podignuta, šaka okrenuta <b>bočno</b> (vidiš joj ivicu, kao da te doziva), pored nje <b>strelica levo-desno</b></td><td>odručena ruka sa dlanom okrenutim nagore i mahanje podlaktice savijanjem u laktu</td><td><b>Primakneš vozilo</b> raskrsnici, odnosno ovlašćenom licu</td></tr>
+</table>
+<p><b>Kako da razlikuješ tri slične gradske slike.</b> Baza koristi istu ulicu i istog policajca, a menja samo ruku — i odgovor je svaki put drugi. Ruka uvis i pun dlan okrenut ka tebi znače <b>stani</b>; ista podignuta podlaktica sa <b>kružnom</b> strelicom znači <b>ubrzaj</b>. Za „priđi bliže" gledaj strelicu koja pokazuje <b>ka policajcu</b>: na gradskim fotografijama to je velika <b>žuta strelica pravo napred</b>, a na studijskim crtežima strelica <b>levo-desno</b> uz bočno okrenutu šaku. Ne pamti scenu — pamti šaku i smer strelice.</p>
+
+<p><b>Položaj tela je znak i kad su ruke spuštene.</b> Kad policajac stoji mirno ili sa <b>obe ruke odručene</b>, važi isto pravilo: ko dolazi iz pravca u kome su okrenuta njegova <b>leđa, odnosno prsa</b> — <b>staje</b>; ko dolazi sa njegovih <b>bočnih strana</b> — <b>prolazi</b>. Raširene ruke ništa ne menjaju, samo ga čine uočljivijim. Obrnuta verzija te rečenice („bočne strane staju, prsa i leđa prolaze") je standardni mamac — čitaj redosled do kraja.</p>
+<svg viewBox="0 0 420 250" role="img" style="max-width:420px;width:100%;display:block;margin:8px auto">
+  <rect x="0" y="92" width="420" height="66" fill="#c9ced4"/>
+  <rect x="177" y="0" width="66" height="250" fill="#c9ced4"/>
+  <path d="M210 22 L210 62" stroke="#c0392b" stroke-width="6" fill="none"/>
+  <path d="M198 52 L210 68 L222 52" stroke="#c0392b" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="210" y="15" text-anchor="middle" font-size="12" font-weight="bold" fill="#c0392b">STAJE</text>
+  <path d="M210 228 L210 188" stroke="#c0392b" stroke-width="6" fill="none"/>
+  <path d="M198 198 L210 182 L222 198" stroke="#c0392b" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="210" y="245" text-anchor="middle" font-size="12" font-weight="bold" fill="#c0392b">STAJE</text>
+  <path d="M20 110 L136 110" stroke="#2e7d32" stroke-width="6" fill="none"/>
+  <path d="M128 100 L146 110 L128 120" stroke="#2e7d32" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="76" y="84" text-anchor="middle" font-size="12" font-weight="bold" fill="#2e7d32">PROLAZI</text>
+  <path d="M400 140 L284 140" stroke="#2e7d32" stroke-width="6" fill="none"/>
+  <path d="M292 130 L274 140 L292 150" stroke="#2e7d32" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="344" y="178" text-anchor="middle" font-size="12" font-weight="bold" fill="#2e7d32">PROLAZI</text>
+  <line x1="186" y1="125" x2="234" y2="125" stroke="#1f2937" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="210" cy="125" r="16" fill="#334155"/>
+  <path d="M194 125 A16 16 0 0 1 226 125 Z" fill="#c0392b"/>
+</svg>
+<p class="mut" style="text-align:center;font-size:.85rem">crvena polovina figure = prsa; crta kroz figuru = odručene ruke, koje ovde ništa ne menjaju</p>
+
+<p><b>Predručena ruka se gleda drugačije.</b> Zamisli je kao rampu koja se pruža u smeru u kome pokazuje: ako <b>tvoja putanja preseca tu rampu</b> — ne smeš. Ako je ne dodiruješ (na primer, prolaziš iza njegovih leđa, mimo pravca ruke) — smeš pravo.</p>
+<svg viewBox="0 0 420 196" role="img" style="max-width:420px;width:100%;display:block;margin:8px auto">
+  <circle cx="150" cy="80" r="14" fill="#334155"/>
+  <line x1="164" y1="80" x2="318" y2="80" stroke="#334155" stroke-width="8" stroke-linecap="round"/>
+  <rect x="312" y="70" width="26" height="20" rx="6" fill="#334155"/>
+  <text x="150" y="108" text-anchor="middle" font-size="10" fill="#64748b">policajac</text>
+  <text x="196" y="58" text-anchor="middle" font-size="11" fill="#334155">smer predručene ruke</text>
+  <path d="M280 160 L280 44" stroke="#c0392b" stroke-width="6" fill="none"/>
+  <path d="M268 54 L280 32 L292 54" stroke="#c0392b" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="280" y="182" text-anchor="middle" font-size="12" font-weight="bold" fill="#c0392b">SEČE = stani</text>
+  <path d="M70 160 L70 44" stroke="#2e7d32" stroke-width="6" fill="none"/>
+  <path d="M58 54 L70 32 L82 54" stroke="#2e7d32" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="70" y="182" text-anchor="middle" font-size="12" font-weight="bold" fill="#2e7d32">ne seče = možeš</text>
+</svg>
+<p><b>Nemoj mešati dva pravila.</b> Kad su mu ruke spuštene ili obe odručene — gledaš <b>kuda je okrenut</b>. Kad je jedna ruka <b>predručena</b> — telo više nije merilo, gledaš samo <b>da li joj sečeš smer</b>. Zato na jednoj slici gledaš policajcu u leđa i moraš da staneš, a na drugoj mu takođe gledaš u leđa, ali je ruka predručena mimo tvoje putanje — i smeš pravo. I još jedno: predručena ruka <b>ne naređuje</b> da se krećeš u njenom smeru, ona samo zabranjuje onima koji je seku.</p>
+
+<p><b>Zamke koje se ponavljaju kroz celu oblast</b></p>
+<table>
+<tr><th>Ponuđeni odgovor</th><th>Zašto je netačan</th></tr>
+<tr><td>„...osim za one vozače čija se vozila, u času kada policijski službenik podigne ruku, ne mogu na bezbedan način zaustaviti"</td><td>Nudi se uz uzdignutu ruku, uz predručenu i uz oba položaja tela — <b>nijednom nije tačan</b>. Nema izuzetka „nisam stigao da stanem".</td></tr>
+<tr><td>„obavezan je da ukloni vozilo sa kolovoza"</td><td>Nijedan znak rukom ne znači „skloni vozilo sa kolovoza".</td></tr>
+<tr><td>„možete nastaviti pravo kada propustite vozila sa puta sa kojim se ukršta"</td><td>Dok policajac reguliše, prvenstvo ne odlučuju pravila ni znakovi — odlučuje njegov znak.</td></tr>
+<tr><td>„preporuka za bezbedno kretanje" · „samo ako ste učinili prekršaj" · „samo ako ste prekoračili brzinu"</td><td>Svetlosni znaci sa policijskog vozila su uvek <b>obaveza</b>, i uvek bezuslovna.</td></tr>
+</table>
+
+<p><b>Pištaljka</b> — daje se <b>samo kad je policajac van vozila</b>, i to u kombinaciji sa znacima rukama. Nijedan zvižduk sam po sebi nije naredba za zaustavljanje:</p>
+<table>
+<tr><th>Zvuk</th><th>Znači</th><th>Ti radiš</th></tr>
+<tr><td>Jedan <b>duži</b> zvižduk</td><td>Poziv svima koji ga čuju da <b>obrate pažnju</b> na policajca, koji će dati odgovarajući znak</td><td>Gledaš u njega i čekaš znak</td></tr>
+<tr><td><b>Više uzastopnih kratkih</b> zvižduka</td><td>Neko je postupio protivno datom znaku, pravilima saobraćaja ili postavljenim znakovima</td><td><b>Osmatranjem policajca utvrdiš da li se znak odnosi na tebe</b> — ne staješ automatski i sigurno ne ubrzavaš</td></tr>
+</table>
+<p class="mut">Skraćeno: <b>dugo = pažnja</b>, <b>kratko-kratko-kratko = neko je pogrešio, proveri da li si to ti</b>.</p>
+
+<p><b>Iz vozila i sa motocikla.</b> Znake za <b>smanjenje brzine</b>, <b>ubrzanje</b> i <b>zaustavljanje</b> policijski službenik <b>može</b> davati i iz vozila, odnosno sa motocikla — kada policajac, odnosno vozilo, <b>ima vidno obeležje policije</b> (ZOBS čl. 166: znaci i naredbe mogu se davati i iz vozila). Mamci su „ne može iz vozila" i „samo iz vozila sa prvenstvom prolaza" — <b>ne traži se rotacija, traži se obeležje</b>. Obrnuto od toga, pištaljka ide samo van vozila.</p>
+
+<p><b>Baterijska lampa sa postojanim crvenim svetlom, kojom maše upravno na uzdužnu osu puta.</b> Dve noćne slike, dva različita odgovora:</p>
+<table>
+<tr><th>Šta je na slici</th><th>Šta radiš</th></tr>
+<tr><td>Policajac stoji na <b>tvom</b> kolovozu, okrenut ka tebi, i maše crvenom lampom preko tvoje trake</td><td>Bezbedno zaustaviš vozilo na kolovozu, a <b>po mogućnosti van kolovoza</b> — <b>neposredno ISPRED policajca</b> koji daje znak</td></tr>
+<tr><td>Policajac je <b>na drugoj strani puta</b> (zaokružen je žutim) i znak daje vozilu koje ide ka tebi iz suprotnog smera</td><td><b>Smanjiš brzinu</b>, odnosno krećeš se sa <b>povećanom opreznošću</b> — ne zaustavljaš se</td></tr>
+</table>
+<p class="mut">Reč koja odlučuje je „neposredno <b>ispred</b> policijskog službenika" — ne iza njega, ne pored njega. A kad znak nije upućen tebi, ostaje samo obaveza opreza.</p>
+
+<p><b>Displej na policijskom vozilu.</b> Poruka je ispisana crvenim slovima na tamnoj podlozi, na zadnjem staklu vozila ispred tebe, i naizmenično se smenjuje sa rečju POLICIJA. Postupaš doslovno po tekstu — to je <b>obaveza</b>, a ne preporuka, i ne zavisi od toga da li si napravio prekršaj:</p>
+<div class="signRow wrapRow" style="margin:10px 0">
+  <div class="signCell">
+    <svg viewBox="0 0 100 58"><rect x="3" y="7" width="94" height="44" rx="4" fill="#141414"/><text x="50" y="37" text-anchor="middle" fill="#ff4522" font-size="19" font-weight="bold" font-family="monospace">STOP</text></svg>
+    <span><b>Staješ IZA</b><br>policijskog vozila</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 100 58"><rect x="3" y="7" width="94" height="44" rx="4" fill="#141414"/><text x="50" y="26" text-anchor="middle" fill="#ff4522" font-size="13" font-weight="bold" font-family="monospace">STANITE</text><text x="50" y="44" text-anchor="middle" fill="#ff4522" font-size="13" font-weight="bold" font-family="monospace">ISPRED</text></svg>
+    <span><b>Staješ ISPRED</b><br>službenog vozila</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 100 58"><rect x="3" y="7" width="94" height="44" rx="4" fill="#141414"/><text x="50" y="37" text-anchor="middle" fill="#ff4522" font-size="14" font-weight="bold" font-family="monospace">USPORITE</text></svg>
+    <span><b>Voziš brzinom</b><br>policijskog vozila</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 100 58"><rect x="3" y="7" width="94" height="44" rx="4" fill="#141414"/><text x="50" y="26" text-anchor="middle" fill="#ff4522" font-size="13" font-weight="bold" font-family="monospace">PRATITE</text><text x="50" y="44" text-anchor="middle" fill="#ff4522" font-size="13" font-weight="bold" font-family="monospace">NAS</text></svg>
+    <span><b>Voziš za njim</b><br>dok daje znak</span>
+  </div>
+</div>
+<p>Zašto goli „STOP" znači <i>iza</i>: vozač koji se kreće <b>neposredno iza</b> policijskog vozila koje daje posebne znake dužan je da postupi po znacima i naredbama policajca, odnosno da prati vozilo do pogodnog mesta i bezbedno se zaustavi <b>iza</b> njega (ZOBS čl. 110). Ispred staješ samo kad na displeju izričito piše da staneš ispred službenog vozila. Mamac na oba pitanja: „dužan sam samo ako uz displej dobijem i znak stop tablicom" — nije tačno, displej je dovoljan.</p>
+
+<p><b>Duga svetla iza tebe.</b> Kada policijsko vozilo pod pratnjom, odnosno sa prvenstvom prolaza, uz posebna svetla daje i <b>svetlosni znak upozorenja</b> — a to je <b>uzastopno ili naizmenično paljenje dugih svetala</b> (ZOBS čl. 60) — vozač koji se kreće <b>neposredno ispred</b> njega mora <b>odmah bezbedno da zaustavi vozilo uz desnu ivicu kolovoza, a po mogućnosti van kolovoza</b> (ZOBS čl. 110). Mamci: „smanji brzinu" i „omogući mu preticanje". Ne — <b>staješ</b>, i to uz desnu ivicu.</p>
+
+<p><b>Rotaciona svetla: četiri situacije.</b> Reč <b>„po potrebi"</b> je ovde skoro uvek deo tačnog odgovora:</p>
+<table>
+<tr><th>Svetlo</th><th>Vozilo</th><th>Tvoje obaveze</th></tr>
+<tr><td><b>Crveno + plavo</b>, naizmenično</td><td>Vozilo <b>pod pratnjom</b>, u kretanju</td><td>Propustiš ga i omogućiš mu mimoilaženje, preticanje, odnosno obilaženje · <b>po potrebi</b> staneš ili skloniš vozilo sa kolovoza · strogo se pridržavaš naredbi <b>lica iz pratnje</b> · nastaviš tek pošto prođu <b>sva</b> vozila pod pratnjom (čl. 107)</td></tr>
+<tr><td><b>Dva plava</b></td><td>Vozilo sa prvenstvom prolaza, <b>u kretanju</b></td><td>Obratiš pažnju na njega <b>i na vozila kojima ono obezbeđuje prolaz</b>, pa ih propustiš · po potrebi staneš ili skloniš vozilo dok prođu · strogo se pridržavaš naredbi lica iz tog vozila (čl. 109)</td></tr>
+<tr><td><b>Jedno plavo</b></td><td>Vozilo sa prvenstvom prolaza, <b>u kretanju</b></td><td>Obratiš pažnju i <b>ustupiš mu prvenstvo</b>, odnosno propustiš ga · po potrebi staneš ili skloniš vozilo dok prođe <span class="mut">(bez dela o vozilima kojima obezbeđuje prolaz — to ide uz dva svetla)</span></td></tr>
+<tr><td><b>Jedno ili dva plava</b></td><td>Vozilo sa prvenstvom prolaza koje <b>STOJI</b> na kolovozu</td><td><b>Smanjiš brzinu</b> · <b>po potrebi</b> staneš · <b>postupaš po naredbama policijskog službenika</b> — potpuno isto za jedno i za dva svetla</td></tr>
+</table>
+<p class="mut">Dva ključa: kod vozila <b>u kretanju</b> nikad se ne bira ni „smanji brzinu i nastavi kretanje" ni bezuslovno „zaustavi se" — bira se propuštanje uz zaustavljanje <b>po potrebi</b>. Kod <b>zaustavljenog</b> vozila „smanji brzinu" jeste tačno, ali opet uz „po potrebi zaustavi" i „postupaj po naredbama" — nikada samo suvo „zaustavi se".</p>
+
+<p><b>Za test zapamti:</b> ruka uvis i pun dlan ka tebi znače stani; predručena ruka je rampa koju ne smeš da presečeš; spuštene i odručene ruke znače isto — prsa i leđa staju, bokovi prolaze; zvižduk nije naredba za zaustavljanje; crvena lampa znači stani <b>neposredno ispred</b> policajca, a iz suprotnog smera samo uspori; displej se čita doslovno; duga svetla iza tebe znače odmah uz desnu ivicu.</p>
+`,
+};
+
 const BYSUB = {
   148: 'prvenstvo-prolaza',   // vozila pod pratnjom i sa pravom prvenstva (56 pitanja)
   136: 'prvenstvo-prolaza',   // prvenstvo prolaza
-  137: 'prvenstvo-prolaza',   // saobraćaj na raskrsnici
+  137: 'skretanje',   // saobraćaj na raskrsnici (prestrojavanje, ulazak, zaustavljanje u raskrsnici)
 };
 
 const prilagodi = 'Brzina se prilagođava USLOVIMA (ZOBS čl. 42): osobinama i stanju puta, vidljivosti, preglednosti, atmosferskim prilikama, stanju vozila i tereta, gustini saobraćaja — tako da vozilo možeš blagovremeno da zaustaviš pred svakom preprekom koju vidiš ili imaš razloga da predvidiš, bez ugrožavanja drugih. Odgovori sa "raspoloživim vremenom", "udobnošću" ili "što pre stigneš" su uvek netačni.';
@@ -1112,7 +1361,7 @@ BYSUB[157] = 'znakovi-opasnosti';
 BYSUB[158] = 'znakovi-naredbi';
 BYSUB[159] = 'znakovi-obavestenja';
 BYSUB[160] = 'znakovi-porodice';
-BYSUB[166] = 'prvenstvo-prolaza';   // znaci ovlašćenog lica — vrh hijerarhije
+BYSUB[166] = 'policajac-znaci';   // znaci ovlašćenog lica — vrh hijerarhije
 BYSUB[131] = 'prvenstvo-prolaza';   // opšte odredbe (hijerarhija postupanja)
 
 
