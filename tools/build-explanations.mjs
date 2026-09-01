@@ -1295,7 +1295,7 @@ CARDS['uredjaji-oprema'] = {
 <tr><td><b>Motocikl sa tri točka</b></td><td><b>dva</b></td></tr>
 <tr><td><b>Četvorocikl širi od 1 m</b></td><td><b>dva</b></td></tr>
 </table>
-<p class="mut">Pre nego što izabereš broj, pročitaj širinu u pitanju — ona je jedini razlikovni podatak. Odgovor „ne moraju biti ugrađeni" nije tačan ni u jednom od ta tri pitanja.</p>
+<p class="mut">Prvo pogledaj <b>vrstu vozila</b>, pa tek onda širinu: „motocikl sa tri točka" ide na <b>dva</b> i kad širina uopšte nije navedena. Broj nije dovoljan — i pogrešne ponude znaju da kažu „dva", pa uvek proveri i da su katadiopteri <b>crveni</b> i da <b>nisu trouglasti</b>. Odgovor „ne moraju biti ugrađeni" nije tačan ni u jednom od ta tri pitanja.</p>
 
 <p><b>Dimenzije i registarska tablica:</b></p>
 <table>
@@ -1318,7 +1318,7 @@ CARDS['uredjaji-oprema'] = {
 <tr><td><b>N</b></td><td>brzinska oznaka</td><td><b>indeks brzine</b></td></tr>
 </table>
 <p>Pitanje „dimenzije su iskazane kodovima" traži <b>dva</b> odgovora: <b>195/65 i 16</b>. R, 89 i N nisu dimenzije. Ista podela radi i na drugom primeru iz baze, 180/60 R 14 82 T.</p>
-<p><b>Istrošenost:</b> <b>TWI</b> označava <b>položaj indikatora istrošenosti pneumatika</b> <span class="mut">(mamci: indeks nosivosti, indeks brzine, „namenjen za letnju upotrebu", „može da se protektira")</span>. Dubina gazećeg sloja mora biti <b>veća od dubine označene TWI oznakama, odnosno najmanje 1,6 mm ako TWI oznaka nema</b>. <span class="mut">Pazi: goli odgovor „najmanje 1,6 mm" ponuđen je kao mamac — tačan odgovor uvek prvo pominje TWI, a tek onda cifru. Kad TWI oznake nema, granica je 1,6 mm, ne 2,0 ni 4,0.</span> Sami pneumatici moraju biti <b>dimenzija koje je deklarisao proizvođač vozila</b>, ne „najvećih koje mogu da stanu".</p>
+<p><b>Istrošenost:</b> <b>TWI</b> označava <b>položaj indikatora istrošenosti pneumatika</b> <span class="mut">(mamci: indeks nosivosti, indeks brzine, „namenjen za letnju upotrebu", „može da se protektira")</span>. Dubina gazećeg sloja mora biti <b>veća od dubine označene TWI oznakama, odnosno najmanje 1,6 mm ako TWI oznaka nema</b>. <span class="mut">Pazi na formulaciju pitanja. Ako pitanje ne pominje TWI („dubina gazećeg sloja… mora biti"), tačan odgovor prvo pominje TWI pa tek onda cifru — goli „najmanje 1,6 mm" je tu mamac. Ali ako pitanje samo kaže „kada ne postoji TWI oznaka", tačan odgovor je upravo gola cifra <b>1,6 mm</b>, a mamci su 2,0 i 4,0 mm.</span> Sami pneumatici moraju biti <b>dimenzija koje je deklarisao proizvođač vozila</b>, ne „najvećih koje mogu da stanu".</p>
 
 <p><b>Oprema i sirena.</b> Oprema za pružanje prve pomoći veličine „A" mora postojati u <b>motociklima, teškim triciklima i teškim četvorociklima</b> — <b>moped je ne mora imati</b>, a mamac je upravo odgovor koji moped ubacuje u spisak. Uređaj za davanje zvučnih znakova mora proizvoditi zvuk <b>čija je jačina u propisanim granicama</b>: ni „što veće jačine", ni „jačina nije propisana".</p>
 
@@ -1342,13 +1342,13 @@ CARDS['uredjaji-oprema'] = {
   <div class="signCell"><svg viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg">
     <rect x="8" y="8" width="134" height="28" fill="#f3c000"/>
     <rect x="5" y="5" width="140" height="34" fill="none" stroke="#d81f26" stroke-width="6"/>
-  </svg><b>DUGA vozila</b><span>isti pravougaonik i isti okvir, ali je polje čisto žuto, bez pruga</span></div>
+  </svg><b>DUGA vozila</b><span>isti pravougaonik, ali čisto <b>žuto polje bez pruga</b>, uokvireno <b>širokom crvenom trakom</b></span></div>
   <div class="signCell"><svg viewBox="0 0 150 140" xmlns="http://www.w3.org/2000/svg">
     <polygon points="53,20 97,20 137,116 127,130 23,130 13,116" fill="#d81f26" stroke="#111" stroke-width="3"/>
     <polygon points="75,38 116,116 34,116" fill="#f0821c"/>
   </svg><b>SPORA vozila</b><span>trougao zasečenih uglova: crveni okvir, narandžasta sredina</span></div>
 </div>
-<p class="mut">Razlikuj ih po polju, ne po obliku: dve pravougaone table imaju isti crveni okvir, pa je <b>pruge = teško, bez pruga = dugo</b>; jedina tabla u obliku trougla je ona za <b>spora</b> vozila.</p>
+<p class="mut">Razlikuj ih po polju i obodu: <b>kose crveno-žute pruge preko celog polja = TEŠKA</b> vozila (obod je tanak i žut), a <b>čisto žuto polje u širokom crvenom okviru = DUGA</b> vozila; jedina tabla u obliku trougla je ona za <b>spora</b> vozila.</p>
 
 <p class="mut"><b>Rezime mamaca u ovoj oblasti:</b> „najmanje" umesto „najviše" kod magle, 40 m umesto 10–50 m kod mopeda, „bela ili žuta" kod dnevnih svetala, „boju određuje proizvođač", „optička I zvučna", trouglasti katadiopteri, goli „1,6 mm" bez pominjanja TWI, i moped ubačen u spisak vozila koja moraju imati opremu prve pomoći.</p>
 `,
@@ -1362,10 +1362,12 @@ CARDS['vozac-zdravlje-alkohol'] = {
 <table>
 <tr><th>Pravilo</th><th>Šta ti nude kao mamac</th></tr>
 <tr><td><b>1. Vozač A kategorije ne sme da ima alkohola u krvi</b> — nula <span class="mut">(zakon govori i o alkoholu u organizmu, ali odgovori u bazi glase „u krvi")</span></td><td>„sme najviše do 0,30 mg/ml", „sme najviše do 0,50 mg/ml"</td></tr>
-<tr><td><b>2. Umoran, bolestan ili u lošem psihičkom stanju — ne sme da vozi</b>, bez ijednog izuzetka</td><td>„na kratkom delu puta", „ako time ne ometa, odnosno ne ugrožava druge"</td></tr>
+<tr><td><b>2. Umoran, bolestan ili u lošem psihičkom stanju — ne sme da vozi</b>, bez ijednog izuzetka</td><td>„na kratkom delu puta", „ako time ne ometa, odnosno ne ugrožava druge", „ne sme <b>samo</b> na javnom putu"</td></tr>
 <tr><td><b>3. Umor i bolest se utvrđuju stručnim pregledom</b></td><td>„neposrednim uvidom policijskog službenika", „pomoću odgovarajućih uređaja"</td></tr>
 <tr><td><b>4. Kontrolni zdravstveni pregled: osnov je SUMNJA, cena neodazivanja je ODUZIMANJE dozvole</b></td><td>„jer je učestvovao u nezgodi", „jer je učinio više prekršaja", „privremeno će mu se zabraniti upravljanje"</td></tr>
 </table>
+
+<p class="mut"><b>Mamac koji ne ublažava nego sužava:</b> uz pitanje o vožnji pod dejstvom alkohola ponuđeno je i „ne sme da upravlja vozilom <b>samo</b> u saobraćaju na javnom putu". I to je netačno — zabrana važi na <b>svakom putu</b>, a javni put je samo jedna vrsta puta. Tačan odgovor glasi jednostavno: „ne sme da upravlja vozilom u saobraćaju na putu".</p>
 
 <p><b>1. Nula alkohola (ZOBS čl. 187).</b> Opšte pravilo kaže da je „pod dejstvom alkohola" onaj kome se utvrdi sadržaj <b>veći od 0,20 mg/ml</b>. Tebe to ne dodiruje: vozači kategorija <b>AM, A1, A2 i A</b> su na zakonskoj listi onih kojima nije dozvoljena nijedna kap.</p>
 
