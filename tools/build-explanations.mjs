@@ -559,7 +559,73 @@ CARDS['pokazivaci'] = {
 <tr><td>4</td><td>kad si POSLEDNJI u zaustavljenoj koloni van naselja</td></tr>
 <tr><td>5</td><td>kretanje UNAZAD</td></tr>
 <tr><td>6</td><td>zaustavljanje na kolovozu (osim propisnog parkiranja/znaka)</td></tr>
-</table>`,
+</table>
+<p><b>Zvučni i svetlosni znak upozorenja (čl. 59 i 60)</b> — cela ova podoblast staje u jednu rečenicu: <b>truba je za OPASNOST, nikad za nervozu.</b> Čim u pitanju piše da hoćeš nekoga da požuriš, tačan odgovor je strpljenje.</p>
+
+<p><b>Zvučni znak si DUŽAN da upotrebiš</b> „kada to zahtevaju razlozi bezbednosti saobraćaja, a naročito" u tri nabrojana slučaja:</p>
+<table>
+<tr><th>Situacija</th><th>Gde</th></tr>
+<tr><td>Upozoravaš vozača kog želiš da <b>pretekneš ili obiđeš</b>, ako bi bez tog znaka postojala opasnost od nezgode</td><td>na putu <b>van naselja</b></td></tr>
+<tr><td>Pored kolovoza je <b>dete</b> koje ne obraća pažnju na kretanje vozila</td><td>svuda</td></tr>
+<tr><td>Pre ulaska u <b>nepreglednu i uzanu krivinu</b> ili dolaska na <b>prevoj</b>, gde je mimoilaženje otežano</td><td>na putu <b>van naselja</b></td></tr>
+</table>
+<p class="mut">Reč „naročito" znači da lista nije zatvorena — obaveza postoji kad god bezbednost to traži. Zato i u gradskoj ulici (slika sa taksijem koji stoji sa uključenim pokazivačima, a ti ga obilaziš) tačan odgovor glasi da si dužan da daš zvučni znak, iako to nije nijedna od tri nabrojane tačke.</p>
+
+<p><b>Koliko dugo?</b> „U meri koja je dovoljna da se drugi učesnici u saobraćaju upozore." Zakon ne pominje sekunde — i „ne duže od 3 sekunde" i „najmanje 5 sekundi" su izmišljene brojke. Zabranjen je zvučni znak <b>promenljive frekvencije</b> (sirena), osim u slučajevima koje zakon predviđa.</p>
+
+<p><b>Šta se traži na svakoj slici iz ove podoblasti:</b></p>
+<table>
+<tr><th>Šta vidiš</th><th>Tačan odgovor</th></tr>
+<tr><td>Put van naselja, vozilo <b>2</b> već pretiče u levoj traci, a vozilo <b>1</b> ispred njega uključilo levi pokazivač</td><td>dužan je zvučni znak</td></tr>
+<tr><td>Gradska ulica, taksi zaustavljen ispred kolone parkiranih vozila sa uključenim pokazivačima — obilaziš ga</td><td>dužan si zvučni znak</td></tr>
+<tr><td>Uzan put uz odsečenu stenu, iza odbojne ograde se ništa ne vidi — nepregledna krivina</td><td>dužan si zvučni znak</td></tr>
+<tr><td>Dvoje dece trči za loptom preko kolovoza, ne gledaju u saobraćaj</td><td>dužan si zvučni znak</td></tr>
+<tr><td>Iza vozila auto-škole si, leva traka zauzeta — nema uslova za preticanje</td><td><b>strpljivo</b> nastaviš vožnju do mesta gde smeš da pretekneš</td></tr>
+<tr><td>Zeleno svetlo na semaforu, a vozilo auto-škole ispred tebe još nije krenulo</td><td><b>strpljivo</b> sačekaš da krene</td></tr>
+<tr><td>Zaustavljena kolona na putu van naselja (radovi), ti si poslednji</td><td>pališ <b>sva četiri</b> pokazivača</td></tr>
+</table>
+<p class="mut">U dva slučaja sa strpljivim čekanjem (vozilo auto-škole i kolona na semaforu) nije tačan ni zvučni, ni svetlosni, ni „oba" — požurivanje nije razlog za znak upozorenja. A tamo gde jeste obavezan, traži se <b>samo zvučni</b>: ponuda „i zvučni i svetlosni znak" je pogrešna, jer je svetlosni tvoja mogućnost, a ne dodatna obaveza.</p>
+
+<p><b>Svetlosni znak upozorenja</b> = <b>uzastopno ili naizmenično paljenje DUGIH svetala</b> — ne pozicionih, ne stop-svetala, ne pokazivača pravca — uz pažnju da ne zaslepiš vozače iz suprotnog smera.</p>
+<svg viewBox="0 0 460 112" role="img" aria-label="Svetlosni znak upozorenja: uzastopno i naizmenično paljenje dugih svetala" style="max-width:460px;width:100%;display:block;margin:8px auto">
+  <rect x="2" y="6" width="104" height="40" rx="6" fill="#2c6aa0"/>
+  <text x="54" y="31" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">UZASTOPNO</text>
+  <rect x="116" y="6" width="104" height="40" rx="8" fill="#3a3f47"/>
+  <circle cx="146" cy="26" r="12" fill="#ffd84d" stroke="#b58900" stroke-width="2"/>
+  <circle cx="190" cy="26" r="12" fill="#ffd84d" stroke="#b58900" stroke-width="2"/>
+  <rect x="230" y="6" width="104" height="40" rx="8" fill="#3a3f47"/>
+  <circle cx="260" cy="26" r="12" fill="#6b7280" stroke="#4b5563" stroke-width="2"/>
+  <circle cx="304" cy="26" r="12" fill="#6b7280" stroke="#4b5563" stroke-width="2"/>
+  <rect x="344" y="6" width="104" height="40" rx="8" fill="#3a3f47"/>
+  <circle cx="374" cy="26" r="12" fill="#ffd84d" stroke="#b58900" stroke-width="2"/>
+  <circle cx="418" cy="26" r="12" fill="#ffd84d" stroke="#b58900" stroke-width="2"/>
+  <rect x="2" y="62" width="104" height="40" rx="6" fill="#8a5a00"/>
+  <text x="54" y="87" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">NAIZMENIČNO</text>
+  <rect x="116" y="62" width="104" height="40" rx="8" fill="#3a3f47"/>
+  <circle cx="146" cy="82" r="12" fill="#ffd84d" stroke="#b58900" stroke-width="2"/>
+  <circle cx="190" cy="82" r="12" fill="#6b7280" stroke="#4b5563" stroke-width="2"/>
+  <rect x="230" y="62" width="104" height="40" rx="8" fill="#3a3f47"/>
+  <circle cx="260" cy="82" r="12" fill="#6b7280" stroke="#4b5563" stroke-width="2"/>
+  <circle cx="304" cy="82" r="12" fill="#ffd84d" stroke="#b58900" stroke-width="2"/>
+  <rect x="344" y="62" width="104" height="40" rx="8" fill="#3a3f47"/>
+  <circle cx="374" cy="82" r="12" fill="#ffd84d" stroke="#b58900" stroke-width="2"/>
+  <circle cx="418" cy="82" r="12" fill="#6b7280" stroke="#4b5563" stroke-width="2"/>
+</svg>
+<table>
+<tr><td>Noću, <b>umesto</b> zvučnog znaka</td><td>sme</td></tr>
+<tr><td>Noću <b>u naselju</b>, prilikom preticanja drugog vozila</td><td>sme</td></tr>
+<tr><td><b>Danju</b>, ako takav način upozorenja više odgovara uslovima na putu</td><td>sme</td></tr>
+</table>
+<p class="mut">Zbog trećeg reda odgovori „samo danju" i „samo noću" nikada nisu tačni.</p>
+
+<p><b>Sva četiri pokazivača — dve zamke uz tabelu iznad (čl. 61):</b></p>
+<table>
+<tr><th>Ponuđeno</th><th>Zašto nije tačno</th></tr>
+<tr><td>„kada se <b>kreće</b> kao poslednji u koloni na putu van naselja"</td><td>Obaveza važi samo za <b>zaustavljenu</b> kolonu — i ni tada, ako je kolona stala zbog postupanja po saobraćajnom znaku ili pravilu saobraćaja (semafor, ustupanje prvenstva, pešački prelaz)</td></tr>
+<tr><td>„kada se zaustavio <b>iza</b> vozila u koje ulaze ili izlaze deca"</td><td>Sva četiri pali vozilo <b>iz kojeg</b> putnici ulaze ili izlaze, a ne ono koje stoji iza njega</td></tr>
+</table>
+<p class="mut">Na slici sa zaustavljenom kolonom van naselja poslednji vozač pali <b>sva četiri</b> pokazivača — ne levi.</p>
+`,
 };
 
 CARDS['parkiranje'] = {
@@ -657,7 +723,31 @@ CARDS['put-pojmovi'] = {
   <rect x="382" y="28" width="66" height="92" rx="6" fill="#e8dcc2" stroke="#b49a5a"/><text x="415" y="76" text-anchor="middle" font-size="10" font-weight="bold" fill="#6b5520">TROTOAR</text>
 </svg>
 <p><b>Vrste puteva:</b> autoput (fizički razdvojene kolovozne trake, bez ukrštanja u nivou) · motoput (za motorna vozila, može i bez razdvajanja) · javni put · zemljani put (sa njega propuštaš SVE pri uključenju!).</p>
-<p><b>Ključne definicije (čl. 7):</b> ZAUSTAVLJANJE = prekid kretanja do 3 MINUTA (vozač ne napušta vozilo, osim po znaku/pravilu) · PARKIRANJE = svaki duži prekid · NASELJE = izgrađen prostor čije su granice obeležene znakom.</p>`,
+<p><b>Ključne definicije (čl. 7):</b> ZAUSTAVLJANJE = prekid kretanja do 3 MINUTA (vozač ne napušta vozilo, osim po znaku/pravilu) · PARKIRANJE = svaki duži prekid · NASELJE = izgrađen prostor čije su granice obeležene znakom.</p>
+<p><b>Zone (čl. 160-163) — četiri pojma koja baza vrti jedan protiv drugog.</b> Pitanja idu u OBA smera: jednom „Zona 30 je…", drugi put „Deo puta u kojoj je brzina ograničena do 30 km/h je…" — i tu se traži naziv. Zato uči par NAZIV ↔ DEFINICIJA, ne samo brzinu.</p>
+<table>
+<tr><th>Zona</th><th>Po čemu se prepoznaje</th><th>Brzina</th></tr>
+<tr><td><b>Pešačka zona</b><br><span class="mut">čl. 160</span></td><td>prvenstveno namenjena saobraćaju PEŠAKA; vozila samo izuzetno, kad opština dozvoli</td><td><b>brzina kretanja pešaka</b> — bez ijedne brojke u km/h</td></tr>
+<tr><td><b>Zona usporenog saobraćaja</b><br><span class="mut">čl. 161</span></td><td>kolovoz DELE pešaci i vozila</td><td>brzina kretanja pešaka, <b>a najviše 10 km/h</b></td></tr>
+<tr><td><b>Zona „30"</b><br><span class="mut">čl. 162</span></td><td>samo ograničenje brzine — u definiciji nema pešaka</td><td><b>do 30 km/h</b></td></tr>
+<tr><td><b>Zona škole</b><br><span class="mut">čl. 163</span></td><td>deo puta ili ulice u neposrednoj blizini škole</td><td><b>u naselju 30, van naselja 50</b> km/h, u vremenu od 7,00 do 21,00 (osim ako znak ne odredi drugačije)</td></tr>
+</table>
+<p><b>Tri zamke koje nose sve poene ove podoblasti:</b><br>
+1) <b>Pešačka zona je jedina bez brojke.</b> Kad se traži brzina u pešačkoj zoni, ponuđeni „20 km/h" i „30 km/h" su mamci — tačan odgovor je „kretanja pešaka" i tu se staje. Brojku imaju usporena zona (10) i zona „30" (30).<br>
+2) <b>Brzina pešaka se javlja dva puta</b> — u pešačkoj zoni i u zoni usporenog saobraćaja — ali samo usporena zona ima i tavanicu: najviše 10 km/h.<br>
+3) <b>Dvojka je uvek mamac.</b> Kroz celu ovu podoblast, i kod zona i kod gašenja motora, „20 km/h" i „dva minuta" pojavljuju se isključivo kao netačni odgovori. Tačne brojke su 10, 30, 50, vreme 7,00-21,00, jedan minut i tri minuta.</p>
+<p class="mut">Sve četiri zone moraju biti obeležene propisanom saobraćajnom signalizacijom — nema zone koja se podrazumeva bez znaka.</p>
+<p><b>Kad se gasi motor (čl. 164)</b> — zakon nabraja tačno četiri situacije:</p>
+<table>
+<tr><th>Vozač mora isključiti motor</th><th>Zapamti</th></tr>
+<tr><td>na zahtev policajca ili drugog službenog lica</td><td>bez rasprave, odmah</td></tr>
+<tr><td>kada je to određeno saobraćajnom signalizacijom</td><td>znak koji to nalaže; crveno svetlo na semaforu nije nalog za gašenje</td></tr>
+<tr><td>kad je vozilo zaustavljeno u <b>tunelu duže od jednog minuta</b></td><td>u tunelu je strože: izduvni gasovi nemaju kuda</td></tr>
+<tr><td>kad vozilo <b>stoji duže od tri minuta</b></td><td>ista granica kao u definiciji zaustavljanja gore</td></tr>
+</table>
+<p><b>Semafor NIJE razlog za gašenje motora.</b> Kao mamac se dva puta nudi „prekid kretanja radi postupanja po svetlosnom znaku zabrane prolaska koji daje semafor" — jednom sa dodatkom „duže od dva minuta", jednom bez njega. Ni jedno ni drugo nije u zakonu: crveno svetlo motor ne gasi, gasi ga tunel (jedan minut), stajanje (tri minuta), znak i službeno lice.</p>
+<p><b>Otpad i buka (isti čl. 164):</b> ispuštanje, odnosno odlaganje materija i otpada kojima se ugrožava život i zdravlje ljudi, životinja, biljaka ili zagađuje životna sredina <b>nije dozvoljeno</b> — ni na putu ni pored njega, dakle nigde. Svako sužavanje te zabrane rečju „samo" („samo van naseljenog mesta", „samo tamo gde postoji znak") je mamac. Iz istog člana je i pravilo da vozilo u saobraćaju ne sme da prouzrokuje prekomernu buku — kod motocikla to praktično znači neprepravljan, propisan izduvni sistem.</p>
+`,
 };
 
 CARDS['autoput'] = {
@@ -685,7 +775,52 @@ CARDS['razno-pravila'] = {
 <p><b>Vučenje vozila:</b> užetom (≥3 m), krutom vezom (rudom) ili oslanjanjem/podizanjem; noću i pri smanjenoj vidljivosti vučeno vozilo mora biti osvetljeno; brzina ograničena (40 km/h).</p>
 <p><b>Žuto rotaciono svetlo (čl. 111):</b> radovi na putu, vozila pomoći na putu, vanredni prevoz, traktor/radna mašina noću.</p>
 <p><b>Prepreke na putu (čl. 112 i Pravilnik):</b> obeležavaju se propisanim znakovima/svetlima — noću crveno svetlo.</p>
-<p><b>Osnovna načela:</b> poverenje u druge učesnike + tvoja obaveza da ne ugrožavaš i ometaš druge — svaki učesnik odgovara za svoje postupke.</p>`,
+<p><b>Osnovna načela:</b> poverenje u druge učesnike + tvoja obaveza da ne ugrožavaš i ometaš druge — svaki učesnik odgovara za svoje postupke.</p>
+
+<p style="margin-top:18px"><b>TRAMVAJ I ŽIVOTINJE (čl. 84 i 87)</b></p>
+<p><b>Tramvaj nije izvan zakona.</b> Odredbe ZOBS-a <b>shodno se primenjuju</b> i na saobraćaj tramvaja i drugih vozila koja se po putu kreću po šinama — <b>osim ako to ne isključuju konstrukcione osobine tih vozila ili način njihovog kretanja</b>. Ponuđene zamke su „ne primenjuju se" i „ne primenjuju se, osim odredaba o ograničenju brzine" — obe su netačne. Nije stvar u brzini: tramvaj jednostavno ne može da uradi sve što zakon traži od ostalih vozila (ne može da siđe sa šina, ne može da obiđe prepreku), pa zakon unapred priznaje samo taj tip izuzetka.</p>
+<p><b>Vođenje životinje iz vozila ili sa vozila je ZABRANJENO</b> — bez ijednog izuzetka. Domaće životinje smeju biti na putu samo u pratnji lica koje ih vodi i obezbeđuje tako da ne ugrožavaju bezbednost saobraćaja, a na autoput, motoput, državne puteve prvog reda i biciklističke staze im pristup uopšte nije dozvoljen.</p>
+<p class="mut">Zamke su „dozvoljeno je" i, opasnija, <b>„dozvoljeno je samo ako se vozilo kreće brzinom kretanja pešaka"</b> — ta formulacija je pozajmljena iz pravila o pešačkoj zoni i ovde ne postoji. Slikovno pitanje pokazuje vozača mopeda koji jednom rukom drži upravljač, a drugom povodac psa koji trči pored njega: nije dozvoljeno, ma koliko sporo išao. Ako se životinja <b>prevozi</b> u vozilu, to jeste dozvoljeno, ali samo tako da ne ugrožava i ne ometa vozača ni ostale učesnike.</p>
+
+<p style="margin-top:18px"><b>RADOVI NA PUTU — RADNIK SA ZASTAVICOM (čl. 155 i 166)</b></p>
+<p>Tamo gde se izvode radovi i gde je nastala prepreka koja se ne može odmah ukloniti, saobraćaj mogu da regulišu <b>najmanje DVA radnika</b> određena od strane izvođača radova, odnosno upravljača puta. Ne jedan — dva, jer se propušta naizmenično iz dva smera.</p>
+<table>
+<tr><th>Znak</th><th>Značenje za tvoj smer</th></tr>
+<tr><td><b>Podignuta CRVENA zastavica</b></td><td>Prolaz <b>zabranjen</b></td></tr>
+<tr><td><b>Podignuta ZELENA zastavica</b></td><td>Prolaz <b>slobodan</b></td></tr>
+</table>
+<p class="mut">Pamti da je <b>svaka</b> poruka nošena <b>podignutom</b> zastavicom — nema „spuštena crvena znači slobodno". Zato su netačni svi odgovori tipa „regulisanje se vrši samo zastavicom crvene boje, podignuta zabranjuje a spuštena dozvoljava" i isto to sa zelenom. Na slikama radnik uvek drži <b>obe</b> zastavice: ona koju je podigao je poruka, ona koja mu visi niz nogu ne znači ništa.</p>
+<p><b>Znak radnika je OBAVEZUJUĆI za tebe.</b> Znaci i naredbe ovlašćenih lica <b>imaju prvenstvo u odnosu na saobraćajnu signalizaciju i propisana pravila saobraćaja</b>. U dva slikovna pitanja tačni odgovori zato glase „slobodan prolaz <b>i obavezujući je za Vas</b>" i „zabranjen prolaz <b>i obavezujući je za Vas</b>", a zamke su upravo one koje ti nude izgovor: „nije obavezujući za Vas" i „nije obavezujući ako prohodna saobraćajna traka nije zauzeta vozilima iz suprotnog smera". Prazna traka ispred tebe nije dozvola.</p>
+<p><b>Dve dužnosti kod radova (pitanje traži DVA odgovora):</b> ne smeš da <b>ometaš radnika</b> koji obavlja radove na putu ili pored puta, i <b>dužan si da ukloniš svoje vozilo na zahtev izvođača radova</b> — a taj zahtev može biti dat i kao javni poziv. Zamka je „moram ukloniti vozilo samo na zahtev saobraćajne policije": izvođač radova je ovde dovoljan.</p>
+<p><b>Signalna tabla</b> (tabla sa treptavim strelicama, obično na prikolici) postavlja se <b>na zadnji deo motornog vozila ili prikolice, kada je vozilo zaustavljeno</b>. Zamke se lako razdvajaju po nameni: „razdvajajuća ograda" skreće saobraćaj u stranu, a „čeoni branik" ograđuje radilište sa čeone strane — ni jedno ni drugo se ne kači na vozilo.</p>
+
+<p style="margin-top:18px"><b>NASILNIČKA VOŽNJA — DOPUNA (čl. 41)</b></p>
+<p>Uz ono gore, zakon nabraja i <b>brzinu van naselja</b> i <b>alkohol</b>, a to su dva mesta gde su ponuđeni odgovori namerno bliski:</p>
+<table>
+<tr><th>Slučaj</th><th>Granica koja se traži</th><th>Ponuđene zamke</th></tr>
+<tr><td>Brzina <b>u naselju</b></td><td>za više od <b>90 km/h</b> veća od dozvoljene</td><td>70, 80</td></tr>
+<tr><td>Brzina <b>van naselja</b></td><td>za više od <b>100 km/h</b> veća od dozvoljene</td><td>80, 90</td></tr>
+<tr><td><b>Alkohol</b> — potpuna alkoholisanost</td><td>više od <b>2,00 mg/ml</b></td><td>„veoma teška" (više od 1,60 do 2,00) i „teška" (više od 1,20 do 1,60)</td></tr>
+</table>
+<p class="mut">Merdevine za pamćenje: <b>90 u naselju, 100 van naselja</b> — veći broj ide tamo gde je i osnovno ograničenje veće. Kod alkohola pamti samo <b>najviši</b> stepen: teška i veoma teška alkoholisanost jesu teški prekršaji, ali <b>nisu</b> nasilnička vožnja; nasilnička je tek <b>potpuna</b>.</p>
+<p><b>Kako to izgleda na slici.</b> Dva slikovna pitanja gađaju isti ishod iz dva različita ugla. U prvom sa mopeda vidiš vozilo koje ti <b>dolazi u susret tvojom saobraćajnom trakom</b> jer pretiče kolonu preko neisprekidane linije. U drugom nema ni kolone ni preticanja: put je <b>fizički razdvojen ostrvom</b>, na ostrvu stoji znak obaveznog smera okrenut ka tebi, a ti se krećeš <b>suprotnim smerom</b>. U oba slučaja tačan odgovor je isti i doslovno glasi „nepropisno postupanje koje je <b>u gruboj suprotnosti sa pravilima saobraćaja (nasilnička vožnja)</b>".</p>
+<p class="mut">Zamka glasi: „nepropisno postupanje, <b>koje nije</b> u gruboj suprotnosti sa pravilima saobraćaja" (kod pitanja o preticanju kolone nastavlja se i sa „s obzirom da preticanje može izvesti bez ugrožavanja drugih učesnika u saobraćaju". Procena da „stiže da se vrati" ne skida kvalifikaciju — puna linija je tu upravo zato što se preglednost na tom mestu ne može proceniti.</p>
+
+<p style="margin-top:18px"><b>VUČENJE — DOPUNA (čl. 71, 72 i 73)</b></p>
+<p><b>Šta se uopšte NE SME vući.</b> Motorno vozilo ne sme da vuče <b>moped, motocikl, laki tricikl ni teški tricikl</b> — dakle jednotračna vozila i tricikle. Sme da vuče putničko vozilo, laki i teški četvorocikl i teretno vozilo. Pitanje traži <b>tri</b> odgovora.</p>
+<p class="mut">Ovo pravilo samo rešava i slikovno pitanje o propisnom vučenju: vozilo broj 1 vuče <b>motocikl</b>, pa je nepropisno već po vrsti vučenog vozila, bez obzira na to čime ga vuče. Tačan odgovor je vozilo broj 2.</p>
+<table>
+<tr><th>Način vuče</th><th>Kada NE SME</th></tr>
+<tr><td><b>Uže</b></td><td>Vučeno vozilo ima neispravan <b>uređaj za upravljanje</b> ili <b>uređaj za zaustavljanje</b>; užetom se, uz to, ne vuku teretno vozilo i autobus</td></tr>
+<tr><td><b>Kruta veza (ruda)</b></td><td>Vučeno vozilo nema <b>ispravan uređaj za upravljanje</b>; ili mu je ukupna masa veća od ukupne mase vučnog vozila, a neispravna mu je radna kočnica</td></tr>
+</table>
+<p class="mut">Logika iza tabele: <b>uže</b> traži da vučeno vozilo ume i da skreće i da koči samo za sebe, jer ga ništa ne drži; <b>ruda</b> pomaže oko kočenja, ali upravljač i dalje mora da radi. Zato je ispravan upravljač uslov kod <b>oba</b> načina, a ispravne kočnice samo kod užeta. Vuče se, uz to, isključivo vozilo koje zbog neispravnosti ili nedostatka delova ne može samo da se kreće.</p>
+<p><b>Obeležavanje:</b> sigurnosni trougao mora biti postavljen na <b>OBA</b> vozila — na vučnom sa <b>prednje</b> strane, na vučenom sa <b>zadnje</b>. Na vučnom vozilu moraju biti uključeni <b>svi pokazivači pravca</b>, a na vučenom ako su ispravni. Vučenim vozilom je zabranjen prevoz lica, osim vozača koji njime upravlja.</p>
+
+<p style="margin-top:18px"><b>ŽUTO ROTACIONO SVETLO — ŠTA TI RADIŠ (čl. 111)</b></p>
+<p>Kad se susretneš sa vozilom na kome je uključeno žuto rotaciono ili trepćuće svetlo, dužan si da <b>povećaš opreznost i prilagodiš brzinu i način kretanja</b> svog vozila — ne da obavezno staneš, niti da pomeriš vozilo sa kolovoza.</p>
+
+`,
 };
 
 CARDS['kazne'] = {
@@ -1558,6 +1693,8 @@ BYSUB[91] = 'razno-pravila';           // ko reguliše i ko kontroliše saobrać
 BYSUB[163] = 'oznake-kolovoz';         // svetlosne oznake na putu
 BYSUB[168] = 'vozilo-tehnika';         // teret na vozilu
 BYSUB[170] = 'pesaci-bicikli';         // prevoz lica vozilima
+BYSUB[94] = 'slicni-pojmovi';         // opšti pojmovnik (vozač, pešak, kolona, mase...)
+BYSUB[139] = 'pokazivaci';            // zvučni i svetlosni znak upozorenja
 BYSUB[161] = 'oznake-kolovoz';
 BYSUB[162] = 'semafori';
 BYSUB[178] = 'iskljucenje';
@@ -1576,7 +1713,6 @@ BYSUB[146] = 'pruga';
 BYSUB[164] = 'pruga';
 BYSUB[109] = 'put-pojmovi';
 BYSUB[115] = 'put-pojmovi';
-BYSUB[94]  = 'put-pojmovi';
 // BYSUB[91] uklonjen — pitanja o načelima imaju svoje tekstove, zbirna kartica tu ne pomaže
 BYSUB[147] = 'autoput';
 BYSUB[126] = 'vozilo-tehnika';
@@ -2381,7 +2517,167 @@ CARDS['slicni-pojmovi'] = {
       <text x="60" y="70" text-anchor="middle" font-size="13" fill="#fff" font-weight="bold">P</text></svg>
     <b>✗ NIJE KOLONA</b><span>parkirana vozila nisu kolona</span>
   </div>
-</div>`,
+</div>
+<p><b>Vozač ili pešak (čl. 7):</b> ne gleda se šta imaš u džepu ni šta držiš u rukama, nego <b>šta radiš</b>. <b>Vozač</b> je lice koje NA PUTU <b>upravlja</b> vozilom. Čim vozilo sopstvenom snagom guraš ili vučeš — nisi više vozač, <b>ti si pešak</b>.</p>
+<div class="vgrid" style="grid-template-columns:1fr 1fr">
+  <div class="vg vgHead">PEŠAK</div><div class="vg vgHead">VOZAČ</div>
+  <div class="vg" style="text-align:left">kreće se po putu (hoda)<br>
+  sopstvenom snagom <b>gura ili vuče</b> vozilo, ručna kolica, dečje prevozno sredstvo ili kolica za nemoćna lica<br>
+  <b>gura bicikl</b><br>
+  vozi se u dečjem prevoznom sredstvu ili u kolicima za nemoćna lica — svejedno da li ih pokreće sopstvenom snagom ili motorom<br>
+  klizi klizaljkama, skijama ili sankama, vozi se na koturaljkama, skejtbordu i sl.</div>
+  <div class="vg" style="text-align:left">upravlja <b>biciklom</b><br>
+  upravlja <b>zaprežnim vozilom</b><br>
+  upravlja <b>motokultivatorom</b><br>
+  upravlja bilo kojim drugim vozilom na putu</div>
+</div>
+<p><span class="mut">Mamci: „svako lice koje ima vozačku dozvolu" (dozvola u novčaniku ne čini nikoga vozačem) i „lice koje po putu sopstvenom snagom gura ili vuče vozilo" (to je pešak). Na ispitnoj slici pešaci su čovek koji rukama gura automobil i čovek na koturaljkama, dok su biciklista i kočijaš na zaprežnim kolima vozači.</span></p>
+
+<p><b>Saobraćaj = kretanje vozila i lica po PUTU (čl. 7).</b> Svako pitanje prevedi na jedno: <b>da li je ta površina put?</b> Ako nije put, nema ni saobraćaja — pa makar se vozilo kretalo 200 km/h.</p>
+<table>
+<tr><th>JESTE saobraćaj</th><th>NIJE saobraćaj</th></tr>
+<tr><td>kretanje vozila ulicom</td><td>kretanje vozila <b>trkačkom stazom</b></td></tr>
+<tr><td>kretanje zaprežnog vozila zemljanim putem</td><td>kretanje traktora <b>njivom</b></td></tr>
+<tr><td>kretanje motokultivatora zemljanim putem</td><td>kretanje vozila <b>poligonom</b> za probne vožnje ili sportske priredbe</td></tr>
+<tr><td>kretanje pešaka trotoarom</td><td>guranje vozila po <b>platou</b> namenjenom kretanju i okupljanju lica</td></tr>
+<tr><td>kretanje bicikla biciklističkom stazom</td><td>kretanje lica po <b>trgu</b></td></tr>
+<tr><td>guranje bicikla pešačkom stazom</td><td>kretanje po <b>privatnoj površini</b> koju smeju da koriste samo vozila i lica kojima je vlasnik to omogućio</td></tr>
+</table>
+<p><span class="mut">Zemljani put jeste put — i onda kad na priključku na drugi put ima izgrađen kolovozni zastor. Njiva, trkačka staza, poligon, plato i trg nisu. Biciklistička staza i trotoar jesu, pa guranje bicikla po njima jeste saobraćaj; samo je učesnik u njemu pešak, a ne vozač.</span></p>
+
+<p><b>Saobraćajna nezgoda (čl. 7)</b> — tri uslova moraju da se poklope: (1) dogodila se <b>na putu ili je započeta na putu</b>, (2) učestvovalo je <b>najmanje jedno vozilo u pokretu</b>, (3) neko je <b>poginuo ili je povređen</b>, <b>ili</b> je nastala <b>materijalna šteta</b>.</p>
+<div class="signRow lineRow" style="max-width:460px;margin:0 auto">
+  <div class="signCell">
+    <svg viewBox="0 0 150 100"><rect x="0" y="0" width="150" height="100" fill="#c3d3bd"/>
+      <rect x="6" y="0" width="54" height="100" fill="#9aa7b4"/><line x1="33" y1="0" x2="33" y2="100" stroke="#fff" stroke-dasharray="8 7" stroke-width="2"/>
+      <line x1="100" y1="0" x2="100" y2="36" stroke="#8a5a00" stroke-width="3"/>
+      <line x1="100" y1="72" x2="100" y2="100" stroke="#8a5a00" stroke-width="3"/>
+      <g stroke="#8a5a00" stroke-width="2"><line x1="96" y1="6" x2="104" y2="6"/><line x1="96" y1="15" x2="104" y2="15"/><line x1="96" y1="24" x2="104" y2="24"/><line x1="96" y1="33" x2="104" y2="33"/><line x1="96" y1="78" x2="104" y2="78"/><line x1="96" y1="87" x2="104" y2="87"/><line x1="96" y1="96" x2="104" y2="96"/></g>
+      <line x1="104" y1="45" x2="119" y2="38" stroke="#8a5a00" stroke-width="3"/>
+      <line x1="106" y1="60" x2="121" y2="67" stroke="#8a5a00" stroke-width="3"/>
+      <path d="M30 92 Q38 72 72 60" stroke="#c0392b" stroke-width="3" fill="none" stroke-dasharray="6 5" stroke-linecap="round"/>
+      <g transform="translate(126 50) rotate(72)">
+  <rect x="-11" y="-13" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="-13" width="4.5" height="8" rx="2" fill="#333"/>
+  <rect x="-11" y="6" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="6" width="4.5" height="8" rx="2" fill="#333"/>
+  <rect x="-9" y="-17" width="18" height="34" rx="7" fill="#c0392b"/>
+  <path d="M-6 -9 Q0 -13 6 -9 L6 -4 Q0 -7 -6 -4 Z" fill="#fff" opacity=".85"/>
+  <path d="M-6 9 Q0 12 6 9 L6 13 Q0 15 -6 13 Z" fill="#fff" opacity=".5"/>
+</g></svg>
+    <b>✓ JESTE nezgoda</b><span>izletanje sa puta i rušenje dvorišne ograde — nezgoda je započeta NA PUTU, a materijalne štete ima</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 150 100"><rect x="0" y="0" width="150" height="100" fill="#c3d3bd"/>
+      <ellipse cx="75" cy="50" rx="58" ry="34" fill="none" stroke="#9aa7b4" stroke-width="20"/>
+      <ellipse cx="75" cy="50" rx="58" ry="34" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="7 6"/>
+      <g transform="translate(75 16) rotate(90)">
+  <rect x="-11" y="-13" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="-13" width="4.5" height="8" rx="2" fill="#333"/>
+  <rect x="-11" y="6" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="6" width="4.5" height="8" rx="2" fill="#333"/>
+  <rect x="-9" y="-17" width="18" height="34" rx="7" fill="#2c6aa0"/>
+  <path d="M-6 -9 Q0 -13 6 -9 L6 -4 Q0 -7 -6 -4 Z" fill="#fff" opacity=".85"/>
+  <path d="M-6 9 Q0 12 6 9 L6 13 Q0 15 -6 13 Z" fill="#fff" opacity=".5"/>
+</g></svg>
+    <b>✗ NIJE nezgoda</b><span>povreda vozača i šteta na sportskom automobilu na trkačkoj stazi — staza nije put</span>
+  </div>
+</div>
+<p><span class="mut">Mamci koji zvuče logično, a nisu tačni: „nije nezgoda jer je učestvovalo samo jedno vozilo", „nije nezgoda jer nema poginulih ili povređenih lica" i „nije nezgoda jer je materijalna šteta načinjena van puta". Jedno vozilo je dovoljno, sama šteta je dovoljna, a gde se šteta završila nije bitno — bitno je gde je nezgoda počela.</span></p>
+
+<p><b>Šta se uopšte broji kao vozilo (čl. 7):</b> vozilo je sredstvo koje je po konstrukciji, uređajima i opremi <b>namenjeno i osposobljeno za kretanje po putu</b>. Odatle se granaju sve ostale vrste.</p>
+<table>
+<tr><th>Pojam</th><th>Uslovi</th><th>Nije to, iako liči</th></tr>
+<tr><td><b>Vozilo</b></td><td>namenjeno i osposobljeno za kretanje po putu — zaprežna kola, bicikl, radna mašina (npr. valjak), automobil</td><td><b>dečja kolica</b> i <b>ručna kolica</b> — njih pešak gura</td></tr>
+<tr><td><b>Bicikl</b></td><td><b>najmanje</b> dva točka <b>i</b> pokreće ga snaga vozača ili putnika, preneta pedalama ili ručicama na točkove</td><td><b>monocikl</b> (jedan točak) i <b>moped</b> (ima motor); četvorotočkaš na pedale JESTE bicikl, jer uslov glasi „najmanje dva", a ne „tačno dva"</td></tr>
+<tr><td><b>Motorno vozilo</b></td><td>pokreće ga snaga <b>sopstvenog</b> motora — traktor, motokultivator, automobil (šinska vozila su izuzeta)</td><td><b>prikolica i poluprikolica</b> (priključna vozila, nemaju svoj pogon), bicikl, zaprežno vozilo</td></tr>
+<tr><td><b>Zaprežno vozilo</b></td><td>namenjeno i osposobljeno da ga vuče <b>upregnuta životinja</b></td><td>traktorska prikolica, plug i druga priključna oruđa, motokultivator sa prikolicom</td></tr>
+<tr><td><b>Teretno vozilo</b></td><td>motorno vozilo sa <b>najmanje četiri točka</b>, namenjeno prevozu tereta</td><td>poluprikolica i prikolica (nemaju motor); trotočkaš sa sandukom nema četiri točka, pa nije teretno vozilo — po rasporedu točkova je tricikl, laki ili teški zavisno od brzine i motora (vidi karticu o kategorijama)</td></tr>
+</table>
+
+<p><b>Tramvaj, trolejbus, autobus</b> — na slici ih razlikuješ za dve sekunde: prvo gledaj <b>šine</b>, pa <b>motke</b>.</p>
+<div class="signRow">
+  <div class="signCell">
+    <svg viewBox="0 0 120 92"><line x1="0" y1="10" x2="120" y2="10" stroke="#5f6d7a" stroke-width="2"/>
+      <g stroke="#8a5a00" stroke-width="2"><line x1="16" y1="70" x2="16" y2="82"/><line x1="40" y1="70" x2="40" y2="82"/><line x1="64" y1="70" x2="64" y2="82"/><line x1="88" y1="70" x2="88" y2="82"/><line x1="108" y1="70" x2="108" y2="82"/></g>
+      <line x1="2" y1="72" x2="118" y2="72" stroke="#7a8a99" stroke-width="3"/>
+      <line x1="2" y1="80" x2="118" y2="80" stroke="#7a8a99" stroke-width="3"/>
+      <rect x="10" y="32" width="100" height="38" rx="6" fill="#c0392b"/>
+      <rect x="16" y="38" width="34" height="16" rx="2" fill="#eef3f7"/><rect x="56" y="38" width="22" height="16" rx="2" fill="#eef3f7"/><rect x="84" y="38" width="20" height="16" rx="2" fill="#eef3f7"/>
+      <line x1="60" y1="32" x2="52" y2="10" stroke="#333" stroke-width="2"/></svg>
+    <b>TRAMVAJ</b><span>ŠINE + električni vod — šinsko vozilo</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 120 92"><line x1="0" y1="10" x2="120" y2="10" stroke="#5f6d7a" stroke-width="2"/>
+      <rect x="0" y="76" width="120" height="16" fill="#9aa7b4"/>
+      <rect x="10" y="30" width="100" height="38" rx="6" fill="#2e8b57"/>
+      <rect x="16" y="36" width="34" height="16" rx="2" fill="#eef3f7"/><rect x="56" y="36" width="22" height="16" rx="2" fill="#eef3f7"/><rect x="84" y="36" width="20" height="16" rx="2" fill="#eef3f7"/>
+      <line x1="66" y1="30" x2="50" y2="10" stroke="#333" stroke-width="2"/>
+      <line x1="74" y1="30" x2="58" y2="10" stroke="#333" stroke-width="2"/>
+      <circle cx="32" cy="70" r="8" fill="#333"/><circle cx="92" cy="70" r="8" fill="#333"/></svg>
+    <b>TROLEJBUS</b><span>gumeni točkovi + DVE motke na vod; zakonski je to autobus na struju</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 120 92"><rect x="0" y="76" width="120" height="16" fill="#9aa7b4"/>
+      <rect x="10" y="30" width="100" height="38" rx="6" fill="#e08a1e"/>
+      <rect x="16" y="36" width="34" height="16" rx="2" fill="#eef3f7"/><rect x="56" y="36" width="22" height="16" rx="2" fill="#eef3f7"/><rect x="84" y="36" width="20" height="16" rx="2" fill="#eef3f7"/>
+      <circle cx="32" cy="70" r="8" fill="#333"/><circle cx="92" cy="70" r="8" fill="#333"/></svg>
+    <b>AUTOBUS</b><span>ni šina ni motki; više od devet mesta za sedenje, sa vozačem</span>
+  </div>
+</div>
+<p><span class="mut">Zakonski: <b>trolejbus je autobus</b> koji se preko provodnika napaja električnom energijom, a tramvaj je <b>šinsko</b> vozilo povezano na električni vod. Putničko vozilo ima <b>najviše devet</b> mesta za sedenje uključujući i mesto vozača, autobus <b>više od devet</b>. Turistički vozić na gumenim točkovima nije tramvaj.</span></p>
+
+<p><b>Mase (čl. 7)</b> — ključ je <b>ko određuje broj</b>: proizvođač deklariše šta vozilo jeste, država propisuje šta se sme, a ukupna masa je ono što se skupi na dan vožnje.</p>
+<table>
+<tr><th>Pojam</th><th>Šta obuhvata</th><th>Ko ga određuje</th></tr>
+<tr><td><b>Masa praznog vozila</b></td><td>neopterećeno vozilo sa karoserijom (ili šasija sa kabinom ako proizvođač ne ugrađuje karoseriju), najmanje 90% goriva, puni rezervoari tehničkih tečnosti, stalni teret (trajno ugrađeni uređaji, npr. kran ili dizalica), rezervni točak i pripadajući alat</td><td><b>proizvođač</b></td></tr>
+<tr><td><b>Masa vozila</b></td><td>masa praznog vozila + vozač od 75 kg, pri čemu se <b>tih 75 kg NE dodaje vozilima na dva i tri točka</b>, plus drugi član posade u autobusu i vučni uređaj gde postoje</td><td><b>proizvođač</b></td></tr>
+<tr><td><b>Najveća dozvoljena masa vozila</b></td><td>gornja granica mase za to vozilo</td><td><b>proizvođač</b></td></tr>
+<tr><td><b>Ukupna masa vozila</b></td><td>masa vozila + masa kojom je vozilo opterećeno, tj. <b>lica i teret</b></td><td>niko je ne deklariše — <b>zbir na licu mesta</b></td></tr>
+<tr><td><b>Najveća dozvoljena ukupna masa</b></td><td>najveća masa opterećenog vozila, odnosno skupa vozila</td><td><b>nadležni državni organ</b></td></tr>
+<tr><td><b>Nosivost vozila</b></td><td>razlika <b>najveće dozvoljene mase</b> vozila i <b>mase</b> vozila</td><td>računica iz prethodna dva broja</td></tr>
+</table>
+<p><span class="mut">Zamke: definicija „masa koju deklariše proizvođač vozila" bez ijednog dodatka je <b>najveća dozvoljena masa</b>; dugačak opis sa 90% goriva i rezervnim točkom je <b>masa praznog vozila</b>; „vozilo + lica + teret" je <b>ukupna masa</b>, a ne „najveća dozvoljena ukupna". Osovinsko opterećenje je deo ukupne mase kojim jedna osovina pritiska kolovoz dok vozilo <b>miruje</b>.</span></p>
+
+<p><b>Srednja (prosečna) brzina (čl. 7)</b> = <b>dužina deonice podeljena vremenom</b> za koje je vozilo pređe. Ništa se ne prosečuje po očitavanjima brzinomera — samo se deli.</p>
+<div class="vgrid" style="grid-template-columns:auto 1fr">
+  <div class="vg vgHead">Formula</div><div class="vg" style="text-align:left">srednja brzina = pređeni put ÷ vreme</div>
+  <div class="vg vgHead">Primer iz baze</div><div class="vg" style="text-align:left">300 km za 2 sata → 300 ÷ 2 = <b>150 km/h</b> <span class="mut">(mamci: 100, 120 i 200 km/h)</span></div>
+</div>
+
+<p><b>Dokument, oznaka ili pravo (čl. 7)</b> — četiri pojma koja se stalno mešaju. Najlakše ih razdvajaš po tome <b>na čemu stoje</b>: dozvole su papiri, tablica i nalepnica stoje na vozilu.</p>
+<table>
+<tr><th>Šta</th><th>Vrsta</th><th>Šta znači</th></tr>
+<tr><td><b>Saobraćajna dozvola</b></td><td>javna isprava (rešenje)</td><td>zajedno sa registracionom nalepnicom daje <b>pravo na korišćenje vozila</b> u saobraćaju, za vreme važenja nalepnice</td></tr>
+<tr><td><b>Registarska tablica</b></td><td>oznaka na vozilu</td><td>označava da je vozilo <b>upisano u jedinstveni registar vozila</b></td></tr>
+<tr><td><b>Registraciona nalepnica</b></td><td>oznaka i dozvola na vozilu</td><td>određuje da vozilo može da učestvuje u saobraćaju <b>u određenom vremenskom roku</b></td></tr>
+<tr><td><b>Vozačka dozvola</b></td><td>javna isprava (rešenje)</td><td>daje <b>licu</b> pravo da na putu upravlja vozilom <b>određene kategorije</b>, na određeno vreme</td></tr>
+</table>
+<p><b>Registrovano vozilo</b> je ono kod koga su <b>sva tri</b> uslova ispunjena istovremeno: upisano je u jedinstveni registar vozila, izdata mu je saobraćajna dozvola, i izdate su mu registarske tablice i registraciona nalepnica. <span class="mut">Mamci: „učestvuje u saobraćaju na putu" (registracija ne zavisi od toga da li vozilo negde ide) i „izdate su tablice za privremeno označavanje" (privremene tablice nisu registarske).</span></p>
+
+<p><b>Popravka ili prepravka (čl. 7)</b> — pitaj se da li vozilo posle zahvata <b>radi kako treba</b> ili <b>više nije isto vozilo</b>.</p>
+<div class="vgrid" style="grid-template-columns:auto 1fr">
+  <div class="vg vgHead"><b>POPRAVKA</b></div><div class="vg" style="text-align:left">dovođenje vozila, odnosno uređaja i sklopova vozila, u <b>ispravno stanje</b> — vraćaš ono što je bilo</div>
+  <div class="vg vgHead"><b>PREPRAVKA</b></div><div class="vg" style="text-align:left">promena <b>konstruktivnih karakteristika</b> kojom se menja namena ili vrsta vozila, odnosno deklarisane tehničke karakteristike vozila ili njegovih uređaja i sklopova — dobijaš drugačije vozilo</div>
+</div>
+<p><span class="mut">Mamci su „održavanje vozila" i „tehnički pregled vozila": održavanje je redovna briga, a tehnički pregled je provera — ni jedno ni drugo nije zahvat kojim se nešto menja ili vraća u ispravno stanje.</span></p>
+
+<p><b>Oznaka na leku sa psihoaktivnom supstancom</b>, koji se ne sme upotrebljavati pre i za vreme vožnje, jeste <b>pun, ispunjen crveni trougao</b> na pakovanju.</p>
+<div class="signRow" style="max-width:520px;margin:0 auto">
+  <div class="signCell">
+    <svg viewBox="0 0 60 56"><rect x="0" y="0" width="60" height="56" rx="4" fill="#eceff2"/><path d="M30 10 L52 46 L8 46 Z" fill="#d40000"/></svg>
+    <b>✓ TAČNO</b><span>pun crveni trougao</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 60 56"><rect x="0" y="0" width="60" height="56" rx="4" fill="#eceff2"/><path d="M30 12 L52 46 L8 46 Z" fill="none" stroke="#d40000" stroke-width="4"/><rect x="28" y="26" width="4" height="10" rx="2" fill="#111"/><rect x="28" y="38" width="4" height="4" rx="2" fill="#111"/></svg>
+    <b>✗ mamac</b><span>prazan trougao sa uzvičnikom</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 60 56"><rect x="0" y="0" width="60" height="56" rx="4" fill="#eceff2"/><circle cx="30" cy="28" r="19" fill="none" stroke="#d40000" stroke-width="4"/></svg>
+    <b>✗ mamac</b><span>prazan crveni krug</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 60 56"><rect x="0" y="0" width="60" height="56" rx="4" fill="#eceff2"/><circle cx="30" cy="28" r="19" fill="none" stroke="#d40000" stroke-width="4"/><rect x="28" y="18" width="4" height="12" rx="2" fill="#111"/><rect x="28" y="33" width="4" height="4" rx="2" fill="#111"/></svg>
+    <b>✗ mamac</b><span>krug sa uzvičnikom</span>
+  </div>
+</div>
+`,
 };
 X[7940] = { ...(X[7940]||{}), card: 'slicni-pojmovi' };
 X[7942] = { ...(X[7942]||{}), card: 'slicni-pojmovi' };
