@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Вежбај — Возачки А</title>
+<style>
+  :root { color-scheme: light dark; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 16px/1.5 system-ui, "Segoe UI", Arial, sans-serif;
+    background: transparent; color: #1c2733; }
+  .box { border: 1px solid #d8e2ec; border-radius: 12px; padding: 16px 18px; background: #fff; }
+  h1 { font-size: 1.05rem; margin: 0 0 4px; }
+  .mut { color: #5a6b7c; font-size: .86rem; }
+  .q { font-weight: 600; margin: 14px 0 10px; }
+  button.opt { display: block; width: 100%; text-align: left; background: #f2f6fa; color: inherit;
+    border: 1px solid #d8e2ec; border-radius: 8px; padding: 10px 12px; font: inherit; margin-bottom: 8px; cursor: pointer; }
+  button.opt:hover { border-color: #2c6aa0; }
+  button.opt.ok { border-color: #1e7a46; background: #e7f4ec; }
+  button.opt.bad { border-color: #b3392f; background: #fbeeec; }
+  .row { display: flex; gap: 12px; align-items: center; justify-content: space-between; margin-top: 12px; flex-wrap: wrap; }
+  a.cta { display: inline-block; background: #2c6aa0; color: #fff; text-decoration: none;
+    padding: 9px 16px; border-radius: 8px; font-weight: 600; }
+  a.cta:hover { background: #1f4e78; }
+  img.qi { max-width: 100%; border-radius: 8px; margin-bottom: 10px; }
+  @media (prefers-color-scheme: dark) {
+    body { color: #dce6f0; }
+    .box { background: #16212e; border-color: #2a3a4c; }
+    .mut { color: #8fa3b8; }
+    button.opt { background: #1d2937; border-color: #2a3a4c; }
+    button.opt.ok { background: #14301f; border-color: #5cc389; }
+    button.opt.bad { background: #3a1f1c; border-color: #e08279; }
+  }
+</style>
+</head>
+<body>
+<div class="box">
+  <h1>Питање дана — теоријски испит, А категорија</h1>
+  <div class="mut">званична база питања · бесплатно</div>
+  <div id="sadrzaj"><p class="mut" style="margin-top:14px">Учитавам питање…</p></div>
+  <div class="row">
+    <span class="mut" id="odgovor"></span>
+    <a class="cta" id="link" href="https://milanmilojevic.github.io/vozacki-a/" target="_blank" rel="noopener">Цела вежбаоница →</a>
+  </div>
+</div>
+
+<script>
+// Мали умеци за сајтове ауто-школа: једно насумично питање из званичне базе,
+// одговор одмах, па позив на целу вежбаоницу. Ништа се не прати нити чува.
+(function () {
+  var OSNOVA = 'https://milanmilojevic.github.io/vozacki-a/';
+  var s = document.createElement('script');
+  s.src = OSNOVA + 'data.js';
+  s.onload = function () {
+    try {
+      var Q = window.QUIZ.questions;
+      // само питања са једним тачним одговором — умеци треба да буду кратки
+      var kand = Q.filter(function (q) { return q.req === 1; });
+      var q = kand[Math.floor(Math.random() * kand.length)];
+      var c = document.getElementById('sadrzaj');
+      var html = q.img ? '<img class="qi" src="' + OSNOVA + 'img/' + q.id + '.jpg" alt="Слика уз питање">' : '';
+      html += '<div class="q">' + q.t.c + '</div>';
+      c.innerHTML = html;
+      var izbori = q.ch.slice().sort(function () { return Math.random() - 0.5; });
+      izbori.forEach(function (ch) {
+        var b = document.createElement('button');
+        b.className = 'opt';
+        b.textContent = ch.t.c;
+        b.addEventListener('click', function () {
+          var sva = c.querySelectorAll('button.opt');
+          for (var i = 0; i < sva.length; i++) sva[i].disabled = true;
+          for (var i = 0; i < sva.length; i++) {
+            var t = izbori[i];
+            if (t.ok) sva[i].classList.add('ok');
+            else if (sva[i] === b) sva[i].classList.add('bad');
+          }
+          document.getElementById('odgovor').textContent = ch.ok ? '✓ Тачно' : '✗ Нетачно — тачан је означен зеленим';
+          document.getElementById('link').textContent = 'Зашто? Види објашњење →';
+          document.getElementById('link').href = OSNOVA + '#/p/' + q.id;
+        });
+        c.appendChild(b);
+      });
+    } catch (e) {
+      document.getElementById('sadrzaj').innerHTML = '<p class="mut">Питање тренутно није доступно. <a href="' + OSNOVA + '">Отвори вежбаоницу</a></p>';
+    }
+  };
+  s.onerror = function () {
+    document.getElementById('sadrzaj').innerHTML = '<p class="mut">Питање тренутно није доступно. <a href="' + OSNOVA + '">Отвори вежбаоницу</a></p>';
+  };
+  document.head.appendChild(s);
+})();
+</script>
+</body>
+</html>
