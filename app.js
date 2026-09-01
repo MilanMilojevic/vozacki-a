@@ -2192,16 +2192,20 @@
   document.addEventListener('click', (ev) => {
     const slika = ev.target.closest && ev.target.closest('img.qImg');
     if (!slika) return;
-    if (!slika.naturalWidth) return;   // slika se nije učitala — nema šta da se uveća
+    if (!slika.naturalWidth) return;                  // slika se nije učitala — nema šta da se uveća
+    if (document.getElementById('imgZoom')) return;   // jedno uvećanje, ne gomila njih jedno preko drugog
     const z = document.createElement('div');
     z.id = 'imgZoom';
     const im = document.createElement('img');
     im.src = slika.src; im.alt = slika.alt;
     z.appendChild(im);
-    z.addEventListener('click', () => z.remove());
-    document.addEventListener('keydown', function esc(e2) {
-      if (e2.key === 'Escape') { z.remove(); document.removeEventListener('keydown', esc); }
-    });
+    // Zatvaranje na JEDNOM mestu. Ranije se osluškivač za Escape skidao samo ako se
+    // zatvori Escapeom — ko zatvara klikom, ostavljao je po jedan osluškivač za svako
+    // otvaranje, pa su se gomilali do kraja sesije.
+    const zatvori = () => { z.remove(); document.removeEventListener('keydown', naEscape); };
+    const naEscape = (e2) => { if (e2.key === 'Escape') zatvori(); };
+    z.addEventListener('click', zatvori);
+    document.addEventListener('keydown', naEscape);
     document.body.appendChild(z);
   });
 
