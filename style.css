@@ -37,7 +37,6 @@ body.dark .primary { background: #2c6aa0; }
 body.dark .primary:hover { background: #1f4e78; }
 body.dark .primary:disabled, .primary:disabled:hover { background: #4a5560; color: #c9d1d9; cursor: default; }
 body.dark #topbar { background: #24587f; }
-body.dark .linklike { color: var(--blue-d); }
 button.catRow { width: 100%; background: none; border: none; padding: 0; font: inherit; color: inherit; text-align: left; }
 html { font-size: 16px; }
 /* overflow-anchor: sami upravljamo skrolom kad se kartica otvori; bez ovoga pregledač
@@ -162,7 +161,11 @@ table.stats td.num, table.stats th.num { text-align: right; font-variant-numeric
 .accGood { color: var(--ok); font-weight: 600; }
 .accMid { color: var(--mark); font-weight: 600; }
 .accBad { color: var(--bad); font-weight: 600; }
-.linklike { background: none; color: var(--blue); text-decoration: underline; padding: 2px 4px; }
+/* Malo dugme za zatvaranje traka i saveta. Nasledilo je mesto .linklike razreda, koji je
+   uklonjen jer u aplikaciji vise nema nijedne akcije nacrtane kao link (Milanova odluka). */
+.zatvoriX { background: var(--btn2); color: var(--ink); border: 1px solid var(--line);
+  border-radius: 6px; padding: 3px 9px; font-size: .85rem; line-height: 1.2; }
+.zatvoriX:hover { background: var(--btn2h); }
 .pill { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: .8rem; font-weight: 600; }
 .pill.pass { background: var(--ok-bg); color: var(--ok); } .pill.fail { background: var(--bad-bg); color: var(--bad); }
 .histRow { display: grid; grid-template-columns: 7.5em 4.5em 1fr 3.5em 1em; gap: 10px; align-items: center;
@@ -195,12 +198,32 @@ button.histBtn:hover { background: var(--optHover); }
 .explBox p { margin: 0 0 6px; }
 /* Široka tabela sme da se skroluje u svom okviru, ali NIKAD da razvuče celu stranu.
    Tabela statistike je na 320px izlazila 36px preko kartice i pravila vodoravni skrol. */
+/* ---- Podešavanja: imenovane grupe umesto jednog reda nabacanih dugmadi ---- */
+.podGrupa { padding: 12px 0; border-top: 1px solid var(--line); }
+.podGrupa:first-child { padding-top: 0; border-top: none; }
+.podNaslov { font-weight: 700; font-size: .82rem; letter-spacing: .04em; text-transform: uppercase;
+  color: var(--mut); margin-bottom: 8px; }
+.podOpasno .podNaslov { color: var(--bad); }
+
+/* ---- Podnožje ---- */
+#podnozje { max-width: 880px; margin: 26px auto 0; padding: 18px 12px 34px;
+  border-top: 1px solid var(--line); color: var(--mut); font-size: .84rem; line-height: 1.6; }
+.podnozjeRed { margin-bottom: 6px; }
+.podnozjeRed b { color: var(--ink); }
+.podnozjeAkcije { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin: 10px 0 8px; }
+.podnozjeAkcije a { color: var(--blue); text-decoration: underline; border: none; }
+.podnozjeAkcije a:hover { color: var(--blue-d); }
+body.uSimulaciji #podnozje { display: none; }
+@media (min-width: 1200px) { #podnozje { max-width: 1240px; } }
+
 /* traka za tiha upozorenja (napredak se ne čuva, otvorena dva prozora) */
 .upozorenjeTraka { position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 1400;
   background: #7a4b00; color: #fff; border-radius: 10px; padding: 12px 16px; font-size: .9rem;
   line-height: 1.45; box-shadow: 0 6px 22px rgba(0,0,0,.35); max-width: 640px; margin: 0 auto; }
-.upozorenjeTraka .linklike { color: #ffd9a0; margin-left: 6px; white-space: nowrap; }
-.upozorenjeTraka .linklike:hover { color: #fff; }
+/* ista dugmad, ali na tamnonarandžastoj traci moraju da budu svetla */
+.upozorenjeTraka .zatvoriX { background: rgba(255,255,255,.18); color: #fff;
+  border-color: rgba(255,255,255,.45); margin-left: 8px; white-space: nowrap; }
+.upozorenjeTraka .zatvoriX:hover { background: rgba(255,255,255,.34); }
 .tblScroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 /* pitanje čija slika nije stigla da se sačuva pre nego što je nestao internet */
 .qImgFail { border: 1px dashed var(--line); border-radius: 8px; padding: 14px 16px; margin: 0 0 14px;
@@ -336,9 +359,6 @@ tr.totalRow td { border-top: 2px solid var(--blue); }
 
 /* naslov otklopljene kartice ostaje vidljiv ispod lepljive plave trake */
 .explCardBtn { scroll-margin-top: 74px; }
-.linklike.danger { color: #c0392b; }
-.linklike.danger:hover { color: #96281b; }
-body.dark .linklike.danger { color: #ff8a80; }
 .catRow, .statCatRow { scroll-margin-top: 74px; }
 
 /* veće sličice za linije/oznake — natpisi su HTML, ne SVG tekst */

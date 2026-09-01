@@ -156,6 +156,14 @@
     fsSmaller: { l: 'Smanji slova', c: 'Смањи слова' },
     fsBigger: { l: 'Povećaj slova', c: 'Повећај слова' },
     close: { l: 'Zatvori', c: 'Затвори' },
+    grupaNapredak: { l: 'Napredak', c: 'Напредак' },
+    grupaAplikacija: { l: 'Aplikacija', c: 'Апликација' },
+    grupaOprezno: { l: 'Oprezno', c: 'Опрезно' },
+    resetNapomena: { l: 'Briše sve na ovom uređaju: odgovore, obeležena pitanja, simulacije i dnevni cilj. Ne može da se poništi.', c: 'Брише све на овом уређају: одговоре, обележена питања, симулације и дневни циљ. Не може да се поништи.' },
+    podnozjeOpis: { l: 'Besplatna vežbaonica za teorijski ispit, A kategorija. Bez reklama, bez naloga i bez plaćanja.', c: 'Бесплатна вежбаоница за теоријски испит, А категорија. Без реклама, без налога и без плаћања.' },
+    podnozjeBaza: { l: 'Zvanična baza eUprave · @1 pitanja · izvučena @2 · poslednja provera 29.08.2026 · verzija @3', c: 'Званична база еУправе · @1 питања · извучена @2 · последња провера 29.08.2026 · верзија @3' },
+    podnozjePrivatnost: { l: 'Napredak ostaje na tvom uređaju. Ništa se ne šalje i ništa se ne čuva kod nas.', c: 'Напредак остаје на твом уређају. Ништа се не шаље и ништа се не чува код нас.' },
+    podnozjeKod: { l: 'Kôd na GitHub-u', c: 'Кôд на GitHub-у' },
     datumLos: { l: 'Datum nije potpun. Unesi ga u obliku dan-mesec-godina, sa punom godinom (npr. 2026).', c: 'Датум није потпун. Унеси га у облику дан-месец-година, са пуном годином (нпр. 2026).' },
     datumOpseg: { l: 'Godina mora biti između @1. i @2. Ako si otkucao samo dve cifre, dopiši punu godinu.', c: 'Година мора бити између @1. и @2. Ако си откуцао само две цифре, допиши пуну годину.' },
     datumProslost: { l: 'Taj datum je prošao. Unesi datum ispita koji tek dolazi, ili obriši polje ako ne želiš odbrojavanje.', c: 'Тај датум је прошао. Унеси датум испита који тек долази, или обриши поље ако не желиш одбројавање.' },
@@ -212,7 +220,6 @@
     officialBase: { l: 'zvanična baza pitanja', c: 'званична база питања' },
     naIspituTip: { l: 'Koliko pitanja iz ove podoblasti nosi svaki pravi ispit — izmereno iz pet zvaničnih izvlačenja simulacije.', c: 'Колико питања из ове подобласти носи сваки прави испит — измерено из пет званичних извлачења симулације.' },
     qNumTip2: { l: 'Klik: kopiraj adresu ovog pitanja', c: 'Клик: копирај адресу овог питања' },
-    bazaProverena: { l: 'Baza: zvanična eUprava, proverena 29.08.2026.', c: 'База: званична еУправа, проверена 29.08.2026.' },
     imgAlt: { l: 'Slika uz pitanje — saobraćajna situacija ili znak; pitanje se odnosi na ono što je na slici.', c: 'Слика уз питање — саобраћајна ситуација или знак; питање се односи на оно што је на слици.' },
     grp1: { l: '1 · Osnovni pojmovi', c: '1 · Основни појмови' },
     grp2: { l: '2 · Ko ide prvi — prvenstvo i signalizacija', c: '2 · Ко иде први — првенство и сигнализација' },
@@ -259,7 +266,6 @@
     import: { l: 'Učitaj napredak', c: 'Учитај напредак' },
     reset: { l: 'Obriši sav napredak', c: 'Обриши сав напредак' },
     resetConfirm: { l: 'Sigurno obrisati SAV napredak?', c: 'Сигурно обрисати САВ напредак?' },
-    dataInfo: { l: 'Baza: zvanična eUprava pitanja za A kategoriju', c: 'База: званична еУправа питања за А категорију' },
     persistNote: { l: 'Napredak preživljava restart browsera i računara; briše ga samo „brisanje podataka pregledanja". Za svaki slučaj poveži fajl za automatski upis.', c: 'Напредак преживљава рестарт браузера и рачунара; брише га само „брисање података прегледања". За сваки случај повежи фајл за аутоматски упис.' },
     backupConnect: { l: '🔗 Poveži fajl za automatsko čuvanje', c: '🔗 Повежи фајл за аутоматско чување' },
     backupResume: { l: 'Nastavi automatsko čuvanje u fajl', c: 'Настави аутоматско чување у фајл' },
@@ -447,7 +453,7 @@
       b.appendChild(document.createTextNode(tekst + ' '));
       const x = document.createElement('button');
       x.type = 'button';
-      x.className = 'linklike';
+      x.className = 'zatvoriX';
       x.textContent = L('close');
       x.addEventListener('click', () => b.remove());
       b.appendChild(x);
@@ -554,7 +560,12 @@
 
   // ---------- Ruter + trenutni prikaz (za promenu pisma bez gubitka mesta) ----------
   const views = ['home', 'question', 'sim', 'simresult', 'stats', 'browse'];
-  function show(v) { views.forEach((x) => el('view-' + x).classList.toggle('active', x === v)); window.scrollTo(0, 0); }
+  function show(v) {
+    views.forEach((x) => el('view-' + x).classList.toggle('active', x === v));
+    // podnožje se sklanja tokom ispita — pravi ispit ga nema
+    document.body.classList.toggle('uSimulaciji', v === 'sim');
+    window.scrollTo(0, 0);
+  }
   let current = { redraw: renderHome };
 
   // ---------- Hash rutiranje: strelice browsera napred/nazad + deep-link ----------
@@ -880,7 +891,7 @@
     el('qCard').innerHTML = `<p class="qText">${msgHtml}</p>
       <div class="qActions">${extraHtml || ''}
         ${origin ? `<button class="secondary" id="bBackOrigin">‹ ${L('backToList')}</button>` : ''}
-        <button class="linklike" data-nav="home">${L('backHome')}</button></div>`;
+        <button type="button" class="secondary" data-nav="home">${L('backHome')}</button></div>`;
     bindNav(el('qCard'));
     const bo = el('bBackOrigin');
     if (bo) bo.addEventListener('click', origin);
@@ -1252,7 +1263,7 @@
       <div class="qActions" style="margin-top:14px">
         ${fresh ? `<button class="primary" id="btnSimAgain">${L('newSim')}</button>` : ''}
         <button class="secondary" id="btnShareRes">${L('shareBtn')}</button>
-        <button class="linklike" data-nav="home">${L('backHome')}</button>
+        <button type="button" class="secondary" data-nav="home">${L('backHome')}</button>
       </div>`;
     bindNav(rc);
     const ba = rc.querySelector('#btnSimAgain');
@@ -1471,7 +1482,7 @@
         ${wrongNow.length ? `<button class="secondary" id="bWrong">${L('onlyWrong')} (${wrongNow.length})${sfx()}</button>` : ''}
         ${unseen.length && unseen.length < ids.length ? `<button class="secondary" id="bUnseen">${L('onlyUnseen')} (${unseen.length})${sfx()}</button>` : ''}
         ${shuffleBoxHtml()}
-        <button class="linklike" data-nav="home">${L('backHome')}</button>
+        <button type="button" class="secondary" data-nav="home">${L('backHome')}</button>
       </div>`;
     bindNav(head);
     bindShuffleBox(head);
@@ -1555,7 +1566,7 @@
         ${unseen.length && unseen.length < Q.length ? `<button class="secondary" id="bUnseen">${L('onlyUnseen')} (${unseen.length})${sfx()}</button>` : ''}
         ${wrongNow.length ? `<button class="secondary" id="bWrong">${L('onlyWrong')} (${wrongNow.length})${sfx()}</button>` : ''}
         ${shuffleBoxHtml()}
-        <button class="linklike" data-nav="home">${L('backHome')}</button>
+        <button type="button" class="secondary" data-nav="home">${L('backHome')}</button>
       </div>`;
     bindNav(head);
     bindShuffleBox(head);
@@ -1635,7 +1646,7 @@
     if (!ids.length) {
       head.innerHTML = `<h3>${escapeHtml(title)}</h3>
         <p class="qText" style="font-weight:normal">${isWrong ? L('drillEmpty') : L('markedEmpty')}</p>
-        <div class="qActions"><button class="linklike" data-nav="home">${L('backHome')}</button></div>`;
+        <div class="qActions"><button type="button" class="secondary" data-nav="home">${L('backHome')}</button></div>`;
       bindNav(head);
       el('browseList').innerHTML = '';
       show('browse');
@@ -1652,7 +1663,7 @@
              ${waiting.length ? `<button class="secondary" id="bAll">${L('drillWaitingBtn')} (${ids.length})${sfx()}</button>` : ''}`
           : `<button class="primary" id="bAllM">${L('vezbaj')} (${ids.length})${sfx()}</button>`}
         ${shuffleBoxHtml()}
-        <button class="linklike" data-nav="home">${L('backHome')}</button>
+        <button type="button" class="secondary" data-nav="home">${L('backHome')}</button>
       </div>`;
     bindNav(head);
     bindShuffleBox(head);
@@ -1793,7 +1804,7 @@
       tip.innerHTML = `<div class="tourText">${escapeHtml(L(st.key))}</div>
         <div class="tourRow"><span class="mut">${idx + 1} / ${TOUR_STEPS.length}</span>
         <span style="flex:1"></span>
-        <button class="linklike" id="tourSkip">${escapeHtml(L('tourSkip'))}</button>
+        <button type="button" class="secondary sBtn" id="tourSkip">${escapeHtml(L('tourSkip'))}</button>
         <button class="primary" id="tourNext">${escapeHtml(idx === TOUR_STEPS.length - 1 ? L('tourDone') : L('tourNext'))}</button></div>`;
       requestAnimationFrame(() => {
         if (!spot || !tip.isConnected) return;
@@ -2069,35 +2080,49 @@
       pk.querySelectorAll('.explCardBtn').forEach((btn) => sklopivo(btn, pk));
     }
 
-    el('dataTools').innerHTML = `${L('dataInfo')} · ${D.generated} · ${Q.length}
-      <div class="mut" style="margin-top:6px">${L('persistNote')}</div>
-      <div id="backupLine" style="margin-top:8px"></div>
-      <div class="qActions" style="margin-top:8px">
-        <button class="secondary" id="btnExport">${L('export')}</button>
-        <button class="secondary" id="btnImport">${L('import')}</button>
-        <button class="secondary" id="btnInstall" style="display:none">${L('installBtn')}</button>
-        <button class="secondary sBtn" id="btnCheckUpd">${L('updRepoCheck')}</button>
-        <button class="secondary sBtn" id="btnTourReplay">${L('tourReplay')}</button>
-        <button class="danger sBtn" id="btnReset">${L('reset')}</button>
-        <input type="file" id="fileImport" accept=".json" style="display:none">
+    // Četiri imenovane grupe umesto jednog reda nabacanih dugmadi. Podaci o bazi i prijava
+    // greške su odavde preseljeni u podnožje — tamo ih ljudi i traže.
+    el('dataTools').innerHTML = `
+      <div class="podGrupa">
+        <div class="podNaslov">${L('grupaNapredak')}</div>
+        <div class="mut" style="font-size:.82rem">${L('persistNote')}</div>
+        <div id="backupLine" style="margin-top:8px"></div>
+        <div class="qActions" style="margin-top:8px">
+          <button type="button" class="secondary" id="btnExport">${L('export')}</button>
+          <button type="button" class="secondary" id="btnImport">${L('import')}</button>
+          <input type="file" id="fileImport" accept=".json" style="display:none">
+        </div>
       </div>
-      <div id="installWhat" style="margin-top:8px"><button class="explCardBtn pojBtn">${L('installWhatTitle')}</button><div class="explCard" style="display:none">${L('installWhatBody')}</div></div>
-      <div style="margin-top:10px;font-size:.86rem"><label>${L('examDateLabel')}
-        <input type="date" id="examDate" value="${S.examDate || ''}" style="margin-left:6px"></label></div>
-      <div style="margin-top:12px;font-size:.86rem"><b>${L('planNaslov')}</b>
-        <div class="mut" style="font-size:.82rem;margin:2px 0 6px">${L('planObjasnjenje')}</div>
+      <div class="podGrupa">
+        <div class="podNaslov">${L('grupaAplikacija')}</div>
+        <div class="qActions">
+          <button type="button" class="secondary" id="btnInstall" style="display:none">${L('installBtn')}</button>
+          <button type="button" class="secondary" id="btnCheckUpd">${L('updRepoCheck')}</button>
+          <button type="button" class="secondary" id="btnTourReplay">${L('tourReplay')}</button>
+        </div>
+        <div id="installWhat" style="margin-top:8px"><button type="button" class="explCardBtn pojBtn">${L('installWhatTitle')}</button><div class="explCard" style="display:none">${L('installWhatBody')}</div></div>
+      </div>
+      <div class="podGrupa">
+        <div class="podNaslov">${L('planNaslov')}</div>
+        <div style="font-size:.86rem"><label>${L('examDateLabel')}
+          <input type="date" id="examDate" value="${S.examDate || ''}" style="margin-left:6px"></label></div>
+        <div class="mut" style="font-size:.82rem;margin:8px 0 6px">${L('planObjasnjenje')}</div>
         <div class="planPolja">
           <label class="planPolje"><span class="mut">${L('planNovih')}</span>
             <input id="planNovih" type="text" inputmode="numeric" autocomplete="off" value="${S.plan && S.plan.novih ? S.plan.novih : ''}"></label>
           <label class="planPolje"><span class="mut">${L('planPon')}</span>
             <input id="planPon" type="text" inputmode="numeric" autocomplete="off" value="${S.plan && S.plan.pon ? S.plan.pon : ''}"></label>
-          <button class="secondary" id="btnPlanSave">${L('planSacuvaj')}</button>
-          <button class="linklike" id="btnPlanPredlog">${L('planPredlozi')}</button>
-          ${S.plan ? `<button class="secondary sBtn" id="btnPlanOff">${L('planIskljuci')}</button>` : ''}
+          <button type="button" class="secondary" id="btnPlanSave">${L('planSacuvaj')}</button>
+          <button type="button" class="secondary" id="btnPlanPredlog">${L('planPredlozi')}</button>
+          ${S.plan ? `<button type="button" class="secondary" id="btnPlanOff">${L('planIskljuci')}</button>` : ''}
         </div>
-        <div id="planPoruka" class="mut" style="margin-top:6px"></div></div>
-      <div class="mut" style="margin-top:10px;font-size:.82rem">${L('bazaProverena')} ·
-        ${prijavaRadi() ? `<button class="linklike" id="btnFeedback">${L('feedback')}</button>` : ''}</div>`;
+        <div id="planPoruka" class="mut" style="margin-top:6px"></div>
+      </div>
+      <div class="podGrupa podOpasno">
+        <div class="podNaslov">${L('grupaOprezno')}</div>
+        <div class="qActions"><button type="button" class="danger" id="btnReset">${L('reset')}</button></div>
+        <div class="mut" style="font-size:.82rem;margin-top:8px">${L('resetNapomena')}</div>
+      </div>`;
     renderBackupLine();
     if (installEvt) { const bi = el('btnInstall'); if (bi) bi.style.display = ''; }
     el('btnInstall').addEventListener('click', async () => {
@@ -2110,7 +2135,8 @@
     sklopivo(el('installWhat').querySelector('.explCardBtn'));
     el('btnCheckUpd').addEventListener('click', (ev) => { S.noUpd = 0; save(); proveriRepo(true, ev.currentTarget); });
     el('btnTourReplay').addEventListener('click', tourStart);
-    { const bf = el('btnFeedback'); if (bf) bf.addEventListener('click', otvoriPrijavu); }
+    // (prijava greške je preseljena u podnožje — vezuje se u renderPodnozje(), ne ovde;
+    //  ostavljanje veze na ovom mestu bi je zakačilo drugi put pri svakom crtanju početne)
     // Datum ispita: prazno polje je jedini način da se datum ukloni, pa prazno UVEK briše.
     // Sve ostalo mora da prođe proveru — bez nje je otkucano „26" umesto „2026" davalo
     // godinu 0026, prolazilo regeks i davalo besmisleno odbrojavanje, a promašen unos je
@@ -2364,6 +2390,25 @@
     el('btnFinishSim').textContent = L('finishSim');
     el('btnSimReport').textContent = L('report');
     document.title = L('brand') + ' — ' + (S.script === 'l' ? 'vežbanje' : 'вежбање');
+    renderPodnozje();
+  }
+
+  // ---------- Podnožje ----------
+  // Preuzima ono što je do sada zatrpavalo karticu podešavanja (izvor baze, verzija,
+  // prijava greške) i stavlja ga tamo gde ljudi i inače traže takve podatke.
+  // Namerno se NE prikazuje tokom simulacije — pravi ispit nema podnožje.
+  function renderPodnozje() {
+    const f = el('podnozje');
+    if (!f) return;
+    f.innerHTML = `<div class="podnozjeRed"><b>${escapeHtml(L('brand'))}</b> — ${L('podnozjeOpis')}</div>
+      <div class="podnozjeRed mut">${L('podnozjeBaza').split('@1').join(Q.length).split('@2').join(D.generated).split('@3').join(window.APP_V || 0)}</div>
+      <div class="podnozjeRed podnozjeAkcije">
+        ${prijavaRadi() ? `<button type="button" class="secondary sBtn" id="btnFeedback">${L('feedback')}</button>` : ''}
+        <a class="bcLink" href="${REPO}" target="_blank" rel="noopener">${L('podnozjeKod')}</a>
+      </div>
+      <div class="podnozjeRed mut">${L('podnozjePrivatnost')}</div>`;
+    const bf = el('btnFeedback');
+    if (bf) bf.addEventListener('click', otvoriPrijavu);
   }
 
   // Dugoživeći tab: na povratak u tab (i na ~5 min) proveri da li postoji nova verzija fajlova.
@@ -2410,7 +2455,7 @@
       <div class="mut" style="font-size:.86rem;margin-top:2px">${escapeHtml(L('updRepoBody').replace('#A', BOOT_V).replace('#B', nova))}</div></div>
       <div class="repoUpdBtns">
         <a class="primary repoUpdLink" href="${REPO_ZIP}" target="_blank" rel="noopener">${escapeHtml(L('updRepoGet'))}</a>
-        <button class="linklike" id="repoUpdLater">${escapeHtml(L('updRepoLater'))}</button>
+        <button type="button" class="secondary sBtn" id="repoUpdLater">${escapeHtml(L('updRepoLater'))}</button>
         <button class="secondary sBtn" id="repoUpdOff">${escapeHtml(L('updRepoOff'))}</button>
       </div>`;
     document.body.appendChild(b);
@@ -2598,7 +2643,7 @@
     if (!jeIOS) return;
     const strip = document.createElement('div');
     strip.id = 'iosHint';
-    strip.innerHTML = `<span>${L('iosHint')}</span><button class="linklike" id="iosHintX" aria-label="Zatvori">✕</button>`;
+    strip.innerHTML = `<span>${L('iosHint')}</span><button type="button" class="zatvoriX" id="iosHintX" aria-label="Zatvori">✕</button>`;
     document.body.appendChild(strip);
     el('iosHintX').addEventListener('click', () => { S.iosSeen = 1; save(); strip.remove(); });
   }
