@@ -149,6 +149,35 @@
     shareSaved: { l: 'Slika je preuzeta', c: 'Слика је преузета' },
     shareFail: { l: 'Slika nije mogla da se napravi', c: 'Слика није могла да се направи' },
     freeNote: { l: 'besplatna vežbaonica', c: 'бесплатна вежбаоница' },
+    fsSmaller: { l: 'Smanji slova', c: 'Смањи слова' },
+    fsBigger: { l: 'Povećaj slova', c: 'Повећај слова' },
+    fsMin: { l: 'Slova su već na najmanjoj veličini', c: 'Слова су већ на најмањој величини' },
+    fsMax: { l: 'Slova su već na najvećoj veličini', c: 'Слова су већ на највећој величини' },
+    planNaslov: { l: 'Dnevni cilj', c: 'Дневни циљ' },
+    planNovih: { l: 'novih pitanja dnevno', c: 'нових питања дневно' },
+    planPon: { l: 'ponavljanja dnevno', c: 'понављања дневно' },
+    planSacuvaj: { l: 'Sačuvaj cilj', c: 'Сачувај циљ' },
+    planIskljuci: { l: 'Ugasi cilj', c: 'Угаси циљ' },
+    planPredlozi: { l: 'Predloži mi', c: 'Предложи ми' },
+    planSacuvan: { l: 'Dnevni cilj je sačuvan.', c: 'Дневни циљ је сачуван.' },
+    planUgasen: { l: 'Dnevni cilj je ugašen.', c: 'Дневни циљ је угашен.' },
+    planIspunjen: { l: '✅ Dnevni cilj je ispunjen — vidimo se sutra.', c: '✅ Дневни циљ је испуњен — видимо се сутра.' },
+    planVezbaj: { l: '▶ Vežbaj po planu', c: '▶ Вежбај по плану' },
+    planNemaSta: { l: 'Za danas nema više — cilj je ispunjen.', c: 'За данас нема више — циљ је испуњен.' },
+    planNemaDostupnih: { l: 'Nema više pitanja koja čekaju. Cilj ostaje za sutra.', c: 'Нема више питања која чекају. Циљ остаје за сутра.' },
+    planBezDatuma: { l: 'Za predlog prvo unesi datum ispita, ispod.', c: 'За предлог прво унеси датум испита, испод.' },
+    planDatumProsao: { l: 'Datum ispita je prošao — unesi novi da bih mogao da računam.', c: 'Датум испита је прошао — унеси нови да бих могао да рачунам.' },
+    planPredlogGotov: { l: 'Predlog je upisan u polja. Ako ti odgovara, sačuvaj ga.', c: 'Предлог је уписан у поља. Ако ти одговара, сачувај га.' },
+    planSveOdgovoreno: { l: 'nema više novih', c: 'нема више нових' },
+    planObjasnjenje: { l: 'Ostavi oba polja prazna ako ne želiš cilj. Kad ga postaviš, dugme na početnoj daje tačno toliko pitanja — prvo ponavljanja, pa nova.', c: 'Остави оба поља празна ако не желиш циљ. Кад га поставиш, дугме на почетној даје тачно толико питања — прво понављања, па нова.' },
+    novihLbl: { l: 'novih', c: 'нових' },
+    ponLbl: { l: 'ponavljanja', c: 'понављања' },
+    unosPrazno: { l: 'Unesi ceo broj od @1 do @2.', c: 'Унеси цео број од @1 до @2.' },
+    unosSamoCifre: { l: 'Dozvoljene su samo cifre — bez slova, razmaka i zareza. Unesi ceo broj od @1 do @2.', c: 'Дозвољене су само цифре — без слова, размака и зареза. Унеси цео број од @1 до @2.' },
+    unosPremalo: { l: 'Najmanje što može da se unese je @1.', c: 'Најмање што може да се унесе је @1.' },
+    unosPreveliko: { l: 'Toliko ih nema — najviše je @2.', c: 'Толико их нема — највише је @2.' },
+    skokVanOpsega: { l: 'Ovaj spisak ima @2 pitanja. Unesi broj od @1 do @2.', c: 'Овај списак има @2 питања. Унеси број од @1 до @2.' },
+    planMaxNovih: { l: 'Neodgovorenih je ostalo @2 — više od toga ne može stati u jedan dan.', c: 'Неодговорених је остало @2 — више од тога не може стати у један дан.' },
     officialBase: { l: 'zvanična baza pitanja', c: 'званична база питања' },
     naIspituTip: { l: 'Koliko pitanja iz ove podoblasti nosi svaki pravi ispit — izmereno iz pet zvaničnih izvlačenja simulacije.', c: 'Колико питања из ове подобласти носи сваки прави испит — измерено из пет званичних извлачења симулације.' },
     qNumTip2: { l: 'Klik: kopiraj adresu ovog pitanja', c: 'Клик: копирај адресу овог питања' },
@@ -277,6 +306,9 @@
   function nInt(v, min, max, def) { return Number.isInteger(v) && v >= min && v <= max ? v : def; }
   function nNum(v, min, max, def) { return typeof v === 'number' && Number.isFinite(v) && v >= min && v <= max ? v : def; }
   function maxTs() { return 4102444800000; }   // 1.1.2100 — gornja granica za vremenske oznake
+  function round2(x) { return Math.round(x * 100) / 100; }   // da se korak od 0,08 ne raspline u 0,8999999
+  // Granice veličine slova — JEDNO mesto, koriste ih i dugmad i učitavanje stanja.
+  var FS_MIN = 0.9, FS_MAX = 1.25, FS_KORAK = 0.08;
 
   function normalizeState(obj) {
     if (!obj || typeof obj !== 'object' || !obj.q || typeof obj.q !== 'object' || Array.isArray(obj.q)) return null;
@@ -326,8 +358,16 @@
 
     const dan = obj.day && typeof obj.day === 'object' && !Array.isArray(obj.day)
       && typeof obj.day.d === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(obj.day.d)
-      ? { d: obj.day.d, n: nInt(obj.day.n, 0, 1e5, 0), ok: nInt(obj.day.ok, 0, 1e5, 0) }
+      ? { d: obj.day.d, n: nInt(obj.day.n, 0, 1e5, 0), ok: nInt(obj.day.ok, 0, 1e5, 0),
+          novih: nInt(obj.day.novih, 0, 1e5, 0), pon: nInt(obj.day.pon, 0, 1e5, 0) }
       : null;
+
+    // Dnevni cilj (null = ugašen). Granica je ovde namerno široka; pravu granicu —
+    // koliko pitanja stvarno postoji — proverava samo polje pri unosu, uz poruku korisniku.
+    const planObj = obj.plan && typeof obj.plan === 'object' && !Array.isArray(obj.plan)
+      ? { novih: nInt(obj.plan.novih, 1, 5000, null), pon: nInt(obj.plan.pon, 1, 5000, null) }
+      : null;
+    const plan = planObj && (planObj.novih || planObj.pon) ? planObj : null;
 
     return {
       script: obj.script === 'c' ? 'c' : 'l',
@@ -337,8 +377,9 @@
       secPos,
       lastSec: typeof obj.lastSec === 'string' && /^[cs]\d+$/.test(obj.lastSec) ? obj.lastSec : null,
       theme: obj.theme === 'dark' || obj.theme === 'light' ? obj.theme : null,
-      fs: nNum(obj.fs, 0.8, 1.4, 1),
+      fs: nNum(obj.fs, FS_MIN, FS_MAX, 1),
       day: dan,
+      plan,
       tour: obj.tour === 1 ? 1 : 0,
       guide: obj.guide === 1 ? 1 : 0,
       noUpd: obj.noUpd === 1 ? 1 : 0,
@@ -386,6 +427,7 @@
   // Pogrešno → ulazi u red (due odmah). Tačno u redu: 1. put → sutra, 2. put → za 3 dana, 3. put → izlazi.
   function record(id, ok) {
     const r = qs(id);
+    const prviPut = !r.a;             // pre uvećanja: ovo pitanje se danas radi kao NOVO
     r.a++; r.last = Date.now();
     if (ok) {
       r.streak++;
@@ -396,8 +438,9 @@
       r.w++; r.streak = 0; r.due = Date.now();
     }
     const today = localDay();
-    if (!S.day || S.day.d !== today) S.day = { d: today, n: 0, ok: 0 };
+    if (!S.day || S.day.d !== today) S.day = { d: today, n: 0, ok: 0, novih: 0, pon: 0 };
     S.day.n++; if (ok) S.day.ok++;
+    if (prviPut) S.day.novih = (S.day.novih || 0) + 1; else S.day.pon = (S.day.pon || 0) + 1;
     if (S.streakD !== today) {
       const juce = new Date(); juce.setDate(juce.getDate() - 1);
       const juceStr = juce.getFullYear() + '-' + String(juce.getMonth() + 1).padStart(2, '0') + '-' + String(juce.getDate()).padStart(2, '0');
@@ -492,19 +535,54 @@
     if (sim) { e.preventDefault(); e.returnValue = ''; }
   });
 
+  // ---------- Provera unosa ----------
+  // Pravilo: nijedno polje ne sme da ćuti. Ako unos ne valja, korisnik mora da vidi
+  // ŠTA jeste prihvatljivo — ne samo da mu se ništa ne desi kad pritisne dugme.
+  function ocistiPoruku(polje) {
+    if (!polje) return;
+    polje.removeAttribute('aria-invalid');
+    const p = polje.parentElement && polje.parentElement.querySelector('.unosPoruka');
+    if (p) p.remove();
+  }
+  function poruciUzPolje(polje, tekst) {
+    ocistiPoruku(polje);
+    const d = document.createElement('div');
+    d.className = 'unosPoruka';
+    d.setAttribute('role', 'alert');
+    d.textContent = tekst;
+    polje.parentElement.appendChild(d);
+    polje.setAttribute('aria-invalid', 'true');
+    try { polje.focus(); } catch (e) { /* fokus nije presudan */ }
+  }
+  // Vrati ceo broj iz polja, ili null uz poruku koja objašnjava granice.
+  // porukaZaMax je neobavezna — kad je gornja granica vredna posebnog objašnjenja.
+  function ceoBrojIzPolja(polje, min, max, porukaZaMax) {
+    const opseg = (t) => t.split('@1').join(min).split('@2').join(max);
+    const sirovo = String(polje.value == null ? '' : polje.value).trim();
+    if (sirovo === '') { poruciUzPolje(polje, opseg(L('unosPrazno'))); return null; }
+    if (!/^\d+$/.test(sirovo)) { poruciUzPolje(polje, opseg(L('unosSamoCifre'))); return null; }
+    const v = parseInt(sirovo, 10);
+    if (!Number.isFinite(v)) { poruciUzPolje(polje, opseg(L('unosSamoCifre'))); return null; }
+    if (v < min) { poruciUzPolje(polje, opseg(L('unosPremalo'))); return null; }
+    if (v > max) { poruciUzPolje(polje, opseg(porukaZaMax || L('unosPreveliko'))); return null; }
+    ocistiPoruku(polje);
+    return v;
+  }
+
   // ---------- Traka napretka sa skokom na broj ----------
   function renderProgress(title, pos, max, onJump, onBack) {
     el('qProgress').innerHTML = `<span class="qpTitle" title="${escapeHtml(title)}">${onBack ? `<a href="#" id="backToList" class="bcLink">‹ ${L('backToList')}</a> &nbsp; ` : ''}${escapeHtml(title)}</span>
       <span class="qpPos"><b>${pos}</b> ${L('ofQ')} ${max}</span>
-      <span class="jumpBox"><input id="jumpN" type="number" min="1" max="${max}" placeholder="${pos}">
+      <span class="jumpBox"><input id="jumpN" type="text" inputmode="numeric" autocomplete="off" placeholder="${pos}" aria-label="${escapeHtml(L('goto'))}">
       <button id="jumpGo" class="secondary sBtn">${L('goto')}</button></span>
       <span class="mut kbNote">${L('kbHint')}</span>`;
     if (onBack) el('backToList').addEventListener('click', (e) => { e.preventDefault(); onBack(); });
     const doJump = () => {
-      const v = parseInt(el('jumpN').value, 10);
-      if (!isNaN(v) && v >= 1 && v <= max) onJump(v - 1);
+      const v = ceoBrojIzPolja(el('jumpN'), 1, max, L('skokVanOpsega'));
+      if (v !== null) onJump(v - 1);
     };
     el('jumpGo').addEventListener('click', doJump);
+    el('jumpN').addEventListener('input', () => ocistiPoruku(el('jumpN')));
     el('jumpN').addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); doJump(); } });
   }
 
@@ -794,11 +872,53 @@
       inner += `<div><button class="linklike explCardBtn" data-card="${k}">📖 ${escapeHtml(T(c.t))}</button><div class="explCard" style="display:none">${T(c.h)}</div></div>`;
     }
     box.innerHTML = inner;
-    box.querySelectorAll('.explCardBtn').forEach((btn) => btn.addEventListener('click', () => {
-      const cd = btn.nextElementSibling;
-      cd.style.display = cd.style.display === 'none' ? '' : 'none';
-    }));
+    box.querySelectorAll('.explCardBtn').forEach((btn) => sklopivo(btn));
     return box;
+  }
+
+  // ---------- Sklapanje kartica — jedno ponašanje na svim mestima ----------
+  // Ranije su vizuelno iste kartice imale tri različita ponašanja, a kartica pri dnu
+  // strane se korisniku „otvarala nagore": pregledač bi zbog svog sidrenja skrola
+  // odbacio dugme i po hiljadu piksela iznad ekrana.
+  // Sada je pravilo jedno i predvidivo: dugme ostaje tačno tamo gde je bilo, a ako se
+  // otvorilo nisko na ekranu, strana se mekano podigne taman toliko da se vidi početak
+  // sadržaja — nikad više nego što treba.
+  function visinaTrake() {
+    const t = document.getElementById('topbar');
+    return t ? t.getBoundingClientRect().height : 0;
+  }
+  function sklopivo(btn, grupa) {
+    const cd = btn.nextElementSibling;
+    if (!cd) return;
+    btn.setAttribute('aria-expanded', cd.style.display === 'none' ? 'false' : 'true');
+    btn.addEventListener('click', () => {
+      const otvaram = cd.style.display === 'none';
+      const preTop = btn.getBoundingClientRect().top;
+      if (grupa) {
+        grupa.querySelectorAll('.explCard').forEach((x) => { x.style.display = 'none'; });
+        grupa.querySelectorAll('.explCardBtn').forEach((b) => b.setAttribute('aria-expanded', 'false'));
+      }
+      cd.style.display = otvaram ? '' : 'none';
+      btn.setAttribute('aria-expanded', otvaram ? 'true' : 'false');
+      // 1) prikuj dugme tamo gde je bilo (poništi i pomeraj koji pregledač sam napravi)
+      const posleTop = btn.getBoundingClientRect().top;
+      if (posleTop !== preTop) window.scrollBy(0, posleTop - preTop);
+      // 2) ako je dugme toliko nisko da se od sadržaja skoro ništa ne vidi, pomeri
+      //    stranu — ali TAMAN toliko da se vidi početak, nikad do vrha ekrana.
+      //    Namerno bez „behavior: smooth": taj oblik neki pregledači tiho ignorišu,
+      //    a pomeraj koji se ne desi je gori od pomeraja bez animacije.
+      if (otvaram) {
+        const r = btn.getBoundingClientRect();
+        const zeljeno = Math.min(220, cd.getBoundingClientRect().height);
+        const ispod = window.innerHeight - r.bottom;
+        if (ispod < zeljeno) {
+          // traka na vrhu ume da se prelomi u dva reda, pa se razmak računa, ne pogađa
+          const dokleSme = Math.max(0, r.top - (visinaTrake() + 10));
+          const pomeraj = Math.min(zeljeno - ispod, dokleSme);
+          if (pomeraj > 0) window.scrollBy(0, pomeraj);
+        }
+      }
+    });
   }
   function bindShuffleBox(root) {
     const sb = root.querySelector('#shufBox');
@@ -1582,6 +1702,48 @@
     document.addEventListener('keydown', onKey);
     show();
   }
+  // ---------- Dnevni cilj ----------
+  // Brojač je i pre postojao, ali je samo gledao unazad („danas: 12"). Ovde dobija smisao:
+  // korisnik kaže koliko hoće, aplikacija mu odbroji i da tačno toliko — prvo ponavljanja
+  // (to je dug od ranije), pa nova pitanja.
+  function planStanje() {
+    if (!S.plan) return null;
+    const d = (S.day && S.day.d === localDay()) ? S.day : null;
+    const uNovih = d ? (d.novih || 0) : 0;
+    const uPon = d ? (d.pon || 0) : 0;
+    const cNovih = S.plan.novih || 0, cPon = S.plan.pon || 0;
+    return {
+      cNovih, uNovih, cPon, uPon,
+      ostaloNovih: Math.max(0, cNovih - uNovih),
+      ostaloPon: Math.max(0, cPon - uPon),
+    };
+  }
+  function planIds() {
+    const p = planStanje();
+    if (!p) return [];
+    const nova = [];
+    for (const q of Q) {
+      if (nova.length >= p.ostaloNovih) break;
+      if (!S.q[q.id] || !S.q[q.id].a) nova.push(q.id);
+    }
+    return queueSplit().ready.slice(0, p.ostaloPon).concat(nova);
+  }
+  function planBlok() {
+    const p = planStanje();
+    if (!p) return '';
+    const red = (lbl, u, c) => (c <= 0 ? '' : `<div class="planRed"><span>${u} / ${c} ${lbl}</span>
+      <span class="planBar"><span style="width:${Math.min(100, Math.round(100 * u / c))}%"></span></span>
+      <span class="mut">${u >= c ? '✓' : ''}</span></div>`);
+    const ispunjen = p.ostaloNovih === 0 && p.ostaloPon === 0;
+    const ima = planIds().length;
+    const dno = ispunjen ? `<span class="mut">${L('planIspunjen')}</span>`
+      : !ima ? `<span class="mut">${L('planNemaDostupnih')}</span>`
+        : `<button class="primary" id="btnPlanVezbaj">${L('planVezbaj')}</button>`;
+    return `<div class="planBox"><b>${L('planNaslov')}</b>
+      ${red(L('novihLbl'), p.uNovih, p.cNovih)}${red(L('ponLbl'), p.uPon, p.cPon)}
+      <div style="margin-top:8px">${dno}</div></div>`;
+  }
+
   function homeExtras() {
     const delovi = [];
     if (S.streakD === localDay() && S.streakN >= 2) delovi.push('🔥 ' + S.streakN + '. ' + L('streakDani'));
@@ -1635,7 +1797,15 @@
     const today = localDay();
     const dayLine = S.day && S.day.d === today && S.day.n > 0
       ? ` · 📅 ${L('todayLbl')}: <b>${S.day.n}</b> (${L('okShort')} ${S.day.ok})` : '';
-    el('homeSummary').innerHTML = `<b>${answeredCnt}</b> / ${Q.length} ${L('answered')} · <span title="${escapeHtml(L('queueTip'))}" style="cursor:help"><b>${ready.length}</b> ${L('ready')} + ${waiting.length} ${L('waiting')}</span> · 🔖 ${mk}${dayLine}${lastChip}` + homeExtras();
+    el('homeSummary').innerHTML = `<b>${answeredCnt}</b> / ${Q.length} ${L('answered')} · <span title="${escapeHtml(L('queueTip'))}" style="cursor:help"><b>${ready.length}</b> ${L('ready')} + ${waiting.length} ${L('waiting')}</span> · 🔖 ${mk}${dayLine}${lastChip}` + homeExtras() + planBlok();
+    {
+      const bpv = el('btnPlanVezbaj');
+      if (bpv) bpv.addEventListener('click', () => {
+        const ids = planIds();
+        if (!ids.length) return;
+        startList(ids, () => L('planNaslov'), () => L('planNemaSta'), 'filter', { origin: () => renderHome() });
+      });
+    }
     const bls = el('btnLastSec');
     if (bls) bls.addEventListener('click', () => {
       const key = S.lastSec;
@@ -1727,22 +1897,14 @@
     const tc = el('trustCard');
     if (tc) {
       tc.innerHTML = `<div><button class="linklike explCardBtn" style="font-size:1.05rem;font-weight:600">${L('trustTitle')}</button><div class="explCard" style="display:none">${L('trustBody')}</div></div>`;
-      const tb = tc.querySelector('.explCardBtn');
-      tb.addEventListener('click', () => {
-        const cd = tb.nextElementSibling;
-        cd.style.display = cd.style.display === 'none' ? '' : 'none';
-      });
+      sklopivo(tc.querySelector('.explCardBtn'));
     }
 
     const fq = el('faqCard');
     if (EX.cards && EX.cards.faq) {
       fq.style.display = '';
       fq.innerHTML = `<div><button class="linklike explCardBtn" style="font-size:1.05rem;font-weight:600">❓ ${escapeHtml(T(EX.cards.faq.t))}</button><div class="explCard" style="display:none">${T(EX.cards.faq.h)}</div></div>`;
-      const fb = fq.querySelector('.explCardBtn');
-      fb.addEventListener('click', () => {
-        const cd = fb.nextElementSibling;
-        cd.style.display = cd.style.display === 'none' ? '' : 'none';
-      });
+      sklopivo(fq.querySelector('.explCardBtn'));
     } else fq.style.display = 'none';
 
     const gc = el('guideCard');
@@ -1781,13 +1943,8 @@
       const ostatak = cardKeys.filter((k) => !stavljene.has(k));
       for (const k of ostatak) html += entry(k);
       pk.innerHTML = html;
-      pk.querySelectorAll('.explCardBtn').forEach((btn) => btn.addEventListener('click', () => {
-        const cd = btn.nextElementSibling;
-        const otvaram = cd.style.display === 'none';
-        // akordeon: otvaranje jedne kartice sklapa prethodno otvorenu
-        pk.querySelectorAll('.explCard').forEach((x) => { x.style.display = 'none'; });
-        if (otvaram) { cd.style.display = ''; btn.scrollIntoView({ block: 'start', behavior: 'smooth' }); }
-      }));
+      // akordeon: otvaranje jedne kartice sklapa prethodno otvorenu
+      pk.querySelectorAll('.explCardBtn').forEach((btn) => sklopivo(btn, pk));
     }
 
     el('dataTools').innerHTML = `${L('dataInfo')} · ${D.generated} · ${Q.length}
@@ -1804,6 +1961,18 @@
       </div>
       <div style="margin-top:10px;font-size:.86rem"><label>${L('examDateLabel')}
         <input type="date" id="examDate" value="${S.examDate || ''}" style="margin-left:6px"></label></div>
+      <div style="margin-top:12px;font-size:.86rem"><b>${L('planNaslov')}</b>
+        <div class="mut" style="font-size:.82rem;margin:2px 0 6px">${L('planObjasnjenje')}</div>
+        <div class="planPolja">
+          <label class="planPolje"><span class="mut">${L('planNovih')}</span>
+            <input id="planNovih" type="text" inputmode="numeric" autocomplete="off" value="${S.plan && S.plan.novih ? S.plan.novih : ''}"></label>
+          <label class="planPolje"><span class="mut">${L('planPon')}</span>
+            <input id="planPon" type="text" inputmode="numeric" autocomplete="off" value="${S.plan && S.plan.pon ? S.plan.pon : ''}"></label>
+          <button class="secondary sBtn" id="btnPlanSave">${L('planSacuvaj')}</button>
+          <button class="linklike" id="btnPlanPredlog">${L('planPredlozi')}</button>
+          ${S.plan ? `<button class="linklike" id="btnPlanOff">${L('planIskljuci')}</button>` : ''}
+        </div>
+        <div id="planPoruka" class="mut" style="margin-top:6px"></div></div>
       <div class="mut" style="margin-top:10px;font-size:.82rem">${L('bazaProverena')} ·
         ${prijavaRadi() ? `<button class="linklike" id="btnFeedback">${L('feedback')}</button>` : ''}</div>`;
     renderBackupLine();
@@ -1823,6 +1992,40 @@
       S.examDate = /^\d{4}-\d{2}-\d{2}$/.test(v) ? v : null;
       save(); renderHome();
     });
+    {
+      const pn = el('planNovih'), pp = el('planPon');
+      const neodgovorenih = Q.filter((q) => !S.q[q.id] || !S.q[q.id].a).length;
+      const kaziPosle = (t) => { const m = el('planPoruka'); if (m) m.textContent = t; };
+      const prazno = (x) => String(x.value || '').trim() === '';
+      if (!neodgovorenih) { pn.disabled = true; pn.value = ''; pn.placeholder = L('planSveOdgovoreno'); }
+      [pn, pp].forEach((x) => x.addEventListener('input', () => { ocistiPoruku(x); kaziPosle(''); }));
+      el('btnPlanSave').addEventListener('click', () => {
+        if (prazno(pn) && prazno(pp)) { S.plan = null; save(); renderHome(); kaziPosle(L('planUgasen')); return; }
+        let novih = null, pon = null;
+        if (!prazno(pn)) {
+          novih = ceoBrojIzPolja(pn, 1, Math.max(1, neodgovorenih), L('planMaxNovih'));
+          if (novih === null) return;
+        }
+        if (!prazno(pp)) {
+          pon = ceoBrojIzPolja(pp, 1, Q.length, L('unosPreveliko'));
+          if (pon === null) return;
+        }
+        S.plan = { novih, pon };
+        save(); renderHome(); kaziPosle(L('planSacuvan'));
+      });
+      el('btnPlanPredlog').addEventListener('click', () => {
+        if (!S.examDate) { kaziPosle(L('planBezDatuma')); return; }
+        const d0 = new Date(); d0.setHours(0, 0, 0, 0);
+        const dana = Math.ceil((new Date(S.examDate + 'T00:00:00') - d0) / 86400000);
+        if (!Number.isFinite(dana) || dana < 1) { kaziPosle(L('planDatumProsao')); return; }
+        if (!pn.disabled) pn.value = String(Math.max(1, Math.ceil(neodgovorenih / dana)));
+        pp.value = String(Math.max(10, queueSplit().ready.length));
+        ocistiPoruku(pn); ocistiPoruku(pp);
+        kaziPosle(L('planPredlogGotov'));
+      });
+      const off = el('btnPlanOff');
+      if (off) off.addEventListener('click', () => { S.plan = null; save(); renderHome(); kaziPosle(L('planUgasen')); });
+    }
     if (!S.tour && !window.__tourRan) {
       window.__tourRan = 1;
       setTimeout(() => { if (el('view-home').classList.contains('active')) tourStart(); }, 600);
@@ -1961,15 +2164,25 @@
     S.theme = dark ? 'light' : 'dark'; save();
     applyTheme();
   });
-  // Veličina slova: 90–125%
+  // Veličina slova: 90–125%. Granice su na jednom mestu (FS_MIN/FS_MAX u normalizeState),
+  // pa dugmad i učitano stanje ne mogu da se raziđu.
   function applyFont() {
     // osnova zavisi od širine ekrana (mali ekrani imaju manju osnovu), korisnički izbor je množilac
     const osnova = window.matchMedia('(max-width: 560px)').matches ? 15 : 16;
-    document.documentElement.style.fontSize = Math.round(osnova * (S.fs || 1)) + 'px';
+    const f = S.fs || 1;
+    document.documentElement.style.fontSize = Math.round(osnova * f) + 'px';
+    // dugme koje više nema šta da uradi mora i da IZGLEDA tako — inače korisnik kucka uprazno
+    const m = el('btnFontMinus'), p = el('btnFontPlus');
+    const naDnu = f <= FS_MIN + 1e-6, naVrhu = f >= FS_MAX - 1e-6;
+    m.disabled = naDnu; p.disabled = naVrhu;
+    m.title = naDnu ? L('fsMin') : L('fsSmaller');
+    p.title = naVrhu ? L('fsMax') : L('fsBigger');
+    m.setAttribute('aria-label', m.title);
+    p.setAttribute('aria-label', p.title);
   }
   window.matchMedia('(max-width: 560px)').addEventListener('change', applyFont);
-  el('btnFontMinus').addEventListener('click', () => { S.fs = Math.max(0.9, (S.fs || 1) - 0.08); save(); applyFont(); });
-  el('btnFontPlus').addEventListener('click', () => { S.fs = Math.min(1.25, (S.fs || 1) + 0.08); save(); applyFont(); });
+  el('btnFontMinus').addEventListener('click', () => { S.fs = Math.max(FS_MIN, round2((S.fs || 1) - FS_KORAK)); save(); applyFont(); });
+  el('btnFontPlus').addEventListener('click', () => { S.fs = Math.min(FS_MAX, round2((S.fs || 1) + FS_KORAK)); save(); applyFont(); });
   function applyScript() {
     el('btnScript').innerHTML =
       `<span class="${S.script === 'c' ? 'segOn' : 'segOff'}">ЋИР</span><span class="segSep">|</span><span class="${S.script === 'l' ? 'segOn' : 'segOff'}">LAT</span>`;

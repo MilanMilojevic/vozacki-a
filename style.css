@@ -40,15 +40,23 @@ body.dark #topbar { background: #24587f; }
 body.dark .linklike { color: var(--blue-d); }
 button.catRow { width: 100%; background: none; border: none; padding: 0; font: inherit; color: inherit; text-align: left; }
 html { font-size: 16px; }
-body { font-family: "Segoe UI", system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--ink); min-height: 100vh; }
+/* overflow-anchor: sami upravljamo skrolom kad se kartica otvori; bez ovoga pregledač
+   „pomaže" svojim sidrenjem i odbaci dugme iznad ekrana. */
+body { font-family: "Segoe UI", system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--ink); min-height: 100vh; overflow-anchor: none; }
 
-#topbar { position: sticky; top: 0; z-index: 10; display: flex; justify-content: space-between; align-items: center;
+/* Traka na vrhu SME da se prelomi. Bez toga se na uskom telefonu (360px) ne prelama, pa
+   dokument postane širi od ekrana i sve desno — dugme „Početna" i brojači pored traka
+   napretka — bude odsečeno. */
+#topbar { position: sticky; top: 0; z-index: 10; display: flex; flex-wrap: wrap; justify-content: space-between;
+  align-items: center; row-gap: 8px; column-gap: 8px;
   background: var(--blue); color: #fff; padding: 10px 16px; box-shadow: 0 2px 6px rgba(0,0,0,.15); }
-.brand { font-size: 1.1rem; font-weight: 600; cursor: pointer; background: none; border: none; color: inherit; font-family: inherit; padding: 0; }
-.topActions { display: flex; gap: 8px; }
+.brand { font-size: 1.1rem; font-weight: 600; cursor: pointer; background: none; border: none; color: inherit; font-family: inherit; padding: 0; min-width: 0; }
+.topActions { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
 button { font: inherit; color: inherit; cursor: pointer; border: none; border-radius: 8px; }
 .ghost { background: rgba(255,255,255,.15); color: #fff; padding: 6px 12px; }
-.ghost:hover { background: rgba(255,255,255,.28); }
+.ghost:hover:not(:disabled) { background: rgba(255,255,255,.28); }
+/* dugme koje nema šta da uradi mora i da izgleda tako */
+.ghost:disabled { opacity: .4; cursor: default; background: rgba(255,255,255,.07); }
 
 main { max-width: 880px; margin: 0 auto; padding: 16px 12px 60px; }
 .view { display: none; }
@@ -180,6 +188,19 @@ button.histBtn:hover { background: var(--optHover); }
 .explHead { font-weight: 700; color: var(--explInk); margin-bottom: 6px; }
 .explSmall { font-size: .75rem; font-weight: 400; }
 .explBox p { margin: 0 0 6px; }
+/* poruka uz polje za unos — mora da se vidi i mora da kaže šta JESTE dozvoljeno */
+.unosPoruka { color: var(--bad); font-size: .82rem; font-weight: 600; margin-top: 4px; max-width: 34em; }
+.planBox { margin-top: 10px; }
+.planRed { display: grid; grid-template-columns: minmax(0, auto) 1fr 1em; gap: 8px; align-items: center; font-size: .84rem; margin-top: 5px; }
+.planBar { height: 8px; background: var(--bar); border-radius: 4px; overflow: hidden; }
+.planBar > span { display: block; height: 100%; background: var(--blue); }
+.planPolja { display: flex; gap: 12px; flex-wrap: wrap; align-items: flex-end; }
+.planPolje { display: flex; flex-direction: column; gap: 3px; }
+.planPolje span { font-size: .78rem; }
+.planPolje input { width: 92px; padding: 7px 9px; border: 1px solid var(--line); border-radius: 8px;
+  background: var(--card); color: var(--ink); font: inherit; }
+.planPolje input:disabled { opacity: .55; cursor: not-allowed; }
+.planPolje input[aria-invalid="true"] { border-color: var(--bad); }
 .explCardBtn { padding: 4px 0; }
 .explCard { margin-top: 8px; line-height: 1.55; }
 .explCard p { margin: 0 0 10px; }
@@ -213,7 +234,8 @@ button.histBtn:hover { background: var(--optHover); }
   display: inline-block; padding: 4px 2px; margin: -4px -2px; }
 .bcLink { color: var(--mut); text-decoration: none; border-bottom: 1px dotted #b6c2d0; }
 .bcLink:hover { color: var(--blue); border-bottom-color: var(--blue); }
-.jumpBox { display: flex; gap: 5px; align-items: center; }
+.jumpBox { display: flex; gap: 5px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+.jumpBox .unosPoruka { flex-basis: 100%; max-width: 20em; text-align: right; }
 .jumpBox input { width: 74px; padding: 5px 8px; border: 1px solid var(--line); border-radius: 6px; font: inherit; font-size: .88rem; background: var(--card); color: var(--ink); }
 .sBtn { padding: 5px 12px; font-size: .85rem; }
 .kbNote { font-size: .75rem; }
@@ -246,9 +268,23 @@ tr.totalRow td { border-top: 2px solid var(--blue); }
 
 @media (max-width: 560px) {
   html { font-size: 15px; }
-  .catName { flex-basis: 100%; }
-  .catCnt { flex-basis: auto; }
+  /* Na telefonu ime oblasti ide u svoj red, a traka napretka i brojač u sledeći.
+     Ranije je ime imalo flex-basis:100% u redu koji se NE prelama, pa je traka
+     bila stisnuta na 0px — napredak se prosto nije video. */
+  .catMain { flex-wrap: wrap; row-gap: 4px; column-gap: 8px; }
+  .catName { flex: 0 0 100%; }
+  .catBar { flex: 1 1 60px; min-width: 60px; }
+  .catCnt { flex: 0 0 auto; min-width: 54px; }
+  .catSubRow .catName { padding-left: 0; }
   .kbNote { display: none; }
+  #topbar { padding: 8px 12px; }
+  .ghost { padding: 6px 10px; }
+}
+@media (max-width: 400px) {
+  #topbar { padding: 7px 10px; column-gap: 6px; }
+  .brand { font-size: 1rem; }
+  .topActions { gap: 6px; }
+  .ghost { padding: 6px 9px; font-size: .95rem; }
 }
 .statCatRow { cursor: pointer; }
 .statCatRow:hover td { background: var(--optHover); }
