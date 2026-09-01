@@ -171,9 +171,28 @@
     planNemaDostupnih: { l: 'Nema više pitanja koja čekaju. Cilj ostaje za sutra.', c: 'Нема више питања која чекају. Циљ остаје за сутра.' },
     planBezDatuma: { l: 'Za predlog prvo unesi datum ispita, ispod.', c: 'За предлог прво унеси датум испита, испод.' },
     planDatumProsao: { l: 'Datum ispita je prošao — unesi novi da bih mogao da računam.', c: 'Датум испита је прошао — унеси нови да бих могао да рачунам.' },
-    planPredlogGotov: { l: 'Predlog je upisan u polja. Ako ti odgovara, sačuvaj ga.', c: 'Предлог је уписан у поља. Ако ти одговара, сачувај га.' },
+    planPredlogGotov: { l: 'Predlog je upisan. Novo gradivo se završava # dana pre ispita — ti dani ostaju za ponavljanje i simulacije. Ako ti odgovara, sačuvaj.', c: 'Предлог је уписан. Ново градиво се завршава # дана пре испита — ти дани остају за понављање и симулације. Ако ти одговара, сачувај.' },
+    planPredlogUsko: { l: 'Predlog je upisan. Ispit je blizu, pa nema rezerve — novo gradivo ide do poslednjeg dana.', c: 'Предлог је уписан. Испит је близу, па нема резерве — ново градиво иде до последњег дана.' },
+    planPuno: { l: 'Sačuvano — ali # pitanja dnevno je puno. Računaj oko pola sata na svakih 100 pitanja. Uvek možeš da smanjiš.', c: 'Сачувано — али # питања дневно је пуно. Рачунај око пола сата на сваких 100 питања. Увек можеш да смањиш.' },
+    installWhatTitle: { l: '📲 Šta dobijam ako je dodam kao aplikaciju?', c: '📲 Шта добијам ако је додам као апликацију?' },
+    installWhatBody: {
+      l: `<ul>
+        <li><b>Više ekrana za pitanja.</b> Otvara se u svom prozoru, bez adresne trake — na telefonu je to oko desetine ekrana više.</li>
+        <li><b>Svoja ikona.</b> Stoji na početnom ekranu kao svaka druga aplikacija; ne moraš da tražiš karticu u pregledaču.</li>
+        <li><b>Sigurnije radi bez interneta.</b> Pitanja i objašnjenja su već na uređaju, a slike se čuvaju kako ih otvaraš.</li>
+        </ul>
+        <p><b>Šta se NE menja:</b> to je i dalje isti sajt — isti napredak, ista pitanja. Ništa se ne preuzima iz prodavnice i ništa se ne upisuje u sistem. Kad god hoćeš, obrišeš ikonu i nisi izgubio ništa.</p>
+        <p><b>Kako:</b> na Androidu, u pregledaču Chrome → meni ⋮ → „Dodaj na početni ekran". Na iPhone-u, u pregledaču Safari → dugme „Podeli" → „Add to Home Screen".</p>`,
+      c: `<ul>
+        <li><b>Више екрана за питања.</b> Отвара се у свом прозору, без адресне траке — на телефону је то око десетине екрана више.</li>
+        <li><b>Своја икона.</b> Стоји на почетном екрану као свака друга апликација; не мораш да тражиш картицу у прегледачу.</li>
+        <li><b>Сигурније ради без интернета.</b> Питања и објашњења су већ на уређају, а слике се чувају како их отвараш.</li>
+        </ul>
+        <p><b>Шта се НЕ мења:</b> то је и даље исти сајт — исти напредак, иста питања. Ништа се не преузима из продавнице и ништа се не уписује у систем. Кад год хоћеш, обришеш икону и ниси изгубио ништа.</p>
+        <p><b>Како:</b> на Андроиду, у прегледачу Chrome → мени ⋮ → „Додај на почетни екран". На iPhone-у, у прегледачу Safari → дугме „Подели" → „Add to Home Screen".</p>`,
+    },
     planSveOdgovoreno: { l: 'nema više novih', c: 'нема више нових' },
-    planObjasnjenje: { l: 'Ostavi oba polja prazna ako ne želiš cilj. Kad ga postaviš, dugme na početnoj daje tačno toliko pitanja — prvo ponavljanja, pa nova.', c: 'Остави оба поља празна ако не желиш циљ. Кад га поставиш, дугме на почетној даје тачно толико питања — прво понављања, па нова.' },
+    planObjasnjenje: { l: 'Ostavi oba polja prazna ako ne želiš cilj. Kad ga postaviš, dugme na početnoj daje tačno toliko pitanja — prvo ponavljanja, pa nova. U ponavljanja ulaze i pogrešna pitanja i ona koja si pogodio iz prve (ta dobiju jednu potvrdu posle 3 dana).', c: 'Остави оба поља празна ако не желиш циљ. Кад га поставиш, дугме на почетној даје тачно толико питања — прво понављања, па нова. У понављања улазе и погрешна питања и она која си погодио из прве (та добију једну потврду после 3 дана).' },
     novihLbl: { l: 'novih', c: 'нових' },
     ponLbl: { l: 'ponavljanja', c: 'понављања' },
     unosPrazno: { l: 'Unesi ceo broj od @1 do @2.', c: 'Унеси цео број од @1 до @2.' },
@@ -286,7 +305,7 @@
     todayLbl: { l: 'Danas', c: 'Данас' },
     okShort: { l: 'tačno', c: 'тачно' },
     shufTip: { l: 'Vežbanje pokrenuto sa ove strane ide nasumičnim redosledom (ne znaš koje je sledeće). Spisak dole ostaje po redu, a „Nastavi" uvek ide redom. Klik na pitanje u spisku: počinje od njega, pa nastavlja izmešano.', c: 'Вежбање покренуто са ове стране иде насумичним редоследом (не знаш које је следеће). Списак доле остаје по реду, а „Настави" увек иде редом. Клик на питање у списку: почиње од њега, па наставља измешано.' },
-    queueTip: { l: 'Razmaknuto ponavljanje: pogrešiš → pitanje je odmah spremno; pogodiš ga → vraća se sutra; opet pogodiš → za 3 dana; treći pogodak zaredom → izlazi iz reda.', c: 'Размакнуто понављање: погрешиш → питање је одмах спремно; погодиш га → враћа се сутра; опет погодиш → за 3 дана; трећи погодак заредом → излази из реда.' },
+    queueTip: { l: 'Razmaknuto ponavljanje: pogrešiš → pitanje je odmah spremno; pogodiš ga → vraća se sutra; opet pogodiš → za 3 dana; treći pogodak zaredom → izlazi iz reda. I pitanje koje si pogodio iz prve vraća se jednom, za 3 dana, da se potvrdi — pa izlazi.', c: 'Размакнуто понављање: погрешиш → питање је одмах спремно; погодиш га → враћа се сутра; опет погодиш → за 3 дана; трећи погодак заредом → излази из реда. И питање које си погодио из прве враћа се једном, за 3 дана, да се потврди — па излази.' },
     legend: { l: '✓ utvrđeno · ✗ za ponavljanje · • neodgovoreno · 🔖 obeleženo · 🖼 sa slikom', c: '✓ утврђено · ✗ за понављање · • неодговорено · 🔖 обележено · 🖼 са сликом' },
     contTip: { l: 'Nastavlja tačno od mesta gde si stao (uvek redom).', c: 'Наставља тачно од места где си стао (увек редом).' },
     qOne: { l: 'pitanje', c: 'питање' },
@@ -2009,6 +2028,7 @@
         <button class="linklike danger" id="btnReset">${L('reset')}</button>
         <input type="file" id="fileImport" accept=".json" style="display:none">
       </div>
+      <div id="installWhat" style="margin-top:8px"><button class="linklike explCardBtn">${L('installWhatTitle')}</button><div class="explCard" style="display:none">${L('installWhatBody')}</div></div>
       <div style="margin-top:10px;font-size:.86rem"><label>${L('examDateLabel')}
         <input type="date" id="examDate" value="${S.examDate || ''}" style="margin-left:6px"></label></div>
       <div style="margin-top:12px;font-size:.86rem"><b>${L('planNaslov')}</b>
@@ -2034,6 +2054,7 @@
       installEvt = null;
       el('btnInstall').style.display = 'none';
     });
+    sklopivo(el('installWhat').querySelector('.explCardBtn'));
     el('btnCheckUpd').addEventListener('click', () => { S.noUpd = 0; save(); proveriRepo(true); });
     el('btnTourReplay').addEventListener('click', tourStart);
     { const bf = el('btnFeedback'); if (bf) bf.addEventListener('click', otvoriPrijavu); }
@@ -2061,17 +2082,27 @@
           if (pon === null) return;
         }
         S.plan = { novih, pon };
-        save(); renderHome(); kaziPosle(L('planSacuvan'));
+        save(); renderHome();
+        // ne branimo veliki cilj, ali kažemo koliko je to stvarno vremena
+        const dnevno = (novih || 0) + (pon || 0);
+        kaziPosle(dnevno > 150 ? L('planPuno').replace('#', dnevno) : L('planSacuvan'));
       });
       el('btnPlanPredlog').addEventListener('click', () => {
         if (!S.examDate) { kaziPosle(L('planBezDatuma')); return; }
         const d0 = new Date(); d0.setHours(0, 0, 0, 0);
         const dana = Math.ceil((new Date(S.examDate + 'T00:00:00') - d0) / 86400000);
         if (!Number.isFinite(dana) || dana < 1) { kaziPosle(L('planDatumProsao')); return; }
-        if (!pn.disabled) pn.value = String(Math.max(1, Math.ceil(neodgovorenih / dana)));
-        pp.value = String(Math.max(10, queueSplit().ready.length));
+        // Novo gradivo mora da se završi PRE ispita — poslednji dani ostaju za ponavljanje
+        // i simulacije. Rezerva je nedelja dana, ali nikad više od trećine preostalog
+        // vremena, da kod bliskog ispita ne ostane nula dana za novo gradivo.
+        const rezerva = Math.min(7, Math.floor(dana / 3));
+        const danaZaNovo = Math.max(1, dana - rezerva);
+        if (!pn.disabled) pn.value = String(Math.max(1, Math.ceil(neodgovorenih / danaZaNovo)));
+        // Ponavljanja: koliko se stvarno može uraditi u jednoj sednici, a ne ceo zaostatak.
+        // Ranije je stajalo „koliko god ih je spremno" i umelo je da ispadne 346 dnevno.
+        pp.value = String(Math.min(60, Math.max(15, queueSplit().ready.length)));
         ocistiPoruku(pn); ocistiPoruku(pp);
-        kaziPosle(L('planPredlogGotov'));
+        kaziPosle(rezerva > 0 ? L('planPredlogGotov').replace('#', rezerva) : L('planPredlogUsko'));
       });
       const off = el('btnPlanOff');
       if (off) off.addEventListener('click', () => { S.plan = null; save(); renderHome(); kaziPosle(L('planUgasen')); });

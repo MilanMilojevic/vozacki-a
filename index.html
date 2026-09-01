@@ -26,7 +26,7 @@
 }
 </script>
 <title>Возачки А — вежбање</title>
-<link rel="stylesheet" href="style.css?v=78">
+<link rel="stylesheet" href="style.css?v=79">
   <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#2c6aa0">
   <link rel="apple-touch-icon" href="icon-192.png">
@@ -48,7 +48,9 @@
   <!-- POČETNA -->
   <section id="view-home" class="view">
     <div class="card" id="homeSummary"></div>
-    <div class="hCol hColL">
+    <!-- Meni ide preko cele širine (na širokom ekranu svih pet u jednom redu), pa se ispod
+         dele dve kolone: levo napredak po oblastima, desno istorija i podešavanja.
+         Ranije je sve stajalo levo pa je desna kolona zjapila prazna skoro 400px. -->
     <div class="menuGrid">
       <button class="menuBtn" data-nav="learn"><span class="mIcon">📖</span><span class="mTitle" id="mLearn"></span><span class="mSub" id="mLearnSub"></span></button>
       <button class="menuBtn" data-nav="drill"><span class="mIcon">🔁</span><span class="mTitle" id="mDrill"></span><span class="mSub" id="mDrillSub"></span></button>
@@ -56,14 +58,15 @@
       <button class="menuBtn" data-nav="sim"><span class="mIcon">⏱️</span><span class="mTitle" id="mSim"></span><span class="mSub" id="mSimSub"></span></button>
       <button class="menuBtn" data-nav="stats"><span class="mIcon">📊</span><span class="mTitle" id="mStats"></span><span class="mSub" id="mStatsSub"></span></button>
     </div>
-    <div class="card" id="simHistory"></div>
-    <div class="card small" id="dataTools"></div>
-    </div>
-    <div class="hCol hColR">
+    <div class="hCol hColL">
     <div class="card">
       <h3 id="hCats"></h3>
       <div id="catBars"></div>
     </div>
+    </div>
+    <div class="hCol hColR">
+    <div class="card" id="simHistory"></div>
+    <div class="card small" id="dataTools"></div>
     </div>
     <div class="card" id="guideCard"></div>
     <div class="card" id="pojmovnikCard"></div>
@@ -109,9 +112,9 @@
   </section>
 </main>
 
-<script src="version.js?v=78"></script>
-<script src="data.js?v=78"></script>
-<script src="explanations.js?v=78"></script>
-<script src="app.js?v=78"></script>
+<script src="version.js?v=79"></script>
+<script src="data.js?v=79"></script>
+<script src="explanations.js?v=79"></script>
+<script src="app.js?v=79"></script>
 </body>
 </html>

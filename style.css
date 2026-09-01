@@ -314,7 +314,10 @@ tr.totalRow td { border-top: 2px solid var(--blue); }
 @media (min-width: 1200px) {
   main { max-width: 1240px; }
   #view-home.active { display: grid; grid-template-columns: 1fr 1fr; column-gap: 18px; align-items: start; }
-  #view-home > #homeSummary, #view-home > #guideCard, #view-home > #pojmovnikCard, #view-home > #faqCard { grid-column: 1 / -1; }
+  #view-home > #homeSummary, #view-home > .menuGrid, #view-home > #guideCard,
+  #view-home > #pojmovnikCard, #view-home > #faqCard, #view-home > #trustCard { grid-column: 1 / -1; }
+  /* svih pet stavki menija u jedan red: 190px je najmanja širina koja to dozvoljava na 1240px */
+  .menuGrid { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
   .hColL { grid-column: 1; } .hColR { grid-column: 2; }
   /* Objašnjenje ide ISPOD odgovora i na širokim ekranima (Milanova odluka) —
      kartica pitanja je samo ograničena po širini radi čitljivosti redova. */
@@ -335,18 +338,22 @@ body.dark .linklike.danger { color: #ff8a80; }
 .lineRow .signCell.wide svg { max-width: 260px; }
 .lineRow .signCell span { font-size: .8rem; }
 
-/* Uski ekrani: omotači se "rastvaraju" — redosled kao pre uvođenja kolona */
+/* Uski ekrani: omotači kolona se „rastvaraju" i redosled se određuje ovde.
+   PAŽNJA: ovi selektori zavise od građe u index.html — ako se kartice premeštaju,
+   mora i ovaj blok. Svaka stavka MORA da ima svoj order; ono što ga nema dobija 0
+   i odleti na vrh. */
 @media (max-width: 1199px) {
   #view-home.active { display: flex; flex-direction: column; }
   .hCol { display: contents; }
   #view-home > #homeSummary { order: 1; }
-  .hColL > .menuGrid { order: 2; }
-  .hColR > .card { order: 3; }
+  #view-home > .menuGrid { order: 2; }
+  .hColL > .card { order: 3; }            /* napredak po oblastima */
   #view-home > #guideCard { order: 4; }
-  .hColL > #simHistory { order: 5; }
+  .hColR > #simHistory { order: 5; }
   #view-home > #pojmovnikCard { order: 6; }
   #view-home > #faqCard { order: 7; }
-  .hColL > #dataTools { order: 8; }
+  #view-home > #trustCard { order: 8; }
+  .hColR > #dataTools { order: 9; }       /* podešavanja na kraju */
 }
 
 /* Vodič za učenje */
