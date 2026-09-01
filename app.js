@@ -144,6 +144,12 @@
     endAllClear: { l: 'Red za ponavljanje je potpuno prazan — sve što si učio je utvrđeno. 🎉', c: 'Ред за понављање је потпуно празан — све што си учио је утврђено. 🎉' },
     endSimBtn: { l: '🏁 Simulacija ispita', c: '🏁 Симулација испита' },
     naIspitu: { l: 'na ispitu: #', c: 'на испиту: #' },
+    shareBtn: { l: '📷 Sačuvaj sliku rezultata', c: '📷 Сачувај слику резултата' },
+    shareTitle: { l: 'Simulacija ispita — A kategorija', c: 'Симулација испита — А категорија' },
+    shareSaved: { l: 'Slika je preuzeta', c: 'Слика је преузета' },
+    shareFail: { l: 'Slika nije mogla da se napravi', c: 'Слика није могла да се направи' },
+    freeNote: { l: 'besplatna vežbaonica', c: 'бесплатна вежбаоница' },
+    officialBase: { l: 'zvanična baza pitanja', c: 'званична база питања' },
     naIspituTip: { l: 'Koliko pitanja iz ove podoblasti nosi svaki pravi ispit — izmereno iz pet zvaničnih izvlačenja simulacije.', c: 'Колико питања из ове подобласти носи сваки прави испит — измерено из пет званичних извлачења симулације.' },
     qNumTip2: { l: 'Klik: kopiraj adresu ovog pitanja', c: 'Клик: копирај адресу овог питања' },
     bazaProverena: { l: 'Baza: zvanična eUprava, proverena 29.08.2026.', c: 'База: званична еУправа, проверена 29.08.2026.' },
@@ -1024,11 +1030,14 @@
       </tbody></table>` : `<p class="mut">${L('reviewOldNote')}</p>`}
       <div class="qActions" style="margin-top:14px">
         ${fresh ? `<button class="primary" id="btnSimAgain">${L('newSim')}</button>` : ''}
+        <button class="secondary" id="btnShareRes">${L('shareBtn')}</button>
         <button class="linklike" data-nav="home">${L('backHome')}</button>
       </div>`;
     bindNav(rc);
     const ba = rc.querySelector('#btnSimAgain');
     if (ba) ba.addEventListener('click', startSim);
+    const bs = rc.querySelector('#btnShareRes');
+    if (bs) bs.addEventListener('click', () => podeliRezultat(rec));
 
     const wl = el('simWrongList');
     wl.innerHTML = '';
@@ -2061,6 +2070,75 @@
       window.addEventListener('hashchange', broji);
     });
     document.head.appendChild(gs);
+  }
+
+  // ---------- Slika rezultata simulacije (za deljenje) ----------
+  // Crta se u samom pregledaču; nema ni imena ni ijednog ličnog podatka — samo rezultat i datum.
+  function nacrtajRezultat(rec) {
+    const W = 1080, H = 1080;
+    const c = document.createElement('canvas');
+    c.width = W; c.height = H;
+    const g = c.getContext('2d');
+    const polozio = !!rec.passed;
+
+    g.fillStyle = polozio ? '#12603a' : '#7a2620';
+    g.fillRect(0, 0, W, H);
+    g.fillStyle = 'rgba(255,255,255,.08)';
+    g.beginPath(); g.moveTo(0, H * 0.72); g.lineTo(W, H * 0.6); g.lineTo(W, H); g.lineTo(0, H); g.closePath(); g.fill();
+    g.strokeStyle = 'rgba(255,255,255,.7)';
+    g.lineWidth = 10; g.setLineDash([54, 40]);
+    g.beginPath(); g.moveTo(0, H * 0.88); g.lineTo(W, H * 0.76); g.stroke();
+    g.setLineDash([]);
+
+    g.fillStyle = '#ffffff';
+    g.textAlign = 'center';
+    g.font = '600 40px "Segoe UI", Arial, sans-serif';
+    g.fillText(L('shareTitle'), W / 2, 150);
+
+    g.font = '700 210px "Segoe UI", Arial, sans-serif';
+    g.fillText(rec.score + ' / ' + rec.total, W / 2, 400);
+    g.font = '500 46px "Segoe UI", Arial, sans-serif';
+    g.fillText(L('points'), W / 2, 462);
+
+    g.font = '700 74px "Segoe UI", Arial, sans-serif';
+    g.fillText(polozio ? L('passed') : L('failed'), W / 2, 590);
+
+    const d = new Date(rec.d || Date.now());
+    const ds = String(d.getDate()).padStart(2, '0') + '.' + String(d.getMonth() + 1).padStart(2, '0') + '.' + d.getFullYear() + '.';
+    g.font = '400 38px "Segoe UI", Arial, sans-serif';
+    g.fillStyle = 'rgba(255,255,255,.85)';
+    g.fillText(ds + '  ·  ' + SIM_N + ' ' + L('pitanjaMn') + '  ·  45 min', W / 2, 660);
+
+    g.font = '600 34px "Segoe UI", Arial, sans-serif';
+    g.fillStyle = 'rgba(255,255,255,.95)';
+    g.fillText('milanmilojevic.github.io/vozacki-a', W / 2, H - 90);
+    g.font = '400 28px "Segoe UI", Arial, sans-serif';
+    g.fillStyle = 'rgba(255,255,255,.75)';
+    g.fillText(L('freeNote') + ' · ' + L('officialBase'), W / 2, H - 46);
+    return c;
+  }
+
+  async function podeliRezultat(rec) {
+    try {
+      const c = nacrtajRezultat(rec);
+      const blob = await new Promise((r) => c.toBlob(r, 'image/png'));
+      if (!blob) throw new Error('nema slike');
+      const fajl = new File([blob], 'vozacki-a-rezultat.png', { type: 'image/png' });
+      if (navigator.canShare && navigator.canShare({ files: [fajl] })) {
+        await navigator.share({ files: [fajl], title: L('shareTitle') });
+        return;
+      }
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'vozacki-a-rezultat.png';
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 10000);
+    } catch (e) {
+      alert(L('shareFail'));
+    }
   }
 
   // ---------- Prijava greške/predloga ----------
