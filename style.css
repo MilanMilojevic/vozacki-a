@@ -195,6 +195,12 @@ button.histBtn:hover { background: var(--optHover); }
 .explBox p { margin: 0 0 6px; }
 /* Široka tabela sme da se skroluje u svom okviru, ali NIKAD da razvuče celu stranu.
    Tabela statistike je na 320px izlazila 36px preko kartice i pravila vodoravni skrol. */
+/* traka za tiha upozorenja (napredak se ne čuva, otvorena dva prozora) */
+.upozorenjeTraka { position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 1400;
+  background: #7a4b00; color: #fff; border-radius: 10px; padding: 12px 16px; font-size: .9rem;
+  line-height: 1.45; box-shadow: 0 6px 22px rgba(0,0,0,.35); max-width: 640px; margin: 0 auto; }
+.upozorenjeTraka .linklike { color: #ffd9a0; margin-left: 6px; white-space: nowrap; }
+.upozorenjeTraka .linklike:hover { color: #fff; }
 .tblScroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 /* pitanje čija slika nije stigla da se sačuva pre nego što je nestao internet */
 .qImgFail { border: 1px dashed var(--line); border-radius: 8px; padding: 14px 16px; margin: 0 0 14px;
@@ -221,9 +227,13 @@ button.histBtn:hover { background: var(--optHover); }
 /* Pojmovnik na početnoj: svaka kartica kao uredan red sa razmakom i razdvajanjem */
 .pojEntry { border-bottom: 1px solid var(--line); }
 .pojEntry:last-child { border-bottom: none; }
-.pojEntry .pojBtn { display: block; width: 100%; text-align: left; background: none; border: none;
-  padding: 11px 4px; font: inherit; font-weight: 600; font-size: .97rem; color: var(--blue); }
-.pojEntry .pojBtn:hover { color: var(--blue-d); }
+/* Isti oblik za SVAKO otklapanje kartice — u pojmovniku, uz pitanje, u čestim pitanjima,
+   u „zašto verovati" i u podešavanjima. Ranije je ista radnja imala dva izgleda: ovde red
+   preko cele širine, a drugde podvučen link. Red preko širine je i bolji cilj za prst i
+   jasnije govori „ovo se otvara ovde", a ne „ovo vodi na drugu stranu". */
+.pojBtn { display: block; width: 100%; text-align: left; background: none; border: none;
+  padding: 11px 4px; font: inherit; font-weight: 600; font-size: .97rem; color: var(--blue); cursor: pointer; }
+.pojBtn:hover { color: var(--blue-d); }
 .pojEntry .explCard { margin: 0 4px 18px; }
 .explCard th, .explCard td { border: 1px solid var(--explLine); padding: 6px 8px; text-align: left; }
 .explCard th { background: var(--explTh); }

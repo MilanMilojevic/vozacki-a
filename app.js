@@ -155,6 +155,14 @@
     freeNote: { l: 'besplatna vežbaonica', c: 'бесплатна вежбаоница' },
     fsSmaller: { l: 'Smanji slova', c: 'Смањи слова' },
     fsBigger: { l: 'Povećaj slova', c: 'Повећај слова' },
+    close: { l: 'Zatvori', c: 'Затвори' },
+    datumLos: { l: 'Datum nije potpun. Unesi ga u obliku dan-mesec-godina, sa punom godinom (npr. 2026).', c: 'Датум није потпун. Унеси га у облику дан-месец-година, са пуном годином (нпр. 2026).' },
+    datumOpseg: { l: 'Godina mora biti između @1. i @2. Ako si otkucao samo dve cifre, dopiši punu godinu.', c: 'Година мора бити између @1. и @2. Ако си откуцао само две цифре, допиши пуну годину.' },
+    datumProslost: { l: 'Taj datum je prošao. Unesi datum ispita koji tek dolazi, ili obriši polje ako ne želiš odbrojavanje.', c: 'Тај датум је прошао. Унеси датум испита који тек долази, или обриши поље ако не желиш одбројавање.' },
+    importPrevelik: { l: 'Ta datoteka je prevelika da bi bila sačuvan napredak. Izaberi datoteku koju je napravilo dugme „Sačuvaj napredak (fajl)".', c: 'Та датотека је превелика да би била сачуван напредак. Изабери датотеку коју је направило дугме „Сачувај напредак (фајл)".' },
+    importDeo: { l: 'Uvezeno je # od @ zapisa. Ostali se ne nalaze u trenutnoj bazi pitanja, pa su izostavljeni.', c: 'Увезено је # од @ записа. Остали се не налазе у тренутној бази питања, па су изостављени.' },
+    saveFail: { l: '⚠ Napredak ne može da se sačuva u ovom pregledaču — nestaće kad zatvoriš stranicu. Proveri da li su podaci sajta blokirani, ili sačuvaj napredak u datoteku preko „Sačuvaj napredak (fajl)".', c: '⚠ Напредак не може да се сачува у овом прегледачу — нестаће кад затвориш страницу. Провери да ли су подаци сајта блокирани, или сачувај напредак у датотеку преко „Сачувај напредак (фајл)".' },
+    tabUpozorenje: { l: '⚠ Vežbaonica je otvorena u još jednom prozoru ili kartici. Rad u dva prozora se ne spaja — onaj koji poslednji sačuva prepisuje drugog. Zatvori jedan, pa osveži ovaj.', c: '⚠ Вежбаоница је отворена у још једном прозору или картици. Рад у два прозора се не спаја — онај који последњи сачува преписује другог. Затвори један, па освежи овај.' },
     fsMin: { l: 'Slova su već na najmanjoj veličini', c: 'Слова су већ на најмањој величини' },
     fsMax: { l: 'Slova su već na najvećoj veličini', c: 'Слова су већ на највећој величини' },
     planNaslov: { l: 'Dnevni cilj', c: 'Дневни циљ' },
@@ -301,7 +309,8 @@
     readyRough: { l: '⚠ gruba procena — još je malo odgovora', c: '⚠ груба процена — још је мало одговора' },
     readyPts: { l: 'očekivanih poena', c: 'очекиваних поена' },
     searchPh: { l: '🔎 Pretraga pitanja (tekst ili #broj)…', c: '🔎 Претрага питања (текст или #број)…' },
-    searchEmpty: { l: 'Nema pogodaka za „#". Probaj kraću reč ili #broj pitanja.', c: 'Нема погодака за „#". Пробај краћу реч или #број питања.' },
+    // čuvar je @1, a NE #: u samoj rečenici stoji i doslovno „#broj pitanja"
+    searchEmpty: { l: 'Nema pogodaka za „@1". Probaj kraću reč ili #broj pitanja.', c: 'Нема погодака за „@1". Пробај краћу реч или #број питања.' },
     todayLbl: { l: 'Danas', c: 'Данас' },
     okShort: { l: 'tačno', c: 'тачно' },
     shufTip: { l: 'Vežbanje pokrenuto sa ove strane ide nasumičnim redosledom (ne znaš koje je sledeće). Spisak dole ostaje po redu, a „Nastavi" uvek ide redom. Klik na pitanje u spisku: počinje od njega, pa nastavlja izmešano.', c: 'Вежбање покренуто са ове стране иде насумичним редоследом (не знаш које је следеће). Списак доле остаје по реду, а „Настави" увек иде редом. Клик на питање у списку: почиње од њега, па наставља измешано.' },
@@ -422,9 +431,47 @@
     } catch (e) { /* korumpiran zapis — kreni ispočetka */ }
     return normalizeState({ q: {} });
   }
+  // Ako pregledač odbije upis (puno skladište, blokirani podaci sajta, strogo blokiranje
+  // kolačića), do sada se to videlo SAMO u konzoli: korisnik odradi ceo ispit, vidi rezultat,
+  // a ništa nije zapisano — na prvo osvežavanje sve nestane. Zato se sada kaže naglas.
+  // Zastavica je obična promenljiva: localStorage u tom trenutku ne radi, a poruka se ne
+  // sme ponavljati jer se save() zove na svaki odgovor.
+  // Traka namerno NIJE #errStrip — globalni rukovalac greške prepisuje textContent tog
+  // istog elementa, pa bi se poruke gazile. Bez focus(): u simulaciji bi to izbacilo
+  // korisnika iz odgovaranja.
+  function trakaUpozorenja(tekst) {
+    try {
+      const b = document.createElement('div');
+      b.className = 'upozorenjeTraka';
+      b.setAttribute('role', 'alert');
+      b.appendChild(document.createTextNode(tekst + ' '));
+      const x = document.createElement('button');
+      x.type = 'button';
+      x.className = 'linklike';
+      x.textContent = L('close');
+      x.addEventListener('click', () => b.remove());
+      b.appendChild(x);
+      document.body.appendChild(b);
+    } catch (ignore) { /* ako ni ovo ne prođe, bar ne rušimo aplikaciju */ }
+  }
+  let upozorenONeuspehu = false;
+  function upozoriDaSeNeCuva() {
+    if (upozorenONeuspehu) return;
+    upozorenONeuspehu = true;
+    trakaUpozorenja(L('saveFail'));
+  }
+  // Dva otvorena prozora: stanje se učita JEDNOM pri pokretanju, pa onaj koji poslednji
+  // sačuva prepiše ceo napredak drugog. Namerno NE diramo ni S ni simulaciju u toku —
+  // samo kažemo šta se dešava, jednom.
+  let upozorenODvaProzora = false;
+  window.addEventListener('storage', (e) => {
+    if (e.key !== KEY || upozorenODvaProzora) return;
+    upozorenODvaProzora = true;
+    trakaUpozorenja(L('tabUpozorenje'));
+  });
   function save() {
     try { localStorage.setItem(KEY, JSON.stringify(S)); }
-    catch (e) { console.warn('Napredak nije mogao da se sačuva u pregledaču:', e); }
+    catch (e) { console.warn('Napredak nije mogao da se sačuva u pregledaču:', e); upozoriDaSeNeCuva(); }
     scheduleBackup();
   }
   function qs(id) { let r = S.q[id]; if (!r) { r = { a: 0, w: 0, streak: 0, marked: 0 }; S.q[id] = r; } return r; }
@@ -449,6 +496,10 @@
 
   // ---------- Beleženje rezultata + razmaknuto ponavljanje ----------
   // Pogrešno → ulazi u red (due odmah). Tačno u redu: 1. put → sutra, 2. put → za 3 dana, 3. put → izlazi.
+  // NAPOMENA: ponovni odgovor na isto pitanje (strelicama nazad-napred) NAMERNO se beleži —
+  // to je svesna odluka, potvrđena testom u tools/provera-bodovanja.js. Zbog nje pitanje
+  // pogrešeno pa odmah ispravljeno može da se utvrdi u istoj sesiji. Ograničenje se ovde
+  // NE uvodi bez dogovora, jer menja pravila učenja, a ne ispravlja kvar.
   function record(id, ok) {
     const r = qs(id);
     const prviPut = !r.a;             // pre uvećanja: ovo pitanje se danas radi kao NOVO
@@ -919,7 +970,7 @@
     if (e && e.x) inner += `<div class="explHead">${L('explTitle')} <span class="mut explSmall">(${L('explNote')})</span></div><p>${escapeHtml(T(e.x))}</p>`;
     for (const k of cardKeys) {
       const c = EX.cards[k];
-      inner += `<div><button class="linklike explCardBtn" data-card="${k}">📖 ${escapeHtml(T(c.t))}</button><div class="explCard" style="display:none">${T(c.h)}</div></div>`;
+      inner += `<div><button class="explCardBtn pojBtn" data-card="${k}">📖 ${escapeHtml(T(c.t))}</button><div class="explCard" style="display:none">${T(c.h)}</div></div>`;
     }
     box.innerHTML = inner;
     box.querySelectorAll('.explCardBtn').forEach((btn) => sklopivo(btn));
@@ -1207,7 +1258,7 @@
     const ba = rc.querySelector('#btnSimAgain');
     if (ba) ba.addEventListener('click', startSim);
     const bs = rc.querySelector('#btnShareRes');
-    if (bs) bs.addEventListener('click', () => podeliRezultat(rec));
+    if (bs) bs.addEventListener('click', () => podeliRezultat(rec, bs));
 
     const wl = el('simWrongList');
     wl.innerHTML = '';
@@ -1562,7 +1613,9 @@
       // dok traje pretraga, naslovi oblasti se sklanjaju (rezultati su izmešani)
       list.querySelectorAll('.qDivider').forEach((d) => { d.style.display = v ? 'none' : ''; });
       // bez ovoga korisnik dobije praznu belu karticu i ne zna da li traži pogrešno ili je nešto puklo
-      if (v && !vidljivih) { prazno.textContent = L('searchEmpty').replace('#', sb.value.trim()); prazno.style.display = ''; }
+      // split/join, NE replace: u zameni se „$'" i „$&" tumače kao naredbe, pa bi upit
+      // sa tim znakovima izlomio poruku (npr. udvostručio pola rečenice)
+      if (v && !vidljivih) { prazno.textContent = L('searchEmpty').split('@1').join(sb.value.trim()); prazno.style.display = ''; }
       else prazno.style.display = 'none';
     });
     show('browse');
@@ -1965,14 +2018,14 @@
 
     const tc = el('trustCard');
     if (tc) {
-      tc.innerHTML = `<div><button class="linklike explCardBtn" style="font-size:1.05rem;font-weight:600">${L('trustTitle')}</button><div class="explCard" style="display:none">${L('trustBody')}</div></div>`;
+      tc.innerHTML = `<div><button class="explCardBtn pojBtn" style="font-size:1.05rem;font-weight:600">${L('trustTitle')}</button><div class="explCard" style="display:none">${L('trustBody')}</div></div>`;
       sklopivo(tc.querySelector('.explCardBtn'));
     }
 
     const fq = el('faqCard');
     if (EX.cards && EX.cards.faq) {
       fq.style.display = '';
-      fq.innerHTML = `<div><button class="linklike explCardBtn" style="font-size:1.05rem;font-weight:600">❓ ${escapeHtml(T(EX.cards.faq.t))}</button><div class="explCard" style="display:none">${T(EX.cards.faq.h)}</div></div>`;
+      fq.innerHTML = `<div><button class="explCardBtn pojBtn" style="font-size:1.05rem;font-weight:600">❓ ${escapeHtml(T(EX.cards.faq.t))}</button><div class="explCard" style="display:none">${T(EX.cards.faq.h)}</div></div>`;
       sklopivo(fq.querySelector('.explCardBtn'));
     } else fq.style.display = 'none';
 
@@ -2023,12 +2076,12 @@
         <button class="secondary" id="btnExport">${L('export')}</button>
         <button class="secondary" id="btnImport">${L('import')}</button>
         <button class="secondary" id="btnInstall" style="display:none">${L('installBtn')}</button>
-        <button class="linklike" id="btnCheckUpd">${L('updRepoCheck')}</button>
-        <button class="linklike" id="btnTourReplay">${L('tourReplay')}</button>
-        <button class="linklike danger" id="btnReset">${L('reset')}</button>
+        <button class="secondary sBtn" id="btnCheckUpd">${L('updRepoCheck')}</button>
+        <button class="secondary sBtn" id="btnTourReplay">${L('tourReplay')}</button>
+        <button class="danger sBtn" id="btnReset">${L('reset')}</button>
         <input type="file" id="fileImport" accept=".json" style="display:none">
       </div>
-      <div id="installWhat" style="margin-top:8px"><button class="linklike explCardBtn">${L('installWhatTitle')}</button><div class="explCard" style="display:none">${L('installWhatBody')}</div></div>
+      <div id="installWhat" style="margin-top:8px"><button class="explCardBtn pojBtn">${L('installWhatTitle')}</button><div class="explCard" style="display:none">${L('installWhatBody')}</div></div>
       <div style="margin-top:10px;font-size:.86rem"><label>${L('examDateLabel')}
         <input type="date" id="examDate" value="${S.examDate || ''}" style="margin-left:6px"></label></div>
       <div style="margin-top:12px;font-size:.86rem"><b>${L('planNaslov')}</b>
@@ -2038,9 +2091,9 @@
             <input id="planNovih" type="text" inputmode="numeric" autocomplete="off" value="${S.plan && S.plan.novih ? S.plan.novih : ''}"></label>
           <label class="planPolje"><span class="mut">${L('planPon')}</span>
             <input id="planPon" type="text" inputmode="numeric" autocomplete="off" value="${S.plan && S.plan.pon ? S.plan.pon : ''}"></label>
-          <button class="secondary sBtn" id="btnPlanSave">${L('planSacuvaj')}</button>
+          <button class="secondary" id="btnPlanSave">${L('planSacuvaj')}</button>
           <button class="linklike" id="btnPlanPredlog">${L('planPredlozi')}</button>
-          ${S.plan ? `<button class="linklike" id="btnPlanOff">${L('planIskljuci')}</button>` : ''}
+          ${S.plan ? `<button class="secondary sBtn" id="btnPlanOff">${L('planIskljuci')}</button>` : ''}
         </div>
         <div id="planPoruka" class="mut" style="margin-top:6px"></div></div>
       <div class="mut" style="margin-top:10px;font-size:.82rem">${L('bazaProverena')} ·
@@ -2055,12 +2108,28 @@
       el('btnInstall').style.display = 'none';
     });
     sklopivo(el('installWhat').querySelector('.explCardBtn'));
-    el('btnCheckUpd').addEventListener('click', () => { S.noUpd = 0; save(); proveriRepo(true); });
+    el('btnCheckUpd').addEventListener('click', (ev) => { S.noUpd = 0; save(); proveriRepo(true, ev.currentTarget); });
     el('btnTourReplay').addEventListener('click', tourStart);
     { const bf = el('btnFeedback'); if (bf) bf.addEventListener('click', otvoriPrijavu); }
+    // Datum ispita: prazno polje je jedini način da se datum ukloni, pa prazno UVEK briše.
+    // Sve ostalo mora da prođe proveru — bez nje je otkucano „26" umesto „2026" davalo
+    // godinu 0026, prolazilo regeks i davalo besmisleno odbrojavanje, a promašen unos je
+    // ćutke brisao prethodno sačuvani datum.
     el('examDate').addEventListener('change', () => {
-      const v = el('examDate').value;
-      S.examDate = /^\d{4}-\d{2}-\d{2}$/.test(v) ? v : null;
+      const inp = el('examDate');
+      const v = inp.value;
+      ocistiPoruku(inp);
+      if (v === '') { S.examDate = null; save(); renderHome(); return; }
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(v)) { poruciUzPolje(inp, L('datumLos')); return; }
+      const d = new Date(v + 'T00:00:00');
+      const danas = new Date(); danas.setHours(0, 0, 0, 0);
+      const godina = +v.slice(0, 4);
+      if (isNaN(d.getTime()) || godina < danas.getFullYear() || godina > danas.getFullYear() + 5) {
+        poruciUzPolje(inp, L('datumOpseg').split('@1').join(danas.getFullYear()).split('@2').join(danas.getFullYear() + 5));
+        return;
+      }
+      if (d < danas) { poruciUzPolje(inp, L('datumProslost')); return; }
+      S.examDate = v;
       save(); renderHome();
     });
     {
@@ -2127,10 +2196,15 @@
       const f = e.target.files[0];
       e.target.value = '';   // da ponovni izbor ISTOG fajla opet okine 'change'
       if (!f) return;
+      // „accept=.json" je samo filter u prozoru za izbor — korisnik ga u dva klika promeni.
+      // Izvezen napredak je reda desetina kilobajta; 5 MB je i dalje ogromno, a sprečava da
+      // izbor filma ili arhive zaledi karticu dok se čita u memoriju.
+      if (f.size > 5 * 1024 * 1024) { alert(L('importPrevelik')); return; }
       const rd = new FileReader();
+      rd.onerror = () => alert(L('importBad'));
       rd.onload = () => {
-        let norm = null;
-        try { norm = normalizeState(JSON.parse(rd.result)); } catch (err) { /* nevalidan JSON */ }
+        let sirovo = null, norm = null;
+        try { sirovo = JSON.parse(rd.result); norm = normalizeState(sirovo); } catch (err) { /* nevalidan JSON */ }
         if (!norm) { alert(L('importBad')); return; }
         const hasProgress = Object.keys(S.q).length > 0 || S.sims.length > 0;
         if (hasProgress && !confirm(L('importConfirm'))) return;
@@ -2138,6 +2212,12 @@
         applyScript(); applyTheme(); applyFont();
         renderHome();
         save();
+        // Zapisi za pitanja kojih nema u trenutnoj bazi se odbacuju — to je ispravno, ali
+        // se do sada dešavalo nemo, pa je uvoz stare kopije izgledao kao pun uspeh.
+        const bilo = sirovo && sirovo.q && typeof sirovo.q === 'object' && !Array.isArray(sirovo.q)
+          ? Object.keys(sirovo.q).length : 0;
+        const ostalo = Object.keys(norm.q).length;
+        if (bilo > ostalo) alert(L('importDeo').split('#').join(ostalo).split('@').join(bilo));
       };
       rd.readAsText(f);
     });
@@ -2202,10 +2282,17 @@
     // Zatvaranje na JEDNOM mestu. Ranije se osluškivač za Escape skidao samo ako se
     // zatvori Escapeom — ko zatvara klikom, ostavljao je po jedan osluškivač za svako
     // otvaranje, pa su se gomilali do kraja sesije.
-    const zatvori = () => { z.remove(); document.removeEventListener('keydown', naEscape); };
+    // Na telefonu je dugme Nazad prirodan potez za zatvaranje punog ekrana. Bez ovoga
+    // ono promeni prikaz ispod, a uvećanje ostane da visi preko novog ekrana.
+    const zatvori = () => {
+      z.remove();
+      document.removeEventListener('keydown', naEscape);
+      window.removeEventListener('hashchange', zatvori);
+    };
     const naEscape = (e2) => { if (e2.key === 'Escape') zatvori(); };
     z.addEventListener('click', zatvori);
     document.addEventListener('keydown', naEscape);
+    window.addEventListener('hashchange', zatvori);
     document.body.appendChild(z);
   });
 
@@ -2324,7 +2411,7 @@
       <div class="repoUpdBtns">
         <a class="primary repoUpdLink" href="${REPO_ZIP}" target="_blank" rel="noopener">${escapeHtml(L('updRepoGet'))}</a>
         <button class="linklike" id="repoUpdLater">${escapeHtml(L('updRepoLater'))}</button>
-        <button class="linklike" id="repoUpdOff">${escapeHtml(L('updRepoOff'))}</button>
+        <button class="secondary sBtn" id="repoUpdOff">${escapeHtml(L('updRepoOff'))}</button>
       </div>`;
     document.body.appendChild(b);
     const zatvori = () => { S.updSeen = nova; save(); b.remove(); };
@@ -2332,13 +2419,20 @@
     b.querySelector('#repoUpdOff').addEventListener('click', () => { S.noUpd = 1; zatvori(); renderHome(); });
   }
 
-  async function proveriRepo(rucno) {
+  let proveraUToku = false;
+  async function proveriRepo(rucno, dugme) {
+    if (proveraUToku) return;   // bez ovoga N klikova = N zahteva i N poruka jedna za drugom
+    proveraUToku = true;
+    if (dugme) dugme.disabled = true;
     try {
       const nova = await dohvatiUdaljenuVerziju();
       if (nova > BOOT_V && (rucno || nova !== S.updSeen)) { prikaziNovuVerziju(nova, rucno); return; }
       if (rucno) alert(L('updRepoNone').replace('#A', BOOT_V));
     } catch (e) {
       if (rucno) alert(L('updRepoFail'));
+    } finally {
+      proveraUToku = false;
+      if (dugme) dugme.disabled = false;
     }
   }
 
@@ -2417,7 +2511,11 @@
     return c;
   }
 
-  async function podeliRezultat(rec) {
+  let deljenjeUToku = false;
+  async function podeliRezultat(rec, dugme) {
+    if (deljenjeUToku) return;   // svaki klik crta platno 1080×1080; deset klikova = deset platna
+    deljenjeUToku = true;
+    if (dugme) dugme.disabled = true;
     try {
       const c = nacrtajRezultat(rec);
       const blob = await new Promise((r) => c.toBlob(r, 'image/png'));
@@ -2444,6 +2542,9 @@
       setTimeout(() => URL.revokeObjectURL(url), 10000);
     } catch (e) {
       alert(L('shareFail'));
+    } finally {
+      deljenjeUToku = false;
+      if (dugme) dugme.disabled = false;
     }
   }
 
