@@ -130,7 +130,11 @@
     examDateLabel: { l: 'Datum ispita (za odbrojavanje):', c: 'Датум испита (за одбројавање):' },
     examIn: { l: 'do ispita', c: 'до испита' },
     examDays: { l: 'dana', c: 'дана' },
+    examDaysOne: { l: 'dan', c: 'дан' },
+    examToday: { l: '📅 ispit je danas — srećno!', c: '📅 испит је данас — срећно!' },
     examPlan: { l: 'predlog tempa: ~# novih pitanja dnevno', c: 'предлог темпа: ~# нових питања дневно' },
+    examPlanOne: { l: 'predlog tempa: ~# novo pitanje dnevno', c: 'предлог темпа: ~# ново питање дневно' },
+    imgFail: { l: 'Slika nije dostupna bez interneta — otvori ovo pitanje kad budeš na mreži pa ostaje sačuvana.', c: 'Слика није доступна без интернета — отвори ово питање кад будеш на мрежи па остаје сачувана.' },
     planPonavljanja: { l: 'ponavljanja danas: #', c: 'понављања данас: #' },
     planSim: { l: 'predlog: uradi simulaciju danas', c: 'предлог: уради симулацију данас' },
     planSimNedelja: { l: 'poslednja nedelja — po jedna simulacija dnevno', c: 'последња недеља — по једна симулација дневно' },
@@ -278,6 +282,7 @@
     readyRough: { l: '⚠ gruba procena — još je malo odgovora', c: '⚠ груба процена — још је мало одговора' },
     readyPts: { l: 'očekivanih poena', c: 'очекиваних поена' },
     searchPh: { l: '🔎 Pretraga pitanja (tekst ili #broj)…', c: '🔎 Претрага питања (текст или #број)…' },
+    searchEmpty: { l: 'Nema pogodaka za „#". Probaj kraću reč ili #broj pitanja.', c: 'Нема погодака за „#". Пробај краћу реч или #број питања.' },
     todayLbl: { l: 'Danas', c: 'Данас' },
     okShort: { l: 'tačno', c: 'тачно' },
     shufTip: { l: 'Vežbanje pokrenuto sa ove strane ide nasumičnim redosledom (ne znaš koje je sledeće). Spisak dole ostaje po redu, a „Nastavi" uvek ide redom. Klik na pitanje u spisku: počinje od njega, pa nastavlja izmešano.', c: 'Вежбање покренуто са ове стране иде насумичним редоследом (не знаш које је следеће). Списак доле остаје по реду, а „Настави" увек иде редом. Клик на питање у списку: почиње од њега, па наставља измешано.' },
@@ -535,6 +540,30 @@
     if (sim) { e.preventDefault(); e.returnValue = ''; }
   });
 
+  // ---------- Slika uz pitanje ----------
+  // Slike se keširaju tek kad se jednom vide, pa pitanje koje nikad nije otvoreno
+  // nema sliku bez interneta — a slika je kod 704 od 1327 pitanja nosilac zadatka.
+  // Umesto polomljene ikone bez objašnjenja, kaže se šta se desilo.
+  // (Ovo važi i u simulaciji: ne menja ni pitanja, ni bodovanje, ni vreme — samo
+  // objašnjava prazninu koju bi korisnik inače video kao kvar aplikacije.)
+  function pratiSliku(im) {
+    im.addEventListener('error', () => {
+      const p = document.createElement('div');
+      p.className = 'qImgFail';
+      p.textContent = L('imgFail');
+      im.replaceWith(p);
+    });
+    return im;
+  }
+  function slikaPitanja(q) {
+    const im = document.createElement('img');
+    im.className = 'qImg';
+    im.alt = L('imgAlt');
+    pratiSliku(im);
+    im.src = 'img/' + q.id + '.jpg';   // src tek POSLE osluškivača, da se greška ne propusti
+    return im;
+  }
+
   // ---------- Provera unosa ----------
   // Pravilo: nijedno polje ne sme da ćuti. Ako unos ne valja, korisnik mora da vidi
   // ŠTA jeste prihvatljivo — ne samo da mu se ništa ne desi kad pritisne dugme.
@@ -611,7 +640,7 @@
     const txt = document.createElement('div'); txt.className = 'qText'; txt.textContent = T(q.t);
     c.appendChild(txt);
 
-    if (q.img) { const im = document.createElement('img'); im.className = 'qImg'; im.src = 'img/' + q.id + '.jpg'; im.alt = L('imgAlt'); c.appendChild(im); }
+    if (q.img) c.appendChild(slikaPitanja(q));
 
     if (q.req > 1) {
       const hint = document.createElement('div'); hint.className = 'mut'; hint.style.marginBottom = '8px';
@@ -771,7 +800,9 @@
     const bw = el('bEndWrong');
     if (bw) bw.addEventListener('click', () => startList(pogresna, () => m.titleFn() + ' — 🔁', null, 'filter', { origin: m.origin, chainKey: m.secKey || m.chainKey }));
     const bn = el('bEndNext');
-    if (bn) bn.addEventListener('click', () => startList(Q.filter((q) => 's' + q.sub === dalje.key).map((q) => q.id), secTitleFn(dalje.key), null, 'section', { secKey: dalje.key, origin: () => browse(dalje.key) }));
+    // startAt: bez njega je lanac „Sledeća podoblast ›" kretao od nule i time PREPISIVAO
+    // zapamćenu poziciju u toj podoblasti — jedini ulazak koji se tako ponašao.
+    if (bn) bn.addEventListener('click', () => startList(Q.filter((q) => 's' + q.sub === dalje.key).map((q) => q.id), secTitleFn(dalje.key), null, 'section', { secKey: dalje.key, startAt: S.secPos[dalje.key] || 0, origin: () => browse(dalje.key) }));
   }
 
   function endScreen(msgHtml, origin, extraHtml) {
@@ -1045,7 +1076,7 @@
     meta.innerHTML = `<span>${L('question')} ${sim.i + 1} / ${SIM_N}</span><span>${q.pts} ${L('points')}${q.req > 1 ? ` · ${L('chooseN')} ${q.req}` : ''}</span>`;
     c.appendChild(meta);
     const txt = document.createElement('div'); txt.className = 'qText'; txt.textContent = T(q.t); c.appendChild(txt);
-    if (q.img) { const im = document.createElement('img'); im.className = 'qImg'; im.src = 'img/' + q.id + '.jpg'; im.alt = L('imgAlt'); c.appendChild(im); }
+    if (q.img) c.appendChild(slikaPitanja(q));
     for (const ch of sq.order) {
       const b = document.createElement('button'); b.className = 'choice' + (sq.chosen.has(ch.id) ? ' sel' : ''); b.type = 'button';
       b.textContent = T(ch.t);
@@ -1175,6 +1206,7 @@
         ${chosen && chosen.size === 0 ? `<div class="noAnsw">${L('notAnswered')}</div>` : ''}
         ${q.img ? `<img class="qImg" src="img/${q.id}.jpg" alt="${escapeHtml(L('imgAlt'))}">` : ''}
         ${q.ch.map((ch) => `<div class="choice rev${ch.ok ? ' ok' : (chosen && chosen.has(ch.id) ? ' bad' : '')}">${escapeHtml(T(ch.t))}${chips(ch)}</div>`).join('')}`;
+      { const im = card.querySelector('img.qImg'); if (im) pratiSliku(im); }
       const ex = explNode(q);
       if (ex) card.appendChild(ex);
       return card;
@@ -1270,12 +1302,13 @@
     for (const q of Q) { const r = S.q[q.id]; if (r && r.a) { tSeen++; tAtt += r.a; tWr += r.w; } }
     const tAcc = tAtt ? Math.round(100 * (tAtt - tWr) / tAtt) : null;
     el('statsCard').innerHTML = `<h3>${L('statsTitle')}</h3>
+      <div class="tblScroll">
       <table class="stats"><thead><tr><th>${L('thArea')}</th><th class="num">${L('thQ')}</th><th class="num">${L('thSeen')}</th><th class="num">${L('thAcc')}</th></tr></thead>
       <tbody>${rows.map((r) => `<tr class="statCatRow" data-cat="${r.c.id}" tabindex="0" title="${escapeHtml(L('statExpand'))}"><td>▸ ${escapeHtml(T(r.c))}</td><td class="num">${r.n}</td><td class="num">${r.seen}</td>
         <td class="num">${r.acc === null ? '—' : `<span class="${r.acc >= 90 ? 'accGood' : r.acc >= 75 ? 'accMid' : 'accBad'}">${r.acc}%</span>`}</td></tr>`).join('')}
       <tr class="totalRow"><td><b>${L('ukupno')}</b></td><td class="num"><b>${Q.length}</b></td><td class="num"><b>${tSeen}</b></td>
         <td class="num">${tAcc === null ? '—' : `<b><span class="${tAcc >= 90 ? 'accGood' : tAcc >= 75 ? 'accMid' : 'accBad'}">${tAcc}%</span></b>`}</td></tr>
-      </tbody></table>`;
+      </tbody></table></div>`;
 
     // Raspis po PODOBLASTIMA: klik na red oblasti umetne redove podoblasti ispod njega
     el('statsCard').querySelectorAll('.statCatRow').forEach((tr) => {
@@ -1493,13 +1526,25 @@
       list.appendChild(b);
     });
     const sb = el('qSearch');
+    // poruka kad nema pogodaka: pravi se jednom, samo se pokazuje/skriva
+    const prazno = document.createElement('p');
+    prazno.className = 'mut';
+    prazno.style.display = 'none';
+    prazno.style.marginTop = '10px';
+    list.appendChild(prazno);   // unutar kartice, ispod redova — tu korisnik i gleda
     sb.addEventListener('input', () => {
       const v = sb.value.trim().toLowerCase();
+      let vidljivih = 0;
       list.querySelectorAll('.qRow').forEach((row) => {
-        row.style.display = !v || row._search.includes(v) ? '' : 'none';
+        const vidi = !v || row._search.includes(v);
+        row.style.display = vidi ? '' : 'none';
+        if (vidi) vidljivih++;
       });
       // dok traje pretraga, naslovi oblasti se sklanjaju (rezultati su izmešani)
       list.querySelectorAll('.qDivider').forEach((d) => { d.style.display = v ? 'none' : ''; });
+      // bez ovoga korisnik dobije praznu belu karticu i ne zna da li traži pogrešno ili je nešto puklo
+      if (v && !vidljivih) { prazno.textContent = L('searchEmpty').replace('#', sb.value.trim()); prazno.style.display = ''; }
+      else prazno.style.display = 'none';
     });
     show('browse');
   }
@@ -1772,9 +1817,14 @@
       const ispit = new Date(S.examDate + 'T00:00:00');
       const dana = Math.round((ispit - danas) / 86400000);
       if (dana >= 0) {
-        delovi.push('📅 ' + L('examIn') + ': ' + dana + ' ' + L('examDays'));
+        // srpska jednina: „1 dan", ne „1 dana"; na sam dan ispita ne piše se „0 dana"
+        if (dana === 0) delovi.push(L('examToday'));
+        else delovi.push('📅 ' + L('examIn') + ': ' + dana + ' ' + (one(dana) ? L('examDaysOne') : L('examDays')));
         const neodg = Q.filter((q) => !S.q[q.id] || !S.q[q.id].a).length;
-        if (dana > 0 && neodg > 0) delovi.push(L('examPlan').replace('#', Math.ceil(neodg / dana)));
+        if (dana > 0 && neodg > 0) {
+          const tempo = Math.ceil(neodg / dana);
+          delovi.push((one(tempo) ? L('examPlanOne') : L('examPlan')).replace('#', tempo));
+        }
       }
     }
     return delovi.length ? '<div class="homeExtras">' + delovi.join(' &nbsp;·&nbsp; ') + '</div>' : '';
@@ -2111,6 +2161,7 @@
   document.addEventListener('click', (ev) => {
     const slika = ev.target.closest && ev.target.closest('img.qImg');
     if (!slika) return;
+    if (!slika.naturalWidth) return;   // slika se nije učitala — nema šta da se uveća
     const z = document.createElement('div');
     z.id = 'imgZoom';
     const im = document.createElement('img');
@@ -2338,8 +2389,15 @@
       if (!blob) throw new Error('nema slike');
       const fajl = new File([blob], 'vozacki-a-rezultat.png', { type: 'image/png' });
       if (navigator.canShare && navigator.canShare({ files: [fajl] })) {
-        await navigator.share({ files: [fajl], title: L('shareTitle') });
-        return;
+        try {
+          await navigator.share({ files: [fajl], title: L('shareTitle') });
+          return;
+        } catch (e) {
+          // Zatvaranje sistemskog prozora „Podeli" (dodir izvan, dugme Nazad) stiže kao
+          // AbortError. To NIJE greška — korisnik se predomislio, ne treba mu poruka.
+          if (e && e.name === 'AbortError') return;
+          // svaka druga greška: tiho pređi na preuzimanje slike
+        }
       }
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');

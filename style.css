@@ -77,7 +77,9 @@ main { max-width: 880px; margin: 0 auto; padding: 16px 12px 60px; }
 .catMain { display: flex; align-items: center; gap: 10px; flex: 1; background: none; border: none; padding: 2px 0; font: inherit; color: inherit; text-align: left; cursor: pointer; }
 .catMain:hover .catName { color: var(--blue); }
 .catChevBtn, .catChevSpacer { flex: 0 0 26px; width: 26px; box-sizing: border-box; }
-.catChevBtn { background: none; border: none; color: var(--mut); font-size: .8rem; padding: 8px 3px; border-radius: 6px; cursor: pointer; line-height: 1; text-align: center; min-height: 26px; }
+/* Strelica je bila 26×28px, tik uz dugme koje vodi na drugu stranu — premalo za prst.
+   Negativna margina povećava dodirnu površinu na 44px a ne pomera raspored. */
+.catChevBtn { background: none; border: none; color: var(--mut); font-size: .8rem; padding: 8px 3px; border-radius: 6px; cursor: pointer; line-height: 1; text-align: center; min-height: 44px; margin: -8px 0; }
 .catChevBtn:hover { background: var(--optHover); color: var(--blue); }
 .catName { flex: 0 0 46%; font-size: .9rem; }
 .catBar { flex: 1; height: 14px; background: var(--bar); border-radius: 7px; overflow: hidden; position: relative; }
@@ -170,7 +172,10 @@ table.stats td.num, table.stats th.num { text-align: right; font-variant-numeric
 .histWrong { text-align: right; font-variant-numeric: tabular-nums; }
 .histArrow { text-align: right; }
 @media (max-width: 460px) {
-  .histRow { grid-template-columns: 1fr auto auto; row-gap: 2px; }
+  /* Red ima PET stavki. Sa tri kolone je peta — strelica „›" — padala sama u treći red,
+     poravnata desno unutar prve kolone, pa je lebdela ispod rezultata. Četiri kolone:
+     datum uzme ceo prvi red, ostale četiri stanu u drugi. */
+  .histRow { grid-template-columns: 1fr auto auto auto; row-gap: 2px; }
   .histDate { grid-column: 1 / -1; }
 }
 .histRow:last-child { border-bottom: none; }
@@ -188,6 +193,13 @@ button.histBtn:hover { background: var(--optHover); }
 .explHead { font-weight: 700; color: var(--explInk); margin-bottom: 6px; }
 .explSmall { font-size: .75rem; font-weight: 400; }
 .explBox p { margin: 0 0 6px; }
+/* Široka tabela sme da se skroluje u svom okviru, ali NIKAD da razvuče celu stranu.
+   Tabela statistike je na 320px izlazila 36px preko kartice i pravila vodoravni skrol. */
+.tblScroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+/* pitanje čija slika nije stigla da se sačuva pre nego što je nestao internet */
+.qImgFail { border: 1px dashed var(--line); border-radius: 8px; padding: 14px 16px; margin: 0 0 14px;
+  color: var(--mut); font-size: .9rem; text-align: center; background: var(--bar); }
+.explCard table, .tblScroll table { min-width: 0; }
 /* poruka uz polje za unos — mora da se vidi i mora da kaže šta JESTE dozvoljeno */
 .unosPoruka { color: var(--bad); font-size: .82rem; font-weight: 600; margin-top: 4px; max-width: 34em; }
 .planBox { margin-top: 10px; }
@@ -217,6 +229,13 @@ button.histBtn:hover { background: var(--optHover); }
 .explCard th { background: var(--explTh); }
 .vgrid { display: grid; grid-template-columns: minmax(90px, auto) repeat(3, 1fr); gap: 4px; margin: 8px 0; font-size: .85rem; }
 .vg { padding: 8px 6px; border-radius: 6px; text-align: center; }
+/* „1fr" ima skriven pod — min-content — pa duge reči („ČETVOROCIKL") razvuku mrežu
+   preko ekrana. minmax(0, 1fr) taj pod ukida, a prelom reči sprečava da se kolona
+   ipak razvuče. Bez ovoga tabela kategorija na 320px izlazi 56px van ekrana. */
+@media (max-width: 560px) {
+  .vgrid { grid-template-columns: minmax(64px, auto) repeat(3, minmax(0, 1fr)); font-size: .76rem; gap: 3px; }
+  .vg { padding: 7px 3px; overflow-wrap: anywhere; }
+}
 .vgHead { color: var(--mut); font-weight: 600; display: flex; align-items: center; justify-content: center; }
 .vgSlow { background: var(--vgSlow); color: var(--vgSlowInk); font-weight: 700; }
 .vgFast { background: var(--vgFast); color: var(--vgFastInk); font-weight: 700; }
