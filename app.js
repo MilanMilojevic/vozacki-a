@@ -26,6 +26,7 @@
   const CATS = D.cats.filter((c) => Q.some((q) => q.cat === c.id));
   const DAY = 24 * 60 * 60 * 1000;
   const one = (n) => n % 10 === 1 && n % 100 !== 11;   // srpski: 1, 21, 31... "pitanje/dan"
+  const poeni = (n) => n + ' ' + (one(n) ? L('pointsOne') : L('points'));   // "1 poen", "2 poena"
   const localDay = () => { const d = new Date(); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
   // Ponavljanje se zakazuje za POČETAK dana (00:00), da bi "sutra" zaista značilo sutra ujutru,
   // a ne 24 sata od trenutka odgovaranja.
@@ -51,6 +52,7 @@
     question: { l: 'Pitanje', c: 'Питање' },
     qNumTip: { l: 'Zvanični broj pitanja u MUP bazi (isti broj važi i na eUpravi)', c: 'Званични број питања у МУП бази (исти број важи и на еУправи)' },
     points: { l: 'poena', c: 'поена' },
+    pointsOne: { l: 'poen', c: 'поен' },
     chooseN: { l: 'Izaberite odgovora:', c: 'Изаберите одговора:' },
     confirm: { l: 'Odgovori', c: 'Одговори' },
     next: { l: 'Sledeće pitanje', c: 'Следеће питање' },
@@ -60,8 +62,8 @@
     wrong: { l: 'Netačno.', c: 'Нетачно.' },
     correctIs: { l: 'Tačan odgovor je označen zelenim.', c: 'Тачан одговор је означен зеленим.' },
     mark: { l: 'Obeleži pitanje', c: 'Обележи питање' },
-    seenTimes: { l: 'odgovarano', c: 'одговарано' },
-    wrongTimes: { l: 'pogrešno', c: 'погрешно' },
+    tacnoLbl: { l: 'tačno', c: 'тачно' },
+    netacnoLbl: { l: 'netačno', c: 'нетачно' },
     today: { l: 'danas', c: 'данас' },
     yesterday: { l: 'juče', c: 'јуче' },
     daysAgo: { l: 'pre # dana', c: 'пре # дана' },
@@ -710,11 +712,13 @@
 
     c.innerHTML = '';
     const meta = document.createElement('div'); meta.className = 'qMeta';
+    // Brojač: tačno i netačno ODVOJENO, ne ukupno+pogrešno. „2× odgovarano, 1× pogrešno"
+    // tera čoveka da oduzima; „1× tačno · 1× netačno" se čita bez računanja.
     const hist = qr(q.id).a > 0
-      ? ` &nbsp;·&nbsp; ${S.q[q.id].a}× ${L('seenTimes')}${S.q[q.id].w ? `, ${S.q[q.id].w}× ${L('wrongTimes')}` : ''} (${relTime(S.q[q.id].last)})`
+      ? ` &nbsp;·&nbsp; <span class="qOk">${S.q[q.id].a - S.q[q.id].w}× ${L('tacnoLbl')}</span> · <span class="${S.q[q.id].w ? 'qBad' : 'mut'}">${S.q[q.id].w}× ${L('netacnoLbl')}</span> · ${relTime(S.q[q.id].last)}`
       : '';
     meta.innerHTML = `<span><a href="#" class="bcLink" data-bc="c${q.cat}">${escapeHtml(catOf(q))}</a> › <a href="#" class="bcLink" data-bc="s${q.sub}">${escapeHtml(subOf(q))}</a></span>
-      <span><span class="qNum" data-qid="${q.id}" title="${escapeHtml(FILE_MODE ? L('qNumTip') : L('qNumTip2'))}">#${q.id}</span> · ${q.pts} ${L('points')}${hist}</span>`;
+      <span><span class="qNum" data-qid="${q.id}" title="${escapeHtml(FILE_MODE ? L('qNumTip') : L('qNumTip2'))}">#${q.id}</span> · ${poeni(q.pts)}${hist}</span>`;
     meta.querySelectorAll('.bcLink').forEach((a) => a.addEventListener('click', (e) => { e.preventDefault(); browse(a.dataset.bc); }));
     c.appendChild(meta);
 
@@ -969,6 +973,20 @@
   }
   const legendHtml = () => `<div class="mut" style="font-size:.8rem;margin:4px 0 8px">${L('legend')}</div>`;
 
+  // Jedan red u spisku pitanja — JEDNO mesto za sva tri spiska (podoblast, sva pitanja,
+  // pogrešna/obeležena). Ranije su bila tri prepisana primerka istog koda, pa bi svaka
+  // dopuna morala na tri mesta (i lako bi promašila jedno).
+  // Brojač se pokazuje samo gde ima istorije: 1327 redova sa praznim brojačima bio bi šum.
+  function redPitanjaHtml(q, idx, r, dodatak) {
+    const icon = !r || !r.a ? '<span class="qDot">•</span>'
+      : inQueue(q.id) ? '<span class="qBad">✗</span>'
+      : '<span class="qOk">✓</span>';
+    const stat = r && r.a
+      ? `<span class="qRowStat"><span class="qOk">${r.a - r.w}✓</span>${r.w ? ` <span class="qBad">${r.w}✗</span>` : ''}</span>`
+      : '';
+    return `<span class="qRowN">${idx + 1}.</span> ${icon} <span class="qRowT">${escapeHtml(T(q.t))}</span>${r && r.marked ? ' 🔖' : ''}${q.img ? ' 🖼' : ''}${dodatak || ''}${stat}`;
+  }
+
   // ---------- Objašnjenja (explanations.js, opciono prisutan) ----------
   const EX = window.EXPLAIN || { cards: {}, byQ: {}, bySub: {} };
   function explNode(q) {
@@ -1154,7 +1172,7 @@
     c.dataset.qid = q.id;
     c.innerHTML = '';
     const meta = document.createElement('div'); meta.className = 'qMeta';
-    meta.innerHTML = `<span>${L('question')} ${sim.i + 1} / ${SIM_N}</span><span>${q.pts} ${L('points')}${q.req > 1 ? ` · ${L('chooseN')} ${q.req}` : ''}</span>`;
+    meta.innerHTML = `<span>${L('question')} ${sim.i + 1} / ${SIM_N}</span><span>${poeni(q.pts)}${q.req > 1 ? ` · ${L('chooseN')} ${q.req}` : ''}</span>`;
     c.appendChild(meta);
     const txt = document.createElement('div'); txt.className = 'qText'; txt.textContent = T(q.t); c.appendChild(txt);
     if (q.img) c.appendChild(slikaPitanja(q));
@@ -1281,7 +1299,7 @@
         if (chosen && chosen.has(ch.id)) parts.push(`<span class="chip ${ch.ok ? 'chipYourOk' : 'chipYourBad'}">${L('yourAnswer')}</span>`);
         return parts.length ? `<span class="chipWrap">${parts.join(' ')}</span>` : '';
       };
-      card.innerHTML = `<div class="qMeta"><span>${escapeHtml(catOf(q))}</span><span><span class="qNum" title="${escapeHtml(L('qNumTip'))}">#${q.id}</span> · ${q.pts} ${L('points')}</span></div>
+      card.innerHTML = `<div class="qMeta"><span>${escapeHtml(catOf(q))}</span><span><span class="qNum" title="${escapeHtml(L('qNumTip'))}">#${q.id}</span> · ${poeni(q.pts)}</span></div>
         <div class="qText">${escapeHtml(T(q.t))}</div>
         ${q.req > 1 ? `<div class="reqNote">${L('requiresN').replace('#', q.req)}</div>` : ''}
         ${chosen && chosen.size === 0 ? `<div class="noAnsw">${L('notAnswered')}</div>` : ''}
@@ -1531,11 +1549,8 @@
         list.appendChild(d);
       }
       const r = S.q[qid];
-      const icon = !r || !r.a ? '<span class="qDot">•</span>'
-        : inQueue(qid) ? '<span class="qBad">✗</span>'
-        : '<span class="qOk">✓</span>';
       const b = document.createElement('button'); b.className = 'qRow';
-      b.innerHTML = `<span class="qRowN">${idx + 1}.</span> ${icon} <span class="qRowT">${escapeHtml(T(q.t))}</span>${r && r.marked ? ' 🔖' : ''}${q.img ? ' 🖼' : ''}`;
+      b.innerHTML = redPitanjaHtml(q, idx, r);
       b.addEventListener('click', () => {
         if (shuffleOn) rowStart(ids, idx, secTitleFn(key), origin);
         else startList(ids, secTitleFn(key), null, 'section', { secKey: key, startAt: idx, origin });
@@ -1594,11 +1609,8 @@
         list.appendChild(d);
       }
       const r = S.q[q.id];
-      const icon = !r || !r.a ? '<span class="qDot">•</span>'
-        : inQueue(q.id) ? '<span class="qBad">✗</span>'
-        : '<span class="qOk">✓</span>';
       const b = document.createElement('button'); b.className = 'qRow';
-      b.innerHTML = `<span class="qRowN">${idx + 1}.</span> ${icon} <span class="qRowT">${escapeHtml(T(q.t))}</span>${r && r.marked ? ' 🔖' : ''}${q.img ? ' 🖼' : ''}`;
+      b.innerHTML = redPitanjaHtml(q, idx, r);
       b.addEventListener('click', () => {
         if (shuffleOn) rowStart(allIds, idx, () => L('allPage'), browseAll);
         else startLearn(idx);
@@ -1677,16 +1689,13 @@
     ids.forEach((qid, idx) => {
       const q = byId.get(qid);
       const r = S.q[qid];
-      const icon = !r || !r.a ? '<span class="qDot">•</span>'
-        : inQueue(qid) ? '<span class="qBad">✗</span>'
-        : '<span class="qOk">✓</span>';
       let dueTag = '';
       if (isWrong && r && (r.due || 0) > now) {
         const days = Math.ceil((r.due - now) / DAY);
         dueTag = ` <span class="mut">(${days <= 1 ? L('dueTomorrow') : (one(days) ? L('dueDaysOne') : L('dueDays')).replace('#', days)})</span>`;
       }
       const b = document.createElement('button'); b.className = 'qRow';
-      b.innerHTML = `<span class="qRowN">${idx + 1}.</span> ${icon} <span class="qRowT">${escapeHtml(T(q.t))}</span>${r && r.marked ? ' 🔖' : ''}${q.img ? ' 🖼' : ''}${dueTag}`;
+      b.innerHTML = redPitanjaHtml(q, idx, r, dueTag);
       b.addEventListener('click', () => {
         if (shuffleOn) rowStart(ids, idx, () => title, origin);
         else startList(ids, () => title, null, isWrong ? 'drill-all' : 'filter', { startAt: idx, origin });

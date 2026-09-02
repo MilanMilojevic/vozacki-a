@@ -299,6 +299,8 @@ body.uSimulaciji #podnozje { display: none; }
 .qRow:hover { background: var(--optHover); }
 .qRowN { color: var(--mut); font-variant-numeric: tabular-nums; display: inline-block; min-width: 38px; }
 .qRowT { }
+/* brojač tačno/netačno u redu spiska — samo za pitanja koja imaju istoriju */
+.qRowStat { float: right; margin-left: 10px; font-size: .78rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .qOk { color: var(--ok); font-weight: 700; }
 .qBad { color: var(--bad); font-weight: 700; }
 .qDot { color: #b6c2d0; font-weight: 700; }
