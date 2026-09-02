@@ -152,6 +152,9 @@
     fsSmaller: { l: 'Smanji slova', c: 'Смањи слова' },
     fsBigger: { l: 'Povećaj slova', c: 'Повећај слова' },
     close: { l: 'Zatvori', c: 'Затвори' },
+    sekDeo: { l: 'Prikazan je deo kartice koji se odnosi na ovu podoblast.', c: 'Приказан је део картице који се односи на ову подобласт.' },
+    sekCela: { l: 'Prikaži celu karticu', c: 'Прикажи целу картицу' },
+    statsTip: { l: 'Isti pregled kao na početnoj, uz tačnost: klik na naziv otvara spisak pitanja, strelica otklapa podoblasti.', c: 'Исти преглед као на почетној, уз тачност: клик на назив отвара списак питања, стрелица отклапа подобласти.' },
     grupaNapredak: { l: 'Napredak', c: 'Напредак' },
     grupaAplikacija: { l: 'Aplikacija', c: 'Апликација' },
     grupaOprezno: { l: 'Oprezno', c: 'Опрезно' },
@@ -183,8 +186,8 @@
     planNemaDostupnih: { l: 'Nema više pitanja koja čekaju. Cilj ostaje za sutra.', c: 'Нема више питања која чекају. Циљ остаје за сутра.' },
     planBezDatuma: { l: 'Za predlog prvo unesi datum ispita, ispod.', c: 'За предлог прво унеси датум испита, испод.' },
     planDatumProsao: { l: 'Datum ispita je prošao — unesi novi da bih mogao da računam.', c: 'Датум испита је прошао — унеси нови да бих могао да рачунам.' },
-    planPredlogGotov: { l: 'Predlog je upisan. Novo gradivo se završava # dana pre ispita — ti dani ostaju za ponavljanje i simulacije. Ako ti odgovara, sačuvaj.', c: 'Предлог је уписан. Ново градиво се завршава # дана пре испита — ти дани остају за понављање и симулације. Ако ти одговара, сачувај.' },
-    planPredlogUsko: { l: 'Predlog je upisan. Ispit je blizu, pa nema rezerve — novo gradivo ide do poslednjeg dana.', c: 'Предлог је уписан. Испит је близу, па нема резерве — ново градиво иде до последњег дана.' },
+    planPredlogGotov: { l: 'Sačuvano kao cilj: @1 novih i @2 ponavljanja dnevno. Novo gradivo se završava # dana pre ispita — ti dani ostaju za ponavljanje i simulacije. Brojeve možeš da promeniš i ponovo sačuvaš.', c: 'Сачувано као циљ: @1 нових и @2 понављања дневно. Ново градиво се завршава # дана пре испита — ти дани остају за понављање и симулације. Бројеве можеш да промениш и поново сачуваш.' },
+    planPredlogUsko: { l: 'Sačuvano kao cilj: @1 novih i @2 ponavljanja dnevno. Ispit je blizu, pa nema rezerve — novo gradivo ide do poslednjeg dana.', c: 'Сачувано као циљ: @1 нових и @2 понављања дневно. Испит је близу, па нема резерве — ново градиво иде до последњег дана.' },
     planPuno: { l: 'Sačuvano — ali # pitanja dnevno je puno. Računaj oko pola sata na svakih 100 pitanja. Uvek možeš da smanjiš.', c: 'Сачувано — али # питања дневно је пуно. Рачунај око пола сата на сваких 100 питања. Увек можеш да смањиш.' },
     installWhatTitle: { l: '📲 Šta dobijam ako je dodam kao aplikaciju?', c: '📲 Шта добијам ако је додам као апликацију?' },
     installWhatBody: {
@@ -1028,7 +1031,26 @@
     }
     box.innerHTML = inner;
     box.querySelectorAll('.explCardBtn').forEach((btn) => sklopivo(btn));
+    box.querySelectorAll('.explCard').forEach((cd) => suziKarticu(cd, q.sub));
     return box;
+  }
+
+  // Zbirna kartica uz pitanje pokazuje SAMO odeljke te podoblasti (.kSek[data-sub]);
+  // ostalo je šum koji ne pomaže baš tom pitanju. Cela kartica je na jedan klik, a u
+  // pojmovniku se i dalje vidi cela.
+  function suziKarticu(cd, sub) {
+    const sek = [...cd.querySelectorAll('.kSek[data-sub]')];
+    if (!sek.length) return;
+    const pogodak = sek.filter((x) => x.dataset.sub.split(',').map((y) => y.trim()).includes(String(sub)));
+    if (!pogodak.length) return;
+    let sakriveno = 0;
+    [...cd.children].forEach((x) => { if (!pogodak.includes(x)) { x.classList.add('kSekSkriven'); sakriveno++; } });
+    if (!sakriveno) return;
+    const d = document.createElement('div');
+    d.className = 'kSekNapomena mut';
+    d.innerHTML = `<span>${L('sekDeo')}</span> <button type="button" class="secondary sBtn">${L('sekCela')}</button>`;
+    d.querySelector('button').addEventListener('click', () => { cd.querySelectorAll('.kSekSkriven').forEach((x) => x.classList.remove('kSekSkriven')); d.remove(); });
+    cd.appendChild(d);
   }
 
   // ---------- Sklapanje kartica — jedno ponašanje na svim mestima ----------
@@ -1396,7 +1418,6 @@
     const e = Math.round(exp);
     const pass = e >= 84;
     const top = Object.values(loss).sort((a, b) => b.pts - a.pts).slice(0, 5);
-    const subName = (sid) => T({ l: D.subs[sid].l, c: D.subs[sid].c });
     el('readyCard').innerHTML = `<h3>${L('readyTitle')}</h3>
       <div class="bigScore ${pass ? 'pass' : 'fail'}">≈ ${e} / 98</div>
       <p><span class="pill ${pass ? 'pass' : 'fail'}">${pass ? L('passed') : L('failed')}</span>
@@ -1404,10 +1425,15 @@
       ${answered < 150 ? `&nbsp;<span class="mut">${L('readyRough')} (${answered}/${Q.length})</span>` : ''}</p>
       <h3 style="margin-top:12px">${L('readyLoss')}</h3>
       <table class="stats"><tbody>${top.map((t) =>
-        `<tr><td>${t.subs.map((s) => escapeHtml(subName(s).slice(0, 48))).join(' / ')}</td>
+        `<tr class="statLink" data-sub="${t.subs[0]}" tabindex="0" title="${escapeHtml(L('catOpen'))}"><td>${t.subs.map((s) => escapeHtml(subShortName(s))).join(' / ')}</td>
          <td class="num accBad">−${t.pts.toFixed(1)} ${L('points')}</td></tr>`).join('')}
       </tbody></table>
-      <p class="mut" style="margin-top:8px;font-size:.82rem">${L('readyNote')}</p>`;
+      <p class="mut napomena">${L('readyNote')}</p>`;
+    el('readyCard').querySelectorAll('.statLink').forEach((tr) => {
+      const idi = () => browse('s' + tr.dataset.sub);
+      tr.addEventListener('click', idi);
+      tr.addEventListener('keydown', (ev) => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); idi(); } });
+    });
   }
 
   // ---------- Statistika ----------
@@ -1415,70 +1441,8 @@
     current = { redraw: renderStats };
     setHash('#/stats');
     renderReady();
-    const rows = CATS.map((c) => {
-      const qq = Q.filter((q) => q.cat === c.id);
-      let seen = 0, att = 0, wr = 0;
-      for (const q of qq) { const r = S.q[q.id]; if (r && r.a) { seen++; att += r.a; wr += r.w; } }
-      const acc = att ? Math.round(100 * (att - wr) / att) : null;
-      return { c, n: qq.length, seen, acc };
-    });
-    let tAtt = 0, tWr = 0, tSeen = 0;
-    for (const q of Q) { const r = S.q[q.id]; if (r && r.a) { tSeen++; tAtt += r.a; tWr += r.w; } }
-    const tAcc = tAtt ? Math.round(100 * (tAtt - tWr) / tAtt) : null;
-    el('statsCard').innerHTML = `<h3>${L('statsTitle')}</h3>
-      <div class="tblScroll">
-      <table class="stats"><thead><tr><th>${L('thArea')}</th><th class="num">${L('thQ')}</th><th class="num">${L('thSeen')}</th><th class="num">${L('thAcc')}</th></tr></thead>
-      <tbody>${rows.map((r) => `<tr class="statCatRow" data-cat="${r.c.id}" tabindex="0" title="${escapeHtml(L('statExpand'))}"><td>▸ ${escapeHtml(T(r.c))}</td><td class="num">${r.n}</td><td class="num">${r.seen}</td>
-        <td class="num">${r.acc === null ? '—' : `<span class="${r.acc >= 90 ? 'accGood' : r.acc >= 75 ? 'accMid' : 'accBad'}">${r.acc}%</span>`}</td></tr>`).join('')}
-      <tr class="totalRow"><td><b>${L('ukupno')}</b></td><td class="num"><b>${Q.length}</b></td><td class="num"><b>${tSeen}</b></td>
-        <td class="num">${tAcc === null ? '—' : `<b><span class="${tAcc >= 90 ? 'accGood' : tAcc >= 75 ? 'accMid' : 'accBad'}">${tAcc}%</span></b>`}</td></tr>
-      </tbody></table></div>`;
-
-    // Raspis po PODOBLASTIMA: klik na red oblasti umetne redove podoblasti ispod njega
-    el('statsCard').querySelectorAll('.statCatRow').forEach((tr) => {
-      const toggle = () => {
-        const cid = +tr.dataset.cat;
-        const open = tr.classList.toggle('open');
-        tr.cells[0].textContent = (open ? '▾ ' : '▸ ') + T(catName.get(cid));
-        // ukloni postojeće sub-redove ove oblasti
-        let next = tr.nextElementSibling;
-        while (next && next.classList.contains('statSubRow')) { const rm = next; next = next.nextElementSibling; rm.remove(); }
-        if (!open) return;
-        const subIds = [...new Set(Q.filter((q) => q.cat === cid).map((q) => q.sub))];
-        let ref = tr;
-        for (const sid of subIds) {
-          const sq = Q.filter((q) => q.sub === sid);
-          let a = 0, w = 0, seen = 0;
-          for (const q of sq) { const r = S.q[q.id]; if (r && r.a) { seen++; a += r.a; w += r.w; } }
-          const acc = a ? Math.round(100 * (a - w) / a) : null;
-          const row = document.createElement('tr');
-          row.className = 'statSubRow';
-          row.title = T({ l: D.subs[sid].l, c: D.subs[sid].c });
-          row.innerHTML = `<td class="statSubName">${escapeHtml(subShortName(sid))}</td>
-            <td class="num">${sq.length}</td><td class="num">${seen}</td>
-            <td class="num">${acc === null ? '—' : `<span class="${acc >= 90 ? 'accGood' : acc >= 75 ? 'accMid' : 'accBad'}">${acc}%</span>`}</td>`;
-          ref.after(row); ref = row;
-        }
-      };
-      tr.addEventListener('click', toggle);
-      tr.addEventListener('keydown', (ev) => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); toggle(); } });
-    });
-
-    const bySub = {};
-    for (const q of Q) {
-      const r = S.q[q.id]; if (!r || !r.a) continue;
-      const s = bySub[q.sub] || (bySub[q.sub] = { att: 0, wr: 0, cat: q.cat });
-      s.att += r.a; s.wr += r.w;
-    }
-    const weak = Object.entries(bySub)
-      .filter(([, s]) => s.att >= 3)
-      .map(([sid, s]) => ({ sid: +sid, acc: Math.round(100 * (s.att - s.wr) / s.att), att: s.att, cat: s.cat }))
-      .sort((a, b) => a.acc - b.acc).slice(0, 10);
-    el('weakCard').innerHTML = `<h3>${L('weakTitle')}</h3>` + (weak.length
-      ? `<table class="stats"><tbody>${weak.map((w) =>
-          `<tr><td>${escapeHtml(T(catName.get(w.cat)))} › ${escapeHtml(T({ l: D.subs[w.sid].l, c: D.subs[w.sid].c }))}</td>
-           <td class="num"><span class="${w.acc >= 90 ? 'accGood' : w.acc >= 75 ? 'accMid' : 'accBad'}">${w.acc}%</span> <span class="mut">(${w.att})</span></td></tr>`).join('')}</tbody></table>`
-      : `<p class="mut">—</p>`);
+    el('statsCard').innerHTML = `<h3>${L('statsTitle')}</h3><p class="mut napomena">${L('statsTip')}</p><div id="statsBars"></div>`;
+    nacrtajOblasti(el('statsBars'), { tacnost: true });
     show('stats');
   }
 
@@ -1957,6 +1921,67 @@
     return delovi.length ? '<div class="homeExtras">' + delovi.join(' &nbsp;·&nbsp; ') + '</div>' : '';
   }
 
+  // ---------- Oblasti: JEDAN crtač za početnu i statistiku ----------
+  // Ranije je statistika imala svoju tabelu bez veza ka pitanjima; sada oba mesta koriste
+  // iste redove — traka napretka, brojač, klik vodi na spisak, strelica otklapa podoblasti
+  // (akordeon). Statistika uz to prikazuje i tačnost.
+  function nacrtajOblasti(cont, opts) {
+    opts = opts || {};
+    cont.innerHTML = '';
+    const stat = (qq) => {
+      let seen = 0, good = 0, att = 0, wr = 0;
+      for (const q of qq) { const r = S.q[q.id]; if (r && r.a) { seen++; att += r.a; wr += r.w; if (r.streak >= 1) good++; } }
+      return { seen, good, att, wr, acc: att ? Math.round(100 * (att - wr) / att) : null };
+    };
+    const accHtml = (st) => !opts.tacnost ? '' : `<span class="catAcc">${st.acc === null ? '—' : `<span class="${st.acc >= 90 ? 'accGood' : st.acc >= 75 ? 'accMid' : 'accBad'}">${st.acc}%</span>`}</span>`;
+    const redHtml = (labelHtml, st, tot, jak) => `<button type="button" class="catMain"><span class="catName">${jak ? '<b>' + labelHtml + '</b>' : labelHtml}</span>
+        <span class="catBar"><span class="seen" style="width:${tot ? 100 * st.seen / tot : 0}%"></span><span class="good" style="width:${tot ? 100 * st.good / tot : 0}%"></span></span>
+        <span class="catCnt">${jak ? '<b>' + st.seen + '/' + tot + '</b>' : st.seen + '/' + tot}</span>${accHtml(st)}</button>`;
+    {
+      const st = stat(Q);
+      const row = document.createElement('div'); row.className = 'catRow catTotal';
+      row.innerHTML = '<span class="catChevSpacer"></span>' + redHtml(L('ukupno'), st, Q.length, true);
+      row.querySelector('.catMain').addEventListener('click', () => browseAll());
+      cont.appendChild(row);
+    }
+    for (const c of CATS) {
+      const qq = Q.filter((q) => q.cat === c.id);
+      const st = stat(qq);
+      const row = document.createElement('div'); row.className = 'catRow';
+      row.innerHTML = `<button type="button" class="catChevBtn" aria-expanded="false" title="${escapeHtml(L('catExpand'))}" aria-label="${escapeHtml(L('catExpand'))}">▸</button>` + redHtml(escapeHtml(T(c)), st, qq.length, false);
+      row.querySelector('.catMain').setAttribute('title', L('catOpen'));
+      row.querySelector('.catMain').addEventListener('click', () => browse('c' + c.id));
+      row.querySelector('.catChevBtn').addEventListener('click', () => {
+        // akordeon: otvaranje jedne oblasti sklapa prethodno otvorenu
+        const zatvoriRed = (r) => {
+          r.classList.remove('open');
+          const ch = r.querySelector('.catChevBtn');
+          if (ch) { ch.textContent = '▸'; ch.setAttribute('aria-expanded', 'false'); }
+          let n2 = r.nextElementSibling;
+          while (n2 && n2.classList.contains('catSubRow')) { const rm2 = n2; n2 = n2.nextElementSibling; rm2.remove(); }
+        };
+        const bioOtvoren = row.classList.contains('open');
+        cont.querySelectorAll('.catRow.open').forEach(zatvoriRed);
+        if (bioOtvoren) return;
+        row.classList.add('open');
+        const chev = row.querySelector('.catChevBtn');
+        chev.textContent = '▾';
+        chev.setAttribute('aria-expanded', 'true');
+        let ref = row, zi = 0;
+        for (const sid of [...new Set(qq.map((q) => q.sub))]) {
+          const sq = qq.filter((q) => q.sub === sid);
+          const sr = document.createElement('div');
+          sr.className = 'catRow catSubRow' + (zi++ % 2 ? ' zebra' : '');
+          sr.title = T({ l: D.subs[sid].l, c: D.subs[sid].c });
+          sr.innerHTML = '<span class="catChevSpacer"></span>' + redHtml(escapeHtml(subShortName(sid)), stat(sq), sq.length, false);
+          sr.querySelector('.catMain').addEventListener('click', () => browse('s' + sid));
+          ref.after(sr); ref = sr;
+        }
+      });
+      cont.appendChild(row);
+    }
+  }
+
   function renderHome() {
     current = { redraw: renderHome };
     setHash('#/');
@@ -2006,66 +2031,7 @@
     el('mStatsSub').textContent = L('statsSub');
     el('hCats').textContent = L('cats');
 
-    const cb = el('catBars'); cb.innerHTML = '';
-    {
-      const seenAll = Q.filter((q) => S.q[q.id] && S.q[q.id].a > 0).length;
-      const goodAll = Q.filter((q) => S.q[q.id] && S.q[q.id].a > 0 && S.q[q.id].streak >= 1).length;
-      const row = document.createElement('div'); row.className = 'catRow catTotal';
-      row.innerHTML = `<span class="catChevSpacer"></span>
-        <button type="button" class="catMain"><span class="catName"><b>${L('ukupno')}</b></span>
-        <span class="catBar"><span class="seen" style="width:${100 * seenAll / Q.length}%"></span><span class="good" style="width:${100 * goodAll / Q.length}%"></span></span>
-        <span class="catCnt"><b>${seenAll}/${Q.length}</b></span></button>`;
-      row.querySelector('.catMain').addEventListener('click', () => browseAll());
-      cb.appendChild(row);
-    }
-    for (const c of CATS) {
-      const qq = Q.filter((q) => q.cat === c.id);
-      const seen = qq.filter((q) => S.q[q.id] && S.q[q.id].a > 0).length;
-      const good = qq.filter((q) => S.q[q.id] && S.q[q.id].a > 0 && S.q[q.id].streak >= 1).length;
-      const row = document.createElement('div'); row.className = 'catRow';
-      row.innerHTML = `<button type="button" class="catChevBtn" aria-expanded="false" title="${escapeHtml(L('catExpand'))}" aria-label="${escapeHtml(L('catExpand'))}">▸</button>
-        <button type="button" class="catMain" title="${escapeHtml(L('catOpen'))}"><span class="catName">${escapeHtml(T(c))}</span>
-        <span class="catBar"><span class="seen" style="width:${100 * seen / qq.length}%"></span><span class="good" style="width:${100 * good / qq.length}%"></span></span>
-        <span class="catCnt">${seen}/${qq.length}</span></button>`;
-      row.querySelector('.catMain').addEventListener('click', () => browse('c' + c.id));
-      row.querySelector('.catChevBtn').addEventListener('click', () => {
-        // Akordeon kao u pojmovniku: otvaranje jedne oblasti sklapa prethodno otvorenu.
-        // Bez ovoga je otklapanje svega isteglo levu kolonu na 2361px uz prazninu desno.
-        const zatvoriRed = (r) => {
-          r.classList.remove('open');
-          const ch = r.querySelector('.catChevBtn');
-          if (ch) { ch.textContent = '▸'; ch.setAttribute('aria-expanded', 'false'); }
-          let n2 = r.nextElementSibling;
-          while (n2 && n2.classList.contains('catSubRow')) { const rm2 = n2; n2 = n2.nextElementSibling; rm2.remove(); }
-        };
-        const bioOtvoren = row.classList.contains('open');
-        cb.querySelectorAll('.catRow.open').forEach(zatvoriRed);
-        if (bioOtvoren) return;                     // klik na otvorenu = samo zatvori
-        row.classList.add('open');
-        const chev = row.querySelector('.catChevBtn');
-        chev.textContent = '▾';
-        chev.setAttribute('aria-expanded', 'true');
-        let ref = row, zi = 0;
-        const addSub = (labelHtml, key, sSeen, sTot, sGood, title) => {
-          const sr = document.createElement('div');
-          sr.className = 'catRow catSubRow' + (zi++ % 2 ? ' zebra' : '');
-          if (title) sr.title = title;
-          sr.innerHTML = `<span class="catChevSpacer"></span>
-            <button type="button" class="catMain"><span class="catName">${labelHtml}</span>
-            <span class="catBar"><span class="seen" style="width:${sTot ? 100 * sSeen / sTot : 0}%"></span><span class="good" style="width:${sTot ? 100 * sGood / sTot : 0}%"></span></span>
-            <span class="catCnt">${sSeen}/${sTot}</span></button>`;
-          sr.querySelector('.catMain').addEventListener('click', () => browse(key));
-          ref.after(sr); ref = sr;
-        };
-        for (const sid of [...new Set(qq.map((q) => q.sub))]) {
-          const sq = qq.filter((q) => q.sub === sid);
-          const sSeen = sq.filter((q) => S.q[q.id] && S.q[q.id].a > 0).length;
-          const sGood = sq.filter((q) => S.q[q.id] && S.q[q.id].a > 0 && S.q[q.id].streak >= 1).length;
-          addSub(escapeHtml(subShortName(sid)), 's' + sid, sSeen, sq.length, sGood, T({ l: D.subs[sid].l, c: D.subs[sid].c }));
-        }
-      });
-      cb.appendChild(row);
-    }
+    nacrtajOblasti(el('catBars'), { tacnost: false });
 
     const sh = el('simHistory');
     if (!S.sims.length) sh.innerHTML = `<h3>${L('history')}</h3><p class="mut">${L('noSims')}</p>`;
@@ -2117,7 +2083,7 @@
       // Redosled kartica prati predloženi tok učenja iz vodiča (od pojmova ka posledicama)
       const GRUPE = [
         ['grp1', ['slicni-pojmovi', 'put-pojmovi', 'kategorije-vozila', 'brzine', 'vozac-zdravlje-alkohol']],
-        ['grp2', ['prvenstvo-prolaza', 'policajac-znaci', 'znakovi-porodice', 'znakovi-opasnosti', 'znakovi-naredbi', 'znakovi-obavestenja', 'semafori', 'oznake-kolovoz']],
+        ['grp2', ['prvenstvo-prolaza', 'policajac-znaci', 'znakovi-porodice', 'znakovi-opasnosti', 'znakovi-naredbi', 'znakovi-obavestenja', 'semafori', 'oznake-kolovoz', 'svetlosne-oznake']],
         ['grp3', ['skretanje', 'preticanje', 'parkiranje', 'parking-table', 'pokazivaci', 'svetla']],
         ['grp4', ['pesaci-bicikli', 'pruga', 'autoput', 'nezgoda', 'razno-pravila']],
         ['grp5', ['dozvole', 'vozilo-tehnika', 'uredjaji-oprema', 'iskljucenje', 'kazne', 'kaznene-klase', 'zamke-odgovori']],
@@ -2248,16 +2214,18 @@
         const dana = Math.ceil((new Date(S.examDate + 'T00:00:00') - d0) / 86400000);
         if (!Number.isFinite(dana) || dana < 1) { kaziPosle(L('planDatumProsao')); return; }
         // Novo gradivo mora da se završi PRE ispita — poslednji dani ostaju za ponavljanje
-        // i simulacije. Rezerva je nedelja dana, ali nikad više od trećine preostalog
-        // vremena, da kod bliskog ispita ne ostane nula dana za novo gradivo.
+        // i simulacije. Rezerva je nedelja dana, ali nikad više od trećine preostalog vremena.
         const rezerva = Math.min(7, Math.floor(dana / 3));
         const danaZaNovo = Math.max(1, dana - rezerva);
-        if (!pn.disabled) pn.value = String(Math.max(1, Math.ceil(neodgovorenih / danaZaNovo)));
-        // Ponavljanja: koliko se stvarno može uraditi u jednoj sednici, a ne ceo zaostatak.
-        // Ranije je stajalo „koliko god ih je spremno" i umelo je da ispadne 346 dnevno.
-        pp.value = String(Math.min(60, Math.max(15, queueSplit().ready.length)));
-        ocistiPoruku(pn); ocistiPoruku(pp);
-        kaziPosle(rezerva > 0 ? L('planPredlogGotov').replace('#', rezerva) : L('planPredlogUsko'));
+        const novih = neodgovorenih ? Math.max(1, Math.ceil(neodgovorenih / danaZaNovo)) : null;
+        // ponavljanja: koliko se stvarno može u jednoj sednici, ne ceo zaostatak
+        const pon = Math.min(60, Math.max(15, queueSplit().ready.length));
+        // predlog se ODMAH čuva kao cilj — ranije je samo punio polja, pa je osvežavanje
+        // strane vraćalo stare brojeve i izgledalo kao da se ništa nije desilo
+        S.plan = { novih, pon };
+        save(); renderHome();
+        kaziPosle((rezerva > 0 ? L('planPredlogGotov').replace('#', rezerva) : L('planPredlogUsko'))
+          .split('@1').join(novih === null ? '0' : novih).split('@2').join(pon));
       });
       const off = el('btnPlanOff');
       if (off) off.addEventListener('click', () => { S.plan = null; save(); renderHome(); kaziPosle(L('planUgasen')); });

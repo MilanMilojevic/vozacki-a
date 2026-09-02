@@ -742,11 +742,8 @@ CARDS['pruga'] = {
     <b>DVOSTRUKI KRST — dva ili više koloseka</b><span>posle prvog voza može naići i drugi iz suprotnog smera</span>
   </div>
   <div class="signCell">
-    <svg viewBox="0 0 120 120"><rect x="4" y="4" width="112" height="112" rx="8" fill="#fff" stroke="#c0392b" stroke-width="5"/>
-      <rect x="18" y="24" width="84" height="18" rx="4" fill="#fff" stroke="#c0392b" stroke-width="5"/>
-      <rect x="18" y="52" width="84" height="18" rx="4" fill="#fff" stroke="#c0392b" stroke-width="5"/>
-      <rect x="18" y="80" width="84" height="18" rx="4" fill="#fff" stroke="#c0392b" stroke-width="5"/></svg>
-    <b>KOSNICI — 240 · 160 · 80 m</b><span>tri crte = 240 m do pruge, dve = 160 m, jedna = 80 m (odbrojavanje)</span>
+    <svg viewBox="0 0 120 120"><rect x="38" y="4" width="44" height="112" rx="3" fill="#fff" stroke="#8a99a8" stroke-width="2"/><g fill="#e0451c"><polygon points="38,30 82,12 82,24 38,42"/><polygon points="38,56 82,38 82,50 38,68"/><polygon points="38,82 82,64 82,76 38,94"/></g></svg>
+    <b>KOSNICI — 240 · 160 · 80 m</b><span>uspravna tabla ispod znaka: tri kose pruge = 240 m do pruge, dve = 160 m, jedna = 80 m</span>
   </div>
   <div class="signCell">
     <svg viewBox="0 0 120 120"><rect x="0" y="70" width="120" height="50" fill="#9aa7b4"/>
@@ -870,17 +867,28 @@ CARDS['vozilo-tehnika'] = {
 CARDS['razno-pravila'] = {
   title: 'Nasilnička vožnja, vučenje i ostala pravila',
   html: `
+<div class="kSek" data-sub="138">
 <p><b>Nasilnička vožnja (čl. 41):</b> 2+ prolaska kroz crveno u 10 minuta · preticanje kolone preko neisprekidane linije · vožnja u naselju 90+ km/h preko ograničenja · gruba nepažnja prema drugima.</p>
+</div>
+<div class="kSek" data-sub="141">
 <p><b>Vučenje vozila:</b> užetom (≥3 m), krutom vezom (rudom) ili oslanjanjem/podizanjem; noću i pri smanjenoj vidljivosti vučeno vozilo mora biti osvetljeno; brzina ograničena (40 km/h).</p>
+</div>
+<div class="kSek" data-sub="149">
 <p><b>Žuto rotaciono svetlo (čl. 111):</b> radovi na putu, vozila pomoći na putu, vanredni prevoz, traktor/radna mašina noću.</p>
+</div>
+<div class="kSek" data-sub="165">
 <p><b>Prepreke na putu (čl. 112 i Pravilnik):</b> obeležavaju se propisanim znakovima/svetlima — noću crveno svetlo.</p>
+</div>
 <p><b>Osnovna načela:</b> poverenje u druge učesnike + tvoja obaveza da ne ugrožavaš i ometaš druge — svaki učesnik odgovara za svoje postupke.</p>
 
+<div class="kSek" data-sub="143">
 <p style="margin-top:18px"><b>TRAMVAJ I ŽIVOTINJE (čl. 84 i 87)</b></p>
 <p><b>Tramvaj nije izvan zakona.</b> Odredbe ZOBS-a <b>shodno se primenjuju</b> i na saobraćaj tramvaja i drugih vozila koja se po putu kreću po šinama — <b>osim ako to ne isključuju konstrukcione osobine tih vozila ili način njihovog kretanja</b>. Ponuđene zamke su „ne primenjuju se" i „ne primenjuju se, osim odredaba o ograničenju brzine" — obe su netačne. Nije stvar u brzini: tramvaj jednostavno ne može da uradi sve što zakon traži od ostalih vozila (ne može da siđe sa šina, ne može da obiđe prepreku), pa zakon unapred priznaje samo taj tip izuzetka.</p>
 <p><b>Vođenje životinje iz vozila ili sa vozila je ZABRANJENO</b> — bez ijednog izuzetka. Domaće životinje smeju biti na putu samo u pratnji lica koje ih vodi i obezbeđuje tako da ne ugrožavaju bezbednost saobraćaja, a na autoput, motoput, državne puteve prvog reda i biciklističke staze im pristup uopšte nije dozvoljen.</p>
 <p class="mut">Zamke su „dozvoljeno je" i, opasnija, <b>„dozvoljeno je samo ako se vozilo kreće brzinom kretanja pešaka"</b> — ta formulacija je pozajmljena iz pravila o pešačkoj zoni i ovde ne postoji. Slikovno pitanje pokazuje vozača mopeda koji jednom rukom drži upravljač, a drugom povodac psa koji trči pored njega: nije dozvoljeno, ma koliko sporo išao. Ako se životinja <b>prevozi</b> u vozilu, to jeste dozvoljeno, ali samo tako da ne ugrožava i ne ometa vozača ni ostale učesnike.</p>
 
+</div>
+<div class="kSek" data-sub="165">
 <p style="margin-top:18px"><b>RADOVI NA PUTU — RADNIK SA ZASTAVICOM (čl. 155 i 166)</b></p>
 <p>Tamo gde se izvode radovi i gde je nastala prepreka koja se ne može odmah ukloniti, saobraćaj mogu da regulišu <b>najmanje DVA radnika</b> određena od strane izvođača radova, odnosno upravljača puta. Ne jedan — dva, jer se propušta naizmenično iz dva smera.</p>
 <table>
@@ -893,6 +901,8 @@ CARDS['razno-pravila'] = {
 <p><b>Dve dužnosti kod radova (pitanje traži DVA odgovora):</b> ne smeš da <b>ometaš radnika</b> koji obavlja radove na putu ili pored puta, i <b>dužan si da ukloniš svoje vozilo na zahtev izvođača radova</b> — a taj zahtev može biti dat i kao javni poziv. Zamka je „moram ukloniti vozilo samo na zahtev saobraćajne policije": izvođač radova je ovde dovoljan.</p>
 <p><b>Signalna tabla</b> (tabla sa treptavim strelicama, obično na prikolici) postavlja se <b>na zadnji deo motornog vozila ili prikolice, kada je vozilo zaustavljeno</b>. Zamke se lako razdvajaju po nameni: „razdvajajuća ograda" skreće saobraćaj u stranu, a „čeoni branik" ograđuje radilište sa čeone strane — ni jedno ni drugo se ne kači na vozilo.</p>
 
+</div>
+<div class="kSek" data-sub="138">
 <p style="margin-top:18px"><b>NASILNIČKA VOŽNJA — DOPUNA (čl. 41)</b></p>
 <p>Uz ono gore, zakon nabraja i <b>brzinu van naselja</b> i <b>alkohol</b>, a to su dva mesta gde su ponuđeni odgovori namerno bliski:</p>
 <table>
@@ -905,6 +915,8 @@ CARDS['razno-pravila'] = {
 <p><b>Kako to izgleda na slici.</b> Dva slikovna pitanja gađaju isti ishod iz dva različita ugla. U prvom sa mopeda vidiš vozilo koje ti <b>dolazi u susret tvojom saobraćajnom trakom</b> jer pretiče kolonu preko neisprekidane linije. U drugom nema ni kolone ni preticanja: put je <b>fizički razdvojen ostrvom</b>, na ostrvu stoji znak obaveznog smera okrenut ka tebi, a ti se krećeš <b>suprotnim smerom</b>. U oba slučaja tačan odgovor je isti i doslovno glasi „nepropisno postupanje koje je <b>u gruboj suprotnosti sa pravilima saobraćaja (nasilnička vožnja)</b>".</p>
 <p class="mut">Zamka glasi: „nepropisno postupanje, <b>koje nije</b> u gruboj suprotnosti sa pravilima saobraćaja" (kod pitanja o preticanju kolone nastavlja se i sa „s obzirom da preticanje može izvesti bez ugrožavanja drugih učesnika u saobraćaju". Procena da „stiže da se vrati" ne skida kvalifikaciju — puna linija je tu upravo zato što se preglednost na tom mestu ne može proceniti.</p>
 
+</div>
+<div class="kSek" data-sub="141">
 <p style="margin-top:18px"><b>VUČENJE — DOPUNA (čl. 71, 72 i 73)</b></p>
 <p><b>Šta se uopšte NE SME vući.</b> Motorno vozilo ne sme da vuče <b>moped, motocikl, laki tricikl ni teški tricikl</b> — dakle jednotračna vozila i tricikle. Sme da vuče putničko vozilo, laki i teški četvorocikl i teretno vozilo. Pitanje traži <b>tri</b> odgovora.</p>
 <p class="mut">Ovo pravilo samo rešava i slikovno pitanje o propisnom vučenju: vozilo broj 1 vuče <b>motocikl</b>, pa je nepropisno već po vrsti vučenog vozila, bez obzira na to čime ga vuče. Tačan odgovor je vozilo broj 2.</p>
@@ -916,9 +928,12 @@ CARDS['razno-pravila'] = {
 <p class="mut">Logika iza tabele: <b>uže</b> traži da vučeno vozilo ume i da skreće i da koči samo za sebe, jer ga ništa ne drži; <b>ruda</b> pomaže oko kočenja, ali upravljač i dalje mora da radi. Zato je ispravan upravljač uslov kod <b>oba</b> načina, a ispravne kočnice samo kod užeta. Vuče se, uz to, isključivo vozilo koje zbog neispravnosti ili nedostatka delova ne može samo da se kreće.</p>
 <p><b>Obeležavanje:</b> sigurnosni trougao mora biti postavljen na <b>OBA</b> vozila — na vučnom sa <b>prednje</b> strane, na vučenom sa <b>zadnje</b>. Na vučnom vozilu moraju biti uključeni <b>svi pokazivači pravca</b>, a na vučenom ako su ispravni. Vučenim vozilom je zabranjen prevoz lica, osim vozača koji njime upravlja.</p>
 
+</div>
+<div class="kSek" data-sub="149">
 <p style="margin-top:18px"><b>ŽUTO ROTACIONO SVETLO — ŠTA TI RADIŠ (čl. 111)</b></p>
 <p>Kad se susretneš sa vozilom na kome je uključeno žuto rotaciono ili trepćuće svetlo, dužan si da <b>povećaš opreznost i prilagodiš brzinu i način kretanja</b> svog vozila — ne da obavezno staneš, niti da pomeriš vozilo sa kolovoza.</p>
 
+</div>
 `,
 };
 
@@ -1589,6 +1604,25 @@ CARDS['uredjaji-oprema'] = {
 };
 
 // --- vozac-zdravlje-alkohol (Tura 4; kontrola bez blokirajućih nalaza) ---
+CARDS['svetlosne-oznake'] = {
+  title: 'Svetlosne oznake na putu — smerokazi, štapovi, table',
+  html: `
+<p><b>Ključ za pamćenje:</b> pitanja traže da razvrstaš pet naziva u dve grupe — šta obeležava <b>ivicu kolovoza</b>, a šta <b>putni objekat</b> (most, tunel, stub, izdignuti ivičnjak). Mamci su uvek nazivi iz druge grupe.</p>
+<table>
+<tr><th>Obeležava IVICU KOLOVOZA</th><th>Obeležava PUTNI OBJEKAT</th></tr>
+<tr><td><b>katadiopter</b></td><td><b>tabla za označavanje stalnih prepreka</b> unutar gabarita slobodnog profila puta</td></tr>
+<tr><td><b>smerokazi</b></td><td><b>indikator za označavanje putnog objekta</b> i zona izdignutih ivičnjaka</td></tr>
+<tr><td><b>štap za označavanje puta u zimskim uslovima</b></td><td></td></tr>
+</table>
+<div class="signRow">
+<div class="signCell"><svg viewBox="0 0 120 120"><rect x="20" y="30" width="80" height="60" rx="3" fill="#f5d000" stroke="#8a99a8" stroke-width="2"/><g fill="#e0451c"><polygon points="20,30 40,30 20,50"/><polygon points="40,30 60,30 20,70"/><polygon points="60,30 80,30 20,90"/><polygon points="80,30 100,30 40,90"/><polygon points="100,30 100,50 60,90"/><polygon points="100,70 100,90 80,90"/></g></svg><b>TABLA — stalna prepreka</b><span>crveno-žute kose pruge na ivici tunela, mosta, stuba (slika uz pitanje 11039)</span></div>
+<div class="signCell"><svg viewBox="0 0 120 120"><rect x="52" y="6" width="16" height="108" rx="3" fill="#f5d000"/><rect x="52" y="24" width="16" height="16" fill="#e0451c"/><rect x="52" y="56" width="16" height="16" fill="#e0451c"/><rect x="52" y="88" width="16" height="16" fill="#e0451c"/></svg><b>ŠTAP — zimski uslovi</b><span>visok žuto-crveni štap koji se vidi i iznad snega (slika uz 11058)</span></div>
+<div class="signCell"><svg viewBox="0 0 120 120"><rect x="50" y="10" width="20" height="104" rx="2" fill="#fff" stroke="#8a99a8" stroke-width="2"/><rect x="50" y="10" width="20" height="10" fill="#111"/><rect x="55" y="30" width="10" height="22" fill="#e0451c"/></svg><b>SMEROKAZ</b><span>beli stubić uz ivicu; na slici uz 11059 je smerokaz za <b>desnu</b> ivicu kolovoza (osim na autoputu)</span></div>
+</div>
+<p class="mut">Zamke po pitanjima: kod „ivice kolovoza“ nude tablu za prepreke i indikator (to su putni objekti); kod „putnih objekata“ nude smerokaze, štap i katadiopter (to je ivica). Štap na slici nije „stub saobraćajnog znaka“, a smerokaz nije „saobraćajni znak“ — svetlosne oznake su posebna vrsta signalizacije.</p>
+`,
+};
+
 CARDS['vozac-zdravlje-alkohol'] = {
   title: 'Vozač — zdravlje, umor i alkohol',
   html: `<p><b>Osam pitanja, i jedno od njih te sigurno čeka.</b> Po izmerenom zvaničnom šablonu testa za A kategoriju, ova oblast ima <b>fiksni slot</b> — jedno pitanje, uvek <b>3 poena</b>. U bazi postoji svega 8 takvih pitanja i <b>svih 8 vredi po tri poena</b>. Test ima 41 pitanje i 98 poena, a prolaz je 84 — smeš da izgubiš svega 14 poena, pa ti jedan promašaj ovde pojede više od petine cele rezerve. A celo gradivo staje u četiri pravila.</p>
@@ -1789,7 +1823,7 @@ BYSUB[131] = 'prvenstvo-prolaza';   // opšte odredbe (hijerarhija postupanja)
 BYSUB[118] = 'uredjaji-oprema';        // sklopovi, uređaji i oprema vozila
 BYSUB[103] = 'vozac-zdravlje-alkohol'; // psihofizički uslovi, umor, alkohol
 BYSUB[91] = 'razno-pravila';           // ko reguliše i ko kontroliše saobraćaj
-BYSUB[163] = 'oznake-kolovoz';         // svetlosne oznake na putu
+BYSUB[163] = 'svetlosne-oznake';       // svetlosne oznake na putu (smerokazi, štapovi, table)
 BYSUB[168] = 'vozilo-tehnika';         // teret na vozilu
 BYSUB[170] = 'pesaci-bicikli';         // prevoz lica vozilima
 BYSUB[94] = 'slicni-pojmovi';         // opšti pojmovnik (vozač, pešak, kolona, mase...)

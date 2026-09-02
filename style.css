@@ -41,7 +41,9 @@ button.catRow { width: 100%; background: none; border: none; padding: 0; font: i
 html { font-size: 16px; }
 /* overflow-anchor: sami upravljamo skrolom kad se kartica otvori; bez ovoga pregledač
    „pomaže" svojim sidrenjem i odbaci dugme iznad ekrana. */
-body { font-family: "Segoe UI", system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--ink); min-height: 100vh; overflow-anchor: none; }
+/* telo je stub: glavni deo raste, podnožje je uvek na dnu (ne lebdi na kratkim stranama) */
+body { font-family: "Segoe UI", system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--ink); min-height: 100vh; overflow-anchor: none;
+  display: flex; flex-direction: column; }
 
 /* Traka na vrhu SME da se prelomi. Bez toga se na uskom telefonu (360px) ne prelama, pa
    dokument postane širi od ekrana i sve desno — dugme „Početna" i brojači pored traka
@@ -57,7 +59,7 @@ button { font: inherit; color: inherit; cursor: pointer; border: none; border-ra
 /* dugme koje nema šta da uradi mora i da izgleda tako */
 .ghost:disabled { opacity: .4; cursor: default; background: rgba(255,255,255,.07); }
 
-main { max-width: 880px; margin: 0 auto; padding: 16px 12px 60px; }
+main { max-width: 880px; width: 100%; margin: 0 auto; padding: 16px 12px 60px; flex: 1 0 auto; }
 .view { display: none; }
 .view.active { display: block; }
 .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 18px; margin-bottom: 14px; box-shadow: 0 1px 3px rgba(16,24,40,.06); }
@@ -85,6 +87,9 @@ main { max-width: 880px; margin: 0 auto; padding: 16px 12px 60px; }
 .catBar .seen { position: absolute; inset: 0 auto 0 0; background: #9db8d2; }
 .catBar .good { position: absolute; inset: 0 auto 0 0; background: var(--blue); }
 .catCnt { flex: 0 0 90px; text-align: right; font-size: .8rem; color: var(--mut); }
+.catAcc { flex: 0 0 50px; text-align: right; font-size: .8rem; font-weight: 600; }
+.statLink { cursor: pointer; }
+.statLink:hover td { background: var(--optHover); }
 .signRow.wrapRow { grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); }
 .catSubRow { margin: 0; padding: 3px 0; border-bottom: 1px dashed var(--line); border-radius: 0; }
 .catSubRow.zebra { background: var(--optHover); }
@@ -245,6 +250,12 @@ body.uSimulaciji #podnozje { display: none; }
 .explCardBtn { padding: 4px 0; }
 .explCard { margin-top: 8px; line-height: 1.55; }
 .explCard p { margin: 0 0 10px; }
+.explCard ul, .explCard ol { padding-left: 22px; margin: 6px 0 10px; }
+.explCard li { margin-bottom: 4px; }
+/* zbirna kartica uz pitanje: prikazan je samo odeljak podoblasti */
+.kSekSkriven { display: none; }
+.kSekNapomena { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 10px; font-size: .84rem; }
+.napomena { font-size: .82rem; margin: 4px 0 8px; }
 .explCard table { border-collapse: collapse; width: 100%; font-size: .88rem; margin: 8px 0 14px; }
 .explCard .vgrid { margin: 10px 0 14px; }
 /* Pojmovnik na početnoj: svaka kartica kao uredan red sa razmakom i razdvajanjem */
