@@ -26,8 +26,27 @@ const CARDS = {
 <p><b>Ključ za pamćenje:</b> raspored točkova ti kaže <i>vrstu</i> (2 = moped/motocikl; 3 asimetrična = motocikl sa bočnim sedištem; 3 simetrična = tricikl; 4 = četvorocikl),
 a granice su <b>45 km/h</b>, <b>50 cm³</b> (motor sa unutrašnjim sagorevanjem) i <b>4 kW</b> (električni pogon):
 <b>sve u granicama = moped / "laki"</b>; <b>bilo koja granica probijena = motocikl / "teški"</b>. (ZOBS čl. 7)</p>
+<p class="mut" style="text-align:center;">Iz ptice: isprekidana linija je <b>srednja podužna ravan</b> vozila. Da li su točkovi raspoređeni ogledalski oko nje (simetrično) ili jedan stoji sa strane (asimetrično) — to odlučuje tricikl ili motocikl.</p>
+<div class="signRow lineRow" style="grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:12px">
+  <div class="signCell">
+    <svg viewBox="0 0 120 150" role="img" aria-label="dva točka na osi"><line x1="60" y1="6" x2="60" y2="144" stroke="currentColor" stroke-width="1.5" stroke-dasharray="6 5" opacity=".55"/><rect x="53" y="42" width="14" height="66" rx="7" fill="currentColor" opacity=".18"/><line x1="42" y1="50" x2="78" y2="50" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".6"/><rect x="55" y="16" width="10" height="24" rx="4" fill="currentColor"/><rect x="55" y="108" width="10" height="24" rx="4" fill="currentColor"/></svg>
+    <b>2 TOČKA</b><span>oba na osi — moped / motocikl</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 120 150" role="img" aria-label="tri točka asimetrično"><line x1="44" y1="6" x2="44" y2="144" stroke="currentColor" stroke-width="1.5" stroke-dasharray="6 5" opacity=".55"/><rect x="37" y="42" width="14" height="66" rx="7" fill="currentColor" opacity=".18"/><line x1="26" y1="50" x2="62" y2="50" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".6"/><rect x="39" y="16" width="10" height="24" rx="4" fill="currentColor"/><rect x="39" y="108" width="10" height="24" rx="4" fill="currentColor"/><line x1="51" y1="70" x2="74" y2="70" stroke="currentColor" stroke-width="3" opacity=".6"/><line x1="51" y1="96" x2="74" y2="96" stroke="currentColor" stroke-width="3" opacity=".6"/><rect x="72" y="56" width="28" height="52" rx="8" fill="currentColor" opacity=".18"/><rect x="93" y="86" width="10" height="24" rx="4" fill="currentColor" stroke="#2c6aa0" stroke-width="2.5"/></svg>
+    <b>3 ASIMETRIČNO</b><span>treći točak SA STRANE (bočno sedište) — i dalje MOTOCIKL</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 120 150" role="img" aria-label="tri točka simetrično"><line x1="60" y1="6" x2="60" y2="144" stroke="currentColor" stroke-width="1.5" stroke-dasharray="6 5" opacity=".55"/><path d="M50 30 H70 L92 112 H28 Z" fill="currentColor" opacity=".18"/><line x1="42" y1="50" x2="78" y2="50" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".6"/><rect x="55" y="16" width="10" height="24" rx="4" fill="currentColor"/><rect x="31" y="106" width="10" height="24" rx="4" fill="currentColor" stroke="#2c6aa0" stroke-width="2.5"/><rect x="79" y="106" width="10" height="24" rx="4" fill="currentColor" stroke="#2c6aa0" stroke-width="2.5"/></svg>
+    <b>3 SIMETRIČNO</b><span>par točkova jednako oko ose (ili dva napred, jedan pozadi) — TRICIKL</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 120 150" role="img" aria-label="četiri točka"><line x1="60" y1="6" x2="60" y2="144" stroke="currentColor" stroke-width="1.5" stroke-dasharray="6 5" opacity=".55"/><rect x="34" y="24" width="52" height="102" rx="12" fill="currentColor" opacity=".18"/><rect x="31" y="20" width="10" height="24" rx="4" fill="currentColor"/><rect x="79" y="20" width="10" height="24" rx="4" fill="currentColor"/><rect x="31" y="106" width="10" height="24" rx="4" fill="currentColor"/><rect x="79" y="106" width="10" height="24" rx="4" fill="currentColor"/></svg>
+    <b>4 TOČKA</b><span>po dva sa svake strane — ČETVOROCIKL</span>
+  </div>
+</div>
 <div class="vgrid">
-  <div class="vg vgHead"></div><div class="vg vgHead">⚫⚫ 2 točka</div><div class="vg vgHead">⚫⚫⚫ 3 točka</div><div class="vg vgHead">⚫⚫⚫⚫ 4 točka</div>
+  <div class="vg vgHead"></div><div class="vg vgHead">2 točka</div><div class="vg vgHead">3 točka (simetrično)</div><div class="vg vgHead">4 točka</div>
   <div class="vg vgHead">sve u granicama</div><div class="vg vgSlow">🛵 MOPED</div><div class="vg vgSlow">LAKI TRICIKL</div><div class="vg vgSlow">LAKI ČETVOROCIKL</div>
   <div class="vg vgHead">preko bilo koje granice</div><div class="vg vgFast">🏍️ MOTOCIKL</div><div class="vg vgFast">TEŠKI TRICIKL</div><div class="vg vgFast">TEŠKI ČETVOROCIKL</div>
 </div>
@@ -85,6 +104,97 @@ Ovo je poslednja traka piramide, razvijena. Svih pet pravila je u istom članu i
 <tr><td><b>4. Zemljani put</b></td><td>Kad se uključuješ sa zemljanog puta (ili sa površine na kojoj se ne vrši javni saobraćaj — dvorište, parking) na put sa savremenim kolovoznim zastorom, propuštaš <b>SVA</b> vozila, <b>i onda kad taj put nije znakom označen kao put sa prvenstvom</b>. Netačno: „samo motorna vozila", „samo kada je to određeno znakom".</td></tr>
 <tr><td><b>5. Biciklistička staza i traka</b></td><td>Kad skretanjem presecaš stazu ili traku, propuštaš <b>sva</b> vozila koja se njome kreću — ne samo ona koja ti dolaze zdesna.</td></tr>
 </table>
+<p style="margin-top:12px"><b>Četiri od pet pravila iz ptičje perspektive</b> — zeleno ide prvo, crveno čeka; ti si uvek plavo vozilo dole. Crteži važe dok <i>nema znaka</i>: čim se između tebe i poprečnog puta pojavi trougao, STOP ili žuti romb, on odlučuje umesto pravila — ali prema vozilu iz suprotnog smera i dalje važi pravilo levog skretanja (zato i uz znak STOP, kad skrećeš ulevo, propuštaš i onog preko puta koji ide pravo).</p>
+<div class="signRow lineRow">
+  <div class="signCell">
+    <svg viewBox="0 0 120 136"><rect x="0" y="34" width="120" height="44" fill="#9aa7b4"/><rect x="38" y="0" width="44" height="136" fill="#9aa7b4"/>
+      <line x1="2" y1="56" x2="34" y2="56" stroke="#fff" stroke-width="2.5" stroke-dasharray="7 6"/><line x1="86" y1="56" x2="118" y2="56" stroke="#fff" stroke-width="2.5" stroke-dasharray="7 6"/>
+      <line x1="60" y1="2" x2="60" y2="30" stroke="#fff" stroke-width="2.5" stroke-dasharray="7 6"/><line x1="60" y1="82" x2="60" y2="134" stroke="#fff" stroke-width="2.5" stroke-dasharray="7 6"/>
+      <path d="M71 100 L71 40" stroke="#c0392b" stroke-width="3" fill="none" stroke-dasharray="6 5"/>
+      <g transform="translate(102 45) rotate(-90)">
+  <rect x="-11" y="-13" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="-13" width="4.5" height="8" rx="2" fill="#333"/>
+  <rect x="-11" y="6" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="6" width="4.5" height="8" rx="2" fill="#333"/>
+  <rect x="-9" y="-17" width="18" height="34" rx="7" fill="#5f6d7a"/>
+  <path d="M-6 -9 Q0 -13 6 -9 L6 -4 Q0 -7 -6 -4 Z" fill="#fff" opacity=".85"/>
+  <path d="M-6 9 Q0 12 6 9 L6 13 Q0 15 -6 13 Z" fill="#fff" opacity=".5"/>
+</g><path d="M84 45 L26 45 M34.10402392117409 41.085310192998925 L26 45 L34.10402392117409 48.914689807001075" stroke="#2e7d32" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <g transform="translate(71 118) rotate(0)">
+  <rect x="-11" y="-13" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="-13" width="4.5" height="8" rx="2" fill="#333"/>
+  <rect x="-11" y="6" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="6" width="4.5" height="8" rx="2" fill="#333"/>
+  <rect x="-9" y="-17" width="18" height="34" rx="7" fill="#2c6aa0"/>
+  <path d="M-6 -9 Q0 -13 6 -9 L6 -4 Q0 -7 -6 -4 Z" fill="#fff" opacity=".85"/>
+  <path d="M-6 9 Q0 12 6 9 L6 13 Q0 15 -6 13 Z" fill="#fff" opacity=".5"/>
+</g><g transform="translate(71 88)"><circle r="11" fill="#fff" stroke="#c0392b" stroke-width="3"/><path d="M-5 -5 L5 5 M5 -5 L-5 5" stroke="#c0392b" stroke-width="3" stroke-linecap="round"/></g></svg>
+    <b>DESNA STRANA</b><span>propuštaš vozilo koje ti dolazi zdesna — i na raskrsnici i pri prestrojavanju u istu traku</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 120 136"><rect x="0" y="34" width="120" height="44" fill="#9aa7b4"/><rect x="38" y="0" width="44" height="136" fill="#9aa7b4"/>
+      <line x1="2" y1="56" x2="34" y2="56" stroke="#fff" stroke-width="2.5" stroke-dasharray="7 6"/><line x1="86" y1="56" x2="118" y2="56" stroke="#fff" stroke-width="2.5" stroke-dasharray="7 6"/>
+      <line x1="60" y1="2" x2="60" y2="30" stroke="#fff" stroke-width="2.5" stroke-dasharray="7 6"/><line x1="60" y1="82" x2="60" y2="134" stroke="#fff" stroke-width="2.5" stroke-dasharray="7 6"/>
+      <path d="M71 100 Q71 45 30 45" stroke="#c0392b" stroke-width="3" fill="none" stroke-dasharray="6 5"/>
+      <g transform="translate(49 16) rotate(180)">
+  <rect x="-11" y="-13" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="-13" width="4.5" height="8" rx="2" fill="#333"/>
+  <rect x="-11" y="6" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="6" width="4.5" height="8" rx="2" fill="#333"/>
+  <rect x="-9" y="-17" width="18" height="34" rx="7" fill="#5f6d7a"/>
+  <path d="M-6 -9 Q0 -13 6 -9 L6 -4 Q0 -7 -6 -4 Z" fill="#fff" opacity=".85"/>
+  <path d="M-6 9 Q0 12 6 9 L6 13 Q0 15 -6 13 Z" fill="#fff" opacity=".5"/>
+</g><path d="M49 36 L49 104 M45.085310192998925 95.89597607882591 L49 104 L52.914689807001075 95.89597607882591" stroke="#2e7d32" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M49 36 Q49 45 26 45 M32 40 L26 45 L32 50" stroke="#2e7d32" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <g transform="translate(71 118) rotate(0)">
+  <rect x="-11" y="-13" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="-13" width="4.5" height="8" rx="2" fill="#333"/>
+  <rect x="-11" y="6" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="6" width="4.5" height="8" rx="2" fill="#333"/>
+  <rect x="-9" y="-17" width="18" height="34" rx="7" fill="#2c6aa0"/>
+  <path d="M-6 -9 Q0 -13 6 -9 L6 -4 Q0 -7 -6 -4 Z" fill="#fff" opacity=".85"/>
+  <path d="M-6 9 Q0 12 6 9 L6 13 Q0 15 -6 13 Z" fill="#fff" opacity=".5"/>
+</g><g transform="translate(71 88)"><circle r="11" fill="#fff" stroke="#c0392b" stroke-width="3"/><path d="M-5 -5 L5 5 M5 -5 L-5 5" stroke="#c0392b" stroke-width="3" stroke-linecap="round"/></g></svg>
+    <b>LEVO SKRETANJE</b><span>iz suprotnog smera propuštaš i onog koji ide pravo (preseca ti putanju) i onog koji skreće udesno (ulazi u istu traku kao ti)</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 120 136"><rect x="0" y="34" width="120" height="44" fill="#9aa7b4"/><rect x="38" y="0" width="44" height="136" fill="#9aa7b4"/>
+      <line x1="2" y1="56" x2="34" y2="56" stroke="#fff" stroke-width="2.5" stroke-dasharray="7 6"/><line x1="86" y1="56" x2="118" y2="56" stroke="#fff" stroke-width="2.5" stroke-dasharray="7 6"/>
+      <line x1="60" y1="2" x2="60" y2="30" stroke="#fff" stroke-width="2.5" stroke-dasharray="7 6"/><line x1="60" y1="82" x2="60" y2="134" stroke="#fff" stroke-width="2.5" stroke-dasharray="7 6"/>
+      <line x1="0" y1="62" x2="120" y2="62" stroke="#7a8a99" stroke-width="1.5"/><line x1="0" y1="72" x2="120" y2="72" stroke="#7a8a99" stroke-width="1.5"/>
+      <path d="M71 100 L71 40" stroke="#c0392b" stroke-width="3" fill="none" stroke-dasharray="6 5"/>
+      <rect x="-4" y="60" width="48" height="14" rx="3" fill="#c0392b"/><rect x="2" y="63" width="10" height="8" rx="1" fill="#eef3f7"/><rect x="16" y="63" width="10" height="8" rx="1" fill="#eef3f7"/><rect x="30" y="63" width="10" height="8" rx="1" fill="#eef3f7"/>
+      <path d="M48 67 L106 67 M97.89597607882591 70.91468980700107 L106 67 L97.89597607882591 63.085310192998925" stroke="#2e7d32" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <g transform="translate(71 118) rotate(0)">
+  <rect x="-11" y="-13" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="-13" width="4.5" height="8" rx="2" fill="#333"/>
+  <rect x="-11" y="6" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="6" width="4.5" height="8" rx="2" fill="#333"/>
+  <rect x="-9" y="-17" width="18" height="34" rx="7" fill="#2c6aa0"/>
+  <path d="M-6 -9 Q0 -13 6 -9 L6 -4 Q0 -7 -6 -4 Z" fill="#fff" opacity=".85"/>
+  <path d="M-6 9 Q0 12 6 9 L6 13 Q0 15 -6 13 Z" fill="#fff" opacity=".5"/>
+</g><g transform="translate(71 88)"><circle r="11" fill="#fff" stroke="#c0392b" stroke-width="3"/><path d="M-5 -5 L5 5 M5 -5 L-5 5" stroke="#c0392b" stroke-width="3" stroke-linecap="round"/></g></svg>
+    <b>TRAMVAJ</b><span>propuštaš ga u svim slučajevima — „dolazi mi sleva" nije izgovor</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 120 136"><rect x="0" y="34" width="120" height="44" fill="#9aa7b4"/><rect x="38" y="78" width="44" height="58" fill="#e8dcc2"/>
+      <g fill="#c9b892"><circle cx="46" cy="92" r="1.6"/><circle cx="58" cy="104" r="1.6"/><circle cx="76" cy="96" r="1.6"/><circle cx="44" cy="120" r="1.6"/><circle cx="56" cy="128" r="1.6"/><circle cx="78" cy="126" r="1.6"/><circle cx="66" cy="84" r="1.6"/></g>
+      <line x1="2" y1="56" x2="118" y2="56" stroke="#fff" stroke-width="2.5" stroke-dasharray="7 6"/>
+      <path d="M71 100 L71 50" stroke="#c0392b" stroke-width="3" fill="none" stroke-dasharray="6 5"/>
+      <g transform="translate(18 67) rotate(90)">
+  <rect x="-11" y="-13" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="-13" width="4.5" height="8" rx="2" fill="#333"/>
+  <rect x="-11" y="6" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="6" width="4.5" height="8" rx="2" fill="#333"/>
+  <rect x="-9" y="-17" width="18" height="34" rx="7" fill="#5f6d7a"/>
+  <path d="M-6 -9 Q0 -13 6 -9 L6 -4 Q0 -7 -6 -4 Z" fill="#fff" opacity=".85"/>
+  <path d="M-6 9 Q0 12 6 9 L6 13 Q0 15 -6 13 Z" fill="#fff" opacity=".5"/>
+</g><path d="M38 67 L108 67 M99.89597607882591 70.91468980700107 L108 67 L99.89597607882591 63.085310192998925" stroke="#2e7d32" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <g transform="translate(102 45) rotate(-90)">
+  <rect x="-11" y="-13" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="-13" width="4.5" height="8" rx="2" fill="#333"/>
+  <rect x="-11" y="6" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="6" width="4.5" height="8" rx="2" fill="#333"/>
+  <rect x="-9" y="-17" width="18" height="34" rx="7" fill="#5f6d7a"/>
+  <path d="M-6 -9 Q0 -13 6 -9 L6 -4 Q0 -7 -6 -4 Z" fill="#fff" opacity=".85"/>
+  <path d="M-6 9 Q0 12 6 9 L6 13 Q0 15 -6 13 Z" fill="#fff" opacity=".5"/>
+</g><path d="M82 45 L12 45 M20.10402392117409 41.085310192998925 L12 45 L20.10402392117409 48.914689807001075" stroke="#2e7d32" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <g transform="translate(71 118) rotate(0)">
+  <rect x="-11" y="-13" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="-13" width="4.5" height="8" rx="2" fill="#333"/>
+  <rect x="-11" y="6" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="6" width="4.5" height="8" rx="2" fill="#333"/>
+  <rect x="-9" y="-17" width="18" height="34" rx="7" fill="#2c6aa0"/>
+  <path d="M-6 -9 Q0 -13 6 -9 L6 -4 Q0 -7 -6 -4 Z" fill="#fff" opacity=".85"/>
+  <path d="M-6 9 Q0 12 6 9 L6 13 Q0 15 -6 13 Z" fill="#fff" opacity=".5"/>
+</g><g transform="translate(71 88)"><circle r="11" fill="#fff" stroke="#c0392b" stroke-width="3"/><path d="M-5 -5 L5 5 M5 -5 L-5 5" stroke="#c0392b" stroke-width="3" stroke-linecap="round"/></g></svg>
+    <b>ZEMLJANI PUT</b><span>sa zemlje (ili sa parkinga, iz dvorišta) na asfalt: propuštaš SVA vozila iz oba smera, i bez znaka</span>
+  </div>
+</div>
 <p><b>Kako to izgleda na slici.</b> Skoro sva pitanja ove grupe su slikovna i rešavaju se u dva koraka: prvo <i>ima li znaka</i>, pa tek onda pravilo.</p>
 <table>
 <tr><th>Na slici vidiš</th><th>Tačan odgovor</th></tr>
@@ -217,6 +327,79 @@ CARDS['preticanje'] = {
   title: 'Preticanje i obilaženje (5 pitanja na svakom testu!)',
   html: `
 <p><b>Osnovno (čl. 53):</b> pretiče se SA LEVE strane. Sa DESNE samo: vozilo koje skreće ULEVO · tramvaj na šinama po sredini kolovoza (ako desno postoji traka) · na raskrsnici na putu sa prvenstvom, vozilo koje skreće ulevo.</p>
+<p><b>Zašto baš zdesna:</b> vozilo koje je zauzelo položaj uz razdelnu liniju i daje znak za levo skretanje, kao i tramvaj na šinama po sredini kolovoza, drže levu stranu zauzetu — slobodna je samo desna strana. Ponuda „sa bilo koje strane, u zavisnosti od saobraćajne situacije" je uvek mamac.</p>
+<div class="signRow lineRow" style="max-width:360px;margin:6px auto">
+  <div class="signCell">
+    <svg viewBox="0 0 160 150" role="img" aria-label="Vozilo skreće ulevo — pretiče se s desne strane">
+      <rect x="0" y="0" width="160" height="150" fill="#9aa7b4"/>
+      <rect x="0" y="0" width="36" height="20" fill="#e8dcc2"/><rect x="124" y="0" width="36" height="20" fill="#e8dcc2"/>
+      <rect x="0" y="70" width="36" height="80" fill="#e8dcc2"/><rect x="124" y="70" width="36" height="80" fill="#e8dcc2"/>
+      <polygon points="142,80 151,89 142,98 133,89" fill="#f2c200" stroke="#fff" stroke-width="2.5" stroke-linejoin="round"/>
+      <line x1="80" y1="76" x2="80" y2="148" stroke="#fff" stroke-width="4" stroke-dasharray="14 10"/>
+      <line x1="80" y1="2" x2="80" y2="14" stroke="#fff" stroke-width="4" stroke-dasharray="14 10"/>
+      <line x1="2" y1="45" x2="30" y2="45" stroke="#fff" stroke-width="4" stroke-dasharray="14 10"/>
+      <line x1="130" y1="45" x2="158" y2="45" stroke="#fff" stroke-width="4" stroke-dasharray="14 10"/>
+      <path d="M85 33 Q82 26 68 26 L52 26" stroke="#1c2e40" stroke-width="2.5" fill="none" stroke-dasharray="5 4"/>
+      <path d="M57 20 L49 26 L57 32" stroke="#1c2e40" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <g transform="translate(88 50) rotate(-12)">
+        <rect x="-11" y="-13" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="-13" width="4.5" height="8" rx="2" fill="#333"/>
+        <rect x="-11" y="6" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="6" width="4.5" height="8" rx="2" fill="#333"/>
+        <rect x="-9" y="-17" width="18" height="34" rx="7" fill="#5f6d7a"/>
+        <path d="M-6 -9 Q0 -13 6 -9 L6 -4 Q0 -7 -6 -4 Z" fill="#fff" opacity=".85"/>
+        <path d="M-6 9 Q0 12 6 9 L6 13 Q0 15 -6 13 Z" fill="#fff" opacity=".5"/>
+        <circle cx="-7.5" cy="-15" r="2.6" fill="#f2c200"/>
+      </g>
+      <g transform="translate(108 126)">
+        <rect x="-11" y="-13" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="-13" width="4.5" height="8" rx="2" fill="#333"/>
+        <rect x="-11" y="6" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="6" width="4.5" height="8" rx="2" fill="#333"/>
+        <rect x="-9" y="-17" width="18" height="34" rx="7" fill="#2c6aa0"/>
+        <path d="M-6 -9 Q0 -13 6 -9 L6 -4 Q0 -7 -6 -4 Z" fill="#fff" opacity=".85"/>
+        <path d="M-6 9 Q0 12 6 9 L6 13 Q0 15 -6 13 Z" fill="#fff" opacity=".5"/>
+      </g>
+      <path d="M108 106 L108 10" stroke="#2e7d32" stroke-width="3" fill="none" stroke-dasharray="6 5"/>
+      <path d="M102 16 L108 6 L114 16" stroke="#2e7d32" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <g transform="translate(140 40)"><circle r="11" fill="#fff" stroke="#1f7a3f" stroke-width="3"/><path d="M-5 0 L-1 5 L5 -5" stroke="#1f7a3f" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+      <path d="M100 114 C78 106 58 98 58 78 L58 44" stroke="#c0392b" stroke-width="3" fill="none" stroke-dasharray="6 5"/>
+      <path d="M52 52 L58 42 L64 52" stroke="#c0392b" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <g transform="translate(58 94)"><circle r="11" fill="#fff" stroke="#c0392b" stroke-width="3"/><path d="M-5 -5 L5 5 M5 -5 L-5 5" stroke="#c0392b" stroke-width="3" stroke-linecap="round"/></g>
+    </svg>
+    <b>SKREĆE ULEVO</b><span>zauzeo položaj uz razdelnu liniju + levi žmigavac → pretičeš ga ZDESNA (i na raskrsnici na putu sa prvenstvom)</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 160 150" role="img" aria-label="Tramvaj na šinama po sredini kolovoza — pretiče se samo s desne strane">
+      <rect x="0" y="0" width="160" height="150" fill="#9aa7b4"/>
+      <rect x="0" y="0" width="10" height="150" fill="#e8dcc2"/><rect x="150" y="0" width="10" height="150" fill="#e8dcc2"/>
+      <line x1="80" y1="2" x2="80" y2="148" stroke="#fff" stroke-width="4" stroke-dasharray="14 10"/>
+      <line x1="74" y1="0" x2="74" y2="150" stroke="#4d5761" stroke-width="1.6"/><line x1="86" y1="0" x2="86" y2="150" stroke="#4d5761" stroke-width="1.6"/>
+      <rect x="70" y="20" width="20" height="72" rx="4" fill="#b7332b"/>
+      <rect x="73" y="23" width="14" height="8" rx="2" fill="#fff" opacity=".85"/>
+      <rect x="73" y="36" width="14" height="6" rx="1.5" fill="#fff" opacity=".55"/><rect x="73" y="46" width="14" height="6" rx="1.5" fill="#fff" opacity=".55"/>
+      <rect x="73" y="56" width="14" height="6" rx="1.5" fill="#fff" opacity=".55"/><rect x="73" y="66" width="14" height="6" rx="1.5" fill="#fff" opacity=".55"/>
+      <rect x="73" y="76" width="14" height="6" rx="1.5" fill="#fff" opacity=".55"/>
+      <g transform="translate(36 34) rotate(180)">
+        <rect x="-11" y="-13" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="-13" width="4.5" height="8" rx="2" fill="#333"/>
+        <rect x="-11" y="6" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="6" width="4.5" height="8" rx="2" fill="#333"/>
+        <rect x="-9" y="-17" width="18" height="34" rx="7" fill="#5f6d7a"/>
+        <path d="M-6 -9 Q0 -13 6 -9 L6 -4 Q0 -7 -6 -4 Z" fill="#fff" opacity=".85"/>
+        <path d="M-6 9 Q0 12 6 9 L6 13 Q0 15 -6 13 Z" fill="#fff" opacity=".5"/>
+      </g>
+      <g transform="translate(120 126)">
+        <rect x="-11" y="-13" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="-13" width="4.5" height="8" rx="2" fill="#333"/>
+        <rect x="-11" y="6" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="6" width="4.5" height="8" rx="2" fill="#333"/>
+        <rect x="-9" y="-17" width="18" height="34" rx="7" fill="#2c6aa0"/>
+        <path d="M-6 -9 Q0 -13 6 -9 L6 -4 Q0 -7 -6 -4 Z" fill="#fff" opacity=".85"/>
+        <path d="M-6 9 Q0 12 6 9 L6 13 Q0 15 -6 13 Z" fill="#fff" opacity=".5"/>
+      </g>
+      <path d="M120 106 L120 10" stroke="#2e7d32" stroke-width="3" fill="none" stroke-dasharray="6 5"/>
+      <path d="M114 16 L120 6 L126 16" stroke="#2e7d32" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <g transform="translate(140 56)"><circle r="11" fill="#fff" stroke="#1f7a3f" stroke-width="3"/><path d="M-5 0 L-1 5 L5 -5" stroke="#1f7a3f" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+      <path d="M112 114 C92 106 56 104 56 82 L56 66" stroke="#c0392b" stroke-width="3" fill="none" stroke-dasharray="6 5"/>
+      <path d="M50 74 L56 64 L62 74" stroke="#c0392b" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <g transform="translate(56 96)"><circle r="11" fill="#fff" stroke="#c0392b" stroke-width="3"/><path d="M-5 -5 L5 5 M5 -5 L-5 5" stroke="#c0392b" stroke-width="3" stroke-linecap="round"/></g>
+    </svg>
+    <b>TRAMVAJ PO SREDINI</b><span>šine po sredini kolovoza → SAMO zdesna, i to samo ako desno postoji saobraćajna traka</span>
+  </div>
+</div>
 <p><b>NIJE preticanje:</b> na putu sa ≥2 trake u istom smeru, brže kretanje jedne trake (kolone) od druge — ni u naselju prolaženje s desne strane vozila koje nije uz desnu ivicu.</p>
 <div class="vgrid" style="grid-template-columns:1fr 1fr">
   <div class="vg vgFast"><b>❌ ZABRANJENO preticati (čl. 55 i 57)</b></div><div class="vg vgSlow"><b>✅ SME, iako zvuči opasno</b></div>
@@ -1501,7 +1684,62 @@ CARDS['uredjaji-oprema'] = {
 <tr><td><b>Dugo svetlo</b> (osim traktora)</td><td><b>najmanje 100 m</b>, bez gornje granice</td><td>„najmanje 80 m", „najmanje 40 m"</td></tr>
 <tr><td><b>Svetlo za maglu</b></td><td><b>najviše 35 m</b>, bez donje granice</td><td>„<b>najmanje</b> 35 m" — ista cifra, obrnuta reč</td></tr>
 </table>
-<p class="mut">Logika iza brojki: kratko svetlo ima <i>obe</i> granice (mora da osvetli, a ne sme da zaslepi), dugo samo donju, a svetlo za maglu samo gornju — snop koji bi išao dalje odbijao bi se od magle nazad u oči. Moped je jedini sa sopstvenim, znatno kraćim rasponom.</p>
+<svg viewBox="0 0 460 200" role="img" aria-label="Dometi svetala na zajedničkoj metarskoj skali: magla najviše 35 m, moped 10–50 m, kratko 40–80 m, dugo najmanje 100 m" style="max-width:460px;width:100%;display:block;margin:8px auto">
+  <defs><linearGradient id="uoDugoFade" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#ffd84d"/><stop offset=".62" stop-color="#ffd84d"/><stop offset="1" stop-color="#ffd84d" stop-opacity="0"/></linearGradient></defs>
+  <g stroke="currentColor" stroke-width="1" stroke-dasharray="2 3" opacity=".22">
+    <line x1="112" y1="18" x2="112" y2="172"/><line x1="139" y1="18" x2="139" y2="172"/><line x1="206.5" y1="18" x2="206.5" y2="172"/><line x1="220" y1="18" x2="220" y2="172"/><line x1="247" y1="18" x2="247" y2="172"/><line x1="328" y1="18" x2="328" y2="172"/><line x1="382" y1="18" x2="382" y2="172"/>
+  </g>
+  <g fill="currentColor">
+    <path d="M98 29 h7 a7 7 0 0 1 0 14 h-7 z"/><path d="M98 67 h7 a7 7 0 0 1 0 14 h-7 z"/><path d="M98 105 h7 a7 7 0 0 1 0 14 h-7 z"/><path d="M98 143 h7 a7 7 0 0 1 0 14 h-7 z"/>
+  </g>
+  <g fill="#ffd84d" opacity=".28">
+    <polygon points="112,70 139,65 139,83 112,78"/>
+    <polygon points="112,108 220,103 220,121 112,116"/>
+    <polygon points="112,146 382,141 382,159 112,154"/>
+  </g>
+  <g fill="#ffd84d" stroke="#b58900" stroke-width="1.5">
+    <rect x="112" y="27" width="94.5" height="18"/>
+    <rect x="139" y="65" width="108" height="18"/>
+    <rect x="220" y="103" width="108" height="18"/>
+  </g>
+  <rect x="382" y="141" width="62" height="18" fill="url(#uoDugoFade)"/>
+  <path d="M382 141 h40 M382 159 h40" stroke="#b58900" stroke-width="1.5"/>
+  <g stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+    <line x1="206.5" y1="23" x2="206.5" y2="49"/>
+    <line x1="139" y1="61" x2="139" y2="87"/><line x1="247" y1="61" x2="247" y2="87"/>
+    <line x1="220" y1="99" x2="220" y2="125"/><line x1="328" y1="99" x2="328" y2="125"/>
+    <line x1="382" y1="137" x2="382" y2="163"/>
+  </g>
+  <path d="M432 144 l6 6 l-6 6 M440 144 l6 6 l-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/>
+  <g font-size="10" font-weight="bold" fill="#5a4200" text-anchor="middle">
+    <text x="159" y="40">do 35 m</text><text x="193" y="78">10–50 m</text><text x="274" y="116">40–80 m</text><text x="408" y="154">od 100 m</text>
+  </g>
+  <g font-size="8" fill="currentColor" text-anchor="middle">
+    <text x="206.5" y="19">najviše</text>
+    <text x="139" y="57">najmanje</text><text x="247" y="57">najviše</text>
+    <text x="220" y="95">najmanje</text><text x="328" y="95">najviše</text>
+    <text x="382" y="133">najmanje</text>
+  </g>
+  <g font-size="8" fill="currentColor" opacity=".65">
+    <text x="112" y="19" text-anchor="start">bez donje granice</text>
+    <text x="446" y="169" text-anchor="end">bez gornje granice</text>
+  </g>
+  <g fill="currentColor" font-weight="bold" font-size="11">
+    <text x="4" y="35">MAGLA</text><text x="4" y="73">MOPED</text><text x="4" y="111">KRATKO</text><text x="4" y="149">DUGO</text>
+  </g>
+  <g fill="currentColor" font-size="8.5" opacity=".7">
+    <text x="4" y="46">svetlo za maglu</text><text x="4" y="84">kratko svetlo</text><text x="4" y="122">osim traktora</text><text x="4" y="160">osim traktora</text>
+  </g>
+  <line x1="108" y1="172" x2="446" y2="172" stroke="currentColor" stroke-width="1.5"/>
+  <g stroke="currentColor" stroke-width="1.5">
+    <line x1="112" y1="172" x2="112" y2="177"/><line x1="139" y1="172" x2="139" y2="177"/><line x1="206.5" y1="172" x2="206.5" y2="189"/><line x1="220" y1="172" x2="220" y2="177"/><line x1="247" y1="172" x2="247" y2="177"/><line x1="328" y1="172" x2="328" y2="177"/><line x1="382" y1="172" x2="382" y2="177"/>
+  </g>
+  <g fill="currentColor" font-size="10" text-anchor="middle">
+    <text x="112" y="187">0</text><text x="139" y="187">10</text><text x="220" y="187">40</text><text x="247" y="187">50</text><text x="328" y="187">80</text><text x="382" y="187">100 m</text>
+    <text x="206.5" y="198">35</text>
+  </g>
+</svg>
+<p class="mut">Puna crta je granica koju tačan odgovor mora da sadrži, otvoren kraj znači da granice nema: kratko svetlo ima <i>obe</i> (mora da osvetli, a ne sme da zaslepi), dugo samo donju, magla samo gornju — snop koji bi išao dalje odbijao bi se od magle nazad u oči. Moped je jedini sa sopstvenim, znatno kraćim rasponom — ista slika kao kratko, samo pomerena ulevo.</p>
 <p><b>Oblik snopa:</b> kratko svetlo <b>traktora, mopeda, tricikla i četvorocikla</b> sme biti izvedeno kao simetrično <b>ili</b> desnosmerno asimetrično. <span class="mut">Motocikla u tom spisku nema.</span></p>
 
 <p><b>Boje — celo pravilo staje u dve reči: napred NIKAD crvena, nazad NIKAD bela.</b> Sve ostalo je spisak koji se uči napamet:</p>
