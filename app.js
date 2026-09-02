@@ -999,7 +999,7 @@
       startList(ids, titleFn, null, 'filter', { origin, startAt: idx });
     }
   }
-  const legendHtml = () => `<div class="mut" style="font-size:.8rem;margin:4px 0 8px">${L('legend')}</div>`;
+  const legendHtml = () => `<div class="mut napomena">${L('legend')}</div>`;
 
   // Jedan red u spisku pitanja — JEDNO mesto za sva tri spiska (podoblast, sva pitanja,
   // pogrešna/obeležena). Ranije su bila tri prepisana primerka istog koda, pa bi svaka
@@ -2036,7 +2036,7 @@
     const sh = el('simHistory');
     if (!S.sims.length) sh.innerHTML = `<h3>${L('history')}</h3><p class="mut">${L('noSims')}</p>`;
     else {
-      sh.innerHTML = `<h3>${L('history')}</h3><p class="mut" style="font-size:.82rem;margin-bottom:6px">${L('historyTip')}</p>`
+      sh.innerHTML = `<h3>${L('history')}</h3><p class="mut napomena">${L('historyTip')}</p>`
         + S.sims.slice().reverse().map((s, ri) => {
           const d = new Date(s.d);
           const ds = `${String(d.getDate()).padStart(2, '0')}.${String(d.getMonth() + 1).padStart(2, '0')}. ${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
@@ -2053,20 +2053,20 @@
 
     const tc = el('trustCard');
     if (tc) {
-      tc.innerHTML = `<div><button class="explCardBtn pojBtn" style="font-size:1.05rem;font-weight:600">${L('trustTitle')}</button><div class="explCard" style="display:none">${L('trustBody')}</div></div>`;
+      tc.innerHTML = `<div><button class="explCardBtn pojBtn istaknuto">${L('trustTitle')}</button><div class="explCard" style="display:none">${L('trustBody')}</div></div>`;
       sklopivo(tc.querySelector('.explCardBtn'));
     }
 
     const fq = el('faqCard');
     if (EX.cards && EX.cards.faq) {
       fq.style.display = '';
-      fq.innerHTML = `<div><button class="explCardBtn pojBtn" style="font-size:1.05rem;font-weight:600">❓ ${escapeHtml(T(EX.cards.faq.t))}</button><div class="explCard" style="display:none">${T(EX.cards.faq.h)}</div></div>`;
+      fq.innerHTML = `<div><button class="explCardBtn pojBtn istaknuto">❓ ${escapeHtml(T(EX.cards.faq.t))}</button><div class="explCard" style="display:none">${T(EX.cards.faq.h)}</div></div>`;
       sklopivo(fq.querySelector('.explCardBtn'));
     } else fq.style.display = 'none';
 
     const gc = el('guideCard');
     gc.innerHTML = `<div class="guideHead"><div><h3 style="margin:0">${L('guideTitle')}</h3>
-      <span class="mut" style="font-size:.82rem">${L('guideSub')}</span></div>
+      <span class="mut napomena">${L('guideSub')}</span></div>
       <button class="secondary" id="btnGuide">${S.guide ? L('guideHide') : L('guideOpen')}</button></div>
       <div id="guideBody" style="${S.guide ? '' : 'display:none'}">${L('guideBody')}</div>`;
     el('btnGuide').addEventListener('click', () => {
@@ -2089,7 +2089,7 @@
         ['grp5', ['dozvole', 'vozilo-tehnika', 'uredjaji-oprema', 'iskljucenje', 'kazne', 'kaznene-klase', 'zamke-odgovori']],
       ];
       const stavljene = new Set();
-      let html = `<h3>📖 ${L('pojmovnik')}</h3><p class="mut" style="font-size:.82rem;margin-bottom:6px">${L('pojmovnikSub')}</p>`;
+      let html = `<h3>📖 ${L('pojmovnik')}</h3><p class="mut napomena">${L('pojmovnikSub')}</p>`;
       const entry = (k) => `<div class="pojEntry"><button class="explCardBtn pojBtn">📖 ${escapeHtml(T(EX.cards[k].t))}</button><div class="explCard" style="display:none">${T(EX.cards[k].h)}</div></div>`;
       for (const [gk, keys] of GRUPE) {
         const imaju = keys.filter((k) => cardKeys.includes(k));
@@ -2109,7 +2109,7 @@
     el('dataTools').innerHTML = `
       <div class="podGrupa">
         <div class="podNaslov">${L('grupaNapredak')}</div>
-        <div class="mut" style="font-size:.82rem">${L('persistNote')}</div>
+        <div class="mut napomena">${L('persistNote')}</div>
         <div id="backupLine" style="margin-top:8px"></div>
         <div class="qActions" style="margin-top:8px">
           <button type="button" class="secondary" id="btnExport">${L('export')}</button>
@@ -2128,9 +2128,9 @@
       </div>
       <div class="podGrupa">
         <div class="podNaslov">${L('planNaslov')}</div>
-        <div style="font-size:.86rem"><label>${L('examDateLabel')}
+        <div class="tekstSm"><label>${L('examDateLabel')}
           <input type="date" id="examDate" value="${S.examDate || ''}" style="margin-left:6px"></label></div>
-        <div class="mut" style="font-size:.82rem;margin:8px 0 6px">${L('planObjasnjenje')}</div>
+        <div class="mut napomena">${L('planObjasnjenje')}</div>
         <div class="planPolja">
           <label class="planPolje"><span class="mut">${L('planNovih')}</span>
             <input id="planNovih" type="text" inputmode="numeric" autocomplete="off" value="${S.plan && S.plan.novih ? S.plan.novih : ''}"></label>
@@ -2145,7 +2145,7 @@
       <div class="podGrupa podOpasno">
         <div class="podNaslov">${L('grupaOprezno')}</div>
         <div class="qActions"><button type="button" class="danger" id="btnReset">${L('reset')}</button></div>
-        <div class="mut" style="font-size:.82rem;margin-top:8px">${L('resetNapomena')}</div>
+        <div class="mut napomena">${L('resetNapomena')}</div>
       </div>`;
     renderBackupLine();
     if (installEvt) { const bi = el('btnInstall'); if (bi) bi.style.display = ''; }
@@ -2488,7 +2488,7 @@
     b.id = 'repoUpd';
     b.setAttribute('role', 'status');
     b.innerHTML = `<div><b>${escapeHtml(L('updRepoTitle'))}</b>
-      <div class="mut" style="font-size:.86rem;margin-top:2px">${escapeHtml(L('updRepoBody').replace('#A', BOOT_V).replace('#B', nova))}</div></div>
+      <div class="mut tekstSm">${escapeHtml(L('updRepoBody').replace('#A', BOOT_V).replace('#B', nova))}</div></div>
       <div class="repoUpdBtns">
         <a class="primary repoUpdLink" href="${REPO_ZIP}" target="_blank" rel="noopener">${escapeHtml(L('updRepoGet'))}</a>
         <button type="button" class="secondary sBtn" id="repoUpdLater">${escapeHtml(L('updRepoLater'))}</button>
