@@ -37,18 +37,13 @@
     brand: { l: 'Vozački A', c: 'Возачки А' },
     home: { l: 'Početna', c: 'Почетна' },
     learn: { l: 'Učenje redom', c: 'Учење редом' },
-    learnSub: { l: 'sva pitanja, pamti gde si stao', c: 'сва питања, памти где си стао' },
     drill: { l: 'Ponavljanje', c: 'Понављање' },
-    mixed: { l: 'Mešano ponavljanje', c: 'Мешано понављање' },
-    mixedSub: { l: 'sva pitanja, nasumičan redosled', c: 'сва питања, насумичан редослед' },
     marked: { l: 'Obeležena pitanja', c: 'Обележена питања' },
-    markedSub: { l: 'tvoja ručna lista', c: 'твоја ручна листа' },
     sim: { l: 'Simulacija ispita', c: 'Симулација испита' },
     simSub: { l: '41 pitanje · 45 min · prag 85%', c: '41 питање · 45 мин · праг 85%' },
     stats: { l: 'Statistika', c: 'Статистика' },
     statsSub: { l: 'oblasti i najslabije tačke', c: 'области и најслабије тачке' },
     cats: { l: 'Oblasti — klikni za spisak pitanja i vežbanje', c: 'Области — кликни за списак питања и вежбање' },
-    wholeCat: { l: 'Vežbaj celu oblast', c: 'Вежбај целу област' },
     question: { l: 'Pitanje', c: 'Питање' },
     qNumTip: { l: 'Zvanični broj pitanja u MUP bazi (isti broj važi i na eUpravi)', c: 'Званични број питања у МУП бази (исти број важи и на еУправи)' },
     points: { l: 'poena', c: 'поена' },
@@ -79,10 +74,7 @@
     drillWaitingBtn: { l: 'Vežbaj i ona koja čekaju', c: 'Вежбај и она која чекају' },
     drillEmpty: { l: 'Nema pitanja za ponavljanje — sve što si grešio je utvrđeno. 💪', c: 'Нема питања за понављање — све што си грешио је утврђено. 💪' },
     markedEmpty: { l: 'Nema obeleženih pitanja. Obeleži pitanje kvačicom dok vežbaš.', c: 'Нема обележених питања. Обележи питање квачицом док вежбаш.' },
-    learnDone: { l: 'Prošao si SVA pitanja! Pređi na ponavljanje pogrešnih i simulacije.', c: 'Прошао си СВА питања! Пређи на понављање погрешних и симулације.' },
-    listDone: { l: 'Kraj liste.', c: 'Крај листе.' },
     finishSim: { l: 'Završi ispit', c: 'Заврши испит' },
-    simConfirm: { l: 'Predati test? Neodgovorena pitanja nose 0 poena.', c: 'Предати тест? Неодговорена питања носе 0 поена.' },
     simLeaveConfirm: { l: 'Napustiti simulaciju? Odgovori iz nje NEĆE biti sačuvani niti računati.', c: 'Напустити симулацију? Одговори из ње НЕЋЕ бити сачувани нити рачунати.' },
     passed: { l: 'POLOŽIO', c: 'ПОЛОЖИО' },
     failed: { l: 'NIJE POLOŽENO', c: 'НИЈЕ ПОЛОЖЕНО' },
@@ -97,7 +89,6 @@
     statExpand: { l: 'Klikni za raspis po podoblastima', c: 'Кликни за распис по подобластима' },
     catExpand: { l: 'Prikaži podoblasti', c: 'Прикажи подобласти' },
     catOpen: { l: 'Otvori oblast (spisak pitanja i vežbanje)', c: 'Отвори област (списак питања и вежбање)' },
-    wholeCat: { l: 'Sva pitanja oblasti', c: 'Сва питања области' },
     tour1: { l: 'Tvoj napredak u brojkama: koliko si odgovorio, koliko pogrešnih čeka ponavljanje i koliko si obeležio.', c: 'Твој напредак у бројкама: колико си одговорио, колико погрешних чека понављање и колико си обележио.' },
     tour2: { l: 'Odavde kreće učenje: sva pitanja redom, sa objašnjenjem posle svakog odgovora.', c: 'Одавде креће учење: сва питања редом, са објашњењем после сваког одговора.' },
     tour3: { l: 'Pogrešna pitanja se sama vraćaju: odmah, pa sutradan, pa za tri dana — dok ih ne savladaš.', c: 'Погрешна питања се сама враћају: одмах, па сутрадан, па за три дана — док их не савладаш.' },
@@ -156,7 +147,6 @@
     naIspitu: { l: 'na ispitu: #', c: 'на испиту: #' },
     shareBtn: { l: '📷 Sačuvaj sliku rezultata', c: '📷 Сачувај слику резултата' },
     shareTitle: { l: 'Simulacija ispita — A kategorija', c: 'Симулација испита — А категорија' },
-    shareSaved: { l: 'Slika je preuzeta', c: 'Слика је преузета' },
     shareFail: { l: 'Slika nije mogla da se napravi', c: 'Слика није могла да се направи' },
     freeNote: { l: 'besplatna vežbaonica', c: 'бесплатна вежбаоница' },
     fsSmaller: { l: 'Smanji slova', c: 'Смањи слова' },
@@ -285,7 +275,6 @@
     allQuestions: { l: 'Pitanja', c: 'Питања' },
     onlyWrong: { l: 'Samo pogrešna', c: 'Само погрешна' },
     onlyUnseen: { l: 'Samo neodgovorena', c: 'Само неодговорена' },
-    correctNow: { l: 'utvrđeno', c: 'утврђено' },
     kbHint: { l: 'Prečice: ← → kretanje · 1–9 odgovor · Enter potvrda', c: 'Пречице: ← → кретање · 1–9 одговор · Enter потврда' },
     vezbaj: { l: 'Vežbaj', c: 'Вежбај' },
     vezbajReady: { l: 'Vežbaj spremna', c: 'Вежбај спремна' },
@@ -319,7 +308,6 @@
     readyNote: { l: 'Ukrštanje tvoje tačnosti sa zvaničnim šablonom testa (41 pitanje, 98 poena, prag 84). Procena je pouzdanija što više vežbaš.', c: 'Укрштање твоје тачности са званичним шаблоном теста (41 питање, 98 поена, праг 84). Процена је поузданија што више вежбаш.' },
     readyLoss: { l: 'Najviše te košta', c: 'Највише те кошта' },
     readyRough: { l: '⚠ gruba procena — još je malo odgovora', c: '⚠ груба процена — још је мало одговора' },
-    readyPts: { l: 'očekivanih poena', c: 'очекиваних поена' },
     searchPh: { l: '🔎 Pretraga pitanja (tekst ili #broj)…', c: '🔎 Претрага питања (текст или #број)…' },
     // čuvar je @1, a NE #: u samoj rečenici stoji i doslovno „#broj pitanja"
     searchEmpty: { l: 'Nema pogodaka za „@1". Probaj kraću reč ili #broj pitanja.', c: 'Нема погодака за „@1". Пробај краћу реч или #број питања.' },
@@ -327,7 +315,7 @@
     okShort: { l: 'tačno', c: 'тачно' },
     shufTip: { l: 'Vežbanje pokrenuto sa ove strane ide nasumičnim redosledom (ne znaš koje je sledeće). Spisak dole ostaje po redu, a „Nastavi" uvek ide redom. Klik na pitanje u spisku: počinje od njega, pa nastavlja izmešano.', c: 'Вежбање покренуто са ове стране иде насумичним редоследом (не знаш које је следеће). Списак доле остаје по реду, а „Настави" увек иде редом. Клик на питање у списку: почиње од њега, па наставља измешано.' },
     queueTip: { l: 'Razmaknuto ponavljanje: pogrešiš → pitanje je odmah spremno; pogodiš ga → vraća se sutra; opet pogodiš → za 3 dana; treći pogodak zaredom → izlazi iz reda. I pitanje koje si pogodio iz prve vraća se jednom, za 3 dana, da se potvrdi — pa izlazi.', c: 'Размакнуто понављање: погрешиш → питање је одмах спремно; погодиш га → враћа се сутра; опет погодиш → за 3 дана; трећи погодак заредом → излази из реда. И питање које си погодио из прве враћа се једном, за 3 дана, да се потврди — па излази.' },
-    legend: { l: '✓ utvrđeno · ✗ za ponavljanje · • neodgovoreno · 🔖 obeleženo · 🖼 sa slikom', c: '✓ утврђено · ✗ за понављање · • неодговорено · 🔖 обележено · 🖼 са сликом' },
+    legend: { l: '✓ utvrđeno · ✗ za ponavljanje · • neodgovoreno · 🔖 obeleženo · 🖼 sa slikom · desno: broj tačnih/netačnih', c: '✓ утврђено · ✗ за понављање · • неодговорено · 🔖 обележено · 🖼 са сликом · десно: број тачних/нетачних' },
     contTip: { l: 'Nastavlja tačno od mesta gde si stao (uvek redom).', c: 'Наставља тачно од места где си стао (увек редом).' },
     qOne: { l: 'pitanje', c: 'питање' },
     waitInfoOne: { l: 'Sva spremna pitanja si prošao. # pitanje čeka svoj termin (razmaknuto ponavljanje: sutra, pa za 3 dana).', c: 'Сва спремна питања си прошао. # питање чека свој термин (размакнуто понављање: сутра, па за 3 дана).' },
@@ -463,7 +451,10 @@
       x.textContent = L('close');
       x.addEventListener('click', () => b.remove());
       b.appendChild(x);
-      document.body.appendChild(b);
+      // zajednički držač: dve poruke se ređaju jedna iznad druge, ne preko iste tačke
+      let drz = document.getElementById('trakeDrzac');
+      if (!drz) { drz = document.createElement('div'); drz.id = 'trakeDrzac'; document.body.appendChild(drz); }
+      drz.appendChild(b);
     } catch (ignore) { /* ako ni ovo ne prođe, bar ne rušimo aplikaciju */ }
   }
   let upozorenONeuspehu = false;
@@ -702,12 +693,12 @@
 
   // ---------- Traka napretka sa skokom na broj ----------
   function renderProgress(title, pos, max, onJump, onBack) {
-    el('qProgress').innerHTML = `<span class="qpTitle" title="${escapeHtml(title)}">${onBack ? `<a href="#" id="backToList" class="bcLink">‹ ${L('backToList')}</a> &nbsp; ` : ''}${escapeHtml(title)}</span>
+    el('qProgress').innerHTML = `<span class="qpTitle" title="${escapeHtml(title)}">${onBack ? `<button type="button" id="backToList" class="bcLink">‹ ${L('backToList')}</button> &nbsp; ` : ''}${escapeHtml(title)}</span>
       <span class="qpPos"><b>${pos}</b> ${L('ofQ')} ${max}</span>
       <span class="jumpBox"><input id="jumpN" type="text" inputmode="numeric" autocomplete="off" placeholder="${pos}" aria-label="${escapeHtml(L('goto'))}">
       <button id="jumpGo" class="secondary sBtn">${L('goto')}</button></span>
       <span class="mut kbNote">${L('kbHint')}</span>`;
-    if (onBack) el('backToList').addEventListener('click', (e) => { e.preventDefault(); onBack(); });
+    if (onBack) el('backToList').addEventListener('click', onBack);
     const doJump = () => {
       const v = ceoBrojIzPolja(el('jumpN'), 1, max, L('skokVanOpsega'));
       if (v !== null) onJump(v - 1);
@@ -736,9 +727,9 @@
     const hist = qr(q.id).a > 0
       ? ` &nbsp;·&nbsp; <span class="qOk">${S.q[q.id].a - S.q[q.id].w}× ${L('tacnoLbl')}</span> · <span class="${S.q[q.id].w ? 'qBad' : 'mut'}">${S.q[q.id].w}× ${L('netacnoLbl')}</span> · ${relTime(S.q[q.id].last)}`
       : '';
-    meta.innerHTML = `<span><a href="#" class="bcLink" data-bc="c${q.cat}">${escapeHtml(catOf(q))}</a> › <a href="#" class="bcLink" data-bc="s${q.sub}">${escapeHtml(subOf(q))}</a></span>
+    meta.innerHTML = `<span><button type="button" class="bcLink" data-bc="c${q.cat}">${escapeHtml(catOf(q))}</button> › <button type="button" class="bcLink" data-bc="s${q.sub}">${escapeHtml(subOf(q))}</button></span>
       <span><span class="qNum" data-qid="${q.id}" title="${escapeHtml(FILE_MODE ? L('qNumTip') : L('qNumTip2'))}">#${q.id}</span> · ${poeni(q.pts)}${hist}</span>`;
-    meta.querySelectorAll('.bcLink').forEach((a) => a.addEventListener('click', (e) => { e.preventDefault(); browse(a.dataset.bc); }));
+    meta.querySelectorAll('.bcLink').forEach((b) => b.addEventListener('click', () => browse(b.dataset.bc)));
     c.appendChild(meta);
 
     const txt = document.createElement('div'); txt.className = 'qText'; txt.textContent = T(q.t);
@@ -1510,7 +1501,7 @@
     const head = el('browseHead');
     const catQ = type === 's' ? byId.get(ids[0]) : null;
     head.innerHTML = `
-      ${type === 's' ? `<div class="qMeta"><span><a href="#" class="bcLink" data-bc="c${catQ.cat}">‹ ${escapeHtml(catOf(catQ))}</a></span></div>` : ''}
+      ${type === 's' ? `<div class="qMeta"><span><button type="button" class="bcLink" data-bc="c${catQ.cat}">‹ ${escapeHtml(catOf(catQ))}</button></span></div>` : ''}
       <h3>${escapeHtml(name)}</h3>
       <div class="mut" style="margin:6px 0 10px">${nQ(ids.length)} · ${seen} ${L('answered')}${acc !== null ? ` · ${L('thAcc').toLowerCase()}: ${acc}%` : ''} · <span title="${escapeHtml(L('queueTip'))}" style="cursor:help">${inQ} ${L('inQueue')}</span></div>
       <div class="qActions">
@@ -1523,7 +1514,7 @@
       </div>`;
     bindNav(head);
     bindShuffleBox(head);
-    head.querySelectorAll('.bcLink').forEach((a) => a.addEventListener('click', (e) => { e.preventDefault(); browse(a.dataset.bc); }));
+    head.querySelectorAll('.bcLink').forEach((b) => b.addEventListener('click', () => browse(b.dataset.bc)));
     const origin = () => browse(key);
     el('bStart').addEventListener('click', () => {
       if (shuffleOn) startList(maybeShuffle(ids), shufTag(secTitleFn(key)), null, 'filter', { origin });
@@ -1754,7 +1745,10 @@
       } catch (e) { /* dozvola istekla — dugme će se ponovo pojaviti */ fsPending = fsHandle; fsHandle = null; renderBackupLine(); }
     }, 800);
   }
+  let povezivanjeUToku = false;
   async function connectBackup() {
+    if (povezivanjeUToku) return;   // sistemski prozor za izbor sme da bude samo jedan
+    povezivanjeUToku = true;
     try {
       const h = await window.showSaveFilePicker({
         suggestedName: 'vozacki-a-napredak.json',
@@ -1765,6 +1759,7 @@
       scheduleBackup();
       renderBackupLine();
     } catch (e) { /* korisnik odustao */ }
+    finally { povezivanjeUToku = false; }
   }
   async function resumeBackup() {
     if (!fsPending) return;
@@ -1958,7 +1953,9 @@
       const si = secInfo(S.lastSec);
       const p = S.secPos[S.lastSec] || 0;
       if (p > 0 && p < si.ids.length) {
-        lastChip = `<div style="margin-top:8px"><button class="primary" id="btnLastSec">▶ ${L('continueBtn')}: ${escapeHtml(si.name)} (${p + 1}/${si.ids.length})</button></div>`;
+        // jedna glavna radnja po ekranu: ako plan dana ima svoje plavo dugme, ovo je sivo
+        const lastKlasa = (planStanje() && planIds().length) ? 'secondary' : 'primary';
+        lastChip = `<div style="margin-top:8px"><button class="${lastKlasa}" id="btnLastSec">▶ ${L('continueBtn')}: ${escapeHtml(si.name)} (${p + 1}/${si.ids.length})</button></div>`;
       }
     }
     const today = localDay();
@@ -2173,10 +2170,12 @@
     if (installEvt) { const bi = el('btnInstall'); if (bi) bi.style.display = ''; }
     el('btnInstall').addEventListener('click', async () => {
       if (!installEvt) return;
-      installEvt.prompt();
-      await installEvt.userChoice.catch(() => {});
+      // događaj se preuzima i poništava PRE čekanja: prompt() sme da se pozove samo
+      // jednom, a dupli klik dok je sistemski dijalog otvoren bi ga zvao ponovo
+      const evt = installEvt;
       installEvt = null;
       el('btnInstall').style.display = 'none';
+      try { evt.prompt(); await evt.userChoice; } catch (e) { /* korisnik odustao — u redu */ }
     });
     sklopivo(el('installWhat').querySelector('.explCardBtn'));
     el('btnCheckUpd').addEventListener('click', (ev) => { S.noUpd = 0; save(); proveriRepo(true, ev.currentTarget); });
@@ -2252,7 +2251,10 @@
       window.__tourRan = 1;
       setTimeout(() => { if (el('view-home').classList.contains('active')) tourStart(); }, 600);
     }
-    el('btnExport').addEventListener('click', () => {
+    el('btnExport').addEventListener('click', (ev) => {
+      const d = ev.currentTarget;
+      if (d.disabled) return;
+      d.disabled = true; setTimeout(() => { d.disabled = false; }, 1200);
       const blob = new Blob([JSON.stringify(S)], { type: 'application/json' });
       const a = document.createElement('a');
       const url = URL.createObjectURL(blob);
@@ -2337,7 +2339,11 @@
       qn.textContent = L('linkCopied');
       setTimeout(() => { qn.textContent = staro; }, 1200);
     };
-    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(adresa).then(potvrdi).catch(() => {});
+    // tooltip obećava kopiranje — ako pregledač ne da (nema API-ja, odbijena dozvola),
+    // adresa se pokaže u prozorčetu odakle može ručno da se prekopira
+    const rezerva = () => { try { window.prompt(L('qNumTip2'), adresa); } catch (e2) { /* ništa */ } };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(adresa).then(potvrdi).catch(rezerva);
+    else rezerva();
   });
 
   // Klik na sliku pitanja otvara uvećan prikaz preko celog ekrana; klik ili Escape zatvara.
@@ -2435,6 +2441,7 @@
     el('btnHome').textContent = L('home');
     el('btnFinishSim').textContent = L('finishSim');
     el('btnSimReport').textContent = L('report');
+    { const os = el('offlineStrip'); if (os) os.textContent = L('offline'); }
     document.title = L('brand') + ' — ' + (S.script === 'l' ? 'vežbanje' : 'вежбање');
     renderPodnozje();
   }
