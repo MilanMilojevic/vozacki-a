@@ -63,6 +63,10 @@
     correctIs: { l: 'Tačan odgovor je označen zelenim.', c: 'Тачан одговор је означен зеленим.' },
     mark: { l: 'Obeleži pitanje', c: 'Обележи питање' },
     tacnoLbl: { l: 'tačno', c: 'тачно' },
+    osveziLbl: { l: 'za osvežavanje', c: 'за освежавање' },
+    osveziBtn: { l: '🔄 Osveži znanje', c: '🔄 Освежи знање' },
+    osveziTip: { l: 'Utvrđena pitanja koja nisi video duže od 21 dan. Tačan odgovor ih vraća na počinak; pogrešan ih vraća u red za ponavljanje.', c: 'Утврђена питања која ниси видео дуже од 21 дан. Тачан одговор их враћа на починак; погрешан их враћа у ред за понављање.' },
+    osveziTitle: { l: 'Osvežavanje', c: 'Освежавање' },
     netacnoLbl: { l: 'netačno', c: 'нетачно' },
     today: { l: 'danas', c: 'данас' },
     yesterday: { l: 'juče', c: 'јуче' },
@@ -210,7 +214,7 @@
         <p><b>Како:</b> на Андроиду, у прегледачу Chrome → мени ⋮ → „Додај на почетни екран". На iPhone-у, у прегледачу Safari → дугме „Подели" → „Add to Home Screen".</p>`,
     },
     planSveOdgovoreno: { l: 'nema više novih', c: 'нема више нових' },
-    planObjasnjenje: { l: 'Ostavi oba polja prazna ako ne želiš cilj. Kad ga postaviš, dugme na početnoj daje tačno toliko pitanja — prvo ponavljanja, pa nova. U ponavljanja ulaze i pogrešna pitanja i ona koja si pogodio iz prve (ta dobiju jednu potvrdu posle 3 dana).', c: 'Остави оба поља празна ако не желиш циљ. Кад га поставиш, дугме на почетној даје тачно толико питања — прво понављања, па нова. У понављања улазе и погрешна питања и она која си погодио из прве (та добију једну потврду после 3 дана).' },
+    planObjasnjenje: { l: 'Ostavi oba polja prazna ako ne želiš cilj. Kad ga postaviš, dugme na početnoj daje tačno toliko pitanja — prvo ponavljanja, pa nova. U ponavljanja ulaze i pogrešna pitanja i ona koja si pogodio iz prve (ta dobiju jednu potvrdu posle 3 dana). Ako spremnih nema dovoljno, kvota se dopunjava utvrđenim pitanjima koja nisi video duže od 21 dan.', c: 'Остави оба поља празна ако не желиш циљ. Кад га поставиш, дугме на почетној даје тачно толико питања — прво понављања, па нова. У понављања улазе и погрешна питања и она која си погодио из прве (та добију једну потврду после 3 дана). Ако спремних нема довољно, квота се допуњава утврђеним питањима која ниси видео дуже од 21 дан.' },
     novihLbl: { l: 'novih', c: 'нових' },
     ponLbl: { l: 'ponavljanja', c: 'понављања' },
     unosPrazno: { l: 'Unesi ceo broj od @1 do @2.', c: 'Унеси цео број од @1 до @2.' },
@@ -559,6 +563,21 @@
     return { ready, waiting };
   }
   function markedIds() { return Q.filter((q) => S.q[q.id] && S.q[q.id].marked).map((q) => q.id); }
+
+  // ---------- Osvežavanje davno naučenog ----------
+  // Utvrđeno pitanje (izašlo iz reda) koje nije viđeno duže od 21 dan vraća se na jednu
+  // proveru — krivulja zaboravljanja ne pita da li je pitanje nekad bilo utvrđeno.
+  // Namerno NE dira red za ponavljanje (inQueue/dueOf su zaštićeni testovima): ovo je
+  // zaseban, blaži spisak. Tačan odgovor samo obnovi r.last, pa pitanje nestane sa
+  // spiska na sledeći 21 dan; pogrešan ga postojeća pravila vraćaju u pravi red.
+  const OSVEZI_POSLE = 21 * DAY;
+  function zaOsvezavanje() {
+    const sad = Date.now();
+    return Q.filter((q) => {
+      const r = S.q[q.id];
+      return r && r.a > 0 && r.last && !inQueue(q.id) && sad - r.last > OSVEZI_POSLE;
+    }).map((q) => q.id).sort((x, y) => (S.q[x].last || 0) - (S.q[y].last || 0));
+  }
 
   // ---------- Ruter + trenutni prikaz (za promenu pisma bez gubitka mesta) ----------
   const views = ['home', 'question', 'sim', 'simresult', 'stats', 'browse'];
@@ -1650,12 +1669,12 @@
     setHash('#/lista/' + (setKind === 'wrong' ? 'wrong' : 'marked'));
     const isWrong = setKind === 'wrong';
     const title = isWrong ? L('drill') : L('marked');
-    let ids, ready = [], waiting = [];
-    if (isWrong) { ({ ready, waiting } = queueSplit()); ids = ready.concat(waiting); }
+    let ids, ready = [], waiting = [], stale = [];
+    if (isWrong) { ({ ready, waiting } = queueSplit()); stale = zaOsvezavanje(); ids = ready.concat(waiting); }
     else ids = markedIds();
 
     const head = el('browseHead');
-    if (!ids.length) {
+    if (!ids.length && !(isWrong && stale.length)) {
       head.innerHTML = `<h3>${escapeHtml(title)}</h3>
         <p class="qText" style="font-weight:normal">${isWrong ? L('drillEmpty') : L('markedEmpty')}</p>
         <div class="qActions"><button type="button" class="secondary" data-nav="home">${L('backHome')}</button></div>`;
@@ -1667,12 +1686,13 @@
     const origin = () => browseSet(setKind);
     head.innerHTML = `<h3>${escapeHtml(title)}</h3>
       <div class="mut" style="margin:6px 0 10px">${isWrong
-        ? `<span title="${escapeHtml(L('queueTip'))}" style="cursor:help">${ready.length} ${L('ready')} · ${waiting.length} ${L('waiting')}</span>`
+        ? `<span title="${escapeHtml(L('queueTip'))}" style="cursor:help">${ready.length} ${L('ready')} · ${waiting.length} ${L('waiting')}</span>${stale.length ? ` · <span title="${escapeHtml(L('osveziTip'))}" style="cursor:help">${stale.length} ${L('osveziLbl')}</span>` : ''}`
         : `${ids.length}`}</div>
       <div class="qActions">
         ${isWrong
           ? `${ready.length ? `<button class="primary" id="bReady">${L('vezbajReady')} (${ready.length})${sfx()}</button>` : ''}
-             ${waiting.length ? `<button class="secondary" id="bAll">${L('drillWaitingBtn')} (${ids.length})${sfx()}</button>` : ''}`
+             ${waiting.length ? `<button class="secondary" id="bAll">${L('drillWaitingBtn')} (${ids.length})${sfx()}</button>` : ''}
+             ${stale.length ? `<button class="secondary" id="bStale" title="${escapeHtml(L('osveziTip'))}">${L('osveziBtn')} (${stale.length})${sfx()}</button>` : ''}`
           : `<button class="primary" id="bAllM">${L('vezbaj')} (${ids.length})${sfx()}</button>`}
         ${shuffleBoxHtml()}
         <button type="button" class="secondary" data-nav="home">${L('backHome')}</button>
@@ -1681,6 +1701,7 @@
     bindShuffleBox(head);
     const br = el('bReady'); if (br) br.addEventListener('click', () => startList(maybeShuffle(queueSplit().ready), shufTag(() => L('drill')), () => L('drillEmpty'), shuffleOn ? 'drill-all' : 'drill', { origin }));
     const ba = el('bAll'); if (ba) ba.addEventListener('click', () => startList(maybeShuffle(ids), shufTag(() => L('drill')), null, 'drill-all', { origin }));
+    const bo = el('bStale'); if (bo) bo.addEventListener('click', () => startList(maybeShuffle(zaOsvezavanje()), shufTag(() => L('osveziTitle')), () => L('drillEmpty'), 'filter', { origin }));
     const bm = el('bAllM'); if (bm) bm.addEventListener('click', () => startList(maybeShuffle(ids), shufTag(() => L('marked')), null, 'filter', { origin }));
 
     const list = el('browseList');
@@ -1863,7 +1884,11 @@
       if (nova.length >= p.ostaloNovih) break;
       if (!S.q[q.id] || !S.q[q.id].a) nova.push(q.id);
     }
-    return queueSplit().ready.slice(0, p.ostaloPon).concat(nova);
+    // Ako spremnih ima manje od cilja, dopuni najstarijim utvrđenim — cilj ostaje pun,
+    // a davno naučeno dobija svoju proveru upravo kroz kvotu ponavljanja.
+    let pon = queueSplit().ready.slice(0, p.ostaloPon);
+    if (pon.length < p.ostaloPon) pon = pon.concat(zaOsvezavanje().slice(0, p.ostaloPon - pon.length));
+    return pon.concat(nova);
   }
   function planBlok() {
     const p = planStanje();
@@ -1957,7 +1982,10 @@
     el('mLearn').textContent = L('allPage');
     el('mLearnSub').textContent = `${L('continueBtn')}: ${Math.min(S.seqPos + 1, Q.length)} ${L('ofQ')} ${Q.length} · ${L('allPageSub')}`;
     el('mDrill').textContent = L('drill');
-    el('mDrillSub').textContent = `${ready.length} ${L('ready')} · ${waiting.length} ${L('waiting')}`;
+    {
+      const osv = zaOsvezavanje().length;
+      el('mDrillSub').textContent = `${ready.length} ${L('ready')} · ${waiting.length} ${L('waiting')}${osv ? ` · ${osv} ${L('osveziLbl')}` : ''}`;
+    }
     el('mMarked').textContent = L('marked');
     el('mMarkedSub').textContent = `${mk}`;
     el('mSim').textContent = L('sim');
