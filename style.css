@@ -194,6 +194,12 @@ table.stats td.num, table.stats th.num { text-align: right; font-variant-numeric
 button.histBtn { width: 100%; background: none; text-align: left; border-radius: 6px; padding: 8px 6px; }
 button.histBtn:hover { background: var(--optHover); }
 .chipWrap { float: right; margin-left: 10px; white-space: nowrap; }
+/* Na telefonu oznake „tačan odgovor / tvoj odgovor" idu u SVOJ red — inače uzmu ceo red,
+   a tekst ponude se lomi reč po reč (viđeno na snimku 360px). */
+@media (max-width: 560px) {
+  .choice { flex-wrap: wrap; }                      /* i u vežbanju i u pregledu simulacije */
+  .chipWrap { float: none; flex: 0 0 100%; margin: 6px 0 0; white-space: normal; }
+}
 .chip { display: inline-block; font-size: var(--fs-xs); font-weight: 700; padding: 2px 8px; border-radius: 999px; margin-left: 4px; vertical-align: middle; }
 .chipOk { background: var(--ok-bg); color: var(--ok); border: 1px solid var(--ok); }
 .chipYourOk { background: var(--yourOk); color: #fff; }

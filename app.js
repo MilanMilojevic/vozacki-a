@@ -260,6 +260,7 @@
     thArea: { l: 'Oblast', c: 'Област' },
     thQ: { l: 'Pitanja', c: 'Питања' },
     thSeen: { l: 'Odgovarano', c: 'Одговарано' },
+    thPts: { l: 'Poeni', c: 'Поени' },
     thAcc: { l: 'Tačnost', c: 'Тачност' },
     export: { l: 'Sačuvaj napredak (fajl)', c: 'Сачувај напредак (фајл)' },
     import: { l: 'Učitaj napredak', c: 'Учитај напредак' },
@@ -745,7 +746,7 @@
     const hist = qr(q.id).a > 0
       ? ` &nbsp;·&nbsp; <span class="qOk">${S.q[q.id].a - S.q[q.id].w}× ${L('tacnoLbl')}</span> · <span class="${S.q[q.id].w ? 'qBad' : 'mut'}">${S.q[q.id].w}× ${L('netacnoLbl')}</span> · ${relTime(S.q[q.id].last)}`
       : '';
-    meta.innerHTML = `<span><button type="button" class="bcLink" data-bc="c${q.cat}">${escapeHtml(catOf(q))}</button> › <button type="button" class="bcLink" data-bc="s${q.sub}">${escapeHtml(subOf(q))}</button></span>
+    meta.innerHTML = `<span><button type="button" class="bcLink" data-bc="c${q.cat}">${escapeHtml(catOf(q))}</button> › <button type="button" class="bcLink" data-bc="s${q.sub}" title="${escapeHtml(subOf(q))}">${escapeHtml(subShortName(q.sub))}</button></span>
       <span><span class="qNum" data-qid="${q.id}" title="${escapeHtml(FILE_MODE ? L('qNumTip') : L('qNumTip2'))}">#${q.id}</span> · ${poeni(q.pts)}${hist}</span>`;
     meta.querySelectorAll('.bcLink').forEach((b) => b.addEventListener('click', () => browse(b.dataset.bc)));
     c.appendChild(meta);
@@ -1321,7 +1322,7 @@
       <p><span class="pill ${rec.passed ? 'pass' : 'fail'}">${rec.passed ? L('passed') : L('failed')}</span>
       &nbsp; <span class="mut">${L('threshold')}: ${threshold} (85%)</span></p>
       ${hasDetail ? `<h3 style="margin-top:14px">${L('perCat')}</h3>
-      <table class="stats"><thead><tr><th>${L('thArea')}</th><th class="num">${L('thQ')}</th><th class="num">${L('points')}</th></tr></thead>
+      <table class="stats"><thead><tr><th>${L('thArea')}</th><th class="num">${L('thQ')}</th><th class="num">${L('thPts')}</th></tr></thead>
       <tbody>${Object.entries(perCat).map(([cid, pc]) =>
         `<tr><td>${escapeHtml(T(catName.get(+cid)))}</td><td class="num">${pc.ok}/${pc.n}</td><td class="num">${pc.got}/${pc.pts}</td></tr>`).join('')}
       </tbody></table>` : `<p class="mut">${L('reviewOldNote')}</p>`}
