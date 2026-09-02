@@ -224,7 +224,35 @@ CARDS['preticanje'] = {
   <div class="vg" style="text-align:left">podvožnjak i nadvožnjak · NA raskrsnici sa kružnim tokom · na raskrsnici kad si na putu SA prvenstvom (i to: vozilo koje skreće levo — s desne strane; bicikl/moped/motocikl; kad reguliše semafor ili policajac) · po snegu (sneg sam po sebi ne zabranjuje)<br><br>* prevoj/krivina/tunel su dozvoljeni ako ima ≥2 trake u tvom smeru</div>
 </div>
 <p><b>Dužnosti (čl. 54 i 56):</b> pretican NE SME da ubrzava i pomera se desno; ti se posle preticanja vraćaš u svoju traku bez ugrožavanja drugih.</p>
-<p class="mut">Pamćenje za kružni tok: "ISPRED — ne, NA njemu — da". Za tunele/prevoje: "jedna traka — ne, dve trake — da".</p>`,
+<p class="mut">Pamćenje za kružni tok: "ISPRED — ne, NA njemu — da". Za tunele/prevoje: "jedna traka — ne, dve trake — da".</p>
+<p style="margin-top:10px"><b>Zamka koju baza vrti u oba smera (preticanje i obilaženje):</b> vozilo ispred tebe se zaustavilo — ili se tek zaustavlja — pred „zebrom" da propusti pešaka, a tebi se nudi da prođeš pored njega. Ne smeš <b>ni da ga pretičeš ni da ga obilaziš</b>; mamac „nije Vam dozvoljeno, osim na putu van naselja" je netačan — izuzetka nema, zabrana važi svuda.</p>
+<svg viewBox="0 0 220 170" role="img" style="max-width:250px;width:100%;display:block;margin:8px auto">
+  <rect x="0" y="0" width="30" height="170" fill="#e8dcc2"/><rect x="190" y="0" width="30" height="170" fill="#e8dcc2"/>
+  <rect x="30" y="0" width="160" height="170" fill="#9aa7b4"/>
+  <line x1="110" y1="4" x2="110" y2="24" stroke="#fff" stroke-width="4" stroke-dasharray="14 10"/>
+  <line x1="110" y1="68" x2="110" y2="166" stroke="#fff" stroke-width="4" stroke-dasharray="14 10"/>
+  <rect x="38" y="30" width="9" height="32" fill="#fff"/><rect x="54" y="30" width="9" height="32" fill="#fff"/><rect x="70" y="30" width="9" height="32" fill="#fff"/><rect x="86" y="30" width="9" height="32" fill="#fff"/><rect x="102" y="30" width="9" height="32" fill="#fff"/><rect x="118" y="30" width="9" height="32" fill="#fff"/><rect x="134" y="30" width="9" height="32" fill="#fff"/><rect x="150" y="30" width="9" height="32" fill="#fff"/><rect x="166" y="30" width="9" height="32" fill="#fff"/>
+  <g transform="translate(150 96)">
+    <rect x="-11" y="-13" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="-13" width="4.5" height="8" rx="2" fill="#333"/>
+    <rect x="-11" y="6" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="6" width="4.5" height="8" rx="2" fill="#333"/>
+    <rect x="-9" y="-17" width="18" height="34" rx="7" fill="#5f6d7a"/>
+    <path d="M-6 -9 Q0 -13 6 -9 L6 -4 Q0 -7 -6 -4 Z" fill="#fff" opacity=".85"/>
+    <path d="M-6 9 Q0 12 6 9 L6 13 Q0 15 -6 13 Z" fill="#fff" opacity=".5"/>
+  </g>
+  <g transform="translate(150 146)">
+    <rect x="-2.5" y="-15" width="5" height="9" rx="2.5" fill="#333"/>
+    <rect x="-2.5" y="6" width="5" height="9" rx="2.5" fill="#333"/>
+    <rect x="-4" y="-9" width="8" height="19" rx="4" fill="#2c6aa0"/>
+    <rect x="-9" y="-8" width="18" height="3" rx="1.5" fill="#333"/>
+    <circle cy="2" r="4.5" fill="#c0392b"/>
+  </g>
+  <path d="M141 140 C115 132 100 120 100 100 L100 48" stroke="#c0392b" stroke-width="3" fill="none" stroke-dasharray="6 5"/>
+  <path d="M94 56 L100 46 L106 56" stroke="#c0392b" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <g transform="translate(118 88)"><circle r="11" fill="#fff" stroke="#c0392b" stroke-width="3"/><path d="M-5 -5 L5 5 M5 -5 L-5 5" stroke="#c0392b" stroke-width="3" stroke-linecap="round"/></g>
+  <g transform="translate(172 46)"><ellipse rx="8" ry="5" fill="#1c2e40"/><circle cx="-2" r="3.5" fill="#d9a066"/></g>
+  <path d="M160 46 L146 46 M151 41 L145 46 L151 51" stroke="#1c2e40" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+`,
 };
 
 CARDS['znakovi-porodice'] = {
@@ -666,7 +694,25 @@ CARDS['svetla'] = {
 <p><b>Osnovno (čl. 77):</b> DANJU — kratka ili dnevna svetla (uvek uključena!). NOĆU — duga svetla.</p>
 <p><b>Kratka UMESTO dugih (čl. 77):</b> mimoilaženje kad zaslepljuješ (a UVEK na manje od <b>200 m</b>) · kad ometaš vozača ispred sebe · ulica sa rasvetom · tunel · kad ometaš šinsko vozilo/plovilo · MAGLA · kad je vozilo zaustavljeno.</p>
 <p><b>Magla (čl. 79):</b> kratka svetla i/ili svetla za maglu; ZADNJE svetlo za maglu samo po magli/smanjenoj vidljivosti.</p>
-<p class="mut">Zamka: duga svetla NISU dozvoljena "uvek noću" — sedam izuzetaka gore. I obrnuto: danju svetla MORAJU (kratka/dnevna), nisu opcija.</p>`,
+<p class="mut">Zamka: duga svetla NISU dozvoljena "uvek noću" — sedam izuzetaka gore. I obrnuto: danju svetla MORAJU (kratka/dnevna), nisu opcija.</p>
+<p style="margin-top:10px"><b>Tabela za ispit — situacija → svetlo koje MORA da bude uključeno:</b></p>
+<table>
+<tr><th>Situacija</th><th>Obavezno svetlo</th></tr>
+<tr><td>vožnja <b>DANJU</b></td><td><b>kratka, odnosno dnevna</b> svetla</td></tr>
+<tr><td>vožnja <b>NOĆU</b> (osnovno pravilo)</td><td><b>duga</b> svetla</td></tr>
+<tr><td>noću: mimoilaženje kad oceniš da zaslepljuješ vozača iz susreta — a <b>UVEK na odstojanju manjem od 200 m</b></td><td><b>kratka</b> umesto dugih</td></tr>
+<tr><td>noću: ometaš vozača <b>ispred sebe</b></td><td><b>kratka</b> umesto dugih</td></tr>
+<tr><td>noću: put osvetljen <b>uličnom rasvetom</b></td><td><b>kratka</b> umesto dugih</td></tr>
+<tr><td>noću: u <b>tunelu</b></td><td><b>kratka</b> umesto dugih</td></tr>
+<tr><td>noću: ometaš upravljača <b>šinskog vozila ili plovila</b></td><td><b>kratka</b> umesto dugih</td></tr>
+<tr><td>noću: za vreme <b>magle</b></td><td><b>kratka</b> umesto dugih</td></tr>
+<tr><td>noću: vozilo je <b>zaustavljeno</b></td><td><b>kratka</b> umesto dugih</td></tr>
+<tr><td><b>MAGLA</b> (kao vremenski uslov)</td><td><b>kratka svetla, odnosno svetla za maglu ili obe vrste svetala</b> — ne dnevna, ne duga</td></tr>
+<tr><td><b>zaustavljeno ili parkirano</b> na kolovozu, noću i u uslovima smanjene vidljivosti</td><td><b>poziciona, odnosno parkirna</b> svetla (NE kratka!)</td></tr>
+<tr><td>isto to, ali ulično osvetljenje čini vozilo <b>dovoljno vidljivim</b> + posebno obeleženo mesto</td><td><b>ne moraju</b> biti uključena poziciona/parkirna</td></tr>
+</table>
+<p class="mut">Zamke: „na putu u naselju" se nudi u SVAKOM pitanju o kratkim umesto dugih — i nikad nije tačno (razlog je ulična rasveta, ne naselje). Odstojanje je <b>200 m</b>, mamac je 250 m. Pazi ŠTA pitanje pita: kad traži koja svetla <b>umesto dugih</b> (vožnja noću), „kada je vozilo zaustavljeno" JESTE tačan odgovor za kratka; ali kad pita koja svetla mora da ima <b>zaustavljeno/parkirano vozilo na kolovozu</b>, odgovor su POZICIONA, odnosno parkirna — kratka su tu mamac.</p>
+`,
 };
 
 CARDS['pesaci-bicikli'] = {
@@ -756,7 +802,49 @@ CARDS['autoput'] = {
 <p><b>Kretanje (čl. 104):</b> krajnjom DESNOM trakom (osim kolone/preticanja) · zaustavnom trakom je ZABRANJENO kretanje (izuzetak: pod pratnjom/pravo prvenstva kad je gužva, održavanje) · preticanje s desne strane zabranjeno.</p>
 <p><b>Zabranjeno na autoputu/motoputu (čl. 105):</b> zaustavljanje i parkiranje (osim uređenih mesta) · polukružno okretanje · kretanje unazad.</p>
 <p><b>Kvar (čl. 105):</b> zaustavi na zaustavnoj traci, sigurnosni trougao na ≥ 100 m, svi pokazivači, svetloodbojni prsluk van vozila — i ukloni vozilo što pre.</p>
-<p><b>Zastoj:</b> ostavlja se slobodan prolaz za vozila pod pratnjom/sa pravom prvenstva (čl. 104).</p>`,
+<p><b>Zastoj:</b> ostavlja se slobodan prolaz za vozila pod pratnjom/sa pravom prvenstva (čl. 104).</p>
+<p style="margin-top:14px"><b>Uključivanje na autoput — pogled odozgo:</b></p>
+<svg viewBox="0 0 380 260" style="max-width:420px;width:100%;display:block;margin:10px auto">
+  <rect x="0" y="0" width="380" height="260" fill="#6b7f5e"/>
+  <rect x="0" y="0" width="22" height="260" fill="#4e5f45"/>
+  <rect x="0" y="145" width="22" height="36" fill="#9aa7b4"/>
+  <rect x="22" y="0" width="178" height="260" fill="#9aa7b4"/>
+  <rect x="200" y="0" width="56" height="260" fill="#9aa7b4"/>
+  <line x1="27" y1="0" x2="27" y2="260" stroke="#fff" stroke-width="3"/>
+  <line x1="111" y1="4" x2="111" y2="256" stroke="#fff" stroke-width="4" stroke-dasharray="16 12"/>
+  <line x1="200" y1="0" x2="200" y2="108" stroke="#fff" stroke-width="4"/>
+  <line x1="200" y1="108" x2="200" y2="260" stroke="#fff" stroke-width="4" stroke-dasharray="12 10"/>
+  <line x1="251" y1="0" x2="251" y2="260" stroke="#fff" stroke-width="3"/>
+  <g transform="translate(155 62)">
+    <rect x="-11" y="-13" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="-13" width="4.5" height="8" rx="2" fill="#333"/>
+    <rect x="-11" y="6" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="6" width="4.5" height="8" rx="2" fill="#333"/>
+    <rect x="-9" y="-17" width="18" height="34" rx="7" fill="#5f6d7a"/>
+    <path d="M-6 -9 Q0 -13 6 -9 L6 -4 Q0 -7 -6 -4 Z" fill="#fff" opacity=".85"/>
+    <path d="M-6 9 Q0 12 6 9 L6 13 Q0 15 -6 13 Z" fill="#fff" opacity=".5"/>
+  </g>
+  <g transform="translate(216 228)">
+    <rect x="-11" y="-13" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="-13" width="4.5" height="8" rx="2" fill="#333"/>
+    <rect x="-11" y="6" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="6" width="4.5" height="8" rx="2" fill="#333"/>
+    <rect x="-9" y="-17" width="18" height="34" rx="7" fill="#2c6aa0"/>
+    <path d="M-6 -9 Q0 -13 6 -9 L6 -4 Q0 -7 -6 -4 Z" fill="#fff" opacity=".85"/>
+    <path d="M-6 9 Q0 12 6 9 L6 13 Q0 15 -6 13 Z" fill="#fff" opacity=".5"/>
+  </g>
+  <path d="M216 210 C216 156 208 136 178 124 C160 117 155 116 155 96" stroke="#1f7a3f" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <polygon points="149,100 161,100 155,84" fill="#1f7a3f"/>
+  <g transform="translate(186 94)"><circle r="11" fill="#fff" stroke="#1f7a3f" stroke-width="3"/><path d="M-5 0 L-1 5 L5 -5" stroke="#1f7a3f" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <path d="M206 196 C178 162 124 142 80 118" stroke="#c0392b" stroke-width="4" fill="none" stroke-dasharray="7 6" stroke-linecap="round"/>
+  <g transform="translate(64 102)"><circle r="11" fill="#fff" stroke="#c0392b" stroke-width="3"/><path d="M-5 -5 L5 5 M5 -5 L-5 5" stroke="#c0392b" stroke-width="3" stroke-linecap="round"/></g>
+  <path d="M69 228 C69 192 62 166 34 163 L18 163" stroke="#c0392b" stroke-width="4" fill="none" stroke-dasharray="7 6" stroke-linecap="round"/>
+  <polygon points="20,157 20,169 7,163" fill="#c0392b"/>
+  <g transform="translate(42 186)"><circle r="11" fill="#fff" stroke="#c0392b" stroke-width="3"/><path d="M-5 -5 L5 5 M5 -5 L-5 5" stroke="#c0392b" stroke-width="3" stroke-linecap="round"/></g>
+  <g transform="translate(225 22)"><circle r="11" fill="#fff" stroke="#c0392b" stroke-width="3"/><path d="M-5 -5 L5 5 M5 -5 L-5 5" stroke="#c0392b" stroke-width="3" stroke-linecap="round"/></g>
+  <text x="69" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">leva</text>
+  <text x="155" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">krajnja desna</text>
+  <text transform="translate(228 98) rotate(-90)" font-size="10" font-weight="bold" fill="#fff">ZAUSTAVNA</text>
+  <text transform="translate(246 252) rotate(-90)" font-size="9" font-weight="bold" fill="#fff">ULIVNA TRAKA</text>
+</svg>
+<p>Na autoput se uključuješ SAMO prilaznim putem: ulivnom trakom voziš do njenog kraja i ulivaš se u krajnju DESNU saobraćajnu traku (zelena putanja — na ispitnoj slici to je putanja br. 3), uz uključen LEVI pokazivač pravca i obavezu da propustiš vozila koja se već kreću autoputem. Prevremeno napuštanje ulivne trake — odmah u voznu traku (na slici mamac br. 2) ili sečenjem čak u levu (mamac br. 1) — nije propisno, a zaustavnom trakom kretanje NIJE dozvoljeno: mamac „osim motornim vozilima koja vuku neispravno vozilo" je netačan, izuzetka nema. Polukružno okretanje, i kroz prolaz u razdelnom pojasu, zabranjeno je bez ijednog izuzetka — „ako se može izvršiti bez manevrisanja" i „ako se time ne ugrožavaju drugi učesnici u saobraćaju" su mamci, a isto važi i na motoputu.</p>
+`,
 };
 
 CARDS['vozilo-tehnika'] = {
@@ -765,7 +853,18 @@ CARDS['vozilo-tehnika'] = {
 <p><b>U saobraćaju sme samo vozilo koje je:</b> REGISTROVANO (važeća registraciona nalepnica) + TEHNIČKI ISPRAVNO. Registracija važi godinu dana.</p>
 <p><b>Tehnički pregled:</b> redovni — pre izdavanja registracione nalepnice · vozilo mora imati ispravne propisane uređaje (kočnice, upravljač, svetla, pneumatike...).</p>
 <p><b>Pneumatici:</b> na istoj osovini ISTI (dimenzija, vrsta) · dubina šare: dublja od TWI oznake, a bez TWI oznake NAJMANJE 1,6 mm (moped/motocikl) · zimska oprema kad je propisana.</p>
-<p><b>Za motocikl posebno:</b> ogledala, svetla i kočnice na oba točka su bezbednosno kritični — na testu se traži šta je OBAVEZNA oprema.</p>`,
+<p><b>Za motocikl posebno:</b> ogledala, svetla i kočnice na oba točka su bezbednosno kritični — na testu se traži šta je OBAVEZNA oprema.</p>
+<p style="margin-top:18px"><b>REDOVNI · VANREDNI · KONTROLNI TEHNIČKI PREGLED</b></p>
+<p>Tri vrste pregleda su tri različita pitanja na testu, a zamke su gotovo uvek odgovori <b>pozajmljeni od druge vrste</b>. Razvrstaj jednom i ne mešaj:</p>
+<table>
+<tr><th></th><th>Redovni</th><th>Vanredni</th><th>Kontrolni</th></tr>
+<tr><td><b>Šta je</b></td><td>Može biti <b>godišnji i šestomesečni</b></td><td>Pregled <b>pre puštanja u saobraćaj</b> vozila koje je „ispalo iz stroja"</td><td>Kontrola tehničke ispravnosti <b>po nalogu</b></td></tr>
+<tr><td><b>Kada / povod</b></td><td>Godišnjem se vozilo podvrgava <b>pre upisa u jedinstveni registar vozila, odnosno izdavanja registracione nalepnice</b> · može se izvršiti <b>najranije 30 dana pre podnošenja zahteva</b> za upis/nalepnicu</td><td>1) kod vozila su <b>u saobraćajnoj nezgodi ili na drugi način oštećeni vitalni sklopovi i uređaji</b> bitni za bezbednost, odnosno vozilo posle toga <b>nije bilo u voznom stanju</b> · 2) vozilo je <b>isključeno iz saobraćaja zbog tehničke neispravnosti utvrđene na kontrolnom pregledu</b></td><td>Može se uputiti vozilo <b>koje je u voznom stanju</b></td></tr>
+<tr><td><b>Ko upućuje</b></td><td>Vezan za registraciju (nalepnicu)</td><td>Obavlja se pre puštanja u saobraćaj — ne po nečijem nalogu</td><td><b>Po nalogu ovlašćenog lica MUP-a</b> ili <b>inspektora za drumski saobraćaj</b> — NE po zahtevu vozača ni vlasnika</td></tr>
+</table>
+<p class="mut">Zamke po vrstama: kod redovnog nude „tromesečni" i „petogodišnji" (ne postoje) i „najkasnije jednu godinu nakon prethodnog pregleda" — tačan odgovor je vezan za <b>nalepnicu</b>, ne za datum prošlog pregleda. Kod vanrednog nude „radi kontrole od strane ovlašćenog lica MUP-a/inspektora" (to je kontrolni!) i „pre isteka roka od šest meseci od početka važenja nalepnice" (to miriše na šestomesečni redovni). Kod kontrolnog nude vozilo „kojem su u nezgodi oštećeni uređaji" — to ide na <b>vanredni</b>; na kontrolni se može uputiti vozilo <b>u voznom stanju</b>.</p>
+<p><b>Zajednička pravila za redovni i vanredni pregled:</b> vrše se samo na <b>čistom</b> vozilu koje je <b>u voznom stanju</b> i <b>neopterećeno</b> — zamka „na tehnički ispravnom vozilu" je besmislena, jer se ispravnost na pregledu tek utvrđuje. Lice koje je dovezlo vozilo kontroloru daje na uvid <b>saobraćajnu dozvolu i SVOJU ličnu kartu</b> (ne ličnu kartu vlasnika, ne vozačku dozvolu). Registrovano, neodjavljeno vozilo na redovnom pregledu mora imati <b>sve propisane registarske tablice, postavljene na predviđenim mestima</b> — „bar jedna tablica" nije dovoljna.</p>
+`,
 };
 
 CARDS['razno-pravila'] = {
