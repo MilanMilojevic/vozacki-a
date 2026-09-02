@@ -1989,13 +1989,22 @@
         <span class="catCnt">${seen}/${qq.length}</span></button>`;
       row.querySelector('.catMain').addEventListener('click', () => browse('c' + c.id));
       row.querySelector('.catChevBtn').addEventListener('click', () => {
-        const open = row.classList.toggle('open');
+        // Akordeon kao u pojmovniku: otvaranje jedne oblasti sklapa prethodno otvorenu.
+        // Bez ovoga je otklapanje svega isteglo levu kolonu na 2361px uz prazninu desno.
+        const zatvoriRed = (r) => {
+          r.classList.remove('open');
+          const ch = r.querySelector('.catChevBtn');
+          if (ch) { ch.textContent = '▸'; ch.setAttribute('aria-expanded', 'false'); }
+          let n2 = r.nextElementSibling;
+          while (n2 && n2.classList.contains('catSubRow')) { const rm2 = n2; n2 = n2.nextElementSibling; rm2.remove(); }
+        };
+        const bioOtvoren = row.classList.contains('open');
+        cb.querySelectorAll('.catRow.open').forEach(zatvoriRed);
+        if (bioOtvoren) return;                     // klik na otvorenu = samo zatvori
+        row.classList.add('open');
         const chev = row.querySelector('.catChevBtn');
-        chev.textContent = open ? '▾' : '▸';
-        chev.setAttribute('aria-expanded', open ? 'true' : 'false');
-        let next = row.nextElementSibling;
-        while (next && next.classList.contains('catSubRow')) { const rm = next; next = next.nextElementSibling; rm.remove(); }
-        if (!open) return;
+        chev.textContent = '▾';
+        chev.setAttribute('aria-expanded', 'true');
         let ref = row, zi = 0;
         const addSub = (labelHtml, key, sSeen, sTot, sGood, title) => {
           const sr = document.createElement('div');
