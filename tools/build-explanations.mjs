@@ -1149,9 +1149,11 @@ Ne. Briše ga samo "brisanje podataka pregledanja" ("Clear browsing data") i sli
 <p><b>Zašto simulacija izgleda "siromašnije" od učenja?</b><br>
 Namerno: simulacija je verna pravom ispitu (isti sastav testa, redosled tema, bez objašnjenja, bez pomoći,
 uvek svetla tema). Sve pomoći žive u učenju i u pregledu POSLE predaje.</p>
-<p><b>Kako radi "Ponovi pogrešna"?</b><br>
-Razmaknuto ponavljanje: pogrešiš → pitanje je odmah spremno; pogodiš ga → vraća se sutra; opet pogodiš →
-za 3 dana; treći pogodak zaredom → utvrđeno je i izlazi iz reda.</p>
+<p><b>Kako radi Ponavljanje?</b><br>
+Razmaknuto ponavljanje: pogrešiš → pitanje je odmah na redu; pogodiš ga → vraća se sutra; opet pogodiš →
+za 3 dana; treći pogodak zaredom → utvrđeno je i izlazi iz reda. I pitanje koje si pogodio iz prve vraća se
+jednom, za 3 dana, da se potvrdi — pa izlazi. Tačan odgovor PRE roka je vežbanje i ne pomera raspored;
+pogrešan važi uvek. U dnevni cilj isto pitanje ulazi najviše jednom dnevno.</p>
 <p><b>Šta je broj #1234 pored pitanja?</b><br>
 Zvanični broj pitanja u MUP bazi — isti broj važi i na eUpravi, pa možeš da uporediš.</p>
 <p><b>Zašto odgovori počinju malim slovom, a "km/h" je latinicom i u ćirilici?</b><br>

@@ -18,6 +18,12 @@
   --barSeen: #9db8d2;                            /* traka napretka: viđeno (ispod: --blue = tačno) */
   --warnBg: #7a4b00; --warnInk: #fff;            /* traka tihih upozorenja */
   --yourOk: #1d4ed8;                             /* oznaka „tvoj odgovor" kad je tačan */
+  /* glavno dugme i traka na vrhu imaju SVOJU plavu: u tamnoj temi --blue posvetli (tekst),
+     a bela slova na njoj ne bi prošla kontrast — zato ne nasleđuju --blue */
+  --primaryBg: #2c6aa0; --primaryBgH: #1f4e78; --topbar: #2c6aa0;
+  --dot: #b6c2d0;                                /* tačkica neodgovorenog u spisku */
+  --chipBg: rgba(44,106,160,.12); --chipInk: #1f4e78;   /* oznaka „na ispitu: N" */
+  --sjaj: rgba(44,106,160,.18); --halo: rgba(44,106,160,.35);   /* senka pod mišem; prsten ture */
 }
 body.dark {
   --blue: #4a86bd; --blue-d: #6aa4d8; --bg: #131a22; --card: #1d2731;
@@ -30,10 +36,14 @@ body.dark {
   --reqBg: #1d3348; --reqInk: #a8cdec;
   --vgSlow: #163826; --vgSlowInk: #7fd8a0; --vgFast: #1a2f4d; --vgFastInk: #9dc3ee;
   --btnOff: #4a5560; --barSeen: #5b7a99; --yourOk: #3b6fd9;
+  --topbar: #24587f; --dot: #56687a;
+  --chipBg: rgba(95,151,201,.22); --chipInk: #9cc3e5;
+  --sjaj: rgba(74,134,189,.25); --halo: rgba(74,134,189,.45);
 }
 /* Simulacija UVEK izgleda kao pravi ispit — svetla, bez obzira na temu */
 body.dark #view-sim {
   --blue: #2c6aa0; --blue-d: #1f4e78; --bg: #eef2f6; --card: #ffffff;
+  --primaryBg: #2c6aa0; --primaryBgH: #1f4e78; --btnOff: #a8bcd0;
   --ink: #1c2733; --mut: #64748b; --line: #dbe3ec;
   --ok: #15803d; --ok-bg: #dcfce7; --bad: #b91c1c; --bad-bg: #fee2e2;
   --mark: #b45309; --mark-bg: #fef3c7;
@@ -42,11 +52,6 @@ body.dark #view-sim {
   background: var(--bg); border-radius: 12px; padding: 8px; color: var(--ink);
 }
 :focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
-/* WCAG AA kontrast u tamnoj temi: bela slova traže tamniju plavu podlogu */
-body.dark .primary { background: #2c6aa0; }
-body.dark .primary:hover { background: #1f4e78; }
-.primary:disabled:hover { background: var(--btnOff); }
-body.dark #topbar { background: #24587f; }
 button.catRow { width: 100%; background: none; border: none; padding: 0; font: inherit; color: inherit; text-align: left; }
 html { font-size: 16px; }
 /* overflow-anchor: sami upravljamo skrolom kad se kartica otvori; bez ovoga pregledač
@@ -60,10 +65,12 @@ body { font-family: "Segoe UI", system-ui, -apple-system, sans-serif; background
    napretka — bude odsečeno. */
 #topbar { position: sticky; top: 0; z-index: 10; display: flex; flex-wrap: wrap; justify-content: space-between;
   align-items: center; row-gap: 8px; column-gap: 8px;
-  background: var(--blue); color: #fff; padding: 10px 16px; box-shadow: 0 2px 6px rgba(0,0,0,.15); }
+  background: var(--topbar); color: #fff; padding: 10px 16px; box-shadow: 0 2px 6px rgba(0,0,0,.15); }
 .brand { font-size: var(--fs-lg); font-weight: 600; cursor: pointer; background: none; border: none; color: inherit; font-family: inherit; padding: 0; min-width: 0; }
 .topActions { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
-button { font: inherit; color: inherit; cursor: pointer; border: none; border-radius: 8px; }
+/* Dugme ne nasleđuje veličinu slova kartice: isto dugme („Sačuvaj cilj", „Na početnu") je u
+   podešavanjima (.card.small) bilo manje nego bilo gde drugde, a dodirna površina pala na 40px. */
+button { font: inherit; font-size: 1rem; color: inherit; cursor: pointer; border: none; border-radius: 8px; }
 .ghost { background: rgba(255,255,255,.15); color: #fff; padding: 6px 12px; }
 .ghost:hover:not(:disabled) { background: rgba(255,255,255,.28); }
 /* dugme koje nema šta da uradi mora i da izgleda tako */
@@ -79,7 +86,7 @@ main { max-width: 880px; width: 100%; margin: 0 auto; padding: 16px 12px 60px; f
 .menuGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; margin-bottom: 14px; }
 .menuBtn { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; text-align: left;
   background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; box-shadow: 0 1px 3px rgba(16,24,40,.06); }
-.menuBtn:hover { border-color: var(--blue); box-shadow: 0 2px 8px rgba(44,106,160,.18); }
+.menuBtn:hover { border-color: var(--blue); box-shadow: 0 2px 8px var(--sjaj); }
 .mIcon { font-size: 1.4rem; }
 .mTitle { font-weight: 600; font-size: var(--fs-lg); }
 .mSub { color: var(--mut); font-size: var(--fs-sm); }
@@ -115,7 +122,7 @@ main { max-width: 880px; width: 100%; margin: 0 auto; padding: 16px 12px 60px; f
 #updBar { position: fixed; bottom: 14px; left: 50%; transform: translateX(-50%); background: var(--card); color: var(--ink);
   border: 1px solid var(--blue); border-radius: 12px; padding: 10px 16px; display: flex; gap: 12px; align-items: center;
   z-index: 1200; box-shadow: 0 6px 24px rgba(0,0,0,.25); }
-.tourSpot { position: relative; z-index: 1000; box-shadow: 0 0 0 3px var(--blue), 0 0 0 8px rgba(44,106,160,.35) !important; border-radius: 12px; }
+.tourSpot { position: relative; z-index: 1000; box-shadow: 0 0 0 3px var(--blue), 0 0 0 8px var(--halo) !important; border-radius: 12px; }
 
 /* Traka iznad pitanja: FIKSNA mreža — naslov (skraćen po potrebi) · brojač · Idi · prečice.
    Kontrole ostaju na istom mestu bez obzira na dužinu naziva podoblasti. */
@@ -143,13 +150,14 @@ main { max-width: 880px; width: 100%; margin: 0 auto; padding: 16px 12px 60px; f
 .verdict.ok { color: var(--ok); background: var(--ok-bg); }
 .verdict.bad { color: var(--bad); background: var(--bad-bg); }
 .qActions { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; align-items: center; }
-.primary { background: var(--blue); color: #fff; padding: 11px 22px; font-weight: 600; }
-.primary:hover { background: var(--blue-d); }
+/* Tri oblika dugmeta, iste mere: glavno (jedno po ekranu), sporedno, razorno. */
+.primary { background: var(--primaryBg); color: #fff; padding: 11px 22px; font-weight: 600; }
+.primary:hover:not(:disabled) { background: var(--primaryBgH); }
 .primary:disabled { background: var(--btnOff); cursor: default; }
 .secondary { background: var(--btn2); color: var(--ink); padding: 11px 18px; }
 .secondary:hover:not(:disabled) { background: var(--btn2h); }
 .secondary:disabled { opacity: .55; cursor: default; }
-.danger { background: var(--danger); color: #fff; padding: 10px 18px; font-weight: 600; }
+.danger { background: var(--danger); color: #fff; padding: 11px 22px; font-weight: 600; }
 .danger:hover:not(:disabled) { background: var(--danger-d); }
 .danger:disabled { opacity: .55; cursor: default; }
 #simReport tr.repRow { cursor: pointer; }
@@ -177,7 +185,7 @@ table.stats td.num, table.stats th.num { text-align: right; font-variant-numeric
 .zatvoriX:hover { background: var(--btn2h); }
 .pill { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: var(--fs-sm); font-weight: 600; }
 .pill.pass { background: var(--ok-bg); color: var(--ok); } .pill.fail { background: var(--bad-bg); color: var(--bad); }
-.histRow { display: grid; grid-template-columns: 7.5em 4.5em 1fr 3.5em 1em; gap: 10px; align-items: center;
+.histRow { display: grid; grid-template-columns: 9.5em 5em 1fr 3.5em 1em; gap: 10px; align-items: center;
   padding: 6px 0; border-bottom: 1px solid var(--line); font-size: var(--fs-md); }
 .histScore { text-align: right; font-variant-numeric: tabular-nums; }
 .histPill { justify-self: start; }
@@ -214,11 +222,27 @@ button.histBtn:hover { background: var(--optHover); }
 /* Široka tabela sme da se skroluje u svom okviru, ali NIKAD da razvuče celu stranu.
    Tabela statistike je na 320px izlazila 36px preko kartice i pravila vodoravni skrol. */
 /* ---- Podešavanja: imenovane grupe umesto jednog reda nabacanih dugmadi ---- */
-.podGrupa { padding: 12px 0; border-top: 1px solid var(--line); }
+.podGrupa { padding: 12px 0; border-top: 1px solid var(--line); scroll-margin-top: 74px; }
 .podGrupa:first-child { padding-top: 0; border-top: none; }
-.podNaslov { font-weight: 700; font-size: var(--fs-sm); letter-spacing: .04em; text-transform: uppercase;
-  color: var(--mut); margin-bottom: 8px; }
-.podOpasno .podNaslov { color: var(--bad); }
+/* JEDAN naslov grupe za sve spiskove: grupe podešavanja, grupe pojmovnika, oblasti u
+   „Sva pitanja", podoblasti u oblasti. Ranije tri razreda sa tri različita razmaka i okvira. */
+.grupaNaslov { margin: 14px 0 6px; padding-bottom: 4px; border-bottom: 1px solid var(--line);
+  font-size: var(--fs-sm); font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--mut); }
+.podGrupa .grupaNaslov { margin-top: 0; border-bottom: none; padding-bottom: 0; }
+.podOpasno .grupaNaslov { color: var(--bad); }
+/* razmaci koji su stajali kao inline stilovi na desetak mesta — jedna vrednost, jedan razred */
+.opisRed { margin: 6px 0 10px; }
+.razmakG { margin-top: 8px; }
+.card h3 ~ h3 { margin-top: 12px; }
+#examDate { margin-left: 6px; }
+.markBox.uSpisku { margin-left: 0; }
+/* „?" uz brojeve ponavljanja: otvara objašnjenje na mestu (kao kartica), ne oblačić */
+.pomocBtn { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px;
+  padding: 0; border-radius: 999px; background: var(--btn2); color: var(--ink); font-size: var(--fs-xs);
+  font-weight: 700; vertical-align: middle; margin-left: 2px; }
+.pomocBtn:hover { background: var(--btn2h); }
+.pomocBtn[aria-expanded="true"] { background: var(--blue); color: #fff; }
+.pomocTekst { margin-top: 6px; }
 
 /* ---- Podnožje ---- */
 #podnozje { max-width: 880px; margin: 26px auto 0; padding: 18px 12px 34px; text-align: center;
@@ -282,9 +306,13 @@ body.uSimulaciji #podnozje { display: none; }
    u „zašto verovati" i u podešavanjima. Ranije je ista radnja imala dva izgleda: ovde red
    preko cele širine, a drugde podvučen link. Red preko širine je i bolji cilj za prst i
    jasnije govori „ovo se otvara ovde", a ne „ovo vodi na drugu stranu". */
-.pojBtn { display: block; width: 100%; text-align: left; background: none; border: none;
+.pojBtn { display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%; text-align: left; background: none; border: none;
   padding: 11px 4px; font: inherit; font-weight: 600; font-size: var(--fs-md); color: var(--blue); cursor: pointer; }
 .pojBtn:hover { color: var(--blue-d); }
+/* strelica kaže „ovo se otklapa" — ista kao uz oblasti; bez nje su „Česta pitanja" i
+   „Zašto verovati" izgledali kao prazne kartice sa naslovom */
+.pojBtn[aria-expanded]::after { content: '▸'; color: var(--mut); font-size: var(--fs-sm); flex: 0 0 auto; }
+.pojBtn[aria-expanded="true"]::after { content: '▾'; }
 .pojEntry .explCard { margin: 0 4px 18px; }
 .explCard th, .explCard td { border: 1px solid var(--explLine); padding: 6px 8px; text-align: left; }
 .explCard th { background: var(--explTh); }
@@ -332,7 +360,8 @@ body.uSimulaciji #podnozje { display: none; }
 .qRowStat { float: right; margin-left: 10px; font-size: var(--fs-xs); font-variant-numeric: tabular-nums; white-space: nowrap; }
 .qOk { color: var(--ok); font-weight: 700; }
 .qBad { color: var(--bad); font-weight: 700; }
-.qDot { color: #b6c2d0; font-weight: 700; }
+.qDot { color: var(--dot); font-weight: 700; }
+.qWait { color: var(--blue); font-weight: 700; }   /* tačno iz prve, čeka jednu potvrdu */
 .catTotal { padding-bottom: 6px; border-bottom: 1px solid var(--line); margin-bottom: 8px; }
 tr.totalRow td { border-top: 2px solid var(--blue); }
 .subRow { display: grid; grid-template-columns: 1fr 5.5em 4em; gap: 10px; align-items: center;
@@ -341,8 +370,6 @@ tr.totalRow td { border-top: 2px solid var(--blue); }
 .subRow .subName { color: var(--blue); }
 .subRow .subCnt, .subRow .subAcc { text-align: right; color: var(--mut); font-variant-numeric: tabular-nums; white-space: nowrap; }
 .subRow:hover { background: var(--optHover); }
-.qDivider { margin: 16px 0 4px; padding-bottom: 4px; border-bottom: 2px solid var(--line);
-  font-size: var(--fs-xs); font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--mut); }
 #btnScript .segOn { font-weight: 800; color: #fff; }
 #btnScript .segOff { color: rgba(255,255,255,.75); }
 #btnScript .segSep { margin: 0 5px; color: rgba(255,255,255,.4); }
@@ -383,7 +410,7 @@ tr.totalRow td { border-top: 2px solid var(--blue); }
   .hColL { grid-column: 1; } .hColR { grid-column: 2; }
   /* Objašnjenje ide ISPOD odgovora i na širokim ekranima (Milanova odluka) —
      kartica pitanja je samo ograničena po širini radi čitljivosti redova. */
-  #view-question #qCard { max-width: 860px; margin-left: auto; margin-right: auto; }
+  #view-question #qCard, #view-question #qProgress { max-width: 860px; margin-left: auto; margin-right: auto; }
   /* isti sadržaj (pitanje + ponude) crta se i u pregledu rezultata — ista granica */
   #view-simresult #simResultCard, #view-simresult #simWrongList { max-width: 860px; margin-left: auto; margin-right: auto; }
 }
@@ -411,8 +438,8 @@ tr.totalRow td { border-top: 2px solid var(--blue); }
   /* Redosled po ID-ju, NE po koloni — kolone su raspored za širok ekran i smeju da se
      menjaju bez diranja ovog bloka. */
   #view-home #oblastiCard { order: 3; }   /* napredak po oblastima */
-  #view-home > #guideCard { order: 4; }
-  #view-home #simHistory { order: 5; }
+  #view-home #simHistory { order: 4; }    /* isti redosled kao na širokom: podaci, pa vodič */
+  #view-home > #guideCard { order: 5; }
   #view-home > #pojmovnikCard { order: 6; }
   #view-home > #faqCard { order: 7; }
   #view-home > #trustCard { order: 8; }
@@ -420,13 +447,8 @@ tr.totalRow td { border-top: 2px solid var(--blue); }
 }
 
 /* Vodič za učenje */
-.guideHead { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
 .guideList { margin: 10px 0 0; padding-left: 22px; line-height: 1.5; }
 .guideList li { margin-bottom: 8px; }
-
-/* Grupe u pojmovniku */
-.pojGroup { margin: 14px 0 4px; font-size: var(--fs-sm); font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--mut); border-bottom: 1px solid var(--line); padding-bottom: 4px; }
-.pojGroup:first-of-type { margin-top: 6px; }
 
 /* posle odgovora ponude su zaključane, ali ostaju čitljive za čitače ekrana */
 .choice[aria-disabled="true"] { cursor: default; }
@@ -456,9 +478,10 @@ tr.totalRow td { border-top: 2px solid var(--blue); }
 .homeExtras { margin-top: 6px; color: var(--mut); font-size: var(--fs-md); }
 
 /* Nagoveštaj rada bez interneta */
-#offlineStrip { background: var(--mark, #fff3d6); color: var(--ink, #1c2733); border-bottom: 1px solid var(--line);
-  padding: 8px 14px; font-size: var(--fs-md); text-align: center; }
-body.dark #offlineStrip { background: #3d3420; color: #e8e0cc; }
+/* ista žuta podloga i mastilo kao oznaka „obeleženo" — ranije je podloga bila TAMNA žuta
+   boja teksta, pa je tamno mastilo na njoj bilo nečitljivo baš kad čoveku treba */
+#offlineStrip { background: var(--mark-bg); color: var(--mark); border-bottom: 1px solid var(--line);
+  padding: 8px 14px; font-size: var(--fs-md); text-align: center; font-weight: 600; }
 
 /* Korisnici koji su isključili animacije u sistemu — bez prelaza i glatkog skrola */
 /* ---- Mikro-animacije (tura 9). Samo transform/opacity — ne pomeraju raspored;
@@ -489,10 +512,9 @@ button { transition: background-color .15s ease, border-color .15s ease, color .
 #qCard .qActions { flex-wrap: wrap; }
 
 /* "Na ispitu: N" — koliko pitanja podoblast nosi na pravom ispitu */
-.subExam { display: inline-block; font-size: var(--fs-xs); font-weight: 600; color: var(--blue-d);
-  background: var(--chipBg, rgba(44, 106, 160, .12)); border-radius: 999px; padding: 1px 8px;
+.subExam { display: inline-block; font-size: var(--fs-xs); font-weight: 600; color: var(--chipInk);
+  background: var(--chipBg); border-radius: 999px; padding: 1px 8px;
   margin-left: 6px; white-space: nowrap; vertical-align: 1px; cursor: help; }
-body.dark .subExam { background: rgba(95, 151, 201, .22); color: #9cc3e5; }
 
 
 /* istaknut naslov unutar kartice (poverenje, česta pitanja) — nekad inline 1.05rem/600 */

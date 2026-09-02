@@ -82,20 +82,25 @@ async function proveraBodovanja2() {
   ok('dnevni brojač: drugo pitanje danas → n=2', S().day.n === 2);
   // MILANOVA ODLUKA (2026-09-02): potvrda odmah posle prvog pogotka je PRE roka —
   // broji se kao vežbanje, ali NE utvrđuje pitanje (ranije je utvrđivala za 20 sekundi)
+  // (poslednji odgovor „juče": dnevni brojači bi inače isto pitanje svakako preskočili)
+  S().q[q2.id].last = Date.now() - 86400000;
   klikni('ledeće', document.getElementById('qCard'));
   klikni('rethodno', document.getElementById('qCard'));
   for (const b of document.querySelectorAll('#qCard .choice')) if (tacni2.has(b.textContent.trim())) b.click();
   klikni('dgovori', document.getElementById('qCard'));
   r2 = S().q[q2.id];
   ok('potvrda PRE roka NE utvrđuje: streak=1, rok stoji, u redu', r2.a === 2 && r2.streak === 1 && r2.due === za3 && window.__dev.inQueue(q2.id) === true);
+  ok('PRE roka: NE puni kvotu ponavljanja dnevnog cilja (pon=0)', (S().day.pon || 0) === 0);
   // kad rok STIGNE (pomeramo ga u prošlost), ista potvrda VAŽI → utvrđeno
   S().q[q2.id].due = Date.now() - 1000;
+  S().q[q2.id].last = Date.now() - 86400000;
   klikni('ledeće', document.getElementById('qCard'));
   klikni('rethodno', document.getElementById('qCard'));
   for (const b of document.querySelectorAll('#qCard .choice')) if (tacni2.has(b.textContent.trim())) b.click();
   klikni('dgovori', document.getElementById('qCard'));
   r2 = S().q[q2.id];
   ok('potvrda NA ROKU: utvrđeno, van reda, bez roka', r2.streak === 2 && !r2.due && window.__dev.inQueue(q2.id) === false);
+  ok('NA ROKU: puni kvotu ponavljanja dnevnog cilja (pon=1)', S().day.pon === 1);
   // pogrešan odgovor važi UVEK, i pre roka: vraća pitanje u red odmah
   const q3 = window.QUIZ.questions[2];
   const tacni3 = new Set(q3.ch.filter((c) => c.ok).map((c) => c.t.l.trim()));

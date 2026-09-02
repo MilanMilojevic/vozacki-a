@@ -48,7 +48,8 @@
     qNumTip: { l: 'Zvanični broj pitanja u MUP bazi (isti broj važi i na eUpravi)', c: 'Званични број питања у МУП бази (исти број важи и на еУправи)' },
     points: { l: 'poena', c: 'поена' },
     pointsOne: { l: 'poen', c: 'поен' },
-    chooseN: { l: 'Izaberite odgovora:', c: 'Изаберите одговора:' },
+    chooseN: { l: 'Izaberite odgovora:', c: 'Изаберите одговора:' },   // SAMO simulacija — oblik sa ispita se ne dira
+    chooseNVezba: { l: 'Izaberi @1 odgovora, pa potvrdi.', c: 'Изабери @1 одговора, па потврди.' },
     confirm: { l: 'Odgovori', c: 'Одговори' },
     next: { l: 'Sledeće pitanje', c: 'Следеће питање' },
     skip: { l: 'Preskoči', c: 'Прескочи' },
@@ -67,11 +68,17 @@
     yesterday: { l: 'juče', c: 'јуче' },
     daysAgo: { l: 'pre # dana', c: 'пре # дана' },
     ofQ: { l: 'od', c: 'од' },
+    // JEDAN rečnik ponavljanja: „za ponavljanje" je krovni pojam (sve što je u redu),
+    // „danas" i „kasnije" su njegovi delovi. Ranije su isti brojevi nosili četiri imena
+    // (spremno / čeka / za ponavljanje / ponavljanja danas), a objašnjenje je bilo samo u
+    // oblačiću koji na telefonu ne postoji.
     inQueue: { l: 'za ponavljanje', c: 'за понављање' },
-    ready: { l: 'spremno', c: 'спремно' },
-    waiting: { l: 'čeka', c: 'чека' },
-    waitInfo: { l: 'Sva spremna pitanja si prošao. # pitanja čeka svoj termin (razmaknuto ponavljanje: sutra, pa za 3 dana).', c: 'Сва спремна питања си прошао. # питања чека свој термин (размакнуто понављање: сутра, па за 3 дана).' },
-    drillWaitingBtn: { l: 'Vežbaj i ona koja čekaju', c: 'Вежбај и она која чекају' },
+    ponDanas: { l: 'danas', c: 'данас' },
+    ponKasnije: { l: 'kasnije', c: 'касније' },
+    pomocPonavljanje: { l: 'Kako radi ponavljanje?', c: 'Како ради понављање?' },
+    preRokaNapomena: { l: 'Pitanja za kasnije možeš da vežbaš i pre roka: odgovor ulazi u statistiku pitanja, ali ne pomera raspored ponavljanja. Pogrešan odgovor važi uvek.', c: 'Питања за касније можеш да вежбаш и пре рока: одговор улази у статистику питања, али не помера распоред понављања. Погрешан одговор важи увек.' },
+    waitInfo: { l: 'Današnja ponavljanja si prošao. # pitanja dolazi na red kasnije (razmaknuto ponavljanje: sutra, pa za 3 dana).', c: 'Данашња понављања си прошао. # питања долази на ред касније (размакнуто понављање: сутра, па за 3 дана).' },
+    drillWaitingBtn: { l: 'Vežbaj i ona za kasnije', c: 'Вежбај и она за касније' },
     drillEmpty: { l: 'Nema pitanja za ponavljanje — sve što si grešio je utvrđeno. 💪', c: 'Нема питања за понављање — све што си грешио је утврђено. 💪' },
     markedEmpty: { l: 'Nema obeleženih pitanja. Obeleži pitanje kvačicom dok vežbaš.', c: 'Нема обележених питања. Обележи питање квачицом док вежбаш.' },
     finishSim: { l: 'Završi ispit', c: 'Заврши испит' },
@@ -89,7 +96,7 @@
     statExpand: { l: 'Klikni za raspis po podoblastima', c: 'Кликни за распис по подобластима' },
     catExpand: { l: 'Prikaži podoblasti', c: 'Прикажи подобласти' },
     catOpen: { l: 'Otvori oblast (spisak pitanja i vežbanje)', c: 'Отвори област (списак питања и вежбање)' },
-    tour1: { l: 'Tvoj napredak u brojkama: koliko si odgovorio, koliko pogrešnih čeka ponavljanje i koliko si obeležio.', c: 'Твој напредак у бројкама: колико си одговорио, колико погрешних чека понављање и колико си обележио.' },
+    tour1: { l: 'Tvoj napredak u brojkama: koliko si odgovorio, koliko je za ponavljanje (danas i kasnije) i koliko si obeležio.', c: 'Твој напредак у бројкама: колико си одговорио, колико је за понављање (данас и касније) и колико си обележио.' },
     tour2: { l: 'Odavde kreće učenje: sva pitanja redom, sa objašnjenjem posle svakog odgovora.', c: 'Одавде креће учење: сва питања редом, са објашњењем после сваког одговора.' },
     tour3: { l: 'Pogrešna pitanja se sama vraćaju: odmah, pa sutradan, pa za tri dana — dok ih ne savladaš.', c: 'Погрешна питања се сама враћају: одмах, па сутрадан, па за три дана — док их не савладаш.' },
     tour4: { l: 'Simulacija je verna kopija pravog ispita: 41 pitanje, 45 minuta, prag 85%. Ostavi je za kraj pripreme.', c: 'Симулација је верна копија правог испита: 41 питање, 45 минута, праг 85%. Остави је за крај припреме.' },
@@ -102,18 +109,17 @@
     tourReplay: { l: 'Vodič kroz aplikaciju', c: 'Водич кроз апликацију' },
     guideTitle: { l: '🎓 Kako da učiš — predloženi redosled', c: '🎓 Како да учиш — предложени редослед' },
     guideSub: { l: 'za one koji kreću iz početka; ako već imaš predznanje, slobodno preskoči', c: 'за оне који крећу из почетка; ако већ имаш предзнање, слободно прескочи' },
-    guideOpen: { l: 'Prikaži', c: 'Прикажи' },
     feedback: { l: 'Prijavi grešku ili predlog', c: 'Пријави грешку или предлог' },
 
     trustTitle: { l: '🛡️ Zašto verovati ovoj vežbaonici', c: '🛡️ Зашто веровати овој вежбаоници' },
     trustBody: { l: `<ul class="trustList">
-      <li><b>Baza je zvanična.</b> Svih 1327 pitanja, odgovora i slika dolazi sa eUprava servisa za kandidate (MUP). Poslednja provera: <b>29. 8. 2026.</b> — nula izmena.</li>
+      <li><b>Baza je zvanična.</b> Svih 1327 pitanja, odgovora i slika dolazi sa eUprava servisa za kandidate (MUP). Poslednja provera: <b>@1</b> — nula izmena.</li>
       <li><b>Simulacija je merena, ne "po osećaju".</b> Sastav testa je upoređen sa <b>šest zvaničnih izvlačenja</b> pravog ispita i identičan je do poslednjeg poena (41 pitanje, 98 poena, ista matrica oblasti).</li>
       <li><b>Objašnjenja su pisana ručno</b>, uz doslovnu proveru ZOBS-a i Pravilnika, sa brojem člana — i nezavisno recenzirana. Tamo gde se ispitna baza razilazi sa važećim zakonom, to otvoreno piše.</li>
       <li><b>Kôd je javan.</b> Sve što aplikacija radi može da se proveri: <a href="https://github.com/MilanMilojevic/vozacki-a" target="_blank" rel="noopener">github.com/MilanMilojevic/vozacki-a</a>.</li>
       <li><b>Privatnost:</b> bez naloga, bez reklama; napredak ostaje samo na tvom uređaju. Meri se jedino anoniman broj poseta (bez kolačića; poštuje se „Do Not Track").</li>
     </ul>`, c: `<ul class="trustList">
-      <li><b>База је званична.</b> Свих 1327 питања, одговора и слика долази са еУправа сервиса за кандидате (МУП). Последња провера: <b>29. 8. 2026.</b> — нула измена.</li>
+      <li><b>База је званична.</b> Свих 1327 питања, одговора и слика долази са еУправа сервиса за кандидате (МУП). Последња провера: <b>@1</b> — нула измена.</li>
       <li><b>Симулација је мерена, не „по осећају".</b> Састав теста је упоређен са <b>шест званичних извлачења</b> правог испита и идентичан је до последњег поена (41 питање, 98 поена, иста матрица области).</li>
       <li><b>Објашњења су писана ручно</b>, уз дословну проверу ЗОБС-а и Правилника, са бројем члана — и независно рецензирана. Тамо где се испитна база разилази са важећим законом, то отворено пише.</li>
       <li><b>Кôд је јаван.</b> Све што апликација ради може да се провери: <a href="https://github.com/MilanMilojevic/vozacki-a" target="_blank" rel="noopener">github.com/MilanMilojevic/vozacki-a</a>.</li>
@@ -129,11 +135,12 @@
     examDays: { l: 'dana', c: 'дана' },
     examDaysOne: { l: 'dan', c: 'дан' },
     examToday: { l: '📅 ispit je danas — srećno!', c: '📅 испит је данас — срећно!' },
-    examPlan: { l: 'predlog tempa: ~# novih pitanja dnevno', c: 'предлог темпа: ~# нових питања дневно' },
-    examPlanOne: { l: 'predlog tempa: ~# novo pitanje dnevno', c: 'предлог темпа: ~# ново питање дневно' },
+    examPlan: { l: 'predlog tempa: ~# novih pitanja dnevno — „Predloži mi" u podešavanjima ga upisuje kao cilj', c: 'предлог темпа: ~# нових питања дневно — „Предложи ми" у подешавањима га уписује као циљ' },
+    examPlanOne: { l: 'predlog tempa: ~# novo pitanje dnevno — „Predloži mi" u podešavanjima ga upisuje kao cilj', c: 'предлог темпа: ~# ново питање дневно — „Предложи ми" у подешавањима га уписује као циљ' },
+    planPremalo: { l: 'sa @1 novih dnevno do ispita prođeš ~@2 od @3 neodgovorenih — predlog: @4 dnevno', c: 'са @1 нових дневно до испита прођеш ~@2 од @3 неодговорених — предлог: @4 дневно' },
     imgFail: { l: 'Slika nije dostupna bez interneta — otvori ovo pitanje kad budeš na mreži pa ostaje sačuvana.', c: 'Слика није доступна без интернета — отвори ово питање кад будеш на мрежи па остаје сачувана.' },
-    planPonavljanja: { l: 'ponavljanja danas: #', c: 'понављања данас: #' },
-    planSim: { l: 'predlog: uradi simulaciju danas', c: 'предлог: уради симулацију данас' },
+    planPonavljanja: { l: 'za ponavljanje danas: #', c: 'за понављање данас: #' },
+    planSim: { l: 'predlog: procena je @1 od 98 — uradi simulaciju danas', c: 'предлог: процена је @1 од 98 — уради симулацију данас' },
     planSimNedelja: { l: 'poslednja nedelja — po jedna simulacija dnevno', c: 'последња недеља — по једна симулација дневно' },
     endTitle: { l: 'Kraj spiska — prošao si # &.', c: 'Крај списка — прошао си # &.' },
     pitanjeJd: { l: 'pitanje', c: 'питање' },
@@ -141,7 +148,7 @@
     endWrongBtn: { l: '🔁 Ponovi pogrešna iz ovog spiska (#)', c: '🔁 Понови погрешна из овог списка (#)' },
     endNextSub: { l: 'Sledeća podoblast: #', c: 'Следећа подобласт: #' },
     endNextCat: { l: 'Sledeća oblast: #', c: 'Следећа област: #' },
-    endQueue: { l: 'Ponavljanje čeka: # spremno', c: 'Понављање чека: # спремно' },
+    endQueue: { l: '🔁 Ponavljanje: # danas na redu', c: '🔁 Понављање: # данас на реду' },
     endAllClear: { l: 'Red za ponavljanje je potpuno prazan — sve što si učio je utvrđeno. 🎉', c: 'Ред за понављање је потпуно празан — све што си учио је утврђено. 🎉' },
     endSimBtn: { l: '🏁 Simulacija ispita', c: '🏁 Симулација испита' },
     naIspitu: { l: 'na ispitu: #', c: 'на испиту: #' },
@@ -154,13 +161,13 @@
     close: { l: 'Zatvori', c: 'Затвори' },
     sekDeo: { l: 'Prikazan je deo kartice koji se odnosi na ovu podoblast.', c: 'Приказан је део картице који се односи на ову подобласт.' },
     sekCela: { l: 'Prikaži celu karticu', c: 'Прикажи целу картицу' },
-    statsTip: { l: 'Isti pregled kao na početnoj, uz tačnost: klik na naziv otvara spisak pitanja, strelica otklapa podoblasti.', c: 'Исти преглед као на почетној, уз тачност: клик на назив отвара списак питања, стрелица отклапа подобласти.' },
+    statsTip: { l: 'Isti pregled kao na početnoj, uz tačnost: klik na naziv otvara spisak pitanja, strelica otklapa podoblasti. Boja tačnosti: zeleno od 85% (prag ispita), žuto 70–84%, crveno ispod 70%.', c: 'Исти преглед као на почетној, уз тачност: клик на назив отвара списак питања, стрелица отклапа подобласти. Боја тачности: зелено од 85% (праг испита), жуто 70–84%, црвено испод 70%.' },
     grupaNapredak: { l: 'Napredak', c: 'Напредак' },
     grupaAplikacija: { l: 'Aplikacija', c: 'Апликација' },
     grupaOprezno: { l: 'Oprezno', c: 'Опрезно' },
     resetNapomena: { l: 'Briše sve na ovom uređaju: odgovore, obeležena pitanja, simulacije i dnevni cilj. Ne može da se poništi.', c: 'Брише све на овом уређају: одговоре, обележена питања, симулације и дневни циљ. Не може да се поништи.' },
     podnozjeOpis: { l: 'Besplatna vežbaonica za teorijski ispit, A kategorija. Bez reklama, bez naloga i bez plaćanja.', c: 'Бесплатна вежбаоница за теоријски испит, А категорија. Без реклама, без налога и без плаћања.' },
-    podnozjeBaza: { l: 'Zvanična baza eUprave · @1 pitanja · izvučena @2 · poslednja provera 29.08.2026 · verzija @3', c: 'Званична база еУправе · @1 питања · извучена @2 · последња провера 29.08.2026 · верзија @3' },
+    podnozjeBaza: { l: 'Zvanična baza eUprave · @1 pitanja · izvučena @2 · poslednja provera @3 · verzija @4', c: 'Званична база еУправе · @1 питања · извучена @2 · последња провера @3 · верзија @4' },
     podnozjePrivatnost: { l: 'Napredak ostaje na tvom uređaju. Ništa se ne šalje i ništa se ne čuva kod nas.', c: 'Напредак остаје на твом уређају. Ништа се не шаље и ништа се не чува код нас.' },
     podnozjeKod: { l: 'Kôd na GitHub-u', c: 'Кôд на GitHub-у' },
     datumLos: { l: 'Datum nije potpun. Unesi ga u obliku dan-mesec-godina, sa punom godinom (npr. 2026).', c: 'Датум није потпун. Унеси га у облику дан-месец-година, са пуном годином (нпр. 2026).' },
@@ -181,10 +188,13 @@
     planSacuvan: { l: 'Dnevni cilj je sačuvan.', c: 'Дневни циљ је сачуван.' },
     planUgasen: { l: 'Dnevni cilj je ugašen.', c: 'Дневни циљ је угашен.' },
     planIspunjen: { l: '✅ Dnevni cilj je ispunjen — vidimo se sutra.', c: '✅ Дневни циљ је испуњен — видимо се сутра.' },
+    planIspunjenJos: { l: '✅ Dnevni cilj je ispunjen. Na redu je još @1 za ponavljanje — možeš i danas, ili sutra.', c: '✅ Дневни циљ је испуњен. На реду је још @1 за понављање — можеш и данас, или сутра.' },
+    planNemaPon: { l: 'nema na redu', c: 'нема на реду' },
+    planPodesi: { l: 'Podesi cilj', c: 'Подеси циљ' },
     planVezbaj: { l: '▶ Vežbaj po planu', c: '▶ Вежбај по плану' },
     planNemaSta: { l: 'Za danas nema više — cilj je ispunjen.', c: 'За данас нема више — циљ је испуњен.' },
     planNemaDostupnih: { l: 'Nema više pitanja koja čekaju. Cilj ostaje za sutra.', c: 'Нема више питања која чекају. Циљ остаје за сутра.' },
-    planBezDatuma: { l: 'Za predlog prvo unesi datum ispita, ispod.', c: 'За предлог прво унеси датум испита, испод.' },
+    planBezDatuma: { l: 'Za predlog prvo unesi datum ispita.', c: 'За предлог прво унеси датум испита.' },
     planDatumProsao: { l: 'Datum ispita je prošao — unesi novi da bih mogao da računam.', c: 'Датум испита је прошао — унеси нови да бих могао да рачунам.' },
     planPredlogGotov: { l: 'Sačuvano kao cilj: @1 novih i @2 ponavljanja dnevno. Novo gradivo se završava # dana pre ispita — ti dani ostaju za ponavljanje i simulacije. Brojeve možeš da promeniš i ponovo sačuvaš.', c: 'Сачувано као циљ: @1 нових и @2 понављања дневно. Ново градиво се завршава # дана пре испита — ти дани остају за понављање и симулације. Бројеве можеш да промениш и поново сачуваш.' },
     planPredlogUsko: { l: 'Sačuvano kao cilj: @1 novih i @2 ponavljanja dnevno. Ispit je blizu, pa nema rezerve — novo gradivo ide do poslednjeg dana.', c: 'Сачувано као циљ: @1 нових и @2 понављања дневно. Испит је близу, па нема резерве — ново градиво иде до последњег дана.' },
@@ -207,7 +217,7 @@
         <p><b>Како:</b> на Андроиду, у прегледачу Chrome → мени ⋮ → „Додај на почетни екран". На iPhone-у, у прегледачу Safari → дугме „Подели" → „Add to Home Screen".</p>`,
     },
     planSveOdgovoreno: { l: 'nema više novih', c: 'нема више нових' },
-    planObjasnjenje: { l: 'Ostavi oba polja prazna ako ne želiš cilj. Kad ga postaviš, dugme na početnoj daje tačno toliko pitanja — prvo ponavljanja, pa nova. U ponavljanja ulaze i pogrešna pitanja i ona koja si pogodio iz prve (ta dobiju jednu potvrdu posle 3 dana). Ako spremnih nema dovoljno, kvota se dopunjava utvrđenim pitanjima koja nisi video duže od 21 dan.', c: 'Остави оба поља празна ако не желиш циљ. Кад га поставиш, дугме на почетној даје тачно толико питања — прво понављања, па нова. У понављања улазе и погрешна питања и она која си погодио из прве (та добију једну потврду после 3 дана). Ако спремних нема довољно, квота се допуњава утврђеним питањима која ниси видео дуже од 21 дан.' },
+    planObjasnjenje: { l: 'Ostavi oba polja prazna ako ne želiš cilj. Kad ga postaviš, dugme na početnoj daje tačno toliko pitanja — prvo ponavljanja, pa nova. U ponavljanja ulaze i pogrešna pitanja i ona koja si pogodio iz prve (ta dobiju jednu potvrdu posle 3 dana). Ako pitanja na redu nema dovoljno, kvota se dopunjava utvrđenim pitanjima koja nisi video duže od 21 dan. Odgovor pre roka je vežbanje i ne puni kvotu ponavljanja.', c: 'Остави оба поља празна ако не желиш циљ. Кад га поставиш, дугме на почетној даје тачно толико питања — прво понављања, па нова. У понављања улазе и погрешна питања и она која си погодио из прве (та добију једну потврду после 3 дана). Ако питања на реду нема довољно, квота се допуњава утврђеним питањима која ниси видео дуже од 21 дан. Одговор пре рока је вежбање и не пуни квоту понављања.' },
     novihLbl: { l: 'novih', c: 'нових' },
     ponLbl: { l: 'ponavljanja', c: 'понављања' },
     unosPrazno: { l: 'Unesi ceo broj od @1 do @2.', c: 'Унеси цео број од @1 до @2.' },
@@ -225,7 +235,6 @@
     grp3: { l: '3 · Radnje vozilom', c: '3 · Радње возилом' },
     grp4: { l: '4 · Posebne situacije', c: '4 · Посебне ситуације' },
     grp5: { l: '5 · Propisi, dozvole i posledice', c: '5 · Прописи, дозволе и последице' },
-    guideHide: { l: 'Sakrij', c: 'Сакриј' },
     guideBody: { l: `<ol class="guideList">
       <li><b>Prvo pojmovi, pa pravila.</b> U Pojmovniku pročitaj redom: <i>Slični pojmovi</i> (šta je preticanje a šta obilaženje, odstojanje vs rastojanje), <i>Put, kolovoz, trake</i> i <i>Kategorije vozila</i>. Bez tih reči ostalo gradivo zvuči kao strani jezik.</li>
       <li><b>Ko ide prvi.</b> Kartice <i>Prvenstvo prolaza</i>, <i>Semafori</i> i <i>Porodice saobraćajnih znakova</i> — to je srce ispita i najviše pitanja.</li>
@@ -233,7 +242,7 @@
       <li><b>Posebne situacije.</b> <i>Pešaci i dvotočkaši</i>, <i>Prelaz preko pruge</i>, <i>Autoput i motoput</i>, <i>Vozila pod pratnjom</i>, <i>Postupak kod nezgode</i>.</li>
       <li><b>Tek onda pitanja.</b> Kreni na <i>Sva pitanja</i> i idi redom — posle svakog odgovora pročitaj objašnjenje, i kad pogrešiš i kad pogodiš.</li>
       <li><b>Pusti aplikaciju da te vodi.</b> U <i>Ponavljanje</i> se sama vraćaju pogrešna pitanja (odmah, pa sutradan, pa za tri dana) — ali i pitanja tačna iz prve, jednom posle tri dana: jedan pogodak još nije zapamćeno.</li>
-      <li><b>Simulacije na kraju.</b> Kad u Statistici procena pređe prag, radi <i>Simulaciju ispita</i> — 41 pitanje, 45 minuta, kao pravi ispit. Posle svake pregledaj greške.</li>
+      <li><b>Simulacije na kraju.</b> Kad se u Statistici procena približi pragu (80 i više od 98 poena), radi <i>Simulaciju ispita</i> — 41 pitanje, 45 minuta, kao pravi ispit. Posle svake pregledaj greške.</li>
     </ol>
     <p class="mut">Kaznene mere uči poslednje i bez učenja iznosa napamet — u zvaničnom ispitu za A kategoriju te oblasti nema.</p>`,
       c: `<ol class="guideList">
@@ -243,7 +252,7 @@
       <li><b>Посебне ситуације.</b> <i>Пешаци и двоточкаши</i>, <i>Прелаз преко пруге</i>, <i>Аутопут и мотопут</i>, <i>Возила под пратњом</i>, <i>Поступак код незгоде</i>.</li>
       <li><b>Тек онда питања.</b> Крени на <i>Сва питања</i> и иди редом — после сваког одговора прочитај објашњење, и кад погрешиш и кад погодиш.</li>
       <li><b>Пусти апликацију да те води.</b> У <i>Понављање</i> се сама враћају погрешна питања (одмах, па сутрадан, па за три дана) — али и питања тачна из прве, једном после три дана: један погодак још није запамћено.</li>
-      <li><b>Симулације на крају.</b> Кад у Статистици процена пређе праг, ради <i>Симулацију испита</i> — 41 питање, 45 минута, као прави испит. После сваке прегледај грешке.</li>
+      <li><b>Симулације на крају.</b> Кад се у Статистици процена приближи прагу (80 и више од 98 поена), ради <i>Симулацију испита</i> — 41 питање, 45 минута, као прави испит. После сваке прегледај грешке.</li>
     </ol>
     <p class="mut">Казнене мере учи последње и без учења износа напамет — у званичном испиту за А категорију те области нема.` },
     updNote: { l: 'Stigla je nova verzija aplikacije.', c: 'Стигла је нова верзија апликације.' },
@@ -281,7 +290,7 @@
     onlyUnseen: { l: 'Samo neodgovorena', c: 'Само неодговорена' },
     kbHint: { l: 'Prečice: ← → kretanje · 1–9 odgovor · Enter potvrda', c: 'Пречице: ← → кретање · 1–9 одговор · Enter потврда' },
     vezbaj: { l: 'Vežbaj', c: 'Вежбај' },
-    vezbajReady: { l: 'Vežbaj spremna', c: 'Вежбај спремна' },
+    vezbajReady: { l: 'Ponovi današnja', c: 'Понови данашња' },
     dueTomorrow: { l: 'sutra', c: 'сутра' },
     dueDays: { l: 'za # dana', c: 'за # дана' },
     allPage: { l: 'Sva pitanja', c: 'Сва питања' },
@@ -305,11 +314,11 @@
     prevQ: { l: 'Prethodno pitanje', c: 'Претходно питање' },
     nextQ: { l: 'Sledeće pitanje', c: 'Следеће питање' },
     explTitle: { l: '💡 Objašnjenje', c: '💡 Објашњење' },
-    explNote: { l: 'nezvanično objašnjenje, osnov u ZOBS-u', c: 'незванично објашњење, основ у ЗОБС-у' },
+    explNote: { l: 'nezvanično; osnov: Zakon o bezbednosti saobraćaja (ZOBS)', c: 'незванично; основ: Закон о безбедности саобраћаја (ЗОБС)' },
     pojmovnik: { l: 'Pojmovnik — tematske kartice', c: 'Појмовник — тематске картице' },
     pojmovnikSub: { l: 'jedna kartica objašnjava celu grupu pitanja; iste kartice iskaču i uz pitanja', c: 'једна картица објашњава целу групу питања; исте картице искачу и уз питања' },
     readyTitle: { l: '🎯 Spremnost za ispit (procena)', c: '🎯 Спремност за испит (процена)' },
-    readyNote: { l: 'Ukrštanje tvoje tačnosti sa zvaničnim šablonom testa (41 pitanje, 98 poena, prag 84). Procena je pouzdanija što više vežbaš.', c: 'Укрштање твоје тачности са званичним шаблоном теста (41 питање, 98 поена, праг 84). Процена је поузданија што више вежбаш.' },
+    readyNote: { l: 'Ukrštanje tvoje tačnosti sa zvaničnim šablonom testa (41 pitanje, 98 poena, prag @1). Procena je pouzdanija što više vežbaš.', c: 'Укрштање твоје тачности са званичним шаблоном теста (41 питање, 98 поена, праг @1). Процена је поузданија што више вежбаш.' },
     readyLoss: { l: 'Najviše te košta', c: 'Највише те кошта' },
     readyRough: { l: '⚠ gruba procena — još je malo odgovora', c: '⚠ груба процена — још је мало одговора' },
     searchPh: { l: '🔎 Pretraga pitanja (tekst ili #broj)…', c: '🔎 Претрага питања (текст или #број)…' },
@@ -319,10 +328,11 @@
     okShort: { l: 'tačno', c: 'тачно' },
     shufTip: { l: 'Vežbanje pokrenuto sa ove strane ide nasumičnim redosledom (ne znaš koje je sledeće). Spisak dole ostaje po redu, a „Nastavi" uvek ide redom. Klik na pitanje u spisku: počinje od njega, pa nastavlja izmešano.', c: 'Вежбање покренуто са ове стране иде насумичним редоследом (не знаш које је следеће). Списак доле остаје по реду, а „Настави" увек иде редом. Клик на питање у списку: почиње од њега, па наставља измешано.' },
     queueTip: { l: 'Razmaknuto ponavljanje: pogrešiš → pitanje je odmah spremno; pogodiš ga → vraća se sutra; opet pogodiš → za 3 dana; treći pogodak zaredom → izlazi iz reda. I pitanje koje si pogodio iz prve vraća se jednom, za 3 dana, da se potvrdi — pa izlazi. Tačan odgovor PRE roka je vežbanje i ne pomera raspored; pogrešan važi uvek. U dnevni cilj isto pitanje ulazi najviše jednom dnevno.', c: 'Размакнуто понављање: погрешиш → питање је одмах спремно; погодиш га → враћа се сутра; опет погодиш → за 3 дана; трећи погодак заредом → излази из реда. И питање које си погодио из прве враћа се једном, за 3 дана, да се потврди — па излази. Тачан одговор ПРЕ рока је вежбање и не помера распоред; погрешан важи увек. У дневни циљ исто питање улази највише једном дневно.' },
-    legend: { l: '✓ utvrđeno · ✗ za ponavljanje · • neodgovoreno · 🔖 obeleženo · 🖼 sa slikom · desno: broj tačnih/netačnih', c: '✓ утврђено · ✗ за понављање · • неодговорено · 🔖 обележено · 🖼 са сликом · десно: број тачних/нетачних' },
-    contTip: { l: 'Nastavlja tačno od mesta gde si stao (uvek redom).', c: 'Наставља тачно од места где си стао (увек редом).' },
+    legend: { l: '✓ utvrđeno · ✗ pogrešeno, za ponavljanje · ◐ tačno iz prve, čeka jednu potvrdu · • neodgovoreno · 🔖 obeleženo · 🖼 sa slikom · desno: broj tačnih/netačnih', c: '✓ утврђено · ✗ погрешено, за понављање · ◐ тачно из прве, чека једну потврду · • неодговорено · 🔖 обележено · 🖼 са сликом · десно: број тачних/нетачних' },
+    contTip: { l: 'Nastavlja redom, od prvog neodgovorenog pitanja posle mesta gde si stao.', c: 'Наставља редом, од првог неодговореног питања после места где си стао.' },
+    vezbajPodoblast: { l: 'Vežbaj podoblast', c: 'Вежбај подобласт' },
     qOne: { l: 'pitanje', c: 'питање' },
-    waitInfoOne: { l: 'Sva spremna pitanja si prošao. # pitanje čeka svoj termin (razmaknuto ponavljanje: sutra, pa za 3 dana).', c: 'Сва спремна питања си прошао. # питање чека свој термин (размакнуто понављање: сутра, па за 3 дана).' },
+    waitInfoOne: { l: 'Današnja ponavljanja si prošao. # pitanje dolazi na red kasnije (razmaknuto ponavljanje: sutra, pa za 3 dana).', c: 'Данашња понављања си прошао. # питање долази на ред касније (размакнуто понављање: сутра, па за 3 дана).' },
     daysAgoOne: { l: 'pre # dan', c: 'пре # дан' },
     dueDaysOne: { l: 'za # dan', c: 'за # дан' },
     simConfirm0: { l: 'Predati test?', c: 'Предати тест?' },
@@ -334,6 +344,28 @@
 
   // ---------- Stanje ----------
   const KEY = 'vozackiA.v1';
+  // Datum poslednje provere baze prema eUpravi — JEDNO mesto; čitaju ga podnožje i kartica
+  // poverenja (ranije je stajao prepisan u četiri teksta i mogao da se raziđe).
+  const BAZA_PROVERENA = '2026-08-29';
+  // Prag ispita: 85% poena, zaokruženo naviše (84 od 98). JEDNA formula za simulaciju,
+  // procenu spremnosti i sve tekstove — ranije je „84" stajalo hardkodovano na dva mesta.
+  const PRAG_UDEO = 0.85;
+  const prag = (total) => Math.ceil(PRAG_UDEO * total);
+  const pragTekst = (total) => `${L('threshold')}: ${prag(total)} ${L('ofQ')} ${total} (${Math.round(PRAG_UDEO * 100)}%)`;
+  // Predlog simulacije na početnoj: kad procena spremnosti dođe blizu praga
+  // (isto pravilo citiraju vodič i tura — jedno pravilo, tri mesta).
+  const SIM_PREDLOG_OD = 80;
+  // Boja procenta tačnosti — ISTA na statistici i na strani oblasti, pragovi vezani za
+  // ono što kandidat zna: zeleno = prošao bi (85%), crveno = daleko ispod.
+  const accClass = (acc) => (acc >= 85 ? 'accGood' : acc >= 70 ? 'accMid' : 'accBad');
+  // JEDAN oblik datuma svuda: dd.mm.gggg. (uz vreme: dd.mm.gggg. čč:mm).
+  // Prima broj (ms), Date ili ISO dan „gggg-mm-dd".
+  function fmtDatum(x, vreme) {
+    const d = x instanceof Date ? x : new Date(typeof x === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(x) ? x + 'T00:00:00' : x);
+    if (isNaN(d.getTime())) return String(x);
+    const p = (n) => String(n).padStart(2, '0');
+    return `${p(d.getDate())}.${p(d.getMonth() + 1)}.${d.getFullYear()}.` + (vreme ? ` ${p(d.getHours())}:${p(d.getMinutes())}` : '');
+  }
   let S = load();
   // Svako stanje (učitano ili uvezeno) prolazi kroz normalizaciju — nedostajuća polja
   // dobijaju podrazumevane vrednosti, pa ni stari/oštećeni fajl ne može da obori aplikaciju.
@@ -536,7 +568,8 @@
     if (!S.day || S.day.d !== today) S.day = { d: today, n: 0, ok: 0, novih: 0, pon: 0 };
     if (!vecBrojanoDanas) {
       S.day.n++; if (ok) S.day.ok++;
-      if (prviPut) S.day.novih = (S.day.novih || 0) + 1; else S.day.pon = (S.day.pon || 0) + 1;
+      if (prviPut) S.day.novih = (S.day.novih || 0) + 1;
+      else if (!preRoka) S.day.pon = (S.day.pon || 0) + 1;   // vežbanje pre roka ne puni kvotu ponavljanja
     }
     if (S.streakD !== today) {
       const juce = new Date(); juce.setDate(juce.getDate() - 1);
@@ -623,7 +656,7 @@
     if (h === '#/uci') return startLearn();
     if (h.startsWith('#/p/')) {
       const qid = parseInt(h.slice(4), 10);
-      if (byId.has(qid)) return startList([qid], () => '#' + qid, null, 'filter', { origin: () => renderHome() });
+      if (byId.has(qid)) return startList([qid], () => '#' + qid, null, 'filter', { origin: () => renderHome(), nazadLbl: L('backHome'), jedno: true, hash: h });
       return goHomeReplace();
     }
     if (h.startsWith('#/pregled/')) {
@@ -711,13 +744,17 @@
   }
 
   // ---------- Traka napretka sa skokom na broj ----------
-  function renderProgress(title, pos, max, onJump, onBack) {
-    el('qProgress').innerHTML = `<span class="qpTitle" title="${escapeHtml(title)}">${onBack ? `<button type="button" id="backToList" class="bcLink">‹ ${L('backToList')}</button> &nbsp; ` : ''}${escapeHtml(title)}</span>
-      <span class="qpPos"><b>${pos}</b> ${L('ofQ')} ${max}</span>
+  // opts.nazadLbl: natpis dugmeta nazad kad iza pitanja ne stoji spisak (npr. „Na početnu").
+  // Spisak od jednog pitanja nema ni brojač „1 od 1" ni polje „Idi" — nema kroz šta da se ide.
+  function renderProgress(title, pos, max, onJump, onBack, opts) {
+    opts = opts || {};
+    el('qProgress').innerHTML = `<span class="qpTitle" title="${escapeHtml(title)}">${onBack ? `<button type="button" id="backToList" class="bcLink">‹ ${escapeHtml(opts.nazadLbl || L('backToList'))}</button> &nbsp; ` : ''}${escapeHtml(title)}</span>
+      ${max > 1 ? `<span class="qpPos"><b>${pos}</b> ${L('ofQ')} ${max}</span>
       <span class="jumpBox"><input id="jumpN" type="text" inputmode="numeric" autocomplete="off" placeholder="${pos}" aria-label="${escapeHtml(L('goto'))}">
-      <button id="jumpGo" class="secondary sBtn">${L('goto')}</button></span>
+      <button id="jumpGo" class="secondary sBtn">${L('goto')}</button></span>` : ''}
       <span class="mut kbNote">${L('kbHint')}</span>`;
     if (onBack) el('backToList').addEventListener('click', onBack);
+    if (!el('jumpGo')) return;
     const doJump = () => {
       const v = ceoBrojIzPolja(el('jumpN'), 1, max, L('skokVanOpsega'));
       if (v !== null) onJump(v - 1);
@@ -757,8 +794,8 @@
     if (q.img) c.appendChild(slikaPitanja(q));
 
     if (q.req > 1) {
-      const hint = document.createElement('div'); hint.className = 'mut'; hint.style.marginBottom = '8px';
-      hint.textContent = `${L('chooseN')} ${q.req}`;
+      const hint = document.createElement('div'); hint.className = 'mut napomena';
+      hint.textContent = L('chooseNVezba').split('@1').join(q.req);
       c.appendChild(hint);
     }
 
@@ -798,7 +835,7 @@
     let nextBtn = null;
     if (opts.onNext) {
       nextBtn = document.createElement('button'); nextBtn.className = 'secondary';
-      nextBtn.textContent = L('skip') + ' →';
+      nextBtn.textContent = opts.nextLabel || (L('skip') + ' →');
       nextBtn.addEventListener('click', opts.onNext);
       actions.appendChild(nextBtn);
     }
@@ -834,7 +871,7 @@
       c.insertBefore(v, actions);
       const ex = explNode(q);
       if (ex) c.insertBefore(ex, actions);
-      if (nextBtn) { nextBtn.className = 'primary'; nextBtn.textContent = L('next'); nextBtn.focus(); }
+      if (nextBtn) { nextBtn.className = 'primary'; nextBtn.textContent = opts.nextLabel || L('next'); nextBtn.focus(); }
       if (opts.recordKey && opts.recordKey === lastRecordKey) {
         // isti prikaz istog pitanja (npr. ponovni render posle promene pisma) — ne beleži se dvaput
       } else {
@@ -940,9 +977,10 @@
     let start = opts.startAt || 0;
     if (start < 0 || start >= ids.length) start = 0;
     runSeq++;
-    listMode = { ids, i: start, titleFn, kind, secKey: opts.secKey || null, chainKey: opts.chainKey || null, origin: opts.origin || null };
+    listMode = { ids, i: start, titleFn, kind, secKey: opts.secKey || null, chainKey: opts.chainKey || null, origin: opts.origin || null,
+      nazadLbl: opts.nazadLbl || null, jedno: !!opts.jedno, hash: opts.hash || '#/vezba' };
     current = { redraw: stepList };
-    setHash('#/vezba');
+    setHash(listMode.hash);
     show('question');
     stepList();
   }
@@ -970,12 +1008,18 @@
     }
     const q = byId.get(m.ids[m.i]);
     if (m.secKey) { S.secPos[m.secKey] = m.i; S.lastSec = m.secKey; save(); }
-    renderProgress(title, m.i + 1, m.ids.length, (n) => { m.i = n; stepList(); }, m.origin);
+    renderProgress(title, m.i + 1, m.ids.length, (n) => { m.i = n; stepList(); }, m.origin, { nazadLbl: m.nazadLbl });
+    // jedno pitanje otvoreno preko adrese (#/p/ID): iza njega nema spiska, pa „dalje" vodi
+    // u vežbanje njegove podoblasti, a ne na kraj nepostojećeg spiska
+    const kljuc = 's' + q.sub;
     renderQuestion({
       container: el('qCard'), q,
       recordKey: 'T' + runSeq + '|' + m.i,
       onAnswered: (ok) => record(q.id, ok),
-      onNext: () => { lastRecordKey = null; m.i++; stepList(); },
+      onNext: m.jedno
+        ? () => { lastRecordKey = null; startList(Q.filter((x) => x.sub === q.sub).map((x) => x.id), secTitleFn(kljuc), null, 'section', { secKey: kljuc, startAt: S.secPos[kljuc] || 0, origin: () => browse(kljuc) }); }
+        : () => { lastRecordKey = null; m.i++; stepList(); },
+      nextLabel: m.jedno ? `${L('vezbajPodoblast')}: ${subShortName(q.sub)} ›` : null,
       onPrev: m.i > 0 ? () => { lastRecordKey = null; m.i--; stepList(); } : null,
     });
   }
@@ -988,7 +1032,7 @@
     return a;
   }
   function shuffleBoxHtml() {
-    return `<label class="markBox" style="margin-left:0" title="${escapeHtml(L('shufTip'))}"><input type="checkbox" id="shufBox"${shuffleOn ? ' checked' : ''}> 🎲 ${L('shuffleLbl')}</label>`;
+    return `<label class="markBox uSpisku" title="${escapeHtml(L('shufTip'))}"><input type="checkbox" id="shufBox"${shuffleOn ? ' checked' : ''}> 🎲 ${L('shuffleLbl')}</label>`;
   }
   const sfx = () => (shuffleOn ? ' 🎲' : '');
   // klik na red u spisku: redom od te pozicije; sa 🎲 — počni od tog pitanja pa nastavi izmešano
@@ -1001,15 +1045,26 @@
     }
   }
   const legendHtml = () => `<div class="mut napomena">${L('legend')}</div>`;
+  // „?" uz brojeve ponavljanja: objašnjenje pravila se OTVARA na mestu (isti sklopivi
+  // mehanizam kao kartice), umesto oblačića koji na telefonu ne postoji
+  const pomocHtml = () => ` <button type="button" class="pomocBtn" title="${escapeHtml(L('pomocPonavljanje'))}" aria-label="${escapeHtml(L('pomocPonavljanje'))}">?</button>`;
+  const pomocTekstHtml = (dodatno) => `<div class="pomocTekst mut napomena" style="display:none">${L('queueTip')}${dodatno ? '<br>' + dodatno : ''}</div>`;
+  function veziPomoc(root) {
+    const b = root.querySelector('.pomocBtn'), t = root.querySelector('.pomocTekst');
+    if (b && t) sklopivo(b, null, t);
+  }
 
   // Jedan red u spisku pitanja — JEDNO mesto za sva tri spiska (podoblast, sva pitanja,
   // pogrešna/obeležena). Ranije su bila tri prepisana primerka istog koda, pa bi svaka
   // dopuna morala na tri mesta (i lako bi promašila jedno).
   // Brojač se pokazuje samo gde ima istorije: 1327 redova sa praznim brojačima bio bi šum.
   function redPitanjaHtml(q, idx, r, dodatak) {
+    // tri stanja u redu, ne dva: pitanje pogođeno iz prve koje čeka potvrdu NIJE greška,
+    // pa ne sme da nosi isti crveni ✗ kao pogrešeno (prvog dana je pola spiska bilo „crveno")
     const icon = !r || !r.a ? '<span class="qDot">•</span>'
-      : inQueue(q.id) ? '<span class="qBad">✗</span>'
-      : '<span class="qOk">✓</span>';
+      : !inQueue(q.id) ? '<span class="qOk">✓</span>'
+      : r.w > 0 ? '<span class="qBad">✗</span>'
+      : '<span class="qWait">◐</span>';
     const stat = r && r.a
       ? `<span class="qRowStat"><span class="qOk">${r.a - r.w}✓</span>${r.w ? ` <span class="qBad">${r.w}✗</span>` : ''}</span>`
       : '';
@@ -1065,8 +1120,8 @@
     const t = document.getElementById('topbar');
     return t ? t.getBoundingClientRect().height : 0;
   }
-  function sklopivo(btn, grupa) {
-    const cd = btn.nextElementSibling;
+  function sklopivo(btn, grupa, cilj) {
+    const cd = cilj || btn.nextElementSibling;
     if (!cd) return;
     btn.setAttribute('aria-expanded', cd.style.display === 'none' ? 'false' : 'true');
     btn.addEventListener('click', () => {
@@ -1287,7 +1342,7 @@
       if (ok) { score += sq.q.pts; pc.ok++; pc.got += sq.q.pts; }
       else wrong.push({ q: sq.q, chosen: new Set(sq.chosen) });
     }
-    const threshold = Math.ceil(0.85 * total);
+    const threshold = prag(total);
     const passed = score >= threshold;
     const rec = { d: Date.now(), score, total, passed, wrong: wrong.map((x) => x.q.id), qs: sim.qs.map((sq) => ({ id: sq.q.id, ch: [...sq.chosen] })) };
     S.sims.push(rec);
@@ -1300,7 +1355,6 @@
   function renderSimReview(rec, fresh) {
     current = { redraw: () => renderSimReview(rec, fresh) };
     setHash('#/pregled/' + S.sims.indexOf(rec));
-    const threshold = Math.ceil(0.85 * rec.total);
     const items = (rec.qs || []).map((e) => ({ q: byId.get(e.id), chosen: new Set(e.ch) })).filter((x) => x.q);
     const hasDetail = items.length > 0;
     const isOk = (it) => {
@@ -1313,20 +1367,17 @@
       pc.n++; pc.pts += it.q.pts;
       if (isOk(it)) { pc.ok++; pc.got += it.q.pts; }
     }
-    const d = new Date(rec.d);
-    const ds = `${String(d.getDate()).padStart(2, '0')}.${String(d.getMonth() + 1).padStart(2, '0')}. ${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
-
     const rc = el('simResultCard');
-    rc.innerHTML = `<h3>${L('sim')} <span class="mut" style="font-weight:normal">· ${ds}</span></h3>
+    rc.innerHTML = `<h3>${L('sim')} <span class="mut" style="font-weight:normal">· ${fmtDatum(rec.d, true)}</span></h3>
       <div class="bigScore ${rec.passed ? 'pass' : 'fail'}">${rec.score} / ${rec.total} ${L('points')}</div>
       <p><span class="pill ${rec.passed ? 'pass' : 'fail'}">${rec.passed ? L('passed') : L('failed')}</span>
-      &nbsp; <span class="mut">${L('threshold')}: ${threshold} (85%)</span></p>
-      ${hasDetail ? `<h3 style="margin-top:14px">${L('perCat')}</h3>
+      &nbsp; <span class="mut">${pragTekst(rec.total)}</span></p>
+      ${hasDetail ? `<h3>${L('perCat')}</h3>
       <table class="stats"><thead><tr><th>${L('thArea')}</th><th class="num">${L('thQ')}</th><th class="num">${L('thPts')}</th></tr></thead>
       <tbody>${Object.entries(perCat).map(([cid, pc]) =>
         `<tr><td>${escapeHtml(T(catName.get(+cid)))}</td><td class="num">${pc.ok}/${pc.n}</td><td class="num">${pc.got}/${pc.pts}</td></tr>`).join('')}
       </tbody></table>` : `<p class="mut">${L('reviewOldNote')}</p>`}
-      <div class="qActions" style="margin-top:14px">
+      <div class="qActions">
         ${fresh ? `<button class="primary" id="btnSimAgain">${L('newSim')}</button>` : ''}
         <button class="secondary" id="btnShareRes">${L('shareBtn')}</button>
         <button type="button" class="secondary" data-nav="home">${L('backHome')}</button>
@@ -1417,19 +1468,19 @@
       return;
     }
     const e = Math.round(exp);
-    const pass = e >= 84;
+    const pass = e >= prag(SIM_PTS_MIN);
     const top = Object.values(loss).sort((a, b) => b.pts - a.pts).slice(0, 5);
     el('readyCard').innerHTML = `<h3>${L('readyTitle')}</h3>
-      <div class="bigScore ${pass ? 'pass' : 'fail'}">≈ ${e} / 98</div>
+      <div class="bigScore ${pass ? 'pass' : 'fail'}">≈ ${e} / ${SIM_PTS_MIN}</div>
       <p><span class="pill ${pass ? 'pass' : 'fail'}">${pass ? L('passed') : L('failed')}</span>
-      &nbsp;<span class="mut">${L('threshold')}: 84</span>
+      &nbsp;<span class="mut">${pragTekst(SIM_PTS_MIN)}</span>
       ${answered < 150 ? `&nbsp;<span class="mut">${L('readyRough')} (${answered}/${Q.length})</span>` : ''}</p>
-      <h3 style="margin-top:12px">${L('readyLoss')}</h3>
+      <h3>${L('readyLoss')}</h3>
       <table class="stats"><tbody>${top.map((t) =>
         `<tr class="statLink" data-sub="${t.subs[0]}" tabindex="0" title="${escapeHtml(L('catOpen'))}"><td>${t.subs.map((s) => escapeHtml(subShortName(s))).join(' / ')}</td>
          <td class="num accBad">−${t.pts.toFixed(1)} ${L('points')}</td></tr>`).join('')}
       </tbody></table>
-      <p class="mut napomena">${L('readyNote')}</p>`;
+      <p class="mut napomena">${L('readyNote').split('@1').join(prag(SIM_PTS_MIN))}</p>`;
     el('readyCard').querySelectorAll('.statLink').forEach((tr) => {
       const idi = () => browse('s' + tr.dataset.sub);
       tr.addEventListener('click', idi);
@@ -1483,7 +1534,8 @@
     head.innerHTML = `
       ${type === 's' ? `<div class="qMeta"><span><button type="button" class="bcLink" data-bc="c${catQ.cat}">‹ ${escapeHtml(catOf(catQ))}</button></span></div>` : ''}
       <h3>${escapeHtml(name)}</h3>
-      <div class="mut" style="margin:6px 0 10px">${nQ(ids.length)} · ${seen} ${L('answered')}${acc !== null ? ` · ${L('thAcc').toLowerCase()}: ${acc}%` : ''} · <span title="${escapeHtml(L('queueTip'))}" style="cursor:help">${inQ} ${L('inQueue')}</span></div>
+      <div class="mut opisRed">${nQ(ids.length)} · ${seen} ${L('answered')}${acc !== null ? ` · ${L('thAcc').toLowerCase()}: <span class="${accClass(acc)}">${acc}%</span>` : ''} · ${inQ} ${L('inQueue')}${pomocHtml()}</div>
+      ${pomocTekstHtml()}
       <div class="qActions">
         <button class="primary" id="bStart" ${!shuffleOn && pos > 0 ? `title="${escapeHtml(L('contTip'))}"` : ''}>${pos > 0 && !shuffleOn ? `${L('continueBtn')} (${pos + 1}/${ids.length})` : L('startBtn') + sfx()}</button>
         ${pos > 0 && !shuffleOn ? `<button class="secondary" id="bStartOver">${L('fromStart')}</button>` : ''}
@@ -1494,6 +1546,7 @@
       </div>`;
     bindNav(head);
     bindShuffleBox(head);
+    veziPomoc(head);
     head.querySelectorAll('.bcLink').forEach((b) => b.addEventListener('click', () => browse(b.dataset.bc)));
     const origin = () => browse(key);
     el('bStart').addEventListener('click', () => {
@@ -1520,12 +1573,12 @@
         const naIsp = NA_ISPITU[sid];
         b.innerHTML = `<span class="subName">${escapeHtml(subShortName(sid))}${naIsp ? ` <span class="subExam" title="${escapeHtml(L('naIspituTip'))}">${L('naIspitu').replace('#', naIsp)}</span>` : ''}</span>
           <span class="subCnt">${sSeen}/${sq.length}</span>
-          <span class="subAcc">${sAcc !== null ? sAcc + '%' : ''}</span>`;
+          <span class="subAcc">${sAcc !== null ? `<span class="${accClass(sAcc)}">${sAcc}%</span>` : ''}</span>`;
         b.addEventListener('click', () => browse('s' + sid));
         list.appendChild(b);
       }
     }
-    const qh = document.createElement('h3'); qh.textContent = L('allQuestions'); qh.style.marginTop = '12px'; list.appendChild(qh);
+    const qh = document.createElement('h3'); qh.textContent = L('allQuestions'); list.appendChild(qh);
     list.insertAdjacentHTML('beforeend', legendHtml());
     let lastSub = null;
     ids.forEach((qid, idx) => {
@@ -1533,7 +1586,7 @@
       if (type === 'c' && q.sub !== lastSub) {
         lastSub = q.sub;
         const d = document.createElement('div');
-        d.className = 'qDivider';
+        d.className = 'grupaNaslov';
         d.title = T({ l: D.subs[q.sub].l, c: D.subs[q.sub].c });
         d.textContent = subShortName(q.sub);
         list.appendChild(d);
@@ -1563,19 +1616,22 @@
     }
     const acc = att ? Math.round(100 * (att - wr) / att) : null;
     const head = el('browseHead');
+    // isti redosled dugmadi kao na strani oblasti: nastavi · od početka · pogrešna · neodgovorena · 🎲 · početna
     head.innerHTML = `<h3>${L('allPage')}</h3>
-      <div class="mut" style="margin:6px 0 10px">${nQ(Q.length)} · ${seen} ${L('answered')}${acc !== null ? ` · ${L('thAcc').toLowerCase()}: ${acc}%` : ''} · <span title="${escapeHtml(L('queueTip'))}" style="cursor:help">${inQ} ${L('inQueue')}</span></div>
+      <div class="mut opisRed">${nQ(Q.length)} · ${seen} ${L('answered')}${acc !== null ? ` · ${L('thAcc').toLowerCase()}: <span class="${accClass(acc)}">${acc}%</span>` : ''} · ${inQ} ${L('inQueue')}${pomocHtml()}</div>
+      ${pomocTekstHtml()}
       <div class="qActions">
-        <button class="primary" id="bCont" title="${escapeHtml(L('contTip'))}">${L('continueBtn')} (${Math.min(S.seqPos + 1, Q.length)}/${Q.length})</button>
+        <button class="primary" id="bCont" title="${escapeHtml(L('contTip'))}">${L('continueBtn')} (${Math.min(prviNeodgOd(S.seqPos) + 1, Q.length)}/${Q.length})</button>
         <button class="secondary" id="bFrom1">${L('fromStart')}${sfx()}</button>
-        ${unseen.length && unseen.length < Q.length ? `<button class="secondary" id="bUnseen">${L('onlyUnseen')} (${unseen.length})${sfx()}</button>` : ''}
         ${wrongNow.length ? `<button class="secondary" id="bWrong">${L('onlyWrong')} (${wrongNow.length})${sfx()}</button>` : ''}
+        ${unseen.length && unseen.length < Q.length ? `<button class="secondary" id="bUnseen">${L('onlyUnseen')} (${unseen.length})${sfx()}</button>` : ''}
         ${shuffleBoxHtml()}
         <button type="button" class="secondary" data-nav="home">${L('backHome')}</button>
       </div>`;
     bindNav(head);
     bindShuffleBox(head);
-    el('bCont').addEventListener('click', () => startLearn());
+    veziPomoc(head);
+    el('bCont').addEventListener('click', () => startLearn(prviNeodgOd(S.seqPos)));
     el('bFrom1').addEventListener('click', () => {
       if (shuffleOn) startList(maybeShuffle(Q.map((q) => q.id)), shufTag(() => L('allPage')), null, 'filter', { origin: browseAll });
       else startLearn(0);
@@ -1593,7 +1649,7 @@
         lastCat = q.cat;
         const cat = D.cats.find((x) => x.id === q.cat);
         const d = document.createElement('div');
-        d.className = 'qDivider';
+        d.className = 'grupaNaslov';
         d.textContent = cat ? T({ l: cat.l, c: cat.c }) : '';
         d._search = '';
         list.appendChild(d);
@@ -1611,9 +1667,8 @@
     const sb = el('qSearch');
     // poruka kad nema pogodaka: pravi se jednom, samo se pokazuje/skriva
     const prazno = document.createElement('p');
-    prazno.className = 'mut';
+    prazno.className = 'mut razmakG';
     prazno.style.display = 'none';
-    prazno.style.marginTop = '10px';
     list.appendChild(prazno);   // unutar kartice, ispod redova — tu korisnik i gleda
     sb.addEventListener('input', () => {
       const v = sb.value.trim().toLowerCase();
@@ -1624,7 +1679,7 @@
         if (vidi) vidljivih++;
       });
       // dok traje pretraga, naslovi oblasti se sklanjaju (rezultati su izmešani)
-      list.querySelectorAll('.qDivider').forEach((d) => { d.style.display = v ? 'none' : ''; });
+      list.querySelectorAll('.grupaNaslov').forEach((d) => { d.style.display = v ? 'none' : ''; });
       // bez ovoga korisnik dobije praznu belu karticu i ne zna da li traži pogrešno ili je nešto puklo
       // split/join, NE replace: u zameni se „$'" i „$&" tumače kao naredbe, pa bi upit
       // sa tim znakovima izlomio poruku (npr. udvostručio pola rečenice)
@@ -1656,9 +1711,10 @@
     }
     const origin = () => browseSet(setKind);
     head.innerHTML = `<h3>${escapeHtml(title)}</h3>
-      <div class="mut" style="margin:6px 0 10px">${isWrong
-        ? `<span title="${escapeHtml(L('queueTip'))}" style="cursor:help">${ready.length} ${L('ready')} · ${waiting.length} ${L('waiting')}</span>${stale.length ? ` · <span title="${escapeHtml(L('osveziTip'))}" style="cursor:help">${stale.length} ${L('osveziLbl')}</span>` : ''}`
+      <div class="mut opisRed">${isWrong
+        ? `${ids.length} ${L('inQueue')}: ${ready.length} ${L('ponDanas')} · ${waiting.length} ${L('ponKasnije')}${stale.length ? ` · ${stale.length} ${L('osveziLbl')}` : ''}${pomocHtml()}`
         : `${ids.length}`}</div>
+      ${isWrong ? pomocTekstHtml(stale.length ? L('osveziTip') : '') : ''}
       <div class="qActions">
         ${isWrong
           ? `${ready.length ? `<button class="primary" id="bReady">${L('vezbajReady')} (${ready.length})${sfx()}</button>` : ''}
@@ -1667,9 +1723,11 @@
           : `<button class="primary" id="bAllM">${L('vezbaj')} (${ids.length})${sfx()}</button>`}
         ${shuffleBoxHtml()}
         <button type="button" class="secondary" data-nav="home">${L('backHome')}</button>
-      </div>`;
+      </div>
+      ${isWrong && waiting.length ? `<div class="mut napomena razmakG">${L('preRokaNapomena')}</div>` : ''}`;
     bindNav(head);
     bindShuffleBox(head);
+    veziPomoc(head);
     const br = el('bReady'); if (br) br.addEventListener('click', () => startList(maybeShuffle(queueSplit().ready), shufTag(() => L('drill')), () => L('drillEmpty'), shuffleOn ? 'drill-all' : 'drill', { origin }));
     const ba = el('bAll'); if (ba) ba.addEventListener('click', () => startList(maybeShuffle(ids), shufTag(() => L('drill')), null, 'drill-all', { origin }));
     const bo = el('bStale'); if (bo) bo.addEventListener('click', () => startList(maybeShuffle(zaOsvezavanje()), shufTag(() => L('osveziTitle')), () => L('drillEmpty'), 'filter', { origin }));
@@ -1839,6 +1897,25 @@
   // Brojač je i pre postojao, ali je samo gledao unazad („danas: 12"). Ovde dobija smisao:
   // korisnik kaže koliko hoće, aplikacija mu odbroji i da tačno toliko — prvo ponavljanja
   // (to je dug od ranije), pa nova pitanja.
+  // JEDNA formula tempa — nju koriste i sažetak na početnoj i „Predloži mi". Ranije su bile
+  // dve (sažetak bez rezerve), pa je isti ekran nudio 54 i 81 za istu stvar.
+  // Novo gradivo mora da se završi PRE ispita — poslednji dani ostaju za ponavljanje
+  // i simulacije. Rezerva je nedelja dana, ali nikad više od trećine preostalog vremena.
+  function predlogTempa(dana, neodg) {
+    const rezerva = Math.min(7, Math.floor(dana / 3));
+    const danaZaNovo = Math.max(1, dana - rezerva);
+    const novih = neodg ? Math.max(1, Math.ceil(neodg / danaZaNovo)) : null;
+    // ponavljanja: koliko se stvarno može u jednoj sednici, ne ceo zaostatak
+    const pon = Math.min(60, Math.max(15, queueSplit().ready.length));
+    return { rezerva, danaZaNovo, novih, pon };
+  }
+  const neodgovorenih = () => Q.filter((q) => !S.q[q.id] || !S.q[q.id].a).length;
+  // „Nastavi" na Sva pitanja: prvo NEODGOVORENO pitanje od mesta gde si stao. Ko uči kroz
+  // plan dana ili oblasti ne sme na „Nastavi" da dobije pitanje 1 koje je odavno rešio.
+  function prviNeodgOd(pos) {
+    for (let i = pos; i < Q.length; i++) if (!S.q[Q[i].id] || !S.q[Q[i].id].a) return i;
+    return Math.min(pos, Q.length);
+  }
   function planStanje() {
     if (!S.plan) return null;
     const d = (S.day && S.day.d === localDay()) ? S.day : null;
@@ -1849,6 +1926,9 @@
       cNovih, uNovih, cPon, uPon,
       ostaloNovih: Math.max(0, cNovih - uNovih),
       ostaloPon: Math.max(0, cPon - uPon),
+      // kvota bez gradiva: prvog dana nema šta da se ponavlja, na kraju nema novih
+      nemaNovih: neodgovorenih() === 0,
+      nemaPon: !queueSplit().ready.length && !zaOsvezavanje().length,
     };
   }
   function planIds() {
@@ -1868,29 +1948,35 @@
   function planBlok() {
     const p = planStanje();
     if (!p) return '';
-    const red = (lbl, u, c) => (c <= 0 ? '' : `<div class="planRed"><span>${u} / ${c} ${lbl}</span>
+    // Kvota bez gradiva se smatra ispunjenom — inače bi prvog dana (nema šta da se
+    // ponavlja) i u poslednjoj nedelji (nema novih) cilj zauvek stajao „neispunjen".
+    const red = (lbl, u, c, nema, nemaLbl) => (c <= 0 ? '' : `<div class="planRed"><span>${u} / ${c} ${lbl}${nema && u < c ? ` <span class="mut">(${nemaLbl})</span>` : ''}</span>
       <span class="planBar"><span style="width:${Math.min(100, Math.round(100 * u / c))}%"></span></span>
-      <span class="mut">${u >= c ? '✓' : ''}</span></div>`);
-    const ispunjen = p.ostaloNovih === 0 && p.ostaloPon === 0;
+      <span class="mut">${u >= c || nema ? '✓' : ''}</span></div>`);
+    const ispunjen = (p.ostaloNovih === 0 || p.nemaNovih) && (p.ostaloPon === 0 || p.nemaPon);
     const ima = planIds().length;
-    const dno = ispunjen ? `<span class="mut">${L('planIspunjen')}</span>`
+    const naRedu = queueSplit().ready.length;
+    // posle ispunjenog cilja ne kaže se „vidimo se sutra" dok istovremeno nešto čeka na redu
+    const dno = ispunjen ? `<span class="mut">${naRedu ? L('planIspunjenJos').split('@1').join(nQ(naRedu)) : L('planIspunjen')}</span>${naRedu ? ` <button type="button" class="secondary sBtn" data-nav="drill">${L('drill')} ›</button>` : ''}`
       : !ima ? `<span class="mut">${L('planNemaDostupnih')}</span>`
         : `<button class="primary" id="btnPlanVezbaj">${L('planVezbaj')}</button>`;
-    return `<div class="planBox"><b>${L('planNaslov')}</b>
-      ${red(L('novihLbl'), p.uNovih, p.cNovih)}${red(L('ponLbl'), p.uPon, p.cPon)}
-      <div style="margin-top:8px">${dno}</div></div>`;
+    return `<div class="planBox"><b>${L('planNaslov')}</b> &nbsp;<button type="button" class="bcLink" id="btnPlanPodesi">${L('planPodesi')} ›</button>
+      ${red(L('novihLbl'), p.uNovih, p.cNovih, p.nemaNovih, L('planSveOdgovoreno'))}${red(L('ponLbl'), p.uPon, p.cPon, p.nemaPon, L('planNemaPon'))}
+      <div class="razmakG">${dno}</div></div>`;
   }
 
   function homeExtras() {
     const delovi = [];
     if (S.streakD === localDay() && S.streakN >= 2) delovi.push('🔥 ' + S.streakN + '. ' + L('streakDani'));
-    const spremno = queueSplit().ready.length;
-    if (spremno > 0) delovi.push('🔁 ' + L('planPonavljanja').replace('#', spremno));
+    // kad cilj postoji, kvota ponavljanja stoji u bloku cilja — isti broj ne ide dvaput
+    const naRedu = queueSplit().ready.length;
+    if (naRedu > 0 && !S.plan) delovi.push('🔁 ' + L('planPonavljanja').replace('#', naRedu));
     {
-      // predlog simulacije: transparentno pravilo — pokrivenost ≥ 60% i nijedna simulacija danas;
-      // u poslednjih 7 dana pred ispit: po jedna dnevno.
-      const odgovoreno = Q.filter((q) => S.q[q.id] && S.q[q.id].a > 0).length;
-      const pokrivenost = odgovoreno / Q.length;
+      // predlog simulacije: JEDNO pravilo za sažetak, vodič i turu — procena spremnosti
+      // blizu praga (80+ od 98) i nijedna simulacija danas; u poslednjih 7 dana pred
+      // ispit: po jedna dnevno.
+      const { exp, answered } = readiness();
+      const procena = answered >= 30 ? Math.round(exp) : null;
       const zadnja = S.sims.length ? S.sims[S.sims.length - 1].d : 0;
       const simDanas = zadnja && new Date(zadnja).toDateString() === new Date().toDateString();
       let danaDoIspita = null;
@@ -1900,8 +1986,8 @@
       }
       if (danaDoIspita !== null && danaDoIspita >= 0 && danaDoIspita <= 7) {
         if (!simDanas) delovi.push('🎯 ' + L('planSimNedelja'));
-      } else if (pokrivenost >= 0.6 && !simDanas && (!zadnja || Date.now() - zadnja > 2.5 * 86400000)) {
-        delovi.push('🎯 ' + L('planSim'));
+      } else if (procena !== null && procena >= SIM_PREDLOG_OD && !simDanas && (!zadnja || Date.now() - zadnja > 2.5 * DAY)) {
+        delovi.push('🎯 ' + L('planSim').split('@1').join(procena));
       }
     }
     if (S.examDate) {
@@ -1912,10 +1998,14 @@
         // srpska jednina: „1 dan", ne „1 dana"; na sam dan ispita ne piše se „0 dana"
         if (dana === 0) delovi.push(L('examToday'));
         else delovi.push('📅 ' + L('examIn') + ': ' + dana + ' ' + (one(dana) ? L('examDaysOne') : L('examDays')));
-        const neodg = Q.filter((q) => !S.q[q.id] || !S.q[q.id].a).length;
+        const neodg = neodgovorenih();
         if (dana > 0 && neodg > 0) {
-          const tempo = Math.ceil(neodg / dana);
-          delovi.push((one(tempo) ? L('examPlanOne') : L('examPlan')).replace('#', tempo));
+          const tempo = predlogTempa(dana, neodg).novih;
+          if (!S.plan) delovi.push((one(tempo) ? L('examPlanOne') : L('examPlan')).replace('#', tempo));
+          else if (S.plan.novih && S.plan.novih * dana < neodg) {
+            // cilj ne stiže do kraja gradiva pre ispita — to se kaže, ne ćuti se
+            delovi.push('⚠ ' + L('planPremalo').split('@1').join(S.plan.novih).split('@2').join(S.plan.novih * dana).split('@3').join(neodg).split('@4').join(tempo));
+          }
         }
       }
     }
@@ -1934,7 +2024,7 @@
       for (const q of qq) { const r = S.q[q.id]; if (r && r.a) { seen++; att += r.a; wr += r.w; if (r.streak >= 1) good++; } }
       return { seen, good, att, wr, acc: att ? Math.round(100 * (att - wr) / att) : null };
     };
-    const accHtml = (st) => !opts.tacnost ? '' : `<span class="catAcc">${st.acc === null ? '—' : `<span class="${st.acc >= 90 ? 'accGood' : st.acc >= 75 ? 'accMid' : 'accBad'}">${st.acc}%</span>`}</span>`;
+    const accHtml = (st) => !opts.tacnost ? '' : `<span class="catAcc">${st.acc === null ? '—' : `<span class="${accClass(st.acc)}">${st.acc}%</span>`}</span>`;
     const redHtml = (labelHtml, st, tot, jak) => `<button type="button" class="catMain"><span class="catName">${jak ? '<b>' + labelHtml + '</b>' : labelHtml}</span>
         <span class="catBar"><span class="seen" style="width:${tot ? 100 * st.seen / tot : 0}%"></span><span class="good" style="width:${tot ? 100 * st.good / tot : 0}%"></span></span>
         <span class="catCnt">${jak ? '<b>' + st.seen + '/' + tot + '</b>' : st.seen + '/' + tot}</span>${accHtml(st)}</button>`;
@@ -1996,13 +2086,25 @@
       if (p > 0 && p < si.ids.length) {
         // jedna glavna radnja po ekranu: ako plan dana ima svoje plavo dugme, ovo je sivo
         const lastKlasa = (planStanje() && planIds().length) ? 'secondary' : 'primary';
-        lastChip = `<div style="margin-top:8px"><button class="${lastKlasa}" id="btnLastSec">▶ ${L('continueBtn')}: ${escapeHtml(si.name)} (${p + 1}/${si.ids.length})</button></div>`;
+        lastChip = `<div class="razmakG"><button class="${lastKlasa}" id="btnLastSec">▶ ${L('continueBtn')}: ${escapeHtml(si.name)} (${p + 1}/${si.ids.length})</button></div>`;
       }
     }
     const today = localDay();
     const dayLine = S.day && S.day.d === today && S.day.n > 0
       ? ` · 📅 ${L('todayLbl')}: <b>${S.day.n}</b> (${L('okShort')} ${S.day.ok})` : '';
-    el('homeSummary').innerHTML = `<b>${answeredCnt}</b> / ${Q.length} ${L('answered')} · <span title="${escapeHtml(L('queueTip'))}" style="cursor:help"><b>${ready.length}</b> ${L('ready')} + ${waiting.length} ${L('waiting')}</span> · 🔖 ${mk}${dayLine}${lastChip}` + homeExtras() + planBlok();
+    const uRedu = ready.length + waiting.length;
+    el('homeSummary').innerHTML = `<b>${answeredCnt}</b> / ${Q.length} ${L('answered')} · <b>${uRedu}</b> ${L('inQueue')}${uRedu ? ` (${ready.length} ${L('ponDanas')} · ${waiting.length} ${L('ponKasnije')})` : ''}${pomocHtml()} · 🔖 ${mk}${dayLine}${pomocTekstHtml()}${lastChip}` + homeExtras() + planBlok();
+    veziPomoc(el('homeSummary'));
+    bindNav(el('homeSummary'));
+    {
+      const bpp = el('btnPlanPodesi');
+      if (bpp) bpp.addEventListener('click', () => {
+        // kontrole cilja su u podešavanjima, na dnu strane — skok do njih, ne skrol kroz sve
+        const g = el('planGrupa');
+        if (g) g.scrollIntoView({ block: 'start' });
+        const pn = el('planNovih'); if (pn && !pn.disabled) pn.focus({ preventScroll: true });
+      });
+    }
     {
       const bpv = el('btnPlanVezbaj');
       if (bpv) bpv.addEventListener('click', () => {
@@ -2018,11 +2120,11 @@
       startList(si.ids, secTitleFn(key), null, 'section', { secKey: key, startAt: S.secPos[key] || 0 });
     });
     el('mLearn').textContent = L('allPage');
-    el('mLearnSub').textContent = `${L('continueBtn')}: ${Math.min(S.seqPos + 1, Q.length)} ${L('ofQ')} ${Q.length} · ${L('allPageSub')}`;
+    el('mLearnSub').textContent = `${L('continueBtn')}: ${Math.min(prviNeodgOd(S.seqPos) + 1, Q.length)} ${L('ofQ')} ${Q.length} · ${L('allPageSub')}`;
     el('mDrill').textContent = L('drill');
     {
       const osv = zaOsvezavanje().length;
-      el('mDrillSub').textContent = `${ready.length} ${L('ready')} · ${waiting.length} ${L('waiting')}${osv ? ` · ${osv} ${L('osveziLbl')}` : ''}`;
+      el('mDrillSub').textContent = `${ready.length} ${L('ponDanas')} · ${waiting.length} ${L('ponKasnije')}${osv ? ` · ${osv} ${L('osveziLbl')}` : ''}`;
     }
     el('mMarked').textContent = L('marked');
     el('mMarkedSub').textContent = `${mk}`;
@@ -2039,12 +2141,10 @@
     else {
       sh.innerHTML = `<h3>${L('history')}</h3><p class="mut napomena">${L('historyTip')}</p>`
         + S.sims.slice().reverse().map((s, ri) => {
-          const d = new Date(s.d);
-          const ds = `${String(d.getDate()).padStart(2, '0')}.${String(d.getMonth() + 1).padStart(2, '0')}. ${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
           const brGresaka = (s.wrong || []).length;
           return `<button class="histRow histBtn" data-sim="${S.sims.length - 1 - ri}">
-            <span class="histDate mut">${ds}</span>
-            <b class="histScore">${s.score}/${s.total}</b>
+            <span class="histDate mut">${fmtDatum(s.d, true)}</span>
+            <b class="histScore">${s.score} / ${s.total}</b>
             <span class="histPill"><span class="pill ${s.passed ? 'pass' : 'fail'}">${s.passed ? L('passed') : L('failed')}</span></span>
             <span class="histWrong mut">${brGresaka ? brGresaka + ' ✗' : ''}</span>
             <span class="histArrow mut">›</span></button>`;
@@ -2054,7 +2154,7 @@
 
     const tc = el('trustCard');
     if (tc) {
-      tc.innerHTML = `<div><button class="explCardBtn pojBtn istaknuto">${L('trustTitle')}</button><div class="explCard" style="display:none">${L('trustBody')}</div></div>`;
+      tc.innerHTML = `<div><button class="explCardBtn pojBtn istaknuto">${L('trustTitle')}</button><div class="explCard" style="display:none">${L('trustBody').split('@1').join(fmtDatum(BAZA_PROVERENA))}</div></div>`;
       sklopivo(tc.querySelector('.explCardBtn'));
     }
 
@@ -2066,15 +2166,13 @@
     } else fq.style.display = 'none';
 
     const gc = el('guideCard');
-    gc.innerHTML = `<div class="guideHead"><div><h3 style="margin:0">${L('guideTitle')}</h3>
-      <span class="mut napomena">${L('guideSub')}</span></div>
-      <button class="secondary" id="btnGuide">${S.guide ? L('guideHide') : L('guideOpen')}</button></div>
-      <div id="guideBody" style="${S.guide ? '' : 'display:none'}">${L('guideBody')}</div>`;
-    el('btnGuide').addEventListener('click', () => {
-      S.guide = S.guide ? 0 : 1; save();
-      el('guideBody').style.display = S.guide ? '' : 'none';
-      el('btnGuide').textContent = S.guide ? L('guideHide') : L('guideOpen');
-    });
+    // isti sklopivi obrazac kao pojmovnik, česta pitanja i poverenje — ranije je vodič jedini
+    // imao posebno dugme „Prikaži", pa su tri susedne kartice imale tri različita otklapanja
+    gc.innerHTML = `<div><button type="button" class="explCardBtn pojBtn istaknuto" id="btnGuide">${L('guideTitle')}</button>
+      <div class="explCard" id="guideBody" style="${S.guide ? '' : 'display:none'}"><p class="mut napomena">${L('guideSub')}</p>${L('guideBody')}</div></div>`;
+    sklopivo(el('btnGuide'));
+    // otvoren/zatvoren vodič se pamti; sluša se POSLE sklopivo, pa čita stanje koje je ono postavilo
+    el('btnGuide').addEventListener('click', () => { S.guide = el('btnGuide').getAttribute('aria-expanded') === 'true' ? 1 : 0; save(); });
 
     const pk = el('pojmovnikCard');
     const cardKeys = Object.keys(EX.cards || {}).filter((k) => k !== 'faq');
@@ -2095,7 +2193,7 @@
       for (const [gk, keys] of GRUPE) {
         const imaju = keys.filter((k) => cardKeys.includes(k));
         if (!imaju.length) continue;
-        html += `<div class="pojGroup">${escapeHtml(L(gk))}</div>`;
+        html += `<div class="grupaNaslov">${escapeHtml(L(gk))}</div>`;
         for (const k of imaju) { html += entry(k); stavljene.add(k); }
       }
       const ostatak = cardKeys.filter((k) => !stavljene.has(k));
@@ -2109,28 +2207,28 @@
     // greške su odavde preseljeni u podnožje — tamo ih ljudi i traže.
     el('dataTools').innerHTML = `
       <div class="podGrupa">
-        <div class="podNaslov">${L('grupaNapredak')}</div>
+        <div class="grupaNaslov">${L('grupaNapredak')}</div>
         <div class="mut napomena">${L('persistNote')}</div>
-        <div id="backupLine" style="margin-top:8px"></div>
-        <div class="qActions" style="margin-top:8px">
+        <div id="backupLine" class="razmakG"></div>
+        <div class="qActions">
           <button type="button" class="secondary" id="btnExport">${L('export')}</button>
           <button type="button" class="secondary" id="btnImport">${L('import')}</button>
           <input type="file" id="fileImport" accept=".json" style="display:none">
         </div>
       </div>
       <div class="podGrupa">
-        <div class="podNaslov">${L('grupaAplikacija')}</div>
+        <div class="grupaNaslov">${L('grupaAplikacija')}</div>
         <div class="qActions">
           <button type="button" class="secondary" id="btnInstall" style="display:none">${L('installBtn')}</button>
           <button type="button" class="secondary" id="btnCheckUpd">${L('updRepoCheck')}</button>
           <button type="button" class="secondary" id="btnTourReplay">${L('tourReplay')}</button>
         </div>
-        <div id="installWhat" style="margin-top:8px"><button type="button" class="explCardBtn pojBtn">${L('installWhatTitle')}</button><div class="explCard" style="display:none">${L('installWhatBody')}</div></div>
+        <div id="installWhat" class="razmakG"><button type="button" class="explCardBtn pojBtn">${L('installWhatTitle')}</button><div class="explCard" style="display:none">${L('installWhatBody')}</div></div>
       </div>
-      <div class="podGrupa">
-        <div class="podNaslov">${L('planNaslov')}</div>
+      <div class="podGrupa" id="planGrupa">
+        <div class="grupaNaslov">${L('planNaslov')}</div>
         <div class="tekstSm"><label>${L('examDateLabel')}
-          <input type="date" id="examDate" value="${S.examDate || ''}" style="margin-left:6px"></label></div>
+          <input type="date" id="examDate" value="${S.examDate || ''}"></label></div>
         <div class="mut napomena">${L('planObjasnjenje')}</div>
         <div class="planPolja">
           <label class="planPolje"><span class="mut">${L('planNovih')}</span>
@@ -2141,10 +2239,10 @@
           <button type="button" class="secondary" id="btnPlanPredlog">${L('planPredlozi')}</button>
           ${S.plan ? `<button type="button" class="secondary" id="btnPlanOff">${L('planIskljuci')}</button>` : ''}
         </div>
-        <div id="planPoruka" class="mut" style="margin-top:6px"></div>
+        <div id="planPoruka" class="mut razmakG"></div>
       </div>
       <div class="podGrupa podOpasno">
-        <div class="podNaslov">${L('grupaOprezno')}</div>
+        <div class="grupaNaslov">${L('grupaOprezno')}</div>
         <div class="qActions"><button type="button" class="danger" id="btnReset">${L('reset')}</button></div>
         <div class="mut napomena">${L('resetNapomena')}</div>
       </div>`;
@@ -2187,16 +2285,16 @@
     });
     {
       const pn = el('planNovih'), pp = el('planPon');
-      const neodgovorenih = Q.filter((q) => !S.q[q.id] || !S.q[q.id].a).length;
+      const neodg = neodgovorenih();
       const kaziPosle = (t) => { const m = el('planPoruka'); if (m) m.textContent = t; };
       const prazno = (x) => String(x.value || '').trim() === '';
-      if (!neodgovorenih) { pn.disabled = true; pn.value = ''; pn.placeholder = L('planSveOdgovoreno'); }
+      if (!neodg) { pn.disabled = true; pn.value = ''; pn.placeholder = L('planSveOdgovoreno'); }
       [pn, pp].forEach((x) => x.addEventListener('input', () => { ocistiPoruku(x); kaziPosle(''); }));
       el('btnPlanSave').addEventListener('click', () => {
         if (prazno(pn) && prazno(pp)) { S.plan = null; save(); renderHome(); kaziPosle(L('planUgasen')); return; }
         let novih = null, pon = null;
         if (!prazno(pn)) {
-          novih = ceoBrojIzPolja(pn, 1, Math.max(1, neodgovorenih), L('planMaxNovih'));
+          novih = ceoBrojIzPolja(pn, 1, Math.max(1, neodg), L('planMaxNovih'));
           if (novih === null) return;
         }
         if (!prazno(pp)) {
@@ -2210,17 +2308,13 @@
         kaziPosle(dnevno > 150 ? L('planPuno').replace('#', dnevno) : L('planSacuvan'));
       });
       el('btnPlanPredlog').addEventListener('click', () => {
-        if (!S.examDate) { kaziPosle(L('planBezDatuma')); return; }
+        // poruka o datumu stoji UZ polje datuma (i fokusira ga) — ono je iznad dugmeta,
+        // pa je „unesi datum ispod" slalo čoveka na pogrešnu stranu
+        if (!S.examDate) { poruciUzPolje(el('examDate'), L('planBezDatuma')); return; }
         const d0 = new Date(); d0.setHours(0, 0, 0, 0);
         const dana = Math.ceil((new Date(S.examDate + 'T00:00:00') - d0) / 86400000);
-        if (!Number.isFinite(dana) || dana < 1) { kaziPosle(L('planDatumProsao')); return; }
-        // Novo gradivo mora da se završi PRE ispita — poslednji dani ostaju za ponavljanje
-        // i simulacije. Rezerva je nedelja dana, ali nikad više od trećine preostalog vremena.
-        const rezerva = Math.min(7, Math.floor(dana / 3));
-        const danaZaNovo = Math.max(1, dana - rezerva);
-        const novih = neodgovorenih ? Math.max(1, Math.ceil(neodgovorenih / danaZaNovo)) : null;
-        // ponavljanja: koliko se stvarno može u jednoj sednici, ne ceo zaostatak
-        const pon = Math.min(60, Math.max(15, queueSplit().ready.length));
+        if (!Number.isFinite(dana) || dana < 1) { poruciUzPolje(el('examDate'), L('planDatumProsao')); return; }
+        const { rezerva, novih, pon } = predlogTempa(dana, neodg);
         // predlog se ODMAH čuva kao cilj — ranije je samo punio polja, pa je osvežavanje
         // strane vraćalo stare brojeve i izgledalo kao da se ništa nije desilo
         S.plan = { novih, pon };
@@ -2438,7 +2532,7 @@
     const f = el('podnozje');
     if (!f) return;
     f.innerHTML = `<div class="podnozjeRed"><b>${escapeHtml(L('brand'))}</b> — ${L('podnozjeOpis')}</div>
-      <div class="podnozjeRed mut">${L('podnozjeBaza').split('@1').join(Q.length).split('@2').join(D.generated).split('@3').join(window.APP_V || 0)}</div>
+      <div class="podnozjeRed mut">${L('podnozjeBaza').split('@1').join(Q.length).split('@2').join(fmtDatum(D.generated)).split('@3').join(fmtDatum(BAZA_PROVERENA)).split('@4').join(window.APP_V || 0)}</div>
       <div class="podnozjeRed podnozjeAkcije">
         ${prijavaRadi() ? `<button type="button" class="secondary sBtn" id="btnFeedback">${L('feedback')}</button>` : ''}
         <a class="bcLink" href="${REPO}" target="_blank" rel="noopener">${L('podnozjeKod')}</a>
@@ -2579,7 +2673,7 @@
     g.fillText(polozio ? L('passed') : L('failed'), W / 2, 590);
 
     const d = new Date(rec.d || Date.now());
-    const ds = String(d.getDate()).padStart(2, '0') + '.' + String(d.getMonth() + 1).padStart(2, '0') + '.' + d.getFullYear() + '.';
+    const ds = fmtDatum(d);
     g.font = '400 38px "Segoe UI", Arial, sans-serif';
     g.fillStyle = 'rgba(255,255,255,.85)';
     g.fillText(ds + '  ·  ' + SIM_N + ' ' + L('pitanjaMn') + '  ·  45 min', W / 2, 660);
