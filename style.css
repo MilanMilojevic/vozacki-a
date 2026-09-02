@@ -433,6 +433,21 @@ tr.totalRow td { border-top: 2px solid var(--blue); }
 body.dark #offlineStrip { background: #3d3420; color: #e8e0cc; }
 
 /* Korisnici koji su isključili animacije u sistemu — bez prelaza i glatkog skrola */
+/* ---- Mikro-animacije (tura 9). Samo transform/opacity — ne pomeraju raspored;
+   dole ih blok prefers-reduced-motion sve gasi za one koji pokret ne žele. ---- */
+button { transition: background-color .15s ease, border-color .15s ease, color .15s ease, opacity .15s ease; }
+.menuBtn { transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease; }
+.menuBtn:hover { transform: translateY(-1px); }
+.choice { transition: border-color .12s ease, background-color .12s ease; }
+.qRow { transition: background-color .12s ease; }
+@keyframes mekiUlaz { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+.explCard { animation: mekiUlaz .18s ease-out; }
+.catSubRow { animation: mekiUlaz .15s ease-out; }
+.verdict { animation: mekiUlaz .16s ease-out; }
+.upozorenjeTraka { animation: mekiUlaz .2s ease-out; }
+#imgZoom { animation: mekiUlaz .15s ease-out; }
+.planBar > span { transition: width .35s ease; }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; scroll-behavior: auto !important; }
 }
