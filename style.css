@@ -13,6 +13,11 @@
   --explBg: #f3f0ff; --explLine: #d6ccf5; --explInk: #4c3a99; --explTh: #e9e3fa;
   --reqBg: #e0ecf8; --reqInk: #1e4e79;
   --vgSlow: #dcfce7; --vgSlowInk: #14532d; --vgFast: #dbeafe; --vgFastInk: #1e3a8a;
+  --danger: #c0392b; --danger-d: #a93226;        /* razorne radnje */
+  --btnOff: #a8bcd0;                             /* ugašeno glavno dugme */
+  --barSeen: #9db8d2;                            /* traka napretka: viđeno (ispod: --blue = tačno) */
+  --warnBg: #7a4b00; --warnInk: #fff;            /* traka tihih upozorenja */
+  --yourOk: #1d4ed8;                             /* oznaka „tvoj odgovor" kad je tačan */
 }
 body.dark {
   --blue: #4a86bd; --blue-d: #6aa4d8; --bg: #131a22; --card: #1d2731;
@@ -24,6 +29,7 @@ body.dark {
   --explBg: #262038; --explLine: #4a3f6e; --explInk: #c3b3f0; --explTh: #322a4d;
   --reqBg: #1d3348; --reqInk: #a8cdec;
   --vgSlow: #163826; --vgSlowInk: #7fd8a0; --vgFast: #1a2f4d; --vgFastInk: #9dc3ee;
+  --btnOff: #4a5560; --barSeen: #5b7a99; --yourOk: #3b6fd9;
 }
 /* Simulacija UVEK izgleda kao pravi ispit — svetla, bez obzira na temu */
 body.dark #view-sim {
@@ -39,7 +45,7 @@ body.dark #view-sim {
 /* WCAG AA kontrast u tamnoj temi: bela slova traže tamniju plavu podlogu */
 body.dark .primary { background: #2c6aa0; }
 body.dark .primary:hover { background: #1f4e78; }
-body.dark .primary:disabled, .primary:disabled:hover { background: #4a5560; color: #c9d1d9; cursor: default; }
+.primary:disabled:hover { background: var(--btnOff); }
 body.dark #topbar { background: #24587f; }
 button.catRow { width: 100%; background: none; border: none; padding: 0; font: inherit; color: inherit; text-align: left; }
 html { font-size: 16px; }
@@ -88,7 +94,7 @@ main { max-width: 880px; width: 100%; margin: 0 auto; padding: 16px 12px 60px; f
 .catChevBtn:hover { background: var(--optHover); color: var(--blue); }
 .catName { flex: 0 0 46%; font-size: var(--fs-md); }
 .catBar { flex: 1; height: 14px; background: var(--bar); border-radius: 7px; overflow: hidden; position: relative; }
-.catBar .seen { position: absolute; inset: 0 auto 0 0; background: #9db8d2; }
+.catBar .seen { position: absolute; inset: 0 auto 0 0; background: var(--barSeen); }
 .catBar .good { position: absolute; inset: 0 auto 0 0; background: var(--blue); }
 .catCnt { flex: 0 0 90px; text-align: right; font-size: var(--fs-sm); color: var(--mut); }
 .catAcc { flex: 0 0 50px; text-align: right; font-size: var(--fs-sm); font-weight: 600; }
@@ -139,12 +145,12 @@ main { max-width: 880px; width: 100%; margin: 0 auto; padding: 16px 12px 60px; f
 .qActions { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; align-items: center; }
 .primary { background: var(--blue); color: #fff; padding: 11px 22px; font-weight: 600; }
 .primary:hover { background: var(--blue-d); }
-.primary:disabled { background: #a8bcd0; cursor: default; }
+.primary:disabled { background: var(--btnOff); cursor: default; }
 .secondary { background: var(--btn2); color: var(--ink); padding: 11px 18px; }
 .secondary:hover:not(:disabled) { background: var(--btn2h); }
 .secondary:disabled { opacity: .55; cursor: default; }
-.danger { background: #c0392b; color: #fff; padding: 10px 18px; font-weight: 600; }
-.danger:hover:not(:disabled) { background: #a93226; }
+.danger { background: var(--danger); color: #fff; padding: 10px 18px; font-weight: 600; }
+.danger:hover:not(:disabled) { background: var(--danger-d); }
 .danger:disabled { opacity: .55; cursor: default; }
 #simReport tr.repRow { cursor: pointer; }
 #simReport tr.repRow:hover td { background: var(--optHover); }
@@ -190,8 +196,8 @@ button.histBtn:hover { background: var(--optHover); }
 .chipWrap { float: right; margin-left: 10px; white-space: nowrap; }
 .chip { display: inline-block; font-size: var(--fs-xs); font-weight: 700; padding: 2px 8px; border-radius: 999px; margin-left: 4px; vertical-align: middle; }
 .chipOk { background: var(--ok-bg); color: var(--ok); border: 1px solid var(--ok); }
-.chipYourOk { background: #1d4ed8; color: #fff; }
-.chipYourBad { background: #b91c1c; color: #fff; }
+.chipYourOk { background: var(--yourOk); color: #fff; }
+.chipYourBad { background: var(--bad); color: #fff; }
 .choice.rev { cursor: default; }
 .reqNote { background: var(--reqBg); color: var(--reqInk); border-radius: 8px; padding: 7px 12px; margin-bottom: 8px; font-size: var(--fs-sm); font-weight: 600; }
 .noAnsw { background: var(--mark-bg); color: var(--mark); border-radius: 8px; padding: 7px 12px; margin-bottom: 8px; font-size: var(--fs-sm); font-weight: 700; }
@@ -222,7 +228,7 @@ body.uSimulaciji #podnozje { display: none; }
 /* traka za tiha upozorenja (napredak se ne čuva, otvorena dva prozora) */
 #trakeDrzac { position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 1400;
   display: flex; flex-direction: column; gap: 8px; max-width: 640px; margin: 0 auto; pointer-events: none; }
-.upozorenjeTraka { background: #7a4b00; color: #fff; border-radius: 10px; padding: 12px 16px;
+.upozorenjeTraka { background: var(--warnBg); color: var(--warnInk); border-radius: 10px; padding: 12px 16px;
   font-size: var(--fs-md); line-height: 1.45; box-shadow: 0 6px 22px rgba(0,0,0,.35); pointer-events: auto; }
 /* ista dugmad, ali na tamnonarandžastoj traci moraju da budu svetla */
 .upozorenjeTraka .zatvoriX { background: rgba(255,255,255,.18); color: #fff;
@@ -300,7 +306,7 @@ body.uSimulaciji #podnozje { display: none; }
 
 .qNum { color: var(--mut); font-size: var(--fs-sm); cursor: pointer; border-bottom: 1px dotted var(--mut);
   display: inline-block; padding: 4px 2px; margin: -4px -2px; }
-.bcLink { color: var(--mut); text-decoration: none; border-bottom: 1px dotted #b6c2d0;
+.bcLink { color: var(--mut); text-decoration: none; border-bottom: 1px dotted var(--line);
   background: none; border-radius: 0; padding: 0; font: inherit; cursor: pointer; }
 .bcLink:hover { color: var(--blue); border-bottom-color: var(--blue); }
 .jumpBox { display: flex; gap: 5px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
