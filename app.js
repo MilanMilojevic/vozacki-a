@@ -27,7 +27,7 @@
   const DAY = 24 * 60 * 60 * 1000;
   const one = (n) => n % 10 === 1 && n % 100 !== 11;   // srpski: 1, 21, 31... "pitanje/dan"
   const poeni = (n) => n + ' ' + (one(n) ? L('pointsOne') : L('points'));   // "1 poen", "2 poena"
-  const localDay = () => { const d = new Date(); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
+  const localDay = (ts) => { const d = ts ? new Date(ts) : new Date(); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
   // Ponavljanje se zakazuje za POČETAK dana (00:00), da bi "sutra" zaista značilo sutra ujutru,
   // a ne 24 sata od trenutka odgovaranja.
   const pocetakDanaZa = (zaDana) => { const d = new Date(); d.setHours(0, 0, 0, 0); d.setDate(d.getDate() + zaDana); return d.getTime(); };
@@ -314,7 +314,7 @@
     todayLbl: { l: 'Danas', c: 'Данас' },
     okShort: { l: 'tačno', c: 'тачно' },
     shufTip: { l: 'Vežbanje pokrenuto sa ove strane ide nasumičnim redosledom (ne znaš koje je sledeće). Spisak dole ostaje po redu, a „Nastavi" uvek ide redom. Klik na pitanje u spisku: počinje od njega, pa nastavlja izmešano.', c: 'Вежбање покренуто са ове стране иде насумичним редоследом (не знаш које је следеће). Списак доле остаје по реду, а „Настави" увек иде редом. Клик на питање у списку: почиње од њега, па наставља измешано.' },
-    queueTip: { l: 'Razmaknuto ponavljanje: pogrešiš → pitanje je odmah spremno; pogodiš ga → vraća se sutra; opet pogodiš → za 3 dana; treći pogodak zaredom → izlazi iz reda. I pitanje koje si pogodio iz prve vraća se jednom, za 3 dana, da se potvrdi — pa izlazi.', c: 'Размакнуто понављање: погрешиш → питање је одмах спремно; погодиш га → враћа се сутра; опет погодиш → за 3 дана; трећи погодак заредом → излази из реда. И питање које си погодио из прве враћа се једном, за 3 дана, да се потврди — па излази.' },
+    queueTip: { l: 'Razmaknuto ponavljanje: pogrešiš → pitanje je odmah spremno; pogodiš ga → vraća se sutra; opet pogodiš → za 3 dana; treći pogodak zaredom → izlazi iz reda. I pitanje koje si pogodio iz prve vraća se jednom, za 3 dana, da se potvrdi — pa izlazi. Tačan odgovor PRE roka je vežbanje i ne pomera raspored; pogrešan važi uvek. U dnevni cilj isto pitanje ulazi najviše jednom dnevno.', c: 'Размакнуто понављање: погрешиш → питање је одмах спремно; погодиш га → враћа се сутра; опет погодиш → за 3 дана; трећи погодак заредом → излази из реда. И питање које си погодио из прве враћа се једном, за 3 дана, да се потврди — па излази. Тачан одговор ПРЕ рока је вежбање и не помера распоред; погрешан важи увек. У дневни циљ исто питање улази највише једном дневно.' },
     legend: { l: '✓ utvrđeno · ✗ za ponavljanje · • neodgovoreno · 🔖 obeleženo · 🖼 sa slikom · desno: broj tačnih/netačnih', c: '✓ утврђено · ✗ за понављање · • неодговорено · 🔖 обележено · 🖼 са сликом · десно: број тачних/нетачних' },
     contTip: { l: 'Nastavlja tačno od mesta gde si stao (uvek redom).', c: 'Наставља тачно од места где си стао (увек редом).' },
     qOne: { l: 'pitanje', c: 'питање' },
@@ -506,8 +506,21 @@
   function record(id, ok) {
     const r = qs(id);
     const prviPut = !r.a;             // pre uvećanja: ovo pitanje se danas radi kao NOVO
-    r.a++; r.last = Date.now();
-    if (ok) {
+    const sada = Date.now();
+    // MILANOVA ODLUKA (2026-09-02): tačan odgovor pomera raspored SAMO kad je pitanje
+    // stvarno na redu. Strelicama nazad-napred pitanje je moglo da „diplomira" iz reda
+    // za dvadeset sekundi, bez ijednog stvarnog razmaka. Odgovor pre roka je vežbanje:
+    // broji se u statistici pitanja (a), ali ne dira ni streak ni rok.
+    // Pogrešan odgovor VAŽI UVEK — greška je stvarna informacija, ma kad se desila.
+    const preRoka = ok && !prviPut && inQueue(id) && dueOf(id) > sada;
+    // isto pitanje se u dnevne brojače (i dnevni cilj) računa najviše JEDNOM dnevno,
+    // da se kvota ne puni vrćenjem istog pitanja u krug
+    const vecBrojanoDanas = !!r.last && localDay(r.last) === localDay();
+    if (preRoka && !r.due) r.due = dueOf(id);   // nasleđen zapis bez roka: zamrzni rok pre pomeranja r.last
+    r.a++; r.last = sada;
+    if (preRoka) {
+      // raspored ostaje netaknut
+    } else if (ok) {
       r.streak++;
       if (r.w > 0 && r.streak < 3) r.due = pocetakDanaZa(r.streak === 1 ? 1 : 3);
       else if (r.w === 0 && r.streak === 1) r.due = pocetakDanaZa(3);   // utvrđivanje: druga potvrda za 3 dana
@@ -517,8 +530,10 @@
     }
     const today = localDay();
     if (!S.day || S.day.d !== today) S.day = { d: today, n: 0, ok: 0, novih: 0, pon: 0 };
-    S.day.n++; if (ok) S.day.ok++;
-    if (prviPut) S.day.novih = (S.day.novih || 0) + 1; else S.day.pon = (S.day.pon || 0) + 1;
+    if (!vecBrojanoDanas) {
+      S.day.n++; if (ok) S.day.ok++;
+      if (prviPut) S.day.novih = (S.day.novih || 0) + 1; else S.day.pon = (S.day.pon || 0) + 1;
+    }
     if (S.streakD !== today) {
       const juce = new Date(); juce.setDate(juce.getDate() - 1);
       const juceStr = juce.getFullYear() + '-' + String(juce.getMonth() + 1).padStart(2, '0') + '-' + String(juce.getDate()).padStart(2, '0');

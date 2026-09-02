@@ -48,17 +48,26 @@ async function proveraBodovanja2() {
   ok('pogrešan odgovor: due = ODMAH (u redu za ponavljanje)', r.due <= Date.now());
   ok('dnevni brojač: n=1, ok=0', S().day && S().day.n === 1 && S().day.ok === 0);
 
-  // sledeće pa nazad — ponovni odgovor MORA da se beleži
+  // sledeće pa nazad — ISPRAVKA pogrešnog odgovora važi (pitanje je NA REDU: due je "odmah")
   klikni('ledeće', document.getElementById('qCard'));
   klikni('rethodno', document.getElementById('qCard'));
   const tacanBtn = [...document.querySelectorAll('#qCard .choice')].find((b) => tacni.has(b.textContent.trim()));
   tacanBtn.click();
   klikni('dgovori', document.getElementById('qCard'));
   r = S().q[q1.id];
-  ok('ponovni (tačan) odgovor se beleži: a=2, streak=1', r.a === 2 && r.streak === 1);
+  ok('ispravka na roku se beleži: a=2, streak=1', r.a === 2 && r.streak === 1);
   const sutra = new Date(); sutra.setHours(0, 0, 0, 0); sutra.setDate(sutra.getDate() + 1);
   ok('rok posle 1. pogotka = SUTRA u 00:00 (kalendarski)', r.due === sutra.getTime());
   ok('u redu za ponavljanje dok streak < 3', window.__dev.inQueue(q1.id) === true);
+  ok('dnevni brojač: isto pitanje se broji JEDNOM dnevno (n i dalje 1)', S().day.n === 1);
+  // rok je sada SUTRA — još jedan tačan odgovor PRE roka je vežbanje, ne sme da pomeri raspored
+  klikni('ledeće', document.getElementById('qCard'));
+  klikni('rethodno', document.getElementById('qCard'));
+  [...document.querySelectorAll('#qCard .choice')].find((b) => tacni.has(b.textContent.trim())).click();
+  klikni('dgovori', document.getElementById('qCard'));
+  r = S().q[q1.id];
+  ok('PRE roka: odgovor se broji (a=3) ali streak i rok stoje', r.a === 3 && r.streak === 1 && r.due === sutra.getTime());
+  ok('PRE roka: i dalje u redu za ponavljanje', window.__dev.inQueue(q1.id) === true);
 
   // ---- 1b) UTVRĐIVANJE: tačno IZ PRVE → druga potvrda za 3 dana; posle druge potvrde utvrđeno ----
   klikni('ledeće', document.getElementById('qCard'));
@@ -70,12 +79,38 @@ async function proveraBodovanja2() {
   const za3 = window.__dev.pocetakDanaZa(3);
   ok('tačno iz prve: zakazana potvrda za 3 dana', r2 && r2.w === 0 && r2.streak === 1 && r2.due === za3);
   ok('tačno iz prve: u redu za utvrđivanje', window.__dev.inQueue(q2.id) === true);
+  ok('dnevni brojač: drugo pitanje danas → n=2', S().day.n === 2);
+  // MILANOVA ODLUKA (2026-09-02): potvrda odmah posle prvog pogotka je PRE roka —
+  // broji se kao vežbanje, ali NE utvrđuje pitanje (ranije je utvrđivala za 20 sekundi)
   klikni('ledeće', document.getElementById('qCard'));
   klikni('rethodno', document.getElementById('qCard'));
   for (const b of document.querySelectorAll('#qCard .choice')) if (tacni2.has(b.textContent.trim())) b.click();
   klikni('dgovori', document.getElementById('qCard'));
   r2 = S().q[q2.id];
-  ok('druga potvrda: utvrđeno, van reda, bez roka', r2.streak === 2 && !r2.due && window.__dev.inQueue(q2.id) === false);
+  ok('potvrda PRE roka NE utvrđuje: streak=1, rok stoji, u redu', r2.a === 2 && r2.streak === 1 && r2.due === za3 && window.__dev.inQueue(q2.id) === true);
+  // kad rok STIGNE (pomeramo ga u prošlost), ista potvrda VAŽI → utvrđeno
+  S().q[q2.id].due = Date.now() - 1000;
+  klikni('ledeće', document.getElementById('qCard'));
+  klikni('rethodno', document.getElementById('qCard'));
+  for (const b of document.querySelectorAll('#qCard .choice')) if (tacni2.has(b.textContent.trim())) b.click();
+  klikni('dgovori', document.getElementById('qCard'));
+  r2 = S().q[q2.id];
+  ok('potvrda NA ROKU: utvrđeno, van reda, bez roka', r2.streak === 2 && !r2.due && window.__dev.inQueue(q2.id) === false);
+  // pogrešan odgovor važi UVEK, i pre roka: vraća pitanje u red odmah
+  const q3 = window.QUIZ.questions[2];
+  const tacni3 = new Set(q3.ch.filter((c) => c.ok).map((c) => c.t.l.trim()));
+  klikni('ledeće', document.getElementById('qCard'));
+  for (const b of document.querySelectorAll('#qCard .choice')) if (tacni3.has(b.textContent.trim())) b.click();
+  klikni('dgovori', document.getElementById('qCard'));
+  klikni('ledeće', document.getElementById('qCard'));
+  klikni('rethodno', document.getElementById('qCard'));
+  // pitanje traži DVA odgovora — biramo jedan tačan i jedan netačan (ukupno pogrešno)
+  const svi3 = [...document.querySelectorAll('#qCard .choice')];
+  svi3.find((b) => tacni3.has(b.textContent.trim())).click();
+  svi3.find((b) => !tacni3.has(b.textContent.trim())).click();
+  klikni('dgovori', document.getElementById('qCard'));
+  const r3 = S().q[q3.id];
+  ok('pogrešan PRE roka VAŽI: w=1, streak=0, odmah na redu', r3.w === 1 && r3.streak === 0 && r3.due <= Date.now());
 
   // ---- 2) SIMULACIJA: svih 41 tačno → 98/98, položeno ----
   document.querySelector('[data-nav="home"]').click();
