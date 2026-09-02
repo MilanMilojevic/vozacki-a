@@ -224,6 +224,11 @@ body.uSimulaciji #podnozje { display: none; }
 .qImgFail { border: 1px dashed var(--line); border-radius: 8px; padding: 14px 16px; margin: 0 0 14px;
   color: var(--mut); font-size: .9rem; text-align: center; background: var(--bar); }
 .explCard table, .tblScroll table { min-width: 0; }
+/* Na uskom ekranu 27 tabela u karticama je prelivalo preko ivice — isto pravilo kao
+   za tabelu statistike: tabela skroluje u svom okviru, strana nikad vodoravno. */
+@media (max-width: 700px) {
+  .explCard table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+}
 /* poruka uz polje za unos — mora da se vidi i mora da kaže šta JESTE dozvoljeno */
 .unosPoruka { color: var(--bad); font-size: .82rem; font-weight: 600; margin-top: 4px; max-width: 34em; }
 .planBox { margin-top: 10px; }

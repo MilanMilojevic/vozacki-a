@@ -1295,11 +1295,11 @@ CARDS['policajac-znaci'] = {
 
 <p><b>Predručena ruka se gleda drugačije.</b> Zamisli je kao rampu koja se pruža u smeru u kome pokazuje: ako <b>tvoja putanja preseca tu rampu</b> — ne smeš. Ako je ne dodiruješ (na primer, prolaziš iza njegovih leđa, mimo pravca ruke) — smeš pravo.</p>
 <svg viewBox="0 0 420 196" role="img" style="max-width:420px;width:100%;display:block;margin:8px auto">
-  <circle cx="150" cy="80" r="14" fill="#334155"/>
-  <line x1="164" y1="80" x2="318" y2="80" stroke="#334155" stroke-width="8" stroke-linecap="round"/>
-  <rect x="312" y="70" width="26" height="20" rx="6" fill="#334155"/>
+  <circle cx="150" cy="80" r="14" fill="currentColor"/>
+  <line x1="164" y1="80" x2="318" y2="80" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
+  <rect x="312" y="70" width="26" height="20" rx="6" fill="currentColor"/>
   <text x="150" y="108" text-anchor="middle" font-size="10" fill="#64748b">policajac</text>
-  <text x="196" y="58" text-anchor="middle" font-size="11" fill="#334155">smer predručene ruke</text>
+  <text x="196" y="58" text-anchor="middle" font-size="11" fill="currentColor">smer predručene ruke</text>
   <path d="M280 160 L280 44" stroke="#c0392b" stroke-width="6" fill="none"/>
   <path d="M268 54 L280 32 L292 54" stroke="#c0392b" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
   <text x="280" y="182" text-anchor="middle" font-size="12" font-weight="bold" fill="#c0392b">SEČE = stani</text>
@@ -2600,7 +2600,7 @@ CARDS['slicni-pojmovi'] = {
       <line x1="2" y1="80" x2="118" y2="80" stroke="#7a8a99" stroke-width="3"/>
       <rect x="10" y="32" width="100" height="38" rx="6" fill="#c0392b"/>
       <rect x="16" y="38" width="34" height="16" rx="2" fill="#eef3f7"/><rect x="56" y="38" width="22" height="16" rx="2" fill="#eef3f7"/><rect x="84" y="38" width="20" height="16" rx="2" fill="#eef3f7"/>
-      <line x1="60" y1="32" x2="52" y2="10" stroke="#333" stroke-width="2"/></svg>
+      <line x1="60" y1="32" x2="52" y2="10" stroke="currentColor" stroke-width="2"/></svg>
     <b>TRAMVAJ</b><span>ŠINE + električni vod — šinsko vozilo</span>
   </div>
   <div class="signCell">
@@ -2608,16 +2608,16 @@ CARDS['slicni-pojmovi'] = {
       <rect x="0" y="76" width="120" height="16" fill="#9aa7b4"/>
       <rect x="10" y="30" width="100" height="38" rx="6" fill="#2e8b57"/>
       <rect x="16" y="36" width="34" height="16" rx="2" fill="#eef3f7"/><rect x="56" y="36" width="22" height="16" rx="2" fill="#eef3f7"/><rect x="84" y="36" width="20" height="16" rx="2" fill="#eef3f7"/>
-      <line x1="66" y1="30" x2="50" y2="10" stroke="#333" stroke-width="2"/>
-      <line x1="74" y1="30" x2="58" y2="10" stroke="#333" stroke-width="2"/>
-      <circle cx="32" cy="70" r="8" fill="#333"/><circle cx="92" cy="70" r="8" fill="#333"/></svg>
+      <line x1="66" y1="30" x2="50" y2="10" stroke="currentColor" stroke-width="2"/>
+      <line x1="74" y1="30" x2="58" y2="10" stroke="currentColor" stroke-width="2"/>
+      <circle cx="32" cy="70" r="8" fill="currentColor"/><circle cx="92" cy="70" r="8" fill="currentColor"/></svg>
     <b>TROLEJBUS</b><span>gumeni točkovi + DVE motke na vod; zakonski je to autobus na struju</span>
   </div>
   <div class="signCell">
     <svg viewBox="0 0 120 92"><rect x="0" y="76" width="120" height="16" fill="#9aa7b4"/>
       <rect x="10" y="30" width="100" height="38" rx="6" fill="#e08a1e"/>
       <rect x="16" y="36" width="34" height="16" rx="2" fill="#eef3f7"/><rect x="56" y="36" width="22" height="16" rx="2" fill="#eef3f7"/><rect x="84" y="36" width="20" height="16" rx="2" fill="#eef3f7"/>
-      <circle cx="32" cy="70" r="8" fill="#333"/><circle cx="92" cy="70" r="8" fill="#333"/></svg>
+      <circle cx="32" cy="70" r="8" fill="currentColor"/><circle cx="92" cy="70" r="8" fill="currentColor"/></svg>
     <b>AUTOBUS</b><span>ni šina ni motki; više od devet mesta za sedenje, sa vozačem</span>
   </div>
 </div>
