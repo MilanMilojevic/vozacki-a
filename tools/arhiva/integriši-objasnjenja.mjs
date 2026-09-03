@@ -24,7 +24,10 @@ for (const s of stavke) {
   if (!Number.isInteger(s.id)) { console.log('FAIL ' + ime + ': id nije ceo broj'); pao++; continue; }
   if (vidjeni.has(s.id)) { console.log('FAIL ' + ime + ': duplikat u ulazu'); pao++; continue; }
   vidjeni.add(s.id);
-  if (t.includes('X[' + s.id + ']')) { console.log('FAIL ' + ime + ': X[' + s.id + '] VEĆ postoji u izvoru'); pao++; continue; }
+  // Pitanje SME već da ima zapis — najčešće dodelu kartice: X[id] = { ...(X[id]||{}), card: '…' }.
+  // Tada se objašnjenje spaja sa njim. Odbija se samo ako pitanje već ima svoj TEKST (x:), da se ne
+  // prepiše ranije napisano objašnjenje.
+  if (new RegExp('X\\[' + s.id + '\\][^;]*\\bx:').test(t)) { console.log('FAIL ' + ime + ': već ima svoje objašnjenje (x:)'); pao++; continue; }
   const x = String(s.x || '');
   if (x.length < 150 || x.length > 700) { console.log('FAIL ' + ime + ': dužina ' + x.length + ' (dozvoljeno 150-700)'); pao++; }
   if (x.includes('`') || x.includes('${')) { console.log('FAIL ' + ime + ': beketik ili dolar-vitičasta'); pao++; }
@@ -34,8 +37,9 @@ for (const s of stavke) {
 }
 if (pao) { console.log('\n*** NE PIŠEM — ' + pao + ' problema ***'); process.exit(1); }
 
-// jednostruki apostrof u tekstu → escape, jer se upisuje unutar '...'
-const red = (s) => "X[" + s.id + "] = { x: '" + String(s.x).replace(/\\/g, '\\\\').replace(/'/g, "\\'") + "' };";
+// Jednostruki apostrof u tekstu → escape, jer se upisuje unutar '...'.
+// SPAJANJE, ne prepisivanje: pitanje već može da ima dodelu kartice (card), koja mora da preživi.
+const red = (s) => "X[" + s.id + "] = { ...(X[" + s.id + "] || {}), x: '" + String(s.x).replace(/\\/g, '\\\\').replace(/'/g, "\\'") + "' };";
 const blok = '// --- objašnjenja za slikovna pitanja (talas ' + (process.env.TALAS || '1') + ') ---\n'
   + stavke.map(red).join('\n') + '\n\n';
 t = t.slice(0, i) + blok + t.slice(i);
