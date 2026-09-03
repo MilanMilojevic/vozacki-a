@@ -63,15 +63,42 @@ body { font-family: "Segoe UI", system-ui, -apple-system, sans-serif; background
 /* Traka na vrhu SME da se prelomi. Bez toga se na uskom telefonu (360px) ne prelama, pa
    dokument postane širi od ekrana i sve desno — dugme „Početna" i brojači pored traka
    napretka — bude odsečeno. */
-#topbar { position: sticky; top: 0; z-index: 10; display: flex; flex-wrap: wrap; justify-content: space-between;
-  align-items: center; row-gap: 8px; column-gap: 8px;
-  background: var(--topbar); color: #fff; padding: 10px 16px; box-shadow: 0 2px 6px rgba(0,0,0,.15); }
-.brand { font-size: var(--fs-lg); font-weight: 600; cursor: pointer; background: none; border: none; color: inherit; font-family: inherit; padding: 0; min-width: 0; }
-.topActions { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+/* Traka u TRI zone: levo „nazad" (kad ga ima), na sredini brend = jedina kontrola za početnu,
+   desno alatke. Mreža 1fr auto 1fr drži brend u pravoj sredini bez obzira na širinu zona. */
+#topbar { position: sticky; top: 0; z-index: 10; display: grid; grid-template-columns: 1fr auto 1fr;
+  align-items: center; column-gap: 8px;
+  background: var(--topbar); color: #fff; padding: 8px 12px; box-shadow: 0 2px 6px rgba(0,0,0,.15); }
+.tbZona { display: flex; gap: 8px; align-items: center; min-width: 0; }
+.tbLevo { justify-self: start; }
+.tbDesno { justify-self: end; }
+.brand { font-size: var(--fs-lg); font-weight: 600; cursor: pointer; background: none; border: none; color: inherit;
+  font-family: inherit; padding: 8px 10px; border-radius: 8px; min-width: 0; white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis; min-height: 44px; }
+.brand:hover { background: rgba(255,255,255,.14); }
+#btnNazad { max-width: 42vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Donja navigacija — samo na telefonu; palac je dole. U simulaciji je nema (ispit nema navigaciju). */
+#donjaNav { display: none; }
+@media (max-width: 700px) {
+  #donjaNav { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px;
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 1300;
+    background: var(--card); border-top: 1px solid var(--line);
+    padding: 4px 4px calc(4px + env(safe-area-inset-bottom, 0px));
+    box-shadow: 0 -2px 10px rgba(16,24,40,.10); }
+  #donjaNav button { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+    background: none; color: var(--mut); padding: 6px 2px; min-height: 52px; border-radius: 10px; }
+  #donjaNav button[aria-current="page"] { color: var(--blue); background: var(--optSel); font-weight: 600; }
+  .dnIkona { font-size: 1.2rem; line-height: 1; }
+  .dnTekst { font-size: var(--fs-xs); line-height: 1.1; text-align: center; }
+  body.uSimulaciji #donjaNav { display: none; }
+  /* sadržaj i plutajuće trake ne smeju da stanu ispod navigacije */
+  main { padding-bottom: 84px; }
+  body.uSimulaciji main { padding-bottom: 60px; }
+}
 /* Dugme ne nasleđuje veličinu slova kartice: isto dugme („Sačuvaj cilj", „Na početnu") je u
    podešavanjima (.card.small) bilo manje nego bilo gde drugde, a dodirna površina pala na 40px. */
 button { font: inherit; font-size: 1rem; color: inherit; cursor: pointer; border: none; border-radius: 8px; }
-.ghost { background: rgba(255,255,255,.15); color: #fff; padding: 6px 12px; }
+.ghost { background: rgba(255,255,255,.15); color: #fff; padding: 9px 12px; min-height: 44px; }
 .ghost:hover:not(:disabled) { background: rgba(255,255,255,.28); }
 /* dugme koje nema šta da uradi mora i da izgleda tako */
 .ghost:disabled { opacity: .4; cursor: default; background: rgba(255,255,255,.07); }
@@ -166,6 +193,12 @@ main { max-width: 880px; width: 100%; margin: 0 auto; padding: 16px 12px 60px; f
 .markBox input { accent-color: var(--mark); width: 17px; height: 17px; cursor: pointer; }
 
 .simTop { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+/* na telefonu tajmer i oba dugmeta staju u JEDAN red — na ispitu su takođe u jednom */
+@media (max-width: 560px) {
+  .simTop { gap: 8px; padding: 12px; }
+  .simTop .simTimer { font-size: 1.25rem; min-width: 74px; }
+  .simTop button { padding: 10px 12px; }
+}
 /* „Broj potrebnih odgovora: 2" — kurziv i plavo, ispod teksta pitanja, kao na zvaničnoj strani */
 .simReq { font-style: italic; color: var(--blue); margin: -6px 0 10px; }
 .simTimer { font-size: 1.5rem; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--blue-d); min-width: 92px; }
@@ -231,13 +264,21 @@ button.histBtn:hover { background: var(--optHover); }
 .grupaNaslov { margin: 14px 0 6px; padding-bottom: 4px; border-bottom: 1px solid var(--line);
   font-size: var(--fs-sm); font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--mut); }
 .podGrupa .grupaNaslov { margin-top: 0; border-bottom: none; padding-bottom: 0; }
+/* dugmad u podešavanjima: mreža jednakih ćelija — na telefonu jedno ispod drugog, na širokom dva u redu */
+.podDugmad { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; margin-top: 8px; }
+.podDugmad button { width: 100%; }
+/* veličina slova: bila je u gornjoj traci, a podešava se jednom — sad stoji uz ostala podešavanja */
+.slovaRed { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+.slovaRed .sBtn { min-width: 48px; min-height: 44px; font-size: 1rem; }
+.slovaRed .slovaVrednost { font-variant-numeric: tabular-nums; min-width: 4.5em; text-align: center; }
 .podOpasno .grupaNaslov { color: var(--bad); }
 /* razmaci koji su stajali kao inline stilovi na desetak mesta — jedna vrednost, jedan razred */
 .opisRed { margin: 6px 0 10px; }
 .razmakG { margin-top: 8px; }
 .card h3 ~ h3 { margin-top: 12px; }
 #examDate { margin-left: 6px; }
-.markBox.uSpisku { margin-left: 0; }
+/* dugme-prekidač: uključeno stanje se vidi kao plavi okvir, ne kao „link" */
+.prekidac[aria-pressed="true"] { box-shadow: inset 0 0 0 2px var(--blue); background: var(--optSel); color: var(--blue-d); }
 /* „?" uz brojeve ponavljanja: otvara objašnjenje na mestu (kao kartica), ne oblačić */
 .pomocBtn { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px;
   padding: 0; border-radius: 999px; background: var(--btn2); color: var(--ink); font-size: var(--fs-xs);
@@ -266,6 +307,10 @@ body.uSimulaciji #podnozje { display: none; }
 .upozorenjeTraka .zatvoriX { background: rgba(255,255,255,.18); color: #fff;
   border-color: rgba(255,255,255,.45); margin-left: 8px; white-space: nowrap; }
 .upozorenjeTraka .zatvoriX:hover { background: rgba(255,255,255,.34); }
+/* kratka potvrda radnje — ista porodica kao traka upozorenja, ali tiša (sama nestaje) */
+.poruka { background: var(--ink); color: var(--bg); border-radius: 10px; padding: 11px 16px;
+  font-size: var(--fs-md); line-height: 1.4; box-shadow: 0 6px 22px rgba(0,0,0,.28); pointer-events: auto;
+  animation: mekiUlaz .18s ease-out; }
 .tblScroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 /* pitanje čija slika nije stigla da se sačuva pre nego što je nestao internet */
 .qImgFail { border: 1px dashed var(--line); border-radius: 8px; padding: 14px 16px; margin: 0 0 14px;
@@ -316,6 +361,13 @@ body.uSimulaciji #podnozje { display: none; }
 .pojBtn[aria-expanded]::after { content: '▸'; color: var(--mut); font-size: var(--fs-sm); flex: 0 0 auto; }
 .pojBtn[aria-expanded="true"]::after { content: '▾'; }
 .pojEntry .explCard { margin: 0 4px 18px; }
+/* pregled rezultata: jedno pitanje = jedan red dok se ne otvori */
+.pregledStavka { padding: 4px 12px; margin-bottom: 8px; }
+.pregledNaslov { font-weight: 500; color: var(--ink); gap: 8px; }
+.pregledNaslov:hover { color: var(--blue); }
+.pregZnak { flex: 0 0 auto; font-weight: 700; }
+.pregTekst { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: left; }
+.pregledStavka .explCard .card { border: none; box-shadow: none; padding: 0 0 10px; margin: 0; }
 .explCard th, .explCard td { border: 1px solid var(--explLine); padding: 6px 8px; text-align: left; }
 .explCard th { background: var(--explTh); }
 .vgrid { display: grid; grid-template-columns: minmax(90px, auto) repeat(3, 1fr); gap: 4px; margin: 8px 0; font-size: var(--fs-sm); }
@@ -391,10 +443,10 @@ tr.totalRow td { border-top: 2px solid var(--blue); }
   .ghost { padding: 6px 10px; }
 }
 @media (max-width: 400px) {
-  #topbar { padding: 7px 10px; column-gap: 6px; }
-  .brand { font-size: 1rem; }
-  .topActions { gap: 6px; }
-  .ghost { padding: 6px 9px; font-size: var(--fs-md); }
+  #topbar { padding: 6px 8px; column-gap: 4px; }
+  .brand { font-size: 1rem; padding: 8px 6px; }
+  .tbZona { gap: 4px; }
+  .ghost { padding: 8px 8px; font-size: var(--fs-md); }
 }
 .statCatRow { cursor: pointer; }
 .statCatRow:hover td { background: var(--optHover); }
@@ -521,3 +573,14 @@ button { transition: background-color .15s ease, border-color .15s ease, color .
 
 /* istaknut naslov unutar kartice (poverenje, česta pitanja) — nekad inline 1.05rem/600 */
 .istaknuto { font-size: var(--fs-lg); font-weight: 600; }
+
+/* Plutajuće trake iznad donje navigacije — MORA na kraju datoteke: osnovna pravila za
+   #trakeDrzac/#iosHint/#updBar/#repoUpd dolaze kasnije u fajlu i inače bi ovo pregazila. */
+@media (max-width: 700px) {
+  #trakeDrzac, #iosHint { bottom: calc(12px + 66px); }
+  #updBar { bottom: calc(14px + 66px); }
+  #repoUpd { bottom: calc(16px + 66px); }
+  body.uSimulaciji #trakeDrzac, body.uSimulaciji #iosHint { bottom: 12px; }
+  body.uSimulaciji #updBar { bottom: 14px; }
+  body.uSimulaciji #repoUpd { bottom: 16px; }
+}

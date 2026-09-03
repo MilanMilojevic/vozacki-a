@@ -98,6 +98,30 @@
     simWrongTitle: { l: 'Pogrešna i neodgovorena pitanja', c: 'Погрешна и неодговорена питања' },
     perCat: { l: 'Po oblastima', c: 'По областима' },
     backHome: { l: 'Na početnu', c: 'На почетну' },
+    navPitanja: { l: 'Pitanja', c: 'Питања' },
+    navPonavljanje: { l: 'Ponavljanje', c: 'Понављање' },
+    navSim: { l: 'Ispit', c: 'Испит' },
+    navStats: { l: 'Statistika', c: 'Статистика' },
+    slovaLbl: { l: 'Veličina slova', c: 'Величина слова' },
+    porVerzijaOK: { l: 'Imaš najnoviju verziju (@1).', c: 'Имаш најновију верзију (@1).' },
+    temaLbl: { l: 'Tamna ili svetla tema', c: 'Тамна или светла тема' },
+    pismoLbl: { l: 'Ćirilica ili latinica', c: 'Ћирилица или латиница' },
+    navGlavna: { l: 'Glavna navigacija', c: 'Главна навигација' },
+    porExport: { l: 'Napredak je sačuvan u fajl @1', c: 'Напредак је сачуван у фајл @1' },
+    porReset: { l: 'Napredak je obrisan. Krećeš iz početka.', c: 'Напредак је обрисан. Крећеш из почетка.' },
+    porUvoz: { l: 'Napredak je učitan.', c: 'Напредак је учитан.' },
+    porObelezeno: { l: 'Pitanje je obeleženo · ukupno @1', c: 'Питање је обележено · укупно @1' },
+    porOdobelezeno: { l: 'Oznaka je uklonjena · ukupno @1', c: 'Ознака је уклоњена · укупно @1' },
+    porPovezano: { l: 'Automatsko čuvanje je uključeno.', c: 'Аутоматско чување је укључено.' },
+    porNemaPitanja: { l: 'To pitanje više ne postoji u bazi.', c: 'То питање више не постоји у бази.' },
+    porNemaPregleda: { l: 'Taj pregled simulacije ne postoji.', c: 'Тај преглед симулације не постоји.' },
+    porSimPrekinuta: { l: 'Simulacija je prekinuta osvežavanjem — pokušaj nije sačuvan.', c: 'Симулација је прекинута освежавањем — покушај није сачуван.' },
+    drillEmptyNovi: { l: 'Ovde se skupljaju pitanja koja pogrešiš — vraćaju se sutra, pa za tri dana, dok ih ne savladaš. Još nisi odgovorio nijedno pitanje.', c: 'Овде се скупљају питања која погрешиш — враћају се сутра, па за три дана, док их не савладаш. Још ниси одговорио ниједно питање.' },
+    krenimo: { l: '▶ Kreni: Sva pitanja', c: '▶ Крени: Сва питања' },
+    otvoriSve: { l: 'Otvori sva pitanja', c: 'Отвори сва питања' },
+    zatvoriSve: { l: 'Zatvori sva pitanja', c: 'Затвори сва питања' },
+    planKratko: { l: 'Ostavi oba polja prazna ako ne želiš cilj. Dugme na početnoj daje tačno toliko pitanja — prvo ponavljanja, pa nova.', c: 'Остави оба поља празна ако не желиш циљ. Дугме на почетној даје тачно толико питања — прво понављања, па нова.' },
+    planDetalji: { l: 'Kako se broji dnevni cilj?', c: 'Како се броји дневни циљ?' },
     newSim: { l: 'Nova simulacija', c: 'Нова симулација' },
     history: { l: 'Simulacije do sada', c: 'Симулације до сада' },
     noSims: { l: 'Još nijedna simulacija.', c: 'Још ниједна симулација.' },
@@ -164,7 +188,9 @@
     endAllClear: { l: 'Red za ponavljanje je potpuno prazan — sve što si učio je utvrđeno. 🎉', c: 'Ред за понављање је потпуно празан — све што си учио је утврђено. 🎉' },
     endSimBtn: { l: '🏁 Simulacija ispita', c: '🏁 Симулација испита' },
     naIspitu: { l: 'na ispitu: #', c: 'на испиту: #' },
-    shareBtn: { l: '📷 Sačuvaj sliku rezultata', c: '📷 Сачувај слику резултата' },
+    shareBtn: { l: '📤 Podeli rezultat', c: '📤 Подели резултат' },   // pravi karticu za deljenje; nije snimak ekrana
+    shareDone: { l: 'Slika rezultata je preuzeta.', c: 'Слика резултата је преузета.' },
+    historyOlder: { l: 'Starije simulacije (@1)', c: 'Старије симулације (@1)' },
     shareTitle: { l: 'Simulacija ispita — A kategorija', c: 'Симулација испита — А категорија' },
     shareFail: { l: 'Slika nije mogla da se napravi', c: 'Слика није могла да се направи' },
     freeNote: { l: 'besplatna vežbaonica', c: 'бесплатна вежбаоница' },
@@ -317,7 +343,7 @@
     notAnswered: { l: 'Nisi odgovorio na ovo pitanje.', c: 'Ниси одговорио на ово питање.' },
     requiresN: { l: 'Traži # odgovora — priznaje se samo ako su označena SVA tačna.', c: 'Тражи # одговора — признаје се само ако су означена СВА тачна.' },
     correctOnesTitle: { l: 'Tačno odgovorena pitanja', c: 'Тачно одговорена питања' },
-    reviewOldNote: { l: 'Starija simulacija — tvoji odgovori nisu bili sačuvani, prikazana su samo pogrešna pitanja sa tačnim odgovorima.', c: 'Старија симулација — твоји одговори нису били сачувани, приказана су само погрешна питања са тачним одговорима.' },
+    reviewOldNote: { l: 'Ova simulacija je iz starije verzije aplikacije (pre 27.08.2026), kad se tvoji odgovori još nisu čuvali — prikazana su samo pogrešna pitanja sa tačnim odgovorima.', c: 'Ова симулација је из старије верзије апликације (пре 27.08.2026), кад се твоји одговори још нису чували — приказана су само погрешна питања са тачним одговорима.' },
     historyTip: { l: 'Klikni na pokušaj za ceo pregled: svako pitanje, tvoj i tačan odgovor.', c: 'Кликни на покушај за цео преглед: свако питање, твој и тачан одговор.' },
     report: { l: 'Izveštaj', c: 'Извештај' },
     repAnswered: { l: 'Odgovoreno', c: 'Одговорено' },
@@ -506,6 +532,22 @@
       drz.appendChild(b);
     } catch (ignore) { /* ako ni ovo ne prođe, bar ne rušimo aplikaciju */ }
   }
+  // Kratka potvrda radnje: ista traka kao upozorenja, ali tiša i sama nestaje. Jedan oblik za
+  // sve radnje — ranije je isti tip radnje čas ćutao, čas dizao sistemski prozor.
+  function poruci(tekst) {
+    try {
+      let drz = document.getElementById('trakeDrzac');
+      if (!drz) { drz = document.createElement('div'); drz.id = 'trakeDrzac'; document.body.appendChild(drz); }
+      drz.querySelectorAll('.poruka').forEach((p) => p.remove());   // uvek najviše jedna
+      const b = document.createElement('div');
+      b.className = 'poruka';
+      b.setAttribute('role', 'status');
+      b.setAttribute('aria-live', 'polite');
+      b.textContent = tekst;
+      drz.appendChild(b);
+      setTimeout(() => b.remove(), 2600);
+    } catch (ignore) { /* poruka nikad ne sme da obori radnju */ }
+  }
   let upozorenONeuspehu = false;
   function upozoriDaSeNeCuva() {
     if (upozorenONeuspehu) return;
@@ -637,8 +679,37 @@
 
   // ---------- Ruter + trenutni prikaz (za promenu pisma bez gubitka mesta) ----------
   const views = ['home', 'question', 'sim', 'simresult', 'stats', 'browse'];
+  // „Nazad" stoji UVEK na istom mestu — levo u traci; svaki ekran ga sam postavlja posle show(),
+  // a show() ga briše, pa nikad ne ostane zalutalo dugme sa prethodnog ekrana.
+  function postaviNazad(tekst, fn) {
+    const b = el('btnNazad');
+    if (!b) return;
+    if (!tekst || !fn) { b.hidden = true; b.onclick = null; return; }
+    el('btnNazadText').textContent = tekst;
+    b.title = tekst; b.setAttribute('aria-label', tekst);
+    b.hidden = false;
+    b.onclick = () => { if (leaveSimOk()) fn(); };
+  }
+  // Donja navigacija: označi gde se korisnik nalazi (kao u velikim aplikacijama).
+  function oznaciNav(v) {
+    const nav = el('donjaNav');
+    if (!nav) return;
+    const h = curHash || '#/';
+    let cilj = null;
+    if (v === 'home') cilj = 'home';
+    else if (v === 'sim') cilj = 'sim';
+    else if (v === 'stats') cilj = 'stats';
+    else if (h === '#/sva' || h === '#/uci') cilj = 'learn';
+    else if (h === '#/lista/wrong') cilj = 'drill';
+    nav.querySelectorAll('[data-nav]').forEach((b) => {
+      if (b.dataset.nav === cilj) b.setAttribute('aria-current', 'page');
+      else b.removeAttribute('aria-current');
+    });
+  }
   function show(v) {
+    postaviNazad(null);
     views.forEach((x) => el('view-' + x).classList.toggle('active', x === v));
+    oznaciNav(v);
     // podnožje se sklanja tokom ispita — pravi ispit ga nema
     document.body.classList.toggle('uSimulaciji', v === 'sim');
     window.scrollTo(0, 0);
@@ -655,7 +726,9 @@
   }
   // mrtva adresa (#/vezba, ugašena simulacija, loš pregled) se zamenjuje u istoriji —
   // inače bi svaki "Nazad" ponovo sletao na nju i korisnik bi se vrteo u krug
-  function goHomeReplace() {
+  function goHomeReplace(kljuc) {
+    // korisnik koji je otvorio deljenu adresu mora da zna zašto gleda početnu
+    if (kljuc) setTimeout(() => poruci(L(kljuc)), 60);
     if (FILE_MODE) { renderHome(); return; }
     location.replace('#/');
   }
@@ -663,6 +736,15 @@
     if (!h || h === '#' || h === '#/') return renderHome();
     if (h === '#/sva') return browseAll();
     if (h.startsWith('#/sek/')) return browse(h.slice(6));
+    // vežbanje oblasti/podoblasti ima svoju adresu: osvežavanje i „nazad" vraćaju na isto mesto
+    if (h.startsWith('#/vezba/')) {
+      const key = h.slice(8);
+      if (/^[cs]\d+$/.test(key) && secInfo(key).ids.length) {
+        const si = secInfo(key);
+        return startList(si.ids, secTitleFn(key), null, 'section', { secKey: key, startAt: S.secPos[key] || 0, origin: () => browse(key), hash: h });
+      }
+      return goHomeReplace();
+    }
     if (h === '#/lista/wrong') return browseSet('wrong');
     if (h === '#/lista/marked') return browseSet('marked');
     if (h === '#/stats') return renderStats();
@@ -670,16 +752,16 @@
     if (h.startsWith('#/p/')) {
       const qid = parseInt(h.slice(4), 10);
       if (byId.has(qid)) return startList([qid], () => '#' + qid, null, 'filter', { origin: () => renderHome(), nazadLbl: L('backHome'), jedno: true, hash: h });
-      return goHomeReplace();
+      return goHomeReplace('porNemaPitanja');
     }
     if (h.startsWith('#/pregled/')) {
       const i = parseInt(h.slice(10), 10);
       if (S.sims[i]) return renderSimReview(S.sims[i], false);
-      return goHomeReplace();
+      return goHomeReplace('porNemaPregleda');
     }
     if (h === '#/sim') {
       if (sim) { show('sim'); sim.showReport ? renderSimReport() : renderSimQ(); return; }
-      return goHomeReplace();
+      return goHomeReplace('porSimPrekinuta');
     }
     return goHomeReplace();   // '#/vezba' i nepoznato: prolazna vežba se ne rekonstruiše
   }
@@ -761,12 +843,12 @@
   // Spisak od jednog pitanja nema ni brojač „1 od 1" ni polje „Idi" — nema kroz šta da se ide.
   function renderProgress(title, pos, max, onJump, onBack, opts) {
     opts = opts || {};
-    el('qProgress').innerHTML = `<span class="qpTitle" title="${escapeHtml(title)}">${onBack ? `<button type="button" id="backToList" class="bcLink">‹ ${escapeHtml(opts.nazadLbl || L('backToList'))}</button> &nbsp; ` : ''}${escapeHtml(title)}</span>
+    el('qProgress').innerHTML = `<span class="qpTitle" title="${escapeHtml(title)}">${escapeHtml(title)}</span>
       ${max > 1 ? `<span class="qpPos"><b>${pos}</b> ${L('ofQ')} ${max}</span>
       <span class="jumpBox"><input id="jumpN" type="text" inputmode="numeric" autocomplete="off" placeholder="${pos}" aria-label="${escapeHtml(L('goto'))}">
       <button id="jumpGo" class="secondary sBtn">${L('goto')}</button></span>` : ''}
       <span class="mut kbNote">${L('kbHint')}</span>`;
-    if (onBack) el('backToList').addEventListener('click', onBack);
+    postaviNazad(onBack ? (opts.nazadLbl || L('backToList')) : null, onBack);
     if (!el('jumpGo')) return;
     const doJump = () => {
       const v = ceoBrojIzPolja(el('jumpN'), 1, max, L('skokVanOpsega').split('@3').join(nQ(max)));
@@ -873,7 +955,10 @@
 
     const markWrap = document.createElement('label'); markWrap.className = 'markBox';
     const cb = document.createElement('input'); cb.type = 'checkbox'; cb.checked = !!qr(q.id).marked;
-    cb.addEventListener('change', () => { qs(q.id).marked = cb.checked ? 1 : 0; save(); });
+    cb.addEventListener('change', () => {
+      qs(q.id).marked = cb.checked ? 1 : 0; save();
+      poruci((cb.checked ? L('porObelezeno') : L('porOdobelezeno')).split('@1').join(markedIds().length));
+    });
     markWrap.appendChild(cb); markWrap.appendChild(document.createTextNode(' ' + L('mark')));
     actions.appendChild(markWrap);
     c.appendChild(actions);
@@ -992,6 +1077,7 @@
 
   function endScreen(msgHtml, origin, extraHtml) {
     el('qProgress').textContent = '';
+    postaviNazad(origin ? L('backToList') : null, origin);
     el('qCard').innerHTML = `<p class="qText">${msgHtml}</p>
       <div class="qActions">${extraHtml || ''}
         ${origin ? `<button class="secondary" id="bBackOrigin">‹ ${L('backToList')}</button>` : ''}
@@ -1066,7 +1152,8 @@
     return a;
   }
   function shuffleBoxHtml() {
-    return `<label class="markBox uSpisku" title="${escapeHtml(L('shufTip'))}"><input type="checkbox" id="shufBox"${shuffleOn ? ' checked' : ''}> 🎲 ${L('shuffleLbl')}</label>`;
+    // dugme-prekidač (aria-pressed), isto kao ostala dugmad u redu — kvačica sa narandžastim natpisom je izgledala kao link
+    return `<button type="button" class="secondary prekidac" id="shufBox" aria-pressed="${shuffleOn ? 'true' : 'false'}" title="${escapeHtml(L('shufTip'))}">🎲 ${L('shuffleLbl')}</button>`;
   }
   const sfx = () => (shuffleOn ? ' 🎲' : '');
   // klik na red u spisku: redom od te pozicije; sa 🎲 — počni od tog pitanja pa nastavi izmešano
@@ -1189,7 +1276,7 @@
   }
   function bindShuffleBox(root) {
     const sb = root.querySelector('#shufBox');
-    if (sb) sb.addEventListener('change', () => { shuffleOn = sb.checked; current.redraw(); });
+    if (sb) sb.addEventListener('click', () => { shuffleOn = !shuffleOn; current.redraw(); });
   }
   const shufTag = (fn) => () => fn() + (shuffleOn ? ` — ${L('shuffled')}` : '');
 
@@ -1426,7 +1513,7 @@
       <table class="stats"><thead><tr><th>${L('thArea')}</th><th class="num">${L('thQ')}</th><th class="num">${L('thPts')}</th></tr></thead>
       <tbody>${Object.entries(perCat).map(([cid, pc]) =>
         `<tr><td>${escapeHtml(T(catName.get(+cid)))}</td><td class="num">${pc.ok}/${pc.n}</td><td class="num">${pc.got}/${pc.pts}</td></tr>`).join('')}
-      </tbody></table>` : `<p class="mut">${L('reviewOldNote')}</p>`}
+      </tbody></table>` : `<p class="mut napomena">${L('reviewOldNote')}</p>`}
       <div class="qActions">
         ${fresh ? `<button class="primary" id="btnSimAgain">${L('newSim')}</button>` : ''}
         <button class="secondary" id="btnShareRes">${L('shareBtn')}</button>
@@ -1457,7 +1544,42 @@
       { const im = card.querySelector('img.qImg'); if (im) pratiSliku(im); }
       const ex = explNode(q);
       if (ex) card.appendChild(ex);
-      return card;
+      // Sklopljeno na jedan red: 40 otvorenih pregleda je pravilo stranu od 34.000px na telefonu.
+      // Naslov kaže sve što treba za odluku „otvoriti ili ne": ishod, broj i početak pitanja.
+      const omot = document.createElement('div');
+      omot.className = 'card pregledStavka';
+      const dobro = chosen && (() => { const okSet = new Set(q.ch.filter((x) => x.ok).map((x) => x.id)); return chosen.size === okSet.size && [...chosen].every((id) => okSet.has(id)); })();
+      const znak = !chosen || chosen.size === 0 ? '•' : dobro ? '✓' : '✗';
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'explCardBtn pojBtn pregledNaslov';
+      btn.innerHTML = `<span class="pregZnak ${dobro ? 'qOk' : (!chosen || !chosen.size ? 'qDot' : 'qBad')}">${znak}</span> <span class="pregTekst">${escapeHtml(T(q.t))}</span>`;
+      const telo = document.createElement('div');
+      telo.className = 'explCard';
+      telo.style.display = 'none';
+      telo.appendChild(card);
+      omot.append(btn, telo);
+      sklopivo(btn);
+      return omot;
+    };
+    // jedno dugme za sve — ko hoće da pregleda ceo test, ne otvara 40 puta
+    const dugmeSve = (drzac) => {
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'secondary sBtn razmakG';
+      b.textContent = L('otvoriSve');
+      b.addEventListener('click', () => {
+        // SAMO omotači pitanja: '.pregledStavka .explCard' hvata i karticu pojmovnika unutar
+        // otvorenog pitanja, pa su se brojevi razilazili i otvaranje je pucalo na sredini
+        const stavke = [...drzac.querySelectorAll('.pregledStavka > .explCard')];
+        const otvaram = stavke.some((x) => x.style.display === 'none');
+        stavke.forEach((x) => {
+          x.style.display = otvaram ? '' : 'none';
+          const naslov = x.parentElement.querySelector('.pregledNaslov');
+          if (naslov) naslov.setAttribute('aria-expanded', otvaram ? 'true' : 'false');
+        });
+        b.textContent = otvaram ? L('zatvoriSve') : L('otvoriSve');
+      });
+      return b;
     };
     if (hasDetail) {
       const wrongItems = items.filter((it) => !isOk(it));
@@ -1465,6 +1587,7 @@
       if (wrongItems.length) {
         const hw = document.createElement('div'); hw.className = 'card';
         hw.innerHTML = `<h3>${L('simWrongTitle')} (${wrongItems.length})</h3>`;
+        hw.appendChild(dugmeSve(wl));
         wl.appendChild(hw);
         for (const it of wrongItems) wl.appendChild(reviewCard(it.q, it.chosen));
       }
@@ -1514,7 +1637,9 @@
   function renderReady() {
     const { exp, loss, answered } = readiness();
     if (answered < 30) {
-      el('readyCard').innerHTML = `<h3>${L('readyTitle')}</h3><p class="mut">${L('readyNoData').replace('#', answered)}</p>`;
+      el('readyCard').innerHTML = `<h3>${L('readyTitle')}</h3><p class="mut">${L('readyNoData').replace('#', answered)}</p>
+        <div class="qActions"><button type="button" class="primary" data-nav="learn">${L('krenimo')}</button></div>`;
+      bindNav(el('readyCard'));
       return;
     }
     const e = Math.round(exp);
@@ -1582,7 +1707,6 @@
     const head = el('browseHead');
     const catQ = type === 's' ? byId.get(ids[0]) : null;
     head.innerHTML = `
-      ${type === 's' ? `<div class="qMeta"><span><button type="button" class="bcLink" data-bc="c${catQ.cat}">‹ ${escapeHtml(catOf(catQ))}</button></span></div>` : ''}
       <h3>${escapeHtml(name)}</h3>
       <div class="mut opisRed">${nQ(ids.length)} · ${seen} ${L('answered')}${acc !== null ? ` · ${L('thAcc').toLowerCase()}: <span class="${accClass(acc)}">${acc}%</span>` : ''} · ${inQ} ${L('inQueue')}${pomocHtml()}</div>
       ${pomocTekstHtml()}
@@ -1592,18 +1716,16 @@
         ${wrongNow.length ? `<button class="secondary" id="bWrong">${L('onlyWrong')} (${wrongNow.length})${sfx()}</button>` : ''}
         ${unseen.length && unseen.length < ids.length ? `<button class="secondary" id="bUnseen">${L('onlyUnseen')} (${unseen.length})${sfx()}</button>` : ''}
         ${shuffleBoxHtml()}
-        <button type="button" class="secondary" data-nav="home">${L('backHome')}</button>
       </div>`;
     bindNav(head);
     bindShuffleBox(head);
     veziPomoc(head);
-    head.querySelectorAll('.bcLink').forEach((b) => b.addEventListener('click', () => browse(b.dataset.bc)));
     const origin = () => browse(key);
     el('bStart').addEventListener('click', () => {
       if (shuffleOn) startList(maybeShuffle(ids), shufTag(secTitleFn(key)), null, 'filter', { origin });
-      else startList(ids, secTitleFn(key), null, 'section', { secKey: key, startAt: S.secPos[key] || 0, origin });
+      else startList(ids, secTitleFn(key), null, 'section', { secKey: key, startAt: S.secPos[key] || 0, origin, hash: '#/vezba/' + key });
     });
-    const so = el('bStartOver'); if (so) so.addEventListener('click', () => startList(ids, secTitleFn(key), null, 'section', { secKey: key, startAt: 0, origin }));
+    const so = el('bStartOver'); if (so) so.addEventListener('click', () => startList(ids, secTitleFn(key), null, 'section', { secKey: key, startAt: 0, origin, hash: '#/vezba/' + key }));
     const bw = el('bWrong'); if (bw) bw.addEventListener('click', () => startList(maybeShuffle(wrongNow), shufTag(() => `${secInfo(key).name} — ${L('onlyWrong').toLowerCase()}`), null, 'filter', { origin }));
     const bu = el('bUnseen'); if (bu) bu.addEventListener('click', () => startList(maybeShuffle(unseen), shufTag(() => `${secInfo(key).name} — ${L('onlyUnseen').toLowerCase()}`), null, 'filter', { origin }));
 
@@ -1651,6 +1773,8 @@
       list.appendChild(b);
     });
     show('browse');
+    // podoblast se vraća u svoju oblast; oblast nema „nazad" — početna je brend na sredini
+    if (type === 's') postaviNazad(catOf(catQ), () => browse('c' + catQ.cat));
   }
 
   // ---------- Strana "Sva pitanja" (učenje redom + filteri + spisak) ----------
@@ -1676,7 +1800,6 @@
         ${wrongNow.length ? `<button class="secondary" id="bWrong">${L('onlyWrong')} (${wrongNow.length})${sfx()}</button>` : ''}
         ${unseen.length && unseen.length < Q.length ? `<button class="secondary" id="bUnseen">${L('onlyUnseen')} (${unseen.length})${sfx()}</button>` : ''}
         ${shuffleBoxHtml()}
-        <button type="button" class="secondary" data-nav="home">${L('backHome')}</button>
       </div>`;
     bindNav(head);
     bindShuffleBox(head);
@@ -1751,14 +1874,23 @@
 
     const head = el('browseHead');
     if (!ids.length && !(isWrong && stale.length)) {
+      // prazno stanje mora da vodi NAPRED (u radnju koja ga puni), a ne samo nazad;
+      // i tekst mora da odgovara stanju: ko nije odgovorio nijedno pitanje nije ništa „savladao"
+      const nista = !Q.some((q) => S.q[q.id] && S.q[q.id].a);
+      const poruka = isWrong ? (nista ? L('drillEmptyNovi') : L('drillEmpty')) : L('markedEmpty');
+      const dalje = isWrong && !nista
+        ? `<button type="button" class="primary" data-nav="sim">${L('endSimBtn')}</button>`
+        : `<button type="button" class="primary" data-nav="learn">${L('krenimo')}</button>`;
       head.innerHTML = `<h3>${escapeHtml(title)}</h3>
-        <p class="qText" style="font-weight:normal">${isWrong ? L('drillEmpty') : L('markedEmpty')}</p>
-        <div class="qActions"><button type="button" class="secondary" data-nav="home">${L('backHome')}</button></div>`;
+        <p class="qText" style="font-weight:normal">${poruka}</p>
+        <div class="qActions">${dalje}</div>`;
       bindNav(head);
       el('browseList').innerHTML = '';
+      el('browseList').hidden = true;   // prazan .card je inače ostajao kao beli pravougaonik
       show('browse');
       return;
     }
+    el('browseList').hidden = false;
     const origin = () => browseSet(setKind);
     head.innerHTML = `<h3>${escapeHtml(title)}</h3>
       <div class="mut opisRed">${isWrong
@@ -1772,7 +1904,6 @@
              ${stale.length ? `<button class="secondary" id="bStale" title="${escapeHtml(L('osveziTip'))}">${L('osveziBtn')} (${stale.length})${sfx()}</button>` : ''}`
           : `<button class="primary" id="bAllM">${L('vezbaj')} (${ids.length})${sfx()}</button>`}
         ${shuffleBoxHtml()}
-        <button type="button" class="secondary" data-nav="home">${L('backHome')}</button>
       </div>
       ${isWrong && waiting.length ? `<div class="mut napomena razmakG">${L('preRokaNapomena')}</div>` : ''}`;
     bindNav(head);
@@ -1846,6 +1977,7 @@
       await idbSet('handle', h);
       scheduleBackup();
       renderBackupLine();
+      poruci(L('porPovezano'));
     } catch (e) { /* korisnik odustao */ }
     finally { povezivanjeUToku = false; }
   }
@@ -1868,17 +2000,21 @@
     } catch (e) { /* ignore */ }
     renderBackupLine();
   }
+  // Dugme za povezivanje stoji u ISTOJ mreži kao „Sačuvaj/Učitaj" (jednake ćelije), a stanje
+  // (povezano / nije podržano) ide kao napomena ispod — ranije je dugme bilo samo u svom redu.
   function renderBackupLine() {
-    const s = el('backupLine');
-    if (!s) return;
-    if (!FSA) { s.innerHTML = `<span class="mut">${L('backupNA')}</span>`; return; }
+    const s = el('backupLine'), slot = el('backupSlot');
+    if (!s || !slot) return;
+    s.innerHTML = ''; slot.innerHTML = ''; slot.style.display = 'none';
+    if (!FSA) { s.textContent = L('backupNA'); return; }
     if (fsHandle) { s.innerHTML = `✅ ${L('backupOn')}: <b>${escapeHtml(fsHandle.name)}</b>`; return; }
+    slot.style.display = 'contents';
     if (fsPending) {
-      s.innerHTML = `<button class="secondary" id="btnResumeBackup">🔗 ${L('backupResume')} (${escapeHtml(fsPending.name)})</button>`;
+      slot.innerHTML = `<button type="button" class="secondary" id="btnResumeBackup">🔗 ${L('backupResume')} (${escapeHtml(fsPending.name)})</button>`;
       el('btnResumeBackup').addEventListener('click', resumeBackup);
       return;
     }
-    s.innerHTML = `<button class="secondary" id="btnConnectBackup">${L('backupConnect')}</button>`;
+    slot.innerHTML = `<button type="button" class="secondary" id="btnConnectBackup">${L('backupConnect')}</button>`;
     el('btnConnectBackup').addEventListener('click', connectBackup);
   }
 
@@ -1913,7 +2049,9 @@
       if (elx && st.card) elx = elx.closest('.card') || elx;
       if (!elx) { next(); return; }
       spot = elx; spot.classList.add('tourSpot');
-      spot.scrollIntoView({ block: 'center' });
+      // visok element (kartica duža od ekrana) se poravnava na VRH — centriranje bi mu
+      // gurnulo početak iznad ekrana, pa korisnik gleda sredinu onoga što mu se objašnjava
+      spot.scrollIntoView({ block: spot.offsetHeight > window.innerHeight * 0.6 ? 'start' : 'center' });
       tip.innerHTML = `<div class="tourText">${escapeHtml(L(st.key))}</div>
         <div class="tourRow"><span class="mut">${idx + 1} / ${TOUR_STEPS.length}</span>
         <span style="flex:1"></span>
@@ -2192,16 +2330,20 @@
     const sh = el('simHistory');
     if (!S.sims.length) sh.innerHTML = `<h3>${L('history')}</h3><p class="mut">${L('noSims')}</p>`;
     else {
-      sh.innerHTML = `<h3>${L('history')}</h3><p class="mut napomena">${L('historyTip')}</p>`
-        + S.sims.slice().reverse().map((s, ri) => {
-          const brGresaka = (s.wrong || []).length;
-          return `<button class="histRow histBtn" data-sim="${S.sims.length - 1 - ri}">
+      // kartica ne raste beskonačno: poslednjih 5 je uvek vidljivo, starije se otklapaju na zahtev
+      const NOVIJIH = 5;
+      const redovi = S.sims.slice().reverse().map((s, ri) => {
+        const brGresaka = (s.wrong || []).length;
+        return `<button class="histRow histBtn" data-sim="${S.sims.length - 1 - ri}">
             <span class="histDate mut">${fmtDatum(s.d, true)}</span>
             <b class="histScore">${s.score} / ${s.total}</b>
             <span class="histPill"><span class="pill ${s.passed ? 'pass' : 'fail'}">${s.passed ? L('passed') : L('failed')}</span></span>
             <span class="histWrong mut">${brGresaka ? brGresaka + ' ✗' : ''}</span>
             <span class="histArrow mut">›</span></button>`;
-        }).join('');
+      });
+      sh.innerHTML = `<h3>${L('history')}</h3><p class="mut napomena">${L('historyTip')}</p>` + redovi.slice(0, NOVIJIH).join('')
+        + (redovi.length > NOVIJIH ? `<div><button type="button" class="pojBtn" id="btnHistOlder">${L('historyOlder').split('@1').join(redovi.length - NOVIJIH)}</button><div id="histOlder" style="display:none">${redovi.slice(NOVIJIH).join('')}</div></div>` : '');
+      const bho = el('btnHistOlder'); if (bho) sklopivo(bho);
       sh.querySelectorAll('.histBtn').forEach((b) => b.addEventListener('click', () => renderSimReview(S.sims[+b.dataset.sim], false)));
     }
 
@@ -2262,32 +2404,41 @@
       <div class="podGrupa">
         <div class="grupaNaslov">${L('grupaNapredak')}</div>
         <div class="mut napomena">${L('persistNote')}</div>
-        <div id="backupLine" class="razmakG"></div>
-        <div class="qActions">
+        <div class="podDugmad">
+          <span id="backupSlot" style="display:none"></span>
           <button type="button" class="secondary" id="btnExport">${L('export')}</button>
           <button type="button" class="secondary" id="btnImport">${L('import')}</button>
           <input type="file" id="fileImport" accept=".json" style="display:none">
         </div>
+        <div id="backupLine" class="mut napomena razmakG"></div>
       </div>
       <div class="podGrupa">
         <div class="grupaNaslov">${L('grupaAplikacija')}</div>
-        <div class="qActions">
+        <div class="podDugmad">
           <button type="button" class="secondary" id="btnInstall" style="display:none">${L('installBtn')}</button>
           <button type="button" class="secondary" id="btnCheckUpd">${L('updRepoCheck')}</button>
           <button type="button" class="secondary" id="btnTourReplay">${L('tourReplay')}</button>
         </div>
+        <div class="slovaRed"><span class="mut">${L('slovaLbl')}:</span>
+          <button type="button" class="secondary sBtn" id="btnFontMinus">A−</button>
+          <span class="slovaVrednost" id="fsVrednost"></span>
+          <button type="button" class="secondary sBtn" id="btnFontPlus">A+</button></div>
         <div id="installWhat" class="razmakG"><button type="button" class="explCardBtn pojBtn">${L('installWhatTitle')}</button><div class="explCard" style="display:none">${L('installWhatBody')}</div></div>
       </div>
       <div class="podGrupa" id="planGrupa">
         <div class="grupaNaslov">${L('planNaslov')}</div>
         <div class="tekstSm"><label>${L('examDateLabel')}
           <input type="date" id="examDate" value="${S.examDate || ''}"></label></div>
-        <div class="mut napomena">${L('planObjasnjenje')}</div>
+        <div class="mut napomena">${L('planKratko')}
+          <button type="button" class="pomocBtn" id="btnPlanPomoc" aria-label="${escapeHtml(L('planDetalji'))}" title="${escapeHtml(L('planDetalji'))}">?</button></div>
+        <div class="mut napomena" id="planPomocTekst" style="display:none">${L('planObjasnjenje')}</div>
         <div class="planPolja">
           <label class="planPolje"><span class="mut">${L('planNovih')}</span>
             <input id="planNovih" type="text" inputmode="numeric" autocomplete="off" value="${S.plan && S.plan.novih ? S.plan.novih : ''}"></label>
           <label class="planPolje"><span class="mut">${L('planPon')}</span>
             <input id="planPon" type="text" inputmode="numeric" autocomplete="off" value="${S.plan && S.plan.pon ? S.plan.pon : ''}"></label>
+        </div>
+        <div class="podDugmad">
           <button type="button" class="secondary" id="btnPlanSave">${L('planSacuvaj')}</button>
           <button type="button" class="secondary" id="btnPlanPredlog">${L('planPredlozi')}</button>
           ${S.plan ? `<button type="button" class="secondary" id="btnPlanOff">${L('planIskljuci')}</button>` : ''}
@@ -2300,6 +2451,8 @@
         <div class="mut napomena">${L('resetNapomena')}</div>
       </div>`;
     renderBackupLine();
+    { const bp = el('btnPlanPomoc'); if (bp) sklopivo(bp, null, el('planPomocTekst')); }
+    applyFont();   // dugmad i procenat veličine slova žive u ovoj kartici — crtaju se sa njom
     if (installEvt) { const bi = el('btnInstall'); if (bi) bi.style.display = ''; }
     el('btnInstall').addEventListener('click', async () => {
       if (!installEvt) return;
@@ -2393,6 +2546,7 @@
       a.download = 'vozacki-a-napredak.json';
       document.body.appendChild(a);
       a.click();
+      poruci(L('porExport').split('@1').join('vozacki-a-napredak.json'));
       a.remove();
       setTimeout(() => URL.revokeObjectURL(url), 10000);
     });
@@ -2423,11 +2577,12 @@
           ? Object.keys(sirovo.q).length : 0;
         const ostalo = Object.keys(norm.q).length;
         if (bilo > ostalo) alert(L('importDeo').split('#').join(ostalo).split('@').join(bilo));
+        else poruci(L('porUvoz'));
       };
       rd.readAsText(f);
     });
     el('btnReset').addEventListener('click', () => {
-      if (confirm(L('resetConfirm'))) { S = normalizeState({ q: {}, script: S.script, theme: S.theme, fs: S.fs }); save(); renderHome(); }
+      if (confirm(L('resetConfirm'))) { S = normalizeState({ q: {}, script: S.script, theme: S.theme, fs: S.fs }); save(); renderHome(); poruci(L('porReset')); }
     });
     show('home');
   }
@@ -2530,6 +2685,7 @@
       if (b && document.activeElement !== b) { b.click(); e.preventDefault(); }
     }
   });
+  bindNav(el('donjaNav'));
   el('btnScript').addEventListener('click', () => {
     S.script = S.script === 'l' ? 'c' : 'l'; save();
     applyScript();
@@ -2555,22 +2711,40 @@
     const f = S.fs || 1;
     document.documentElement.style.fontSize = Math.round(osnova * f) + 'px';
     // dugme koje više nema šta da uradi mora i da IZGLEDA tako — inače korisnik kucka uprazno
-    const m = el('btnFontMinus'), p = el('btnFontPlus');
+    // dugmad su sada u podešavanjima — postoje samo dok je početna nacrtana
+    const m = el('btnFontMinus'), p = el('btnFontPlus'), v = el('fsVrednost');
+    if (!m || !p) return;
     const naDnu = f <= FS_MIN + 1e-6, naVrhu = f >= FS_MAX - 1e-6;
     m.disabled = naDnu; p.disabled = naVrhu;
     m.title = naDnu ? L('fsMin') : L('fsSmaller');
     p.title = naVrhu ? L('fsMax') : L('fsBigger');
     m.setAttribute('aria-label', m.title);
     p.setAttribute('aria-label', p.title);
+    if (v) v.textContent = Math.round(f * 100) + '%';
   }
   window.matchMedia('(max-width: 560px)').addEventListener('change', applyFont);
-  el('btnFontMinus').addEventListener('click', () => { S.fs = Math.max(FS_MIN, round2((S.fs || 1) - FS_KORAK)); save(); applyFont(); });
-  el('btnFontPlus').addEventListener('click', () => { S.fs = Math.min(FS_MAX, round2((S.fs || 1) + FS_KORAK)); save(); applyFont(); });
+  // delegirano: dugmad se iznova crtaju sa karticom podešavanja
+  document.addEventListener('click', (e) => {
+    const t = e.target && e.target.closest && e.target.closest('#btnFontMinus, #btnFontPlus');
+    if (!t || t.disabled) return;
+    const smer = t.id === 'btnFontPlus' ? 1 : -1;
+    S.fs = Math.min(FS_MAX, Math.max(FS_MIN, round2((S.fs || 1) + smer * FS_KORAK)));
+    save(); applyFont();
+  });
   function applyScript() {
     el('btnScript').innerHTML =
       `<span class="${S.script === 'c' ? 'segOn' : 'segOff'}">ЋИР</span><span class="segSep">|</span><span class="${S.script === 'l' ? 'segOn' : 'segOff'}">LAT</span>`;
     el('brandTitle').textContent = L('brand');
-    el('btnHome').textContent = L('home');
+    el('topbar').querySelector('.brand').title = L('home');
+    el('topbar').querySelector('.brand').setAttribute('aria-label', L('home'));
+    el('btnTheme').title = L('temaLbl'); el('btnTheme').setAttribute('aria-label', L('temaLbl'));
+    el('btnScript').title = L('pismoLbl'); el('btnScript').setAttribute('aria-label', L('pismoLbl'));
+    el('dnHome').textContent = L('home');
+    el('dnLearn').textContent = L('navPitanja');
+    el('dnDrill').textContent = L('navPonavljanje');
+    el('dnSim').textContent = L('navSim');
+    el('dnStats').textContent = L('navStats');
+    el('donjaNav').setAttribute('aria-label', L('navGlavna'));
     el('btnFinishSim').textContent = L('finishSim');
     el('btnSimReport').textContent = L('report');
     { const os = el('offlineStrip'); if (os) os.textContent = L('offline'); }
@@ -2657,7 +2831,7 @@
     try {
       const nova = await dohvatiUdaljenuVerziju();
       if (nova > BOOT_V && (rucno || nova !== S.updSeen)) { prikaziNovuVerziju(nova, rucno); return; }
-      if (rucno) alert(L('updRepoNone').replace('#A', BOOT_V));
+      if (rucno) poruci(L('porVerzijaOK').split('@1').join(BOOT_V));
     } catch (e) {
       if (rucno) alert(L('updRepoFail'));
     } finally {
@@ -2770,6 +2944,8 @@
       link.click();
       link.remove();
       setTimeout(() => URL.revokeObjectURL(url), 10000);
+      // bez sistemskog prozora za deljenje slika se tiho preuzme — dugme kaže šta se desilo
+      if (dugme) { const staro = dugme.textContent; dugme.textContent = L('shareDone'); setTimeout(() => { dugme.textContent = staro; }, 2500); }
     } catch (e) {
       alert(L('shareFail'));
     } finally {

@@ -26,7 +26,7 @@
 }
 </script>
 <title>Возачки А — вежбање</title>
-<link rel="stylesheet" href="style.css?v=98">
+<link rel="stylesheet" href="style.css?v=99">
   <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#2c6aa0">
   <link rel="apple-touch-icon" href="icon-192.png">
@@ -34,13 +34,11 @@
 <body>
 <div id="offlineStrip" hidden></div>
 <header id="topbar">
+  <div class="tbZona tbLevo"><button type="button" id="btnNazad" class="ghost" hidden>‹ <span id="btnNazadText"></span></button></div>
   <button type="button" class="brand" data-nav="home" title="Почетна">🏍️ <span id="brandTitle">Возачки А</span></button>
-  <div class="topActions">
-    <button id="btnFontMinus" class="ghost" aria-label="Smanji slova" title="Smanji slova">A−</button>
-    <button id="btnFontPlus" class="ghost" aria-label="Povećaj slova" title="Povećaj slova">A+</button>
+  <div class="tbZona tbDesno">
     <button id="btnTheme" class="ghost" aria-label="Tamna/svetla tema" title="Tamna/svetla tema">🌙</button>
     <button id="btnScript" class="ghost" aria-label="Promena pisma" title="Промени писмо">lat</button>
-    <button id="btnHome" class="ghost" data-nav="home">Почетна</button>
   </div>
 </header>
 
@@ -111,11 +109,19 @@
   </section>
 </main>
 
+<nav id="donjaNav" aria-label="Главна навигација">
+  <button type="button" data-nav="home"><span class="dnIkona">🏠</span><span class="dnTekst" id="dnHome"></span></button>
+  <button type="button" data-nav="learn"><span class="dnIkona">📖</span><span class="dnTekst" id="dnLearn"></span></button>
+  <button type="button" data-nav="drill"><span class="dnIkona">🔁</span><span class="dnTekst" id="dnDrill"></span></button>
+  <button type="button" data-nav="sim"><span class="dnIkona">⏱️</span><span class="dnTekst" id="dnSim"></span></button>
+  <button type="button" data-nav="stats"><span class="dnIkona">📊</span><span class="dnTekst" id="dnStats"></span></button>
+</nav>
+
 <footer id="podnozje"></footer>
 
-<script src="version.js?v=98"></script>
-<script src="data.js?v=98"></script>
-<script src="explanations.js?v=98"></script>
-<script src="app.js?v=98"></script>
+<script src="version.js?v=99"></script>
+<script src="data.js?v=99"></script>
+<script src="explanations.js?v=99"></script>
+<script src="app.js?v=99"></script>
 </body>
 </html>
