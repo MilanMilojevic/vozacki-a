@@ -1933,6 +1933,41 @@ CARDS['vozac-zdravlje-alkohol'] = {
 <p class="mut">Dalje: šta policija radi na licu mesta — kartica „Isključenje vozača iz saobraćaja i zadržavanje"; kolika je sankcija — kartica „Kaznene klase".</p>`,
 };
 
+CARDS['kretanje-po-putu'] = {
+  title: 'Kretanje po putu i uključivanje u saobraćaj',
+  html: `
+<p><b>Osnovno (čl. 35):</b> vozilo se kreće <b>desnom stranom kolovoza</b> i drži se <b>što bliže desnoj ivici</b> —
+toliko blizu da, s obzirom na brzinu i stanje puta, ne ugrožava druge ni sebe.</p>
+<p><b>U naselju, kad za tvoj smer ima najmanje dve trake</b>, smeš i trakom koja nije uz desnu ivicu — ali samo
+ako time <b>ne ometaš one iza sebe</b>. To ne važi za teretno vozilo preko 3.500 kg, za vozilo koje na ravnom
+putu ne može preko 40 km/h i za vozila koja nisu motorna: oni ostaju desno, osim pred raskrsnicom, pred
+skretanjem ulevo i pri preticanju.</p>
+
+<p style="margin-top:10px"><b>Dvosmerni put — koja traka sme, a koja ne (čl. 36):</b></p>
+<table>
+<tr><th>Kakav je put</th><th>Pravilo</th><th>Zamka</th></tr>
+<tr><td><b>TRI</b> saobraćajne trake</td><td>traka uz <b>levu ivicu</b> puta u tvom smeru je <b>zabranjena</b></td><td>zabrana nema izuzetak — <b>ni za preticanje ni za obilaženje ni zbog zastoja</b>; pretiče se srednjom trakom</td></tr>
+<tr><td><b>ČETIRI</b> i više traka</td><td>ne smeš da se krećeš ni da prelaziš na kolovoznu traku za suprotan smer</td><td>„samo da zaobiđem" ne postoji</td></tr>
+<tr><td>kolovozne trake <b>fizički odvojene</b></td><td>ne smeš na traku namenjenu suprotnom smeru</td><td>—</td></tr>
+<tr><td><b>jednosmerni</b> put</td><td>ne smeš da se krećeš u zabranjenom smeru</td><td>ni unazad, ni „kratko"</td></tr>
+<tr><td>traka se <b>završava</b> ili je na njoj saobraćaj onemogućen</td><td>vozač u traci pored dužan je da omogući uključenje <b>jednog</b> vozila</td><td>jednog, ne kolone</td></tr>
+</table>
+
+<p style="margin-top:10px"><b>Pre svake radnje (čl. 32):</b> uključivanje u saobraćaj, promena trake, prestrojavanje,
+skretanje, polukružno okretanje, obilaženje, preticanje, vožnja unazad, isključenje, zaustavljanje i parkiranje
+smeju da počnu tek <b>kad se uveriš</b> da radnju možeš da izvedeš bezbedno i propisno. O nameri obaveštavaš
+<b>jasno i blagovremeno</b> pokazivačem pravca (ako ga nema — znakom rukom), znak daješ <b>sve vreme</b> radnje
+i prestaješ čim je završiš.</p>
+<p><b>Naglo menjanje načina vožnje</b> (naglo kočenje, usporavanje, skretanje) dozvoljeno je <b>samo radi
+izbegavanja neposredne opasnosti</b>. Sve ostalo mora postepeno i predvidivo — zato „nisam na vreme zauzeo
+položaj" nikad nije opravdanje.</p>
+<p><b>Uključivanje iz dvorišta ili garaže</b> kad je preglednost ili vidljivost nedovoljna (čl. 33): uključenje se
+izvodi <b>uz pomoć lica van vozila</b> koje ti daje znakove.</p>
+<p><b>U naselju</b> si dužan da omogućiš uključenje <b>autobusu koji propisno kreće sa stajališta</b> (čl. 27).</p>
+<p class="mut">Pamtilica: desno koliko možeš, levu ivicu na dvosmernom nikad, i nijedna radnja ne počinje
+pre nego što si siguran — a znak ide pre radnje, ne u toku nje.</p>`,
+};
+
 const BYSUB = {
   148: 'prvenstvo-prolaza',   // vozila pod pratnjom i sa pravom prvenstva (56 pitanja)
   136: 'prvenstvo-prolaza',   // prvenstvo prolaza
@@ -2065,7 +2100,6 @@ BYSUB[103] = 'vozac-zdravlje-alkohol'; // psihofizički uslovi, umor, alkohol
 BYSUB[91] = 'razno-pravila';           // ko reguliše i ko kontroliše saobraćaj
 BYSUB[163] = 'svetlosne-oznake';       // svetlosne oznake na putu (smerokazi, štapovi, table)
 BYSUB[168] = 'vozilo-tehnika';         // teret na vozilu
-BYSUB[170] = 'pesaci-bicikli';         // prevoz lica vozilima
 BYSUB[94] = 'slicni-pojmovi';         // opšti pojmovnik (vozač, pešak, kolona, mase...)
 BYSUB[139] = 'pokazivaci';            // zvučni i svetlosni znak upozorenja
 BYSUB[161] = 'oznake-kolovoz';
@@ -2074,7 +2108,7 @@ BYSUB[178] = 'iskljucenje';
 
 
 BYSUB[133] = 'skretanje';
-BYSUB[132] = 'pokazivaci';
+BYSUB[132] = 'kretanje-po-putu';   // 28 od 29 pitanja te podoblasti nisu o pokazivačima
 BYSUB[139] = 'pokazivaci';
 BYSUB[140] = 'parkiranje';
 
@@ -2228,7 +2262,7 @@ X[10451] = { x: radnja };
 X[9593] = { x: 'Osnovno: vozilo se kreće DESNOM stranom kolovoza u smeru kretanja (ZOBS čl. 33).' };
 X[9603] = { x: 'Drži se što bliže DESNOJ ivici kolovoza (ZOBS čl. 33) — leva strana je za preticanje i mimoilaženje, ne za krstarenje.' };
 X[9612] = { x: 'Dvosmerni put sa ≥4 trake: ne prelazi na kolovoznu polovinu namenjenu suprotnom smeru — ni za preticanje (ZOBS čl. 34).' };
-X[9616] = { x: 'Dvosmerni put sa TRI trake: traka uz LEVU ivicu je zabranjena za tebe (srednja služi za preticanje po pravilima) — ZOBS čl. 34.' };
+X[9616] = { x: 'Zabrana je bezuslovna: na dvosmernom putu sa TRI trake ne smeš u traku uz LEVU ivicu puta u svom smeru (ZOBS čl. 36 st. 2). Zakon tu ne daje nijedan izuzetak, pa su obe ponude koje tu traku dozvoljavaju netačne — ni preticanje ni zastoj je ne otključavaju, jer je namenjena vozilima iz suprotnog smera. Odatle sledi i gde se pretiče: srednjom trakom, po opštim pravilima preticanja.' };
 X[9619] = { x: 'Fizički odvojene kolovozne trake: prelazak na suprotnu kolovoznu traku je apsolutno zabranjen (ZOBS čl. 34).' };
 X[9622] = { x: 'Jednosmerni put: vožnja u suprotnom smeru zabranjena — uključujući i kretanje unazad "samo malo".' };
 X[10454] = { x: 'U zastoju na putu sa odvojenim kolovoznim trakama pravi se slobodan prolaz za vozila POD PRATNJOM i SA PRAVOM PRVENSTVA (ZOBS čl. 104 st. 6) — "koridor spasa".' };
@@ -2512,7 +2546,7 @@ X[9531] = { ...(X[9531] || {}), x: "Odstojanje (napred-nazad) i rastojanje (boč
 X[9593] = { ...(X[9593] || {}), x: "Osnovno: vozilo se kreće DESNOM stranom kolovoza u smeru kretanja (ZOBS čl. 35)." };
 X[9603] = { ...(X[9603] || {}), x: "Drži se što bliže DESNOJ ivici kolovoza (ZOBS čl. 35) — leva strana je za preticanje i mimoilaženje, ne za krstarenje." };
 X[9612] = { ...(X[9612] || {}), x: "Dvosmerni put sa najmanje četiri trake: ne prelazi na kolovoznu traku namenjenu suprotnom smeru — ni za preticanje (ZOBS čl. 36 st. 1)." };
-X[9616] = { ...(X[9616] || {}), x: "Dvosmerni put sa TRI trake: traka uz LEVU ivicu je zabranjena za tebe (srednja služi za preticanje po pravilima) — ZOBS čl. 36 st. 2." };
+X[9616] = { ...(X[9616] || {}), x: 'Zabrana je bezuslovna: na dvosmernom putu sa TRI trake ne smeš u traku uz LEVU ivicu puta u svom smeru (ZOBS čl. 36 st. 2). Zakon tu ne daje nijedan izuzetak, pa su obe ponude koje tu traku dozvoljavaju netačne — ni preticanje ni zastoj je ne otključavaju, jer je namenjena vozilima iz suprotnog smera. Odatle sledi i gde se pretiče: srednjom trakom, po opštim pravilima preticanja.' };
 X[9619] = { ...(X[9619] || {}), x: "Fizički odvojene kolovozne trake: kretanje trakom namenjenom za suprotni smer je apsolutno zabranjeno — bez izuzetka (ZOBS čl. 36)." };
 X[9639] = { ...(X[9639] || {}), x: "Skretanje UDESNO: iz krajnje desne trake, uz desnu ivicu kolovoza (ZOBS čl. 46) — bez \"sečenja\" iz srednje trake, osim ako signalizacija odredi drugačije." };
 X[10218] = { ...(X[10218] || {}), x: "Izuzetak iz ZOBS čl. 80: i vozilu zaustavljenom na KOLOVOZU poziciona/parkirna svetla ne moraju biti uključena ako stoji na posebno obeleženom mestu, na delu puta gde ga ulično osvetljenje čini dovoljno vidljivim. Van tog izuzetka, na kolovozu noću svetla su obavezna." };

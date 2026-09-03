@@ -1193,7 +1193,11 @@
   const EX = window.EXPLAIN || { cards: {}, byQ: {}, bySub: {} };
   function explNode(q) {
     const e = EX.byQ[q.id];
-    const cardKeys = [...new Set([e && e.card, (EX.bySub || {})[q.sub]].filter((k) => k && EX.cards[k]))];
+    // Kartica se kači uz pitanje SAMO ako mu tema odgovara. Podoblasti su zvanično spojevi više
+    // tema, pa pitanje sme da kaže: uzmi ovu karticu (card) ili nemoj nijednu (nocard). Bolje bez
+    // kartice nego kartica koja sa pitanjem nema veze — objašnjenje ionako stoji uz svako pitanje.
+    const izSub = (e && e.nocard) ? null : (EX.bySub || {})[q.sub];
+    const cardKeys = [...new Set([e && e.card, izSub].filter((k) => k && EX.cards[k]))];
     if (!e && !cardKeys.length) return null;
     const box = document.createElement('div');
     box.className = 'explBox';
@@ -2375,7 +2379,7 @@
       const GRUPE = [
         ['grp1', ['slicni-pojmovi', 'put-pojmovi', 'kategorije-vozila', 'brzine', 'vozac-zdravlje-alkohol']],
         ['grp2', ['prvenstvo-prolaza', 'policajac-znaci', 'znakovi-porodice', 'znakovi-opasnosti', 'znakovi-naredbi', 'znakovi-obavestenja', 'semafori', 'oznake-kolovoz', 'svetlosne-oznake']],
-        ['grp3', ['skretanje', 'preticanje', 'parkiranje', 'parking-table', 'pokazivaci', 'svetla']],
+        ['grp3', ['kretanje-po-putu', 'skretanje', 'preticanje', 'parkiranje', 'parking-table', 'pokazivaci', 'svetla']],
         ['grp4', ['pesaci-bicikli', 'pruga', 'autoput', 'nezgoda', 'razno-pravila']],
         ['grp5', ['dozvole', 'vozilo-tehnika', 'uredjaji-oprema', 'iskljucenje', 'kazne', 'kaznene-klase', 'zamke-odgovori']],
       ];
