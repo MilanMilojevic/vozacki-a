@@ -33,6 +33,17 @@ async function proveraBodovanja2() {
 
   const skip = document.getElementById('tourSkip'); if (skip) skip.click();
 
+  // ---- 0) DNEVNI CILJ na čistom stanju: kvota bez gradiva je ispunjena, plan nudi tačno toliko novih ----
+  S().plan = { novih: 3, pon: 10 };
+  document.querySelector('[data-nav="home"]').click();
+  const pb = () => document.querySelector('#homeSummary .planBox');
+  ok('plan: kvota ponavljanja bez gradiva je ispunjena („nema na redu" + ✓)', !!pb() && pb().textContent.includes('0 / 10 ponavljanja (nema na redu)') && pb().textContent.includes('✓'));
+  ok('plan: nova pitanja se nude — dugme „Vežbaj po planu"', !!document.getElementById('btnPlanVezbaj'));
+  document.getElementById('btnPlanVezbaj').click();
+  ok('plan: spisak plana ima tačno 3 pitanja (1 od 3)', document.querySelector('#qProgress .qpPos').textContent.replace(/\s+/g, ' ').trim() === '1 od 3');
+  S().plan = null;
+  document.querySelector('[data-nav="home"]').click();
+
   // ---- 1) UČENJE: tačan, netačan, ponovni odgovor, dnevni brojači, rok ----
   document.querySelector('.menuBtn[data-nav="learn"]').click();
   document.getElementById('bCont').click();
@@ -116,6 +127,13 @@ async function proveraBodovanja2() {
   klikni('dgovori', document.getElementById('qCard'));
   const r3 = S().q[q3.id];
   ok('pogrešan PRE roka VAŽI: w=1, streak=0, odmah na redu', r3.w === 1 && r3.streak === 0 && r3.due <= Date.now());
+
+  // ---- 1c) „Nastavi" na Sva pitanja preskače već odgovorena: Q[0..2] su rešena, seqPos=2 → nudi 4. ----
+  document.querySelector('[data-nav="home"]').click();
+  document.querySelector('.menuBtn[data-nav="learn"]').click();
+  ok('Nastavi preskače već odgovorena: nudi (4/1327)', document.getElementById('bCont').textContent.includes('(4/1327)'));
+  document.getElementById('bCont').click();
+  ok('Nastavi otvara 4. pitanje (prvo neodgovoreno)', document.querySelector('#qProgress .qpPos').textContent.replace(/\s+/g, ' ').trim() === '4 od 1327');
 
   // ---- 2) SIMULACIJA: svih 41 tačno → 98/98, položeno ----
   document.querySelector('[data-nav="home"]').click();

@@ -166,6 +166,8 @@ main { max-width: 880px; width: 100%; margin: 0 auto; padding: 16px 12px 60px; f
 .markBox input { accent-color: var(--mark); width: 17px; height: 17px; cursor: pointer; }
 
 .simTop { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+/* „Broj potrebnih odgovora: 2" — kurziv i plavo, ispod teksta pitanja, kao na zvaničnoj strani */
+.simReq { font-style: italic; color: var(--blue); margin: -6px 0 10px; }
 .simTimer { font-size: 1.5rem; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--blue-d); min-width: 92px; }
 .simTimer.low { color: var(--bad); }
 .bigScore { font-size: 2rem; font-weight: 800; margin: 6px 0; }
@@ -191,7 +193,7 @@ table.stats td.num, table.stats th.num { text-align: right; font-variant-numeric
 .histPill { justify-self: start; }
 .histWrong { text-align: right; font-variant-numeric: tabular-nums; }
 .histArrow { text-align: right; }
-@media (max-width: 460px) {
+@media (max-width: 560px) {
   /* Red ima PET stavki. Sa tri kolone je peta — strelica „›" — padala sama u treći red,
      poravnata desno unutar prve kolone, pa je lebdela ispod rezultata. Četiri kolone:
      datum uzme ceo prvi red, ostale četiri stanu u drugi. */
@@ -241,7 +243,7 @@ button.histBtn:hover { background: var(--optHover); }
   padding: 0; border-radius: 999px; background: var(--btn2); color: var(--ink); font-size: var(--fs-xs);
   font-weight: 700; vertical-align: middle; margin-left: 2px; }
 .pomocBtn:hover { background: var(--btn2h); }
-.pomocBtn[aria-expanded="true"] { background: var(--blue); color: #fff; }
+.pomocBtn[aria-expanded="true"] { background: var(--primaryBg); color: #fff; }
 .pomocTekst { margin-top: 6px; }
 
 /* ---- Podnožje ---- */

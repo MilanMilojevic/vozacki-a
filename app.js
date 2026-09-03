@@ -26,6 +26,8 @@
   const CATS = D.cats.filter((c) => Q.some((q) => q.cat === c.id));
   const DAY = 24 * 60 * 60 * 1000;
   const one = (n) => n % 10 === 1 && n % 100 !== 11;   // srpski: 1, 21, 31... "pitanje/dan"
+  const few = (n) => [2, 3, 4].includes(n % 10) && ![12, 13, 14].includes(n % 100);   // paukal: 2, 3, 4, 22... "nova pitanja"
+  const novihPitanja = (n) => (one(n) ? L('novoJd') : few(n) ? L('novaPk') : L('novihMn'));
   const poeni = (n) => n + ' ' + (one(n) ? L('pointsOne') : L('points'));   // "1 poen", "2 poena"
   const localDay = (ts) => { const d = ts ? new Date(ts) : new Date(); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
   // Ponavljanje se zakazuje za POČETAK dana (00:00), da bi "sutra" zaista značilo sutra ujutru,
@@ -48,7 +50,14 @@
     qNumTip: { l: 'Zvanični broj pitanja u MUP bazi (isti broj važi i na eUpravi)', c: 'Званични број питања у МУП бази (исти број важи и на еУправи)' },
     points: { l: 'poena', c: 'поена' },
     pointsOne: { l: 'poen', c: 'поен' },
-    chooseN: { l: 'Izaberite odgovora:', c: 'Изаберите одговора:' },   // SAMO simulacija — oblik sa ispita se ne dira
+    // Simulacija: tekstovi DOSLOVNO sa zvanične strane eUprave (message_* u ep.js) — ne menjati po ukusu
+    chooseN: { l: 'Broj potrebnih odgovora:', c: 'Број потребних одговора:' },   // message_ChoicesRequired
+    brojPoena: { l: 'Broj poena', c: 'Број поена' },                              // message_NumberOfPoints
+    markSim: { l: 'Obeležite pitanje', c: 'Обележите питање' },                  // #questionMarking
+    simBrojOdgovora: { l: 'Niste označili potreban broj odgovora.', c: 'Нисте означили потребан број одговора.' },   // message_IncorrectNumberOfAnswers
+    simKraj: { l: 'Ispit je završen!', c: 'Испит је завршен!' },
+    simPolozio: { l: 'Čestitamo, položili ste teorijski ispit.', c: 'Честитамо, положили сте теоријски испит.' },   // message_Passed
+    simPao: { l: 'Nažalost, niste položili teorijski ispit.', c: 'Нажалост, нисте положили теоријски испит.' },     // message_Failed
     chooseNVezba: { l: 'Izaberi @1 odgovora, pa potvrdi.', c: 'Изабери @1 одговора, па потврди.' },
     confirm: { l: 'Odgovori', c: 'Одговори' },
     next: { l: 'Sledeće pitanje', c: 'Следеће питање' },
@@ -77,11 +86,11 @@
     ponKasnije: { l: 'kasnije', c: 'касније' },
     pomocPonavljanje: { l: 'Kako radi ponavljanje?', c: 'Како ради понављање?' },
     preRokaNapomena: { l: 'Pitanja za kasnije možeš da vežbaš i pre roka: odgovor ulazi u statistiku pitanja, ali ne pomera raspored ponavljanja. Pogrešan odgovor važi uvek.', c: 'Питања за касније можеш да вежбаш и пре рока: одговор улази у статистику питања, али не помера распоред понављања. Погрешан одговор важи увек.' },
-    waitInfo: { l: 'Današnja ponavljanja si prošao. # pitanja dolazi na red kasnije (razmaknuto ponavljanje: sutra, pa za 3 dana).', c: 'Данашња понављања си прошао. # питања долази на ред касније (размакнуто понављање: сутра, па за 3 дана).' },
+    waitInfo: { l: 'Današnja ponavljanja si prošao. Kasnije na redu: # pitanja (razmaknuto ponavljanje: sutra, pa za 3 dana).', c: 'Данашња понављања си прошао. Касније на реду: # питања (размакнуто понављање: сутра, па за 3 дана).' },
     drillWaitingBtn: { l: 'Vežbaj i ona za kasnije', c: 'Вежбај и она за касније' },
     drillEmpty: { l: 'Nema pitanja za ponavljanje — sve što si grešio je utvrđeno. 💪', c: 'Нема питања за понављање — све што си грешио је утврђено. 💪' },
     markedEmpty: { l: 'Nema obeleženih pitanja. Obeleži pitanje kvačicom dok vežbaš.', c: 'Нема обележених питања. Обележи питање квачицом док вежбаш.' },
-    finishSim: { l: 'Završi ispit', c: 'Заврши испит' },
+    finishSim: { l: 'Kraj ispita', c: 'Крај испита' },   // #btnFinishExam
     simLeaveConfirm: { l: 'Napustiti simulaciju? Odgovori iz nje NEĆE biti sačuvani niti računati.', c: 'Напустити симулацију? Одговори из ње НЕЋЕ бити сачувани нити рачунати.' },
     passed: { l: 'POLOŽIO', c: 'ПОЛОЖИО' },
     failed: { l: 'NIJE POLOŽENO', c: 'НИЈЕ ПОЛОЖЕНО' },
@@ -135,9 +144,12 @@
     examDays: { l: 'dana', c: 'дана' },
     examDaysOne: { l: 'dan', c: 'дан' },
     examToday: { l: '📅 ispit je danas — srećno!', c: '📅 испит је данас — срећно!' },
-    examPlan: { l: 'predlog tempa: ~# novih pitanja dnevno — „Predloži mi" u podešavanjima ga upisuje kao cilj', c: 'предлог темпа: ~# нових питања дневно — „Предложи ми" у подешавањима га уписује као циљ' },
-    examPlanOne: { l: 'predlog tempa: ~# novo pitanje dnevno — „Predloži mi" u podešavanjima ga upisuje kao cilj', c: 'предлог темпа: ~# ново питање дневно — „Предложи ми" у подешавањима га уписује као циљ' },
-    planPremalo: { l: 'sa @1 novih dnevno do ispita prođeš ~@2 od @3 neodgovorenih — predlog: @4 dnevno', c: 'са @1 нових дневно до испита прођеш ~@2 од @3 неодговорених — предлог: @4 дневно' },
+    // [9] „u podešavanjima" — na ekranu ne postoji ništa tako nazvano; grupa se zove „Dnevni cilj"
+    examPlan: { l: 'predlog tempa: ~# @1 dnevno — „Predloži mi" u grupi „Dnevni cilj" (dole) ga upisuje kao cilj', c: 'предлог темпа: ~# @1 дневно — „Предложи ми" у групи „Дневни циљ" (доле) га уписује као циљ' },
+    novoJd: { l: 'novo pitanje', c: 'ново питање' },
+    novaPk: { l: 'nova pitanja', c: 'нова питања' },
+    novihMn: { l: 'novih pitanja', c: 'нових питања' },
+    planPremalo: { l: 'sa @1 dnevno do ispita prođeš ~@2 od @3 neodgovorenih — predlog: @4 dnevno', c: 'са @1 дневно до испита прођеш ~@2 од @3 неодговорених — предлог: @4 дневно' },
     imgFail: { l: 'Slika nije dostupna bez interneta — otvori ovo pitanje kad budeš na mreži pa ostaje sačuvana.', c: 'Слика није доступна без интернета — отвори ово питање кад будеш на мрежи па остаје сачувана.' },
     planPonavljanja: { l: 'za ponavljanje danas: #', c: 'за понављање данас: #' },
     planSim: { l: 'predlog: procena je @1 od 98 — uradi simulaciju danas', c: 'предлог: процена је @1 од 98 — уради симулацију данас' },
@@ -188,7 +200,7 @@
     planSacuvan: { l: 'Dnevni cilj je sačuvan.', c: 'Дневни циљ је сачуван.' },
     planUgasen: { l: 'Dnevni cilj je ugašen.', c: 'Дневни циљ је угашен.' },
     planIspunjen: { l: '✅ Dnevni cilj je ispunjen — vidimo se sutra.', c: '✅ Дневни циљ је испуњен — видимо се сутра.' },
-    planIspunjenJos: { l: '✅ Dnevni cilj je ispunjen. Na redu je još @1 za ponavljanje — možeš i danas, ili sutra.', c: '✅ Дневни циљ је испуњен. На реду је још @1 за понављање — можеш и данас, или сутра.' },
+    planIspunjenJos: { l: '✅ Dnevni cilj je ispunjen. Za ponavljanje ostaje još: @1 — možeš i danas, ili sutra.', c: '✅ Дневни циљ је испуњен. За понављање остаје још: @1 — можеш и данас, или сутра.' },
     planNemaPon: { l: 'nema na redu', c: 'нема на реду' },
     planPodesi: { l: 'Podesi cilj', c: 'Подеси циљ' },
     planVezbaj: { l: '▶ Vežbaj po planu', c: '▶ Вежбај по плану' },
@@ -196,9 +208,9 @@
     planNemaDostupnih: { l: 'Nema više pitanja koja čekaju. Cilj ostaje za sutra.', c: 'Нема више питања која чекају. Циљ остаје за сутра.' },
     planBezDatuma: { l: 'Za predlog prvo unesi datum ispita.', c: 'За предлог прво унеси датум испита.' },
     planDatumProsao: { l: 'Datum ispita je prošao — unesi novi da bih mogao da računam.', c: 'Датум испита је прошао — унеси нови да бих могао да рачунам.' },
-    planPredlogGotov: { l: 'Sačuvano kao cilj: @1 novih i @2 ponavljanja dnevno. Novo gradivo se završava # dana pre ispita — ti dani ostaju za ponavljanje i simulacije. Brojeve možeš da promeniš i ponovo sačuvaš.', c: 'Сачувано као циљ: @1 нових и @2 понављања дневно. Ново градиво се завршава # дана пре испита — ти дани остају за понављање и симулације. Бројеве можеш да промениш и поново сачуваш.' },
-    planPredlogUsko: { l: 'Sačuvano kao cilj: @1 novih i @2 ponavljanja dnevno. Ispit je blizu, pa nema rezerve — novo gradivo ide do poslednjeg dana.', c: 'Сачувано као циљ: @1 нових и @2 понављања дневно. Испит је близу, па нема резерве — ново градиво иде до последњег дана.' },
-    planPuno: { l: 'Sačuvano — ali # pitanja dnevno je puno. Računaj oko pola sata na svakih 100 pitanja. Uvek možeš da smanjiš.', c: 'Сачувано — али # питања дневно је пуно. Рачунај око пола сата на сваких 100 питања. Увек можеш да смањиш.' },
+    planPredlogGotov: { l: 'Sačuvano kao cilj: @1 i @2 ponavljanja dnevno. Novo gradivo se završava # pre ispita — ti dani ostaju za ponavljanje i simulacije. Brojeve možeš da promeniš i ponovo sačuvaš.', c: 'Сачувано као циљ: @1 и @2 понављања дневно. Ново градиво се завршава # пре испита — ти дани остају за понављање и симулације. Бројеве можеш да промениш и поново сачуваш.' },
+    planPredlogUsko: { l: 'Sačuvano kao cilj: @1 i @2 ponavljanja dnevno. Ispit je blizu, pa nema rezerve — novo gradivo ide do poslednjeg dana.', c: 'Сачувано као циљ: @1 и @2 понављања дневно. Испит је близу, па нема резерве — ново градиво иде до последњег дана.' },
+    planPuno: { l: 'Sačuvano — ali # dnevno je puno. Računaj oko pola sata na svakih 100 pitanja. Uvek možeš da smanjiš.', c: 'Сачувано — али # дневно је пуно. Рачунај око пола сата на сваких 100 питања. Увек можеш да смањиш.' },
     installWhatTitle: { l: '📲 Šta dobijam ako je dodam kao aplikaciju?', c: '📲 Шта добијам ако је додам као апликацију?' },
     installWhatBody: {
       l: `<ul>
@@ -224,7 +236,7 @@
     unosSamoCifre: { l: 'Dozvoljene su samo cifre — bez slova, razmaka i zareza. Unesi ceo broj od @1 do @2.', c: 'Дозвољене су само цифре — без слова, размака и зареза. Унеси цео број од @1 до @2.' },
     unosPremalo: { l: 'Najmanje što može da se unese je @1.', c: 'Најмање што може да се унесе је @1.' },
     unosPreveliko: { l: 'Toliko ih nema — najviše je @2.', c: 'Толико их нема — највише је @2.' },
-    skokVanOpsega: { l: 'Ovaj spisak ima @2 pitanja. Unesi broj od @1 do @2.', c: 'Овај списак има @2 питања. Унеси број од @1 до @2.' },
+    skokVanOpsega: { l: 'Ovaj spisak ima @3. Unesi broj od @1 do @2.', c: 'Овај списак има @3. Унеси број од @1 до @2.' },
     planMaxNovih: { l: 'Neodgovorenih je ostalo @2 — više od toga ne može stati u jedan dan.', c: 'Неодговорених је остало @2 — више од тога не може стати у један дан.' },
     officialBase: { l: 'zvanična baza pitanja', c: 'званична база питања' },
     naIspituTip: { l: 'Koliko pitanja iz ove podoblasti nosi svaki pravi ispit — izmereno iz pet zvaničnih izvlačenja simulacije.', c: 'Колико питања из ове подобласти носи сваки прави испит — измерено из пет званичних извлачења симулације.' },
@@ -236,7 +248,7 @@
     grp4: { l: '4 · Posebne situacije', c: '4 · Посебне ситуације' },
     grp5: { l: '5 · Propisi, dozvole i posledice', c: '5 · Прописи, дозволе и последице' },
     guideBody: { l: `<ol class="guideList">
-      <li><b>Prvo pojmovi, pa pravila.</b> U Pojmovniku pročitaj redom: <i>Slični pojmovi</i> (šta je preticanje a šta obilaženje, odstojanje vs rastojanje), <i>Put, kolovoz, trake</i> i <i>Kategorije vozila</i>. Bez tih reči ostalo gradivo zvuči kao strani jezik.</li>
+      <li><b>Prvo pojmovi, pa pravila.</b> U Pojmovniku pročitaj redom: <i>Slični pojmovi</i> (šta je preticanje a šta obilaženje, odstojanje naspram rastojanja), <i>Put, kolovoz, trake</i> i <i>Kategorije vozila</i>. Bez tih reči ostalo gradivo zvuči kao strani jezik.</li>
       <li><b>Ko ide prvi.</b> Kartice <i>Prvenstvo prolaza</i>, <i>Semafori</i> i <i>Porodice saobraćajnih znakova</i> — to je srce ispita i najviše pitanja.</li>
       <li><b>Radnje vozilom.</b> <i>Skretanje i prestrojavanje</i>, <i>Preticanje i obilaženje</i>, <i>Zaustavljanje i parkiranje</i>, <i>Pokazivači pravca</i>, <i>Upotreba svetala</i>.</li>
       <li><b>Posebne situacije.</b> <i>Pešaci i dvotočkaši</i>, <i>Prelaz preko pruge</i>, <i>Autoput i motoput</i>, <i>Vozila pod pratnjom</i>, <i>Postupak kod nezgode</i>.</li>
@@ -246,7 +258,7 @@
     </ol>
     <p class="mut">Kaznene mere uči poslednje i bez učenja iznosa napamet — u zvaničnom ispitu za A kategoriju te oblasti nema.</p>`,
       c: `<ol class="guideList">
-      <li><b>Прво појмови, па правила.</b> У Појмовнику прочитај редом: <i>Слични појмови</i> (шта је претицање а шта обилажење, одстојање vs растојање), <i>Пут, коловоз, траке</i> и <i>Категорије возила</i>. Без тих речи остало градиво звучи као страни језик.</li>
+      <li><b>Прво појмови, па правила.</b> У Појмовнику прочитај редом: <i>Слични појмови</i> (шта је претицање а шта обилажење, одстојање наспрам растојања), <i>Пут, коловоз, траке</i> и <i>Категорије возила</i>. Без тих речи остало градиво звучи као страни језик.</li>
       <li><b>Ко иде први.</b> Картице <i>Првенство пролаза</i>, <i>Семафори</i> и <i>Породице саобраћајних знакова</i> — то је срце испита и највише питања.</li>
       <li><b>Радње возилом.</b> <i>Скретање и престројавање</i>, <i>Претицање и обилажење</i>, <i>Заустављање и паркирање</i>, <i>Показивачи правца</i>, <i>Употреба светала</i>.</li>
       <li><b>Посебне ситуације.</b> <i>Пешаци и двоточкаши</i>, <i>Прелаз преко пруге</i>, <i>Аутопут и мотопут</i>, <i>Возила под пратњом</i>, <i>Поступак код незгоде</i>.</li>
@@ -310,7 +322,7 @@
     report: { l: 'Izveštaj', c: 'Извештај' },
     repAnswered: { l: 'Odgovoreno', c: 'Одговорено' },
     repMarked: { l: 'Obeleženo', c: 'Обележено' },
-    backToTest: { l: 'Nazad na test', c: 'Назад на тест' },
+    backToTest: { l: 'Nazad', c: 'Назад' },   // #btnBack
     prevQ: { l: 'Prethodno pitanje', c: 'Претходно питање' },
     nextQ: { l: 'Sledeće pitanje', c: 'Следеће питање' },
     explTitle: { l: '💡 Objašnjenje', c: '💡 Објашњење' },
@@ -327,16 +339,17 @@
     todayLbl: { l: 'Danas', c: 'Данас' },
     okShort: { l: 'tačno', c: 'тачно' },
     shufTip: { l: 'Vežbanje pokrenuto sa ove strane ide nasumičnim redosledom (ne znaš koje je sledeće). Spisak dole ostaje po redu, a „Nastavi" uvek ide redom. Klik na pitanje u spisku: počinje od njega, pa nastavlja izmešano.', c: 'Вежбање покренуто са ове стране иде насумичним редоследом (не знаш које је следеће). Списак доле остаје по реду, а „Настави" увек иде редом. Клик на питање у списку: почиње од њега, па наставља измешано.' },
-    queueTip: { l: 'Razmaknuto ponavljanje: pogrešiš → pitanje je odmah spremno; pogodiš ga → vraća se sutra; opet pogodiš → za 3 dana; treći pogodak zaredom → izlazi iz reda. I pitanje koje si pogodio iz prve vraća se jednom, za 3 dana, da se potvrdi — pa izlazi. Tačan odgovor PRE roka je vežbanje i ne pomera raspored; pogrešan važi uvek. U dnevni cilj isto pitanje ulazi najviše jednom dnevno.', c: 'Размакнуто понављање: погрешиш → питање је одмах спремно; погодиш га → враћа се сутра; опет погодиш → за 3 дана; трећи погодак заредом → излази из реда. И питање које си погодио из прве враћа се једном, за 3 дана, да се потврди — па излази. Тачан одговор ПРЕ рока је вежбање и не помера распоред; погрешан важи увек. У дневни циљ исто питање улази највише једном дневно.' },
+    queueTip: { l: 'Razmaknuto ponavljanje: pogrešiš → pitanje je odmah na redu; pogodiš ga → vraća se sutra; opet pogodiš → za 3 dana; treći pogodak zaredom → utvrđeno je i izlazi iz reda. I pitanje koje si pogodio iz prve vraća se jednom, za 3 dana, da se potvrdi — pa izlazi. Tačan odgovor PRE roka je vežbanje i ne pomera raspored; pogrešan važi uvek. U dnevni cilj isto pitanje ulazi najviše jednom dnevno.', c: 'Размакнуто понављање: погрешиш → питање је одмах на реду; погодиш га → враћа се сутра; опет погодиш → за 3 дана; трећи погодак заредом → утврђено је и излази из реда. И питање које си погодио из прве враћа се једном, за 3 дана, да се потврди — па излази. Тачан одговор ПРЕ рока је вежбање и не помера распоред; погрешан важи увек. У дневни циљ исто питање улази највише једном дневно.' },
     legend: { l: '✓ utvrđeno · ✗ pogrešeno, za ponavljanje · ◐ tačno iz prve, čeka jednu potvrdu · • neodgovoreno · 🔖 obeleženo · 🖼 sa slikom · desno: broj tačnih/netačnih', c: '✓ утврђено · ✗ погрешено, за понављање · ◐ тачно из прве, чека једну потврду · • неодговорено · 🔖 обележено · 🖼 са сликом · десно: број тачних/нетачних' },
     contTip: { l: 'Nastavlja redom, od prvog neodgovorenog pitanja posle mesta gde si stao.', c: 'Наставља редом, од првог неодговореног питања после места где си стао.' },
+    contTipSec: { l: 'Nastavlja tačno od mesta gde si stao (uvek redom).', c: 'Наставља тачно од места где си стао (увек редом).' },
     vezbajPodoblast: { l: 'Vežbaj podoblast', c: 'Вежбај подобласт' },
     qOne: { l: 'pitanje', c: 'питање' },
-    waitInfoOne: { l: 'Današnja ponavljanja si prošao. # pitanje dolazi na red kasnije (razmaknuto ponavljanje: sutra, pa za 3 dana).', c: 'Данашња понављања си прошао. # питање долази на ред касније (размакнуто понављање: сутра, па за 3 дана).' },
+    waitInfoOne: { l: 'Današnja ponavljanja si prošao. Kasnije na redu: # pitanje (razmaknuto ponavljanje: sutra, pa za 3 dana).', c: 'Данашња понављања си прошао. Касније на реду: # питање (размакнуто понављање: сутра, па за 3 дана).' },
     daysAgoOne: { l: 'pre # dan', c: 'пре # дан' },
     dueDaysOne: { l: 'za # dan', c: 'за # дан' },
-    simConfirm0: { l: 'Predati test?', c: 'Предати тест?' },
-    simConfirmN: { l: 'Predati test? Neodgovorenih: # (nose 0 poena).', c: 'Предати тест? Неодговорених: # (носе 0 поена).' },
+    // message_ConfirmExamFinish — bez brojanja neodgovorenih: toga na ispitu nema
+    simConfirm: { l: 'Da li sigurno želite završiti teorijski ispit? Nakon potvrde više nećete moći uneti bilo koju izmenu u date odgovore.', c: 'Да ли сигурно желите завршити теоријски испит? Након потврде више нећете моћи унети било коју измену у дате одговоре.' },
     importBad: { l: 'Fajl nije prepoznat kao ispravan napredak — ništa nije promenjeno.', c: 'Фајл није препознат као исправан напредак — ништа није промењено.' },
     importConfirm: { l: 'Učitavanje će ZAMENITI postojeći napredak ovim iz fajla. Nastaviti?', c: 'Учитавање ће ЗАМЕНИТИ постојећи напредак овим из фајла. Наставити?' },
     readyNoData: { l: 'Procena se prikazuje kada odgovoriš na bar 30 pitanja (do sada: #). Uradi prvi krug, pa se vrati ovde.', c: 'Процена се приказује када одговориш на бар 30 питања (до сада: #). Уради први круг, па се врати овде.' },
@@ -756,7 +769,7 @@
     if (onBack) el('backToList').addEventListener('click', onBack);
     if (!el('jumpGo')) return;
     const doJump = () => {
-      const v = ceoBrojIzPolja(el('jumpN'), 1, max, L('skokVanOpsega'));
+      const v = ceoBrojIzPolja(el('jumpN'), 1, max, L('skokVanOpsega').split('@3').join(nQ(max)));
       if (v !== null) onJump(v - 1);
     };
     el('jumpGo').addEventListener('click', doJump);
@@ -766,15 +779,31 @@
 
   // ---------- Prikaz jednog pitanja (zajednički engine) ----------
   // opts: {container, q, onAnswered, onNext, onPrev, nextLabelKey}
+  // Isti prikaz istog pitanja (promena pisma/teme usred rada) mora da izgleda isto: isti
+  // redosled ponuda, isti izbor, a već dat odgovor ostaje dat. Ključ je opts.recordKey
+  // (prolaz|pozicija) — isti koji čuva i od dvostrukog beleženja.
+  const prikazPitanja = new Map();
+  let ponovniPrikaz = false;   // true samo dok traje current.redraw() zbog promene pisma
   function renderQuestion(opts) {
     const q = opts.q;
     const c = opts.container;
     c.dataset.qid = q.id;
-    const shuffled = q.ch.slice();
-    for (let i = shuffled.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]; }
+    const zapamceno = ponovniPrikaz && opts.recordKey ? prikazPitanja.get(opts.recordKey) : null;
+    let shuffled;
+    if (zapamceno) {
+      shuffled = zapamceno.order.map((id) => q.ch.find((x) => x.id === id)).filter(Boolean);
+    } else {
+      shuffled = q.ch.slice();
+      for (let i = shuffled.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]; }
+    }
 
-    const sel = new Set();
+    const sel = new Set(zapamceno ? zapamceno.sel : []);
     let answered = false;
+    const zapamti = (odgovoreno) => {
+      if (!opts.recordKey) return;
+      prikazPitanja.set(opts.recordKey, { order: shuffled.map((x) => x.id), sel: [...sel], odgovoreno: odgovoreno || (zapamceno && zapamceno.odgovoreno) || null });
+      if (prikazPitanja.size > 300) prikazPitanja.delete(prikazPitanja.keys().next().value);   // ne raste beskonačno
+    };
 
     c.innerHTML = '';
     const meta = document.createElement('div'); meta.className = 'qMeta';
@@ -810,7 +839,9 @@
         else if (q.req === 1) { sel.clear(); btns.forEach((x) => x.classList.remove('sel')); sel.add(ch.id); b.classList.add('sel'); }
         else if (sel.size < q.req) { sel.add(ch.id); b.classList.add('sel'); }
         confirmBtn.disabled = sel.size !== q.req;
+        zapamti();
       });
+      if (sel.has(ch.id)) b.classList.add('sel');   // izbor zapamćen pre ponovnog prikaza
       b._ch = ch;
       btns.push(b); c.appendChild(b);
     }
@@ -826,7 +857,7 @@
     }
 
     const confirmBtn = document.createElement('button');
-    confirmBtn.className = 'primary'; confirmBtn.disabled = true;
+    confirmBtn.className = 'primary'; confirmBtn.disabled = sel.size !== q.req;
     confirmBtn.textContent = L('confirm');
     confirmBtn.addEventListener('click', () => { if (!answered && sel.size === q.req) finish(shuffled.filter((ch) => sel.has(ch.id))); });
     actions.appendChild(confirmBtn);
@@ -834,7 +865,7 @@
     // → preskoči (pre odgovora); posle odgovora postaje "Sledeće pitanje"
     let nextBtn = null;
     if (opts.onNext) {
-      nextBtn = document.createElement('button'); nextBtn.className = 'secondary';
+      nextBtn = document.createElement('button'); nextBtn.className = 'secondary'; nextBtn.dataset.uloga = 'dalje';
       nextBtn.textContent = opts.nextLabel || (L('skip') + ' →');
       nextBtn.addEventListener('click', opts.onNext);
       actions.appendChild(nextBtn);
@@ -846,9 +877,12 @@
     markWrap.appendChild(cb); markWrap.appendChild(document.createTextNode(' ' + L('mark')));
     actions.appendChild(markWrap);
     c.appendChild(actions);
+    // već odgovoreno u ovom prolazu: pokaži isti ishod (beleženje preskače lastRecordKey čuvar)
+    if (zapamceno && zapamceno.odgovoreno) finish(shuffled.filter((ch) => zapamceno.odgovoreno.includes(ch.id)));
 
     function finish(chosen) {
       answered = true;
+      zapamti(chosen.map((x) => x.id));
       const okSet = new Set(q.ch.filter((x) => x.ok).map((x) => x.id));
       const ok = chosen.length === okSet.size && chosen.every((x) => okSet.has(x.id));
       for (const b of btns) {
@@ -1258,7 +1292,8 @@
   function tickSim() {
     if (!sim) return;
     const left = Math.max(0, Math.round((sim.deadline - Date.now()) / 1000));
-    const mm = String(Math.floor(left / 60)).padStart(2, '0');
+    // isti oblik kao zvanični tajmer (displayTime): minuti bez vodeće nule — 45:00, 9:59, 0:07
+    const mm = String(Math.floor(left / 60));
     const ss = String(left % 60).padStart(2, '0');
     const t = el('simTimer');
     t.textContent = mm + ':' + ss;
@@ -1275,9 +1310,16 @@
     c.dataset.qid = q.id;
     c.innerHTML = '';
     const meta = document.createElement('div'); meta.className = 'qMeta';
-    meta.innerHTML = `<span>${L('question')} ${sim.i + 1} / ${SIM_N}</span><span>${poeni(q.pts)}${q.req > 1 ? ` · ${L('chooseN')} ${q.req}` : ''}</span>`;
+    // zvanično zaglavlje: „Питање: 3/41" i „Број поена: 2" (GoToQuestion u ep.js)
+    meta.innerHTML = `<span>${L('question')}: ${sim.i + 1}/${SIM_N}</span><span>${L('brojPoena')}: ${q.pts}</span>`;
     c.appendChild(meta);
     const txt = document.createElement('div'); txt.className = 'qText'; txt.textContent = T(q.t); c.appendChild(txt);
+    if (q.req > 1) {
+      // kao na ispitu: kurzivna plava oznaka ISPOD teksta pitanja (GenerateQuestionsFrame u ep.js)
+      const rq = document.createElement('div'); rq.className = 'simReq';
+      rq.textContent = `${L('chooseN')} ${q.req}`;
+      c.appendChild(rq);
+    }
     if (q.img) c.appendChild(slikaPitanja(q));
     for (const ch of sq.order) {
       const b = document.createElement('button'); b.className = 'choice' + (sq.chosen.has(ch.id) ? ' sel' : ''); b.type = 'button';
@@ -1291,26 +1333,34 @@
       c.appendChild(b);
     }
     const actions = document.createElement('div'); actions.className = 'qActions';
-    if (sim.i > 0) { const p = document.createElement('button'); p.className = 'secondary'; p.textContent = '‹ ' + L('prevQ'); p.addEventListener('click', () => { sim.i--; renderSimQ(); }); actions.appendChild(p); }
-    if (sim.i < SIM_N - 1) { const n = document.createElement('button'); n.className = 'primary'; n.textContent = L('nextQ') + ' ›'; n.addEventListener('click', () => { sim.i++; renderSimQ(); }); actions.appendChild(n); }
+    if (sim.i > 0) { const p = document.createElement('button'); p.className = 'secondary'; p.textContent = '‹ ' + L('prevQ'); p.addEventListener('click', () => { if (!simSmeDalje()) return; sim.i--; renderSimQ(); }); actions.appendChild(p); }
+    if (sim.i < SIM_N - 1) { const n = document.createElement('button'); n.className = 'primary'; n.textContent = L('nextQ') + ' ›'; n.addEventListener('click', () => { if (!simSmeDalje()) return; sim.i++; renderSimQ(); }); actions.appendChild(n); }
     // Obeležavanje pitanja postoji i na pravom ispitu
     const markWrap = document.createElement('label'); markWrap.className = 'markBox';
     const cb = document.createElement('input'); cb.type = 'checkbox'; cb.checked = sq.marked;
     cb.addEventListener('change', () => { sq.marked = cb.checked; });
-    markWrap.appendChild(cb); markWrap.appendChild(document.createTextNode(' ' + L('mark')));
+    markWrap.appendChild(cb); markWrap.appendChild(document.createTextNode(' ' + L('markSim')));
     actions.appendChild(markWrap);
     c.appendChild(actions);
   }
-  // "Izveštaj" — kao na ispitu: tabela Pitanje / Odgovoreno / Obeleženo, klik vodi na pitanje
+  // Kao na ispitu (SaveUserInput u ep.js): pitanje sa VIŠE odgovora ne može da se napusti dok
+  // nije označen ni jedan ili tačno traženi broj — pola odgovora zaustavlja i poruči.
+  function simSmeDalje() {
+    if (!sim || sim.showReport) return true;
+    const sq = sim.qs[sim.i];
+    if (sq.chosen.size > 0 && sq.chosen.size !== sq.q.req) { alert(L('simBrojOdgovora')); return false; }
+    return true;
+  }
+  // "Izveštaj" — kao na ispitu: tabela Pitanje / Broj poena / Odgovoreno / Obeleženo, klik vodi na pitanje
   function renderSimReport() {
     sim.showReport = true;
     el('simQCard').style.display = 'none';
     const rp = el('simReport');
     rp.style.display = '';
     rp.innerHTML = `<h3>${L('report')}</h3>
-      <table class="stats"><thead><tr><th>${L('question')}</th><th class="num">${L('repAnswered')}</th><th class="num">${L('repMarked')}</th></tr></thead>
+      <table class="stats"><thead><tr><th>${L('question')}</th><th class="num">${L('brojPoena')}</th><th class="num">${L('repAnswered')}</th><th class="num">${L('repMarked')}</th></tr></thead>
       <tbody>${sim.qs.map((sq, idx) =>
-        `<tr class="repRow" tabindex="0" data-i="${idx}"><td>${idx + 1}</td><td class="num">${sq.chosen.size ? '✓' : '—'}</td><td class="num">${sq.marked ? '🔖' : '—'}</td></tr>`).join('')}
+        `<tr class="repRow" tabindex="0" data-i="${idx}"><td>${L('question')} ${idx + 1}</td><td class="num">${sq.q.pts}</td><td class="num">${sq.chosen.size === sq.q.req ? '✓' : '—'}</td><td class="num">${sq.marked ? '🔖' : '—'}</td></tr>`).join('')}
       </tbody></table>
       <div class="qActions" style="margin-top:12px"><button class="primary" id="btnRepBack">‹ ${L('backToTest')}</button></div>`;
     rp.querySelectorAll('.repRow').forEach((tr) => {
@@ -1323,9 +1373,8 @@
   function finishSim(auto) {
     if (!sim) return;
     if (!auto) {
-      const unanswered = sim.qs.filter((sq) => !sq.chosen.size).length;
-      const msg = unanswered === 0 ? L('simConfirm0') : L('simConfirmN').replace('#', unanswered);
-      if (!confirm(msg)) return;
+      if (!simSmeDalje()) return;
+      if (!confirm(L('simConfirm'))) return;   // doslovno pitanje sa ispita, bez brojanja neodgovorenih
     }
     clearInterval(sim.timerId);
     const total = sim.qs.reduce((a, sq) => a + sq.q.pts, 0);
@@ -1372,6 +1421,7 @@
       <div class="bigScore ${rec.passed ? 'pass' : 'fail'}">${rec.score} / ${rec.total} ${L('points')}</div>
       <p><span class="pill ${rec.passed ? 'pass' : 'fail'}">${rec.passed ? L('passed') : L('failed')}</span>
       &nbsp; <span class="mut">${pragTekst(rec.total)}</span></p>
+      <p><b>${L('simKraj')}</b> ${rec.passed ? L('simPolozio') : L('simPao')}</p>
       ${hasDetail ? `<h3>${L('perCat')}</h3>
       <table class="stats"><thead><tr><th>${L('thArea')}</th><th class="num">${L('thQ')}</th><th class="num">${L('thPts')}</th></tr></thead>
       <tbody>${Object.entries(perCat).map(([cid, pc]) =>
@@ -1537,7 +1587,7 @@
       <div class="mut opisRed">${nQ(ids.length)} · ${seen} ${L('answered')}${acc !== null ? ` · ${L('thAcc').toLowerCase()}: <span class="${accClass(acc)}">${acc}%</span>` : ''} · ${inQ} ${L('inQueue')}${pomocHtml()}</div>
       ${pomocTekstHtml()}
       <div class="qActions">
-        <button class="primary" id="bStart" ${!shuffleOn && pos > 0 ? `title="${escapeHtml(L('contTip'))}"` : ''}>${pos > 0 && !shuffleOn ? `${L('continueBtn')} (${pos + 1}/${ids.length})` : L('startBtn') + sfx()}</button>
+        <button class="primary" id="bStart" ${!shuffleOn && pos > 0 ? `title="${escapeHtml(L('contTipSec'))}"` : ''}>${pos > 0 && !shuffleOn ? `${L('continueBtn')} (${pos + 1}/${ids.length})` : L('startBtn') + sfx()}</button>
         ${pos > 0 && !shuffleOn ? `<button class="secondary" id="bStartOver">${L('fromStart')}</button>` : ''}
         ${wrongNow.length ? `<button class="secondary" id="bWrong">${L('onlyWrong')} (${wrongNow.length})${sfx()}</button>` : ''}
         ${unseen.length && unseen.length < ids.length ? `<button class="secondary" id="bUnseen">${L('onlyUnseen')} (${unseen.length})${sfx()}</button>` : ''}
@@ -1909,6 +1959,15 @@
     const pon = Math.min(60, Math.max(15, queueSplit().ready.length));
     return { rezerva, danaZaNovo, novih, pon };
   }
+  // Dani do ispita: obe tačke su lokalna ponoć, pa je razlika ceo broj dana ±1h (letnje/zimsko
+  // vreme) — zato round, nikad ceil. Ranije su sažetak (round) i „Predloži mi" (ceil) mogli da se
+  // razlikuju za dan, pa i za tempo.
+  function danaDoIspita() {
+    if (!S.examDate) return null;
+    const d0 = new Date(); d0.setHours(0, 0, 0, 0);
+    const d = Math.round((new Date(S.examDate + 'T00:00:00') - d0) / DAY);
+    return Number.isFinite(d) ? d : null;
+  }
   const neodgovorenih = () => Q.filter((q) => !S.q[q.id] || !S.q[q.id].a).length;
   // „Nastavi" na Sva pitanja: prvo NEODGOVORENO pitanje od mesta gde si stao. Ko uči kroz
   // plan dana ili oblasti ne sme na „Nastavi" da dobije pitanje 1 koje je odavno rešio.
@@ -1979,32 +2038,26 @@
       const procena = answered >= 30 ? Math.round(exp) : null;
       const zadnja = S.sims.length ? S.sims[S.sims.length - 1].d : 0;
       const simDanas = zadnja && new Date(zadnja).toDateString() === new Date().toDateString();
-      let danaDoIspita = null;
-      if (S.examDate) {
-        const d0 = new Date(); d0.setHours(0, 0, 0, 0);
-        danaDoIspita = Math.round((new Date(S.examDate + 'T00:00:00') - d0) / 86400000);
-      }
-      if (danaDoIspita !== null && danaDoIspita >= 0 && danaDoIspita <= 7) {
+      const doIspita = danaDoIspita();
+      if (doIspita !== null && doIspita >= 0 && doIspita <= 7) {
         if (!simDanas) delovi.push('🎯 ' + L('planSimNedelja'));
       } else if (procena !== null && procena >= SIM_PREDLOG_OD && !simDanas && (!zadnja || Date.now() - zadnja > 2.5 * DAY)) {
         delovi.push('🎯 ' + L('planSim').split('@1').join(procena));
       }
     }
     if (S.examDate) {
-      const danas = new Date(); danas.setHours(0, 0, 0, 0);
-      const ispit = new Date(S.examDate + 'T00:00:00');
-      const dana = Math.round((ispit - danas) / 86400000);
-      if (dana >= 0) {
+      const dana = danaDoIspita();
+      if (dana !== null && dana >= 0) {
         // srpska jednina: „1 dan", ne „1 dana"; na sam dan ispita ne piše se „0 dana"
         if (dana === 0) delovi.push(L('examToday'));
         else delovi.push('📅 ' + L('examIn') + ': ' + dana + ' ' + (one(dana) ? L('examDaysOne') : L('examDays')));
         const neodg = neodgovorenih();
         if (dana > 0 && neodg > 0) {
           const tempo = predlogTempa(dana, neodg).novih;
-          if (!S.plan) delovi.push((one(tempo) ? L('examPlanOne') : L('examPlan')).replace('#', tempo));
+          if (!S.plan) delovi.push(L('examPlan').replace('#', tempo).split('@1').join(novihPitanja(tempo)));
           else if (S.plan.novih && S.plan.novih * dana < neodg) {
             // cilj ne stiže do kraja gradiva pre ispita — to se kaže, ne ćuti se
-            delovi.push('⚠ ' + L('planPremalo').split('@1').join(S.plan.novih).split('@2').join(S.plan.novih * dana).split('@3').join(neodg).split('@4').join(tempo));
+            delovi.push('⚠ ' + L('planPremalo').split('@1').join(S.plan.novih + ' ' + novihPitanja(S.plan.novih)).split('@2').join(S.plan.novih * dana).split('@3').join(neodg).split('@4').join(tempo));
           }
         }
       }
@@ -2305,22 +2358,22 @@
         save(); renderHome();
         // ne branimo veliki cilj, ali kažemo koliko je to stvarno vremena
         const dnevno = (novih || 0) + (pon || 0);
-        kaziPosle(dnevno > 150 ? L('planPuno').replace('#', dnevno) : L('planSacuvan'));
+        kaziPosle(dnevno > 150 ? L('planPuno').replace('#', nQ(dnevno)) : L('planSacuvan'));
       });
       el('btnPlanPredlog').addEventListener('click', () => {
         // poruka o datumu stoji UZ polje datuma (i fokusira ga) — ono je iznad dugmeta,
         // pa je „unesi datum ispod" slalo čoveka na pogrešnu stranu
         if (!S.examDate) { poruciUzPolje(el('examDate'), L('planBezDatuma')); return; }
-        const d0 = new Date(); d0.setHours(0, 0, 0, 0);
-        const dana = Math.ceil((new Date(S.examDate + 'T00:00:00') - d0) / 86400000);
-        if (!Number.isFinite(dana) || dana < 1) { poruciUzPolje(el('examDate'), L('planDatumProsao')); return; }
+        const dana = danaDoIspita();
+        if (dana === null || dana < 1) { poruciUzPolje(el('examDate'), L('planDatumProsao')); return; }
         const { rezerva, novih, pon } = predlogTempa(dana, neodg);
         // predlog se ODMAH čuva kao cilj — ranije je samo punio polja, pa je osvežavanje
         // strane vraćalo stare brojeve i izgledalo kao da se ništa nije desilo
         S.plan = { novih, pon };
         save(); renderHome();
-        kaziPosle((rezerva > 0 ? L('planPredlogGotov').replace('#', rezerva) : L('planPredlogUsko'))
-          .split('@1').join(novih === null ? '0' : novih).split('@2').join(pon));
+        const brNovih = novih === null ? 0 : novih;
+        kaziPosle((rezerva > 0 ? L('planPredlogGotov').replace('#', rezerva + ' ' + (one(rezerva) ? L('examDaysOne') : L('examDays'))) : L('planPredlogUsko'))
+          .split('@1').join(brNovih + ' ' + novihPitanja(brNovih)).split('@2').join(pon));
       });
       const off = el('btnPlanOff');
       if (off) off.addEventListener('click', () => { S.plan = null; save(); renderHome(); kaziPosle(L('planUgasen')); });
@@ -2405,7 +2458,7 @@
   }
   bindNav(document);
   el('btnFinishSim').addEventListener('click', () => finishSim(false));
-  el('btnSimReport').addEventListener('click', () => { if (sim) (sim.showReport ? renderSimQ() : renderSimReport()); });
+  el('btnSimReport').addEventListener('click', () => { if (!sim) return; if (sim.showReport) renderSimQ(); else if (simSmeDalje()) renderSimReport(); });
 
   // Klik na kôd pitanja (#9557) kopira adresu tog pitanja — za deljenje u porukama/grupama.
   document.addEventListener('click', (ev) => {
@@ -2463,7 +2516,7 @@
     const root = qv ? el('qCard') : el('simQCard');
     const actionBtns = [...root.querySelectorAll('.qActions button')];
     if (e.key === 'ArrowRight') {
-      const b = actionBtns.find((x) => /→|Sledeće|Следеће|Preskoči|Прескочи/.test(x.textContent));
+      const b = actionBtns.find((x) => x.dataset.uloga === 'dalje') || actionBtns.find((x) => /→|Sledeće|Следеће|Preskoči|Прескочи/.test(x.textContent));
       if (b) { b.click(); e.preventDefault(); }
     } else if (e.key === 'ArrowLeft') {
       const b = actionBtns.find((x) => /←|Prethodno|Претходно/.test(x.textContent));
@@ -2480,7 +2533,8 @@
   el('btnScript').addEventListener('click', () => {
     S.script = S.script === 'l' ? 'c' : 'l'; save();
     applyScript();
-    current.redraw();          // ostani na istom ekranu, samo drugo pismo
+    ponovniPrikaz = true;      // pitanje na ekranu zadržava redosled ponuda, izbor i dat odgovor
+    try { current.redraw(); } finally { ponovniPrikaz = false; }   // ostani na istom ekranu, samo drugo pismo
   });
   // Tema: podrazumevano prati sistem; prekidač pamti izbor. Simulacija je uvek svetla (CSS).
   function applyTheme() {
