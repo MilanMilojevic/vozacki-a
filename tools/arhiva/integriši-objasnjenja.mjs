@@ -30,7 +30,7 @@ for (const s of stavke) {
   if (x.includes('`') || x.includes('${')) { console.log('FAIL ' + ime + ': beketik ili dolar-vitičasta'); pao++; }
   if (/[Ѐ-ӿ]/.test(x)) { console.log('FAIL ' + ime + ': ćirilica u izvoru (piše se latinica, build presloviti)'); pao++; }
   if (/\b\d{3,5}\s*(din|дин|RSD)\b/i.test(x)) { console.log('FAIL ' + ime + ': dinarski iznos'); pao++; }
-  if (/kandidat/i.test(x)) { console.log('NAPOMENA ' + ime + ": reč „kandidat" (ton projekta je „ti")"); }
+  if (/kandidat/i.test(x)) { console.log('NAPOMENA ' + ime + ': koristi reč kandidat, a ton projekta je obraćanje sa ti'); }
 }
 if (pao) { console.log('\n*** NE PIŠEM — ' + pao + ' problema ***'); process.exit(1); }
 
