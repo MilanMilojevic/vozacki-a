@@ -107,6 +107,7 @@
     temaLbl: { l: 'Tamna ili svetla tema', c: 'Тамна или светла тема' },
     pismoLbl: { l: 'Ćirilica ili latinica', c: 'Ћирилица или латиница' },
     navGlavna: { l: 'Glavna navigacija', c: 'Главна навигација' },
+    preskoci: { l: 'Preskoči na sadržaj', c: 'Прескочи на садржај' },
     porExport: { l: 'Napredak je sačuvan u fajl @1', c: 'Напредак је сачуван у фајл @1' },
     porReset: { l: 'Napredak je obrisan. Krećeš iz početka.', c: 'Напредак је обрисан. Крећеш из почетка.' },
     porUvoz: { l: 'Napredak je učitan.', c: 'Напредак је учитан.' },
@@ -126,7 +127,6 @@
     history: { l: 'Simulacije do sada', c: 'Симулације до сада' },
     noSims: { l: 'Još nijedna simulacija.', c: 'Још ниједна симулација.' },
     statsTitle: { l: 'Tačnost po oblastima', c: 'Тачност по областима' },
-    statExpand: { l: 'Klikni za raspis po podoblastima', c: 'Кликни за распис по подобластима' },
     catExpand: { l: 'Prikaži podoblasti', c: 'Прикажи подобласти' },
     catOpen: { l: 'Otvori oblast (spisak pitanja i vežbanje)', c: 'Отвори област (списак питања и вежбање)' },
     tour1: { l: 'Tvoj napredak u brojkama: koliko si odgovorio, koliko je za ponavljanje (danas i kasnije) i koliko si obeležio.', c: 'Твој напредак у бројкама: колико си одговорио, колико је за понављање (данас и касније) и колико си обележио.' },
@@ -300,13 +300,10 @@
     updRepoGet: { l: 'Preuzmi novu verziju', c: 'Преузми нову верзију' },
     updRepoLater: { l: 'Ne sad', c: 'Не сад' },
     updRepoCheck: { l: 'Proveri ima li novije verzije', c: 'Провери има ли новије верзије' },
-    updRepoNone: { l: 'Imaš najnoviju verziju (#A).', c: 'Имаш најновију верзију (#A).' },
     updRepoFail: { l: 'Provera nije uspela (nema veze sa internetom ili je izvor nedostupan).', c: 'Провера није успела (нема везе са интернетом или је извор недоступан).' },
     updRepoOff: { l: 'Ne proveravaj automatski', c: 'Не проверавај аутоматски' },
-    weakTitle: { l: 'Najslabije podoblasti (min. 3 odgovora)', c: 'Најслабије подобласти (мин. 3 одговора)' },
     thArea: { l: 'Oblast', c: 'Област' },
     thQ: { l: 'Pitanja', c: 'Питања' },
-    thSeen: { l: 'Odgovarano', c: 'Одговарано' },
     thPts: { l: 'Poeni', c: 'Поени' },
     thAcc: { l: 'Tačnost', c: 'Тачност' },
     export: { l: 'Sačuvaj napredak (fajl)', c: 'Сачувај напредак (фајл)' },
@@ -385,7 +382,7 @@
   const KEY = 'vozackiA.v1';
   // Datum poslednje provere baze prema eUpravi — JEDNO mesto; čitaju ga podnožje i kartica
   // poverenja (ranije je stajao prepisan u četiri teksta i mogao da se raziđe).
-  const BAZA_PROVERENA = '2026-08-29';
+  const BAZA_PROVERENA = '2026-09-03';
   // Prag ispita: 85% poena, zaokruženo naviše (84 od 98). JEDNA formula za simulaciju,
   // procenu spremnosti i sve tekstove — ranije je „84" stajalo hardkodovano na dva mesta.
   const PRAG_UDEO = 0.85;
@@ -2686,6 +2683,10 @@
     }
   });
   bindNav(el('donjaNav'));
+  // „Preskoči na sadržaj" NE sme da menja adresu: hash '#glavni' ruter ne poznaje i vratio bi
+  // korisnika sa Statistike na početnu. Veza samo prebacuje fokus i pogled na sadržaj.
+  { const p = document.querySelector('.preskoci');
+    if (p) p.addEventListener('click', (e) => { e.preventDefault(); const m = el('glavni'); if (!m) return; m.focus({ preventScroll: true }); m.scrollIntoView({ block: 'start' }); }); }
   el('btnScript').addEventListener('click', () => {
     S.script = S.script === 'l' ? 'c' : 'l'; save();
     applyScript();
@@ -2734,6 +2735,10 @@
   function applyScript() {
     el('btnScript').innerHTML =
       `<span class="${S.script === 'c' ? 'segOn' : 'segOff'}">ЋИР</span><span class="segSep">|</span><span class="${S.script === 'l' ? 'segOn' : 'segOff'}">LAT</span>`;
+    // čitač ekrana mora da zna KOJIM pismom je tekst — inače srpski čita kao da je latinica uvek
+    document.documentElement.lang = S.script === 'c' ? 'sr-Cyrl' : 'sr-Latn';
+    { const n = el('naslovStrane'); if (n) n.textContent = L('brand') + ' — ' + L('podnozjeOpis'); }
+    { const p = document.querySelector('.preskoci'); if (p) p.textContent = L('preskoci'); }
     el('brandTitle').textContent = L('brand');
     el('topbar').querySelector('.brand').title = L('home');
     el('topbar').querySelector('.brand').setAttribute('aria-label', L('home'));
