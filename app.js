@@ -258,6 +258,16 @@
     autoOpis: { l: 'Kvota se svakog dana izvodi iz onoga što je ostalo i broja dana do ispita. Uradiš više danas — sutra ti traži manje.', c: 'Квота се сваког дана изводи из онога што је остало и броја дана до испита. Урадиш више данас — сутра ти тражи мање.' },
     autoBezDatuma: { l: '⚠ Cilj se ne može sam računati bez datuma ispita — upiši ga iznad.', c: '⚠ Циљ се не може сам рачунати без датума испита — упиши га изнад.' },
     prioNaslov: { l: 'Prioritet po težini na ispitu', c: 'Приоритет по тежини на испиту' },
+    sansaNaslov: { l: 'Šansa da položiš', c: 'Шанса да положиш' },
+    sansaKako: { l: 'Računato iz tvoje tačnosti po podoblastima i zvaničnog sastava testa (41 pitanje, @1 poena, prag @2): za svako mesto na testu koliko je verovatno da ga pogodiš, pa tačna raspodela zbira. Procena, ne obećanje — pretpostavlja da su pitanja nezavisna i da ti tačnost ostaje ista.', c: 'Рачунато из твоје тачности по подобластима и званичног састава теста (41 питање, @1 поена, праг @2): за свако место на тесту колико је вероватно да га погодиш, па тачна расподела збира. Процена, не обећање — претпоставља да су питања независна и да ти тачност остаје иста.' },
+    spremanNaslov: { l: 'Kad smeš da kažeš „spreman sam"', c: 'Кад смеш да кажеш „спреман сам"' },
+    spremanBroj: { l: 'Bar @1 simulacija ukupno (imaš @2)', c: 'Бар @1 симулација укупно (имаш @2)' },
+    spremanDani: { l: 'Rađene bar @1 različita dana (imaš @2)', c: 'Рађене бар @1 различита дана (имаш @2)' },
+    spremanNiz: { l: 'Poslednje @1 položene, svaka sa bar @2 poena preko praga', c: 'Последње @1 положене, свака са бар @2 поена преко прага' },
+    spremanSansa: { l: 'Procena bar @1% (sada @2%)', c: 'Процена бар @1% (сада @2%)' },
+    spremanDa: { l: '✅ Sve četiri stavke stoje — ovo je samopouzdanje koje ima pokriće.', c: '✅ Све четири ставке стоје — ово је самопоуздање које има покриће.' },
+    spremanNe: { l: 'Jedna položena simulacija nije dokaz: da ti je stvarna šansa 70%, tri zaredom bi ti se desile u trećini slučajeva. Zato ide i procena, i razmak od bar dan između simulacija.', c: 'Једна положена симулација није доказ: да ти је стварна шанса 70%, три заредом би ти се десиле у трећини случајева. Зато иде и процена, и размак од бар дан између симулација.' },
+    simUcinak: { l: 'Položeno @1 od @2 · prosek @3 poena', c: 'Положено @1 од @2 · просек @3 поена' },
     prioOpis: { l: 'Nova pitanja idu redom od podoblasti koje ispit najviše nosi (preticanje 5 pitanja, brzine 3…), pa ono što se izostavi bude ono što se retko i pojavi.', c: 'Нова питања иду редом од подобласти које испит највише носи (претицање 5 питања, брзине 3…), па оно што се изостави буде оно што се ретко и појави.' },
     planUskladi: { l: 'Uskladi cilj', c: 'Усклади циљ' },
     planUskladjen: { l: 'Cilj je usklađen: @1 novih i @2 ponavljanja dnevno.', c: 'Циљ је усклађен: @1 нових и @2 понављања дневно.' },
@@ -1911,16 +1921,72 @@
     };
     let exp = 0;
     const loss = {};   // subs-key -> {pts, subs}
+    const slotovi = [];   // {pts, p} po slotu — ulaz za tačnu raspodelu poena
     for (const slot of SIM_SLOTS) {
       const pool = Q.filter((q) => slot.s.includes(q.sub) && q.pts === slot.p);
       if (!pool.length) continue;
       const p = pool.reduce((a, q) => a + pOf(q), 0) / pool.length;
+      slotovi.push({ pts: slot.p, p });
       exp += slot.p * p;
       const key = slot.s.join('/');
       (loss[key] = loss[key] || { pts: 0, subs: slot.s }).pts += slot.p * (1 - p);
     }
     const answered = Q.filter((q) => S.q[q.id] && S.q[q.id].a > 0).length;
-    return { exp, loss, answered };
+    return { exp, loss, answered, slotovi };
+  }
+
+  // Šansa da položiš — TAČAN račun, ne procena. Ispit je 41 slot sa poznatim poenima (2 ili 3);
+  // ako je p verovatnoća da slot bude tačan, raspodela ZBIRA poena se dobija dinamičkim
+  // programiranjem preko 99 mogućih poena (41 × 99 koraka). Odatle P(zbir ≥ prag).
+  // Pretpostavka je nezavisnost slotova — ona je i inače pretpostavka svakog ovakvog računa,
+  // a marginale su tačne: verovatnoća slota je prosek po skupu pitanja koja u njega mogu.
+  function sansaZaProlaz(slotovi) {
+    if (!slotovi || !slotovi.length) return null;
+    const ukupno = slotovi.reduce((a, s) => a + s.pts, 0);
+    let raspodela = new Float64Array(ukupno + 1);
+    raspodela[0] = 1;
+    for (const s of slotovi) {
+      const nova = new Float64Array(ukupno + 1);
+      for (let i = 0; i <= ukupno; i++) {
+        const v = raspodela[i];
+        if (!v) continue;
+        nova[i] += v * (1 - s.p);
+        if (i + s.pts <= ukupno) nova[i + s.pts] += v * s.p;
+      }
+      raspodela = nova;
+    }
+    const prag_ = prag(ukupno);
+    let sansa = 0;
+    for (let i = prag_; i <= ukupno; i++) sansa += raspodela[i];
+    return { sansa, ukupno, prag: prag_ };
+  }
+
+  // Kad se sme reći „spreman sam" — tri uslova, ne osećaj. Jedna položena simulacija ne dokazuje
+  // ništa: ako je stvarna šansa 70%, tri zaredom dešavaju se u 34% slučajeva. Zato ide i procena.
+  const SIM_MIN = 5;            // najmanje toliko simulacija ukupno
+  const SIM_NIZ = 3;            // poslednje toliko moraju biti položene
+  const SIM_MARGINA = 5;        // svaka sa bar toliko poena preko praga
+  const SIM_SANSA = 0.85;       // i procenjena šansa bar tolika
+  function spremnost() {
+    const r = readiness();
+    const s = sansaZaProlaz(r.slotovi);
+    const sims = S.sims || [];
+    const zadnje = sims.slice(-SIM_NIZ);
+    const nizOk = zadnje.length === SIM_NIZ && zadnje.every((x) => x.score >= prag(x.total) + SIM_MARGINA);
+    const dani = new Set(sims.map((x) => localDay(x.d)));
+    return {
+      sansa: s ? s.sansa : null,
+      prag: s ? s.prag : prag(SIM_PTS_MIN),
+      ukupno: s ? s.ukupno : SIM_PTS_MIN,
+      exp: r.exp,
+      odgovoreno: r.answered,
+      broj: sims.length,
+      dana: dani.size,
+      nizOk,
+      brojOk: sims.length >= SIM_MIN,
+      daniOk: dani.size >= SIM_NIZ,
+      sansaOk: !!s && s.sansa >= SIM_SANSA,
+    };
   }
   function renderReady() {
     const { exp, loss, answered } = readiness();
@@ -1933,11 +1999,24 @@
     const e = Math.round(exp);
     const pass = e >= prag(SIM_PTS_MIN);
     const top = Object.values(loss).sort((a, b) => b.pts - a.pts).slice(0, 5);
+    const sp = spremnost();
+    const pct = sp.sansa === null ? null : Math.round(sp.sansa * 100);
+    // stavka pravila: ✓ ili ✗ i tačan broj — da se vidi šta tačno fali
+    const stavka = (ok, tekst) => `<div class="brRed"><span>${ok ? '✓' : '✗'}</span> <span class="${ok ? '' : 'mut'}">${tekst}</span></div>`;
     el('readyCard').innerHTML = `<h3>${L('readyTitle')}</h3>
       <div class="bigScore ${pass ? 'pass' : 'fail'}">≈ ${e} / ${SIM_PTS_MIN}</div>
       <p><span class="pill ${pass ? 'pass' : 'fail'}">${pass ? L('passed') : L('failed')}</span>
       &nbsp;<span class="mut">${pragTekst(SIM_PTS_MIN)}</span>
       ${answered < 150 ? `&nbsp;<span class="mut">${L('readyRough')} (${answered}/${Q.length})</span>` : ''}</p>
+      ${pct === null ? '' : `<h3>${L('sansaNaslov')}</h3>
+      <div class="bigScore ${pct >= 85 ? 'pass' : 'fail'}">${pct}%</div>
+      <p class="mut napomena">${L('sansaKako').split('@1').join(sp.ukupno).split('@2').join(sp.prag)}</p>`}
+      <h3>${L('spremanNaslov')}</h3>
+      ${stavka(sp.brojOk, L('spremanBroj').split('@1').join(SIM_MIN).split('@2').join(sp.broj))}
+      ${stavka(sp.daniOk, L('spremanDani').split('@1').join(SIM_NIZ).split('@2').join(sp.dana))}
+      ${stavka(sp.nizOk, L('spremanNiz').split('@1').join(SIM_NIZ).split('@2').join(SIM_MARGINA))}
+      ${stavka(sp.sansaOk, L('spremanSansa').split('@1').join(Math.round(SIM_SANSA * 100)).split('@2').join(pct === null ? '—' : pct))}
+      <p class="mut napomena">${sp.brojOk && sp.daniOk && sp.nizOk && sp.sansaOk ? L('spremanDa') : L('spremanNe')}</p>
       <h3>${L('readyLoss')}</h3>
       <table class="stats"><tbody>${top.map((t) =>
         `<tr class="statLink" data-sub="${t.subs[0]}" tabindex="0" title="${escapeHtml(L('catOpen'))}"><td>${t.subs.map((s) => escapeHtml(subShortName(s))).join(' / ')}</td>
@@ -2758,7 +2837,12 @@
     el('mMarked').textContent = L('marked');
     el('mMarkedSub').textContent = `${mk}`;
     el('mSim').textContent = L('sim');
-    el('mSimSub').textContent = L('simSub');
+    {
+      // procena stoji uz dugme za ispit — tamo je i odluka „hoću li danas na simulaciju"
+      const sp = spremnost();
+      const pct = sp.odgovoreno >= 30 && sp.sansa !== null ? Math.round(sp.sansa * 100) : null;
+      el('mSimSub').textContent = L('simSub') + (pct === null ? '' : ` · ${L('sansaNaslov').toLowerCase()} ${pct}%`);
+    }
     el('mStats').textContent = L('stats');
     el('mStatsSub').textContent = L('statsSub');
     el('catBars').innerHTML = `<button type="button" class="explCardBtn pojBtn" id="btnOblasti">${L('oblastiDugme')}</button>
@@ -2779,7 +2863,11 @@
             <span class="histWrong mut">${brGresaka ? brGresaka + ' ✗' : ''}</span>
             <span class="histArrow mut">›</span></button>`;
       });
-      sh.innerHTML = `<h3>${L('history')}</h3><p class="mut napomena">${L('historyTip')}</p>` + redovi.slice(0, NOVIJIH).join('')
+      // učinak u jednom redu — istorija bez sabiranja u glavi
+      const polozeno = S.sims.filter((x) => x.passed).length;
+      const prosek = Math.round(S.sims.reduce((a, x) => a + x.score, 0) / S.sims.length);
+      const ucinak = `<p class="mut napomena">${L('simUcinak').split('@1').join(polozeno).split('@2').join(S.sims.length).split('@3').join(prosek)}</p>`;
+      sh.innerHTML = `<h3>${L('history')}</h3>${ucinak}<p class="mut napomena">${L('historyTip')}</p>` + redovi.slice(0, NOVIJIH).join('')
         + (redovi.length > NOVIJIH ? `<div><button type="button" class="pojBtn" id="btnHistOlder">${L('historyOlder').split('@1').join(redovi.length - NOVIJIH)}</button><div id="histOlder" style="display:none">${redovi.slice(NOVIJIH).join('')}</div></div>` : '');
       const bho = el('btnHistOlder'); if (bho) sklopivo(bho);
       sh.querySelectorAll('.histBtn').forEach((b) => b.addEventListener('click', () => renderSimReview(S.sims[+b.dataset.sim], false)));
@@ -3565,6 +3653,9 @@
       pocetakDanaZa,
       record,
       inQueue,
+      sansaZaProlaz,
+      spremnost,
+      planStanje,
     };
   }
 })();

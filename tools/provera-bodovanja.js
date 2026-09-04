@@ -263,6 +263,37 @@ async function proveraBodovanja2() {
     ok('sve tačno → nula pogrešnih', (zapis.wrong || []).length === 0);
     ok('završen ispit briše zapis o toku', zapisIspita() === null);
 
+    // ---- 2b) ŠANSA DA POLOŽIŠ i pravilo o simulacijama ----
+    {
+      const sz = window.__dev.sansaZaProlaz;
+      const slot = (p) => Array.from({ length: 41 }, (_, i) => ({ pts: i < 20 ? 3 : 2, p }));
+      const sve = sz(slot(1)), nista = sz(slot(0));
+      ok('šansa: sve tačno → 100%', Math.round(sve.sansa * 100) === 100);
+      ok('šansa: ništa tačno → 0%', Math.round(nista.sansa * 100) === 0);
+      ok('šansa: prag je 85% od zbira poena', sve.prag === Math.ceil(0.85 * sve.ukupno));
+      // simetričan slučaj: p = 0.5 na svim slotovima daje šansu ispod praga (85% je visoko)
+      const pola = sz(slot(0.5));
+      ok('šansa: pri 50% po pitanju šansa za prag od 85% je ispod 1%', pola.sansa < 0.01);
+      // monotonost: veće p nikad ne daje manju šansu
+      ok('šansa: raste sa tačnošću', sz(slot(0.9)).sansa > sz(slot(0.8)).sansa);
+
+      // pravilo: sve četiri stavke stoje tek kad su i broj, i dani, i niz, i procena na mestu
+      const staroSims = S().sims;
+      const dan = 86400000, sada = Date.now();
+      S().sims = [1, 2, 3, 4, 5].map((i) => ({ d: sada - (6 - i) * dan, score: 95, total: 98, passed: true, wrong: [], qs: [] }));
+      const sp1 = window.__dev.spremnost();
+      ok('pravilo: 5 simulacija u 5 dana sa velikom marginom → broj, dani i niz stoje', sp1.brojOk && sp1.daniOk && sp1.nizOk);
+      // sve u ISTOM danu: broj stoji, dani ne
+      S().sims = [1, 2, 3, 4, 5].map(() => ({ d: sada, score: 95, total: 98, passed: true, wrong: [], qs: [] }));
+      const sp2 = window.__dev.spremnost();
+      ok('pravilo: pet simulacija u istom danu ne prolazi uslov razmaka', sp2.brojOk && !sp2.daniOk);
+      // poslednja jedva prošla (manje od 5 poena preko praga) → niz pada
+      S().sims = [1, 2, 3, 4, 5].map((i) => ({ d: sada - (6 - i) * dan, score: i === 5 ? 85 : 95, total: 98, passed: true, wrong: [], qs: [] }));
+      const sp3 = window.__dev.spremnost();
+      ok('pravilo: prolaz za dlaku ne računa se u niz', !sp3.nizOk);
+      S().sims = staroSims;
+    }
+
     // ---- 3) PRIORITET PO TEŽINI NA ISPITU ----
     // Podoblast 134 (preticanje) nosi 5 pitanja na svakom ispitu, 91 nijedno. Kad su obe
     // neodgovorene, plan bez prioriteta uzima redom po bazi (91 je ranije), a sa prioritetom 134.
