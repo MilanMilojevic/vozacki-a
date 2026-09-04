@@ -279,6 +279,8 @@
     naIspituTip: { l: 'Koliko pitanja iz ove podoblasti nosi svaki pravi ispit — izmereno iz pet zvaničnih izvlačenja simulacije.', c: 'Колико питања из ове подобласти носи сваки прави испит — измерено из пет званичних извлачења симулације.' },
     qNumTip2: { l: 'Klik: kopiraj adresu ovog pitanja', c: 'Клик: копирај адресу овог питања' },
     uvecajSliku: { l: 'Uvećaj sliku', c: 'Увећај слику' },
+    zoomVise: { l: 'Bliže', c: 'Ближе' },
+    zoomManje: { l: 'Dalje', c: 'Даље' },
     imgAlt: { l: 'Slika uz pitanje — saobraćajna situacija ili znak; pitanje se odnosi na ono što je na slici.', c: 'Слика уз питање — саобраћајна ситуација или знак; питање се односи на оно што је на слици.' },
     grp1: { l: '1 · Osnovni pojmovi', c: '1 · Основни појмови' },
     grp2: { l: '2 · Ko ide prvi — prvenstvo i signalizacija', c: '2 · Ко иде први — првенство и сигнализација' },
@@ -1042,7 +1044,19 @@
       c.insertBefore(v, actions);
       const ex = explNode(q);
       if (ex) c.insertBefore(ex, actions);
-      if (nextBtn) { nextBtn.className = 'primary'; nextBtn.textContent = opts.nextLabel || L('next'); nextBtn.focus(); }
+      if (nextBtn) {
+        nextBtn.className = 'primary';
+        nextBtn.textContent = opts.nextLabel || L('next');
+        // Fokus ide na „dalje" zbog tastature, ali strana NE sme da skače: ako je dugme već na
+        // ekranu, ne pomera se ništa (preventScroll); ako nije, pomeri se taman toliko da se vidi.
+        // Ranije je `focus()` uvek doskrolovao do dugmeta, pa je ekran poskakivao na svaki odgovor.
+        const r = nextBtn.getBoundingClientRect();
+        const dn = el('donjaNav');
+        const dno = (window.innerHeight || 0) - (dn && getComputedStyle(dn).display !== 'none' ? dn.offsetHeight : 0);
+        const vidiSe = r.top >= 0 && r.bottom <= dno;
+        nextBtn.focus({ preventScroll: true });
+        if (!vidiSe) nextBtn.scrollIntoView({ block: 'nearest' });
+      }
       if (opts.recordKey && opts.recordKey === lastRecordKey) {
         // isti prikaz istog pitanja (npr. ponovni render posle promene pisma) — ne beleži se dvaput
       } else {
@@ -2309,7 +2323,7 @@
       });
       const btnNext = tip.querySelector('#tourNext');
       btnNext.addEventListener('click', next);
-      btnNext.focus();   // фокус улази у водич — тастатура ради одмах
+      btnNext.focus({ preventScroll: true });   // фокус улази у водич — тастатура ради одмах, али страна не скаче
       tip.querySelector('#tourSkip').addEventListener('click', end);
     };
     const next = () => { idx++; if (idx >= TOUR_STEPS.length) end(); else show(); };
@@ -2890,7 +2904,9 @@
     else rezerva();
   });
 
-  // Klik na sliku pitanja otvara uvećan prikaz preko celog ekrana; klik ili Escape zatvara.
+  // Klik na sliku pitanja otvara je preko celog ekrana, u DVA koraka: prvo koliko god stane
+  // (slike su 800px, a kartica pitanja na širokom ekranu 860px — zato se ranije ništa nije
+  // menjalo osim pozadine), pa onda pravo uvećanje 2× uz pomeranje prstom ili mišem.
   document.addEventListener('click', (ev) => {
     // dugme (tastatura: Enter/razmak šalju klik na dugme) ili sama slika (miš)
     const meta = ev.target.closest && ev.target.closest('.qImgBtn, img.qImg');
@@ -2899,6 +2915,7 @@
     if (!slika) return;
     if (!slika.naturalWidth) return;                  // slika se nije učitala — nema šta da se uveća
     if (document.getElementById('imgZoom')) return;   // jedno uvećanje, ne gomila njih jedno preko drugog
+    const vracaFokus = document.activeElement;
     const z = document.createElement('div');
     z.id = 'imgZoom';
     const im = document.createElement('img');
@@ -2910,15 +2927,52 @@
     // Na telefonu je dugme Nazad prirodan potez za zatvaranje punog ekrana. Bez ovoga
     // ono promeni prikaz ispod, a uvećanje ostane da visi preko novog ekrana.
     const zatvori = () => {
-      z.remove();
+      z.remove(); gore.remove(); dole.remove();
       document.removeEventListener('keydown', naEscape);
       window.removeEventListener('hashchange', zatvori);
+      if (vracaFokus && vracaFokus.focus) vracaFokus.focus({ preventScroll: true });
     };
-    const naEscape = (e2) => { if (e2.key === 'Escape') zatvori(); };
-    z.addEventListener('click', zatvori);
+    const naEscape = (e2) => { if (e2.key === 'Escape') { e2.preventDefault(); zatvori(); } };
+
+    // ✕ zatvori (gore desno) i +/− uvećanje (dole na sredini) — oba su dugmad, ne veze
+    const gore = document.createElement('div'); gore.className = 'zoomAlat gore';
+    const bZatvori = document.createElement('button'); bZatvori.type = 'button';
+    bZatvori.textContent = '✕ ' + L('close');
+    gore.appendChild(bZatvori);
+    const dole = document.createElement('div'); dole.className = 'zoomAlat dole';
+    const bBlize = document.createElement('button'); bBlize.type = 'button';
+    dole.appendChild(bBlize);
+
+    const osveziAlat = () => {
+      const blizu = z.classList.contains('blizu');
+      bBlize.textContent = blizu ? '− ' + L('zoomManje') : '+ ' + L('zoomVise');
+      bBlize.setAttribute('aria-pressed', blizu ? 'true' : 'false');
+    };
+    const prebaci = () => {
+      const blizu = !z.classList.contains('blizu');
+      z.classList.toggle('blizu', blizu);
+      osveziAlat();
+      // uvećano: kreni od sredine slike, da se ne gleda u ćošak
+      if (blizu) { z.scrollLeft = (z.scrollWidth - z.clientWidth) / 2; z.scrollTop = (z.scrollHeight - z.clientHeight) / 2; }
+    };
+    osveziAlat();
+    bZatvori.addEventListener('click', (e2) => { e2.stopPropagation(); zatvori(); });
+    bBlize.addEventListener('click', (e2) => { e2.stopPropagation(); prebaci(); });
+    im.addEventListener('click', (e2) => { e2.stopPropagation(); prebaci(); });   // dodir na sliku = bliže/dalje
+    z.addEventListener('click', zatvori);                                        // klik pored slike = zatvori
     document.addEventListener('keydown', naEscape);
     window.addEventListener('hashchange', zatvori);
-    document.body.appendChild(z);
+    document.body.append(z, gore, dole);
+    // Na telefonu je slika u kartici već skoro preko cele širine, pa bi „koliko god stane" bilo
+    // isto što i pre otvaranja — a to je i bila primedba („slika nije veća"). Zato se tu odmah
+    // otvara drugi korak; na širokom ekranu prvi korak stvarno uvećava, pa ostaje.
+    // Posle append-a: prebaci() računa pomeraj, a on na elementu van strane ne bi radio.
+    {
+      const dw = Math.max(0, window.innerWidth - 36), dh = Math.max(0, window.innerHeight - 36);
+      const stane = Math.min(dw, dh * (slika.naturalWidth / slika.naturalHeight));
+      if (stane < slika.getBoundingClientRect().width * 1.25) prebaci();
+    }
+    bZatvori.focus({ preventScroll: true });   // tastatura ulazi u uvećanje, ne ostaje iza njega
   });
 
   // Prečice: ← → kretanje, 1–9 izbor odgovora, Enter potvrda/sledeće

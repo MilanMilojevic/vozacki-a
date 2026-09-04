@@ -164,16 +164,20 @@ main { max-width: 880px; width: 100%; margin: 0 auto; padding: 16px 12px 60px; f
 .tourSpot { position: relative; z-index: 1000; box-shadow: 0 0 0 3px var(--blue), 0 0 0 8px var(--halo) !important; border-radius: 12px; }
 
 /* Traka iznad pitanja: FIKSNA mreža — naslov (skraćen po potrebi) · brojač · Idi · prečice.
-   Kontrole ostaju na istom mestu bez obzira na dužinu naziva podoblasti. */
-.qProgress { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center;
-  column-gap: 14px; row-gap: 6px; margin-bottom: 10px; color: var(--mut); font-size: var(--fs-md); }
+   Kontrole ostaju na istom mestu bez obzira na dužinu naziva podoblasti.
+   Naslov i brojač stoje JEDNO UZ DRUGO: prazan prostor je u trećoj koloni, uz „Idi". Ranije je
+   naslov razvlačio prvu kolonu, pa je na širokom ekranu „Dnevni cilj" stajao skroz levo, a
+   „18 od 125" skroz desno — čitalo se kao dve nepovezane rečenice. */
+.qProgress { display: grid; grid-template-columns: minmax(0, auto) auto minmax(0, 1fr); align-items: center;
+  column-gap: 10px; row-gap: 6px; margin-bottom: 10px; color: var(--mut); font-size: var(--fs-md); }
 .qpTitle { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.qpPos { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.qpPos { white-space: nowrap; font-variant-numeric: tabular-nums; justify-self: start; }
 .qProgress .jumpBox { justify-self: end; }
 .qProgress .kbNote { grid-column: 1 / -1; justify-self: end; }
+/* Na telefonu se „Idi" spušta u drugi red. Kolone ostaju ISTE: brojač je `auto` i ne sme da se
+   stisne (bio je stisnut na 0,9px i prelivao se preko ivice kad je naziv podoblasti dugačak). */
 @media (max-width: 560px) {
-  .qProgress { grid-template-columns: minmax(0, 1fr) auto; }
-  .qProgress .jumpBox { grid-column: 2; }
+  .qProgress .jumpBox { grid-column: 2 / -1; }
 }
 .qMeta { font-size: var(--fs-sm); color: var(--mut); margin-bottom: 10px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; }
 .qText { font-size: var(--fs-lg); font-weight: 600; margin-bottom: 12px; line-height: 1.45; }
@@ -581,12 +585,33 @@ button { transition: background-color .15s ease, border-color .15s ease, color .
    postoji da bi se uvećanje moglo otvoriti i tastaturom. */
 .qImg { cursor: zoom-in; }
 .qImgBtn { display: block; width: 100%; background: none; border: 0; padding: 0; cursor: zoom-in; }
-#imgZoom { position: fixed; inset: 0; background: rgba(8, 14, 20, .92); z-index: 1500;
-  display: flex; align-items: center; justify-content: center; cursor: zoom-out; padding: 18px; }
-#imgZoom img { max-width: 100%; max-height: 100%; border-radius: 8px; }
+/* Uvećanje je ranije samo zatamnjivalo ekran: slika je imala max-width/max-height 100%, a to
+   NE uvećava — slike su 800px široke, a kartica pitanja je na širokom ekranu 860px, pa se
+   prikazivala u istoj veličini. Sada se prvo razvuče koliko god stane (contain), a drugi korak
+   je pravo uvećanje (2×) uz pomeranje prstom ili mišem. */
+#imgZoom { position: fixed; inset: 0; background: rgba(8, 14, 20, .94); z-index: 1500;
+  display: flex; align-items: center; justify-content: center; cursor: zoom-out; padding: 18px;
+  overflow: auto; overscroll-behavior: contain; }
+/* width:100% + height:auto + max-height:100% — okvir slike je TAČNO slika (bez crnih pojaseva
+   unutar elementa), pa dodir pored slike zatvara, a dodir na sliku menja uvećanje. */
+#imgZoom img { width: 100%; height: auto; max-width: 100%; max-height: 100%; border-radius: 8px; cursor: zoom-in; }
+#imgZoom.blizu { align-items: flex-start; justify-content: flex-start; }
+#imgZoom.blizu img { width: auto; min-width: 200%; max-width: none; height: auto; max-height: none;
+  border-radius: 0; cursor: zoom-out; }
+/* alatke uvećanja: uvek na istom mestu, iznad slike, dovoljno velike za palac */
+.zoomAlat { position: fixed; z-index: 1510; display: flex; gap: 8px; }
+.zoomAlat.gore { top: 10px; right: 10px; }
+.zoomAlat.dole { bottom: 10px; left: 50%; transform: translateX(-50%); }
+.zoomAlat button { background: rgba(255, 255, 255, .92); color: #10202e; border: 0; border-radius: 999px;
+  padding: 10px 16px; font-weight: 600; min-height: 44px; box-shadow: 0 2px 10px rgba(0, 0, 0, .35); }
+.zoomAlat button:hover { background: #fff; }
+.zoomAlat button:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
 
 /* Kraj spiska: dugmad se lepo slažu i na telefonu */
 #qCard .qActions { flex-wrap: wrap; }
+/* Kad dugme „dalje" mora da se dovuče na ekran, ne sme da stane TAČNO na donju ivicu —
+   tamo je fiksna navigacija koja bi ga prekrila. */
+@media (max-width: 700px) { .qActions button { scroll-margin-bottom: 78px; } }
 
 /* "Na ispitu: N" — koliko pitanja podoblast nosi na pravom ispitu */
 .subExam { display: inline-block; font-size: var(--fs-xs); font-weight: 600; color: var(--chipInk);
