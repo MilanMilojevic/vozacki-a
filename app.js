@@ -246,7 +246,19 @@
     planNemaPon: { l: 'nema na redu', c: 'нема на реду' },
     planPodesi: { l: 'Podesi cilj', c: 'Подеси циљ' },
     planOdNaRedu: { l: 'U redu za ponavljanje čeka @1 — to je zaostatak od ranije, ne zadatak za danas. Cilj uzima najviše @2 dnevno, a danas ti je od toga ostalo još @3.', c: 'У реду за понављање чека @1 — то је заостатак од раније, не задатак за данас. Циљ узима највише @2 дневно, а данас ти је од тога остало још @3.' },
-    planNeStize: { l: 'Uz @1 novih dnevno u red do ispita ulazi bar @2 pitanja, a cilj stigne oko @3 — red će rasti, ne padati. Nije prepreka za ispit, ali deo pitanja ćeš videti jednom ili dvaput.', c: 'Уз @1 нових дневно у ред до испита улази бар @2 питања, а циљ стигне око @3 — ред ће расти, не падати. Није препрека за испит, али део питања ћеш видети једном или двапут.' },
+    sudStize: { l: '✅ Ovim tempom stižeš: do ispita otvoriš svih @1 neodgovorenih i stigneš sva ponavljanja koja iz njih izađu.', c: '✅ Овим темпом стижеш: до испита отвориш свих @1 неодговорених и стигнеш сва понављања која из њих изађу.' },
+    sudGradivoDa: { l: '⚠ Gradivo stižeš, ali ne i ponavljanja: uz @1 novih dnevno u red do ispita ulazi bar @2, a cilj stigne @3. Oko @4 pitanja ćeš videti samo jednom — a jedno viđenje je premalo da bi ostalo u glavi.', c: '⚠ Градиво стижеш, али не и понављања: уз @1 нових дневно у ред до испита улази бар @2, а циљ стигне @3. Око @4 питања ћеш видети само једном — а једно виђење је премало да би остало у глави.' },
+    sudNeStize: { l: '⛔ Ovim tempom NE stižeš gradivo: uz @1 novih dnevno do ispita otvoriš @2 od @3 neodgovorenih, pa @4 pitanja ostaje neviđeno. To jeste prepreka — na ispitu se pitanja izvlače iz cele baze.', c: '⛔ Овим темпом НЕ стижеш градиво: уз @1 нових дневно до испита отвориш @2 од @3 неодговорених, па @4 питања остаје невиђено. То јесте препрека — на испиту се питања извлаче из целе базе.' },
+    lostTempo: { l: 'Podigni na @1 novih i @2 ponavljanja dnevno', c: 'Подигни на @1 нових и @2 понављања дневно' },
+    lostPrio: { l: 'Uči prvo ono što se na ispitu i pojavljuje', c: 'Учи прво оно што се на испиту и појављује' },
+    lostPrioUkljucen: { l: 'Prioritet po težini na ispitu je uključen: nova pitanja idu redom od podoblasti koje ispit najviše nosi.', c: 'Приоритет по тежини на испиту је укључен: нова питања иду редом од подобласти које испит највише носи.' },
+    viskDanas: { l: 'Danas si uradio @1 novih, a cilj je @2 — @3 preko cilja.', c: 'Данас си урадио @1 нових, а циљ је @2 — @3 преко циља.' },
+    viskAuto: { l: ' Sutrašnja kvota će zato biti manja.', c: ' Сутрашња квота ће зато бити мања.' },
+    autoNaslov: { l: 'Cilj se sam računa do ispita', c: 'Циљ се сам рачуна до испита' },
+    autoOpis: { l: 'Kvota se svakog dana izvodi iz onoga što je ostalo i broja dana do ispita. Uradiš više danas — sutra ti traži manje.', c: 'Квота се сваког дана изводи из онога што је остало и броја дана до испита. Урадиш више данас — сутра ти тражи мање.' },
+    autoBezDatuma: { l: '⚠ Cilj se ne može sam računati bez datuma ispita — upiši ga iznad.', c: '⚠ Циљ се не може сам рачунати без датума испита — упиши га изнад.' },
+    prioNaslov: { l: 'Prioritet po težini na ispitu', c: 'Приоритет по тежини на испиту' },
+    prioOpis: { l: 'Nova pitanja idu redom od podoblasti koje ispit najviše nosi (preticanje 5 pitanja, brzine 3…), pa ono što se izostavi bude ono što se retko i pojavi.', c: 'Нова питања иду редом од подобласти које испит највише носи (претицање 5 питања, брзине 3…), па оно што се изостави буде оно што се ретко и појави.' },
     planUskladi: { l: 'Uskladi cilj', c: 'Усклади циљ' },
     planUskladjen: { l: 'Cilj je usklađen: @1 novih i @2 ponavljanja dnevno.', c: 'Циљ је усклађен: @1 нових и @2 понављања дневно.' },
     skociNaOblast: { l: 'Skoči na oblast', c: 'Скочи на област' },
@@ -506,9 +518,15 @@
     // Dnevni cilj (null = ugašen). Granica je ovde namerno široka; pravu granicu —
     // koliko pitanja stvarno postoji — proverava samo polje pri unosu, uz poruku korisniku.
     const planObj = obj.plan && typeof obj.plan === 'object' && !Array.isArray(obj.plan)
-      ? { novih: nInt(obj.plan.novih, 1, 5000, null), pon: nInt(obj.plan.pon, 1, 5000, null) }
+      ? {
+        novih: nInt(obj.plan.novih, 1, 5000, null),
+        pon: nInt(obj.plan.pon, 1, 5000, null),
+        auto: obj.plan.auto === 1 ? 1 : 0,   // kvota se računa svakog dana iz onoga što je ostalo
+        prio: obj.plan.prio === 1 ? 1 : 0,   // nova pitanja idu redom po težini na ispitu
+      }
       : null;
-    const plan = planObj && (planObj.novih || planObj.pon) ? planObj : null;
+    // Auto režim ne mora da ima upisane brojeve — njih računa planStanje() iz datuma ispita.
+    const plan = planObj && (planObj.novih || planObj.pon || planObj.auto) ? planObj : null;
 
     return {
       script: obj.script === 'c' ? 'c' : 'l',
@@ -2387,6 +2405,18 @@
   // dve (sažetak bez rezerve), pa je isti ekran nudio 54 i 81 za istu stvar.
   // Novo gradivo mora da se završi PRE ispita — poslednji dani ostaju za ponavljanje
   // i simulacije. Rezerva je nedelja dana, ali nikad više od trećine preostalog vremena.
+  // Koliko pitanja iz koje podoblasti PROSEČNO nosi jedan ispit — izvedeno iz zvaničnog šablona
+  // (SIM_SLOTS): slot sa više mogućih podoblasti deli svoju jedinicu na njih. Podoblast 134
+  // (preticanje) tako nosi 5, a 91 nula. Ko nema vremena za sve, uči prvo ono što se i pojavljuje.
+  let _tezine = null;
+  function tezinaPodoblasti() {
+    if (_tezine) return _tezine;
+    const t = {};
+    for (const slot of SIM_SLOTS) for (const s of slot.s) t[s] = (t[s] || 0) + 1 / slot.s.length;
+    _tezine = t;
+    return t;
+  }
+
   function predlogTempa(dana, neodg) {
     const rezerva = Math.min(7, Math.floor(dana / 3));
     const danaZaNovo = Math.max(1, dana - rezerva);
@@ -2411,13 +2441,30 @@
     for (let i = pos; i < Q.length; i++) if (!S.q[Q[i].id] || !S.q[Q[i].id].a) return i;
     return Math.min(pos, Q.length);
   }
+  // Auto režim: dnevna kvota se izvodi iz onoga što je OSTALO i broja dana do ispita, svakog dana
+  // iznova. Zato višak urađen danas sam po sebi snižava sutrašnju kvotu — ne pamti se nikakav dug.
+  function autoKvota() {
+    const dana = danaDoIspita();
+    if (dana === null || dana < 1) return null;      // bez datuma ispita nema od čega da se računa
+    const neodg = neodgovorenih();
+    const { danaZaNovo } = predlogTempa(dana, neodg);
+    const cNovih = neodg ? Math.max(1, Math.ceil(neodg / danaZaNovo)) : 0;
+    // svako novo pitanje traži bar jednu potvrdu, a tu je i zaostali red — otud sabirak
+    const naRedu = queueSplit().ready.length;
+    const cPon = Math.min(120, Math.max(20, cNovih + Math.ceil(naRedu / dana)));
+    return { cNovih, cPon, dana };
+  }
   function planStanje() {
     if (!S.plan) return null;
     const d = (S.day && S.day.d === localDay()) ? S.day : null;
     const uNovih = d ? (d.novih || 0) : 0;
     const uPon = d ? (d.pon || 0) : 0;
-    const cNovih = S.plan.novih || 0, cPon = S.plan.pon || 0;
+    const auto = S.plan.auto ? autoKvota() : null;
+    const cNovih = auto ? auto.cNovih : (S.plan.novih || 0);
+    const cPon = auto ? auto.cPon : (S.plan.pon || 0);
     return {
+      auto: !!auto,
+      autoBezDatuma: !!S.plan.auto && !auto,   // uključen auto, a datum ispita nije upisan
       cNovih, uNovih, cPon, uPon,
       ostaloNovih: Math.max(0, cNovih - uNovih),
       ostaloPon: Math.max(0, cPon - uPon),
@@ -2429,10 +2476,18 @@
   function planIds() {
     const p = planStanje();
     if (!p) return [];
-    const nova = [];
-    for (const q of Q) {
-      if (nova.length >= p.ostaloNovih) break;
-      if (!S.q[q.id] || !S.q[q.id].a) nova.push(q.id);
+    let nova = [];
+    if (S.plan && S.plan.prio) {
+      // prvo ono što se na ispitu i pojavljuje: podoblast koja nosi 5 pitanja pre one koja nosi 0
+      const tez = tezinaPodoblasti();
+      nova = Q.filter((q) => !S.q[q.id] || !S.q[q.id].a)
+        .sort((a, b) => (tez[b.sub] || 0) - (tez[a.sub] || 0))
+        .slice(0, p.ostaloNovih).map((q) => q.id);
+    } else {
+      for (const q of Q) {
+        if (nova.length >= p.ostaloNovih) break;
+        if (!S.q[q.id] || !S.q[q.id].a) nova.push(q.id);
+      }
     }
     // Ako spremnih ima manje od cilja, dopuni najstarijim utvrđenim — cilj ostaje pun,
     // a davno naučeno dobija svoju proveru upravo kroz kvotu ponavljanja.
@@ -2458,27 +2513,48 @@
     // pa velika brojka ne sme da izgleda kao obaveza za danas.
     const zaostatak = (!ispunjen && naRedu > p.cPon && p.cPon > 0)
       ? `<div class="mut napomena">${L('planOdNaRedu').split('@1').join(nQ(naRedu)).split('@2').join(p.cPon).split('@3').join(p.ostaloPon)}</div>` : '';
-    // Donja granica, ne prognoza: SVAKO novo pitanje ulazi u red i traži bar jednu potvrdu.
-    // Ako ni taj minimum ne staje u kvotu do ispita, bolje je to reći nego pustiti čoveka da
-    // svakog dana gleda broj koji raste i ne zna zašto.
+    // PRESUDA, ne uteha. Sve tri grane su donja granica, ne prognoza: svako novo pitanje ulazi u
+    // red i traži bar jednu potvrdu (inQueue), pa je „potrebno ponavljanja` zbir zaostalog reda i
+    // broja novih koje ćeš otvoriti. Ako ni taj minimum ne staje — to se kaže, sa lostovima.
     let neStize = '';
     {
       const dana = danaDoIspita();
-      if (dana !== null && dana > 0 && p.cPon > 0 && S.plan && S.plan.novih > 0) {
-        const ulazi = naRedu + S.plan.novih * dana;
-        const kapacitet = p.cPon * dana;
-        if (ulazi > kapacitet) {
-          neStize = `<div class="mut napomena">${L('planNeStize').split('@1').join(S.plan.novih).split('@2').join(ulazi).split('@3').join(kapacitet)}</div>`;
+      const neodg = neodgovorenih();
+      if (dana !== null && dana > 0 && p.cNovih > 0 && p.cPon > 0) {
+        const otvoriS = Math.min(neodg, p.cNovih * dana);
+        const stigneGradivo = otvoriS >= neodg;
+        const potrebnoPon = naRedu + otvoriS;
+        const kapacitetPon = p.cPon * dana;
+        const t = predlogTempa(dana, neodg);
+        const trebaNovih = neodg ? Math.max(1, Math.ceil(neodg / t.danaZaNovo)) : 0;
+        const trebaPon = Math.min(200, Math.ceil((naRedu + neodg) / dana));
+        const lostovi = [];
+        if (!p.auto && (trebaNovih > p.cNovih || trebaPon > p.cPon)) {
+          lostovi.push(`<button type="button" class="secondary sBtn" id="btnLostTempo" data-novih="${trebaNovih}" data-pon="${trebaPon}">${L('lostTempo').split('@1').join(trebaNovih).split('@2').join(trebaPon)}</button>`);
         }
+        if (!(S.plan && S.plan.prio)) lostovi.push(`<button type="button" class="secondary sBtn" id="btnLostPrio">${L('lostPrio')}</button>`);
+        const dugmad = lostovi.length ? `<div class="razmakG">${lostovi.join(' ')}</div>` : '';
+        if (!stigneGradivo) {
+          neStize = `<div class="mut napomena">${L('sudNeStize').split('@1').join(p.cNovih).split('@2').join(otvoriS).split('@3').join(neodg).split('@4').join(neodg - otvoriS)}</div>${dugmad}`;
+        } else if (potrebnoPon > kapacitetPon) {
+          neStize = `<div class="mut napomena">${L('sudGradivoDa').split('@1').join(p.cNovih).split('@2').join(potrebnoPon).split('@3').join(kapacitetPon).split('@4').join(potrebnoPon - kapacitetPon)}</div>${dugmad}`;
+        } else {
+          neStize = `<div class="mut napomena">${L('sudStize').split('@1').join(neodg)}</div>`;
+        }
+        if (S.plan && S.plan.prio) neStize += `<div class="mut napomena">${L('lostPrioUkljucen')}</div>`;
       }
+      if (p.autoBezDatuma) neStize = `<div class="mut napomena">${L('autoBezDatuma')}</div>`;
     }
+    // Višak preko cilja se VIDI — u auto režimu on sam snižava sutrašnju kvotu.
+    const visak = (p.cNovih > 0 && p.uNovih > p.cNovih)
+      ? `<div class="mut napomena">${L('viskDanas').split('@1').join(p.uNovih).split('@2').join(p.cNovih).split('@3').join(p.uNovih - p.cNovih)}${p.auto ? L('viskAuto') : ''}</div>` : '';
     // posle ispunjenog cilja ne kaže se „vidimo se sutra" dok istovremeno nešto čeka na redu
     const dno = ispunjen ? `<span class="mut">${naRedu ? L('planIspunjenJos').split('@1').join(nQ(naRedu)) : L('planIspunjen')}</span>${naRedu ? ` <button type="button" class="secondary sBtn" data-nav="drill">${L('drill')} ›</button>` : ''}`
       : !ima ? `<span class="mut">${L('planNemaDostupnih')}</span>`
         : `<button class="primary" id="btnPlanVezbaj">${L('planVezbaj')} (${ima})</button>`;
     return `<div class="planBox"><b>${L('planNaslov')}</b> &nbsp;<button type="button" class="bcLink" id="btnPlanPodesi">${L('planPodesi')} ›</button>
       ${red(L('novihLbl'), p.uNovih, p.cNovih, p.nemaNovih, L('planSveOdgovoreno'))}${red(L('ponLbl'), p.uPon, p.cPon, p.nemaPon, L('planNemaPon'))}
-      ${zaostatak}${neStize}<div class="razmakG">${dno}</div></div>`;
+      ${zaostatak}${visak}${neStize}<div class="razmakG">${dno}</div></div>`;
   }
 
   function homeExtras() {
@@ -2622,6 +2698,21 @@
       + lastChip + homeExtras() + planBlok();
     sklopivo(el('btnBrojevi'), null, el('brojeviTekst'));
     bindNav(el('homeSummary'));
+    {
+      // Lostovi iz presude: podigni tempo na izračunat, ili uči prvo ono što ispit nosi.
+      const bt = el('btnLostTempo');
+      if (bt) bt.addEventListener('click', () => {
+        S.plan = { ...(S.plan || {}), novih: +bt.dataset.novih, pon: +bt.dataset.pon };
+        save(); renderHome();
+        poruci(L('planUskladjen').split('@1').join(bt.dataset.novih).split('@2').join(bt.dataset.pon));
+      });
+      const bp = el('btnLostPrio');
+      if (bp) bp.addEventListener('click', () => {
+        S.plan = { ...(S.plan || {}), prio: 1 };
+        save(); renderHome();
+        poruci(L('lostPrioUkljucen'));
+      });
+    }
     {
       // „Uskladi cilj": upisuje predloženi tempo odmah, da čovek ne mora da traži polja u podešavanjima
       const buc = el('btnUskladiCilj');
@@ -2790,6 +2881,12 @@
         <div class="mut napomena">${L('planKratko')}
           <button type="button" class="pomocBtn" id="btnPlanPomoc" aria-label="${escapeHtml(L('planDetalji'))}" title="${escapeHtml(L('planDetalji'))}">?</button></div>
         <div class="mut napomena" id="planPomocTekst" style="display:none">${L('planObjasnjenje')}</div>
+        <div class="podDugmad">
+          <button type="button" class="secondary prekidac" id="btnPlanAuto" aria-pressed="${S.plan && S.plan.auto ? 'true' : 'false'}">${L('autoNaslov')}</button>
+          <button type="button" class="secondary prekidac" id="btnPlanPrio" aria-pressed="${S.plan && S.plan.prio ? 'true' : 'false'}">${L('prioNaslov')}</button>
+        </div>
+        <div class="mut napomena">${L('autoOpis')}</div>
+        <div class="mut napomena">${L('prioOpis')}</div>
         <div class="planPolja">
           <label class="planPolje"><span class="mut">${L('planNovih')}</span>
             <input id="planNovih" type="text" inputmode="numeric" autocomplete="off" value="${S.plan && S.plan.novih ? S.plan.novih : ''}"></label>
@@ -2858,6 +2955,22 @@
       const prazno = (x) => String(x.value || '').trim() === '';
       if (!neodg) { pn.disabled = true; pn.value = ''; pn.placeholder = L('planSveOdgovoreno'); }
       [pn, pp].forEach((x) => x.addEventListener('input', () => { ocistiPoruku(x); kaziPosle(''); }));
+      // Auto režim sam računa kvotu, pa polja za brojeve tada nemaju šta da kažu — ostaju
+      // upisana za slučaj da se auto ugasi, ali se ne koriste.
+      el('btnPlanAuto').addEventListener('click', () => {
+        const bio = !!(S.plan && S.plan.auto);
+        S.plan = { ...(S.plan || {}), auto: bio ? 0 : 1 };
+        if (!S.plan.auto && !S.plan.novih && !S.plan.pon) S.plan = null;
+        save(); renderHome();
+        poruci(bio ? L('planUgasen') : L('autoNaslov'));
+      });
+      el('btnPlanPrio').addEventListener('click', () => {
+        const bio = !!(S.plan && S.plan.prio);
+        S.plan = { ...(S.plan || {}), prio: bio ? 0 : 1 };
+        if (!S.plan.auto && !S.plan.novih && !S.plan.pon && !S.plan.prio) S.plan = null;
+        save(); renderHome();
+        poruci(bio ? L('planUgasen') : L('lostPrioUkljucen'));
+      });
       el('btnPlanSave').addEventListener('click', () => {
         if (prazno(pn) && prazno(pp)) { S.plan = null; save(); renderHome(); kaziPosle(L('planUgasen')); return; }
         let novih = null, pon = null;

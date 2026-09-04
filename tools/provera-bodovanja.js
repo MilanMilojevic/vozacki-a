@@ -62,6 +62,52 @@ async function proveraBodovanja2() {
     document.getElementById('btnPlanVezbaj').click();
     ok('plan: spisak plana ima tačno 3 pitanja (1 od 3)', document.querySelector('#qProgress .qpPos').textContent.replace(/\s+/g, ' ').trim() === '1 od 3');
     S().plan = null;
+
+    // ---- 0b) TEMPO: auto kvota, presuda i višak ----
+    const planTekst = () => document.querySelector('#homeSummary .planBox').textContent.replace(/\s+/g, ' ');
+    const naPocetnu = async () => { document.querySelector('[data-nav="home"]').click(); await cekaj(120); };
+    const staroPlan = S().plan, staroDatum = S().examDate, staroDan = S().day;
+    {
+      const danas = new Date(); const za10 = new Date(danas.getTime() + 10 * 86400000);
+      // LOKALNI datum, kao localDay() u aplikaciji — toISOString je UTC i ume da promaši dan,
+      // a S().day.d koji je ranije bio prazan bi ostavio kvotu na nuli
+      const dva = (n) => String(n).padStart(2, '0');
+      const danasStr = danas.getFullYear() + '-' + dva(danas.getMonth() + 1) + '-' + dva(danas.getDate());
+      S().examDate = za10.getFullYear() + '-' + String(za10.getMonth() + 1).padStart(2, '0') + '-' + String(za10.getDate()).padStart(2, '0');
+      S().day = { d: danasStr, n: 0, ok: 0, novih: 0, pon: 0 };
+
+      // auto: kvota se računa iz neodgovorenih i dana, ne iz upisanog broja
+      S().plan = { novih: 5, pon: 5, auto: 1, prio: 0 };
+      await naPocetnu();
+      const neodg = 1327 - Object.keys(S().q).filter((id) => S().q[id].a).length;
+      const ocekNovih = Math.max(1, Math.ceil(neodg / Math.max(1, 10 - Math.min(7, Math.floor(10 / 3)))));
+      ok('tempo: auto kvota se računa iz gradiva i dana (' + ocekNovih + ' novih)', planTekst().includes('Nova pitanja: 0 / ' + ocekNovih));
+      ok('tempo: auto presuda kaže da stižeš', planTekst().includes('stižeš'));
+
+      // fiksni, premali tempo: presuda mora da kaže da NE stižeš gradivo
+      S().plan = { novih: 2, pon: 30, auto: 0, prio: 0 };
+      await naPocetnu();
+      ok('tempo: premali tempo se prijavljuje kao prepreka', planTekst().includes('NE stižeš gradivo') && planTekst().includes('To jeste prepreka'));
+      ok('tempo: uz prepreku stoji i dugme koje diže tempo', !!document.getElementById('btnLostTempo'));
+
+      // višak preko cilja se vidi; u auto režimu uz to kaže i da snižava sutrašnju kvotu
+      S().plan = { novih: 10, pon: 10, auto: 0, prio: 0 };
+      S().day = { d: danasStr, n: 40, ok: 30, novih: 40, pon: 0 };
+      await naPocetnu();
+      ok('tempo: višak preko cilja se vidi', /preko cilja/.test(planTekst()));
+      // isti višak u auto režimu: daleki datum ispita daje malu kvotu, pa 40 novih jeste višak
+      const daleko = new Date(danas.getTime() + 300 * 86400000);
+      S().examDate = daleko.getFullYear() + '-' + String(daleko.getMonth() + 1).padStart(2, '0') + '-' + String(daleko.getDate()).padStart(2, '0');
+      S().plan = { novih: 10, pon: 10, auto: 1, prio: 0 };
+      await naPocetnu();
+      ok('tempo: u auto režimu višak snižava sutrašnju kvotu', /preko cilja/.test(planTekst()) && /sutrašnja kvota/i.test(planTekst()));
+
+      // bez datuma ispita auto nema od čega da računa — i to kaže
+      S().examDate = null;
+      await naPocetnu();
+      ok('tempo: auto bez datuma ispita kaže šta fali', planTekst().includes('bez datuma ispita'));
+    }
+    S().plan = staroPlan; S().examDate = staroDatum; S().day = staroDan;
     document.querySelector('[data-nav="home"]').click();
 
     // ---- 1) UČENJE: tačan, netačan, ponovni odgovor, dnevni brojači, rok ----
@@ -216,6 +262,33 @@ async function proveraBodovanja2() {
     ok('sve tačno → POLOŽENO', zapis.passed === true);
     ok('sve tačno → nula pogrešnih', (zapis.wrong || []).length === 0);
     ok('završen ispit briše zapis o toku', zapisIspita() === null);
+
+    // ---- 3) PRIORITET PO TEŽINI NA ISPITU ----
+    // Podoblast 134 (preticanje) nosi 5 pitanja na svakom ispitu, 91 nijedno. Kad su obe
+    // neodgovorene, plan bez prioriteta uzima redom po bazi (91 je ranije), a sa prioritetom 134.
+    // Ovaj odeljak menja S.q i zato stoji POSLEDNJI — posle njega ništa se ne oslanja na napredak.
+    {
+      const Q = window.QUIZ.questions;
+      const sada = Date.now();
+      S().q = {};
+      for (const q of Q) if (q.sub !== 91 && q.sub !== 134) S().q[q.id] = { a: 3, w: 0, streak: 3, marked: 0, last: sada };
+      const dva2 = (n) => String(n).padStart(2, '0');
+      const dn = new Date();
+      S().day = { d: dn.getFullYear() + '-' + dva2(dn.getMonth() + 1) + '-' + dva2(dn.getDate()), n: 0, ok: 0, novih: 0, pon: 0 };
+      const prviIzPlana = async (prio) => {
+        S().plan = { novih: 5, pon: 0, auto: 0, prio };
+        document.querySelector('[data-nav="home"]').click();
+        await cekaj(150);
+        document.getElementById('btnPlanVezbaj').click();
+        await cekaj(200);
+        const id = +document.getElementById('qCard').dataset.qid;
+        document.querySelector('[data-nav="home"]').click();
+        await cekaj(120);
+        return Q.find((x) => x.id === id).sub;
+      };
+      ok('prioritet: bez njega plan ide redom po bazi (podoblast 91)', (await prviIzPlana(0)) === 91);
+      ok('prioritet: sa njim plan kreće od podoblasti koju ispit najviše nosi (134)', (await prviIzPlana(1)) === 134);
+    }
 
   } catch (e) {
     rez.push('FAIL - provera je pukla usred rada: ' + ((e && e.message) || e));
