@@ -69,6 +69,17 @@
     mark: { l: 'Obeleži pitanje', c: 'Обележи питање' },
     tacnoLbl: { l: 'tačno', c: 'тачно' },
     osveziLbl: { l: 'za osvežavanje', c: 'за освежавање' },
+    brPitanja: { l: 'Pitanja', c: 'Питања' },
+    brNeotvoreno: { l: 'još nisi otvorio', c: 'још ниси отворио' },
+    brZaPon: { l: 'Za ponavljanje', c: 'За понављање' },
+    brObelezeno: { l: 'Obeleženo', c: 'Обележено' },
+    brDanasOdg: { l: 'Danas', c: 'Данас' },
+    brKakoSeRacuna: { l: 'Kako se ovo računa?', c: 'Како се ово рачуна?' },
+    pojmovnikDugme: { l: '📖 Pojmovnik — @1 tematskih kartica', c: '📖 Појмовник — @1 тематских картица' },
+    pojmovnikPod: { l: 'priručnik za čitanje van vežbanja; iste kartice iskaču i uz pitanja kojima odgovaraju', c: 'приручник за читање ван вежбања; исте картице искачу и уз питања којима одговарају' },
+    podesavanjaDugme: { l: '⚙️ Podešavanja — cilj, datum ispita, čuvanje napretka, izgled', c: '⚙️ Подешавања — циљ, датум испита, чување напретка, изглед' },
+    oblastiDugme: { l: '📊 Napredak po oblastima ›', c: '📊 Напредак по областима ›' },
+    oblastiPod: { l: 'trake po oblastima, tačnost i procena — na strani Statistika', c: 'траке по областима, тачност и процена — на страни Статистика' },
     osveziBtn: { l: '🔄 Osveži znanje', c: '🔄 Освежи знање' },
     osveziTip: { l: 'Utvrđena pitanja koja nisi video duže od 21 dan. Tačan odgovor ih vraća na počinak; pogrešan ih vraća u red za ponavljanje.', c: 'Утврђена питања која ниси видео дуже од 21 дан. Тачан одговор их враћа на починак; погрешан их враћа у ред за понављање.' },
     osveziTitle: { l: 'Osvežavanje', c: 'Освежавање' },
@@ -136,9 +147,9 @@
     tour2: { l: 'Odavde kreće učenje: sva pitanja redom, sa objašnjenjem posle svakog odgovora.', c: 'Одавде креће учење: сва питања редом, са објашњењем после сваког одговора.' },
     tour3: { l: 'Pogrešna pitanja se sama vraćaju: odmah, pa sutradan, pa za tri dana — dok ih ne savladaš.', c: 'Погрешна питања се сама враћају: одмах, па сутрадан, па за три дана — док их не савладаш.' },
     tour4: { l: 'Simulacija je verna kopija pravog ispita: 41 pitanje, 45 minuta, prag 85%. Ostavi je za kraj pripreme.', c: 'Симулација је верна копија правог испита: 41 питање, 45 минута, праг 85%. Остави је за крај припреме.' },
-    tour5: { l: 'Oblasti: klik na red otklapa podoblasti, pa vežbaš baš ono što ti treba.', c: 'Области: клик на ред отклапа подобласти, па вежбаш баш оно што ти треба.' },
-    tour6: { l: 'Pojmovnik: tematske kartice sa slikama i tabelama. Iste kartice iskaču i uz pitanja na koja se odnose.', c: 'Појмовник: тематске картице са сликама и табелама. Исте картице искачу и уз питања на која се односе.' },
-    tour7: { l: 'Napredak se čuva u ovom pregledaču. Ovde ga izvezi u fajl ili poveži stalno čuvanje — uradi to odmah, za svaki slučaj.', c: 'Напредак се чува у овом прегледачу. Овде га извези у фајл или повежи стално чување — уради то одмах, за сваки случај.' },
+    tour5: { l: 'Napredak po oblastima je na Statistici: traka za svaku oblast, tačnost i klik do spiska pitanja.', c: 'Напредак по областима је на Статистици: трака за сваку област, тачност и клик до списка питања.' },
+    tour6: { l: 'Pojmovnik (jedno dugme, otvara se na klik): tematske kartice sa slikama i tabelama. Iste kartice iskaču i uz pitanja na koja se odnose.', c: 'Појмовник: тематске картице са сликама и табелама. Исте картице искачу и уз питања на која се односе.' },
+    tour7: { l: 'Podešavanja se otvaraju na klik. Napredak se čuva u ovom pregledaču — odatle ga izvezi u fajl ili poveži stalno čuvanje — uradi to odmah, za svaki slučaj.', c: 'Напредак се чува у овом прегледачу. Овде га извези у фајл или повежи стално чување — уради то одмах, за сваки случај.' },
     tourNext: { l: 'Dalje', c: 'Даље' },
     tourSkip: { l: 'Preskoči', c: 'Прескочи' },
     tourDone: { l: 'Završi', c: 'Заврши' },
@@ -234,7 +245,8 @@
     planIspunjenJos: { l: '✅ Dnevni cilj je ispunjen. Za ponavljanje ostaje još: @1 — možeš i danas, ili sutra.', c: '✅ Дневни циљ је испуњен. За понављање остаје још: @1 — можеш и данас, или сутра.' },
     planNemaPon: { l: 'nema na redu', c: 'нема на реду' },
     planPodesi: { l: 'Podesi cilj', c: 'Подеси циљ' },
-    planOdNaRedu: { l: 'na redu ih je @1, plan ti danas daje @2', c: 'на реду их је @1, план ти данас даје @2' },
+    planOdNaRedu: { l: 'U redu za ponavljanje čeka @1 — to je zaostatak od ranije, ne zadatak za danas. Cilj uzima najviše @2 dnevno, a danas ti je od toga ostalo još @3.', c: 'У реду за понављање чека @1 — то је заостатак од раније, не задатак за данас. Циљ узима највише @2 дневно, а данас ти је од тога остало још @3.' },
+    planNeStize: { l: 'Uz @1 novih dnevno u red do ispita ulazi bar @2 pitanja, a cilj stigne oko @3 — red će rasti, ne padati. Nije prepreka za ispit, ali deo pitanja ćeš videti jednom ili dvaput.', c: 'Уз @1 нових дневно у ред до испита улази бар @2 питања, а циљ стигне око @3 — ред ће расти, не падати. Није препрека за испит, али део питања ћеш видети једном или двапут.' },
     planUskladi: { l: 'Uskladi cilj', c: 'Усклади циљ' },
     planUskladjen: { l: 'Cilj je usklađen: @1 novih i @2 ponavljanja dnevno.', c: 'Циљ је усклађен: @1 нових и @2 понављања дневно.' },
     skociNaOblast: { l: 'Skoči na oblast', c: 'Скочи на област' },
@@ -267,8 +279,9 @@
     },
     planSveOdgovoreno: { l: 'nema više novih', c: 'нема више нових' },
     planObjasnjenje: { l: 'Ostavi oba polja prazna ako ne želiš cilj. Kad ga postaviš, dugme na početnoj daje tačno toliko pitanja — prvo ponavljanja, pa nova. U ponavljanja ulaze i pogrešna pitanja i ona koja si pogodio iz prve (ta dobiju jednu potvrdu posle 3 dana). Ako pitanja na redu nema dovoljno, kvota se dopunjava utvrđenim pitanjima koja nisi video duže od 21 dan. Odgovor pre roka je vežbanje i ne puni kvotu ponavljanja.', c: 'Остави оба поља празна ако не желиш циљ. Кад га поставиш, дугме на почетној даје тачно толико питања — прво понављања, па нова. У понављања улазе и погрешна питања и она која си погодио из прве (та добију једну потврду после 3 дана). Ако питања на реду нема довољно, квота се допуњава утврђеним питањима која ниси видео дуже од 21 дан. Одговор пре рока је вежбање и не пуни квоту понављања.' },
-    novihLbl: { l: 'novih', c: 'нових' },
-    ponLbl: { l: 'ponavljanja', c: 'понављања' },
+    novihLbl: { l: 'Nova pitanja', c: 'Нова питања' },
+    ponLbl: { l: 'Ponavljanja', c: 'Понављања' },
+    planOstaje: { l: 'ostaje', c: 'остаје' },
     unosPrazno: { l: 'Unesi ceo broj od @1 do @2.', c: 'Унеси цео број од @1 до @2.' },
     unosSamoCifre: { l: 'Dozvoljene su samo cifre — bez slova, razmaka i zareza. Unesi ceo broj od @1 do @2.', c: 'Дозвољене су само цифре — без слова, размака и зареза. Унеси цео број од @1 до @2.' },
     unosPremalo: { l: 'Najmanje što može da se unese je @1.', c: 'Најмање што може да се унесе је @1.' },
@@ -344,6 +357,7 @@
     dueDays: { l: 'za # dana', c: 'за # дана' },
     allPage: { l: 'Sva pitanja', c: 'Сва питања' },
     allPageSub: { l: 'redom, filteri, spisak', c: 'редом, филтери, списак' },
+    nastaviOd: { l: 'Nastavi od @1. pitanja', c: 'Настави од @1. питања' },
     fromStart: { l: 'Počni od 1.', c: 'Почни од 1.' },
     shuffleLbl: { l: 'Izmešaj redosled', c: 'Измешај редослед' },
     shuffled: { l: 'mešano', c: 'мешано' },
@@ -378,6 +392,7 @@
     todayLbl: { l: 'Danas', c: 'Данас' },
     okShort: { l: 'tačno', c: 'тачно' },
     shufTip: { l: 'Vežbanje pokrenuto sa ove strane ide nasumičnim redosledom (ne znaš koje je sledeće). Spisak dole ostaje po redu, a „Nastavi" uvek ide redom. Klik na pitanje u spisku: počinje od njega, pa nastavlja izmešano.', c: 'Вежбање покренуто са ове стране иде насумичним редоследом (не знаш које је следеће). Списак доле остаје по реду, а „Настави" увек иде редом. Клик на питање у списку: почиње од њега, па наставља измешано.' },
+    brojeviTip: { l: '<b>Za ponavljanje</b> su pitanja koja još nisu utvrđena — svako od njih nosi svoj rok, datum kad treba ponovo da ga vidiš.<br>· <b>danas</b> — rok im je danas ili je već prošao; ta te čekaju sada.<br>· <b>kasnije</b> — rok im tek dolazi, nekog od narednih dana. Svakog jutra deo njih pređe u „danas“.<br>· <b>za osvežavanje</b> — utvrđena pitanja koja nisi video duže od 21 dan; nisu u redu, ali ih plan dopunjuje kad spremnih nema dovoljno.<br><br><b>Zašto isti broj ume da stoji na dva mesta:</b> „Danas“ broji sva pitanja koja si danas radio, svako najviše jednom. „Ponavljanja“ u dnevnom cilju broje samo ona koja si radio PONOVO (ne nova) i ne pre roka. Zato ta dva broja umeju da budu ista, a umeju i da se razlikuju.<br><br><b>Zašto red raste dok učiš:</b> svako novo pitanje ulazi u red i traži bar jednu potvrdu. Dok god otvaraš nova, red raste; počinje da pada kad prestaneš da dodaješ nova.', c: '<b>За понављање</b> су питања која још нису утврђена — свако од њих носи свој рок, датум кад треба поново да га видиш.<br>· <b>данас</b> — рок им је данас или је већ прошао; та те чекају сада.<br>· <b>касније</b> — рок им тек долази, неког од наредних дана. Сваког јутра део њих пређе у „данас“.<br>· <b>за освежавање</b> — утврђена питања која ниси видео дуже од 21 дан; нису у реду, али их план допуњује кад спремних нема довољно.<br><br><b>Зашто исти број уме да стоји на два места:</b> „Данас“ броји сва питања која си данас радио, свако највише једном. „Понављања“ у дневном циљу броје само она која си радио ПОНОВО (не нова) и не пре рока. Зато та два броја умеју да буду иста, а умеју и да се разликују.<br><br><b>Зашто ред расте док учиш:</b> свако ново питање улази у ред и тражи бар једну потврду. Док год отвараш нова, ред расте; почиње да пада кад престанеш да додајеш нова.' },
     queueTip: { l: 'Razmaknuto ponavljanje: pogrešiš → pitanje je odmah na redu; pogodiš ga → vraća se sutra; opet pogodiš → za 3 dana; treći pogodak zaredom → utvrđeno je i izlazi iz reda. I pitanje koje si pogodio iz prve vraća se jednom, za 3 dana, da se potvrdi — pa izlazi. Tačan odgovor PRE roka je vežbanje i ne pomera raspored; pogrešan važi uvek. U dnevni cilj isto pitanje ulazi najviše jednom dnevno.', c: 'Размакнуто понављање: погрешиш → питање је одмах на реду; погодиш га → враћа се сутра; опет погодиш → за 3 дана; трећи погодак заредом → утврђено је и излази из реда. И питање које си погодио из прве враћа се једном, за 3 дана, да се потврди — па излази. Тачан одговор ПРЕ рока је вежбање и не помера распоред; погрешан важи увек. У дневни циљ исто питање улази највише једном дневно.' },
     legend: { l: '✓ utvrđeno · ✗ pogrešeno, za ponavljanje · ◐ tačno iz prve, čeka jednu potvrdu · • neodgovoreno · 🔖 obeleženo · 🖼 sa slikom · desno: broj tačnih/netačnih', c: '✓ утврђено · ✗ погрешено, за понављање · ◐ тачно из прве, чека једну потврду · • неодговорено · 🔖 обележено · 🖼 са сликом · десно: број тачних/нетачних' },
     contTip: { l: 'Nastavlja redom, od prvog neodgovorenog pitanja posle mesta gde si stao.', c: 'Наставља редом, од првог неодговореног питања после места где си стао.' },
@@ -2165,6 +2180,33 @@
   let backupTimer = null;
   const FSA = 'showSaveFilePicker' in window;
 
+  // Čuvanje fajla na JEDNOM mestu, za napredak i za sliku rezultata. Gde pregledač to ume
+  // (Chrome i Edge na računaru), pita GDE i POD KOJIM IMENOM — kao svaki drugi program.
+  // Gde ne ume (telefon, Firefox, Safari), pada na preuzimanje u podrazumevanu fasciklu,
+  // jer drugog puta nema. Odustajanje u sistemskom prozoru NIJE greška: vraća null i ćuti.
+  async function sacuvajFajl(blob, ime, tipovi) {
+    if (FSA) {
+      try {
+        const h = await window.showSaveFilePicker({ suggestedName: ime, types: tipovi });
+        const w = await h.createWritable();
+        await w.write(blob);
+        await w.close();
+        return h.name || ime;
+      } catch (e) {
+        if (e && e.name === 'AbortError') return null;
+        console.warn('Čuvanje kroz sistemski prozor nije prošlo, ide preuzimanje:', e);
+      }
+    }
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = ime;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 10000);
+    return ime;
+  }
+
   function idb() {
     return new Promise((res, rej) => {
       const r = indexedDB.open('vozackiA-fs', 1);
@@ -2280,7 +2322,7 @@
     { sel: '.menuBtn[data-nav="learn"]', key: 'tour2' },
     { sel: '.menuBtn[data-nav="drill"]', key: 'tour3' },
     { sel: '.menuBtn[data-nav="sim"]', key: 'tour4' },
-    { sel: '#catBars', key: 'tour5', card: true },
+    { sel: '#btnOblasti', key: 'tour5' },
     { sel: '#pojmovnikCard', key: 'tour6' },
     { sel: '#dataTools', key: 'tour7' },
   ];
@@ -2403,7 +2445,10 @@
     if (!p) return '';
     // Kvota bez gradiva se smatra ispunjenom — inače bi prvog dana (nema šta da se
     // ponavlja) i u poslednjoj nedelji (nema novih) cilj zauvek stajao „neispunjen".
-    const red = (lbl, u, c, nema, nemaLbl) => (c <= 0 ? '' : `<div class="planRed"><span>${u} / ${c} ${lbl}${nema && u < c ? ` <span class="mut">(${nemaLbl})</span>` : ''}</span>
+    // Ime ide ISPRED brojeva, a koliko još ostaje piše se izričito — ranije se „ostalo 7`
+    // moglo izvesti samo oduzimanjem 60 − 53 u glavi, pa je rečenica ispod izgledala kao da
+    // protivreči traci iznad.
+    const red = (lbl, u, c, nema, nemaLbl) => (c <= 0 ? '' : `<div class="planRed"><span class="planIme">${lbl}: <b>${u}</b> / ${c}${nema && u < c ? ` <span class="mut">(${nemaLbl})</span>` : (u < c ? ` <span class="mut">· ${L('planOstaje')} ${c - u}</span>` : '')}</span>
       <span class="planBar"><span style="width:${Math.min(100, Math.round(100 * u / c))}%"></span></span>
       <span class="mut">${u >= c || nema ? '✓' : ''}</span></div>`);
     const ispunjen = (p.ostaloNovih === 0 || p.nemaNovih) && (p.ostaloPon === 0 || p.nemaPon);
@@ -2412,14 +2457,28 @@
     // Ako je zaostalo više nego što staje u kvotu, kaže se ODAKLE dokle: dnevni cilj je kvota, ne dug,
     // pa velika brojka ne sme da izgleda kao obaveza za danas.
     const zaostatak = (!ispunjen && naRedu > p.cPon && p.cPon > 0)
-      ? `<div class="mut napomena">${L('planOdNaRedu').split('@1').join(naRedu).split('@2').join(p.ostaloPon)}</div>` : '';
+      ? `<div class="mut napomena">${L('planOdNaRedu').split('@1').join(nQ(naRedu)).split('@2').join(p.cPon).split('@3').join(p.ostaloPon)}</div>` : '';
+    // Donja granica, ne prognoza: SVAKO novo pitanje ulazi u red i traži bar jednu potvrdu.
+    // Ako ni taj minimum ne staje u kvotu do ispita, bolje je to reći nego pustiti čoveka da
+    // svakog dana gleda broj koji raste i ne zna zašto.
+    let neStize = '';
+    {
+      const dana = danaDoIspita();
+      if (dana !== null && dana > 0 && p.cPon > 0 && S.plan && S.plan.novih > 0) {
+        const ulazi = naRedu + S.plan.novih * dana;
+        const kapacitet = p.cPon * dana;
+        if (ulazi > kapacitet) {
+          neStize = `<div class="mut napomena">${L('planNeStize').split('@1').join(S.plan.novih).split('@2').join(ulazi).split('@3').join(kapacitet)}</div>`;
+        }
+      }
+    }
     // posle ispunjenog cilja ne kaže se „vidimo se sutra" dok istovremeno nešto čeka na redu
     const dno = ispunjen ? `<span class="mut">${naRedu ? L('planIspunjenJos').split('@1').join(nQ(naRedu)) : L('planIspunjen')}</span>${naRedu ? ` <button type="button" class="secondary sBtn" data-nav="drill">${L('drill')} ›</button>` : ''}`
       : !ima ? `<span class="mut">${L('planNemaDostupnih')}</span>`
-        : `<button class="primary" id="btnPlanVezbaj">${L('planVezbaj')}</button>`;
+        : `<button class="primary" id="btnPlanVezbaj">${L('planVezbaj')} (${ima})</button>`;
     return `<div class="planBox"><b>${L('planNaslov')}</b> &nbsp;<button type="button" class="bcLink" id="btnPlanPodesi">${L('planPodesi')} ›</button>
       ${red(L('novihLbl'), p.uNovih, p.cNovih, p.nemaNovih, L('planSveOdgovoreno'))}${red(L('ponLbl'), p.uPon, p.cPon, p.nemaPon, L('planNemaPon'))}
-      ${zaostatak}<div class="razmakG">${dno}</div></div>`;
+      ${zaostatak}${neStize}<div class="razmakG">${dno}</div></div>`;
   }
 
   function homeExtras() {
@@ -2542,11 +2601,26 @@
       }
     }
     const today = localDay();
-    const dayLine = S.day && S.day.d === today && S.day.n > 0
-      ? ` · 📅 ${L('todayLbl')}: <b>${S.day.n}</b> (${L('okShort')} ${S.day.ok})` : '';
+    // Svaki broj ima IME ispred sebe i svoj red. Ranije je ceo sažetak bio jedan niz brojeva
+    // razdvojen tačkama, pa se nije videlo ni šta je koji broj ni odakle se dobija: vlasnik je
+    // pitao „odakle ti broj 401`. Sabirci sada stoje sa znakom plus, a ispod je imenovano
+    // dugme koje otvara objašnjenje (ranije goli upitnik).
     const uRedu = ready.length + waiting.length;
-    el('homeSummary').innerHTML = `<b>${answeredCnt}</b> / ${Q.length} ${L('answered')} · <b>${uRedu}</b> ${L('inQueue')}${uRedu ? ` (${ready.length} ${L('ponDanas')} · ${waiting.length} ${L('ponKasnije')})` : ''}${pomocHtml()} · 🔖 ${mk}${dayLine}${pomocTekstHtml()}${lastChip}` + homeExtras() + planBlok();
-    veziPomoc(el('homeSummary'));
+    const osv = zaOsvezavanje().length;
+    const neotvoreno = Q.length - answeredCnt;
+    const brRed = (ime, telo) => `<div class="brRed"><span class="brIme">${ime}:</span> <span>${telo}</span></div>`;
+    const danasN = S.day && S.day.d === today ? S.day.n : 0;
+    const redovi = [
+      brRed(L('brPitanja'), `<b>${answeredCnt}</b> ${L('ofQ')} ${Q.length} ${L('answered')}${neotvoreno ? ` · <b>${neotvoreno}</b> ${L('brNeotvoreno')}` : ''}`),
+      (uRedu || osv) ? brRed(L('brZaPon'), `<b>${uRedu}</b>${uRedu ? ` = ${ready.length} ${L('ponDanas')} + ${waiting.length} ${L('ponKasnije')}` : ''}${osv ? ` · <b>${osv}</b> ${L('osveziLbl')}` : ''}`) : '',
+      danasN ? brRed(L('brDanasOdg'), `${nQ(danasN)}, ${S.day.ok} ${L('okShort')}`) : '',
+      mk ? brRed(L('brObelezeno'), `<b>${mk}</b>`) : '',
+    ].filter(Boolean).join('');
+    el('homeSummary').innerHTML = redovi
+      + `<div><button type="button" class="pomocBtn2 bcLink" id="btnBrojevi">${L('brKakoSeRacuna')}</button>
+         <div class="pomocTekst mut napomena" id="brojeviTekst" style="display:none">${L('brojeviTip')}<br><br>${L('queueTip')}</div></div>`
+      + lastChip + homeExtras() + planBlok();
+    sklopivo(el('btnBrojevi'), null, el('brojeviTekst'));
     bindNav(el('homeSummary'));
     {
       // „Uskladi cilj": upisuje predloženi tempo odmah, da čovek ne mora da traži polja u podešavanjima
@@ -2582,7 +2656,9 @@
       startList(si.ids, secTitleFn(key), null, 'section', { secKey: key, startAt: S.secPos[key] || 0 });
     });
     el('mLearn').textContent = L('allPage');
-    el('mLearnSub').textContent = `${L('continueBtn')}: ${Math.min(prviNeodgOd(S.seqPos) + 1, Q.length)} ${L('ofQ')} ${Q.length} · ${L('allPageSub')}`;
+    // redni broj, ne brojanje: „493 od 1327" je stajalo tik ispod „492 od 1327 odgovoreno",
+    // a to su dve različite vrste broja koje se slučajno poklope
+    el('mLearnSub').textContent = `${L('nastaviOd').split('@1').join(Math.min(prviNeodgOd(S.seqPos) + 1, Q.length))} · ${L('allPageSub')}`;
     el('mDrill').textContent = L('drill');
     {
       const osv = zaOsvezavanje().length;
@@ -2594,9 +2670,9 @@
     el('mSimSub').textContent = L('simSub');
     el('mStats').textContent = L('stats');
     el('mStatsSub').textContent = L('statsSub');
-    el('hCats').textContent = L('cats');
-
-    nacrtajOblasti(el('catBars'), { tacnost: false });
+    el('catBars').innerHTML = `<button type="button" class="explCardBtn pojBtn" id="btnOblasti">${L('oblastiDugme')}</button>
+      <div class="mut napomena">${L('oblastiPod')}</div>`;
+    el('btnOblasti').addEventListener('click', renderStats);
 
     const sh = el('simHistory');
     if (!S.sims.length) sh.innerHTML = `<h3>${L('history')}</h3><p class="mut">${L('noSims')}</p>`;
@@ -2652,7 +2728,7 @@
         ['grp5', ['dozvole', 'vozilo-tehnika', 'uredjaji-oprema', 'iskljucenje', 'kazne', 'kaznene-klase', 'zamke-odgovori']],
       ];
       const stavljene = new Set();
-      let html = `<h3>📖 ${L('pojmovnik')}</h3><p class="mut napomena">${L('pojmovnikSub')}</p>`;
+      let html = '';
       // telo kartice se NE gradi unapred (33 kartice = oko 4.900 skrivenih elemenata pri
       // svakom crtanju početne); pravi se pri prvom otvaranju, ključ stoji u data-poj
       const entry = (k) => `<div class="pojEntry"><button class="explCardBtn pojBtn" data-poj="${escapeHtml(k)}">📖 ${escapeHtml(T(EX.cards[k].t))}</button><div class="explCard" style="display:none"></div></div>`;
@@ -2664,14 +2740,25 @@
       }
       const ostatak = cardKeys.filter((k) => !stavljene.has(k));
       for (const k of ostatak) html += entry(k);
-      pk.innerHTML = html;
-      // akordeon: otvaranje jedne kartice sklapa prethodno otvorenu
-      pk.querySelectorAll('.explCardBtn').forEach((btn) => sklopivo(btn, pk, null, (cd) => { cd.innerHTML = T(EX.cards[btn.dataset.poj].h); }));
+      // Ceo spisak je iza JEDNOG dugmeta i pravi se tek pri prvom otvaranju: pojmovnik je
+      // priručnik koji se čita namerno, a ne nešto što stoji otvoreno na početnoj i jede
+      // 1.919px od 4.743px koliko je početna nekad bila visoka.
+      pk.innerHTML = `<button type="button" class="explCardBtn pojBtn istaknuto" id="btnPojmovnik">${L('pojmovnikDugme').split('@1').join(cardKeys.length)}</button>
+        <div class="mut napomena">${L('pojmovnikPod')}</div>
+        <div id="pojmovnikTelo" style="display:none"></div>`;
+      sklopivo(el('btnPojmovnik'), null, el('pojmovnikTelo'), (cd) => {
+        cd.innerHTML = html;
+        // akordeon: otvaranje jedne kartice sklapa prethodno otvorenu
+        cd.querySelectorAll('.explCardBtn').forEach((btn) => sklopivo(btn, cd, null, (c2) => { c2.innerHTML = T(EX.cards[btn.dataset.poj].h); }));
+      });
     }
 
     // Četiri imenovane grupe umesto jednog reda nabacanih dugmadi. Podaci o bazi i prijava
     // greške su odavde preseljeni u podnožje — tamo ih ljudi i traže.
-    el('dataTools').innerHTML = `
+    // Podešavanja se sklapaju iza jednog dugmeta. Telo se pravi ODMAH (ne lenjo): sve
+    // dugmad unutra vezuju se po id-u odmah posle crtanja, pa moraju da postoje u DOM-u.
+    el('dataTools').innerHTML = `<button type="button" class="explCardBtn pojBtn" id="btnPodesavanja">${L('podesavanjaDugme')}</button>
+      <div id="podesavanjaTelo" style="display:none">
       <div class="podGrupa">
         <h4 class="grupaNaslov">${L('grupaNapredak')}</h4>
         <div class="mut napomena">${L('persistNote')}</div>
@@ -2720,8 +2807,12 @@
         <h4 class="grupaNaslov">${L('grupaOprezno')}</h4>
         <div class="qActions"><button type="button" class="danger" id="btnReset">${L('reset')}</button></div>
         <div class="mut napomena">${L('resetNapomena')}</div>
-      </div>`;
+      </div></div>`;
+    sklopivo(el('btnPodesavanja'), null, el('podesavanjaTelo'));
     renderBackupLine();
+    // Prekinuta rezerva u fajl je jedina stvar iz podešavanja koja NE sme da čeka da je neko
+    // otvori: tada se kartica otvara sama, da crveni red ne završi ispod sklopljenog dugmeta.
+    if (fsPending) { el('podesavanjaTelo').style.display = ''; el('btnPodesavanja').setAttribute('aria-expanded', 'true'); }
     { const bp = el('btnPlanPomoc'); if (bp) sklopivo(bp, null, el('planPomocTekst')); }
     applyFont();   // dugmad i procenat veličine slova žive u ovoj kartici — crtaju se sa njom
     if (installEvt) { const bi = el('btnInstall'); if (bi) bi.style.display = ''; }
@@ -2806,20 +2897,17 @@
       window.__tourRan = 1;
       setTimeout(() => { if (el('view-home').classList.contains('active')) tourStart(); }, 600);
     }
-    el('btnExport').addEventListener('click', (ev) => {
+    el('btnExport').addEventListener('click', async (ev) => {
       const d = ev.currentTarget;
       if (d.disabled) return;
-      d.disabled = true; setTimeout(() => { d.disabled = false; }, 1200);
-      const blob = new Blob([JSON.stringify(S)], { type: 'application/json' });
-      const a = document.createElement('a');
-      const url = URL.createObjectURL(blob);
-      a.href = url;
-      a.download = 'vozacki-a-napredak.json';
-      document.body.appendChild(a);
-      a.click();
-      poruci(L('porExport').split('@1').join('vozacki-a-napredak.json'));
-      a.remove();
-      setTimeout(() => URL.revokeObjectURL(url), 10000);
+      d.disabled = true;
+      try {
+        const blob = new Blob([JSON.stringify(S)], { type: 'application/json' });
+        // datum u imenu: dva izvoza u istoj fascikli se ne gaze i vidi se koji je noviji
+        const ime = 'vozacki-a-napredak-' + localDay() + '.json';
+        const sacuvano = await sacuvajFajl(blob, ime, [{ description: 'JSON', accept: { 'application/json': ['.json'] } }]);
+        if (sacuvano) poruci(L('porExport').split('@1').join(sacuvano));
+      } finally { d.disabled = false; }
     });
     el('btnImport').addEventListener('click', () => el('fileImport').click());
     el('fileImport').addEventListener('change', (e) => {
@@ -3262,16 +3350,10 @@
           // svaka druga greška: tiho pređi na preuzimanje slike
         }
       }
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = 'vozacki-a-rezultat.png';
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-      setTimeout(() => URL.revokeObjectURL(url), 10000);
-      // bez sistemskog prozora za deljenje slika se tiho preuzme — dugme kaže šta se desilo
-      if (dugme) { const staro = dugme.textContent; dugme.textContent = L('shareDone'); setTimeout(() => { dugme.textContent = staro; }, 2500); }
+      // nema sistemskog deljenja (računar): sačuvaj sliku — sa pitanjem gde i pod kojim imenom
+      const sacuvano = await sacuvajFajl(blob, 'vozacki-a-rezultat-' + localDay() + '.png',
+        [{ description: 'PNG slika', accept: { 'image/png': ['.png'] } }]);
+      if (sacuvano && dugme) { const staro = dugme.textContent; dugme.textContent = L('shareDone'); setTimeout(() => { dugme.textContent = staro; }, 2500); }
     } catch (e) {
       alert(L('shareFail'));
     } finally {

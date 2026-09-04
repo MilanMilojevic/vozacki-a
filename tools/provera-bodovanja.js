@@ -57,7 +57,7 @@ async function proveraBodovanja2() {
     S().plan = { novih: 3, pon: 10 };
     document.querySelector('[data-nav="home"]').click();
     const pb = () => document.querySelector('#homeSummary .planBox');
-    ok('plan: kvota ponavljanja bez gradiva je ispunjena („nema na redu" + ✓)', !!pb() && pb().textContent.includes('0 / 10 ponavljanja (nema na redu)') && pb().textContent.includes('✓'));
+    ok('plan: kvota ponavljanja bez gradiva je ispunjena („nema na redu" + ✓)', !!pb() && pb().textContent.includes('Ponavljanja: 0 / 10 (nema na redu)') && pb().textContent.includes('✓'));
     ok('plan: nova pitanja se nude — dugme „Vežbaj po planu"', !!document.getElementById('btnPlanVezbaj'));
     document.getElementById('btnPlanVezbaj').click();
     ok('plan: spisak plana ima tačno 3 pitanja (1 od 3)', document.querySelector('#qProgress .qpPos').textContent.replace(/\s+/g, ' ').trim() === '1 od 3');

@@ -26,7 +26,7 @@
 }
 </script>
 <title>Возачки А — вежбање</title>
-<link rel="stylesheet" href="style.css?v=110">
+<link rel="stylesheet" href="style.css?v=111">
   <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#2c6aa0">
   <link rel="icon" href="icon-192.png">
@@ -59,15 +59,17 @@
       <button class="menuBtn" data-nav="sim"><span class="mIcon">⏱️</span><span class="mTitle" id="mSim"></span><span class="mSub" id="mSimSub"></span></button>
       <button class="menuBtn" data-nav="stats"><span class="mIcon">📊</span><span class="mTitle" id="mStats"></span><span class="mSub" id="mStatsSub"></span></button>
     </div>
+    <!-- Dve kolone na širokom ekranu; na uskom se rastvaraju i redosled određuje style.css
+         (blok @media max-width:1199px, po ID-ju). Otkad su podešavanja i pojmovnik sklopivi,
+         kartice su kratke, pa levo stoje dve male, a desno istorija — da nijedna kolona ne zjapi. -->
     <div class="hCol hColL">
     <div class="card" id="oblastiCard">
-      <h3 id="hCats"></h3>
       <div id="catBars"></div>
     </div>
-    <div class="card" id="simHistory"></div>
+    <div class="card small" id="dataTools"></div>
     </div>
     <div class="hCol hColR">
-    <div class="card small" id="dataTools"></div>
+    <div class="card" id="simHistory"></div>
     </div>
     <div class="card" id="guideCard"></div>
     <div class="card" id="pojmovnikCard"></div>
@@ -122,9 +124,9 @@
 
 <footer id="podnozje"></footer>
 
-<script src="version.js?v=110"></script>
-<script src="data.js?v=110"></script>
-<script src="explanations.js?v=110"></script>
-<script src="app.js?v=110"></script>
+<script src="version.js?v=111"></script>
+<script src="data.js?v=111"></script>
+<script src="explanations.js?v=111"></script>
+<script src="app.js?v=111"></script>
 </body>
 </html>
