@@ -116,7 +116,10 @@
     porPovezano: { l: 'Automatsko čuvanje je uključeno.', c: 'Аутоматско чување је укључено.' },
     porNemaPitanja: { l: 'To pitanje više ne postoji u bazi.', c: 'То питање више не постоји у бази.' },
     porNemaPregleda: { l: 'Taj pregled simulacije ne postoji.', c: 'Тај преглед симулације не постоји.' },
-    porSimPrekinuta: { l: 'Simulacija je prekinuta osvežavanjem — pokušaj nije sačuvan.', c: 'Симулација је прекинута освежавањем — покушај није сачуван.' },
+    porSimPrekinuta: { l: 'Taj ispit više nije u toku.', c: 'Тај испит више није у току.' },
+    porGreskaAdrese: { l: 'Ta adresa nije mogla da se otvori — evo početne strane.', c: 'Та адреса није могла да се отвори — ево почетне стране.' },
+    porSimVracena: { l: 'Ispit je nastavljen tamo gde je stao — vreme je teklo i dok si bio odsutan.', c: 'Испит је настављен тамо где је стао — време је текло и док си био одсутан.' },
+    porSimIsteklo: { l: 'Vreme za ispit je isteklo dok si bio odsutan — evo rezultata.', c: 'Време за испит је истекло док си био одсутан — ево резултата.' },
     drillEmptyNovi: { l: 'Ovde se skupljaju pitanja koja pogrešiš — vraćaju se sutra, pa za tri dana, dok ih ne savladaš. Još nisi odgovorio nijedno pitanje.', c: 'Овде се скупљају питања која погрешиш — враћају се сутра, па за три дана, док их не савладаш. Још ниси одговорио ниједно питање.' },
     krenimo: { l: '▶ Kreni: Sva pitanja', c: '▶ Крени: Сва питања' },
     otvoriSve: { l: 'Otvori sva pitanja', c: 'Отвори сва питања' },
@@ -213,6 +216,8 @@
     datumProslost: { l: 'Taj datum je prošao. Unesi datum ispita koji tek dolazi, ili obriši polje ako ne želiš odbrojavanje.', c: 'Тај датум је прошао. Унеси датум испита који тек долази, или обриши поље ако не желиш одбројавање.' },
     importPrevelik: { l: 'Ta datoteka je prevelika da bi bila sačuvan napredak. Izaberi datoteku koju je napravilo dugme „Sačuvaj napredak (fajl)".', c: 'Та датотека је превелика да би била сачуван напредак. Изабери датотеку коју је направило дугме „Сачувај напредак (фајл)".' },
     importDeo: { l: 'Uvezeno je # od @ zapisa. Ostali se ne nalaze u trenutnoj bazi pitanja, pa su izostavljeni.', c: 'Увезено је # од @ записа. Остали се не налазе у тренутној бази питања, па су изостављени.' },
+    rezervaDozvola: { l: '⚠ Rezerva u fajl je isključena jer je pregledač povukao dozvolu za pisanje. U podešavanjima je dugme da je ponovo uključiš.', c: '⚠ Резерва у фајл је искључена јер је прегледач повукао дозволу за писање. У подешавањима је дугме да је поново укључиш.' },
+    rezervaNeuspeh: { l: '⚠ Rezerva u fajl trenutno ne prolazi — fajl je možda otvoren u drugom programu ili je disk pun. Napredak je i dalje u pregledaču, a upis se pokušava ponovo.', c: '⚠ Резерва у фајл тренутно не пролази — фајл је можда отворен у другом програму или је диск пун. Напредак је и даље у прегледачу, а упис се покушава поново.' },
     saveFail: { l: '⚠ Napredak ne može da se sačuva u ovom pregledaču — nestaće kad zatvoriš stranicu. Proveri da li su podaci sajta blokirani, ili sačuvaj napredak u datoteku preko „Sačuvaj napredak (fajl)".', c: '⚠ Напредак не може да се сачува у овом прегледачу — нестаће кад затвориш страницу. Провери да ли су подаци сајта блокирани, или сачувај напредак у датотеку преко „Сачувај напредак (фајл)".' },
     tabUpozorenje: { l: '⚠ Vežbaonica je otvorena u još jednom prozoru ili kartici. Rad u dva prozora se ne spaja — onaj koji poslednji sačuva prepisuje drugog. Zatvori jedan, pa osveži ovaj.', c: '⚠ Вежбаоница је отворена у још једном прозору или картици. Рад у два прозора се не спаја — онај који последњи сачува преписује другог. Затвори један, па освежи овај.' },
     fsMin: { l: 'Slova su već na najmanjoj veličini', c: 'Слова су већ на најмањој величини' },
@@ -273,6 +278,7 @@
     officialBase: { l: 'zvanična baza pitanja', c: 'званична база питања' },
     naIspituTip: { l: 'Koliko pitanja iz ove podoblasti nosi svaki pravi ispit — izmereno iz pet zvaničnih izvlačenja simulacije.', c: 'Колико питања из ове подобласти носи сваки прави испит — измерено из пет званичних извлачења симулације.' },
     qNumTip2: { l: 'Klik: kopiraj adresu ovog pitanja', c: 'Клик: копирај адресу овог питања' },
+    uvecajSliku: { l: 'Uvećaj sliku', c: 'Увећај слику' },
     imgAlt: { l: 'Slika uz pitanje — saobraćajna situacija ili znak; pitanje se odnosi na ono što je na slici.', c: 'Слика уз питање — саобраћајна ситуација или знак; питање се односи на оно што је на слици.' },
     grp1: { l: '1 · Osnovni pojmovi', c: '1 · Основни појмови' },
     grp2: { l: '2 · Ko ide prvi — prvenstvo i signalizacija', c: '2 · Ко иде први — првенство и сигнализација' },
@@ -365,6 +371,8 @@
     searchPh: { l: '🔎 Pretraga pitanja (tekst ili #broj)…', c: '🔎 Претрага питања (текст или #број)…' },
     // čuvar je @1, a NE #: u samoj rečenici stoji i doslovno „#broj pitanja"
     searchEmpty: { l: 'Nema pogodaka za „@1". Probaj kraću reč ili #broj pitanja.', c: 'Нема погодака за „@1". Пробај краћу реч или #број питања.' },
+    searchHits: { l: 'Pogodaka: @1', c: 'Погодака: @1' },
+    searchHitsOne: { l: 'Jedan pogodak.', c: 'Један погодак.' },
     todayLbl: { l: 'Danas', c: 'Данас' },
     okShort: { l: 'tačno', c: 'тачно' },
     shufTip: { l: 'Vežbanje pokrenuto sa ove strane ide nasumičnim redosledom (ne znaš koje je sledeće). Spisak dole ostaje po redu, a „Nastavi" uvek ide redom. Klik na pitanje u spisku: počinje od njega, pa nastavlja izmešano.', c: 'Вежбање покренуто са ове стране иде насумичним редоследом (не знаш које је следеће). Списак доле остаје по реду, а „Настави" увек иде редом. Клик на питање у списку: почиње од њега, па наставља измешано.' },
@@ -386,6 +394,11 @@
 
   // ---------- Stanje ----------
   const KEY = 'vozackiA.v1';
+  // Granice veličine slova — JEDNO mesto, koriste ih i dugmad i učitavanje stanja.
+  // Moraju da stoje IZNAD `let S = load()`: normalizeState ih čita pri prvom učitavanju,
+  // a dok su bile ispod (kao `var`), tada su još bile undefined — pa je sačuvana
+  // veličina slova na svakom pokretanju tiho padala na 1.
+  const FS_MIN = 0.9, FS_MAX = 1.25, FS_KORAK = 0.08;
   // Datum poslednje provere baze prema eUpravi — JEDNO mesto; čitaju ga podnožje i kartica
   // poverenja (ranije je stajao prepisan u četiri teksta i mogao da se raziđe).
   const BAZA_PROVERENA = '2026-09-03';
@@ -418,8 +431,6 @@
   function nNum(v, min, max, def) { return typeof v === 'number' && Number.isFinite(v) && v >= min && v <= max ? v : def; }
   function maxTs() { return 4102444800000; }   // 1.1.2100 — gornja granica za vremenske oznake
   function round2(x) { return Math.round(x * 100) / 100; }   // da se korak od 0,08 ne raspline u 0,8999999
-  // Granice veličine slova — JEDNO mesto, koriste ih i dugmad i učitavanje stanja.
-  var FS_MIN = 0.9, FS_MAX = 1.25, FS_KORAK = 0.08;
 
   function normalizeState(obj) {
     if (!obj || typeof obj !== 'object' || !obj.q || typeof obj.q !== 'object' || Array.isArray(obj.q)) return null;
@@ -443,7 +454,9 @@
     }
 
     // simulacije: brojevi i liste identifikatora pitanja
-    const sims = (Array.isArray(obj.sims) ? obj.sims : []).slice(0, 500).map((s) => {
+    // slice(-500): kad ih ima više od 500, baca se NAJSTARIJIH — ranije je bilo slice(0,500),
+    // pa se pri prvom sledećem učitavanju gubilo baš ono što je korisnik tek uradio
+    const sims = (Array.isArray(obj.sims) ? obj.sims : []).slice(-500).map((s) => {
       if (!s || typeof s !== 'object' || Array.isArray(s)) return null;
       const ids = (x) => (Array.isArray(x) ? x.filter((v) => Number.isInteger(v) && byId.has(v)).slice(0, 200) : []);
       return {
@@ -709,13 +722,28 @@
       else b.removeAttribute('aria-current');
     });
   }
+  // Spisak pitanja je dubok desetine hiljada piksela. Ko iz njega otvori pitanje pa se vrati,
+  // ranije je uvek padao na vrh i morao ponovo da traži gde je stao. Pamti se JEDNO mesto —
+  // poslednji spisak sa kog se otišlo — i troši se pri prvom povratku na taj isti spisak.
+  let skrolKljuc = null;      // adresa spiska koji je trenutno iscrtan
+  let skrolSpisak = null;     // { kljuc, y }
+  function pamtiSkrolSpiska(kljuc) {
+    // ponovno crtanje istog spiska (promena pisma/teme) takođe ne sme da baci na vrh
+    if (skrolKljuc === kljuc && el('view-browse').classList.contains('active')) skrolSpisak = { kljuc, y: window.scrollY };
+    skrolKljuc = kljuc;
+  }
   function show(v) {
+    const bio = views.find((x) => el('view-' + x).classList.contains('active'));
+    if (bio === 'browse' && v === 'question' && skrolKljuc) skrolSpisak = { kljuc: skrolKljuc, y: window.scrollY };
     postaviNazad(null);
     views.forEach((x) => el('view-' + x).classList.toggle('active', x === v));
     oznaciNav(v);
     // podnožje se sklanja tokom ispita — pravi ispit ga nema
     document.body.classList.toggle('uSimulaciji', v === 'sim');
-    window.scrollTo(0, 0);
+    let y = 0;
+    if (v === 'browse') { if (skrolSpisak && skrolSpisak.kljuc === skrolKljuc) y = skrolSpisak.y; skrolSpisak = null; }
+    else if (v !== 'question') skrolSpisak = null;   // otišao je nekud drugde — spisak se otvara od vrha
+    window.scrollTo(0, y);
   }
   let current = { redraw: renderHome };
 
@@ -764,6 +792,7 @@
     }
     if (h === '#/sim') {
       if (sim) { show('sim'); sim.showReport ? renderSimReport() : renderSimQ(); return; }
+      if (simNastavi()) return;              // ispit iz zapisa (npr. „nazad" posle vraćanja u aplikaciju)
       return goHomeReplace('porSimPrekinuta');
     }
     return goHomeReplace();   // '#/vezba' i nepoznato: prolazna vežba se ne rekonstruiše
@@ -773,12 +802,14 @@
     if (h === curHash) return;               // naš sopstveni upis, ne korisnikova strelica
     if (sim) {
       if (!confirm(L('simLeaveConfirm'))) { setHash('#/sim'); return; }
-      clearInterval(sim.timerId); sim = null;
+      clearInterval(sim.timerId); sim = null; simObrisi();
     }
     curHash = h;
-    try { routeTo(h); } catch (err) { goHomeReplace(); }
+    // greška u rutiranju ne sme da ćuti: korisnik inače završi na početnoj bez ijedne reči
+    try { routeTo(h); } catch (err) { console.warn('Adresa nije mogla da se otvori:', h, err); goHomeReplace('porGreskaAdrese'); }
   });
-  // slučajan F5/zatvaranje taba usred simulacije ne sme tiho da uništi pokušaj
+  // Ispit se od v108 pamti, pa ga osvežavanje ne uništava — ali sat i dalje kuca dok te nema.
+  // Zato upozorenje ostaje: ko zatvori tab i vrati se posle sat vremena, zatiče istekao ispit.
   window.addEventListener('beforeunload', (e) => {
     if (sim) { e.preventDefault(); e.returnValue = ''; }
   });
@@ -794,17 +825,25 @@
       const p = document.createElement('div');
       p.className = 'qImgFail';
       p.textContent = L('imgFail');
-      im.replaceWith(p);
+      // ako je slika u dugmetu za uvećanje, sklanja se CELO dugme — inače bi ostalo
+      // prazno dugme koje se fokusira, a nema šta da uveća
+      (im.closest('.qImgBtn') || im).replaceWith(p);
     });
     return im;
   }
+  // Slika je u dugmetu: uvećanje se ranije otvaralo SAMO mišem, pa ga tastaturom nije bilo
+  // kako dobiti — a slika nosi zadatak kod 704 od 1327 pitanja. Dugme nema svoj izgled.
   function slikaPitanja(q) {
+    const dugme = document.createElement('button');
+    dugme.type = 'button'; dugme.className = 'qImgBtn';
+    dugme.setAttribute('aria-label', L('uvecajSliku'));
     const im = document.createElement('img');
     im.className = 'qImg';
     im.alt = L('imgAlt');
     pratiSliku(im);
     im.src = 'img/' + q.id + '.jpg';   // src tek POSLE osluškivača, da se greška ne propusti
-    return im;
+    dugme.appendChild(im);
+    return dugme;
   }
 
   // ---------- Provera unosa ----------
@@ -914,28 +953,37 @@
     }
 
     const btns = [];
+    // Izbor se ranije video SAMO po boji — čitač ekrana nije imao šta da pročita, pa se na
+    // pitanju sa dva odgovora nije znalo šta je već izabrano. Sada je svaki odgovor
+    // prekidač (aria-pressed), a jedno mesto osvežava i boju i objavu.
+    const osveziIzbor = () => btns.forEach((x) => {
+      const izabran = sel.has(x._ch.id);
+      x.classList.toggle('sel', izabran);
+      x.setAttribute('aria-pressed', izabran ? 'true' : 'false');
+    });
     for (const ch of shuffled) {
       const b = document.createElement('button'); b.className = 'choice'; b.type = 'button';
       b.textContent = T(ch.t); b.dataset.ok = ch.ok;
+      b._ch = ch;
       b.addEventListener('click', () => {
         if (answered) return;
         // klik samo bira; odgovor se uvek potvrđuje dugmetom (da ne bude zaletanja)
-        if (sel.has(ch.id)) { sel.delete(ch.id); b.classList.remove('sel'); }
-        else if (q.req === 1) { sel.clear(); btns.forEach((x) => x.classList.remove('sel')); sel.add(ch.id); b.classList.add('sel'); }
-        else if (sel.size < q.req) { sel.add(ch.id); b.classList.add('sel'); }
+        if (sel.has(ch.id)) sel.delete(ch.id);
+        else if (q.req === 1) { sel.clear(); sel.add(ch.id); }
+        else if (sel.size < q.req) sel.add(ch.id);
+        osveziIzbor();
         confirmBtn.disabled = sel.size !== q.req;
         zapamti();
       });
-      if (sel.has(ch.id)) b.classList.add('sel');   // izbor zapamćen pre ponovnog prikaza
-      b._ch = ch;
       btns.push(b); c.appendChild(b);
     }
+    osveziIzbor();   // izbor zapamćen pre ponovnog prikaza
 
     const actions = document.createElement('div'); actions.className = 'qActions';
 
     // ← prethodno
     if (opts.onPrev) {
-      const pb = document.createElement('button'); pb.className = 'secondary';
+      const pb = document.createElement('button'); pb.className = 'secondary'; pb.dataset.uloga = 'nazad';
       pb.textContent = '← ' + L('prev');
       pb.addEventListener('click', opts.onPrev);
       actions.appendChild(pb);
@@ -979,6 +1027,7 @@
         if (b._ch.ok) b.classList.add('ok');
         else if (isChosen) b.classList.add('bad');
         b.classList.remove('sel');
+        b.setAttribute('aria-pressed', isChosen ? 'true' : 'false');   // ostaje istinito i posle odgovora
         const parts = [];
         if (b._ch.ok) parts.push(`<span class="chip chipOk">✓ ${L('correctAnswer')}</span>`);
         if (isChosen) parts.push(`<span class="chip ${b._ch.ok ? 'chipYourOk' : 'chipYourBad'}">${L('yourAnswer')}</span>`);
@@ -1131,7 +1180,10 @@
     }
     const q = byId.get(m.ids[m.i]);
     if (m.secKey) { S.secPos[m.secKey] = m.i; S.lastSec = m.secKey; save(); }
-    renderProgress(title, m.i + 1, m.ids.length, (n) => { m.i = n; stepList(); }, m.origin, { nazadLbl: m.nazadLbl });
+    // reset čuvara kao kod svakog drugog prelaza (dalje/nazad): bez njega povratak poljem „Idi"
+    // na poziciju koja je već odgovorena u ovom prolazu daje isti recordKey, pa se novi odgovor
+    // NE beleži — korisnik vidi „Tačno!", a brojači i raspored ponavljanja stoje
+    renderProgress(title, m.i + 1, m.ids.length, (n) => { lastRecordKey = null; m.i = n; stepList(); }, m.origin, { nazadLbl: m.nazadLbl });
     // jedno pitanje otvoreno preko adrese (#/p/ID): iza njega nema spiska, pa „dalje" vodi
     // u vežbanje njegove podoblasti, a ne na kraj nepostojećeg spiska
     const kljuc = 's' + q.sub;
@@ -1176,6 +1228,78 @@
     if (naslovi.length < 3) return '';
     return `<div class="skokRed"><span class="mut">${L('skociNaOblast')}:</span>${naslovi
       .map((n, i) => `<button type="button" class="secondary sBtn skokBtn" data-skok="${i}">${escapeHtml(n)}</button>`).join('')}</div>`;
+  }
+  // JEDAN crtač redova za sva tri spiska pitanja (sva pitanja, oblast/podoblast, pogrešna i
+  // obeležena). Razlike su parametri, ne prepisan kôd: naslov grupe (ili bez grupa), dodatak
+  // uz red i šta se dešava na klik. Ranije su postojala tri skoro ista crtača — zato je
+  // pretraga postojala samo na jednom od njih, a svaka izmena morala da se uradi tri puta.
+  // opts: { grupa(q)→tekst|null, naslovOpis(q)→title, dodatak(q, r)→html, naKlik(idx, q) }
+  function crtajRedove(list, ids, opts) {
+    let zadnja = null;
+    ids.forEach((qid, idx) => {
+      const q = byId.get(qid);
+      const g = opts.grupa ? opts.grupa(q) : null;
+      if (g !== null && g !== zadnja) {
+        zadnja = g;
+        // pravi naslov (h4), ne div: po naslovima se u dugačkom spisku skače čitačem ekrana
+        const d = document.createElement('h4');
+        d.className = 'grupaNaslov';
+        d.textContent = g;
+        if (opts.naslovOpis) d.title = opts.naslovOpis(q);
+        d._search = '';
+        list.appendChild(d);
+      }
+      const r = S.q[qid];
+      const b = document.createElement('button');
+      b.className = 'qRow';
+      b.innerHTML = redPitanjaHtml(q, idx, r, opts.dodatak ? opts.dodatak(q, r) : '');
+      b.addEventListener('click', () => opts.naKlik(idx, q));
+      b._search = (T(q.t) + ' ' + q.t.l + ' #' + q.id).toLowerCase();
+      list.appendChild(b);
+    });
+  }
+  // Pretraga po tekstu i broju pitanja — na SVAKOM dovoljno dugačkom spisku, ne samo na
+  // „Sva pitanja". Na kratkom spisku bi bila smetnja, pa je nema.
+  const PRETRAGA_OD = 40;
+  const pretragaHtml = (koliko) => (koliko < PRETRAGA_OD ? ''
+    : `<input id="qSearch" type="search" class="searchBox" placeholder="${escapeHtml(L('searchPh'))}" aria-label="${escapeHtml(L('searchPh'))}">`);
+  function veziPretragu(list) {
+    const sb = el('qSearch');
+    if (!sb) return;
+    // Ishod pretrage se KAŽE, ne samo pokaže: koliko je pogodaka ili da ih nema.
+    // role="status" — ko ne vidi spisak, čuje broj; ranije se spisak menjao u tišini.
+    const stanje = document.createElement('p');
+    stanje.className = 'mut razmakG';
+    stanje.setAttribute('role', 'status');
+    stanje.style.display = 'none';
+    list.appendChild(stanje);   // unutar kartice, ispod redova — tu korisnik i gleda
+    // broj se objavljuje sa odlaganjem: bez toga bi čitač ekrana čitao novo stanje na SVAKO slovo
+    let objavaTimer = null;
+    const objavi = (tekst) => {
+      clearTimeout(objavaTimer);
+      objavaTimer = setTimeout(() => {
+        if (!tekst) { stanje.style.display = 'none'; stanje.textContent = ''; return; }
+        stanje.textContent = tekst; stanje.style.display = '';
+      }, 300);
+    };
+    sb.addEventListener('input', () => {
+      const v = sb.value.trim().toLowerCase();
+      let vidljivih = 0;
+      list.querySelectorAll('.qRow').forEach((row) => {
+        const vidi = !v || row._search.includes(v);
+        row.style.display = vidi ? '' : 'none';
+        if (vidi) vidljivih++;
+      });
+      // dok traje pretraga sklanja se sve što nije pogodak: naslovi grupa (rezultati su izmešani),
+      // spisak podoblasti i red za skok — naslovi na koje bi vodio su sakriveni
+      list.querySelectorAll('.grupaNaslov, .skrijUPretrazi, .skokRed').forEach((d) => { d.style.display = v ? 'none' : ''; });
+      // bez ovoga korisnik dobije praznu belu karticu i ne zna da li traži pogrešno ili je nešto puklo
+      // split/join, NE replace: u zameni se „$'" i „$&" tumače kao naredbe, pa bi upit
+      // sa tim znakovima izlomio poruku (npr. udvostručio pola rečenice)
+      if (!v) objavi(null);
+      else if (!vidljivih) objavi(L('searchEmpty').split('@1').join(sb.value.trim()));
+      else objavi(vidljivih === 1 ? L('searchHitsOne') : L('searchHits').split('@1').join(vidljivih));
+    });
   }
   function veziSkok(koren, spisak) {
     koren.querySelectorAll('.skokBtn').forEach((b) => b.addEventListener('click', () => {
@@ -1276,12 +1400,23 @@
     const t = document.getElementById('topbar');
     return t ? t.getBoundingClientRect().height : 0;
   }
-  function sklopivo(btn, grupa, cilj) {
+  // `napuni` (neobavezno): sadržaj se pravi tek pri PRVOM otvaranju. Sklopljene kartice su
+  // inače gradile hiljade skrivenih elemenata (pojmovnik na početnoj, pregled ispita) i
+  // povlačile slike koje se nikad ne vide.
+  // sadržaj se pravi najviše jednom, ma ko ga otvorio (dugme kartice ili „Otvori sva pitanja")
+  function napuniAko(cd) {
+    if (!cd || !cd._napuni || cd._napunjeno) return;
+    cd._napunjeno = true;
+    cd._napuni(cd);
+  }
+  function sklopivo(btn, grupa, cilj, napuni) {
     const cd = cilj || btn.nextElementSibling;
     if (!cd) return;
+    if (napuni) cd._napuni = napuni;
     btn.setAttribute('aria-expanded', cd.style.display === 'none' ? 'false' : 'true');
     btn.addEventListener('click', () => {
       const otvaram = cd.style.display === 'none';
+      if (otvaram) napuniAko(cd);
       const preTop = btn.getBoundingClientRect().top;
       if (grupa) {
         grupa.querySelectorAll('.explCard').forEach((x) => { x.style.display = 'none'; });
@@ -1344,6 +1479,62 @@
     { p: 2, s: [131] }, { p: 2, s: [132] }, { p: 3, s: [135] }, { p: 3, s: [135] }, { p: 3, s: [135] },
     { p: 2, s: [136] }, { p: 2, s: [137] }, { p: 2, s: [140] }, { p: 2, s: [144] }, { p: 2, s: [145] },
   ];
+  // ---------- Ispit u toku preživljava osvežavanje ----------
+  // Na pravom ispitu odgovori idu na server, pa osvežavanje strane ili ugašen tab ne poništavaju
+  // pokušaj — vreme i dalje teče. Kod nas je ceo ispit živeo u jednoj promenljivoj, pa je F5
+  // (ili telefon koji izbaci tab iz memorije) brisao 45 minuta rada. Zato se tok ispita upisuje
+  // posebno od napretka: ispit u toku NIJE napredak i ne ulazi u izvoz.
+  const SIM_KEY = 'vozackiA.sim';
+  function simSnimi() {
+    if (!sim) return;
+    try {
+      localStorage.setItem(SIM_KEY, JSON.stringify({
+        v: 1,
+        d: sim.deadline,
+        i: sim.i,
+        r: sim.showReport ? 1 : 0,
+        qs: sim.qs.map((sq) => ({ id: sq.q.id, o: sq.order.map((c) => c.id), c: [...sq.chosen], m: sq.marked ? 1 : 0 })),
+      }));
+    } catch (e) { /* skladište odbija upis — na to već upozorava upozoriDaSeNeCuva() */ }
+  }
+  function simObrisi() { try { localStorage.removeItem(SIM_KEY); } catch (e) { /* nema šta da se radi */ } }
+  // Vraća ispit iz zapisa ili null. Sve što nije tačno onako kako je upisano — druga verzija
+  // zapisa, pitanje kog više nema u bazi, izmenjeni odgovori — briše zapis i vraća null:
+  // pola ispita je gore od nijednog.
+  function simVrati() {
+    let z = null;
+    try { z = JSON.parse(localStorage.getItem(SIM_KEY) || 'null'); } catch (e) { z = null; }
+    if (!z || z.v !== 1 || !Array.isArray(z.qs) || z.qs.length !== SIM_N || typeof z.d !== 'number' || !Number.isFinite(z.d)) { simObrisi(); return null; }
+    const qs = [];
+    for (const s of z.qs) {
+      const q = s && Number.isInteger(s.id) ? byId.get(s.id) : null;
+      if (!q) { simObrisi(); return null; }
+      const po = new Map(q.ch.map((c) => [c.id, c]));
+      const order = (Array.isArray(s.o) ? s.o : []).map((id) => po.get(id)).filter(Boolean);
+      if (order.length !== q.ch.length) { simObrisi(); return null; }
+      const chosen = new Set((Array.isArray(s.c) ? s.c : []).filter((id) => po.has(id)).slice(0, q.req));
+      qs.push({ q, order, chosen, marked: s.m === 1 });
+    }
+    return { qs, i: nInt(z.i, 0, SIM_N - 1, 0), showReport: z.r === 1, deadline: z.d, timerId: null };
+  }
+  // Vraća true ako je ispit nastavljen (ili istekao i završen) — tada rutiranje nema šta da radi.
+  function simNastavi() {
+    if (sim) return false;
+    const s = simVrati();
+    if (!s) return false;
+    sim = s;
+    current = { redraw: () => { applySimLabels(); sim.showReport ? renderSimReport() : renderSimQ(); } };
+    setHash('#/sim');
+    applySimLabels();
+    show('sim');
+    sim.timerId = setInterval(tickSim, 500);
+    tickSim();                       // ako je vreme isteklo dok te nije bilo, ovo završava ispit
+    if (!sim) { poruci(L('porSimIsteklo')); return true; }
+    sim.showReport ? renderSimReport() : renderSimQ();
+    poruci(L('porSimVracena'));
+    return true;
+  }
+
   function buildSimSet() {
     const used = new Set();
     const pick = [];
@@ -1387,6 +1578,7 @@
 
   function startSim() {
     if (sim) { clearInterval(sim.timerId); sim = null; }   // defanzivno: nikad dva tajmera
+    { const ub = document.getElementById('updBar'); if (ub) ub.remove(); }   // ekran ispita je čist, kao pravi
     const set = buildSimSet();
     sim = {
       qs: set.map((q) => {
@@ -1405,7 +1597,7 @@
     show('sim');
     sim.timerId = setInterval(tickSim, 500);
     tickSim();
-    renderSimQ();
+    renderSimQ();      // renderSimQ upisuje tok ispita (simSnimi na kraju)
   }
   function applySimLabels() {
     el('btnFinishSim').textContent = L('finishSim');
@@ -1443,27 +1635,33 @@
       c.appendChild(rq);
     }
     if (q.img) c.appendChild(slikaPitanja(q));
-    for (const ch of sq.order) {
+    sq.order.forEach((ch, redni) => {
       const b = document.createElement('button'); b.className = 'choice' + (sq.chosen.has(ch.id) ? ' sel' : ''); b.type = 'button';
       b.textContent = T(ch.t);
+      b.setAttribute('aria-pressed', sq.chosen.has(ch.id) ? 'true' : 'false');
       b.addEventListener('click', () => {
         if (q.req === 1) { sq.chosen.clear(); sq.chosen.add(ch.id); }
         else if (sq.chosen.has(ch.id)) sq.chosen.delete(ch.id);
         else if (sq.chosen.size < q.req) sq.chosen.add(ch.id);
         renderSimQ();
+        // kartica se ponovo gradi, pa bi fokus pao na telo strane — tastatura bi
+        // posle svakog izbora morala ispočetka. Vraća se na isti odgovor.
+        const nov = el('simQCard').querySelectorAll('.choice')[redni];
+        if (nov && document.activeElement === document.body) nov.focus({ preventScroll: true });
       });
       c.appendChild(b);
-    }
+    });
     const actions = document.createElement('div'); actions.className = 'qActions';
-    if (sim.i > 0) { const p = document.createElement('button'); p.className = 'secondary'; p.textContent = '‹ ' + L('prevQ'); p.addEventListener('click', () => { if (!simSmeDalje()) return; sim.i--; renderSimQ(); }); actions.appendChild(p); }
-    if (sim.i < SIM_N - 1) { const n = document.createElement('button'); n.className = 'primary'; n.textContent = L('nextQ') + ' ›'; n.addEventListener('click', () => { if (!simSmeDalje()) return; sim.i++; renderSimQ(); }); actions.appendChild(n); }
+    if (sim.i > 0) { const p = document.createElement('button'); p.className = 'secondary'; p.dataset.uloga = 'nazad'; p.textContent = '‹ ' + L('prevQ'); p.addEventListener('click', () => { if (!simSmeDalje()) return; sim.i--; renderSimQ(); }); actions.appendChild(p); }
+    if (sim.i < SIM_N - 1) { const n = document.createElement('button'); n.className = 'primary'; n.dataset.uloga = 'dalje'; n.textContent = L('nextQ') + ' ›'; n.addEventListener('click', () => { if (!simSmeDalje()) return; sim.i++; renderSimQ(); }); actions.appendChild(n); }
     // Obeležavanje pitanja postoji i na pravom ispitu
     const markWrap = document.createElement('label'); markWrap.className = 'markBox';
     const cb = document.createElement('input'); cb.type = 'checkbox'; cb.checked = sq.marked;
-    cb.addEventListener('change', () => { sq.marked = cb.checked; });
+    cb.addEventListener('change', () => { sq.marked = cb.checked; simSnimi(); });
     markWrap.appendChild(cb); markWrap.appendChild(document.createTextNode(' ' + L('markSim')));
     actions.appendChild(markWrap);
     c.appendChild(actions);
+    simSnimi();        // JEDNO mesto: svaka promena pitanja/izbora prolazi kroz crtanje
   }
   // Kao na ispitu (SaveUserInput u ep.js): pitanje sa VIŠE odgovora ne može da se napusti dok
   // nije označen ni jedan ili tačno traženi broj — pola odgovora zaustavlja i poruči.
@@ -1491,6 +1689,7 @@
       tr.addEventListener('keydown', (ev) => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); go(); } });
     });
     el('btnRepBack').addEventListener('click', renderSimQ);
+    simSnimi();
   }
   function finishSim(auto) {
     if (!sim) return;
@@ -1517,7 +1716,9 @@
     const passed = score >= threshold;
     const rec = { d: Date.now(), score, total, passed, wrong: wrong.map((x) => x.q.id), qs: sim.qs.map((sq) => ({ id: sq.q.id, ch: [...sq.chosen] })) };
     S.sims.push(rec);
+    if (S.sims.length > 500) S.sims = S.sims.slice(-500);   // ista granica kao pri učitavanju
     sim = null;          // zatvori ispit PRE upisa — neuspeo upis ne sme da ga zaglavi
+    simObrisi();         // ispit je gotov: sačuvani tok se briše, da se ne obnovi posle osvežavanja
     save();
     renderSimReview(rec, true);
   }
@@ -1563,22 +1764,27 @@
     const wl = el('simWrongList');
     wl.innerHTML = '';
     const reviewCard = (q, chosen) => {
-      const card = document.createElement('div'); card.className = 'card';
-      const chips = (ch) => {
-        const parts = [];
-        if (ch.ok) parts.push(`<span class="chip chipOk">✓ ${L('correctAnswer')}</span>`);
-        if (chosen && chosen.has(ch.id)) parts.push(`<span class="chip ${ch.ok ? 'chipYourOk' : 'chipYourBad'}">${L('yourAnswer')}</span>`);
-        return parts.length ? `<span class="chipWrap">${parts.join(' ')}</span>` : '';
+      // Telo pregleda se pravi tek pri otvaranju: 41 sklopljeno pitanje je inače gradilo oko
+      // 552.000 znakova skrivenog HTML-a i povlačilo ~1,3 MB slika koje se ne vide.
+      const napraviTelo = () => {
+        const card = document.createElement('div'); card.className = 'card';
+        const chips = (ch) => {
+          const parts = [];
+          if (ch.ok) parts.push(`<span class="chip chipOk">✓ ${L('correctAnswer')}</span>`);
+          if (chosen && chosen.has(ch.id)) parts.push(`<span class="chip ${ch.ok ? 'chipYourOk' : 'chipYourBad'}">${L('yourAnswer')}</span>`);
+          return parts.length ? `<span class="chipWrap">${parts.join(' ')}</span>` : '';
+        };
+        card.innerHTML = `<div class="qMeta"><span>${escapeHtml(catOf(q))}</span><span><span class="qNum" title="${escapeHtml(L('qNumTip'))}">#${q.id}</span> · ${poeni(q.pts)}</span></div>
+          <div class="qText">${escapeHtml(T(q.t))}</div>
+          ${q.req > 1 ? `<div class="reqNote">${L('requiresN').replace('#', q.req)}</div>` : ''}
+          ${chosen && chosen.size === 0 ? `<div class="noAnsw">${L('notAnswered')}</div>` : ''}
+          ${q.img ? `<button type="button" class="qImgBtn" aria-label="${escapeHtml(L('uvecajSliku'))}"><img class="qImg" loading="lazy" src="img/${q.id}.jpg" alt="${escapeHtml(L('imgAlt'))}"></button>` : ''}
+          ${q.ch.map((ch) => `<div class="choice rev${ch.ok ? ' ok' : (chosen && chosen.has(ch.id) ? ' bad' : '')}">${escapeHtml(T(ch.t))}${chips(ch)}</div>`).join('')}`;
+        { const im = card.querySelector('img.qImg'); if (im) pratiSliku(im); }
+        const ex = explNode(q);
+        if (ex) card.appendChild(ex);
+        return card;
       };
-      card.innerHTML = `<div class="qMeta"><span>${escapeHtml(catOf(q))}</span><span><span class="qNum" title="${escapeHtml(L('qNumTip'))}">#${q.id}</span> · ${poeni(q.pts)}</span></div>
-        <div class="qText">${escapeHtml(T(q.t))}</div>
-        ${q.req > 1 ? `<div class="reqNote">${L('requiresN').replace('#', q.req)}</div>` : ''}
-        ${chosen && chosen.size === 0 ? `<div class="noAnsw">${L('notAnswered')}</div>` : ''}
-        ${q.img ? `<img class="qImg" src="img/${q.id}.jpg" alt="${escapeHtml(L('imgAlt'))}">` : ''}
-        ${q.ch.map((ch) => `<div class="choice rev${ch.ok ? ' ok' : (chosen && chosen.has(ch.id) ? ' bad' : '')}">${escapeHtml(T(ch.t))}${chips(ch)}</div>`).join('')}`;
-      { const im = card.querySelector('img.qImg'); if (im) pratiSliku(im); }
-      const ex = explNode(q);
-      if (ex) card.appendChild(ex);
       // Sklopljeno na jedan red: 40 otvorenih pregleda je pravilo stranu od 34.000px na telefonu.
       // Naslov kaže sve što treba za odluku „otvoriti ili ne": ishod, broj i početak pitanja.
       const omot = document.createElement('div');
@@ -1592,9 +1798,8 @@
       const telo = document.createElement('div');
       telo.className = 'explCard';
       telo.style.display = 'none';
-      telo.appendChild(card);
       omot.append(btn, telo);
-      sklopivo(btn);
+      sklopivo(btn, null, null, (cd) => cd.appendChild(napraviTelo()));
       return omot;
     };
     // jedno dugme za sve — ko hoće da pregleda ceo test, ne otvara 40 puta
@@ -1608,6 +1813,7 @@
         const stavke = [...drzac.querySelectorAll('.pregledStavka > .explCard')];
         const otvaram = stavke.some((x) => x.style.display === 'none');
         stavke.forEach((x) => {
+          if (otvaram) napuniAko(x);   // tela se prave tek sad, isto kao pri pojedinačnom otvaranju
           x.style.display = otvaram ? '' : 'none';
           const naslov = x.parentElement.querySelector('.pregledNaslov');
           if (naslov) naslov.setAttribute('aria-expanded', otvaram ? 'true' : 'false');
@@ -1730,6 +1936,7 @@
     if (!ids.length) return goHomeReplace();   // zastarela adresa posle osvežavanja baze
     current = { redraw: () => browse(key) };
     setHash('#/sek/' + key);
+    pamtiSkrolSpiska('#/sek/' + key);
     let seen = 0, att = 0, wr = 0, inQ = 0, unseen = [], wrongNow = [];
     for (const qid of ids) {
       const r = S.q[qid];
@@ -1737,7 +1944,9 @@
       if (inQueue(qid)) { inQ++; wrongNow.push(qid); }
     }
     const acc = att ? Math.round(100 * (att - wr) / att) : null;
-    const pos = S.secPos[key] || 0;
+    // sačuvana pozicija se ograničava na tekuću dužinu spiska: ako se baza smanji, natpis
+    // dugmeta bi inače pisao „Nastavi (900/471)" (samo prikaz — startList je i ranije bio siguran)
+    const pos = Math.min(S.secPos[key] || 0, Math.max(0, ids.length - 1));
 
     const head = el('browseHead');
     const catQ = type === 's' ? byId.get(ids[0]) : null;
@@ -1768,14 +1977,14 @@
     list.innerHTML = '';
     if (type === 'c') {
       const subIds = [...new Set(Q.filter((q) => q.cat === id).map((q) => q.sub))];
-      const sh = document.createElement('h3'); sh.textContent = L('podoblasti'); list.appendChild(sh);
+      const sh = document.createElement('h3'); sh.className = 'skrijUPretrazi'; sh.textContent = L('podoblasti'); list.appendChild(sh);
       for (const sid of subIds) {
         const sq = Q.filter((q) => q.sub === sid);
         const sSeen = sq.filter((q) => S.q[q.id] && S.q[q.id].a > 0).length;
         let sAtt = 0, sWr = 0;
         for (const q of sq) { const r = S.q[q.id]; if (r) { sAtt += r.a; sWr += r.w; } }
         const sAcc = sAtt ? Math.round(100 * (sAtt - sWr) / sAtt) : null;
-        const b = document.createElement('button'); b.className = 'subRow';
+        const b = document.createElement('button'); b.className = 'subRow skrijUPretrazi';
         b.title = T({ l: D.subs[sid].l, c: D.subs[sid].c });
         const naIsp = NA_ISPITU[sid];
         b.innerHTML = `<span class="subName">${escapeHtml(subShortName(sid))}${naIsp ? ` <span class="subExam" title="${escapeHtml(L('naIspituTip'))}">${L('naIspitu').replace('#', naIsp)}</span>` : ''}</span>
@@ -1786,27 +1995,16 @@
       }
     }
     const qh = document.createElement('h3'); qh.textContent = L('allQuestions'); list.appendChild(qh);
-    list.insertAdjacentHTML('beforeend', legendHtml());
-    let lastSub = null;
-    ids.forEach((qid, idx) => {
-      const q = byId.get(qid);
-      if (type === 'c' && q.sub !== lastSub) {
-        lastSub = q.sub;
-        const d = document.createElement('div');
-        d.className = 'grupaNaslov';
-        d.title = T({ l: D.subs[q.sub].l, c: D.subs[q.sub].c });
-        d.textContent = subShortName(q.sub);
-        list.appendChild(d);
-      }
-      const r = S.q[qid];
-      const b = document.createElement('button'); b.className = 'qRow';
-      b.innerHTML = redPitanjaHtml(q, idx, r);
-      b.addEventListener('click', () => {
+    list.insertAdjacentHTML('beforeend', pretragaHtml(ids.length) + legendHtml());
+    crtajRedove(list, ids, {
+      grupa: type === 'c' ? ((q) => subShortName(q.sub)) : null,
+      naslovOpis: (q) => T({ l: D.subs[q.sub].l, c: D.subs[q.sub].c }),
+      naKlik: (idx) => {
         if (shuffleOn) rowStart(ids, idx, secTitleFn(key), origin);
         else startList(ids, secTitleFn(key), null, 'section', { secKey: key, startAt: idx, origin });
-      });
-      list.appendChild(b);
+      },
     });
+    veziPretragu(list);
     if (type === 'c') {
       const naslovi = [...list.querySelectorAll('.grupaNaslov')].map((n) => n.textContent);
       const drz = document.createElement('div');
@@ -1823,6 +2021,7 @@
   function browseAll() {
     current = { redraw: browseAll };
     setHash('#/sva');
+    pamtiSkrolSpiska('#/sva');
     let seen = 0, att = 0, wr = 0, inQ = 0;
     const unseen = [], wrongNow = [];
     for (const q of Q) {
@@ -1857,55 +2056,15 @@
     const list = el('browseList');
     const imenaOblasti = [];
     { let zadnja = null; for (const q of Q) { if (q.cat !== zadnja) { zadnja = q.cat; const c = D.cats.find((x) => x.id === q.cat); imenaOblasti.push(c ? T({ l: c.l, c: c.c }) : ''); } } }
-    list.innerHTML = `<h3>${L('allQuestions')}</h3>
-      <input id="qSearch" type="search" class="searchBox" placeholder="${escapeHtml(L('searchPh'))}" aria-label="${escapeHtml(L('searchPh'))}">`
+    list.innerHTML = `<h3>${L('allQuestions')}</h3>` + pretragaHtml(Q.length)
       + skokNaOblastHtml(imenaOblasti) + legendHtml();
     const allIds = Q.map((q) => q.id);
-    let lastCat = null;
-    Q.forEach((q, idx) => {
-      if (q.cat !== lastCat) {
-        lastCat = q.cat;
-        const cat = D.cats.find((x) => x.id === q.cat);
-        const d = document.createElement('div');
-        d.className = 'grupaNaslov';
-        d.textContent = cat ? T({ l: cat.l, c: cat.c }) : '';
-        d._search = '';
-        list.appendChild(d);
-      }
-      const r = S.q[q.id];
-      const b = document.createElement('button'); b.className = 'qRow';
-      b.innerHTML = redPitanjaHtml(q, idx, r);
-      b.addEventListener('click', () => {
-        if (shuffleOn) rowStart(allIds, idx, () => L('allPage'), browseAll);
-        else startLearn(idx);
-      });
-      b._search = (T(q.t) + ' ' + q.t.l + ' #' + q.id).toLowerCase();
-      list.appendChild(b);
+    const imeOblasti = (q) => { const c = D.cats.find((x) => x.id === q.cat); return c ? T({ l: c.l, c: c.c }) : ''; };
+    crtajRedove(list, allIds, {
+      grupa: imeOblasti,
+      naKlik: (idx) => { if (shuffleOn) rowStart(allIds, idx, () => L('allPage'), browseAll); else startLearn(idx); },
     });
-    const sb = el('qSearch');
-    // poruka kad nema pogodaka: pravi se jednom, samo se pokazuje/skriva
-    const prazno = document.createElement('p');
-    prazno.className = 'mut razmakG';
-    prazno.style.display = 'none';
-    list.appendChild(prazno);   // unutar kartice, ispod redova — tu korisnik i gleda
-    sb.addEventListener('input', () => {
-      const v = sb.value.trim().toLowerCase();
-      let vidljivih = 0;
-      list.querySelectorAll('.qRow').forEach((row) => {
-        const vidi = !v || row._search.includes(v);
-        row.style.display = vidi ? '' : 'none';
-        if (vidi) vidljivih++;
-      });
-      // dok traje pretraga, naslovi oblasti se sklanjaju (rezultati su izmešani)
-      list.querySelectorAll('.grupaNaslov').forEach((d) => { d.style.display = v ? 'none' : ''; });
-      // bez ovoga korisnik dobije praznu belu karticu i ne zna da li traži pogrešno ili je nešto puklo
-      // split/join, NE replace: u zameni se „$'" i „$&" tumače kao naredbe, pa bi upit
-      // sa tim znakovima izlomio poruku (npr. udvostručio pola rečenice)
-      if (v && !vidljivih) { prazno.textContent = L('searchEmpty').split('@1').join(sb.value.trim()); prazno.style.display = ''; }
-      else prazno.style.display = 'none';
-      // dok traje pretraga skok na oblast nema smisla — naslovi su sakriveni
-      const sk = list.querySelector('.skokRed'); if (sk) sk.style.display = v ? 'none' : '';
-    });
+    veziPretragu(list);
     veziSkok(list, list);
     show('browse');
     veziNaVrh();
@@ -1915,6 +2074,7 @@
   function browseSet(setKind) {
     current = { redraw: () => browseSet(setKind) };
     setHash('#/lista/' + (setKind === 'wrong' ? 'wrong' : 'marked'));
+    pamtiSkrolSpiska('#/lista/' + (setKind === 'wrong' ? 'wrong' : 'marked'));
     const isWrong = setKind === 'wrong';
     const title = isWrong ? L('drill') : L('marked');
     let ids, ready = [], waiting = [], stale = [];
@@ -1937,6 +2097,7 @@
       el('browseList').innerHTML = '';
       el('browseList').hidden = true;   // prazan .card je inače ostajao kao beli pravougaonik
       show('browse');
+      veziNaVrh();
       return;
     }
     el('browseList').hidden = false;
@@ -1964,25 +2125,24 @@
     const bm = el('bAllM'); if (bm) bm.addEventListener('click', () => startList(maybeShuffle(ids), shufTag(() => L('marked')), null, 'filter', { origin }));
 
     const list = el('browseList');
-    list.innerHTML = legendHtml();
+    list.innerHTML = pretragaHtml(ids.length) + legendHtml();
     const now = Date.now();
-    ids.forEach((qid, idx) => {
-      const q = byId.get(qid);
-      const r = S.q[qid];
-      let dueTag = '';
-      if (isWrong && r && (r.due || 0) > now) {
+    crtajRedove(list, ids, {
+      dodatak: (q, r) => {
+        if (!isWrong || !r || (r.due || 0) <= now) return '';
         const days = Math.ceil((r.due - now) / DAY);
-        dueTag = ` <span class="mut">(${days <= 1 ? L('dueTomorrow') : (one(days) ? L('dueDaysOne') : L('dueDays')).replace('#', days)})</span>`;
-      }
-      const b = document.createElement('button'); b.className = 'qRow';
-      b.innerHTML = redPitanjaHtml(q, idx, r, dueTag);
-      b.addEventListener('click', () => {
+        return ` <span class="mut">(${days <= 1 ? L('dueTomorrow') : (one(days) ? L('dueDaysOne') : L('dueDays')).replace('#', days)})</span>`;
+      },
+      naKlik: (idx) => {
         if (shuffleOn) rowStart(ids, idx, () => title, origin);
         else startList(ids, () => title, null, isWrong ? 'drill-all' : 'filter', { startAt: idx, origin });
-      });
-      list.appendChild(b);
+      },
     });
+    veziPretragu(list);
     show('browse');
+    // i ova strana ume da bude duboka (svi pogrešni, sve obeleženo) — dugme „na vrh" je i
+    // ranije umelo da se pojavi ovde, ali samo ako se pre toga posetila strana koja ga pravi
+    veziNaVrh();
   }
 
   // ---------- Automatski upis napretka u fajl (File System Access) ----------
@@ -2002,15 +2162,48 @@
   async function idbSet(k, v) { const db = await idb(); return new Promise((res, rej) => { const tx = db.transaction('kv', 'readwrite'); tx.objectStore('kv').put(v, k); tx.oncomplete = res; tx.onerror = () => rej(tx.error); }); }
   async function idbGet(k) { const db = await idb(); return new Promise((res, rej) => { const tx = db.transaction('kv', 'readonly'); const g = tx.objectStore('kv').get(k); g.onsuccess = () => res(g.result); g.onerror = () => rej(g.error); }); }
 
+  // Rezerva u fajl se ranije gasila na PRVU grešku, ma kakva bila, i to bez ijedne reči: jedini
+  // trag je bilo dugme koje se vrati u podešavanjima, gde korisnik i ne gleda. Sada:
+  //  · izgubljena dozvola je jedini razlog za gašenje (tad dugme za ponovno povezivanje ima smisla),
+  //  · prolazna greška (zaključan fajl, dva upisa u letu) dobija još jedan pokušaj,
+  //  · ako ni on ne prođe, kaže se naglas i rezerva OSTAJE uključena,
+  //  · upis se ne preklapa sam sa sobom (ista brava kao kod povezivanja),
+  //  · piše se preko postojećeg sadržaja pa se dužina skrati na kraju — prekid struje između
+  //    upisa i zatvaranja ne ostavlja prazan fajl umesto kopije.
+  let upisUToku = false;
+  let upozorenONeuspehuRezerve = false;
+  async function upisiRezervu() {
+    const tekst = JSON.stringify(S);
+    const w = await fsHandle.createWritable({ keepExistingData: true });
+    await w.write({ type: 'write', position: 0, data: tekst });
+    await w.truncate(new Blob([tekst]).size);
+    await w.close();
+  }
   function scheduleBackup() {
     if (!fsHandle) return;
     clearTimeout(backupTimer);
     backupTimer = setTimeout(async () => {
+      if (!fsHandle || upisUToku) return;
+      upisUToku = true;
       try {
-        const w = await fsHandle.createWritable();
-        await w.write(JSON.stringify(S));
-        await w.close();
-      } catch (e) { /* dozvola istekla — dugme će se ponovo pojaviti */ fsPending = fsHandle; fsHandle = null; renderBackupLine(); }
+        try {
+          await upisiRezervu();
+        } catch (e) {
+          if (e && (e.name === 'NotAllowedError' || e.name === 'SecurityError')) throw e;
+          await new Promise((r) => setTimeout(r, 2000));   // prolazna smetnja — još jedan pokušaj
+          await upisiRezervu();
+        }
+        upozorenONeuspehuRezerve = false;
+      } catch (e) {
+        if (e && (e.name === 'NotAllowedError' || e.name === 'SecurityError')) {
+          fsPending = fsHandle; fsHandle = null; renderBackupLine();   // dozvola istekla
+          trakaUpozorenja(L('rezervaDozvola'));
+        } else if (!upozorenONeuspehuRezerve) {
+          upozorenONeuspehuRezerve = true;
+          console.warn('Rezerva u fajl nije upisana:', e);
+          trakaUpozorenja(L('rezervaNeuspeh'));
+        }
+      } finally { upisUToku = false; }
     }, 800);
   }
   let povezivanjeUToku = false;
@@ -2419,7 +2612,7 @@
     fq.style.display = '';
     fq.innerHTML = `<div><button class="explCardBtn pojBtn istaknuto">${L('oVezbaonici')}</button>
       <div class="explCard" style="display:none">${L('trustBody').split('@1').join(fmtDatum(BAZA_PROVERENA))}
-      ${(EX.cards && EX.cards.faq) ? `<div class="grupaNaslov">${escapeHtml(T(EX.cards.faq.t))}</div>${T(EX.cards.faq.h)}` : ''}</div></div>`;
+      ${(EX.cards && EX.cards.faq) ? `<h4 class="grupaNaslov">${escapeHtml(T(EX.cards.faq.t))}</h4>${T(EX.cards.faq.h)}` : ''}</div></div>`;
     sklopivo(fq.querySelector('.explCardBtn'));
 
     const gc = el('guideCard');
@@ -2446,25 +2639,27 @@
       ];
       const stavljene = new Set();
       let html = `<h3>📖 ${L('pojmovnik')}</h3><p class="mut napomena">${L('pojmovnikSub')}</p>`;
-      const entry = (k) => `<div class="pojEntry"><button class="explCardBtn pojBtn">📖 ${escapeHtml(T(EX.cards[k].t))}</button><div class="explCard" style="display:none">${T(EX.cards[k].h)}</div></div>`;
+      // telo kartice se NE gradi unapred (33 kartice = oko 4.900 skrivenih elemenata pri
+      // svakom crtanju početne); pravi se pri prvom otvaranju, ključ stoji u data-poj
+      const entry = (k) => `<div class="pojEntry"><button class="explCardBtn pojBtn" data-poj="${escapeHtml(k)}">📖 ${escapeHtml(T(EX.cards[k].t))}</button><div class="explCard" style="display:none"></div></div>`;
       for (const [gk, keys] of GRUPE) {
         const imaju = keys.filter((k) => cardKeys.includes(k));
         if (!imaju.length) continue;
-        html += `<div class="grupaNaslov">${escapeHtml(L(gk))}</div>`;
+        html += `<h4 class="grupaNaslov">${escapeHtml(L(gk))}</h4>`;
         for (const k of imaju) { html += entry(k); stavljene.add(k); }
       }
       const ostatak = cardKeys.filter((k) => !stavljene.has(k));
       for (const k of ostatak) html += entry(k);
       pk.innerHTML = html;
       // akordeon: otvaranje jedne kartice sklapa prethodno otvorenu
-      pk.querySelectorAll('.explCardBtn').forEach((btn) => sklopivo(btn, pk));
+      pk.querySelectorAll('.explCardBtn').forEach((btn) => sklopivo(btn, pk, null, (cd) => { cd.innerHTML = T(EX.cards[btn.dataset.poj].h); }));
     }
 
     // Četiri imenovane grupe umesto jednog reda nabacanih dugmadi. Podaci o bazi i prijava
     // greške su odavde preseljeni u podnožje — tamo ih ljudi i traže.
     el('dataTools').innerHTML = `
       <div class="podGrupa">
-        <div class="grupaNaslov">${L('grupaNapredak')}</div>
+        <h4 class="grupaNaslov">${L('grupaNapredak')}</h4>
         <div class="mut napomena">${L('persistNote')}</div>
         <div class="podDugmad">
           <span id="backupSlot" style="display:none"></span>
@@ -2475,7 +2670,7 @@
         <div id="backupLine" class="mut napomena razmakG"></div>
       </div>
       <div class="podGrupa">
-        <div class="grupaNaslov">${L('grupaAplikacija')}</div>
+        <h4 class="grupaNaslov">${L('grupaAplikacija')}</h4>
         <div class="podDugmad">
           <button type="button" class="secondary" id="btnInstall" style="display:none">${L('installBtn')}</button>
           <button type="button" class="secondary" id="btnCheckUpd">${L('updRepoCheck')}</button>
@@ -2488,7 +2683,7 @@
         <div id="installWhat" class="razmakG"><button type="button" class="explCardBtn pojBtn">${L('installWhatTitle')}</button><div class="explCard" style="display:none">${L('installWhatBody')}</div></div>
       </div>
       <div class="podGrupa" id="planGrupa">
-        <div class="grupaNaslov">${L('planNaslov')}</div>
+        <h4 class="grupaNaslov">${L('planNaslov')}</h4>
         <div class="tekstSm"><label>${L('examDateLabel')}
           <input type="date" id="examDate" value="${S.examDate || ''}"></label></div>
         <div class="mut napomena">${L('planKratko')}
@@ -2508,7 +2703,7 @@
         <div id="planPoruka" class="mut razmakG"></div>
       </div>
       <div class="podGrupa podOpasno">
-        <div class="grupaNaslov">${L('grupaOprezno')}</div>
+        <h4 class="grupaNaslov">${L('grupaOprezno')}</h4>
         <div class="qActions"><button type="button" class="danger" id="btnReset">${L('reset')}</button></div>
         <div class="mut napomena">${L('resetNapomena')}</div>
       </div>`;
@@ -2656,6 +2851,7 @@
     if (!confirm(L('simLeaveConfirm'))) return false;
     clearInterval(sim.timerId);
     sim = null;
+    simObrisi();       // napušten ispit se ne obnavlja pri sledećem pokretanju
     return true;
   }
   function bindNav(root) {
@@ -2696,7 +2892,10 @@
 
   // Klik na sliku pitanja otvara uvećan prikaz preko celog ekrana; klik ili Escape zatvara.
   document.addEventListener('click', (ev) => {
-    const slika = ev.target.closest && ev.target.closest('img.qImg');
+    // dugme (tastatura: Enter/razmak šalju klik na dugme) ili sama slika (miš)
+    const meta = ev.target.closest && ev.target.closest('.qImgBtn, img.qImg');
+    if (!meta) return;
+    const slika = meta.tagName === 'IMG' ? meta : meta.querySelector('img.qImg');
     if (!slika) return;
     if (!slika.naturalWidth) return;                  // slika se nije učitala — nema šta da se uveća
     if (document.getElementById('imgZoom')) return;   // jedno uvećanje, ne gomila njih jedno preko drugog
@@ -2732,11 +2931,13 @@
     if (sv && sim && sim.showReport) return;   // dok je Izveštaj otvoren, prečice ne diraju pitanja
     const root = qv ? el('qCard') : el('simQCard');
     const actionBtns = [...root.querySelectorAll('.qActions button')];
+    // Dugmad se traže po ULOZI (data-uloga), ne po natpisu: natpis zavisi od pisma i od
+    // toga da li je pitanje odgovoreno, pa je prečica ranije zavisila od teksta na dugmetu.
     if (e.key === 'ArrowRight') {
-      const b = actionBtns.find((x) => x.dataset.uloga === 'dalje') || actionBtns.find((x) => /→|Sledeće|Следеће|Preskoči|Прескочи/.test(x.textContent));
+      const b = actionBtns.find((x) => x.dataset.uloga === 'dalje');
       if (b) { b.click(); e.preventDefault(); }
     } else if (e.key === 'ArrowLeft') {
-      const b = actionBtns.find((x) => /←|Prethodno|Претходно/.test(x.textContent));
+      const b = actionBtns.find((x) => x.dataset.uloga === 'nazad');
       if (b) { b.click(); e.preventDefault(); }
     } else if (/^[1-9]$/.test(e.key)) {
       const cs = [...root.querySelectorAll('.choice')].filter((x) => !x.disabled);
@@ -2844,6 +3045,7 @@
   const BOOT_V = window.APP_V || 0;
   function checkVersion() {
     if (!BOOT_V || FILE_MODE || document.getElementById('updBar')) return;
+    if (sim) return;   // usred ispita se traka ne pokazuje: klik na nju osvežava stranu i gasi ispit
     const sc = document.createElement('script');
     sc.src = 'version.js?ts=' + Date.now();
     sc.onload = () => {
@@ -3094,7 +3296,15 @@
   applyFont();
   if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => { /* nije podržano — u redu */ });
   curHash = FILE_MODE ? '#/' : (location.hash || '#/');
-  try { routeTo(curHash); } catch (err) { try { renderHome(); } catch (e2) { /* errStrip će prikazati */ } }
+  // Ispit u toku ima prvenstvo nad adresom: ko je osvežio stranu usred ispita (ili mu je telefon
+  // izbacio tab), vraća se u isti ispit sa vremenom koje je i dalje teklo.
+  if (!simNastavi()) {
+    try { routeTo(curHash); }
+    catch (err) {
+      console.warn('Adresa nije mogla da se otvori:', curHash, err);
+      try { renderHome(); poruci(L('porGreskaAdrese')); } catch (e2) { /* errStrip će prikazati */ }
+    }
+  }
   initBackup();
 
   // ---------- Razvojni prozor (SAMO localhost — za automatske provere bodovanja) ----------
