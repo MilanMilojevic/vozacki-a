@@ -2801,7 +2801,8 @@ BYSUB[118] = 'uredjaji-oprema';        // sklopovi, uređaji i oprema vozila
 BYSUB[103] = 'vozac-zdravlje-alkohol'; // psihofizički uslovi, umor, alkohol
 BYSUB[91] = 'razno-pravila';           // ko reguliše i ko kontroliše saobraćaj
 BYSUB[163] = 'svetlosne-oznake';       // svetlosne oznake na putu (smerokazi, štapovi, table)
-BYSUB[168] = 'vozilo-tehnika';         // teret na vozilu
+// BYSUB[168] — UKINUTO 04.09.2026: podoblast je o teretu i njegovom obeležavanju, a kartica
+// „Vozilo, registracija i tehnički pregled" o teretu nema nijednu reč (oba pitanja su bez nje).
 BYSUB[94] = 'slicni-pojmovi';         // opšti pojmovnik (vozač, pešak, kolona, mase...)
 BYSUB[139] = 'pokazivaci';            // zvučni i svetlosni znak upozorenja
 BYSUB[161] = 'oznake-kolovoz';
@@ -2816,7 +2817,8 @@ BYSUB[140] = 'parkiranje';
 
 
 BYSUB[142] = 'svetla';
-BYSUB[144] = 'pesaci-bicikli';
+// BYSUB[144] — UKINUTO 04.09.2026: podoblast je o kretanju pešaka po putu (gde i kojom stranom),
+// a kartica govori vozaču kako da propusti pešaka — drugoj strani istog susreta.
 BYSUB[145] = 'pesaci-bicikli';
 BYSUB[146] = 'pruga';
 BYSUB[164] = 'pruga';
@@ -3956,12 +3958,55 @@ function capCells(html) {
 }
 for (const c of Object.values(CARDS)) c.html = capCells(c.html);
 
+// --- Pitanja koja NE dobijaju karticu svoje podoblasti (revizija 04.09.2026) ---
+// Zvanične podoblasti su spojevi tema; kartica koja odgovara podoblasti često ne odgovara
+// pojedinačnom pitanju. Merilo: pomaže li otvaranje BAŠ te kartice BAŠ tom pitanju.
+// Bolje nijedna nego pogrešna — objašnjenje uz pitanje ostaje u svakom slučaju.
+for (const id of [
+  7921, 7922, 7923, 7925, 7927, 7928, 7929, 7996, 7997, 7998, 8005, 8006,
+  8007, 8008, 8009, 8010, 8011, 8013, 8015, 8016, 8083, 8084, 8085, 8086,
+  8087, 8088, 8089, 8096, 8097, 8099, 8100, 8101, 8102, 8103, 8105, 8106,
+  8107, 8108, 8109, 8111, 8113, 8114, 8281, 8328, 8338, 8339, 8340, 8397,
+  8399, 8401, 8403, 8404, 8405, 8406, 8410, 8411, 8412, 8413, 8418, 8420,
+  8421, 8422, 8423, 8424, 8427, 8433, 8434, 8435, 8436, 8437, 8438, 8439,
+  8441, 8442, 8443, 8444, 8449, 8451, 8464, 8465, 8476, 8477, 8478, 8480,
+  8481, 8535, 8548, 8550, 8559, 8560, 8561, 8562, 8563, 8564, 8565, 8566,
+  8567, 8568, 8569, 8570, 8571, 8572, 8575, 8576, 8577, 8578, 8579, 8584,
+  8588, 8590, 8592, 8593, 8594, 8597, 8598, 8599, 8600, 8601, 8603, 8606,
+  8609, 8611, 8937, 8938, 8939, 8941, 9214, 9215, 9220, 9221, 9226, 9227,
+  9228, 9229, 9230, 9234, 9235, 9236, 9247, 9286, 9287, 9296, 9305, 9308,
+  9309, 9310, 9312, 9313, 9338, 9339, 9340, 9377, 9389, 9391, 9405, 9531,
+  9533, 9534, 9535, 9536, 9538, 9539, 9540, 9542, 9543, 9545, 9546, 9554,
+  9555, 9557, 9559, 9561, 9592, 9615, 9618, 9644, 9645, 9646, 9675, 9677,
+  9679, 9685, 9689, 9690, 9691, 9693, 9698, 9699, 9702, 9703, 9706, 9715,
+  9717, 9813, 9853, 9858, 9862, 9865, 10060, 10061, 10244, 10245, 10248, 10270,
+  10271, 10273, 10406, 10443, 10454, 10474, 10485, 10486, 10487, 10499, 10528, 10550,
+  10558, 10559, 10565, 10614, 10631, 10632, 10634, 10636, 10701, 10714, 10715, 10716,
+  10717, 10718, 10719, 10780, 10988, 10989, 10992, 11014, 11016, 11017, 11019, 11021,
+  11022, 11024, 11027, 11028, 11029, 11030, 11031, 11032, 11033, 11035, 11036, 11037,
+  11038,
+]) X[id] = { ...(X[id] || {}), nocard: 1 };
+
+// --- Prava kartica umesto pogrešne (revizija 04.09.2026, drugi deo) ---
+// Ova pitanja su ostala bez kartice svoje podoblasti, ali im odgovara druga postojeća kartica.
+// Svaki par je potvrdilo DVA nezavisna suda; gde se nisu složili, kartice nema.
+X[11044] = { ...(X[11044] || {}), nocard: 1 };
+for (const id of [7996, 7997, 7998, 8008, 8009, 8010, 8013, 8015, 8016]) X[id] = { ...(X[id] || {}), card: 'kategorije-vozila' };
+for (const id of [9615, 9618, 9685, 10061]) X[id] = { ...(X[id] || {}), card: 'oznake-kolovoz' };
+for (const id of [9675, 9679, 9862, 9865]) X[id] = { ...(X[id] || {}), card: 'znakovi-naredbi' };
+for (const id of [9535, 9536, 9538]) X[id] = { ...(X[id] || {}), card: 'pesaci-bicikli' };
+for (const id of [8113]) X[id] = { ...(X[id] || {}), card: 'pruga' };
+for (const id of [8465]) X[id] = { ...(X[id] || {}), card: 'iskljucenje' };
+for (const id of [11044]) X[id] = { ...(X[id] || {}), card: 'semafori' };
+for (const id of [10550]) X[id] = { ...(X[id] || {}), card: 'policajac-znaci' };
+
 const out = {
   updated: new Date().toISOString().slice(0, 10),
   cards: Object.fromEntries(Object.entries(CARDS).map(([k, c]) => [k, { t: { l: c.title, c: toCyr(c.title) }, h: { l: c.html, c: toCyr(c.html) } }])),
   byQ: Object.fromEntries(Object.entries(X).map(([id, e]) => [id, {
     ...(e.x ? { x: { l: e.x, c: toCyr(e.x) } } : {}),
     ...(e.card ? { card: e.card } : {}),
+    ...(e.nocard ? { nocard: 1 } : {}),
   }])),
   bySub: BYSUB,
 };
@@ -3994,6 +4039,9 @@ try {
   const tekst = baza.questions.filter((q) => !q.HasImage);
   const sa = tekst.filter((q) => out.byQ[q.qId] && out.byQ[q.qId].x).length;
   const slika = baza.questions.length - tekst.length;
-  const slKart = baza.questions.filter((q) => q.HasImage && (out.bySub[q.subcategoryId] || (out.byQ[q.qId] && out.byQ[q.qId].card))).length;
-  console.log('pokrivenost: tekstualna ' + sa + '/' + tekst.length + ' | slikovna sa karticom ' + slKart + '/' + slika);
+  // kartica se broji samo ako se STVARNO prikazuje: nocard je isključuje iz kartice podoblasti
+  const imaKarticu = (q) => { const e = out.byQ[q.qId]; return !!((e && e.card) || (!(e && e.nocard) && out.bySub[q.subcategoryId])); };
+  const slKart = baza.questions.filter((q) => q.HasImage && imaKarticu(q)).length;
+  const svePoj = baza.questions.filter(imaKarticu).length;
+  console.log('pokrivenost: objašnjenje ' + Object.values(out.byQ).filter((e) => e.x).length + '/' + baza.questions.length + ' | tekstualna ' + sa + '/' + tekst.length + ' | slikovna sa karticom ' + slKart + '/' + slika + ' | uz karticu pojmovnika ' + svePoj + '/' + baza.questions.length);
 } catch (e) { console.log('pokrivenost: base-A.json nije dostupan, preskočeno'); }
