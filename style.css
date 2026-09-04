@@ -269,6 +269,14 @@ button.histBtn:hover { background: var(--optHover); }
    „Sva pitanja", podoblasti u oblasti. Ranije tri razreda sa tri različita razmaka i okvira. */
 .grupaNaslov { margin: 14px 0 6px; padding-bottom: 4px; border-bottom: 1px solid var(--line);
   font-size: var(--fs-sm); font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--mut); }
+/* U dugačkom spisku naslov oblasti ostaje na vrhu dok skroluješ kroz nju — inače na pola dubine
+   ne znaš gde si. Lepi se ISPOD gornje trake. */
+#browseList .grupaNaslov { position: sticky; top: 52px; z-index: 3; background: var(--card);
+  margin: 14px -18px 6px; padding: 8px 18px 5px; border-top: 1px solid var(--line); }
+.skokRed { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 8px 0 10px; }
+.skokRed .mut { flex: 0 0 100%; font-size: var(--fs-xs); }
+#btnNaVrh { position: fixed; right: 14px; bottom: 14px; z-index: 1250; box-shadow: 0 4px 14px rgba(16,24,40,.25); }
+@media (max-width: 700px) { #btnNaVrh { bottom: calc(14px + 66px); } }
 .podGrupa .grupaNaslov { margin-top: 0; border-bottom: none; padding-bottom: 0; }
 /* dugmad u podešavanjima: mreža jednakih ćelija — na telefonu jedno ispod drugog, na širokom dva u redu */
 .podDugmad { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; margin-top: 8px; }

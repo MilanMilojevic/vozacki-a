@@ -229,6 +229,12 @@
     planIspunjenJos: { l: '✅ Dnevni cilj je ispunjen. Za ponavljanje ostaje još: @1 — možeš i danas, ili sutra.', c: '✅ Дневни циљ је испуњен. За понављање остаје још: @1 — можеш и данас, или сутра.' },
     planNemaPon: { l: 'nema na redu', c: 'нема на реду' },
     planPodesi: { l: 'Podesi cilj', c: 'Подеси циљ' },
+    planOdNaRedu: { l: 'na redu ih je @1, plan ti danas daje @2', c: 'на реду их је @1, план ти данас даје @2' },
+    planUskladi: { l: 'Uskladi cilj', c: 'Усклади циљ' },
+    planUskladjen: { l: 'Cilj je usklađen: @1 novih i @2 ponavljanja dnevno.', c: 'Циљ је усклађен: @1 нових и @2 понављања дневно.' },
+    skociNaOblast: { l: 'Skoči na oblast', c: 'Скочи на област' },
+    naVrh: { l: 'Na vrh', c: 'На врх' },
+    oVezbaonici: { l: 'ℹ️ O vežbaonici — poreklo, pouzdanost, česta pitanja', c: 'ℹ️ О вежбаоници — порекло, поузданост, честа питања' },
     planVezbaj: { l: '▶ Vežbaj po planu', c: '▶ Вежбај по плану' },
     planNemaSta: { l: 'Za danas nema više — cilj je ispunjen.', c: 'За данас нема више — циљ је испуњен.' },
     planNemaDostupnih: { l: 'Nema više pitanja koja čekaju. Cilj ostaje za sutra.', c: 'Нема више питања која чекају. Циљ остаје за сутра.' },
@@ -1163,6 +1169,34 @@
     }
   }
   const legendHtml = () => `<div class="mut napomena">${L('legend')}</div>`;
+  // Spisak od 1327 pitanja nije spor (mereno: ~11.000 elemenata, 8 MB, pretraga ~1 ms) — problem je
+  // ORIJENTACIJA: na pola dubine se ne zna u kojoj si oblasti. Zato: skok na oblast, lepljiv naslov
+  // oblasti (CSS) i povratak na vrh. Straničenje bi pokvarilo „nastavi gde si stao" i traženje po broju.
+  function skokNaOblastHtml(naslovi) {
+    if (naslovi.length < 3) return '';
+    return `<div class="skokRed"><span class="mut">${L('skociNaOblast')}:</span>${naslovi
+      .map((n, i) => `<button type="button" class="secondary sBtn skokBtn" data-skok="${i}">${escapeHtml(n)}</button>`).join('')}</div>`;
+  }
+  function veziSkok(koren, spisak) {
+    koren.querySelectorAll('.skokBtn').forEach((b) => b.addEventListener('click', () => {
+      const c = spisak.querySelectorAll('.grupaNaslov')[+b.dataset.skok];
+      if (c) c.scrollIntoView({ block: 'start' });
+    }));
+  }
+  // dugme „na vrh" se pojavljuje tek kad se odskroluje — inače je samo smetnja
+  function veziNaVrh() {
+    let b = document.getElementById('btnNaVrh');
+    if (!b) {
+      b = document.createElement('button');
+      b.id = 'btnNaVrh'; b.type = 'button'; b.className = 'secondary';
+      b.textContent = '↑ ' + L('naVrh');
+      b.addEventListener('click', () => window.scrollTo({ top: 0 }));
+      document.body.appendChild(b);
+    } else { b.textContent = '↑ ' + L('naVrh'); }
+    const proveri = () => { b.hidden = window.scrollY < 1200 || !el('view-browse').classList.contains('active'); };
+    if (!b._vezan) { b._vezan = true; window.addEventListener('scroll', proveri, { passive: true }); }
+    proveri();
+  }
   // „?" uz brojeve ponavljanja: objašnjenje pravila se OTVARA na mestu (isti sklopivi
   // mehanizam kao kartice), umesto oblačića koji na telefonu ne postoji
   const pomocHtml = () => ` <button type="button" class="pomocBtn" title="${escapeHtml(L('pomocPonavljanje'))}" aria-label="${escapeHtml(L('pomocPonavljanje'))}">?</button>`;
@@ -1773,7 +1807,14 @@
       });
       list.appendChild(b);
     });
+    if (type === 'c') {
+      const naslovi = [...list.querySelectorAll('.grupaNaslov')].map((n) => n.textContent);
+      const drz = document.createElement('div');
+      drz.innerHTML = skokNaOblastHtml(naslovi);
+      if (drz.firstChild) { list.insertBefore(drz.firstChild, list.querySelector('.grupaNaslov')); veziSkok(list, list); }
+    }
     show('browse');
+    veziNaVrh();
     // podoblast se vraća u svoju oblast; oblast nema „nazad" — početna je brend na sredini
     if (type === 's') postaviNazad(catOf(catQ), () => browse('c' + catQ.cat));
   }
@@ -1814,8 +1855,11 @@
     const bw = el('bWrong'); if (bw) bw.addEventListener('click', () => startList(maybeShuffle(wrongNow), shufTag(() => `${L('allPage')} — ${L('onlyWrong').toLowerCase()}`), null, 'filter', { origin: browseAll }));
 
     const list = el('browseList');
+    const imenaOblasti = [];
+    { let zadnja = null; for (const q of Q) { if (q.cat !== zadnja) { zadnja = q.cat; const c = D.cats.find((x) => x.id === q.cat); imenaOblasti.push(c ? T({ l: c.l, c: c.c }) : ''); } } }
     list.innerHTML = `<h3>${L('allQuestions')}</h3>
-      <input id="qSearch" type="search" class="searchBox" placeholder="${escapeHtml(L('searchPh'))}" aria-label="${escapeHtml(L('searchPh'))}">` + legendHtml();
+      <input id="qSearch" type="search" class="searchBox" placeholder="${escapeHtml(L('searchPh'))}" aria-label="${escapeHtml(L('searchPh'))}">`
+      + skokNaOblastHtml(imenaOblasti) + legendHtml();
     const allIds = Q.map((q) => q.id);
     let lastCat = null;
     Q.forEach((q, idx) => {
@@ -1859,8 +1903,12 @@
       // sa tim znakovima izlomio poruku (npr. udvostručio pola rečenice)
       if (v && !vidljivih) { prazno.textContent = L('searchEmpty').split('@1').join(sb.value.trim()); prazno.style.display = ''; }
       else prazno.style.display = 'none';
+      // dok traje pretraga skok na oblast nema smisla — naslovi su sakriveni
+      const sk = list.querySelector('.skokRed'); if (sk) sk.style.display = v ? 'none' : '';
     });
+    veziSkok(list, list);
     show('browse');
+    veziNaVrh();
   }
 
   // ---------- Strane "Pogrešna" i "Obeležena" (spisak + vežbanje) ----------
@@ -2154,13 +2202,17 @@
     const ispunjen = (p.ostaloNovih === 0 || p.nemaNovih) && (p.ostaloPon === 0 || p.nemaPon);
     const ima = planIds().length;
     const naRedu = queueSplit().ready.length;
+    // Ako je zaostalo više nego što staje u kvotu, kaže se ODAKLE dokle: dnevni cilj je kvota, ne dug,
+    // pa velika brojka ne sme da izgleda kao obaveza za danas.
+    const zaostatak = (!ispunjen && naRedu > p.cPon && p.cPon > 0)
+      ? `<div class="mut napomena">${L('planOdNaRedu').split('@1').join(naRedu).split('@2').join(p.ostaloPon)}</div>` : '';
     // posle ispunjenog cilja ne kaže se „vidimo se sutra" dok istovremeno nešto čeka na redu
     const dno = ispunjen ? `<span class="mut">${naRedu ? L('planIspunjenJos').split('@1').join(nQ(naRedu)) : L('planIspunjen')}</span>${naRedu ? ` <button type="button" class="secondary sBtn" data-nav="drill">${L('drill')} ›</button>` : ''}`
       : !ima ? `<span class="mut">${L('planNemaDostupnih')}</span>`
         : `<button class="primary" id="btnPlanVezbaj">${L('planVezbaj')}</button>`;
     return `<div class="planBox"><b>${L('planNaslov')}</b> &nbsp;<button type="button" class="bcLink" id="btnPlanPodesi">${L('planPodesi')} ›</button>
       ${red(L('novihLbl'), p.uNovih, p.cNovih, p.nemaNovih, L('planSveOdgovoreno'))}${red(L('ponLbl'), p.uPon, p.cPon, p.nemaPon, L('planNemaPon'))}
-      <div class="razmakG">${dno}</div></div>`;
+      ${zaostatak}<div class="razmakG">${dno}</div></div>`;
   }
 
   function homeExtras() {
@@ -2196,7 +2248,8 @@
           if (!S.plan) delovi.push(L('examPlan').replace('#', tempo).split('@1').join(novihPitanja(tempo)));
           else if (S.plan.novih && S.plan.novih * dana < neodg) {
             // cilj ne stiže do kraja gradiva pre ispita — to se kaže, ne ćuti se
-            delovi.push('⚠ ' + L('planPremalo').split('@1').join(S.plan.novih + ' ' + novihPitanja(S.plan.novih)).split('@2').join(S.plan.novih * dana).split('@3').join(neodg).split('@4').join(tempo));
+            delovi.push('⚠ ' + L('planPremalo').split('@1').join(S.plan.novih + ' ' + novihPitanja(S.plan.novih)).split('@2').join(S.plan.novih * dana).split('@3').join(neodg).split('@4').join(tempo)
+              + ` <button type="button" class="secondary sBtn" id="btnUskladiCilj">${L('planUskladi')}</button>`);
           }
         }
       }
@@ -2289,6 +2342,16 @@
     veziPomoc(el('homeSummary'));
     bindNav(el('homeSummary'));
     {
+      // „Uskladi cilj": upisuje predloženi tempo odmah, da čovek ne mora da traži polja u podešavanjima
+      const buc = el('btnUskladiCilj');
+      if (buc) buc.addEventListener('click', () => {
+        const dana = danaDoIspita();
+        if (dana === null || dana < 1) return;
+        const { novih, pon } = predlogTempa(dana, neodgovorenih());
+        S.plan = { novih, pon };
+        save(); renderHome();
+        poruci(L('planUskladjen').split('@1').join(novih === null ? 0 : novih).split('@2').join(pon));
+      });
       const bpp = el('btnPlanPodesi');
       if (bpp) bpp.addEventListener('click', () => {
         // kontrole cilja su u podešavanjima, na dnu strane — skok do njih, ne skrol kroz sve
@@ -2348,18 +2411,16 @@
       sh.querySelectorAll('.histBtn').forEach((b) => b.addEventListener('click', () => renderSimReview(S.sims[+b.dataset.sim], false)));
     }
 
-    const tc = el('trustCard');
-    if (tc) {
-      tc.innerHTML = `<div><button class="explCardBtn pojBtn istaknuto">${L('trustTitle')}</button><div class="explCard" style="display:none">${L('trustBody').split('@1').join(fmtDatum(BAZA_PROVERENA))}</div></div>`;
-      sklopivo(tc.querySelector('.explCardBtn'));
-    }
-
+    // Milanova odluka (04.09.2026): „Zašto verovati" i „Česta pitanja" su se sadržajno preklapali
+    // (isto pitanje imalo odgovor na dva mesta), pa su spojeni u jednu karticu — poreklo baze i
+    // pouzdanost pa česta pitanja, jedno ispod drugog.
+    { const tc = el('trustCard'); if (tc) { tc.innerHTML = ''; tc.style.display = 'none'; } }
     const fq = el('faqCard');
-    if (EX.cards && EX.cards.faq) {
-      fq.style.display = '';
-      fq.innerHTML = `<div><button class="explCardBtn pojBtn istaknuto">❓ ${escapeHtml(T(EX.cards.faq.t))}</button><div class="explCard" style="display:none">${T(EX.cards.faq.h)}</div></div>`;
-      sklopivo(fq.querySelector('.explCardBtn'));
-    } else fq.style.display = 'none';
+    fq.style.display = '';
+    fq.innerHTML = `<div><button class="explCardBtn pojBtn istaknuto">${L('oVezbaonici')}</button>
+      <div class="explCard" style="display:none">${L('trustBody').split('@1').join(fmtDatum(BAZA_PROVERENA))}
+      ${(EX.cards && EX.cards.faq) ? `<div class="grupaNaslov">${escapeHtml(T(EX.cards.faq.t))}</div>${T(EX.cards.faq.h)}` : ''}</div></div>`;
+    sklopivo(fq.querySelector('.explCardBtn'));
 
     const gc = el('guideCard');
     // isti sklopivi obrazac kao pojmovnik, česta pitanja i poverenje — ranije je vodič jedini
