@@ -26,7 +26,15 @@ async function proveraBodovanja() {
 async function proveraBodovanja2() {
   const rez = [];
   const ok = (naziv, uslov) => rez.push((uslov ? 'PASS' : 'FAIL') + ' — ' + naziv);
-  const cekaj = (ms) => new Promise((r) => setTimeout(r, ms));
+  // NE setTimeout: sakriven tab (ugrađeni pregledač alata) prigušuje tajmere i do jednom u
+  // minutu, pa je provera od 90 sekundi umela da traje POLA SATA. Zadaci kroz MessageChannel
+  // se ne prigušuju; troše nešto CPU-a, ali provera radi samo lokalno.
+  const cekaj = (ms) => new Promise((r) => {
+    const kraj = performance.now() + ms;
+    const ch = new MessageChannel();
+    ch.port1.onmessage = () => { if (performance.now() >= kraj) r(); else ch.port2.postMessage(0); };
+    ch.port2.postMessage(0);
+  });
   const S = () => window.__dev.S;
   const klikni = (tekst, koren) => {
     const b = [...(koren || document).querySelectorAll('button')].find((x) => x.textContent.includes(tekst));
@@ -262,6 +270,28 @@ async function proveraBodovanja2() {
     ok('sve tačno → POLOŽENO', zapis.passed === true);
     ok('sve tačno → nula pogrešnih', (zapis.wrong || []).length === 0);
     ok('završen ispit briše zapis o toku', zapisIspita() === null);
+
+    // ---- 2a) KARTICA UZ PITANJE prikazuje samo odeljak svoje podoblasti ----
+    {
+      location.hash = '#/p/9502';   // hijerarhija (sub 131) — kartica prvenstva ima 5 odeljaka
+      await cekaj(400);
+      const q = window.QUIZ.questions.find((x) => x.id === 9502);
+      const izbori = [...document.querySelectorAll('#qCard .choice')];
+      for (let i = 0; i < q.req; i++) izbori[i].click();
+      document.querySelector('#qCard .qActions .primary').click();
+      await cekaj(250);
+      const btn = document.querySelector('#qCard .explBox .explCardBtn');
+      btn.click();
+      await cekaj(250);
+      const cd = btn.nextElementSibling;
+      ok('kartica uz pitanje: prikazan samo odeljak podoblasti (3 od 5 skrivena)',
+        cd.querySelectorAll('.kSek').length === 5 && cd.querySelectorAll('.kSek.kSekSkriven').length === 3);
+      const cela = cd.querySelector('.kSekNapomena button');
+      cela.click(); await cekaj(150);
+      ok('kartica uz pitanje: „Prikaži celu" otkriva sve odeljke', cd.querySelectorAll('.kSek.kSekSkriven').length === 0);
+      document.querySelector('[data-nav="home"]').click();
+      await cekaj(150);
+    }
 
     // ---- 2b) ŠANSA DA POLOŽIŠ i pravilo o simulacijama ----
     {

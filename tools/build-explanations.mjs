@@ -68,6 +68,7 @@ Moped sa motorom sa unutrašnjim sagorevanjem NEMA granicu snage: 5 kW efektivne
 CARDS['prvenstvo-prolaza'] = {
   title: 'Prvenstvo prolaza, rotacije i hijerarhija znakova',
   html: `
+<div class="kSek" data-sub="131">
 <p><b>Hijerarhija (ZOBS čl. 20)</b> — jače pobija slabije:</p>
 <svg viewBox="0 0 460 175" role="img" style="max-width:460px;width:100%;display:block;margin:6px auto">
   <rect x="130" y="4"   width="200" height="27" rx="6" fill="#c0392b"/><text x="230" y="22" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">1. SAOBRAĆAJAC</text>
@@ -77,6 +78,8 @@ CARDS['prvenstvo-prolaza'] = {
   <rect x="10"  y="140" width="440" height="27" rx="6" fill="#94a3b8"/><text x="230" y="158" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">5. PRAVILA (desna strana...)</text>
 </svg>
 <p class="mut" style="text-align:center;font-size:.85rem">što je traka viša — to je jača: saobraćajac pobija semafor, semafor pobija znakove...</p>
+</div>
+<div class="kSek" data-sub="148">
 <div class="signRow" style="max-width:340px;margin:6px auto">
   <div class="signCell">
     <svg viewBox="0 0 120 46"><rect x="10" y="26" width="100" height="14" rx="7" fill="#4a5a6a"/><circle cx="45" cy="18" r="12" fill="#c0392b"/><circle cx="75" cy="18" r="12" fill="#2c6aa0"/></svg>
@@ -93,7 +96,11 @@ CARDS['prvenstvo-prolaza'] = {
 <tr><td><b>ko</b></td><td>vozila koja prati policija/vojska/BIA + samo policijsko/vojno vozilo kad daje te znake</td><td>policija, hitna pomoć, vatrogasci, vojska, BIA...</td></tr>
 <tr><td><b>tvoja obaveza</b></td><td colspan="2">propusti ga, omogući mimoilaženje/preticanje, po potrebi se skloni ili zaustavi (čl. 107 i 109)</td></tr>
 </table>
+</div>
+<div class="kSek" data-sub="131,148">
 <p><b>Za test zapamti:</b> rotacija NE gasi semafor — na semaforizovanoj raskrsnici prvenstvo je „regulisano semaforom"; semafor „gasi" samo saobraćajac. Obaveza propuštanja važi kad te takvo vozilo susretne ili sustigne na putu.</p>
+</div>
+<div class="kSek" data-sub="136">
 <p><b>A) Nesignalisana raskrsnica — pet pravila (čl. 47)</b><br>
 Ovo je poslednja traka piramide, razvijena. Svih pet pravila je u istom članu i sva važe samo <b>ako prvenstvo prolaza nije regulisano na drugi način</b> — čim se pojavi saobraćajac, semafor, žuti romb, trougao ili STOP, pravilo pada.</p>
 <table>
@@ -210,7 +217,9 @@ Ovo je poslednja traka piramide, razvijena. Svih pet pravila je u istom članu i
 <p><b>UPOZORENJE — vrsta vozila NE menja prvenstvo.</b> Traktor, autobus, kamion, bicikl: prvenstvo određuju samo <b>pravac</b> i <b>znak</b>. Kad ti traktor dolazi sa desne strane, tačan odgovor je „dužni ste da propustite oba vozila" — nikad „propustite putničko vozilo, a imate prvenstvo u odnosu na traktor". Ponude su namerno pisane tako da razdvajaju vozila po vrsti; ta razlika ne postoji. Isto važi i za bicikl: on nije „slabiji učesnik kome se ne daje prednost", nego vozilo kao i svako drugo.</p>
 <p><b>Kružni tok je jedino mesto gde je „sleva" tačan odgovor.</b> Prepoznaješ ga po paru znakova na ulazu: <b>trougao „ustupi prvenstvo" + plavi okrugli znak kružnog toka</b>. Kad tek ulaziš — propuštaš vozilo koje ti dolazi <b>sa leve strane</b>. Kad si već u krugu (razdelno ostrvo ti je s leve strane) — prednost je <b>tvoja</b> u odnosu na vozilo sleva. Pravilo desne strane ovde ne odlučuje ništa; odlučuje znak na ulazu.</p>
 <p><b>Kad se svi blokiraju.</b> Postoji i pitanje sa četiri vozila gde svako ima prednost u odnosu na ono sa svoje leve strane, pa niko ne može prvi. Tačan odgovor nije „pokažite odlučnost i prvi prođite", nego: <b>vizuelnim kontaktom i odgovarajućim znakom rukom</b> omogući prolaz onom vozilu koje ima prednost u odnosu na treće, a sam propusti vozilo koje tebi dolazi zdesna.</p>
+</div>
 
+<div class="kSek" data-sub="148">
 <p><b>B) Vozila pod pratnjom i sa pravom prvenstva — ono na čemu se pada</b><br>
 Tabela iznad je „ko je ko". Ostatak podoblasti (najveće u pravilima, sa preko pedeset pitanja) pita dve stvari: <b>šta za njih prestaje da važi</b> i <b>kad ni oni nemaju prednost</b>.</p>
 <p><b>Prvo pogledaj da li svetla GORE.</b> Bez uključenih posebnih znakova policijsko vozilo je obično vozilo i tačan odgovor je „nije vozilo pod pratnjom, ni vozilo sa pravom prvenstva prolaza". Na fotografijama se upaljena rampa vidi po <b>sjaju (oreolu)</b> oko lampi — ista slika sa ugašenom rampom daje suprotan odgovor. Na crtežima to su nacrtani bljesci oko vozila: <b>crveni + plavi = pod pratnjom</b>, <b>samo plavi = sa pravom prvenstva</b>, a <b>žuti bljesak je samo žmigavac</b> i ne znači ništa. Na slici sa tri vozila (dva policijska i vozilo hitne pomoći) vozilo sa prvenstvom prolaza je jedino ono kome plava svetla gore.</p>
@@ -249,6 +258,7 @@ Tabela iznad je „ko je ko". Ostatak podoblasti (najveće u pravilima, sa preko
 <tr><td>Ti se krećeš <b>neposredno iza</b> policijskog vozila koje daje posebne znake i iz kojeg policajac daje naredbe</td><td>Postupi po znacima i naredbama, <b>prati policijsko vozilo do pogodnog mesta</b> i bezbedno stani <b>iza njega</b>. Ne staješ odmah i ne uklanjaš vozilo sa kolovoza</td></tr>
 </table>
 <p class="mut">Mnemonik: <b>policija iza tebe — ti staješ desno; policija ispred tebe — ti je pratiš i staješ iza nje.</b></p>
+</div>
 `,
 };
 
@@ -678,6 +688,7 @@ CARDS['oznake-kolovoz'] = {
 CARDS['skretanje'] = {
   title: 'Skretanje, prestrojavanje i polukružno okretanje',
   html: `
+<div class="kSek" data-sub="133,137">
 <p><b>Prestrojavanje (čl. 48):</b> na DOVOLJNOM ODSTOJANJU pred raskrsnicom zauzmi traku za svoj smer: za levo — krajnja leva, za desno — krajnja desna (na dvosmernom putu "krajnja leva" je uz središnju liniju!).</p>
 <svg viewBox="0 0 460 140" role="img" style="max-width:460px;width:100%;display:block;margin:6px auto">
   <rect x="100" y="0" width="260" height="120" fill="#9aa7b4"/>
@@ -692,8 +703,14 @@ CARDS['skretanje'] = {
   <text x="316" y="134" text-anchor="middle" font-size="11" fill="currentColor" font-weight="bold">desno: krajnja desna</text>
 </svg>
 <p><b>Propuštanja pri skretanju (čl. 47):</b> sa zemljanog puta/parkinga propuštaš SVE · pri skretanju preko biciklističke staze propuštaš bicikle · pravilo desne strane kad ništa drugo ne reguliše · pri skretanju ULEVO propuštaš vozila iz suprotnog smera.</p>
+</div>
+<div class="kSek" data-sub="137">
 <p><b>Ne ulazi u raskrsnicu (čl. 49)</b> — ni kad imaš zeleno/prvenstvo — ako bi zbog gužve ostao na raskrsnici ili pešačkom prelazu i blokirao druge.</p>
+</div>
+<div class="kSek" data-sub="133">
 <p><b>Polukružno okretanje ZABRANJENO (čl. 50):</b> tunel, most, vijadukt, podvožnjak, nadvožnjak, smanjena vidljivost, nedovoljna preglednost, nedovoljna širina puta. (Prepoznaješ listu? Skoro ista kao za preticanje — "opasna mesta".)</p>
+</div>
+<div class="kSek" data-sub="137">
 <p style="margin-top:18px"><b>PRILAZ RASKRSNICI I PROLAZAK KROZ NJU (čl. 48 i 49)</b></p>
 <p><b>Brzina na prilazu (čl. 48, stav 1):</b> vozač je dužan da <b>prilagodi vožnju uslovima saobraćaja na raskrsnici</b>, a naročito da vozi <b>brzinom pri kojoj može da se zaustavi i propusti</b> vozila koja na raskrsnici imaju prvenstvo prolaza.</p>
 <p class="mut">Zamka: to pitanje traži <b>DVA</b> tačna odgovora, jer zakonska rečenica ima dva dela — „uslovima saobraćaja na raskrsnici" <b>i</b> „brzinom pri kojoj može da se zaustavi i propusti". Ako zaokružiš samo jedan, pitanje je netačno. Ponuđene zamke su „kako bi što pre stigao na odredište" i „da što pre prođe kroz raskrsnicu" — žurba nikad nije zakonski kriterijum.</p>
@@ -706,7 +723,9 @@ CARDS['skretanje'] = {
 </table>
 <p><b>Ulazak na put sa prvenstvom prolaza:</b> propuštaš <b>SVA vozila</b> koja se kreću tim putem. Ne „samo ona zdesna", ne „samo ona sleva", ne „samo motorna". Tako glasi i sam znak <b>II-1 „ustupanje prvenstva prolaza"</b>: naredba vozaču da ustupi prvenstvo <b>vozilima koja se kreću putem na koji nailazi</b> (Pravilnik o saobraćajnoj signalizaciji, čl. 25).</p>
 <p class="mut">Zašto ovde ne odlučuje „pravilo desne strane"? Zato što se ono primenjuje tek kad prvenstvo <b>nije regulisano na drugi način</b>. Pažnja: na raskrsnici koja jeste regulisana (znakom, semaforom ili policajcem) pravila desne strane i levog skretanja i dalje važe — ali samo za <b>međusobno</b> prvenstvo onih koji istovremeno dobiju pravo prolaza. Čim stoji znak II-1 ili II-2, prvenstvo <b>jeste</b> regulisano — i ti propuštaš ceo taj put, a ne polovinu.</p>
+</div>
 
+<div class="kSek" data-sub="133">
 <p style="margin-top:16px"><b>Strelica u traci je naredba — slikovna pitanja</b></p>
 <p>Kad si se već zaustavio u traci, smeš <b>samo tamo gde strelica na asfaltu pokazuje</b>. Zeleno svetlo ti ne otvara drugi smer, i nema „popravnog" iz pogrešne trake — jedini ispravan postupak je da nastaviš kuda strelica kaže i da se vratiš kasnije.</p>
 <table>
@@ -716,7 +735,9 @@ CARDS['skretanje'] = {
 </table>
 <p><b>Zamka nad zamkama:</b> ista fotografija sa tri strelice pojavljuje se u <b>tri različita pitanja</b> — jednom te pitaju „šta možete", drugi put „da li vam je dozvoljeno ulevo", treći put „da li vam je dozvoljeno udesno". Ne pamti odgovor po slici, nego pročitaj <b>šta te pitaju</b>. I obrnuto: kod slike sa strelicom ulevo tačan odgovor je potvrdan („jeste dozvoljeno"), pa te navika da uvek odgovoriš „nije dozvoljeno" tu obara.</p>
 <p class="mut">Još jedna zamka iz istog seta: „nastaviti kretanje u sva tri smera, ukoliko ne ometate ili ugrožavate bezbednost saobraćaja". Netačno — oznaka na kolovozu se ne poništava time što nikoga ne ometaš.</p>
+</div>
 
+<div class="kSek" data-sub="137">
 <p style="margin-top:16px"><b>Ne ulazi u raskrsnicu ako ćeš u njoj ostati (čl. 49)</b></p>
 <p>Zakon kaže: vozač <b>ne sme</b> vozilom da uđe u raskrsnicu, <b>iako ima prvenstvo prolaza ili mu je semaforom to dozvoljeno</b>, ako će se zbog gustine saobraćaja zaustaviti <b>na raskrsnici ili pešačkom prelazu</b> i time ometati ili onemogućiti saobraćaj vozila, odnosno pešaka.</p>
 <p>U testu se to isto pravilo pojavljuje u <b>dva ruha</b> — jednom kao „imam zeleno", drugi put kao „ja sam na putu sa prvenstvom prolaza". Odgovor je oba puta isti: <b>staneš i čekaš da se izlaz oslobodi</b>.</p>
@@ -755,6 +776,7 @@ CARDS['skretanje'] = {
 </table>
 <p class="mut">Slikovne varijante su prepoznatljive: sa mopeda vidiš zebru tik ispred sebe, a iza nje kolonu koja stoji; ili je nacrtan pogled odozgo gde crveno vozilo ima <b>zeleno svetlo</b>, ali žuto vozilo odmah iza raskrsnice ne miče; ili crveno vozilo ide <b>putem sa prvenstvom prolaza</b> (žuti romb pored kolovoza), a ispred njega pešački prelaz i zaglavljena kolona. Situacija je različita, odgovor isti.</p>
 <p><b>Ključ za celu ovu podoblast:</b> na raskrsnici te uvek pitaju tri iste stvari — <b>možeš li da staneš</b> (brzina na prilazu), <b>jesi li u pravoj traci</b> (prestrojavanje i strelica), i <b>gde ćeš stati</b> (nikad u raskrsnici, nikad na zebri). Prvenstvo prolaza i zeleno svetlo daju ti <b>pravo da prođeš</b>, ali ti nikad ne daju <b>pravo da blokiraš</b>.</p>
+</div>
 `,
 };
 
@@ -940,6 +962,7 @@ CARDS['pruga'] = {
 CARDS['put-pojmovi'] = {
   title: 'Put, kolovoz, trake — osnovni pojmovi',
   html: `
+<div class="kSek" data-sub="109">
 <p><b>Slojevi puta:</b> PUT (celina) ⊃ KOLOVOZ (deo za vozila) ⊃ KOLOVOZNA TRAKA (jedan smer) ⊃ SAOBRAĆAJNA TRAKA (jedan red vozila). Trotoar je deo puta za pešake, bankina je uz kolovoz.</p>
 <svg viewBox="0 0 460 130" role="img" style="max-width:460px;width:100%;display:block;margin:6px auto">
   <rect x="2" y="2" width="456" height="126" rx="8" fill="#dcefdc" stroke="#7aa87a"/><text x="12" y="20" font-size="11" font-weight="bold" fill="#2f5b2f">PUT (celina: kolovoz + trotoar + bankina...)</text>
@@ -950,6 +973,8 @@ CARDS['put-pojmovi'] = {
 </svg>
 <p><b>Vrste puteva:</b> autoput (fizički razdvojene kolovozne trake, bez ukrštanja u nivou) · motoput (za motorna vozila, može i bez razdvajanja) · javni put · zemljani put (sa njega propuštaš SVE pri uključenju!).</p>
 <p><b>Ključne definicije (čl. 7):</b> ZAUSTAVLJANJE = prekid kretanja do 3 MINUTA (vozač ne napušta vozilo, osim po znaku/pravilu) · PARKIRANJE = svaki duži prekid · NASELJE = izgrađen prostor čije su granice obeležene znakom.</p>
+</div>
+<div class="kSek" data-sub="115">
 <p><b>Zone (čl. 160-163) — četiri pojma koja baza vrti jedan protiv drugog.</b> Pitanja idu u OBA smera: jednom „Zona 30 je…", drugi put „Deo puta u kojoj je brzina ograničena do 30 km/h je…" — i tu se traži naziv. Zato uči par NAZIV ↔ DEFINICIJA, ne samo brzinu.</p>
 <table>
 <tr><th>Zona</th><th>Po čemu se prepoznaje</th><th>Brzina</th></tr>
@@ -973,6 +998,7 @@ CARDS['put-pojmovi'] = {
 </table>
 <p><b>Semafor NIJE razlog za gašenje motora.</b> Kao mamac se dva puta nudi „prekid kretanja radi postupanja po svetlosnom znaku zabrane prolaska koji daje semafor" — jednom sa dodatkom „duže od dva minuta", jednom bez njega. Ni jedno ni drugo nije u zakonu: crveno svetlo motor ne gasi, gasi ga tunel (jedan minut), stajanje (tri minuta), znak i službeno lice.</p>
 <p><b>Otpad i buka (isti čl. 164):</b> ispuštanje, odnosno odlaganje materija i otpada kojima se ugrožava život i zdravlje ljudi, životinja, biljaka ili zagađuje životna sredina <b>nije dozvoljeno</b> — ni na putu ni pored njega, dakle nigde. Svako sužavanje te zabrane rečju „samo" („samo van naseljenog mesta", „samo tamo gde postoji znak") je mamac. Iz istog člana je i pravilo da vozilo u saobraćaju ne sme da prouzrokuje prekomernu buku — kod motocikla to praktično znači neprepravljan, propisan izduvni sistem.</p>
+</div>
 `,
 };
 
@@ -1030,7 +1056,10 @@ CARDS['autoput'] = {
 CARDS['vozilo-tehnika'] = {
   title: 'Vozilo, registracija i tehnički pregled',
   html: `
+<div class="kSek" data-sub="126,127">
 <p><b>U saobraćaju sme samo vozilo koje je:</b> REGISTROVANO (važeća registraciona nalepnica) + TEHNIČKI ISPRAVNO. Registracija važi godinu dana.</p>
+</div>
+<div class="kSek" data-sub="127">
 <p><b>Tehnički pregled:</b> redovni — pre izdavanja registracione nalepnice · vozilo mora imati ispravne propisane uređaje (kočnice, upravljač, svetla, pneumatike...).</p>
 <p><b>Pneumatici:</b> na istoj osovini ISTI (dimenzija, vrsta) · dubina šare: dublja od TWI oznake, a bez TWI oznake NAJMANJE 1,6 mm (moped/motocikl) · zimska oprema kad je propisana.</p>
 <p><b>Za motocikl posebno:</b> ogledala, svetla i kočnice na oba točka su bezbednosno kritični — na testu se traži šta je OBAVEZNA oprema.</p>
@@ -1044,6 +1073,7 @@ CARDS['vozilo-tehnika'] = {
 </table>
 <p class="mut">Zamke po vrstama: kod redovnog nude „tromesečni" i „petogodišnji" (ne postoje) i „najkasnije jednu godinu nakon prethodnog pregleda" — tačan odgovor je vezan za <b>nalepnicu</b>, ne za datum prošlog pregleda. Kod vanrednog nude „radi kontrole od strane ovlašćenog lica MUP-a/inspektora" (to je kontrolni!) i „pre isteka roka od šest meseci od početka važenja nalepnice" (to miriše na šestomesečni redovni). Kod kontrolnog nude vozilo „kojem su u nezgodi oštećeni uređaji" — to ide na <b>vanredni</b>; na kontrolni se može uputiti vozilo <b>u voznom stanju</b>.</p>
 <p><b>Zajednička pravila za redovni i vanredni pregled:</b> vrše se samo na <b>čistom</b> vozilu koje je <b>u voznom stanju</b> i <b>neopterećeno</b> — zamka „na tehnički ispravnom vozilu" je besmislena, jer se ispravnost na pregledu tek utvrđuje. Lice koje je dovezlo vozilo kontroloru daje na uvid <b>saobraćajnu dozvolu i SVOJU ličnu kartu</b> (ne ličnu kartu vlasnika, ne vozačku dozvolu). Registrovano, neodjavljeno vozilo na redovnom pregledu mora imati <b>sve propisane registarske tablice, postavljene na predviđenim mestima</b> — „bar jedna tablica" nije dovoljna.</p>
+</div>
 `,
 };
 
