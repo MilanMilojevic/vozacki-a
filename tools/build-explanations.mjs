@@ -1378,15 +1378,9 @@ CARDS['znakovi-naredbi'] = {
 
 // --- znakovi-obavestenja (Tura 2; tri runde revizije, poslednja kontrola bez blokirajućih nalaza) ---
 CARDS['znakovi-obavestenja'] = {
-  title: 'Znakovi obaveštenja — precrtano znači kraj',
+  title: 'Znakovi obaveštenja — kako ih čitaš (boja, oblik, precrtano)',
   html: `
 <p><b>Šta rade znakovi obaveštenja:</b> po Pravilniku o saobraćajnoj signalizaciji (čl. 34) pružaju obaveštenja o putu kojim se krećeš, nazivima mesta i udaljenosti do njih, o <b>prestanku važenja znakova izričitih naredbi</b> i druga obaveštenja; postavljaju se tako da daju prethodna obaveštenja, obaveštenja o prestrojavanju i o skretanju, potvrdno obaveštenje o pravcu kretanja i da označe objekat, teren, ulicu, odnosno delove puta (čl. 51). Oblik im je <b>kvadrat, pravougaonik ili krug</b> (čl. 49) — okrugli su baš znakovi prestanka; sam Pravilnik navodi tri izuzetka od oblika: strelasti putokaz, znak „obilazak" i turistički strelasti putokaz. <b>Romb nije izuzetak</b> — to je kvadrat postavljen na vrh. Ovo je ubedljivo najveća grupa slikovnih pitanja (u banci ih je oko 146, sledeća grupa ima 68), ali skoro sva se rešavaju sa <b>četiri mehanizma i jednim ključem boja</b> — uči mehanizme, ne bubaj slike:</p>
-<div class="signRow">
-  <div class="signCell"><!-- SVG: zelena tabla sa simbolom autoputa preko koje ide debela crvena kosa traka --><b>CRVENA KOSA TRAKA</b><span>isti znak precrtan = KRAJ (autoputa, motoputa, naselja, staza, trake javnog prevoza, zone usporenog saobraćaja...) — znak zadržava svoju boju</span></div>
-  <div class="signCell"><!-- SVG: beli krug sa crnim brojem 60 i snopom tankih crnih kosih crta preko --><b>TANKE CRNE CRTE</b><span>PRESTANAK zabrane/ograničenja koje je uveo crveni krug</span></div>
-  <div class="signCell"><!-- SVG: bela tabla sa natpisom ZONA i umetnutim okruglim znakom 30 ispod natpisa --><b>TABLA „ZONA"</b><span>bela tabla + natpis + umetnut običan znak; ista tabla sa crnim kosim crtama i sivim umetkom = kraj zone</span></div>
-  <div class="signCell"><!-- SVG: dva slična znaka zatvaranja trake jedan pored drugog, prvi označen kao najava, drugi kao mesto --><b>PREDZNAK → ZNAK</b><span>ista šema postoji kao najava („približavanje/blizina/udaljenost") i kao „mesto"</span></div>
-</div>
 <table>
 <tr><th>Boja podloge</th><th>Šta ti kaže</th></tr>
 <tr><td><b>zelena</b></td><td>autoput — znak autoputa i znakovi <b>traka</b> na autoputu (čl. 43). <b>Pažnja:</b> znak „mesto izlaska sa autoputa" je <b>PLAVI</b> kvadrat sa belom kosom strelicom</td></tr>
@@ -1395,7 +1389,18 @@ CARDS['znakovi-obavestenja'] = {
 <tr><td><b>bela</b></td><td>table „ZONA", naselje, naziv ulice, brojevi domaćih puteva (oznaka <b>evropskog</b> puta, npr. „E 75", je na <b>zelenoj</b> podlozi) — i, po čl. 43, znakovi za vođenje čije je odredište objekat, sadržaj ili deo naselja</td></tr>
 <tr><td><b>fluorescentna žuto-zelena</b></td><td>samo tri znaka: <b>blizina škole</b> (čl. 50 st. 2 t. 10), tabla <b>OPASNOST / PAZI DECA</b> (t. 17) i tabla <b>POGREŠAN SMER</b> (t. 18)</td></tr>
 </table>
+<p><b>Taktika za sliku:</b> prvo <b>boja podloge</b> (zelena = autoput; plava = motoput, usluge, traka za spora vozila i znakovi zatvaranja/otvaranja/preusmeravanja traka; žuta = skretanje traka, devijacija i vođenje na ostalim putevima; bela = table „ZONA", naselje, brojevi i nazivi; fluorescentna žuto-zelena = blizina škole, OPASNOST, POGREŠAN SMER), pa mehanizam (crvena traka? crne kose crte? tabla „ZONA"? predznak ili mesto?), zatim porodica po obliku (tabla obaveštava — krug naređuje — trougao upozorava), pa tek onda simbol. Pazi: <b>beli KRUG sa crnim kosim crtama</b> znači prestanak zabrane, ali <b>bela TABLA</b> ne znači prestanak ničega — ona nosi zonu, naselje, naziv ili broj. Skoro svaki mamac je znak iz susedne kolone iste tabele.</p>`,
+};
 
+CARDS['zn-ob-kraj-zone'] = {
+  title: 'Znakovi obaveštenja — kraj, prestanak i zone',
+  html: `
+<div class="signRow">
+  <div class="signCell"><!-- SVG: zelena tabla sa simbolom autoputa preko koje ide debela crvena kosa traka --><b>CRVENA KOSA TRAKA</b><span>isti znak precrtan = KRAJ (autoputa, motoputa, naselja, staza, trake javnog prevoza, zone usporenog saobraćaja...) — znak zadržava svoju boju</span></div>
+  <div class="signCell"><!-- SVG: beli krug sa crnim brojem 60 i snopom tankih crnih kosih crta preko --><b>TANKE CRNE CRTE</b><span>PRESTANAK zabrane/ograničenja koje je uveo crveni krug</span></div>
+  <div class="signCell"><!-- SVG: bela tabla sa natpisom ZONA i umetnutim okruglim znakom 30 ispod natpisa --><b>TABLA „ZONA"</b><span>bela tabla + natpis + umetnut običan znak; ista tabla sa crnim kosim crtama i sivim umetkom = kraj zone</span></div>
+  <div class="signCell"><!-- SVG: dva slična znaka zatvaranja trake jedan pored drugog, prvi označen kao najava, drugi kao mesto --><b>PREDZNAK → ZNAK</b><span>ista šema postoji kao najava („približavanje/blizina/udaljenost") i kao „mesto"</span></div>
+</div>
 <p style="margin-top:10px"><b>1. Precrtano crvenom trakom = KRAJ.</b> Znak koji nešto otvara postoji i u verziji precrtanoj <b>crvenom kosom trakom</b> koja to zatvara (Pravilnik čl. 50 st. 2 t. 5). Podloga ostaje ista — crvena je samo traka:</p>
 <table>
 <tr><th>Znak</th><th>Znak početka</th><th>Znak kraja</th></tr>
@@ -1411,7 +1416,6 @@ CARDS['znakovi-obavestenja'] = {
 <p><b>Zamka — autoput ili motoput?</b> Boja odlučuje: <b>zelena</b> tabla + dve trake sa nadvožnjakom = autoput; <b>plava</b> tabla + prednja silueta automobila = motoput. Mamac na slici autoputa je i „nadvožnjak na putu" — nadvožnjak je deo simbola, ne značenje znaka.</p>
 <p><b>Zamka — naselje ili naseljeno mesto?</b> Silueta grada bez naziva = „naselje". Tabla sa ispisanim nazivom = „naseljeno mesto". Na ispitu se nude jedno umesto drugog — gledaj da li na znaku piše ime.</p>
 <p><b>Zamka — zona usporenog saobraćaja je JEDINA zona iz ove tačke.</b> Njen kraj ide crvenom trakom, a kraj sve četiri table „ZONA" iz tačke 4 ide crnim kosim crtama. Ako na slici vidiš plavu tablu sa figurama i crvenu traku — to nije „završetak zone škole" ni „završetak pešačke zone", nego kraj zone usporenog saobraćaja; ta tri odgovora se nude jedan umesto drugog.</p>
-
 <p style="margin-top:10px"><b>2. Precrtano = PRESTANAK — ali postoje DVE porodice, razlikuje ih boja crte:</b></p>
 <table>
 <tr><th>Porodica</th><th>Kako izgleda</th><th>Šta je unutra</th></tr>
@@ -1431,15 +1435,7 @@ CARDS['znakovi-obavestenja'] = {
 </table>
 <p><b>Zamka — reč „svi" je marker netačnog odgovora.</b> Kod znaka sa samim kosim crtama nude se tri odgovora, a dva netačna počinju sa „prestaju da važe SVI...": „svi saobraćajni znakovi opasnosti" i „svi saobraćajni znakovi". Tačan odgovor <b>nema reč „svi"</b> i taksativno nabraja tri vrste: <b>zabrana, ograničenja i obaveza</b>. Naziv znaka u Pravilniku jeste „prestanak svih zabrana", ali njegovo značenje po čl. 35 nije „svi znakovi".</p>
 <p><b>Zamka — tri znaka sa brojem</b> se stalno nude jedan umesto drugog. Prvo pogledaj <b>podlogu i boju crte</b>, pa tek onda broj. Beli krug + crne crte = prestanak <b>ograničenja</b>; plavi krug + crvena traka = prestanak <b>najmanje</b> brzine; plavi kvadrat + crvena traka = prestanak <b>preporuke</b>.</p>
-
-<p style="margin-top:10px"><b>3. Romb — kvadrat postavljen na vrh:</b></p>
-<div class="signRow" style="max-width:340px;margin:0 auto">
-  <div class="signCell"><!-- SVG: beli romb sa crnim rubom i žutim kvadratom unutra --><b>PUT SA PRVENSTVOM</b><span>put ili deo puta na kome vozila imaju prvenstvo prolaza u odnosu na vozila koja se kreću putevima koji se s njim ukrštaju. Unutrašnji kvadrat je <b>žut</b>, pojas oko njega <b>beo</b> (čl. 50 st. 2 t. 8)</span></div>
-  <div class="signCell"><!-- SVG: isti romb preko koga ide snop tankih crnih kosih crta --><b>ZAVRŠETAK</b><span>isti romb sa snopom tankih <b>crnih</b> kosih crta (porodica a, čl. 50 st. 2 t. 6) = mesto na kome se završava put ili deo puta sa prvenstvom prolaza</span></div>
-</div>
-<p class="mut">Mamci kod romba nisu drugi znakovi obaveštenja nego znakovi izričitih naredbi: „ustupi prvenstvo prolaza" i „obavezno zaustavljanje".</p>
-
-<p style="margin-top:10px"><b>4. Zone — bela tabla sa natpisom i umetnutim običnim znakom</b> (čl. 50 st. 2 t. 3); ista tabla sa <b>crnim</b> kosim crtama i umetnutim znakom u <b>crno-beloj (sivoj)</b> verziji = kraj zone (t. 4 — ovde nema crvene trake). Ovakvih tabli ima tačno četiri:</p>
+<p style="margin-top:10px"><b>3. Zone — bela tabla sa natpisom i umetnutim običnim znakom</b> (čl. 50 st. 2 t. 3); ista tabla sa <b>crnim</b> kosim crtama i umetnutim znakom u <b>crno-beloj (sivoj)</b> verziji = kraj zone (t. 4 — ovde nema crvene trake). Ovakvih tabli ima tačno četiri:</p>
 <table>
 <tr><th>Tabla</th><th>Šta je umetnuto</th><th>Početak znači</th><th>Precrtana crnim crtama</th></tr>
 <tr><td>ZONA</td><td>okrugli znak <b>30</b> u crvenom krugu</td><td>zona u kojoj je brzina vozila ograničena <b>do 30 km/h</b></td><td>završetak zone 30</td></tr>
@@ -1447,9 +1443,19 @@ CARDS['znakovi-obavestenja'] = {
 <tr><td>ZONA</td><td>plavi krug sa <b>figurom odraslog i deteta</b></td><td>početak zone namenjene kretanju pešaka</td><td>završetak pešačke zone</td></tr>
 <tr><td>ZONA</td><td>običan znak <b>zabranjeno parkiranje</b>: plavo polje, crveni rub, jedna crvena dijagonala — <b>slova P nema</b></td><td>početak zone u kojoj je zabranjeno parkiranje</td><td>završetak zone zabrane parkiranja</td></tr>
 </table>
-<p class="mut">Zona usporenog saobraćaja NIJE u ovoj grupi — vidi tačku 1. Koja pravila važe unutar zona (10 km/h, brzina pešaka, 30/50 km/h...) — kartica o pojmovima puta i zonama.</p>
+<p class="mut">Zona usporenog saobraćaja NIJE u ovoj grupi — vidi tačku 1. Koja pravila važe unutar zona (10 km/h, brzina pešaka, 30/50 km/h...) — kartica o pojmovima puta i zonama.</p>`,
+};
 
-<p style="margin-top:10px"><b>5. Parovi koji se najčešće mešaju</b> — kvadratna tabla OBAVEŠTAVA, krug NAREĐUJE, trougao UPOZORAVA:</p>
+CARDS['zn-ob-parovi'] = {
+  title: 'Znakovi obaveštenja — romb i parovi tabla/krug/trougao',
+  html: `
+<p style="margin-top:10px"><b>1. Romb — kvadrat postavljen na vrh:</b></p>
+<div class="signRow" style="max-width:340px;margin:0 auto">
+  <div class="signCell"><!-- SVG: beli romb sa crnim rubom i žutim kvadratom unutra --><b>PUT SA PRVENSTVOM</b><span>put ili deo puta na kome vozila imaju prvenstvo prolaza u odnosu na vozila koja se kreću putevima koji se s njim ukrštaju. Unutrašnji kvadrat je <b>žut</b>, pojas oko njega <b>beo</b> (čl. 50 st. 2 t. 8)</span></div>
+  <div class="signCell"><!-- SVG: isti romb preko koga ide snop tankih crnih kosih crta --><b>ZAVRŠETAK</b><span>isti romb sa snopom tankih <b>crnih</b> kosih crta (porodica a, čl. 50 st. 2 t. 6) = mesto na kome se završava put ili deo puta sa prvenstvom prolaza</span></div>
+</div>
+<p class="mut">Mamci kod romba nisu drugi znakovi obaveštenja nego znakovi izričitih naredbi: „ustupi prvenstvo prolaza" i „obavezno zaustavljanje".</p>
+<p style="margin-top:10px"><b>2. Parovi koji se najčešće mešaju</b> — kvadratna tabla OBAVEŠTAVA, krug NAREĐUJE, trougao UPOZORAVA:</p>
 <table>
 <tr><th>Ovo je...</th><th>...a mamac je</th></tr>
 <tr><td><b>Jednosmerni put</b> — pravougaona/kvadratna tabla sa strelicom (postoji uspravna i položena varijanta)<!-- SVG: par — plava tabla sa strelicom nagore i plava tabla sa vodoravnom strelicom --></td><td>plavi <b>krug</b> sa strelicom = smer kojim se vozila <b>moraju</b> kretati (naredba); nudi se i „smer kojim nije dozvoljeno"</td></tr>
@@ -1462,9 +1468,13 @@ CARDS['znakovi-obavestenja'] = {
 <tr><td><b>P varijante:</b> samo P = parkiralište · P sa satom = parkiranje <b>vremenski ograničeno</b> · P pod krovom = <b>garaža</b> sa parking mestima · P + simbol prevoznog sredstva = parkiraj, pa putovanje nastavi drugim prevoznim sredstvom</td><td>sve četiri se nude međusobno — gledaj dodatak uz slovo P</td></tr>
 <tr><td>Šema traka sa simbolom vozila <b>u crvenom krugu</b> iznad jedne trake = ta traka <b>NIJE namenjena</b> vrstama vozila čiji je simbol prikazan. Podloga je zelena na autoputu, plava na svim ostalim putevima (čl. 50 st. 2 t. 14)</td><td><b>traka javnog prevoza</b>: autobus u <b>običnom belom krugu, bez crvenog ruba</b>, uz tu traku ide <b>isprekidana žuta linija</b> (čl. 50 st. 2 t. 13) — značenje je suprotno („traka JESTE namenjena"). Crveni krug je jedina razlika u značenju; nudi se i „zabranjeno kretanje na deonici"</td></tr>
 </table>
-<p><b>Zamka nad zamkama:</b> „potvrda pravca kretanja" zvuči kao mamac, ali ovde, kao saobraćajni <b>znak</b>, ona postoji i JESTE tačan odgovor — za tablu koja stoji <b>posle</b> raskrsnice.</p>
+<p><b>Zamka nad zamkama:</b> „potvrda pravca kretanja" zvuči kao mamac, ali ovde, kao saobraćajni <b>znak</b>, ona postoji i JESTE tačan odgovor — za tablu koja stoji <b>posle</b> raskrsnice.</p>`,
+};
 
-<p style="margin-top:10px"><b>6. Autoput — otvaranje i zatvaranje traka.</b> Svaka situacija ima dva znaka; odgovore razlikuje formulacija <b>„približavanje mestu"</b> (predznak, najava) protiv <b>„mesto"</b>:</p>
+CARDS['zn-ob-autoput'] = {
+  title: 'Znakovi obaveštenja — trake, radovi i preusmeravanje',
+  html: `
+<p style="margin-top:10px"><b>1. Autoput — otvaranje i zatvaranje traka.</b> Svaka situacija ima dva znaka; odgovore razlikuje formulacija <b>„približavanje mestu"</b> (predznak, najava) protiv <b>„mesto"</b>:</p>
 <table>
 <tr><th>Situacija (ZELENI znakovi na autoputu)</th><th>Predznak — najava</th><th>Znak — mesto</th></tr>
 <tr><td>otvara se saobraćajna traka</td><td>približavanje mestu <b>na autoputu</b> gde se otvara</td><td>mesto <b>na autoputu</b> gde se otvara</td></tr>
@@ -1481,8 +1491,7 @@ CARDS['znakovi-obavestenja'] = {
 <tr><td>Značenje</td><td>najava, odnosno mesto otvaranja/zatvaranja trake</td><td>tom trakom se MORAJU kretati vozila sporija od brzine sa znaka; ista šema sa trakom koja se uliva nazad = kraj te trake</td></tr>
 </table>
 <p><b>Izlaz i odmorište:</b> mesto izlaska sa autoputa · <b>udaljenost do početka trake za izlaz</b> (znak sa brojem metara) · nailazak na odmorište čiji je sadržaj prikazan <b>piktogramima</b> · mesto izlaska sa puta <b>do odmorišta</b> — četiri različita znaka, nude se međusobno.</p>
-
-<p style="margin-top:10px"><b>7. Radovi i preusmeravanje — ovde boja deli grupu na dva dela.</b> Znakovi zatvaranja, otvaranja i preusmeravanja traka su <b>PLAVI</b> (čl. 50 st. 2 t. 16), a znakovi <b>skretanja saobraćajnih traka i devijacije su ŽUTI sa crnim strelicama</b> (čl. 44). U zoni radova i plavi znakovi traka dobijaju žutu osnovu sa crnim simbolima (čl. 45):</p>
+<p style="margin-top:10px"><b>2. Radovi i preusmeravanje — ovde boja deli grupu na dva dela.</b> Znakovi zatvaranja, otvaranja i preusmeravanja traka su <b>PLAVI</b> (čl. 50 st. 2 t. 16), a znakovi <b>skretanja saobraćajnih traka i devijacije su ŽUTI sa crnim strelicama</b> (čl. 44). U zoni radova i plavi znakovi traka dobijaju žutu osnovu sa crnim simbolima (čl. 45):</p>
 <table>
 <tr><th>Situacija</th><th>Najava</th><th>Mesto</th></tr>
 <tr><td>zatvara se saobraćajna traka (<b>plavi</b>)</td><td><b>udaljenost</b> do mesta zatvaranja</td><td>mesto gde <b>počinje</b> zatvaranje</td></tr>
@@ -1499,9 +1508,13 @@ CARDS['znakovi-obavestenja'] = {
 <tr><td>Ostali mamci</td><td>trouglovi opasnosti: „približavanje krivini nadesno" i „deo puta sa više uzastopnih krivina"</td><td>„neravan kolovoz zbog opasne izbočine" i „skretanje saobraćajnih traka"</td></tr>
 </table>
 <p class="mut">Plavi znak preusmeravanja takođe ima jednu strelicu nadole i jednu nagore, ali je <b>plav</b> i na njemu su nacrtana i <b>šrafirana ostrva</b> — zato boja ostaje prvi filter.</p>
-<p>Još iz ove grupe: <b>predznak za obilazak</b> = smer i tok preusmerenog saobraćaja kada je put zatvoren · strelasto oblikovana tabla <b>„obilazak"</b> za usmeravanje vozila na obilazni put · obaveštenje da zbog radova/prepreka/oštećenja kolovoza saobraćaj regulišu <b>ovlašćena lica</b> · <b>poslednje upozorenje</b> da si na delu puta namenjenom vozilima iz suprotnog smera (fluorescentna žuto-zelena tabla sa natpisima STOP i POGREŠAN SMER, crnom šakom i znakom zabrane saobraćaja u jednom smeru) · mesto gde se zbog završetka trake ili suženja vozila <b>naizmenično uključuju</b> u jednu traku (patent-zatvarač).</p>
+<p>Još iz ove grupe: <b>predznak za obilazak</b> = smer i tok preusmerenog saobraćaja kada je put zatvoren · strelasto oblikovana tabla <b>„obilazak"</b> za usmeravanje vozila na obilazni put · obaveštenje da zbog radova/prepreka/oštećenja kolovoza saobraćaj regulišu <b>ovlašćena lica</b> · <b>poslednje upozorenje</b> da si na delu puta namenjenom vozilima iz suprotnog smera (fluorescentna žuto-zelena tabla sa natpisima STOP i POGREŠAN SMER, crnom šakom i znakom zabrane saobraćaja u jednom smeru) · mesto gde se zbog završetka trake ili suženja vozila <b>naizmenično uključuju</b> u jednu traku (patent-zatvarač).</p>`,
+};
 
-<p style="margin-top:10px"><b>8. Vođenje saobraćaja — gledaj GDE tabla stoji:</b></p>
+CARDS['zn-ob-vodjenje'] = {
+  title: 'Znakovi obaveštenja — vođenje, usluge i tunel',
+  html: `
+<p style="margin-top:10px"><b>1. Vođenje saobraćaja — gledaj GDE tabla stoji:</b></p>
 <table>
 <tr><th>Položaj</th><th>Znak</th></tr>
 <tr><td><b>PRE</b> raskrsnice, šema puteva</td><td>„raskrsnica" — međusobni položaj, pravci puteva i nazivi mesta; kružna šema = raskrsnica sa kružnim tokom</td></tr>
@@ -1513,8 +1526,7 @@ CARDS['znakovi-obavestenja'] = {
 </table>
 <p class="mut">Boja osnove znakova za vođenje (Pravilnik čl. 43): zelena = autoput, plava = motoput, žuta = ostali putevi, bela = znak čije je odredište objekat, sadržaj ili deo naselja. Isti ključ boja objašnjava i zašto su znakovi traka iz tačke 6 zeleni. Isto značenje ume da se pojavi i na zelenoj, i na žutoj i na plavoj podlozi — kod ovih znakova boja ti kaže KOJI je put, ne šta znak znači.</p>
 <p>Poseban znak: put kojim je <b>dozvoljeno</b> kretanje kada nameravaš da skreneš ulevo na raskrsnici na kojoj je skretanje ulevo <b>zabranjeno</b> (tabla ti crta obilazni put oko bloka).</p>
-
-<p style="margin-top:10px"><b>9. Usluge — simbol govori sve, mamci su uvek susedi iz iste grupe:</b><!-- SVG: mini-galerija plavih kvadrata sa belim poljem i crnim simbolom: šoljica na tacni, ukrštene kašika i viljuška, krevet, šator, prikolica, crveni krst, ključ, slušalica, pumpa --></p>
+<p style="margin-top:10px"><b>2. Usluge — simbol govori sve, mamci su uvek susedi iz iste grupe:</b><!-- SVG: mini-galerija plavih kvadrata sa belim poljem i crnim simbolom: šoljica na tacni, ukrštene kašika i viljuška, krevet, šator, prikolica, crveni krst, ključ, slušalica, pumpa --></p>
 <table>
 <tr><th>Znak</th><th>Kako ih razlikuješ</th></tr>
 <tr><td><b>šoljica na tacni</b> = kafana · <b>ukrštene kašika i viljuška</b> = restoran · <b>krevet</b> = hotel/motel</td><td>nude se međusobno; na znaku za restoran <b>nema noža</b> — ukrštene su kašika i viljuška</td></tr>
@@ -1527,15 +1539,18 @@ CARDS['znakovi-obavestenja'] = {
 <tr><td><b>autobusko stajalište</b> · <b>tramvajska stanica</b></td><td>nude se međusobno; kod tramvaja mamac je i „ukrštanje sa tramvajskom prugom" (trougao!)</td></tr>
 <tr><td><b>brod na vodi</b> (bez sidra) = luka, pristanište, trajekt · avion = aerodrom</td><td>mamci su znakovi opasnosti: pokretni most, rečna/morska obala, bočni vetar, niski letovi aviona</td></tr>
 </table>
-
-<p style="margin-top:10px"><b>10. Tunel — tri znaka za slučaj opasnosti:</b></p>
+<p style="margin-top:10px"><b>3. Tunel — tri znaka za slučaj opasnosti:</b></p>
 <div class="signRow">
   <div class="signCell"><!-- SVG: zeleni kvadrat, bela figura trči ka belom pravougaoniku (vratima) --><b>IZLAZ ZA PEŠAKE</b><span>izlaz za pešake u slučaju opasnosti (mamac: „objekat za rekreaciju i sport")</span></div>
   <div class="signCell"><!-- SVG: zelena tabla oblikovana kao strelica (petougao) sa figurom, vodoravnom strelicom i natpisom 100 m --><b>SMER + UDALJENOST</b><span>smer u kome je izlaz za slučaj opasnosti i udaljenost do njega; tabla je <b>strelasto oblikovana</b> i pokazuje na stranu na kojoj je izlaz</span></div>
   <div class="signCell"><!-- SVG: plava tabla sa belom šemom kolovoza i proširenja (niše) sa desne strane, bez ikakvih simbola --><b>SOS NIŠA</b><span>deo puta za zaustavljanje/parkiranje u hitnom slučaju; može biti opremljen telefonom za hitne pozive i aparatom za gašenje požara (mamac: „parking mesto"). Na samom znaku je samo šema niše — telefon i aparat se ne crtaju</span></div>
-</div>
+</div>`,
+};
 
-<p style="margin-top:10px"><b>11. Putarina, radar, kamere:</b></p>
+CARDS['zn-ob-ostalo'] = {
+  title: 'Znakovi obaveštenja — putarina, table i brojevi',
+  html: `
+<p style="margin-top:10px"><b>1. Putarina, radar, kamere:</b></p>
 <table>
 <tr><th>Znak</th><th>Znači</th></tr>
 <tr><td>naplatna stanica (dve varijante znaka)</td><td>nailazak na objekat za naplatu putarine — mamac: „naredba da zaustaviš vozilo (naplatno mesto)"</td></tr>
@@ -1544,10 +1559,8 @@ CARDS['znakovi-obavestenja'] = {
 <tr><td>radar</td><td>početak deonice na kojoj se <b>često vrši radarska kontrola</b> brzine</td></tr>
 <tr><td>kamera</td><td>mesto na deonici od kojeg počinje <b>snimanje saobraćaja fiksnim tehničkim uređajima</b> — mamci: radarska kontrola, vozilo-presretač</td></tr>
 </table>
-
-<p style="margin-top:10px"><b>12. Tabla na granici:</b> plava tabla na kojoj je gore <b>zastava Srbije</b>, natpis „Srbija" i ovalna oznaka SRB, ispod nje <b>četiri reda</b> — crna silueta naselja, precrtana silueta naselja, <b>plavi</b> kvadrat sa automobilom (motoput) i <b>zeleni</b> kvadrat sa simbolom autoputa — i uz svaki red <b>ograničenje brzine u crvenom krugu</b> (50, 80, 100, 130), a na dnu <b>simbol svetlosnog snopa fara</b> sa oznakom „00-24".<!-- SVG: plava tabla sa zastavom, natpisom Srbija i oznakom SRB, ispod četiri bela reda sa siluetama i crvenim krugovima brzina, u dnu red sa simbolom fara i natpisom 00-24 --> Znači: <b>opšte ograničenje najveće dozvoljene brzine kretanja vozila prema kategoriji puta</b> i obaveza upotrebe <b>svetla</b> na teritoriji Republike Srbije. Mamci: „srednja brzina" i „preporučene brzine" — na tabli su opšta OGRANIČENJA, a brojevi stoje u crvenim krugovima, koji uvek znače zabranu.</p>
-
-<p style="margin-top:10px"><b>13. Razdelno ostrvo i oštra krivina (žuto-crno / crno-belo):</b> tabla na vrhu razdelnog ostrva ima dve varijante, a od varijante zavisi koji se znak postavlja iznad nje (Pravilnik čl. 35):</p>
+<p style="margin-top:10px"><b>2. Tabla na granici:</b> plava tabla na kojoj je gore <b>zastava Srbije</b>, natpis „Srbija" i ovalna oznaka SRB, ispod nje <b>četiri reda</b> — crna silueta naselja, precrtana silueta naselja, <b>plavi</b> kvadrat sa automobilom (motoput) i <b>zeleni</b> kvadrat sa simbolom autoputa — i uz svaki red <b>ograničenje brzine u crvenom krugu</b> (50, 80, 100, 130), a na dnu <b>simbol svetlosnog snopa fara</b> sa oznakom „00-24".<!-- SVG: plava tabla sa zastavom, natpisom Srbija i oznakom SRB, ispod četiri bela reda sa siluetama i crvenim krugovima brzina, u dnu red sa simbolom fara i natpisom 00-24 --> Znači: <b>opšte ograničenje najveće dozvoljene brzine kretanja vozila prema kategoriji puta</b> i obaveza upotrebe <b>svetla</b> na teritoriji Republike Srbije. Mamci: „srednja brzina" i „preporučene brzine" — na tabli su opšta OGRANIČENJA, a brojevi stoje u crvenim krugovima, koji uvek znače zabranu.</p>
+<p style="margin-top:10px"><b>3. Razdelno ostrvo i oštra krivina (žuto-crno / crno-belo):</b> tabla na vrhu razdelnog ostrva ima dve varijante, a od varijante zavisi koji se znak postavlja iznad nje (Pravilnik čl. 35):</p>
 <table>
 <tr><th>Varijanta table (uspravna, uska)</th><th>Šta ide IZNAD nje</th></tr>
 <tr><td><b>vodoravna naizmenična crna i žuta polja</b> (kao pruge preko table)<!-- SVG: uska uspravna tabla sa vodoravnim naizmeničnim crnim i žutim poljima --></td><td>plavi krug sa <b>kosom belom strelicom nadole-udesno</b> ili <b>nadole-ulevo</b> = obavezno obilaženje s desne, odnosno s leve strane. Na pitanju sa četiri ponuđena znaka tačna su <b>OBA</b>, a mamci su plavi krug sa <b>vodoravnom</b> strelicom (obavezan smer) i znak kružnog toka</td></tr>
@@ -1558,8 +1571,7 @@ CARDS['znakovi-obavestenja'] = {
 <tr><th>Znak</th><th>Znači</th></tr>
 <tr><td>tabla sa <b>crnim strelicama na beloj podlozi</b> u krivini<!-- SVG: kvadratna tabla sa velikom crnom strelicom (šiljkom) na beloj podlozi, u varijantama usmerenim ulevo i udesno --></td><td>mesto gde se nailazi na <b>oštru krivinu</b> — više varijanti slike (jedna ili tri strelice, levo ili desno), uvek isti odgovor. Mamci su trouglovi: „približavanje krivini na levo/desno" i „više opasnih krivina"</td></tr>
 </table>
-
-<p style="margin-top:10px"><b>14. Brojevi, nazivi i sitnice koje ispadnu na ispitu:</b></p>
+<p style="margin-top:10px"><b>4. Brojevi, nazivi i sitnice koje ispadnu na ispitu:</b></p>
 <table>
 <tr><th>Znak</th><th>Znači</th></tr>
 <tr><td>tabla sa slovom E i brojem</td><td>broj <b>međunarodnog</b> puta</td></tr>
@@ -1574,10 +1586,7 @@ CARDS['znakovi-obavestenja'] = {
 <tr><td>izbočina na plavom kvadratu</td><td><b>nailazak na mesto</b> gde su postavljena <b>tehnička sredstva za usporavanje</b> saobraćaja — mamci: „neravan kolovoz, izbočine/ulegnuća" (to je trougao opasnosti!)</td></tr>
 <tr><td>tabla OPASNOST — <b>fluorescentna žuto-zelena</b> podloga, crn natpis i upisan znak opasnosti (trougao sa uzvičnikom)</td><td>nailazak na <b>posebno opasnu deonicu</b> puta — mamci: „radovi na putu", „opasno mesto"</td></tr>
 </table>
-<p class="mut">Tri table sa nadmorskom visinom i dužinom se stalno mešaju. Zapamti redosled provere: ima li <b>simbol</b>? Ako nema — serpentina. Ako ima simbol prevoja i ime — planinski prevoj. Ako ima piktogram tunela/mosta — putni objekat, a broj je dužina.</p>
-
-<p><b>Taktika za sliku:</b> prvo <b>boja podloge</b> (zelena = autoput; plava = motoput, usluge, traka za spora vozila i znakovi zatvaranja/otvaranja/preusmeravanja traka; žuta = skretanje traka, devijacija i vođenje na ostalim putevima; bela = table „ZONA", naselje, brojevi i nazivi; fluorescentna žuto-zelena = blizina škole, OPASNOST, POGREŠAN SMER), pa mehanizam (crvena traka? crne kose crte? tabla „ZONA"? predznak ili mesto?), zatim porodica po obliku (tabla obaveštava — krug naređuje — trougao upozorava), pa tek onda simbol. Pazi: <b>beli KRUG sa crnim kosim crtama</b> znači prestanak zabrane, ali <b>bela TABLA</b> ne znači prestanak ničega — ona nosi zonu, naselje, naziv ili broj. Skoro svaki mamac je znak iz susedne kolone iste tabele.</p>
-`,
+<p class="mut">Tri table sa nadmorskom visinom i dužinom se stalno mešaju. Zapamti redosled provere: ima li <b>simbol</b>? Ako nema — serpentina. Ako ima simbol prevoja i ime — planinski prevoj. Ako ima piktogram tunela/mosta — putni objekat, a broj je dužina.</p>`,
 };
 
 // --- policajac-znaci (Tura 3; kontrola + ručna provera slika 9457/9464) ---
@@ -2821,7 +2830,8 @@ BYSUB[155] = 'znakovi-porodice';
 BYSUB[156] = 'znakovi-porodice';
 BYSUB[157] = 'znakovi-opasnosti';
 BYSUB[158] = 'znakovi-naredbi';
-BYSUB[159] = 'znakovi-obavestenja';
+// BYSUB[159] — UKINUTO 05.09.2026: kartica je podeljena na šest manjih (deoba-znakova-obavestenja),
+// pa pitanja podoblasti 159 dobijaju karticu PO PITANJU (X[id].card), ne po podoblasti.
 BYSUB[160] = 'znakovi-porodice';
 BYSUB[166] = 'policajac-znaci';   // znaci ovlašćenog lica — vrh hijerarhije
 BYSUB[131] = 'prvenstvo-prolaza';   // opšte odredbe (hijerarhija postupanja)
@@ -4029,6 +4039,23 @@ for (const id of [8113]) X[id] = { ...(X[id] || {}), card: 'pruga' };
 for (const id of [8465]) X[id] = { ...(X[id] || {}), card: 'iskljucenje' };
 for (const id of [11044]) X[id] = { ...(X[id] || {}), card: 'semafori' };
 for (const id of [10550]) X[id] = { ...(X[id] || {}), card: 'policajac-znaci' };
+
+// --- Znakovi obaveštenja: kartica PO PITANJU posle deobe na šest (05.09.2026) ---
+// Dva nezavisna suda + čovek za nesložene; "nijedna" znači samo objašnjenje, bez kartice.
+for (const id of [9074]) X[id] = { ...(X[id] || {}), card: 'znakovi-obavestenja' };
+for (const id of [9077, 9085, 9117, 9118, 9123, 9125, 9128, 9129, 9130, 9131, 9133, 10908, 10910, 10914]) X[id] = { ...(X[id] || {}), card: 'zn-ob-ostalo' };
+for (const id of [10915, 10916, 10917, 10920, 10938, 10940, 10942, 10981, 10982, 10983, 10984, 10985]) X[id] = { ...(X[id] || {}), card: 'zn-ob-ostalo' };
+for (const id of [9082, 9083, 9088, 9135, 9143, 9146, 9151, 9152, 9155, 9162, 10884, 10885, 10886, 10888]) X[id] = { ...(X[id] || {}), card: 'zn-ob-kraj-zone' };
+for (const id of [10889, 10912, 10934, 10935, 10936, 10937, 10946, 10948, 10949, 10950, 10951, 10952, 10953, 11067]) X[id] = { ...(X[id] || {}), card: 'zn-ob-kraj-zone' };
+for (const id of [11070]) X[id] = { ...(X[id] || {}), card: 'zn-ob-kraj-zone' };
+for (const id of [9092, 9094, 9095, 9121, 9122, 9126, 9127, 9153, 10880, 10881, 10882, 10883, 10890, 10911]) X[id] = { ...(X[id] || {}), card: 'zn-ob-parovi' };
+for (const id of [10918, 10919, 10939]) X[id] = { ...(X[id] || {}), card: 'zn-ob-parovi' };
+for (const id of [9102, 9106, 9120, 9149, 9156, 9157, 9158, 9176, 9185, 9186, 10891, 10892, 10893, 10894]) X[id] = { ...(X[id] || {}), card: 'zn-ob-vodjenje' };
+for (const id of [10895, 10896, 10897, 10898, 10900, 10902, 10903, 10904, 10905, 10906, 10907, 10909, 10924, 10943]) X[id] = { ...(X[id] || {}), card: 'zn-ob-vodjenje' };
+for (const id of [10944, 10945, 10954, 10955, 10956, 10957, 10958, 10959, 10960, 10961, 10962, 10963, 10964, 10965]) X[id] = { ...(X[id] || {}), card: 'zn-ob-vodjenje' };
+for (const id of [10966, 10967, 10968, 11064]) X[id] = { ...(X[id] || {}), card: 'zn-ob-vodjenje' };
+for (const id of [9132, 9188, 9189, 10921, 10922, 10925, 10926, 10928, 10929, 10930, 10931, 10932, 10933, 10941]) X[id] = { ...(X[id] || {}), card: 'zn-ob-autoput' };
+for (const id of [10969, 10970, 10971, 10972, 10973, 10974, 10975, 10976, 10977, 10978, 10979, 10980, 11069, 11071]) X[id] = { ...(X[id] || {}), card: 'zn-ob-autoput' };
 
 const out = {
   updated: new Date().toISOString().slice(0, 10),
