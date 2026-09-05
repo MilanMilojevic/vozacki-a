@@ -247,6 +247,8 @@
     planPodesi: { l: 'Podesi cilj', c: 'Подеси циљ' },
     planOdNaRedu: { l: 'U redu za ponavljanje čeka @1 — to je zaostatak od ranije, ne zadatak za danas. Cilj uzima najviše @2 dnevno, a danas ti je od toga ostalo još @3.', c: 'У реду за понављање чека @1 — то је заостатак од раније, не задатак за данас. Циљ узима највише @2 дневно, а данас ти је од тога остало још @3.' },
     sudStize: { l: '✅ Ovim tempom stižeš: do ispita otvoriš svih @1 neodgovorenih i stigneš sva ponavljanja koja iz njih izađu.', c: '✅ Овим темпом стижеш: до испита отвориш свих @1 неодговорених и стигнеш сва понављања која из њих изађу.' },
+    sudStizeSvePon: { l: '✅ Sve gradivo je otvoreno — ovim tempom stižeš i ponavljanja koja čekaju.', c: '✅ Све градиво је отворено — овим темпом стижеш и понављања која чекају.' },
+    sudPonNeStaju: { l: '⚠ Sve gradivo je otvoreno, ali zaostala ponavljanja ne staju: čeka @1, a cilj do ispita stigne @2. Podigni ponavljanja ili prihvati da deo ostane neponovljen.', c: '⚠ Све градиво је отворено, али заостала понављања не стају: чека @1, а циљ до испита стигне @2. Подигни понављања или прихвати да део остане непоновљен.' },
     sudGradivoDa: { l: '⚠ Gradivo stižeš, ali ne i ponavljanja: uz @1 novih dnevno u red do ispita ulazi bar @2, a cilj stigne @3. Oko @4 pitanja ćeš videti samo jednom — a jedno viđenje je premalo da bi ostalo u glavi.', c: '⚠ Градиво стижеш, али не и понављања: уз @1 нових дневно у ред до испита улази бар @2, а циљ стигне @3. Око @4 питања ћеш видети само једном — а једно виђење је премало да би остало у глави.' },
     sudNeStize: { l: '⛔ Ovim tempom NE stižeš gradivo: uz @1 novih dnevno do ispita otvoriš @2 od @3 neodgovorenih, pa @4 pitanja ostaje neviđeno. To jeste prepreka — na ispitu se pitanja izvlače iz cele baze.', c: '⛔ Овим темпом НЕ стижеш градиво: уз @1 нових дневно до испита отвориш @2 од @3 неодговорених, па @4 питања остаје невиђено. То јесте препрека — на испиту се питања извлаче из целе базе.' },
     lostTempo: { l: 'Podigni na @1 novih i @2 ponavljanja dnevno', c: 'Подигни на @1 нових и @2 понављања дневно' },
@@ -257,6 +259,7 @@
     autoNaslov: { l: 'Cilj se sam računa do ispita', c: 'Циљ се сам рачуна до испита' },
     autoOpis: { l: 'Kvota se svakog dana izvodi iz onoga što je ostalo i broja dana do ispita. Uradiš više danas — sutra ti traži manje.', c: 'Квота се сваког дана изводи из онога што је остало и броја дана до испита. Урадиш више данас — сутра ти тражи мање.' },
     autoBezDatuma: { l: '⚠ Cilj se ne može sam računati bez datuma ispita — upiši ga iznad.', c: '⚠ Циљ се не може сам рачунати без датума испита — упиши га изнад.' },
+    prosaoDatum: { l: '⚠ Upisani datum ispita (@1) je prošao. Upiši novi datum, pa će cilj i procene ponovo raditi.', c: '⚠ Уписани датум испита (@1) је прошао. Упиши нови датум, па ће циљ и процене поново радити.' },
     prioNaslov: { l: 'Prioritet po težini na ispitu', c: 'Приоритет по тежини на испиту' },
     sansaNaslov: { l: 'Šansa da položiš', c: 'Шанса да положиш' },
     sansaKako: { l: 'Računato iz tvoje tačnosti po podoblastima i zvaničnog sastava testa (41 pitanje, @1 poena, prag @2): za svako mesto na testu koliko je verovatno da ga pogodiš, pa tačna raspodela zbira. Procena, ne obećanje — pretpostavlja da su pitanja nezavisna i da ti tačnost ostaje ista.', c: 'Рачунато из твоје тачности по подобластима и званичног састава теста (41 питање, @1 поена, праг @2): за свако место на тесту колико је вероватно да га погодиш, па тачна расподела збира. Процена, не обећање — претпоставља да су питања независна и да ти тачност остаје иста.' },
@@ -2543,7 +2546,10 @@
     const cPon = auto ? auto.cPon : (S.plan.pon || 0);
     return {
       auto: !!auto,
-      autoBezDatuma: !!S.plan.auto && !auto,   // uključen auto, a datum ispita nije upisan
+      // uključen auto, a kvota nema od čega da se izračuna — razlog se razlikuje:
+      // nema datuma / datum prošao / ispit je danas (tada niko ne planira kvote)
+      autoBezDatuma: !!S.plan.auto && !auto && danaDoIspita() === null,
+      autoProsaoDatum: !!S.plan.auto && !auto && danaDoIspita() !== null && danaDoIspita() < 0,
       cNovih, uNovih, cPon, uPon,
       ostaloNovih: Math.max(0, cNovih - uNovih),
       ostaloPon: Math.max(0, cPon - uPon),
@@ -2599,7 +2605,7 @@
     {
       const dana = danaDoIspita();
       const neodg = neodgovorenih();
-      if (dana !== null && dana > 0 && p.cNovih > 0 && p.cPon > 0) {
+      if (dana !== null && dana > 0 && (p.cNovih > 0 || p.cPon > 0)) {
         const otvoriS = Math.min(neodg, p.cNovih * dana);
         const stigneGradivo = otvoriS >= neodg;
         const potrebnoPon = naRedu + otvoriS;
@@ -2613,16 +2619,21 @@
         }
         if (!(S.plan && S.plan.prio)) lostovi.push(`<button type="button" class="secondary sBtn" id="btnLostPrio">${L('lostPrio')}</button>`);
         const dugmad = lostovi.length ? `<div class="razmakG">${lostovi.join(' ')}</div>` : '';
-        if (!stigneGradivo) {
+        if (!stigneGradivo && p.cNovih > 0) {
           neStize = `<div class="mut napomena">${L('sudNeStize').split('@1').join(p.cNovih).split('@2').join(otvoriS).split('@3').join(neodg).split('@4').join(neodg - otvoriS)}</div>${dugmad}`;
         } else if (potrebnoPon > kapacitetPon) {
-          neStize = `<div class="mut napomena">${L('sudGradivoDa').split('@1').join(p.cNovih).split('@2').join(potrebnoPon).split('@3').join(kapacitetPon).split('@4').join(potrebnoPon - kapacitetPon)}</div>${dugmad}`;
+          neStize = neodg === 0
+            ? `<div class="mut napomena">${L('sudPonNeStaju').split('@1').join(nQ(potrebnoPon)).split('@2').join(kapacitetPon)}</div>${dugmad}`
+            : `<div class="mut napomena">${L('sudGradivoDa').split('@1').join(p.cNovih).split('@2').join(potrebnoPon).split('@3').join(kapacitetPon).split('@4').join(potrebnoPon - kapacitetPon)}</div>${dugmad}`;
         } else {
-          neStize = `<div class="mut napomena">${L('sudStize').split('@1').join(neodg)}</div>`;
+          neStize = `<div class="mut napomena">${neodg === 0 ? L('sudStizeSvePon') : L('sudStize').split('@1').join(neodg)}</div>`;
         }
         if (S.plan && S.plan.prio) neStize += `<div class="mut napomena">${L('lostPrioUkljucen')}</div>`;
       }
       if (p.autoBezDatuma) neStize = `<div class="mut napomena">${L('autoBezDatuma')}</div>`;
+      // datum prošao: kaže se to, a ne „nema datuma"; na sam dan ispita presuda ćuti —
+      // red „ispit je danas — srećno!" iz homeExtras govori umesto nje
+      if (p.autoProsaoDatum) neStize = `<div class="mut napomena">${L('prosaoDatum').split('@1').join(fmtDatum(S.examDate))}</div>`;
     }
     // Višak preko cilja se VIDI — u auto režimu on sam snižava sutrašnju kvotu.
     const visak = (p.cNovih > 0 && p.uNovih > p.cNovih)
@@ -2659,6 +2670,9 @@
     }
     if (S.examDate) {
       const dana = danaDoIspita();
+      // datum u prošlosti: do sada se NIŠTA nije prikazivalo — ni „do ispita", ni upozorenje,
+      // pa je čovek posle ispita zauvek nosio mrtav datum u stanju a da to nigde ne vidi
+      if (dana !== null && dana < 0) delovi.push(L('prosaoDatum').split('@1').join(fmtDatum(S.examDate)));
       if (dana !== null && dana >= 0) {
         // srpska jednina: „1 dan", ne „1 dana"; na sam dan ispita ne piše se „0 dana"
         if (dana === 0) delovi.push(L('examToday'));

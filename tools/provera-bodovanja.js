@@ -114,6 +114,21 @@ async function proveraBodovanja2() {
       S().examDate = null;
       await naPocetnu();
       ok('tempo: auto bez datuma ispita kaže šta fali', planTekst().includes('bez datuma ispita'));
+
+      // ---- 0c) RUBNI SLUČAJEVI DATUMA ----
+      const sazetak = () => document.getElementById('homeSummary').textContent.replace(/\s+/g, ' ');
+      const prosli = new Date(danas.getTime() - 3 * 86400000);
+      S().examDate = prosli.getFullYear() + '-' + dva(prosli.getMonth() + 1) + '-' + dva(prosli.getDate());
+      S().plan = { novih: null, pon: null, auto: 1, prio: 0 };
+      await naPocetnu();
+      ok('datum: prošao datum se kaže naglas (auto)', sazetak().includes('je prošao') && !planTekst().includes('bez datuma'));
+      S().plan = { novih: 20, pon: 20, auto: 0, prio: 0 };
+      await naPocetnu();
+      ok('datum: prošao datum se kaže naglas i u fiksnom režimu', sazetak().includes('je prošao'));
+      S().examDate = danasStr;   // ispit je DANAS
+      S().plan = { novih: null, pon: null, auto: 1, prio: 0 };
+      await naPocetnu();
+      ok('datum: na sam dan ispita nema pogrešne poruke o datumu', !planTekst().includes('bez datuma') && !sazetak().includes('je prošao'));
     }
     S().plan = staroPlan; S().examDate = staroDatum; S().day = staroDan;
     document.querySelector('[data-nav="home"]').click();
@@ -349,6 +364,20 @@ async function proveraBodovanja2() {
       };
       ok('prioritet: bez njega plan ide redom po bazi (podoblast 91)', (await prviIzPlana(0)) === 91);
       ok('prioritet: sa njim plan kreće od podoblasti koju ispit najviše nosi (134)', (await prviIzPlana(1)) === 134);
+
+      // ---- 3b) SVE GRADIVO OTVORENO: presuda sudi samo ponavljanjima ----
+      {
+        const juce = Date.now() - 26 * 3600 * 1000;
+        Q.forEach((q, i) => { S().q[q.id] = i < 700 ? { a: 2, w: 1, streak: 1, marked: 0, due: Date.now() - 1000, last: juce } : { a: 3, w: 0, streak: 3, marked: 0, last: juce }; });
+        const za3 = new Date(Date.now() + 3 * 86400000);
+        const dva3 = (n) => String(n).padStart(2, '0');
+        S().examDate = za3.getFullYear() + '-' + dva3(za3.getMonth() + 1) + '-' + dva3(za3.getDate());
+        S().plan = { novih: null, pon: null, auto: 1, prio: 0 };
+        document.querySelector('[data-nav="home"]').click();
+        await cekaj(200);
+        const pt = document.querySelector('#homeSummary .planBox').textContent.replace(/\s+/g, ' ');
+        ok('sve otvoreno: presuda kaže da zaostala ponavljanja ne staju', pt.includes('Sve gradivo je otvoreno') && pt.includes('ne staju'));
+      }
     }
 
   } catch (e) {
