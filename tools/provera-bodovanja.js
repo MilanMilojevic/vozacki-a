@@ -36,6 +36,7 @@ async function proveraBodovanja2() {
     ch.port2.postMessage(0);
   });
   const S = () => window.__dev.S;
+  const el2 = (id) => document.getElementById(id);
   const klikni = (tekst, koren) => {
     const b = [...(koren || document).querySelectorAll('button')].find((x) => x.textContent.includes(tekst));
     if (b) b.click();
@@ -81,6 +82,9 @@ async function proveraBodovanja2() {
       // a S().day.d koji je ranije bio prazan bi ostavio kvotu na nuli
       const dva = (n) => String(n).padStart(2, '0');
       const danasStr = danas.getFullYear() + '-' + dva(danas.getMonth() + 1) + '-' + dva(danas.getDate());
+      // testovi menjaju datum/režim DIREKTNO (mimo UI-ja), pa moraju i sami da bace zamrznutu
+      // dnevnu auto kvotu — UI to radi kroz ponistiAutoKvotu()
+      const svezaKvota = () => { if (S().day) { delete S().day.autoN; delete S().day.autoP; } };
       S().examDate = za10.getFullYear() + '-' + String(za10.getMonth() + 1).padStart(2, '0') + '-' + String(za10.getDate()).padStart(2, '0');
       S().day = { d: danasStr, n: 0, ok: 0, novih: 0, pon: 0 };
 
@@ -91,6 +95,15 @@ async function proveraBodovanja2() {
       const ocekNovih = Math.max(1, Math.ceil(neodg / Math.max(1, 10 - Math.min(7, Math.floor(10 / 3)))));
       ok('tempo: auto kvota se računa iz gradiva i dana (' + ocekNovih + ' novih)', planTekst().includes('Nova pitanja: 0 / ' + ocekNovih));
       ok('tempo: auto presuda kaže da stižeš', planTekst().includes('stižeš'));
+      // ZAMRZNUTA kvota: odgovor na novo pitanje NE sme da smanji današnju metu.
+      // Proba ide na POSLEDNJE pitanje baze (odeljak 1 koristi prva tri) i briše se za sobom.
+      ok('tempo: kvota je zamrznuta u S.day', S().day && S().day.autoN === ocekNovih);
+      const probno = window.QUIZ.questions[window.QUIZ.questions.length - 1].id;
+      window.__dev.record(probno, true);
+      await naPocetnu();
+      ok('tempo: meta ne beži unazad dok radiš', planTekst().includes('/ ' + ocekNovih));
+      delete S().q[probno];
+      S().day = { d: danasStr, n: 0, ok: 0, novih: 0, pon: 0, autoN: S().day.autoN, autoP: S().day.autoP };
 
       // fiksni, premali tempo: presuda mora da kaže da NE stižeš gradivo
       S().plan = { novih: 2, pon: 30, auto: 0, prio: 0 };
@@ -107,6 +120,7 @@ async function proveraBodovanja2() {
       const daleko = new Date(danas.getTime() + 300 * 86400000);
       S().examDate = daleko.getFullYear() + '-' + String(daleko.getMonth() + 1).padStart(2, '0') + '-' + String(daleko.getDate()).padStart(2, '0');
       S().plan = { novih: 10, pon: 10, auto: 1, prio: 0 };
+      svezaKvota();
       await naPocetnu();
       ok('tempo: u auto režimu višak snižava sutrašnju kvotu', /preko cilja/.test(planTekst()) && /sutrašnja kvota/i.test(planTekst()));
 
@@ -120,6 +134,7 @@ async function proveraBodovanja2() {
       const prosli = new Date(danas.getTime() - 3 * 86400000);
       S().examDate = prosli.getFullYear() + '-' + dva(prosli.getMonth() + 1) + '-' + dva(prosli.getDate());
       S().plan = { novih: null, pon: null, auto: 1, prio: 0 };
+      svezaKvota();
       await naPocetnu();
       ok('datum: prošao datum se kaže naglas (auto)', sazetak().includes('je prošao') && !planTekst().includes('bez datuma'));
       S().plan = { novih: 20, pon: 20, auto: 0, prio: 0 };
@@ -286,6 +301,46 @@ async function proveraBodovanja2() {
     ok('sve tačno → nula pogrešnih', (zapis.wrong || []).length === 0);
     ok('završen ispit briše zapis o toku', zapisIspita() === null);
 
+    // ---- 1e) PLAN-ZASTAVICE i BROJAČ PONAVLJANJA ----
+    {
+      // prio preživljava normalizaciju (učitavanje/uvoz)
+      const NS = window.__dev.normalizeState;
+      const n1 = NS({ q: {}, plan: { prio: 1 } });
+      ok('plan: prio sam za sebe preživljava učitavanje', !!(n1.plan && n1.plan.prio === 1));
+      // ručni upis brojeva NE gasi prekidače (spread u svim upisima)
+      const staroPlanZ = S().plan;
+      S().plan = { novih: 5, pon: 5, auto: 0, prio: 1 };
+      document.querySelector('[data-nav="home"]').click(); await cekaj(150);
+      document.getElementById('btnPodesavanja').click(); await cekaj(150);
+      el2('planNovih').value = '7'; el2('planPon').value = '7';
+      document.getElementById('btnPlanSave').click(); await cekaj(150);
+      ok('plan: „Sačuvaj cilj" čuva prio prekidač', S().plan.prio === 1 && S().plan.novih === 7);
+      S().plan = staroPlanZ;
+
+      // brojač ponavljanja: prelistavanje utvrđenog pitanja NE puni kvotu
+      const utvrdjeno = window.QUIZ.questions.find((q) => S().q[q.id] && S().q[q.id].streak >= 3 && !window.__dev.inQueue(q.id));
+      if (utvrdjeno) {
+        const preP = (S().day && S().day.pon) || 0;
+        window.__dev.record(utvrdjeno.id, true);
+        ok('brojač: prelistavanje utvrđenog ne puni kvotu ponavljanja', ((S().day && S().day.pon) || 0) === preP);
+      } else {
+        ok('brojač: prelistavanje utvrđenog ne puni kvotu ponavljanja (nema utvrđenog za probu)', true);
+      }
+    }
+
+    // ---- 1f) ISTEKAO ISPIT BEZ ODGOVORA SE ODBACUJE ----
+    {
+      const brojSimova = S().sims.length;
+      localStorage.setItem('vozackiA.sim', JSON.stringify({
+        v: 1, d: Date.now() - 60000, i: 0, r: 0,
+        qs: window.QUIZ.questions.slice(0, 41).map((q) => ({ id: q.id, o: q.ch.map((c) => c.id), c: [], m: 0 })),
+      }));
+      location.hash = '#/sim';
+      await cekaj(400);
+      ok('ispit: istekao BEZ odgovora se odbacuje, ne upisuje pad', S().sims.length === brojSimova && localStorage.getItem('vozackiA.sim') === null);
+      document.querySelector('[data-nav="home"]').click(); await cekaj(150);
+    }
+
     // ---- 2a) KARTICA UZ PITANJE prikazuje samo odeljak svoje podoblasti ----
     {
       location.hash = '#/p/9502';   // hijerarhija (sub 131) — kartica prvenstva ima 5 odeljaka
@@ -373,6 +428,7 @@ async function proveraBodovanja2() {
         const dva3 = (n) => String(n).padStart(2, '0');
         S().examDate = za3.getFullYear() + '-' + dva3(za3.getMonth() + 1) + '-' + dva3(za3.getDate());
         S().plan = { novih: null, pon: null, auto: 1, prio: 0 };
+        if (S().day) { delete S().day.autoN; delete S().day.autoP; }
         document.querySelector('[data-nav="home"]').click();
         await cekaj(200);
         const pt = document.querySelector('#homeSummary .planBox').textContent.replace(/\s+/g, ' ');

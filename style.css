@@ -104,6 +104,8 @@ body { font-family: "Segoe UI", system-ui, -apple-system, sans-serif; background
   .dnIkona { font-size: 1.2rem; line-height: 1; }
   .dnTekst { font-size: var(--fs-xs); line-height: 1.1; text-align: center; }
   body.uSimulaciji #donjaNav { display: none; }
+  /* ni predlozi ažuriranja ni iOS uputstvo ne smeju preko ispita — ekran ispita je čist */
+  body.uSimulaciji #repoUpd, body.uSimulaciji #iosHint { display: none; }
   /* sadržaj i plutajuće trake ne smeju da stanu ispod navigacije */
   main { padding-bottom: 84px; }
   body.uSimulaciji main { padding-bottom: 60px; }
@@ -521,7 +523,6 @@ body.uSimulaciji #podnozje { display: none; }
 #view-home > #guideCard { order: 5; }
 #view-home > #pojmovnikCard { order: 6; }
 #view-home > #faqCard { order: 7; }
-#view-home > #trustCard { order: 8; }
 #view-home #dataTools { order: 9; }     /* podešavanja na kraju */
 
 /* Vodič za učenje */
