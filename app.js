@@ -45,7 +45,6 @@
     simSub: { l: '41 pitanje · 45 min · prag 85%', c: '41 питање · 45 мин · праг 85%' },
     stats: { l: 'Statistika', c: 'Статистика' },
     statsSub: { l: 'oblasti i najslabije tačke', c: 'области и најслабије тачке' },
-    cats: { l: 'Oblasti — klikni za spisak pitanja i vežbanje', c: 'Области — кликни за списак питања и вежбање' },
     question: { l: 'Pitanje', c: 'Питање' },
     qNumTip: { l: 'Zvanični broj pitanja u MUP bazi (isti broj važi i na eUpravi)', c: 'Званични број питања у МУП бази (исти број важи и на еУправи)' },
     points: { l: 'poena', c: 'поена' },
@@ -78,8 +77,6 @@
     pojmovnikDugme: { l: '📖 Pojmovnik — @1 tematskih kartica', c: '📖 Појмовник — @1 тематских картица' },
     pojmovnikPod: { l: 'priručnik za čitanje van vežbanja; iste kartice iskaču i uz pitanja kojima odgovaraju', c: 'приручник за читање ван вежбања; исте картице искачу и уз питања којима одговарају' },
     podesavanjaDugme: { l: '⚙️ Podešavanja — cilj, datum ispita, čuvanje napretka, izgled', c: '⚙️ Подешавања — циљ, датум испита, чување напретка, изглед' },
-    oblastiDugme: { l: '📊 Napredak po oblastima ›', c: '📊 Напредак по областима ›' },
-    oblastiPod: { l: 'trake po oblastima, tačnost i procena — na strani Statistika', c: 'траке по областима, тачност и процена — на страни Статистика' },
     osveziBtn: { l: '🔄 Osveži znanje', c: '🔄 Освежи знање' },
     osveziTip: { l: 'Utvrđena pitanja koja nisi video duže od 21 dan. Tačan odgovor ih vraća na počinak; pogrešan ih vraća u red za ponavljanje.', c: 'Утврђена питања која ниси видео дуже од 21 дан. Тачан одговор их враћа на починак; погрешан их враћа у ред за понављање.' },
     osveziTitle: { l: 'Osvežavanje', c: 'Освежавање' },
@@ -245,11 +242,10 @@
     planIspunjenJos: { l: '✅ Dnevni cilj je ispunjen. Za ponavljanje ostaje još: @1 — možeš i danas, ili sutra.', c: '✅ Дневни циљ је испуњен. За понављање остаје још: @1 — можеш и данас, или сутра.' },
     planNemaPon: { l: 'nema na redu', c: 'нема на реду' },
     planPodesi: { l: 'Podesi cilj', c: 'Подеси циљ' },
-    planOdNaRedu: { l: 'U redu za ponavljanje čeka @1 — to je zaostatak od ranije, ne zadatak za danas. Cilj uzima najviše @2 dnevno, a danas ti je od toga ostalo još @3.', c: 'У реду за понављање чека @1 — то је заостатак од раније, не задатак за данас. Циљ узима највише @2 дневно, а данас ти је од тога остало још @3.' },
     sudStize: { l: '✅ Ovim tempom stižeš: do ispita otvoriš svih @1 neodgovorenih i stigneš sva ponavljanja koja iz njih izađu.', c: '✅ Овим темпом стижеш: до испита отвориш свих @1 неодговорених и стигнеш сва понављања која из њих изађу.' },
     sudStizeSvePon: { l: '✅ Sve gradivo je otvoreno — ovim tempom stižeš i ponavljanja koja čekaju.', c: '✅ Све градиво је отворено — овим темпом стижеш и понављања која чекају.' },
     sudPonNeStaju: { l: '⚠ Sve gradivo je otvoreno, ali zaostala ponavljanja ne staju: čeka @1, a cilj do ispita stigne @2. Podigni ponavljanja ili prihvati da deo ostane neponovljen.', c: '⚠ Све градиво је отворено, али заостала понављања не стају: чека @1, а циљ до испита стигне @2. Подигни понављања или прихвати да део остане непоновљен.' },
-    sudGradivoDa: { l: '⚠ Gradivo stižeš, ali ne i ponavljanja: uz @1 novih dnevno u red do ispita ulazi bar @2, a cilj stigne @3. Oko @4 pitanja ćeš videti samo jednom — a jedno viđenje je premalo da bi ostalo u glavi.', c: '⚠ Градиво стижеш, али не и понављања: уз @1 нових дневно у ред до испита улази бар @2, а циљ стигне @3. Око @4 питања ћеш видети само једном — а једно виђење је премало да би остало у глави.' },
+    sudGradivoDa: { l: '⚠ Gradivo stižeš, ali ne i ponavljanja: uz @1 novih dnevno u red do ispita ulazi bar @2, a cilj stigne @3. Oko @4 pitanja ćeš videti samo jednom.', c: '⚠ Градиво стижеш, али не и понављања: уз @1 нових дневно у ред до испита улази бар @2, а циљ стигне @3. Око @4 питања ћеш видети само једном.' },
     sudNeStize: { l: '⛔ Ovim tempom NE stižeš gradivo: uz @1 novih dnevno do ispita otvoriš @2 od @3 neodgovorenih, pa @4 pitanja ostaje neviđeno. To jeste prepreka — na ispitu se pitanja izvlače iz cele baze.', c: '⛔ Овим темпом НЕ стижеш градиво: уз @1 нових дневно до испита отвориш @2 од @3 неодговорених, па @4 питања остаје невиђено. То јесте препрека — на испиту се питања извлаче из целе базе.' },
     lostTempo: { l: 'Podigni na @1 novih i @2 ponavljanja dnevno', c: 'Подигни на @1 нових и @2 понављања дневно' },
     lostPrio: { l: 'Uči prvo ono što se na ispitu i pojavljuje', c: 'Учи прво оно што се на испиту и појављује' },
@@ -2422,7 +2418,7 @@
     { sel: '.menuBtn[data-nav="learn"]', key: 'tour2' },
     { sel: '.menuBtn[data-nav="drill"]', key: 'tour3' },
     { sel: '.menuBtn[data-nav="sim"]', key: 'tour4' },
-    { sel: '#btnOblasti', key: 'tour5' },
+    { sel: '.menuBtn[data-nav="stats"]', key: 'tour5' },
     { sel: '#pojmovnikCard', key: 'tour6' },
     { sel: '#dataTools', key: 'tour7' },
   ];
@@ -2596,8 +2592,6 @@
     const naRedu = queueSplit().ready.length;
     // Ako je zaostalo više nego što staje u kvotu, kaže se ODAKLE dokle: dnevni cilj je kvota, ne dug,
     // pa velika brojka ne sme da izgleda kao obaveza za danas.
-    const zaostatak = (!ispunjen && naRedu > p.cPon && p.cPon > 0)
-      ? `<div class="mut napomena">${L('planOdNaRedu').split('@1').join(nQ(naRedu)).split('@2').join(p.cPon).split('@3').join(p.ostaloPon)}</div>` : '';
     // PRESUDA, ne uteha. Sve tri grane su donja granica, ne prognoza: svako novo pitanje ulazi u
     // red i traži bar jednu potvrdu (inQueue), pa je „potrebno ponavljanja` zbir zaostalog reda i
     // broja novih koje ćeš otvoriti. Ako ni taj minimum ne staje — to se kaže, sa lostovima.
@@ -2644,7 +2638,7 @@
         : `<button class="primary" id="btnPlanVezbaj">${L('planVezbaj')} (${ima})</button>`;
     return `<div class="planBox"><b>${L('planNaslov')}</b> &nbsp;<button type="button" class="bcLink" id="btnPlanPodesi">${L('planPodesi')} ›</button>
       ${red(L('novihLbl'), p.uNovih, p.cNovih, p.nemaNovih, L('planSveOdgovoreno'))}${red(L('ponLbl'), p.uPon, p.cPon, p.nemaPon, L('planNemaPon'))}
-      ${zaostatak}${visak}${neStize}<div class="razmakG">${dno}</div></div>`;
+      ${visak}${neStize}<div class="razmakG">${dno}</div></div>`;
   }
 
   function homeExtras() {
@@ -2859,9 +2853,6 @@
     }
     el('mStats').textContent = L('stats');
     el('mStatsSub').textContent = L('statsSub');
-    el('catBars').innerHTML = `<button type="button" class="explCardBtn pojBtn" id="btnOblasti">${L('oblastiDugme')}</button>
-      <div class="mut napomena">${L('oblastiPod')}</div>`;
-    el('btnOblasti').addEventListener('click', renderStats);
 
     const sh = el('simHistory');
     if (!S.sims.length) sh.innerHTML = `<h3>${L('history')}</h3><p class="mut">${L('noSims')}</p>`;

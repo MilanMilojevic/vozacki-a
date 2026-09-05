@@ -353,13 +353,14 @@ body.uSimulaciji #podnozje { display: none; }
 }
 /* poruka uz polje za unos — mora da se vidi i mora da kaže šta JESTE dozvoljeno */
 .unosPoruka { color: var(--bad); font-size: var(--fs-sm); font-weight: 600; margin-top: 4px; max-width: 34em; }
-/* Сажетак почетне: сваки број у свом реду, име испред броја. */
-.brRed { display: flex; flex-wrap: wrap; gap: 4px 6px; align-items: baseline; margin-top: 3px; font-size: var(--fs-md); }
+/* Сажетак почетне: сваки број у свом реду, име испред броја. Обичан ток текста, не flex:
+   на телефону се дуга вредност иначе преламала као ЦЕЛИНА, па је име остајало само у реду. */
+.brRed { margin-top: 3px; font-size: var(--fs-md); line-height: 1.5; }
 .brIme { color: var(--mut); }
 #homeSummary .pomocBtn2 { margin-top: 8px; }
 .planBox { margin-top: 10px; }
 .planRed { display: grid; grid-template-columns: minmax(0, auto) 1fr 1em; gap: 8px; align-items: center; font-size: var(--fs-sm); margin-top: 5px; }
-.planBar { height: 8px; background: var(--bar); border-radius: 4px; overflow: hidden; }
+.planBar { height: 8px; background: var(--bar); border-radius: 4px; overflow: hidden; max-width: 360px; }
 .planBar > span { display: block; height: 100%; background: var(--blue); }
 .planPolja { display: flex; gap: 12px; flex-wrap: wrap; align-items: flex-end; }
 .planPolje { display: flex; flex-direction: column; gap: 3px; }
@@ -485,12 +486,12 @@ body.uSimulaciji #podnozje { display: none; }
 /* ---- Eksperiment: iskorišćenje širokih ekrana (>=1200px). Simulacija namerno netaknuta. ---- */
 @media (min-width: 1200px) {
   main { max-width: 1240px; }
-  #view-home.active { display: grid; grid-template-columns: 1fr 1fr; column-gap: 18px; align-items: start; }
-  #view-home > #homeSummary, #view-home > .menuGrid, #view-home > #guideCard,
-  #view-home > #pojmovnikCard, #view-home > #faqCard, #view-home > #trustCard { grid-column: 1 / -1; }
-  /* svih pet stavki menija u jedan red: 190px je najmanja širina koja to dozvoljava na 1240px */
-  .menuGrid { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
-  .hColL { grid-column: 1; } .hColR { grid-column: 2; }
+  /* Početna je JEDNA kolona i na širokom ekranu, ograničena kao i strana pitanja: dvokolonski
+     raspored je imao smisla dok su podešavanja i pojmovnik bili visoki — otkad su sklopljeni,
+     pravio je samo prazninu pored kraćе kolone (Milan, 05.09). */
+  #view-home.active { max-width: 880px; margin-left: auto; margin-right: auto; }
+  /* svih pet stavki menija u jedan red na širokom ekranu */
+  .menuGrid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
   /* Objašnjenje ide ISPOD odgovora i na širokim ekranima (Milanova odluka) —
      kartica pitanja je samo ograničena po širini radi čitljivosti redova. */
   #view-question #qCard, #view-question #qProgress { max-width: 860px; margin-left: auto; margin-right: auto; }
@@ -513,21 +514,15 @@ body.uSimulaciji #podnozje { display: none; }
    PAŽNJA: ovi selektori zavise od građe u index.html — ako se kartice premeštaju,
    mora i ovaj blok. Svaka stavka MORA da ima svoj order; ono što ga nema dobija 0
    i odleti na vrh. */
-@media (max-width: 1199px) {
-  #view-home.active { display: flex; flex-direction: column; }
-  .hCol { display: contents; }
-  #view-home > #homeSummary { order: 1; }
-  #view-home > .menuGrid { order: 2; }
-  /* Redosled po ID-ju, NE po koloni — kolone su raspored za širok ekran i smeju da se
-     menjaju bez diranja ovog bloka. */
-  #view-home #simHistory { order: 3; }    /* svoje simulacije su zanimljivije od preporuke */
-  #view-home #oblastiCard { order: 4; }   /* dugme ka napretku po oblastima (Statistika) */
-  #view-home > #guideCard { order: 5; }
-  #view-home > #pojmovnikCard { order: 6; }
-  #view-home > #faqCard { order: 7; }
-  #view-home > #trustCard { order: 8; }
-  #view-home #dataTools { order: 9; }     /* podešavanja na kraju */
-}
+#view-home.active { display: flex; flex-direction: column; }
+#view-home > #homeSummary { order: 1; }
+#view-home > .menuGrid { order: 2; }
+#view-home #simHistory { order: 3; }    /* svoje simulacije su zanimljivije od preporuke */
+#view-home > #guideCard { order: 5; }
+#view-home > #pojmovnikCard { order: 6; }
+#view-home > #faqCard { order: 7; }
+#view-home > #trustCard { order: 8; }
+#view-home #dataTools { order: 9; }     /* podešavanja na kraju */
 
 /* Vodič za učenje */
 .guideList { margin: 10px 0 0; padding-left: 22px; line-height: 1.5; }
