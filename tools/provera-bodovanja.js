@@ -363,6 +363,51 @@ async function proveraBodovanja2() {
       await cekaj(150);
     }
 
+    // ---- 2ab) ATLAS ZNAKOVA: slika i značenje se IZVODE iz baze, ne prepisuju ----
+    {
+      const EXA = (window.EXPLAIN && window.EXPLAIN.atlas) || {};
+      const grupe = Object.keys(EXA);
+      const poId = new Map(window.QUIZ.questions.map((q) => [q.id, q]));
+      let uk = 0, lose = 0;
+      for (const k of grupe) {
+        if (!window.EXPLAIN.cards[k]) lose++;
+        for (const s of EXA[k]) {
+          uk++;
+          const q = poId.get(s.i);
+          const tacno = q && q.ch.filter((c) => c.ok).map((c) => c.t.l.trim()).join(' + ');
+          // svaka stavka mora da pokazuje na pitanje SA SLIKOM čiji je tačan odgovor baš to značenje
+          if (!q || !q.img || tacno !== s.z.l) lose++;
+        }
+      }
+      ok('atlas: svaka slika ima pitanje sa slikom, značenje = tačan odgovor (' + uk + ' slika)', uk > 250 && lose === 0);
+      ok('atlas: nijedna grupa nije sitna niti bez svoje kartice',
+        grupe.length >= 10 && grupe.every((k) => window.EXPLAIN.cards[k] && EXA[k].length >= 3));
+
+      // uz pitanje: kartica dobija podkarticu sa slikama, NA VRHU i sklopljenu
+      location.hash = '#/p/10783';   // opasna krivina nalevo (sub 157)
+      await cekaj(400);
+      const q2 = window.QUIZ.questions.find((x) => x.id === 10783);
+      const izb = [...document.querySelectorAll('#qCard .choice')];
+      for (let i = 0; i < q2.req; i++) izb[i].click();
+      document.querySelector('#qCard .qActions .primary').click();
+      await cekaj(250);
+      const b2 = document.querySelector('#qCard .explBox .explCardBtn');
+      b2.click(); await cekaj(250);
+      const cd2 = b2.nextElementSibling;
+      const pod = cd2.querySelector('.kPod');
+      ok('atlas: podkartica sa slikama stoji na VRHU kartice', !!pod && cd2.firstChild === pod);
+      const ab = pod && pod.querySelector('button');
+      ok('atlas: sklopljena je dok se ne zatraži', !!ab && ab.getAttribute('aria-expanded') === 'false'
+        && cd2.querySelectorAll('.znCell').length === 0);
+      ab.click(); await cekaj(300);
+      ok('atlas: otvaranje pravi sve slike grupe (' + EXA['znakovi-opasnosti'].length + ')',
+        cd2.querySelectorAll('.znCell').length === EXA['znakovi-opasnosti'].length);
+      ok('atlas: svaka slika je dugme koje otvara uvećanje',
+        cd2.querySelectorAll('.znCell .qImgBtn img.qImg').length === EXA['znakovi-opasnosti'].length);
+      document.querySelector('[data-nav="home"]').click();
+      await cekaj(150);
+    }
+
     // ---- 2b) ŠANSA DA POLOŽIŠ i pravilo o simulacijama ----
     {
       const sz = window.__dev.sansaZaProlaz;

@@ -210,6 +210,8 @@
     close: { l: 'Zatvori', c: 'Затвори' },
     sekDeo: { l: 'Prikazan je deo kartice koji se odnosi na ovu podoblast.', c: 'Приказан је део картице који се односи на ову подобласт.' },
     sekCela: { l: 'Prikaži celu karticu', c: 'Прикажи целу картицу' },
+    atlasDugme: { l: '🖼️ Slike iz baze (@1)', c: '🖼️ Слике из базе (@1)' },
+    atlasNapomena: { l: 'Slike su iz same baze pitanja — isti znak koji te čeka na ispitu, uz zvanično značenje (tačan odgovor na to pitanje). Dodirni sliku da je uvećaš.', c: 'Слике су из саме базе питања — исти знак који те чека на испиту, уз званично значење (тачан одговор на то питање). Додирни слику да је увећаш.' },
     statsTip: { l: 'Isti pregled kao na početnoj, uz tačnost: klik na naziv otvara spisak pitanja, strelica otklapa podoblasti. Boja tačnosti: zeleno od 85% (prag ispita), žuto 70–84%, crveno ispod 70%.', c: 'Исти преглед као на почетној, уз тачност: клик на назив отвара списак питања, стрелица отклапа подобласти. Боја тачности: зелено од 85% (праг испита), жуто 70–84%, црвено испод 70%.' },
     grupaNapredak: { l: 'Napredak', c: 'Напредак' },
     grupaAplikacija: { l: 'Aplikacija', c: 'Апликација' },
@@ -1439,7 +1441,10 @@
       inner += `<div><button class="explCardBtn pojBtn" data-card="${k}">📖 ${escapeHtml(T(c.t))}</button><div class="explCard" style="display:none">${T(c.h)}</div></div>`;
     }
     box.innerHTML = inner;
-    box.querySelectorAll('.explCardBtn').forEach((btn) => sklopivo(btn));
+    box.querySelectorAll('.explCardBtn').forEach((btn) => {
+      dodajAtlas(btn.nextElementSibling, btn.dataset.card);
+      sklopivo(btn);
+    });
     box.querySelectorAll('.explCard').forEach((cd) => suziKarticu(cd, q.sub));
     return box;
   }
@@ -1453,13 +1458,42 @@
     const pogodak = sek.filter((x) => x.dataset.sub.split(',').map((y) => y.trim()).includes(String(sub)));
     if (!pogodak.length) return;
     let sakriveno = 0;
-    [...cd.children].forEach((x) => { if (!pogodak.includes(x)) { x.classList.add('kSekSkriven'); sakriveno++; } });
+    // podkartice (atlas slika) su ionako sklopljene na jedan red i vezane su za temu cele
+    // kartice — sužavanje ih ne dira, inače bi slike nestale baš uz pitanje kome trebaju
+    [...cd.children].forEach((x) => {
+      if (!pogodak.includes(x) && !x.classList.contains('kPod')) { x.classList.add('kSekSkriven'); sakriveno++; }
+    });
     if (!sakriveno) return;
     const d = document.createElement('div');
     d.className = 'kSekNapomena mut';
     d.innerHTML = `<span>${L('sekDeo')}</span> <button type="button" class="secondary sBtn">${L('sekCela')}</button>`;
     d.querySelector('button').addEventListener('click', () => { cd.querySelectorAll('.kSekSkriven').forEach((x) => x.classList.remove('kSekSkriven')); d.remove(); });
     cd.appendChild(d);
+  }
+
+  // ---------- Atlas znakova: slike iz same baze pitanja ----------
+  // U bazi 313 pitanja glasi „znak prikazan na slici označava:" — slika je znak, tačan odgovor
+  // je njegovo zvanično značenje. Zato se atlas ne piše rukom nego se izvodi (explanations.js
+  // → EXPLAIN.atlas), pa ne može da se razmimoiđe sa ispitom.
+  // Stoji iza JEDNOG dugmeta unutar kartice i pravi se tek kad se otvori: kartica koju korisnik
+  // već zove velikom ne sme da dobije 58 slika u telo, a ni 58 <img> elemenata pri svakom crtanju.
+  function dodajAtlas(cd, kljuc) {
+    const st = (EX.atlas || {})[kljuc];
+    if (!cd || !st || !st.length) return;
+    const omot = document.createElement('div');
+    omot.className = 'kPod';
+    omot.innerHTML = `<button type="button" class="pojBtn kPodBtn">${escapeHtml(L('atlasDugme').split('@1').join(st.length))}</button><div class="kPodTelo" style="display:none"></div>`;
+    // slike idu na VRH kartice: najbrži su put do razumevanja, a ni ne traže se na dnu
+    // teksta od pet hiljada piksela (Milanova primedba 07.09.2026: kartica nema slika)
+    cd.insertBefore(omot, cd.firstChild);
+    sklopivo(omot.querySelector('button'), null, omot.querySelector('.kPodTelo'), (telo) => {
+      telo.innerHTML = `<p class="mut napomena">${escapeHtml(L('atlasNapomena'))}</p><div class="znGrid">`
+        + st.map((s) => {
+          const z = escapeHtml(T(s.z));
+          return `<div class="znCell"><button type="button" class="qImgBtn" aria-label="${escapeHtml(L('uvecajSliku'))}: ${z}"><img class="qImg znImg" loading="lazy" decoding="async" src="img/${s.i}.jpg" alt=""></button><span>${z}</span></div>`;
+        }).join('')
+        + '</div>';
+    });
   }
 
   // ---------- Sklapanje kartica — jedno ponašanje na svim mestima ----------
@@ -3003,7 +3037,10 @@
       sklopivo(el('btnPojmovnik'), null, el('pojmovnikTelo'), (cd) => {
         cd.innerHTML = html;
         // akordeon: otvaranje jedne kartice sklapa prethodno otvorenu
-        cd.querySelectorAll('.explCardBtn').forEach((btn) => sklopivo(btn, cd, null, (c2) => { c2.innerHTML = T(EX.cards[btn.dataset.poj].h); }));
+        cd.querySelectorAll('.explCardBtn').forEach((btn) => sklopivo(btn, cd, null, (c2) => {
+          c2.innerHTML = T(EX.cards[btn.dataset.poj].h);
+          dodajAtlas(c2, btn.dataset.poj);
+        }));
       });
     }
 

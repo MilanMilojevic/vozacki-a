@@ -380,6 +380,23 @@ body.uSimulaciji #podnozje { display: none; }
 .kSekSkriven { display: none; }
 .kSekNapomena { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 10px; font-size: var(--fs-sm); }
 .napomena { font-size: var(--fs-sm); margin: 4px 0 8px; }
+/* podkartica: odeljak unutar kartice iza svog dugmeta (atlas slika) */
+.kPod { margin-top: 14px; border-top: 1px solid var(--line); padding-top: 6px; }
+/* na vrhu kartice crta ide ISPOD podkartice — inače bi se udvojila sa naslovom kartice */
+.kPod:first-child { margin-top: 0; border-top: 0; padding-top: 0;
+  border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 12px; }
+.kPodBtn { padding: 6px 0; }
+.kPodTelo { margin-top: 4px; line-height: 1.55; }
+/* atlas znakova: sličica i njeno zvanično značenje; na širokom ekranu dve kolone */
+.znGrid { display: grid; grid-template-columns: 1fr; gap: 14px; margin: 6px 0 2px; }
+/* Slika PLUTA levo, značenje se obavija oko nje: značenja idu od 11 do 279 znakova, pa bi
+   kolona fiksne širine pravila ćeliju od 339px sa praznom polovinom pored sličice. */
+.znCell { overflow: hidden; }
+.znCell .qImgBtn { float: left; width: 120px; margin: 0 12px 6px 0; }
+/* contain, ne cover: putokazi i dopunske table su ŠIROKI — isečen kraj table je isečen podatak */
+.znCell img.znImg { width: 120px; height: 88px; object-fit: contain; margin: 0; padding: 2px; }
+.znCell > span { font-size: var(--fs-sm); line-height: 1.45; }
+@media (min-width: 760px) { .znGrid { grid-template-columns: 1fr 1fr; gap: 16px 22px; } }
 .tekstSm { font-size: var(--fs-sm); }
 .explCard table { border-collapse: collapse; width: 100%; font-size: var(--fs-sm); margin: 8px 0 14px; }
 .explCard .vgrid { margin: 10px 0 14px; }
