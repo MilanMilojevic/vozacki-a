@@ -358,11 +358,17 @@ body.uSimulaciji #podnozje { display: none; }
 /* Сажетак почетне: сваки број у свом реду, име испред броја. Обичан ток текста, не flex:
    на телефону се дуга вредност иначе преламала као ЦЕЛИНА, па је име остајало само у реду. */
 .brRed { margin-top: 3px; font-size: var(--fs-md); line-height: 1.5; }
+/* sažetak na širokom ekranu ide u dve kolone — kratki redovi su ostavljali praznu desnu
+   polovinu kartice („ima dosta praznog prostora na vrhu jer su redovi kratki") */
+@media (min-width: 620px) { #homeSummary { display: grid; grid-template-columns: 1fr 1fr; column-gap: 24px; align-items: start; }
+  #homeSummary > div:last-child { grid-column: 1 / -1; } }
 .brIme { color: var(--mut); }
 #homeSummary .pomocBtn2 { margin-top: 8px; }
 .planBox { margin-top: 10px; }
 .planRed { display: grid; grid-template-columns: minmax(0, auto) 1fr 1em; gap: 8px; align-items: center; font-size: var(--fs-sm); margin-top: 5px; }
-.planBar { height: 8px; background: var(--bar); border-radius: 4px; overflow: hidden; max-width: 360px; }
+/* traka ide celom širinom reda: ograničenje od 360px je na širokom ekranu
+   ostavljalo pola reda prazno („ima dosta praznog prostora na vrhu jer su redovi kratki") */
+.planBar { height: 8px; background: var(--bar); border-radius: 4px; overflow: hidden; }
 .planBar > span { display: block; height: 100%; background: var(--blue); }
 /* traka tačnosti nosi i boju ocene: prag ispita je 85% */
 .planBar > span.barDobar { background: var(--ok); }

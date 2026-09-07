@@ -238,6 +238,7 @@
     fsMax: { l: 'Slova su već na najvećoj veličini', c: 'Слова су већ на највећој величини' },
     planNaslov: { l: 'Dnevni cilj', c: 'Дневни циљ' },
     planTacnost: { l: 'Tačnost danas', c: 'Тачност данас' },
+    autoPoljaZakljucana: { l: 'Dok je „Cilj se sam računa do ispita" uključen, ovi brojevi se ne koriste — kvota se svakog dana računa iz onoga što je ostalo i broja dana do ispita. Isključi ga ako hoćeš svoj broj.', c: 'Док је „Циљ се сам рачуна до испита" укључен, ови бројеви се не користе — квота се сваког дана рачуна из онога што је остало и броја дана до испита. Искључи га ако хоћеш свој број.' },
     daniNaslov: { l: '📅 Po danima — koliko i kako je išlo', c: '📅 По данима — колико и како је ишло' },
     daniPrazno: { l: 'Ovde će stajati svaki dan u kome si nešto uradio: koliko novih pitanja, koliko ponavljanja i kolika je bila tačnost. Prvi red stiže sutra — današnji dan se upisuje kad pređe ponoć.', c: 'Овде ће стајати сваки дан у коме си нешто урадио: колико нових питања, колико понављања и колика је била тачност. Први ред стиже сутра — данашњи дан се уписује кад пређе поноћ.' },
     daniDatum: { l: 'Dan', c: 'Дан' },
@@ -1642,6 +1643,11 @@
       sklopivo(btn, null, telo);
     });
   }
+
+  // Da li su podešavanja bila otvorena. Živi samo u ovoj poseti (ne u sačuvanom stanju):
+  // renderHome() karticu pravi iznova pri svakoj izmeni, pa bi se bez ovoga zatvarala čim
+  // nešto promeniš — a menjaš baš zato što si u njoj.
+  let podesavanjaOtvorena = false;
 
   // ---------- Sklapanje kartica — jedno ponašanje na svim mestima ----------
   // Ranije su vizuelno iste kartice imale tri različita ponašanja, a kartica pri dnu
@@ -3283,6 +3289,9 @@
     // greške su odavde preseljeni u podnožje — tamo ih ljudi i traže.
     // Podešavanja se sklapaju iza jednog dugmeta. Telo se pravi ODMAH (ne lenjo): sve
     // dugmad unutra vezuju se po id-u odmah posle crtanja, pa moraju da postoje u DOM-u.
+    // U auto režimu kvotu računa aplikacija, pa ručna polja tada NISU u igri — vidi se da su
+    // zaključana i piše zašto. Ranije su primala broj, javljala „Sačuvano" i ništa se nije menjalo.
+    const autoUkljucen = !!(S.plan && S.plan.auto);
     el('dataTools').innerHTML = `<button type="button" class="explCardBtn pojBtn" id="btnPodesavanja">${L('podesavanjaDugme')}</button>
       <div id="podesavanjaTelo" style="display:none">
       <div class="podGrupa">
@@ -3324,13 +3333,14 @@
         <div class="mut napomena">${L('prioOpis')}</div>
         <div class="planPolja">
           <label class="planPolje"><span class="mut">${L('planNovih')}</span>
-            <input id="planNovih" type="text" inputmode="numeric" autocomplete="off" value="${S.plan && S.plan.novih ? S.plan.novih : ''}"></label>
+            <input id="planNovih" type="text" inputmode="numeric" autocomplete="off"${autoUkljucen ? ' disabled' : ''} value="${S.plan && S.plan.novih ? S.plan.novih : ''}"></label>
           <label class="planPolje"><span class="mut">${L('planPon')}</span>
-            <input id="planPon" type="text" inputmode="numeric" autocomplete="off" value="${S.plan && S.plan.pon ? S.plan.pon : ''}"></label>
+            <input id="planPon" type="text" inputmode="numeric" autocomplete="off"${autoUkljucen ? ' disabled' : ''} value="${S.plan && S.plan.pon ? S.plan.pon : ''}"></label>
         </div>
+        ${autoUkljucen ? `<div class="mut napomena">${L('autoPoljaZakljucana')}</div>` : ''}
         <div class="podDugmad">
-          <button type="button" class="secondary" id="btnPlanSave">${L('planSacuvaj')}</button>
-          <button type="button" class="secondary" id="btnPlanPredlog">${L('planPredlozi')}</button>
+          <button type="button" class="secondary" id="btnPlanSave"${autoUkljucen ? ' disabled' : ''}>${L('planSacuvaj')}</button>
+          <button type="button" class="secondary" id="btnPlanPredlog"${autoUkljucen ? ' disabled' : ''}>${L('planPredlozi')}</button>
           ${S.plan ? `<button type="button" class="secondary" id="btnPlanOff">${L('planIskljuci')}</button>` : ''}
         </div>
         <div id="planPoruka" class="mut razmakG"></div>
@@ -3341,6 +3351,14 @@
         <div class="mut napomena">${L('resetNapomena')}</div>
       </div></div>`;
     sklopivo(el('btnPodesavanja'), null, el('podesavanjaTelo'));
+    // pamti otvoreno/zatvoreno; sluša se POSLE sklopivo, pa čita stanje koje je ono postavilo
+    el('btnPodesavanja').addEventListener('click', () => {
+      podesavanjaOtvorena = el('btnPodesavanja').getAttribute('aria-expanded') === 'true';
+    });
+    if (podesavanjaOtvorena) {
+      el('podesavanjaTelo').style.display = '';
+      el('btnPodesavanja').setAttribute('aria-expanded', 'true');
+    }
     renderBackupLine();
     // Prekinuta rezerva u fajl je jedina stvar iz podešavanja koja NE sme da čeka da je neko
     // otvori: tada se kartica otvara sama, da crveni red ne završi ispod sklopljenog dugmeta.
@@ -3389,7 +3407,7 @@
       const neodg = neodgovorenih();
       const kaziPosle = (t) => { const m = el('planPoruka'); if (m) m.textContent = t; };
       const prazno = (x) => String(x.value || '').trim() === '';
-      if (!neodg) { pn.disabled = true; pn.value = ''; pn.placeholder = L('planSveOdgovoreno'); }
+      if (!neodg && !autoUkljucen) { pn.disabled = true; pn.value = ''; pn.placeholder = L('planSveOdgovoreno'); }
       [pn, pp].forEach((x) => x.addEventListener('input', () => { ocistiPoruku(x); kaziPosle(''); }));
       // Auto režim sam računa kvotu, pa polja za brojeve tada nemaju šta da kažu — ostaju
       // upisana za slučaj da se auto ugasi, ali se ne koriste.

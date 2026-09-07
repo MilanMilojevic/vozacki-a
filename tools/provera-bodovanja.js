@@ -662,6 +662,51 @@ async function proveraBodovanja2() {
       document.querySelector('[data-nav="home"]').click(); await cekaj(150);
     }
 
+    // ---- 2ah) ŽIVOTNI CIKLUS DNEVNOG CILJA ----
+    // Tri greške koje je Milan prijavio 07.09.2026, svaka sa svojom proverom.
+    {
+      const S1 = S();
+      const dva3 = (n) => String(n).padStart(2, '0');
+      const za = new Date(); za.setDate(za.getDate() + 40);
+      S1.examDate = za.getFullYear() + '-' + dva3(za.getMonth() + 1) + '-' + dva3(za.getDate());
+      S1.plan = { novih: 60, pon: 60, auto: 1, prio: 0 };
+      if (S1.day) { delete S1.day.autoN; delete S1.day.autoP; }   // pomoćnik svezaKvota živi u drugom bloku
+      document.querySelector('[data-nav="home"]').click(); await cekaj(250);
+      const otvoriPod = async () => {
+        const telo = el2('podesavanjaTelo');
+        if (telo && telo.style.display === 'none') { el2('btnPodesavanja').click(); await cekaj(200); }
+      };
+      await otvoriPod();
+      // (1) u auto režimu ručna polja NE primaju broj i to se vidi
+      ok('cilj: auto režim zaključava ručna polja i dugmad',
+        el2('planNovih').disabled && el2('planPon').disabled && el2('btnPlanSave').disabled && el2('btnPlanPredlog').disabled);
+      ok('cilj: piše ZAŠTO su zaključana', /ne koriste|не користе/.test(el2('podesavanjaTelo').textContent));
+
+      // (2) promena datuma NE zatvara podešavanja, a kvota se prilagodi
+      const preTekst = planTekst();
+      const za15 = new Date(); za15.setDate(za15.getDate() + 15);
+      const inp3 = el2('examDate');
+      inp3.value = za15.getFullYear() + '-' + dva3(za15.getMonth() + 1) + '-' + dva3(za15.getDate());
+      inp3.dispatchEvent(new Event('change', { bubbles: true }));
+      await cekaj(350);
+      ok('cilj: promena datuma ne zatvara podešavanja', el2('podesavanjaTelo').style.display !== 'none');
+      ok('cilj: promena datuma menja auto kvotu', planTekst() !== preTekst);
+
+      // (3) kad se auto ugasi, ručni brojevi ODMAH važe i polja se otključavaju
+      await otvoriPod();
+      el2('btnPlanAuto').click(); await cekaj(350);
+      await otvoriPod();
+      ok('cilj: gašenje auta otključava polja', !el2('planNovih').disabled && !el2('btnPlanSave').disabled);
+      ok('cilj: posle gašenja auta važe ručni brojevi (60)', planTekst().includes('/ 60'));
+
+      // ručni upis se ODMAH vidi gore
+      el2('planNovih').value = '25'; el2('planPon').value = '35';
+      el2('btnPlanSave').click(); await cekaj(350);
+      ok('cilj: ručni upis se odmah vidi u dnevnom cilju', planTekst().includes('/ 25') && planTekst().includes('/ 35'));
+      ok('cilj: podešavanja ostaju otvorena i posle čuvanja', el2('podesavanjaTelo').style.display !== 'none');
+      document.querySelector('[data-nav="home"]').click(); await cekaj(150);
+    }
+
     // ---- 2b) ŠANSA DA POLOŽIŠ i pravilo o simulacijama ----
     {
       const sz = window.__dev.sansaZaProlaz;
