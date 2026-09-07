@@ -401,6 +401,11 @@ body.uSimulaciji #podnozje { display: none; }
 .znCel { width: 100px; }
 .znTd { width: 92px; }
 .znTdImg { width: 92px; height: 68px; object-fit: contain; margin: 0; padding: 2px; }
+/* opis rečima STOJI UZ sličicu, ne umesto nje (Milan, 07.09.2026) */
+.znOpis { display: block; margin-top: 4px; font-size: var(--fs-sm); line-height: 1.35; }
+/* Crtež sme da probije unutrašnju marginu kartice: na telefonu je telo kartice 306px, a
+   ovako dobija 342px — 12% više prostora za isti tekst u SVG-u. Samo za dijagrame. */
+.kPodTelo .crtezSiroko, .explCard .crtezSiroko { width: calc(100% + 36px); max-width: none; margin-left: -18px; margin-right: -18px; }
 /* traka zamki uz odgovoreno pitanje — odvojena crtom, ali bez sopstvene kartice */
 .zamkaBox { margin: 10px 0 2px; padding-top: 8px; border-top: 1px dashed var(--line); }
 .zamkaBox .znGrid { gap: 10px; }
@@ -609,6 +614,12 @@ button { transition: background-color .15s ease, border-color .15s ease, color .
    postoji da bi se uvećanje moglo otvoriti i tastaturom. */
 .qImg { cursor: zoom-in; }
 .qImgBtn { display: block; width: 100%; background: none; border: 0; padding: 0; cursor: zoom-in; }
+/* Crtež u kartici se uvećava kao fotografija: telo kartice je na telefonu 306px. */
+.explCard svg[data-zum], .kPodTelo svg[data-zum] { cursor: zoom-in; }
+.explCard svg[data-zum]:focus-visible, .kPodTelo svg[data-zum]:focus-visible {
+  outline: 3px solid var(--blue); outline-offset: 2px; border-radius: 4px; }
+/* uvećan crtež dobija podlogu kartice — proziran SVG bi na tamnoj pozadini izgubio linije */
+#imgZoom img.crtezZum { background: var(--card); padding: 12px; border-radius: 10px; }
 /* Uvećanje je ranije samo zatamnjivalo ekran: slika je imala max-width/max-height 100%, a to
    NE uvećava — slike su 800px široke, a kartica pitanja je na širokom ekranu 860px, pa se
    prikazivala u istoj veličini. Sada se prvo razvuče koliko god stane (contain), a drugi korak

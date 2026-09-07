@@ -320,6 +320,7 @@
     naIspituTip: { l: 'Koliko pitanja iz ove podoblasti nosi svaki pravi ispit — izmereno iz pet zvaničnih izvlačenja simulacije.', c: 'Колико питања из ове подобласти носи сваки прави испит — измерено из пет званичних извлачења симулације.' },
     qNumTip2: { l: 'Klik: kopiraj adresu ovog pitanja', c: 'Клик: копирај адресу овог питања' },
     uvecajSliku: { l: 'Uvećaj sliku', c: 'Увећај слику' },
+    uvecajCrtez: { l: 'Uvećaj crtež', c: 'Увећај цртеж' },
     zoomVise: { l: 'Bliže', c: 'Ближе' },
     zoomManje: { l: 'Dalje', c: 'Даље' },
     imgAlt: { l: 'Slika uz pitanje — saobraćajna situacija ili znak; pitanje se odnosi na ono što je na slici.', c: 'Слика уз питање — саобраћајна ситуација или знак; питање се односи на оно што је на слици.' },
@@ -1454,6 +1455,7 @@
     box.querySelectorAll('.explCardBtn').forEach((btn) => {
       oziviSekcije(btn.nextElementSibling);
       dodajAtlas(btn.nextElementSibling, btn.dataset.card);
+      oziviCrteze(btn.nextElementSibling);
       sklopivo(btn);
     });
     box.querySelectorAll('.explCard').forEach((cd) => suziKarticu(cd, q.sub));
@@ -1526,6 +1528,32 @@
         + st.map((s) => celijaZnaka(s.i, s.z)).join('')
         + '</div>';
     });
+  }
+
+  // ---------- Crtež u kartici se uvećava kao i fotografija ----------
+  // Telo kartice je na telefonu 306 px: i dobro nacrtan dijagram tu ima sitan tekst.
+  // Zato je svaki crtež u kartici dugme — dodir ga otvara preko celog ekrana.
+  function oziviCrteze(cd) {
+    if (!cd) return;
+    cd.querySelectorAll('svg').forEach((s) => {
+      if (s.dataset.zum) return;
+      s.dataset.zum = '1';
+      s.setAttribute('tabindex', '0');
+      s.setAttribute('role', 'button');
+      const opis = s.getAttribute('aria-label');
+      s.setAttribute('aria-label', L('uvecajCrtez') + (opis ? ': ' + opis : ''));
+    });
+  }
+  // SVG se prepisuje u sliku da bi prošao kroz ISTO uvećanje kao fotografija.
+  // U <img> crtež više ne vidi stranu oko sebe, pa se boja (currentColor) upisuje u njega.
+  function crtezUSliku(svg) {
+    const k = svg.cloneNode(true);
+    k.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+    k.removeAttribute('tabindex'); k.removeAttribute('role');
+    k.style.color = getComputedStyle(svg).color;
+    const vb = (svg.getAttribute('viewBox') || '').trim().split(/\s+/).map(Number);
+    if (vb.length === 4 && vb[2] > 0) { k.setAttribute('width', vb[2]); k.setAttribute('height', vb[3]); }
+    return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(new XMLSerializer().serializeToString(k));
   }
 
   // ---------- Teme unutar kartice ----------
@@ -3098,6 +3126,7 @@
           c2.innerHTML = T(EX.cards[btn.dataset.poj].h);
           oziviSekcije(c2);
           dodajAtlas(c2, btn.dataset.poj);
+          oziviCrteze(c2);
         }));
       });
     }
@@ -3374,19 +3403,37 @@
   // Klik na sliku pitanja otvara je preko celog ekrana, u DVA koraka: prvo koliko god stane
   // (slike su 800px, a kartica pitanja na širokom ekranu 860px — zato se ranije ništa nije
   // menjalo osim pozadine), pa onda pravo uvećanje 2× uz pomeranje prstom ili mišem.
+  document.addEventListener('keydown', (ev) => {
+    if (ev.key !== 'Enter' && ev.key !== ' ') return;
+    const s = ev.target && ev.target.closest && ev.target.closest('svg[data-zum]');
+    if (!s) return;
+    ev.preventDefault();
+    s.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+  });
   document.addEventListener('click', (ev) => {
     // dugme (tastatura: Enter/razmak šalju klik na dugme) ili sama slika (miš)
-    const meta = ev.target.closest && ev.target.closest('.qImgBtn, img.qImg');
-    if (!meta) return;
-    const slika = meta.tagName === 'IMG' ? meta : meta.querySelector('img.qImg');
-    if (!slika) return;
-    if (!slika.naturalWidth) return;                  // slika se nije učitala — nema šta da se uveća
+    if (!ev.target.closest) return;
+    const crtez = ev.target.closest('svg[data-zum]');
+    const meta = crtez ? null : ev.target.closest('.qImgBtn, img.qImg');
+    if (!crtez && !meta) return;
+    let izvor = null, opisSlike = '';
+    if (crtez) {
+      izvor = crtezUSliku(crtez);
+      opisSlike = (crtez.getAttribute('aria-label') || '').replace(L('uvecajCrtez') + ': ', '');
+    } else {
+      const slika = meta.tagName === 'IMG' ? meta : meta.querySelector('img.qImg');
+      if (!slika) return;
+      if (!slika.naturalWidth) return;                // slika se nije učitala — nema šta da se uveća
+      izvor = slika.src; opisSlike = slika.alt;
+    }
     if (document.getElementById('imgZoom')) return;   // jedno uvećanje, ne gomila njih jedno preko drugog
     const vracaFokus = document.activeElement;
     const z = document.createElement('div');
     z.id = 'imgZoom';
     const im = document.createElement('img');
-    im.src = slika.src; im.alt = slika.alt;
+    im.src = izvor; im.alt = opisSlike;
+    // crtež je proziran — bez podloge bi u tamnoj temi nestale linije boje mastila
+    if (crtez) im.className = 'crtezZum';
     z.appendChild(im);
     // Zatvaranje na JEDNOM mestu. Ranije se osluškivač za Escape skidao samo ako se
     // zatvori Escapeom — ko zatvara klikom, ostavljao je po jedan osluškivač za svako
@@ -3435,9 +3482,12 @@
     // otvara drugi korak; na širokom ekranu prvi korak stvarno uvećava, pa ostaje.
     // Posle append-a: prebaci() računa pomeraj, a on na elementu van strane ne bi radio.
     {
+      const izvorEl = crtez || (meta && (meta.tagName === 'IMG' ? meta : meta.querySelector('img.qImg')));
+      const r0 = izvorEl ? izvorEl.getBoundingClientRect() : { width: 0, height: 1 };
+      const odnos = r0.height > 0 ? (r0.width / r0.height) : 1;
       const dw = Math.max(0, window.innerWidth - 36), dh = Math.max(0, window.innerHeight - 36);
-      const stane = Math.min(dw, dh * (slika.naturalWidth / slika.naturalHeight));
-      if (stane < slika.getBoundingClientRect().width * 1.25) prebaci();
+      const stane = Math.min(dw, dh * odnos);
+      if (stane < r0.width * 1.25) prebaci();
     }
     bZatvori.focus({ preventScroll: true });   // tastatura ulazi u uvećanje, ne ostaje iza njega
   });

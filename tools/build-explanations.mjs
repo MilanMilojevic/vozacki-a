@@ -279,7 +279,75 @@ CARDS['brzine'] = {
 <p><b>Opšta ograničenja</b> (kad znak ne kaže drugačije): naselje 50 (čl. 43), van naselja 80, motoput 100, autoput 130 (čl. 44). Pamti merdevine: <b>50 → 80 → 100 → 130</b> — što bolji put, to više.</p>
 <p><b>Znak uvek pobija opšte pravilo</b> — i naniže i naviše: znakom se u naselju može dozvoliti i do 80 (čl. 43 st. 2).</p>
 <p><b>Čemu se brzina prilagođava (čl. 42):</b> osobinama i stanju PUTA, VIDLJIVOSTI, preglednosti, ATMOSFERSKIM prilikama, stanju VOZILA i tereta, GUSTINI saobraćaja — tako da možeš da staneš pred svakom preprekom koju vidiš ili imaš razloga da predvidiš.</p>
-<p><b>Zamka u odgovorima:</b> varijante sa "raspoloživim vremenom", "udobnošću" ili "da što pre stigneš" su UVEK netačne — vreme dolaska nikad nije zakonski faktor.</p>`,
+<p><b>Zamka u odgovorima:</b> varijante sa "raspoloživim vremenom", "udobnošću" ili "da što pre stigneš" su UVEK netačne — vreme dolaska nikad nije zakonski faktor.</p>
+
+<!-- ==== dopuna 07.09.2026 (tura 4): crtež + isto to rečima ==== -->
+<div class="kPodH"><b class="kPodNaslov">Pitanja sa znakom: prvo traži broj NA znaku</b>
+<svg viewBox="0 0 460 192" style="max-width:460px;width:100%;display:block;margin:6px auto" role="img" aria-label="dijagram: ako znak nosi broj vazi taj broj, ako ne nosi broj vazi opste ogranicenje prema tome sta znak znaci">
+  <rect x="118" y="4" width="224" height="26" rx="5" fill="none" stroke="currentColor" stroke-width="2"/>
+  <text x="230" y="21" text-anchor="middle" font-size="12" fill="currentColor">pitanje: „nakon saobraćajnog znaka"</text>
+  <line x1="230" y1="30" x2="230" y2="44" stroke="currentColor" stroke-width="2"/>
+  <rect x="142" y="44" width="176" height="26" rx="5" fill="none" stroke="currentColor" stroke-width="2"/>
+  <text x="230" y="61" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">ima li NA ZNAKU broj?</text>
+  <path d="M230 70L230 82M114 82L346 82M114 82L114 98M346 82L346 98" fill="none" stroke="currentColor" stroke-width="2"/>
+  <text x="146" y="96" text-anchor="middle" font-size="12" font-weight="bold" fill="#1f7a3f">DA</text>
+  <text x="314" y="96" text-anchor="middle" font-size="12" font-weight="bold" fill="#2c6aa0">NE</text>
+  <rect x="14" y="98" width="200" height="84" rx="6" fill="none" stroke="#1f7a3f" stroke-width="2"/>
+  <text x="114" y="118" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">važi TAJ broj</text>
+  <text x="114" y="137" text-anchor="middle" font-size="11" fill="currentColor">ispod opšteg pravila: 40</text>
+  <text x="114" y="154" text-anchor="middle" font-size="11" fill="currentColor">iznad njega: 80 u naselju</text>
+  <text x="114" y="171" text-anchor="middle" font-size="11" fill="currentColor">60 tamo gde bi bilo 100</text>
+  <rect x="246" y="98" width="200" height="84" rx="6" fill="none" stroke="#2c6aa0" stroke-width="2"/>
+  <text x="346" y="118" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">čitaš ŠTA znak znači</text>
+  <text x="346" y="137" text-anchor="middle" font-size="11" fill="currentColor">ulazak u naselje → 50</text>
+  <text x="346" y="154" text-anchor="middle" font-size="11" fill="currentColor">prestanak naselja → 80</text>
+  <text x="346" y="171" text-anchor="middle" font-size="11" fill="currentColor">(put koji nije auto/motoput)</text>
+</svg>
+<p><b>Kad pitanje kaže „nakon saobraćajnog znaka", odgovor je broj</b> — ostaje samo da odlučiš odakle taj broj dolazi. Nosi li znak broj, važi taj broj, a opšte pravilo pada (#9908, #9946, #9947, #9949). Nema li broja, čitaš šta znak znači i primenjuješ merdevine po vrsti puta sa slike gore (#9878, #9948).</p>
+<table>
+<tr><th>Šta znak kaže</th><th>Koliko smeš</th></tr>
+<tr><td>broj 40 uz ulazak u naselje</td><td><b>40</b> — znak obara opštih 50 (#9946)</td></tr>
+<tr><td>broj 80 uz ulazak u naselje</td><td><b>80</b> — znakom sme da se dozvoli i više od 50, kada put to omogućava (#9947, čl. 43 st. 2)</td></tr>
+<tr><td>broj 60 na putu za motorna vozila</td><td><b>60</b>, a ne opštih 100 (#9949)</td></tr>
+<tr><td>postavljen znak sa brojem 80</td><td><b>80</b> — konkretan znak jači je od opšteg ograničenja (#9908)</td></tr>
+<tr><td>ulazak u naselje, bez broja</td><td><b>50</b> — opšte ograničenje u naselju (#9878, čl. 43)</td></tr>
+<tr><td>prestanak naselja, bez broja</td><td><b>80</b> na putu koji nije ni autoput ni motoput (#9948, čl. 44)</td></tr>
+</table>
+<p><b>Vrsta vozila te ne spasava:</b> i kad pitanje kaže „vozač mopeda, odnosno motocikla", odgovor je i dalje broj sa znaka — u ovim situacijama za njih nema posebne opšte granice (#9946, #9947, #9949).</p>
+</div>
+<div class="kPodH"><b class="kPodNaslov">Kad pitanje traži da PRILAGODIŠ brzinu (čl. 42)</b>
+<svg viewBox="0 0 460 124" style="max-width:460px;width:100%;display:block;margin:6px auto" role="img" aria-label="vozilo na putu staje pre prepreke, unutar rastojanja koje vozac vidi ili ima razloga da predvidi">
+  <rect x="0" y="78" width="460" height="26" fill="#9aa7b4"/>
+  <g stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 4"><line x1="72" y1="30" x2="72" y2="82"/><line x1="408" y1="30" x2="408" y2="54"/></g>
+  <line x1="340" y1="52" x2="340" y2="82" stroke="#1f7a3f" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <g stroke="currentColor" stroke-width="2"><line x1="72" y1="26" x2="408" y2="26"/><line x1="72" y1="20" x2="72" y2="32"/><line x1="408" y1="20" x2="408" y2="32"/></g>
+  <text x="240" y="14" text-anchor="middle" font-size="11" fill="currentColor">koliko VIDIŠ ili imaš razloga da PREDVIDIŠ</text>
+  <g stroke="#1f7a3f" stroke-width="3"><line x1="72" y1="46" x2="340" y2="46"/><line x1="72" y1="40" x2="72" y2="52"/><line x1="340" y1="40" x2="340" y2="52"/></g>
+  <text x="206" y="66" text-anchor="middle" font-size="11" font-weight="bold" fill="currentColor">staješ PRE prepreke</text>
+  <g fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="32" cy="88" r="8"/><circle cx="62" cy="88" r="8"/><path d="M32 88L44 74L62 88"/><path d="M40 76L52 76"/><path d="M44 74L50 66"/></g>
+  <rect x="396" y="54" width="24" height="24" fill="#c0392b"/>
+  <text x="408" y="118" text-anchor="middle" font-size="11" font-weight="bold" fill="#c0392b">PREPREKA</text>
+</svg>
+<p><b>Merilo nije broj nego rastojanje:</b> smeš onoliko brzo koliko ti treba da vozilo blagovremeno zaustaviš pred svakom preprekom koju pod datim okolnostima možeš da vidiš ili imaš razloga da predvidiš. Zato u ovim pitanjima nijedan broj ni procenat nije tačan — ni „najmanje 20% manje od dozvoljene", ni „najviše 60 km/h", ni „najviše 80 km/h" (#9870, #9873).</p>
+<p><b>Dva oblika pitanja traže dva oblika tačnog odgovora:</b></p>
+<ul>
+<li><b>„…prilagodi TAKO DA…"</b> → tačno je ono što opisuje ISHOD: da vozilo blagovremeno zaustaviš pred preprekom (#9868, #9870, #9873), da ne ugrožavaš bezbednost saobraćaja (#9868), da ne ugrožavaš sebe i druge učesnike u saobraćaju (#9873).</li>
+<li><b>„…prilagodi:"</b> pa spisak → tačno je ono što je USLOV vožnje: osobine i stanje puta, vidljivost i preglednost, stanje vozila i tereta (#10488), atmosferske prilike, gustina saobraćaja i drugi saobraćajni uslovi (#10489).</li>
+</ul>
+<p><b>Ne broji kvačice:</b> tačnih odgovora nema uvek isto — u #9870 tačan je samo jedan, u #9868, #9873 i #10489 po dva, u #10488 tri. Svaku ponudu ceni zasebno.</p>
+<p class="mut">Nabrajanje uslova iz čl. 42 nije kontrolna lista: poslednja stavka i sama glasi „gustini saobraćaja i drugim saobraćajnim uslovima" (#10489), a tačan ume da bude i odgovor koji uopšte nije uslov, nego ishod (#9868, #9873).</p>
+<table>
+<tr><th>Ponuđeno u ovim pitanjima</th><th>Vredi?</th></tr>
+<tr><td>da ne ugrožavaš bezbednost saobraćaja</td><td><b>TAČNO</b> (#9868)</td></tr>
+<tr><td>da ne ugrožavaš sebe i druge učesnike</td><td><b>TAČNO</b> (#9873)</td></tr>
+<tr><td>smeš da ometaš, samo ne da ugroziš</td><td>netačno (#9868)</td></tr>
+<tr><td>najmanje 20% manje od dozvoljene</td><td>netačno (#9870, #9873)</td></tr>
+<tr><td>najviše 60 km/h · najviše 80 km/h</td><td>netačno (#9870, #9873)</td></tr>
+<tr><td>prema vozilima koja se najbrže kreću</td><td>netačno (#10488)</td></tr>
+</table>
+<p class="mut">Pamtilica na formulaciju: „nakon saobraćajnog znaka" → odgovor je BROJ (#9878, #9908, #9946, #9947, #9948, #9949); „u situaciji prikazanoj na slici" bez pomena znaka → odgovor je rečenica o zaustavljanju pred preprekom, nikad broj (#9870, #9873).</p>
+</div>
+`,
 };
 
 
@@ -319,7 +387,152 @@ CARDS['nezgoda'] = {
   <div class="vg" style="text-align:left">1. Skloni vozilo sa kolovoza ako smeta<br>2. Upozori ostale učesnike<br>3. Razmeni podatke sa drugim učesnikom<br>4. Popunite Evropski izveštaj o nezgodi<br>5. Ako oštećeni nije tu: ostavi podatke i obavesti policiju<br>6. Svako može tražiti da policija izađe na uviđaj</div>
 </div>
 <p><b>Udaljiti se sa mesta nezgode sa povređenima smeš SAMO:</b> ako je tebi neophodna hitna pomoć, radi prevoza povređenog do zdravstvene ustanove, ili da bi obavestio policiju — pa se vraćaš. (ZOBS čl. 167-172)</p>
-<p><b>Još tri činjenice koje test voli:</b> davanje krvi/urina na uviđaju je OBAVEZNO · fotografisanje na uviđaju bez poginulih/povređenih je obavezno · oduzete tablice se vraćaju kad dostaviš dokaz da je vozilo tehnički ispravno.</p>`,
+<p><b>Još tri činjenice koje test voli:</b> davanje krvi/urina na uviđaju je OBAVEZNO · fotografisanje na uviđaju bez poginulih/povređenih je obavezno · oduzete tablice se vraćaju kad dostaviš dokaz da je vozilo tehnički ispravno.</p>
+
+<!-- ==== dopuna 07.09.2026 (tura 4): crtež + isto to rečima ==== -->
+<div class="kPodH"><b class="kPodNaslov">Sat nezgode — dokle šta važi</b>
+<div style="display:flex;justify-content:center;margin:6px 0"><svg viewBox="0 0 520 180" style="max-width:520px;width:100%" role="img" aria-label="vremenska osa od nastanka nezgode do završetka uviđaja: zabrana alkohola važi za svakog učesnika bez uslova, ostanak na mestu nezgode zavisi od vrste nezgode, a posle uviđaja se kolovoz oslobađa"><rect x="60" y="6" width="332" height="32" rx="5" fill="none" stroke="#c0392b" stroke-width="2"/><text x="226" y="21" font-size="10.5" text-anchor="middle" fill="currentColor">ne uzimaš alkohol ni psihoaktivne supstance</text><text x="226" y="33" font-size="8.5" text-anchor="middle" fill="currentColor">(svaki učesnik, u svakoj nezgodi — bez uslova)</text><rect x="60" y="42" width="332" height="32" rx="5" fill="none" stroke="#c0392b" stroke-width="2"/><text x="226" y="57" font-size="10.5" text-anchor="middle" fill="currentColor">ostaješ na mestu nezgode do završetka uviđaja</text><text x="226" y="69" font-size="8.5" text-anchor="middle" fill="currentColor">(povređeni, poginuli ili velika materijalna šteta)</text><rect x="60" y="78" width="332" height="32" rx="5" fill="none" stroke="#c0392b" stroke-width="2"/><text x="226" y="93" font-size="10.5" text-anchor="middle" fill="currentColor">ostaješ do završetka uviđaja ako ga je neko zatražio</text><text x="226" y="105" font-size="8.5" text-anchor="middle" fill="currentColor">(samo manja materijalna šteta)</text><rect x="400" y="42" width="112" height="68" rx="5" fill="none" stroke="#1f7a3f" stroke-width="2"/><text x="456" y="62" font-size="9" text-anchor="middle" fill="currentColor">POSLE UVIĐAJA</text><text x="456" y="76" font-size="9" text-anchor="middle" fill="currentColor">bez odlaganja</text><text x="456" y="90" font-size="9" text-anchor="middle" fill="currentColor">skloni vozilo i</text><text x="456" y="104" font-size="9" text-anchor="middle" fill="currentColor">rasuti materijal</text><line x1="14" y1="142" x2="506" y2="142" stroke="currentColor" stroke-width="2"/><path d="M498 136 L512 142 L498 148 Z" fill="currentColor"/><line x1="60" y1="132" x2="60" y2="152" stroke="currentColor" stroke-width="2"/><line x1="392" y1="132" x2="392" y2="152" stroke="currentColor" stroke-width="2"/><text x="60" y="166" font-size="10.5" text-anchor="middle" fill="currentColor">NEZGODA</text><text x="226" y="166" font-size="9.5" text-anchor="middle" fill="currentColor" fill-opacity=".7">uviđaj traje</text><text x="392" y="166" font-size="10.5" text-anchor="middle" fill="currentColor">KRAJ UVIĐAJA</text></svg></div>
+<ul>
+<li><b>Alkohol — bez ijednog uslova.</b> Od nastanka saobraćajne nezgode do završetka uviđaja učesnicima nije dozvoljeno uzimanje alkoholnih pića, odnosno psihoaktivnih supstanci (čl. 174). Zabrana ne čeka da ti je saopšti lice koje vrši uviđaj i ne pada time što je ispitivanje već sprovedeno.</li>
+<li><b>Povređeni, poginuli ili velika materijalna šteta:</b> obavesti policiju i <b>ostani</b> na mestu nezgode do dolaska policije i završetka uviđaja (čl. 168).</li>
+<li><b>Samo manja materijalna šteta:</b> bilo koji učesnik ili lice koje je pretrpelo štetu <b>može</b> zahtevati da policijski službenik izađe i izvrši uviđaj — saglasnost ostalih se za taj zahtev ne traži (čl. 171). Ako je neko to zahtevao, ostali su dužni da ostanu do završetka uviđaja (čl. 171 st. 2).</li>
+<li><b>Posle uviđaja:</b> bez odlaganja ukloni sa kolovoza vozilo, teret, stvari ili drugi materijal rasut po putu (čl. 177).</li>
+</ul>
+<p class="mut">Pamtilica: šest pitanja počinje istim stemom — „telesne povrede, odnosno poginulo, <b>ili je nastala velika materijalna šteta</b>". Velika šteta bez ijednog povređenog ide u isti režim kao nezgoda sa povređenima, ne u manju štetu.</p>
+</div>
+
+<div class="kPodH"><b class="kPodNaslov">Kolovoz: šta ostaje, šta se sklanja</b>
+<div style="display:flex;justify-content:center;margin:6px 0"><svg viewBox="0 0 480 196" style="max-width:480px;width:100%" role="img" aria-label="levo nezgoda sa povređenima poginulima ili velikom štetom: vozila ostaju na kolovozu, tragovi se obezbeđuju ako time ne ugrožavaš bezbednost saobraćaja, ljudi se sklanjaju sa kolovoza; desno samo manja materijalna šteta: vozila se sklanjaju sa kolovoza ako smetaju saobraćaju ili preti opasnost od novih nezgoda"><text x="120" y="14" font-size="9.5" font-weight="bold" text-anchor="middle" fill="currentColor">POVREĐENI, POGINULI ILI VELIKA ŠTETA</text><text x="360" y="14" font-size="9.5" font-weight="bold" text-anchor="middle" fill="currentColor">SAMO MANJA MATERIJALNA ŠTETA</text><rect x="8" y="62" width="224" height="60" fill="#9aa7b4" fill-opacity=".45"/><rect x="248" y="62" width="224" height="60" fill="#9aa7b4" fill-opacity=".45"/><line x1="160" y1="92" x2="232" y2="92" stroke="currentColor" stroke-opacity=".45" stroke-width="2" stroke-dasharray="10 8"/><line x1="248" y1="92" x2="472" y2="92" stroke="currentColor" stroke-opacity=".45" stroke-width="2" stroke-dasharray="10 8"/><rect x="34" y="80" width="46" height="22" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><g transform="rotate(20 82 91)"><rect x="82" y="80" width="46" height="22" rx="5" fill="none" stroke="currentColor" stroke-width="2"/></g><line x1="12" y1="97" x2="32" y2="94" stroke="currentColor" stroke-width="2" stroke-dasharray="5 4"/><line x1="12" y1="107" x2="32" y2="104" stroke="currentColor" stroke-width="2" stroke-dasharray="5 4"/><text x="30" y="117" font-size="10" text-anchor="middle" fill="currentColor">tragovi</text><path d="M148 84 L170 62" fill="none" stroke="currentColor" stroke-width="2"/><path d="M173 57 L168 68 L161 61 Z" fill="currentColor"/><circle cx="180" cy="34" r="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M180 39 L180 50 M172 43 L188 43 M180 50 L174 58 M180 50 L186 58" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="204" cy="34" r="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M204 39 L204 50 M196 43 L212 43 M204 50 L198 58 M204 50 L210 58" fill="none" stroke="currentColor" stroke-width="2"/><rect x="310" y="28" width="46" height="22" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="372" y="28" width="46" height="22" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M360 88 L360 60" fill="none" stroke="currentColor" stroke-width="2"/><path d="M360 54 L354 65 L366 65 Z" fill="currentColor"/><line x1="240" y1="8" x2="240" y2="190" stroke="currentColor" stroke-opacity=".35" stroke-width="1" stroke-dasharray="6 5"/><text x="120" y="140" font-size="9.5" text-anchor="middle" fill="currentColor">vozila stoje · ljudi se sklanjaju sa kolovoza</text><text x="120" y="155" font-size="9.5" text-anchor="middle" fill="currentColor">tragove obezbeđuješ AKO time ne ugrožavaš</text><text x="120" y="169" font-size="9.5" text-anchor="middle" fill="currentColor">bezbednost saobraćaja</text><text x="360" y="140" font-size="9.5" text-anchor="middle" fill="currentColor">vozilo sklanjaš AKO smeta saobraćaju</text><text x="360" y="155" font-size="9.5" text-anchor="middle" fill="currentColor">ili preti opasnost od novih nezgoda</text><text x="360" y="169" font-size="9.5" text-anchor="middle" fill="currentColor">Evropski izveštaj</text></svg></div>
+<p><b>Povređeni, poginuli ili velika materijalna šteta (čl. 168) — dužan si da:</b></p>
+<ul>
+<li><b>ukažeš pomoć povređenima</b>, odnosno prvu pomoć ili medicinsku pomoć — u skladu sa svojim znanjima, sposobnostima i mogućnostima;</li>
+<li><b>preduzmeš sve mere zaštite</b> koje su u tvojoj moći da se spreči nastajanje novih i uvećavanje postojećih posledica i povreda;</li>
+<li><b>obezbediš tragove</b> i predmete nezgode — <i>pod uslovom da time ne ugrožavaš bezbednost saobraćaja</i>. Taj uslov je deo tačnog odgovora, ne zamka;</li>
+<li><b>upozoriš sva lica da se sklone sa kolovoza</b> da ne bi bila povređena i da ne bi uništavala tragove nezgode. Nije tačno da „nisi dužan da daješ upozorenja".</li>
+</ul>
+<p><b>Samo manja materijalna šteta (čl. 172) — dužan si da:</b></p>
+<ul>
+<li><b>ukloniš vozilo i druge predmete sa kolovoza</b>, ako onemogućavaju ili ugrožavaju odvijanje saobraćaja, odnosno ako preti opasnost od novih saobraćajnih nezgoda;</li>
+<li>ako ih sam ne možeš ukloniti — <b>upozoriš ostale učesnike</b> u saobraćaju o postojanju vozila i drugih prepreka na putu;</li>
+<li><b>preduzmeš mere zaštite</b> u svojoj moći da se spreči nastajanje novih i uvećavanje postojećih posledica nezgode;</li>
+<li><b>ostaviš podatke o sebi i vozilu</b> vozaču oštećenog vozila <b>ili držaocu druge oštećene stvari</b> u nezgodi, <b>odnosno policiji</b>.</li>
+</ul>
+<p><b>Evropski izveštaj, ne poziv policiji.</b> Posle nezgode sa manjom materijalnom štetom učesnici <b>popunjavaju Evropski izveštaj o saobraćajnoj nezgodi</b> (čl. 172) — nisu obavezni da obaveste policiju radi vršenja uviđaja. Policija se tu javlja izuzetno: kad neko zahteva uviđaj (čl. 171) i kad je vozač oštećenog vozila odsutan (čl. 172 st. 2).</p>
+<p><b>Vozača oštećenog vozila nema:</b> obavesti policiju i saopšti svoje lične podatke i podatke o oštećenom vozilu. Ceduljica na vozilu i poziv svom osiguravajućem društvu nisu zakonska opcija (čl. 172 st. 2).</p>
+<p class="mut">Pamtilica: kod manje štete vozilo sklanjaš ako smeta — suprotno od nezgode sa povređenima, gde se do uviđaja ništa ne pomera. Regulisanje saobraćaja do dolaska policije nije dužnost vozača ni u jednom od ta dva slučaja — to rade ovlašćena lica.</p>
+</div>
+
+<div class="kPodH"><b class="kPodNaslov">Ako samo naiđeš na nezgodu (nisi učesnik)</b>
+<ul>
+<li>Odmah obavesti <b>policiju, odnosno službu hitne medicinske pomoći</b> — ne porodicu povređenog, ne upravljača puta, ne službu pomoći na putu.</li>
+<li>Pruži pomoć <b>u skladu sa svojim znanjima, sposobnostima i mogućnostima</b> i po potrebi prevezi povređenog do najbliže zdravstvene ustanove.</li>
+<li>Preduzmi sve što je u tvojoj moći da <b>sprečiš uvećavanje postojećih i nastajanje novih posledica</b>.</li>
+</ul>
+<p class="mut">Obaveza pomoći važi za svakoga, ne samo za učesnike (čl. 167) — a učesnik ima te iste dužnosti i sam (čl. 168, gore). Odgovori „nije obavezno da preduzima bilo kakve radnje" i „što pre se udalji" su zamke.</p>
+</div>
+
+<div class="kPodH"><b class="kPodNaslov">Uviđaj: uzorci, isključenje, tablice</b>
+<table>
+<tr><th>Na uviđaju</th><th>Obavezno je</th></tr>
+<tr><td>IMA poginulih ili povređenih</td><td>uzimanje uzorka <b>krvi, odnosno urina</b></td></tr>
+<tr><td>NEMA poginulih ni povređenih</td><td>ispitivanje sredstvima — <b>alkometar, droga-test</b></td></tr>
+</table>
+<p class="mut">Pamtilica: i jedno i drugo je obavezno i nijedno ne zavisi od toga da li neki učesnik to zahteva. Kad ima poginulih ili povređenih, uzorak krvi je obavezan i onda kada je provera već izvršena odgovarajućim sredstvima — alkometar ga ne zamenjuje (čl. 174).</p>
+<div class="signRow">
+  <div class="signCell">
+    <svg viewBox="0 0 78 70" role="img" aria-label="vozilu koje nije u voznom stanju oduzimaju se registarske tablice"><path d="M12 40 L20 24 L42 24 L46 32 L52 26 L58 40" fill="none" stroke="currentColor" stroke-width="2"/><rect x="8" y="38" width="56" height="12" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="20" cy="52" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="52" cy="52" r="4" fill="none" stroke="currentColor" stroke-width="2"/><rect x="24" y="58" width="30" height="10" rx="2" fill="none" stroke="#c0392b" stroke-width="2"/><path d="M24 58 L54 68 M54 58 L24 68" stroke="#c0392b" stroke-width="2"/></svg>
+    <b>NIJE U VOZNOM STANJU</b><span>ili su znatno oštećeni uređaji bitni za bezbedno kretanje → isključenje i oduzimanje tablica</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 78 70" role="img" aria-label="dokaz o tehničkoj ispravnosti vraća oduzete registarske tablice"><rect x="14" y="6" width="38" height="44" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M21 18 L45 18 M21 26 L45 26 M21 34 L37 34" stroke="currentColor" stroke-width="2"/><path d="M40 44 L48 54 L68 28" fill="none" stroke="#1f7a3f" stroke-width="3"/><rect x="20" y="56" width="30" height="10" rx="2" fill="none" stroke="#1f7a3f" stroke-width="2"/></svg>
+    <b>DOKAZ O TEHNIČKOJ ISPRAVNOSTI</b><span>dostaviš ga nadležnom organu → tablice se vraćaju (čl. 175)</span>
+  </div>
+</div>
+<p><b>Merilo je stanje vozila posle nezgode.</b> Meru isključenja i oduzimanja registarskih tablica policijski službenik primenjuje na vozila koja nisu u voznom stanju, odnosno na kojima su znatno oštećeni ili neispravni sistemi, sklopovi i uređaji bitni za bezbedno kretanje. Ne primenjuje se na sva vozila zato što u nezgodi ima povređenih, ni samo na vozilo onoga čije je nepropisno ponašanje dovelo do nezgode. Oduzete tablice se vraćaju vlasniku, odnosno korisniku, kada nadležnom organu dostavi dokaz da je vozilo tehnički ispravno — ni veštačenje ni sama popravka nisu dovoljni (čl. 175).</p>
+</div>
+
+<div class="kPodH"><b class="kPodNaslov">Mamci koji se stalno vraćaju</b>
+<table>
+<tr><th>Ponuđeno u odgovoru</th><th>Zašto pada</th></tr>
+<tr><td>„do dolaska policije reguliše saobraćaj kao ovlašćeno lice"</td><td>nije dužnost vozača — ni kod povređenih i velike štete, ni kod manje štete</td></tr>
+<tr><td>„udalji se ako preti opasnost od novih nezgoda" / „ako nemaš znanja da pomogneš"</td><td>ni jedno ni drugo nije razlog za odlazak; udaljiti se smeš kad je <b>tebi</b> neophodna hitna medicinska pomoć i radi <b>prevoženja povređenog</b> do najbliže zdravstvene ustanove — uz obavezu da se vratiš</td></tr>
+<tr><td>„dužan si da ostaneš do dolaska policije bez obzira na svoje i tuđe povrede"</td><td>i to pada, zbog ta dva izuzetka iznad</td></tr>
+<tr><td>„obavesti službu pomoći na putu"</td><td>zovu se policija, odnosno služba hitne medicinske pomoći</td></tr>
+<tr><td>„odmah nadoknadi štetu drugim učesnicima ako si izazvao nezgodu"</td><td>kod manje štete dužnost je da <b>ostaviš podatke</b> o sebi i vozilu, ne da plaćaš na licu mesta</td></tr>
+<tr><td>„popuni Evropski izveštaj" kod povređenih, poginulih ili velike štete</td><td>Evropski izveštaj je obrazac za <b>manju</b> materijalnu štetu</td></tr>
+<tr><td>„obavezni ste da obavestite policiju radi vršenja uviđaja" (manja šteta)</td><td>učesnici popunjavaju Evropski izveštaj; policija izlazi na zahtev, to nije obaveza učesnika</td></tr>
+<tr><td>„povređene ukloni sa kolovoza i ostavi ih na bezbednom"</td><td>pomoć pružaš u skladu sa svojim znanjima, sposobnostima i mogućnostima — ne „izbavi pa ostavi"</td></tr>
+<tr><td>„posle uviđaja ukloni vozilo <b>ukoliko je u voznom stanju</b>"</td><td>tačan odgovor je bez tog uslova: bez odlaganja ukloni sa kolovoza vozilo, teret, stvari i rasuti materijal</td></tr>
+<tr><td>„uzorak krvi nije obavezan ako je provera izvršena odgovarajućim sredstvima"</td><td>kad ima poginulih ili povređenih, uzorak je obavezan</td></tr>
+</table>
+</div>
+
+<!-- ============================================================
+     NE ULAZI U KARTICU — mapiranje tvrdnji na brojeve pitanja
+     (STIL.md t.2). Obrisati pre unosa u build-explanations.mjs.
+
+  Sat nezgode
+  - alkohol/psihoaktivne supstance zabranjeni od nezgode do kraja uviđaja,
+    bez uslova ......................................................... #8535
+  - ostani do dolaska policije i završetka uviđaja (povrede/poginuli/
+    velika šteta) ...................................................... #8538
+  - kod manje štete svako može zahtevati uviđaj, bez saglasnosti ostalih . #8540
+  - ako je neko zahtevao uviđaj, ostali ostaju do kraja .................. #8541
+  - posle uviđaja bez odlaganja ukloni vozilo, teret, stvari, rasuti
+    materijal .......................................................... #8550
+  - stem „...ili je nastala velika materijalna šteta"
+    ................................ #8531 #8532 #8536 #8537 #8538 #8539
+
+  Kolovoz / duznosti ucesnika
+  - pomoć povređenima u skladu sa znanjima, sposobnostima, mogućnostima .. #8532
+  - sve mere zaštite da se spreče nove i uvećanje postojećih posledica ... #8536
+  - obezbedi tragove, pod uslovom da ne ugrožavaš bezbednost saobraćaja .. #8531
+  - upozori sva lica da se sklone sa kolovoza ........................... #8537
+  - ukloni vozilo/predmete AKO smetaju ili preti opasnost od novih
+    nezgoda ............................................................ #8542
+  - upozori ostale učesnike na prepreke ako ih sam ne možeš ukloniti ..... #8542
+  - mere zaštite kod manje štete ........................................ #8545
+  - ostavi podatke vozaču oštećenog vozila ili držaocu druge oštećene
+    stvari, odnosno policiji ........................................... #8545
+  - popunjavaju Evropski izveštaj; nisu obavezni da zovu policiju ........ #8551
+  - policija izuzetno: zahtev za uviđaj #8540 #8541; odsutan vozač ....... #8546
+  - regulisanje saobraćaja nije dužnost vozača ........... #8537 #8542 #8545
+  - „do uviđaja se ništa ne pomera" — kontrast iz postojećeg objašnjenja
+    uz to pitanje ...................................................... #8542
+
+  Nisi ucesnik
+  - obavesti policiju, odnosno hitnu medicinsku pomoć ................... #8530
+  - pomoć u skladu sa znanjima i prevoz do ustanove; spreči uvećanje
+    posledica; „nije obavezno" i „udalji se" su zamke ................... #8533
+
+  Uvidjaj / tablice
+  - uzorak krvi, odnosno urina obavezan kad ima poginulih/povređenih ..... #8543
+  - alkometar/droga-test obavezan kad nema poginulih ni povređenih ....... #8548
+  - isključenje i oduzimanje tablica: vozila koja nisu u voznom stanju,
+    odnosno sa znatno oštećenim uređajima bitnim za bezbedno kretanje ... #10719
+  - tablice se vraćaju uz dokaz o tehničkoj ispravnosti (čl. 175) ........ #8547
+
+  Mamci
+  - razlozi za udaljavanje ............................................. #8539
+  - „ostani bez obzira na povrede" ..................................... #8539
+  - „služba pomoći na putu" .................... #8530 #8531 #8536 #8538
+  - „nadoknadi štetu na licu mesta" .................................... #8545
+  - „Evropski izveštaj" kod teške nezgode ....................... #8531 #8551
+  - „izbavi povređene pa ih ostavi" .................................... #8532
+  - „ukloni vozilo ukoliko je u voznom stanju" ......................... #8550
+  - „uzorak nije obavezan ako su korišćena sredstva" ................... #8543
+
+  PRIJAVA GRESKE U POSTOJECOJ KARTICI (STIL.md t.7)
+  Postojeći pasus glasi: „Udaljiti se sa mesta nezgode sa povređenima smeš
+  SAMO: ako je tebi neophodna hitna pomoć, radi prevoza povređenog do
+  zdravstvene ustanove, ili da bi obavestio policiju — pa se vraćaš."
+  Treći razlog („da bi obavestio policiju") nema oslonca u građi: #8539 ima
+  tačno dva tačna odgovora, a postojeće objašnjenje uz #8539 doslovno kaže
+  „samo iz dva razloga". Ovaj dodatak zato NIGDE ne broji razloge, da učenik
+  ne bi dobio dva različita brojanja na istom ekranu. Predlog ispravke
+  postojećeg teksta: obrisati „ili da bi obavestio policiju".
+============================================================ -->
+`,
 };
 
 CARDS['dozvole'] = {
@@ -335,7 +548,123 @@ CARDS['dozvole'] = {
 <tr><td>ostali putevi</td><td><b>najviše 90% ograničenja</b> na tom delu puta</td></tr>
 <tr><td>alkohol</td><td><b>0,00</b> (kao i svi vozači A kategorija)</td></tr>
 </table>
-<p class="mut">Pamćenje: probna skida "deseticu": 130→110 na autoputu, 100→90 na motoputu, ostalo −10%.</p>`,
+<p class="mut">Pamćenje: probna skida "deseticu": 130→110 na autoputu, 100→90 na motoputu, ostalo −10%.</p>
+
+<!-- ==== dopuna 07.09.2026 (tura 4): crtež + isto to rečima ==== -->
+<div class="kPodH"><b class="kPodNaslov">A dozvola: šta smeš, a šta ne</b>
+<div style="display:flex;justify-content:center;margin:6px 0">
+<svg viewBox="0 0 330 166" style="max-width:340px;width:100%" role="img" aria-label="vozačka dozvola A kategorije: smeš moped, motocikl i teški tricikl; ne smeš teški četvorocikl, koji ide uz B1 odnosno B kategoriju, ni radnu mašinu, koja ide uz F kategoriju">
+<rect x="112" y="4" width="106" height="32" rx="6" stroke="currentColor" fill="none"/>
+<text x="165" y="18" font-size="8.5" text-anchor="middle" fill="currentColor">VOZAČKA DOZVOLA</text>
+<text x="165" y="31" font-size="12" font-weight="600" text-anchor="middle" fill="currentColor">kategorija A</text>
+<path d="M165 36 L165 48 M82 48 L248 48 M82 48 L82 56 M248 48 L248 56" stroke="currentColor" stroke-width="1.5" fill="none"/>
+<path d="M77 56 L82 64 L87 56 Z" fill="#1f7a3f"/>
+<path d="M243 56 L248 64 L253 56 Z" fill="#c0392b"/>
+<text x="82" y="80" font-size="11" font-weight="600" text-anchor="middle" fill="#1f7a3f">SMEŠ</text>
+<text x="248" y="80" font-size="11" font-weight="600" text-anchor="middle" fill="#c0392b">NE SMEŠ</text>
+<path d="M165 70 L165 160" stroke="currentColor" stroke-dasharray="3 4"/>
+<g stroke="#1f7a3f" stroke-width="2" fill="none"><path d="M26 100 l5 6 l10 -13"/><path d="M26 126 l5 6 l10 -13"/><path d="M26 152 l5 6 l10 -13"/></g>
+<text x="46" y="104" font-size="10.5" fill="currentColor">moped</text>
+<text x="46" y="130" font-size="10.5" fill="currentColor">motocikl</text>
+<text x="46" y="156" font-size="10.5" fill="currentColor">teški tricikl</text>
+<g stroke="#c0392b" stroke-width="2"><path d="M178 96 L190 108 M190 96 L178 108"/><path d="M178 128 L190 140 M190 128 L178 140"/></g>
+<text x="196" y="104" font-size="10.5" fill="currentColor">teški četvorocikl</text>
+<text x="196" y="118" font-size="9" fill="currentColor">ide uz B1, odnosno B</text>
+<text x="196" y="136" font-size="10.5" fill="currentColor">radna mašina</text>
+<text x="196" y="150" font-size="9" fill="currentColor">ide uz F kategoriju</text>
+</svg>
+</div>
+<p><b>Rečima:</b> sa dozvolom A kategorije smeš <b>moped, motocikl i teški tricikl</b>. <b>Teški četvorocikl</b> ne smeš — četvorocikli idu uz B1, odnosno B kategoriju. <b>Radnom mašinom</b> sme da upravlja samo vozač sa F kategorijom (čl. 195). Pitanje se rešava po nazivu vozila, ne po izgledu — uči spisak.</p>
+<p class="mut">Pamtilica: u obe verzije ovog pitanja netačna su ista dva — teški ČETVOROcikl i RADNA MAŠINA. Sve ostalo što se u njima nudi (moped, motocikl, teški tricikl) je tačno. Tricikl se ne pojavi u svakoj verziji — ne traži ga po svaku cenu.</p>
+</div>
+
+<div class="kPodH"><b class="kPodNaslov">Kad MUP oduzima dozvolu (čl. 197)</b>
+<div style="display:flex;justify-content:center;margin:6px 0">
+<svg viewBox="0 0 330 206" style="max-width:340px;width:100%" role="img" aria-label="četiri stanja vode do istog ishoda: najmanje osamnaest kaznenih poena, odnosno devet za probnu dozvolu; jedna pravnosnažna presuda za krivično delo protiv bezbednosti javnog saobraćaja sa smrtnom posledicom; više od jedne takve presude u pet godina za teške telesne povrede; više od jedne takve presude u tri godine za telesne povrede ili imovinsku štetu. U svakom od ta četiri slučaja MUP oduzima vozačku dozvolu.">
+<text x="6" y="28" font-size="10" font-weight="600" fill="currentColor">KAZNENI POENI</text>
+<text x="124" y="28" font-size="10" fill="currentColor">najmanje 18 (probna: 9)</text>
+<text x="6" y="62" font-size="10" font-weight="600" fill="currentColor">SMRT LICA</text>
+<text x="124" y="62" font-size="10" fill="currentColor">dovoljna 1 presuda</text>
+<text x="6" y="96" font-size="10" font-weight="600" fill="currentColor">TEŠKE POVREDE</text>
+<text x="124" y="96" font-size="10" fill="currentColor">više od 1 u 5 godina</text>
+<text x="6" y="130" font-size="10" font-weight="600" fill="currentColor">POVREDE / ŠTETA</text>
+<text x="124" y="130" font-size="10" fill="currentColor">više od 1 u 3 godine</text>
+<path d="M244 24 L252 24 M244 58 L252 58 M244 92 L252 92 M244 126 L252 126" stroke="currentColor" fill="none"/>
+<path d="M252 24 L252 148 L166 148 L166 156" stroke="currentColor" stroke-width="2" fill="none"/>
+<path d="M161 154 L166 164 L171 154 Z" fill="currentColor"/>
+<rect x="26" y="168" width="280" height="30" rx="6" stroke="currentColor" fill="none"/>
+<text x="166" y="187" font-size="11" font-weight="600" text-anchor="middle" fill="currentColor">MUP ODUZIMA VOZAČKU DOZVOLU</text>
+</svg>
+</div>
+<table>
+<tr><th colspan="2">Ne upravlja savesno i na propisan način vozač koji…</th></tr>
+<tr><td>ima kaznene poene</td><td><b>najmanje 18</b> (za probnu dozvolu: <b>9</b>)</td></tr>
+<tr><td>je pravnosnažno osuđen za krivično delo protiv bezbednosti javnog saobraćaja sa posledicom <b>smrt lica</b></td><td>dovoljna je <b>jedna</b> presuda</td></tr>
+<tr><td>je za isto delo osuđen sa posledicom <b>teške telesne povrede</b> drugog lica</td><td><b>više od jednom u 5 godina</b></td></tr>
+<tr><td>je za isto delo osuđen sa posledicom <b>telesne povrede ili imovinska šteta</b></td><td><b>više od jednom u 3 godine</b></td></tr>
+</table>
+<p><b>Šta sledi:</b> u sva četiri slučaja organizaciona jedinica MUP-a koja te vodi u evidenciji <b>oduzeće vozačku dozvolu</b> — neće ti „izreći odgovarajući broj kaznenih poena" ni „privremeno zabraniti upravljanje u trajanju do jedne godine". To su dve ponuđene zamke.</p>
+<p class="mut">Pamtilica: 5 godina ide uz TEŠKE povrede, 3 godine uz obične povrede i štetu, a za smrt se ne broji — dovoljna je jedna presuda. Prag poena je 18, a za probnu dozvolu upola manje — 9.</p>
+</div>
+
+<div class="kPodH"><b class="kPodNaslov">Kazneni poeni: odakle se meri 24 meseca</b>
+<div style="display:flex;justify-content:center;margin:6px 0">
+<svg viewBox="0 0 320 104" style="max-width:340px;width:100%" role="img" aria-label="vremenska traka: prekršaj, zatim pravnosnažnost odluke kao početak roka, pa 24 meseca do brisanja kaznenih poena">
+<path d="M14 52 L294 52" stroke="currentColor"/>
+<path d="M292 47 L304 52 L292 57 Z" fill="currentColor"/>
+<circle cx="48" cy="52" r="4" fill="currentColor"/>
+<text x="48" y="38" font-size="10" text-anchor="middle" fill="currentColor">prekršaj</text>
+<text x="48" y="72" font-size="9" text-anchor="middle" fill="#c0392b">rok NE kreće ovde</text>
+<path d="M122 32 L122 62" stroke="#1f7a3f" stroke-width="2"/>
+<text x="122" y="24" font-size="10" text-anchor="middle" fill="currentColor">pravnosnažna odluka</text>
+<text x="122" y="72" font-size="9" text-anchor="middle" fill="#1f7a3f">START</text>
+<path d="M122 78 L122 86 L252 86 L252 78" stroke="currentColor" fill="none"/>
+<text x="187" y="98" font-size="10.5" text-anchor="middle" fill="currentColor">24 meseca</text>
+<path d="M252 44 L252 60" stroke="currentColor" stroke-width="2"/>
+<text x="252" y="38" font-size="10" text-anchor="middle" fill="currentColor">poeni se brišu</text>
+</svg>
+</div>
+<p><b>Rečima:</b> poeni se brišu <b>nakon isteka 24 meseca od dana pravnosnažnosti odluke o prekršaju</b> (čl. 198) — a ne od dana kada je prekršaj izvršen. Same poene ne izriče MUP: izriču se odlukom kojom si kažnjen za prekršaj, a jedinica MUP-a ih samo vodi u evidenciji.</p>
+<p class="mut">Zamka iz baze: „ako u toku 24 meseca nije ponovo kažnjen…" — takav uslov ne postoji; rok teče od pravnosnažnosti i gotovo.</p>
+</div>
+
+<div class="kPodH"><b class="kPodNaslov">Zabrana, isključenje, zaštitna mera — nula izuzetaka</b>
+<table>
+<tr><th>Ponuđeni „izuzetak"</th><th>Tačno</th></tr>
+<tr><td>Zabranjeno ti je upravljanje odlukom nadležnog organa — „ali smem samo lokalne puteve / samo skup vozila / samo vozila čija najveća konstruktivna brzina nije veća od 45 km/h"</td><td>NE — nije dozvoljeno upravljanje motornim vozilom, odnosno skupom vozila. Bez izuzetaka.</td></tr>
+<tr><td>Isključen si iz saobraćaja — „ali smem samo do prebivališta, odnosno do sedišta firme"</td><td>NE — nema vožnje ni do kuće ni do sedišta</td></tr>
+<tr><td>Isključen si — „zabrana važi samo za kategoriju kojom sam upravljao"</td><td>NE — važi za sva motorna vozila i skupove vozila</td></tr>
+<tr><td>Traje ti zaštitna mera, odnosno mera bezbednosti zabrane upravljanja — „ali smem obuku, ili bar teorijsku obuku i teorijski ispit"</td><td>NE — dok mera traje ne možeš ni započeti obuku, ni vršiti je, ni polagati ispit</td></tr>
+</table>
+<p class="mut">Pamtilica: kod zabrane odlukom organa i kod isključenja iz saobraćaja svaki netačan odgovor ima reč „samo" — tačan je onaj bez nje. Kod zaštitne mere zamka je drugačija: nude ti pola prava (samo obuka, ili samo teorija i teorijski ispit) — tačno je da ne smeš ništa od toga.</p>
+</div>
+
+<div class="kPodH"><b class="kPodNaslov">Papiri: obuka &rarr; ispit &rarr; dozvola</b>
+<p><b>Na praktičnoj obuci kandidat kod sebe mora imati i staviti na uvid tri stvari:</b></p>
+<ul>
+<li>ličnu kartu</li>
+<li>dokaz o zdravstvenoj sposobnosti za vozača</li>
+<li>potvrdu o položenom teorijskom ispitu</li>
+</ul>
+<p>Ne traže se: ugovor o uslovima pod kojima će se obaviti obuka, potvrda o završenoj teorijskoj obuci, knjižica obuke kandidata za vozača.</p>
+<table>
+<tr><th>Traži se</th><th>Zamka koja stoji odmah do nje</th></tr>
+<tr><td>potvrda o <b>položenom teorijskom ISPITU</b></td><td>potvrda o <b>završenoj teorijskoj OBUCI</b></td></tr>
+</table>
+<p class="mut">Pamtilica: traži se dokaz da si POLOŽIO, a ne da si POHAĐAO.</p>
+<p><b>Samostalna vožnja:</b> sme onaj ko ispunjava propisane uslove <b>i ima vozačku dozvolu za tu kategoriju</b> vozila. Uverenje o položenom vozačkom ispitu nije dozvola, a ni golo „ima vozačku dozvolu" nije dovoljno ako nije za kategoriju kojom upravljaš.</p>
+</div>
+
+<div class="kPodH"><b class="kPodNaslov">Probna dozvola: uz 90% idu dve zamke</b>
+<p><b>Rečima:</b> na putu koji nije autoput ni motoput vozaču sa probnom dozvolom <b>nije dozvoljena</b> brzina veća od <b>90% od brzine dozvoljene na tom delu puta</b> (čl. 182). Bez ograda — važi sve dok traje probna dozvola.</p>
+<table>
+<tr><th>Ponuđena zamka</th><th>Zašto pada</th></tr>
+<tr><td>„nije dozvoljeno <b>samo do navršenih 18 godina</b> života"</td><td>ograničenje ne prestaje na 18. rođendan — traje koliko i probna dozvola</td></tr>
+<tr><td>„nije dozvoljeno <b>samo u periodu od 23,00 do 06,00</b> časova"</td><td>u tom periodu vozač sa probnom dozvolom uopšte ne sme da upravlja vozilom (čl. 182) — to nije prozor u kom važi ograničenje brzine</td></tr>
+</table>
+<p class="mut">Pamtilica: i ovde tačan odgovor nema reč „samo" — glasi prosto „nije dozvoljeno".</p>
+</div>
+`,
 };
 
 CARDS['preticanje'] = {
@@ -593,7 +922,93 @@ CARDS['iskljucenje'] = {
 <tr><td>6</td><td>vozi nasilnički</td></tr>
 <tr><td>7</td><td>nema dozvolu za tu kategoriju / dozvola istekla</td></tr>
 </table>
-<p><b>Zapamti:</b> isključenje je PRIVREMENA mera na licu mesta (nije oduzimanje dozvole); isključenom vozaču upravljanje nije dozvoljeno dok mera traje. Vozilo se isključuje posebno (tehnička neispravnost, tablice...).</p>`,
+<p><b>Zapamti:</b> isključenje je PRIVREMENA mera na licu mesta (nije oduzimanje dozvole); isključenom vozaču upravljanje nije dozvoljeno dok mera traje. Vozilo se isključuje posebno (tehnička neispravnost, tablice...).</p>
+
+<!-- ==== dopuna 07.09.2026 (tura 4): crtež + isto to rečima ==== -->
+<div class="kPodH"><b class="kPodNaslov">VOZAČ ili VOZILO — dve različite mere</b>
+<div style="display:flex;justify-content:center;margin:6px 0">
+<svg viewBox="0 0 520 180" style="max-width:520px;width:100%" role="img" aria-label="Levo: isključen vozač — čovek je crvenom pregradom odvojen od motocikla i ne sme da upravlja. Desno: isključeno vozilo — motociklu se skidaju registarske tablice."><text x="128" y="16" text-anchor="middle" font-size="12" fill="currentColor">VOZAČ (čl. 279)</text><line x1="12" y1="150" x2="248" y2="150" stroke="currentColor" stroke-width="2"/><circle cx="40" cy="62" r="10" fill="none" stroke="currentColor" stroke-width="2"/><line x1="40" y1="72" x2="40" y2="105" stroke="currentColor" stroke-width="2"/><line x1="24" y1="86" x2="56" y2="86" stroke="currentColor" stroke-width="2"/><line x1="40" y1="105" x2="30" y2="149" stroke="currentColor" stroke-width="2"/><line x1="40" y1="105" x2="50" y2="149" stroke="currentColor" stroke-width="2"/><rect x="72" y="48" width="8" height="102" fill="#c0392b"/><circle cx="130" cy="132" r="15" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="196" cy="132" r="15" fill="none" stroke="currentColor" stroke-width="2"/><path d="M130 132 L152 108 L180 108 L196 132" fill="none" stroke="currentColor" stroke-width="2"/><line x1="152" y1="108" x2="143" y2="90" stroke="currentColor" stroke-width="2"/><line x1="134" y1="86" x2="154" y2="93" stroke="currentColor" stroke-width="2"/><rect x="160" y="100" width="28" height="6" rx="3" fill="currentColor"/><text x="128" y="170" text-anchor="middle" font-size="11" fill="currentColor">čovek ne sme da upravlja</text><line x1="260" y1="24" x2="260" y2="156" stroke="currentColor" stroke-width="1" stroke-dasharray="5 5"/><text x="392" y="16" text-anchor="middle" font-size="12" fill="currentColor">VOZILO (čl. 289)</text><line x1="276" y1="150" x2="512" y2="150" stroke="currentColor" stroke-width="2"/><circle cx="320" cy="132" r="15" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="386" cy="132" r="15" fill="none" stroke="currentColor" stroke-width="2"/><path d="M320 132 L342 108 L370 108 L386 132" fill="none" stroke="currentColor" stroke-width="2"/><line x1="342" y1="108" x2="333" y2="90" stroke="currentColor" stroke-width="2"/><line x1="324" y1="86" x2="344" y2="93" stroke="currentColor" stroke-width="2"/><rect x="350" y="100" width="28" height="6" rx="3" fill="currentColor"/><rect x="396" y="116" width="32" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 3"/><path d="M432 110 L458 86" fill="none" stroke="#c0392b" stroke-width="3"/><polygon points="464,80 460,93 452,86" fill="#c0392b"/><rect x="452" y="50" width="48" height="20" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><rect x="454" y="52" width="8" height="16" fill="#2c6aa0"/><text x="392" y="170" text-anchor="middle" font-size="11" fill="currentColor">skidaju se registarske tablice</text></svg>
+</div>
+<p class="mut" style="text-align:center;font-size:.82rem">levo: mera pogađa ČOVEKA · desno: mera pogađa VOZILO</p>
+<p><b>Isto to rečima:</b> isključenje VOZAČA (čl. 279) pogađa čoveka — dok mera traje ne smeš da upravljaš, a ako te zateknu za volanom u toku isključenja, to je novi razlog za isključenje vozača (#8556, #8557). Isključenje VOZILA (čl. 289) pogađa mašinu: vozilu se oduzimaju REGISTARSKE tablice, uz potvrdu o oduzimanju — ne saobraćajna i ne vozačka dozvola (#8601). Svako pitanje prvo prelomi ovako: <b>pogađa li ovo čoveka ili mašinu?</b></p>
+<p><b>Dopuna liste sa vrha kartice (čl. 279):</b></p>
+<table>
+<tr><td>8</td><td>Vozi za vreme trajanja ZAŠTITNE MERE ili mere bezbednosti</td><td>#8555, #8558</td></tr>
+<tr><td>9</td><td>Zatečen je da vozi za vreme trajanja ISKLJUČENJA vozača</td><td>#8556, #8557</td></tr>
+<tr><td>10</td><td>Na vozilu bez kabine (moped, motocikl, tricikl, četvorocikl) nema na glavi ZAKOPČANU homologovanu kacigu, na način propisan deklaracijom proizvođača — ili je nema putnik koga prevozi</td><td>#10701</td></tr>
+<tr><td>11</td><td>Strana vozačka dozvola mu je nečitljiva</td><td>obj. #8553, #8558</td></tr>
+</table>
+<p class="mut">Stavke 8, 9 i 10 pitanja stvarno nude kao tačne odgovore. Stavka 11 stoji samo u objašnjenjima uz #8553 i #8558 kao deo liste iz čl. 279 — u ponuđenim odgovorima ove podoblasti se ne pojavljuje, pa je uči kao deo liste, ne kao očekivano pitanje.</p>
+<p><b>Zamke — ovo NIJE razlog da isključe VOZAČA:</b></p>
+<ul>
+<li>obično prekoračenje brzine: od 51 do 70 km/h preko dozvoljene u naselju (#8552), preko 70 km/h van naselja (#8553), preko 50 km/h u zoni škole (#8556, #8557);</li>
+<li>„prođe svetlosni saobraćajni znak kada je tim znakom zabranjen prolaz" (#8555, #8557, #8558);</li>
+<li>noću nema uključena duga svetla (#8553); nije iskoristio dnevni odmor u roku od 24 sata nakon prethodnog odmora (#8556);</li>
+<li>nema svetloodbojni prsluk — ni vozač ni putnik: prsluk se drži u putničkom, teretnom vozilu i autobusu (čl. 30), a za vozača mopeda/motocikla nošenje u vožnji nije propisan uslov (#10701);</li>
+<li>tehnička neispravnost, uključujući neispravan uređaj za upravljanje ili uređaj za zaustavljanje — to je razlog za isključenje VOZILA (čl. 289), ne vozača (#8552, #8558, #8584);</li>
+<li>preopterećenje — takođe stvar vozila, a ne vozača; zamka je ponuđena kao „opterećeno preko svoje NOSIVOSTI za više od 5%", dok se pravilo meri UKUPNOM MASOM preko najveće dozvoljene za više od 5% (#8555).</li>
+</ul>
+<p class="mut">Pamtilica: brzina i crveno ulaze na listu tek kroz nasilničku vožnju (čl. 41 — npr. brzina veća za više od 90 km/h u naselju, odnosno dva prolaska na crveno u roku od 10 minuta), a nasilnička vožnja jeste stavka liste (obj. #8557).</p>
+</div>
+
+<div class="kPodH"><b class="kPodNaslov">Isključenje VOZILA (čl. 289) — i šta posle</b>
+<table>
+<tr><th>ISKLJUČUJE SE</th><th>NE isključuje se (zamke)</th><th>pitanje</th></tr>
+<tr><td>neispravan uređaj za upravljanje ili uređaj za zaustavljanje</td><td>teret u rasutom stanju nije prekriven</td><td>#8584</td></tr>
+<tr><td>uređaji i oprema neispravni tako da mogu ugroziti bezbednost saobraćaja i životnu sredinu</td><td>proglašeno neispravnim na kontrolnom pregledu — „BEZ OBZIRA na utvrđeni stepen neispravnosti"</td><td>#8584</td></tr>
+<tr><td>nije upisano u jedinstveni registar vozila</td><td>registraciona nalepnica nije POSTAVLJENA na propisan način</td><td>#8590</td></tr>
+<tr><td>istekao rok važenja registracione nalepnice, odnosno potvrde o korišćenju tablica za privremeno označavanje</td><td>nema oznake za duga, teška i spora vozila, a ima obavezu označavanja</td><td>#8590</td></tr>
+<tr><td>umesto registarskim tablicama označeno NEPROPISNIM tablicama</td><td>registarske tablice nisu POSTAVLJENE na propisan način</td><td>#8588</td></tr>
+<tr><td>nepropisno ugrađeni uređaji za davanje posebnih svetlosnih I zvučnih znakova, a vozač ih ne ukloni u roku iz naredbe policijskog službenika</td><td>nepropisno ugrađeno žuto rotaciono ili trepćuće svetlo</td><td>#8588</td></tr>
+<tr><td>pojedinačno proizvedeno ili prepravljeno, a nije izvršeno ispitivanje i izdato uverenje o ispitivanju</td><td>nije obavljen periodični pregled uređaja za pogon na gas</td><td>#8592</td></tr>
+<tr><td>učestvuje u saobraćaju za vreme trajanja isključenja</td><td>prevozi više lica nego što je označeno u saobraćajnoj dozvoli</td><td>#8592</td></tr>
+<tr><td>preopterećenje: ukupna masa preko najveće dozvoljene za više od 5%</td><td>isto to kao razlog da se isključi VOZAČ</td><td>obj. #8555</td></tr>
+</table>
+<p><b>Zašto je „proglašeno neispravnim na kontrolnom pregledu" zamka:</b> zamka je u dodatku <b>bez obzira na stepen</b>. Vozilo se isključuje kad je neispravan uređaj za upravljanje ili zaustavljanje, odnosno kad su uređaji i oprema neispravni tako da mogu ugroziti bezbednost saobraćaja i životnu sredinu (#8584) — dakle po TEŽINI neispravnosti, a ne automatski po svakoj oceni sa kontrolnog pregleda. Kad kontrolni pregled utvrdi baš takvu neispravnost, vozilo jeste isključeno — i onda mu sledi vanredni pregled (#8599, #8600).</p>
+<p class="mut">Pamtilica: NEPROPISNA tablica i ISTEKLA nalepnica = isključenje; propisna tablica/nalepnica samo loše POSTAVLJENA = nije (#8588, #8590). Kod posebnih znakova gleda se VRSTA uređaja — „uređaji za davanje posebnih svetlosnih i zvučnih znakova", i to tek ako ih ne ukloniš u roku iz naredbe; žuto rotaciono ili trepćuće svetlo nije razlog (#8588).</p>
+<p><b>Šta sledi:</b> oduzimaju se REGISTARSKE tablice uz potvrdu o oduzimanju (#8601). <b>Isključenje VOZILA</b> traje DO PRESTANKA RAZLOGA — nema roka od 24 sata i nema procene policijskog službenika koliko je potrebno (#8598); tablice se vraćaju kad se utvrdi da su razlozi prestali, a ne posle 24 časa ni u roku od tri dana (#8603). Ako tablice ne predaš: privode te prekršajnom sudu i angažuje se stručno lice da ih skine o tvom trošku (#10717).</p>
+<p><b>Put na kom ti kretanje nije dozvoljeno:</b> naređenje je da BEZ ODLAGANJA, NAJKRAĆIM putem napustiš taj put (#8594). Ako ne postupiš po toj naredbi → isključuje se VOZILO, ne vozač (#10716). Ako je razlog za isključenje nastao tamo gde bi vozilo ometalo, odnosno ugrožavalo bezbednost saobraćaja, naređuje ti se da ga odvezeš POD NADZOROM policijskog službenika do najbližeg mesta gde je isključenje moguće (#8597).</p>
+</div>
+
+<div class="kPodH"><b class="kPodNaslov">Alkohol: test, osporavanje, zadržavanje</b>
+<div style="display:flex;justify-content:center;margin:6px 0">
+<svg viewBox="0 0 520 150" style="max-width:520px;width:100%" role="img" aria-label="Vozač pod dejstvom alkohola: sa sadržajem manjim od 1,20 mg per ml zadržava se samo ako preti da nastavi vožnju, sa sadržajem većim od 1,20 zadržava se obavezno do otrežnjenja najduže 12 sati. Odbijanje ispitivanja povlači isključenje i obavezno zadržavanje. Donja granica pojma pod dejstvom alkohola nije prikazana jer je propisi ne daju."><defs><linearGradient id="alkPodDejstvom" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#e8b000" stop-opacity="0"/><stop offset="0.3" stop-color="#e8b000" stop-opacity="1"/><stop offset="1" stop-color="#e8b000" stop-opacity="1"/></linearGradient></defs><rect x="268" y="2" width="248" height="22" rx="5" fill="none" stroke="#c0392b" stroke-width="2"/><text x="392" y="17" text-anchor="middle" font-size="11" fill="#c0392b">ODBIJE ISPITIVANJE → isto: obavezno</text><path d="M392 24 L392 50" stroke="#c0392b" stroke-width="2"/><polygon points="392,58 386,46 398,46" fill="#c0392b"/><rect x="30" y="60" width="250" height="26" fill="url(#alkPodDejstvom)"/><rect x="286" y="60" width="200" height="26" fill="#c0392b"/><line x1="282" y1="52" x2="282" y2="94" stroke="currentColor" stroke-width="2"/><text x="282" y="46" text-anchor="middle" font-size="12" fill="currentColor">1,20</text><text x="500" y="80" text-anchor="middle" font-size="10" fill="currentColor">mg/ml</text><line x1="238" y1="58" x2="238" y2="88" stroke="#2a333d" stroke-width="1"/><text x="238" y="52" text-anchor="middle" font-size="10" fill="currentColor">npr. 1,00</text><text x="180" y="78" text-anchor="middle" font-size="11" fill="#2a333d">POD DEJSTVOM ALKOHOLA</text><text x="150" y="104" text-anchor="middle" font-size="11" fill="currentColor">MANJI od 1,20: zadržan SAMO ako</text><text x="150" y="118" text-anchor="middle" font-size="11" fill="currentColor">preti da nastavi vožnju posle isključenja</text><text x="386" y="104" text-anchor="middle" font-size="11" fill="currentColor">VEĆI od 1,20: OBAVEZNO zadržan</text><text x="386" y="118" text-anchor="middle" font-size="11" fill="currentColor">do otrežnjenja, najduže 12 h</text><text x="260" y="140" text-anchor="middle" font-size="10" fill="currentColor">žuta traka važi samo za vozača POD DEJSTVOM alkohola</text></svg>
+</div>
+<p><b>Isto to rečima:</b> vozač koji je POD DEJSTVOM alkohola sa sadržajem u krvi VEĆIM od 1,20 mg/ml zadržava se OBAVEZNO, do otrežnjenja, najduže 12 sati (#8569). Vozač koji je POD DEJSTVOM alkohola, a sadržaj mu je MANJI od 1,20 mg/ml (recimo 1,00) — može biti zadržan SAMO ako izražava nameru, odnosno ako postoji opasnost da će nastaviti da upravlja vozilom pošto je isključen; nije uslov da je izazvao nezgodu i nema obaveznog zadržavanja (#8571, #8572). Uslov „pod dejstvom alkohola" je deo pravila: obe rečenice polaze od njega. Ko ODBIJE ispitivanje: isključenje iz saobraćaja <b>i obavezno zadržavanje</b> — ne „samo isključenje", i ne sprovođenje na analizu krvi (#8570).</p>
+<p><b>Test i osporavanje:</b> po nalogu ovlašćenog lica dužan si da postupiš BEZ ODLAGANJA i omogućiš ispitivanje (alkometar i dr.); obaveza je bezuslovna — ne oslobađa te ni to što tražiš analizu krvi, ni to što prekineš vožnju (#8559, #8560). Analizu krvi, odnosno krvi i urina tražiš o SOPSTVENOM trošku i samo ako OSPORAVAŠ rezultat već izvršenog ispitivanja (#8561), i to u PISANOJ formi, NA LICU MESTA, u zapisnik u kome su utvrđeni rezultati — ne usmeno i ne „u roku od 24 sata" (#8562). <b>Ali pazi:</b> i sam zahtev za analizu krvi, odnosno urina jeste razlog da te privremeno isključe iz saobraćaja (#8553; stavka 4 liste sa vrha kartice) — traženje analize nije bezopasan potez, nego pravni lek koji te istovremeno skida sa puta.</p>
+<p><b>Privođenje:</b> vozača zatečenog u prekršaju koji je NASTAVIO sa tim prekršajem ili izražava nameru da ga nastavi — privode prekršajnom sudu (#10714). Zadržavanje najduže 24 sata dolazi u obzir SAMO ako ne može odmah da bude priveden (#10715).</p>
+<p class="mut">Pamtilica: dva roka — <b>12 sati</b> je otrežnjenje (#8569), <b>24 sata</b> je „ne može odmah pred sud" (#10715).</p>
+</div>
+
+<div class="kPodH"><b class="kPodNaslov">Kontrolni i vanredni tehnički pregled</b>
+<table>
+<tr><th></th><th>KONTROLNI</th><th>VANREDNI</th></tr>
+<tr><td>Kada</td><td>kad policijski službenik POSUMNJA u tehničku ispravnost — sumnja je dovoljna (#8575)</td><td>posle isključenja vozila zbog neispravnosti utvrđene na kontrolnom pregledu; i posle nezgode u kojoj su oštećeni vitalni sklopovi i uređaji (#8575, #8599, #8600)</td></tr>
+<tr><td>Gde</td><td>samo u objektu KOJI ODREDI policijski službenik (#8576)</td><td>po pravilu u objektu u kom je obavljen kontrolni pregled (#8599); u drugom objektu samo kad to DOZVOLI organ čiji je službenik uputio vozilo na kontrolni (#8600)</td></tr>
+</table>
+<p><b>Redosled:</b> sumnja → kontrolni pregled → ako se na njemu utvrdi neispravnost koja ugrožava bezbednost, vozilo se isključuje (#8584) → vanredni pregled, po pravilu tamo gde je bio kontrolni (#8599, #8600).</p>
+<p><b>Vozač:</b> po nalogu za kontrolni pregled postupaš BEZ ODLAGANJA i omogućavaš pregled — ne „najkasnije u roku od 24 sata" (#8577); obaveza važi i kad imaš potvrdu o tehničkoj ispravnosti i bez obzira na to da li je vozilo opterećeno (#8578). <b>Trošak</b> kontrolnog pregleda snosi vlasnik, odnosno korisnik vozila SAMO kada se na pregledu utvrdi tehnička neispravnost (#8579).</p>
+</div>
+
+<div class="kPodH"><b class="kPodNaslov">Premeštanje, uklanjanje i ko šta plaća</b>
+<div style="display:flex;justify-content:center;margin:6px 0">
+<svg viewBox="0 0 520 165" style="max-width:520px;width:100%" role="img" aria-label="Premeštanje: levo isključeno vozilo stoji na kolovozu tako da saobraćaj ne može da prođe, pa sme da se premesti; desno isto takvo vozilo stoji tako da saobraćaj slobodno prolazi, pa se ne premešta. Kriterijum je ometanje saobraćaja, a ne mesto na kome vozilo stoji."><text x="260" y="14" text-anchor="middle" font-size="12" fill="currentColor">PREMEŠTANJE: pitanje je da li vozilo OMETA saobraćaj</text><rect x="6" y="40" width="244" height="38" fill="#9aa7b4"/><rect x="90" y="44" width="70" height="18" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="106" cy="64" r="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="146" cy="64" r="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M14 58 L66 58" fill="none" stroke="#c0392b" stroke-width="3"/><line x1="72" y1="50" x2="88" y2="66" stroke="#c0392b" stroke-width="3"/><line x1="88" y1="50" x2="72" y2="66" stroke="#c0392b" stroke-width="3"/><text x="128" y="100" text-anchor="middle" font-size="11" fill="currentColor">saobraćaj ne može da prođe</text><text x="128" y="120" text-anchor="middle" font-size="11" fill="currentColor">OMETA →</text><text x="128" y="134" text-anchor="middle" font-size="11" fill="currentColor">sme da se premesti</text><rect x="270" y="30" width="244" height="66" fill="#9aa7b4"/><line x1="272" y1="68" x2="512" y2="68" stroke="#fff" stroke-width="2" stroke-dasharray="12 10"/><rect x="354" y="36" width="70" height="18" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="370" cy="56" r="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="410" cy="56" r="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M280 84 L492 84" fill="none" stroke="#1f7a3f" stroke-width="3"/><polygon points="504,84 490,78 490,90" fill="#1f7a3f"/><text x="392" y="112" text-anchor="middle" font-size="11" fill="currentColor">saobraćaj prolazi</text><text x="392" y="126" text-anchor="middle" font-size="11" fill="currentColor">NE OMETA → ne premešta se</text><text x="260" y="156" text-anchor="middle" font-size="10" fill="currentColor">isto vozilo na kolovozu — razlikuje se samo to da li saobraćaj može da prođe</text></svg>
+</div>
+<p><b>Isto to rečima:</b> i vozilo kojim je upravljao isključeni vozač i vozilo koje je isključeno iz saobraćaja policijski službenik sme da premesti ili naloži da se premesti SAMO kada ono ometa nesmetano i bezbedno odvijanje saobraćaja — nikad „svako takvo vozilo" (#8563, #8564, #8565, #8566). Nije opcija ni da vozač završi započetu vožnju, ni da mu se vozilo privremeno oduzme (#8563, #8564). Jedini kriterijum je OMETANJE, a ne to gde vozilo stoji.</p>
+<p><b>Uklanjanje je druga mera</b> — kod nje se ometanje uopšte ne pominje. Vozaču vozila parkiranog ili zaustavljenog suprotno propisima naređuje se da vozilo ODMAH ukloni, pod pretnjom prinudnog izvršenja; nije „u roku od 15 minuta" i rešenje mu se ne uručuje odmah na licu mesta (#8606). Rešenje dolazi kasnije i u njemu stoji rok: ako u tom roku ne ukloniš vozilo, ono se uklanja na za to određeno mesto o trošku vozača ili vlasnika, odnosno korisnika (#8609). Za štete od započinjanja uklanjanja do preuzimanja vozila odgovara pravno lice, odnosno preduzetnik kome je uklanjanje povereno (#8611).</p>
+<table>
+<tr><th>Trošak</th><th>Ko plaća</th><th>pitanje</th></tr>
+<tr><td>premeštanje vozila (isključen vozač ili isključeno vozilo)</td><td>vlasnik, odnosno korisnik vozila</td><td>#8567, #8568</td></tr>
+<tr><td>obezbeđenje isključenog vozila i tereta, smeštaj putnika</td><td>vlasnik, odnosno korisnik vozila</td><td>#8593</td></tr>
+<tr><td>uklanjanje nepropisno parkiranog vozila posle roka iz rešenja</td><td>vozač ili vlasnik, odnosno korisnik vozila</td><td>#8609</td></tr>
+<tr><td>skidanje tablica kad ih ne predaš</td><td>vozač</td><td>#10717</td></tr>
+<tr><td>analiza krvi/urina koju sam tražiš</td><td>vozač — o sopstvenom trošku</td><td>#8561, #8562</td></tr>
+<tr><td>kontrolni tehnički pregled</td><td>vlasnik, odnosno korisnik vozila — SAMO ako se utvrdi neispravnost</td><td>#8579</td></tr>
+<tr><td>štete od započinjanja uklanjanja do preuzimanja vozila</td><td>pravno lice, odnosno preduzetnik kome je povereno uklanjanje</td><td>#8611</td></tr>
+</table>
+<p class="mut">Pamtilica: kod premeštanja i obezbeđenja tačan odgovor glasi doslovno „vlasnik, odnosno korisnik vozila" — ne „vozač" (#8567, #8568, #8593). Vozač se u odgovoru pojavljuje tek kod uklanjanja posle roka iz rešenja (#8609) i kod skidanja tablica (#10717).</p>
+</div>
+`,
 };
 
 CARDS['oznake-kolovoz'] = {
@@ -1079,6 +1494,161 @@ CARDS['vozilo-tehnika'] = {
 <p class="mut">Zamke po vrstama: kod redovnog nude „tromesečni" i „petogodišnji" (ne postoje) i „najkasnije jednu godinu nakon prethodnog pregleda" — tačan odgovor je vezan za <b>nalepnicu</b>, ne za datum prošlog pregleda. Kod vanrednog nude „radi kontrole od strane ovlašćenog lica MUP-a/inspektora" (to je kontrolni!) i „pre isteka roka od šest meseci od početka važenja nalepnice" (to miriše na šestomesečni redovni). Kod kontrolnog nude vozilo „kojem su u nezgodi oštećeni uređaji" — to ide na <b>vanredni</b>; na kontrolni se može uputiti vozilo <b>u voznom stanju</b>.</p>
 <p><b>Zajednička pravila za redovni i vanredni pregled:</b> vrše se samo na <b>čistom</b> vozilu koje je <b>u voznom stanju</b> i <b>neopterećeno</b> — zamka „na tehnički ispravnom vozilu" je besmislena, jer se ispravnost na pregledu tek utvrđuje. Lice koje je dovezlo vozilo kontroloru daje na uvid <b>saobraćajnu dozvolu i SVOJU ličnu kartu</b> (ne ličnu kartu vlasnika, ne vozačku dozvolu). Registrovano, neodjavljeno vozilo na redovnom pregledu mora imati <b>sve propisane registarske tablice, postavljene na predviđenim mestima</b> — „bar jedna tablica" nije dovoljna.</p>
 </div>
+
+
+<!-- ==== dopuna 07.09.2026 (tura 4): crtež + isto to rečima ==== -->
+<!-- DODATAK kartici vozilo-tehnika (podoblasti 126, 127). Sledljivost: ispred svakog bloka stoji HTML komentar sa brojevima pitanja iz gradje na koja se blok oslanja. Komentari se ne vide u kartici. -->
+<div class="kSek" data-sub="126,127">
+<div class="kPodH"><b class="kPodNaslov">Bez ovo troje vozilo ne sme na put</b>
+<!-- izvor: #8423, #8424 -->
+<div style="display:flex;justify-content:center;margin:6px 0">
+<svg viewBox="0 0 360 168" style="max-width:420px;width:100%" role="img" aria-label="sema: saobracajna dozvola plus registarske tablice plus registraciona nalepnica znaci da vozilo sme na put; ako fali bilo koje od troje, vozilo ne sme na put">
+<g fill="none" stroke="currentColor" stroke-width="1.5">
+<rect x="2" y="6" width="196" height="28" rx="4"/>
+<rect x="2" y="50" width="196" height="28" rx="4"/>
+<rect x="2" y="94" width="196" height="28" rx="4"/>
+<line x1="198" y1="20" x2="206" y2="20"/>
+<line x1="198" y1="108" x2="206" y2="108"/>
+<line x1="206" y1="20" x2="206" y2="108"/>
+<line x1="198" y1="64" x2="224" y2="64"/>
+</g>
+<polygon points="224,60 232,64 224,68" fill="currentColor"/>
+<g fill="none" stroke="#1f7a3f" stroke-width="1.8"><rect x="236" y="48" width="120" height="32" rx="4"/></g>
+<g fill="none" stroke="#c0392b" stroke-width="1.8">
+<rect x="2" y="132" width="196" height="30" rx="4" stroke-dasharray="6 4"/>
+<rect x="236" y="132" width="120" height="30" rx="4"/>
+<line x1="200" y1="147" x2="224" y2="147"/>
+</g>
+<polygon points="224,143 232,147 224,151" fill="#c0392b"/>
+<g fill="currentColor" font-size="11" text-anchor="middle">
+<text x="100" y="25">SAOBRAĆAJNA DOZVOLA</text>
+<text x="100" y="69">REGISTARSKE TABLICE</text>
+<text x="100" y="113">REGISTRACIONA NALEPNICA</text>
+<text x="100" y="46" font-size="13">+</text>
+<text x="100" y="90" font-size="13">+</text>
+</g>
+<text x="296" y="68" font-size="12" text-anchor="middle" fill="#1f7a3f">SME NA PUT</text>
+<text x="100" y="152" font-size="11" text-anchor="middle" fill="#c0392b">fali BILO KOJE od troje</text>
+<text x="296" y="152" font-size="12" text-anchor="middle" fill="#c0392b">NE SME NA PUT</text>
+</svg>
+</div>
+<!-- izvor: #8423, #8424 -->
+<p><b>Sva tri dokumenta zajedno:</b> saobraćajna dozvola + registarske tablice + registraciona nalepnica. Svejedno je koje od troje fali — vozilo ne sme na put.</p>
+<!-- izvor: #8423, #8424 -->
+<p><b>Mamci su uvek nepotpuni spiskovi:</b> „dozvola i tablice" (fali nalepnica), „dozvola i potvrda o tehničkoj ispravnosti" (fale i tablice i nalepnica), „potvrda o tehničkoj ispravnosti i registracioni list" (nema ni same dozvole). Tačan odgovor nabraja sva tri dokumenta, a „potvrda o tehničkoj ispravnosti" i „registracioni list" u tom spisku uopšte ne postoje.</p>
+<!-- izvor: #8435, #8443 -->
+<p><b>Isključeno vozilo</b> ne sme u saobraćaj — ni na kratkom delu puta, ni kad nikoga ne ometa. <b>Vozilo na lizingu ili u zakupu</b> smeš da voziš tek kad je podatak o korišćenju upisan u saobraćajnu dozvolu, ne odmah po zaključenju ugovora.</p>
+<!-- izvor: #8433, #8434 (prvi red) · #8437, #8438 (drugi red) · #10707 (treći red) -->
+<table>
+<tr><th>Situacija</th><th>Kod sebe i na uvid</th><th>Ne zamenjuje ga</th></tr>
+<tr><td>vožnja sa registarskim tablicama</td><td><b>saobraćajna dozvola</b></td><td>polisa osiguranja · važeća nalepnica</td></tr>
+<tr><td>vožnja sa tablicama za privremeno označavanje</td><td><b>potvrda o korišćenju tih tablica</b></td><td>polisa osiguranja · potvrda o tehničkoj ispravnosti · dokaz o vlasništvu</td></tr>
+<tr><td>dolazak na redovni ili vanredni pregled</td><td><b>saobraćajna dozvola + tvoja lična karta</b></td><td>vozačka dozvola · lična karta vlasnika</td></tr>
+</table>
+<!-- izvor: #8434, #8438 -->
+<p class="mut">Pamtilica: na kontroli je odgovor uvek „Da" — i saobraćajna dozvola i potvrda o korišćenju privremenih tablica daju se na uvid, nijedan drugi papir ih ne menja.</p>
+</div>
+</div>
+<div class="kSek" data-sub="126,127">
+<div class="kPodH"><b class="kPodNaslov">Godina registracije — vremenska osa</b>
+<!-- izvor: #10688 (30 dana) · #10687 (pregled pre izdavanja nalepnice) · #8428, #8429 (1 godina) · #8425 (po isteku ne sme) -->
+<div style="display:flex;justify-content:center;margin:6px 0">
+<svg viewBox="0 0 360 116" style="max-width:420px;width:100%" role="img" aria-label="vremenska osa u razmeri: prozor od 30 dana za redovni godisnji pregled, zatim zahtev i izdavanje nalepnice, pa godina dana vazenja nalepnice, i istek posle koga vozilo ne sme na put">
+<g fill="none" stroke="currentColor" stroke-width="1.4">
+<rect x="42" y="58" width="21" height="22" stroke-dasharray="4 3"/>
+<rect x="63" y="58" width="255" height="22" rx="3"/>
+<line x1="52" y1="38" x2="52" y2="56" stroke-dasharray="3 3"/>
+<line x1="63" y1="52" x2="63" y2="84"/>
+</g>
+<line x1="318" y1="50" x2="318" y2="84" stroke="#c0392b" stroke-width="3"/>
+<g fill="none" stroke="#c0392b" stroke-width="2.2">
+<circle cx="338" cy="69" r="12"/><line x1="330" y1="61" x2="346" y2="77"/>
+</g>
+<g fill="currentColor" text-anchor="middle">
+<text x="52" y="20" font-size="11">PREGLED</text>
+<text x="52" y="34" font-size="10">najranije 30 dana</text>
+<text x="190" y="73" font-size="11">NALEPNICA VAŽI 1 GODINU</text>
+<text x="63" y="94" font-size="10">ZAHTEV</text>
+<text x="63" y="106" font-size="10">IZDAVANJE NALEPNICE</text>
+</g>
+<g fill="#c0392b" text-anchor="middle">
+<text x="318" y="44" font-size="11">ISTEK</text>
+<text x="306" y="100" font-size="11">NE SME NA PUT</text>
+</g>
+</svg>
+</div>
+<p class="mut" style="text-align:center;font-size:.82rem">osa je u razmeri: prozor od 30 dana je dvanaest puta kraći od godine važenja</p>
+<!-- izvor: #10688, #10687, #8428, #8429 -->
+<p><b>Redosled:</b> redovni godišnji tehnički pregled → zahtev za upis u jedinstveni registar, odnosno za izdavanje registracione nalepnice → nalepnica važi <b>godinu dana</b>. Pregled se sme obaviti <b>najranije 30 dana pre podnošenja zahteva</b>, a vozilo mu se podvrgava <b>pre</b> upisa u registar odnosno izdavanja nalepnice — ne „najkasnije godinu dana od prethodnog pregleda" i ne „svake dve godine".</p>
+<!-- izvor: #8425 -->
+<p><b>Kad nalepnica istekne:</b> vozilo <b>ne sme</b> da učestvuje u saobraćaju — nema odlaganja ni od 5 ni od 15 dana.</p>
+<!-- izvor: #8436, #8427, #8439 -->
+<p><b>Jedini izlaz</b> je odlazak <b>na tehnički pregled, opravku ili ispitivanje</b>, i to samo ako je vozilo označeno <b>tablicama za privremeno označavanje</b> i ako mu je izdata <b>potvrda o njihovom korišćenju</b>. Tablice i potvrda izdaju se sa rokom važenja <b>najduže 15 dana</b>, a dužan si da se krećeš <b>relacijom i u vreme označeno u potvrdi</b> — ne po celoj Srbiji ni slobodno po području organa koji ih je izdao.</p>
+<!-- izvor: #8444 (ODMAH) · #8427 (najduže 15 dana) · #8441, #8442 (u roku od 15 dana) · #10688 (30 dana) · #8428, #8429 (1 godina) -->
+<table>
+<tr><th>Rok</th><th>Na šta se odnosi</th></tr>
+<tr><td><b>ODMAH</b></td><td>gubitak ili nestanak registarske tablice, odnosno registracione nalepnice → obaveštavaš <b>najbližu</b> organizacionu jedinicu MUP-a (ne onu koja ih je izdala, i ne „u roku od 7 dana")</td></tr>
+<tr><td><b>najduže 15 dana</b></td><td>rok važenja tablica za privremeno označavanje i potvrde o njihovom korišćenju</td></tr>
+<tr><td><b>u roku od 15 dana</b></td><td>odjava uništenog ili otpisanog vozila · prijava promene bilo kog podatka koji se upisuje u saobraćajnu dozvolu</td></tr>
+<tr><td><b>najranije 30 dana</b></td><td>toliko pre podnošenja zahteva sme se obaviti redovni godišnji pregled</td></tr>
+<tr><td><b>1 godina</b></td><td>rok važenja registracione nalepnice</td></tr>
+</table>
+<!-- izvor: #8441, #8442, #8444, #10688, #8436 -->
+<p class="mut">Pamtilica: administrativne obaveze su <b>15 dana</b> (odjava, prijava promene), a gubitak tablice ili nalepnice nema rok — <b>ODMAH</b>, i to <b>najbližoj</b> jedinici MUP-a. „7 dana" nije tačan odgovor ni u jednom od ovih pitanja, a „30 dana" je tačno samo za pregled pre zahteva. Za vožnju posle isteka ne postoji nikakva „posebna dozvola nadležnog organa".</p>
+</div>
+</div>
+<div class="kSek" data-sub="127">
+<div class="kPodH"><b class="kPodNaslov">Put nazad u saobraćaj</b>
+<!-- izvor: #8461 (prva dva reda) · #8449 (treći red) -->
+<div style="display:flex;justify-content:center;margin:6px 0">
+<svg viewBox="0 0 360 156" style="max-width:420px;width:100%" role="img" aria-label="sema: posle ostecenja vitalnih sklopova i posle iskljucenja zbog neispravnosti utvrdjene na kontrolnom pregledu ide vanredni tehnicki pregled, a prepravljeno vozilo ide na ispitivanje; tek onda vozilo sme na put">
+<g fill="none" stroke="currentColor" stroke-width="1.5">
+<rect x="2" y="4" width="146" height="44" rx="4"/><rect x="2" y="56" width="146" height="44" rx="4"/><rect x="2" y="108" width="146" height="44" rx="4"/>
+<rect x="164" y="4" width="124" height="44" rx="4"/><rect x="164" y="56" width="124" height="44" rx="4"/><rect x="164" y="108" width="124" height="44" rx="4"/>
+<line x1="148" y1="26" x2="158" y2="26"/><line x1="148" y1="78" x2="158" y2="78"/><line x1="148" y1="130" x2="158" y2="130"/>
+<line x1="288" y1="26" x2="298" y2="26"/><line x1="288" y1="78" x2="298" y2="78"/><line x1="288" y1="130" x2="298" y2="130"/>
+</g>
+<g fill="currentColor">
+<polygon points="158,22 164,26 158,30"/><polygon points="158,74 164,78 158,82"/><polygon points="158,126 164,130 158,134"/>
+<polygon points="298,22 304,26 298,30"/><polygon points="298,74 304,78 298,82"/><polygon points="298,126 304,130 298,134"/>
+</g>
+<g fill="none" stroke="#1f7a3f" stroke-width="1.8">
+<rect x="304" y="4" width="54" height="44" rx="4"/><rect x="304" y="56" width="54" height="44" rx="4"/><rect x="304" y="108" width="54" height="44" rx="4"/>
+</g>
+<g fill="currentColor" text-anchor="middle" font-size="10">
+<text x="75" y="19">u nezgodi oštećeni</text><text x="75" y="31">VITALNI SKLOPOVI</text><text x="75" y="43">nije bilo u voznom stanju</text>
+<text x="75" y="71">isključeno zbog</text><text x="75" y="83">neispravnosti sa</text><text x="75" y="95">KONTROLNOG pregleda</text>
+<text x="75" y="134">PREPRAVLJENO VOZILO</text>
+<text x="226" y="22" font-size="11">VANREDNI</text><text x="226" y="36" font-size="11">PREGLED</text>
+<text x="226" y="74" font-size="11">VANREDNI</text><text x="226" y="88" font-size="11">PREGLED</text>
+<text x="226" y="126" font-size="11">ISPITIVANJE</text><text x="226" y="140">ispunjava uslove</text>
+</g>
+<g fill="#1f7a3f" text-anchor="middle" font-size="11">
+<text x="331" y="30">NA PUT</text><text x="331" y="82">NA PUT</text><text x="331" y="134">NA PUT</text>
+</g>
+</svg>
+</div>
+<!-- izvor: #8461 -->
+<p><b>Vanredni pregled</b> traži se u dva slučaja, oba <b>pre puštanja u saobraćaj</b>: kad su u saobraćajnoj nezgodi ili na drugi način oštećeni vitalni sklopovi i uređaji bitni za bezbedno učestvovanje u saobraćaju, odnosno kad vozilo nakon toga nije bilo u voznom stanju; i kad je vozilo isključeno iz saobraćaja zbog tehničke neispravnosti utvrđene na kontrolnom pregledu.</p>
+<!-- izvor: #8449 -->
+<p><b>Prepravljeno vozilo</b> ne rešava tehnički pregled — traži se <b>ispitivanje</b> i utvrđivanje da ispunjava propisane uslove, pa tek onda sme u saobraćaj. Nikako „odmah nakon izvršene prepravke".</p>
+<!-- izvor: #8446, #8461 -->
+<p class="mut">Pamtilica: na <b>kontrolni</b> pregled ide samo vozilo <b>u voznom stanju</b>; vozilo kojem su u nezgodi oštećeni sklopovi ide na <b>vanredni</b> — to je par koji se najčešće zamenjuje.</p>
+</div>
+<div class="kPodH"><b class="kPodNaslov">Ispravnost i identitet vozila</b>
+<!-- izvor: #8448 -->
+<table>
+<tr><th>Tehnički ispravno je vozilo koje (oba uslova)</th><th>NIJE dokaz ispravnosti</th></tr>
+<tr><td>zadovoljava sve tehničke normative <b>i</b> ima ispravne sve propisane uređaje i opremu</td><td>„u voznom stanju, bez vidljivih oštećenja" · „redovni pregled obavljen u propisanom roku"</td></tr>
+</table>
+<!-- izvor: #8450 -->
+<p><b>Tehnički pregled utvrđuje dvoje:</b> da je vozilo tehnički ispravno <b>i</b> da ispunjava tehničke propise i uslove za učešće u saobraćaju — ne homologaciju i ne usklađenost sa smernicama proizvođača.</p>
+<!-- izvor: #8447 -->
+<p><b>Gde važi:</b> tehnički uslovi i ispravnost traže se <b>kada vozilo učestvuje u saobraćaju na putu</b> — na svakom putu, ne „samo na javnom putu" ni „samo na putu sa savremenim kolovoznim zastorom".</p>
+<!-- izvor: #8451 -->
+<p><b>Identitet:</b> vozilo jednoznačno određuje <b>identifikaciona oznaka koju određuje proizvođač</b>. Ne oznaka „i broj motora" (motor je zamenljiv deo), ni registraciona nalepnica (menja se pri svakoj registraciji).</p>
+</div>
+</div>
 `,
 };
 
@@ -1239,13 +1809,13 @@ CARDS['znakovi-opasnosti'] = {
 </div>
 <div class="kPodH"><b class="kPodNaslov">Pruga — pet znakova, jedan sistem</b>
 <table>
-<tr><th>Znak</th><th>Znači</th><th>Zamka — NIJE</th></tr>
-<tr><td class="znCel">${zn(10825)}</td><td>ukrštanje sa železničkom prugom <b>SA branicima</b> ili polubranicima</td><td>prelaz bez branika; tramvajska pruga</td></tr>
-<tr><td class="znCel">${zn(10830)}</td><td>ukrštanje sa železničkom prugom <b>BEZ branika</b> i polubranika</td><td>prelaz sa branicima</td></tr>
-<tr><td class="znCel">${zn(10829)}</td><td>ukrštanje puta sa <b>tramvajskom</b> prugom u nivou</td><td>„tramvajska stanica"; železnička pruga</td></tr>
-<tr><td class="znCel">${zn(10840)}</td><td>pruga sa <b>jednim kolosekom</b></td><td>dva ili više koloseka</td></tr>
-<tr><td class="znCel">${zn(10831)}</td><td>pruga sa <b>dva ili više koloseka</b></td><td>jedan kolosek; „prelaz bez branika"</td></tr>
-<tr><td class="znCel">${zn(10832)}</td><td><b>udaljenost</b> do ukrštanja puta i pruge: <b>3 crte = 240 m, 2 crte = 160 m, 1 crta = 80 m</b></td><td>ponuđenih „280 m" ne postoji — računaj 80 × broj crta</td></tr>
+<tr><th>Znak — slika i opis</th><th>Znači</th><th>Zamka — NIJE</th></tr>
+<tr><td class="znCel">${zn(10825)}<span class="znOpis">Trougao + <b>OGRADA</b></span></td><td>ukrštanje sa železničkom prugom <b>SA branicima</b> ili polubranicima</td><td>prelaz bez branika; tramvajska pruga</td></tr>
+<tr><td class="znCel">${zn(10830)}<span class="znOpis">Trougao + <b>LOKOMOTIVA</b></span></td><td>ukrštanje sa železničkom prugom <b>BEZ branika</b> i polubranika</td><td>prelaz sa branicima</td></tr>
+<tr><td class="znCel">${zn(10829)}<span class="znOpis">Trougao + <b>TRAMVAJ</b></span></td><td>ukrštanje puta sa <b>tramvajskom</b> prugom u nivou</td><td>„tramvajska stanica"; železnička pruga</td></tr>
+<tr><td class="znCel">${zn(10840)}<span class="znOpis"><b>JEDAN</b> Andrejin krst</span></td><td>pruga sa <b>jednim kolosekom</b></td><td>dva ili više koloseka</td></tr>
+<tr><td class="znCel">${zn(10831)}<span class="znOpis"><b>DVOSTRUKI</b> Andrejin krst</span></td><td>pruga sa <b>dva ili više koloseka</b></td><td>jedan kolosek; „prelaz bez branika"</td></tr>
+<tr><td class="znCel">${zn(10832)}<span class="znOpis">Kosnik (kose crvene crte)</span></td><td><b>udaljenost</b> do ukrštanja puta i pruge: <b>3 crte = 240 m, 2 crte = 160 m, 1 crta = 80 m</b></td><td>ponuđenih „280 m" ne postoji — računaj 80 × broj crta</td></tr>
 </table>
 <p class="mut">Iznad kosnika sa tri crte stoji trougao sa ogradom ili lokomotivom (Pravilnik čl. 23) — po NJEMU na pitanju „240 m" znaš da li je prelaz sa branicima ili bez njih.</p>
 
@@ -1253,49 +1823,49 @@ CARDS['znakovi-opasnosti'] = {
 <div class="kPodH"><b class="kPodNaslov">Raskrsnice — prati debljinu crta</b>
 <p>Debela uspravna crta = TVOJ put (sa prvenstvom prolaza), tanka crta = sporedni put. Gledaj <b>sa koje strane</b> tanka crta dolazi (leve/desne) i <b>pod kojim uglom</b> (pravi, oštri, tupi) — simbol odgovara stvarnoj situaciji na putu.</p>
 <table>
-<tr><th>Znak</th><th>Znači</th></tr>
-<tr><td class="znCel">${zn(10817)}</td><td>blizina raskrsnice puteva od kojih <b>nijedan</b> nije put sa prvenstvom prolaza</td></tr>
-<tr><td class="znCel">${zn(10818)}</td><td>put sa prvenstvom se <b>UKRŠTA</b> sa sporednim putem</td></tr>
-<tr><td class="znCel">${zn(10819)}</td><td>sporedni put se <b>SPAJA</b> — pod pravim / oštrim / tupim uglom, sa leve ili desne strane</td></tr>
+<tr><th>Znak — slika i opis</th><th>Znači</th></tr>
+<tr><td class="znCel">${zn(10817)}<span class="znOpis">Krst — <b>sve crte iste debljine</b></span></td><td>blizina raskrsnice puteva od kojih <b>nijedan</b> nije put sa prvenstvom prolaza</td></tr>
+<tr><td class="znCel">${zn(10818)}<span class="znOpis">Tanka crta <b>preseca</b> debelu skroz</span></td><td>put sa prvenstvom se <b>UKRŠTA</b> sa sporednim putem</td></tr>
+<tr><td class="znCel">${zn(10819)}<span class="znOpis">Tanka crta se <b>uliva</b> u debelu</span></td><td>sporedni put se <b>SPAJA</b> — pod pravim / oštrim / tupim uglom, sa leve ili desne strane</td></tr>
 </table>
 <p class="mut">Zamke su uvek iste: „iste važnosti" i „ukršta se" — prvo prebroj debljine, pa proveri da li tanka crta prolazi skroz ili se samo uliva.</p>
 
 </div>
 <div class="kPodH"><b class="kPodNaslov">Parovi-zamke: put i teren</b>
 <table>
-<tr><th>Znak</th><th>Znači</th><th>Zamka — NIJE</th></tr>
-<tr><td class="znCel">${zn(10783)}</td><td>opasna KRIVINA <b>nalevo / nadesno</b> — kako strelica pokazuje</td><td>„smer kojim se vozila moraju kretati" (plavi krug) ni „jednosmerni put"</td></tr>
-<tr><td class="znCel">${zn(10785)}</td><td>više <b>uzastopnih krivina</b> — odgovor po PRVOJ (nalevo/nadesno)</td><td>obična krivina</td></tr>
-<tr><td class="znCel">${zn(10787)}</td><td>opasna <b>NIZBRDICA</b> ili opasan <b>USPON</b> (procenat = nagib puta)</td><td>„tehnička sredstva za usporavanje saobraćaja"</td></tr>
-<tr><td class="znCel">${zn(10789)}</td><td><b>SUŽENJE</b> kolovoza: obostrano / samo sa leve / samo sa desne strane</td><td>„radovi na putu" ni „naizmenično uključivanje vozila u jednu traku"</td></tr>
-<tr><td class="znCel">${zn(10805)}</td><td><b>RADOVI</b> na putu</td><td>suženje</td></tr>
-<tr><td class="znCel">${zn(10797)}</td><td>moguća pojava <b>KLIZAVOG</b> kolovoza</td><td>bankina ni obala</td></tr>
-<tr><td class="znCel">${zn(10794)}</td><td>neravan kolovoz: <b>IZBOČINA</b> / <b>ULEGNUĆE</b> / <b>„izbočine i ulegnuća"</b> — čitaj sliku doslovno</td><td>međusobno se nude kao zamke — biraj tačno ono što je nacrtano</td></tr>
-<tr><td class="znCel">${zn(10798)}</td><td>moguća pojava <b>PRŠTANJA</b> kamenja</td><td>odron ni bankina</td></tr>
-<tr><td class="znCel">${zn(10799)}</td><td><b>ODRON</b> kamenja — kosina je na strani sa koje kamenje preti: <b>sa leve ili sa desne</b> strane puta</td><td>prštanje ni bankina</td></tr>
-<tr><td class="znCel">${zn(10837)}</td><td>opasna <b>BANKINA</b> uz kolovoz (simbol = strana puta)</td><td>odron ni prštanje</td></tr>
-<tr><td class="znCel">${zn(10793)}</td><td>put vodi do <b>OBALE</b>, odnosno pruža se u njenoj blizini</td><td>klizav kolovoz ni pokretni most</td></tr>
-<tr><td class="znCel">${zn(10792)}</td><td>blizina <b>POKRETNOG MOSTA</b></td><td>obala</td></tr>
-<tr><td class="znCel">${zn(10820)}</td><td>nailazak na <b>TUNEL</b></td><td>nadvožnjak ni podvožnjak</td></tr>
+<tr><th>Znak — slika i opis</th><th>Znači</th><th>Zamka — NIJE</th></tr>
+<tr><td class="znCel">${zn(10783)}<span class="znOpis">Savijena strelica</span></td><td>opasna KRIVINA <b>nalevo / nadesno</b> — kako strelica pokazuje</td><td>„smer kojim se vozila moraju kretati" (plavi krug) ni „jednosmerni put"</td></tr>
+<tr><td class="znCel">${zn(10785)}<span class="znOpis">Dvostruko izlomljena strelica</span></td><td>više <b>uzastopnih krivina</b> — odgovor po PRVOJ (nalevo/nadesno)</td><td>obična krivina</td></tr>
+<tr><td class="znCel">${zn(10787)}<span class="znOpis">Kosina sa procentom</span></td><td>opasna <b>NIZBRDICA</b> ili opasan <b>USPON</b> (procenat = nagib puta)</td><td>„tehnička sredstva za usporavanje saobraćaja"</td></tr>
+<tr><td class="znCel">${zn(10789)}<span class="znOpis">Ivice puta se skupljaju</span></td><td><b>SUŽENJE</b> kolovoza: obostrano / samo sa leve / samo sa desne strane</td><td>„radovi na putu" ni „naizmenično uključivanje vozila u jednu traku"</td></tr>
+<tr><td class="znCel">${zn(10805)}<span class="znOpis">Čovek sa lopatom, <b>žuta osnova</b></span></td><td><b>RADOVI</b> na putu</td><td>suženje</td></tr>
+<tr><td class="znCel">${zn(10797)}<span class="znOpis">Vozilo sa vijugavim tragovima</span></td><td>moguća pojava <b>KLIZAVOG</b> kolovoza</td><td>bankina ni obala</td></tr>
+<tr><td class="znCel">${zn(10794)}<span class="znOpis">Jedna grba / jedno udubljenje / grba i udubljenje</span></td><td>neravan kolovoz: <b>IZBOČINA</b> / <b>ULEGNUĆE</b> / <b>„izbočine i ulegnuća"</b> — čitaj sliku doslovno</td><td>međusobno se nude kao zamke — biraj tačno ono što je nacrtano</td></tr>
+<tr><td class="znCel">${zn(10798)}<span class="znOpis">Točak izbacuje kamenčiće</span></td><td>moguća pojava <b>PRŠTANJA</b> kamenja</td><td>odron ni bankina</td></tr>
+<tr><td class="znCel">${zn(10799)}<span class="znOpis">Kamenje pada niz kosinu</span></td><td><b>ODRON</b> kamenja — kosina je na strani sa koje kamenje preti: <b>sa leve ili sa desne</b> strane puta</td><td>prštanje ni bankina</td></tr>
+<tr><td class="znCel">${zn(10837)}<span class="znOpis">Vozilo propada uz ivicu kolovoza</span></td><td>opasna <b>BANKINA</b> uz kolovoz (simbol = strana puta)</td><td>odron ni prštanje</td></tr>
+<tr><td class="znCel">${zn(10793)}<span class="znOpis">Vozilo pada u vodu</span></td><td>put vodi do <b>OBALE</b>, odnosno pruža se u njenoj blizini</td><td>klizav kolovoz ni pokretni most</td></tr>
+<tr><td class="znCel">${zn(10792)}<span class="znOpis">Most se podiže</span></td><td>blizina <b>POKRETNOG MOSTA</b></td><td>obala</td></tr>
+<tr><td class="znCel">${zn(10820)}<span class="znOpis">Portal u trouglu</span></td><td>nailazak na <b>TUNEL</b></td><td>nadvožnjak ni podvožnjak</td></tr>
 </table>
 
 </div>
 <div class="kPodH"><b class="kPodNaslov">Parovi-zamke: ljudi, životinje, saobraćaj</b>
 <table>
-<tr><th>Znak</th><th>Znači</th><th>Zamka — NIJE</th></tr>
-<tr><td class="znCel">${zn(10800)}</td><td>NAILAZAK na mesto gde je <b>obeležen pešački prelaz</b></td><td>„mesto na kome se nalazi pešački prelaz" (to je plavi KVADRAT) ni pešačka staza</td></tr>
-<tr><td class="znCel">${zn(10801)}</td><td>deo puta gde se često kreću <b>DECA</b> (blizina škole, obdaništa, igrališta)</td><td>„mesto od kojeg počinje zona škole" (to je plava tabla)</td></tr>
-<tr><td class="znCel">${zn(10838)}</td><td>deo puta kojim se <b>PEŠACI često kreću</b></td><td>pešačka staza ni obeležen prelaz</td></tr>
-<tr><td class="znCel">${zn(10802)}</td><td><b>BICIKLISTI</b> se često kreću, odnosno prelaze put</td><td>biciklistička staza ni zabrana saobraćaja za bicikle</td></tr>
-<tr><td class="znCel">${zn(10804)}</td><td>opasnost zbog prelaska <b>DIVLJAČI</b></td><td>domaće životinje ni „staza za jahanje"</td></tr>
-<tr><td class="znCel">${zn(10826)}</td><td><b>DOMAĆE životinje pod nadzorom</b> prelaze preko puta, odnosno kreću se duž puta</td><td>divljač ni „staza za jahanje"</td></tr>
-<tr><td class="znCel">${zn(10810)}</td><td>mesto od koga <b>POČINJE DVOSMERAN</b> saobraćaj</td><td>„prvenstvo na suženom delu" (plava tabla) ni „zabrana stupanja na suženi deo" (krug)</td></tr>
-<tr><td class="znCel">${zn(10806)}</td><td>najava mesta gde je saobraćaj <b>regulisan SEMAFORIMA</b></td><td>prelaz preko pruge sa semaforima ni „pristup vozila reguliše se semaforima"</td></tr>
-<tr><td class="znCel">${zn(10808)}</td><td>blizina piste: avioni preleću u <b>NISKOM LETU</b> pri sletanju, odnosno poletanju</td><td>„bočni vetar izazvan letom aviona" ni „blizina aerodroma" (to je obaveštenje)</td></tr>
-<tr><td class="znCel">${zn(10809)}</td><td>učestala pojava jakog <b>BOČNOG VETRA</b> — simbol odgovara smeru vetra</td><td>avioni</td></tr>
-<tr><td class="znCel">${zn(10836)}</td><td>opasnost od <b>STVARANJA KOLONE</b> vozila (zastoj — vozila gledaš otpozadi)</td><td>„moraju se kretati u koloni" ni „zabranjeno kretanje u koloni"</td></tr>
-<tr><td class="znCel">${zn(10824)}</td><td>nailazak na raskrsnicu sa <b>KRUŽNIM TOKOM</b></td><td>„obavezan smer obilaska ostrva" (plavi krug) ni zabrana polukružnog okretanja</td></tr>
-<tr><td class="znCel">${zn(10811)}</td><td>opasnost za koju <b>NIJE predviđen poseban znak</b></td><td>radovi ni „ustupi prvenstvo prolaza"</td></tr>
+<tr><th>Znak — slika i opis</th><th>Znači</th><th>Zamka — NIJE</th></tr>
+<tr><td class="znCel">${zn(10800)}<span class="znOpis">Pešak na zebri u <b>TROUGLU</b></span></td><td>NAILAZAK na mesto gde je <b>obeležen pešački prelaz</b></td><td>„mesto na kome se nalazi pešački prelaz" (to je plavi KVADRAT) ni pešačka staza</td></tr>
+<tr><td class="znCel">${zn(10801)}<span class="znOpis">Deca u trku</span></td><td>deo puta gde se često kreću <b>DECA</b> (blizina škole, obdaništa, igrališta)</td><td>„mesto od kojeg počinje zona škole" (to je plava tabla)</td></tr>
+<tr><td class="znCel">${zn(10838)}<span class="znOpis">Pešak koji hoda</span></td><td>deo puta kojim se <b>PEŠACI često kreću</b></td><td>pešačka staza ni obeležen prelaz</td></tr>
+<tr><td class="znCel">${zn(10802)}<span class="znOpis">Biciklista</span></td><td><b>BICIKLISTI</b> se često kreću, odnosno prelaze put</td><td>biciklistička staza ni zabrana saobraćaja za bicikle</td></tr>
+<tr><td class="znCel">${zn(10804)}<span class="znOpis">Jelen u skoku</span></td><td>opasnost zbog prelaska <b>DIVLJAČI</b></td><td>domaće životinje ni „staza za jahanje"</td></tr>
+<tr><td class="znCel">${zn(10826)}<span class="znOpis">Krava</span></td><td><b>DOMAĆE životinje pod nadzorom</b> prelaze preko puta, odnosno kreću se duž puta</td><td>divljač ni „staza za jahanje"</td></tr>
+<tr><td class="znCel">${zn(10810)}<span class="znOpis">Dve strelice gore-dole</span></td><td>mesto od koga <b>POČINJE DVOSMERAN</b> saobraćaj</td><td>„prvenstvo na suženom delu" (plava tabla) ni „zabrana stupanja na suženi deo" (krug)</td></tr>
+<tr><td class="znCel">${zn(10806)}<span class="znOpis">Semafor u trouglu</span></td><td>najava mesta gde je saobraćaj <b>regulisan SEMAFORIMA</b></td><td>prelaz preko pruge sa semaforima ni „pristup vozila reguliše se semaforima"</td></tr>
+<tr><td class="znCel">${zn(10808)}<span class="znOpis">Avion</span></td><td>blizina piste: avioni preleću u <b>NISKOM LETU</b> pri sletanju, odnosno poletanju</td><td>„bočni vetar izazvan letom aviona" ni „blizina aerodroma" (to je obaveštenje)</td></tr>
+<tr><td class="znCel">${zn(10809)}<span class="znOpis">Vetrokaz (vreća na stubu)</span></td><td>učestala pojava jakog <b>BOČNOG VETRA</b> — simbol odgovara smeru vetra</td><td>avioni</td></tr>
+<tr><td class="znCel">${zn(10836)}<span class="znOpis">Vozila u nizu, crvena zadnja svetla</span></td><td>opasnost od <b>STVARANJA KOLONE</b> vozila (zastoj — vozila gledaš otpozadi)</td><td>„moraju se kretati u koloni" ni „zabranjeno kretanje u koloni"</td></tr>
+<tr><td class="znCel">${zn(10824)}<span class="znOpis">Kružne strelice u trouglu</span></td><td>nailazak na raskrsnicu sa <b>KRUŽNIM TOKOM</b></td><td>„obavezan smer obilaska ostrva" (plavi krug) ni zabrana polukružnog okretanja</td></tr>
+<tr><td class="znCel">${zn(10811)}<span class="znOpis">Uzvičnik</span></td><td>opasnost za koju <b>NIJE predviđen poseban znak</b></td><td>radovi ni „ustupi prvenstvo prolaza"</td></tr>
 </table>
 
 </div>

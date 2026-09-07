@@ -475,6 +475,41 @@ async function proveraBodovanja2() {
       await cekaj(150);
     }
 
+    // ---- 2ae) I SLIKA I REČ, i uvećanje crteža ----
+    {
+      // uz sličicu znaka u tabeli stoji i opis rečima (Milan 07.09: „ne mora UMESTO")
+      const ko = window.EXPLAIN.cards['znakovi-opasnosti'].h.l;
+      const slika = (ko.match(/znTdImg/g) || []).length;
+      const rec = (ko.match(/znOpis/g) || []).length;
+      ok('i slika i reč: svaka sličica u tabeli ima i opis rečima (' + slika + ')', slika >= 35 && slika === rec);
+
+      // crtež u kartici je dugme i otvara uvećanje kao fotografija
+      document.querySelector('[data-nav="home"]').click(); await cekaj(200);
+      const bp2 = el2('btnPojmovnik');
+      if (bp2.getAttribute('aria-expanded') !== 'true') { bp2.click(); await cekaj(250); }
+      const bk2 = document.querySelector('[data-poj="brzine"]');
+      bk2.click(); await cekaj(300);
+      const cd4 = bk2.nextElementSibling;
+      [...cd4.querySelectorAll('.kPod > button')].forEach((x) => x.click());
+      await cekaj(250);
+      const crt = cd4.querySelector('svg[data-zum]');
+      ok('crtež: svaki crtež u kartici je dugme (uloga, fokus, opis)',
+        !!crt && crt.getAttribute('role') === 'button' && crt.getAttribute('tabindex') === '0'
+        && /Uveć|Увећ/.test(crt.getAttribute('aria-label') || ''));
+      crt.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+      await cekaj(350);
+      const zz = document.getElementById('imgZoom');
+      const zim = zz && zz.querySelector('img');
+      ok('crtež: dodir otvara uvećanje preko celog ekrana', !!zim && zim.className === 'crtezZum');
+      ok('crtež: u uvećanju je isti crtež, sa upisanom bojom (radi i u tamnoj temi)',
+        !!zim && zim.src.startsWith('data:image/svg+xml') && decodeURIComponent(zim.src).includes('color:'));
+      document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+      await cekaj(200);
+      ok('crtež: Escape zatvara uvećanje', !document.getElementById('imgZoom'));
+      bk2.click(); await cekaj(120);
+      document.querySelector('[data-nav="home"]').click(); await cekaj(150);
+    }
+
     // ---- 2b) ŠANSA DA POLOŽIŠ i pravilo o simulacijama ----
     {
       const sz = window.__dev.sansaZaProlaz;
