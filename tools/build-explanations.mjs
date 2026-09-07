@@ -4165,7 +4165,7 @@ for (const id of [10969, 10970, 10971, 10972, 10973, 10974, 10975, 10976, 10977,
 
 // ---- ATLAS ZNAKOVA: slike iz same baze pitanja (tools/atlas.mjs) ----
 // Podaci, ne HTML — okvir crta app.js, pa se ne ponavlja 313 puta u dva pisma.
-const { atlas: ATLAS, ukupno: ATLAS_N, bezGrupe: ATLAS_VAN } = napraviAtlas(X);
+const { atlas: ATLAS, zamke: ZAMKE, ukupno: ATLAS_N, bezGrupe: ATLAS_VAN, vezaUkupno: ZAMKA_N } = napraviAtlas(X);
 for (const k of Object.keys(ATLAS)) if (!CARDS[k]) console.log('⚠ atlas: nema kartice', k);
 const ATLAS_OUT = Object.fromEntries(Object.entries(ATLAS)
   .map(([k, l]) => [k, l.map((s) => ({ i: s.i, z: { l: s.z, c: toCyr(s.z) } }))]));
@@ -4180,6 +4180,7 @@ const out = {
   }])),
   bySub: BYSUB,
   atlas: ATLAS_OUT,
+  zamke: ZAMKE,
 };
 
 // Automatski skener: mešani latinično-ćirilični tokeni i zaostali digrafi u ćiriličnom izlazu
@@ -4204,6 +4205,7 @@ const out = {
 await fs.writeFile('../explanations.js', 'window.EXPLAIN = ' + JSON.stringify(out) + ';\n');
 console.log('explanations.js:', Object.keys(out.byQ).length, 'pitanja,', Object.keys(out.cards).length, 'kartica');
 console.log('atlas:', ATLAS_N, 'slika u', Object.keys(ATLAS).length, 'kartica' + (ATLAS_VAN ? ' (van grupa: ' + ATLAS_VAN + ')' : ''));
+console.log('zamke:', ZAMKA_N, 'veza uz', Object.keys(ZAMKE).length, 'pitanja');
 console.log('proba ćirilice:', toCyr('Vozač ne sme (ZOBS čl. 187) — 0,20 mg/ml, kategorije AM, A1, A2 i A; 1,5 m; 45 km/h'));
 
 // Мерена покривеност — да број у документацији не може да застари.

@@ -211,6 +211,8 @@
     sekDeo: { l: 'Prikazan je deo kartice koji se odnosi na ovu podoblast.', c: 'Приказан је део картице који се односи на ову подобласт.' },
     sekCela: { l: 'Prikaži celu karticu', c: 'Прикажи целу картицу' },
     atlasDugme: { l: '🖼️ Slike iz baze (@1)', c: '🖼️ Слике из базе (@1)' },
+    istoZnacenje: { l: 'isto značenje nosi @1 znakova — svi su u „Slike iz baze"', c: 'исто значење носи @1 знакова — сви су у „Слике из базе"' },
+    zamkaNaslov: { l: 'Ponuđeni odgovori koji NISU tačni ovde su zvanično značenje ovih znakova:', c: 'Понуђени одговори који НИСУ тачни овде су званично значење ових знакова:' },
     atlasNapomena: { l: 'Slike su iz same baze pitanja — isti znak koji te čeka na ispitu, uz zvanično značenje (tačan odgovor na to pitanje). Dodirni sliku da je uvećaš.', c: 'Слике су из саме базе питања — исти знак који те чека на испиту, уз званично значење (тачан одговор на то питање). Додирни слику да је увећаш.' },
     statsTip: { l: 'Isti pregled kao na početnoj, uz tačnost: klik na naziv otvara spisak pitanja, strelica otklapa podoblasti. Boja tačnosti: zeleno od 85% (prag ispita), žuto 70–84%, crveno ispod 70%.', c: 'Исти преглед као на почетној, уз тачност: клик на назив отвара списак питања, стрелица отклапа подобласти. Боја тачности: зелено од 85% (праг испита), жуто 70–84%, црвено испод 70%.' },
     grupaNapredak: { l: 'Napredak', c: 'Напредак' },
@@ -1436,6 +1438,14 @@
     box.className = 'explBox';
     let inner = '';
     if (e && e.x) inner += `<div class="explHead">${L('explTitle')} <span class="mut explSmall">(${L('explNote')})</span></div><p>${escapeHtml(T(e.x))}</p>`;
+    // Zamke: ponuđen netačan odgovor koji je DOSLOVNO zvanično značenje nekog drugog znaka —
+    // svaki sa svojom slikom. Ispit sam kaže šta se sa čim meša, pa se ništa ne pogađa.
+    // Stoji samo tu gde i objašnjenje: POSLE odgovora (u simulaciji objašnjenja i nema).
+    const zam = ((EX.zamke || {})[q.id] || []).filter((id) => znacenjeZnaka(id));
+    if (zam.length) {
+      inner += `<div class="zamkaBox"><div class="mut napomena">${escapeHtml(L('zamkaNaslov'))}</div>`
+        + `<div class="znGrid">${zam.map((id) => celijaZnaka(id, znacenjeZnaka(id), true)).join('')}</div></div>`;
+    }
     for (const k of cardKeys) {
       const c = EX.cards[k];
       inner += `<div><button class="explCardBtn pojBtn" data-card="${k}">📖 ${escapeHtml(T(c.t))}</button><div class="explCard" style="display:none">${T(c.h)}</div></div>`;
@@ -1478,6 +1488,30 @@
   // → EXPLAIN.atlas), pa ne može da se razmimoiđe sa ispitom.
   // Stoji iza JEDNOG dugmeta unutar kartice i pravi se tek kad se otvori: kartica koju korisnik
   // već zove velikom ne sme da dobije 58 slika u telo, a ni 58 <img> elemenata pri svakom crtanju.
+  // Značenje znaka po broju pitanja + koliko znakova nosi baš to značenje (mape se prave
+  // pri prvom traženju, 311 stavki). Drugo je važno: pet različitih znakova znači „smer kojim
+  // se vozila moraju kretati", pa se ne sme ćutke pokazati jedan kao da je jedini.
+  let _znacenja = null, _istih = null;
+  function pripremiZnakove() {
+    if (_znacenja) return;
+    _znacenja = new Map();
+    _istih = new Map();
+    for (const l of Object.values(EX.atlas || {})) for (const s of l) {
+      _znacenja.set(s.i, s.z);
+      _istih.set(s.z.l, (_istih.get(s.z.l) || 0) + 1);
+    }
+  }
+  function znacenjeZnaka(id) { pripremiZnakove(); return _znacenja.get(id); }
+  function istihZnakova(znacenje) { pripremiZnakove(); return _istih.get(znacenje.l) || 1; }
+  // Jedna ćelija atlasa: slika kao dugme (uvećanje) + značenje ispod/pored.
+  function celijaZnaka(id, znacenje, kaziIste) {
+    const z = escapeHtml(T(znacenje));                 // isti tekst ide i u aria-label — bez markupa
+    const n = kaziIste ? istihZnakova(znacenje) : 1;
+    const vid = z + (n > 1 ? ` <span class="mut">(${escapeHtml(L('istoZnacenje').split('@1').join(n))})</span>` : '');
+    return `<div class="znCell"><button type="button" class="qImgBtn" aria-label="${escapeHtml(L('uvecajSliku'))}: ${z}">`
+      + `<img class="qImg znImg" loading="lazy" decoding="async" src="img/${id}.jpg" alt=""></button><span>${vid}</span></div>`;
+  }
+
   function dodajAtlas(cd, kljuc) {
     const st = (EX.atlas || {})[kljuc];
     if (!cd || !st || !st.length) return;
@@ -1489,10 +1523,7 @@
     cd.insertBefore(omot, cd.firstChild);
     sklopivo(omot.querySelector('button'), null, omot.querySelector('.kPodTelo'), (telo) => {
       telo.innerHTML = `<p class="mut napomena">${escapeHtml(L('atlasNapomena'))}</p><div class="znGrid">`
-        + st.map((s) => {
-          const z = escapeHtml(T(s.z));
-          return `<div class="znCell"><button type="button" class="qImgBtn" aria-label="${escapeHtml(L('uvecajSliku'))}: ${z}"><img class="qImg znImg" loading="lazy" decoding="async" src="img/${s.i}.jpg" alt=""></button><span>${z}</span></div>`;
-        }).join('')
+        + st.map((s) => celijaZnaka(s.i, s.z)).join('')
         + '</div>';
     });
   }

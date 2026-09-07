@@ -62,5 +62,32 @@ export function napraviAtlas(X) {
   for (const [k, l] of Object.entries(atlas)) {
     if (l.length < 3) { delete atlas[k]; ukupno -= l.length; bezGrupe += l.length; }
   }
-  return { atlas, ukupno, bezGrupe };
+  // ---- ZAMKE: ponuđen NETAČAN odgovor koji je zvanično značenje nekog DRUGOG znaka ----
+  // Ispit sam kaže šta se sa čim meša: mamac u pitanju „krivina nalevo" je doslovno značenje
+  // znaka „krivina nadesno". Zato uz odgovoreno pitanje ide slika BAŠ tog znaka — čovek vidi
+  // kome je pripadao odgovor koji je zamalo izabrao. Ništa se ne pogađa: poklapanje je doslovno.
+  const poZnacenju = new Map();
+  for (const l of Object.values(atlas)) {
+    for (const s of l) {
+      if (!poZnacenju.has(s.z)) poZnacenju.set(s.z, []);
+      poZnacenju.get(s.z).push(s.i);
+    }
+  }
+  const uAtlasu = new Set([].concat(...Object.values(atlas).map((l) => l.map((s) => s.i))));
+  const zamke = {};
+  let vezaUkupno = 0;
+  for (const q of Q) {
+    if (!uAtlasu.has(q.id)) continue;
+    const lista = [];
+    for (const c of q.ch) {
+      if (c.ok) continue;
+      const drugi = (poZnacenju.get(c.t.l.trim()) || []).filter((id) => id !== q.id);
+      // isto značenje ume da nose i dva-tri različita znaka (pet znakova „smer kojim se vozila
+      // moraju kretati"). Ide JEDAN po odgovoru — dve sličice sa istim natpisom izgledaju kao
+      // greška; da ih ima više, app.js to kaže rečima (a ceo spisak stoji u atlasu kartice).
+      for (const id of drugi.slice(0, 1)) if (!lista.includes(id)) lista.push(id);
+    }
+    if (lista.length) { zamke[q.id] = lista.slice(0, 3); vezaUkupno += Math.min(lista.length, 3); }
+  }
+  return { atlas, zamke, ukupno, bezGrupe, vezaUkupno };
 }

@@ -435,6 +435,46 @@ async function proveraBodovanja2() {
       document.querySelector('[data-nav="home"]').click(); await cekaj(150);
     }
 
+    // ---- 2ad) ZAMKE: netačan odgovor je značenje DRUGOG znaka ----
+    {
+      const Z = window.EXPLAIN.zamke || {};
+      const A2 = window.EXPLAIN.atlas || {};
+      const znac = new Map();
+      for (const l of Object.values(A2)) for (const s of l) znac.set(s.i, s.z.l);
+      const poId2 = new Map(window.QUIZ.questions.map((q) => [q.id, q]));
+      let veza = 0, lose = 0;
+      for (const [qid, lista] of Object.entries(Z)) {
+        const q = poId2.get(Number(qid));
+        const netacni = q ? q.ch.filter((c) => !c.ok).map((c) => c.t.l.trim()) : [];
+        const tacni = q ? q.ch.filter((c) => c.ok).map((c) => c.t.l.trim()) : [];
+        for (const id of lista) {
+          veza++;
+          const z = znac.get(id);
+          // svaka veza mora da pokazuje na DRUGI znak čije je značenje baš jedan od NETAČNIH
+          // ponuđenih odgovora — nikad tačan odgovor i nikad samo pitanje
+          if (!z || id === Number(qid) || !netacni.includes(z) || tacni.includes(z)) lose++;
+        }
+      }
+      ok('zamke: svaka veza je drugi znak čije je značenje netačan ponuđen odgovor (' + veza + ')', veza > 250 && lose === 0);
+
+      // uz pitanje: traka sa slikama, posle odgovora
+      location.hash = '#/p/10825';   // pruga SA branicima — mamci su „bez branika" i „tramvajska"
+      await cekaj(400);
+      const q3 = window.QUIZ.questions.find((x) => x.id === 10825);
+      const izb3 = [...document.querySelectorAll('#qCard .choice')];
+      for (let i = 0; i < q3.req; i++) izb3[i].click();
+      document.querySelector('#qCard .qActions .primary').click();
+      await cekaj(300);
+      const zb = document.querySelector('#qCard .explBox .zamkaBox');
+      ok('zamke: traka stoji uz odgovoreno pitanje', !!zb && zb.querySelectorAll('.znCell').length === Z[10825].length);
+      ok('zamke: svaka sličica je dugme za uvećanje',
+        !!zb && zb.querySelectorAll('.znCell .qImgBtn img.qImg').length === Z[10825].length);
+      ok('zamke: natpis nikad ne curi kao markup u aria-label',
+        !!zb && [...zb.querySelectorAll('.qImgBtn')].every((x) => !/[<>]/.test(x.getAttribute('aria-label') || '')));
+      document.querySelector('[data-nav="home"]').click();
+      await cekaj(150);
+    }
+
     // ---- 2b) ŠANSA DA POLOŽIŠ i pravilo o simulacijama ----
     {
       const sz = window.__dev.sansaZaProlaz;
