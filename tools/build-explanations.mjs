@@ -1,7 +1,7 @@
 // Gradi ../explanations.js iz latiničnog izvora (automatska transliteracija u ćirilicu,
 // SI oznake ostaju latinicom kao u zvaničnoj bazi). Pokreni: node build-explanations.mjs
 import fs from 'node:fs/promises';
-import { napraviAtlas } from './atlas.mjs';
+import { napraviAtlas, SUB_KARTICA_SVE } from './atlas.mjs';
 
 // ---------------- IZVOR (latinica) ----------------
 const road = (w, h) => `<rect x="0" y="0" width="${w}" height="${h}" fill="#9aa7b4"/>`;
@@ -4735,10 +4735,12 @@ for (const id of [10969, 10970, 10971, 10972, 10973, 10974, 10975, 10976, 10977,
 
 // ---- ATLAS ZNAKOVA: slike iz same baze pitanja (tools/atlas.mjs) ----
 // Podaci, ne HTML — okvir crta app.js, pa se ne ponavlja 313 puta u dva pisma.
-const { atlas: ATLAS, zamke: ZAMKE, ukupno: ATLAS_N, bezGrupe: ATLAS_VAN, vezaUkupno: ZAMKA_N } = napraviAtlas(X);
+// situacije idu uz SVOJU karticu, ma koja bila — atlas.mjs zato mora da zna celu bySub mapu
+Object.assign(SUB_KARTICA_SVE, BYSUB);
+const { atlas: ATLAS, situacije: SITUACIJE, zamke: ZAMKE,
+  ukupno: ATLAS_N, bezGrupe: ATLAS_VAN, vezaUkupno: ZAMKA_N, situacijaN: SIT_N } = napraviAtlas(X);
 for (const k of Object.keys(ATLAS)) if (!CARDS[k]) console.log('⚠ atlas: nema kartice', k);
-const ATLAS_OUT = Object.fromEntries(Object.entries(ATLAS)
-  .map(([k, l]) => [k, l.map((s) => ({ i: s.i, z: { l: s.z, c: toCyr(s.z) } }))]));
+for (const k of Object.keys(SITUACIJE)) if (!CARDS[k]) console.log('⚠ situacije: nema kartice', k);
 
 const out = {
   updated: new Date().toISOString().slice(0, 10),
@@ -4749,7 +4751,10 @@ const out = {
     ...(e.nocard ? { nocard: 1 } : {}),
   }])),
   bySub: BYSUB,
-  atlas: ATLAS_OUT,
+  // Sve tri liste su SAMO brojevi pitanja: tekst (značenje, pitanje, tačan odgovor) stoji u
+  // data.js, koji je ionako učitan. Ista istina na dva mesta pre ili kasnije postane dve istine.
+  atlas: ATLAS,
+  situacije: SITUACIJE,
   zamke: ZAMKE,
 };
 
@@ -4758,7 +4763,6 @@ const out = {
   const texts = [];
   for (const c of Object.values(out.cards)) { texts.push(c.t.c, c.h.c); }
   for (const e of Object.values(out.byQ)) { if (e.x) texts.push(e.x.c); }
-  for (const l of Object.values(out.atlas)) for (const s of l) texts.push(s.z.c);
   const bad = new Set();
   for (const t of texts) {
     const plain = t.replace(/<[^>]+>/g, ' ');
@@ -4775,6 +4779,7 @@ const out = {
 await fs.writeFile('../explanations.js', 'window.EXPLAIN = ' + JSON.stringify(out) + ';\n');
 console.log('explanations.js:', Object.keys(out.byQ).length, 'pitanja,', Object.keys(out.cards).length, 'kartica');
 console.log('atlas:', ATLAS_N, 'slika u', Object.keys(ATLAS).length, 'kartica' + (ATLAS_VAN ? ' (van grupa: ' + ATLAS_VAN + ')' : ''));
+console.log('situacije:', SIT_N, 'slika u', Object.keys(SITUACIJE).length, 'kartica');
 console.log('zamke:', ZAMKA_N, 'veza uz', Object.keys(ZAMKE).length, 'pitanja');
 console.log('proba ćirilice:', toCyr('Vozač ne sme (ZOBS čl. 187) — 0,20 mg/ml, kategorije AM, A1, A2 i A; 1,5 m; 45 km/h'));
 

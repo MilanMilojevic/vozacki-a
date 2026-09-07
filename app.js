@@ -211,6 +211,8 @@
     sekDeo: { l: 'Prikazan je deo kartice koji se odnosi na ovu podoblast.', c: 'Приказан је део картице који се односи на ову подобласт.' },
     sekCela: { l: 'Prikaži celu karticu', c: 'Прикажи целу картицу' },
     atlasDugme: { l: '🖼️ Slike iz baze (@1)', c: '🖼️ Слике из базе (@1)' },
+    situacijeDugme: { l: '📷 Situacije sa ispita (@1)', c: '📷 Ситуације са испита (@1)' },
+    situacijeNapomena: { l: 'Slikovna pitanja iz ove oblasti, sa tačnim odgovorom uz svaku sliku — iste slike te čekaju na ispitu. Dodirni sliku da je uvećaš.', c: 'Сликовна питања из ове области, са тачним одговором уз сваку слику — исте слике те чекају на испиту. Додирни слику да је увећаш.' },
     istoZnacenje: { l: 'isto značenje nosi @1 znakova — svi su u „Slike iz baze"', c: 'исто значење носи @1 знакова — сви су у „Слике из базе"' },
     zamkaNaslov: { l: 'Ponuđeni odgovori koji NISU tačni ovde su zvanično značenje ovih znakova:', c: 'Понуђени одговори који НИСУ тачни овде су званично значење ових знакова:' },
     atlasNapomena: { l: 'Slike su iz same baze pitanja — isti znak koji te čeka na ispitu, uz zvanično značenje (tačan odgovor na to pitanje). Dodirni sliku da je uvećaš.', c: 'Слике су из саме базе питања — исти знак који те чека на испиту, уз званично значење (тачан одговор на то питање). Додирни слику да је увећаш.' },
@@ -1455,6 +1457,7 @@
     box.querySelectorAll('.explCardBtn').forEach((btn) => {
       oziviSekcije(btn.nextElementSibling);
       dodajAtlas(btn.nextElementSibling, btn.dataset.card);
+      dodajSituacije(btn.nextElementSibling, btn.dataset.card);
       oziviCrteze(btn.nextElementSibling);
       sklopivo(btn);
     });
@@ -1494,13 +1497,23 @@
   // pri prvom traženju, 311 stavki). Drugo je važno: pet različitih znakova znači „smer kojim
   // se vozila moraju kretati", pa se ne sme ćutke pokazati jedan kao da je jedini.
   let _znacenja = null, _istih = null;
+  // Značenje znaka JESTE tačan odgovor tog pitanja, a pitanja su već učitana (data.js).
+  // Zato explanations.js nosi samo BROJEVE — ista istina na dva mesta pre ili kasnije
+  // postane dve istine (i dva pisma da se održavaju).
+  const tacniOdgovori = (q) => {
+    const t2 = q.ch.filter((c) => c.ok);
+    return { l: t2.map((c) => c.t.l.trim()).join(' + '), c: t2.map((c) => c.t.c.trim()).join(' + ') };
+  };
   function pripremiZnakove() {
     if (_znacenja) return;
     _znacenja = new Map();
     _istih = new Map();
-    for (const l of Object.values(EX.atlas || {})) for (const s of l) {
-      _znacenja.set(s.i, s.z);
-      _istih.set(s.z.l, (_istih.get(s.z.l) || 0) + 1);
+    for (const l of Object.values(EX.atlas || {})) for (const id of l) {
+      const q = byId.get(id);
+      if (!q) continue;
+      const z = tacniOdgovori(q);
+      _znacenja.set(id, z);
+      _istih.set(z.l, (_istih.get(z.l) || 0) + 1);
     }
   }
   function znacenjeZnaka(id) { pripremiZnakove(); return _znacenja.get(id); }
@@ -1518,14 +1531,42 @@
     const st = (EX.atlas || {})[kljuc];
     if (!cd || !st || !st.length) return;
     const omot = document.createElement('div');
-    omot.className = 'kPod';
+    omot.className = 'kPod kPodAtlas';
     omot.innerHTML = `<button type="button" class="pojBtn kPodBtn">${escapeHtml(L('atlasDugme').split('@1').join(st.length))}</button><div class="kPodTelo" style="display:none"></div>`;
     // slike idu na VRH kartice: najbrži su put do razumevanja, a ni ne traže se na dnu
     // teksta od pet hiljada piksela (Milanova primedba 07.09.2026: kartica nema slika)
     cd.insertBefore(omot, cd.firstChild);
     sklopivo(omot.querySelector('button'), null, omot.querySelector('.kPodTelo'), (telo) => {
       telo.innerHTML = `<p class="mut napomena">${escapeHtml(L('atlasNapomena'))}</p><div class="znGrid">`
-        + st.map((s) => celijaZnaka(s.i, s.z)).join('')
+        + st.map((id) => celijaZnaka(id, znacenjeZnaka(id))).join('')
+        + '</div>';
+    });
+  }
+
+  // ---------- Situacije sa ispita ----------
+  // Od 704 slike u bazi, 311 su znakovi (atlas). Ostalih 334 prikazuju SITUACIJU na putu i
+  // vezane su za temu kartice — uz svaku ide njeno pitanje i tačan odgovor. Bez ovoga te
+  // slike vidi samo onaj ko naiđe baš na to pitanje.
+  function dodajSituacije(cd, kljuc) {
+    const st = (EX.situacije || {})[kljuc];
+    if (!cd || !st || !st.length) return;
+    const omot = document.createElement('div');
+    omot.className = 'kPod';
+    omot.innerHTML = `<button type="button" class="pojBtn kPodBtn">${escapeHtml(L('situacijeDugme').split('@1').join(st.length))}</button><div class="kPodTelo" style="display:none"></div>`;
+    // ide odmah iza atlasa (ili na vrh ako atlasa nema) — slike su najbrži put do razumevanja
+    const atlas = cd.querySelector(':scope > .kPodAtlas');
+    if (atlas) atlas.after(omot); else cd.insertBefore(omot, cd.firstChild);
+    sklopivo(omot.querySelector('button'), null, omot.querySelector('.kPodTelo'), (telo) => {
+      telo.innerHTML = `<p class="mut napomena">${escapeHtml(L('situacijeNapomena'))}</p><div class="znGrid">`
+        + st.map((id) => {
+          const q = byId.get(id);
+          if (!q) return '';
+          const pit = escapeHtml(T(q.t).replace(/\s+/g, ' ').trim());
+          const odg = escapeHtml(T(tacniOdgovori(q)));
+          return `<div class="znCell"><button type="button" class="qImgBtn" aria-label="${escapeHtml(L('uvecajSliku'))}: ${pit} ${odg}">`
+            + `<img class="qImg znImg" loading="lazy" decoding="async" src="img/${id}.jpg" alt=""></button>`
+            + `<span><i>${pit}</i> <b>${odg}</b></span></div>`;
+        }).join('')
         + '</div>';
     });
   }
@@ -3126,6 +3167,7 @@
           c2.innerHTML = T(EX.cards[btn.dataset.poj].h);
           oziviSekcije(c2);
           dodajAtlas(c2, btn.dataset.poj);
+          dodajSituacije(c2, btn.dataset.poj);
           oziviCrteze(c2);
         }));
       });

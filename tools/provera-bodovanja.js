@@ -371,15 +371,18 @@ async function proveraBodovanja2() {
       let uk = 0, lose = 0;
       for (const k of grupe) {
         if (!window.EXPLAIN.cards[k]) lose++;
-        for (const s of EXA[k]) {
+        for (const id of EXA[k]) {
           uk++;
-          const q = poId.get(s.i);
+          const q = poId.get(id);
+          // svaka stavka je BROJ pitanja sa slikom čiji tačan odgovor JESTE značenje znaka;
+          // tekst se ne čuva u explanations.js nego se čita iz baze (jedan izvor istine)
           const tacno = q && q.ch.filter((c) => c.ok).map((c) => c.t.l.trim()).join(' + ');
-          // svaka stavka mora da pokazuje na pitanje SA SLIKOM čiji je tačan odgovor baš to značenje
-          if (!q || !q.img || tacno !== s.z.l) lose++;
+          if (!q || !q.img || !tacno) lose++;
         }
       }
-      ok('atlas: svaka slika ima pitanje sa slikom, značenje = tačan odgovor (' + uk + ' slika)', uk > 250 && lose === 0);
+      ok('atlas: svaka slika ima pitanje sa slikom i tačan odgovor kao značenje (' + uk + ' slika)', uk > 250 && lose === 0);
+      ok('atlas: u explanations.js stoje SAMO brojevi (tekst se čita iz baze)',
+        grupe.every((k) => EXA[k].every((x) => typeof x === 'number')));
       ok('atlas: nijedna grupa nije sitna niti bez svoje kartice',
         grupe.length >= 10 && grupe.every((k) => window.EXPLAIN.cards[k] && EXA[k].length >= 3));
 
@@ -435,12 +438,54 @@ async function proveraBodovanja2() {
       document.querySelector('[data-nav="home"]').click(); await cekaj(150);
     }
 
+    // ---- 2ac2) SITUACIJE SA ISPITA: slikovna pitanja koja nisu znakovi ----
+    {
+      const SIT = window.EXPLAIN.situacije || {};
+      const A3 = window.EXPLAIN.atlas || {};
+      const uAtlasu = new Set([].concat(...Object.values(A3)));
+      const poId3 = new Map(window.QUIZ.questions.map((q) => [q.id, q]));
+      let uk3 = 0, lose3 = 0;
+      for (const [k, lista] of Object.entries(SIT)) {
+        if (!window.EXPLAIN.cards[k]) lose3++;
+        for (const id of lista) {
+          uk3++;
+          const q = poId3.get(id);
+          // mora biti pitanje SA SLIKOM, van atlasa (atlas su znakovi), sa tačnim odgovorom
+          if (!q || !q.img || uAtlasu.has(id) || !q.ch.some((c) => c.ok)) lose3++;
+        }
+      }
+      ok('situacije: svaka slika je pitanje sa slikom van atlasa (' + uk3 + ' slika)', uk3 > 300 && lose3 === 0);
+
+      // u pojmovniku: podkartica stoji i puni se tek kad se otvori
+      document.querySelector('[data-nav="home"]').click(); await cekaj(200);
+      const bp3 = el2('btnPojmovnik');
+      if (bp3.getAttribute('aria-expanded') !== 'true') { bp3.click(); await cekaj(250); }
+      const bk3 = document.querySelector('[data-poj="preticanje"]');
+      bk3.click(); await cekaj(300);
+      const cd5 = bk3.nextElementSibling;
+      const dugmeS = [...cd5.querySelectorAll('.kPod > button')].find((x) => /Situacije|Ситуације/.test(x.textContent));
+      ok('situacije: kartica ima podkarticu sa slikama sa ispita', !!dugmeS
+        && cd5.querySelectorAll('.znCell').length === 0);
+      dugmeS.click(); await cekaj(350);
+      const cel = [...cd5.querySelectorAll('.znCell')];
+      ok('situacije: otvaranje pravi sve slike grupe (' + SIT['preticanje'].length + ')',
+        cel.length === SIT['preticanje'].length);
+      ok('situacije: uz svaku sliku stoji i pitanje i tačan odgovor',
+        cel.every((c) => c.querySelector('span i') && c.querySelector('span b')
+          && c.querySelector('span b').textContent.trim().length > 0));
+      bk3.click(); await cekaj(120);
+      document.querySelector('[data-nav="home"]').click(); await cekaj(150);
+    }
+
     // ---- 2ad) ZAMKE: netačan odgovor je značenje DRUGOG znaka ----
     {
       const Z = window.EXPLAIN.zamke || {};
       const A2 = window.EXPLAIN.atlas || {};
       const znac = new Map();
-      for (const l of Object.values(A2)) for (const s of l) znac.set(s.i, s.z.l);
+      for (const l of Object.values(A2)) for (const id of l) {
+        const q0 = window.QUIZ.questions.find((x) => x.id === id);
+        if (q0) znac.set(id, q0.ch.filter((c) => c.ok).map((c) => c.t.l.trim()).join(' + '));
+      }
       const poId2 = new Map(window.QUIZ.questions.map((q) => [q.id, q]));
       let veza = 0, lose = 0;
       for (const [qid, lista] of Object.entries(Z)) {
