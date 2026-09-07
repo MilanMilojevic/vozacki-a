@@ -1442,6 +1442,7 @@
     }
     box.innerHTML = inner;
     box.querySelectorAll('.explCardBtn').forEach((btn) => {
+      oziviSekcije(btn.nextElementSibling);
       dodajAtlas(btn.nextElementSibling, btn.dataset.card);
       sklopivo(btn);
     });
@@ -1493,6 +1494,31 @@
           return `<div class="znCell"><button type="button" class="qImgBtn" aria-label="${escapeHtml(L('uvecajSliku'))}: ${z}"><img class="qImg znImg" loading="lazy" decoding="async" src="img/${s.i}.jpg" alt=""></button><span>${z}</span></div>`;
         }).join('')
         + '</div>';
+    });
+  }
+
+  // ---------- Teme unutar kartice ----------
+  // Kartica „Znakovi opasnosti" je 5.700 px: uz pitanje o krivini padne i pruga, i raskrsnice,
+  // i životinje. Zato se veliki delovi kartice čitaju po temi: izvor obeleži temu sa
+  // <div class="kPodH"><b class="kPodNaslov">Naslov</b>…</div>, a ovde postaje dugme + sklopljeno
+  // telo. Naslov je element (ne atribut) jer toCyr ne dira sadržaj tagova.
+  function oziviSekcije(cd) {
+    if (!cd) return;
+    cd.querySelectorAll('.kPodH').forEach((sek) => {
+      const nas = sek.querySelector('.kPodNaslov');
+      if (!nas) return;
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'pojBtn kPodBtn';
+      btn.textContent = nas.textContent;
+      const telo = document.createElement('div');
+      telo.className = 'kPodTelo';
+      telo.style.display = 'none';
+      nas.remove();
+      while (sek.firstChild) telo.appendChild(sek.firstChild);
+      sek.className = 'kPod';
+      sek.append(btn, telo);
+      sklopivo(btn, null, telo);
     });
   }
 
@@ -3039,6 +3065,7 @@
         // akordeon: otvaranje jedne kartice sklapa prethodno otvorenu
         cd.querySelectorAll('.explCardBtn').forEach((btn) => sklopivo(btn, cd, null, (c2) => {
           c2.innerHTML = T(EX.cards[btn.dataset.poj].h);
+          oziviSekcije(c2);
           dodajAtlas(c2, btn.dataset.poj);
         }));
       });

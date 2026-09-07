@@ -20,6 +20,10 @@ const arr = (x1, y1, x2, y2, color, w = 3.5) => {
   const hx = (a) => x2 - 9 * Math.cos(ang - a), hy = (a) => y2 - 9 * Math.sin(ang - a);
   return `<path d="M${x1} ${y1} L${x2} ${y2} M${hx(0.45)} ${hy(0.45)} L${x2} ${y2} L${hx(-0.45)} ${hy(-0.45)}" stroke="${color}" stroke-width="${w}" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`;
 };
+// Sličica znaka IZ SAME BAZE (img/<qId>.jpg) — u koloni „Znak" umesto opisa rečima.
+// Klik otvara uvećanje samo od sebe: osmatrač za '.qImgBtn, img.qImg' stoji na document.
+const zn = (id) => `<button type="button" class="znTd qImgBtn" aria-label="Uvećaj sliku"><img class="qImg znTdImg" loading="lazy" src="img/${id}.jpg" alt=""></button>`;
+
 const CARDS = {
   'kategorije-vozila': {
     title: 'Kategorije vozila (moped, tricikl, motocikl...)',
@@ -1223,7 +1227,7 @@ CARDS['znakovi-opasnosti'] = {
 <p><b>Ključ za slikovna pitanja:</b> znak opasnosti UPOZORAVA unapred, pa je tačan odgovor uvek NAJAVA — počinje sa <b>„nailazak na...", „približavanje...", „blizina...", „udaljenost...", „mesto od koga počinje..."</b>. Ako ponuđeni odgovor zvuči kao naredba („moraju se kretati", „zabranjeno je") ili kao opis izgrađenog objekta („posebno izgrađena staza", „mesto na kome se nalazi...") — to je zamka iz druge porodice znakova.</p>
 <p><b>Oblik i boja:</b> jednakostranični trougao sa vrhom naviše, bela osnova, crveni okvir, crni simboli (Pravilnik čl. 19 i 20). Samo tri znaka opasnosti NISU trougao nego pravougaonik: <b>Andrejin krst</b> (jednostruki i dvostruki) i <b>kosnici</b>. Jedini trougao sa <b>ŽUTOM</b> osnovom je „radovi na putu".</p>
 
-<p style="margin-top:10px"><b>Postavljanje — brojke koje se pitaju (Pravilnik čl. 22):</b></p>
+<div class="kPodH"><b class="kPodNaslov">Postavljanje — brojke koje se pitaju</b>
 <table>
 <tr><th>Gde je znak postavljen</th><th>Pravilo</th></tr>
 <tr><td>Po pravilu</td><td>na udaljenosti od <b>150 m do 250 m</b> ispred opasnog mesta</td></tr>
@@ -1232,67 +1236,69 @@ CARDS['znakovi-opasnosti'] = {
 </table>
 <p class="mut">Pamtilica: van naselja svako odstupanje od 150-250 traži tablu; u naselju sme bliže i bez table.</p>
 
-<p style="margin-top:10px"><b>Pruga — pet znakova, jedan sistem:</b></p>
-<!-- SVG: red znakova: trougao sa ogradom (branici), trougao sa lokomotivom (bez branika), trougao sa tramvajem, jednostruki Andrejin krst, dvostruki Andrejin krst, tri kosnika sa 3/2/1 crvenom crtom i upisanim 240/160/80 m -->
+</div>
+<div class="kPodH"><b class="kPodNaslov">Pruga — pet znakova, jedan sistem</b>
 <table>
-<tr><th>Na slici</th><th>Znači</th><th>Zamka — NIJE</th></tr>
-<tr><td>Trougao + <b>OGRADA</b></td><td>ukrštanje sa železničkom prugom <b>SA branicima</b> ili polubranicima</td><td>prelaz bez branika; tramvajska pruga</td></tr>
-<tr><td>Trougao + <b>LOKOMOTIVA</b></td><td>ukrštanje sa železničkom prugom <b>BEZ branika</b> i polubranika</td><td>prelaz sa branicima</td></tr>
-<tr><td>Trougao + <b>TRAMVAJ</b></td><td>ukrštanje puta sa <b>tramvajskom</b> prugom u nivou</td><td>„tramvajska stanica"; železnička pruga</td></tr>
-<tr><td><b>JEDAN</b> Andrejin krst</td><td>pruga sa <b>jednim kolosekom</b></td><td>dva ili više koloseka</td></tr>
-<tr><td><b>DVOSTRUKI</b> Andrejin krst</td><td>pruga sa <b>dva ili više koloseka</b></td><td>jedan kolosek; „prelaz bez branika"</td></tr>
-<tr><td>Kosnik (kose crvene crte)</td><td><b>udaljenost</b> do ukrštanja puta i pruge: <b>3 crte = 240 m, 2 crte = 160 m, 1 crta = 80 m</b></td><td>ponuđenih „280 m" ne postoji — računaj 80 × broj crta</td></tr>
+<tr><th>Znak</th><th>Znači</th><th>Zamka — NIJE</th></tr>
+<tr><td class="znCel">${zn(10825)}</td><td>ukrštanje sa železničkom prugom <b>SA branicima</b> ili polubranicima</td><td>prelaz bez branika; tramvajska pruga</td></tr>
+<tr><td class="znCel">${zn(10830)}</td><td>ukrštanje sa železničkom prugom <b>BEZ branika</b> i polubranika</td><td>prelaz sa branicima</td></tr>
+<tr><td class="znCel">${zn(10829)}</td><td>ukrštanje puta sa <b>tramvajskom</b> prugom u nivou</td><td>„tramvajska stanica"; železnička pruga</td></tr>
+<tr><td class="znCel">${zn(10840)}</td><td>pruga sa <b>jednim kolosekom</b></td><td>dva ili više koloseka</td></tr>
+<tr><td class="znCel">${zn(10831)}</td><td>pruga sa <b>dva ili više koloseka</b></td><td>jedan kolosek; „prelaz bez branika"</td></tr>
+<tr><td class="znCel">${zn(10832)}</td><td><b>udaljenost</b> do ukrštanja puta i pruge: <b>3 crte = 240 m, 2 crte = 160 m, 1 crta = 80 m</b></td><td>ponuđenih „280 m" ne postoji — računaj 80 × broj crta</td></tr>
 </table>
 <p class="mut">Iznad kosnika sa tri crte stoji trougao sa ogradom ili lokomotivom (Pravilnik čl. 23) — po NJEMU na pitanju „240 m" znaš da li je prelaz sa branicima ili bez njih.</p>
 
-<p style="margin-top:10px"><b>Raskrsnice — prati debljinu crta:</b> debela uspravna crta = TVOJ put (sa prvenstvom prolaza), tanka crta = sporedni put. Gledaj <b>sa koje strane</b> tanka crta dolazi (leve/desne) i <b>pod kojim uglom</b> (pravi, oštri, tupi) — simbol odgovara stvarnoj situaciji na putu.</p>
-<!-- SVG: red znakova: trougao sa krstom čiji su kraci iste debljine; debela uspravna + tanka poprečna crta koja prolazi skroz; spajanje tanke crte pod pravim uglom sa desne strane; pod oštrim uglom sa leve; pod tupim uglom sa desne -->
+</div>
+<div class="kPodH"><b class="kPodNaslov">Raskrsnice — prati debljinu crta</b>
+<p>Debela uspravna crta = TVOJ put (sa prvenstvom prolaza), tanka crta = sporedni put. Gledaj <b>sa koje strane</b> tanka crta dolazi (leve/desne) i <b>pod kojim uglom</b> (pravi, oštri, tupi) — simbol odgovara stvarnoj situaciji na putu.</p>
 <table>
-<tr><th>Na slici</th><th>Znači</th></tr>
-<tr><td>Krst — <b>sve crte iste debljine</b></td><td>blizina raskrsnice puteva od kojih <b>nijedan</b> nije put sa prvenstvom prolaza</td></tr>
-<tr><td>Tanka crta <b>preseca</b> debelu skroz</td><td>put sa prvenstvom se <b>UKRŠTA</b> sa sporednim putem</td></tr>
-<tr><td>Tanka crta se <b>uliva</b> u debelu</td><td>sporedni put se <b>SPAJA</b> — pod pravim / oštrim / tupim uglom, sa leve ili desne strane</td></tr>
+<tr><th>Znak</th><th>Znači</th></tr>
+<tr><td class="znCel">${zn(10817)}</td><td>blizina raskrsnice puteva od kojih <b>nijedan</b> nije put sa prvenstvom prolaza</td></tr>
+<tr><td class="znCel">${zn(10818)}</td><td>put sa prvenstvom se <b>UKRŠTA</b> sa sporednim putem</td></tr>
+<tr><td class="znCel">${zn(10819)}</td><td>sporedni put se <b>SPAJA</b> — pod pravim / oštrim / tupim uglom, sa leve ili desne strane</td></tr>
 </table>
 <p class="mut">Zamke su uvek iste: „iste važnosti" i „ukršta se" — prvo prebroj debljine, pa proveri da li tanka crta prolazi skroz ili se samo uliva.</p>
 
-<p style="margin-top:10px"><b>Parovi-zamke: put i teren</b></p>
-<!-- SVG: tri para: izbočina / ulegnuće / izbočina+ulegnuće; prštanje kamenja (točak izbacuje kamenčiće) naspram odrona (kamenje pada niz kosinu); bankina (vozilo propada uz ivicu) -->
+</div>
+<div class="kPodH"><b class="kPodNaslov">Parovi-zamke: put i teren</b>
 <table>
-<tr><th>Na slici</th><th>Znači</th><th>Zamka — NIJE</th></tr>
-<tr><td>Savijena strelica</td><td>opasna KRIVINA <b>nalevo / nadesno</b> — kako strelica pokazuje</td><td>„smer kojim se vozila moraju kretati" (plavi krug) ni „jednosmerni put"</td></tr>
-<tr><td>Dvostruko izlomljena strelica</td><td>više <b>uzastopnih krivina</b> — odgovor po PRVOJ (nalevo/nadesno)</td><td>obična krivina</td></tr>
-<tr><td>Kosina sa procentom</td><td>opasna <b>NIZBRDICA</b> ili opasan <b>USPON</b> (procenat = nagib puta)</td><td>„tehnička sredstva za usporavanje saobraćaja"</td></tr>
-<tr><td>Ivice puta se skupljaju</td><td><b>SUŽENJE</b> kolovoza: obostrano / samo sa leve / samo sa desne strane</td><td>„radovi na putu" ni „naizmenično uključivanje vozila u jednu traku"</td></tr>
-<tr><td>Čovek sa lopatom, <b>žuta osnova</b></td><td><b>RADOVI</b> na putu</td><td>suženje</td></tr>
-<tr><td>Vozilo sa vijugavim tragovima</td><td>moguća pojava <b>KLIZAVOG</b> kolovoza</td><td>bankina ni obala</td></tr>
-<tr><td>Jedna grba / jedno udubljenje / grba i udubljenje</td><td>neravan kolovoz: <b>IZBOČINA</b> / <b>ULEGNUĆE</b> / <b>„izbočine i ulegnuća"</b> — čitaj sliku doslovno</td><td>međusobno se nude kao zamke — biraj tačno ono što je nacrtano</td></tr>
-<tr><td>Točak izbacuje kamenčiće</td><td>moguća pojava <b>PRŠTANJA</b> kamenja</td><td>odron ni bankina</td></tr>
-<tr><td>Kamenje pada niz kosinu</td><td><b>ODRON</b> kamenja — kosina je na strani sa koje kamenje preti: <b>sa leve ili sa desne</b> strane puta</td><td>prštanje ni bankina</td></tr>
-<tr><td>Vozilo propada uz ivicu kolovoza</td><td>opasna <b>BANKINA</b> uz kolovoz (simbol = strana puta)</td><td>odron ni prštanje</td></tr>
-<tr><td>Vozilo pada u vodu</td><td>put vodi do <b>OBALE</b>, odnosno pruža se u njenoj blizini</td><td>klizav kolovoz ni pokretni most</td></tr>
-<tr><td>Most se podiže</td><td>blizina <b>POKRETNOG MOSTA</b></td><td>obala</td></tr>
-<tr><td>Portal u trouglu</td><td>nailazak na <b>TUNEL</b></td><td>nadvožnjak ni podvožnjak</td></tr>
+<tr><th>Znak</th><th>Znači</th><th>Zamka — NIJE</th></tr>
+<tr><td class="znCel">${zn(10783)}</td><td>opasna KRIVINA <b>nalevo / nadesno</b> — kako strelica pokazuje</td><td>„smer kojim se vozila moraju kretati" (plavi krug) ni „jednosmerni put"</td></tr>
+<tr><td class="znCel">${zn(10785)}</td><td>više <b>uzastopnih krivina</b> — odgovor po PRVOJ (nalevo/nadesno)</td><td>obična krivina</td></tr>
+<tr><td class="znCel">${zn(10787)}</td><td>opasna <b>NIZBRDICA</b> ili opasan <b>USPON</b> (procenat = nagib puta)</td><td>„tehnička sredstva za usporavanje saobraćaja"</td></tr>
+<tr><td class="znCel">${zn(10789)}</td><td><b>SUŽENJE</b> kolovoza: obostrano / samo sa leve / samo sa desne strane</td><td>„radovi na putu" ni „naizmenično uključivanje vozila u jednu traku"</td></tr>
+<tr><td class="znCel">${zn(10805)}</td><td><b>RADOVI</b> na putu</td><td>suženje</td></tr>
+<tr><td class="znCel">${zn(10797)}</td><td>moguća pojava <b>KLIZAVOG</b> kolovoza</td><td>bankina ni obala</td></tr>
+<tr><td class="znCel">${zn(10794)}</td><td>neravan kolovoz: <b>IZBOČINA</b> / <b>ULEGNUĆE</b> / <b>„izbočine i ulegnuća"</b> — čitaj sliku doslovno</td><td>međusobno se nude kao zamke — biraj tačno ono što je nacrtano</td></tr>
+<tr><td class="znCel">${zn(10798)}</td><td>moguća pojava <b>PRŠTANJA</b> kamenja</td><td>odron ni bankina</td></tr>
+<tr><td class="znCel">${zn(10799)}</td><td><b>ODRON</b> kamenja — kosina je na strani sa koje kamenje preti: <b>sa leve ili sa desne</b> strane puta</td><td>prštanje ni bankina</td></tr>
+<tr><td class="znCel">${zn(10837)}</td><td>opasna <b>BANKINA</b> uz kolovoz (simbol = strana puta)</td><td>odron ni prštanje</td></tr>
+<tr><td class="znCel">${zn(10793)}</td><td>put vodi do <b>OBALE</b>, odnosno pruža se u njenoj blizini</td><td>klizav kolovoz ni pokretni most</td></tr>
+<tr><td class="znCel">${zn(10792)}</td><td>blizina <b>POKRETNOG MOSTA</b></td><td>obala</td></tr>
+<tr><td class="znCel">${zn(10820)}</td><td>nailazak na <b>TUNEL</b></td><td>nadvožnjak ni podvožnjak</td></tr>
 </table>
 
-<p style="margin-top:10px"><b>Parovi-zamke: ljudi, životinje, saobraćaj</b></p>
-<!-- SVG: par: trougao sa pešakom na zebri (opasnost — najava prelaza) pored plavog kvadrata sa pešakom na zebri (obaveštenje — mesto prelaza); trojka za dvosmerni saobraćaj: trougao sa dve strelice gore-dole, plava tabla prvenstva na suženju, okrugli znak zabrane stupanja -->
+</div>
+<div class="kPodH"><b class="kPodNaslov">Parovi-zamke: ljudi, životinje, saobraćaj</b>
 <table>
-<tr><th>Na slici</th><th>Znači</th><th>Zamka — NIJE</th></tr>
-<tr><td>Pešak na zebri u <b>TROUGLU</b></td><td>NAILAZAK na mesto gde je <b>obeležen pešački prelaz</b></td><td>„mesto na kome se nalazi pešački prelaz" (to je plavi KVADRAT) ni pešačka staza</td></tr>
-<tr><td>Deca u trku</td><td>deo puta gde se često kreću <b>DECA</b> (blizina škole, obdaništa, igrališta)</td><td>„mesto od kojeg počinje zona škole" (to je plava tabla)</td></tr>
-<tr><td>Pešak koji hoda</td><td>deo puta kojim se <b>PEŠACI često kreću</b></td><td>pešačka staza ni obeležen prelaz</td></tr>
-<tr><td>Biciklista</td><td><b>BICIKLISTI</b> se često kreću, odnosno prelaze put</td><td>biciklistička staza ni zabrana saobraćaja za bicikle</td></tr>
-<tr><td>Jelen u skoku</td><td>opasnost zbog prelaska <b>DIVLJAČI</b></td><td>domaće životinje ni „staza za jahanje"</td></tr>
-<tr><td>Krava</td><td><b>DOMAĆE životinje pod nadzorom</b> prelaze preko puta, odnosno kreću se duž puta</td><td>divljač ni „staza za jahanje"</td></tr>
-<tr><td>Dve strelice gore-dole</td><td>mesto od koga <b>POČINJE DVOSMERAN</b> saobraćaj</td><td>„prvenstvo na suženom delu" (plava tabla) ni „zabrana stupanja na suženi deo" (krug)</td></tr>
-<tr><td>Semafor u trouglu</td><td>najava mesta gde je saobraćaj <b>regulisan SEMAFORIMA</b></td><td>prelaz preko pruge sa semaforima ni „pristup vozila reguliše se semaforima"</td></tr>
-<tr><td>Avion</td><td>blizina piste: avioni preleću u <b>NISKOM LETU</b> pri sletanju, odnosno poletanju</td><td>„bočni vetar izazvan letom aviona" ni „blizina aerodroma" (to je obaveštenje)</td></tr>
-<tr><td>Vetrokaz (vreća na stubu)</td><td>učestala pojava jakog <b>BOČNOG VETRA</b> — simbol odgovara smeru vetra</td><td>avioni</td></tr>
-<tr><td>Vozila u nizu, crvena zadnja svetla</td><td>opasnost od <b>STVARANJA KOLONE</b> vozila (zastoj — vozila gledaš otpozadi)</td><td>„moraju se kretati u koloni" ni „zabranjeno kretanje u koloni"</td></tr>
-<tr><td>Kružne strelice u trouglu</td><td>nailazak na raskrsnicu sa <b>KRUŽNIM TOKOM</b></td><td>„obavezan smer obilaska ostrva" (plavi krug) ni zabrana polukružnog okretanja</td></tr>
-<tr><td>Uzvičnik</td><td>opasnost za koju <b>NIJE predviđen poseban znak</b></td><td>radovi ni „ustupi prvenstvo prolaza"</td></tr>
+<tr><th>Znak</th><th>Znači</th><th>Zamka — NIJE</th></tr>
+<tr><td class="znCel">${zn(10800)}</td><td>NAILAZAK na mesto gde je <b>obeležen pešački prelaz</b></td><td>„mesto na kome se nalazi pešački prelaz" (to je plavi KVADRAT) ni pešačka staza</td></tr>
+<tr><td class="znCel">${zn(10801)}</td><td>deo puta gde se često kreću <b>DECA</b> (blizina škole, obdaništa, igrališta)</td><td>„mesto od kojeg počinje zona škole" (to je plava tabla)</td></tr>
+<tr><td class="znCel">${zn(10838)}</td><td>deo puta kojim se <b>PEŠACI često kreću</b></td><td>pešačka staza ni obeležen prelaz</td></tr>
+<tr><td class="znCel">${zn(10802)}</td><td><b>BICIKLISTI</b> se često kreću, odnosno prelaze put</td><td>biciklistička staza ni zabrana saobraćaja za bicikle</td></tr>
+<tr><td class="znCel">${zn(10804)}</td><td>opasnost zbog prelaska <b>DIVLJAČI</b></td><td>domaće životinje ni „staza za jahanje"</td></tr>
+<tr><td class="znCel">${zn(10826)}</td><td><b>DOMAĆE životinje pod nadzorom</b> prelaze preko puta, odnosno kreću se duž puta</td><td>divljač ni „staza za jahanje"</td></tr>
+<tr><td class="znCel">${zn(10810)}</td><td>mesto od koga <b>POČINJE DVOSMERAN</b> saobraćaj</td><td>„prvenstvo na suženom delu" (plava tabla) ni „zabrana stupanja na suženi deo" (krug)</td></tr>
+<tr><td class="znCel">${zn(10806)}</td><td>najava mesta gde je saobraćaj <b>regulisan SEMAFORIMA</b></td><td>prelaz preko pruge sa semaforima ni „pristup vozila reguliše se semaforima"</td></tr>
+<tr><td class="znCel">${zn(10808)}</td><td>blizina piste: avioni preleću u <b>NISKOM LETU</b> pri sletanju, odnosno poletanju</td><td>„bočni vetar izazvan letom aviona" ni „blizina aerodroma" (to je obaveštenje)</td></tr>
+<tr><td class="znCel">${zn(10809)}</td><td>učestala pojava jakog <b>BOČNOG VETRA</b> — simbol odgovara smeru vetra</td><td>avioni</td></tr>
+<tr><td class="znCel">${zn(10836)}</td><td>opasnost od <b>STVARANJA KOLONE</b> vozila (zastoj — vozila gledaš otpozadi)</td><td>„moraju se kretati u koloni" ni „zabranjeno kretanje u koloni"</td></tr>
+<tr><td class="znCel">${zn(10824)}</td><td>nailazak na raskrsnicu sa <b>KRUŽNIM TOKOM</b></td><td>„obavezan smer obilaska ostrva" (plavi krug) ni zabrana polukružnog okretanja</td></tr>
+<tr><td class="znCel">${zn(10811)}</td><td>opasnost za koju <b>NIJE predviđen poseban znak</b></td><td>radovi ni „ustupi prvenstvo prolaza"</td></tr>
 </table>
 
+</div>
 <p><b>Taktika:</b> prvo oblik (trougao = upozorenje), pa simbol, pa u odgovorima traži NAJAVU („nailazak", „približavanje"). Kod parova (levo/desno, sa/bez branika, jedan/dva koloseka, izbočina/ulegnuće) tačan odgovor je uvek DOSLOVNO ono što je nacrtano — ne biraj „logičniji", biraj nacrtani.</p>
 `,
 };
@@ -3997,6 +4003,105 @@ function capCells(html) {
   return html.replace(/(<(?:td|th)[^>]*>|<div class="vg"[^>]*>)(\s*)(<b>)?([a-zčćšđž])/g,
     (m, tag, sp, b, ch) => tag + sp + (b || '') + ch.toUpperCase());
 }
+// ---------- Velike kartice se čitaju PO TEMI ----------
+// Kartica „Znakovi opasnosti" je uz pitanje o krivini otvarala 5.700 px (i prugu, i raskrsnice,
+// i životinje), a „Prvenstvo prolaza" u pojmovniku 8.228 px. Zato blok koji počinje pasusom
+// „<b>Naslov</b>" postaje sklopivi odeljak — app.js ga oživljava (oziviSekcije).
+// Ide SAMO po spisku (prag = koliko tema mora da bude „teška" da dobije svoje dugme).
+const PO_TEMAMA = {
+  'slicni-pojmovi': 1400,
+  'prvenstvo-prolaza': 1200,
+  'oznake-kolovoz': 600,
+  'uredjaji-oprema': 900,
+  'policajac-znaci': 900,
+  'preticanje': 900,
+  'znakovi-naredbi': 800,
+  'skretanje': 350,
+  // razno-pravila: NAMERNO nije na spisku — devet odeljaka od 0,2 do 2,2 KB, deljenje
+  // na teme bi tu bilo cepanje radi cepanja (uz pitanje se ionako vidi samo jedan odeljak)
+  'vozac-zdravlje-alkohol': 700,
+  'put-pojmovi': 350,
+  'vozilo-tehnika': 350,
+  'zn-ob-kraj-zone': 600,
+  'zn-ob-autoput': 600,
+  'zn-ob-ostalo': 600,
+  'zn-ob-parovi': 300,
+  'zn-ob-vodjenje': 600,
+  'pokazivaci': 600,
+  'semafori': 700,
+  'znakovi-porodice': 700,
+  'kretanje-po-putu': 400,
+};
+// blokovi najvišeg nivoa (isti parser kao u deobi džin-kartice)
+function blokovi(html) {
+  const b = [];
+  let dubina = 0, start = 0;
+  const re = /<(\/?)(div|table|p|svg|h4|ul|ol)\b[^>]*>/g;
+  let m;
+  while ((m = re.exec(html))) {
+    if (!m[1]) { if (dubina === 0) start = m.index; dubina++; }
+    else { dubina--; if (dubina === 0) b.push(html.slice(start, re.lastIndex)); }
+  }
+  return dubina === 0 ? b : null;
+}
+function poTemama(html, prag, imaUvod) {
+  const b = blokovi(html);
+  if (!b || !b.length) return html;
+  const jeNaslov = (x) => /^<p[^>]*>\s*<b>[^<]{3,120}<\/b>/.test(x);
+  const grupe = [];
+  for (const blok of b) {
+    if (jeNaslov(blok) || !grupe.length) grupe.push({ naslov: jeNaslov(blok) ? blok : null, telo: jeNaslov(blok) ? [] : [blok] });
+    else grupe[grupe.length - 1].telo.push(blok);
+  }
+  // sitne teme se pripajaju prethodnoj — inače dvadeset dugmadi od po dva reda
+  const spojene = [];
+  for (const g of grupe) {
+    const duz = (g.naslov || '').length + g.telo.join('').length;
+    if (g.naslov && duz < prag && spojene.length && spojene[spojene.length - 1].naslov) {
+      spojene[spojene.length - 1].telo.push(g.naslov, ...g.telo);
+    } else spojene.push(g);
+  }
+  // prva grupa KARTICE je uvod („Ova oblast je čista memorija brojeva.") — ostaje vidljiva.
+  // Unutar kSek odeljka toga nema: odeljak je već izabrala podoblast, pa je i prva tema tema.
+  if (imaUvod && spojene.length && spojene[0].naslov) spojene[0].uvod = 1;
+  // jedna tema nije podela — osim ako je ta jedna toliko krupna da sama pravi džin-karticu
+  const teme = spojene.filter((g) => g.naslov && !g.uvod);
+  const krupna = teme.length === 1 && (teme[0].naslov + teme[0].telo.join('')).length > 1500;
+  if (teme.length < 2 && !krupna) return html;
+  let out = '';
+  for (const g of spojene) {
+    if (!g.naslov || g.uvod) { out += (g.naslov ? g.naslov + '\n' : '') + g.telo.join('\n') + '\n'; continue; }
+    let naslov = g.naslov.match(/<b>([^<]+)<\/b>/)[1].replace(/\s*[.:]\s*$/, '');
+    // dugme nosi IME teme, ne celu rečenicu — seče se na prvoj cezuri ako je predugačko
+    if (naslov.length > 64) {
+      const c = naslov.search(/ — |: /);
+      naslov = c >= 3 ? naslov.slice(0, c) : naslov.slice(0, 60).replace(/\s+\S*$/, '') + '…';
+    }
+    const ostatak = g.naslov.replace(/^<p[^>]*>\s*<b>[^<]+<\/b>\s*/, '').replace(/<\/p>\s*$/, '').trim();
+    out += '<div class="kPodH"><b class="kPodNaslov">' + naslov + '</b>\n'
+      + (ostatak ? '<p>' + ostatak + '</p>\n' : '')
+      + g.telo.join('\n') + '\n</div>\n';
+  }
+  return out;
+}
+// kartica sa .kSek odeljcima: podoblast bira odeljak, pa se teme seku UNUTAR odeljka
+function poTemamaKartica(html, prag) {
+  const b = blokovi(html);
+  if (b && b.length > 1 && b.every((x) => x.startsWith('<div class="kSek"'))) {
+    return b.map((x) => {
+      const i = x.indexOf('>') + 1;
+      const kr = x.lastIndexOf('</div>');
+      return x.slice(0, i) + '\n' + poTemama(x.slice(i, kr), prag, false) + '</div>';
+    }).join('\n');
+  }
+  return poTemama(html, prag, true);
+}
+for (const [k, prag] of Object.entries(PO_TEMAMA)) {
+  if (!CARDS[k]) { console.log('⚠ po temama: nema kartice', k); continue; }
+  CARDS[k].html = poTemamaKartica(CARDS[k].html, prag);
+  if (!(CARDS[k].html.split('<div class="kPodH">').length - 1)) console.log('⚠ po temama: kartica', k, 'nije podeljena');
+}
+
 for (const c of Object.values(CARDS)) c.html = capCells(c.html);
 
 // --- Pitanja koja NE dobijaju karticu svoje podoblasti (revizija 04.09.2026) ---

@@ -397,6 +397,10 @@ body.uSimulaciji #podnozje { display: none; }
 .znCell img.znImg { width: 120px; height: 88px; object-fit: contain; margin: 0; padding: 2px; }
 .znCell > span { font-size: var(--fs-sm); line-height: 1.45; }
 @media (min-width: 760px) { .znGrid { grid-template-columns: 1fr 1fr; gap: 16px 22px; } }
+/* sličica znaka u koloni „Znak" — stoji umesto opisa rečima („Trougao + OGRADA") */
+.znCel { width: 100px; }
+.znTd { width: 92px; }
+.znTdImg { width: 92px; height: 68px; object-fit: contain; margin: 0; padding: 2px; }
 .tekstSm { font-size: var(--fs-sm); }
 .explCard table { border-collapse: collapse; width: 100%; font-size: var(--fs-sm); margin: 8px 0 14px; }
 .explCard .vgrid { margin: 10px 0 14px; }

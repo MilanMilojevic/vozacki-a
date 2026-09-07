@@ -408,6 +408,33 @@ async function proveraBodovanja2() {
       await cekaj(150);
     }
 
+    // ---- 2ac) TEME UNUTAR KARTICE (kPodH -> sklopivi odeljak) ----
+    {
+      const sveKartice = Object.values(window.EXPLAIN.cards);
+      const saTemama = sveKartice.filter((c) => /kPodNaslov/.test(c.h.l));
+      ok('teme: velike kartice su podeljene na teme (' + saTemama.length + ' kartica)', saTemama.length >= 10);
+      ok('teme: naslov tema postoji i u ćirilici',
+        saTemama.every((c) => (c.h.l.match(/kPodNaslov/g) || []).length === (c.h.c.match(/kPodNaslov/g) || []).length));
+
+      // u pojmovniku: kPodH postaje dugme + sklopljeno telo
+      document.querySelector('[data-nav="home"]').click(); await cekaj(200);
+      const bp = el2('btnPojmovnik');
+      if (bp.getAttribute('aria-expanded') !== 'true') { bp.click(); await cekaj(250); }
+      const bk = document.querySelector('[data-poj="znakovi-opasnosti"]');
+      bk.click(); await cekaj(300);
+      const cd3 = bk.nextElementSibling;
+      const teme = [...cd3.querySelectorAll('.kPod')];
+      ok('teme: nijedan kPodH ne ostaje neoživljen', cd3.querySelectorAll('.kPodH').length === 0);
+      ok('teme: svaka tema ima dugme sa imenom i sklopljeno telo', teme.length >= 5
+        && teme.every((p) => p.querySelector('button') && p.querySelector('button').textContent.trim().length > 2
+          && p.querySelector('.kPodTelo') && p.querySelector('.kPodTelo').style.display === 'none'));
+      const preVisina = cd3.getBoundingClientRect().height;
+      teme[1].querySelector('button').click(); await cekaj(250);
+      ok('teme: otvaranje teme pokazuje njen sadržaj', cd3.getBoundingClientRect().height > preVisina + 100);
+      bk.click(); await cekaj(150);
+      document.querySelector('[data-nav="home"]').click(); await cekaj(150);
+    }
+
     // ---- 2b) ŠANSA DA POLOŽIŠ i pravilo o simulacijama ----
     {
       const sz = window.__dev.sansaZaProlaz;
