@@ -612,6 +612,56 @@ async function proveraBodovanja2() {
       document.querySelector('[data-nav="home"]').click(); await cekaj(150);
     }
 
+    // ---- 2ag) DNEVNIK PO DANIMA i tačnost u dnevnom cilju ----
+    {
+      // arhiviranje: kad se pređe ponoć, jučerašnji dan mora da završi u S.dani
+      const S0 = S();
+      const staroDani = S0.dani, staroDay = S0.day;
+      const juce = new Date(); juce.setDate(juce.getDate() - 1);
+      const dva2 = (n) => String(n).padStart(2, '0');
+      const juceStr = juce.getFullYear() + '-' + dva2(juce.getMonth() + 1) + '-' + dva2(juce.getDate());
+      S0.dani = [];
+      S0.day = { d: juceStr, n: 7, ok: 5, novih: 4, pon: 3 };
+      // bilo koji odgovor danas mora da zatvori jučerašnji dan
+      const qq = window.QUIZ.questions[window.QUIZ.questions.length - 2];
+      window.__dev.record(qq.id, true);
+      const arh = (S().dani || []).find((x) => x.d === juceStr);
+      ok('dnevnik: prelazak ponoći arhivira jučerašnji dan', !!arh && arh.n === 7 && arh.ok === 5 && arh.novih === 4 && arh.pon === 3);
+      ok('dnevnik: današnji dan počinje od nule', S().day && S().day.d !== juceStr && S().day.n === 1);
+      // normalizacija: smeće u dnevniku se odbacuje, ispravni redovi ostaju
+      const n2 = window.__dev.normalizeState({ q: {}, dani: [{ d: '2026-09-01', n: 5, ok: 3, novih: 2, pon: 1 }, { d: 'juče', n: 9 }, 'smeće'] });
+      ok('dnevnik: normalizacija čuva ispravne redove i odbacuje smeće',
+        Array.isArray(n2.dani) && n2.dani.length === 1 && n2.dani[0].d === '2026-09-01' && n2.dani[0].ok === 3);
+
+      // prikaz: tačnost danas stoji uz dnevni cilj
+      S().plan = { novih: 10, pon: 10, auto: 0, prio: 0 };
+      document.querySelector('[data-nav="home"]').click(); await cekaj(200);
+      ok('dnevnik: tačnost danas stoji uz dnevni cilj', /Tačnost danas|Тачност данас/.test(planTekst()));
+
+      // strana „po danima": crtež i tabela
+      S().dani = [
+        { d: '2026-09-01', n: 40, ok: 26, novih: 30, pon: 10 },
+        { d: '2026-09-02', n: 52, ok: 44, novih: 35, pon: 17 },
+      ];
+      location.hash = '#/stats'; await cekaj(400);
+      const bd = el2('btnDani');
+      ok('dnevnik: statistika ima stranu „po danima"', !!bd);
+      bd.click(); await cekaj(350);
+      const telo = el2('daniTelo');
+      const svg = telo.querySelector('svg');
+      ok('dnevnik: crta se trend sa stubićem po danu', !!svg && svg.querySelectorAll('rect').length === 3);
+      ok('dnevnik: tabela ima red po danu', telo.querySelectorAll('tbody tr').length === 3);
+      // isto pravilo čitljivosti kao za crteže pojmovnika
+      if (svg) {
+        const vb2 = svg.getAttribute('viewBox').trim().split(/\s+/).map(Number);
+        const sk = (svg.getBoundingClientRect().width / vb2[2]) * (306 / (telo.getBoundingClientRect().width || 306));
+        const najm = Math.min(...[...svg.querySelectorAll('text')].map((x) => parseFloat(getComputedStyle(x).fontSize) * sk));
+        ok('dnevnik: tekst u trendu nije ispod 10px na telefonu (' + Math.round(najm * 10) / 10 + 'px)', najm >= 10);
+      }
+      S().dani = staroDani; S().day = staroDay;
+      document.querySelector('[data-nav="home"]').click(); await cekaj(150);
+    }
+
     // ---- 2b) ŠANSA DA POLOŽIŠ i pravilo o simulacijama ----
     {
       const sz = window.__dev.sansaZaProlaz;

@@ -237,6 +237,18 @@
     fsMin: { l: 'Slova su već na najmanjoj veličini', c: 'Слова су већ на најмањој величини' },
     fsMax: { l: 'Slova su već na najvećoj veličini', c: 'Слова су већ на највећој величини' },
     planNaslov: { l: 'Dnevni cilj', c: 'Дневни циљ' },
+    planTacnost: { l: 'Tačnost danas', c: 'Тачност данас' },
+    daniNaslov: { l: '📅 Po danima — koliko i kako je išlo', c: '📅 По данима — колико и како је ишло' },
+    daniPrazno: { l: 'Ovde će stajati svaki dan u kome si nešto uradio: koliko novih pitanja, koliko ponavljanja i kolika je bila tačnost. Prvi red stiže sutra — današnji dan se upisuje kad pređe ponoć.', c: 'Овде ће стајати сваки дан у коме си нешто урадио: колико нових питања, колико понављања и колика је била тачност. Први ред стиже сутра — данашњи дан се уписује кад пређе поноћ.' },
+    daniDatum: { l: 'Dan', c: 'Дан' },
+    daniNovih: { l: 'Novih', c: 'Нових' },
+    daniPon: { l: 'Ponavljanja', c: 'Понављања' },
+    daniTacnost: { l: 'Tačnost', c: 'Тачност' },
+    daniDanas: { l: 'danas, još traje', c: 'данас, још траје' },
+    daniProsek: { l: 'Prosek poslednjih 7 dana', c: 'Просек последњих 7 дана' },
+    daniTrend: { l: 'Tačnost po danima — poslednjih @1', c: 'Тачност по данима — последњих @1' },
+    daniPragLinija: { l: 'isprekidana linija = 85%, prag ispita · ispod svakog dana stoji koliko si pitanja uradio', c: 'испрекидана линија = 85%, праг испита · испод сваког дана стоји колико си питања урадио' },
+    daniUkupno: { l: 'Ukupno u @1 dana: @2 odgovora, @3 tačnih (@4%)', c: 'Укупно у @1 дана: @2 одговора, @3 тачних (@4%)' },
     planNovih: { l: 'novih pitanja dnevno', c: 'нових питања дневно' },
     planPon: { l: 'ponavljanja dnevno', c: 'понављања дневно' },
     planSacuvaj: { l: 'Sačuvaj cilj', c: 'Сачувај циљ' },
@@ -535,6 +547,14 @@
           autoN: nInt(obj.day.autoN, 0, 5000, null), autoP: nInt(obj.day.autoP, 0, 5000, null) }
       : null;
 
+    // Dnevnik po danima: red po danu, najviše 400 (starije se ne čuva). Svaki red mora da ima
+    // ispravan datum i brojeve — uvoz tuđeg/starog fajla ne sme da ubaci smeće u tabelu.
+    const daniNiz = Array.isArray(obj.dani) ? obj.dani.filter((x) => x && typeof x === 'object'
+      && typeof x.d === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(x.d))
+      .slice(-400)
+      .map((x) => ({ d: x.d, n: nInt(x.n, 0, 1e5, 0), ok: nInt(x.ok, 0, 1e5, 0),
+        novih: nInt(x.novih, 0, 1e5, 0), pon: nInt(x.pon, 0, 1e5, 0) })) : [];
+
     // Dnevni cilj (null = ugašen). Granica je ovde namerno široka; pravu granicu —
     // koliko pitanja stvarno postoji — proverava samo polje pri unosu, uz poruku korisniku.
     const planObj = obj.plan && typeof obj.plan === 'object' && !Array.isArray(obj.plan)
@@ -559,6 +579,7 @@
       theme: obj.theme === 'dark' || obj.theme === 'light' ? obj.theme : null,
       fs: nNum(obj.fs, FS_MIN, FS_MAX, 1),
       day: dan,
+      dani: daniNiz,
       plan,
       tour: obj.tour === 1 ? 1 : 0,
       guide: obj.guide === 1 ? 1 : 0,
@@ -696,7 +717,7 @@
       r.w++; r.streak = 0; r.due = Date.now();
     }
     const today = localDay();
-    if (!S.day || S.day.d !== today) S.day = { d: today, n: 0, ok: 0, novih: 0, pon: 0 };
+    if (!S.day || S.day.d !== today) zapocniDan(today);
     if (!vecBrojanoDanas) {
       S.day.n++; if (ok) S.day.ok++;
       if (prviPut) S.day.novih = (S.day.novih || 0) + 1;
@@ -2229,7 +2250,69 @@
     renderReady();
     el('statsCard').innerHTML = `<h3>${L('statsTitle')}</h3><p class="mut napomena">${L('statsTip')}</p><div id="statsBars"></div>`;
     nacrtajOblasti(el('statsBars'), { tacnost: true });
+    el('daniCard').innerHTML = `<button type="button" class="explCardBtn pojBtn istaknuto" id="btnDani">${L('daniNaslov')}</button>
+      <div class="explCard" id="daniTelo" style="display:none"></div>`;
+    sklopivo(el('btnDani'), null, el('daniTelo'), (cd) => { cd.innerHTML = daniBlok(); oziviCrteze(cd); });
     show('stats');
+  }
+
+  // ---------- Po danima: koliko je urađeno i kakva je bila tačnost ----------
+  // Dnevnik se puni sam (zapocniDan arhivira jučerašnji dan). Ovde se samo čita.
+  function daniBlok() {
+    const arhiva = Array.isArray(S.dani) ? S.dani : [];
+    const danas = (S.day && S.day.d === localDay() && (S.day.n || S.day.novih || S.day.pon))
+      ? [{ ...S.day, tekuci: 1 }] : [];
+    const svi = [...arhiva, ...danas];
+    if (!svi.length) return `<p class="mut napomena">${escapeHtml(L('daniPrazno'))}</p>`;
+
+    const pos = svi.slice(-14).reverse();               // najnoviji gore
+    const zaCrtez = svi.slice(-7);                      // nedelja u crtežu
+    const pct = (x) => (x.n ? Math.round(100 * x.ok / x.n) : null);
+    const kratak = (ds) => ds.slice(8) + '.' + ds.slice(5, 7) + '.';
+
+    // trend: stubić po danu, visina = tačnost. Platno 306 (telo kartice na telefonu), font 11.
+    let crtez = '';
+    if (zaCrtez.length >= 2) {
+      const W = 306, H = 150, dno = 116, vrh = 18;
+      const sirina = Math.min(34, Math.floor((W - 16) / zaCrtez.length) - 6);
+      const razmak = (W - 16 - sirina * zaCrtez.length) / Math.max(1, zaCrtez.length - 1);
+      const stubovi = zaCrtez.map((x, i) => {
+        const p = pct(x);
+        const h = p === null ? 0 : Math.round((dno - vrh) * p / 100);
+        const x0 = Math.round(8 + i * (sirina + razmak));
+        const boja = p === null ? '#9aa7b4' : (p >= 85 ? '#1f7a3f' : (p >= 70 ? '#e8b000' : '#c0392b'));
+        return `<rect x="${x0}" y="${dno - h}" width="${sirina}" height="${h}" rx="3" fill="${boja}"/>`
+          + (p === null ? '' : `<text x="${x0 + sirina / 2}" y="${dno - h - 4}" text-anchor="middle" font-size="11" fill="currentColor">${p}%</text>`)
+          + `<text x="${x0 + sirina / 2}" y="${dno + 15}" text-anchor="middle" font-size="11" fill="currentColor" opacity=".7">${kratak(x.d)}</text>`
+          + `<text x="${x0 + sirina / 2}" y="${dno + 30}" text-anchor="middle" font-size="11" fill="currentColor" opacity=".55">${x.n}</text>`;
+      }).join('');
+      const prag = dno - Math.round((dno - vrh) * 0.85);
+      crtez = `<svg viewBox="0 0 ${W} ${H}" role="img" style="max-width:306px;width:100%;display:block;margin:8px auto"
+        aria-label="${escapeHtml(L('daniTrend').split('@1').join(zaCrtez.length))}">
+        <line x1="4" y1="${prag}" x2="302" y2="${prag}" stroke="#1f7a3f" stroke-width="1" stroke-dasharray="5 4" opacity=".6"/>
+        <line x1="4" y1="${dno}" x2="302" y2="${dno}" stroke="currentColor" stroke-width="1" opacity=".35"/>
+        ${stubovi}</svg>
+        <p class="mut napomena" style="text-align:center">${escapeHtml(L('daniTrend').split('@1').join(zaCrtez.length))}<br>${escapeHtml(L('daniPragLinija'))}</p>`;
+    }
+
+    const nedelja = svi.slice(-7);
+    const zbirN = nedelja.reduce((a, x) => a + x.n, 0);
+    const zbirOk = nedelja.reduce((a, x) => a + x.ok, 0);
+    const sazetak = zbirN
+      ? `<p>${escapeHtml(L('daniUkupno').split('@1').join(nedelja.length).split('@2').join(zbirN)
+          .split('@3').join(zbirOk).split('@4').join(Math.round(100 * zbirOk / zbirN)))}</p>`
+      : '';
+
+    const redovi = pos.map((x) => {
+      const p = pct(x);
+      const klasa = p === null ? '' : (p >= 85 ? 'accGood' : (p >= 70 ? 'accMid' : 'accBad'));
+      return `<tr><td>${kratak(x.d)}${x.tekuci ? ' <span class="mut">(' + escapeHtml(L('daniDanas')) + ')</span>' : ''}</td>
+        <td class="num">${x.novih || 0}</td><td class="num">${x.pon || 0}</td>
+        <td class="num ${klasa}">${p === null ? '—' : p + '%'} <span class="mut">(${x.ok}/${x.n})</span></td></tr>`;
+    }).join('');
+
+    return crtez + sazetak + `<table class="stats"><thead><tr><th>${L('daniDatum')}</th><th class="num">${L('daniNovih')}</th>
+      <th class="num">${L('daniPon')}</th><th class="num">${L('daniTacnost')}</th></tr></thead><tbody>${redovi}</tbody></table>`;
   }
 
   // ---------- Strana oblasti / podoblasti ----------
@@ -2735,11 +2818,23 @@
     // svako novo pitanje traži bar jednu potvrdu, a tu je i zaostali red — otud sabirak
     const naRedu = queueSplit().ready.length;
     const cPon = Math.min(120, Math.max(20, cNovih + Math.ceil(naRedu / dana)));
-    if (!S.day || S.day.d !== danas) S.day = { d: danas, n: 0, ok: 0, novih: 0, pon: 0 };
+    if (!S.day || S.day.d !== danas) zapocniDan(danas);
     S.day.autoN = cNovih; S.day.autoP = cPon;
     save();
     return { cNovih, cPon, dana };
   }
+  // Prelazak ponoći: jučerašnji dan se ARHIVIRA pa se počinje nov. Bez arhive nije ostajao
+  // nikakav trag o tome kako je išlo — a bez traga nema ni trenda. Čuva se poslednjih 400 dana
+  // (dovoljno za celu pripremu), i samo dani u kojima je nešto stvarno urađeno.
+  function zapocniDan(danas) {
+    if (S.day && S.day.d && S.day.d !== danas && (S.day.n || S.day.novih || S.day.pon)) {
+      S.dani = Array.isArray(S.dani) ? S.dani : [];
+      S.dani.push({ d: S.day.d, n: S.day.n || 0, ok: S.day.ok || 0, novih: S.day.novih || 0, pon: S.day.pon || 0 });
+      if (S.dani.length > 400) S.dani = S.dani.slice(-400);
+    }
+    S.day = { d: danas, n: 0, ok: 0, novih: 0, pon: 0 };
+  }
+
   // Promena datuma ispita ili režima menja osnovu računa — zamrznuta kvota se tada baca,
   // pa se sledeće crtanje računa iznova (istog dana, iz tekućeg stanja).
   function ponistiAutoKvotu() {
@@ -2789,6 +2884,17 @@
     if (pon.length < p.ostaloPon) pon = pon.concat(zaOsvezavanje().slice(0, p.ostaloPon - pon.length));
     return pon.concat(nova);
   }
+  // Koliko si danas pogodio od onoga što si uradio. Brojevi već postoje (S.day.n / S.day.ok) —
+  // do sada su stajali samo u sažetku na početnoj, a Milan ih je tražio uz sam cilj, dok radi.
+  function tacnostDanas() {
+    const d = (S.day && S.day.d === localDay()) ? S.day : null;
+    if (!d || !d.n) return '';
+    const pct = Math.round(100 * d.ok / d.n);
+    return `<div class="planRed"><span class="planIme">${L('planTacnost')}: <b>${d.ok}</b> / ${d.n} <span class="mut">(${pct}%)</span></span>
+      <span class="planBar"><span class="${pct >= 85 ? 'barDobar' : (pct >= 70 ? 'barSrednji' : 'barLos')}" style="width:${pct}%"></span></span>
+      <span class="mut">${pct >= 85 ? '✓' : ''}</span></div>`;
+  }
+
   function planBlok() {
     const p = planStanje();
     if (!p) return '';
@@ -2862,7 +2968,7 @@
       : !ima ? `<span class="mut">${L('planNemaDostupnih')}</span>`
         : `<button class="primary" id="btnPlanVezbaj">${L('planVezbaj')} (${ima})</button>`;
     return `<div class="planBox"><b>${L('planNaslov')}</b> &nbsp;<button type="button" class="bcLink" id="btnPlanPodesi">${L('planPodesi')} ›</button>
-      ${red(L('novihLbl'), p.uNovih, p.cNovih, p.nemaNovih, L('planSveOdgovoreno'))}${red(L('ponLbl'), p.uPon, p.cPon, p.nemaPon, L('planNemaPon'))}
+      ${red(L('novihLbl'), p.uNovih, p.cNovih, p.nemaNovih, L('planSveOdgovoreno'))}${red(L('ponLbl'), p.uPon, p.cPon, p.nemaPon, L('planNemaPon'))}${tacnostDanas()}
       ${visak}${neStize}<div class="razmakG">${dno}</div></div>`;
   }
 

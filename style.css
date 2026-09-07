@@ -364,6 +364,10 @@ body.uSimulaciji #podnozje { display: none; }
 .planRed { display: grid; grid-template-columns: minmax(0, auto) 1fr 1em; gap: 8px; align-items: center; font-size: var(--fs-sm); margin-top: 5px; }
 .planBar { height: 8px; background: var(--bar); border-radius: 4px; overflow: hidden; max-width: 360px; }
 .planBar > span { display: block; height: 100%; background: var(--blue); }
+/* traka tačnosti nosi i boju ocene: prag ispita je 85% */
+.planBar > span.barDobar { background: var(--ok); }
+.planBar > span.barSrednji { background: var(--mark); }
+.planBar > span.barLos { background: var(--bad); }
 .planPolja { display: flex; gap: 12px; flex-wrap: wrap; align-items: flex-end; }
 .planPolje { display: flex; flex-direction: column; gap: 3px; }
 .planPolje span { font-size: var(--fs-xs); }
@@ -442,7 +446,8 @@ body.uSimulaciji #podnozje { display: none; }
    preko ekrana. minmax(0, 1fr) taj pod ukida, a prelom reči sprečava da se kolona
    ipak razvuče. Bez ovoga tabela kategorija na 320px izlazi 56px van ekrana. */
 @media (max-width: 560px) {
-  .vgrid { grid-template-columns: minmax(64px, auto) repeat(3, minmax(0, 1fr)); font-size: var(--fs-xs); gap: 3px; }
+  /* ista sitna visina kao tabele — kartica ima dve visine teksta, ne četiri */
+  .vgrid { grid-template-columns: minmax(64px, auto) repeat(3, minmax(0, 1fr)); gap: 3px; }
   .vg { padding: 7px 3px; overflow-wrap: anywhere; }
 }
 .vgHead { color: var(--mut); font-weight: 600; display: flex; align-items: center; justify-content: center; }

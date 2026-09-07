@@ -92,7 +92,7 @@ CARDS['prvenstvo-prolaza'] = {
   <text x="160" y="211" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">5. PRAVILA</text>
   <text x="160" y="230" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">(desna strana...)</text>
 </svg>
-<p class="mut" style="text-align:center;font-size:.85rem">što je traka viša — to je jača: saobraćajac pobija semafor, semafor pobija znakove...</p>
+<p class="mut" style="text-align:center;font-size:var(--fs-sm)">što je traka viša — to je jača: saobraćajac pobija semafor, semafor pobija znakove...</p>
 </div>
 <div class="kSek" data-sub="148">
 <div class="signRow" style="max-width:340px;margin:6px auto">
@@ -945,7 +945,7 @@ CARDS['semafori'] = {
 <svg viewBox="0 0 56 150" style="height:130px"><rect x="8" y="4" width="40" height="142" rx="10" fill="#2a333d"/><circle cx="28" cy="30" r="16" fill="#e34b3a"/><circle cx="28" cy="74" r="16" fill="#5a4a22"/><circle cx="28" cy="118" r="16" fill="#1f4a2e"/></svg>
 <svg viewBox="0 0 150 56" style="height:52px"><rect x="4" y="8" width="142" height="40" rx="10" fill="#2a333d"/><circle cx="30" cy="28" r="16" fill="#e34b3a"/><circle cx="75" cy="28" r="16" fill="#5a4a22"/><circle cx="120" cy="28" r="16" fill="#4bb36b"/></svg>
 </div>
-<p class="mut" style="text-align:center;font-size:.82rem">vertikalno: crveno GORE · horizontalno: crveno LEVO (zeleno desno)</p>
+<p class="mut" style="text-align:center;font-size:var(--fs-sm)">vertikalno: crveno GORE · horizontalno: crveno LEVO (zeleno desno)</p>
 <div class="vgrid" style="grid-template-columns:auto 1fr">
   <div class="vg" style="background:#b91c1c;color:#fff"><b>🔴 CRVENO</b></div><div class="vg" style="text-align:left">zabranjen prolaz</div>
   <div class="vg" style="background:#b45309;color:#fff"><b>🔴+🟡 CRVENO + ŽUTO</b></div><div class="vg" style="text-align:left">i dalje zabranjen prolaz — najava zelenog (pripremi se)</div>
@@ -1017,7 +1017,7 @@ CARDS['iskljucenje'] = {
 <div style="display:flex;justify-content:center;margin:6px 0">
 <svg viewBox="0 0 320 168" style="max-width:400px;width:100%" role="img" aria-label="Levo: isključen vozač — čovek je crvenom pregradom odvojen od motocikla i ne sme da upravlja. Desno: isključeno vozilo — motociklu se skidaju registarske tablice."><text x="80" y="15" text-anchor="middle" font-size="13" fill="currentColor">VOZAČ (čl. 279)</text><line x1="6" y1="112" x2="154" y2="112" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="48" r="9" fill="none" stroke="currentColor" stroke-width="2"/><line x1="24" y1="57" x2="24" y2="80" stroke="currentColor" stroke-width="2"/><line x1="12" y1="66" x2="36" y2="66" stroke="currentColor" stroke-width="2"/><line x1="24" y1="80" x2="17" y2="111" stroke="currentColor" stroke-width="2"/><line x1="24" y1="80" x2="31" y2="111" stroke="currentColor" stroke-width="2"/><rect x="44" y="34" width="7" height="78" fill="#c0392b"/><circle cx="80" cy="98" r="12" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="128" cy="98" r="12" fill="none" stroke="currentColor" stroke-width="2"/><path d="M80 98 L96 80 L118 80 L128 98" fill="none" stroke="currentColor" stroke-width="2"/><line x1="96" y1="80" x2="90" y2="66" stroke="currentColor" stroke-width="2"/><line x1="82" y1="62" x2="98" y2="69" stroke="currentColor" stroke-width="2"/><rect x="104" y="74" width="22" height="5" rx="2" fill="currentColor"/><text x="80" y="134" text-anchor="middle" font-size="13" fill="currentColor">čovek ne sme</text><text x="80" y="152" text-anchor="middle" font-size="13" fill="currentColor">da upravlja</text><line x1="160" y1="24" x2="160" y2="156" stroke="currentColor" stroke-width="1" stroke-dasharray="5 5"/><text x="241" y="15" text-anchor="middle" font-size="13" fill="currentColor">VOZILO (čl. 289)</text><line x1="166" y1="112" x2="314" y2="112" stroke="currentColor" stroke-width="2"/><circle cx="196" cy="98" r="12" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="244" cy="98" r="12" fill="none" stroke="currentColor" stroke-width="2"/><path d="M196 98 L212 80 L234 80 L244 98" fill="none" stroke="currentColor" stroke-width="2"/><line x1="212" y1="80" x2="206" y2="66" stroke="currentColor" stroke-width="2"/><line x1="198" y1="62" x2="214" y2="69" stroke="currentColor" stroke-width="2"/><rect x="220" y="74" width="22" height="5" rx="2" fill="currentColor"/><rect x="258" y="84" width="24" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 3"/><path d="M284 80 L296 64" fill="none" stroke="#c0392b" stroke-width="3"/><polygon points="301,57 297,70 290,63" fill="#c0392b"/><rect x="266" y="26" width="44" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><rect x="268" y="28" width="7" height="14" fill="#2c6aa0"/><text x="241" y="134" text-anchor="middle" font-size="13" fill="currentColor">skidaju se</text><text x="241" y="152" text-anchor="middle" font-size="13" fill="currentColor">registarske tablice</text></svg>
 </div>
-<p class="mut" style="text-align:center;font-size:.82rem">levo: mera pogađa ČOVEKA · desno: mera pogađa VOZILO</p>
+<p class="mut" style="text-align:center;font-size:var(--fs-sm)">levo: mera pogađa ČOVEKA · desno: mera pogađa VOZILO</p>
 <p><b>Isto to rečima:</b> isključenje VOZAČA (čl. 279) pogađa čoveka — dok mera traje ne smeš da upravljaš, a ako te zateknu za volanom u toku isključenja, to je novi razlog za isključenje vozača (#8556, #8557). Isključenje VOZILA (čl. 289) pogađa mašinu: vozilu se oduzimaju REGISTARSKE tablice, uz potvrdu o oduzimanju — ne saobraćajna i ne vozačka dozvola (#8601). Svako pitanje prvo prelomi ovako: <b>pogađa li ovo čoveka ili mašinu?</b></p>
 <p><b>Dopuna liste sa vrha kartice (čl. 279):</b></p>
 <table>
@@ -1286,7 +1286,7 @@ CARDS['skretanje'] = {
   <text x="48" y="188" text-anchor="end" font-size="12" fill="currentColor">zeleno</text>
   <text x="48" y="205" text-anchor="end" font-size="12" fill="currentColor">svetlo</text>
 </svg>
-<p class="mut" style="text-align:center;font-size:.85rem">imaš zeleno, ali izlaz iz raskrsnice je zauzet — ostaješ ispred zebre</p>
+<p class="mut" style="text-align:center;font-size:var(--fs-sm)">imaš zeleno, ali izlaz iz raskrsnice je zauzet — ostaješ ispred zebre</p>
 <p><b>Četiri odgovora koji su ovde UVEK netačni</b> (vrte se kroz sva pitanja o gužvi na raskrsnici):</p>
 <table>
 <tr><th>Ponuđeno</th><th>Zašto pada</th></tr>
@@ -2226,7 +2226,7 @@ CARDS['pesaci-bicikli'] = {
 <text x="178" y="160" text-anchor="middle" font-size="12" fill="currentColor">pešački prelaz</text>
 </svg>
 </div>
-<p class="mut" style="text-align:center;font-size:.82rem">na crtežu ti je svetlosnim znakom prolaz zabranjen (upaljeno crveno): zaustavljaš vozilo <b>ispred pešačkog prelaza</b> i čekaš, ceo prostor prelaza ostaje prazan za pešake · šare leže u smeru vožnje, a pešak ih gazi popreko</p>
+<p class="mut" style="text-align:center;font-size:var(--fs-sm)">na crtežu ti je svetlosnim znakom prolaz zabranjen (upaljeno crveno): zaustavljaš vozilo <b>ispred pešačkog prelaza</b> i čekaš, ceo prostor prelaza ostaje prazan za pešake · šare leže u smeru vožnje, a pešak ih gazi popreko</p>
 <div style="display:flex;justify-content:center;margin:8px 0">
 <svg viewBox="0 0 300 175" style="max-width:300px;width:100%" role="img" aria-label="policijski službenik okrenut prednjom stranom tela prema tebi stoji kraj kolovoza; vozilo stoji ispred bele linije zaustavljanja, a pešak prelazi preko šara">
 <text x="150" y="14" text-anchor="middle" font-size="13" fill="currentColor">POLICAJAC OKRENUT LICEM KA TEBI</text>
@@ -2256,7 +2256,7 @@ CARDS['pesaci-bicikli'] = {
 <text x="122" y="166" text-anchor="middle" font-size="12" fill="currentColor">linija zaustavljanja</text>
 </svg>
 </div>
-<p class="mut" style="text-align:center;font-size:.82rem">isti slučaj — prolaz ti je zabranjen — samo je znak dao policajac: tu tačan odgovor imenuje <b>liniju zaustavljanja</b>, pa staješ ispred nje</p>
+<p class="mut" style="text-align:center;font-size:var(--fs-sm)">isti slučaj — prolaz ti je zabranjen — samo je znak dao policajac: tu tačan odgovor imenuje <b>liniju zaustavljanja</b>, pa staješ ispred nje</p>
 <div style="display:flex;justify-content:center;margin:8px 0">
 <svg viewBox="0 0 300 175" style="max-width:300px;width:100%" role="img" aria-label="semafor sa upaljenim zelenim svetlom; pešak prelazi preko šara, vozilo stoji i propušta ga, a zelena isprekidana strelica iza prelaza pokazuje da posle toga nastavlja">
 <text x="150" y="14" text-anchor="middle" font-size="13" fill="currentColor">SVETLOSNI ZNAK: DOZVOLJEN PROLAZ</text>
@@ -2282,7 +2282,7 @@ CARDS['pesaci-bicikli'] = {
 <text x="246" y="160" text-anchor="middle" font-size="12" fill="#1f7a3f">pa nastavljaš</text>
 </svg>
 </div>
-<p class="mut" style="text-align:center;font-size:.82rem">zeleno ti otvara put, ali ne kroz ljude na prelazu: pešaka koji prelazi <b>propuštaš</b>, pa tek onda nastavljaš — i kad ideš pravo i kad skrećeš</p>
+<p class="mut" style="text-align:center;font-size:var(--fs-sm)">zeleno ti otvara put, ali ne kroz ljude na prelazu: pešaka koji prelazi <b>propuštaš</b>, pa tek onda nastavljaš — i kad ideš pravo i kad skrećeš</p>
 <div style="display:flex;justify-content:center;margin:8px 0">
 <svg viewBox="0 0 300 175" style="max-width:300px;width:100%" role="img" aria-label="prelaz na kome nema ni semafora ni policijskog službenika — oba su nacrtana i precrtana crvenim krstom; vozilo smanjuje brzinu pri nailasku na prelaz">
 <text x="150" y="14" text-anchor="middle" font-size="13" fill="currentColor">NEMA SEMAFORA NI POLICAJCA</text>
@@ -2307,7 +2307,7 @@ CARDS['pesaci-bicikli'] = {
 <text x="150" y="160" text-anchor="middle" font-size="12" fill="currentColor">PRILAGOĐAVAŠ BRZINU</text>
 </svg>
 </div>
-<p class="mut" style="text-align:center;font-size:.82rem">stubići koji se smanjuju = brzina koju spuštaš pri nailasku · pri nailasku na neregulisan prelaz obavezna je <b>prilagođena brzina</b>, ne zaustavljanje i ne truba — a ako je na prelaz stupilo ili stupa <b>dete</b>, zaustavljaš vozilo</p>
+<p class="mut" style="text-align:center;font-size:var(--fs-sm)">stubići koji se smanjuju = brzina koju spuštaš pri nailasku · pri nailasku na neregulisan prelaz obavezna je <b>prilagođena brzina</b>, ne zaustavljanje i ne truba — a ako je na prelaz stupilo ili stupa <b>dete</b>, zaustavljaš vozilo</p>
 <p><b>Policijski službenik na raskrsnici — dva pitanja sa slikom počinju gotovo isto</b> („na raskrsnici na kojoj saobraćaj reguliše policijski službenik"), a tačni odgovori su im suprotni. Razlikuje ih <b>ono što je u pitanju ponuđeno</b>:</p>
 <ul>
 <li>gde je ponuđeno <b>„zaustavite svoje vozilo ispred linije zaustavljanja"</b> — to je tačan odgovor: policajac stoji okrenut <b>prednjom stranom tela prema tebi</b>, a taj položaj za tvoj smer znači <b>zabranjen prolaz</b>; propuštanje pešaka tu nije dovoljan odgovor jer ionako ne smeš preko linije;</li>
@@ -2349,7 +2349,7 @@ CARDS['pesaci-bicikli'] = {
 <text x="150" y="186" text-anchor="middle" font-size="13" fill="currentColor">BEZ OBELEŽENOG PRELAZA</text>
 </svg>
 </div>
-<p class="mut" style="text-align:center;font-size:.82rem">crveni krug = mesto gde tvoja putanja preseca pešaka · u oba crteža ga propuštaš — u donjem odlučuje to što je <b>već stupio na kolovoz</b></p>
+<p class="mut" style="text-align:center;font-size:var(--fs-sm)">crveni krug = mesto gde tvoja putanja preseca pešaka · u oba crteža ga propuštaš — u donjem odlučuje to što je <b>već stupio na kolovoz</b></p>
 <p>Kad skrećeš na bočni put, tvoja putanja preseca pešake koji prelaze kolovoz tog puta. Njih propuštaš:</p>
 <ul>
 <li>i kad na ulazu u bočni put <b>nema obeleženog prelaza</b> — odlučuje to što su <b>već stupili na kolovoz</b>, a ne to kuda prelaze;</li>
@@ -2411,7 +2411,7 @@ CARDS['pesaci-bicikli'] = {
 <text x="150" y="184" text-anchor="middle" font-size="12" fill="#c0392b">ZVUČNI ZNAK: NE</text>
 </svg>
 </div>
-<p class="mut" style="text-align:center;font-size:.82rem">gore: na prelazu ispred tebe nema nikoga, deca su pored kolovoza — usporavaš, spreman da staneš, <b>i</b> trubiš · dole: precrtani semafor i policajac znače da prelaz nije regulisan, a dete je već na njemu — <b>zaustavljaš vozilo</b>, truba ne pomaže</p>
+<p class="mut" style="text-align:center;font-size:var(--fs-sm)">gore: na prelazu ispred tebe nema nikoga, deca su pored kolovoza — usporavaš, spreman da staneš, <b>i</b> trubiš · dole: precrtani semafor i policajac znače da prelaz nije regulisan, a dete je već na njemu — <b>zaustavljaš vozilo</b>, truba ne pomaže</p>
 <table>
 <tr><th>Situacija</th><th>Zvučni znak?</th></tr>
 <tr><td>pešak je stupio ili stupa <b>na pešački prelaz</b> ispred tebe — i onda kad ti je prolaz dozvoljen</td><td><b>NE</b> — propuštaš ga</td></tr>
@@ -2441,7 +2441,7 @@ CARDS['pesaci-bicikli'] = {
 <text x="150" y="142" text-anchor="middle" font-size="12" fill="#c0392b">ne presecaš je — čekaš da cela pređe</text>
 </svg>
 </div>
-<p class="mut" style="text-align:center;font-size:.82rem">plava strelica = smer kretanja kolone · crveni krst stoji tačno u praznini između dvoje pešaka: ni tuda ne prolaziš</p>
+<p class="mut" style="text-align:center;font-size:var(--fs-sm)">plava strelica = smer kretanja kolone · crveni krst stoji tačno u praznini između dvoje pešaka: ni tuda ne prolaziš</p>
 </div>
 
 <div class="kPodH"><b class="kPodNaslov">Pešak van naselja, koturaljke i autoput</b>
@@ -2463,7 +2463,7 @@ CARDS['pesaci-bicikli'] = {
 <path d="M148,88 L176,88 M170,83 L177,88 L170,93" fill="none" stroke="currentColor" stroke-width="2"/>
 </svg>
 </div>
-<p class="mut" style="text-align:center;font-size:.82rem">pešak gore ide udesno, a vozilo u toj istoj polovini kolovoza dolazi mu u susret — zato ga vidi na vreme · dole vozilo ide u istom smeru kao pešak</p>
+<p class="mut" style="text-align:center;font-size:var(--fs-sm)">pešak gore ide udesno, a vozilo u toj istoj polovini kolovoza dolazi mu u susret — zato ga vidi na vreme · dole vozilo ide u istom smeru kao pešak</p>
 <p><b>Van naselja</b> pešak koji se kreće po kolovozu <b>mora</b> da ide što bliže <b>levoj</b> ivici kolovoza u smeru svog kretanja, tako da ne ometa i ne sprečava saobraćaj vozila. Nije „može levo ili desno" i nije desno — mora levo, suprotno od strane kojom idu vozila u njegovom smeru.</p>
 <div class="signRow">
   <div class="signCell">
@@ -2801,7 +2801,7 @@ CARDS['vozilo-tehnika'] = {
 </g>
 </svg>
 </div>
-<p class="mut" style="text-align:center;font-size:.82rem">osa je u razmeri: prozor od 30 dana je dvanaest puta kraći od godine važenja</p>
+<p class="mut" style="text-align:center;font-size:var(--fs-sm)">osa je u razmeri: prozor od 30 dana je dvanaest puta kraći od godine važenja</p>
 <!-- izvor: #10688, #10687, #8428, #8429 -->
 <p><b>Redosled:</b> redovni godišnji tehnički pregled → zahtev za upis u jedinstveni registar, odnosno za izdavanje registracione nalepnice → nalepnica važi <b>godinu dana</b>. Pregled se sme obaviti <b>najranije 30 dana pre podnošenja zahteva</b>, a vozilo mu se podvrgava <b>pre</b> upisa u registar odnosno izdavanja nalepnice — ne „najkasnije godinu dana od prethodnog pregleda" i ne „svake dve godine".</p>
 <!-- izvor: #8425 -->
@@ -3451,7 +3451,7 @@ CARDS['policajac-znaci'] = {
   <path d="M92 244 L130 164" stroke="currentColor" stroke-width="1.5" opacity=".5" fill="none"/>
   <text x="58" y="256" text-anchor="middle" font-size="12" fill="#64748b">policajac</text>
 </svg>
-<p class="mut" style="text-align:center;font-size:.85rem">crvena polovina figure = prsa; crta kroz figuru = odručene ruke, koje ovde ništa ne menjaju</p>
+<p class="mut" style="text-align:center;font-size:var(--fs-sm)">crvena polovina figure = prsa; crta kroz figuru = odručene ruke, koje ovde ništa ne menjaju</p>
 
 <p><b>Predručena ruka se gleda drugačije.</b> Zamisli je kao rampu koja se pruža u smeru u kome pokazuje: ako <b>tvoja putanja preseca tu rampu</b> — ne smeš. Ako je ne dodiruješ (na primer, prolaziš iza njegovih leđa, mimo pravca ruke) — smeš pravo.</p>
 <svg viewBox="0 0 320 340" role="img" aria-label="Dva prikaza odozgo: gore vozilo čija putanja ne seče predručenu ruku policajca, pa može da prođe; dole vozilo čija putanja seče predručenu ruku, pa mora da stane" style="max-width:320px;width:100%;display:block;margin:8px auto">
@@ -3926,7 +3926,7 @@ pre nego što si siguran — a znak ide pre radnje, ne u toku nje.</p>
 <text x="153" y="124" font-size="12" text-anchor="middle" fill="currentColor">prelazak je zabranjen — bez izuzetka</text>
 </svg>
 </div>
-<p class="mut" style="text-align:center;font-size:.82rem">plavo = ti · crveno = zabranjeno · zelena strelica = dozvoljeno kretanje</p>
+<p class="mut" style="text-align:center;font-size:var(--fs-sm)">plavo = ti · crveno = zabranjeno · zelena strelica = dozvoljeno kretanje</p>
 <p><b>Dva izraza, ne jedan.</b> Zabranjeni deo puta ne zove se u sva tri pitanja isto, pa se lako pomeša. Kod <b>tri</b> trake to je <b>saobraćajna traka koja se nalazi uz levu ivicu puta u pravcu kretanja vozila</b>; kod <b>najmanje četiri</b> trake i kod <b>fizički odvojenih</b> kolovoznih traka to je <b>kolovozna traka namenjena za saobraćaj vozila iz suprotnog smera</b>. Ni uslov nije uvek broj traka: u trećem pitanju se nikakav broj ne pominje — dovoljno je da su kolovozne trake fizički odvojene.</p>
 <table>
 <tr><th>Kako pitanje opisuje put</th><th>Šta ti je zabranjeno — rečima iz pitanja</th><th>Gde je to na crtežu</th></tr>
@@ -5796,7 +5796,7 @@ opšti okvir trajanja: od 30 dana do jedne godine (Zakon o prekršajima čl. 58)
 </g>
 </svg>
 </div>
-<p class="mut" style="text-align:center;font-size:.82rem">širina leve trake = težina klase · broj desno = koliko od 89 pitanja pada u tu klasu · isprekidani red nije klasa nego jedini zatvorski mamac u bazi</p>
+<p class="mut" style="text-align:center;font-size:var(--fs-sm)">širina leve trake = težina klase · broj desno = koliko od 89 pitanja pada u tu klasu · isprekidani red nije klasa nego jedini zatvorski mamac u bazi</p>
 <p><b>Isto rečima:</b> <b>jedan iznos, bez poena</b> = lakša klasa. <b>Raspon „od–do“</b> (u tri četvrtine slučajeva uz kaznene poene) = srednja. <b>„Zatvor od najmanje 15 dana ILI novčana kazna“ + 14 poena</b> = najteža — tu su zatvor i novčana <i>alternativa</i>, i to je jedini oblik odgovora u kome se pominju oboje. <b>„Zatvor od 30 do 60 dana“ + 15 poena</b> = nasilnička vožnja — fiksni broj dana, bez reči „ili“ i <b>bez novčane kazne</b>. Na tom jedinom pitanju o nasilničkoj vožnji druge dve ponude su jedan fiksni iznos i raspon sa 6 poena, dakle obe iz blažih klasa: odgovora u kome stoje i zatvor i novčana kazna tu uopšte nema, pa ga i ne traži.</p>
 <p><b>Peti oblik je zamka:</b> „kaznom zatvora <b>do 30 dana</b>“ — zatvor bez reči „ili“, bez novčane kazne i bez poena. Po tom opisu liči na nasilničku, ali nije: nudi se tačno jednom, na pitanju o zaustavljanju dok putnici ulaze i izlaze iz tramvaja, i nije tačan (tamo je tačan raspon uz 2 kaznena poena). Zato ključ za nasilničku glasi punije — traži <b>i broj dana (30 do 60) i 15 poena</b>, a ne samo reč „zatvor“.</p>
 <table>
@@ -5844,7 +5844,7 @@ opšti okvir trajanja: od 30 dana do jedne godine (Zakon o prekršajima čl. 58)
 <text x="153" y="161" font-size="12" text-anchor="middle" fill="#c0392b">izriču se ZAJEDNO, nije „ili“</text>
 </svg>
 </div>
-<p class="mut" style="text-align:center;font-size:.82rem">plavo = ti · sivo = ostali · strelice = smer kretanja, pa se vidi da su ona dva vozila u susretu · isprekidano vozilo i isprekidana strelica = odakle si i kojim putem izašao iz svoje trake</p>
+<p class="mut" style="text-align:center;font-size:var(--fs-sm)">plavo = ti · sivo = ostali · strelice = smer kretanja, pa se vidi da su ona dva vozila u susretu · isprekidano vozilo i isprekidana strelica = odakle si i kojim putem izašao iz svoje trake</p>
 <p><b>Isto rečima:</b> ovo nije obično nepropisno preticanje. Izlazak u <b>traku suprotnog smera pred vozilima koja ti dolaze u susret</b> je gruba, bezobzirna vožnja — otud sam vrh lestvice. Zato se ovde zatvor i kazneni poeni izriču <b>zajedno, kumulativno</b>, a ne jedno ili drugo, i zato u tačnom odgovoru nema reči „ili“. Obično nepropisno preticanje, bez te neposredne opasnosti od čeonog sudara, ostaje srednja klasa: raspon uz 6 poena.</p>
 <p class="mut">Pamtilica: formulacija <b>„zatvor od 30 do 60 dana“</b> u celoj podoblasti postoji samo na tom jednom pitanju — i tamo je tačna. Ali pazi: zatvor <i>uopšte</i> nije siguran znak za nasilničku — jednom se nudi i „zatvor do 30 dana“, i to kao mamac (v. celinu iznad).</p>
 </div>
@@ -5911,7 +5911,7 @@ opšti okvir trajanja: od 30 dana do jedne godine (Zakon o prekršajima čl. 58)
 <g font-size="12" text-anchor="middle" fill="currentColor" opacity="0.85"><text x="99.8" y="182">+30</text><text x="179.6" y="182">+60</text></g>
 </svg>
 </div>
-<p class="mut" style="text-align:center;font-size:.82rem">oba crteža imaju istu osu i istu razmeru — vodoravno je za koliko km/h prelaziš dozvoljeno · isprekidani procep sa <b>?</b> = zona u kojoj baza ne pita, pa granica nije povučena · ✗ = mera se ne izriče, ✓ = izriče se, i to samo na tačkama koje baza pita · crvena crta na 70 = mesto na kome se dve lestvice spajaju</p>
+<p class="mut" style="text-align:center;font-size:var(--fs-sm)">oba crteža imaju istu osu i istu razmeru — vodoravno je za koliko km/h prelaziš dozvoljeno · isprekidani procep sa <b>?</b> = zona u kojoj baza ne pita, pa granica nije povučena · ✗ = mera se ne izriče, ✓ = izriče se, i to samo na tačkama koje baza pita · crvena crta na 70 = mesto na kome se dve lestvice spajaju</p>
 <p><b>Isto rečima:</b> ista brojka prekoračenja pada za stepenik niže van naselja nego u naselju — <b>osim na vrhu, gde se lestvice spajaju</b>: preko 70 km/h prekoračenja je najteža klasa i u naselju i van njega (crvena crta na oba crteža, na istom mestu). Na <b>+30 km/h</b>: u naselju — raspon, kazneni poeni <b>i</b> zabrana upravljanja; van naselja — jedan iznos, bez poena i <b>bez</b> zabrane. Baza pita tačke, ne granice: u naselju potvrđuje fiksnu kaznu na +7 i na +11 do +20, a raspon sa poenima već na +30; van naselja fiksnu na +15 i na +30, a raspon sa poenima na +50. Zato između te dve potvrđene tačke na crtežu stoji procep sa znakom pitanja, a ne ivica: prelaz je negde između +20 i +30 u naselju, odnosno između +30 i +50 van naselja, a gde tačno — baza ne kaže. <b>Tačno 70 još nije najteža klasa</b> — jedno pitanje se lomi baš na toj razlici.</p>
 <table>
 <tr><th>Gde voziš</th><th>Dozvoljeno</th><th>Najteža klasa počinje na prekoračenju od</th></tr>
@@ -5949,7 +5949,7 @@ opšti okvir trajanja: od 30 dana do jedne godine (Zakon o prekršajima čl. 58)
 <g font-size="12" text-anchor="middle" fill="currentColor"><text x="84.9" y="76">0,30</text><text x="121.4" y="76">0,50</text><text x="249.5" y="76">1,20</text></g>
 </svg>
 </div>
-<p class="mut" style="text-align:center;font-size:.82rem">vodoravno = mg/ml alkohola · ✗ kazna da, mera ne · ✓ uz kaznu ide i mera · <b>?</b> = baza tu ništa ne pita, ni ispod 0,30 ni preko 1,20</p>
+<p class="mut" style="text-align:center;font-size:var(--fs-sm)">vodoravno = mg/ml alkohola · ✗ kazna da, mera ne · ✓ uz kaznu ide i mera · <b>?</b> = baza tu ništa ne pita, ni ispod 0,30 ni preko 1,20</p>
 <p><b>Isto rečima:</b> granica za <b>zabranu upravljanja je 0,50</b> — od 0,30 do 0,50 ide kazna ali ne i zabrana; više od 0,50 do 1,20 uz kaznu obavezno ide i zabrana. To su tačno dva opsega koja baza pita; preko 1,20 o meri ne pita ništa, pa crtež tu ne tvrdi ništa.</p>
 <div style="display:flex;justify-content:center;margin:8px 0">
 <svg viewBox="0 0 306 200" style="max-width:306px;width:100%" role="img" aria-label="Lestvica klasa kazne po stepenu alkoholisanosti, od najblažeg ka najtežem: moped i motocikl u blagoj i umerenoj alkoholisanosti — lakša klasa, jedan iznos; srednja alkoholisanost — raspon i 6 kaznenih poena; psihoaktivna supstanca — raspon i 8 poena; 1,80 mg/ml — raspon i 12 poena; preko 2,00 — najteža klasa, 14 poena; odbijanje testa — isto kao preko 2,00.">
@@ -5976,7 +5976,7 @@ opšti okvir trajanja: od 30 dana do jedne godine (Zakon o prekršajima čl. 58)
 </g>
 </svg>
 </div>
-<p class="mut" style="text-align:center;font-size:.82rem">redovi idu od najblažeg ka najtežem · leva traka raste sa težinom · poslednja dva reda su isti odgovor: odbijanjem se ništa ne dobija</p>
+<p class="mut" style="text-align:center;font-size:var(--fs-sm)">redovi idu od najblažeg ka najtežem · leva traka raste sa težinom · poslednja dva reda su isti odgovor: odbijanjem se ništa ne dobija</p>
 <p><b>Isto rečima:</b> granica za <b>najtežu klasu je 2,00</b>: preko toga je zatvor ILI najviša novčana uz 14 poena, a po slovu zakona takva vožnja je već nasilnička (čl. 41) — ipak, u bazi je tačan odgovor u obliku najteže klase. <b>Odbijanje</b> alkotesta ili droga-testa kažnjava se istim odgovorom kao preko 2,00. Za <b>mopedistu i motociklistu</b>, kao i za kandidata na praktičnoj obuci, važi <b>nulta tolerancija</b> (ZOBS čl. 187): zabranjen je svaki alkohol, a stepen alkoholisanosti određuje samo visinu kazne — zato blaga i umerena kod njih ostaju lakša klasa, a srednja već nosi raspon uz 6 poena, isto kao i kod kandidata na obuci.</p>
 </div>
 
@@ -6004,7 +6004,7 @@ opšti okvir trajanja: od 30 dana do jedne godine (Zakon o prekršajima čl. 58)
 <g font-size="12" fill="currentColor" opacity="0.85"><text x="52" y="122" text-anchor="middle">30 dana</text><text x="158.5" y="122" text-anchor="middle">6 meseci</text><text x="298" y="122" text-anchor="end">1 godina</text><text x="94.5" y="140" text-anchor="middle">3 meseca</text></g>
 </svg>
 </div>
-<p class="mut" style="text-align:center;font-size:.82rem">puna zelena ivica = tačan okvir · isprekidane crvene = ponude koje sužavaju okvir, svaka sa svoje strane</p>
+<p class="mut" style="text-align:center;font-size:var(--fs-sm)">puna zelena ivica = tačan okvir · isprekidane crvene = ponude koje sužavaju okvir, svaka sa svoje strane</p>
 <p><b>Isto rečima:</b> mera traje <b>najmanje 30 dana, najviše jednu godinu</b>. Jedan mamac ti skraćuje gornju granicu na šest meseci, drugi ti podiže donju na tri meseca. Zapamti obe krajnje tačke i biraj najširu ponudu.</p>
 <p>Dvadeset pitanja pita samo da li se mera izriče, a odgovor su dve reči. Nauči spisak — pravilo ispod pokriva većinu, ali ne sve.</p>
 <table>
@@ -6046,7 +6046,7 @@ opšti okvir trajanja: od 30 dana do jedne godine (Zakon o prekršajima čl. 58)
 <text x="153" y="188" font-size="12" text-anchor="middle" fill="#1f7a3f">zaštitna mera se NE izriče</text>
 </svg>
 </div>
-<p class="mut" style="text-align:center;font-size:.82rem">plavo = ti · žuta tačka = pokazivač pravca vozila ispred tebe, koje je već dalo znak da i samo pretiče · gore je puna linija i tuđa traka, dole si ostao u svojoj</p>
+<p class="mut" style="text-align:center;font-size:var(--fs-sm)">plavo = ti · žuta tačka = pokazivač pravca vozila ispred tebe, koje je već dalo znak da i samo pretiče · gore je puna linija i tuđa traka, dole si ostao u svojoj</p>
 <p><b>Ključ za ta tri reda:</b> mera prati <b>traku suprotnog smera</b> — preticanje preko neisprekidane linije uz ulazak u tuđu traku je isti scenario kao kod nasilničke vožnje, čeoni sudar, pa mera ide. Preticanje onoga ko je već dao znak da i sâm pretiče je zabranjeno i kažnjivo, ali se odigrava u <b>tvojoj</b> traci — mera ne ide. Uslovna zelena strelica je treći slučaj i on je <b>kontraprimer intuiciji</b> „mala kazna, dakle nema mere“: kazna je raspon uz svega 2 poena, a mera se ipak <b>izriče</b>, jer je propuštanje vozila sam uslov pod kojim smeš da prođeš strelicu — prekršiš uslov, pao je ceo osnov prolaska.</p>
 <p>Ostaju još dva para koja liče na čistu papirologiju, a razdvajaju se:</p>
 <div class="signRow">
@@ -6098,7 +6098,7 @@ opšti okvir trajanja: od 30 dana do jedne godine (Zakon o prekršajima čl. 58)
 <text x="153" y="198" font-size="12" text-anchor="middle" fill="#c0392b">najteža — zatvor ILI novčana, 14 poena</text>
 </svg>
 </div>
-<p class="mut" style="text-align:center;font-size:.82rem">gornji pojas = saobraćajna traka, donji svetliji = zaustavna traka · plavo = ti · razlika između dva panela je samo u tome da li se vozilo pomera</p>
+<p class="mut" style="text-align:center;font-size:var(--fs-sm)">gornji pojas = saobraćajna traka, donji svetliji = zaustavna traka · plavo = ti · razlika između dva panela je samo u tome da li se vozilo pomera</p>
 <p><b>Isto rečima:</b> zaustavna traka nije saobraćajna traka — po njoj se ne vozi, jer je to jedini prostor za vozila u kvaru i za hitne službe. Zato <b>zaustavljanje</b> na njoj ostaje srednja klasa (niži raspon), a <b>kretanje</b> odnosno <b>preticanje</b> njome ide u najtežu: takvim manevrom udaraš u zaustavljene i blokiraš pomoć.</p>
 <table>
 <tr><th>Tema</th><th>Blaže</th><th>Teže</th></tr>
@@ -6689,34 +6689,39 @@ for (const c of Object.values(CARDS)) c.html = capCells(c.html).replace(/<!--[\s
 // pojedinačnom pitanju. Merilo: pomaže li otvaranje BAŠ te kartice BAŠ tom pitanju.
 // Bolje nijedna nego pogrešna — objašnjenje uz pitanje ostaje u svakom slučaju.
 for (const id of [
-  7921, 7922, 7923, 7925, 7927, 7928, 7929, 7996, 7997, 7998, 8005, 8006,
-  8007, 8008, 8009, 8010, 8011, 8013, 8015, 8016, 8083, 8084, 8085, 8086,
-  8087, 8088, 8089, 8096, 8097, 8099, 8100, 8101, 8102, 8103, 8105, 8106,
-  8107, 8108, 8109, 8111, 8113, 8114, 8281, 8328, 8338, 8339, 8340, 8397,
-  8399, 8401, 8403, 8404, 8405, 8406, 8410, 8411, 8412, 8413, 8418, 8420,
-  8421, 8422, 8423, 8424, 8427, 8433, 8434, 8435, 8436, 8437, 8438, 8439,
-  8441, 8442, 8443, 8444, 8449, 8451, 8464, 8465, 8476, 8477, 8478, 8480,
-  8481, 8535, 8548, 8550, 8559, 8560, 8561, 8562, 8563, 8564, 8565, 8566,
-  8567, 8568, 8569, 8570, 8571, 8572, 8575, 8576, 8577, 8578, 8579, 8584,
-  8588, 8590, 8592, 8593, 8594, 8597, 8598, 8599, 8600, 8601, 8603, 8606,
-  8609, 8611, 8937, 8938, 8939, 8941, 9214, 9215, 9220, 9221, 9226, 9227,
-  9228, 9229, 9230, 9234, 9235, 9236, 9247, 9286, 9287, 9296, 9305, 9308,
-  9309, 9310, 9312, 9313, 9338, 9339, 9340, 9377, 9389, 9391, 9405, 9531,
-  9533, 9534, 9535, 9536, 9538, 9539, 9540, 9542, 9543, 9545, 9546, 9554,
-  9555, 9557, 9559, 9561, 9592, 9615, 9618, 9644, 9645, 9646, 9675, 9677,
-  9679, 9685, 9689, 9690, 9691, 9693, 9698, 9699, 9702, 9703, 9706, 9715,
-  9717, 9813, 9853, 9858, 9862, 9865, 10060, 10061, 10244, 10245, 10248, 10270,
-  10271, 10273, 10406, 10443, 10454, 10474, 10485, 10486, 10487, 10499, 10528, 10550,
-  10558, 10559, 10565, 10614, 10631, 10632, 10634, 10636, 10701, 10714, 10715, 10716,
-  10717, 10718, 10719, 10780, 10988, 10989, 10992, 11014, 11016, 11017, 11019, 11021,
-  11022, 11024, 11027, 11028, 11029, 11030, 11031, 11032, 11033, 11035, 11036, 11037,
-  11038,
+  7921, 7922, 7923, 7927, 7928, 7929, 7996, 7997, 7998, 8005,
+  8006, 8007, 8008, 8009, 8010, 8011, 8013, 8015, 8016, 8083,
+  8086, 8087, 8088, 8089, 8096, 8097, 8099, 8100, 8101, 8102,
+  8103, 8105, 8106, 8107, 8108, 8109, 8111, 8113, 8114, 8465,
+  8667, 8668, 8669, 8937, 8938, 8939, 8941, 9214, 9215, 9220,
+  9221, 9226, 9227, 9228, 9229, 9230, 9234, 9235, 9236, 9247,
+  9286, 9287, 9296, 9305, 9309, 9313, 9339, 9340, 9377, 9391,
+  9405, 9533, 9534, 9535, 9536, 9538, 9540, 9542, 9543, 9545,
+  9546, 9554, 9555, 9557, 9559, 9561, 9615, 9618, 9644, 9645,
+  9646, 9675, 9679, 9685, 9690, 9691, 9693, 9698, 9699, 9702,
+  9703, 9706, 9715, 9717, 9750, 9752, 9853, 9858, 9862, 9865,
+  10351, 10377, 10406, 10443, 10474, 10485, 10486, 10487, 10558, 10559,
+  10565, 10614, 10631, 10632, 10634, 10636, 10780, 10988, 10989, 10992,
+  11014, 11016, 11017, 11019, 11021, 11022, 11024, 11027, 11028, 11029,
+  11030, 11031, 11032, 11033, 11035, 11037, 11038,
 ]) X[id] = { ...(X[id] || {}), nocard: 1 };
 
 // --- Prava kartica umesto pogrešne (revizija 04.09.2026, drugi deo) ---
 // Ova pitanja su ostala bez kartice svoje podoblasti, ali im odgovara druga postojeća kartica.
 // Svaki par je potvrdilo DVA nezavisna suda; gde se nisu složili, kartice nema.
 X[11044] = { ...(X[11044] || {}), nocard: 1 };
+
+// --- Revizija svih pojmova (07.09.2026): pitanju se dodaje DRUGA kartica uz njegovu
+// podoblasnu, jer mu i ona vodi do tačnog odgovora. Podoblasna ostaje — obe se vide.
+X[9677] = { ...(X[9677] || {}), card: 'znakovi-naredbi' };   // znak „obavezan smer" uz skretanje (#9677)
+X[9762] = { ...(X[9762] || {}), card: 'znakovi-naredbi' };   // zabrana preticanja važi od mesta znaka (#9762)
+X[9813] = { ...(X[9813] || {}), card: 'znakovi-naredbi' };   // zabrana preticanja svih motornih vozila (#9813)
+X[9539] = { ...(X[9539] || {}), card: 'pesaci-bicikli' };   // obaveza prema pešacima na prelazu (#9539)
+X[7990] = { ...(X[7990] || {}), card: 'kategorije-vozila' };   // pojam vozila po kategoriji (#7990)
+X[9531] = { ...(X[9531] || {}), card: 'zamke-odgovori' };   // večiti mamci u ponuđenim odgovorima (#9531)
+X[9689] = { ...(X[9689] || {}), card: 'zamke-odgovori' };   // večiti mamci u ponuđenim odgovorima (#9689)
+X[7925] = { ...(X[7925] || {}), card: 'zamke-odgovori' };   // večiti mamci u ponuđenim odgovorima (#7925)
+
 for (const id of [7996, 7997, 7998, 8008, 8009, 8010, 8013, 8015, 8016]) X[id] = { ...(X[id] || {}), card: 'kategorije-vozila' };
 for (const id of [9615, 9618, 9685, 10061]) X[id] = { ...(X[id] || {}), card: 'oznake-kolovoz' };
 for (const id of [9675, 9679, 9862, 9865]) X[id] = { ...(X[id] || {}), card: 'znakovi-naredbi' };
