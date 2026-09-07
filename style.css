@@ -607,6 +607,38 @@ button { transition: background-color .15s ease, border-color .15s ease, color .
 #imgZoom { animation: mekiUlaz .15s ease-out; }
 .planBar > span { transition: width .35s ease; }
 
+/* ---- Pokret u crtežima pojmovnika (tura 4, 07.09.2026) ----
+   Sve su CSS animacije na SVG elementima, pa ih blok prefers-reduced-motion ispod gasi.
+   Pomeraj je u jedinicama viewBox-a (u SVG-u 1px transformacije = 1 jedinica platna). */
+@keyframes vaDesno { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(11px); } }
+@keyframes vaLevo  { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(-11px); } }
+@keyframes vaDole  { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(13px); } }
+@keyframes vaGore  { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-13px); } }
+@keyframes vaTrepti { 0%, 45% { opacity: 1; } 55%, 100% { opacity: .2; } }
+@keyframes vaTok { to { stroke-dashoffset: -24; } }
+/* magla se pomera ULEVO: trake su i po crtežu šire od platna, pa pomeranje udesno otkriva
+   levu ivicu — ovako ostaje pokrivena sa obe strane */
+@keyframes vaMagla { 0%, 100% { transform: translateX(0); opacity: .45; } 50% { transform: translateX(-7px); opacity: .8; } }
+
+/* vozilo/biciklista napreduje svojim smerom */
+.animVoziTrakom, .animUkljuci, .animIzlazak, .animBiciklObilazi, .animSinskoPrilazi,
+.animPropusti, .animUlazUTunel, .animVoziloSeKotrlja {
+  animation: vaDesno 2.6s ease-in-out infinite; }
+/* dolazi TEBI u susret — jedini razlog zbog kog se vidi da nije kolona ispred tebe */
+.animSusret, .animVoziloUSusret, .animDolaziUSusret { animation: vaLevo 2.6s ease-in-out infinite; }
+/* pešak prelazi preko kolovoza (zebra je u tim crtežima uspravna) */
+.animPesakPrelazi, .animKolonaPrelazi { animation: vaDole 3s ease-in-out infinite; }
+/* prilazak granici prikaza — vozilo ide nagore */
+.animPrilaziGranici { animation: vaGore 2.8s ease-in-out infinite; }
+/* vozilo koje izlazi iz sporednog puta: smer nije jednoznačan iz crteža, pa samo pulsira */
+.animIzlaziIzSporednog { animation: vaTrepti 2.2s ease-in-out infinite; }
+/* trepćuće svetlo (pokazivač pravca, žuto rotaciono) */
+.animTrepti, .animMigavac { animation: vaTrepti .9s steps(1, end) infinite; }
+/* tok kroz koridor / putanja skretanja — crtica putuje duž linije */
+.animKoridorTok { stroke-dasharray: 18 7; animation: vaTok 1.4s linear infinite; }
+.animPutanjaSkretanja { animation: vaTok 1.4s linear infinite; }
+/* magla se pomera i gusne */
+.animMaglaProlazi { animation: vaMagla 3.4s ease-in-out infinite; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; scroll-behavior: auto !important; }
 }

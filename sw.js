@@ -43,6 +43,30 @@ self.addEventListener('fetch', (e) => {
     return;
   }
 
+  // Fajlovi sa brojem izdanja u adresi (app.js?v=124, explanations.js?v=124…): KEŠ PRVI.
+  // Sadržaj takve adrese se ne menja — kad izađe novo izdanje, index.html (koji ide sa mreže)
+  // pokazuje na NOVE adrese, pa se one i povuku. Bez ovoga se explanations.js od 2,4 MB
+  // skidao pri svakom pokretanju. Provera novije verzije koristi version.js?ts=… i ne dira se.
+  // NA LOKALU se ovo ne radi: tamo se fajlovi menjaju bez promene broja izdanja, pa bi keš
+  // servirao staru kopiju i lagao onoga ko proverava izmenu.
+  const RAZVOJ = self.location.hostname === 'localhost' || self.location.hostname === '127.0.0.1';
+  if (!RAZVOJ && url.searchParams.has('v')) {
+    e.respondWith((async () => {
+      const c = await caches.open(CORE);
+      const hit = await c.match(req);
+      if (hit) return hit;
+      try {
+        const res = await fetch(req);
+        if (res.ok) c.put(req, res.clone());
+        return res;
+      } catch (err) {
+        const rez = await c.match(req);
+        return rez || new Response('', { status: 504 });
+      }
+    })());
+    return;
+  }
+
   // sve ostalo: mreža prva, keš samo kao rezerva bez interneta
   e.respondWith((async () => {
     const c = await caches.open(CORE);

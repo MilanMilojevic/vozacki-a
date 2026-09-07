@@ -555,6 +555,63 @@ async function proveraBodovanja2() {
       document.querySelector('[data-nav="home"]').click(); await cekaj(150);
     }
 
+    // ---- 2af) ČITLJIVOST CRTEŽA I ANIMACIJE ----
+    // Telo kartice na telefonu (375px) široko je 306px, pa se svaki crtež skupi na tu širinu
+    // i sa njim sav tekst u njemu. Mera se svodi na 306 bez obzira na širinu prozora u kome
+    // provera radi — inače bi na širokom ekranu prošlo i ono što na telefonu niko ne vidi.
+    {
+      const presek = (a, b) => {
+        const w = Math.min(a.x + a.width, b.x + b.width) - Math.max(a.x, b.x);
+        const h = Math.min(a.y + a.height, b.y + b.height) - Math.max(a.y, b.y);
+        return (w <= 0 || h <= 0) ? 0 : (w * h) / Math.min(a.width * a.height, b.width * b.height);
+      };
+      document.querySelector('[data-nav="home"]').click(); await cekaj(200);
+      const bp4 = el2('btnPojmovnik');
+      if (bp4.getAttribute('aria-expanded') !== 'true') { bp4.click(); await cekaj(250); }
+      let svgUk = 0, sitnih = 0, sudara = 0, prelivi = 0, animUk = 0, animBezPravila = 0, najmanji = 99;
+      for (const b of [...document.querySelectorAll('[data-poj]')]) {
+        b.click(); await cekaj(140);
+        const cd = b.nextElementSibling;
+        for (let i = 0; i < 4; i++) {
+          const z = [...cd.querySelectorAll('.kPod > button')].filter((x) => x.getAttribute('aria-expanded') === 'false'
+            && !/Slike iz baze|Слике из базе|Situacije|Ситуације/.test(x.textContent));
+          if (!z.length) break;
+          z.forEach((x) => x.click());
+          await cekaj(160);
+        }
+        const telo = cd.getBoundingClientRect().width || 306;
+        const na306 = 306 / telo;                       // svođenje na telefon
+        for (const s of cd.querySelectorAll('svg')) {
+          const r = s.getBoundingClientRect();
+          const vb = (s.getAttribute('viewBox') || '').trim().split(/\s+/).map(Number);
+          if (!r.width || vb.length !== 4 || !vb[2]) continue;
+          svgUk++;
+          for (const el of s.querySelectorAll('[class*="anim"]')) {
+            animUk++;
+            if (getComputedStyle(el).animationName === 'none') animBezPravila++;
+          }
+          const txt = [...s.querySelectorAll('text')].filter((x) => x.textContent.trim());
+          if (!txt.length) continue;
+          const skala = (r.width / vb[2]) * na306;
+          const bb = txt.map((x) => { try { return x.getBBox(); } catch (e) { return null; } });
+          for (let a = 0; a < bb.length; a++) for (let c = a + 1; c < bb.length; c++)
+            if (bb[a] && bb[c] && bb[a].width && bb[c].width && presek(bb[a], bb[c]) > 0.15) sudara++;
+          prelivi += bb.filter((x) => x && x.width > 0 && (x.x < vb[0] - 0.5 || x.x + x.width > vb[0] + vb[2] + 0.5)).length;
+          for (const x of txt) {
+            const px = parseFloat(getComputedStyle(x).fontSize) * skala;
+            najmanji = Math.min(najmanji, px);
+            if (px < 10) sitnih++;
+          }
+        }
+        b.click(); await cekaj(60);
+      }
+      ok('crteži: nijedan tekst nije ispod 10px na telefonu (' + svgUk + ' crteža, najmanji ' + Math.round(najmanji * 10) / 10 + 'px)', svgUk > 150 && sitnih === 0);
+      ok('crteži: nijedan natpis se ne preklapa sa drugim', sudara === 0);
+      ok('crteži: nijedan natpis ne izlazi iz okvira crteža', prelivi === 0);
+      ok('animacije: svaka anim klasa u karticama ima svoje pravilo u style.css (' + animUk + ')', animUk > 20 && animBezPravila === 0);
+      document.querySelector('[data-nav="home"]').click(); await cekaj(150);
+    }
+
     // ---- 2b) ŠANSA DA POLOŽIŠ i pravilo o simulacijama ----
     {
       const sz = window.__dev.sansaZaProlaz;

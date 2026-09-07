@@ -75,12 +75,22 @@ CARDS['prvenstvo-prolaza'] = {
   html: `
 <div class="kSek" data-sub="131">
 <p><b>Hijerarhija (ZOBS čl. 20)</b> — jače pobija slabije:</p>
-<svg viewBox="0 0 460 175" role="img" style="max-width:460px;width:100%;display:block;margin:6px auto">
-  <rect x="130" y="4"   width="200" height="27" rx="6" fill="#c0392b"/><text x="230" y="22" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">1. SAOBRAĆAJAC</text>
-  <rect x="100" y="38"  width="260" height="27" rx="6" fill="#8a5a00"/><text x="230" y="56" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">2. SEMAFOR</text>
-  <rect x="70"  y="72"  width="320" height="27" rx="6" fill="#2c6aa0"/><text x="230" y="90" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">3. SAOBRAĆAJNI ZNAKOVI</text>
-  <rect x="40"  y="106" width="380" height="27" rx="6" fill="#64748b"/><text x="230" y="124" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">4. OZNAKE NA KOLOVOZU</text>
-  <rect x="10"  y="140" width="440" height="27" rx="6" fill="#94a3b8"/><text x="230" y="158" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">5. PRAVILA (desna strana...)</text>
+<svg viewBox="0 0 320 246" role="img" aria-label="Redosled prvenstva prolaza: 1. saobraćajac, 2. semafor, 3. saobraćajni znakovi, 4. oznake na kolovozu, 5. pravila (desna strana)" style="max-width:320px;width:100%;display:block;margin:6px auto">
+  <rect x="60"   y="6"   width="200" height="40" rx="8" fill="#c0392b"/>
+  <text x="160" y="31" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">1. SAOBRAĆAJAC</text>
+
+  <rect x="47.5" y="52"  width="225" height="40" rx="8" fill="#8a5a00"/>
+  <text x="160" y="77" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">2. SEMAFOR</text>
+
+  <rect x="32.5" y="98"  width="255" height="40" rx="8" fill="#2c6aa0"/>
+  <text x="160" y="123" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">3. SAOBRAĆAJNI ZNAKOVI</text>
+
+  <rect x="20"   y="144" width="280" height="40" rx="8" fill="#64748b"/>
+  <text x="160" y="169" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">4. OZNAKE NA KOLOVOZU</text>
+
+  <rect x="7"    y="190" width="306" height="50" rx="8" fill="#94a3b8"/>
+  <text x="160" y="211" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">5. PRAVILA</text>
+  <text x="160" y="230" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">(desna strana...)</text>
 </svg>
 <p class="mut" style="text-align:center;font-size:.85rem">što je traka viša — to je jača: saobraćajac pobija semafor, semafor pobija znakove...</p>
 </div>
@@ -270,11 +280,31 @@ Tabela iznad je „ko je ko". Ostatak podoblasti (najveće u pravilima, sa preko
 CARDS['brzine'] = {
   title: 'Ograničenja brzine (50-80-100-130)',
   html: `
-<svg viewBox="0 0 460 120" role="img" style="max-width:460px;width:100%;display:block;margin:6px auto">
-  <g><circle cx="65" cy="45" r="36" fill="#fff" stroke="#c0392b" stroke-width="9"/><text x="65" y="53" text-anchor="middle" font-size="24" font-weight="bold" fill="#111">50</text><text x="65" y="108" text-anchor="middle" font-size="12" fill="#888" font-weight="bold">NASELJE</text></g>
-  <g><circle cx="175" cy="45" r="36" fill="#fff" stroke="#c0392b" stroke-width="9"/><text x="175" y="53" text-anchor="middle" font-size="24" font-weight="bold" fill="#111">80</text><text x="175" y="108" text-anchor="middle" font-size="12" fill="#888" font-weight="bold">VAN NASELJA</text></g>
-  <g><circle cx="285" cy="45" r="36" fill="#fff" stroke="#c0392b" stroke-width="9"/><text x="285" y="53" text-anchor="middle" font-size="24" font-weight="bold" fill="#111">100</text><text x="285" y="108" text-anchor="middle" font-size="12" fill="#888" font-weight="bold">MOTOPUT</text></g>
-  <g><circle cx="395" cy="45" r="36" fill="#fff" stroke="#c0392b" stroke-width="9"/><text x="395" y="53" text-anchor="middle" font-size="24" font-weight="bold" fill="#111">130</text><text x="395" y="108" text-anchor="middle" font-size="12" fill="#888" font-weight="bold">AUTOPUT</text></g>
+<svg viewBox="0 0 320 300" role="img" aria-label="ograničenja brzine po vrsti puta: 50 u naselju, 80 van naselja, 100 na motoputu, 130 na autoputu" style="max-width:320px;width:100%;display:block;margin:6px auto">
+  <g>
+    <circle cx="48" cy="44" r="30" fill="#fff" stroke="#c0392b" stroke-width="8"/>
+    <text x="48" y="52" text-anchor="middle" font-size="23" font-weight="bold" fill="#111">50</text>
+    <text x="94" y="42" font-size="14" font-weight="bold" fill="currentColor">NASELJE</text>
+    <rect x="94" y="52" width="75" height="7" rx="3" fill="currentColor" opacity="0.35"/>
+  </g>
+  <g>
+    <circle cx="48" cy="116" r="30" fill="#fff" stroke="#c0392b" stroke-width="8"/>
+    <text x="48" y="124" text-anchor="middle" font-size="23" font-weight="bold" fill="#111">80</text>
+    <text x="94" y="114" font-size="14" font-weight="bold" fill="currentColor">VAN NASELJA</text>
+    <rect x="94" y="124" width="121" height="7" rx="3" fill="currentColor" opacity="0.35"/>
+  </g>
+  <g>
+    <circle cx="48" cy="188" r="30" fill="#fff" stroke="#c0392b" stroke-width="8"/>
+    <text x="48" y="196" text-anchor="middle" font-size="23" font-weight="bold" fill="#111">100</text>
+    <text x="94" y="186" font-size="14" font-weight="bold" fill="currentColor">MOTOPUT</text>
+    <rect x="94" y="196" width="151" height="7" rx="3" fill="currentColor" opacity="0.35"/>
+  </g>
+  <g>
+    <circle cx="48" cy="260" r="30" fill="#fff" stroke="#c0392b" stroke-width="8"/>
+    <text x="48" y="268" text-anchor="middle" font-size="23" font-weight="bold" fill="#111">130</text>
+    <text x="94" y="258" font-size="14" font-weight="bold" fill="currentColor">AUTOPUT</text>
+    <rect x="94" y="268" width="196" height="7" rx="3" fill="currentColor" opacity="0.35"/>
+  </g>
 </svg>
 <p><b>Opšta ograničenja</b> (kad znak ne kaže drugačije): naselje 50 (čl. 43), van naselja 80, motoput 100, autoput 130 (čl. 44). Pamti merdevine: <b>50 → 80 → 100 → 130</b> — što bolji put, to više.</p>
 <p><b>Znak uvek pobija opšte pravilo</b> — i naniže i naviše: znakom se u naselju može dozvoliti i do 80 (čl. 43 st. 2).</p>
@@ -283,25 +313,46 @@ CARDS['brzine'] = {
 
 <!-- ==== dopuna 07.09.2026 (tura 4): crtež + isto to rečima ==== -->
 <div class="kPodH"><b class="kPodNaslov">Pitanja sa znakom: prvo traži broj NA znaku</b>
-<svg viewBox="0 0 460 192" style="max-width:460px;width:100%;display:block;margin:6px auto" role="img" aria-label="dijagram: ako znak nosi broj vazi taj broj, ako ne nosi broj vazi opste ogranicenje prema tome sta znak znaci">
-  <rect x="118" y="4" width="224" height="26" rx="5" fill="none" stroke="currentColor" stroke-width="2"/>
-  <text x="230" y="21" text-anchor="middle" font-size="12" fill="currentColor">pitanje: „nakon saobraćajnog znaka"</text>
-  <line x1="230" y1="30" x2="230" y2="44" stroke="currentColor" stroke-width="2"/>
-  <rect x="142" y="44" width="176" height="26" rx="5" fill="none" stroke="currentColor" stroke-width="2"/>
-  <text x="230" y="61" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">ima li NA ZNAKU broj?</text>
-  <path d="M230 70L230 82M114 82L346 82M114 82L114 98M346 82L346 98" fill="none" stroke="currentColor" stroke-width="2"/>
-  <text x="146" y="96" text-anchor="middle" font-size="12" font-weight="bold" fill="#1f7a3f">DA</text>
-  <text x="314" y="96" text-anchor="middle" font-size="12" font-weight="bold" fill="#2c6aa0">NE</text>
-  <rect x="14" y="98" width="200" height="84" rx="6" fill="none" stroke="#1f7a3f" stroke-width="2"/>
-  <text x="114" y="118" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">važi TAJ broj</text>
-  <text x="114" y="137" text-anchor="middle" font-size="11" fill="currentColor">ispod opšteg pravila: 40</text>
-  <text x="114" y="154" text-anchor="middle" font-size="11" fill="currentColor">iznad njega: 80 u naselju</text>
-  <text x="114" y="171" text-anchor="middle" font-size="11" fill="currentColor">60 tamo gde bi bilo 100</text>
-  <rect x="246" y="98" width="200" height="84" rx="6" fill="none" stroke="#2c6aa0" stroke-width="2"/>
-  <text x="346" y="118" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">čitaš ŠTA znak znači</text>
-  <text x="346" y="137" text-anchor="middle" font-size="11" fill="currentColor">ulazak u naselje → 50</text>
-  <text x="346" y="154" text-anchor="middle" font-size="11" fill="currentColor">prestanak naselja → 80</text>
-  <text x="346" y="171" text-anchor="middle" font-size="11" fill="currentColor">(put koji nije auto/motoput)</text>
+<svg viewBox="0 0 320 178" style="max-width:320px;width:100%;display:block;margin:6px auto" role="img" aria-label="odluka: ako znak nosi broj vazi taj broj, ako znak nema broj citas sta znak znaci">
+  <rect x="6" y="4" width="308" height="30" rx="5" fill="none" stroke="currentColor" stroke-width="2"/>
+  <text x="160" y="24" text-anchor="middle" font-size="12" fill="currentColor">pitanje: „nakon saobraćajnog znaka"</text>
+  <line x1="160" y1="34" x2="160" y2="46" stroke="currentColor" stroke-width="2"/>
+  <rect x="48" y="46" width="224" height="30" rx="5" fill="none" stroke="currentColor" stroke-width="2"/>
+  <text x="160" y="66" text-anchor="middle" font-size="13" font-weight="bold" fill="currentColor">ima li NA ZNAKU broj?</text>
+  <path d="M160 76L160 88M80 88L240 88M80 88L80 106M240 88L240 106" fill="none" stroke="currentColor" stroke-width="2"/>
+  <text x="96" y="103" font-size="12" font-weight="bold" fill="#1f7a3f">DA</text>
+  <text x="224" y="103" text-anchor="end" font-size="12" font-weight="bold" fill="#2c6aa0">NE</text>
+  <rect x="6" y="106" width="148" height="62" rx="6" fill="none" stroke="#1f7a3f" stroke-width="2"/>
+  <text x="80" y="132" text-anchor="middle" font-size="13" font-weight="bold" fill="currentColor">važi TAJ broj</text>
+  <text x="80" y="154" text-anchor="middle" font-size="11.5" fill="currentColor">opšte pravilo pada</text>
+  <rect x="166" y="106" width="148" height="62" rx="6" fill="none" stroke="#2c6aa0" stroke-width="2"/>
+  <text x="240" y="132" text-anchor="middle" font-size="13" font-weight="bold" fill="currentColor">čitaš ŠTA znak</text>
+  <text x="240" y="154" text-anchor="middle" font-size="13" font-weight="bold" fill="currentColor">znači</text>
+</svg>
+<svg viewBox="0 0 320 172" style="max-width:320px;width:100%;display:block;margin:6px auto" role="img" aria-label="kad znak nosi broj: 40 je ispod opsteg pravila, 80 je iznad njega u naselju, 60 tamo gde bi bilo 100">
+  <text x="160" y="16" text-anchor="middle" font-size="13" font-weight="bold" fill="#1f7a3f">ZNAK NOSI BROJ → važi taj broj</text>
+  <g fill="none" stroke="#c0392b" stroke-width="5"><circle cx="40" cy="54" r="21"/><circle cx="40" cy="98" r="21"/><circle cx="40" cy="142" r="21"/></g>
+  <text x="40" y="61" text-anchor="middle" font-size="17" font-weight="bold" fill="currentColor">40</text>
+  <text x="40" y="105" text-anchor="middle" font-size="17" font-weight="bold" fill="currentColor">80</text>
+  <text x="40" y="149" text-anchor="middle" font-size="17" font-weight="bold" fill="currentColor">60</text>
+  <text x="76" y="60" font-size="12.5" fill="currentColor">ispod opšteg pravila</text>
+  <text x="76" y="104" font-size="12.5" fill="currentColor">iznad njega, u naselju</text>
+  <text x="76" y="148" font-size="12.5" fill="currentColor">tamo gde bi bilo 100</text>
+</svg>
+<svg viewBox="0 0 320 152" style="max-width:320px;width:100%;display:block;margin:6px auto" role="img" aria-label="kad znak nema broj: znak ulazak u naselje znaci 50, znak prestanak naselja znaci 80 na putu koji nije autoput ni motoput">
+  <text x="160" y="16" text-anchor="middle" font-size="13" font-weight="bold" fill="#2c6aa0">ZNAK BEZ BROJA → čitaš značenje</text>
+  <rect x="8" y="34" width="54" height="38" rx="3" fill="#2c6aa0" stroke="currentColor" stroke-width="1.5"/>
+  <g fill="#e9eef3"><path d="M14 66L14 54L22 47L30 54L30 66Z"/><rect x="34" y="52" width="10" height="14"/><rect x="47" y="57" width="8" height="9"/></g>
+  <path d="M70 53L92 53M86 48L92 53L86 58" fill="none" stroke="currentColor" stroke-width="2"/>
+  <text x="100" y="61" font-size="18" font-weight="bold" fill="currentColor">50</text>
+  <text x="130" y="58" font-size="12" fill="currentColor">ulazak u naselje</text>
+  <rect x="8" y="93" width="54" height="38" rx="3" fill="#2c6aa0" stroke="currentColor" stroke-width="1.5"/>
+  <g fill="#e9eef3"><path d="M14 125L14 113L22 106L30 113L30 125Z"/><rect x="34" y="111" width="10" height="14"/><rect x="47" y="116" width="8" height="9"/></g>
+  <line x1="10" y1="129" x2="60" y2="95" stroke="#c0392b" stroke-width="3"/>
+  <path d="M70 112L92 112M86 107L92 112L86 117" fill="none" stroke="currentColor" stroke-width="2"/>
+  <text x="100" y="120" font-size="18" font-weight="bold" fill="currentColor">80</text>
+  <text x="130" y="111" font-size="12" fill="currentColor">prestanak naselja</text>
+  <text x="130" y="127" font-size="11.5" fill="currentColor">put koji nije auto/motoput</text>
 </svg>
 <p><b>Kad pitanje kaže „nakon saobraćajnog znaka", odgovor je broj</b> — ostaje samo da odlučiš odakle taj broj dolazi. Nosi li znak broj, važi taj broj, a opšte pravilo pada (#9908, #9946, #9947, #9949). Nema li broja, čitaš šta znak znači i primenjuješ merdevine po vrsti puta sa slike gore (#9878, #9948).</p>
 <table>
@@ -316,17 +367,34 @@ CARDS['brzine'] = {
 <p><b>Vrsta vozila te ne spasava:</b> i kad pitanje kaže „vozač mopeda, odnosno motocikla", odgovor je i dalje broj sa znaka — u ovim situacijama za njih nema posebne opšte granice (#9946, #9947, #9949).</p>
 </div>
 <div class="kPodH"><b class="kPodNaslov">Kad pitanje traži da PRILAGODIŠ brzinu (čl. 42)</b>
-<svg viewBox="0 0 460 124" style="max-width:460px;width:100%;display:block;margin:6px auto" role="img" aria-label="vozilo na putu staje pre prepreke, unutar rastojanja koje vozac vidi ili ima razloga da predvidi">
-  <rect x="0" y="78" width="460" height="26" fill="#9aa7b4"/>
-  <g stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 4"><line x1="72" y1="30" x2="72" y2="82"/><line x1="408" y1="30" x2="408" y2="54"/></g>
-  <line x1="340" y1="52" x2="340" y2="82" stroke="#1f7a3f" stroke-width="1.5" stroke-dasharray="4 4"/>
-  <g stroke="currentColor" stroke-width="2"><line x1="72" y1="26" x2="408" y2="26"/><line x1="72" y1="20" x2="72" y2="32"/><line x1="408" y1="20" x2="408" y2="32"/></g>
-  <text x="240" y="14" text-anchor="middle" font-size="11" fill="currentColor">koliko VIDIŠ ili imaš razloga da PREDVIDIŠ</text>
-  <g stroke="#1f7a3f" stroke-width="3"><line x1="72" y1="46" x2="340" y2="46"/><line x1="72" y1="40" x2="72" y2="52"/><line x1="340" y1="40" x2="340" y2="52"/></g>
-  <text x="206" y="66" text-anchor="middle" font-size="11" font-weight="bold" fill="currentColor">staješ PRE prepreke</text>
-  <g fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="32" cy="88" r="8"/><circle cx="62" cy="88" r="8"/><path d="M32 88L44 74L62 88"/><path d="M40 76L52 76"/><path d="M44 74L50 66"/></g>
-  <rect x="396" y="54" width="24" height="24" fill="#c0392b"/>
-  <text x="408" y="118" text-anchor="middle" font-size="11" font-weight="bold" fill="#c0392b">PREPREKA</text>
+<svg viewBox="0 0 320 175" role="img" aria-label="vozilo staje pre prepreke, unutar rastojanja koje vozač vidi ili ima razloga da predvidi" style="max-width:320px;width:100%;display:block;margin:6px auto">
+  <text x="160" y="18" text-anchor="middle" font-size="13" fill="currentColor">koliko VIDIŠ ili imaš razloga</text>
+  <text x="160" y="39" text-anchor="middle" font-size="13" fill="currentColor">da PREDVIDIŠ</text>
+  <g stroke="currentColor" stroke-width="2" fill="none">
+    <line x1="34" y1="56" x2="298" y2="56"/>
+    <line x1="34" y1="49" x2="34" y2="63"/>
+    <line x1="298" y1="49" x2="298" y2="63"/>
+  </g>
+  <g stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 4">
+    <line x1="34" y1="63" x2="34" y2="112"/>
+    <line x1="298" y1="63" x2="298" y2="84"/>
+  </g>
+  <g stroke="#1f7a3f" stroke-width="3" fill="none">
+    <line x1="34" y1="78" x2="232" y2="78"/>
+    <line x1="34" y1="71" x2="34" y2="85"/>
+    <line x1="232" y1="71" x2="232" y2="85"/>
+  </g>
+  <text x="133" y="101" text-anchor="middle" font-size="13" font-weight="bold" fill="currentColor">staješ PRE prepreke</text>
+  <rect x="0" y="112" width="320" height="34" fill="#9aa7b4"/>
+  <g fill="none" stroke="currentColor" stroke-width="2.5">
+    <circle cx="26" cy="132" r="8"/>
+    <circle cx="56" cy="132" r="8"/>
+    <path d="M26 132L38 118L56 132"/>
+    <path d="M34 120L46 120"/>
+    <path d="M38 118L44 110"/>
+  </g>
+  <rect x="284" y="84" width="26" height="28" fill="#c0392b"/>
+  <text x="313" y="162" text-anchor="end" font-size="13" font-weight="bold" fill="#c0392b">PREPREKA</text>
 </svg>
 <p><b>Merilo nije broj nego rastojanje:</b> smeš onoliko brzo koliko ti treba da vozilo blagovremeno zaustaviš pred svakom preprekom koju pod datim okolnostima možeš da vidiš ili imaš razloga da predvidiš. Zato u ovim pitanjima nijedan broj ni procenat nije tačan — ni „najmanje 20% manje od dozvoljene", ni „najviše 60 km/h", ni „najviše 80 km/h" (#9870, #9873).</p>
 <p><b>Dva oblika pitanja traže dva oblika tačnog odgovora:</b></p>
@@ -334,7 +402,19 @@ CARDS['brzine'] = {
 <li><b>„…prilagodi TAKO DA…"</b> → tačno je ono što opisuje ISHOD: da vozilo blagovremeno zaustaviš pred preprekom (#9868, #9870, #9873), da ne ugrožavaš bezbednost saobraćaja (#9868), da ne ugrožavaš sebe i druge učesnike u saobraćaju (#9873).</li>
 <li><b>„…prilagodi:"</b> pa spisak → tačno je ono što je USLOV vožnje: osobine i stanje puta, vidljivost i preglednost, stanje vozila i tereta (#10488), atmosferske prilike, gustina saobraćaja i drugi saobraćajni uslovi (#10489).</li>
 </ul>
-<p><b>Ne broji kvačice:</b> tačnih odgovora nema uvek isto — u #9870 tačan je samo jedan, u #9868, #9873 i #10489 po dva, u #10488 tri. Svaku ponudu ceni zasebno.</p>
+<svg viewBox="0 0 320 196" style="max-width:320px;width:100%;display:block;margin:6px auto" role="img" aria-label="dva oblika pitanja: prilagodi tako da trazi ishod, a prilagodi pa spisak trazi uslov voznje">
+  <rect x="6" y="4" width="308" height="80" rx="6" fill="none" stroke="#1f7a3f" stroke-width="2"/>
+  <text x="160" y="25" text-anchor="middle" font-size="12.5" font-weight="bold" fill="currentColor">„…prilagodi TAKO DA…"</text>
+  <text x="160" y="46" text-anchor="middle" font-size="12" font-weight="bold" fill="#1f7a3f">odgovor opisuje ISHOD</text>
+  <text x="160" y="64" text-anchor="middle" font-size="11.5" fill="currentColor">zaustaviš pred preprekom</text>
+  <text x="160" y="79" text-anchor="middle" font-size="11.5" fill="currentColor">ne ugrožavaš sebe ni druge</text>
+  <rect x="6" y="94" width="308" height="96" rx="6" fill="none" stroke="#2c6aa0" stroke-width="2"/>
+  <text x="160" y="115" text-anchor="middle" font-size="12.5" font-weight="bold" fill="currentColor">„…prilagodi:" pa spisak</text>
+  <text x="160" y="136" text-anchor="middle" font-size="12" font-weight="bold" fill="#2c6aa0">odgovor je USLOV vožnje</text>
+  <text x="160" y="154" text-anchor="middle" font-size="11.5" fill="currentColor">stanje puta · vidljivost i preglednost</text>
+  <text x="160" y="169" text-anchor="middle" font-size="11.5" fill="currentColor">stanje vozila i tereta · atmosferske prilike</text>
+  <text x="160" y="184" text-anchor="middle" font-size="11.5" fill="currentColor">gustina saobraćaja i drugi uslovi</text>
+</svg><p><b>Ne broji kvačice:</b> tačnih odgovora nema uvek isto — u #9870 tačan je samo jedan, u #9868, #9873 i #10489 po dva, u #10488 tri. Svaku ponudu ceni zasebno.</p>
 <p class="mut">Nabrajanje uslova iz čl. 42 nije kontrolna lista: poslednja stavka i sama glasi „gustini saobraćaja i drugim saobraćajnim uslovima" (#10489), a tačan ume da bude i odgovor koji uopšte nije uslov, nego ishod (#9868, #9873).</p>
 <table>
 <tr><th>Ponuđeno u ovim pitanjima</th><th>Vredi?</th></tr>
@@ -391,7 +471,8 @@ CARDS['nezgoda'] = {
 
 <!-- ==== dopuna 07.09.2026 (tura 4): crtež + isto to rečima ==== -->
 <div class="kPodH"><b class="kPodNaslov">Sat nezgode — dokle šta važi</b>
-<div style="display:flex;justify-content:center;margin:6px 0"><svg viewBox="0 0 520 180" style="max-width:520px;width:100%" role="img" aria-label="vremenska osa od nastanka nezgode do završetka uviđaja: zabrana alkohola važi za svakog učesnika bez uslova, ostanak na mestu nezgode zavisi od vrste nezgode, a posle uviđaja se kolovoz oslobađa"><rect x="60" y="6" width="332" height="32" rx="5" fill="none" stroke="#c0392b" stroke-width="2"/><text x="226" y="21" font-size="10.5" text-anchor="middle" fill="currentColor">ne uzimaš alkohol ni psihoaktivne supstance</text><text x="226" y="33" font-size="8.5" text-anchor="middle" fill="currentColor">(svaki učesnik, u svakoj nezgodi — bez uslova)</text><rect x="60" y="42" width="332" height="32" rx="5" fill="none" stroke="#c0392b" stroke-width="2"/><text x="226" y="57" font-size="10.5" text-anchor="middle" fill="currentColor">ostaješ na mestu nezgode do završetka uviđaja</text><text x="226" y="69" font-size="8.5" text-anchor="middle" fill="currentColor">(povređeni, poginuli ili velika materijalna šteta)</text><rect x="60" y="78" width="332" height="32" rx="5" fill="none" stroke="#c0392b" stroke-width="2"/><text x="226" y="93" font-size="10.5" text-anchor="middle" fill="currentColor">ostaješ do završetka uviđaja ako ga je neko zatražio</text><text x="226" y="105" font-size="8.5" text-anchor="middle" fill="currentColor">(samo manja materijalna šteta)</text><rect x="400" y="42" width="112" height="68" rx="5" fill="none" stroke="#1f7a3f" stroke-width="2"/><text x="456" y="62" font-size="9" text-anchor="middle" fill="currentColor">POSLE UVIĐAJA</text><text x="456" y="76" font-size="9" text-anchor="middle" fill="currentColor">bez odlaganja</text><text x="456" y="90" font-size="9" text-anchor="middle" fill="currentColor">skloni vozilo i</text><text x="456" y="104" font-size="9" text-anchor="middle" fill="currentColor">rasuti materijal</text><line x1="14" y1="142" x2="506" y2="142" stroke="currentColor" stroke-width="2"/><path d="M498 136 L512 142 L498 148 Z" fill="currentColor"/><line x1="60" y1="132" x2="60" y2="152" stroke="currentColor" stroke-width="2"/><line x1="392" y1="132" x2="392" y2="152" stroke="currentColor" stroke-width="2"/><text x="60" y="166" font-size="10.5" text-anchor="middle" fill="currentColor">NEZGODA</text><text x="226" y="166" font-size="9.5" text-anchor="middle" fill="currentColor" fill-opacity=".7">uviđaj traje</text><text x="392" y="166" font-size="10.5" text-anchor="middle" fill="currentColor">KRAJ UVIĐAJA</text></svg></div>
+<div style="display:flex;justify-content:center;margin:6px 0"><svg viewBox="0 0 306 246" style="max-width:340px;width:100%" role="img" aria-label="traka vremena od nastanka nezgode do završetka uviđaja: zabrana alkohola i psihoaktivnih supstanci važi celo vreme, za svakog učesnika i bez uslova; kod povređenih, poginulih ili velike štete ostaješ na mestu do kraja uviđaja; kod manje štete ostaješ samo ako je neko zahtevao uviđaj"><text x="153" y="16" font-size="12" text-anchor="middle" fill="currentColor">ne uzimaš alkohol ni psihoaktivne supstance</text><text x="153" y="34" font-size="12" text-anchor="middle" fill="currentColor" fill-opacity=".7">svaki učesnik, u svakoj nezgodi — bez uslova</text><rect x="34" y="42" width="210" height="16" rx="4" fill="#c0392b" fill-opacity=".12" stroke="#c0392b" stroke-width="2"/><text x="153" y="82" font-size="12" text-anchor="middle" fill="currentColor">ostaješ na mestu nezgode do kraja uviđaja</text><text x="153" y="100" font-size="12" text-anchor="middle" fill="currentColor" fill-opacity=".7">ako ima povređenih, poginulih ili velike štete</text><rect x="34" y="108" width="210" height="16" rx="4" fill="#c0392b" fill-opacity=".12" stroke="#c0392b" stroke-width="2"/><text x="153" y="148" font-size="12" text-anchor="middle" fill="currentColor">ostaješ do kraja uviđaja</text><text x="153" y="166" font-size="12" text-anchor="middle" fill="currentColor" fill-opacity=".7">samo ako je neko zahtevao uviđaj — manja šteta</text><rect x="34" y="174" width="210" height="16" rx="4" fill="none" stroke="#c0392b" stroke-width="2" stroke-dasharray="7 5"/><line x1="6" y1="214" x2="288" y2="214" stroke="currentColor" stroke-width="2"/><path d="M282 208 L298 214 L282 220 Z" fill="currentColor"/><line x1="34" y1="206" x2="34" y2="222" stroke="currentColor" stroke-width="2"/><line x1="244" y1="206" x2="244" y2="222" stroke="currentColor" stroke-width="2"/><text x="34" y="236" font-size="12" text-anchor="middle" fill="currentColor">NEZGODA</text><text x="139" y="236" font-size="12" text-anchor="middle" fill="currentColor" fill-opacity=".6">uviđaj traje</text><text x="244" y="236" font-size="12" text-anchor="middle" fill="currentColor">KRAJ UVIĐAJA</text></svg></div>
+<div style="display:flex;justify-content:center;margin:6px 0"><svg viewBox="0 0 306 130" style="max-width:340px;width:100%" role="img" aria-label="posle završenog uviđaja kolovoz se oslobađa: levo kolovoz sa vozilom i rasutim materijalom, desno slobodan kolovoz"><text x="69" y="26" font-size="12" text-anchor="middle" fill="currentColor">rasuto po kolovozu</text><text x="240" y="26" font-size="12" text-anchor="middle" fill="currentColor">kolovoz slobodan</text><rect x="6" y="36" width="126" height="46" fill="#9aa7b4" fill-opacity=".45"/><rect x="16" y="48" width="42" height="20" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="76" cy="56" r="3" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="92" cy="72" r="3" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="118" cy="52" r="3" fill="none" stroke="currentColor" stroke-width="2"/><rect x="98" y="60" width="14" height="8" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><line x1="140" y1="59" x2="156" y2="59" stroke="currentColor" stroke-width="2"/><path d="M154 53 L170 59 L154 65 Z" fill="currentColor"/><rect x="178" y="36" width="122" height="46" fill="#9aa7b4" fill-opacity=".45"/><path d="M222 60 L234 72 L258 46" fill="none" stroke="#1f7a3f" stroke-width="3"/><text x="153" y="102" font-size="12" text-anchor="middle" fill="currentColor">posle uviđaja uklanjaš bez odlaganja</text><text x="153" y="122" font-size="12" text-anchor="middle" fill="currentColor" fill-opacity=".7">nema uslova „ako je vozilo u voznom stanju“</text></svg></div>
 <ul>
 <li><b>Alkohol — bez ijednog uslova.</b> Od nastanka saobraćajne nezgode do završetka uviđaja učesnicima nije dozvoljeno uzimanje alkoholnih pića, odnosno psihoaktivnih supstanci (čl. 174). Zabrana ne čeka da ti je saopšti lice koje vrši uviđaj i ne pada time što je ispitivanje već sprovedeno.</li>
 <li><b>Povređeni, poginuli ili velika materijalna šteta:</b> obavesti policiju i <b>ostani</b> na mestu nezgode do dolaska policije i završetka uviđaja (čl. 168).</li>
@@ -402,7 +483,8 @@ CARDS['nezgoda'] = {
 </div>
 
 <div class="kPodH"><b class="kPodNaslov">Kolovoz: šta ostaje, šta se sklanja</b>
-<div style="display:flex;justify-content:center;margin:6px 0"><svg viewBox="0 0 480 196" style="max-width:480px;width:100%" role="img" aria-label="levo nezgoda sa povređenima poginulima ili velikom štetom: vozila ostaju na kolovozu, tragovi se obezbeđuju ako time ne ugrožavaš bezbednost saobraćaja, ljudi se sklanjaju sa kolovoza; desno samo manja materijalna šteta: vozila se sklanjaju sa kolovoza ako smetaju saobraćaju ili preti opasnost od novih nezgoda"><text x="120" y="14" font-size="9.5" font-weight="bold" text-anchor="middle" fill="currentColor">POVREĐENI, POGINULI ILI VELIKA ŠTETA</text><text x="360" y="14" font-size="9.5" font-weight="bold" text-anchor="middle" fill="currentColor">SAMO MANJA MATERIJALNA ŠTETA</text><rect x="8" y="62" width="224" height="60" fill="#9aa7b4" fill-opacity=".45"/><rect x="248" y="62" width="224" height="60" fill="#9aa7b4" fill-opacity=".45"/><line x1="160" y1="92" x2="232" y2="92" stroke="currentColor" stroke-opacity=".45" stroke-width="2" stroke-dasharray="10 8"/><line x1="248" y1="92" x2="472" y2="92" stroke="currentColor" stroke-opacity=".45" stroke-width="2" stroke-dasharray="10 8"/><rect x="34" y="80" width="46" height="22" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><g transform="rotate(20 82 91)"><rect x="82" y="80" width="46" height="22" rx="5" fill="none" stroke="currentColor" stroke-width="2"/></g><line x1="12" y1="97" x2="32" y2="94" stroke="currentColor" stroke-width="2" stroke-dasharray="5 4"/><line x1="12" y1="107" x2="32" y2="104" stroke="currentColor" stroke-width="2" stroke-dasharray="5 4"/><text x="30" y="117" font-size="10" text-anchor="middle" fill="currentColor">tragovi</text><path d="M148 84 L170 62" fill="none" stroke="currentColor" stroke-width="2"/><path d="M173 57 L168 68 L161 61 Z" fill="currentColor"/><circle cx="180" cy="34" r="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M180 39 L180 50 M172 43 L188 43 M180 50 L174 58 M180 50 L186 58" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="204" cy="34" r="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M204 39 L204 50 M196 43 L212 43 M204 50 L198 58 M204 50 L210 58" fill="none" stroke="currentColor" stroke-width="2"/><rect x="310" y="28" width="46" height="22" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="372" y="28" width="46" height="22" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M360 88 L360 60" fill="none" stroke="currentColor" stroke-width="2"/><path d="M360 54 L354 65 L366 65 Z" fill="currentColor"/><line x1="240" y1="8" x2="240" y2="190" stroke="currentColor" stroke-opacity=".35" stroke-width="1" stroke-dasharray="6 5"/><text x="120" y="140" font-size="9.5" text-anchor="middle" fill="currentColor">vozila stoje · ljudi se sklanjaju sa kolovoza</text><text x="120" y="155" font-size="9.5" text-anchor="middle" fill="currentColor">tragove obezbeđuješ AKO time ne ugrožavaš</text><text x="120" y="169" font-size="9.5" text-anchor="middle" fill="currentColor">bezbednost saobraćaja</text><text x="360" y="140" font-size="9.5" text-anchor="middle" fill="currentColor">vozilo sklanjaš AKO smeta saobraćaju</text><text x="360" y="155" font-size="9.5" text-anchor="middle" fill="currentColor">ili preti opasnost od novih nezgoda</text><text x="360" y="169" font-size="9.5" text-anchor="middle" fill="currentColor">Evropski izveštaj</text></svg></div>
+<div style="display:flex;justify-content:center;margin:6px 0"><svg viewBox="0 0 306 218" style="max-width:340px;width:100%" role="img" aria-label="nezgoda sa povređenima, poginulima ili velikom materijalnom štetom: vozila ostaju na kolovozu, tragove obezbeđuješ ako time ne ugrožavaš bezbednost saobraćaja, a ljude upozoravaš da se sklone sa kolovoza"><text x="153" y="16" font-size="12.5" font-weight="bold" text-anchor="middle" fill="currentColor">POVREĐENI, POGINULI</text><text x="153" y="36" font-size="12.5" font-weight="bold" text-anchor="middle" fill="currentColor">ILI VELIKA MATERIJALNA ŠTETA</text><circle cx="230" cy="52" r="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M230 57 L230 68 M222 61 L238 61 M230 68 L224 78 M230 68 L236 78" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="262" cy="52" r="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M262 57 L262 68 M254 61 L270 61 M262 68 L256 78 M262 68 L268 78" fill="none" stroke="currentColor" stroke-width="2"/><rect x="6" y="86" width="294" height="52" fill="#9aa7b4" fill-opacity=".45"/><line x1="6" y1="112" x2="300" y2="112" stroke="currentColor" stroke-opacity=".45" stroke-width="2" stroke-dasharray="10 8"/><rect x="44" y="98" width="46" height="22" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><g transform="rotate(18 110 109)"><rect x="110" y="98" width="46" height="22" rx="5" fill="none" stroke="currentColor" stroke-width="2"/></g><line x1="10" y1="124" x2="38" y2="118" stroke="currentColor" stroke-width="2" stroke-dasharray="5 4"/><line x1="10" y1="134" x2="38" y2="128" stroke="currentColor" stroke-width="2" stroke-dasharray="5 4"/><text x="26" y="152" font-size="12" text-anchor="middle" fill="currentColor">tragovi</text><path d="M198 98 L216 84" fill="none" stroke="currentColor" stroke-width="2"/><path d="M224 78 L218 89 L212 81 Z" fill="currentColor"/><text x="153" y="174" font-size="12" text-anchor="middle" fill="currentColor">vozila stoje · ljudi se sklanjaju sa kolovoza</text><text x="153" y="192" font-size="12" text-anchor="middle" fill="currentColor">tragove obezbeđuješ AKO time ne ugrožavaš</text><text x="153" y="210" font-size="12" text-anchor="middle" fill="currentColor">bezbednost saobraćaja</text></svg></div>
+<div style="display:flex;justify-content:center;margin:6px 0"><svg viewBox="0 0 306 186" style="max-width:340px;width:100%" role="img" aria-label="nezgoda sa samo manjom materijalnom štetom: vozila se sklanjaju sa kolovoza ako smetaju saobraćaju ili preti opasnost od novih nezgoda, a učesnici popunjavaju Evropski izveštaj"><text x="153" y="16" font-size="12.5" font-weight="bold" text-anchor="middle" fill="currentColor">SAMO MANJA MATERIJALNA ŠTETA</text><rect x="52" y="32" width="46" height="22" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="188" y="32" width="46" height="22" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="6" y="72" width="294" height="52" fill="#9aa7b4" fill-opacity=".45"/><line x1="6" y1="98" x2="300" y2="98" stroke="currentColor" stroke-opacity=".45" stroke-width="2" stroke-dasharray="10 8"/><rect x="52" y="86" width="46" height="22" rx="5" fill="none" stroke="currentColor" stroke-opacity=".4" stroke-width="2" stroke-dasharray="5 4"/><rect x="188" y="86" width="46" height="22" rx="5" fill="none" stroke="currentColor" stroke-opacity=".4" stroke-width="2" stroke-dasharray="5 4"/><line x1="75" y1="84" x2="75" y2="66" stroke="currentColor" stroke-width="2"/><path d="M75 56 L69 68 L81 68 Z" fill="currentColor"/><line x1="211" y1="84" x2="211" y2="66" stroke="currentColor" stroke-width="2"/><path d="M211 56 L205 68 L217 68 Z" fill="currentColor"/><text x="153" y="142" font-size="12" text-anchor="middle" fill="currentColor">vozilo sklanjaš AKO smeta saobraćaju</text><text x="153" y="160" font-size="12" text-anchor="middle" fill="currentColor">ili preti opasnost od novih nezgoda</text><text x="153" y="178" font-size="12" text-anchor="middle" fill="currentColor" fill-opacity=".7">učesnici popunjavaju Evropski izveštaj</text></svg></div>
 <p><b>Povređeni, poginuli ili velika materijalna šteta (čl. 168) — dužan si da:</b></p>
 <ul>
 <li><b>ukažeš pomoć povređenima</b>, odnosno prvu pomoć ili medicinsku pomoć — u skladu sa svojim znanjima, sposobnostima i mogućnostima;</li>
@@ -423,6 +505,7 @@ CARDS['nezgoda'] = {
 </div>
 
 <div class="kPodH"><b class="kPodNaslov">Ako samo naiđeš na nezgodu (nisi učesnik)</b>
+<div style="display:flex;justify-content:center;margin:6px 0"><svg viewBox="0 0 306 164" style="max-width:340px;width:100%" role="img" aria-label="ako naiđeš na nezgodu, odmah obaveštavaš policiju odnosno službu hitne medicinske pomoći; porodica povređenog, upravljač puta i služba pomoći na putu nisu tačan odgovor"><rect x="10" y="28" width="32" height="54" rx="6" fill="none" stroke="currentColor" stroke-width="2"/><line x1="16" y1="38" x2="36" y2="38" stroke="currentColor" stroke-width="2"/><circle cx="26" cy="74" r="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M46 46 L60 46 L60 32 L74 32" fill="none" stroke="currentColor" stroke-width="2"/><path d="M72 27 L82 32 L72 37 Z" fill="currentColor"/><path d="M46 64 L60 64 L60 94 L74 94" fill="none" stroke="currentColor" stroke-width="2"/><path d="M72 89 L82 94 L72 99 Z" fill="currentColor"/><rect x="84" y="18" width="214" height="28" rx="5" fill="none" stroke="#1f7a3f" stroke-width="2"/><text x="191" y="37" font-size="12" text-anchor="middle" fill="currentColor">POLICIJA</text><rect x="84" y="70" width="214" height="48" rx="5" fill="none" stroke="#1f7a3f" stroke-width="2"/><text x="191" y="90" font-size="12" text-anchor="middle" fill="currentColor">SLUŽBA HITNE</text><text x="191" y="108" font-size="12" text-anchor="middle" fill="currentColor">MEDICINSKE POMOĆI</text><rect x="6" y="130" width="292" height="30" rx="5" fill="none" stroke="#c0392b" stroke-width="2"/><path d="M14 137 L30 153 M30 137 L14 153" stroke="#c0392b" stroke-width="2"/><text x="168" y="150" font-size="12" text-anchor="middle" fill="currentColor">porodica · upravljač puta · pomoć na putu</text></svg></div>
 <ul>
 <li>Odmah obavesti <b>policiju, odnosno službu hitne medicinske pomoći</b> — ne porodicu povređenog, ne upravljača puta, ne službu pomoći na putu.</li>
 <li>Pruži pomoć <b>u skladu sa svojim znanjima, sposobnostima i mogućnostima</b> i po potrebi prevezi povređenog do najbliže zdravstvene ustanove.</li>
@@ -553,25 +636,24 @@ CARDS['dozvole'] = {
 <!-- ==== dopuna 07.09.2026 (tura 4): crtež + isto to rečima ==== -->
 <div class="kPodH"><b class="kPodNaslov">A dozvola: šta smeš, a šta ne</b>
 <div style="display:flex;justify-content:center;margin:6px 0">
-<svg viewBox="0 0 330 166" style="max-width:340px;width:100%" role="img" aria-label="vozačka dozvola A kategorije: smeš moped, motocikl i teški tricikl; ne smeš teški četvorocikl, koji ide uz B1 odnosno B kategoriju, ni radnu mašinu, koja ide uz F kategoriju">
-<rect x="112" y="4" width="106" height="32" rx="6" stroke="currentColor" fill="none"/>
-<text x="165" y="18" font-size="8.5" text-anchor="middle" fill="currentColor">VOZAČKA DOZVOLA</text>
-<text x="165" y="31" font-size="12" font-weight="600" text-anchor="middle" fill="currentColor">kategorija A</text>
-<path d="M165 36 L165 48 M82 48 L248 48 M82 48 L82 56 M248 48 L248 56" stroke="currentColor" stroke-width="1.5" fill="none"/>
-<path d="M77 56 L82 64 L87 56 Z" fill="#1f7a3f"/>
-<path d="M243 56 L248 64 L253 56 Z" fill="#c0392b"/>
-<text x="82" y="80" font-size="11" font-weight="600" text-anchor="middle" fill="#1f7a3f">SMEŠ</text>
-<text x="248" y="80" font-size="11" font-weight="600" text-anchor="middle" fill="#c0392b">NE SMEŠ</text>
-<path d="M165 70 L165 160" stroke="currentColor" stroke-dasharray="3 4"/>
-<g stroke="#1f7a3f" stroke-width="2" fill="none"><path d="M26 100 l5 6 l10 -13"/><path d="M26 126 l5 6 l10 -13"/><path d="M26 152 l5 6 l10 -13"/></g>
-<text x="46" y="104" font-size="10.5" fill="currentColor">moped</text>
-<text x="46" y="130" font-size="10.5" fill="currentColor">motocikl</text>
-<text x="46" y="156" font-size="10.5" fill="currentColor">teški tricikl</text>
-<g stroke="#c0392b" stroke-width="2"><path d="M178 96 L190 108 M190 96 L178 108"/><path d="M178 128 L190 140 M190 128 L178 140"/></g>
-<text x="196" y="104" font-size="10.5" fill="currentColor">teški četvorocikl</text>
-<text x="196" y="118" font-size="9" fill="currentColor">ide uz B1, odnosno B</text>
-<text x="196" y="136" font-size="10.5" fill="currentColor">radna mašina</text>
-<text x="196" y="150" font-size="9" fill="currentColor">ide uz F kategoriju</text>
+<svg viewBox="0 0 306 278" style="max-width:330px;width:100%" role="img" aria-label="vozačka dozvola A kategorije: smeš moped, motocikl i teški tricikl; ne smeš teški četvorocikl, koji ide uz B1 odnosno B kategoriju, ni radnu mašinu, koja ide uz F kategoriju">
+<rect x="86" y="6" width="134" height="44" rx="6" stroke="currentColor" fill="none"/>
+<text x="153" y="25" font-size="11" text-anchor="middle" fill="currentColor">VOZAČKA DOZVOLA</text>
+<text x="153" y="43" font-size="13" font-weight="600" text-anchor="middle" fill="currentColor">kategorija A</text>
+<path d="M153 50 L153 62" stroke="currentColor" stroke-width="1.5"/>
+<rect x="6" y="64" width="294" height="94" rx="8" stroke="#1f7a3f" fill="none"/>
+<text x="18" y="84" font-size="13" font-weight="600" fill="#1f7a3f">SMEŠ</text>
+<g stroke="#1f7a3f" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M18 103 l5 6 l10 -13"/><path d="M18 125 l5 6 l10 -13"/><path d="M18 147 l5 6 l10 -13"/></g>
+<text x="42" y="108" font-size="12.5" fill="currentColor">moped</text>
+<text x="42" y="130" font-size="12.5" fill="currentColor">motocikl</text>
+<text x="42" y="152" font-size="12.5" fill="currentColor">teški tricikl</text>
+<rect x="6" y="168" width="294" height="104" rx="8" stroke="#c0392b" fill="none"/>
+<text x="18" y="188" font-size="13" font-weight="600" fill="#c0392b">NE SMEŠ</text>
+<g stroke="#c0392b" stroke-width="2.5" stroke-linecap="round"><path d="M19 202 L31 214 M31 202 L19 214"/><path d="M19 238 L31 250 M31 238 L19 250"/></g>
+<text x="42" y="208" font-size="12.5" fill="currentColor">teški četvorocikl</text>
+<text x="42" y="224" font-size="11" fill="currentColor">ide uz B1, odnosno B</text>
+<text x="42" y="244" font-size="12.5" fill="currentColor">radna mašina</text>
+<text x="42" y="260" font-size="11" fill="currentColor">ide uz F kategoriju</text>
 </svg>
 </div>
 <p><b>Rečima:</b> sa dozvolom A kategorije smeš <b>moped, motocikl i teški tricikl</b>. <b>Teški četvorocikl</b> ne smeš — četvorocikli idu uz B1, odnosno B kategoriju. <b>Radnom mašinom</b> sme da upravlja samo vozač sa F kategorijom (čl. 195). Pitanje se rešava po nazivu vozila, ne po izgledu — uči spisak.</p>
@@ -580,20 +662,24 @@ CARDS['dozvole'] = {
 
 <div class="kPodH"><b class="kPodNaslov">Kad MUP oduzima dozvolu (čl. 197)</b>
 <div style="display:flex;justify-content:center;margin:6px 0">
-<svg viewBox="0 0 330 206" style="max-width:340px;width:100%" role="img" aria-label="četiri stanja vode do istog ishoda: najmanje osamnaest kaznenih poena, odnosno devet za probnu dozvolu; jedna pravnosnažna presuda za krivično delo protiv bezbednosti javnog saobraćaja sa smrtnom posledicom; više od jedne takve presude u pet godina za teške telesne povrede; više od jedne takve presude u tri godine za telesne povrede ili imovinsku štetu. U svakom od ta četiri slučaja MUP oduzima vozačku dozvolu.">
-<text x="6" y="28" font-size="10" font-weight="600" fill="currentColor">KAZNENI POENI</text>
-<text x="124" y="28" font-size="10" fill="currentColor">najmanje 18 (probna: 9)</text>
-<text x="6" y="62" font-size="10" font-weight="600" fill="currentColor">SMRT LICA</text>
-<text x="124" y="62" font-size="10" fill="currentColor">dovoljna 1 presuda</text>
-<text x="6" y="96" font-size="10" font-weight="600" fill="currentColor">TEŠKE POVREDE</text>
-<text x="124" y="96" font-size="10" fill="currentColor">više od 1 u 5 godina</text>
-<text x="6" y="130" font-size="10" font-weight="600" fill="currentColor">POVREDE / ŠTETA</text>
-<text x="124" y="130" font-size="10" fill="currentColor">više od 1 u 3 godine</text>
-<path d="M244 24 L252 24 M244 58 L252 58 M244 92 L252 92 M244 126 L252 126" stroke="currentColor" fill="none"/>
-<path d="M252 24 L252 148 L166 148 L166 156" stroke="currentColor" stroke-width="2" fill="none"/>
-<path d="M161 154 L166 164 L171 154 Z" fill="currentColor"/>
-<rect x="26" y="168" width="280" height="30" rx="6" stroke="currentColor" fill="none"/>
-<text x="166" y="187" font-size="11" font-weight="600" text-anchor="middle" fill="currentColor">MUP ODUZIMA VOZAČKU DOZVOLU</text>
+<svg viewBox="0 0 306 212" style="max-width:330px;width:100%" role="img" aria-label="četiri stanja vode do istog ishoda: najmanje osamnaest kaznenih poena, odnosno devet za probnu dozvolu; jedna pravnosnažna presuda za krivično delo protiv bezbednosti javnog saobraćaja sa smrtnom posledicom; više od jedne takve presude u pet godina za teške telesne povrede; više od jedne takve presude u tri godine za telesne povrede ili imovinsku štetu. U svakom od ta četiri slučaja MUP oduzima vozačku dozvolu.">
+<rect x="6" y="4" width="294" height="28" rx="6" stroke="currentColor" fill="none"/>
+<text x="16" y="23" font-size="12" font-weight="600" fill="currentColor">KAZNENI POENI</text>
+<text x="290" y="23" font-size="12" text-anchor="end" fill="currentColor">najmanje 18 (probna: 9)</text>
+<rect x="6" y="38" width="294" height="28" rx="6" stroke="currentColor" fill="none"/>
+<text x="16" y="57" font-size="12" font-weight="600" fill="currentColor">SMRT LICA</text>
+<text x="290" y="57" font-size="12" text-anchor="end" fill="currentColor">dovoljna 1 presuda</text>
+<rect x="6" y="72" width="294" height="28" rx="6" stroke="currentColor" fill="none"/>
+<text x="16" y="91" font-size="12" font-weight="600" fill="currentColor">TEŠKE POVREDE</text>
+<text x="290" y="91" font-size="12" text-anchor="end" fill="currentColor">više od 1 u 5 godina</text>
+<rect x="6" y="106" width="294" height="28" rx="6" stroke="currentColor" fill="none"/>
+<text x="16" y="125" font-size="12" font-weight="600" fill="currentColor">POVREDE / ŠTETA</text>
+<text x="290" y="125" font-size="12" text-anchor="end" fill="currentColor">više od 1 u 3 godine</text>
+<path d="M153 136 L153 150" stroke="currentColor" stroke-width="2"/>
+<path d="M148 148 L153 158 L158 148 Z" fill="currentColor"/>
+<rect x="6" y="162" width="294" height="46" rx="8" stroke="currentColor" stroke-width="2" fill="none"/>
+<text x="153" y="181" font-size="11" text-anchor="middle" fill="currentColor">u svakom od ova četiri slučaja</text>
+<text x="153" y="200" font-size="13" font-weight="600" text-anchor="middle" fill="currentColor">MUP ODUZIMA VOZAČKU DOZVOLU</text>
 </svg>
 </div>
 <table>
@@ -609,19 +695,21 @@ CARDS['dozvole'] = {
 
 <div class="kPodH"><b class="kPodNaslov">Kazneni poeni: odakle se meri 24 meseca</b>
 <div style="display:flex;justify-content:center;margin:6px 0">
-<svg viewBox="0 0 320 104" style="max-width:340px;width:100%" role="img" aria-label="vremenska traka: prekršaj, zatim pravnosnažnost odluke kao početak roka, pa 24 meseca do brisanja kaznenih poena">
-<path d="M14 52 L294 52" stroke="currentColor"/>
-<path d="M292 47 L304 52 L292 57 Z" fill="currentColor"/>
-<circle cx="48" cy="52" r="4" fill="currentColor"/>
-<text x="48" y="38" font-size="10" text-anchor="middle" fill="currentColor">prekršaj</text>
-<text x="48" y="72" font-size="9" text-anchor="middle" fill="#c0392b">rok NE kreće ovde</text>
-<path d="M122 32 L122 62" stroke="#1f7a3f" stroke-width="2"/>
-<text x="122" y="24" font-size="10" text-anchor="middle" fill="currentColor">pravnosnažna odluka</text>
-<text x="122" y="72" font-size="9" text-anchor="middle" fill="#1f7a3f">START</text>
-<path d="M122 78 L122 86 L252 86 L252 78" stroke="currentColor" fill="none"/>
-<text x="187" y="98" font-size="10.5" text-anchor="middle" fill="currentColor">24 meseca</text>
-<path d="M252 44 L252 60" stroke="currentColor" stroke-width="2"/>
-<text x="252" y="38" font-size="10" text-anchor="middle" fill="currentColor">poeni se brišu</text>
+<svg viewBox="0 0 306 196" style="max-width:330px;width:100%" role="img" aria-label="vremenska traka odozgo nadole: prekršaj, zatim pravnosnažnost odluke kao početak roka, pa 24 meseca do brisanja kaznenih poena">
+<path d="M30 22 L30 178" stroke="currentColor"/>
+<path d="M25 176 L30 190 L35 176 Z" fill="currentColor"/>
+<path d="M30 96 L30 170" stroke="currentColor" stroke-width="5"/>
+<circle cx="30" cy="44" r="5" fill="currentColor"/>
+<text x="46" y="41" font-size="12.5" fill="currentColor">prekršaj</text>
+<text x="46" y="59" font-size="11" fill="#c0392b">rok NE kreće ovde</text>
+<path d="M18 96 L42 96" stroke="#1f7a3f" stroke-width="4"/>
+<text x="48" y="93" font-size="12.5" fill="currentColor">pravnosnažna odluka</text>
+<text x="48" y="111" font-size="11" font-weight="600" fill="#1f7a3f">START</text>
+<path d="M30 134 L54 134" stroke="currentColor" stroke-dasharray="3 3"/>
+<rect x="54" y="120" width="196" height="28" rx="6" stroke="currentColor" fill="none"/>
+<text x="152" y="139" font-size="13" font-weight="600" text-anchor="middle" fill="currentColor">24 meseca</text>
+<path d="M18 170 L42 170" stroke="currentColor" stroke-width="4"/>
+<text x="48" y="167" font-size="12.5" fill="currentColor">poeni se brišu</text>
 </svg>
 </div>
 <p><b>Rečima:</b> poeni se brišu <b>nakon isteka 24 meseca od dana pravnosnažnosti odluke o prekršaju</b> (čl. 198) — a ne od dana kada je prekršaj izvršen. Same poene ne izriče MUP: izriču se odlukom kojom si kažnjen za prekršaj, a jedinica MUP-a ih samo vodi u evidenciji.</p>
@@ -927,7 +1015,7 @@ CARDS['iskljucenje'] = {
 <!-- ==== dopuna 07.09.2026 (tura 4): crtež + isto to rečima ==== -->
 <div class="kPodH"><b class="kPodNaslov">VOZAČ ili VOZILO — dve različite mere</b>
 <div style="display:flex;justify-content:center;margin:6px 0">
-<svg viewBox="0 0 520 180" style="max-width:520px;width:100%" role="img" aria-label="Levo: isključen vozač — čovek je crvenom pregradom odvojen od motocikla i ne sme da upravlja. Desno: isključeno vozilo — motociklu se skidaju registarske tablice."><text x="128" y="16" text-anchor="middle" font-size="12" fill="currentColor">VOZAČ (čl. 279)</text><line x1="12" y1="150" x2="248" y2="150" stroke="currentColor" stroke-width="2"/><circle cx="40" cy="62" r="10" fill="none" stroke="currentColor" stroke-width="2"/><line x1="40" y1="72" x2="40" y2="105" stroke="currentColor" stroke-width="2"/><line x1="24" y1="86" x2="56" y2="86" stroke="currentColor" stroke-width="2"/><line x1="40" y1="105" x2="30" y2="149" stroke="currentColor" stroke-width="2"/><line x1="40" y1="105" x2="50" y2="149" stroke="currentColor" stroke-width="2"/><rect x="72" y="48" width="8" height="102" fill="#c0392b"/><circle cx="130" cy="132" r="15" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="196" cy="132" r="15" fill="none" stroke="currentColor" stroke-width="2"/><path d="M130 132 L152 108 L180 108 L196 132" fill="none" stroke="currentColor" stroke-width="2"/><line x1="152" y1="108" x2="143" y2="90" stroke="currentColor" stroke-width="2"/><line x1="134" y1="86" x2="154" y2="93" stroke="currentColor" stroke-width="2"/><rect x="160" y="100" width="28" height="6" rx="3" fill="currentColor"/><text x="128" y="170" text-anchor="middle" font-size="11" fill="currentColor">čovek ne sme da upravlja</text><line x1="260" y1="24" x2="260" y2="156" stroke="currentColor" stroke-width="1" stroke-dasharray="5 5"/><text x="392" y="16" text-anchor="middle" font-size="12" fill="currentColor">VOZILO (čl. 289)</text><line x1="276" y1="150" x2="512" y2="150" stroke="currentColor" stroke-width="2"/><circle cx="320" cy="132" r="15" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="386" cy="132" r="15" fill="none" stroke="currentColor" stroke-width="2"/><path d="M320 132 L342 108 L370 108 L386 132" fill="none" stroke="currentColor" stroke-width="2"/><line x1="342" y1="108" x2="333" y2="90" stroke="currentColor" stroke-width="2"/><line x1="324" y1="86" x2="344" y2="93" stroke="currentColor" stroke-width="2"/><rect x="350" y="100" width="28" height="6" rx="3" fill="currentColor"/><rect x="396" y="116" width="32" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 3"/><path d="M432 110 L458 86" fill="none" stroke="#c0392b" stroke-width="3"/><polygon points="464,80 460,93 452,86" fill="#c0392b"/><rect x="452" y="50" width="48" height="20" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><rect x="454" y="52" width="8" height="16" fill="#2c6aa0"/><text x="392" y="170" text-anchor="middle" font-size="11" fill="currentColor">skidaju se registarske tablice</text></svg>
+<svg viewBox="0 0 320 168" style="max-width:400px;width:100%" role="img" aria-label="Levo: isključen vozač — čovek je crvenom pregradom odvojen od motocikla i ne sme da upravlja. Desno: isključeno vozilo — motociklu se skidaju registarske tablice."><text x="80" y="15" text-anchor="middle" font-size="13" fill="currentColor">VOZAČ (čl. 279)</text><line x1="6" y1="112" x2="154" y2="112" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="48" r="9" fill="none" stroke="currentColor" stroke-width="2"/><line x1="24" y1="57" x2="24" y2="80" stroke="currentColor" stroke-width="2"/><line x1="12" y1="66" x2="36" y2="66" stroke="currentColor" stroke-width="2"/><line x1="24" y1="80" x2="17" y2="111" stroke="currentColor" stroke-width="2"/><line x1="24" y1="80" x2="31" y2="111" stroke="currentColor" stroke-width="2"/><rect x="44" y="34" width="7" height="78" fill="#c0392b"/><circle cx="80" cy="98" r="12" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="128" cy="98" r="12" fill="none" stroke="currentColor" stroke-width="2"/><path d="M80 98 L96 80 L118 80 L128 98" fill="none" stroke="currentColor" stroke-width="2"/><line x1="96" y1="80" x2="90" y2="66" stroke="currentColor" stroke-width="2"/><line x1="82" y1="62" x2="98" y2="69" stroke="currentColor" stroke-width="2"/><rect x="104" y="74" width="22" height="5" rx="2" fill="currentColor"/><text x="80" y="134" text-anchor="middle" font-size="13" fill="currentColor">čovek ne sme</text><text x="80" y="152" text-anchor="middle" font-size="13" fill="currentColor">da upravlja</text><line x1="160" y1="24" x2="160" y2="156" stroke="currentColor" stroke-width="1" stroke-dasharray="5 5"/><text x="241" y="15" text-anchor="middle" font-size="13" fill="currentColor">VOZILO (čl. 289)</text><line x1="166" y1="112" x2="314" y2="112" stroke="currentColor" stroke-width="2"/><circle cx="196" cy="98" r="12" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="244" cy="98" r="12" fill="none" stroke="currentColor" stroke-width="2"/><path d="M196 98 L212 80 L234 80 L244 98" fill="none" stroke="currentColor" stroke-width="2"/><line x1="212" y1="80" x2="206" y2="66" stroke="currentColor" stroke-width="2"/><line x1="198" y1="62" x2="214" y2="69" stroke="currentColor" stroke-width="2"/><rect x="220" y="74" width="22" height="5" rx="2" fill="currentColor"/><rect x="258" y="84" width="24" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 3"/><path d="M284 80 L296 64" fill="none" stroke="#c0392b" stroke-width="3"/><polygon points="301,57 297,70 290,63" fill="#c0392b"/><rect x="266" y="26" width="44" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><rect x="268" y="28" width="7" height="14" fill="#2c6aa0"/><text x="241" y="134" text-anchor="middle" font-size="13" fill="currentColor">skidaju se</text><text x="241" y="152" text-anchor="middle" font-size="13" fill="currentColor">registarske tablice</text></svg>
 </div>
 <p class="mut" style="text-align:center;font-size:.82rem">levo: mera pogađa ČOVEKA · desno: mera pogađa VOZILO</p>
 <p><b>Isto to rečima:</b> isključenje VOZAČA (čl. 279) pogađa čoveka — dok mera traje ne smeš da upravljaš, a ako te zateknu za volanom u toku isključenja, to je novi razlog za isključenje vozača (#8556, #8557). Isključenje VOZILA (čl. 289) pogađa mašinu: vozilu se oduzimaju REGISTARSKE tablice, uz potvrdu o oduzimanju — ne saobraćajna i ne vozačka dozvola (#8601). Svako pitanje prvo prelomi ovako: <b>pogađa li ovo čoveka ili mašinu?</b></p>
@@ -972,7 +1060,7 @@ CARDS['iskljucenje'] = {
 
 <div class="kPodH"><b class="kPodNaslov">Alkohol: test, osporavanje, zadržavanje</b>
 <div style="display:flex;justify-content:center;margin:6px 0">
-<svg viewBox="0 0 520 150" style="max-width:520px;width:100%" role="img" aria-label="Vozač pod dejstvom alkohola: sa sadržajem manjim od 1,20 mg per ml zadržava se samo ako preti da nastavi vožnju, sa sadržajem većim od 1,20 zadržava se obavezno do otrežnjenja najduže 12 sati. Odbijanje ispitivanja povlači isključenje i obavezno zadržavanje. Donja granica pojma pod dejstvom alkohola nije prikazana jer je propisi ne daju."><defs><linearGradient id="alkPodDejstvom" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#e8b000" stop-opacity="0"/><stop offset="0.3" stop-color="#e8b000" stop-opacity="1"/><stop offset="1" stop-color="#e8b000" stop-opacity="1"/></linearGradient></defs><rect x="268" y="2" width="248" height="22" rx="5" fill="none" stroke="#c0392b" stroke-width="2"/><text x="392" y="17" text-anchor="middle" font-size="11" fill="#c0392b">ODBIJE ISPITIVANJE → isto: obavezno</text><path d="M392 24 L392 50" stroke="#c0392b" stroke-width="2"/><polygon points="392,58 386,46 398,46" fill="#c0392b"/><rect x="30" y="60" width="250" height="26" fill="url(#alkPodDejstvom)"/><rect x="286" y="60" width="200" height="26" fill="#c0392b"/><line x1="282" y1="52" x2="282" y2="94" stroke="currentColor" stroke-width="2"/><text x="282" y="46" text-anchor="middle" font-size="12" fill="currentColor">1,20</text><text x="500" y="80" text-anchor="middle" font-size="10" fill="currentColor">mg/ml</text><line x1="238" y1="58" x2="238" y2="88" stroke="#2a333d" stroke-width="1"/><text x="238" y="52" text-anchor="middle" font-size="10" fill="currentColor">npr. 1,00</text><text x="180" y="78" text-anchor="middle" font-size="11" fill="#2a333d">POD DEJSTVOM ALKOHOLA</text><text x="150" y="104" text-anchor="middle" font-size="11" fill="currentColor">MANJI od 1,20: zadržan SAMO ako</text><text x="150" y="118" text-anchor="middle" font-size="11" fill="currentColor">preti da nastavi vožnju posle isključenja</text><text x="386" y="104" text-anchor="middle" font-size="11" fill="currentColor">VEĆI od 1,20: OBAVEZNO zadržan</text><text x="386" y="118" text-anchor="middle" font-size="11" fill="currentColor">do otrežnjenja, najduže 12 h</text><text x="260" y="140" text-anchor="middle" font-size="10" fill="currentColor">žuta traka važi samo za vozača POD DEJSTVOM alkohola</text></svg>
+<svg viewBox="0 0 320 300" style="max-width:400px;width:100%" role="img" aria-label="Vozač pod dejstvom alkohola: sa sadržajem manjim od 1,20 mg per ml zadržava se samo ako preti da nastavi vožnju, sa sadržajem većim od 1,20 zadržava se obavezno do otrežnjenja najduže 12 sati. Odbijanje ispitivanja povlači isto obavezno zadržavanje. Donja granica pojma pod dejstvom alkohola nije prikazana jer je propisi ne daju."><defs><linearGradient id="alkPodDejstvom" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#e8b000" stop-opacity="0"/><stop offset="0.12" stop-color="#e8b000" stop-opacity="1"/><stop offset="1" stop-color="#e8b000" stop-opacity="1"/></linearGradient></defs><rect x="10" y="3" width="300" height="46" rx="5" fill="none" stroke="#c0392b" stroke-width="2"/><text x="160" y="22" text-anchor="middle" font-size="13" fill="#c0392b">ODBIJE ISPITIVANJE →</text><text x="160" y="41" text-anchor="middle" font-size="13" fill="#c0392b">isto: obavezno zadržavanje</text><path d="M255 49 L255 66" stroke="#c0392b" stroke-width="2"/><polygon points="255,77 249,64 261,64" fill="#c0392b"/><rect x="14" y="82" width="194" height="28" fill="url(#alkPodDejstvom)"/><rect x="212" y="82" width="94" height="28" fill="#c0392b"/><line x1="210" y1="74" x2="210" y2="118" stroke="currentColor" stroke-width="2"/><text x="210" y="70" text-anchor="middle" font-size="14" fill="currentColor">1,20</text><text x="120" y="101" text-anchor="middle" font-size="13" fill="#2a333d">POD DEJSTVOM ALKOHOLA</text><text x="286" y="130" text-anchor="middle" font-size="12" fill="currentColor">mg/ml</text><rect x="14" y="142" width="14" height="14" fill="#e8b000"/><text x="36" y="154" font-size="13" fill="currentColor">MANJI od 1,20 (npr. 1,00):</text><text x="36" y="172" font-size="13" fill="currentColor">zadržan SAMO ako preti da</text><text x="36" y="190" font-size="13" fill="currentColor">nastavi vožnju posle isključenja</text><rect x="14" y="206" width="14" height="14" fill="#c0392b"/><text x="36" y="218" font-size="13" fill="currentColor">VEĆI od 1,20:</text><text x="36" y="236" font-size="13" fill="currentColor">OBAVEZNO zadržan do otrežnjenja,</text><text x="36" y="254" font-size="13" fill="currentColor">najduže 12 h</text><text x="160" y="278" text-anchor="middle" font-size="12" fill="currentColor">žuta traka važi samo za vozača</text><text x="160" y="295" text-anchor="middle" font-size="12" fill="currentColor">POD DEJSTVOM alkohola</text></svg>
 </div>
 <p><b>Isto to rečima:</b> vozač koji je POD DEJSTVOM alkohola sa sadržajem u krvi VEĆIM od 1,20 mg/ml zadržava se OBAVEZNO, do otrežnjenja, najduže 12 sati (#8569). Vozač koji je POD DEJSTVOM alkohola, a sadržaj mu je MANJI od 1,20 mg/ml (recimo 1,00) — može biti zadržan SAMO ako izražava nameru, odnosno ako postoji opasnost da će nastaviti da upravlja vozilom pošto je isključen; nije uslov da je izazvao nezgodu i nema obaveznog zadržavanja (#8571, #8572). Uslov „pod dejstvom alkohola" je deo pravila: obe rečenice polaze od njega. Ko ODBIJE ispitivanje: isključenje iz saobraćaja <b>i obavezno zadržavanje</b> — ne „samo isključenje", i ne sprovođenje na analizu krvi (#8570).</p>
 <p><b>Test i osporavanje:</b> po nalogu ovlašćenog lica dužan si da postupiš BEZ ODLAGANJA i omogućiš ispitivanje (alkometar i dr.); obaveza je bezuslovna — ne oslobađa te ni to što tražiš analizu krvi, ni to što prekineš vožnju (#8559, #8560). Analizu krvi, odnosno krvi i urina tražiš o SOPSTVENOM trošku i samo ako OSPORAVAŠ rezultat već izvršenog ispitivanja (#8561), i to u PISANOJ formi, NA LICU MESTA, u zapisnik u kome su utvrđeni rezultati — ne usmeno i ne „u roku od 24 sata" (#8562). <b>Ali pazi:</b> i sam zahtev za analizu krvi, odnosno urina jeste razlog da te privremeno isključe iz saobraćaja (#8553; stavka 4 liste sa vrha kartice) — traženje analize nije bezopasan potez, nego pravni lek koji te istovremeno skida sa puta.</p>
@@ -992,7 +1080,7 @@ CARDS['iskljucenje'] = {
 
 <div class="kPodH"><b class="kPodNaslov">Premeštanje, uklanjanje i ko šta plaća</b>
 <div style="display:flex;justify-content:center;margin:6px 0">
-<svg viewBox="0 0 520 165" style="max-width:520px;width:100%" role="img" aria-label="Premeštanje: levo isključeno vozilo stoji na kolovozu tako da saobraćaj ne može da prođe, pa sme da se premesti; desno isto takvo vozilo stoji tako da saobraćaj slobodno prolazi, pa se ne premešta. Kriterijum je ometanje saobraćaja, a ne mesto na kome vozilo stoji."><text x="260" y="14" text-anchor="middle" font-size="12" fill="currentColor">PREMEŠTANJE: pitanje je da li vozilo OMETA saobraćaj</text><rect x="6" y="40" width="244" height="38" fill="#9aa7b4"/><rect x="90" y="44" width="70" height="18" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="106" cy="64" r="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="146" cy="64" r="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M14 58 L66 58" fill="none" stroke="#c0392b" stroke-width="3"/><line x1="72" y1="50" x2="88" y2="66" stroke="#c0392b" stroke-width="3"/><line x1="88" y1="50" x2="72" y2="66" stroke="#c0392b" stroke-width="3"/><text x="128" y="100" text-anchor="middle" font-size="11" fill="currentColor">saobraćaj ne može da prođe</text><text x="128" y="120" text-anchor="middle" font-size="11" fill="currentColor">OMETA →</text><text x="128" y="134" text-anchor="middle" font-size="11" fill="currentColor">sme da se premesti</text><rect x="270" y="30" width="244" height="66" fill="#9aa7b4"/><line x1="272" y1="68" x2="512" y2="68" stroke="#fff" stroke-width="2" stroke-dasharray="12 10"/><rect x="354" y="36" width="70" height="18" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="370" cy="56" r="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="410" cy="56" r="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M280 84 L492 84" fill="none" stroke="#1f7a3f" stroke-width="3"/><polygon points="504,84 490,78 490,90" fill="#1f7a3f"/><text x="392" y="112" text-anchor="middle" font-size="11" fill="currentColor">saobraćaj prolazi</text><text x="392" y="126" text-anchor="middle" font-size="11" fill="currentColor">NE OMETA → ne premešta se</text><text x="260" y="156" text-anchor="middle" font-size="10" fill="currentColor">isto vozilo na kolovozu — razlikuje se samo to da li saobraćaj može da prođe</text></svg>
+<svg viewBox="0 0 320 304" style="max-width:400px;width:100%" role="img" aria-label="Premeštanje: gore isključeno vozilo stoji na kolovozu tako da saobraćaj ne može da prođe, pa sme da se premesti; dole isto takvo vozilo stoji tako da saobraćaj slobodno prolazi, pa se ne premešta. Kriterijum je ometanje saobraćaja, a ne mesto na kome vozilo stoji."><text x="160" y="15" text-anchor="middle" font-size="13" fill="currentColor">PREMEŠTANJE: pitanje je da li</text><text x="160" y="33" text-anchor="middle" font-size="13" fill="currentColor">vozilo OMETA saobraćaj</text><rect x="8" y="50" width="304" height="46" fill="#9aa7b4"/><rect x="112" y="56" width="76" height="20" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="130" cy="79" r="6" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="172" cy="79" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M18 68 L84 68" fill="none" stroke="#c0392b" stroke-width="3"/><line x1="92" y1="60" x2="106" y2="76" stroke="#c0392b" stroke-width="3"/><line x1="106" y1="60" x2="92" y2="76" stroke="#c0392b" stroke-width="3"/><text x="160" y="118" text-anchor="middle" font-size="13" fill="currentColor">saobraćaj ne može da prođe</text><text x="160" y="136" text-anchor="middle" font-size="13" fill="currentColor">OMETA → sme da se premesti</text><rect x="8" y="154" width="304" height="64" fill="#9aa7b4"/><line x1="10" y1="194" x2="310" y2="194" stroke="#fff" stroke-width="2" stroke-dasharray="12 10"/><rect x="112" y="160" width="76" height="20" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="130" cy="183" r="6" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="172" cy="183" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 206 L286 206" fill="none" stroke="#1f7a3f" stroke-width="3"/><polygon points="300,206 286,200 286,212" fill="#1f7a3f"/><text x="160" y="240" text-anchor="middle" font-size="13" fill="currentColor">saobraćaj prolazi</text><text x="160" y="258" text-anchor="middle" font-size="13" fill="currentColor">NE OMETA → ne premešta se</text><text x="160" y="281" text-anchor="middle" font-size="12" fill="currentColor">isto vozilo na kolovozu — razlikuje se</text><text x="160" y="298" text-anchor="middle" font-size="12" fill="currentColor">samo to da li saobraćaj može da prođe</text></svg>
 </div>
 <p><b>Isto to rečima:</b> i vozilo kojim je upravljao isključeni vozač i vozilo koje je isključeno iz saobraćaja policijski službenik sme da premesti ili naloži da se premesti SAMO kada ono ometa nesmetano i bezbedno odvijanje saobraćaja — nikad „svako takvo vozilo" (#8563, #8564, #8565, #8566). Nije opcija ni da vozač završi započetu vožnju, ni da mu se vozilo privremeno oduzme (#8563, #8564). Jedini kriterijum je OMETANJE, a ne to gde vozilo stoji.</p>
 <p><b>Uklanjanje je druga mera</b> — kod nje se ometanje uopšte ne pominje. Vozaču vozila parkiranog ili zaustavljenog suprotno propisima naređuje se da vozilo ODMAH ukloni, pod pretnjom prinudnog izvršenja; nije „u roku od 15 minuta" i rešenje mu se ne uručuje odmah na licu mesta (#8606). Rešenje dolazi kasnije i u njemu stoji rok: ako u tom roku ne ukloniš vozilo, ono se uklanja na za to određeno mesto o trošku vozača ili vlasnika, odnosno korisnika (#8609). Za štete od započinjanja uklanjanja do preuzimanja vozila odgovara pravno lice, odnosno preduzetnik kome je uklanjanje povereno (#8611).</p>
@@ -1110,17 +1198,22 @@ CARDS['skretanje'] = {
   html: `
 <div class="kSek" data-sub="133,137">
 <p><b>Prestrojavanje (čl. 48):</b> na DOVOLJNOM ODSTOJANJU pred raskrsnicom zauzmi traku za svoj smer: za levo — krajnja leva, za desno — krajnja desna (na dvosmernom putu "krajnja leva" je uz središnju liniju!).</p>
-<svg viewBox="0 0 460 140" role="img" style="max-width:460px;width:100%;display:block;margin:6px auto">
-  <rect x="100" y="0" width="260" height="120" fill="#9aa7b4"/>
-  <line x1="186" y1="0" x2="186" y2="120" stroke="#fff" stroke-dasharray="10 8" stroke-width="3"/>
-  <line x1="273" y1="0" x2="273" y2="120" stroke="#fff" stroke-dasharray="10 8" stroke-width="3"/>
-  <g stroke="#fff" stroke-width="6" fill="none">
-    <path d="M143 105 L143 45 M143 45 L118 45" marker-end="none"/><path d="M118 45 L128 35 M118 45 L128 55"/>
-    <path d="M229 105 L229 35"/><path d="M229 35 L219 47 M229 35 L239 47"/>
-    <path d="M316 105 L316 45 M316 45 L341 45"/><path d="M341 45 L331 35 M341 45 L331 55"/>
+<svg viewBox="0 0 306 190" role="img" aria-label="Kolovoz sa tri trake i strelice: za skretanje levo zauzimaš krajnju levu traku, za skretanje desno krajnju desnu traku, srednja traka vodi pravo." style="max-width:306px;width:100%;display:block;margin:6px auto">
+  <rect x="20" y="8" width="266" height="130" fill="#9aa7b4"/>
+  <line x1="109" y1="8" x2="109" y2="138" stroke="#fff" stroke-width="3" stroke-dasharray="10 8"/>
+  <line x1="197" y1="8" x2="197" y2="138" stroke="#fff" stroke-width="3" stroke-dasharray="10 8"/>
+  <g stroke="#fff" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M64 126 L64 60 L36 60"/>
+    <path d="M36 60 L48 50 M36 60 L48 70"/>
+    <path d="M153 126 L153 46"/>
+    <path d="M153 46 L141 58 M153 46 L165 58"/>
+    <path d="M242 126 L242 60 L270 60"/>
+    <path d="M270 60 L258 50 M270 60 L258 70"/>
   </g>
-  <text x="143" y="134" text-anchor="middle" font-size="11" fill="currentColor" font-weight="bold">levo: krajnja leva</text>
-  <text x="316" y="134" text-anchor="middle" font-size="11" fill="currentColor" font-weight="bold">desno: krajnja desna</text>
+  <text x="64" y="158" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">levo:</text>
+  <text x="64" y="175" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">krajnja leva</text>
+  <text x="242" y="158" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">desno:</text>
+  <text x="242" y="175" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">krajnja desna</text>
 </svg>
 <p><b>Propuštanja pri skretanju (čl. 47):</b> sa zemljanog puta/parkinga propuštaš SVE · pri skretanju preko biciklističke staze propuštaš bicikle · pravilo desne strane kad ništa drugo ne reguliše · pri skretanju ULEVO propuštaš vozila iz suprotnog smera.</p>
 </div>
@@ -1161,29 +1254,37 @@ CARDS['skretanje'] = {
 <p style="margin-top:16px"><b>Ne ulazi u raskrsnicu ako ćeš u njoj ostati (čl. 49)</b></p>
 <p>Zakon kaže: vozač <b>ne sme</b> vozilom da uđe u raskrsnicu, <b>iako ima prvenstvo prolaza ili mu je semaforom to dozvoljeno</b>, ako će se zbog gustine saobraćaja zaustaviti <b>na raskrsnici ili pešačkom prelazu</b> i time ometati ili onemogućiti saobraćaj vozila, odnosno pešaka.</p>
 <p>U testu se to isto pravilo pojavljuje u <b>dva ruha</b> — jednom kao „imam zeleno", drugi put kao „ja sam na putu sa prvenstvom prolaza". Odgovor je oba puta isti: <b>staneš i čekaš da se izlaz oslobodi</b>.</p>
-<svg viewBox="0 0 460 226" role="img" style="max-width:460px;width:100%;display:block;margin:8px auto">
-  <rect x="160" y="0" width="140" height="220" fill="#9aa7b4"/>
-  <rect x="0" y="60" width="460" height="80" fill="#9aa7b4"/>
-  <line x1="230" y1="0" x2="230" y2="58" stroke="#fff" stroke-width="3" stroke-dasharray="10 8"/>
-  <line x1="230" y1="170" x2="230" y2="220" stroke="#fff" stroke-width="3" stroke-dasharray="10 8"/>
-  <line x1="0" y1="100" x2="158" y2="100" stroke="#fff" stroke-width="3" stroke-dasharray="10 8"/>
-  <line x1="302" y1="100" x2="460" y2="100" stroke="#fff" stroke-width="3" stroke-dasharray="10 8"/>
+<svg viewBox="0 0 306 232" role="img" aria-label="Raskrsnica: za tebe je zeleno svetlo, ali vozilo ispred stoji iza raskrsnice, pa ne ulaziš u raskrsnicu; ispred tebe je pešački prelaz." style="max-width:306px;width:100%;display:block;margin:8px auto">
+  <rect x="96" y="0" width="114" height="214" fill="#9aa7b4"/>
+  <rect x="0" y="60" width="306" height="80" fill="#9aa7b4"/>
+  <line x1="153" y1="0" x2="153" y2="58" stroke="#fff" stroke-width="3" stroke-dasharray="10 8"/>
+  <line x1="153" y1="170" x2="153" y2="212" stroke="#fff" stroke-width="3" stroke-dasharray="10 8"/>
+  <line x1="0" y1="100" x2="94" y2="100" stroke="#fff" stroke-width="3" stroke-dasharray="10 8"/>
+  <line x1="212" y1="100" x2="306" y2="100" stroke="#fff" stroke-width="3" stroke-dasharray="10 8"/>
   <g fill="#fff">
-    <rect x="164" y="144" width="11" height="20"/><rect x="181" y="144" width="11" height="20"/>
-    <rect x="198" y="144" width="11" height="20"/><rect x="215" y="144" width="11" height="20"/>
-    <rect x="232" y="144" width="11" height="20"/><rect x="249" y="144" width="11" height="20"/>
-    <rect x="266" y="144" width="11" height="20"/><rect x="283" y="144" width="11" height="20"/>
+    <rect x="100" y="148" width="11" height="20"/>
+    <rect x="119" y="148" width="11" height="20"/>
+    <rect x="138" y="148" width="11" height="20"/>
+    <rect x="157" y="148" width="11" height="20"/>
+    <rect x="176" y="148" width="11" height="20"/>
+    <rect x="195" y="148" width="11" height="20"/>
   </g>
-  <rect x="160" y="60" width="140" height="80" fill="#c0392b" opacity=".3"/>
-  <text x="230" y="105" text-anchor="middle" font-size="13" font-weight="bold" fill="#7f1d1d">NE ULAZI</text>
-  <rect x="244" y="24" width="34" height="32" rx="6" fill="#e0c53a" stroke="#8a7a10" stroke-width="1.5"/>
-  <rect x="244" y="176" width="34" height="32" rx="6" fill="#c0392b" stroke="#7f1d1d" stroke-width="1.5"/>
-  <text x="261" y="197" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff">ti</text>
-  <rect x="128" y="176" width="20" height="30" rx="5" fill="#4a5560"/>
-  <circle cx="138" cy="191" r="7" fill="#22c55e"/>
-  <text x="120" y="194" text-anchor="end" font-size="10" fill="currentColor">zeleno svetlo</text>
-  <text x="308" y="44" font-size="10" fill="currentColor">vozilo ispred stoji</text>
-  <text x="308" y="158" font-size="10" fill="currentColor">pešački prelaz</text>
+  <rect x="96" y="60" width="114" height="80" fill="#c0392b" opacity=".5" stroke="#c0392b" stroke-width="2"/>
+  <text x="153" y="106" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">NE ULAZI</text>
+  <rect x="168" y="22" width="34" height="32" rx="6" fill="#e0c53a" stroke="#8a7a10" stroke-width="1.5"/>
+  <rect x="168" y="176" width="34" height="32" rx="6" fill="#c0392b" stroke="#7f1d1d" stroke-width="1.5"/>
+  <text x="185" y="198" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">ti</text>
+  <rect x="56" y="176" width="20" height="30" rx="5" fill="#4a5560"/>
+  <circle cx="66" cy="191" r="7" fill="#22c55e"/>
+  <line x1="204" y1="38" x2="221" y2="38" stroke="currentColor" stroke-width="1.5"/>
+  <line x1="208" y1="157" x2="221" y2="157" stroke="currentColor" stroke-width="1.5"/>
+  <text x="224" y="18" font-size="12" fill="currentColor">vozilo</text>
+  <text x="224" y="35" font-size="12" fill="currentColor">ispred</text>
+  <text x="224" y="52" font-size="12" fill="currentColor">stoji</text>
+  <text x="224" y="158" font-size="12" fill="currentColor">pešački</text>
+  <text x="224" y="175" font-size="12" fill="currentColor">prelaz</text>
+  <text x="48" y="188" text-anchor="end" font-size="12" fill="currentColor">zeleno</text>
+  <text x="48" y="205" text-anchor="end" font-size="12" fill="currentColor">svetlo</text>
 </svg>
 <p class="mut" style="text-align:center;font-size:.85rem">imaš zeleno, ali izlaz iz raskrsnice je zauzet — ostaješ ispred zebre</p>
 <p><b>Četiri odgovora koji su ovde UVEK netačni</b> (vrte se kroz sva pitanja o gužvi na raskrsnici):</p>
@@ -1240,29 +1341,36 @@ CARDS['pokazivaci'] = {
 <p class="mut">U dva slučaja sa strpljivim čekanjem (vozilo auto-škole i kolona na semaforu) nije tačan ni zvučni, ni svetlosni, ni „oba" — požurivanje nije razlog za znak upozorenja. A tamo gde jeste obavezan, traži se <b>samo zvučni</b>: ponuda „i zvučni i svetlosni znak" je pogrešna, jer je svetlosni tvoja mogućnost, a ne dodatna obaveza.</p>
 
 <p><b>Svetlosni znak upozorenja</b> = <b>uzastopno ili naizmenično paljenje DUGIH svetala</b> — ne pozicionih, ne stop-svetala, ne pokazivača pravca — uz pažnju da ne zaslepiš vozače iz suprotnog smera.</p>
-<svg viewBox="0 0 460 112" role="img" aria-label="Svetlosni znak upozorenja: uzastopno i naizmenično paljenje dugih svetala" style="max-width:460px;width:100%;display:block;margin:8px auto">
-  <rect x="2" y="6" width="104" height="40" rx="6" fill="#2c6aa0"/>
-  <text x="54" y="31" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">UZASTOPNO</text>
-  <rect x="116" y="6" width="104" height="40" rx="8" fill="#3a3f47"/>
-  <circle cx="146" cy="26" r="12" fill="#ffd84d" stroke="#b58900" stroke-width="2"/>
-  <circle cx="190" cy="26" r="12" fill="#ffd84d" stroke="#b58900" stroke-width="2"/>
-  <rect x="230" y="6" width="104" height="40" rx="8" fill="#3a3f47"/>
-  <circle cx="260" cy="26" r="12" fill="#6b7280" stroke="#4b5563" stroke-width="2"/>
-  <circle cx="304" cy="26" r="12" fill="#6b7280" stroke="#4b5563" stroke-width="2"/>
-  <rect x="344" y="6" width="104" height="40" rx="8" fill="#3a3f47"/>
-  <circle cx="374" cy="26" r="12" fill="#ffd84d" stroke="#b58900" stroke-width="2"/>
-  <circle cx="418" cy="26" r="12" fill="#ffd84d" stroke="#b58900" stroke-width="2"/>
-  <rect x="2" y="62" width="104" height="40" rx="6" fill="#8a5a00"/>
-  <text x="54" y="87" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">NAIZMENIČNO</text>
-  <rect x="116" y="62" width="104" height="40" rx="8" fill="#3a3f47"/>
-  <circle cx="146" cy="82" r="12" fill="#ffd84d" stroke="#b58900" stroke-width="2"/>
-  <circle cx="190" cy="82" r="12" fill="#6b7280" stroke="#4b5563" stroke-width="2"/>
-  <rect x="230" y="62" width="104" height="40" rx="8" fill="#3a3f47"/>
-  <circle cx="260" cy="82" r="12" fill="#6b7280" stroke="#4b5563" stroke-width="2"/>
-  <circle cx="304" cy="82" r="12" fill="#ffd84d" stroke="#b58900" stroke-width="2"/>
-  <rect x="344" y="62" width="104" height="40" rx="8" fill="#3a3f47"/>
-  <circle cx="374" cy="82" r="12" fill="#ffd84d" stroke="#b58900" stroke-width="2"/>
-  <circle cx="418" cy="82" r="12" fill="#6b7280" stroke="#4b5563" stroke-width="2"/>
+<svg viewBox="0 0 320 230" role="img" aria-label="Svetlosni znak upozorenja: uzastopno i naizmenično paljenje dugih svetala" style="max-width:320px;width:100%;display:block;margin:8px auto">
+  <rect x="8" y="6" width="304" height="30" rx="6" fill="#2c6aa0"/>
+  <text x="160" y="26" text-anchor="middle" fill="#fff" font-size="15" font-weight="bold">UZASTOPNO</text>
+
+  <rect x="8" y="44" width="96" height="62" rx="8" fill="#3a3f47" stroke="currentColor" stroke-width="1.5"/>
+  <circle cx="36" cy="75" r="14" fill="#ffd84d" stroke="#b58900" stroke-width="2"/>
+  <circle cx="76" cy="75" r="14" fill="#ffd84d" stroke="#b58900" stroke-width="2"/>
+
+  <rect x="112" y="44" width="96" height="62" rx="8" fill="#3a3f47" stroke="currentColor" stroke-width="1.5"/>
+  <circle cx="140" cy="75" r="14" fill="#6b7280" stroke="#4b5563" stroke-width="2"/>
+  <circle cx="180" cy="75" r="14" fill="#6b7280" stroke="#4b5563" stroke-width="2"/>
+
+  <rect x="216" y="44" width="96" height="62" rx="8" fill="#3a3f47" stroke="currentColor" stroke-width="1.5"/>
+  <circle cx="244" cy="75" r="14" fill="#ffd84d" stroke="#b58900" stroke-width="2"/>
+  <circle cx="284" cy="75" r="14" fill="#ffd84d" stroke="#b58900" stroke-width="2"/>
+
+  <rect x="8" y="122" width="304" height="30" rx="6" fill="#8a5a00"/>
+  <text x="160" y="142" text-anchor="middle" fill="#fff" font-size="15" font-weight="bold">NAIZMENIČNO</text>
+
+  <rect x="8" y="160" width="96" height="62" rx="8" fill="#3a3f47" stroke="currentColor" stroke-width="1.5"/>
+  <circle cx="36" cy="191" r="14" fill="#ffd84d" stroke="#b58900" stroke-width="2"/>
+  <circle cx="76" cy="191" r="14" fill="#6b7280" stroke="#4b5563" stroke-width="2"/>
+
+  <rect x="112" y="160" width="96" height="62" rx="8" fill="#3a3f47" stroke="currentColor" stroke-width="1.5"/>
+  <circle cx="140" cy="191" r="14" fill="#6b7280" stroke="#4b5563" stroke-width="2"/>
+  <circle cx="180" cy="191" r="14" fill="#ffd84d" stroke="#b58900" stroke-width="2"/>
+
+  <rect x="216" y="160" width="96" height="62" rx="8" fill="#3a3f47" stroke="currentColor" stroke-width="1.5"/>
+  <circle cx="244" cy="191" r="14" fill="#ffd84d" stroke="#b58900" stroke-width="2"/>
+  <circle cx="284" cy="191" r="14" fill="#6b7280" stroke="#4b5563" stroke-width="2"/>
 </svg>
 <table>
 <tr><td>Noću, <b>umesto</b> zvučnog znaka</td><td>sme</td></tr>
@@ -1297,20 +1405,425 @@ CARDS['parkiranje'] = {
 <tr><td>prevoj, nepregledna krivina</td><td>uvek zabranjeno</td></tr>
 <tr><td>biciklistička staza/traka, zaklanjanje znaka</td><td>uvek zabranjeno</td></tr>
 </table>
-<svg viewBox="0 0 460 110" role="img" style="max-width:460px;width:100%;display:block;margin:6px auto">
-  <rect x="0" y="30" width="460" height="50" fill="#9aa7b4"/>
-  <rect x="120" y="30" width="34" height="50" fill="#fff" opacity="0.9"/>
-  <g fill="#fff"><rect x="123" y="33" width="28" height="7"/><rect x="123" y="45" width="28" height="7"/><rect x="123" y="57" width="28" height="7"/><rect x="123" y="69" width="28" height="7"/></g>
-  <rect x="300" y="30" width="70" height="50" fill="#e0a030" opacity="0.55"/><text x="335" y="60" text-anchor="middle" font-size="10" font-weight="bold" fill="#333">BUS</text>
-  <path d="M60 20 L120 20" stroke="#c0392b" stroke-width="2"/><path d="M154 20 L214 20" stroke="#c0392b" stroke-width="2"/>
-  <text x="90" y="14" text-anchor="middle" font-size="11" fill="#c0392b" font-weight="bold">5 m</text>
-  <text x="184" y="14" text-anchor="middle" font-size="11" fill="#c0392b" font-weight="bold">5 m</text>
-  <path d="M255 20 L300 20" stroke="#c0392b" stroke-width="2"/><path d="M370 20 L415 20" stroke="#c0392b" stroke-width="2"/>
-  <text x="335" y="14" text-anchor="middle" font-size="11" fill="#c0392b" font-weight="bold">15 m + 15 m</text>
-  <text x="90" y="100" text-anchor="middle" font-size="10" fill="#888">zona zabrane oko prelaza</text>
-  <text x="335" y="100" text-anchor="middle" font-size="10" fill="#888">zona oko stajališta</text>
+<svg viewBox="0 0 306 132" role="img" aria-label="kolovoz sa pešačkim prelazom i autobuskim stajalištem: zabrana zaustavljanja 5 m sa obe strane prelaza i 15 m sa obe strane stajališta" style="max-width:306px;width:100%;display:block;margin:6px auto">
+  <rect x="0" y="40" width="306" height="46" fill="#9aa7b4"/>
+  <rect x="70" y="40" width="26" height="46" fill="#fff" opacity="0.9"/>
+  <g fill="#fff"><rect x="72" y="43" width="22" height="6"/><rect x="72" y="54" width="22" height="6"/>
+<rect x="72" y="65" width="22" height="6"/><rect x="72" y="76" width="22" height="6"/></g>
+  <rect x="190" y="40" width="50" height="46" fill="#e0a030" opacity="0.55"/>
+<text x="215" y="68" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">BUS</text>
+  <path d="M40 26 L70 26" stroke="#c0392b" stroke-width="2"/><path d="M96 26 L126 26" stroke="#c0392b" stroke-width="2"/>
+  <text x="55" y="19" text-anchor="middle" font-size="12" fill="#c0392b" font-weight="bold">5 m</text>
+  <text x="111" y="19" text-anchor="middle" font-size="12" fill="#c0392b" font-weight="bold">5 m</text>
+  <path d="M150 26 L190 26" stroke="#c0392b" stroke-width="2"/><path d="M240 26 L280 26" stroke="#c0392b" stroke-width="2"/>
+  <text x="215" y="19" text-anchor="middle" font-size="12" fill="#c0392b" font-weight="bold">15 m + 15 m</text>
+  <text x="83" y="108" text-anchor="middle" font-size="11" fill="currentColor" opacity=".75">zona zabrane</text>
+  <text x="83" y="122" text-anchor="middle" font-size="11" fill="currentColor" opacity=".75">oko prelaza</text>
+  <text x="215" y="108" text-anchor="middle" font-size="11" fill="currentColor" opacity=".75">zona oko</text>
+  <text x="215" y="122" text-anchor="middle" font-size="11" fill="currentColor" opacity=".75">stajališta</text>
 </svg>
-<p class="mut">Pamćenje: "5 - 5 - 5 - 15 - 3": prelazi i raskrsnica po 5 m, stajalište 15 m, prolaz 3 m. Lista "opasnih mesta" (tunel/most/prevoj/krivina) ista je kao kod preticanja i polukružnog.</p>`,
+<p class="mut">Pamćenje: "5 - 5 - 5 - 15 - 3": prelazi i raskrsnica po 5 m, stajalište 15 m, prolaz 3 m. Lista "opasnih mesta" (tunel/most/prevoj/krivina) ista je kao kod preticanja i polukružnog.</p>
+
+<!-- ==== dopuna 07.09.2026 (tura 4): crtež + isto to rečima ==== -->
+<!-- IZVORI po temama (brojevi pitanja podoblasti 140 — sve tvrdnje se oslanjaju na tacne odgovore i postojeca objasnjenja tih pitanja):
+     1  Zaustavljanje i parkiranje idu zajedno .......... 10052, 10058, 10101, 10141, 10142, 10507, 10091, 10092
+     2  Uz koju ivicu se staje .......................... 10055, 10057, 10058, 10054, 10060
+     3  Raskrsnica i pojas od 5 m ....................... 10142, 10065, 10066, 10068, 10071
+     4  Pojas desno od pune bele linije ................. 10091, 10092, 10090
+     5  Zamka "najmanje 1,60 m" ......................... 10111, 10113, 10117, 10118, 10120
+     6  Izgleda kao slobodan prostor, a nije ............ 10061, 10101, 10141, 10507
+     7  Uspon, nizbrdica, vrh prevoja, krivina .......... 10073, 10500, 10052, 10054
+     8  Kad odlazis od vozila i kad stanes u kvaru ...... 10528, 10499
+     9  Sve zamke na jednom mestu ....................... sve gore navedeno
+     CRTEZI: svaki viewBox je sirok 306 (= telo kartice na ekranu od 375 px), font-size 12,
+     pa se svaki natpis na telefonu vidi u velicini od 12 px (mereno: nijedan ispod 11 px).
+     ANIMACIJE (klase su samo pozvane; definicija ide u style.css):
+       animBiciklObilazi, animIzlaziIzSporednog, animVoziloSeKotrlja, animSinskoPrilazi
+-->
+
+<div class="kPodH"><b class="kPodNaslov">Zaustavljanje i parkiranje idu zajedno</b>
+<p><b>Iznad svih spiskova:</b> tamo gde bi zaustavljeno ili parkirano vozilo ugrožavalo bezbednost drugih učesnika u saobraćaju ili bilo smetnja za normalno odvijanje saobraćaja i kretanje pešaka — ne smeš ni da zaustaviš ni da parkiraš, i onda kad to mesto nije ni na jednom spisku zabrana.</p>
+<p><b>U ovoj podoblasti zabrana nikad ne deli ta dva pojma.</b> Ponuda "dozvoljeno je zaustavljanje, a nije dozvoljeno parkiranje" (i njen blizanac "sme da zaustavi, a ne sme da parkira") nudi se u <b>šest</b> pitanja i ni u jednom nije tačan odgovor. Isto pada i "sme da zaustavi vozilo najduže do 3 minuta", i "dozvoljeno je samo vozilima kojima se obavlja auto-taksi prevoz" — taksi nema nikakvu povlasticu, pravilo važi za sva vozila jednako.</p>
+</div>
+
+<div class="kPodH"><b class="kPodNaslov">Uz koju ivicu se staje</b>
+<svg viewBox="0 0 306 140" role="img" aria-label="pogled odozgo na dvosmerni put: vozilo uz levu ivicu je precrtano, a vozilo uz desnu ivicu u tvom smeru nosi zelenu kvačicu" style="max-width:306px;width:100%;display:block;margin:6px auto">
+  <text x="6" y="14" text-anchor="start" font-size="12" font-weight="bold" fill="currentColor">DVOSMERNI PUT</text>
+  <text x="72" y="33" text-anchor="middle" font-size="12" fill="#c0392b">leva ivica — ne sme</text>
+  <rect x="0" y="38" width="306" height="70" fill="#9aa7b4"/>
+  <path d="M0 73 H306" stroke="#fff" stroke-width="2" stroke-dasharray="14 10" fill="none"/>
+  <path d="M210 52 H150 M162 46 L150 52 L162 58" stroke="#fff" stroke-width="2" fill="none"/>
+  <rect x="26" y="41" width="80" height="26" rx="4" fill="#2a333d" opacity="0.92"/>
+  <path d="M32 44 L100 64 M100 44 L32 64" stroke="#c0392b" stroke-width="3" fill="none"/>
+  <rect x="26" y="79" width="80" height="26" rx="4" fill="#2a333d" opacity="0.92"/>
+  <path d="M114 93 L122 101 L138 81" stroke="#1f7a3f" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M170 92 H250 M238 86 L250 92 L238 98" stroke="#2c6aa0" stroke-width="3" fill="none"/>
+  <text x="164" y="96" text-anchor="end" font-size="12" font-weight="bold" fill="#2c6aa0">TI</text>
+  <text x="72" y="126" text-anchor="middle" font-size="12" fill="#1f7a3f">desna ivica — sme</text>
+</svg>
+<svg viewBox="0 0 306 140" role="img" aria-label="pogled odozgo na jednosmerni put: i vozilo uz levu i vozilo uz desnu ivicu nose zelenu kvačicu, oba su dozvoljena" style="max-width:306px;width:100%;display:block;margin:6px auto">
+  <text x="6" y="14" text-anchor="start" font-size="12" font-weight="bold" fill="currentColor">JEDNOSMERNI PUT</text>
+  <text x="72" y="33" text-anchor="middle" font-size="12" fill="#1f7a3f">leva ivica — sme</text>
+  <rect x="0" y="38" width="306" height="70" fill="#9aa7b4"/>
+  <path d="M0 73 H306" stroke="#fff" stroke-width="2" stroke-dasharray="14 10" fill="none"/>
+  <path d="M150 52 H210 M198 46 L210 52 L198 58" stroke="#fff" stroke-width="2" fill="none"/>
+  <rect x="26" y="41" width="80" height="26" rx="4" fill="#2a333d" opacity="0.92"/>
+  <path d="M114 55 L122 63 L138 43" stroke="#1f7a3f" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <rect x="26" y="79" width="80" height="26" rx="4" fill="#2a333d" opacity="0.92"/>
+  <path d="M114 93 L122 101 L138 81" stroke="#1f7a3f" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M170 92 H250 M238 86 L250 92 L238 98" stroke="#2c6aa0" stroke-width="3" fill="none"/>
+  <text x="164" y="96" text-anchor="end" font-size="12" font-weight="bold" fill="#2c6aa0">TI</text>
+  <text x="72" y="126" text-anchor="middle" font-size="12" fill="#1f7a3f">desna ivica — sme</text>
+</svg>
+<p><b>Rečima:</b> na putu na kome se saobraćaj odvija <b>u oba smera</b> vozilo se zaustavlja i parkira neposredno uz <b>desnu</b> ivicu kolovoza, pa ponude "desnu ili levu ivicu" i "levu ivicu" padaju. Na <b>jednosmernom</b> putu smeš uz <b>desnu ili levu</b> ivicu, pa tu padaju ponude "samo uz desnu" i "samo uz levu" (čl. 64 st. 2). Ponude su u ta dva pitanja gotovo iste (desna · desna ili leva · leva), pa prvo pročitaj da li se saobraćaj odvija u oba smera ili samo u jednom — od toga zavisi koja od njih je tačna.</p>
+<p class="mut">Boje na crtežima: zeleno je ono što pitanje dopušta, crveno je zabrana ili opasnost (pa i pojas koji se meri i putanja koja preti), a plava strelica pokazuje tvoj smer kretanja.</p>
+<svg viewBox="0 0 306 152" role="img" aria-label="pogled odozgo: uz desnu ivicu kolovoza idu tramvajske šine, vozilo koje je uz tu ivicu stalo na njima je precrtano, a sa leve strane po šinama nailazi šinsko vozilo" style="max-width:306px;width:100%;display:block;margin:6px auto">
+  <text x="6" y="14" text-anchor="start" font-size="12" font-weight="bold" fill="currentColor">ŠINE UZ DESNU IVICU KOLOVOZA</text>
+  <rect x="0" y="22" width="306" height="94" fill="#9aa7b4"/>
+  <path d="M60 44 H140 M128 38 L140 44 L128 50" stroke="#2c6aa0" stroke-width="3" fill="none"/>
+  <text x="54" y="48" text-anchor="end" font-size="12" font-weight="bold" fill="#2c6aa0">TI</text>
+  <g stroke="#3c4a56" stroke-width="3" opacity="0.5" fill="none"><path d="M8 84 V112"/><path d="M32 84 V112"/><path d="M56 84 V112"/><path d="M80 84 V112"/><path d="M104 84 V112"/><path d="M128 84 V112"/><path d="M152 84 V112"/><path d="M176 84 V112"/><path d="M200 84 V112"/><path d="M224 84 V112"/><path d="M248 84 V112"/><path d="M272 84 V112"/><path d="M296 84 V112"/></g>
+  <path d="M0 90 H306 M0 106 H306" stroke="#3c4a56" stroke-width="4" fill="none"/>
+  <g class="animSinskoPrilazi">
+    <rect x="4" y="76" width="70" height="40" rx="7" fill="#2a333d" stroke="#fff" stroke-width="1.5"/>
+    <rect x="12" y="84" width="20" height="14" rx="2" fill="#fff" opacity="0.75"/>
+    <rect x="40" y="84" width="20" height="14" rx="2" fill="#fff" opacity="0.75"/>
+    <path d="M82 96 H106 M98 90 L108 96 L98 102" stroke="#c0392b" stroke-width="2.5" fill="none"/>
+  </g>
+  <rect x="150" y="82" width="96" height="30" rx="5" fill="#2a333d" opacity="0.95"/>
+  <path d="M156 85 L240 109 M240 85 L156 109" stroke="#c0392b" stroke-width="3" fill="none"/>
+  <text x="153" y="140" text-anchor="middle" font-size="12" fill="#c0392b">tu se ne zaustavlja i ne parkira</text>
+</svg>
+<svg viewBox="0 0 306 146" role="img" aria-label="pogled odozgo na put van naselja: vozilo sklonjeno van kolovoza na bankinu nosi zelenu kvačicu, a vozilo koje je ostalo na kolovozu nosi napomenu samo ako van kolovoza ne može" style="max-width:306px;width:100%;display:block;margin:6px auto">
+  <text x="6" y="14" text-anchor="start" font-size="12" font-weight="bold" fill="currentColor">PUT VAN NASELJA</text>
+  <rect x="0" y="20" width="306" height="20" fill="currentColor" opacity="0.14"/>
+  <rect x="0" y="40" width="306" height="62" fill="#9aa7b4"/>
+  <rect x="0" y="102" width="306" height="26" fill="currentColor" opacity="0.14"/>
+  <rect x="20" y="46" width="80" height="24" rx="4" fill="#2a333d" opacity="0.92"/>
+  <text x="196" y="60" text-anchor="middle" font-size="12" fill="#fff">samo ako van kolovoza ne može</text>
+  <rect x="176" y="104" width="80" height="24" rx="4" fill="#2a333d" opacity="0.92"/>
+  <path d="M264 118 L272 126 L288 106" stroke="#1f7a3f" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <text x="86" y="122" text-anchor="middle" font-size="12" font-weight="bold" fill="#1f7a3f">VAN KOLOVOZA</text>
+  <text x="153" y="142" text-anchor="middle" font-size="12" fill="#1f7a3f">kad god za to postoji mogućnost</text>
+</svg>
+<p><b>Šine uz desnu ivicu:</b> ako se uz desnu ivicu kolovoza nalaze tramvajske ili druge šine, tu ne smeš ni da zaustaviš ni da parkiraš (čl. 64 st. 3) — šinsko vozilo ne može da te obiđe. <b>Van naselja:</b> uvek kada za to postoji mogućnost, vozilo se zaustavlja ili parkira <b>van kolovoza</b> (čl. 64 st. 1), dakle na bankinu ili proširenje pre nego uz ivicu kolovoza; ponuda "uvek zaustavi ili parkira vozilo na kolovozu" je zamka.</p>
+<svg viewBox="0 0 306 132" role="img" aria-label="pogled odozgo: sredina kolovoza obeležena belim oznakama za parkiranje, vozilo u obeleženom mestu nosi zelenu kvačicu, a saobraćaj teče trakama sa obe strane" style="max-width:306px;width:100%;display:block;margin:6px auto">
+  <text x="6" y="14" text-anchor="start" font-size="12" font-weight="bold" fill="currentColor">OBELEŽENO SIGNALIZACIJOM</text>
+  <rect x="0" y="22" width="306" height="88" fill="#9aa7b4"/>
+  <path d="M40 36 H120 M108 30 L120 36 L108 42" stroke="#fff" stroke-width="2" fill="none"/>
+  <rect x="200" y="26" width="60" height="18" rx="3" fill="#2a333d" opacity="0.9"/>
+  <rect x="60" y="52" width="150" height="30" fill="none" stroke="#fff" stroke-width="2.5"/>
+  <path d="M110 52 V82 M160 52 V82" stroke="#fff" stroke-width="2" fill="none"/>
+  <rect x="64" y="56" width="42" height="22" rx="3" fill="#2a333d" opacity="0.92"/>
+  <path d="M220 70 L228 78 L244 58" stroke="#1f7a3f" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M266 96 H186 M198 90 L186 96 L198 102" stroke="#fff" stroke-width="2" fill="none"/>
+  <rect x="46" y="88" width="60" height="18" rx="3" fill="#2a333d" opacity="0.9"/>
+  <text x="153" y="126" text-anchor="middle" font-size="12" fill="#1f7a3f">sme se parkirati</text>
+</svg>
+<svg viewBox="0 0 306 132" role="img" aria-label="pogled odozgo: ista sredina kolovoza bez ijedne oznake, vozilo koje je tu stalo je precrtano crvenom bojom" style="max-width:306px;width:100%;display:block;margin:6px auto">
+  <text x="6" y="14" text-anchor="start" font-size="12" font-weight="bold" fill="currentColor">NIJE OBELEŽENO</text>
+  <rect x="0" y="22" width="306" height="88" fill="#9aa7b4"/>
+  <path d="M40 36 H120 M108 30 L120 36 L108 42" stroke="#fff" stroke-width="2" fill="none"/>
+  <rect x="200" y="26" width="60" height="18" rx="3" fill="#2a333d" opacity="0.9"/>
+  <rect x="120" y="54" width="70" height="26" rx="4" fill="#2a333d" opacity="0.92"/>
+  <path d="M124 56 L186 78 M186 56 L124 78" stroke="#c0392b" stroke-width="3" fill="none"/>
+  <path d="M266 96 H186 M198 90 L186 96 L198 102" stroke="#fff" stroke-width="2" fill="none"/>
+  <rect x="46" y="88" width="60" height="18" rx="3" fill="#2a333d" opacity="0.9"/>
+  <text x="153" y="126" text-anchor="middle" font-size="12" fill="#c0392b">ne sme, ma koliko prostora bilo</text>
+</svg>
+<p><b>Sredina kolovoza:</b> mesta na sredini kolovoza smeju se koristiti samo ako su <b>saobraćajnom signalizacijom obeležena kao mesta za parkiranje</b> (čl. 64 st. 4). Ni "ako postoji dovoljno prostora" ni "ako time ne ometa druge učesnike u saobraćaju" nisu uslov — jedini uslov je signalizacija.</p>
+</div>
+
+<div class="kPodH"><b class="kPodNaslov">Raskrsnica i pojas od 5 m</b>
+<svg viewBox="0 0 306 206" role="img" aria-label="pogled odozgo na raskrsnicu: crveno je obojena i sama površina raskrsnice i pojas od pet metara sa obe njene strane; u levom pojasu stoji precrtano vozilo, a plava strelica pokazuje tvoj smer kretanja" style="max-width:306px;width:100%;display:block;margin:6px auto">
+  <text x="153" y="14" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">RASKRSNICA I POJAS OD 5 m</text>
+  <text x="90" y="34" text-anchor="middle" font-size="12" font-weight="bold" fill="#c0392b">5 m</text>
+  <text x="216" y="34" text-anchor="middle" font-size="12" font-weight="bold" fill="#c0392b">5 m</text>
+  <g stroke="#c0392b" stroke-width="1.5" fill="none"><path d="M63 40 H118"/><path d="M63 36 V44"/><path d="M118 36 V44"/><path d="M188 40 H243"/><path d="M188 36 V44"/><path d="M243 36 V44"/></g>
+  <rect x="0" y="48" width="306" height="64" fill="#9aa7b4"/>
+  <rect x="118" y="112" width="70" height="72" fill="#9aa7b4"/>
+  <rect x="63" y="48" width="180" height="64" fill="#c0392b" opacity="0.2"/>
+  <rect x="118" y="48" width="70" height="64" fill="#c0392b" opacity="0.34"/>
+  <path d="M63 46 V116 M243 46 V116" stroke="#c0392b" stroke-width="1.5" stroke-dasharray="5 5" fill="none"/>
+  <text x="153" y="84" text-anchor="middle" font-size="12" fill="#fff">raskrsnica</text>
+  <rect x="68" y="60" width="46" height="22" rx="4" fill="#2a333d" opacity="0.92"/>
+  <path d="M72 62 L110 80 M110 62 L72 80" stroke="#c0392b" stroke-width="2.5" fill="none"/>
+  <text x="6" y="104" text-anchor="start" font-size="12" font-weight="bold" fill="#2c6aa0">TI</text>
+  <path d="M24 100 H58 M48 94 L58 100 L48 106" stroke="#2c6aa0" stroke-width="3" fill="none"/>
+  <text x="246" y="140" text-anchor="middle" font-size="12" fill="currentColor">tvoja desna strana</text>
+  <text x="153" y="198" text-anchor="middle" font-size="12" fill="#c0392b">ne staje se ni u pojasu ni na raskrsnici</text>
+</svg>
+<p><b>Rečima:</b> na ispitnoj slici sa desne strane kolovoz preseca poprečni put — dakle reč je o <b>raskrsnici</b>. Zabranjeno je i na <b>samoj raskrsnici</b> i na udaljenosti manjoj od <b>5 m</b> od najbliže ivice poprečnog kolovoza; ponuda "samo na raskrsnici" zato pada. Koja je ivica najbliža, zavisi od toga s koje strane dolaziš — pa pojas stoji sa obe strane poprečnog kolovoza. Zabrana pokriva i kratko stajanje i duže parkiranje, pa ne prolazi ni ponuda po kojoj bi stajanje bilo dopušteno, a samo parkiranje zabranjeno.</p>
+<svg viewBox="0 0 306 178" role="img" aria-label="pogled odozgo: vozilo parkirano u pojasu ispred raskrsnice zaklanja pogled vozilu koje izlazi iz poprečnog puta, crvena isprekidana linija pokazuje zaklonjeni pogled" style="max-width:306px;width:100%;display:block;margin:6px auto">
+  <text x="6" y="14" text-anchor="start" font-size="12" font-weight="bold" fill="currentColor">ZAŠTO: VOZILO ZAKLANJA POGLED</text>
+  <rect x="0" y="24" width="306" height="64" fill="#9aa7b4"/>
+  <rect x="140" y="88" width="70" height="66" fill="#9aa7b4"/>
+  <rect x="70" y="40" width="56" height="24" rx="4" fill="#2a333d" opacity="0.92"/>
+  <path d="M74 42 L122 62 M122 42 L74 62" stroke="#c0392b" stroke-width="2.5" fill="none"/>
+  <path d="M172 92 L110 58" stroke="#c0392b" stroke-width="1.5" stroke-dasharray="4 4" fill="none"/>
+  <g class="animIzlaziIzSporednog">
+    <rect x="150" y="96" width="48" height="30" rx="4" fill="#2a333d" opacity="0.92"/>
+  </g>
+  <text x="252" y="110" text-anchor="middle" font-size="12" fill="currentColor">vozilo iz</text>
+  <text x="252" y="130" text-anchor="middle" font-size="12" fill="currentColor">sporednog puta</text>
+  <text x="153" y="170" text-anchor="middle" font-size="12" fill="#c0392b">parkirano vozilo mu zaklanja pogled</text>
+</svg>
+<p>Isti pojas od 5 m stoji i uz <b>pešački prelaz</b>, uz <b>prelaz biciklističke staze preko kolovoza</b> i uz <b>prelaz puta preko železničke pruge</b>. U sva četiri pitanja te grupe ponuđene su iste <b>dve</b> zamke:</p>
+<table>
+<tr><th>Zamka u ponudi</th><th>Kako glasi tačan odgovor</th></tr>
+<tr><td>mesto bez pojasa: "samo na pešačkom prelazu", "samo na raskrsnici"</td><td>i mesto <b>i</b> pojas: "na pešačkom prelazu kao i na udaljenosti manjoj od <b>5 m</b> od prelaza", odnosno "na raskrsnici kao i na udaljenosti manjoj od 5 m od najbliže ivice poprečnog kolovoza"</td></tr>
+<tr><td>pogrešan broj: "na udaljenosti manjoj od <b>10 m</b>"</td><td>meri se <b>5 m</b> — u sva četiri pitanja</td></tr>
+</table>
+<p class="mut">Sami metri su u tabeli ove kartice (5-5-5-15-3); ovde je samo ono po čemu se ponude razlikuju.</p>
+</div>
+
+<div class="kPodH"><b class="kPodNaslov">Pojas desno od pune bele linije</b>
+<svg viewBox="0 0 306 162" role="img" aria-label="pogled odozgo: gore je deo puta kojim idu automobili, ispod njega puna bela linija, a desno od nje biciklistička traka po kojoj se uz sam ivičnjak kreće biciklistkinja na biciklu" style="max-width:306px;width:100%;display:block;margin:6px auto">
+  <text x="6" y="14" text-anchor="start" font-size="12" font-weight="bold" fill="currentColor">ŠTA JE DESNO OD PUNE LINIJE</text>
+  <rect x="0" y="20" width="306" height="52" fill="#9aa7b4"/>
+  <text x="86" y="36" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff">TUDA IDU AUTOMOBILI</text>
+  <rect x="180" y="26" width="54" height="22" rx="4" fill="#2a333d" opacity="0.92"/>
+  <rect x="244" y="26" width="54" height="22" rx="4" fill="#2a333d" opacity="0.92"/>
+  <text x="238" y="64" text-anchor="middle" font-size="12" fill="#fff">puna bela linija</text>
+  <rect x="0" y="72" width="306" height="54" fill="#9aa7b4" opacity="0.85"/>
+  <rect x="0" y="69" width="306" height="5" fill="#fff"/>
+  <text x="6" y="90" text-anchor="start" font-size="12" font-weight="bold" fill="#fff">BICIKLISTIČKA TRAKA</text>
+  <text x="100" y="112" text-anchor="middle" font-size="12" fill="#fff">biciklistkinja</text>
+  <path d="M138 108 H186" stroke="#fff" stroke-width="1.5" fill="none"/>
+  <g stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round">
+    <circle cx="200" cy="114" r="9"/><circle cx="242" cy="114" r="9"/>
+    <path d="M200 114 L224 114 L233 98 L242 114"/><path d="M224 114 L216 98 L233 98"/>
+    <path d="M233 98 L240 96"/>
+    <circle cx="216" cy="78" r="6"/><path d="M216 84 L222 99"/><path d="M218 88 L233 97"/><path d="M222 99 L228 112"/><path d="M222 99 L214 110"/>
+  </g>
+  <rect x="0" y="126" width="306" height="14" fill="currentColor" opacity="0.22"/>
+  <text x="40" y="158" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">IVIČNJAK</text>
+</svg>
+<svg viewBox="0 0 306 158" role="img" aria-label="pogled odozgo: vozilo je stalo na biciklističkoj traci sa crvenom oznakom ne staje se, pa biciklistkinja crvenom isprekidanom putanjom mora da izađe među automobile" style="max-width:306px;width:100%;display:block;margin:6px auto">
+  <text x="6" y="14" text-anchor="start" font-size="12" font-weight="bold" fill="currentColor">AKO TU STANEŠ</text>
+  <rect x="0" y="20" width="306" height="52" fill="#9aa7b4"/>
+  <rect x="180" y="26" width="54" height="22" rx="4" fill="#2a333d" opacity="0.92"/>
+  <rect x="244" y="26" width="54" height="22" rx="4" fill="#2a333d" opacity="0.92"/>
+  <rect x="0" y="72" width="306" height="54" fill="#9aa7b4" opacity="0.85"/>
+  <rect x="0" y="69" width="306" height="5" fill="#fff"/>
+  <rect x="150" y="80" width="130" height="40" rx="5" fill="#2a333d" opacity="0.92"/>
+  <rect x="178" y="89" width="74" height="20" rx="10" fill="#c0392b"/>
+  <text x="215" y="103" text-anchor="middle" font-size="12" fill="#fff">ne staje se</text>
+  <g class="animBiciklObilazi" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round">
+    <circle cx="34" cy="114" r="9"/><circle cx="76" cy="114" r="9"/>
+    <path d="M34 114 L58 114 L67 98 L76 114"/><path d="M58 114 L50 98 L67 98"/>
+    <path d="M67 98 L74 96"/>
+    <circle cx="50" cy="78" r="6"/><path d="M50 84 L56 99"/><path d="M52 88 L67 97"/><path d="M56 99 L62 112"/><path d="M56 99 L48 110"/>
+  </g>
+  <path d="M92 100 C 112 92, 122 66, 132 44" stroke="#c0392b" stroke-width="2" stroke-dasharray="6 5" fill="none"/>
+  <path d="M124 50 L133 40 L138 52" stroke="#c0392b" stroke-width="2" fill="none"/>
+  <rect x="0" y="126" width="306" height="14" fill="currentColor" opacity="0.22"/>
+  <text x="153" y="154" text-anchor="middle" font-size="12" fill="#c0392b">mora da izađe među automobile</text>
+</svg>
+<p><b>Rečima:</b> na ispitnoj slici pojas desno od pune bele linije <b>nije bankina</b> nego <b>biciklistička traka</b>, deo puta namenjen samo biciklima, i njome se uz sam <b>ivičnjak</b> kreće biciklistkinja. Zato je tu zabranjeno i najkraće stajanje: ona bi zbog tvog vozila morala da izađe <b>među automobile</b>. Parkiranje je isto to, samo duže — vozilo tu ostaje mnogo duže od kratkog stajanja. Zabrana važi i na biciklističkoj <b>traci</b> i na biciklističkoj <b>stazi</b> (čl. 66 st. 1 t. 8), pa su odgovori "samo traka" i "samo staza" pogrešni. Auto-taksi vozila nisu izuzeta: pravilo važi za sva vozila jednako.</p>
+</div>
+
+<div class="kPodH"><b class="kPodNaslov">Zamka "najmanje 1,60 m"</b>
+<svg viewBox="0 0 306 156" role="img" aria-label="pogled odozgo na trotoar: vozilo je parkirano uz ivicu kolovoza, iza njega prema zgradi ostaje izmeren slobodan prolaz od 1,60 metara, a crvena napomena kaže da znaka nema pa metri ne pomažu" style="max-width:306px;width:100%;display:block;margin:6px auto">
+  <rect x="0" y="6" width="306" height="12" fill="currentColor" opacity="0.3"/>
+  <rect x="0" y="18" width="306" height="78" fill="currentColor" opacity="0.12"/>
+  <text x="298" y="32" text-anchor="end" font-size="12" font-weight="bold" fill="currentColor">TROTOAR</text>
+  <g stroke="currentColor" stroke-width="1.5" fill="none"><path d="M30 26 V54"/><path d="M24 26 H36"/><path d="M24 54 H36"/></g>
+  <text x="62" y="44" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">1,60 m</text>
+  <text x="180" y="36" text-anchor="middle" font-size="12" fill="currentColor">slobodan prolaz</text>
+  <text x="180" y="56" text-anchor="middle" font-size="12" fill="currentColor">nije uz ivicu kolovoza</text>
+  <rect x="34" y="60" width="156" height="32" rx="5" fill="#2a333d" opacity="0.92"/>
+  <rect x="66" y="66" width="92" height="20" rx="10" fill="#c0392b"/>
+  <text x="112" y="80" text-anchor="middle" font-size="12" fill="#fff">ne parkira se</text>
+  <rect x="0" y="96" width="306" height="40" fill="#9aa7b4"/>
+  <text x="40" y="120" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff">KOLOVOZ</text>
+  <text x="153" y="150" text-anchor="middle" font-size="12" fill="#c0392b">nema znaka — metri ne pomažu</text>
+</svg>
+<p><b>Rečima:</b> ponuda sa slobodnim prolazom za pešake od 1,60 m vraća se u <b>pet</b> pitanja ove podoblasti i <b>ni u jednom nije tačan odgovor</b>. Ta širina je dodatni <b>uslov</b> tamo gde je parkiranje već dopušteno saobraćajnim znakom ili oznakom na kolovozu — nikad sama dozvola. Na crtežu je prolaz i izmeren i pomeren dalje od ivice kolovoza, pa ipak ne vredi: znaka koji bi parkiranje dopustio nema.</p>
+<p class="mut">Ne mešaj taj broj sa redom "slobodan prolaz pored vozila — najmanje 3 m" iz tabele ove kartice: 3 m je prolaz koji mora da ostane pored zaustavljenog vozila, a 1,60 m je prolaz za pešake na trotoaru. Dva različita broja i dve različite stvari.</p>
+<table>
+<tr><th>Površina</th><th>Sme li se stati</th></tr>
+<tr><td>Trotoar</td><td><b>Nije dozvoljeno</b> — osim tamo gde znak ili oznaka izričito dozvoljava; tek tada se traži i slobodan prolaz <b>≥ 1,60 m</b> koji nije uz ivicu kolovoza (čl. 66 t. 13)</td></tr>
+<tr><td>Pešačka staza</td><td><b>Nije dozvoljeno</b> — zabrana bez uslova (čl. 66 t. 14)</td></tr>
+<tr><td>Deo trotoara za kretanje lica sa posebnim potrebama</td><td><b>Nije dozvoljeno</b> — bez izuzetka</td></tr>
+<tr><td>Staza za pešake i bicikliste</td><td><b>Nije dozvoljeno</b> — to nije kolovoz nego staza</td></tr>
+</table>
+<p>Na slici uz jedno od tih pitanja odgovor donosi baš <b>znak</b> — po njemu prepoznaješ da površina ispod nije kolovoz nego staza:</p>
+<div class="signRow">
+  <div class="signCell">
+    <svg viewBox="0 0 78 70" role="img" aria-label="plavi okrugli znak podeljen uspravnom belom linijom: sa jedne strane lik pešaka, sa druge bicikl">
+      <circle cx="39" cy="34" r="29" fill="#2c6aa0"/>
+      <path d="M39 7 L39 61" stroke="#fff" stroke-width="2.5"/>
+      <g fill="#fff"><circle cx="24" cy="20" r="4"/><rect x="22.5" y="25" width="3" height="14" rx="1.5"/></g>
+      <g stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"><path d="M24 39 L19 50"/><path d="M24 39 L29 50"/><path d="M24 28 L17 33"/><path d="M24 28 L31 33"/></g>
+      <g stroke="#fff" stroke-width="2" fill="none"><circle cx="48" cy="44" r="5.5"/><circle cx="60" cy="44" r="5.5"/><path d="M48 44 L55 35 L60 44"/><path d="M55 35 L59 32"/></g>
+    </svg>
+    <b>STAZA ZA PEŠAKE I BICIKLISTE</b><span>plavi krug je porodica obaveze, a ovaj deli površinu na deo za pešake i deo za bicikliste; koja je strana koja, ne pita se — bitno je da to nije kolovoz nego staza, pa vozilo tu ne stoji ni najkraće</span>
+  </div>
+</div>
+<p>Na slici uz pitanje o <b>trotoaru</b> odlučuje obrnuto: takvog znaka tu <b>nema</b>, pa zabrana važi bez obzira na to koliko je prostora ostalo iza vozila. Znak, dakle, gledaš da bi znao <b>šta je ta površina</b> — a ne zato što bi neki znak sam po sebi opravdao stajanje.</p>
+<p class="mut">Pamtilica: nema znaka — nema merenja metara.</p>
+</div>
+
+<div class="kPodH"><b class="kPodNaslov">Izgleda kao slobodan prostor, a nije</b>
+<svg viewBox="0 0 306 168" role="img" aria-label="pogled odozgo: dva toka saobraćaja se razdvajaju levo i desno, a između njih je polje za usmeravanje saobraćaja, bele kose pruge oivičene punom linijom; vozilo koje je stalo na polju je precrtano" style="max-width:306px;width:100%;display:block;margin:6px auto">
+  <defs><clipPath id="pusPolje140"><rect x="110" y="52" width="86" height="86"/></clipPath></defs>
+  <text x="153" y="14" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">POLJE ZA USMERAVANJE SAOBRAĆAJA</text>
+  <rect x="0" y="22" width="306" height="124" fill="#9aa7b4"/>
+  <text x="56" y="42" text-anchor="middle" font-size="12" fill="#fff">jedan tok</text>
+  <text x="250" y="42" text-anchor="middle" font-size="12" fill="#fff">drugi tok</text>
+  <path d="M96 140 L66 62" stroke="#fff" stroke-width="3" fill="none"/>
+  <path d="M80 74 L66 62 L63 80" stroke="#fff" stroke-width="3" fill="none" stroke-linejoin="round"/>
+  <path d="M210 140 L240 62" stroke="#fff" stroke-width="3" fill="none"/>
+  <path d="M226 74 L240 62 L243 80" stroke="#fff" stroke-width="3" fill="none" stroke-linejoin="round"/>
+  <g clip-path="url(#pusPolje140)" stroke="#fff" stroke-width="2.5" fill="none">
+    <path d="M110 72 L130 52"/><path d="M110 96 L154 52"/><path d="M110 120 L178 52"/><path d="M110 138 L196 52"/><path d="M128 138 L196 70"/><path d="M152 138 L196 94"/><path d="M176 138 L196 118"/>
+  </g>
+  <rect x="110" y="52" width="86" height="86" fill="none" stroke="#fff" stroke-width="3"/>
+  <rect x="118" y="82" width="70" height="26" rx="4" fill="#2a333d" opacity="0.95"/>
+  <path d="M122 84 L184 106 M184 84 L122 106" stroke="#c0392b" stroke-width="3" fill="none"/>
+  <text x="153" y="160" text-anchor="middle" font-size="12" fill="#c0392b">ovde se ne prelazi ni ne staje</text>
+</svg>
+<p><b>Rečima:</b> bele kose pruge oivičene punom linijom su <b>polje za usmeravanje saobraćaja</b> — površina koja mora da ostane prazna da bi se tokovi razdvojili na vreme, pa je i nacrtana između dva toka koja se razilaze. Vozilo na nju ne sme ni da pređe, pa je i ostavljanje vozila tu zabranjeno: vozilo ostavljeno na prugama stoji nepropisno, iako mesto na prvi pogled deluje kao slobodan prostor uz ivicu.</p>
+<table>
+<tr><th>Mesto</th><th>Pravilo</th></tr>
+<tr><td>Kolovozne trake fizički odvojene (razdelno ostrvo)</td><td>Ni zaustavljanje ni parkiranje — nema bezbednog obilaženja</td></tr>
+<tr><td>Površina na kojoj je signalizacijom zabranjen saobraćaj vozila</td><td>Zabranjen saobraćaj znači i zabranjeno zaustavljanje i parkiranje — jače pravilo uključuje slabije</td></tr>
+<tr><td>Trg, pešačka zona, protivpožarni put</td><td>Ni zaustavljanje ni parkiranje — protivpožarni put mora biti prohodan u svakom trenutku</td></tr>
+</table>
+</div>
+
+<div class="kPodH"><b class="kPodNaslov">Uspon i nizbrdica nisu na spisku, blizina vrha prevoja jeste</b>
+<svg viewBox="0 0 306 156" role="img" aria-label="uzdužni profil puta sa prevojem: crvenom bojom obeležen je i sam vrh prevoja i pojas oko njega u kome se ne sme zaustaviti ni parkirati, dok su niži delovi uspona i nizbrdice samo imenovani" style="max-width:306px;width:100%;display:block;margin:6px auto">
+  <path d="M6 112 L70 112 L133 64 Q153 50 173 64 L236 112 L300 112 L300 122 L6 122 Z" fill="currentColor" opacity="0.1"/>
+  <path d="M6 112 L70 112 L133 64 Q153 50 173 64 L236 112 L300 112" fill="none" stroke="currentColor" stroke-width="2.5"/>
+  <path d="M113 79 L133 64 Q153 50 173 64 L193 79" fill="none" stroke="#c0392b" stroke-width="6"/>
+  <text x="153" y="20" text-anchor="middle" font-size="12" font-weight="bold" fill="#c0392b">blizina vrha prevoja</text>
+  <text x="153" y="40" text-anchor="middle" font-size="12" fill="#c0392b">ne zaustavlja se ni parkira</text>
+  <g stroke="#c0392b" stroke-width="1.5" fill="none"><path d="M113 86 V132" stroke-dasharray="4 4"/><path d="M193 86 V132" stroke-dasharray="4 4"/><path d="M113 130 H193"/></g>
+  <text x="60" y="104" text-anchor="middle" font-size="12" fill="currentColor">uspon</text>
+  <text x="250" y="104" text-anchor="middle" font-size="12" fill="currentColor">nizbrdica</text>
+  <text x="153" y="148" text-anchor="middle" font-size="12" fill="#c0392b">i sam vrh i pojas oko njega</text>
+</svg>
+<p><b>Rečima:</b> u pitanjima zabrana glasi <b>"u blizini vrha prevoja"</b>, pa crvena boja na crtežu pokriva i sam vrh i pojas oko njega; tabela ove kartice isti red vodi kao "Prevoj, nepregledna krivina — uvek zabranjeno". Zabranjena je, dakle, i <b>nepregledna krivina</b> (čl. 66 t. 5). Uvek su zabranjeni i tunel, podvožnjak, galerija, most i nadvožnjak (čl. 66).</p>
+<svg viewBox="0 0 306 152" role="img" aria-label="pogled odozgo na nepreglednu krivinu: put se savija udesno, u samoj krivini stoji precrtano parkirano vozilo, a plava strelica pokazuje tvoj smer kretanja kroz krivinu" style="max-width:306px;width:100%;display:block;margin:6px auto">
+  <text x="6" y="14" text-anchor="start" font-size="12" font-weight="bold" fill="currentColor">NEPREGLEDNA KRIVINA</text>
+  <path d="M0 48 H150 A 54 54 0 0 1 204 102 V 152" stroke="#9aa7b4" stroke-width="42" fill="none"/>
+  <path d="M0 48 H150 A 54 54 0 0 1 204 102 V 152" stroke="#fff" stroke-width="2" stroke-dasharray="12 9" fill="none"/>
+  <path d="M40 48 H104 M92 42 L104 48 L92 54" stroke="#2c6aa0" stroke-width="3" fill="none"/>
+  <text x="34" y="52" text-anchor="end" font-size="12" font-weight="bold" fill="#2c6aa0">TI</text>
+  <g transform="translate(186 72) rotate(45)"><rect x="-24" y="-9" width="48" height="18" rx="4" fill="#2a333d" opacity="0.92"/></g>
+  <path d="M166 54 L206 92 M206 54 L166 92" stroke="#c0392b" stroke-width="3" fill="none"/>
+  <text x="100" y="140" text-anchor="middle" font-size="12" fill="#c0392b">ne zaustavlja se ni parkira</text>
+</svg>
+<p>Sam <b>uspon</b>, sama <b>nizbrdica</b> i <b>put van naselja</b> nisu na spisku zabranjenih mesta, pa te tri ponude nisu tačni odgovori. To ipak nije dozvola: iznad svih spiskova ostaje pravilo da se ne staje tamo gde vozilo ugrožava ili ometa, a van naselja se vozilo sklanja van kolovoza kad god za to postoji mogućnost (čl. 64 st. 1).</p>
+<p class="mut">Vrh prevoja i nepregledna krivina su ista "opasna mesta" kao kod preticanja i polukružnog okretanja. Ovo nije ceo spisak zabrana — mesta sa metrima (5-5-5-15-3) i ostale zabrane su u tabeli ove kartice i u temama iznad.</p>
+</div>
+
+<div class="kPodH"><b class="kPodNaslov">Kad odlaziš od vozila i kad staneš u kvaru</b>
+<svg viewBox="0 0 306 142" role="img" aria-label="vozilo parkirano na nagibu dok se vozač udaljava; crvena isprekidana strelica pokazuje kako se vozilo samo kotrlja niz nagib" style="max-width:306px;width:100%;display:block;margin:6px auto">
+  <path d="M14 62 L292 106 L292 128 L14 128 Z" fill="currentColor" opacity="0.12"/>
+  <path d="M14 62 L292 106" stroke="currentColor" stroke-width="2.5" fill="none"/>
+  <g stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round">
+    <circle cx="46" cy="44" r="5"/><path d="M46 49 V62"/><path d="M46 62 L40 72"/><path d="M46 62 L53 72"/><path d="M46 53 L37 49"/><path d="M46 53 L55 57"/>
+  </g>
+  <text x="46" y="28" text-anchor="middle" font-size="12" fill="currentColor">vozač odlazi</text>
+  <g transform="translate(116 68) rotate(9)"><g class="animVoziloSeKotrlja">
+    <rect x="-40" y="-16" width="80" height="24" rx="5" fill="#2a333d" opacity="0.92"/>
+    <circle cx="-24" cy="10" r="6" fill="currentColor"/><circle cx="24" cy="10" r="6" fill="currentColor"/>
+  </g></g>
+  <path d="M168 78 L224 87" stroke="#c0392b" stroke-width="2.5" stroke-dasharray="6 5" fill="none"/>
+  <path d="M217 81 L232 88 L216 93" stroke="#c0392b" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+  <text x="222" y="42" text-anchor="middle" font-size="12" font-weight="bold" fill="#c0392b">sprečiti da se vozilo</text>
+  <text x="222" y="62" text-anchor="middle" font-size="12" font-weight="bold" fill="#c0392b">samo pokrene s mesta</text>
+</svg>
+<svg viewBox="0 0 306 128" role="img" aria-label="pogled odozgo na vozilo parkirano uz ivičnjak na nagibu: prednji točkovi su okrenuti ka ivičnjaku" style="max-width:306px;width:100%;display:block;margin:6px auto">
+  <text x="6" y="14" text-anchor="start" font-size="12" font-weight="bold" fill="currentColor">NA NAGIBU: TOČKOVI KA IVIČNJAKU</text>
+  <rect x="0" y="24" width="306" height="60" fill="#9aa7b4"/>
+  <rect x="0" y="84" width="306" height="14" fill="currentColor" opacity="0.25"/>
+  <rect x="80" y="36" width="130" height="34" rx="5" fill="#2a333d" opacity="0.92"/>
+  <rect x="96" y="30" width="20" height="8" rx="2" fill="currentColor"/>
+  <rect x="96" y="68" width="20" height="8" rx="2" fill="currentColor"/>
+  <g transform="translate(186 34) rotate(28)"><rect x="-10" y="-4" width="20" height="8" rx="2" fill="currentColor"/></g>
+  <g transform="translate(186 72) rotate(28)"><rect x="-10" y="-4" width="20" height="8" rx="2" fill="currentColor"/></g>
+  <path d="M200 78 L212 90 M204 88 L213 91 L210 82" stroke="#1f7a3f" stroke-width="2" fill="none"/>
+  <text x="264" y="94" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">IVIČNJAK</text>
+  <text x="153" y="118" text-anchor="middle" font-size="12" fill="currentColor">ručna kočnica · brzina · točkovi ka ivičnjaku</text>
+</svg>
+<p><b>Pre nego što napustiš parkirano vozilo:</b> preduzmi mere kojima se sprečava da se vozilo samo pokrene sa mesta na kome je parkirano. To je ceo tačan odgovor — ni sigurnosni trougao iza vozila ni uključeni pokazivači pravca nisu rešenje. Te mere su <b>ručna kočnica</b>, ostavljena <b>brzina</b> i, na nagibu, <b>točkovi okrenuti ka ivičnjaku</b>.</p>
+<svg viewBox="0 0 306 180" role="img" aria-label="vozilo u kvaru stoji na šinama, sa leve strane po šinama nailazi šinsko vozilo, a između njih je crveni znak upozorenja" style="max-width:306px;width:100%;display:block;margin:6px auto">
+  <text x="153" y="16" text-anchor="middle" font-size="12" font-weight="bold" fill="#c0392b">1. vozilo ODMAH ukloni sa šina</text>
+  <g stroke="#3c4a56" stroke-width="3" opacity="0.45" fill="none"><path d="M8 84 V112"/><path d="M30 84 V112"/><path d="M52 84 V112"/><path d="M74 84 V112"/><path d="M96 84 V112"/><path d="M118 84 V112"/><path d="M140 84 V112"/><path d="M162 84 V112"/><path d="M184 84 V112"/><path d="M206 84 V112"/><path d="M228 84 V112"/><path d="M250 84 V112"/><path d="M272 84 V112"/><path d="M294 84 V112"/></g>
+  <path d="M0 90 H306 M0 106 H306" stroke="#3c4a56" stroke-width="4" fill="none"/>
+  <g class="animSinskoPrilazi">
+    <rect x="4" y="76" width="72" height="42" rx="7" fill="#2a333d" stroke="#fff" stroke-width="1.5"/>
+    <rect x="12" y="84" width="20" height="14" rx="2" fill="#fff" opacity="0.75"/>
+    <rect x="40" y="84" width="20" height="14" rx="2" fill="#fff" opacity="0.75"/>
+    <path d="M84 97 H108 M100 91 L110 97 L100 103" stroke="#c0392b" stroke-width="2.5" fill="none"/>
+  </g>
+  <circle cx="140" cy="46" r="14" fill="#c0392b"/>
+  <rect x="137" y="38" width="6" height="12" rx="2" fill="#fff"/><circle cx="140" cy="54" r="2.5" fill="#fff"/>
+  <rect x="176" y="80" width="96" height="38" rx="6" fill="#2a333d" opacity="0.95"/>
+  <text x="224" y="134" text-anchor="middle" font-size="12" fill="currentColor">vozilo u kvaru</text>
+  <text x="153" y="154" text-anchor="middle" font-size="12" fill="#c0392b">2. ako ne može — odmah upozori</text>
+  <text x="153" y="174" text-anchor="middle" font-size="12" fill="#c0392b">vozače šinskog vozila</text>
+</svg>
+<p><b>Kvar na šinama:</b> vozilo <b>odmah</b> ukloni sa šina; ako to nije moguće, odmah preduzmi mere da vozači šinskog vozila na vreme budu upozoreni na opasnost (čl. 63 st. 2). Ni popravka na licu mesta ni trougao sa pokazivačima pravca nisu rešenje.</p>
+<div class="signRow wrapRow">
+  <div class="signCell">
+    <svg viewBox="0 0 78 70" role="img" aria-label="precrtani sigurnosni trougao sa upaljenim pokazivačima pravca">
+      <path d="M39 12 L66 56 L12 56 Z" fill="none" stroke="#c0392b" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M39 24 L39 42" stroke="#c0392b" stroke-width="3"/><circle cx="39" cy="48" r="2.5" fill="#c0392b"/>
+      <path d="M10 8 L70 64" stroke="#c0392b" stroke-width="4"/>
+    </svg>
+    <b>TROUGAO I POKAZIVAČI PRAVCA</b><span>nudi se i uz napuštanje parkiranog vozila i uz kvar na šinama — ni u jednom od ta dva pitanja nije tačan odgovor</span>
+  </div>
+</div>
+</div>
+
+<div class="kPodH"><b class="kPodNaslov">Sve zamke na jednom mestu</b>
+<p>Ponude se kroz ovu podoblast ponavljaju. Nijedna dole nabrojana <b>nijednom nije tačan odgovor</b> — dužina trake pokazuje u koliko se pitanja ta ponuda javlja.</p>
+<svg viewBox="0 0 306 318" role="img" aria-label="vodoravni grafikon: zaustavljanje da a parkiranje ne šest puta, slobodan prolaz 1,60 m pet puta, manje od 10 m umesto 5 m četiri puta, samo na mestu bez pojasa četiri puta, izuzetak za auto-taksi dva puta, trougao i pokazivači pravca dva puta, samo staza ili samo traka jednom, najduže do 3 minuta jednom; nijedna od tih ponuda nije nijednom tačna" style="max-width:306px;width:100%;display:block;margin:6px auto">
+  <text x="6" y="16" text-anchor="start" font-size="12" fill="currentColor">koliko puta se ponuda javlja — tačna: nijednom</text>
+  <text x="6" y="42" text-anchor="start" font-size="12" fill="currentColor">zaustavljanje da, parkiranje ne</text>
+  <rect x="6" y="46" width="180" height="14" fill="#c0392b"/>
+  <text x="286" y="57" text-anchor="end" font-size="12" fill="currentColor">6</text>
+  <text x="6" y="78" text-anchor="start" font-size="12" fill="currentColor">slobodan prolaz 1,60 m</text>
+  <rect x="6" y="82" width="150" height="14" fill="#c0392b"/>
+  <text x="286" y="93" text-anchor="end" font-size="12" fill="currentColor">5</text>
+  <text x="6" y="114" text-anchor="start" font-size="12" fill="currentColor">manje od 10 m umesto 5 m</text>
+  <rect x="6" y="118" width="120" height="14" fill="#c0392b"/>
+  <text x="286" y="129" text-anchor="end" font-size="12" fill="currentColor">4</text>
+  <text x="6" y="150" text-anchor="start" font-size="12" fill="currentColor">samo na mestu, bez pojasa</text>
+  <rect x="6" y="154" width="120" height="14" fill="#c0392b"/>
+  <text x="286" y="165" text-anchor="end" font-size="12" fill="currentColor">4</text>
+  <text x="6" y="186" text-anchor="start" font-size="12" fill="currentColor">izuzetak za auto-taksi</text>
+  <rect x="6" y="190" width="60" height="14" fill="#c0392b"/>
+  <text x="286" y="201" text-anchor="end" font-size="12" fill="currentColor">2</text>
+  <text x="6" y="222" text-anchor="start" font-size="12" fill="currentColor">trougao i pokazivači pravca</text>
+  <rect x="6" y="226" width="60" height="14" fill="#c0392b"/>
+  <text x="286" y="237" text-anchor="end" font-size="12" fill="currentColor">2</text>
+  <text x="6" y="258" text-anchor="start" font-size="12" fill="currentColor">samo staza ili samo traka</text>
+  <rect x="6" y="262" width="30" height="14" fill="#c0392b"/>
+  <text x="286" y="273" text-anchor="end" font-size="12" fill="currentColor">1</text>
+  <text x="6" y="294" text-anchor="start" font-size="12" fill="currentColor">najduže do 3 minuta</text>
+  <rect x="6" y="298" width="30" height="14" fill="#c0392b"/>
+  <text x="286" y="309" text-anchor="end" font-size="12" fill="currentColor">1</text>
+</svg>
+<table>
+<tr><th>Ponuda koja se stalno vraća</th><th>Šta stvarno stoji</th></tr>
+<tr><td>"dozvoljeno je zaustavljanje, a nije dozvoljeno parkiranje"</td><td>zabranjeno je oboje</td></tr>
+<tr><td>"slobodan prolaz za pešake najmanje širine 1,60 m"</td><td>uslov tamo gde je parkiranje već dopušteno znakom ili oznakom, nikad sama dozvola</td></tr>
+<tr><td>"na udaljenosti manjoj od 10 m"</td><td>meri se 5 m</td></tr>
+<tr><td>"samo na pešačkom prelazu", "samo na raskrsnici"</td><td>i mesto i pojas od 5 m oko njega</td></tr>
+<tr><td>"dozvoljeno samo vozilima auto-taksi prevoza"</td><td>pravilo važi za sva vozila jednako</td></tr>
+<tr><td>"sigurnosni trougao", "svi pokazivači pravca"</td><td>mere protiv samopokretanja vozila, odnosno uklanjanje sa šina i upozorenje</td></tr>
+<tr><td>"samo na biciklističkoj stazi", "samo na biciklističkoj traci"</td><td>i na stazi i na traci</td></tr>
+<tr><td>"sme da zaustavi vozilo najduže do 3 minuta"</td><td>ne sme ni da zaustavi ni da parkira</td></tr>
+</table>
+<p class="mut">Pamtilica: zamka je skoro uvek ona ponuda koja nešto <b>dopušta</b> — pod uslovom, na kraće vreme, samo za taksi, uz izmerenih 1,60 m. U dvanaest pitanja ove podoblasti pita se da li je na nekoj površini dozvoljeno zaustavljanje ili parkiranje i u svih dvanaest tačan odgovor glasi da <b>nije dozvoljeno</b>. Pitanja u kojima tačan odgovor nešto dopušta ne pitaju da li se sme, nego <b>gde</b> i pod kojim uslovom — sva su u temi "Uz koju ivicu se staje" (čl. 64).</p>
+</div>
+`,
 };
 
 CARDS['svetla'] = {
@@ -1337,6 +1850,307 @@ CARDS['svetla'] = {
 <tr><td>isto to, ali ulično osvetljenje čini vozilo <b>dovoljno vidljivim</b> + posebno obeleženo mesto</td><td><b>ne moraju</b> biti uključena poziciona/parkirna</td></tr>
 </table>
 <p class="mut">Zamke: „na putu u naselju" se nudi u SVAKOM pitanju o kratkim umesto dugih — i nikad nije tačno (razlog je ulična rasveta, ne naselje). Odstojanje je <b>200 m</b>, mamac je 250 m. Pazi ŠTA pitanje pita: kad traži koja svetla <b>umesto dugih</b> (vožnja noću), „kada je vozilo zaustavljeno" JESTE tačan odgovor za kratka; ali kad pita koja svetla mora da ima <b>zaustavljeno/parkirano vozilo na kolovozu</b>, odgovor su POZICIONA, odnosno parkirna — kratka su tu mamac.</p>
+
+
+<!-- ==== dopuna 07.09.2026 (tura 4): crtež + isto to rečima ==== -->
+<!-- IZVOR (podoblast 142 — upotreba svetala). Devet pitanja: 10210, 10211, 10217, 10218,
+     10539, 10540, 10541, 10542, 10543. Mapa tema u ovom dodatku:
+     tema 1 = 10210 + 10211 · tema 2 = 10539 + 10540 + 10541 + 10542 · tema 3 = 10539 (200 m) i
+     mamac 250 m iz 10539/10540/10541/10542 · tema 4 = 10543 (+ magla kao jedna od sedam, 10541)
+     · tema 5 = 10542 + 10217 + 10218 · tema 6 = sve ponude iz svih devet pitanja. -->
+<p><b>Mapa podoblasti:</b> devet pitanja, svako po 2 poena, u četiri porodice — šta mora da bude uključeno <b>danju i noću</b> (2 pitanja) · kada idu <b>kratka umesto dugih</b> (4) · <b>magla</b> (1) · <b>zaustavljeno ili parkirano vozilo na kolovozu</b> (2).</p>
+
+<!-- TEMA 1 — pitanja 10210 (danju) i 10211 (noću) -->
+<div class="kPodH"><b class="kPodNaslov">Osnovno: danju i noću svetla MORAJU</b>
+<div class="signRow lineRow" style="max-width:306px;margin:6px auto">
+  <div class="signCell">
+    <svg viewBox="0 0 150 120" style="width:100%;max-width:300px" role="img" aria-label="Vožnja danju: na vozilu su uključena kratka, odnosno dnevna svetla">
+      <rect x="35" y="0" width="80" height="120" fill="#9aa7b4"/>
+      <rect x="35" y="0" width="6" height="120" fill="#e8dcc2"/><rect x="109" y="0" width="6" height="120" fill="#e8dcc2"/>
+      <line x1="75" y1="0" x2="75" y2="120" stroke="#fff" stroke-width="3" stroke-dasharray="12 9"/>
+      <circle cx="17" cy="22" r="9" fill="#e8b000"/>
+      <line x1="17" y1="5" x2="17" y2="10" stroke="#e8b000" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="17" y1="34" x2="17" y2="39" stroke="#e8b000" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="0" y1="22" x2="5" y2="22" stroke="#e8b000" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="29" y1="22" x2="34" y2="22" stroke="#e8b000" stroke-width="2.5" stroke-linecap="round"/>
+      <g transform="translate(94 68)">
+        <circle cx="-5" cy="-17" r="7" fill="#e8b000" opacity=".3"/><circle cx="5" cy="-17" r="7" fill="#e8b000" opacity=".3"/>
+        <rect x="-13.5" y="-15" width="5" height="9" rx="2" fill="#333"/><rect x="8.5" y="-15" width="5" height="9" rx="2" fill="#333"/>
+        <rect x="-13.5" y="6" width="5" height="9" rx="2" fill="#333"/><rect x="8.5" y="6" width="5" height="9" rx="2" fill="#333"/>
+        <rect x="-10" y="-19" width="20" height="38" rx="8" fill="#2c6aa0"/>
+        <path d="M-7 -10 Q0 -14 7 -10 L7 -4 Q0 -7 -7 -4 Z" fill="#fff" opacity=".85"/>
+        <circle cx="-5" cy="-17" r="3" fill="#e8b000"/><circle cx="5" cy="-17" r="3" fill="#e8b000"/>
+      </g>
+    </svg>
+    <b>DANJU — KRATKA, ODNOSNO DNEVNA</b><span>moraju biti uključena za vreme vožnje na putu (čl. 77 st. 1)</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 150 120" style="width:100%;max-width:300px" role="img" aria-label="Vožnja noću: na vozilu su uključena duga svetla, snop dopire daleko">
+      <rect x="35" y="0" width="80" height="120" fill="#9aa7b4"/>
+      <rect x="35" y="0" width="6" height="120" fill="#e8dcc2"/><rect x="109" y="0" width="6" height="120" fill="#e8dcc2"/>
+      <rect x="0" y="0" width="150" height="120" fill="#1c2e40" opacity=".42"/>
+      <line x1="75" y1="0" x2="75" y2="120" stroke="#fff" stroke-width="3" stroke-dasharray="12 9" opacity=".8"/>
+      <circle cx="14" cy="14" r="2" fill="#fff" opacity=".8"/><circle cx="26" cy="31" r="1.6" fill="#fff" opacity=".7"/><circle cx="9" cy="44" r="1.6" fill="#fff" opacity=".7"/><circle cx="136" cy="19" r="2" fill="#fff" opacity=".8"/>
+      <polygon points="84,73 104,73 120,2 68,2" fill="#e8b000" opacity=".3"/>
+      <g transform="translate(94 92)">
+        <rect x="-13.5" y="-15" width="5" height="9" rx="2" fill="#333"/><rect x="8.5" y="-15" width="5" height="9" rx="2" fill="#333"/>
+        <rect x="-13.5" y="6" width="5" height="9" rx="2" fill="#333"/><rect x="8.5" y="6" width="5" height="9" rx="2" fill="#333"/>
+        <rect x="-10" y="-19" width="20" height="38" rx="8" fill="#2c6aa0"/>
+        <path d="M-7 -10 Q0 -14 7 -10 L7 -4 Q0 -7 -7 -4 Z" fill="#fff" opacity=".85"/>
+        <circle cx="-5" cy="-17" r="3" fill="#e8b000"/><circle cx="5" cy="-17" r="3" fill="#e8b000"/>
+      </g>
+    </svg>
+    <b>NOĆU — DUGA</b><span>moraju biti uključena za vreme vožnje na putu (čl. 77 st. 2)</span>
+  </div>
+</div>
+<p><b>Rečima (čl. 77):</b> danju za vreme vožnje na putu <b>moraju</b> biti uključena <b>kratka, odnosno dnevna</b> svetla (st. 1) — nisu opcija. Noću za vreme vožnje na putu <b>moraju</b> biti uključena <b>duga</b> svetla (st. 2) — a u sedam propisanih situacija umesto dugih idu kratka (sledeća tema).</p>
+<p class="mut">Pamtilica: ta dva pitanja nude <b>ista četiri odgovora</b> — „svetla za maglu" · „kratka, odnosno dnevna" · „duga" · „svetla za osvetljavanje mesta gde se izvode radovi". Menja se samo koji je tačan: danju kratka/dnevna, noću duga. Preostala dva se nude i danju i noću, a nijednom nisu tačna.</p>
+</div>
+
+<!-- TEMA 2 — pitanja 10539, 10540, 10541, 10542 (kratka umesto dugih; sedam situacija iz objašnjenja, čl. 77 st. 3) -->
+<div class="kPodH"><b class="kPodNaslov">Sedam situacija za kratka umesto dugih</b>
+<div class="signRow wrapRow">
+  <div class="signCell">
+    <svg viewBox="0 0 78 70" role="img" aria-label="Dva vozila se mimoilaze iz suprotnih smerova, snopovi su kratki i ne dosežu do drugog vozila"><rect x="14" y="0" width="50" height="70" fill="#9aa7b4"/><rect x="14" y="0" width="50" height="70" fill="#1c2e40" opacity=".22"/><line x1="39" y1="0" x2="39" y2="70" stroke="#fff" stroke-width="2.5" stroke-dasharray="7 6"/><polygon points="46,41 58,41 60,32 44,32" fill="#e8b000" opacity=".32"/><g class="animDolaziUSusret"><polygon points="20,29 32,29 34,38 18,38" fill="#e8b000" opacity=".32"/><g transform="translate(26 18) rotate(180)"><rect x="-6" y="-11" width="12" height="22" rx="4" fill="#5f6d7a"/><path d="M-4 -5 Q0 -8 4 -5 L4 -1 Q0 -3 -4 -1 Z" fill="#fff" opacity=".8"/><circle cx="-3.2" cy="-9.6" r="1.5" fill="#e8b000"/><circle cx="3.2" cy="-9.6" r="1.5" fill="#e8b000"/></g></g><g transform="translate(52 52)"><rect x="-6" y="-11" width="12" height="22" rx="4" fill="#2c6aa0"/><path d="M-4 -5 Q0 -8 4 -5 L4 -1 Q0 -3 -4 -1 Z" fill="#fff" opacity=".8"/><circle cx="-3.2" cy="-9.6" r="1.5" fill="#e8b000"/><circle cx="3.2" cy="-9.6" r="1.5" fill="#e8b000"/></g></svg>
+    <b>1 · MIMOILAŽENJE</b><span>kad oceniš da zaslepljuješ vozača iz susreta — a uvek na odstojanju manjem od 200 m</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 78 70" role="img" aria-label="Vozilo vozi iza drugog vozila u istoj traci, snop staje pre vozila ispred"><rect x="14" y="0" width="50" height="70" fill="#9aa7b4"/><rect x="14" y="0" width="50" height="70" fill="#1c2e40" opacity=".22"/><line x1="39" y1="0" x2="39" y2="70" stroke="#fff" stroke-width="2.5" stroke-dasharray="7 6"/><polygon points="46,43 58,43 60,33 44,33" fill="#e8b000" opacity=".32"/><g transform="translate(52 20)"><rect x="-6" y="-11" width="12" height="22" rx="4" fill="#5f6d7a"/><path d="M-4 -5 Q0 -8 4 -5 L4 -1 Q0 -3 -4 -1 Z" fill="#fff" opacity=".8"/><circle cx="-3.2" cy="9.6" r="1.5" fill="#c0392b"/><circle cx="3.2" cy="9.6" r="1.5" fill="#c0392b"/></g><g transform="translate(52 54)"><rect x="-6" y="-11" width="12" height="22" rx="4" fill="#2c6aa0"/><path d="M-4 -5 Q0 -8 4 -5 L4 -1 Q0 -3 -4 -1 Z" fill="#fff" opacity=".8"/><circle cx="-3.2" cy="-9.6" r="1.5" fill="#e8b000"/><circle cx="3.2" cy="-9.6" r="1.5" fill="#e8b000"/></g></svg>
+    <b>2 · VOZILO ISPRED</b><span>ako ometaš vozača koji je ispred tebe</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 78 70" role="img" aria-label="Ulična svetiljka osvetljava kolovoz sa vozilom"><rect x="14" y="0" width="50" height="70" fill="#9aa7b4"/><rect x="14" y="0" width="50" height="70" fill="#1c2e40" opacity=".22"/><line x1="39" y1="0" x2="39" y2="70" stroke="#fff" stroke-width="2.5" stroke-dasharray="7 6"/><polygon points="54,11 64,11 74,60 34,60" fill="#e8b000" opacity=".3"/><line x1="70" y1="68" x2="70" y2="12" stroke="currentColor" stroke-width="2"/><path d="M70 13 L61 9" stroke="currentColor" stroke-width="2" fill="none"/><rect x="53" y="5" width="12" height="4.5" rx="2" fill="currentColor"/><g transform="translate(52 46)"><rect x="-6" y="-11" width="12" height="22" rx="4" fill="#2c6aa0"/><path d="M-4 -5 Q0 -8 4 -5 L4 -1 Q0 -3 -4 -1 Z" fill="#fff" opacity=".8"/><circle cx="-3.2" cy="-9.6" r="1.5" fill="#e8b000"/><circle cx="3.2" cy="-9.6" r="1.5" fill="#e8b000"/></g></svg>
+    <b>3 · ULIČNA RASVETA</b><span>put je osvetljen uličnom rasvetom — razlog je rasveta, NE „naselje"</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 78 70" role="img" aria-label="Vozilo ulazi u tunel"><path d="M4 62 Q39 4 74 62 Z" fill="#5f6d7a" opacity=".45"/><path d="M22 62 V40 A17 17 0 0 1 56 40 V62 Z" fill="#2a333d"/><rect x="22" y="58" width="34" height="12" fill="#9aa7b4"/><g class="animUlazUTunel"><g transform="translate(39 58)"><rect x="-6" y="-11" width="12" height="22" rx="4" fill="#2c6aa0"/><path d="M-4 -5 Q0 -8 4 -5 L4 -1 Q0 -3 -4 -1 Z" fill="#fff" opacity=".8"/><circle cx="-3.2" cy="-9.6" r="1.5" fill="#e8b000"/><circle cx="3.2" cy="-9.6" r="1.5" fill="#e8b000"/></g></g></svg>
+    <b>4 · TUNEL</b><span>u tunelu</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 78 70" role="img" aria-label="Vozilo sa kratkim snopom koji staje pre šina sa tramvajem i pre vode sa plovilom"><rect x="0" y="36" width="78" height="34" fill="#9aa7b4"/><rect x="0" y="36" width="78" height="34" fill="#1c2e40" opacity=".22"/><line x1="7" y1="2" x2="7" y2="32" stroke="#4d5761" stroke-width="1.6"/><line x1="25" y1="2" x2="25" y2="32" stroke="#4d5761" stroke-width="1.6"/><line x1="4" y1="6" x2="28" y2="6" stroke="#4d5761" stroke-width="1.4"/><line x1="4" y1="28" x2="28" y2="28" stroke="#4d5761" stroke-width="1.4"/><rect x="10" y="8" width="12" height="21" rx="3" fill="#b7332b"/><rect x="12" y="10" width="8" height="5" rx="1.5" fill="#fff" opacity=".8"/><rect x="12" y="18" width="8" height="4" rx="1.5" fill="#fff" opacity=".5"/><path d="M44 24 H73 L68 31 H49 Z" fill="#5f6d7a"/><rect x="54" y="17" width="8" height="7" rx="2" fill="#5f6d7a"/><path d="M40 33 q5 -3 10 0 t10 0 t10 0" stroke="#2c6aa0" fill="none" stroke-width="1.8" opacity=".85"/><polygon points="33,52 45,52 48,42 30,42" fill="#e8b000" opacity=".32"/><g transform="translate(39 60)"><rect x="-6" y="-9" width="12" height="18" rx="4" fill="#2c6aa0"/><path d="M-4 -4 Q0 -7 4 -4 L4 0 Q0 -2 -4 0 Z" fill="#fff" opacity=".8"/><circle cx="-3.2" cy="-6.6" r="1.5" fill="#e8b000"/><circle cx="3.2" cy="-6.6" r="1.5" fill="#e8b000"/></g></svg>
+    <b>5 · ŠINSKO VOZILO / PLOVILO</b><span>ako ometaš upravljača šinskog vozila ili plovila — na crtežu kratak snop staje pre šina, odnosno pre vode</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 78 70" role="img" aria-label="Vozilo u magli, pojasevi magle preko puta"><rect x="14" y="0" width="50" height="70" fill="#9aa7b4"/><rect x="14" y="0" width="50" height="70" fill="#1c2e40" opacity=".22"/><line x1="39" y1="0" x2="39" y2="70" stroke="#fff" stroke-width="2.5" stroke-dasharray="7 6"/><polygon points="46,29 58,29 61,17 43,17" fill="#e8b000" opacity=".32"/><g transform="translate(52 40)"><rect x="-6" y="-11" width="12" height="22" rx="4" fill="#2c6aa0"/><path d="M-4 -5 Q0 -8 4 -5 L4 -1 Q0 -3 -4 -1 Z" fill="#fff" opacity=".8"/><circle cx="-3.2" cy="-9.6" r="1.5" fill="#e8b000"/><circle cx="3.2" cy="-9.6" r="1.5" fill="#e8b000"/></g><g class="animMaglaProlazi"><rect x="-14" y="13" width="106" height="7" rx="3.5" fill="#dfe6ec" opacity=".5"/><rect x="-14" y="33" width="106" height="7" rx="3.5" fill="#dfe6ec" opacity=".5"/><rect x="-14" y="53" width="106" height="7" rx="3.5" fill="#dfe6ec" opacity=".5"/></g></svg>
+    <b>6 · MAGLA</b><span>za vreme magle — magla ima i sopstveno pitanje, vidi temu o magli</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 78 70" role="img" aria-label="Zaustavljeno vozilo, strelica kretanja precrtana"><rect x="14" y="0" width="50" height="70" fill="#9aa7b4"/><rect x="14" y="0" width="50" height="70" fill="#1c2e40" opacity=".22"/><line x1="39" y1="0" x2="39" y2="70" stroke="#fff" stroke-width="2.5" stroke-dasharray="7 6"/><polygon points="46,35 58,35 61,24 43,24" fill="#e8b000" opacity=".28"/><g transform="translate(52 46)"><rect x="-6" y="-11" width="12" height="22" rx="4" fill="#2c6aa0"/><path d="M-4 -5 Q0 -8 4 -5 L4 -1 Q0 -3 -4 -1 Z" fill="#fff" opacity=".8"/><circle cx="-3.2" cy="-9.6" r="1.5" fill="#e8b000"/><circle cx="3.2" cy="-9.6" r="1.5" fill="#e8b000"/></g><path d="M52 21 V8 M47 13 L52 7 L57 13" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="44" y1="6" x2="60" y2="21" stroke="#c0392b" stroke-width="3.5" stroke-linecap="round"/></svg>
+    <b>7 · ZAUSTAVLJENO VOZILO</b><span>kada je vozilo zaustavljeno — vidi temu o zaustavljenom vozilu, tu je zamka</span>
+  </div>
+</div>
+<p><b>Rečima (čl. 77 st. 3):</b> noću je vozač dužan da umesto dugih svetala upotrebljava kratka u sedam situacija — pri mimoilaženju kad oceni da zaslepljuje vozača iz susreta, a <b>uvek na odstojanju manjem od 200 m</b> · ako ometa vozača ispred sebe · na putu osvetljenom uličnom rasvetom · u tunelu · ako ometa upravljača šinskog vozila ili plovila · za vreme magle · kada je vozilo zaustavljeno.</p>
+<p class="mut">Pamtilica: <b>tri</b> od sedam prepoznaješ po tome što nekome smetaš — <b>1</b> zaslepljuješ vozača iz susreta · <b>2</b> ometaš vozača ispred · <b>5</b> ometaš upravljača šinskog vozila ili plovila. <b>Tri</b> su mesto ili vreme — <b>3</b> ulična rasveta · <b>4</b> tunel · <b>6</b> magla. Sedma stoji sama: <b>7</b> kada je vozilo zaustavljeno.</p>
+<p><b>Zamka koja rešava sva četiri pitanja:</b> u tim pitanjima ima ukupno osam netačnih ponuda. U šest stoji „na putu u naselju", u četiri stoji „250 m", a dve od njih spajaju oboje („na putu u naselju na odstojanju manjem od 250 m"). Zajedno pokrivaju svih osam — dakle: <b>ponuda u kojoj vidiš „u naselju" ili „250 m" nije tačna.</b> Nijedan tačan odgovor u ovoj podoblasti ne sadrži te reči. Na kratka te tera <b>ulična rasveta</b>, ne to što je put u naselju.</p>
+<p class="mut">U sva četiri pitanja traže se po <b>dva</b> tačna odgovora. Svejedno pročitaj sve ponuđene pre nego što potvrdiš.</p>
+</div>
+
+<!-- TEMA 3 — 200 m: brojka iz tačnog odgovora u 10539; mamac 250 m stoji u 10539, 10540, 10541 i 10542.
+     Crtež je u razmeri: moje vozilo na x=28, granica 200 m na x=178 (150 px = 200 m, 0,75 px po metru),
+     pa oznaka 250 m pada na x=215,5. -->
+<div class="kPodH"><b class="kPodNaslov">200 m — jedina brojka koja se javlja u tačnom odgovoru</b>
+<div style="display:flex;justify-content:center;margin:6px 0">
+<svg viewBox="0 0 300 188" style="max-width:300px;width:100%" role="img" aria-label="Odstojanje pri mimoilaženju: tvoje vozilo levo, vozilo iz susreta desno, uspravna isprekidana crta na 200 metara i precrtana oznaka 250 metara desno od nje">
+  <rect x="0" y="52" width="300" height="72" fill="#9aa7b4"/>
+  <rect x="0" y="52" width="300" height="72" fill="#1c2e40" opacity=".3"/>
+  <rect x="0" y="52" width="300" height="5" fill="#e8dcc2"/><rect x="0" y="119" width="300" height="5" fill="#e8dcc2"/>
+  <line x1="0" y1="88" x2="300" y2="88" stroke="#fff" stroke-width="3" stroke-dasharray="14 10" opacity=".85"/>
+  <line x1="215.5" y1="28" x2="215.5" y2="52" stroke="currentColor" stroke-width="1.5" opacity=".65"/>
+  <text x="215" y="24" text-anchor="middle" font-size="11" fill="currentColor">250 m</text>
+  <line x1="196" y1="20" x2="235" y2="20" stroke="#c0392b" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="178" y1="46" x2="178" y2="130" stroke="currentColor" stroke-width="2" stroke-dasharray="6 5"/>
+  <text x="178" y="42" text-anchor="middle" font-size="13" font-weight="700" fill="currentColor">200 m</text>
+  <g transform="translate(28 104) rotate(90) scale(1.3)">
+    <rect x="-6" y="-11" width="12" height="22" rx="4" fill="#2c6aa0"/>
+    <path d="M-4 -5 Q0 -8 4 -5 L4 -1 Q0 -3 -4 -1 Z" fill="#fff" opacity=".8"/>
+    <circle cx="-3.2" cy="-9.6" r="1.5" fill="#e8b000"/><circle cx="3.2" cy="-9.6" r="1.5" fill="#e8b000"/>
+  </g>
+  <g class="animPrilaziGranici"><g transform="translate(266 72) rotate(-90) scale(1.3)">
+    <rect x="-6" y="-11" width="12" height="22" rx="4" fill="#5f6d7a"/>
+    <path d="M-4 -5 Q0 -8 4 -5 L4 -1 Q0 -3 -4 -1 Z" fill="#fff" opacity=".8"/>
+    <circle cx="-3.2" cy="-9.6" r="1.5" fill="#e8b000"/><circle cx="3.2" cy="-9.6" r="1.5" fill="#e8b000"/>
+  </g></g>
+  <line x1="28" y1="140" x2="178" y2="140" stroke="currentColor" stroke-width="1.5"/>
+  <line x1="28" y1="135" x2="28" y2="145" stroke="currentColor" stroke-width="1.5"/>
+  <line x1="178" y1="135" x2="178" y2="145" stroke="currentColor" stroke-width="1.5"/>
+  <line x1="182" y1="140" x2="294" y2="140" stroke="currentColor" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <line x1="294" y1="135" x2="294" y2="145" stroke="currentColor" stroke-width="1.5"/>
+  <text x="103" y="160" text-anchor="middle" font-size="12" fill="currentColor">MANJE OD 200 m — UVEK KRATKA</text>
+  <text x="150" y="180" text-anchor="middle" font-size="11" fill="currentColor">preko 200 m: kratka ako oceniš da zaslepljuješ</text>
+</svg>
+</div>
+<p><b>Rečima:</b> tačan odgovor ima <b>dva dela</b>. Prvi: kad pri mimoilaženju <b>oceniš</b> da svetlom svog vozila zaslepljuješ vozača koji ti dolazi u susret. Drugi: <b>uvek</b> na odstojanju <b>manjem od 200 m</b>. Drugi deo ne traži nikakvu ocenu — ispod 200 m kratka idu bez razmišljanja; iznad toga i dalje važi prvi deo, pa ako oceniš da zaslepljuješ — opet kratka.</p>
+<p class="mut">Pamtilica: brojka <b>200 m</b> stoji u samo jednom od četiri pitanja o kratkim umesto dugih, i tamo je u <b>tačnom</b> odgovoru. Brojka <b>250 m</b> stoji u sva četiri i nijednom nije u tačnom odgovoru — to je čista zamena cifre.</p>
+</div>
+
+<!-- TEMA 4 — magla: 10543 (sopstveno pravilo, čl. 79) i magla kao jedna od sedam (10541, čl. 77 st. 3).
+     „Duga se odbijaju o kapljice" je iz postojećeg objašnjenja uz 10543. -->
+<div class="kPodH"><b class="kPodNaslov">Magla se pita na dva mesta</b>
+<div class="signRow lineRow" style="max-width:306px;margin:6px auto">
+  <div class="signCell">
+    <svg viewBox="0 0 150 120" style="width:100%;max-width:300px" role="img" aria-label="Vozilo u magli sa kratkim snopom koji ne udara u pojas magle">
+      <rect x="35" y="0" width="80" height="120" fill="#9aa7b4"/>
+      <rect x="35" y="0" width="6" height="120" fill="#e8dcc2"/><rect x="109" y="0" width="6" height="120" fill="#e8dcc2"/>
+      <line x1="75" y1="0" x2="75" y2="120" stroke="#fff" stroke-width="3" stroke-dasharray="12 9"/>
+      <polygon points="66,74 84,74 88,56 62,56" fill="#e8b000" opacity=".4"/>
+      <g transform="translate(75 92)">
+        <rect x="-10" y="-19" width="20" height="38" rx="8" fill="#2c6aa0"/>
+        <path d="M-7 -10 Q0 -14 7 -10 L7 -4 Q0 -7 -7 -4 Z" fill="#fff" opacity=".85"/>
+        <circle cx="-5" cy="-17" r="3" fill="#e8b000"/><circle cx="5" cy="-17" r="3" fill="#e8b000"/>
+      </g>
+      <g class="animMaglaProlazi">
+        <rect x="-16" y="8" width="182" height="8" rx="4" fill="#dfe6ec" opacity=".45"/>
+        <rect x="-16" y="22" width="182" height="10" rx="5" fill="#dfe6ec" opacity=".55"/>
+        <rect x="-16" y="38" width="182" height="10" rx="5" fill="#dfe6ec" opacity=".55"/>
+      </g>
+    </svg>
+    <b>KRATKA — TAČNO</b><span>kratka svetla, odnosno svetla za maglu ili obe vrste svetala (čl. 79)</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 150 120" style="width:100%;max-width:300px" role="img" aria-label="Duga svetla u magli: snop udara u pojas magle i vraća se ka vozilu, preko snopa je crveni krst">
+      <rect x="35" y="0" width="80" height="120" fill="#9aa7b4"/>
+      <rect x="35" y="0" width="6" height="120" fill="#e8dcc2"/><rect x="109" y="0" width="6" height="120" fill="#e8dcc2"/>
+      <line x1="75" y1="0" x2="75" y2="120" stroke="#fff" stroke-width="3" stroke-dasharray="12 9"/>
+      <polygon points="66,74 84,74 92,48 58,48" fill="#e8b000" opacity=".32"/>
+      <g class="animMaglaProlazi">
+        <rect x="-16" y="10" width="182" height="9" rx="4.5" fill="#dfe6ec" opacity=".5"/>
+        <rect x="-16" y="28" width="182" height="18" rx="9" fill="#dfe6ec" opacity=".75"/>
+      </g>
+      <path d="M60 48 Q50 60 62 70" stroke="#e8b000" stroke-width="2.5" fill="none"/>
+      <path d="M58 63 L62 72 L67 64" stroke="#e8b000" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M90 48 Q100 60 88 70" stroke="#e8b000" stroke-width="2.5" fill="none"/>
+      <path d="M83 64 L88 72 L92 63" stroke="#e8b000" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <g transform="translate(75 92)">
+        <rect x="-10" y="-19" width="20" height="38" rx="8" fill="#2c6aa0"/>
+        <path d="M-7 -10 Q0 -14 7 -10 L7 -4 Q0 -7 -7 -4 Z" fill="#fff" opacity=".85"/>
+        <circle cx="-5" cy="-17" r="3" fill="#e8b000"/><circle cx="5" cy="-17" r="3" fill="#e8b000"/>
+      </g>
+      <line x1="61" y1="24" x2="89" y2="50" stroke="#c0392b" stroke-width="4" stroke-linecap="round"/>
+      <line x1="89" y1="24" x2="61" y2="50" stroke="#c0392b" stroke-width="4" stroke-linecap="round"/>
+    </svg>
+    <b>DUGA — NETAČNO</b><span>u magli se odbijaju o kapljice, zato nisu tačan odgovor</span>
+  </div>
+</div>
+<p><b>Rečima — dva različita pitanja:</b> (1) <b>za vreme vožnje noću</b> magla je jedna od sedam situacija u kojima umesto dugih ideš na kratka (čl. 77 st. 3); (2) kad pitanje traži koja svetla <b>moraju da budu uključena za vreme magle</b>, tačan odgovor je <b>kratka svetla, odnosno svetla za maglu ili obe vrste svetala</b> (čl. 79). U tom pitanju su ponuđena samo tri odgovora, a mamci su <b>dnevna</b> i <b>duga</b> svetla.</p>
+<table>
+<tr><th>Šta je uključeno</th><th>Da li je to u skladu s pravilom o magli?</th></tr>
+<tr><td>samo <b>kratka</b> svetla</td><td><b>Da</b> — pravilo ih dozvoljava</td></tr>
+<tr><td>samo <b>svetla za maglu</b></td><td><b>Da</b> — pravilo ih dozvoljava</td></tr>
+<tr><td><b>obe vrste</b> zajedno</td><td><b>Da</b> — pravilo izričito kaže „ili obe vrste svetala"</td></tr>
+<tr><td><b>dnevna</b> svetla</td><td><b>Ne</b> — nude se u pitanju o magli i netačna su</td></tr>
+<tr><td><b>duga</b> svetla</td><td><b>Ne</b> — nude se u pitanju o magli i netačna su</td></tr>
+</table>
+<p class="mut">Pamtilica: tabela govori šta <b>pravilo</b> dozvoljava. U samom pitanju je ponuđen samo <b>jedan</b> odgovor u kome uopšte piše „kratka" ili „svetla za maglu", i on glasi cela rečenica — „kratka svetla, odnosno svetla za maglu ili obe vrste svetala". Ponude u kojoj piše samo jedna vrsta nema, pa je ne traži.</p>
+</div>
+
+<!-- TEMA 5 — zaustavljeno vozilo: 10542 (kratka umesto dugih), 10217 (poziciona, odnosno parkirna),
+     10218 (ne moraju — izuzetak, ZOBS čl. 80) -->
+<div class="kPodH"><b class="kPodNaslov">Zaustavljeno vozilo: kratka, poziciona — ili ne moraju?</b>
+<div style="display:flex;justify-content:center;margin:6px 0">
+<svg viewBox="0 0 300 312" style="max-width:300px;width:100%" role="img" aria-label="Stablo odluke sa tri grane: pitanje o svetlima umesto dugih pri vožnji noću vodi na kratka; pitanje o vozilu koje stoji na kolovozu noću i u uslovima smanjene vidljivosti vodi na poziciona odnosno parkirna; isto to uz posebno obeleženo mesto i uličnu rasvetu vodi na to da poziciona odnosno parkirna ne moraju biti uključena">
+  <rect x="26" y="4" width="268" height="30" rx="8" fill="none" stroke="currentColor" stroke-width="1.6"/>
+  <text x="160" y="24" text-anchor="middle" font-size="13" font-weight="700" fill="currentColor">ŠTA PITANJE PITA?</text>
+  <path d="M14 34 V240" stroke="currentColor" stroke-width="1.5" fill="none"/>
+  <path d="M26 34 H14" stroke="currentColor" stroke-width="1.5" fill="none"/>
+  <path d="M14 58 H26 M14 146 H26 M14 240 H26" stroke="currentColor" stroke-width="1.5" fill="none"/>
+  <rect x="26" y="44" width="268" height="28" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"/>
+  <text x="160" y="63" text-anchor="middle" font-size="12" fill="currentColor">UMESTO DUGIH — VOŽNJA NOĆU</text>
+  <path d="M160 72 V80" stroke="currentColor" stroke-width="1.5" fill="none"/>
+  <polygon points="160,90 153,78 167,78" fill="currentColor"/>
+  <rect x="56" y="90" width="208" height="28" rx="8" fill="none" stroke="currentColor" stroke-width="1.6"/>
+  <text x="160" y="109" text-anchor="middle" font-size="13" font-weight="700" fill="currentColor">KRATKA</text>
+  <rect x="26" y="126" width="268" height="40" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"/>
+  <text x="160" y="144" text-anchor="middle" font-size="12" fill="currentColor">STOJI NA KOLOVOZU, NOĆU</text>
+  <text x="160" y="160" text-anchor="middle" font-size="11" fill="currentColor">i u uslovima smanjene vidljivosti</text>
+  <path d="M160 166 V174" stroke="currentColor" stroke-width="1.5" fill="none"/>
+  <polygon points="160,184 153,172 167,172" fill="currentColor"/>
+  <rect x="26" y="184" width="268" height="28" rx="8" fill="none" stroke="currentColor" stroke-width="1.6"/>
+  <text x="160" y="203" text-anchor="middle" font-size="12" font-weight="700" fill="currentColor">POZICIONA, ODNOSNO PARKIRNA</text>
+  <rect x="26" y="220" width="268" height="40" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"/>
+  <text x="160" y="238" text-anchor="middle" font-size="12" fill="currentColor">ISTO TO + OBELEŽENO MESTO</text>
+  <text x="160" y="254" text-anchor="middle" font-size="11" fill="currentColor">i ulična rasveta ga čini vidljivim</text>
+  <path d="M160 260 V268" stroke="currentColor" stroke-width="1.5" fill="none"/>
+  <polygon points="160,278 153,266 167,266" fill="currentColor"/>
+  <rect x="26" y="278" width="268" height="28" rx="8" fill="none" stroke="currentColor" stroke-width="1.6"/>
+  <text x="160" y="297" text-anchor="middle" font-size="12" font-weight="700" fill="currentColor">NE MORAJU POZICIONA / PARKIRNA</text>
+</svg>
+</div>
+<p class="mut" style="text-align:center">Ne odlučuje slika na putu — odlučuje početak pitanja.</p>
+<div class="signRow lineRow" style="max-width:306px;margin:6px auto">
+  <div class="signCell">
+    <svg viewBox="0 0 300 152" style="width:100%;max-width:300px" role="img" aria-label="Vozilo stoji na kolovozu noću, poziciona svetla su upaljena: žuta napred i crvena nazad">
+      <text x="150" y="14" text-anchor="middle" font-size="12" font-weight="700" fill="currentColor">STOJI NA KOLOVOZU, NOĆU</text>
+      <rect x="0" y="22" width="300" height="130" fill="#9aa7b4"/>
+      <rect x="0" y="22" width="16" height="130" fill="#e8dcc2"/><rect x="284" y="22" width="16" height="130" fill="#e8dcc2"/>
+      <rect x="0" y="22" width="300" height="130" fill="#1c2e40" opacity=".34"/>
+      <line x1="150" y1="24" x2="150" y2="150" stroke="#fff" stroke-width="4" stroke-dasharray="14 10"/>
+      <circle cx="201" cy="65" r="11" fill="#e8b000" opacity=".35"/><circle cx="219" cy="65" r="11" fill="#e8b000" opacity=".35"/>
+      <circle cx="201" cy="107" r="11" fill="#c0392b" opacity=".35"/><circle cx="219" cy="107" r="11" fill="#c0392b" opacity=".35"/>
+      <g transform="translate(210 86) scale(1.5)">
+        <rect x="-11" y="-13" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="-13" width="4.5" height="8" rx="2" fill="#333"/>
+        <rect x="-11" y="6" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="6" width="4.5" height="8" rx="2" fill="#333"/>
+        <rect x="-9" y="-17" width="18" height="34" rx="7" fill="#2c6aa0"/>
+        <path d="M-6 -9 Q0 -13 6 -9 L6 -4 Q0 -7 -6 -4 Z" fill="#fff" opacity=".85"/>
+      </g>
+      <circle cx="201" cy="65" r="4" fill="#e8b000"/><circle cx="219" cy="65" r="4" fill="#e8b000"/>
+      <circle cx="201" cy="107" r="4" fill="#c0392b"/><circle cx="219" cy="107" r="4" fill="#c0392b"/>
+    </svg>
+    <b>MORAJU — POZICIONA (PARKIRNA)</b><span>zaustavljeno ili parkirano na kolovozu, noću i u uslovima smanjene vidljivosti</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 300 152" style="width:100%;max-width:300px" role="img" aria-label="Vozilo na posebno obeleženom mestu na kolovozu ispod ulične rasvete, sva četiri svetla su ugašena">
+      <text x="150" y="14" text-anchor="middle" font-size="12" font-weight="700" fill="currentColor">OBELEŽENO MESTO + RASVETA</text>
+      <rect x="0" y="22" width="300" height="130" fill="#9aa7b4"/>
+      <rect x="0" y="22" width="16" height="130" fill="#e8dcc2"/><rect x="284" y="22" width="16" height="130" fill="#e8dcc2"/>
+      <rect x="0" y="22" width="300" height="130" fill="#1c2e40" opacity=".34"/>
+      <line x1="150" y1="24" x2="150" y2="150" stroke="#fff" stroke-width="4" stroke-dasharray="14 10"/>
+      <polygon points="258,34 274,34 296,140 150,140" fill="#e8b000" opacity=".3"/>
+      <line x1="284" y1="34" x2="284" y2="150" stroke="currentColor" stroke-width="2.5"/>
+      <path d="M284 36 L268 31" stroke="currentColor" stroke-width="2.5" fill="none"/>
+      <rect x="254" y="26" width="16" height="6" rx="2" fill="currentColor"/>
+      <path d="M180 54 V128 M244 54 V128 M180 128 H244" stroke="#fff" stroke-width="3.5" fill="none" opacity=".9"/>
+      <g transform="translate(212 90) scale(1.5)">
+        <rect x="-11" y="-13" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="-13" width="4.5" height="8" rx="2" fill="#333"/>
+        <rect x="-11" y="6" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="6" width="4.5" height="8" rx="2" fill="#333"/>
+        <rect x="-9" y="-17" width="18" height="34" rx="7" fill="#2c6aa0"/>
+        <path d="M-6 -9 Q0 -13 6 -9 L6 -4 Q0 -7 -6 -4 Z" fill="#fff" opacity=".85"/>
+      </g>
+      <circle cx="203" cy="69" r="3.6" fill="#7d8792" stroke="#2a333d" stroke-width="1.2"/><circle cx="221" cy="69" r="3.6" fill="#7d8792" stroke="#2a333d" stroke-width="1.2"/>
+      <circle cx="203" cy="111" r="3.6" fill="#7d8792" stroke="#2a333d" stroke-width="1.2"/><circle cx="221" cy="111" r="3.6" fill="#7d8792" stroke="#2a333d" stroke-width="1.2"/>
+    </svg>
+    <b>NE MORAJU</b><span>posebno obeleženo mesto, a ulično osvetljenje čini vozilo dovoljno vidljivim — izuzetak (ZOBS čl. 80)</span>
+  </div>
+</div>
+<p><b>Rečima:</b> isti pojam — zaustavljeno vozilo — javlja se u <b>tri</b> različita pitanja i ima <b>tri</b> različita tačna odgovora. Ako pitanje traži koja se svetla upotrebljavaju <b>umesto dugih</b> za vreme vožnje noću, „kada je vozilo zaustavljeno" jeste tačan odgovor za <b>kratka</b>. Ako pita koja svetla mora da ima <b>zaustavljeno ili parkirano vozilo na kolovozu, noću i u uslovima smanjene vidljivosti</b>, odgovor su <b>poziciona, odnosno parkirna</b> — kratka su tu mamac. A ako se tome doda <b>posebno obeleženo mesto</b> na delu puta gde ulično osvetljenje čini vozilo dovoljno vidljivim, tačno je da <b>ne moraju</b> biti uključena poziciona, odnosno parkirna.</p>
+<table>
+<tr><th>Šta pitanje pita</th><th>Tačan odgovor</th></tr>
+<tr><td>Vožnja <b>noću</b>: koja svetla <b>umesto dugih</b> (a među ponuđenim stoji „kada je vozilo zaustavljeno")</td><td><b>Kratka</b></td></tr>
+<tr><td><b>Zaustavljeno ili parkirano na kolovozu</b>, noću i u uslovima smanjene vidljivosti</td><td><b>Poziciona, odnosno parkirna</b> — kratka su tu mamac</td></tr>
+<tr><td>Isto, ali na <b>posebno obeleženom mestu</b> gde ga ulično osvetljenje čini dovoljno vidljivim</td><td><b>Ne moraju</b> biti uključena poziciona, odnosno parkirna</td></tr>
+</table>
+<p class="mut">Zamka na kraju: dve ponude počinju odricanjem. „Ne mora imati uključena svetla" nudi se u pitanju bez obeleženog mesta i netačno je; „ne moraju biti uključena <b>poziciona, odnosno parkirna</b>, svetla" tačno je samo uz obeleženo mesto i dovoljnu uličnu rasvetu.</p>
+</div>
+
+<!-- TEMA 6 — indeks svih ponuda iz svih devet pitanja podoblasti
+     (10210, 10211, 10217, 10218, 10539, 10540, 10541, 10542, 10543) -->
+<div class="kPodH"><b class="kPodNaslov">Sve ponuđene vrste svetala na jednom mestu</b>
+<p>Ovo su sve vrste svetala koje se u ovoj podoblasti uopšte nude kao odgovor — i mesto na kome je svaka tačna, odnosno mesto na kome je mamac. U četiri pitanja o kratkim umesto dugih ponuđeni odgovori nisu vrste svetala nego situacije, pa ta pitanja ovde i nisu — red „kratka, odnosno dnevna svetla" govori samo o pitanju za osnovno pravilo noću i ne poriče sedam situacija u kojima kratka idu umesto dugih.</p>
+<table>
+<tr><th>Ponuda</th><th>Gde je TAČNA</th><th>Gde je MAMAC</th></tr>
+<tr><td>„kratka, odnosno dnevna svetla"</td><td>vožnja <b>danju</b></td><td>vožnja <b>noću</b></td></tr>
+<tr><td>„duga svetla"</td><td>vožnja <b>noću</b></td><td>vožnja danju · za vreme magle</td></tr>
+<tr><td>„svetla za maglu" (sama)</td><td>nigde sama — ulaze u tačan odgovor o magli</td><td>i u pitanju o danu i u pitanju o noći</td></tr>
+<tr><td>„svetla za osvetljavanje mesta gde se izvode radovi"</td><td>nigde u ovoj podoblasti</td><td>nude se dvaput — i za dan i za noć</td></tr>
+<tr><td>„dnevna svetla" (bez reči „kratka")</td><td>nigde u ovoj podoblasti</td><td>za vreme magle</td></tr>
+<tr><td>„kratka svetla, odnosno svetla za maglu ili obe vrste svetala"</td><td>za vreme <b>magle</b></td><td>—</td></tr>
+<tr><td>„poziciona, odnosno parkirna svetla"</td><td>zaustavljeno ili parkirano <b>na kolovozu</b>, noću i u uslovima smanjene vidljivosti</td><td>isto to, ali na posebno obeleženom mestu uz dovoljnu uličnu rasvetu</td></tr>
+<tr><td>„mora imati uključena kratka svetla"</td><td>nigde u ovoj podoblasti</td><td>zaustavljeno ili parkirano na kolovozu</td></tr>
+<tr><td>„kratka i poziciona svetla" (zajedno)</td><td>nigde u ovoj podoblasti</td><td>obeleženo mesto uz uličnu rasvetu</td></tr>
+<tr><td>„ne mora imati uključena svetla"</td><td>nigde u ovoj podoblasti</td><td>zaustavljeno ili parkirano na kolovozu</td></tr>
+<tr><td>„ne moraju biti uključena poziciona, odnosno parkirna, svetla"</td><td>obeleženo mesto uz dovoljnu uličnu rasvetu</td><td>—</td></tr>
+</table>
+<p class="mut">Pamtilica: dve ponude liče, a nisu isto — „<b>kratka, odnosno dnevna</b> svetla" (tačna danju) i „<b>dnevna</b> svetla" (nigde tačna, nude se u pitanju o magli). Razlika je u prve dve reči, pa ponudu čitaj do kraja.</p>
+</div>
 `,
 };
 
@@ -1345,7 +2159,327 @@ CARDS['pesaci-bicikli'] = {
   html: `
 <p><b>Vozač prema pešacima (čl. 23):</b> pazi na pešake koji su na kolovozu, stupaju ili se vidi da nameravaju · pred pešačkim prelazom brzina takva da UVEK možeš da staneš · zona dece = naročita opreznost.</p>
 <p><b>Na prelazu:</b> pešaku na prelazu (i kad tek stupa) — propusti; zabranjeno je preticanje i obilaženje vozila koje se zaustavilo radi propuštanja pešaka.</p>
-<p><b>Za tebe kao vozača mopeda/motocikla:</b> kaciga OBAVEZNA (vozač i putnik) · svetla uvek · dete mlađe od 12 godina se ne prevozi · deca do 12 ne smeju upravljati biciklom na javnom putu.</p>`,
+<p><b>Za tebe kao vozača mopeda/motocikla:</b> kaciga OBAVEZNA (vozač i putnik) · svetla uvek · dete mlađe od 12 godina se ne prevozi · deca do 12 ne smeju upravljati biciklom na javnom putu.</p>
+
+<!-- ==== dopuna 07.09.2026 (tura 4): crtež + isto to rečima ==== -->
+<!-- IZVORI (mapa tvrdnja -> broj pitanja; NE ulazi u karticu, brise se pri ubacivanju u build-explanations.mjs)
+     zabranjen prolaz (svetlosni znak / znak policajca) -> zaustavis vozilo ... #10249, #10250, #10550
+     tacan odgovor glasi "ispred pesackog prelaza" (tekstualna pitanja) ...... #10249, #10250
+     tacan odgovor glasi "ispred linije zaustavljanja" (pitanje sa slikom) ... #10550
+     policajac: prednja strana tela prema tebi = zabranjen prolaz ........... #10550 (objasnjenje)
+       -> sta znace ostali polozaji tela i znaci rukom U GRADJI NE STOJI: kartica o tome NE tvrdi nista
+     par sa gotovo istim tekstom, suprotni tacni odgovori:
+       #10550 nudi odgovor "zaustavite vozilo ispred linije zaustavljanja" (tacan)
+       #10255 taj odgovor NE nudi (ponuda: niste duzni / zvucni znak / propustate) -> tacno je propustanje
+     dozvoljen prolaz + pesak prelazi -> propustis ...................... #10253, #10257, #10259, #10553
+     zeleno ti otvara put, ali ne kroz ljude na prelazu ................. #10259 (objasnjenje)
+     neregulisan prelaz -> prilagodjena brzina; nije obavezno zaustavljanje ni truba ... #10703
+     dete na NEREGULISANOM prelazu -> zaustavis vozilo .................. #10264
+     dete na prelazu bocnog puta uz prolaz dozvoljen svetlosnim znakom -> zaustavis vozilo ... #10552
+     (za "dozvoljen prolaz + voznja pravo + dete" u gradji NEMA pitanja - ne tvrdi se nista)
+     deca, nemocna i slepa lica: nema procene "stici ce da predje" ...... #10264 (objasnjenje)
+     skretanje bez obelezenog prelaza, pesak vec na kolovozu -> propustis #10551, #10266
+     skretanje uz dozvoljen prolaz -> propustis ......................... #10263, #10553
+     prisustvo dece pored kolovoza -> narocita opreznost + blagovremeno zaustavljanje + zvucni znak ... #10270, #10264 (objasnjenje, cl. 59)
+     zvucni znak nije resenje kad je neko vec na prelazu/kolovozu ....... #10255, #10259, #10263, #10264, #10266, #10551
+     organizovana kolona pesaka se ne preseca ........................... #10271, #10273
+     pesak van naselja -> LEVA ivica, u susret vozilima ................. #10244
+     pridrzavanje za vozilo u pokretu je zabranjeno ..................... #10245
+     autoput/motoput: koga zabrana kretanja pesaka ne obuhvata .......... #10248
+     ANIMACIJE (klase dodaje integrator u style.css): animPesakPrelazi, animPutanjaSkretanja,
+     animKolonaPrelazi, animVoziloUSusret
+     PLATNA: svaki viewBox je sirok 300 (telo kartice na telefonu = 306 px), font-size 12 i 13.
+-->
+<div class="kPodH"><b class="kPodNaslov">Pešački prelaz — prvo pitanje je: da li je MENI prolaz dozvoljen?</b>
+<table>
+<tr><th>Kako je situacija postavljena</th><th>Šta si dužan</th></tr>
+<tr><td>prolaz ti je <b>ZABRANJEN</b> — svetlosnim saobraćajnim znakom ili znakom policijskog službenika</td><td><b>zaustaviš vozilo</b> i čekaš</td></tr>
+<tr><td>prolaz ti je <b>DOZVOLJEN</b>, a preko prelaza prelazi pešak</td><td><b>propustiš pešaka</b></td></tr>
+<tr><td>prolaz ti je <b>DOZVOLJEN svetlosnim znakom</b>, skrećeš na bočni put, a preko prelaza na njegovom ulazu prelazi <b>DETE</b></td><td><b>zaustaviš vozilo</b> i propustiš ga</td></tr>
+<tr><td>prelaz <b>NIJE REGULISAN</b> — nema ni semafora ni policajca</td><td><b>prilagodiš brzinu</b> tako da u svakoj situaciji koju vidiš ili imaš razloga da predvidiš možeš bezbedno da propustiš pešaka</td></tr>
+<tr><td>prelaz <b>nije regulisan</b>, a na njega je stupilo ili stupa <b>DETE</b></td><td><b>zaustaviš vozilo</b> i propustiš ga</td></tr>
+</table>
+<p class="mut">Obrati pažnju gde tačno stoji „zaustaviš vozilo" zbog deteta: u pitanjima su to <b>neregulisan prelaz</b> i <b>prelaz na ulazu u bočni put u koji skrećeš</b>. To su dva slučaja koja baza pita — ne pravi od toga pravilo za svaki prelaz.</p>
+<p><b>Ispred čega staješ kad ti je prolaz zabranjen.</b> Radnja je uvek ista: staješ pre nego što uđeš u prostor kojim pešak prelazi. Razlikuje se samo koju granicu tačan odgovor imenuje: u pitanjima koja su <b>samo tekst</b> glasi „zaustavi svoje vozilo ispred pešačkog prelaza", a u pitanju sa slikom, na raskrsnici kojom upravlja policijski službenik, glasi „zaustavite svoje vozilo ispred <b>linije zaustavljanja</b>".</p>
+<p>Četiri puta ista ulica, a četiri različite dužnosti — razlikuje se samo ono što stoji <i>iznad</i> kolovoza. Zato na svakom od sledeća četiri crteža prvo gledaj tamo: to je ono što odlučuje.</p>
+<div style="display:flex;justify-content:center;margin:8px 0">
+<svg viewBox="0 0 300 175" style="max-width:300px;width:100%" role="img" aria-label="semafor sa upaljenim crvenim svetlom pored pešačkog prelaza; vozilo stoji ispred prelaza dok pešak prelazi preko šara">
+<text x="150" y="14" text-anchor="middle" font-size="13" fill="currentColor">SVETLOSNI ZNAK: ZABRANJEN PROLAZ</text>
+<rect x="0" y="78" width="300" height="64" fill="#9aa7b4"/>
+<rect x="120" y="26" width="24" height="48" rx="5" fill="#2a333d"/>
+<circle cx="132" cy="38" r="6.5" fill="#c0392b"/>
+<circle cx="132" cy="50" r="6.5" fill="#5a4a22"/>
+<circle cx="132" cy="62" r="6.5" fill="#1f4a2e"/>
+<rect x="150" y="82" width="56" height="9" fill="#fff"/>
+<rect x="150" y="96" width="56" height="9" fill="#fff"/>
+<rect x="150" y="110" width="56" height="9" fill="#fff"/>
+<rect x="150" y="124" width="56" height="9" fill="#fff"/>
+<g class="animPesakPrelazi">
+<circle cx="178" cy="86" r="6" fill="#2c6aa0"/>
+<path d="M178,94 L178,132 M172,126 L178,133 L184,126" fill="none" stroke="#2c6aa0" stroke-width="2"/>
+</g>
+<rect x="16" y="94" width="58" height="32" rx="6" fill="none" stroke="currentColor" stroke-width="2"/>
+<text x="45" y="115" text-anchor="middle" font-size="12" fill="currentColor">TI</text>
+<text x="52" y="50" text-anchor="middle" font-size="12" fill="#c0392b">STAJEŠ</text>
+<text x="52" y="67" text-anchor="middle" font-size="12" fill="#c0392b">ispred prelaza</text>
+<path d="M52,72 L52,90 M47,84 L52,91 L57,84" fill="none" stroke="#c0392b" stroke-width="2"/>
+<text x="178" y="160" text-anchor="middle" font-size="12" fill="currentColor">pešački prelaz</text>
+</svg>
+</div>
+<p class="mut" style="text-align:center;font-size:.82rem">na crtežu ti je svetlosnim znakom prolaz zabranjen (upaljeno crveno): zaustavljaš vozilo <b>ispred pešačkog prelaza</b> i čekaš, ceo prostor prelaza ostaje prazan za pešake · šare leže u smeru vožnje, a pešak ih gazi popreko</p>
+<div style="display:flex;justify-content:center;margin:8px 0">
+<svg viewBox="0 0 300 175" style="max-width:300px;width:100%" role="img" aria-label="policijski službenik okrenut prednjom stranom tela prema tebi stoji kraj kolovoza; vozilo stoji ispred bele linije zaustavljanja, a pešak prelazi preko šara">
+<text x="150" y="14" text-anchor="middle" font-size="13" fill="currentColor">POLICAJAC OKRENUT LICEM KA TEBI</text>
+<rect x="0" y="78" width="300" height="64" fill="#9aa7b4"/>
+<circle cx="250" cy="32" r="8" fill="none" stroke="currentColor" stroke-width="2"/>
+<line x1="240" y1="27" x2="260" y2="27" stroke="currentColor" stroke-width="3"/>
+<circle cx="247" cy="33" r="1.5" fill="currentColor"/>
+<circle cx="253" cy="33" r="1.5" fill="currentColor"/>
+<path d="M239,44 L261,44 L264,76 L236,76 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+<line x1="239" y1="46" x2="232" y2="68" stroke="currentColor" stroke-width="2"/>
+<line x1="261" y1="46" x2="268" y2="68" stroke="currentColor" stroke-width="2"/>
+<rect x="118" y="78" width="8" height="64" fill="#fff"/>
+<rect x="150" y="82" width="56" height="9" fill="#fff"/>
+<rect x="150" y="96" width="56" height="9" fill="#fff"/>
+<rect x="150" y="110" width="56" height="9" fill="#fff"/>
+<rect x="150" y="124" width="56" height="9" fill="#fff"/>
+<g class="animPesakPrelazi">
+<circle cx="178" cy="86" r="6" fill="#2c6aa0"/>
+<path d="M178,94 L178,132 M172,126 L178,133 L184,126" fill="none" stroke="#2c6aa0" stroke-width="2"/>
+</g>
+<rect x="16" y="94" width="58" height="32" rx="6" fill="none" stroke="currentColor" stroke-width="2"/>
+<text x="45" y="115" text-anchor="middle" font-size="12" fill="currentColor">TI</text>
+<text x="52" y="50" text-anchor="middle" font-size="12" fill="#c0392b">STAJEŠ</text>
+<text x="52" y="67" text-anchor="middle" font-size="12" fill="#c0392b">ispred linije</text>
+<path d="M52,72 L52,90 M47,84 L52,91 L57,84" fill="none" stroke="#c0392b" stroke-width="2"/>
+<line x1="122" y1="146" x2="122" y2="152" stroke="currentColor" stroke-width="1"/>
+<text x="122" y="166" text-anchor="middle" font-size="12" fill="currentColor">linija zaustavljanja</text>
+</svg>
+</div>
+<p class="mut" style="text-align:center;font-size:.82rem">isti slučaj — prolaz ti je zabranjen — samo je znak dao policajac: tu tačan odgovor imenuje <b>liniju zaustavljanja</b>, pa staješ ispred nje</p>
+<div style="display:flex;justify-content:center;margin:8px 0">
+<svg viewBox="0 0 300 175" style="max-width:300px;width:100%" role="img" aria-label="semafor sa upaljenim zelenim svetlom; pešak prelazi preko šara, vozilo stoji i propušta ga, a zelena isprekidana strelica iza prelaza pokazuje da posle toga nastavlja">
+<text x="150" y="14" text-anchor="middle" font-size="13" fill="currentColor">SVETLOSNI ZNAK: DOZVOLJEN PROLAZ</text>
+<rect x="0" y="78" width="300" height="64" fill="#9aa7b4"/>
+<rect x="120" y="26" width="24" height="48" rx="5" fill="#2a333d"/>
+<circle cx="132" cy="38" r="6.5" fill="#5a2a26"/>
+<circle cx="132" cy="50" r="6.5" fill="#5a4a22"/>
+<circle cx="132" cy="62" r="6.5" fill="#1f7a3f"/>
+<rect x="150" y="82" width="56" height="9" fill="#fff"/>
+<rect x="150" y="96" width="56" height="9" fill="#fff"/>
+<rect x="150" y="110" width="56" height="9" fill="#fff"/>
+<rect x="150" y="124" width="56" height="9" fill="#fff"/>
+<g class="animPesakPrelazi">
+<circle cx="178" cy="86" r="6" fill="#2c6aa0"/>
+<path d="M178,94 L178,132 M172,126 L178,133 L184,126" fill="none" stroke="#2c6aa0" stroke-width="2"/>
+</g>
+<rect x="16" y="94" width="58" height="32" rx="6" fill="none" stroke="currentColor" stroke-width="2"/>
+<text x="45" y="115" text-anchor="middle" font-size="12" fill="currentColor">TI</text>
+<text x="52" y="50" text-anchor="middle" font-size="12" fill="#1f7a3f">PROPUŠTAŠ</text>
+<text x="52" y="67" text-anchor="middle" font-size="12" fill="#1f7a3f">pešaka</text>
+<path d="M214,110 L274,110" fill="none" stroke="#1f7a3f" stroke-width="2" stroke-dasharray="7 5"/>
+<path d="M272,104 L284,110 L272,116 Z" fill="#1f7a3f"/>
+<text x="246" y="160" text-anchor="middle" font-size="12" fill="#1f7a3f">pa nastavljaš</text>
+</svg>
+</div>
+<p class="mut" style="text-align:center;font-size:.82rem">zeleno ti otvara put, ali ne kroz ljude na prelazu: pešaka koji prelazi <b>propuštaš</b>, pa tek onda nastavljaš — i kad ideš pravo i kad skrećeš</p>
+<div style="display:flex;justify-content:center;margin:8px 0">
+<svg viewBox="0 0 300 175" style="max-width:300px;width:100%" role="img" aria-label="prelaz na kome nema ni semafora ni policijskog službenika — oba su nacrtana i precrtana crvenim krstom; vozilo smanjuje brzinu pri nailasku na prelaz">
+<text x="150" y="14" text-anchor="middle" font-size="13" fill="currentColor">NEMA SEMAFORA NI POLICAJCA</text>
+<rect x="0" y="78" width="300" height="64" fill="#9aa7b4"/>
+<rect x="96" y="30" width="18" height="36" rx="3" fill="#2a333d"/>
+<circle cx="105" cy="38" r="4.5" fill="#5a6672"/>
+<circle cx="105" cy="48" r="4.5" fill="#5a6672"/>
+<circle cx="105" cy="58" r="4.5" fill="#5a6672"/>
+<path d="M92,26 L118,70 M118,26 L92,70" fill="none" stroke="#c0392b" stroke-width="3"/>
+<circle cx="170" cy="36" r="7" fill="none" stroke="currentColor" stroke-width="2"/>
+<path d="M161,48 L179,48 L182,70 L158,70 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+<path d="M154,26 L186,72 M186,26 L154,72" fill="none" stroke="#c0392b" stroke-width="3"/>
+<rect x="150" y="82" width="56" height="9" fill="#fff"/>
+<rect x="150" y="96" width="56" height="9" fill="#fff"/>
+<rect x="150" y="110" width="56" height="9" fill="#fff"/>
+<rect x="150" y="124" width="56" height="9" fill="#fff"/>
+<rect x="16" y="94" width="58" height="32" rx="6" fill="none" stroke="currentColor" stroke-width="2"/>
+<text x="45" y="115" text-anchor="middle" font-size="12" fill="currentColor">TI</text>
+<rect x="86" y="102" width="6" height="24" fill="currentColor" opacity=".55"/>
+<rect x="98" y="110" width="6" height="16" fill="currentColor" opacity=".55"/>
+<rect x="110" y="118" width="6" height="8" fill="currentColor" opacity=".55"/>
+<text x="150" y="160" text-anchor="middle" font-size="12" fill="currentColor">PRILAGOĐAVAŠ BRZINU</text>
+</svg>
+</div>
+<p class="mut" style="text-align:center;font-size:.82rem">stubići koji se smanjuju = brzina koju spuštaš pri nailasku · pri nailasku na neregulisan prelaz obavezna je <b>prilagođena brzina</b>, ne zaustavljanje i ne truba — a ako je na prelaz stupilo ili stupa <b>dete</b>, zaustavljaš vozilo</p>
+<p><b>Policijski službenik na raskrsnici — dva pitanja sa slikom počinju gotovo isto</b> („na raskrsnici na kojoj saobraćaj reguliše policijski službenik"), a tačni odgovori su im suprotni. Razlikuje ih <b>ono što je u pitanju ponuđeno</b>:</p>
+<ul>
+<li>gde je ponuđeno <b>„zaustavite svoje vozilo ispred linije zaustavljanja"</b> — to je tačan odgovor: policajac stoji okrenut <b>prednjom stranom tela prema tebi</b>, a taj položaj za tvoj smer znači <b>zabranjen prolaz</b>; propuštanje pešaka tu nije dovoljan odgovor jer ionako ne smeš preko linije;</li>
+<li>gde tog odgovora <b>nema</b> u ponudi, biraš između „niste dužni da propustite", zvučnog znaka i propuštanja — i tačno je <b>da propustiš pešake</b>.</li>
+</ul>
+<p class="mut">Iz građe ovih pitanja izlazi samo jedno o položaju tela: prednja strana okrenuta prema tebi = tebi je prolaz zabranjen. Šta znače ostali položaji i znaci rukom, u njima ne piše — ne izvodi iz toga zaključak.</p>
+</div>
+
+<div class="kPodH"><b class="kPodNaslov">Skretanje na bočni put — tu presecaš pešaka</b>
+<div style="display:flex;justify-content:center;margin:8px 0">
+<svg viewBox="0 0 300 192" style="max-width:300px;width:100%" role="img" aria-label="skretanje udesno na bočni put na čijem ulazu postoji obeležen pešački prelaz: isprekidana putanja vozila preseca pešaka koji prelazi preko šara">
+<rect x="70" y="6" width="76" height="164" fill="#9aa7b4"/>
+<rect x="146" y="54" width="154" height="64" fill="#9aa7b4"/>
+<rect x="156" y="58" width="44" height="9" fill="#fff"/>
+<rect x="156" y="72" width="44" height="9" fill="#fff"/>
+<rect x="156" y="86" width="44" height="9" fill="#fff"/>
+<rect x="156" y="100" width="44" height="9" fill="#fff"/>
+<rect x="88" y="126" width="38" height="40" rx="5" fill="none" stroke="currentColor" stroke-width="2"/>
+<text x="107" y="150" text-anchor="middle" font-size="12" fill="currentColor">TI</text>
+<path class="animPutanjaSkretanja" d="M107,126 L107,98 Q107,82 132,82 L272,82" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="7 5"/>
+<path d="M270,76 L282,82 L270,88 Z" fill="currentColor"/>
+<circle cx="178" cy="62" r="6" fill="#2c6aa0"/>
+<path d="M178,70 L178,110 M172,104 L178,111 L184,104" fill="none" stroke="#2c6aa0" stroke-width="2"/>
+<circle cx="178" cy="82" r="13" fill="none" stroke="#c0392b" stroke-width="2.5"/>
+<text x="150" y="186" text-anchor="middle" font-size="13" fill="currentColor">SA OBELEŽENIM PRELAZOM</text>
+</svg>
+</div>
+<div style="display:flex;justify-content:center;margin:8px 0">
+<svg viewBox="0 0 300 192" style="max-width:300px;width:100%" role="img" aria-label="skretanje udesno na bočni put na čijem ulazu nema obeleženog prelaza: pešak je već stupio na kolovoz, a isprekidana putanja vozila ga preseca">
+<rect x="70" y="6" width="76" height="164" fill="#9aa7b4"/>
+<rect x="146" y="54" width="154" height="64" fill="#9aa7b4"/>
+<rect x="88" y="126" width="38" height="40" rx="5" fill="none" stroke="currentColor" stroke-width="2"/>
+<text x="107" y="150" text-anchor="middle" font-size="12" fill="currentColor">TI</text>
+<path class="animPutanjaSkretanja" d="M107,126 L107,98 Q107,82 132,82 L272,82" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="7 5"/>
+<path d="M270,76 L282,82 L270,88 Z" fill="currentColor"/>
+<circle cx="178" cy="62" r="6" fill="#2c6aa0"/>
+<path d="M178,70 L178,110 M172,104 L178,111 L184,104" fill="none" stroke="#2c6aa0" stroke-width="2"/>
+<circle cx="178" cy="82" r="13" fill="none" stroke="#c0392b" stroke-width="2.5"/>
+<text x="150" y="186" text-anchor="middle" font-size="13" fill="currentColor">BEZ OBELEŽENOG PRELAZA</text>
+</svg>
+</div>
+<p class="mut" style="text-align:center;font-size:.82rem">crveni krug = mesto gde tvoja putanja preseca pešaka · u oba crteža ga propuštaš — u donjem odlučuje to što je <b>već stupio na kolovoz</b></p>
+<p>Kad skrećeš na bočni put, tvoja putanja preseca pešake koji prelaze kolovoz tog puta. Njih propuštaš:</p>
+<ul>
+<li>i kad na ulazu u bočni put <b>nema obeleženog prelaza</b> — odlučuje to što su <b>već stupili na kolovoz</b>, a ne to kuda prelaze;</li>
+<li>i kad ti je <b>prolaz dozvoljen</b> — svetlosnim saobraćajnim znakom ili znakom policijskog službenika; zeleno ti otvara put, ali ne kroz ljude koji su već na prelazu;</li>
+<li>a kad preko prelaza na ulazu u bočni put prelazi <b>dete</b>, i uz prolaz dozvoljen svetlosnim znakom <b>zaustavljaš vozilo</b> i propuštaš ga.</li>
+</ul>
+</div>
+
+<div class="kPodH"><b class="kPodNaslov">Deca, kolona pešaka i zvučni znak</b>
+<p><b>Dete na prelazu:</b> kad na pešački prelaz na kome nema ni semafora ni policajca stupa ili je već stupilo dete — zaustavljaš vozilo i propuštaš ga. Isto radiš i kad skrećeš na bočni put uz prolaz dozvoljen svetlosnim znakom, a preko prelaza na ulazu prelazi dete. Kod dece, nemoćnih i slepih lica nema procene „stići će da pređe" (ZOBS čl. 99).</p>
+<p><b>Prisustvo dece pored kolovoza:</b> voziš sa naročitom opreznošću, tako da možeš blagovremeno da zaustaviš vozilo <b>i</b> da upotrebiš zvučni znak upozorenja — deca ne prate kretanje vozila (čl. 59). Samo prilagođavanje brzine tu nije potpun odgovor, a nastavak istom brzinom uz trubu je obrnuto od onoga što se traži.</p>
+<div style="display:flex;justify-content:center;margin:8px 0">
+<svg viewBox="0 0 300 178" style="max-width:300px;width:100%" role="img" aria-label="dvoje dece stoji pored kolovoza; vozilo daje zvučni znak i smanjuje brzinu, a pešački prelaz ispred njega je prazan">
+<text x="150" y="14" text-anchor="middle" font-size="13" fill="currentColor">DECA PORED KOLOVOZA</text>
+<rect x="0" y="70" width="300" height="60" fill="#9aa7b4"/>
+<rect x="16" y="84" width="58" height="32" rx="6" fill="none" stroke="currentColor" stroke-width="2"/>
+<text x="45" y="105" text-anchor="middle" font-size="12" fill="currentColor">TI</text>
+<path d="M80,92 Q88,100 80,108" fill="none" stroke="currentColor" stroke-width="1.6"/>
+<path d="M88,87 Q99,100 88,113" fill="none" stroke="currentColor" stroke-width="1.6"/>
+<path d="M96,82 Q110,100 96,118" fill="none" stroke="currentColor" stroke-width="1.6"/>
+<rect x="112" y="92" width="6" height="24" fill="currentColor" opacity=".55"/>
+<rect x="124" y="100" width="6" height="16" fill="currentColor" opacity=".55"/>
+<rect x="136" y="108" width="6" height="8" fill="currentColor" opacity=".55"/>
+<circle cx="170" cy="44" r="5.5" fill="#2c6aa0"/>
+<line x1="170" y1="50" x2="170" y2="68" stroke="#2c6aa0" stroke-width="2"/>
+<circle cx="194" cy="48" r="5.5" fill="#2c6aa0"/>
+<line x1="194" y1="54" x2="194" y2="68" stroke="#2c6aa0" stroke-width="2"/>
+<rect x="230" y="74" width="56" height="9" fill="#fff"/>
+<rect x="230" y="88" width="56" height="9" fill="#fff"/>
+<rect x="230" y="102" width="56" height="9" fill="#fff"/>
+<rect x="230" y="116" width="56" height="9" fill="#fff"/>
+<text x="150" y="150" text-anchor="middle" font-size="12" fill="currentColor">USPORAVAŠ · spreman da staneš</text>
+<text x="150" y="168" text-anchor="middle" font-size="12" fill="currentColor">+ ZVUČNI ZNAK</text>
+</svg>
+</div>
+<div style="display:flex;justify-content:center;margin:8px 0">
+<svg viewBox="0 0 300 194" style="max-width:300px;width:100%" role="img" aria-label="prelaz bez semafora i bez policijskog službenika — oba su nacrtana i precrtana crvenim krstom; dete je stupilo na šare, a vozilo staje ispred prelaza bez upotrebe zvučnog znaka">
+<text x="150" y="14" text-anchor="middle" font-size="13" fill="currentColor">DETE JE STUPILO NA PRELAZ</text>
+<rect x="200" y="30" width="18" height="36" rx="3" fill="#2a333d"/>
+<circle cx="209" cy="38" r="4.5" fill="#5a6672"/>
+<circle cx="209" cy="48" r="4.5" fill="#5a6672"/>
+<circle cx="209" cy="58" r="4.5" fill="#5a6672"/>
+<path d="M196,26 L222,70 M222,26 L196,70" fill="none" stroke="#c0392b" stroke-width="3"/>
+<circle cx="252" cy="38" r="7" fill="none" stroke="currentColor" stroke-width="2"/>
+<path d="M243,50 L261,50 L264,70 L240,70 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+<path d="M236,26 L268,72 M268,26 L236,72" fill="none" stroke="#c0392b" stroke-width="3"/>
+<rect x="0" y="84" width="300" height="60" fill="#9aa7b4"/>
+<rect x="210" y="88" width="56" height="9" fill="#fff"/>
+<rect x="210" y="102" width="56" height="9" fill="#fff"/>
+<rect x="210" y="116" width="56" height="9" fill="#fff"/>
+<rect x="210" y="130" width="56" height="9" fill="#fff"/>
+<circle cx="238" cy="92" r="5" fill="#2c6aa0"/>
+<path d="M238,99 L238,134 M232,128 L238,135 L244,128" fill="none" stroke="#2c6aa0" stroke-width="2"/>
+<rect x="16" y="98" width="58" height="32" rx="6" fill="none" stroke="currentColor" stroke-width="2"/>
+<text x="45" y="119" text-anchor="middle" font-size="12" fill="currentColor">TI</text>
+<text x="46" y="76" text-anchor="middle" font-size="12" fill="#c0392b">STAJEŠ</text>
+<path d="M46,80 L46,94 M41,88 L46,95 L51,88" fill="none" stroke="#c0392b" stroke-width="2"/>
+<text x="150" y="166" text-anchor="middle" font-size="12" fill="currentColor">zaustavljaš i propuštaš ga</text>
+<text x="150" y="184" text-anchor="middle" font-size="12" fill="#c0392b">ZVUČNI ZNAK: NE</text>
+</svg>
+</div>
+<p class="mut" style="text-align:center;font-size:.82rem">gore: na prelazu ispred tebe nema nikoga, deca su pored kolovoza — usporavaš, spreman da staneš, <b>i</b> trubiš · dole: precrtani semafor i policajac znače da prelaz nije regulisan, a dete je već na njemu — <b>zaustavljaš vozilo</b>, truba ne pomaže</p>
+<table>
+<tr><th>Situacija</th><th>Zvučni znak?</th></tr>
+<tr><td>pešak je stupio ili stupa <b>na pešački prelaz</b> ispred tebe — i onda kad ti je prolaz dozvoljen</td><td><b>NE</b> — propuštaš ga</td></tr>
+<tr><td><b>DETE</b> je stupilo ili stupa na prelaz koji <b>nije regulisan</b>, ili na prelaz na ulazu u bočni put u koji skrećeš uz prolaz dozvoljen svetlosnim znakom</td><td><b>NE</b> — zaustavljaš vozilo i propuštaš ga</td></tr>
+<tr><td>pešak je već <b>na kolovozu</b> ispred tebe, van obeleženog prelaza</td><td><b>NE</b> — propuštaš ga</td></tr>
+<tr><td>nailaziš na prelaz koji <b>nije regulisan</b> — pitanje pita šta si dužan pri samom nailasku</td><td><b>NE</b> — prilagođavaš brzinu tako da možeš bezbedno da propustiš pešaka</td></tr>
+<tr><td><b>prisustvo dece pored kolovoza</b>, niko nije stupio na prelaz ispred tebe</td><td><b>DA</b> — uz naročitu opreznost i blagovremeno zaustavljanje</td></tr>
+</table>
+<p class="mut">Pamtilica: truba je tačan odgovor samo tamo gde se pitanje vrti oko <b>prisustva dece</b> i naročite opreznosti. Čim je neko stupio na prelaz ili na kolovoz ispred tebe, trubljenje ne zamenjuje ni propuštanje ni zaustavljanje.</p>
+<p><b>Organizovanu kolonu pešaka</b> koja se kreće po kolovozu <b>ne smeš da presecaš</b> — čekaš da cela pređe, pa tek onda krećeš; nema izuzetka ni kad su u koloni deca (ZOBS čl. 99). Ni u prazninu koja se otvori između dvoje njih ne uteruješ vozilo: kolona prolazi kao celina.</p>
+<div style="display:flex;justify-content:center;margin:8px 0">
+<svg viewBox="0 0 300 156" style="max-width:300px;width:100%" role="img" aria-label="organizovana kolona pešaka prelazi kolovoz u nizu; isprekidana putanja vozila vodi u prazninu između dvoje pešaka i tu je precrtana crvenim krstom">
+<rect x="0" y="44" width="300" height="68" fill="#9aa7b4"/>
+<rect x="14" y="71" width="54" height="32" rx="6" fill="none" stroke="currentColor" stroke-width="2"/>
+<text x="41" y="92" text-anchor="middle" font-size="12" fill="currentColor">TI</text>
+<g class="animKolonaPrelazi">
+<circle cx="186" cy="32" r="5" fill="#2c6aa0"/>
+<circle cx="186" cy="54" r="5" fill="#2c6aa0"/>
+<circle cx="186" cy="76" r="5" fill="#2c6aa0"/>
+<circle cx="186" cy="98" r="5" fill="#2c6aa0"/>
+<circle cx="186" cy="120" r="5" fill="#2c6aa0"/>
+</g>
+<path d="M214,110 L214,50 M208,56 L214,49 L220,56" fill="none" stroke="#2c6aa0" stroke-width="2"/>
+<path d="M72,87 L172,87" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="7 5"/>
+<path d="M180,81 L192,93 M192,81 L180,93" fill="none" stroke="#c0392b" stroke-width="3"/>
+<text x="186" y="20" text-anchor="middle" font-size="13" fill="currentColor">ORGANIZOVANA KOLONA</text>
+<text x="150" y="142" text-anchor="middle" font-size="12" fill="#c0392b">ne presecaš je — čekaš da cela pređe</text>
+</svg>
+</div>
+<p class="mut" style="text-align:center;font-size:.82rem">plava strelica = smer kretanja kolone · crveni krst stoji tačno u praznini između dvoje pešaka: ni tuda ne prolaziš</p>
+</div>
+
+<div class="kPodH"><b class="kPodNaslov">Pešak van naselja, koturaljke i autoput</b>
+<div style="display:flex;justify-content:center;margin:8px 0">
+<svg viewBox="0 0 300 118" style="max-width:300px;width:100%" role="img" aria-label="pešak van naselja ide uz levu ivicu kolovoza u smeru svog kretanja, a vozila mu tom istom stranom dolaze u susret">
+<rect x="0" y="40" width="300" height="64" fill="#9aa7b4"/>
+<line x1="0" y1="72" x2="300" y2="72" stroke="#fff" stroke-width="3" stroke-dasharray="14 10"/>
+<circle cx="54" cy="50" r="6" fill="#2c6aa0"/>
+<path d="M64,50 L92,50 M86,45 L93,50 L86,55" fill="none" stroke="#2c6aa0" stroke-width="2"/>
+<line x1="54" y1="36" x2="54" y2="42" stroke="#2c6aa0" stroke-width="1.5"/>
+<text x="70" y="14" text-anchor="middle" font-size="12" fill="#2c6aa0">PEŠAK: uz LEVU</text>
+<text x="70" y="31" text-anchor="middle" font-size="12" fill="#2c6aa0">ivicu kolovoza</text>
+<g class="animVoziloUSusret">
+<rect x="196" y="46" width="52" height="20" rx="4" fill="none" stroke="currentColor" stroke-width="2"/>
+<path d="M190,56 L162,56 M168,51 L161,56 L168,61" fill="none" stroke="currentColor" stroke-width="2"/>
+</g>
+<text x="222" y="32" text-anchor="middle" font-size="12" fill="currentColor">vozila u susret</text>
+<rect x="90" y="78" width="52" height="20" rx="4" fill="none" stroke="currentColor" stroke-width="2"/>
+<path d="M148,88 L176,88 M170,83 L177,88 L170,93" fill="none" stroke="currentColor" stroke-width="2"/>
+</svg>
+</div>
+<p class="mut" style="text-align:center;font-size:.82rem">pešak gore ide udesno, a vozilo u toj istoj polovini kolovoza dolazi mu u susret — zato ga vidi na vreme · dole vozilo ide u istom smeru kao pešak</p>
+<p><b>Van naselja</b> pešak koji se kreće po kolovozu <b>mora</b> da ide što bliže <b>levoj</b> ivici kolovoza u smeru svog kretanja, tako da ne ometa i ne sprečava saobraćaj vozila. Nije „može levo ili desno" i nije desno — mora levo, suprotno od strane kojom idu vozila u njegovom smeru.</p>
+<div class="signRow">
+  <div class="signCell">
+    <svg viewBox="0 0 78 70" role="img" aria-label="pešak na skejtbordu drži se za vozilo u pokretu, veza je precrtana crvenim krstom"><rect x="3" y="20" width="30" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M2,14 L14,14 M8,9 L1,14 L8,19" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="60" cy="20" r="5" fill="none" stroke="currentColor" stroke-width="2"/><line x1="60" y1="25" x2="60" y2="42" stroke="currentColor" stroke-width="2"/><line x1="60" y1="42" x2="53" y2="52" stroke="currentColor" stroke-width="2"/><line x1="60" y1="42" x2="67" y2="52" stroke="currentColor" stroke-width="2"/><rect x="47" y="53" width="26" height="4" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="52" cy="61" r="3" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="68" cy="61" r="3" fill="none" stroke="currentColor" stroke-width="2"/><line x1="56" y1="30" x2="35" y2="30" stroke="currentColor" stroke-width="2"/><path d="M39,24 L51,36 M51,24 L39,36" fill="none" stroke="#c0392b" stroke-width="3"/></svg>
+    <b>NE DRŽIŠ SE ZA VOZILO</b><span>kolica, koturaljke, skejtbord — ni kad vozilo ide brzinom hoda</span>
+  </div>
+</div>
+<p><b>Kolica za osobe sa invaliditetom, koturaljke, skejtbord:</b> pešak <b>ne sme da se pridržava za vozilo u pokretu</b> — ni onda kad se vozilo kreće brzinom hoda pešaka.</p>
+<table>
+<tr><th>Autoput i motoput: zabrana kretanja pešaka NE važi za</th><th>Zabrana važi — ne sme</th></tr>
+<tr><td>lice koje otklanja posledice saobraćajne nezgode ili neispravnosti na vozilu i teretu</td><td>vozača koji se zaustavio radi odmora</td></tr>
+<tr><td>vozača <b>prinudno</b> zaustavljenog vozila</td><td>vozača koji se zaustavio radi ulaska/izlaska putnika ili utovara/istovara tereta</td></tr>
+</table>
+<p class="mut">Pamtilica: izvela te <b>nevolja</b> iz vozila (nezgoda, kvar) — smeš da budeš pešak na autoputu; izašao si <b>svojom voljom</b> (odmor, putnici, teret) — ne smeš.</p>
+</div>
+`,
 };
 
 CARDS['pruga'] = {
@@ -1384,12 +2518,51 @@ CARDS['put-pojmovi'] = {
   html: `
 <div class="kSek" data-sub="109">
 <p><b>Slojevi puta:</b> PUT (celina) ⊃ KOLOVOZ (deo za vozila) ⊃ KOLOVOZNA TRAKA (jedan smer) ⊃ SAOBRAĆAJNA TRAKA (jedan red vozila). Trotoar je deo puta za pešake, bankina je uz kolovoz.</p>
-<svg viewBox="0 0 460 130" role="img" style="max-width:460px;width:100%;display:block;margin:6px auto">
-  <rect x="2" y="2" width="456" height="126" rx="8" fill="#dcefdc" stroke="#7aa87a"/><text x="12" y="20" font-size="11" font-weight="bold" fill="#2f5b2f">PUT (celina: kolovoz + trotoar + bankina...)</text>
-  <rect x="12" y="28" width="360" height="92" rx="6" fill="#b8c6d4" stroke="#64748b"/><text x="22" y="45" font-size="11" font-weight="bold" fill="#26374a">KOLOVOZ (za vozila)</text>
-  <rect x="22" y="52" width="340" height="60" rx="4" fill="#9db3c8" stroke="#4a6076"/><text x="32" y="68" font-size="10" font-weight="bold" fill="#1c2e40">KOLOVOZNA TRAKA (jedan smer)</text>
-  <rect x="32" y="74" width="320" height="30" rx="3" fill="#7e99b5" stroke="#33495e"/><text x="42" y="93" font-size="10" font-weight="bold" fill="#fff">SAOBRAĆAJNA TRAKA (jedan red vozila)</text>
-  <rect x="382" y="28" width="66" height="92" rx="6" fill="#e8dcc2" stroke="#b49a5a"/><text x="415" y="76" text-anchor="middle" font-size="10" font-weight="bold" fill="#6b5520">TROTOAR</text>
+<svg viewBox="0 0 320 330" role="img" aria-label="Put kao celina: u putu su kolovoz i trotoar; u kolovozu je kolovozna traka za jedan smer, a u njoj saobraćajna traka za jedan red vozila" style="max-width:320px;width:100%;display:block;margin:6px auto">
+  <rect x="5" y="5" width="310" height="317" rx="10" fill="none" stroke="currentColor" stroke-width="2"/>
+  <text x="16" y="28" font-size="15" font-weight="bold" fill="currentColor">PUT (celina)</text>
+  <text x="16" y="46" font-size="12" fill="currentColor">kolovoz + trotoar + bankina…</text>
+
+  <rect x="14" y="56" width="292" height="188" rx="8" fill="#9aa7b4" fill-opacity=".28" stroke="currentColor" stroke-width="1.5"/>
+  <text x="24" y="76" font-size="13" font-weight="bold" fill="currentColor">KOLOVOZ (za vozila)</text>
+
+  <rect x="24" y="86" width="272" height="152" rx="6" fill="#9aa7b4" fill-opacity=".3" stroke="currentColor" stroke-width="1.5"/>
+  <text x="34" y="105" font-size="13" font-weight="bold" fill="currentColor">KOLOVOZNA TRAKA</text>
+  <text x="34" y="123" font-size="12" fill="currentColor">(jedan smer)</text>
+  <g stroke="currentColor" stroke-width="2" fill="none">
+    <line x1="200" y1="110" x2="274" y2="110"/>
+    <path d="M266 103L280 110L266 117"/>
+  </g>
+
+  <rect x="34" y="130" width="252" height="100" rx="5" fill="#9aa7b4" fill-opacity=".32" stroke="currentColor" stroke-width="1.5"/>
+  <text x="44" y="149" font-size="13" font-weight="bold" fill="currentColor">SAOBRAĆAJNA TRAKA</text>
+  <text x="44" y="167" font-size="12" fill="currentColor">(jedan red vozila)</text>
+  <g stroke="currentColor" stroke-width="1.5">
+    <g fill="currentColor" fill-opacity=".25">
+      <rect x="68" y="182" width="48" height="26" rx="6"/>
+      <rect x="78" y="173" width="28" height="11" rx="4"/>
+      <rect x="136" y="182" width="48" height="26" rx="6"/>
+      <rect x="146" y="173" width="28" height="11" rx="4"/>
+      <rect x="204" y="182" width="48" height="26" rx="6"/>
+      <rect x="214" y="173" width="28" height="11" rx="4"/>
+    </g>
+    <g fill="none">
+      <circle cx="81" cy="209" r="4"/><circle cx="103" cy="209" r="4"/>
+      <circle cx="149" cy="209" r="4"/><circle cx="171" cy="209" r="4"/>
+      <circle cx="217" cy="209" r="4"/><circle cx="239" cy="209" r="4"/>
+    </g>
+  </g>
+
+  <rect x="14" y="256" width="292" height="56" rx="8" fill="currentColor" fill-opacity=".07" stroke="currentColor" stroke-width="1.5"/>
+  <text x="24" y="289" font-size="14" font-weight="bold" fill="currentColor">TROTOAR</text>
+  <g stroke="currentColor" stroke-width="1.2" stroke-opacity=".55" fill="none">
+    <line x1="152" y1="284" x2="292" y2="284"/>
+    <line x1="166" y1="264" x2="166" y2="304"/>
+    <line x1="194" y1="264" x2="194" y2="304"/>
+    <line x1="222" y1="264" x2="222" y2="304"/>
+    <line x1="250" y1="264" x2="250" y2="304"/>
+    <line x1="278" y1="264" x2="278" y2="304"/>
+  </g>
 </svg>
 <p><b>Vrste puteva:</b> autoput (fizički razdvojene kolovozne trake, bez ukrštanja u nivou) · motoput (za motorna vozila, može i bez razdvajanja) · javni put · zemljani put (sa njega propuštaš SVE pri uključenju!).</p>
 <p><b>Ključne definicije (čl. 7):</b> ZAUSTAVLJANJE = prekid kretanja do 3 MINUTA (vozač ne napušta vozilo, osim po znaku/pravilu) · PARKIRANJE = svaki duži prekid · NASELJE = izgrađen prostor čije su granice obeležene znakom.</p>
@@ -1430,44 +2603,79 @@ CARDS['autoput'] = {
 <p><b>Kvar (čl. 105):</b> zaustavi na zaustavnoj traci, sigurnosni trougao na ≥ 100 m, svi pokazivači, svetloodbojni prsluk van vozila — i ukloni vozilo što pre.</p>
 <p><b>Zastoj:</b> ostavlja se slobodan prolaz za vozila pod pratnjom/sa pravom prvenstva (čl. 104).</p>
 <p style="margin-top:14px"><b>Uključivanje na autoput — pogled odozgo:</b></p>
-<svg viewBox="0 0 380 260" style="max-width:420px;width:100%;display:block;margin:10px auto">
-  <rect x="0" y="0" width="380" height="260" fill="#6b7f5e"/>
-  <rect x="0" y="0" width="22" height="260" fill="#4e5f45"/>
-  <rect x="0" y="145" width="22" height="36" fill="#9aa7b4"/>
-  <rect x="22" y="0" width="178" height="260" fill="#9aa7b4"/>
-  <rect x="200" y="0" width="56" height="260" fill="#9aa7b4"/>
-  <line x1="27" y1="0" x2="27" y2="260" stroke="#fff" stroke-width="3"/>
-  <line x1="111" y1="4" x2="111" y2="256" stroke="#fff" stroke-width="4" stroke-dasharray="16 12"/>
-  <line x1="200" y1="0" x2="200" y2="108" stroke="#fff" stroke-width="4"/>
-  <line x1="200" y1="108" x2="200" y2="260" stroke="#fff" stroke-width="4" stroke-dasharray="12 10"/>
-  <line x1="251" y1="0" x2="251" y2="260" stroke="#fff" stroke-width="3"/>
-  <g transform="translate(155 62)">
+<svg viewBox="0 0 320 250" role="img" aria-label="Autoput odozgo, smer voznje udesno: leva traka, krajnja desna traka i zaustavna traka; crvenim je precrtan prelazak preko razdelnog pojasa i voznja zaustavnom trakom" style="max-width:340px;width:100%;display:block;margin:10px auto">
+  <!-- razdelni pojas (zelena) sa prolazom -->
+  <rect x="6" y="8" width="308" height="34" fill="#6b7f5e"/>
+  <rect x="222" y="8" width="64" height="34" fill="#9aa7b4"/>
+  <!-- bankina / zelena povrsina desno od kolovoza -->
+  <rect x="6" y="216" width="308" height="26" fill="#6b7f5e"/>
+  <!-- kolovoz -->
+  <rect x="6" y="42" width="308" height="174" fill="#9aa7b4"/>
+  <rect x="6" y="8" width="308" height="234" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".35"/>
+  <!-- oznake na kolovozu -->
+  <line x1="6" y1="47" x2="314" y2="47" stroke="#fff" stroke-width="3"/>
+  <line x1="10" y1="104" x2="310" y2="104" stroke="#fff" stroke-width="4" stroke-dasharray="18 13"/>
+  <line x1="6" y1="164" x2="314" y2="164" stroke="#fff" stroke-width="3"/>
+  <line x1="6" y1="211" x2="314" y2="211" stroke="#fff" stroke-width="3"/>
+  <!-- vozilo u krajnjoj desnoj traci, smer voznje udesno -->
+  <g transform="translate(170 134) rotate(90)">
     <rect x="-11" y="-13" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="-13" width="4.5" height="8" rx="2" fill="#333"/>
     <rect x="-11" y="6" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="6" width="4.5" height="8" rx="2" fill="#333"/>
     <rect x="-9" y="-17" width="18" height="34" rx="7" fill="#5f6d7a"/>
     <path d="M-6 -9 Q0 -13 6 -9 L6 -4 Q0 -7 -6 -4 Z" fill="#fff" opacity=".85"/>
     <path d="M-6 9 Q0 12 6 9 L6 13 Q0 15 -6 13 Z" fill="#fff" opacity=".5"/>
   </g>
-  <g transform="translate(216 228)">
+  <!-- zabranjen prelazak preko razdelnog pojasa -->
+  <path d="M263 101 C263 76 254 58 252 30" stroke="#c0392b" stroke-width="4" fill="none" stroke-dasharray="7 6" stroke-linecap="round"/>
+  <polygon points="246,30 258,30 252,14" fill="#c0392b"/>
+  <g transform="translate(257 66)"><circle r="12" fill="#fff" stroke="#c0392b" stroke-width="3"/><path d="M-5 -5 L5 5 M5 -5 L-5 5" stroke="#c0392b" stroke-width="3" stroke-linecap="round"/></g>
+  <!-- zabranjena voznja zaustavnom trakom -->
+  <g transform="translate(252 187)"><circle r="12" fill="#fff" stroke="#c0392b" stroke-width="3"/><path d="M-5 -5 L5 5 M5 -5 L-5 5" stroke="#c0392b" stroke-width="3" stroke-linecap="round"/></g>
+  <text x="18" y="80" font-size="13" font-weight="bold" fill="#2a333d">LEVA</text>
+  <text x="18" y="139" font-size="13" font-weight="bold" fill="#2a333d">KRAJNJA DESNA</text>
+  <text x="18" y="192" font-size="13" font-weight="bold" fill="#2a333d">ZAUSTAVNA</text>
+</svg>
+<svg viewBox="0 0 320 250" role="img" aria-label="Ukljucivanje sa ulivne trake na autoput: zelena strelica sa kvacicom vodi u krajnju desnu traku, crvena isprekidana strelica pravo u levu traku je precrtana" style="max-width:340px;width:100%;display:block;margin:10px auto">
+  <!-- zelena povrsina: razdelni pojas gore i bankina dole -->
+  <rect x="6" y="8" width="308" height="20" fill="#6b7f5e"/>
+  <rect x="6" y="152" width="308" height="90" fill="#6b7f5e"/>
+  <!-- ulivna traka koja se pri kraju suzava (klin) -->
+  <polygon points="6,152 300,152 210,204 6,204" fill="#9aa7b4"/>
+  <!-- glavni kolovoz: leva + krajnja desna traka -->
+  <rect x="6" y="28" width="308" height="124" fill="#9aa7b4"/>
+  <rect x="6" y="8" width="308" height="234" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".35"/>
+  <!-- oznake na kolovozu -->
+  <line x1="6" y1="33" x2="314" y2="33" stroke="#fff" stroke-width="3"/>
+  <line x1="10" y1="96" x2="310" y2="96" stroke="#fff" stroke-width="4" stroke-dasharray="18 13"/>
+  <line x1="10" y1="152" x2="206" y2="152" stroke="#fff" stroke-width="4" stroke-dasharray="14 12"/>
+  <line x1="210" y1="152" x2="314" y2="152" stroke="#fff" stroke-width="3"/>
+  <polyline points="6,199 205,199 289,152" fill="none" stroke="#fff" stroke-width="3"/>
+  <!-- vozilo u krajnjoj desnoj traci -->
+  <g transform="translate(288 124) rotate(90)">
+    <rect x="-11" y="-13" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="-13" width="4.5" height="8" rx="2" fill="#333"/>
+    <rect x="-11" y="6" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="6" width="4.5" height="8" rx="2" fill="#333"/>
+    <rect x="-9" y="-17" width="18" height="34" rx="7" fill="#5f6d7a"/>
+    <path d="M-6 -9 Q0 -13 6 -9 L6 -4 Q0 -7 -6 -4 Z" fill="#fff" opacity=".85"/>
+    <path d="M-6 9 Q0 12 6 9 L6 13 Q0 15 -6 13 Z" fill="#fff" opacity=".5"/>
+  </g>
+  <!-- vozilo na ulivnoj traci -->
+  <g transform="translate(155 177) rotate(90)">
     <rect x="-11" y="-13" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="-13" width="4.5" height="8" rx="2" fill="#333"/>
     <rect x="-11" y="6" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="6" width="4.5" height="8" rx="2" fill="#333"/>
     <rect x="-9" y="-17" width="18" height="34" rx="7" fill="#2c6aa0"/>
     <path d="M-6 -9 Q0 -13 6 -9 L6 -4 Q0 -7 -6 -4 Z" fill="#fff" opacity=".85"/>
     <path d="M-6 9 Q0 12 6 9 L6 13 Q0 15 -6 13 Z" fill="#fff" opacity=".5"/>
   </g>
-  <path d="M216 210 C216 156 208 136 178 124 C160 117 155 116 155 96" stroke="#1f7a3f" stroke-width="5" fill="none" stroke-linecap="round"/>
-  <polygon points="149,100 161,100 155,84" fill="#1f7a3f"/>
-  <g transform="translate(186 94)"><circle r="11" fill="#fff" stroke="#1f7a3f" stroke-width="3"/><path d="M-5 0 L-1 5 L5 -5" stroke="#1f7a3f" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
-  <path d="M206 196 C178 162 124 142 80 118" stroke="#c0392b" stroke-width="4" fill="none" stroke-dasharray="7 6" stroke-linecap="round"/>
-  <g transform="translate(64 102)"><circle r="11" fill="#fff" stroke="#c0392b" stroke-width="3"/><path d="M-5 -5 L5 5 M5 -5 L-5 5" stroke="#c0392b" stroke-width="3" stroke-linecap="round"/></g>
-  <path d="M69 228 C69 192 62 166 34 163 L18 163" stroke="#c0392b" stroke-width="4" fill="none" stroke-dasharray="7 6" stroke-linecap="round"/>
-  <polygon points="20,157 20,169 7,163" fill="#c0392b"/>
-  <g transform="translate(42 186)"><circle r="11" fill="#fff" stroke="#c0392b" stroke-width="3"/><path d="M-5 -5 L5 5 M5 -5 L-5 5" stroke="#c0392b" stroke-width="3" stroke-linecap="round"/></g>
-  <g transform="translate(225 22)"><circle r="11" fill="#fff" stroke="#c0392b" stroke-width="3"/><path d="M-5 -5 L5 5 M5 -5 L-5 5" stroke="#c0392b" stroke-width="3" stroke-linecap="round"/></g>
-  <text x="69" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">leva</text>
-  <text x="155" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">krajnja desna</text>
-  <text transform="translate(228 98) rotate(-90)" font-size="10" font-weight="bold" fill="#fff">ZAUSTAVNA</text>
-  <text transform="translate(246 252) rotate(-90)" font-size="9" font-weight="bold" fill="#fff">ULIVNA TRAKA</text>
+  <!-- ispravno: uklopi se u krajnju desnu traku -->
+  <path d="M178 174 C212 172 216 128 246 124" stroke="#1f7a3f" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <polygon points="264,123 248,130 248,116" fill="#1f7a3f"/>
+  <g transform="translate(210 150)"><circle r="12" fill="#fff" stroke="#1f7a3f" stroke-width="3"/><path d="M-5 0 L-1 5 L5 -5" stroke="#1f7a3f" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <!-- pogresno: pravo u levu traku -->
+  <path d="M172 164 C205 156 212 100 236 76" stroke="#c0392b" stroke-width="4" fill="none" stroke-dasharray="7 6" stroke-linecap="round"/>
+  <g transform="translate(250 62)"><circle r="12" fill="#fff" stroke="#c0392b" stroke-width="3"/><path d="M-5 -5 L5 5 M5 -5 L-5 5" stroke="#c0392b" stroke-width="3" stroke-linecap="round"/></g>
+  <text x="18" y="70" font-size="13" font-weight="bold" fill="#2a333d">LEVA</text>
+  <text x="18" y="129" font-size="13" font-weight="bold" fill="#2a333d">KRAJNJA DESNA</text>
+  <text x="18" y="184" font-size="13" font-weight="bold" fill="#2a333d">ULIVNA TRAKA</text>
 </svg>
 <p>Na autoput se uključuješ SAMO prilaznim putem: ulivnom trakom voziš do njenog kraja i ulivaš se u krajnju DESNU saobraćajnu traku (zelena putanja — na ispitnoj slici to je putanja br. 3), uz uključen LEVI pokazivač pravca i obavezu da propustiš vozila koja se već kreću autoputem. Prevremeno napuštanje ulivne trake — odmah u voznu traku (na slici mamac br. 2) ili sečenjem čak u levu (mamac br. 1) — nije propisno, a zaustavnom trakom kretanje NIJE dozvoljeno: mamac „osim motornim vozilima koja vuku neispravno vozilo" je netačan, izuzetka nema. Polukružno okretanje, i kroz prolaz u razdelnom pojasu, zabranjeno je bez ijednog izuzetka — „ako se može izvršiti bez manevrisanja" i „ako se time ne ugrožavaju drugi učesnici u saobraćaju" su mamci, a isto važi i na motoputu.</p>
 `,
@@ -1502,34 +2710,45 @@ CARDS['vozilo-tehnika'] = {
 <div class="kPodH"><b class="kPodNaslov">Bez ovo troje vozilo ne sme na put</b>
 <!-- izvor: #8423, #8424 -->
 <div style="display:flex;justify-content:center;margin:6px 0">
-<svg viewBox="0 0 360 168" style="max-width:420px;width:100%" role="img" aria-label="sema: saobracajna dozvola plus registarske tablice plus registraciona nalepnica znaci da vozilo sme na put; ako fali bilo koje od troje, vozilo ne sme na put">
+<svg viewBox="0 0 300 316" style="width:100%;max-width:340px" role="img" aria-label="sema: saobracajna dozvola plus registarske tablice plus registraciona nalepnica znaci da vozilo sme na put; ako fali bilo koje od troje, vozilo ne sme na put">
 <g fill="none" stroke="currentColor" stroke-width="1.5">
-<rect x="2" y="6" width="196" height="28" rx="4"/>
-<rect x="2" y="50" width="196" height="28" rx="4"/>
-<rect x="2" y="94" width="196" height="28" rx="4"/>
-<line x1="198" y1="20" x2="206" y2="20"/>
-<line x1="198" y1="108" x2="206" y2="108"/>
-<line x1="206" y1="20" x2="206" y2="108"/>
-<line x1="198" y1="64" x2="224" y2="64"/>
+<rect x="20" y="6" width="260" height="32" rx="4"/>
+<rect x="20" y="58" width="260" height="32" rx="4"/>
+<rect x="20" y="110" width="260" height="32" rx="4"/>
+<rect x="30" y="11" width="18" height="22" rx="2"/>
+<line x1="34" y1="17" x2="44" y2="17"/>
+<line x1="34" y1="22" x2="44" y2="22"/>
+<line x1="34" y1="27" x2="41" y2="27"/>
+<rect x="26" y="67" width="26" height="14" rx="2"/>
+<circle cx="39" cy="126" r="11"/>
+<circle cx="39" cy="126" r="5"/>
+<line x1="150" y1="142" x2="150" y2="156"/>
 </g>
-<polygon points="224,60 232,64 224,68" fill="currentColor"/>
-<g fill="none" stroke="#1f7a3f" stroke-width="1.8"><rect x="236" y="48" width="120" height="32" rx="4"/></g>
-<g fill="none" stroke="#c0392b" stroke-width="1.8">
-<rect x="2" y="132" width="196" height="30" rx="4" stroke-dasharray="6 4"/>
-<rect x="236" y="132" width="120" height="30" rx="4"/>
-<line x1="200" y1="147" x2="224" y2="147"/>
+<rect x="26" y="67" width="7" height="14" fill="#2c6aa0"/>
+<polygon points="144,156 156,156 150,166" fill="currentColor"/>
+<g fill="currentColor" text-anchor="middle" font-size="12">
+<text x="172" y="27">SAOBRAĆAJNA DOZVOLA</text>
+<text x="172" y="79">REGISTARSKE TABLICE</text>
+<text x="172" y="131">REGISTRACIONA NALEPNICA</text>
 </g>
-<polygon points="224,143 232,147 224,151" fill="#c0392b"/>
-<g fill="currentColor" font-size="11" text-anchor="middle">
-<text x="100" y="25">SAOBRAĆAJNA DOZVOLA</text>
-<text x="100" y="69">REGISTARSKE TABLICE</text>
-<text x="100" y="113">REGISTRACIONA NALEPNICA</text>
-<text x="100" y="46" font-size="13">+</text>
-<text x="100" y="90" font-size="13">+</text>
+<g fill="currentColor" text-anchor="middle" font-size="15">
+<text x="150" y="53">+</text>
+<text x="150" y="105">+</text>
 </g>
-<text x="296" y="68" font-size="12" text-anchor="middle" fill="#1f7a3f">SME NA PUT</text>
-<text x="100" y="152" font-size="11" text-anchor="middle" fill="#c0392b">fali BILO KOJE od troje</text>
-<text x="296" y="152" font-size="12" text-anchor="middle" fill="#c0392b">NE SME NA PUT</text>
+<rect x="64" y="170" width="172" height="34" rx="4" fill="none" stroke="#1f7a3f" stroke-width="1.8"/>
+<polyline points="80,188 87,195 100,180" fill="none" stroke="#1f7a3f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="172" y="192" font-size="13" text-anchor="middle" fill="#1f7a3f">SME NA PUT</text>
+<line x1="12" y1="212" x2="288" y2="212" stroke="currentColor" stroke-width="1" stroke-dasharray="2 4" opacity="0.45"/>
+<rect x="20" y="222" width="260" height="30" rx="4" fill="none" stroke="#c0392b" stroke-width="1.8" stroke-dasharray="6 4"/>
+<text x="150" y="242" font-size="12" text-anchor="middle" fill="#c0392b">fali BILO KOJE od troje</text>
+<line x1="150" y1="252" x2="150" y2="264" stroke="#c0392b" stroke-width="1.5"/>
+<polygon points="144,264 156,264 150,274" fill="#c0392b"/>
+<rect x="64" y="278" width="172" height="34" rx="4" fill="none" stroke="#c0392b" stroke-width="1.8"/>
+<g fill="none" stroke="#c0392b" stroke-width="2.4" stroke-linecap="round">
+<circle cx="90" cy="295" r="9"/>
+<line x1="84" y1="289" x2="96" y2="301"/>
+</g>
+<text x="172" y="300" font-size="13" text-anchor="middle" fill="#c0392b">NE SME NA PUT</text>
 </svg>
 </div>
 <!-- izvor: #8423, #8424 -->
@@ -1553,27 +2772,32 @@ CARDS['vozilo-tehnika'] = {
 <div class="kPodH"><b class="kPodNaslov">Godina registracije — vremenska osa</b>
 <!-- izvor: #10688 (30 dana) · #10687 (pregled pre izdavanja nalepnice) · #8428, #8429 (1 godina) · #8425 (po isteku ne sme) -->
 <div style="display:flex;justify-content:center;margin:6px 0">
-<svg viewBox="0 0 360 116" style="max-width:420px;width:100%" role="img" aria-label="vremenska osa u razmeri: prozor od 30 dana za redovni godisnji pregled, zatim zahtev i izdavanje nalepnice, pa godina dana vazenja nalepnice, i istek posle koga vozilo ne sme na put">
-<g fill="none" stroke="currentColor" stroke-width="1.4">
-<rect x="42" y="58" width="21" height="22" stroke-dasharray="4 3"/>
-<rect x="63" y="58" width="255" height="22" rx="3"/>
-<line x1="52" y1="38" x2="52" y2="56" stroke-dasharray="3 3"/>
-<line x1="63" y1="52" x2="63" y2="84"/>
+<svg viewBox="0 0 300 304" style="width:100%;max-width:340px" role="img" aria-label="uspravna vremenska osa u razmeri: prozor od 30 dana pre podnosenja zahteva, zatim zahtev i izdavanje nalepnice, pa godina dana vazenja nalepnice, i istek posle koga vozilo ne sme na put">
+<g fill="none" stroke="currentColor" stroke-width="1.5">
+<rect x="24" y="44" width="16" height="18" stroke-dasharray="3 3"/>
+<rect x="24" y="62" width="16" height="216" rx="3"/>
 </g>
-<line x1="318" y1="50" x2="318" y2="84" stroke="#c0392b" stroke-width="3"/>
-<g fill="none" stroke="#c0392b" stroke-width="2.2">
-<circle cx="338" cy="69" r="12"/><line x1="330" y1="61" x2="346" y2="77"/>
+<g fill="none" stroke="currentColor" stroke-width="1">
+<path d="M40 53 H48 V32 H54"/>
+<path d="M40 62 H48 V72 H54"/>
+<path d="M40 170 H54"/>
 </g>
-<g fill="currentColor" text-anchor="middle">
-<text x="52" y="20" font-size="11">PREGLED</text>
-<text x="52" y="34" font-size="10">najranije 30 dana</text>
-<text x="190" y="73" font-size="11">NALEPNICA VAŽI 1 GODINU</text>
-<text x="63" y="94" font-size="10">ZAHTEV</text>
-<text x="63" y="106" font-size="10">IZDAVANJE NALEPNICE</text>
+<line x1="16" y1="280" x2="54" y2="280" stroke="#c0392b" stroke-width="3"/>
+<g fill="currentColor">
+<text x="58" y="28" font-size="12">PREGLED</text>
+<text x="58" y="45" font-size="11">najranije 30 dana pre zahteva</text>
+<text x="58" y="68" font-size="12">ZAHTEV</text>
+<text x="58" y="85" font-size="11">izdavanje registracione nalepnice</text>
+<text x="58" y="166" font-size="12">NALEPNICA VAŽI</text>
+<text x="58" y="187" font-size="14">1 GODINU</text>
 </g>
-<g fill="#c0392b" text-anchor="middle">
-<text x="318" y="44" font-size="11">ISTEK</text>
-<text x="306" y="100" font-size="11">NE SME NA PUT</text>
+<g fill="#c0392b">
+<text x="58" y="276" font-size="12">ISTEK</text>
+<text x="58" y="296" font-size="13">NE SME NA PUT</text>
+</g>
+<g fill="none" stroke="#c0392b" stroke-width="2.2" stroke-linecap="round">
+<circle cx="185" cy="291" r="9"/>
+<line x1="179" y1="285" x2="191" y2="297"/>
 </g>
 </svg>
 </div>
@@ -1601,31 +2825,48 @@ CARDS['vozilo-tehnika'] = {
 <div class="kPodH"><b class="kPodNaslov">Put nazad u saobraćaj</b>
 <!-- izvor: #8461 (prva dva reda) · #8449 (treći red) -->
 <div style="display:flex;justify-content:center;margin:6px 0">
-<svg viewBox="0 0 360 156" style="max-width:420px;width:100%" role="img" aria-label="sema: posle ostecenja vitalnih sklopova i posle iskljucenja zbog neispravnosti utvrdjene na kontrolnom pregledu ide vanredni tehnicki pregled, a prepravljeno vozilo ide na ispitivanje; tek onda vozilo sme na put">
+<svg viewBox="0 0 300 248" style="width:100%;max-width:340px" role="img" aria-label="sema: vozilo kome su u saobracajnoj nezgodi osteceni vitalni sklopovi i uredjaji, ili vozilo iskljuceno zbog neispravnosti utvrdjene na kontrolnom pregledu, ide na vanredni pregled pa tek onda sme na put">
 <g fill="none" stroke="currentColor" stroke-width="1.5">
-<rect x="2" y="4" width="146" height="44" rx="4"/><rect x="2" y="56" width="146" height="44" rx="4"/><rect x="2" y="108" width="146" height="44" rx="4"/>
-<rect x="164" y="4" width="124" height="44" rx="4"/><rect x="164" y="56" width="124" height="44" rx="4"/><rect x="164" y="108" width="124" height="44" rx="4"/>
-<line x1="148" y1="26" x2="158" y2="26"/><line x1="148" y1="78" x2="158" y2="78"/><line x1="148" y1="130" x2="158" y2="130"/>
-<line x1="288" y1="26" x2="298" y2="26"/><line x1="288" y1="78" x2="298" y2="78"/><line x1="288" y1="130" x2="298" y2="130"/>
+<rect x="4" y="6" width="292" height="58" rx="4"/>
+<rect x="4" y="84" width="292" height="42" rx="4"/>
+<rect x="40" y="154" width="220" height="32" rx="4"/>
+<line x1="150" y1="126" x2="150" y2="140"/>
+<line x1="150" y1="186" x2="150" y2="198"/>
 </g>
-<g fill="currentColor">
-<polygon points="158,22 164,26 158,30"/><polygon points="158,74 164,78 158,82"/><polygon points="158,126 164,130 158,134"/>
-<polygon points="298,22 304,26 298,30"/><polygon points="298,74 304,78 298,82"/><polygon points="298,126 304,130 298,134"/>
+<polygon points="144,140 156,140 150,150" fill="currentColor"/>
+<polygon points="144,198 156,198 150,208" fill="currentColor"/>
+<g fill="currentColor" text-anchor="middle">
+<text x="150" y="24" font-size="11">u saobraćajnoj nezgodi oštećeni</text>
+<text x="150" y="41" font-size="12">VITALNI SKLOPOVI I UREĐAJI</text>
+<text x="150" y="57" font-size="11">ili vozilo nije bilo u voznom stanju</text>
+<text x="150" y="78" font-size="11">ILI</text>
+<text x="150" y="102" font-size="11">isključeno zbog neispravnosti sa</text>
+<text x="150" y="118" font-size="12">KONTROLNOG PREGLEDA</text>
+<text x="150" y="175" font-size="13">VANREDNI PREGLED</text>
 </g>
-<g fill="none" stroke="#1f7a3f" stroke-width="1.8">
-<rect x="304" y="4" width="54" height="44" rx="4"/><rect x="304" y="56" width="54" height="44" rx="4"/><rect x="304" y="108" width="54" height="44" rx="4"/>
+<rect x="64" y="212" width="172" height="32" rx="4" fill="none" stroke="#1f7a3f" stroke-width="1.8"/>
+<polyline points="82,228 89,235 102,220" fill="none" stroke="#1f7a3f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="172" y="233" font-size="13" text-anchor="middle" fill="#1f7a3f">NA PUT</text>
+</svg>
+</div>
+<div style="display:flex;justify-content:center;margin:6px 0">
+<svg viewBox="0 0 300 176" style="width:100%;max-width:340px" role="img" aria-label="sema: prepravljeno vozilo ide na ispitivanje kojim se utvrdjuje da ispunjava propisane uslove, pa tek onda sme na put">
+<g fill="none" stroke="currentColor" stroke-width="1.5">
+<rect x="30" y="6" width="240" height="32" rx="4"/>
+<rect x="16" y="70" width="268" height="46" rx="4"/>
+<line x1="150" y1="38" x2="150" y2="52"/>
+<line x1="150" y1="116" x2="150" y2="128"/>
 </g>
-<g fill="currentColor" text-anchor="middle" font-size="10">
-<text x="75" y="19">u nezgodi oštećeni</text><text x="75" y="31">VITALNI SKLOPOVI</text><text x="75" y="43">nije bilo u voznom stanju</text>
-<text x="75" y="71">isključeno zbog</text><text x="75" y="83">neispravnosti sa</text><text x="75" y="95">KONTROLNOG pregleda</text>
-<text x="75" y="134">PREPRAVLJENO VOZILO</text>
-<text x="226" y="22" font-size="11">VANREDNI</text><text x="226" y="36" font-size="11">PREGLED</text>
-<text x="226" y="74" font-size="11">VANREDNI</text><text x="226" y="88" font-size="11">PREGLED</text>
-<text x="226" y="126" font-size="11">ISPITIVANJE</text><text x="226" y="140">ispunjava uslove</text>
+<polygon points="144,52 156,52 150,62" fill="currentColor"/>
+<polygon points="144,128 156,128 150,138" fill="currentColor"/>
+<g fill="currentColor" text-anchor="middle">
+<text x="150" y="27" font-size="13">PREPRAVLJENO VOZILO</text>
+<text x="150" y="92" font-size="13">ISPITIVANJE</text>
+<text x="150" y="108" font-size="11">utvrđuje se da ispunjava uslove</text>
 </g>
-<g fill="#1f7a3f" text-anchor="middle" font-size="11">
-<text x="331" y="30">NA PUT</text><text x="331" y="82">NA PUT</text><text x="331" y="134">NA PUT</text>
-</g>
+<rect x="64" y="142" width="172" height="32" rx="4" fill="none" stroke="#1f7a3f" stroke-width="1.8"/>
+<polyline points="82,158 89,165 102,150" fill="none" stroke="#1f7a3f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="172" y="163" font-size="13" text-anchor="middle" fill="#1f7a3f">NA PUT</text>
 </svg>
 </div>
 <!-- izvor: #8461 -->
@@ -2187,40 +3428,50 @@ CARDS['policajac-znaci'] = {
 <p><b>Kako da razlikuješ tri slične gradske slike.</b> Baza koristi istu ulicu i istog policajca, a menja samo ruku — i odgovor je svaki put drugi. Ruka uvis i pun dlan okrenut ka tebi znače <b>stani</b>; ista podignuta podlaktica sa <b>kružnom</b> strelicom znači <b>ubrzaj</b>. Za „priđi bliže" gledaj strelicu koja pokazuje <b>ka policajcu</b>: na gradskim fotografijama to je velika <b>žuta strelica pravo napred</b>, a na studijskim crtežima strelica <b>levo-desno</b> uz bočno okrenutu šaku. Ne pamti scenu — pamti šaku i smer strelice.</p>
 
 <p><b>Položaj tela je znak i kad su ruke spuštene.</b> Kad policajac stoji mirno ili sa <b>obe ruke odručene</b>, važi isto pravilo: ko dolazi iz pravca u kome su okrenuta njegova <b>leđa, odnosno prsa</b> — <b>staje</b>; ko dolazi sa njegovih <b>bočnih strana</b> — <b>prolazi</b>. Raširene ruke ništa ne menjaju, samo ga čine uočljivijim. Obrnuta verzija te rečenice („bočne strane staju, prsa i leđa prolaze") je standardni mamac — čitaj redosled do kraja.</p>
-<svg viewBox="0 0 420 250" role="img" style="max-width:420px;width:100%;display:block;margin:8px auto">
-  <rect x="0" y="92" width="420" height="66" fill="#c9ced4"/>
-  <rect x="177" y="0" width="66" height="250" fill="#c9ced4"/>
-  <path d="M210 22 L210 62" stroke="#c0392b" stroke-width="6" fill="none"/>
-  <path d="M198 52 L210 68 L222 52" stroke="#c0392b" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="210" y="15" text-anchor="middle" font-size="12" font-weight="bold" fill="#c0392b">STAJE</text>
-  <path d="M210 228 L210 188" stroke="#c0392b" stroke-width="6" fill="none"/>
-  <path d="M198 198 L210 182 L222 198" stroke="#c0392b" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="210" y="245" text-anchor="middle" font-size="12" font-weight="bold" fill="#c0392b">STAJE</text>
-  <path d="M20 110 L136 110" stroke="#2e7d32" stroke-width="6" fill="none"/>
-  <path d="M128 100 L146 110 L128 120" stroke="#2e7d32" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="76" y="84" text-anchor="middle" font-size="12" font-weight="bold" fill="#2e7d32">PROLAZI</text>
-  <path d="M400 140 L284 140" stroke="#2e7d32" stroke-width="6" fill="none"/>
-  <path d="M292 130 L274 140 L292 150" stroke="#2e7d32" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="344" y="178" text-anchor="middle" font-size="12" font-weight="bold" fill="#2e7d32">PROLAZI</text>
-  <line x1="186" y1="125" x2="234" y2="125" stroke="#1f2937" stroke-width="7" stroke-linecap="round"/>
-  <circle cx="210" cy="125" r="16" fill="#334155"/>
-  <path d="M194 125 A16 16 0 0 1 226 125 Z" fill="#c0392b"/>
+<svg viewBox="0 0 320 300" role="img" aria-label="Pogled odozgo na raskrsnicu: policajac stoji u sredini sa rukama ispruženim u stranu; vozila koja mu dolaze sa prednje i zadnje strane staju, a vozila sa bočnih strana prolaze" style="max-width:320px;width:100%;display:block;margin:8px auto">
+  <g fill="#9aa7b4" opacity=".38">
+    <rect x="0" y="112" width="320" height="76"/>
+    <rect x="112" y="0" width="76" height="300"/>
+  </g>
+  <path d="M150 40 L150 80" stroke="#c0392b" stroke-width="7" fill="none"/>
+  <path d="M138 78 L150 94 L162 78" stroke="#c0392b" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="150" y="30" text-anchor="middle" font-size="13" font-weight="bold" fill="#c0392b">STAJE</text>
+  <path d="M150 260 L150 220" stroke="#c0392b" stroke-width="7" fill="none"/>
+  <path d="M138 222 L150 206 L162 222" stroke="#c0392b" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="150" y="286" text-anchor="middle" font-size="13" font-weight="bold" fill="#c0392b">STAJE</text>
+  <path d="M16 130 L92 130" stroke="#1f7a3f" stroke-width="7" fill="none"/>
+  <path d="M88 120 L104 130 L88 140" stroke="#1f7a3f" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="58" y="100" text-anchor="middle" font-size="13" font-weight="bold" fill="#1f7a3f">PROLAZI</text>
+  <path d="M304 170 L228 170" stroke="#1f7a3f" stroke-width="7" fill="none"/>
+  <path d="M232 160 L216 170 L232 180" stroke="#1f7a3f" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="252" y="212" text-anchor="middle" font-size="13" font-weight="bold" fill="#1f7a3f">PROLAZI</text>
+  <line x1="110" y1="150" x2="190" y2="150" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="150" cy="150" r="14" fill="currentColor"/>
+  <path d="M136 150 A14 14 0 0 1 164 150 Z" fill="#c0392b"/>
+  <path d="M92 244 L130 164" stroke="currentColor" stroke-width="1.5" opacity=".5" fill="none"/>
+  <text x="58" y="256" text-anchor="middle" font-size="12" fill="#64748b">policajac</text>
 </svg>
 <p class="mut" style="text-align:center;font-size:.85rem">crvena polovina figure = prsa; crta kroz figuru = odručene ruke, koje ovde ništa ne menjaju</p>
 
 <p><b>Predručena ruka se gleda drugačije.</b> Zamisli je kao rampu koja se pruža u smeru u kome pokazuje: ako <b>tvoja putanja preseca tu rampu</b> — ne smeš. Ako je ne dodiruješ (na primer, prolaziš iza njegovih leđa, mimo pravca ruke) — smeš pravo.</p>
-<svg viewBox="0 0 420 196" role="img" style="max-width:420px;width:100%;display:block;margin:8px auto">
-  <circle cx="150" cy="80" r="14" fill="currentColor"/>
-  <line x1="164" y1="80" x2="318" y2="80" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
-  <rect x="312" y="70" width="26" height="20" rx="6" fill="currentColor"/>
-  <text x="150" y="108" text-anchor="middle" font-size="10" fill="#64748b">policajac</text>
-  <text x="196" y="58" text-anchor="middle" font-size="11" fill="currentColor">smer predručene ruke</text>
-  <path d="M280 160 L280 44" stroke="#c0392b" stroke-width="6" fill="none"/>
-  <path d="M268 54 L280 32 L292 54" stroke="#c0392b" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="280" y="182" text-anchor="middle" font-size="12" font-weight="bold" fill="#c0392b">SEČE = stani</text>
-  <path d="M70 160 L70 44" stroke="#2e7d32" stroke-width="6" fill="none"/>
-  <path d="M58 54 L70 32 L82 54" stroke="#2e7d32" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="70" y="182" text-anchor="middle" font-size="12" font-weight="bold" fill="#2e7d32">ne seče = možeš</text>
+<svg viewBox="0 0 320 340" role="img" aria-label="Dva prikaza odozgo: gore vozilo čija putanja ne seče predručenu ruku policajca, pa može da prođe; dole vozilo čija putanja seče predručenu ruku, pa mora da stane" style="max-width:320px;width:100%;display:block;margin:8px auto">
+  <text x="186" y="34" text-anchor="middle" font-size="12" fill="currentColor">smer predručene ruke</text>
+  <circle cx="95" cy="72" r="14" fill="currentColor"/>
+  <line x1="109" y1="72" x2="245" y2="72" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
+  <rect x="239" y="62" width="26" height="20" rx="6" fill="currentColor"/>
+  <text x="95" y="102" text-anchor="middle" font-size="12" fill="#64748b">policajac</text>
+  <path d="M38 132 L38 46" stroke="#1f7a3f" stroke-width="7" fill="none"/>
+  <path d="M26 56 L38 34 L50 56" stroke="#1f7a3f" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="72" y="158" text-anchor="middle" font-size="12" font-weight="bold" fill="#1f7a3f">ne seče = možeš</text>
+  <line x1="12" y1="176" x2="308" y2="176" stroke="currentColor" stroke-width="1" opacity=".25"/>
+  <circle cx="95" cy="248" r="14" fill="currentColor"/>
+  <line x1="109" y1="248" x2="245" y2="248" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
+  <rect x="239" y="238" width="26" height="20" rx="6" fill="currentColor"/>
+  <text x="95" y="278" text-anchor="middle" font-size="12" fill="#64748b">policajac</text>
+  <path d="M186 300 L186 214" stroke="#c0392b" stroke-width="7" fill="none"/>
+  <path d="M174 224 L186 202 L198 224" stroke="#c0392b" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="186" cy="248" r="9" fill="none" stroke="#c0392b" stroke-width="3"/>
+  <text x="186" y="326" text-anchor="middle" font-size="12" font-weight="bold" fill="#c0392b">SEČE = stani</text>
 </svg>
 <p><b>Nemoj mešati dva pravila.</b> Kad su mu ruke spuštene ili obe odručene — gledaš <b>kuda je okrenut</b>. Kad je jedna ruka <b>predručena</b> — telo više nije merilo, gledaš samo <b>da li joj sečeš smer</b>. Zato na jednoj slici gledaš policajcu u leđa i moraš da staneš, a na drugoj mu takođe gledaš u leđa, ali je ruka predručena mimo tvoje putanje — i smeš pravo. I još jedno: predručena ruka <b>ne naređuje</b> da se krećeš u njenom smeru, ona samo zabranjuje onima koji je seku.</p>
 
@@ -2302,59 +3553,86 @@ CARDS['uredjaji-oprema'] = {
 <tr><td><b>Dugo svetlo</b> (osim traktora)</td><td><b>najmanje 100 m</b>, bez gornje granice</td><td>„najmanje 80 m", „najmanje 40 m"</td></tr>
 <tr><td><b>Svetlo za maglu</b></td><td><b>najviše 35 m</b>, bez donje granice</td><td>„<b>najmanje</b> 35 m" — ista cifra, obrnuta reč</td></tr>
 </table>
-<svg viewBox="0 0 460 200" role="img" aria-label="Dometi svetala na zajedničkoj metarskoj skali: magla najviše 35 m, moped 10–50 m, kratko 40–80 m, dugo najmanje 100 m" style="max-width:460px;width:100%;display:block;margin:8px auto">
-  <defs><linearGradient id="uoDugoFade" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#ffd84d"/><stop offset=".62" stop-color="#ffd84d"/><stop offset="1" stop-color="#ffd84d" stop-opacity="0"/></linearGradient></defs>
-  <g stroke="currentColor" stroke-width="1" stroke-dasharray="2 3" opacity=".22">
-    <line x1="112" y1="18" x2="112" y2="172"/><line x1="139" y1="18" x2="139" y2="172"/><line x1="206.5" y1="18" x2="206.5" y2="172"/><line x1="220" y1="18" x2="220" y2="172"/><line x1="247" y1="18" x2="247" y2="172"/><line x1="328" y1="18" x2="328" y2="172"/><line x1="382" y1="18" x2="382" y2="172"/>
+<svg viewBox="0 0 306 380" role="img" aria-label="Dometi svetala na zajedničkoj metarskoj skali od vozila: svetlo za maglu najviše 35 m, kratko svetlo na mopedu 10 do 50 m, kratko svetlo 40 do 80 m, dugo svetlo najmanje 100 m bez gornje granice" style="max-width:306px;width:100%;display:block;margin:8px auto">
+  <defs><linearGradient id="uoDugoFade" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#ffd84d"/><stop offset=".55" stop-color="#ffd84d"/><stop offset="1" stop-color="#ffd84d" stop-opacity="0"/></linearGradient></defs>
+
+  <g fill="currentColor" font-size="11" opacity=".7">
+    <text x="6" y="14">domet u metrima, mereno od vozila</text>
   </g>
-  <g fill="currentColor">
-    <path d="M98 29 h7 a7 7 0 0 1 0 14 h-7 z"/><path d="M98 67 h7 a7 7 0 0 1 0 14 h-7 z"/><path d="M98 105 h7 a7 7 0 0 1 0 14 h-7 z"/><path d="M98 143 h7 a7 7 0 0 1 0 14 h-7 z"/>
+
+  <g stroke="currentColor" stroke-width="1" stroke-dasharray="2 3" opacity=".2">
+    <line x1="30" y1="20" x2="30" y2="340"/>
+    <line x1="53" y1="20" x2="53" y2="340"/>
+    <line x1="110.5" y1="20" x2="110.5" y2="340"/>
+    <line x1="122" y1="20" x2="122" y2="340"/>
+    <line x1="145" y1="20" x2="145" y2="340"/>
+    <line x1="214" y1="20" x2="214" y2="340"/>
+    <line x1="260" y1="20" x2="260" y2="340"/>
   </g>
+
   <g fill="#ffd84d" opacity=".28">
-    <polygon points="112,70 139,65 139,83 112,78"/>
-    <polygon points="112,108 220,103 220,121 112,116"/>
-    <polygon points="112,146 382,141 382,159 112,154"/>
+    <polygon points="30,143 53,138 53,156 30,151"/>
+    <polygon points="30,221 122,216 122,234 30,229"/>
+    <polygon points="30,299 260,294 260,312 30,307"/>
   </g>
+
   <g fill="#ffd84d" stroke="#b58900" stroke-width="1.5">
-    <rect x="112" y="27" width="94.5" height="18"/>
-    <rect x="139" y="65" width="108" height="18"/>
-    <rect x="220" y="103" width="108" height="18"/>
+    <rect x="30" y="60" width="80.5" height="18"/>
+    <rect x="53" y="138" width="92" height="18"/>
+    <rect x="122" y="216" width="92" height="18"/>
   </g>
-  <rect x="382" y="141" width="62" height="18" fill="url(#uoDugoFade)"/>
-  <path d="M382 141 h40 M382 159 h40" stroke="#b58900" stroke-width="1.5"/>
+  <rect x="260" y="294" width="42" height="18" fill="url(#uoDugoFade)"/>
+  <path d="M260 294 h28 M260 312 h28" stroke="#b58900" stroke-width="1.5" fill="none"/>
+  <path d="M288 297 l5 6 l-5 6 M295 297 l5 6 l-5 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/>
+
+  <g fill="currentColor">
+    <path d="M16 63 h6 a6 6 0 0 1 0 12 h-6 z"/>
+    <path d="M16 141 h6 a6 6 0 0 1 0 12 h-6 z"/>
+    <path d="M16 219 h6 a6 6 0 0 1 0 12 h-6 z"/>
+    <path d="M16 297 h6 a6 6 0 0 1 0 12 h-6 z"/>
+  </g>
+
   <g stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-    <line x1="206.5" y1="23" x2="206.5" y2="49"/>
-    <line x1="139" y1="61" x2="139" y2="87"/><line x1="247" y1="61" x2="247" y2="87"/>
-    <line x1="220" y1="99" x2="220" y2="125"/><line x1="328" y1="99" x2="328" y2="125"/>
-    <line x1="382" y1="137" x2="382" y2="163"/>
+    <line x1="110.5" y1="56" x2="110.5" y2="82"/>
+    <line x1="53" y1="134" x2="53" y2="160"/><line x1="145" y1="134" x2="145" y2="160"/>
+    <line x1="122" y1="212" x2="122" y2="238"/><line x1="214" y1="212" x2="214" y2="238"/>
+    <line x1="260" y1="290" x2="260" y2="316"/>
   </g>
-  <path d="M432 144 l6 6 l-6 6 M440 144 l6 6 l-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/>
-  <g font-size="10" font-weight="bold" fill="#5a4200" text-anchor="middle">
-    <text x="159" y="40">do 35 m</text><text x="193" y="78">10–50 m</text><text x="274" y="116">40–80 m</text><text x="408" y="154">od 100 m</text>
+
+  <g fill="currentColor" font-size="13" font-weight="bold">
+    <text x="6" y="37">MAGLA</text><text x="300" y="37" text-anchor="end">do 35 m</text>
+    <text x="6" y="115">MOPED</text><text x="300" y="115" text-anchor="end">10–50 m</text>
+    <text x="6" y="193">KRATKO</text><text x="300" y="193" text-anchor="end">40–80 m</text>
+    <text x="6" y="271">DUGO</text><text x="300" y="271" text-anchor="end">od 100 m</text>
   </g>
-  <g font-size="8" fill="currentColor" text-anchor="middle">
-    <text x="206.5" y="19">najviše</text>
-    <text x="139" y="57">najmanje</text><text x="247" y="57">najviše</text>
-    <text x="220" y="95">najmanje</text><text x="328" y="95">najviše</text>
-    <text x="382" y="133">najmanje</text>
+
+  <g fill="currentColor" font-size="11" opacity=".7">
+    <text x="6" y="55">svetlo za maglu</text>
+    <text x="6" y="133">kratko svetlo</text>
+    <text x="6" y="211">osim traktora</text>
+    <text x="6" y="289">osim traktora</text>
   </g>
-  <g font-size="8" fill="currentColor" opacity=".65">
-    <text x="112" y="19" text-anchor="start">bez donje granice</text>
-    <text x="446" y="169" text-anchor="end">bez gornje granice</text>
+
+  <g fill="currentColor" font-size="11" opacity=".85">
+    <text x="30" y="92">najviše 35 m · bez donje granice</text>
+    <text x="30" y="170">najmanje 10 m · najviše 50 m</text>
+    <text x="30" y="248">najmanje 40 m · najviše 80 m</text>
+    <text x="30" y="326">najmanje 100 m · bez gornje granice</text>
   </g>
-  <g fill="currentColor" font-weight="bold" font-size="11">
-    <text x="4" y="35">MAGLA</text><text x="4" y="73">MOPED</text><text x="4" y="111">KRATKO</text><text x="4" y="149">DUGO</text>
-  </g>
-  <g fill="currentColor" font-size="8.5" opacity=".7">
-    <text x="4" y="46">svetlo za maglu</text><text x="4" y="84">kratko svetlo</text><text x="4" y="122">osim traktora</text><text x="4" y="160">osim traktora</text>
-  </g>
-  <line x1="108" y1="172" x2="446" y2="172" stroke="currentColor" stroke-width="1.5"/>
+
+  <line x1="26" y1="340" x2="302" y2="340" stroke="currentColor" stroke-width="1.5"/>
   <g stroke="currentColor" stroke-width="1.5">
-    <line x1="112" y1="172" x2="112" y2="177"/><line x1="139" y1="172" x2="139" y2="177"/><line x1="206.5" y1="172" x2="206.5" y2="189"/><line x1="220" y1="172" x2="220" y2="177"/><line x1="247" y1="172" x2="247" y2="177"/><line x1="328" y1="172" x2="328" y2="177"/><line x1="382" y1="172" x2="382" y2="177"/>
+    <line x1="30" y1="340" x2="30" y2="345"/>
+    <line x1="53" y1="340" x2="53" y2="345"/>
+    <line x1="110.5" y1="340" x2="110.5" y2="361"/>
+    <line x1="122" y1="340" x2="122" y2="345"/>
+    <line x1="145" y1="340" x2="145" y2="345"/>
+    <line x1="214" y1="340" x2="214" y2="345"/>
+    <line x1="260" y1="340" x2="260" y2="345"/>
   </g>
-  <g fill="currentColor" font-size="10" text-anchor="middle">
-    <text x="112" y="187">0</text><text x="139" y="187">10</text><text x="220" y="187">40</text><text x="247" y="187">50</text><text x="328" y="187">80</text><text x="382" y="187">100 m</text>
-    <text x="206.5" y="198">35</text>
+  <g fill="currentColor" font-size="11" text-anchor="middle">
+    <text x="30" y="357">0</text><text x="53" y="357">10</text><text x="122" y="357">40</text><text x="145" y="357">50</text><text x="214" y="357">80</text><text x="260" y="357">100 m</text>
+    <text x="110.5" y="375">35</text>
   </g>
 </svg>
 <p class="mut">Puna crta je granica koju tačan odgovor mora da sadrži, otvoren kraj znači da granice nema: kratko svetlo ima <i>obe</i> (mora da osvetli, a ne sme da zaslepi), dugo samo donju, magla samo gornju — snop koji bi išao dalje odbijao bi se od magle nazad u oči. Moped je jedini sa sopstvenim, znatno kraćim rasponom — ista slika kao kratko, samo pomerena ulevo.</p>
@@ -2581,7 +3859,358 @@ položaj" nikad nije opravdanje.</p>
 izvodi <b>uz pomoć lica van vozila</b> koje ti daje znakove.</p>
 <p><b>U naselju</b> si dužan da omogućiš uključenje <b>autobusu koji propisno kreće sa stajališta</b> (čl. 27).</p>
 <p class="mut">Pamtilica: desno koliko možeš, levu ivicu na dvosmernom nikad, i nijedna radnja ne počinje
-pre nego što si siguran — a znak ide pre radnje, ne u toku nje.</p>`,
+pre nego što si siguran — a znak ide pre radnje, ne u toku nje.</p>
+
+<!-- ==== dopuna 07.09.2026 (tura 4): crtež + isto to rečima ==== -->
+<!-- DODATAK kartici kretanje-po-putu. Uz svaku celinu stoji izvor: brojevi pitanja iz gradje. -->
+<!-- Crtezi: sva platna su siroka 306 (= sirina tela kartice na telefonu od 375 px), pa je font-size u SVG-u jednak stvarnim px. Najmanji upotrebljen font-size je 11. -->
+<!-- Animacije: klase animTrepti, animUkljuci, animPropusti, animKoridorTok — definicije idu u style.css (opisane u odgovoru). -->
+<!-- izvor: 9616 (tri saobracajne trake), 9612 (najmanje cetiri saobracajne trake), 9619 (fizicki odvojene kolovozne trake), 9621 (zeleno ostrvo + plavi znak, pitanje sa slikom) -->
+<div class="kPodH"><b class="kPodNaslov">Koja traka je tvoja</b>
+<div style="display:flex;justify-content:center;margin:6px 0">
+<svg viewBox="0 0 306 134" style="max-width:306px;width:100%" role="img" aria-label="Dvosmerni put sa tri saobraćajne trake, pogled odozgo. Traka uz levu ivicu puta u tvom smeru obojena je crveno, u njoj je strelica koja pokazuje suprotan smer, a preko nje je crveni krst. Srednja traka je slobodna i kroz nju vodi zelena putanja preticanja. Tvoje plavo vozilo je u traci uz desnu ivicu.">
+<text x="153" y="14" font-size="12" text-anchor="middle" fill="currentColor">DVOSMERNI · TRI SAOBRAĆAJNE TRAKE</text>
+<rect x="8" y="20" width="290" height="72" rx="3" fill="#9aa7b4"/>
+<rect x="8" y="20" width="290" height="24" fill="#c0392b" opacity=".3"/>
+<path d="M14 44 H292 M14 68 H292" stroke="#fff" stroke-width="2" stroke-dasharray="9 7" opacity=".85" fill="none"/>
+<path d="M250 32 H200" stroke="currentColor" stroke-width="2.2" fill="none"/>
+<path d="M200 27 L190 32 L200 37 Z" fill="currentColor"/>
+<path d="M258 22 L286 42 M286 22 L258 42" stroke="#c0392b" stroke-width="3" fill="none"/>
+<rect x="30" y="71" width="44" height="15" rx="4" fill="#2c6aa0"/>
+<text x="52" y="82.5" font-size="12" text-anchor="middle" fill="#fff">ti</text>
+<path d="M80 78 H140" stroke="currentColor" stroke-width="2.2" fill="none"/>
+<path d="M140 72 L152 78 L140 84 Z" fill="currentColor"/>
+<path d="M158 78 C182 78 186 56 210 56" stroke="#1f7a3f" stroke-width="2.4" fill="none"/>
+<path d="M222 56 L210 50 L210 62 Z" fill="#1f7a3f"/>
+<text x="153" y="110" font-size="12" text-anchor="middle" fill="currentColor">traka uz LEVU ivicu nije tvoja</text>
+<text x="153" y="126" font-size="12" text-anchor="middle" fill="currentColor">pretiče se SREDNJOM trakom</text>
+</svg>
+</div>
+<div style="display:flex;justify-content:center;margin:6px 0">
+<svg viewBox="0 0 306 162" style="max-width:306px;width:100%" role="img" aria-label="Dvosmerni put sa četiri saobraćajne trake, bez ikakve pregrade, pogled odozgo. Gornja polovina kolovoza, namenjena suprotnom smeru, obojena je crveno, u njoj su dve strelice suprotnog smera i preko nje je crveni krst. Isprekidane bele linije nacrtane su samo između traka istog smera; na granici dva smera nema nikakve linije — tu se samo menja boja, iz crvene u sivu. Tvoje plavo vozilo je u traci uz desnu ivicu.">
+<text x="153" y="14" font-size="12" text-anchor="middle" fill="currentColor">DVOSMERNI PUT</text>
+<text x="153" y="31" font-size="12" text-anchor="middle" fill="currentColor">NAJMANJE ČETIRI SAOBRAĆAJNE TRAKE</text>
+<rect x="8" y="36" width="290" height="72" rx="3" fill="#9aa7b4"/>
+<rect x="8" y="36" width="290" height="36" fill="#c0392b" opacity=".3"/>
+<path d="M14 54 H292 M14 90 H292" stroke="#fff" stroke-width="2" stroke-dasharray="9 7" opacity=".85" fill="none"/>
+<path d="M250 45 H200 M250 63 H200" stroke="currentColor" stroke-width="2" fill="none"/>
+<path d="M200 40.5 L191 45 L200 49.5 Z M200 58.5 L191 63 L200 67.5 Z" fill="currentColor"/>
+<path d="M258 44 L286 64 M286 44 L258 64" stroke="#c0392b" stroke-width="3" fill="none"/>
+<rect x="96" y="74" width="44" height="14" rx="4" fill="#2a333d"/>
+<path d="M148 81 H190" stroke="currentColor" stroke-width="2.2" fill="none"/>
+<path d="M190 75 L202 81 L190 87 Z" fill="currentColor"/>
+<rect x="30" y="92" width="44" height="14" rx="4" fill="#2c6aa0"/>
+<text x="52" y="102.5" font-size="12" text-anchor="middle" fill="#fff">ti</text>
+<path d="M80 99 H140" stroke="currentColor" stroke-width="2.2" fill="none"/>
+<path d="M140 93 L152 99 L140 105 Z" fill="currentColor"/>
+<text x="153" y="126" font-size="12" text-anchor="middle" fill="currentColor">suprotna kolovozna traka je zabranjena</text>
+<text x="153" y="142" font-size="12" text-anchor="middle" fill="currentColor">i onda kad nema nikakve pregrade</text>
+<text x="153" y="158" font-size="12" text-anchor="middle" fill="currentColor">o vrsti linije ovo pitanje ne govori</text>
+</svg>
+</div>
+<div style="display:flex;justify-content:center;margin:6px 0">
+<svg viewBox="0 0 306 130" style="max-width:306px;width:100%" role="img" aria-label="Dve kolovozne trake fizički odvojene zelenim ostrvom, pogled odozgo. Gornja kolovozna traka, namenjena suprotnom smeru, obojena je crveno, u njoj je strelica suprotnog smera i preko nje je crveni krst. Zeleno ostrvo naleže na obe kolovozne trake, bez razmaka. Tvoje plavo vozilo je u donjoj kolovoznoj traci.">
+<text x="153" y="14" font-size="12" text-anchor="middle" fill="currentColor">FIZIČKI ODVOJENE KOLOVOZNE TRAKE</text>
+<rect x="8" y="20" width="290" height="28" rx="3" fill="#9aa7b4"/>
+<rect x="8" y="20" width="290" height="28" rx="3" fill="#c0392b" opacity=".3"/>
+<path d="M250 34 H200" stroke="currentColor" stroke-width="2.2" fill="none"/>
+<path d="M200 29 L190 34 L200 39 Z" fill="currentColor"/>
+<path d="M258 24 L286 44 M286 24 L258 44" stroke="#c0392b" stroke-width="3" fill="none"/>
+<rect x="8" y="48" width="290" height="16" fill="#1f7a3f" opacity=".65"/>
+<rect x="8" y="64" width="290" height="28" rx="3" fill="#9aa7b4"/>
+<rect x="30" y="71" width="44" height="14" rx="4" fill="#2c6aa0"/>
+<text x="52" y="81.5" font-size="12" text-anchor="middle" fill="#fff">ti</text>
+<path d="M80 78 H140" stroke="currentColor" stroke-width="2.2" fill="none"/>
+<path d="M140 72 L152 78 L140 84 Z" fill="currentColor"/>
+<text x="153" y="108" font-size="12" text-anchor="middle" fill="currentColor">zeleno ostrvo razdvaja smerove</text>
+<text x="153" y="124" font-size="12" text-anchor="middle" fill="currentColor">prelazak je zabranjen — bez izuzetka</text>
+</svg>
+</div>
+<p class="mut" style="text-align:center;font-size:.82rem">plavo = ti · crveno = zabranjeno · zelena strelica = dozvoljeno kretanje</p>
+<p><b>Dva izraza, ne jedan.</b> Zabranjeni deo puta ne zove se u sva tri pitanja isto, pa se lako pomeša. Kod <b>tri</b> trake to je <b>saobraćajna traka koja se nalazi uz levu ivicu puta u pravcu kretanja vozila</b>; kod <b>najmanje četiri</b> trake i kod <b>fizički odvojenih</b> kolovoznih traka to je <b>kolovozna traka namenjena za saobraćaj vozila iz suprotnog smera</b>. Ni uslov nije uvek broj traka: u trećem pitanju se nikakav broj ne pominje — dovoljno je da su kolovozne trake fizički odvojene.</p>
+<table>
+<tr><th>Kako pitanje opisuje put</th><th>Šta ti je zabranjeno — rečima iz pitanja</th><th>Gde je to na crtežu</th></tr>
+<tr><td>oba smera, <b>TRI</b> saobraćajne trake</td><td><b>saobraćajna traka</b> koja se nalazi <b>uz levu ivicu puta</b> u pravcu tvog kretanja</td><td>1. crtež — crvena traka na vrhu</td></tr>
+<tr><td>oba smera, <b>NAJMANJE ČETIRI</b> saobraćajne trake</td><td><b>kolovozna traka namenjena za saobraćaj vozila iz suprotnog smera</b></td><td>2. crtež — crvena polovina, bez ikakve pregrade</td></tr>
+<tr><td>oba smera, <b>FIZIČKI ODVOJENE</b> kolovozne trake <i>(broj traka se ne pominje)</i></td><td><b>kolovozna traka namenjena za saobraćaj vozila iz suprotnog smera</b></td><td>3. crtež — iza zelenog ostrva</td></tr>
+</table>
+<p>U sva tri pitanja netačne ponude su <b>iste dve</b>: „u slučaju <b>preticanja ili obilaženja</b>" i „u slučaju <b>zastoja</b>". Nijedna od njih ne otključava ništa — zabrana je <b>bezuslovna</b> u sva tri slučaja.</p>
+<p class="mut">Samo kod <b>tri</b> trake objašnjenje ide korak dalje i kaže gde se onda pretiče: <b>srednjom</b> trakom, po opštim pravilima preticanja. Kod četiri trake i kod fizički odvojenih kolovoznih traka srednje trake nema — tu se pretiče levom trakom <b>svoje</b> kolovozne trake.</p>
+<p><b>Pitanje sa slikom:</b> zeleno ostrvo i plavi znak zajedno.</p>
+<div style="display:flex;justify-content:center;margin:6px 0">
+<svg viewBox="0 0 306 166" style="max-width:306px;width:100%" role="img" aria-label="Situacija sa slike: dve kolovozne trake razdvojene zelenim ostrvom. Tvoje plavo vozilo nacrtano je u gornjoj kolovoznoj traci, onoj namenjenoj suprotnom smeru, i preko njega je veliki crveni krst. U toj traci je i strelica koja pokazuje da ona vodi u suprotnom smeru. Na ostrvu stoji plavi okrugli znak sa belom strelicom ukošenom naviše nadesno. U donjoj kolovoznoj traci je zelena strelica koja pokazuje gde je trebalo da budeš.">
+<text x="153" y="14" font-size="12" text-anchor="middle" fill="currentColor">SA SLIKE: KREĆEŠ SE NEPROPISNO</text>
+<rect x="8" y="22" width="290" height="32" rx="3" fill="#9aa7b4"/>
+<path d="M280 38 H230" stroke="currentColor" stroke-width="2.2" fill="none"/>
+<path d="M230 33 L220 38 L230 43 Z" fill="currentColor"/>
+<rect x="104" y="30" width="62" height="16" rx="4" fill="#2c6aa0"/>
+<text x="120" y="42" font-size="12" text-anchor="middle" fill="#fff">ti</text>
+<path d="M138 26 L176 50 M176 26 L138 50" stroke="#c0392b" stroke-width="3.4" fill="none"/>
+<rect x="8" y="54" width="290" height="26" fill="#1f7a3f" opacity=".65"/>
+<circle cx="44" cy="67" r="12" fill="#2c6aa0"/>
+<path d="M37 73 L47 63" stroke="#fff" stroke-width="3.5" fill="none"/>
+<path d="M53 57 L43 60 L50 67 Z" fill="#fff"/>
+<rect x="8" y="80" width="290" height="32" rx="3" fill="#9aa7b4"/>
+<path d="M100 96 H180" stroke="#1f7a3f" stroke-width="3" fill="none"/>
+<path d="M192 96 L180 90 L180 102 Z" fill="#1f7a3f"/>
+<text x="153" y="130" font-size="12" text-anchor="middle" fill="currentColor">ti si na kolovoznoj traci suprotnog smera</text>
+<text x="153" y="146" font-size="12" text-anchor="middle" fill="currentColor">znak: prepreku obilaziš S DESNE strane</text>
+<text x="153" y="162" font-size="12" text-anchor="middle" fill="currentColor">tvoja je ona sa zelenom strelicom</text>
+</svg>
+</div>
+<div class="signRow">
+  <div class="signCell">
+    <svg viewBox="0 0 78 70" role="img" aria-label="plavi okrugli znak sa belom strelicom ukošenom naviše nadesno"><circle cx="39" cy="34" r="26" fill="#2c6aa0"/><path d="M28 45 L47 26" stroke="#fff" stroke-width="5" fill="none"/><path d="M56 17 L40 21 L52 33 Z" fill="#fff"/></svg>
+    <b>PLAVI KRUG · STRELICA NADESNO</b><span>prepreka se obilazi s desne strane — tvoja kolovozna traka je ona desno</span>
+  </div>
+</div>
+<p>Kad su smerovi razdvojeni <b>zelenim ostrvom</b>, taj plavi okrugli znak sa strelicom nadesno govori ti da prepreku obiđeš <b>s desne strane</b>. Ako si sa leve strane ostrva, na kolovoznoj traci namenjenoj suprotnom smeru, krećeš se <b>nepropisno</b> — i tu izuzetka za preticanje nema.</p>
+<p class="mut">Vrsta linije ne pominje se ni u jednom od ova tri pitanja — zato granicu smerova na crtežima ne obeležava nikakva linija, nego samo boja. Linija odlučuje u drugoj vrsti pitanja, o <b>razdelnoj</b> liniji, i ona je niže.</p>
+</div>
+<!-- izvor: 9593 + 9603 (cetiri netacne ponude), 9592 (zuta traka), 9600 (propustanje promenom trake u naselju) -->
+<div class="kPodH"><b class="kPodNaslov">Desno — ali unutar trake koja je tvoja</b>
+<p>Osnovno pravilo — <b>desna strana kolovoza</b>, <b>što bliže desnoj ivici</b> — napadaju <b>četiri</b> netačne ponude, po dve u svakom od dva pitanja:</p>
+<ul>
+<li>„sredinom kolovoza, jer na taj način ne ugrožava pešake i bicikliste"</li>
+<li>„levom stranom kolovoza u smeru kretanja"</li>
+<li>„sredinom kolovozne trake"</li>
+<li>„što bliže razdelnoj liniji"</li>
+</ul>
+<p class="mut">Prve dve idu uz pitanje o <b>strani kolovoza</b>, druge dve uz pitanje o tome <b>čemu si blizu</b>. Odgovor je oba puta desno: desna strana, desna ivica.</p>
+<div style="display:flex;justify-content:center;margin:6px 0">
+<svg viewBox="0 0 306 140" style="max-width:306px;width:100%" role="img" aria-label="Dve saobraćajne trake u istom smeru. Donja traka, uz desnu ivicu, prekrivena je žutom bojom; u njoj je tvoje plavo vozilo i preko njega je crveni krst. Gornjom trakom se kreće drugo vozilo. Nijedan natpis ne stoji na samom kolovozu — svi su iznad i ispod njega.">
+<text x="153" y="14" font-size="12" text-anchor="middle" fill="currentColor">TRAKA ZA JAVNI PREVOZ I TAKSI</text>
+<rect x="8" y="20" width="290" height="64" rx="3" fill="#9aa7b4"/>
+<rect x="8" y="52" width="290" height="32" fill="#e8b000" opacity=".3"/>
+<path d="M14 52 H292" stroke="#fff" stroke-width="2" stroke-dasharray="9 7" opacity=".85" fill="none"/>
+<rect x="130" y="28" width="46" height="16" rx="4" fill="#2a333d"/>
+<path d="M184 36 H222" stroke="currentColor" stroke-width="2.2" fill="none"/>
+<path d="M222 30 L234 36 L222 42 Z" fill="currentColor"/>
+<rect x="30" y="60" width="58" height="15" rx="4" fill="#2c6aa0"/>
+<text x="44" y="71.5" font-size="12" text-anchor="middle" fill="#fff">ti</text>
+<path d="M58 54 L96 82 M96 54 L58 82" stroke="#c0392b" stroke-width="3.4" fill="none"/>
+<text x="153" y="102" font-size="12" text-anchor="middle" fill="currentColor">žuta boja i natpisi na kolovozu</text>
+<text x="153" y="118" font-size="12" text-anchor="middle" fill="currentColor">moped i motocikl tu ne spadaju</text>
+<text x="153" y="134" font-size="12" text-anchor="middle" fill="currentColor">kretanje je nepropisno</text>
+</svg>
+</div>
+<p><b>Žuta traka za javni prevoz:</b> traka obeležena <b>žutom bojom i natpisima</b> namenjena je vozilima javnog prevoza i taksi vozilima, a moped odnosno motocikl u njih ne spada — krećeš se površinom koja <b>nije namenjena vozilu kojim upravljaš</b>, dakle nepropisno. Ne daje ti dodatno pravo ni to što je vozilo za osposobljavanje kandidata za vozača, a ne pomaže ni „ipak sam na desnoj strani kolovoza": desno se držiš <b>unutar traka koje smeš da koristiš</b>.</p>
+<div style="display:flex;justify-content:center;margin:6px 0">
+<svg viewBox="0 0 306 122" style="max-width:306px;width:100%" role="img" aria-label="Dve saobraćajne trake u istom smeru, u naselju. Tvoje plavo vozilo je u gornjoj, levoj traci; ispred njega je drugo vozilo koje ga sprečava u bržem kretanju. Zelena strelica pokazuje kako to vozilo prelazi u donju, desnu traku i propušta te.">
+<text x="153" y="14" font-size="12" text-anchor="middle" fill="currentColor">U NASELJU · SPREČAVA TE</text>
+<rect x="8" y="20" width="290" height="64" rx="3" fill="#9aa7b4"/>
+<path d="M14 52 H292" stroke="#fff" stroke-width="2" stroke-dasharray="9 7" opacity=".85" fill="none"/>
+<rect x="26" y="28" width="46" height="16" rx="4" fill="#2c6aa0"/>
+<text x="49" y="40" font-size="12" text-anchor="middle" fill="#fff">ti</text>
+<path d="M80 36 H118" stroke="currentColor" stroke-width="2.2" fill="none"/>
+<path d="M118 30 L130 36 L118 42 Z" fill="currentColor"/>
+<g class="animPropusti"><rect x="142" y="28" width="46" height="16" rx="4" fill="#2a333d"/></g>
+<path d="M194 36 C220 36 226 48 230 60" stroke="#1f7a3f" stroke-width="2.6" fill="none"/>
+<path d="M230 72 L222 58 L238 58 Z" fill="#1f7a3f"/>
+<text x="153" y="102" font-size="12" text-anchor="middle" fill="currentColor">dužan je da te propusti</text>
+<text x="153" y="118" font-size="12" text-anchor="middle" fill="currentColor">promenom saobraćajne trake</text>
+</svg>
+</div>
+<p><b>U naselju</b>, ako se vozilo ispred tebe kreće trakom koja nije uz desnu ivicu i time te <b>sprečava u bržem kretanju</b>, dužno je da te propusti <b>promenom saobraćajne trake</b>. Ne stoji izgovor da vozi najvećom dozvoljenom brzinom — pravilo se vezuje za <b>ometanje</b>, a ne za brzinomer. Ne stoji ni „preteci me zdesna": pretiče se s leve strane, a zdesna samo u posebnim, propisom određenim slučajevima.</p>
+</div>
+<!-- izvor: 9615 (dvostruka puna, cekanje isprekidanog dela), 9618 (kombinovana) -->
+<div class="kPodH"><b class="kPodNaslov">Razdelna linija između smerova</b>
+<div class="signRow lineRow">
+  <div class="signCell">
+    <svg viewBox="0 0 120 62" role="img" aria-label="puna razdelna linija; strelica koja je prelazi precrtana je crvenim krstom"><rect x="2" y="8" width="116" height="46" rx="3" fill="#9aa7b4"/><path d="M8 31 H112" stroke="#fff" stroke-width="3" fill="none"/><path d="M60 50 V22" stroke="#c0392b" stroke-width="2.4" fill="none"/><path d="M60 10 L53 22 L67 22 Z" fill="#c0392b"/><path d="M52 28 L68 42 M68 28 L52 42" stroke="#c0392b" stroke-width="2.6" fill="none"/></svg>
+    <b>PUNA</b><span>ne prelaziš — ni radi preticanja ni radi obilaženja</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 120 62" role="img" aria-label="dvostruka puna razdelna linija; strelice sa obe strane koje je prelaze precrtane su crvenim krstovima"><rect x="2" y="8" width="116" height="46" rx="3" fill="#9aa7b4"/><path d="M8 28 H112 M8 34 H112" stroke="#fff" stroke-width="2.6" fill="none"/><path d="M34 50 V22" stroke="#c0392b" stroke-width="2.2" fill="none"/><path d="M34 10 L28 22 L40 22 Z" fill="#c0392b"/><path d="M27 27 L41 41 M41 27 L27 41" stroke="#c0392b" stroke-width="2.4" fill="none"/><path d="M86 12 V40" stroke="#c0392b" stroke-width="2.2" fill="none"/><path d="M86 52 L80 40 L92 40 Z" fill="#c0392b"/><path d="M79 21 L93 35 M93 21 L79 35" stroke="#c0392b" stroke-width="2.4" fill="none"/></svg>
+    <b>DVOSTRUKA PUNA</b><span>ne sme se preći ni sa jedne strane</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 120 62" role="img" aria-label="kombinovana razdelna linija: sa gornje strane je isprekidana i odatle zelena strelica sme da je pređe, sa donje strane je puna i strelica koja odatle prelazi precrtana je crvenim krstom"><rect x="2" y="8" width="116" height="46" rx="3" fill="#9aa7b4"/><path d="M8 34 H112" stroke="#fff" stroke-width="2.6" fill="none"/><path d="M8 27 H112" stroke="#fff" stroke-width="2.6" stroke-dasharray="8 6" fill="none"/><path d="M32 12 V40" stroke="#1f7a3f" stroke-width="2.4" fill="none"/><path d="M32 52 L26 40 L38 40 Z" fill="#1f7a3f"/><path d="M88 50 V22" stroke="#c0392b" stroke-width="2.4" fill="none"/><path d="M88 10 L82 22 L94 22 Z" fill="#c0392b"/><path d="M81 28 L95 42 M95 28 L81 42" stroke="#c0392b" stroke-width="2.6" fill="none"/></svg>
+    <b>KOMBINOVANA</b><span>prelazi samo onaj kome je bliža isprekidana strana</span>
+  </div>
+</div>
+<p>Preko <b>pune</b> razdelne linije se ne prelazi — ni radi preticanja, ni radi obilaženja; čeka se deo puta na kome je linija <b>isprekidana</b>. <b>Dvostruku punu</b> ne sme da pređe nijedna strana, pa su na crtežu precrtane obe strelice. Kod <b>kombinovane</b> gledaš koja je polovina okrenuta tebi: pređe je samo onaj kome je bliža <b>isprekidana</b> strana — zato je na crtežu jedna strelica zelena, a ona sa pune strane precrtana. Ako je sa tvoje strane puna, izlazak u levu traku je nepropisan i sa uključenim pokazivačem.</p>
+<p class="mut">Pamtilica: uključen pokazivač ne pretvara zabranjenu radnju u dozvoljenu — on najavljuje nameru, ništa više.</p>
+</div>
+<!-- izvor: 9622 (netacne ponude: nema vozila iz suprotnog smera / najmanje dve trake), 9623 (znak sa slike i stanovanje) -->
+<div class="kPodH"><b class="kPodNaslov">Jednosmerni put</b>
+<div class="signRow">
+  <div class="signCell">
+    <svg viewBox="0 0 78 70" role="img" aria-label="saobraćajni znak: crveni krug sa belom vodoravnom prečkom"><circle cx="39" cy="34" r="26" fill="#c0392b"/><rect x="19" y="29" width="40" height="10" rx="2" fill="#fff"/></svg>
+    <b>CRVENI KRUG · BELA PREČKA</b><span>zabranjuje ulazak u ulicu iz tog smera</span>
+  </div>
+</div>
+<p>Na putu za saobraćaj vozila u <b>jednom smeru</b> ne smeš da se krećeš u smeru suprotnom od dozvoljenog. Ne otključava to ni „nema vozila iz suprotnog smera", ni „ima najmanje dve saobraćajne trake u tom smeru" — broj traka tu ništa ne menja.</p>
+<p><b>Znak sa slike:</b> crveni krug sa belom vodoravnom prečkom zabranjuje <b>ulazak u ulicu iz tog smera</b>. Na toj slici je <b>postavljen sa obe strane kolovoza</b>, pa važi za celu širinu — vozilo se jednosmernom ulicom kreće u zabranjenom smeru. Zabrana <b>nema izuzetak po osnovu toga ko gde stanuje</b>: do kuće u toj ulici stiže se iz smera u kojem je saobraćaj dozvoljen, makar to značilo duži put oko bloka.</p>
+</div>
+<!-- izvor: 10454 (koridor spasa; tacan odgovor: vozila pod pratnjom i vozila sa pravom prvenstva prolaza) -->
+<div class="kPodH"><b class="kPodNaslov">Zastoj — prolaz koji ostavljaš</b>
+<div style="display:flex;justify-content:center;margin:6px 0">
+<svg viewBox="0 0 306 188" style="max-width:306px;width:100%" role="img" aria-label="Zastoj na putu sa dve kolovozne trake koje su fizički odvojene zelenim ostrvom; ostrvo naleže na obe kolovozne trake, bez razmaka. U svakoj kolovoznoj traci vozila iz jedne saobraćajne trake stoje uz njenu jednu ivicu, a vozila iz druge uz drugu, pa u sredini ostaje slobodan prolaz označen zelenom strelicom. Tako je nacrtano u obe kolovozne trake. Tvoje vozilo je plavo, u donjoj kolovoznoj traci.">
+<text x="153" y="14" font-size="12" text-anchor="middle" fill="currentColor">ZASTOJ · ODVOJENE KOLOVOZNE TRAKE</text>
+<rect x="8" y="20" width="290" height="56" rx="3" fill="#9aa7b4"/>
+<path d="M14 48 H292" stroke="#fff" stroke-width="2" stroke-dasharray="9 7" opacity=".35" fill="none"/>
+<rect x="16" y="22" width="48" height="14" rx="4" fill="#2a333d"/>
+<rect x="72" y="22" width="48" height="14" rx="4" fill="#2a333d"/>
+<rect x="128" y="22" width="48" height="14" rx="4" fill="#2a333d"/>
+<rect x="184" y="22" width="48" height="14" rx="4" fill="#2a333d"/>
+<rect x="44" y="60" width="48" height="14" rx="4" fill="#2a333d"/>
+<rect x="100" y="60" width="48" height="14" rx="4" fill="#2a333d"/>
+<rect x="156" y="60" width="48" height="14" rx="4" fill="#2a333d"/>
+<rect x="212" y="60" width="48" height="14" rx="4" fill="#2a333d"/>
+<path d="M272 48 H52" stroke="#1f7a3f" stroke-width="3.2" fill="none" class="animKoridorTok"/>
+<path d="M40 48 L54 41 L54 55 Z" fill="#1f7a3f"/>
+<rect x="8" y="76" width="290" height="16" fill="#1f7a3f" opacity=".65"/>
+<rect x="8" y="92" width="290" height="56" rx="3" fill="#9aa7b4"/>
+<path d="M14 120 H292" stroke="#fff" stroke-width="2" stroke-dasharray="9 7" opacity=".35" fill="none"/>
+<rect x="16" y="94" width="48" height="14" rx="4" fill="#2a333d"/>
+<rect x="72" y="94" width="48" height="14" rx="4" fill="#2a333d"/>
+<rect x="128" y="94" width="48" height="14" rx="4" fill="#2a333d"/>
+<rect x="184" y="94" width="48" height="14" rx="4" fill="#2a333d"/>
+<rect x="44" y="132" width="48" height="14" rx="4" fill="#2a333d"/>
+<rect x="100" y="132" width="48" height="14" rx="4" fill="#2c6aa0"/>
+<text x="124" y="142.5" font-size="12" text-anchor="middle" fill="#fff">ti</text>
+<rect x="156" y="132" width="48" height="14" rx="4" fill="#2a333d"/>
+<rect x="212" y="132" width="48" height="14" rx="4" fill="#2a333d"/>
+<path d="M34 120 H254" stroke="#1f7a3f" stroke-width="3.2" fill="none" class="animKoridorTok"/>
+<path d="M266 120 L252 113 L252 127 Z" fill="#1f7a3f"/>
+<text x="153" y="166" font-size="12" text-anchor="middle" fill="currentColor">slobodan prolaz za vozila POD PRATNJOM</text>
+<text x="153" y="182" font-size="12" text-anchor="middle" fill="currentColor">i za vozila SA PRAVOM PRVENSTVA PROLAZA</text>
+</svg>
+</div>
+<p>U zastoju saobraćaja na putu sa <b>fizički odvojenim kolovoznim trakama</b> vozači su <b>uvek</b> dužni da zauzmu položaj <b>uz desnu, odnosno levu ivicu saobraćajne trake</b> i tako ostave slobodan prostor namenjen da, u slučaju potrebe, omogući prolaz <b>vozilima pod pratnjom i vozilima sa pravom prvenstva prolaza</b>. Reč <b>uvek</b> je u pitanju, pa nema situacije u kojoj se to preskače — zato je koridor nacrtan u <b>obe</b> kolovozne trake.</p>
+<p>Taj prostor nije za „vozila koja vrše javni prevoz putnika", ni za „vozila čija širina omogućava kretanje tim prostorom".</p>
+</div>
+<!-- izvor: 9626 + 9630 (susedna traka zatvorena: duzan si, jedno vozilo), 9628 (najava i „zapocela radnju": nisi duzan), 9586 (auto-taksi sa parkinga, „zapoceo radnju", „javni prevoz": nisi duzan) -->
+<div class="kPodH"><b class="kPodNaslov">Uključivanje u tvoju traku — kad si dužan, a kad nisi</b>
+<div style="display:flex;justify-content:center;margin:6px 0">
+<svg viewBox="0 0 306 104" style="max-width:306px;width:100%" role="img" aria-label="Saobraćajna traka pored tebe zatvorena je crvenom preprekom; u njoj su dva vozila, a prvo se zelenom strelicom uključuje u tvoju traku ispred tebe. Tvoje vozilo je plavo, u donjoj traci.">
+<text x="153" y="14" font-size="12" text-anchor="middle" fill="currentColor">TRAKA PORED TEBE JE ZATVORENA</text>
+<rect x="8" y="20" width="290" height="56" rx="3" fill="#9aa7b4"/>
+<rect x="8" y="20" width="290" height="28" fill="#c0392b" opacity=".22"/>
+<path d="M14 48 H292" stroke="#fff" stroke-width="2" stroke-dasharray="9 7" opacity=".85" fill="none"/>
+<rect x="266" y="23" width="26" height="22" rx="3" fill="#c0392b" opacity=".85"/>
+<g class="animUkljuci"><rect x="160" y="26" width="46" height="15" rx="4" fill="#2a333d"/><text x="183" y="37.5" font-size="12" text-anchor="middle" fill="#fff">1</text></g>
+<rect x="96" y="26" width="46" height="15" rx="4" fill="#2a333d"/>
+<text x="119" y="37.5" font-size="12" text-anchor="middle" fill="#fff">2</text>
+<rect x="40" y="54" width="46" height="15" rx="4" fill="#2c6aa0"/>
+<text x="63" y="65.5" font-size="12" text-anchor="middle" fill="#fff">ti</text>
+<path d="M210 34 C232 35 236 44 240 52" stroke="#1f7a3f" stroke-width="2.6" fill="none"/>
+<path d="M240 64 L232 50 L248 50 Z" fill="#1f7a3f"/>
+<text x="153" y="96" font-size="12" text-anchor="middle" fill="currentColor">DUŽAN SI — propuštaš jedno vozilo</text>
+</svg>
+</div>
+<div style="display:flex;justify-content:center;margin:6px 0">
+<svg viewBox="0 0 306 104" style="max-width:306px;width:100%" role="img" aria-label="Saobraćajna traka pored tebe se nastavlja, nije zatvorena. Dva vozila u njoj upaljenim žutim pokazivačem samo najavljuju ulazak u tvoju traku, a njihova namera nacrtana je isprekidanom strelicom. Tvoje vozilo je plavo, u donjoj traci.">
+<text x="153" y="14" font-size="12" text-anchor="middle" fill="currentColor">TRAKA PORED TEBE SE NASTAVLJA</text>
+<rect x="8" y="20" width="290" height="56" rx="3" fill="#9aa7b4"/>
+<path d="M14 48 H292" stroke="#fff" stroke-width="2" stroke-dasharray="9 7" opacity=".85" fill="none"/>
+<rect x="84" y="26" width="46" height="15" rx="4" fill="#2a333d"/>
+<circle cx="132" cy="42" r="4.5" fill="#e8b000" class="animTrepti"/>
+<path d="M134 40 C152 42 156 47 158 55" stroke="currentColor" stroke-width="2" stroke-dasharray="6 5" opacity=".7" fill="none"/>
+<path d="M158 66 L151 52 L165 52 Z" fill="currentColor" opacity=".7"/>
+<rect x="176" y="26" width="46" height="15" rx="4" fill="#2a333d"/>
+<circle cx="224" cy="42" r="4.5" fill="#e8b000" class="animTrepti"/>
+<path d="M226 40 C244 42 248 47 250 55" stroke="currentColor" stroke-width="2" stroke-dasharray="6 5" opacity=".7" fill="none"/>
+<path d="M250 66 L243 52 L257 52 Z" fill="currentColor" opacity=".7"/>
+<rect x="22" y="54" width="46" height="15" rx="4" fill="#2c6aa0"/>
+<text x="45" y="65.5" font-size="12" text-anchor="middle" fill="#fff">ti</text>
+<text x="153" y="96" font-size="12" text-anchor="middle" fill="currentColor">NISI dužan — samo najavljuju nameru</text>
+</svg>
+</div>
+<p><b>Obaveza da omogućiš uključivanje u tvoju saobraćajnu traku ima tačno dva izvora:</b> susedna traka koja se <b>završava</b> ili u kojoj je <b>onemogućen saobraćaj</b> — tada za <b>jedno</b> vozilo — i <b>autobus koji propisno kreće sa stajališta u naselju</b>. Sve ostalo što ponude nude kao razlog nije na tom spisku i ne stvara ti tu obavezu.</p>
+<table>
+<tr><th>Šta se dešava pored tebe</th><th>Tvoja obaveza</th></tr>
+<tr><td>Susedna traka se <b>završava</b> ili je u njoj <b>onemogućen saobraćaj</b></td><td><b>DUŽAN SI</b> — omogućavaš uključenje <b>jednog</b> vozila; sledeće pušta vozač iza tebe</td></tr>
+<tr><td>Jedno ili više vozila ti pokazivačem samo <b>najavljuje</b> ulazak u tvoju traku</td><td><b>NISI</b> — najava sama po sebi ne stvara obavezu, ni za jedno ni za oba vozila</td></tr>
+<tr><td>Vozilo je već <b>započelo</b> radnju uključivanja u saobraćaj</td><td><b>NISI</b> — započeta radnja nije na spisku razloga; ni jedno vozilo, ni oba koja su „započela izvođenje te radnje"</td></tr>
+<tr><td><b>Auto-taksi</b> se sa parking mesta uključuje u saobraćaj</td><td><b>NISI</b> — parking mesto nije traka koja se završava, a ni „vozilo za javni prevoz putnika" nije razlog</td></tr>
+</table>
+<p><b>Gde onda „započeta radnja" ipak stoji:</b> u tačnom odgovoru, ali kao razlog <b>opreza</b>, a ne obaveze — nisi dužan, ali ćeš propustiti jer si nameru uočio <b>na vreme</b>, i tako izbeći opasnu situaciju <b>ukoliko vozač nastavi započetu radnju</b>. Ko to pomeša, izabraće ponudu „dužni ste… jer je vozilo započelo radnju uključivanja".</p>
+<p>Kod zatvorene trake nije važno da li je ona <b>levo ili desno</b> od tebe — obaveza je ista i uvek za <b>jedno</b> vozilo. Netačno je i da propuštaš <b>sva</b> vozila redom, i da <b>imaš prvenstvo prolaza</b> nad vozilima iz trake u kojoj je saobraćaj onemogućen: kad bi ga imao, ta traka se nikad ne bi ispraznila.</p>
+<p class="mut">Pamtilica: kad je susedna traka <b>zatvorena</b>, „niste dužni" je netačan odgovor — dužan si, za jedno vozilo. Kad se traka <b>nastavlja</b>, obaveze nemaš, ali tačan odgovor tu nije samo „niste dužni": ide sa nastavkom da ćeš ih ipak propustiti jer si nameru uočio na vreme i tako izbeći opasnu situaciju ako vozači nastave započetu radnju.</p>
+</div>
+<!-- izvor: 9575 + 9576 (skretanje udesno iz leve trake) -->
+<div class="kPodH"><b class="kPodNaslov">Udesno se skreće iz desne trake</b>
+<div style="display:flex;justify-content:center;margin:6px 0">
+<svg viewBox="0 0 306 156" style="max-width:306px;width:100%" role="img" aria-label="Dve saobraćajne trake u istom smeru. Tvoje plavo vozilo je u levoj traci, sa upaljenim desnim pokazivačem; desnom trakom pored tebe kreće se drugo vozilo. Putanja skretanja udesno u sporednu ulicu nacrtana je crvenom isprekidanom linijom i precrtana crvenim krstom.">
+<rect x="0" y="20" width="306" height="64" fill="#9aa7b4"/>
+<rect x="186" y="84" width="56" height="52" fill="#9aa7b4"/>
+<path d="M6 52 H300" stroke="#fff" stroke-width="2" stroke-dasharray="9 7" opacity=".85" fill="none"/>
+<rect x="44" y="28" width="46" height="16" rx="4" fill="#2c6aa0"/>
+<text x="67" y="40" font-size="12" text-anchor="middle" fill="#fff">ti</text>
+<circle cx="92" cy="46" r="4.5" fill="#e8b000" class="animTrepti"/>
+<rect x="54" y="60" width="46" height="16" rx="4" fill="#2a333d"/>
+<path d="M108 68 H150" stroke="currentColor" stroke-width="2.2" fill="none"/>
+<path d="M150 62 L162 68 L150 74 Z" fill="currentColor"/>
+<path d="M96 40 C150 40 182 54 202 96" stroke="#c0392b" stroke-width="2.6" stroke-dasharray="7 6" fill="none"/>
+<path d="M192 100 L232 132 M232 100 L192 132" stroke="#c0392b" stroke-width="4" fill="none"/>
+<text x="153" y="152" font-size="12" text-anchor="middle" fill="currentColor">iz LEVE trake se ne skreće udesno</text>
+</svg>
+</div>
+<p>Udesno se skreće iz položaja <b>uz desnu ivicu kolovoza</b>. Ako si u <b>levoj</b> traci, a desnom pored tebe se kreće drugo vozilo, <b>ne smeš da skreneš udesno</b> — ni kad si uključio pokazivač: pokazivač je najava namere, a ne pravo prolaza. Ne smeš ni <b>naglo da usporiš</b> da bi sebi napravio mesto za skretanje, jer se naglo usporava samo radi izbegavanja neposredne opasnosti.</p>
+</div>
+<!-- izvor: 9582 + 9583 (znak dok se uverava), 9580 (znak istovremeno / bez znaka), 10451 (samo znak / samo signalizacija), 9581 (samo na pocetku / dok drugi ne shvate), 9583 (levi pokazivac pri ukljucivanju sa desne ivice), 9589 (garaza na nepreglednom mestu), 9633 + 9635 + 10456 + 9574 (naglo; ponuda „nije blagovremeno zauzeo polozaj" stoji i u 9574 i u 10456) -->
+<div class="kPodH"><b class="kPodNaslov">Znak i naglo kočenje — ponude koje padaju</b>
+<div style="display:flex;justify-content:center;margin:6px 0">
+<svg viewBox="0 0 306 98" style="max-width:306px;width:100%" role="img" aria-label="Traka od četiri koraka: prvi korak uveri se, drugi korak daj znak pokazivačem — ispod njega je žuta tačka koja trepće, treći korak radnja — žuta tačka i dalje trepće, četvrti korak kraj — tačka je ugašena.">
+<rect x="2" y="6" width="68" height="54" rx="6" fill="none" stroke="currentColor" stroke-width="1.4"/>
+<text x="36" y="28" font-size="14" text-anchor="middle" fill="currentColor">1</text>
+<text x="36" y="44" font-size="11" text-anchor="middle" fill="currentColor">UVERI SE</text>
+<path d="M70 28 L77 33 L70 38 Z" fill="currentColor"/>
+<rect x="78" y="6" width="68" height="54" rx="6" fill="none" stroke="currentColor" stroke-width="1.4"/>
+<text x="112" y="28" font-size="14" text-anchor="middle" fill="currentColor">2</text>
+<text x="112" y="44" font-size="11" text-anchor="middle" fill="currentColor">DAJ ZNAK</text>
+<circle cx="112" cy="53" r="4.5" fill="#e8b000" class="animTrepti"/>
+<path d="M146 28 L153 33 L146 38 Z" fill="currentColor"/>
+<rect x="154" y="6" width="68" height="54" rx="6" fill="none" stroke="currentColor" stroke-width="1.4"/>
+<text x="188" y="28" font-size="14" text-anchor="middle" fill="currentColor">3</text>
+<text x="188" y="44" font-size="11" text-anchor="middle" fill="currentColor">RADNJA</text>
+<circle cx="188" cy="53" r="4.5" fill="#e8b000" class="animTrepti"/>
+<path d="M222 28 L229 33 L222 38 Z" fill="currentColor"/>
+<rect x="230" y="6" width="68" height="54" rx="6" fill="none" stroke="currentColor" stroke-width="1.4"/>
+<text x="264" y="28" font-size="14" text-anchor="middle" fill="currentColor">4</text>
+<text x="264" y="44" font-size="11" text-anchor="middle" fill="currentColor">KRAJ</text>
+<circle cx="264" cy="53" r="4.5" fill="#2a333d"/>
+<text x="153" y="78" font-size="12" text-anchor="middle" fill="currentColor">znak traje sve vreme radnje</text>
+<text x="153" y="94" font-size="12" text-anchor="middle" fill="currentColor">i prestaje čim je završiš</text>
+</svg>
+</div>
+<p>Redosled <b>uveri se → daj znak → izvedi radnju</b> već stoji na kartici. Ovo su ponude koje uz njega padaju, a lako zvuče tačno:</p>
+<ul>
+<li>„daje znak pokazivačem pravca <b>dok se uverava</b> da može da otpočne" — znak ide <b>posle</b> uveravanja, ne uporedo s njim;</li>
+<li>„znak <b>istovremeno</b> sa započinjanjem radnje" i „uverio sam se da je bezbedno, pa mi <b>znak ne treba</b>";</li>
+<li>„<b>dao sam propisan znak</b>, znači uvek smem da otpočnem" i „radnja je <b>u skladu sa signalizacijom</b>, znači smem" — traži se <b>oboje</b>: uveravanje da radnju možeš bezbedno <b>i</b> propisan znak;</li>
+<li>znak „<b>samo na početku</b> radnje" i znak „samo dok se ne uveriš da su <b>drugi shvatili</b> tvoju nameru" — obe ponude gase znak prerano; kraj znaka određuje jedino <b>kraj radnje</b>, a ne ni njen početak ni tuđa reakcija.</li>
+</ul>
+<div class="signRow lineRow">
+  <div class="signCell">
+    <svg viewBox="0 0 120 62" role="img" aria-label="tvoje plavo vozilo stoji uz desnu ivicu, pored kolovoza; zelena strelica pokazuje ulazak u traku koja je levo, a na prednjoj levoj strani vozila trepće žuta tačka"><rect x="2" y="6" width="116" height="26" rx="2" fill="#9aa7b4"/><rect x="16" y="36" width="34" height="12" rx="3" fill="#2c6aa0"/><circle cx="52" cy="35" r="3.5" fill="#e8b000" class="animTrepti"/><path d="M56 40 C68 40 70 30 72 24" stroke="#1f7a3f" stroke-width="2.4" fill="none"/><path d="M74 14 L66 25 L78 27 Z" fill="#1f7a3f"/></svg>
+    <b>UKLJUČENJE SA DESNE IVICE</b><span>znak <b>levim</b> pokazivačem</span>
+  </div>
+</div>
+<p><b>Uključivanje u saobraćaj sa desne ivice:</b> ulaziš u traku koja ti je sa <b>leve</b> strane, pa je i pokazivač levi — desnim bi najavio suprotno. Redosled je i tu isti: prvo uveravanje, pa znak.</p>
+<p><b>Iz garaže na nepreglednom mestu</b> (moped odnosno motocikl) ne pomaže ni „postepeno ću pomerati vozilo i zauzeti položaj tela koji mi omogućava potrebnu preglednost", ni „uključiću se na nekom drugom, preglednijem mestu": propis ti kaže kako da se uključiš <b>baš tu gde jesi</b> — <b>uz pomoć lica koje se nalazi na pogodnom mestu van vozila</b> i daje ti odgovarajuće znakove.</p>
+<div class="signRow lineRow">
+  <div class="signCell">
+    <svg viewBox="0 0 120 62" role="img" aria-label="kolovoz na kome je tvoje plavo vozilo, a ispred njega dete sa biciklom ulazi na kolovoz"><rect x="2" y="14" width="116" height="40" rx="3" fill="#9aa7b4"/><rect x="8" y="30" width="34" height="12" rx="3" fill="#2c6aa0"/><circle cx="83" cy="8" r="4" fill="currentColor"/><path d="M83 12 V22" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="76" cy="28" r="6" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="90" cy="28" r="6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M76 28 L83 20 L90 28" stroke="currentColor" stroke-width="1.6" fill="none"/><path d="M83 36 V44" stroke="currentColor" stroke-width="2" fill="none"/><path d="M83 52 L78 42 L88 42 Z" fill="currentColor"/></svg>
+    <b>NEPOSREDNA OPASNOST</b><span>dete sa biciklom ulazi na kolovoz pred tobom — <b>smeš</b> naglo da usporiš</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 120 62" role="img" aria-label="tvoje plavo vozilo prilazi raskrsnici, a neposredno iza njega je autobus — duže i više vozilo, sa nizom prozora"><rect x="2" y="18" width="116" height="30" fill="#9aa7b4"/><rect x="88" y="2" width="26" height="58" fill="#9aa7b4"/><rect x="4" y="21" width="46" height="22" rx="2" fill="#2a333d"/><rect x="8" y="25" width="8" height="7" rx="1" fill="#9aa7b4"/><rect x="19" y="25" width="8" height="7" rx="1" fill="#9aa7b4"/><rect x="30" y="25" width="8" height="7" rx="1" fill="#9aa7b4"/><rect x="41" y="25" width="7" height="7" rx="1" fill="#9aa7b4"/><rect x="56" y="29" width="30" height="12" rx="3" fill="#2c6aa0"/></svg>
+    <b>NEMA OPASNOSTI</b><span>raskrsnica ispred, autobus neposredno iza — usporavaš <b>rano i postepeno</b></span>
+  </div>
+</div>
+<table>
+<tr><th>Situacija</th><th>Smeš li naglo</th></tr>
+<tr><td>Dete sa biciklom izlazi na kolovoz pred tobom</td><td><b>DA</b> — neposredna opasnost; rešenje je naglo usporavanje, a ne skretanje ka suprotnom smeru ili ka parkiranim vozilima</td></tr>
+<tr><td>Prilaziš raskrsnici, neposredno iza tebe je autobus</td><td><b>NE</b> naglo — ali brzinu <b>moraš</b> smanjiti: rano i postepeno, tako da onog iza sebe ne ugroziš ni ometeš</td></tr>
+<tr><td>Da uskladiš brzinu sa znakom ograničenja</td><td><b>NE</b> — to se radi postepeno</td></tr>
+<tr><td>„samo pri radnjama koje podrazumevaju obavezno uključivanje pokazivača pravca"</td><td><b>NE</b> — naglo se sme <b>samo</b> radi izbegavanja neposredne opasnosti</td></tr>
+<tr><td>„u slučaju da <b>nije blagovremeno zauzeo položaj</b> vozilom na kolovozu za izvršenje određene radnje"</td><td><b>NE</b> — zakasneli položaj nije neposredna opasnost; ta ista ponuda stoji u <b>oba</b> pitanja o naglom, pa se isplati zapamtiti je</td></tr>
+</table>
+</div>
+`,
 };
 
 // --- objašnjenja za slikovna pitanja (talas 1) ---
@@ -4114,7 +5743,376 @@ zakon to zove "ne upravlja savesno i na propisan način" (čl. 197); za PROBNU d
 <p><b>Zaštitna mera zabrane upravljanja</b> izriče se obavezno, uz kaznu, za pobrojane prekršaje (čl. 338);
 opšti okvir trajanja: od 30 dana do jedne godine (Zakon o prekršajima čl. 58).</p>
 <p class="mut">Iznosi u dinarima se menjaju izmenama zakona — u vežbanju ih čitaj iz ponuđenih odgovora
-(baza se osvežava), a trajno pamti klasu i logiku: što neposrednije ugrožava život, to viša klasa.</p>`,
+(baza se osvežava), a trajno pamti klasu i logiku: što neposrednije ugrožava život, to viša klasa.</p>
+
+<!-- ==== dopuna 07.09.2026 (tura 4): crtež + isto to rečima ==== -->
+<!-- ISPRAVKA U POSTOJECOJ KARTICI (ne ide u tekst kartice, nego se menja postojeci red):
+     red "Vrh: nasilnicka voznja" sada kaze "Zatvor I novcana kazna ZAJEDNO + najvise kaznenih poena +
+     najduza obavezna zabrana". Tacan odgovor #8224 glasi doslovno "kaznom zatvora od 30 do 60 dana i
+     15 kaznenih poena" - novcane kazne u njemu nema, kao ni zabrane. Predlog zamene za tu celiju:
+     "Zatvor od 30 do 60 dana + 15 kaznenih poena (bez novcane kazne)". -->
+
+<!-- OGRADA: ponavlja tvrdnju iz prve recenice postojece kartice ("u zvanicnom sablonu ispita za A
+     kategoriju ova oblast nema nijedno pitanje"). Bez nje ceo dodatak zvuci ispitno-takticki. -->
+<p class="mut">Pre svega ostalog: u zvaničnom šablonu ispita za A kategoriju ova oblast <b>nema nijedno pitanje</b> — to piše i na vrhu kartice. Sve ispod je za vežbanje baze i za razumevanje posledica, ne za bodove na ispitu.</p>
+
+<!-- CELINA 1 - izvor: prebrojane sve 4 klase u 89 pitanja o klasi; oblici odgovora doslovno iz
+     #8224 (nasilnicka), #8228/#8229/#8230/#8231/#8235/#8237/#8241/#8246/#8247 (najteza),
+     #8349/#8351/#8376/#8385 (laksa), #8227/#8251/#8271/#8277/#8278/#8298/#8314 (srednja);
+     peti oblik "kaznom zatvora do 30 dana" - prebrojano: javlja se tacno jednom (#8227) i nije tacan
+     (tacan je raspon 6.000-20.000 + 2 poena); pamtilica 3 = 70 ponuda najstrozeg odgovora na 89
+     pitanja, tacan 15 puta. -->
+<div class="kPodH"><b class="kPodNaslov">Prepoznaj klasu po OBLIKU odgovora, ne po iznosu</b>
+<p>Od 111 pitanja ove podoblasti, <b>89</b> pita isto: na koji stepenik pada prekršaj. Ponuđeni odgovori se razlikuju po obliku, i taj oblik ih razvrstava i pre nego što pročitaš cifre. Klase su četiri — a postoji i peti oblik, koji nije klasa nego mamac.</p>
+<div style="display:flex;justify-content:center;margin:8px 0">
+<svg viewBox="0 0 306 298" style="max-width:306px;width:100%" role="img" aria-label="Četiri klase po obliku tačnog odgovora, jedna ispod druge: lakša — jedan iznos, bez poena, 25 pitanja; srednja — raspon od-do uz poene, 48 pitanja; najteža — zatvor ILI novčana i 14 poena, 15 pitanja; nasilnička vožnja — zatvor od 30 do 60 dana i 15 poena, bez novčane, 1 pitanje. Peti red je isprekidan i nije klasa: mamac koji glasi zatvor do 30 dana, bez reči ili, bez novčane i bez poena, nudi se jednom i nikad nije tačan.">
+<rect x="6" y="6" width="294" height="46" fill="#1f7a3f" fill-opacity="0.16" stroke="#1f7a3f"/>
+<rect x="6" y="6" width="6" height="46" fill="#1f7a3f" fill-opacity="0.55"/>
+<rect x="6" y="58" width="294" height="46" fill="#e8b000" fill-opacity="0.20" stroke="#e8b000"/>
+<rect x="6" y="58" width="11" height="46" fill="#e8b000" fill-opacity="0.65"/>
+<rect x="6" y="110" width="294" height="46" fill="#c0392b" fill-opacity="0.18" stroke="#c0392b"/>
+<rect x="6" y="110" width="16" height="46" fill="#c0392b" fill-opacity="0.55"/>
+<rect x="6" y="162" width="294" height="62" fill="#c0392b" fill-opacity="0.40" stroke="#c0392b"/>
+<rect x="6" y="162" width="21" height="62" fill="#c0392b" fill-opacity="0.85"/>
+<rect x="6" y="230" width="294" height="62" fill="none" stroke="currentColor" stroke-dasharray="5 4" opacity="0.8"/>
+<g fill="currentColor">
+<text x="30" y="26" font-size="13">LAKŠA</text>
+<text x="30" y="43" font-size="12">jedan iznos, bez poena</text>
+<text x="294" y="26" font-size="12" text-anchor="end" opacity="0.8">25 pitanja</text>
+<text x="30" y="78" font-size="13">SREDNJA</text>
+<text x="30" y="95" font-size="12">raspon „od–do“, uz poene</text>
+<text x="294" y="78" font-size="12" text-anchor="end" opacity="0.8">48 pitanja</text>
+<text x="30" y="130" font-size="13">NAJTEŽA</text>
+<text x="30" y="147" font-size="12">zatvor ILI novčana + 14 poena</text>
+<text x="294" y="130" font-size="12" text-anchor="end" opacity="0.8">15 pitanja</text>
+<text x="34" y="182" font-size="13">NASILNIČKA</text>
+<text x="34" y="199" font-size="12">zatvor 30–60 dana + 15 poena</text>
+<text x="34" y="216" font-size="12">bez novčane, bez reči „ili“</text>
+<text x="294" y="182" font-size="12" text-anchor="end" opacity="0.8">1 pitanje</text>
+<text x="30" y="250" font-size="13">MAMAC — nije klasa</text>
+<text x="30" y="267" font-size="12">zatvor do 30 dana, bez „ili“</text>
+<text x="30" y="284" font-size="12">bez novčane i bez poena</text>
+<text x="294" y="250" font-size="12" text-anchor="end" opacity="0.8">0 tačnih</text>
+</g>
+</svg>
+</div>
+<p class="mut" style="text-align:center;font-size:.82rem">širina leve trake = težina klase · broj desno = koliko od 89 pitanja pada u tu klasu · isprekidani red nije klasa nego jedini zatvorski mamac u bazi</p>
+<p><b>Isto rečima:</b> <b>jedan iznos, bez poena</b> = lakša klasa. <b>Raspon „od–do“</b> (u tri četvrtine slučajeva uz kaznene poene) = srednja. <b>„Zatvor od najmanje 15 dana ILI novčana kazna“ + 14 poena</b> = najteža — tu su zatvor i novčana <i>alternativa</i>, i to je jedini oblik odgovora u kome se pominju oboje. <b>„Zatvor od 30 do 60 dana“ + 15 poena</b> = nasilnička vožnja — fiksni broj dana, bez reči „ili“ i <b>bez novčane kazne</b>. Na tom jedinom pitanju o nasilničkoj vožnji druge dve ponude su jedan fiksni iznos i raspon sa 6 poena, dakle obe iz blažih klasa: odgovora u kome stoje i zatvor i novčana kazna tu uopšte nema, pa ga i ne traži.</p>
+<p><b>Peti oblik je zamka:</b> „kaznom zatvora <b>do 30 dana</b>“ — zatvor bez reči „ili“, bez novčane kazne i bez poena. Po tom opisu liči na nasilničku, ali nije: nudi se tačno jednom, na pitanju o zaustavljanju dok putnici ulaze i izlaze iz tramvaja, i nije tačan (tamo je tačan raspon uz 2 kaznena poena). Zato ključ za nasilničku glasi punije — traži <b>i broj dana (30 do 60) i 15 poena</b>, a ne samo reč „zatvor“.</p>
+<table>
+<tr><th>Klasa</th><th>Šta tačno spada (spisak iz baze)</th></tr>
+<tr><td><b>NASILNIČKA</b><br>zatvor + 15 poena</td><td>Jedno pitanje, sa slikom: nepropisno postupanje u <b>gruboj suprotnosti</b> sa pravilima — izlazak u suprotnu traku pred vozilima koja ti dolaze u susret.<br><i>Zamka:</i> alkohol preko 2,00 mg/ml zakon takođe zove nasilničkom vožnjom, ali je u bazi tačan odgovor onaj u obliku <b>najteže</b> klase (zatvor ILI novčana + 14 poena).</td></tr>
+<tr><td><b>NAJTEŽA</b><br>zatvor ILI novčana, 14 poena</td><td>nemaš dozvolu za kategoriju kojom upravljaš (osim kad je dozvoli istekao rok) · alkohol preko 2,00 mg/ml · odbiješ alkotest ili droga-test · voziš dok traje <b>tvoje</b> isključenje iz saobraćaja · voziš <b>vozilom</b> koje je isključeno · voziš dok traje zabrana upravljanja · u naselju prekoračenje preko 70 km/h · van naselja prekoračenje preko 70 km/h · zona usporenog saobraćaja: preko 50 · zona škole u naselju: preko 60 · noću na neosvetljenom putu bez ijednog svetla · ne staneš kad ti je prolaz zabranjen, a na prelazu je pešak · učesnik si nezgode <b>sa povređenima</b> pa ne staneš odnosno ne javiš policiji · preticanje zaustavnom trakom motoputa · kretanje zaustavnom trakom autoputa.<br><span class="mut">15 stavki na 15 pitanja — spisak je potpun.</span></td></tr>
+<tr><td><b>LAKŠA</b><br>jedan iznos, bez poena</td><td>ne omogućiš autobusu da krene sa stajališta u naselju · mobilni telefon na nepropisan način · traka kojom tvoja vrsta vozila ne sme · u naselju prekoračenje 11–20 · van naselja prekoračenje 30 · preticanje preko prelaza puta preko železničke pruge · parkiranje uz levu ivicu na dvosmernom putu · parkiranje na pešačkom prelazu · parkiranje na raskrsnici · duga svetla uz uličnu rasvetu · duga svetla u magli · bez zakopčane homologovane kacige · ne propustiš pešaka kad skrećeš na bočni put bez pešačkog prelaza · na autoputu ne držiš krajnju desnu traku · postupanje suprotno postavljenom znaku · moped ili motocikl u blagoj i umerenoj alkoholisanosti · kandidat bez dokaza o zdravstvenoj sposobnosti kod sebe · neispravan pokazivač pravca.<br><i>Najniži stepenik iste klase:</i> u naselju prekoračenje 7 · van naselja prekoračenje 15 · ne pomeriš se udesno dok te pretiču · danju bez kratkih odnosno dnevnih svetala · slušalice na oba uva (moped, motocikl) · motor radi dok vozilo stoji duže od tri minuta · dozvola nije kod tebe (a imaš je).<br><span class="mut">18 + 7 stavki na 25 pitanja — spisak je potpun.</span></td></tr>
+<tr><td><b>SREDNJA</b><br>raspon</td><td>Sve ostalo među 89 pitanja o klasi — njih 48. Gornja tri reda nabrajaju svoje klase do kraja (nasilnička ima tačno jedno pitanje), pa: ako prekršaj nije naveden ni u jednom od njih, odgovor je <b>raspon</b>.</td></tr>
+</table>
+<p>Dva fiksna iznosa u istoj ponudi javljaju se samo dvaput. Jednom oblik sam razrešava (uz njih stoji i zatvorska opcija, i ona je tačna — noćna vožnja bez ijednog svetla). Drugi put su oba iznosa u lakšoj klasi i tačan je <b>manji</b> — „ne pomeriš se udesno dok te pretiču“ je sa najnižeg stepenika.</p>
+<p class="mut">Pamtilica 1: kad su ti ponuđena <b>dva raspona „od–do“</b> i nijedan odgovor nema zatvor, tačan je treći — onaj sa jednim iznosom. U bazi 16 od 16 takvih pitanja.<br>Pamtilica 2: odgovor sa <b>10 kaznenih poena</b> nudi se sedam puta i nijednom nije tačan — čist mamac.<br>Pamtilica 3: najstroži odgovor (zatvor ILI novčana + 14 poena) nudi se u <b>70 od 89</b> pitanja o klasi — skoro četiri petine — a tačan je 15 puta, dakle otprilike <b>jednom od pet</b> puta kad se ponudi. Ne biraj ga refleksno zato što zvuči ozbiljno.</p>
+</div>
+
+<!-- CELINA 2 - izvor: #8224 (jedino pitanje o nasilnickoj voznji; tacan odgovor "kaznom zatvora od
+     30 do 60 dana i 15 kaznenih poena"; postojece objasnjenje: "izlazak u suprotnu traku pred
+     vozilima koja ti dolaze u susret", "neposredna opasnost od ceonog sudara", "zatvor i kazneni
+     poeni se izricu zajedno, kumulativno"). Zamka iz #8229 (preko 2,00 mg/ml).
+     Crtez: strelice na susretnim vozilima nose razliku prema obicnom preticanju - bez njih slika
+     izgleda kao kolona u istom smeru. -->
+<div class="kPodH"><b class="kPodNaslov">Vrh lestvice: šta se vidi na toj jednoj slici</b>
+<p>Nasilnička vožnja je u bazi <b>jedno jedino pitanje</b>, i ono ima sliku. Isplati se da znaš šta se na njoj dešava, jer se po tome razlikuje od običnog nepropisnog preticanja (koje je srednja klasa).</p>
+<div style="display:flex;justify-content:center;margin:8px 0">
+<svg viewBox="0 0 306 166" style="max-width:306px;width:100%" role="img" aria-label="Dvosmerni put odozgo: plavo vozilo je izašlo iz svoje trake u traku suprotnog smera i vozi udesno, a iz suprotnog smera dolaze dva vozila čije strelice pokazuju ulevo, pravo prema njemu. Isprekidana strelica pokazuje put kojim je plavo vozilo izašlo iz svoje trake. Kazna: zatvor od 30 do 60 dana i 15 kaznenih poena, izriču se zajedno.">
+<text x="78" y="14" font-size="12" text-anchor="middle" fill="currentColor">suprotan smer</text>
+<text x="228" y="14" font-size="12" text-anchor="middle" fill="#c0392b">dolaze ti u susret</text>
+<rect x="6" y="22" width="294" height="82" fill="#9aa7b4"/>
+<line x1="6" y1="63" x2="300" y2="63" stroke="#fff" stroke-width="2" stroke-dasharray="12 9"/>
+<g class="animSusret">
+<g><rect x="202" y="32" width="40" height="16" rx="4" fill="#2a333d"/><rect x="212" y="26" width="22" height="7" rx="3" fill="#2a333d"/><circle cx="212" cy="49" r="3" fill="#2a333d"/><circle cx="232" cy="49" r="3" fill="#2a333d"/></g>
+<g><rect x="250" y="32" width="40" height="16" rx="4" fill="#2a333d"/><rect x="260" y="26" width="22" height="7" rx="3" fill="#2a333d"/><circle cx="260" cy="49" r="3" fill="#2a333d"/><circle cx="280" cy="49" r="3" fill="#2a333d"/></g>
+</g>
+<line x1="196" y1="40" x2="182" y2="40" stroke="#c0392b" stroke-width="2"/>
+<polygon points="182,34 172,40 182,46" fill="#c0392b"/>
+<g class="animIzlazak">
+<rect x="90" y="32" width="40" height="16" rx="4" fill="#2c6aa0"/><rect x="100" y="26" width="22" height="7" rx="3" fill="#2c6aa0"/><circle cx="100" cy="49" r="3" fill="#2a333d"/><circle cx="120" cy="49" r="3" fill="#2a333d"/>
+</g>
+<line x1="136" y1="40" x2="150" y2="40" stroke="#2c6aa0" stroke-width="2"/>
+<polygon points="150,34 160,40 150,46" fill="#2c6aa0"/>
+<g opacity="0.6"><rect x="26" y="74" width="40" height="16" rx="4" fill="none" stroke="#2c6aa0" stroke-dasharray="4 3"/><rect x="36" y="68" width="22" height="7" rx="3" fill="none" stroke="#2c6aa0" stroke-dasharray="4 3"/></g>
+<line x1="70" y1="84" x2="86" y2="52" stroke="#2c6aa0" stroke-width="2" stroke-dasharray="5 4"/>
+<polygon points="90,46 80,56 87,60" fill="#2c6aa0"/>
+<g opacity="0.55"><rect x="140" y="74" width="40" height="16" rx="4" fill="#2a333d"/><rect x="150" y="68" width="22" height="7" rx="3" fill="#2a333d"/></g>
+<text x="60" y="122" font-size="12" text-anchor="middle" fill="currentColor">tvoja traka</text>
+<text x="153" y="144" font-size="12" text-anchor="middle" fill="#c0392b">zatvor 30–60 dana + 15 poena</text>
+<text x="153" y="161" font-size="12" text-anchor="middle" fill="#c0392b">izriču se ZAJEDNO, nije „ili“</text>
+</svg>
+</div>
+<p class="mut" style="text-align:center;font-size:.82rem">plavo = ti · sivo = ostali · strelice = smer kretanja, pa se vidi da su ona dva vozila u susretu · isprekidano vozilo i isprekidana strelica = odakle si i kojim putem izašao iz svoje trake</p>
+<p><b>Isto rečima:</b> ovo nije obično nepropisno preticanje. Izlazak u <b>traku suprotnog smera pred vozilima koja ti dolaze u susret</b> je gruba, bezobzirna vožnja — otud sam vrh lestvice. Zato se ovde zatvor i kazneni poeni izriču <b>zajedno, kumulativno</b>, a ne jedno ili drugo, i zato u tačnom odgovoru nema reči „ili“. Obično nepropisno preticanje, bez te neposredne opasnosti od čeonog sudara, ostaje srednja klasa: raspon uz 6 poena.</p>
+<p class="mut">Pamtilica: formulacija <b>„zatvor od 30 do 60 dana“</b> u celoj podoblasti postoji samo na tom jednom pitanju — i tamo je tačna. Ali pazi: zatvor <i>uopšte</i> nije siguran znak za nasilničku — jednom se nudi i „zatvor do 30 dana“, i to kao mamac (v. celinu iznad).</p>
+</div>
+
+<!-- CELINA 3 - izvor: naselje #8383 (+7 fiksno), #8349 (+11 do 20 fiksno), #8298 (+30 raspon + 4 poena),
+     #8254 (+60 raspon + 7 poena), #8235 (+90 najteza); van naselja #8385 (+15 fiksno), #8351 (+30 fiksno),
+     #8301 (+50 raspon + 3 poena), #8256 (+70 tacno raspon + 6 poena), #8237 (+90 najteza);
+     zabrana #8399 (+10 naselje ne izrice), #8397 (+30 naselje izrice), #8403 (+30 van naselja ne izrice),
+     #8401 (+60 van naselja izrice); zone: #8239 zona usporenog saobracaja (ogranicenje 10) preko 50,
+     #8240 zona skole u naselju (ogranicenje 30, od 7 do 21 cas) i zona "30" preko 60.
+     Dva crteza umesto jednog: iste ose i ista razmera, pa se vidi da ista brojka pada u druge boje.
+     Ivica izmedju "fiksno" i "raspon" NIJE povucena - izmedju poslednje potvrdjene fiksne i prve
+     potvrdjene raspon-tacke stoji isprekidani procep sa znakom pitanja. -->
+<div class="kPodH"><b class="kPodNaslov">Brzina: ista brojka, druga klasa</b>
+<div style="display:flex;justify-content:center;margin:8px 0">
+<svg viewBox="0 0 306 190" style="max-width:306px;width:100%" role="img" aria-label="U naselju, dozvoljeno 50. Osa prekoračenja od 0 do 100 km/h: do plus 20 fiksna kazna bez poena, između plus 20 i plus 30 baza ne pita pa je procep, od plus 30 raspon uz kaznene poene, preko 70 najteža klasa. Zaštitna mera zabrane upravljanja: na plus 10 se ne izriče, na plus 30 se izriče.">
+<text x="153" y="16" font-size="13" text-anchor="middle" fill="currentColor">U NASELJU — dozvoljeno 50</text>
+<g font-size="12" text-anchor="middle" fill="currentColor" opacity="0.85"><text x="20" y="34">0</text><text x="73.2" y="34">20</text><text x="126.4" y="34">40</text><text x="179.6" y="34">60</text><text x="232.8" y="34">80</text><text x="286" y="34">100</text></g>
+<text x="206.2" y="34" font-size="12" text-anchor="middle" fill="#c0392b">70</text>
+<line x1="20" y1="40" x2="286" y2="40" stroke="currentColor" opacity="0.5"/>
+<g stroke="currentColor" opacity="0.5"><line x1="20" y1="40" x2="20" y2="45"/><line x1="73.2" y1="40" x2="73.2" y2="45"/><line x1="126.4" y1="40" x2="126.4" y2="45"/><line x1="179.6" y1="40" x2="179.6" y2="45"/><line x1="232.8" y1="40" x2="232.8" y2="45"/><line x1="286" y1="40" x2="286" y2="45"/></g>
+<line x1="206.2" y1="38" x2="206.2" y2="47" stroke="#c0392b" stroke-width="1.5"/>
+<rect x="20" y="48" width="53.2" height="26" fill="#1f7a3f" fill-opacity="0.28"/>
+<rect x="73.2" y="48" width="26.6" height="26" fill="none" stroke="currentColor" stroke-dasharray="3 3" opacity="0.75"/>
+<rect x="99.8" y="48" width="106.4" height="26" fill="#e8b000" fill-opacity="0.32"/>
+<rect x="206.2" y="48" width="79.8" height="26" fill="#c0392b" fill-opacity="0.40"/>
+<g font-size="12" text-anchor="middle" fill="currentColor">
+<text x="46.6" y="90">fiksna</text><text x="46.6" y="107">bez poena</text>
+<text x="86.5" y="90">?</text>
+<text x="153" y="90">raspon</text><text x="153" y="107">+ poeni</text>
+<text x="246" y="90">NAJTEŽA</text><text x="246" y="107">preko 70</text>
+</g>
+<text x="153" y="129" font-size="12" text-anchor="middle" fill="currentColor">zaštitna mera zabrane upravljanja</text>
+<circle cx="46.6" cy="152" r="11" fill="none" stroke="#1f7a3f"/>
+<text x="46.6" y="157" font-size="15" text-anchor="middle" fill="#1f7a3f">✗</text>
+<circle cx="99.8" cy="152" r="11" fill="none" stroke="#c0392b"/>
+<text x="99.8" y="157" font-size="15" text-anchor="middle" fill="#c0392b">✓</text>
+<g font-size="12" text-anchor="middle" fill="currentColor" opacity="0.85"><text x="46.6" y="182">+10</text><text x="99.8" y="182">+30</text></g>
+</svg>
+</div>
+<div style="display:flex;justify-content:center;margin:8px 0">
+<svg viewBox="0 0 306 190" style="max-width:306px;width:100%" role="img" aria-label="Van naselja, dozvoljeno 80. Ista osa i ista razmera: do plus 30 fiksna kazna bez poena, između plus 30 i plus 50 baza ne pita pa je procep, od plus 50 raspon uz kaznene poene, preko 70 najteža klasa — isto mesto kao u naselju. Zaštitna mera: na plus 30 se ne izriče, na plus 60 se izriče.">
+<text x="153" y="16" font-size="13" text-anchor="middle" fill="currentColor">VAN NASELJA — dozvoljeno 80</text>
+<g font-size="12" text-anchor="middle" fill="currentColor" opacity="0.85"><text x="20" y="34">0</text><text x="73.2" y="34">20</text><text x="126.4" y="34">40</text><text x="179.6" y="34">60</text><text x="232.8" y="34">80</text><text x="286" y="34">100</text></g>
+<text x="206.2" y="34" font-size="12" text-anchor="middle" fill="#c0392b">70</text>
+<line x1="20" y1="40" x2="286" y2="40" stroke="currentColor" opacity="0.5"/>
+<g stroke="currentColor" opacity="0.5"><line x1="20" y1="40" x2="20" y2="45"/><line x1="73.2" y1="40" x2="73.2" y2="45"/><line x1="126.4" y1="40" x2="126.4" y2="45"/><line x1="179.6" y1="40" x2="179.6" y2="45"/><line x1="232.8" y1="40" x2="232.8" y2="45"/><line x1="286" y1="40" x2="286" y2="45"/></g>
+<line x1="206.2" y1="38" x2="206.2" y2="47" stroke="#c0392b" stroke-width="1.5"/>
+<rect x="20" y="48" width="79.8" height="26" fill="#1f7a3f" fill-opacity="0.28"/>
+<rect x="99.8" y="48" width="53.2" height="26" fill="none" stroke="currentColor" stroke-dasharray="3 3" opacity="0.75"/>
+<rect x="153" y="48" width="53.2" height="26" fill="#e8b000" fill-opacity="0.32"/>
+<rect x="206.2" y="48" width="79.8" height="26" fill="#c0392b" fill-opacity="0.40"/>
+<g font-size="12" text-anchor="middle" fill="currentColor">
+<text x="59.9" y="90">fiksna</text><text x="59.9" y="107">bez poena</text>
+<text x="126.4" y="90">?</text>
+<text x="179.6" y="90">raspon</text><text x="179.6" y="107">+ poeni</text>
+<text x="246" y="90">NAJTEŽA</text><text x="246" y="107">preko 70</text>
+</g>
+<text x="153" y="129" font-size="12" text-anchor="middle" fill="currentColor">zaštitna mera zabrane upravljanja</text>
+<circle cx="99.8" cy="152" r="11" fill="none" stroke="#1f7a3f"/>
+<text x="99.8" y="157" font-size="15" text-anchor="middle" fill="#1f7a3f">✗</text>
+<circle cx="179.6" cy="152" r="11" fill="none" stroke="#c0392b"/>
+<text x="179.6" y="157" font-size="15" text-anchor="middle" fill="#c0392b">✓</text>
+<g font-size="12" text-anchor="middle" fill="currentColor" opacity="0.85"><text x="99.8" y="182">+30</text><text x="179.6" y="182">+60</text></g>
+</svg>
+</div>
+<p class="mut" style="text-align:center;font-size:.82rem">oba crteža imaju istu osu i istu razmeru — vodoravno je za koliko km/h prelaziš dozvoljeno · isprekidani procep sa <b>?</b> = zona u kojoj baza ne pita, pa granica nije povučena · ✗ = mera se ne izriče, ✓ = izriče se, i to samo na tačkama koje baza pita · crvena crta na 70 = mesto na kome se dve lestvice spajaju</p>
+<p><b>Isto rečima:</b> ista brojka prekoračenja pada za stepenik niže van naselja nego u naselju — <b>osim na vrhu, gde se lestvice spajaju</b>: preko 70 km/h prekoračenja je najteža klasa i u naselju i van njega (crvena crta na oba crteža, na istom mestu). Na <b>+30 km/h</b>: u naselju — raspon, kazneni poeni <b>i</b> zabrana upravljanja; van naselja — jedan iznos, bez poena i <b>bez</b> zabrane. Baza pita tačke, ne granice: u naselju potvrđuje fiksnu kaznu na +7 i na +11 do +20, a raspon sa poenima već na +30; van naselja fiksnu na +15 i na +30, a raspon sa poenima na +50. Zato između te dve potvrđene tačke na crtežu stoji procep sa znakom pitanja, a ne ivica: prelaz je negde između +20 i +30 u naselju, odnosno između +30 i +50 van naselja, a gde tačno — baza ne kaže. <b>Tačno 70 još nije najteža klasa</b> — jedno pitanje se lomi baš na toj razlici.</p>
+<table>
+<tr><th>Gde voziš</th><th>Dozvoljeno</th><th>Najteža klasa počinje na prekoračenju od</th></tr>
+<tr><td>naselje / van naselja</td><td>50 / 80</td><td><b>preko 70</b></td></tr>
+<tr><td>zona škole u naselju</td><td>30, od 7 do 21 č.</td><td><b>preko 60</b></td></tr>
+<tr><td>zona „30“</td><td>—</td><td><b>preko 60</b></td></tr>
+<tr><td>zona usporenog saobraćaja</td><td>10</td><td><b>preko 50</b></td></tr>
+</table>
+<p class="mut">Za zonu „30“ baza navodi samo prag (preko 60), ne i sâmo ograničenje — zato je to polje prazno.<br>Pamtilica: pragovi idu <b>70 · 60 · 50</b> — što je zona osetljivija, to ti manje treba da upadneš u najtežu klasu.<br>Druga pamtilica, i pazi na ogradu: <b>na brzinskim tačkama koje baza pita</b> poeni i zabrana idu u paru — gde ima kaznenih poena, izriče se i zabrana; gde ih nema, ne izriče se. Van brzine to <b>ne</b> važi: dva prekršaja nose po 2 kaznena poena, a mera se ipak ne izriče — istekla registraciona nalepnica i vozačka dozvola istekla najviše šest meseci (oba su niže, među sličicama).</p>
+</div>
+
+<!-- CELINA 4 - izvor: #8405 (0,30-0,50 mera se NE izrice, "kazna DA, zastitna mera NE"),
+     #8404 (vise od 0,50 do 1,20 mera se IZRICE, "granica za meru je 0,50"), #8229 (preko 2,00 najteza,
+     po slovu zakona nasilnicka, cl. 41), #8230 (odbijanje testa isti odgovor), #8278 (1,80 raspon +
+     12 poena), #8277 (psihoaktivna supstanca raspon + 8 poena), #8376 (moped/motocikl blaga i umerena
+     alkoholisanost - jedan iznos, nulta tolerancija ZOBS cl. 187), #8329 srednja alkoholisanost raspon
+     + 6 poena, #8330 isto za kandidata na praktičnoj obuci.
+     Dva crteza: prvi je SAMO o zastitnoj meri i ide do 1,40 - i ispod 0,30 i preko 1,20 baza ne pita,
+     pa su oba kraja isprekidana. Drugi je lestvica klasa, gde "odbijanje testa" stoji uz "preko 2,00",
+     a ne na levom kraju promilne ose. -->
+<div class="kPodH"><b class="kPodNaslov">Alkohol: gde je koja granica</b>
+<div style="display:flex;justify-content:center;margin:8px 0">
+<svg viewBox="0 0 306 88" style="max-width:306px;width:100%" role="img" aria-label="Zaštitna mera zabrane upravljanja po sadržini alkohola: od 0,30 do 0,50 mg/ml mera se ne izriče, više od 0,50 do 1,20 mera se izriče. Ispod 0,30 i preko 1,20 baza ne pita, pa su ti krajevi isprekidani i označeni znakom pitanja.">
+<text x="153" y="14" font-size="12" text-anchor="middle" fill="currentColor">zaštitna mera zabrane upravljanja</text>
+<rect x="30" y="22" width="54.9" height="30" fill="none" stroke="currentColor" stroke-dasharray="3 3" opacity="0.75"/>
+<rect x="84.9" y="22" width="36.5" height="30" fill="#1f7a3f" fill-opacity="0.28"/>
+<rect x="121.4" y="22" width="128.1" height="30" fill="#c0392b" fill-opacity="0.38"/>
+<rect x="249.5" y="22" width="36.5" height="30" fill="none" stroke="currentColor" stroke-dasharray="3 3" opacity="0.75"/>
+<text x="57.4" y="43" font-size="14" text-anchor="middle" fill="currentColor" opacity="0.8">?</text>
+<text x="103.1" y="43" font-size="15" text-anchor="middle" fill="#1f7a3f">✗</text>
+<text x="185.4" y="42" font-size="12" text-anchor="middle" fill="currentColor">✓ mera se izriče</text>
+<text x="267.7" y="43" font-size="14" text-anchor="middle" fill="currentColor" opacity="0.8">?</text>
+<line x1="30" y1="56" x2="286" y2="56" stroke="currentColor" opacity="0.5"/>
+<g stroke="currentColor" opacity="0.6"><line x1="84.9" y1="56" x2="84.9" y2="62"/><line x1="121.4" y1="56" x2="121.4" y2="62"/><line x1="249.5" y1="56" x2="249.5" y2="62"/></g>
+<g font-size="12" text-anchor="middle" fill="currentColor"><text x="84.9" y="76">0,30</text><text x="121.4" y="76">0,50</text><text x="249.5" y="76">1,20</text></g>
+</svg>
+</div>
+<p class="mut" style="text-align:center;font-size:.82rem">vodoravno = mg/ml alkohola · ✗ kazna da, mera ne · ✓ uz kaznu ide i mera · <b>?</b> = baza tu ništa ne pita, ni ispod 0,30 ni preko 1,20</p>
+<p><b>Isto rečima:</b> granica za <b>zabranu upravljanja je 0,50</b> — od 0,30 do 0,50 ide kazna ali ne i zabrana; više od 0,50 do 1,20 uz kaznu obavezno ide i zabrana. To su tačno dva opsega koja baza pita; preko 1,20 o meri ne pita ništa, pa crtež tu ne tvrdi ništa.</p>
+<div style="display:flex;justify-content:center;margin:8px 0">
+<svg viewBox="0 0 306 200" style="max-width:306px;width:100%" role="img" aria-label="Lestvica klasa kazne po stepenu alkoholisanosti, od najblažeg ka najtežem: moped i motocikl u blagoj i umerenoj alkoholisanosti — lakša klasa, jedan iznos; srednja alkoholisanost — raspon i 6 kaznenih poena; psihoaktivna supstanca — raspon i 8 poena; 1,80 mg/ml — raspon i 12 poena; preko 2,00 — najteža klasa, 14 poena; odbijanje testa — isto kao preko 2,00.">
+<rect x="6" y="6" width="294" height="38" fill="#1f7a3f" fill-opacity="0.16" stroke="#1f7a3f"/>
+<rect x="6" y="6" width="6" height="38" fill="#1f7a3f" fill-opacity="0.55"/>
+<rect x="6" y="49" width="294" height="25" fill="#e8b000" fill-opacity="0.20" stroke="#e8b000"/>
+<rect x="6" y="49" width="10" height="25" fill="#e8b000" fill-opacity="0.65"/>
+<rect x="6" y="79" width="294" height="25" fill="#e8b000" fill-opacity="0.28" stroke="#e8b000"/>
+<rect x="6" y="79" width="13" height="25" fill="#e8b000" fill-opacity="0.8"/>
+<rect x="6" y="109" width="294" height="25" fill="#e8b000" fill-opacity="0.38" stroke="#e8b000"/>
+<rect x="6" y="109" width="16" height="25" fill="#e8b000" fill-opacity="0.95"/>
+<rect x="6" y="139" width="294" height="25" fill="#c0392b" fill-opacity="0.35" stroke="#c0392b"/>
+<rect x="6" y="139" width="20" height="25" fill="#c0392b" fill-opacity="0.85"/>
+<rect x="6" y="169" width="294" height="25" fill="#c0392b" fill-opacity="0.35" stroke="#c0392b"/>
+<rect x="6" y="169" width="20" height="25" fill="#c0392b" fill-opacity="0.85"/>
+<g font-size="12" fill="currentColor">
+<text x="30" y="22">moped i motocikl, blaga i umerena</text>
+<text x="30" y="39">lakša klasa — jedan iznos</text>
+<text x="30" y="66">srednja — raspon + 6 poena</text>
+<text x="30" y="96">psihoaktivna — raspon + 8 poena</text>
+<text x="30" y="126">1,80 mg/ml — raspon + 12 poena</text>
+<text x="30" y="156">preko 2,00 — najteža, 14 poena</text>
+<text x="30" y="186">odbijanje testa — isto kao 2,00</text>
+</g>
+</svg>
+</div>
+<p class="mut" style="text-align:center;font-size:.82rem">redovi idu od najblažeg ka najtežem · leva traka raste sa težinom · poslednja dva reda su isti odgovor: odbijanjem se ništa ne dobija</p>
+<p><b>Isto rečima:</b> granica za <b>najtežu klasu je 2,00</b>: preko toga je zatvor ILI najviša novčana uz 14 poena, a po slovu zakona takva vožnja je već nasilnička (čl. 41) — ipak, u bazi je tačan odgovor u obliku najteže klase. <b>Odbijanje</b> alkotesta ili droga-testa kažnjava se istim odgovorom kao preko 2,00. Za <b>mopedistu i motociklistu</b>, kao i za kandidata na praktičnoj obuci, važi <b>nulta tolerancija</b> (ZOBS čl. 187): zabranjen je svaki alkohol, a stepen alkoholisanosti određuje samo visinu kazne — zato blaga i umerena kod njih ostaju lakša klasa, a srednja već nosi raspon uz 6 poena, isto kao i kod kandidata na obuci.</p>
+</div>
+
+<!-- CELINA 5 - izvor: #8225 (trajanje mere: najmanje 30 dana do najvise jedne godine; oba pogresna
+     odgovora suzavaju okvir), i 20 pitanja "izrice se / ne izrice se": #8397 #8399 #8401 #8403 (brzina),
+     #8404 #8405 (alkohol), #8406-#8411 (preticanje, svetlosni znak, znak, uslovna strelica, pesacki
+     prelaz), #8412 (registar), #8413 (dozvola preko 6 meseci), #8414 (iskljuceno vozilo), #8417 (nocu
+     bez svetala), #8418 (dete u krilu), #8420 (pruga), #8421 (nalepnica), #8422 (dozvola do 6 meseci).
+     Kontraprimeri koji ruse intuiciju "malo poena -> nema mere": #8410 (uslovna strelica: mera SE
+     izrice, a kazna je po #8321 samo raspon + 2 poena), i obrnuto #8421/#8422 (po 2 poena po
+     #8337/#8326, a mera se NE izrice). -->
+<div class="kPodH"><b class="kPodNaslov">Zaštitna mera zabrane upravljanja: koliko traje i kad se izriče</b>
+<p>Jedno pitanje pita samo <b>trajanje</b> mere. Tačan odgovor je najširi ponuđeni okvir; oba mamca ga sužavaju, svaki sa svoje strane.</p>
+<div style="display:flex;justify-content:center;margin:8px 0">
+<svg viewBox="0 0 306 146" style="max-width:306px;width:100%" role="img" aria-label="Trajanje zaštitne mere zabrane upravljanja: tačan okvir je od 30 dana do jedne godine; prvi netačan odgovor skraćuje gornju granicu na šest meseci, drugi podiže donju granicu na tri meseca.">
+<g text-anchor="end" fill="currentColor" font-size="12"><text x="46" y="23">tačno</text><text x="46" y="53">mamac</text><text x="46" y="83">mamac</text></g>
+<rect x="52" y="8" width="234" height="22" fill="#1f7a3f" fill-opacity="0.30" stroke="#1f7a3f"/>
+<text x="169" y="23" font-size="12" text-anchor="middle" fill="currentColor">od 30 dana do 1 godine</text>
+<rect x="52" y="38" width="106.5" height="22" fill="#c0392b" fill-opacity="0.20" stroke="#c0392b" stroke-dasharray="4 3"/>
+<text x="165" y="53" font-size="12" text-anchor="start" fill="currentColor">30 dana – 6 meseci</text>
+<rect x="94.5" y="68" width="191.5" height="22" fill="#c0392b" fill-opacity="0.20" stroke="#c0392b" stroke-dasharray="4 3"/>
+<text x="190" y="83" font-size="12" text-anchor="middle" fill="currentColor">3 meseca – 1 godina</text>
+<line x1="52" y1="100" x2="286" y2="100" stroke="currentColor" opacity="0.5"/>
+<g stroke="currentColor" opacity="0.6"><line x1="52" y1="100" x2="52" y2="106"/><line x1="94.5" y1="100" x2="94.5" y2="106"/><line x1="158.5" y1="100" x2="158.5" y2="106"/><line x1="286" y1="100" x2="286" y2="106"/></g>
+<g font-size="12" fill="currentColor" opacity="0.85"><text x="52" y="122" text-anchor="middle">30 dana</text><text x="158.5" y="122" text-anchor="middle">6 meseci</text><text x="298" y="122" text-anchor="end">1 godina</text><text x="94.5" y="140" text-anchor="middle">3 meseca</text></g>
+</svg>
+</div>
+<p class="mut" style="text-align:center;font-size:.82rem">puna zelena ivica = tačan okvir · isprekidane crvene = ponude koje sužavaju okvir, svaka sa svoje strane</p>
+<p><b>Isto rečima:</b> mera traje <b>najmanje 30 dana, najviše jednu godinu</b>. Jedan mamac ti skraćuje gornju granicu na šest meseci, drugi ti podiže donju na tri meseca. Zapamti obe krajnje tačke i biraj najširu ponudu.</p>
+<p>Dvadeset pitanja pita samo da li se mera izriče, a odgovor su dve reči. Nauči spisak — pravilo ispod pokriva većinu, ali ne sve.</p>
+<table>
+<tr><th>IZRIČE SE</th><th>NE IZRIČE SE</th></tr>
+<tr><td>u naselju: prekoračenje 30 km/h</td><td>u naselju: prekoračenje 10 km/h</td></tr>
+<tr><td>van naselja: prekoračenje 60 km/h</td><td>van naselja: prekoračenje 30 km/h</td></tr>
+<tr><td>alkohol preko 0,50 mg/ml</td><td>alkohol preko 0,30 do 0,50 mg/ml</td></tr>
+<tr><td>preticanje preko neisprekidane linije, uz ulazak u traku suprotnog smera</td><td>pretičeš vozilo koje je već dalo znak da i samo pretiče</td></tr>
+<tr><td>prolazak kad ti je svetlosnim znakom prolaz zabranjen</td><td>postupanje suprotno postavljenom saobraćajnom znaku</td></tr>
+<tr><td>uslovna zelena strelica: ne propustiš vozilo na putu na koji ulaziš</td><td>parkiranje na pešačkom prelazu</td></tr>
+<tr><td>vozilo nije upisano u jedinstveni registar</td><td>istekla registraciona nalepnica</td></tr>
+<tr><td>dozvola istekla više od šest meseci</td><td>dozvola istekla najviše šest meseci</td></tr>
+<tr><td>voziš vozilom isključenim iz saobraćaja</td><td></td></tr>
+<tr><td>noću na neosvetljenom putu bez ijednog svetla</td><td></td></tr>
+<tr><td>dete mlađe od 12 godina u krilu</td><td></td></tr>
+<tr><td>ne staneš pred prugom kad svetlosni znak najavljuje voz (prelaz bez branika)</td><td></td></tr>
+</table>
+<p><b>Isto rečima:</b> mera prati <b>opasnu radnju u vožnji</b> — brzinu sa poenima, alkohol preko 0,50, crveno, mrak bez svetala, dete u krilu, prugu, kršenje isključenja. Ne prati <b>parkiranje, sam prekršeni znak, blago prekoračenje i blagi alkohol</b>. Ostaju tri reda koje to pravilo ne pokriva — dva preticanja i uslovna strelica — i dva para koja liče na čistu papirologiju. Njih zapamti kao slike i ključeve.</p>
+<div style="display:flex;justify-content:center;margin:8px 0">
+<svg viewBox="0 0 306 196" style="max-width:306px;width:100%" role="img" aria-label="Dva preticanja, jedno ispod drugog. Gore: prelaziš preko pune uzdužne linije u traku suprotnog smera — zaštitna mera se izriče. Dole: pretičeš vozilo koje je već dalo znak da i samo pretiče, ostaješ u svojoj traci — mera se ne izriče.">
+<text x="153" y="14" font-size="12" text-anchor="middle" fill="#c0392b">preko PUNE linije u suprotnu traku</text>
+<rect x="8" y="20" width="214" height="50" fill="#9aa7b4"/>
+<line x1="8" y1="45" x2="222" y2="45" stroke="#fff" stroke-width="2.5"/>
+<g class="animIzlazak"><rect x="64" y="26" width="40" height="14" rx="4" fill="#2c6aa0"/><rect x="74" y="21" width="22" height="6" rx="3" fill="#2c6aa0"/></g>
+<line x1="44" y1="58" x2="58" y2="42" stroke="#2c6aa0" stroke-width="2" stroke-dasharray="4 3"/>
+<polygon points="62,38 53,47 60,51" fill="#2c6aa0"/>
+<g opacity="0.6"><rect x="120" y="54" width="40" height="14" rx="4" fill="#2a333d"/><rect x="130" y="48" width="22" height="6" rx="3" fill="#2a333d"/></g>
+<circle cx="262" cy="45" r="17" fill="none" stroke="#c0392b" stroke-width="2"/>
+<text x="262" y="52" font-size="18" text-anchor="middle" fill="#c0392b">✓</text>
+<text x="153" y="88" font-size="12" text-anchor="middle" fill="#c0392b">zaštitna mera SE IZRIČE</text>
+<text x="153" y="112" font-size="12" text-anchor="middle" fill="currentColor">pretičeš onog ko je već dao znak</text>
+<rect x="8" y="120" width="214" height="50" fill="#9aa7b4"/>
+<line x1="8" y1="145" x2="222" y2="145" stroke="#fff" stroke-width="2" stroke-dasharray="12 9"/>
+<g opacity="0.75"><rect x="130" y="126" width="40" height="14" rx="4" fill="#2a333d"/><rect x="140" y="121" width="22" height="6" rx="3" fill="#2a333d"/></g>
+<circle class="animMigavac" cx="134" cy="123" r="3.5" fill="#e8b000"/>
+<g><rect x="60" y="126" width="40" height="14" rx="4" fill="#2c6aa0"/><rect x="70" y="121" width="22" height="6" rx="3" fill="#2c6aa0"/></g>
+<circle cx="262" cy="145" r="17" fill="none" stroke="#1f7a3f" stroke-width="2"/>
+<text x="262" y="152" font-size="18" text-anchor="middle" fill="#1f7a3f">✗</text>
+<text x="153" y="188" font-size="12" text-anchor="middle" fill="#1f7a3f">zaštitna mera se NE izriče</text>
+</svg>
+</div>
+<p class="mut" style="text-align:center;font-size:.82rem">plavo = ti · žuta tačka = pokazivač pravca vozila ispred tebe, koje je već dalo znak da i samo pretiče · gore je puna linija i tuđa traka, dole si ostao u svojoj</p>
+<p><b>Ključ za ta tri reda:</b> mera prati <b>traku suprotnog smera</b> — preticanje preko neisprekidane linije uz ulazak u tuđu traku je isti scenario kao kod nasilničke vožnje, čeoni sudar, pa mera ide. Preticanje onoga ko je već dao znak da i sâm pretiče je zabranjeno i kažnjivo, ali se odigrava u <b>tvojoj</b> traci — mera ne ide. Uslovna zelena strelica je treći slučaj i on je <b>kontraprimer intuiciji</b> „mala kazna, dakle nema mere“: kazna je raspon uz svega 2 poena, a mera se ipak <b>izriče</b>, jer je propuštanje vozila sam uslov pod kojim smeš da prođeš strelicu — prekršiš uslov, pao je ceo osnov prolaska.</p>
+<p>Ostaju još dva para koja liče na čistu papirologiju, a razdvajaju se:</p>
+<div class="signRow">
+  <div class="signCell">
+    <svg viewBox="0 0 78 70" role="img" aria-label="istekla registraciona nalepnica — zaštitna mera se ne izriče"><rect x="4" y="4" width="42" height="26" rx="3" fill="none" stroke="currentColor"/><circle cx="25" cy="15" r="7" fill="none" stroke="currentColor"/><line x1="9" y1="25" x2="41" y2="25" stroke="currentColor" opacity="0.6"/><circle cx="63" cy="12" r="10" fill="none" stroke="#1f7a3f"/><text x="63" y="17" font-size="13" text-anchor="middle" fill="#1f7a3f">✗</text><text x="39" y="47" font-size="11" text-anchor="middle" fill="currentColor">rok</text><text x="39" y="63" font-size="11" text-anchor="middle" fill="currentColor">istekao</text></svg>
+    <b>NALEPNICA ISTEKLA</b><span>vozilo jeste u registru, samo je nalepnici istekao rok — mera se NE izriče</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 78 70" role="img" aria-label="vozilo nije upisano u jedinstveni registar — zaštitna mera se izriče"><rect x="4" y="14" width="44" height="14" rx="4" fill="none" stroke="currentColor"/><rect x="14" y="7" width="24" height="8" rx="3" fill="none" stroke="currentColor"/><rect x="31" y="17" width="15" height="8" rx="2" fill="none" stroke="#c0392b" stroke-dasharray="3 2"/><circle cx="63" cy="12" r="10" fill="none" stroke="#c0392b"/><text x="63" y="17" font-size="13" text-anchor="middle" fill="#c0392b">✓</text><text x="39" y="47" font-size="11" text-anchor="middle" fill="currentColor">nije u</text><text x="39" y="63" font-size="11" text-anchor="middle" fill="currentColor">registru</text></svg>
+    <b>NIJE U REGISTRU</b><span>vozilo van svake evidencije i kontrole — mera se IZRIČE</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 78 70" role="img" aria-label="vozačka dozvola istekla najviše šest meseci — zaštitna mera se ne izriče"><rect x="4" y="4" width="44" height="26" rx="4" fill="none" stroke="currentColor"/><circle cx="15" cy="14" r="5" fill="none" stroke="currentColor"/><line x1="24" y1="12" x2="43" y2="12" stroke="currentColor" opacity="0.6"/><line x1="24" y1="20" x2="43" y2="20" stroke="currentColor" opacity="0.6"/><circle cx="63" cy="12" r="10" fill="none" stroke="#1f7a3f"/><text x="63" y="17" font-size="13" text-anchor="middle" fill="#1f7a3f">✗</text><text x="39" y="47" font-size="11" text-anchor="middle" fill="currentColor">do 6</text><text x="39" y="63" font-size="11" text-anchor="middle" fill="currentColor">meseci</text></svg>
+    <b>DOZVOLA ISTEKLA DO 6 MESECI</b><span>administrativni propust — mera se NE izriče</span>
+  </div>
+  <div class="signCell">
+    <svg viewBox="0 0 78 70" role="img" aria-label="vozačka dozvola istekla više od šest meseci — zaštitna mera se izriče"><rect x="4" y="4" width="44" height="26" rx="4" fill="none" stroke="#c0392b"/><circle cx="15" cy="14" r="5" fill="none" stroke="#c0392b"/><line x1="24" y1="12" x2="43" y2="12" stroke="#c0392b" opacity="0.7"/><line x1="24" y1="20" x2="43" y2="20" stroke="#c0392b" opacity="0.7"/><circle cx="63" cy="12" r="10" fill="none" stroke="#c0392b"/><text x="63" y="17" font-size="13" text-anchor="middle" fill="#c0392b">✓</text><text x="39" y="47" font-size="11" text-anchor="middle" fill="currentColor">preko 6</text><text x="39" y="63" font-size="11" text-anchor="middle" fill="currentColor">meseci</text></svg>
+    <b>DOZVOLA ISTEKLA PREKO 6 MESECI</b><span>predugo voziš bez provere uslova — mera se IZRIČE</span>
+  </div>
+</div>
+<p class="mut">Pamtilica: u oba para <b>teža sličica je ona kod koje je nadzor prestao da postoji</b> — vozilo nije ni upisano, dozvola je istekla toliko davno da provera uslova više ne stoji ni na papiru. Zeleni ✗ znači „mera se ne izriče“, crveni ✓ znači „izriče se“ — isto kao na crtežima brzine. Ta dva ✗ su ujedno i dokaz da poeni ne odlučuju o meri: oba prekršaja nose po 2 kaznena poena, a mere nema.</p>
+</div>
+
+<!-- CELINA 6 - izvor parova: zaustavna traka #8314 (zaustavio se - srednja, nizi raspon, bez poena) vs
+     #8247 (krece se zaustavnom trakom autoputa - najteza) i #8246 (preticanje zaustavnom trakom
+     motoputa - najteza); svetla #8241/#8417 (nijedno svetlo - najteza + mera), #8260 (bez zadnjih
+     pozicionih - raspon + 6 poena); nezgoda #8244 (ucesnik, ima povredenih - najteza), #8324 (naidjes
+     i ne javis - raspon bez poena), #8273 (ucesnik, materijalna steta i neko zahteva uvidjaj, ne
+     ostane do kraja - raspon + 2 poena); dozvola #8228 (nemas za kategoriju - najteza), #8326 (do 6
+     meseci - raspon + 2 poena), #8274 (preko 6 meseci - raspon + 5 poena); registracija #8337/#8412/
+     #8421; crveno #8271 (srednja, 6 poena; postojece objasnjenje: sa pesakom na prelazu najteza,
+     dvaput na crveno u kratkom roku nasilnicka); odgovornost vlasnika #8340 i kazna #8341. -->
+<div class="kPodH"><b class="kPodNaslov">Parovi i formulacije koje se stalno nude jedna uz drugu</b>
+<p>Šest tema u bazi ima blažu i težu verziju, a razlikuju se u jednoj reči ili u jednoj okolnosti. Najopasniji par je zaustavna traka: sve zavisi od toga da li se <b>krećeš</b> ili <b>stojiš</b>.</p>
+<div style="display:flex;justify-content:center;margin:8px 0">
+<svg viewBox="0 0 306 202" style="max-width:306px;width:100%" role="img" aria-label="Zaustavna traka, dva slučaja jedan ispod drugog. Gore: vozilo stoji na zaustavnoj traci — srednja klasa, niži raspon bez kaznenih poena. Dole: vozilo se kreće zaustavnom trakom — najteža klasa, zatvor ili novčana kazna i 14 kaznenih poena.">
+<text x="153" y="14" font-size="12" text-anchor="middle" fill="currentColor">ZAUSTAVIŠ SE NA NJOJ</text>
+<rect x="8" y="22" width="290" height="32" fill="#9aa7b4"/>
+<rect x="8" y="54" width="290" height="26" fill="#9aa7b4" fill-opacity="0.55"/>
+<line x1="8" y1="54" x2="298" y2="54" stroke="#fff" stroke-width="2.5"/>
+<g><rect x="110" y="62" width="40" height="14" rx="4" fill="#2c6aa0"/><rect x="120" y="57" width="22" height="6" rx="3" fill="#2c6aa0"/></g>
+<text x="153" y="96" font-size="12" text-anchor="middle" fill="currentColor">stoji — SREDNJA klasa, bez poena</text>
+<text x="153" y="120" font-size="12" text-anchor="middle" fill="#c0392b">VOZIŠ ILI PRETIČEŠ NJOME</text>
+<rect x="8" y="128" width="290" height="32" fill="#9aa7b4"/>
+<rect x="8" y="160" width="290" height="26" fill="#9aa7b4" fill-opacity="0.55"/>
+<line x1="8" y1="160" x2="298" y2="160" stroke="#fff" stroke-width="2.5"/>
+<g stroke="#c0392b" stroke-width="2" opacity="0.85"><line x1="112" y1="168" x2="130" y2="168"/><line x1="106" y1="174" x2="124" y2="174"/><line x1="112" y1="180" x2="130" y2="180"/></g>
+<g class="animVoziTrakom"><rect x="140" y="167" width="40" height="14" rx="4" fill="#2c6aa0"/><rect x="150" y="162" width="22" height="6" rx="3" fill="#2c6aa0"/></g>
+<text x="153" y="198" font-size="12" text-anchor="middle" fill="#c0392b">najteža — zatvor ILI novčana, 14 poena</text>
+</svg>
+</div>
+<p class="mut" style="text-align:center;font-size:.82rem">gornji pojas = saobraćajna traka, donji svetliji = zaustavna traka · plavo = ti · razlika između dva panela je samo u tome da li se vozilo pomera</p>
+<p><b>Isto rečima:</b> zaustavna traka nije saobraćajna traka — po njoj se ne vozi, jer je to jedini prostor za vozila u kvaru i za hitne službe. Zato <b>zaustavljanje</b> na njoj ostaje srednja klasa (niži raspon), a <b>kretanje</b> odnosno <b>preticanje</b> njome ide u najtežu: takvim manevrom udaraš u zaustavljene i blokiraš pomoć.</p>
+<table>
+<tr><th>Tema</th><th>Blaže</th><th>Teže</th></tr>
+<tr><td>Zaustavna traka</td><td><b>zaustaviš se</b> na njoj — raspon, bez poena</td><td><b>voziš</b> odnosno <b>pretičeš</b> njome — najteža, 14 poena</td></tr>
+<tr><td>Svetla noću</td><td>samo poziciona, ili bez zadnjih pozicionih — raspon, 6 poena</td><td><b>nijedno</b> svetlo na neosvetljenom putu — najteža, 14 poena</td></tr>
+<tr><td>Nezgoda</td><td>naiđeš i ne javiš — raspon, bez poena · učesnik si, ima materijalne štete i neko <b>zahteva uviđaj</b>, a ti ne ostaneš do kraja uviđaja — raspon, 2 poena</td><td>učesnik si, <b>ima povređenih</b>, ne staneš odnosno ne javiš — najteža, 14 poena</td></tr>
+<tr><td>Vozačka dozvola</td><td>nije kod tebe — lakša · istekla do šest meseci — raspon, 2 poena · preko šest meseci — raspon, 5 poena</td><td><b>nemaš je za tu kategoriju</b> — najteža, 14 poena</td></tr>
+<tr><td>Registracija</td><td>istekla <b>nalepnica</b> — raspon, 2 poena, bez zabrane</td><td>vozilo <b>nije u registru</b> — raspon, 6 poena, sa zabranom</td></tr>
+<tr><td>Crveno svetlo</td><td>prođeš na crveno — raspon, 6 poena</td><td>na crveno, a <b>pešak je na prelazu</b> — najteža, 14 poena · dvaput na crveno u kratkom roku — nasilnička</td></tr>
+</table>
+<p class="mut">Pamtilica: teža strana je ona u kojoj je <b>nečiji život neposredno ugrožen</b> — pešak na prelazu, povređeni u nezgodi, zaustavljeni na zaustavnoj traci, ti sam kao nevidljivo vozilo u mraku — ili ona u kojoj <b>uopšte nemaš pravo</b> da voziš to vozilo. Jedini red koji ne ide po tom ključu je Registracija: tamo je teža strana vozilo koje uopšte <b>nije u registru</b> — van svake evidencije i kontrole.</p>
+<p><b>Jedno pitanje ne pita kaznu nego odgovornost.</b> Kad vozač koji je učinio prekršaj nije identifikovan, vlasnik vozila <b>odgovoran je što je omogućio</b> da se njegovim vozilom učini prekršaj. Nije tačno ni „odgovoran je za prekršaj koji je tim vozilom učinjen“ ni „nije odgovoran“ — odgovara za propust nadzora nad svojim vozilom, ne za sam prekršaj. Blizanačko pitanje, koje pita kaznu za to isto, ide po opštem pravilu: raspon.</p>
+</div>
+`,
 };
 BYSUB[182] = 'kaznene-klase';
 
@@ -4199,7 +6197,7 @@ CARDS['slicni-pojmovi'] = {
   </div>
   <div class="signCell">
     <svg viewBox="0 0 110 100"><rect x="25" y="0" width="60" height="100" fill="#9aa7b4"/><line x1="55" y1="0" x2="55" y2="100" stroke="#fff" stroke-dasharray="8 7" stroke-width="2"/>
-      ${carG(70, 46, '#5f6d7a')}<text x="70" y="51" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold">P</text>
+      ${carG(70, 46, '#5f6d7a')}<text x="70" y="52" text-anchor="middle" font-size="16" fill="#fff" font-weight="bold">P</text>
       ${carG(40, 80, '#2c6aa0')}<path d="M40 60 L40 46 Q40 28 55 26 Q70 24 70 12" stroke="#2c6aa0" stroke-width="3.5" fill="none" stroke-dasharray="6 5" stroke-linecap="round"/>${arr(70, 20, 70, 8, '#2c6aa0')}</svg>
     <b>OBILAŽENJE</b><span>NE POMERA SE (vozilo, objekat, prepreka)</span>
   </div>
@@ -4557,7 +6555,9 @@ function toCyr(s) {
   s = s.replace(/\b(?:STOP|BUS|TWI)\b/g, (m) => { KEEP.push(m); return '\u0001' + (KEEP.length - 1) + '\u0001'; });
   // zaštiti SI oznake i HTML tagove
   const guards = [];
-  let t = s.replace(/<[^>]+>|file:\/\/|localhost|Clear browsing data|mg\/ml|km\/h|kW|cm³|\bkg\b|\bAM\b|\bA1\b|\bA2\b|\bB\b|(\d[,.]?\d*\s?)m\b/g, (m0) => {
+  // KOMENTAR IDE PRVI: /<[^>]+>/ staje na prvom „>", pa komentar koji u sebi ima strelicu
+  // „->" ostane polurazbijen i njegov rep ode u transliteraciju (odatle „виеwБоx" u izlazu).
+  let t = s.replace(/<!--[\s\S]*?-->|<[^>]+>|file:\/\/|localhost|Clear browsing data|mg\/ml|km\/h|kW|cm³|\bkg\b|\bAM\b|\bA1\b|\bA2\b|\bB\b|(\d[,.]?\d*\s?)m\b/g, (m0) => {
     guards.push(m0); return ` ${guards.length - 1} `;
   });
   t = t.replace(/DŽ|dž|Dž|LJ|lj|Lj|NJ|nj|Nj|[a-zA-ZčćđšžČĆĐŠŽ]/g, (ch) => MAP[ch] ?? ch);
@@ -4587,8 +6587,6 @@ const PO_TEMAMA = {
   'preticanje': 900,
   'znakovi-naredbi': 800,
   'skretanje': 350,
-  // razno-pravila: NAMERNO nije na spisku — devet odeljaka od 0,2 do 2,2 KB, deljenje
-  // na teme bi tu bilo cepanje radi cepanja (uz pitanje se ionako vidi samo jedan odeljak)
   'vozac-zdravlje-alkohol': 700,
   'put-pojmovi': 350,
   'vozilo-tehnika': 350,
@@ -4601,6 +6599,10 @@ const PO_TEMAMA = {
   'semafori': 700,
   'znakovi-porodice': 700,
   'kretanje-po-putu': 400,
+  'razno-pravila': 350,      // devet odeljaka po podoblasti; teme se seku UNUTAR odeljka
+  'zamke-odgovori': 400,
+  'pruga': 400,
+  'autoput': 400,
 };
 // blokovi najvišeg nivoa (isti parser kao u deobi džin-kartice)
 function blokovi(html) {
@@ -4654,11 +6656,16 @@ function poTemama(html, prag, imaUvod) {
   }
   return out;
 }
-// kartica sa .kSek odeljcima: podoblast bira odeljak, pa se teme seku UNUTAR odeljka
+// Kartica sa .kSek odeljcima: podoblast bira odeljak, pa se teme seku UNUTAR odeljka.
+// Kartica sme da bude MEŠOVITA (odeljci + slobodni pasusi između njih) — dovoljno je da postoji
+// jedan odeljak. Ranije se tražilo da su SVI blokovi odeljci, pa je „razno-pravila" (4 odeljka,
+// pa slobodan pasus, pa još 5) išla celim putem: slobodan naslov je progutao pet odeljaka iza
+// sebe i sakrio ih iza dugmeta „Osnovna načela" — dugmeta koje laže šta nosi.
 function poTemamaKartica(html, prag) {
   const b = blokovi(html);
-  if (b && b.length > 1 && b.every((x) => x.startsWith('<div class="kSek"'))) {
+  if (b && b.some((x) => x.startsWith('<div class="kSek"'))) {
     return b.map((x) => {
+      if (!x.startsWith('<div class="kSek"')) return x;      // blok van odeljka se ne dira
       const i = x.indexOf('>') + 1;
       const kr = x.lastIndexOf('</div>');
       return x.slice(0, i) + '\n' + poTemama(x.slice(i, kr), prag, false) + '</div>';
@@ -4672,7 +6679,10 @@ for (const [k, prag] of Object.entries(PO_TEMAMA)) {
   if (!(CARDS[k].html.split('<div class="kPodH">').length - 1)) console.log('⚠ po temama: kartica', k, 'nije podeljena');
 }
 
-for (const c of Object.values(CARDS)) c.html = capCells(c.html);
+// Komentari u karticama su beleške za pisca (koji broj pitanja potpire koju tvrdnju) — u
+// izvorniku ostaju i tamo služe, ali u isporučenu karticu ne idu: nevidljivi su, a nose bajtove
+// u oba pisma.
+for (const c of Object.values(CARDS)) c.html = capCells(c.html).replace(/<!--[\s\S]*?-->\s*/g, '');
 
 // --- Pitanja koja NE dobijaju karticu svoje podoblasti (revizija 04.09.2026) ---
 // Zvanične podoblasti su spojevi tema; kartica koja odgovara podoblasti često ne odgovara
