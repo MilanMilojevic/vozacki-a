@@ -2186,6 +2186,7 @@
     k.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
     k.removeAttribute('tabindex'); k.removeAttribute('role');
     k.style.color = getComputedStyle(svg).color;
+    k.style.fontFamily = getComputedStyle(svg).fontFamily;
     const vb = (svg.getAttribute('viewBox') || '').trim().split(/\s+/).map(Number);
     if (vb.length === 4 && vb[2] > 0) { k.setAttribute('width', vb[2]); k.setAttribute('height', vb[3]); }
     return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(new XMLSerializer().serializeToString(k));
@@ -4546,6 +4547,7 @@
     if (document.getElementById('imgZoom')) return;   // jedno uvećanje, ne gomila njih jedno preko drugog
     const vracaFokus = document.activeElement;
     const dijalog = document.createElement('div');
+    dijalog.className = 'imgZoomDialog';
     dijalog.setAttribute('role', 'dialog');
     dijalog.setAttribute('aria-modal', 'true');
     dijalog.setAttribute('aria-label', crtez ? L('uvecajCrtez') : L('uvecajSliku'));
@@ -4569,6 +4571,7 @@
       document.removeEventListener('keydown', naEscape);
       document.removeEventListener('focusin', zadrziFokus);
       window.removeEventListener('hashchange', zatvori);
+      window.removeEventListener('resize', osveziVelicinu);
       zatvoriUvecanjeBezbedno = null;
       if (vracaFokus && vracaFokus.focus) vracaFokus.focus({ preventScroll: true });
     };
@@ -4591,6 +4594,24 @@
     const bBlize = document.createElement('button'); bBlize.type = 'button';
     dole.appendChild(bBlize);
 
+    const izvorEl = crtez || (meta && (meta.tagName === 'IMG' ? meta : meta.querySelector('img.qImg')));
+    const r0 = izvorEl ? izvorEl.getBoundingClientRect() : { width: 0, height: 1 };
+    const vb = crtez && crtez.viewBox.baseVal;
+    const odnos = vb && vb.width > 0 && vb.height > 0 ? vb.width / vb.height
+      : izvorEl && izvorEl.naturalHeight ? izvorEl.naturalWidth / izvorEl.naturalHeight : r0.width / r0.height || 1;
+    const osveziVelicinu = () => {
+      const zs = getComputedStyle(z), ims = getComputedStyle(im);
+      const px = (s, k) => parseFloat(s[k]) || 0;
+      const ix = px(ims, 'paddingLeft') + px(ims, 'paddingRight') + px(ims, 'borderLeftWidth') + px(ims, 'borderRightWidth');
+      const iy = px(ims, 'paddingTop') + px(ims, 'paddingBottom') + px(ims, 'borderTopWidth') + px(ims, 'borderBottomWidth');
+      const dw = Math.max(0, z.clientWidth - px(zs, 'paddingLeft') - px(zs, 'paddingRight') - ix);
+      const dh = Math.max(0, z.clientHeight - px(zs, 'paddingTop') - px(zs, 'paddingBottom') - iy);
+      const sirina = Math.min(dw, dh * odnos);
+      // Računa se prostor za samu sliku; SVG podloga ulazi tek u širinu okvira.
+      im.style.setProperty('--zoomFitWidth', (sirina + ix) + 'px');
+      return sirina;
+    };
+
     const osveziAlat = () => {
       const blizu = z.classList.contains('blizu');
       bBlize.textContent = blizu ? '− ' + L('zoomManje') : '+ ' + L('zoomVise');
@@ -4600,6 +4621,7 @@
       const blizu = !z.classList.contains('blizu');
       z.classList.toggle('blizu', blizu);
       osveziAlat();
+      osveziVelicinu();
       // uvećano: kreni od sredine slike, da se ne gleda u ćošak
       if (blizu) { z.scrollLeft = (z.scrollWidth - z.clientWidth) / 2; z.scrollTop = (z.scrollHeight - z.clientHeight) / 2; }
     };
@@ -4608,24 +4630,19 @@
     bBlize.addEventListener('click', (e2) => { e2.stopPropagation(); prebaci(); });
     im.addEventListener('click', (e2) => { e2.stopPropagation(); prebaci(); });   // dodir na sliku = bliže/dalje
     z.addEventListener('click', zatvori);                                        // klik pored slike = zatvori
+    dijalog.addEventListener('click', e2 => { if (e2.target === dijalog) zatvori(); });
     document.addEventListener('keydown', naEscape);
     document.addEventListener('focusin', zadrziFokus);
     window.addEventListener('hashchange', zatvori);
     dijalog.append(z, gore, dole);
     document.body.append(dijalog);
     pozadina.forEach(({ element }) => { element.inert = true; });
+    window.addEventListener('resize', osveziVelicinu);
     // Na telefonu je slika u kartici već skoro preko cele širine, pa bi „koliko god stane" bilo
     // isto što i pre otvaranja — a to je i bila primedba („slika nije veća"). Zato se tu odmah
     // otvara drugi korak; na širokom ekranu prvi korak stvarno uvećava, pa ostaje.
     // Posle append-a: prebaci() računa pomeraj, a on na elementu van strane ne bi radio.
-    {
-      const izvorEl = crtez || (meta && (meta.tagName === 'IMG' ? meta : meta.querySelector('img.qImg')));
-      const r0 = izvorEl ? izvorEl.getBoundingClientRect() : { width: 0, height: 1 };
-      const odnos = r0.height > 0 ? (r0.width / r0.height) : 1;
-      const dw = Math.max(0, window.innerWidth - 36), dh = Math.max(0, window.innerHeight - 36);
-      const stane = Math.min(dw, dh * odnos);
-      if (stane < r0.width * 1.25) prebaci();
-    }
+    if (osveziVelicinu() < r0.width * 1.25) prebaci();
     bZatvori.focus({ preventScroll: true });   // tastatura ulazi u uvećanje, ne ostaje iza njega
   });
 
