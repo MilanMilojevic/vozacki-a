@@ -145,7 +145,7 @@
     tour1: { l: 'Tvoj napredak u brojkama: koliko si odgovorio, koliko je za ponavljanje (danas i kasnije) i koliko si obeležio.', c: 'Твој напредак у бројкама: колико си одговорио, колико је за понављање (данас и касније) и колико си обележио.' },
     tour2: { l: 'Odavde kreće učenje: sva pitanja redom, sa objašnjenjem posle svakog odgovora.', c: 'Одавде креће учење: сва питања редом, са објашњењем после сваког одговора.' },
     tour3: { l: 'Pogrešna pitanja se sama vraćaju: odmah, pa sutradan, pa za tri dana — dok ih ne savladaš.', c: 'Погрешна питања се сама враћају: одмах, па сутрадан, па за три дана — док их не савладаш.' },
-    tour4: { l: 'Simulacija je verna kopija pravog ispita: 41 pitanje, 45 minuta, prag 85%. Ostavi je za kraj pripreme.', c: 'Симулација је верна копија правог испита: 41 питање, 45 минута, праг 85%. Остави је за крај припреме.' },
+    tour4: { l: 'Simulacija ima 41 pitanje, 45 minuta i prag 85%. Ostavi je za kraj pripreme.', c: 'Симулација има 41 питање, 45 минута и праг 85%. Остави је за крај припреме.' },
     tour5: { l: 'Napredak po oblastima je na Statistici: traka za svaku oblast, tačnost i klik do spiska pitanja.', c: 'Напредак по областима је на Статистици: трака за сваку област, тачност и клик до списка питања.' },
     tour6: { l: 'Pojmovnik (jedno dugme, otvara se na klik): tematske kartice sa slikama i tabelama. Iste kartice iskaču i uz pitanja na koja se odnose.', c: 'Појмовник (једно дугме, отвара се на клик): тематске картице са сликама и табелама. Исте картице искачу и уз питања на која се односе.' },
     tour7: { l: 'Podešavanja se otvaraju na klik. Napredak se čuva u ovom pregledaču — odatle ga izvezi u fajl ili poveži stalno čuvanje — uradi to odmah, za svaki slučaj.', c: 'Подешавања се отварају на клик. Напредак се чува у овом прегледачу — одатле га извези у фајл или повежи стално чување — уради то одмах, за сваки случај.' },
@@ -158,22 +158,22 @@
     feedback: { l: 'Prijavi grešku ili predlog', c: 'Пријави грешку или предлог' },
 
     trustBody: { l: `<ul class="trustList">
-      <li><b>Baza je zvanična.</b> Svih 1327 pitanja, odgovora i slika dolazi sa eUprava servisa za kandidate (MUP). Poslednja provera: <b>@1</b> — nula izmena.</li>
-      <li><b>Simulacija je merena, ne "po osećaju".</b> Sastav testa je upoređen sa <b>šest zvaničnih izvlačenja</b> pravog ispita i identičan je do poslednjeg poena (41 pitanje, 98 poena, ista matrica oblasti).</li>
-      <li><b>Objašnjenja su pisana ručno</b>, uz doslovnu proveru ZOBS-a i Pravilnika, sa brojem člana — i nezavisno recenzirana. Tamo gde se ispitna baza razilazi sa važećim zakonom, to otvoreno piše.</li>
-      <li><b>Kôd je javan.</b> Sve što aplikacija radi može da se proveri: <a href="https://github.com/MilanMilojevic/vozacki-a" target="_blank" rel="noopener">github.com/MilanMilojevic/vozacki-a</a>.</li>
-      <li><b>Privatnost:</b> bez naloga, bez reklama; napredak ostaje samo na tvom uređaju. Meri se jedino anoniman broj poseta (bez kolačića; poštuje se „Do Not Track").</li>
+      <li><b>Pitanja su iz zvaničnog izvora.</b> Uvezenih 1327 pitanja, ponuđeni i označeni tačni odgovori i 704 slike potiču sa javnog eUprava servisa za kandidate (MUP). Poslednja provera: <b>@1</b> — bez zabeleženih promena.</li>
+      <li><b>Simulacija prati posmatrani obrazac.</b> U šest posmatranih zvaničnih izvlačenja svaki test je imao 41 pitanje i 98 poena sa istim rasporedom oblasti. Taj uzorak ne garantuje sastav svakog budućeg ispita.</li>
+      <li><b>Objašnjenja i crteži su nezvanični.</b> Svako pitanje trenutno ima objašnjenje; uz neka su navedeni članovi propisa. Sistematska nezavisna revizija je u toku.</li>
+      <li><b>Kod je javan.</b> Sve što aplikacija radi može da se proveri: <a href="https://github.com/MilanMilojevic/vozacki-a" target="_blank" rel="noopener">github.com/MilanMilojevic/vozacki-a</a>.</li>
+      <li><b>Privatnost:</b> bez naloga i reklama. Napredak i ispit u toku ne šalju se serveru. Javna verzija, kada „Do Not Track" nije uključen, koristi <a href="https://www.goatcounter.com/help/privacy" target="_blank" rel="noopener">GoatCounter</a> za statistiku posećenih ruta i tehničke podatke; servis ne upisuje kolačiće ni drugo skladište u pregledaču.</li>
     </ul>`, c: `<ul class="trustList">
-      <li><b>База је званична.</b> Свих 1327 питања, одговора и слика долази са еУправа сервиса за кандидате (МУП). Последња провера: <b>@1</b> — нула измена.</li>
-      <li><b>Симулација је мерена, не „по осећају".</b> Састав теста је упоређен са <b>шест званичних извлачења</b> правог испита и идентичан је до последњег поена (41 питање, 98 поена, иста матрица области).</li>
-      <li><b>Објашњења су писана ручно</b>, уз дословну проверу ЗОБС-а и Правилника, са бројем члана — и независно рецензирана. Тамо где се испитна база разилази са важећим законом, то отворено пише.</li>
-      <li><b>Кôд је јаван.</b> Све што апликација ради може да се провери: <a href="https://github.com/MilanMilojevic/vozacki-a" target="_blank" rel="noopener">github.com/MilanMilojevic/vozacki-a</a>.</li>
-      <li><b>Приватност:</b> без налога, без реклама; напредак остаје само на твом уређају. Мери се једино анониман број посета (без колачића; поштује се „Do Not Track").</li>
+      <li><b>Питања су из званичног извора.</b> Увезених 1327 питања, понуђени и означени тачни одговори и 704 слике потичу са јавног еУправа сервиса за кандидате (МУП). Последња провера: <b>@1</b> — без забележених промена.</li>
+      <li><b>Симулација прати посматрани образац.</b> У шест посматраних званичних извлачења сваки тест је имао 41 питање и 98 поена са истим распоредом области. Тај узорак не гарантује састав сваког будућег испита.</li>
+      <li><b>Објашњења и цртежи су незванични.</b> Свако питање тренутно има објашњење; уз нека су наведени чланови прописа. Систематска независна ревизија је у току.</li>
+      <li><b>Код је јаван.</b> Све што апликација ради може да се провери: <a href="https://github.com/MilanMilojevic/vozacki-a" target="_blank" rel="noopener">github.com/MilanMilojevic/vozacki-a</a>.</li>
+      <li><b>Приватност:</b> без налога и реклама. Напредак и испит у току не шаљу се серверу. Јавна верзија, када „Do Not Track" није укључен, користи <a href="https://www.goatcounter.com/help/privacy" target="_blank" rel="noopener">GoatCounter</a> за статистику посећених рута и техничке податке; сервис не уписује колачиће ни друго складиште у прегледачу.</li>
     </ul>` },
-    iosHint: { l: '📲 Dodaj vežbaonicu na početni ekran: dugme <b>Deli</b> (kvadrat sa strelicom) → <b>Dodaj na početni ekran</b>. Radi i bez interneta.', c: '📲 Додај вежбаоницу на почетни екран: дугме <b>Дели</b> (квадрат са стрелицом) → <b>Додај на почетни екран</b>. Ради и без интернета.' },
+    iosHint: { l: '📲 Dodaj vežbaonicu na početni ekran: dugme <b>Deli</b> (kvadrat sa strelicom) → <b>Dodaj na početni ekran</b>. Za rad bez interneta najpre otvori aplikaciju i potrebne slike uz vezu.', c: '📲 Додај вежбаоницу на почетни екран: дугме <b>Дели</b> (квадрат са стрелицом) → <b>Додај на почетни екран</b>. За рад без интернета најпре отвори апликацију и потребне слике уз везу.' },
     installBtn: { l: '📲 Instaliraj kao aplikaciju', c: '📲 Инсталирај као апликацију' },
     linkCopied: { l: 'kopirano ✓', c: 'копирано ✓' },
-    offline: { l: 'Bez interneta — vežbanje radi i dalje, sve je sačuvano na uređaju.', c: 'Без интернета — вежбање ради и даље, све је сачувано на уређају.' },
+    offline: { l: 'Bez interneta — nastavi sa dostupnim sadržajem. Nepreuzete slike mogu nedostajati.', c: 'Без интернета — настави са доступним садржајем. Непреузете слике могу недостајати.' },
     streakDani: { l: 'dan učenja zaredom', c: 'дан учења заредом' },
     examDateLabel: { l: 'Datum ispita (za odbrojavanje):', c: 'Датум испита (за одбројавање):' },
     examIn: { l: 'do ispita', c: 'до испита' },
@@ -224,8 +224,8 @@
     resetNapomena: { l: 'Briše sve na ovom uređaju: odgovore, obeležena pitanja, simulacije i dnevni cilj. Ne može da se poništi.', c: 'Брише све на овом уређају: одговоре, обележена питања, симулације и дневни циљ. Не може да се поништи.' },
     podnozjeOpis: { l: 'Besplatna vežbaonica za teorijski ispit, A kategorija. Bez reklama, bez naloga i bez plaćanja.', c: 'Бесплатна вежбаоница за теоријски испит, А категорија. Без реклама, без налога и без плаћања.' },
     podnozjeBaza: { l: 'Zvanična baza eUprave · @1 pitanja · izvučena @2 · poslednja provera @3 · verzija @4', c: 'Званична база еУправе · @1 питања · извучена @2 · последња провера @3 · верзија @4' },
-    podnozjePrivatnost: { l: 'Napredak ostaje na tvom uređaju. Ništa se ne šalje i ništa se ne čuva kod nas.', c: 'Напредак остаје на твом уређају. Ништа се не шаље и ништа се не чува код нас.' },
-    podnozjeKod: { l: 'Kôd na GitHub-u', c: 'Кôд на GitHub-у' },
+    podnozjePrivatnost: { l: 'Napredak se čuva na uređaju. Javna verzija koristi GoatCounter za statistiku poseta. <a href="https://www.goatcounter.com/help/privacy" target="_blank" rel="noopener">Više o privatnosti.</a>', c: 'Напредак се чува на уређају. Јавна верзија користи GoatCounter за статистику посета. <a href="https://www.goatcounter.com/help/privacy" target="_blank" rel="noopener">Више о приватности.</a>' },
+    podnozjeKod: { l: 'Kod na GitHub-u', c: 'Код на GitHub-у' },
     datumLos: { l: 'Datum nije potpun. Unesi ga u obliku dan-mesec-godina, sa punom godinom (npr. 2026).', c: 'Датум није потпун. Унеси га у облику дан-месец-година, са пуном годином (нпр. 2026).' },
     datumOpseg: { l: 'Godina mora biti između @1. i @2. Ako si otkucao samo dve cifre, dopiši punu godinu.', c: 'Година мора бити између @1. и @2. Ако си откуцао само две цифре, допиши пуну годину.' },
     datumProslost: { l: 'Taj datum je prošao. Unesi datum ispita koji tek dolazi, ili obriši polje ako ne želiš odbrojavanje.', c: 'Тај датум је прошао. Унеси датум испита који тек долази, или обриши поље ако не желиш одбројавање.' },
@@ -318,18 +318,18 @@
     installWhatTitle: { l: '📲 Šta dobijam ako je dodam kao aplikaciju?', c: '📲 Шта добијам ако је додам као апликацију?' },
     installWhatBody: {
       l: `<ul>
-        <li><b>Više ekrana za pitanja.</b> Otvara se u svom prozoru, bez adresne trake — na telefonu je to oko desetine ekrana više.</li>
+        <li><b>Više prostora za pitanja.</b> Otvara se u svom prozoru, bez adresne trake.</li>
         <li><b>Svoja ikona.</b> Stoji na početnom ekranu kao svaka druga aplikacija; ne moraš da tražiš karticu u pregledaču.</li>
-        <li><b>Sigurnije radi bez interneta.</b> Pitanja i objašnjenja su već na uređaju, a slike se čuvaju kako ih otvaraš.</li>
+        <li><b>Rad bez interneta.</b> Posle uspešne pripreme dostupni su aplikacija, pitanja i objašnjenja. Slike se čuvaju kada ih otvoriš, pa nepreuzete mogu nedostajati.</li>
         </ul>
-        <p><b>Šta se NE menja:</b> to je i dalje isti sajt — isti napredak, ista pitanja. Ništa se ne preuzima iz prodavnice i ništa se ne upisuje u sistem. Kad god hoćeš, obrišeš ikonu i nisi izgubio ništa.</p>
+        <p><b>Šta se ne menja:</b> to je i dalje veb-aplikacija i ne preuzima se iz prodavnice. Dodavanje ili uklanjanje ikone nije rezervna kopija. Napredak se čuva lokalno; za svaki slučaj sačuvaj kopiju u fajl.</p>
         <p><b>Kako:</b> na Androidu, u pregledaču Chrome → meni ⋮ → „Dodaj na početni ekran". Na iPhone-u, u pregledaču Safari → dugme „Podeli" → „Add to Home Screen".</p>`,
       c: `<ul>
-        <li><b>Више екрана за питања.</b> Отвара се у свом прозору, без адресне траке — на телефону је то око десетине екрана више.</li>
+        <li><b>Више простора за питања.</b> Отвара се у свом прозору, без адресне траке.</li>
         <li><b>Своја икона.</b> Стоји на почетном екрану као свака друга апликација; не мораш да тражиш картицу у прегледачу.</li>
-        <li><b>Сигурније ради без интернета.</b> Питања и објашњења су већ на уређају, а слике се чувају како их отвараш.</li>
+        <li><b>Рад без интернета.</b> После успешне припреме доступни су апликација, питања и објашњења. Слике се чувају када их отвориш, па непреузете могу недостајати.</li>
         </ul>
-        <p><b>Шта се НЕ мења:</b> то је и даље исти сајт — исти напредак, иста питања. Ништа се не преузима из продавнице и ништа се не уписује у систем. Кад год хоћеш, обришеш икону и ниси изгубио ништа.</p>
+        <p><b>Шта се не мења:</b> то је и даље веб-апликација и не преузима се из продавнице. Додавање или уклањање иконе није резервна копија. Напредак се чува локално; за сваки случај сачувај копију у фајл.</p>
         <p><b>Како:</b> на Андроиду, у прегледачу Chrome → мени ⋮ → „Додај на почетни екран". На iPhone-у, у прегледачу Safari → дугме „Подели" → „Add to Home Screen".</p>`,
     },
     planSveOdgovoreno: { l: 'nema više novih', c: 'нема више нових' },
@@ -344,7 +344,7 @@
     skokVanOpsega: { l: 'Ovaj spisak ima @3. Unesi broj od @1 do @2.', c: 'Овај списак има @3. Унеси број од @1 до @2.' },
     planMaxNovih: { l: 'Neodgovorenih je ostalo @2 — više od toga ne može stati u jedan dan.', c: 'Неодговорених је остало @2 — више од тога не може стати у један дан.' },
     officialBase: { l: 'zvanična baza pitanja', c: 'званична база питања' },
-    naIspituTip: { l: 'Koliko pitanja iz ove podoblasti nosi svaki pravi ispit — izmereno iz pet zvaničnih izvlačenja simulacije.', c: 'Колико питања из ове подобласти носи сваки прави испит — измерено из пет званичних извлачења симулације.' },
+    naIspituTip: { l: 'Broj mesta za ovu podoblast u našoj simulaciji, prema šest pregledanih zvaničnih izvlačenja.', c: 'Број места за ову подобласт у нашој симулацији, према шест прегледаних званичних извлачења.' },
     qNumTip2: { l: 'Klik: kopiraj adresu ovog pitanja', c: 'Клик: копирај адресу овог питања' },
     uvecajSliku: { l: 'Uvećaj sliku', c: 'Увећај слику' },
     uvecajCrtez: { l: 'Uvećaj crtež', c: 'Увећај цртеж' },
@@ -363,9 +363,9 @@
       <li><b>Posebne situacije.</b> <i>Pešaci i dvotočkaši</i>, <i>Prelaz preko pruge</i>, <i>Autoput i motoput</i>, <i>Vozila pod pratnjom</i>, <i>Postupak kod nezgode</i>.</li>
       <li><b>Tek onda pitanja.</b> Kreni na <i>Sva pitanja</i> i idi redom — posle svakog odgovora pročitaj objašnjenje, i kad pogrešiš i kad pogodiš.</li>
       <li><b>Pusti aplikaciju da te vodi.</b> U <i>Ponavljanje</i> se sama vraćaju pogrešna pitanja (odmah, pa sutradan, pa za tri dana) — ali i pitanja tačna iz prve, jednom posle tri dana: jedan pogodak još nije zapamćeno.</li>
-      <li><b>Simulacije na kraju.</b> Kad se u Statistici procena približi pragu (80 i više od 98 poena), radi <i>Simulaciju ispita</i> — 41 pitanje, 45 minuta, kao pravi ispit. Posle svake pregledaj greške.</li>
+      <li><b>Simulacije na kraju.</b> Kad se u Statistici procena približi pragu (80 i više od 98 poena), radi <i>Simulaciju ispita</i> — 41 pitanje i 45 minuta po obrascu izvedenom iz šest posmatranih zvaničnih izvlačenja. Posle svake pregledaj greške.</li>
     </ol>
-    <p class="mut">Kaznene mere uči poslednje i bez učenja iznosa napamet — u zvaničnom ispitu za A kategoriju te oblasti nema.</p>`,
+    <p class="mut">Kaznene mere uči poslednje i bez učenja iznosa napamet. U šest posmatranih zvaničnih izvlačenja pitanja iz te oblasti nije bilo, ali taj uzorak nije garancija za svaki budući ispit.</p>`,
       c: `<ol class="guideList">
       <li><b>Прво појмови, па правила.</b> У Појмовнику прочитај редом: <i>Слични појмови</i> (шта је претицање а шта обилажење, одстојање наспрам растојања), <i>Пут, коловоз, траке</i> и <i>Категорије возила</i>. Без тих речи остало градиво звучи као страни језик.</li>
       <li><b>Ко иде први.</b> Картице <i>Првенство пролаза</i>, <i>Семафори</i> и <i>Породице саобраћајних знакова</i> — то је срце испита и највише питања.</li>
@@ -373,9 +373,9 @@
       <li><b>Посебне ситуације.</b> <i>Пешаци и двоточкаши</i>, <i>Прелаз преко пруге</i>, <i>Аутопут и мотопут</i>, <i>Возила под пратњом</i>, <i>Поступак код незгоде</i>.</li>
       <li><b>Тек онда питања.</b> Крени на <i>Сва питања</i> и иди редом — после сваког одговора прочитај објашњење, и кад погрешиш и кад погодиш.</li>
       <li><b>Пусти апликацију да те води.</b> У <i>Понављање</i> се сама враћају погрешна питања (одмах, па сутрадан, па за три дана) — али и питања тачна из прве, једном после три дана: један погодак још није запамћено.</li>
-      <li><b>Симулације на крају.</b> Кад се у Статистици процена приближи прагу (80 и више од 98 поена), ради <i>Симулацију испита</i> — 41 питање, 45 минута, као прави испит. После сваке прегледај грешке.</li>
+      <li><b>Симулације на крају.</b> Кад се у Статистици процена приближи прагу (80 и више од 98 поена), ради <i>Симулацију испита</i> — 41 питање и 45 минута по обрасцу изведеном из шест посматраних званичних извлачења. После сваке прегледај грешке.</li>
     </ol>
-    <p class="mut">Казнене мере учи последње и без учења износа напамет — у званичном испиту за А категорију те области нема.` },
+    <p class="mut">Казнене мере учи последње и без учења износа напамет. У шест посматраних званичних извлачења питања из те области није било, али тај узорак није гаранција за сваки будући испит.</p>` },
     updNote: { l: 'Stigla je nova verzija aplikacije.', c: 'Стигла је нова верзија апликације.' },
     updBtn: { l: 'Osveži', c: 'Освежи' },
     updRepoTitle: { l: 'Postoji novija verzija aplikacije', c: 'Постоји новија верзија апликације' },
@@ -393,7 +393,7 @@
     import: { l: 'Učitaj napredak', c: 'Учитај напредак' },
     reset: { l: 'Obriši sav napredak', c: 'Обриши сав напредак' },
     resetConfirm: { l: 'Sigurno obrisati SAV napredak?', c: 'Сигурно обрисати САВ напредак?' },
-    persistNote: { l: 'Napredak preživljava restart browsera i računara; briše ga samo „brisanje podataka pregledanja". Za svaki slučaj poveži fajl za automatski upis.', c: 'Напредак преживљава рестарт браузера и рачунара; брише га само „брисање података прегледања". За сваки случај повежи фајл за аутоматски упис.' },
+    persistNote: { l: 'Napredak se čuva u ovom pregledaču. Brisanje podataka sajta ili profila i zatvaranje privatnog prozora mogu ga ukloniti. Sačuvaj kopiju u fajl.', c: 'Напредак се чува у овом прегледачу. Брисање података сајта или профила и затварање приватног прозора могу га уклонити. Сачувај копију у фајл.' },
     backupConnect: { l: '🔗 Poveži fajl za automatsko čuvanje', c: '🔗 Повежи фајл за аутоматско чување' },
     backupResume: { l: 'Nastavi automatsko čuvanje u fajl', c: 'Настави аутоматско чување у фајл' },
     backupCeka: { l: 'Fajl je povezan; najnovija promena čeka upis u', c: 'Фајл је повезан; најновија промена чека упис у' },
@@ -1564,11 +1564,10 @@
   let runSeq = 0;              // raste sa svakim novim prolazom kroz pitanja
   let najveciRunSeq = 0;       // novi prolaz ne sme ponovo dobiti id vraćen iz istorije
   let lastRecordKey = null;    // "prolaz|pozicija" poslednjeg zabeleženog odgovora
-  // Koliko pitanja podoblast nosi na PRAVOM ispitu — izmereno iz pet zvaničnih izvlačenja
-  // (fiksne vrednosti su bile identične u svih pet; "0–1" se smenjuju za slobodne slotove).
-  // Koliko pitanja podoblast nosi na ispitu — IZVEDENO iz zvaničnog šablona (tezinaPodoblasti /
-  // SIM_SLOTS), ne prepisano rukom: ručna tabela se već bila razišla sa šablonom (143 je pisalo
-  // „1" a nosi trećinu; 147 i 155 su pisale „0–1" a u šablonu ih nema). Leže se računa pri prvom
+  // Broj mesta koji podoblast dobija u našoj simulaciji izveden je iz šest posmatranih
+  // zvaničnih izvlačenja; uzorak nije garancija svakog budućeg ispita. Vrednost se računa iz
+  // tezinaPodoblasti / SIM_SLOTS, ne prepisuje ručno: tabela se već bila razišla sa šablonom (143 je pisalo
+  // „1" a nosi trećinu; 147 i 155 su pisale „0–1" a u šablonu ih nema). Računa se pri prvom
   // pozivu jer SIM_SLOTS stoji niže u fajlu.
   let _naIspitu = null;
   function naIspitu(sid) {
