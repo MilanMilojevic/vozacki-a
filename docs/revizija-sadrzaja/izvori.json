@@ -81,6 +81,15 @@
       "checkedOn": "2026-09-10",
       "revision": "Službeni glasnik RS 76/2026-30 od 21.08.2026; stupanje 29.08.2026 izračunato po čl. 50. Čl. 49 daje tri godine za usklađivanje postojeće signalizacije, ne odlaže stupanje propisa. Tri ciljane definicije nisu menjane; druge povezane odredbe jesu menjane.",
       "contentHash": "a8b10736064baca61cca9277b8f30dc957ff74ab0b45a646318f6d24c2741c7f"
+    },
+    {
+      "id": "zobs-cl106-cl110-mgsi-76-2023",
+      "url": "https://www.mgsi.gov.rs/sites/default/files/zakon_o_bezbednosti_saobracaja_na_putevima.pdf",
+      "title": "Zakon o bezbednosti saobraćaja na putevima — tekst na sajtu MGSI",
+      "article": "Puni članovi 106–110, PDF strane 51–54: vozila pod pratnjom i sa prvenstvom prolaza; svetla bez sirene, dozvoljena vozila i upotreba uređaja, postupanje drugih vozača i posebna zaustavljanja uz policijsko vozilo",
+      "checkedOn": "2026-09-10",
+      "revision": "Tekst zaključno sa Službenim glasnikom RS 76/2023; pročitan ceo Zakon o izmenama i dopunama 19/2025 (devet članova, obe strane), koji ne menja članove 106–110 osnovnog zakona",
+      "contentHash": "f0ba25df5eda00ef7172f6421a26c2dc4a543e7de96e23a97de0fa7fa0975aeb"
     }
   ]
 }
