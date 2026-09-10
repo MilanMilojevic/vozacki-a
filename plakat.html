@@ -22,7 +22,10 @@
     display: grid; grid-template-columns: 1fr 1fr; gap: 3mm 8mm; font-size: 12pt; }
   ul.lista li::before { content: "✓"; color: #1e7a46; font-weight: 700; margin-right: 6px; }
   .dno { margin-top: auto; padding-top: 8mm; border-top: 2px solid #d8e2ec; font-size: 11pt; color: #5a6b7c; }
-  @media print { body { background: #fff; } .plakat { box-shadow: none; } }
+  @media print {
+    body { background: #fff; display: block; min-height: 0; }
+    .plakat { box-shadow: none; width: 100%; min-height: 0; padding: 10mm 12mm; }
+  }
 </style>
 </head>
 <body>
