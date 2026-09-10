@@ -192,6 +192,12 @@ npx --yes --package @playwright/cli playwright-cli -s=provera-cilja close
 Поређује сачувани план, живо стање, квоте, контроле и текстове пре/после reload-а.
 Склапање подешавања остаје намерно по сесији; није услов да остану отворена после reload-а.
 
+За тастатуру, увећање слика/цртежа и копирање броја питања исти CLI поступак
+покреће `tools/tests/keyboard.browser.js`. Провера такође ствара нови контекст.
+Дијалог прати [W3C образац](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/):
+фокус унутра, Tab/Shift+Tab, Escape, неактивна позадина и повратак фокуса.
+Ово је провера тих токова, а не потврда пуне WCAG усаглашености или читача екрана.
+
 ```bash
 node -e "new Function(require('fs').readFileSync('app.js','utf8'))"   # синтакса
 cd tools && node build-explanations.mjs                               # билд + скенер писма

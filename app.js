@@ -1036,7 +1036,7 @@
       ? ` &nbsp;·&nbsp; <span class="qOk">${S.q[q.id].a - S.q[q.id].w}× ${L('tacnoLbl')}</span> · <span class="${S.q[q.id].w ? 'qBad' : 'mut'}">${S.q[q.id].w}× ${L('netacnoLbl')}</span> · ${relTime(S.q[q.id].last)}`
       : '';
     meta.innerHTML = `<span><button type="button" class="bcLink" data-bc="c${q.cat}">${escapeHtml(catOf(q))}</button> › <button type="button" class="bcLink" data-bc="s${q.sub}" title="${escapeHtml(subOf(q))}">${escapeHtml(subShortName(q.sub))}</button></span>
-      <span><span class="qNum" data-qid="${q.id}" title="${escapeHtml(FILE_MODE ? L('qNumTip') : L('qNumTip2'))}">#${q.id}</span> · ${poeni(q.pts)}${hist}</span>`;
+      <span><span class="qNum" data-qid="${q.id}" ${FILE_MODE ? '' : 'role="button" tabindex="0"'} title="${escapeHtml(FILE_MODE ? L('qNumTip') : L('qNumTip2'))}">#${q.id}</span> · ${poeni(q.pts)}${hist}</span>`;
     meta.querySelectorAll('.bcLink').forEach((b) => b.addEventListener('click', () => browse(b.dataset.bc)));
     c.appendChild(meta);
 
@@ -3607,6 +3607,8 @@
   // menjalo osim pozadine), pa onda pravo uvećanje 2× uz pomeranje prstom ili mišem.
   document.addEventListener('keydown', (ev) => {
     if (ev.key !== 'Enter' && ev.key !== ' ') return;
+    const qn = ev.target && ev.target.closest && ev.target.closest('.qNum[role="button"]');
+    if (qn) { ev.preventDefault(); qn.click(); return; }
     const s = ev.target && ev.target.closest && ev.target.closest('svg[data-zum]');
     if (!s) return;
     ev.preventDefault();
@@ -3630,6 +3632,12 @@
     }
     if (document.getElementById('imgZoom')) return;   // jedno uvećanje, ne gomila njih jedno preko drugog
     const vracaFokus = document.activeElement;
+    const dijalog = document.createElement('div');
+    dijalog.setAttribute('role', 'dialog');
+    dijalog.setAttribute('aria-modal', 'true');
+    dijalog.setAttribute('aria-label', crtez ? L('uvecajCrtez') : L('uvecajSliku'));
+    // Sačuvaj prethodno inert stanje: zatvaranje ne sme da otključa drugi prikaz.
+    const pozadina = [...document.body.children].map((element) => ({ element, inert: element.inert }));
     const z = document.createElement('div');
     z.id = 'imgZoom';
     const im = document.createElement('img');
@@ -3643,12 +3651,21 @@
     // Na telefonu je dugme Nazad prirodan potez za zatvaranje punog ekrana. Bez ovoga
     // ono promeni prikaz ispod, a uvećanje ostane da visi preko novog ekrana.
     const zatvori = () => {
-      z.remove(); gore.remove(); dole.remove();
+      dijalog.remove();
+      pozadina.forEach(({ element, inert }) => { element.inert = inert; });
       document.removeEventListener('keydown', naEscape);
+      document.removeEventListener('focusin', zadrziFokus);
       window.removeEventListener('hashchange', zatvori);
       if (vracaFokus && vracaFokus.focus) vracaFokus.focus({ preventScroll: true });
     };
-    const naEscape = (e2) => { if (e2.key === 'Escape') { e2.preventDefault(); zatvori(); } };
+    const zadrziFokus = (e2) => { if (!dijalog.contains(e2.target)) bZatvori.focus({ preventScroll: true }); };
+    const naEscape = (e2) => {
+      if (e2.key === 'Escape') { e2.preventDefault(); zatvori(); }
+      if (e2.key === 'Tab') {
+        e2.preventDefault();
+        (document.activeElement === bZatvori ? bBlize : bZatvori).focus({ preventScroll: true });
+      }
+    };
 
     // ✕ zatvori (gore desno) i +/− uvećanje (dole na sredini) — oba su dugmad, ne veze
     const gore = document.createElement('div'); gore.className = 'zoomAlat gore';
@@ -3677,8 +3694,11 @@
     im.addEventListener('click', (e2) => { e2.stopPropagation(); prebaci(); });   // dodir na sliku = bliže/dalje
     z.addEventListener('click', zatvori);                                        // klik pored slike = zatvori
     document.addEventListener('keydown', naEscape);
+    document.addEventListener('focusin', zadrziFokus);
     window.addEventListener('hashchange', zatvori);
-    document.body.append(z, gore, dole);
+    dijalog.append(z, gore, dole);
+    document.body.append(dijalog);
+    pozadina.forEach(({ element }) => { element.inert = true; });
     // Na telefonu je slika u kartici već skoro preko cele širine, pa bi „koliko god stane" bilo
     // isto što i pre otvaranja — a to je i bila primedba („slika nije veća"). Zato se tu odmah
     // otvara drugi korak; na širokom ekranu prvi korak stvarno uvećava, pa ostaje.
@@ -3696,8 +3716,11 @@
 
   // Prečice: ← → kretanje, 1–9 izbor odgovora, Enter potvrda/sledeće
   document.addEventListener('keydown', (e) => {
-    if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
+    if (e.defaultPrevented || document.getElementById('imgZoom')) return;
+    if (e.target && (e.target.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT'].includes(e.target.tagName))) return;
     if (e.ctrlKey || e.altKey || e.metaKey) return;
+    // Enter pripada fokusiranom dugmetu/linku (npr. Spisak), ne potvrdi odgovora.
+    if (e.key === 'Enter' && e.target.closest && e.target.closest('button, a[href], summary, [role="button"]')) return;
     const qv = el('view-question').classList.contains('active');
     const sv = el('view-sim').classList.contains('active');
     if (!qv && !sv) return;
