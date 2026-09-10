@@ -3,10 +3,11 @@
 // Novo izdanje preuzima jezgro PRE aktivacije. Javni HTML dolazi iz spremnog
 // izdanja; localhost ostaje network-first zbog razvoja bez stalnog menjanja verzije.
 // Slike pitanja se preuzimaju tek kad se vide.
-self.importScripts('./version.js');
+self.importScripts('./version.js', './image-baseline.js');
 
 const CORE = 'va-core-v' + (self.APP_V || 0);
-const IMG = 'va-img-1';
+const IMG_LEGACY = 'va-img-1';
+const IMG_HASHED = 'va-img-h1';
 const RAZVOJ = self.location.hostname === 'localhost' || self.location.hostname === '127.0.0.1';
 const CORE_ASSETS = ['style.css', 'version.js', 'data.js', 'explanations.js', 'app.js'];
 const CORE_FILES = [
@@ -14,6 +15,12 @@ const CORE_FILES = [
   ...CORE_ASSETS.map((file) => `./${file}?v=${self.APP_V}`),
 ];
 const NEPOTPUNO_IZDANJE = 'Izdanje još nije potpuno objavljeno; prethodno ostaje aktivno.';
+const IMAGE_BASELINE = self.VA_IMAGE_BASELINE;
+if (!IMAGE_BASELINE || typeof IMAGE_BASELINE !== 'object' || Array.isArray(IMAGE_BASELINE) ||
+    !Object.keys(IMAGE_BASELINE).length || Object.entries(IMAGE_BASELINE).some(([id, hash]) =>
+      !/^[1-9]\d*$/.test(id) || typeof hash !== 'string' || !/^[a-f0-9]{64}$/.test(hash))) {
+  throw Error('Neispravna ili nedostupna osnovna mapa slika.');
+}
 
 async function proveriJezgro(c) {
   const odgovori = await Promise.all(CORE_FILES.map((file) => c.match(new URL(file, self.location.href).href)));
@@ -43,6 +50,30 @@ async function proveriJezgro(c) {
 async function upisiUKesAkoMoze(c, req, res) {
   if (!res.ok) return;
   try { await c.put(req, res.clone()); } catch (err) { /* mrežni odgovor i dalje vredi */ }
+}
+
+async function hashOdgovora(res) {
+  try {
+    const bytes = await res.clone().arrayBuffer();
+    const hash = await crypto.subtle.digest('SHA-256', bytes);
+    return [...new Uint8Array(hash)].map(byte => byte.toString(16).padStart(2, '0')).join('');
+  } catch (err) { return null; }
+}
+
+async function odgovaraHashu(res, expected) {
+  return !!res?.ok && await hashOdgovora(res) === expected;
+}
+
+async function mrežnaSlika(req, expected, cache) {
+  try {
+    const networkRequest = req instanceof Request ? new Request(req, { cache: 'reload' }) : new Request(req.url, { cache: 'reload' });
+    const res = await fetch(networkRequest);
+    if (!await odgovaraHashu(res, expected)) return new Response('', { status: 504 });
+    await upisiUKesAkoMoze(cache, req, res);
+    return res;
+  } catch (err) {
+    return new Response('', { status: 504 });
+  }
 }
 
 self.addEventListener('install', (e) => {
@@ -98,19 +129,43 @@ self.addEventListener('fetch', (e) => {
     return;
   }
 
-  // slike pitanja: keš prvi (ne menjaju se), mreža kao dopuna
-  if (url.pathname.includes('/img/')) {
+  // Slike pitanja koriste adresu sa hashom sadržaja. Stari dokumenti i dalje
+  // traže gole URL-ove; njih serviramo samo kada bajtovi odgovaraju zamrznutoj
+  // mapi iz prvog izdanja ove migracije.
+  const imageRoot = new URL('./img/', self.location.href);
+  if (url.pathname.startsWith(imageRoot.pathname)) {
     e.respondWith((async () => {
-      const c = await caches.open(IMG);
-      const hit = await c.match(req);
-      if (hit) return hit;
-      try {
-        const res = await fetch(req);
-        await upisiUKesAkoMoze(c, req, res);
-        return res;
-      } catch (err) {
-        return new Response('', { status: 504 });
+      const relative = url.pathname.slice(imageRoot.pathname.length);
+      const match = relative.match(/^([1-9]\d*)\.jpg$/);
+      if (!match) return new Response('', { status: 400 });
+      const id = match[1];
+      const params = [...url.searchParams];
+      const requestedHash = params.length === 1 && params[0][0] === 'h' && /^[a-f0-9]{64}$/.test(params[0][1]) ? params[0][1] : null;
+      if (url.search && !requestedHash) return new Response('', { status: 400 });
+
+      if (requestedHash) {
+        const hashed = await caches.open(IMG_HASHED);
+        const hit = await hashed.match(req);
+        if (await odgovaraHashu(hit, requestedHash)) return hit;
+
+        const legacy = await caches.open(IMG_LEGACY);
+        const legacyRequests = [req, new Request(new URL(`./img/${id}.jpg`, self.location.href))];
+        for (const legacyRequest of legacyRequests) {
+          const legacyHit = await legacy.match(legacyRequest);
+          if (await odgovaraHashu(legacyHit, requestedHash)) {
+            await upisiUKesAkoMoze(hashed, req, legacyHit);
+            return legacyHit;
+          }
+        }
+        return mrežnaSlika(req, requestedHash, hashed);
       }
+
+      const baselineHash = IMAGE_BASELINE[id];
+      if (!baselineHash) return new Response('', { status: 504 });
+      const legacy = await caches.open(IMG_LEGACY);
+      const hit = await legacy.match(req);
+      if (await odgovaraHashu(hit, baselineHash)) return hit;
+      return mrežnaSlika(req, baselineHash, legacy);
     })());
     return;
   }

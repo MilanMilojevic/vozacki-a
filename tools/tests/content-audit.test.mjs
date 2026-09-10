@@ -10,14 +10,31 @@ const hash = text => createHash('sha256').update(text).digest('hex');
 const bilingual = text => ({l:text,c:'Ћирилица '+text});
 function fixture() {
   const q = id => ({id,cat:25,sub:id===1?91:92,pts:1,req:1,img:id===1?1:0,t:bilingual('Question '+id),ch:[{id:id*10,ok:1,t:bilingual('Correct')},{id:id*10+1,ok:0,t:bilingual('Incorrect')}]});
+  const imageOne=hash('image-one');
   return {
     expectedQuestionCount:2,
-    quiz:{generated:'2026-09-10',cats:[{id:25,l:'Category',c:'Област'}],subs:{91:bilingual('Sub 91'),92:bilingual('Sub 92')},questions:[q(1),q(2)]},
+    quiz:{generated:'2026-09-10',cats:[{id:25,l:'Category',c:'Област'}],subs:{91:bilingual('Sub 91'),92:bilingual('Sub 92')},imageHashes:{1:imageOne},questions:[q(1),q(2)]},
     explain:{updated:'2026-09-10',cards:{shared:{t:bilingual('Title'),h:bilingual('<svg><text>Stop</text></svg>')}},byQ:{1:{x:bilingual('Why'),card:'shared',nocard:1},2:{x:bilingual('Other'),nocard:1}},bySub:{},atlas:{},situacije:{},zamke:{}},
-    imageHashes:{'img/1.jpg':hash('image-one')},
+    imageHashes:{'img/1.jpg':imageOne},
     legalSources:[],
   };
 }
+
+for(const [name,change] of [
+  ['missing declared image hashes',f=>{delete f.quiz.imageHashes}],
+  ['missing image hash',f=>{delete f.quiz.imageHashes[1]}],
+  ['extra non-image hash',f=>{f.quiz.imageHashes[2]=hash('unused')}],
+  ['malformed image hash',f=>{f.quiz.imageHashes[1]='bad'}],
+  ['stale image hash',f=>{f.quiz.imageHashes[1]=hash('different')}],
+]) test(name+' is rejected before audit output',()=>{const f=fixture();change(f);assert.throws(()=>createAudit(f),/image hash|data\.js|shape/i);});
+
+test('declared runtime hashes do not become a second semantic dependency',()=>{
+  const f=fixture(),first=createAudit(f),oldQ=first.questions.map(reviewed),oldCards=first.cards.map(reviewed);
+  const again=createAudit({...f,previousQuestions:oldQ,previousCards:oldCards});
+  assert.deepEqual(again.questions.map(r=>r.contentHash),first.questions.map(r=>r.contentHash));
+  assert.deepEqual(again.cards.map(r=>r.contentHash),first.cards.map(r=>r.contentHash));
+  assert.ok([...again.questions,...again.cards].every(r=>r.status==='reviewed'));
+});
 function reviewed(record) {
   const r=structuredClone(record);
   r.status='reviewed';
@@ -51,7 +68,7 @@ for(const [name,change] of [
   ['answer order',f=>f.quiz.questions[0].ch.reverse()],
   ['Cyrillic explanation',f=>f.explain.byQ[1].x.c+=' промена'],
   ['shared SVG',f=>f.explain.cards.shared.h.l='<svg><text>Yield</text></svg>'],
-  ['image bytes',f=>f.imageHashes['img/1.jpg']=hash('image-two')],
+  ['image bytes',f=>{const h=hash('image-two');f.imageHashes['img/1.jpg']=h;f.quiz.imageHashes[1]=h;}],
 ]) test(`${name} change invalidates a reviewed dependent record and preserves its evidence`,()=>{
   const f=fixture(),initial=createAudit(f),old=initial.questions.map(reviewed);
   change(f);
@@ -127,7 +144,7 @@ test('partial legal review requires a registered source before that aspect is ma
 test('unquoted HTML and CSS image resources participate in dependent hashes',()=>{
   for(const html of ['<img src=img/1.jpg>','<div style="background:url(img/1.jpg)"></div>']) {
     const f=fixture(); f.explain.cards.shared.h.l=html; f.explain.byQ[2].card='shared';
-    const a=createAudit(f); f.imageHashes['img/1.jpg']=hash('replacement');
+    const a=createAudit(f); const replacement=hash('replacement'); f.imageHashes['img/1.jpg']=replacement; f.quiz.imageHashes[1]=replacement;
     assert.notEqual(createAudit(f).questions[1].contentHash,a.questions[1].contentHash);
   }
 });
@@ -185,4 +202,16 @@ test('actual public bank covers exactly all 1327 IDs and both-script card depend
   assert.equal(audit.cards.length,39);
   assert.ok(audit.questions.every(r=>r.status==='unreviewed'));
   assert.deepEqual(audit.questions.find(r=>r.id===8007).dependencies.cards,['kategorije-vozila']);
+});
+
+test('adding the declared runtime map preserves every existing semantic record and review status',async()=>{
+  const root=path.resolve(import.meta.dirname,'../..'),dir=path.join(root,'docs/revizija-sadrzaja');
+  const parseJsonl=async name=>(await readFile(path.join(dir,name),'utf8')).trim().split(/\r?\n/).map(line=>JSON.parse(line));
+  const previousQuestions=await parseJsonl('pitanja.jsonl'),previousCards=await parseJsonl('kartice.jsonl');
+  const registry=JSON.parse(await readFile(path.join(dir,'izvori.json'),'utf8'));
+  const next=createAudit({...await readPublicSources(root),previousQuestions,previousCards,legalSources:registry.sources});
+  assert.deepEqual(next.questions.map(({id,contentHash,status,checks,review})=>({id,contentHash,status,checks,review})),
+    previousQuestions.map(({id,contentHash,status,checks,review})=>({id,contentHash,status,checks,review})));
+  assert.deepEqual(next.cards.map(({id,contentHash,status,checks,review})=>({id,contentHash,status,checks,review})),
+    previousCards.map(({id,contentHash,status,checks,review})=>({id,contentHash,status,checks,review})));
 });

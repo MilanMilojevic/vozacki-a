@@ -4,9 +4,18 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const core = ['style.css', 'version.js', 'data.js', 'explanations.js', 'app.js'];
+const BASELINE_COUNT = 704;
+const BASELINE_SHA256 = '9566212743a1292021b662a819a6bd82d7373a2a724b34b981bae773569e76d0';
+const digest = value => createHash('sha256').update(value).digest('hex');
+function publicAssignment(source, name, receiver = 'window') {
+  const match = source.match(new RegExp('^(?:\\s*//[^\\r\\n]*\\r?\\n)?\\s*' + receiver + '\\.' + name + '\\s*=\\s*(\\{[\\s\\S]*\\})\\s*;\\s*$'));
+  if (!match) throw Error('Neispravna javna mapa: ' + name);
+  try { return JSON.parse(match[1]); } catch { throw Error('Neispravan JSON u javnoj mapi: ' + name); }
+}
 
 function run(args, label) {
   console.log('\n' + label);
@@ -23,15 +32,31 @@ try {
   if (marked.length !== core.length || core.some(file => !marked.includes(`${file}?v=${version[1]}`))) {
     throw Error('HTML mora učitati svih pet resursa sa tačnim brojem izdanja.');
   }
-  for (const file of [...core, 'index.html', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'sw.js']) {
+  for (const file of [...core, 'index.html', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'sw.js', 'image-baseline.js']) {
     const stat = fs.statSync(path.join(root, file));
     if (!stat.isFile() || !stat.size) throw Error('Nedostaje javni resurs: ' + file);
   }
   JSON.parse(fs.readFileSync(path.join(root, 'manifest.webmanifest'), 'utf8'));
+  const data = publicAssignment(fs.readFileSync(path.join(root, 'data.js'), 'utf8'), 'QUIZ');
+  if (!data.imageHashes || typeof data.imageHashes !== 'object' || Array.isArray(data.imageHashes)) throw Error('Nedostaje tekuća mapa slika.');
+  const imageIds = data.questions.filter(question => question.img === 1).map(question => String(question.id)).sort((a, b) => Number(a) - Number(b));
+  const declaredIds = Object.keys(data.imageHashes).sort((a, b) => Number(a) - Number(b));
+  if (declaredIds.length !== imageIds.length || declaredIds.some((id, index) => id !== imageIds[index])) throw Error('Tekuća mapa slika ne prati pitanja sa slikama.');
+  for (const id of imageIds) {
+    if (!/^[a-f0-9]{64}$/.test(data.imageHashes[id]) || digest(fs.readFileSync(path.join(root, 'img', id + '.jpg'))) !== data.imageHashes[id]) {
+      throw Error('Hash tekuće javne slike nije tačan: ' + id);
+    }
+  }
+  const baselineSource = fs.readFileSync(path.join(root, 'image-baseline.js'), 'utf8');
+  const baseline = publicAssignment(baselineSource, 'VA_IMAGE_BASELINE', 'self');
+  if (digest(JSON.stringify(baseline)) !== BASELINE_SHA256) throw Error('Zamrznuta osnovna mapa slika je izmenjena.');
+  if (Object.keys(baseline).length !== BASELINE_COUNT || Object.entries(baseline).some(([id, hash]) => !/^[1-9]\d*$/.test(id) || !/^[a-f0-9]{64}$/.test(hash))) {
+    throw Error('Zamrznuta osnovna mapa slika nema očekivani sopstveni oblik.');
+  }
   console.log(`Izdanje v${version[1]}: javni resursi i oznake se slažu.`);
 
   // Samo aktivni alati: arhivirane jednokratne zakrpe nisu deo postupka razvoja.
-  const scripts = ['app.js', 'data.js', 'explanations.js', 'version.js', 'sw.js', 'serve.mjs'];
+  const scripts = ['app.js', 'data.js', 'explanations.js', 'version.js', 'sw.js', 'image-baseline.js', 'serve.mjs'];
   for (const directory of ['tools', 'tools/tests', 'tools/fixtures']) {
     for (const entry of fs.readdirSync(path.join(root, directory), { withFileTypes: true })) {
       if (entry.isFile() && /\.(?:mjs|js)$/.test(entry.name)) scripts.push(directory + '/' + entry.name);

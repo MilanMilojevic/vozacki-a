@@ -22,7 +22,7 @@ test('local server exposes only application resources', async (t) => {
   });
   await writeFile(path.join(dir, 'serve.mjs'), await readFile(new URL('../../serve.mjs', import.meta.url)));
   for (const name of ['index.html', 'app.js', 'version.js', 'style.css', 'data.js', 'explanations.js',
-    'sw.js', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'embed.html', 'plakat.html',
+    'sw.js', 'image-baseline.js', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'embed.html', 'plakat.html',
     'robots.txt', 'sitemap.xml']) await writeFile(path.join(dir, name), 'public-' + name);
   await mkdir(path.join(dir, 'img'));
   await writeFile(path.join(dir, 'img', '7921.jpg'), 'public-image');
@@ -59,7 +59,7 @@ test('local server exposes only application resources', async (t) => {
     assert.ok(!res.body.includes('private-fixture'), url + ' must not reveal fixture');
   }
   for (const url of ['/', '/index.html?v=126', '/app.js?v=126', '/version.js?ts=1', '/style.css',
-    '/data.js', '/explanations.js', '/sw.js', '/manifest.webmanifest', '/icon-192.png',
+    '/data.js', '/explanations.js', '/sw.js', '/image-baseline.js', '/manifest.webmanifest', '/icon-192.png',
     '/icon-512.png', '/embed.html', '/plakat.html', '/robots.txt', '/sitemap.xml', '/img/7921.jpg']) {
     assert.equal((await request(url)).status, 200, url + ' must remain usable');
   }

@@ -23,7 +23,7 @@ async (page) => {
         if(JSON.stringify(actual.filter(ch=>ch.ok).map(ch=>ch.id))!==JSON.stringify(correct))throw Error('Official answer IDs changed: '+id);
         if(expected.req!==correct.length||expected.pts!==3)throw Error('Scoring metadata changed: '+id);
         if(await q.locator('img.qImg').count()!==expected.image)throw Error('Question image count mismatch: '+id);
-        if(expected.image){const img=q.locator('img.qImg');await img.evaluate(async el=>{if(!el.complete)await new Promise((resolve,reject)=>{el.onload=resolve;el.onerror=reject;});if(!el.naturalWidth)throw Error('Question image did not load');});if(!((await img.getAttribute('src'))||'').endsWith('/'+id+'.jpg'))throw Error('Wrong question image: '+id);}
+        if(expected.image){const img=q.locator('img.qImg');await img.evaluate(async el=>{if(!el.complete)await new Promise((resolve,reject)=>{el.onload=resolve;el.onerror=reject;});if(!el.naturalWidth)throw Error('Question image did not load');});const expectedSrc=await p.evaluate(id=>`img/${id}.jpg?h=${window.QUIZ.imageHashes[id]}`,id);if(await img.getAttribute('src')!==expectedSrc)throw Error('Wrong question image: '+id);}
         const confirm=q.locator('.qActions .primary');if(!await confirm.isDisabled())throw Error('Fresh question already answered: '+id);
         for(const ch of await q.locator('.choice[data-ok="1"]').all())await ch.click();
         if(await confirm.isDisabled())throw Error('Cannot confirm full correct selection: '+id);await confirm.click();

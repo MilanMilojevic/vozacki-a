@@ -98,7 +98,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.ar
       console.error('Neuspešni ID-jevi: ' + result.failed.join(' '));
       process.exitCode = 1;
     }
-    if (options.refresh && result.downloaded) console.log('Pre objave osveženih slika promenite IMG ključ u sw.js i broj izdanja; stari ključ zadržava stare slike.');
+    if (options.refresh && result.downloaded) console.log('Pre objave osveženih slika ponovo napravite data.js, proverite hash mape i podignite broj izdanja.');
   } catch (error) {
     console.error(error.message);
     process.exitCode = 1;

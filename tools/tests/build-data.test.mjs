@@ -4,6 +4,7 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { spawnSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import vm from 'node:vm';
 import test from 'node:test';
 
@@ -65,14 +66,25 @@ test('script-relative defaults align by official IDs and preserve sorting, choic
   const raw = await readFile(f.out, 'utf8'), context = { window: {} }; vm.runInNewContext(raw, context);
   assert.ok(!raw.includes('synthetic-private-value'));
   const data = JSON.parse(JSON.stringify(context.window.QUIZ));
-  assert.deepEqual(Object.keys(data), ['generated', 'cats', 'subs', 'questions']);
+  assert.deepEqual(Object.keys(data), ['generated', 'cats', 'subs', 'imageHashes', 'questions']);
   assert.equal(data.generated, '2026-09-10'); assert.equal(data.cats.length, 14);
+  assert.deepEqual(data.imageHashes, {7025:createHash('sha256').update(Buffer.from([255,216,255,217])).digest('hex')});
   assert.deepEqual(data.questions.map(q => q.id), [7025, 7026]);
   assert.deepEqual(data.questions[0], { id: 7025, cat: 25, sub: 1025, pts: 2, req: 1, img: 1,
     t: { l: 'Regulisanje', c: 'Регулисање' }, ch: [
       { id: 8025, ok: 1, t: { l: 'Prvi', c: 'Први' } }, { id: 9025, ok: 0, t: { l: 'Drugi', c: 'Други' } }] });
   assert.deepEqual(data.subs['1025'], { l: 'Podoblasti', c: 'Подобласти' });
   assert.equal(f.run().status, 0); assert.equal(await readFile(f.out, 'utf8'), raw, 'explicit date makes identical inputs reproducible');
+});
+
+test('changing image bytes changes only that image fingerprint and preserves all question data', async t => {
+  const f=await fixture(t), first=f.run(); assert.equal(first.status,0,first.stderr);
+  const before={window:{}};vm.runInNewContext(await readFile(f.out,'utf8'),before);
+  await writeFile(path.join(f.images,'7025.jpg'),Buffer.from([255,216,1,255,217]));
+  const second=f.run();assert.equal(second.status,0,second.stderr);
+  const after={window:{}};vm.runInNewContext(await readFile(f.out,'utf8'),after);
+  assert.notEqual(after.window.QUIZ.imageHashes[7025],before.window.QUIZ.imageHashes[7025]);
+  assert.deepEqual(JSON.parse(JSON.stringify(after.window.QUIZ.questions)),JSON.parse(JSON.stringify(before.window.QUIZ.questions)));
 });
 
 test('explicit CLI paths support spaces and default generated is the UTC build date', async t => {

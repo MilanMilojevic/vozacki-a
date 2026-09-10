@@ -15,7 +15,7 @@ const PORT = Number(process.env.PORT) || 8137;
 // u istoj fascikli mogu biti privatni izvozi, sirove baze i Git metapodaci.
 const PUBLIC_FILES = new Set([
   '/index.html', '/app.js', '/style.css', '/data.js', '/explanations.js',
-  '/version.js', '/sw.js', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png',
+  '/version.js', '/sw.js', '/image-baseline.js', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png',
   '/embed.html', '/plakat.html', '/robots.txt', '/sitemap.xml',
 ]);
 

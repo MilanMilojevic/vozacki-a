@@ -2,7 +2,7 @@
 // Putanje bez argumenata su relativne ovoj skripti, nezavisno od radnog direktorijuma.
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { randomUUID } from 'node:crypto';
+import { createHash, randomUUID } from 'node:crypto';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { validateSource } from './harvest.mjs';
 
@@ -86,18 +86,19 @@ export async function createCandidate(lat, cyr, images, date) {
         }),
       };
     });
+  const imageHashes = {};
   for (const q of questions) {
     if (!nonempty(q.t.l) || !nonempty(q.t.c) || q.ch.some(choice => !nonempty(choice.t.l) || !nonempty(choice.t.c))) invalid();
     if (q.img) {
-      // Presence check only; image decoding/content checks belong to the image audit.
-      const image = await fs.stat(path.join(images, `${q.id}.jpg`)).catch(() => null);
-      if (!image?.isFile() || !image.size) throw new BuildError('Nedostaje obavezna slika ili je prazna; izlaz nije zamenjen.');
+      const image = await fs.readFile(path.join(images, `${q.id}.jpg`)).catch(() => null);
+      if (!image?.length) throw new BuildError('Nedostaje obavezna slika ili je prazna; izlaz nije zamenjen.');
+      imageHashes[q.id] = createHash('sha256').update(image).digest('hex');
     }
   }
   const cats = Object.entries(CAT_CYR).map(([id, c]) => ({ id: +id, c, l: translit(c) }));
   // generated is the build date, never a claim that the source was verified that day.
   // Only runtime fields are selected; private harvest metadata is not copied.
-  return { generated: date, cats, subs: subName, questions };
+  return { generated: date, cats, subs: subName, imageHashes, questions };
 }
 
 export async function buildData(options) {

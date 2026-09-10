@@ -58,7 +58,9 @@
       var kand = Q.filter(function (q) { return q.req === 1; });
       var q = kand[Math.floor(Math.random() * kand.length)];
       var c = document.getElementById('sadrzaj');
-      var html = q.img ? '<img class="qi" src="' + OSNOVA + 'img/' + q.id + '.jpg" alt="Слика уз питање">' : '';
+      var imageHash = q.img && window.QUIZ.imageHashes && window.QUIZ.imageHashes[q.id];
+      if (q.img && !/^[a-f0-9]{64}$/.test(imageHash)) throw new Error('Missing public image hash');
+      var html = q.img ? '<img class="qi" src="' + OSNOVA + 'img/' + q.id + '.jpg?h=' + imageHash + '" alt="Слика уз питање">' : '';
       html += '<div class="q">' + q.t.c + '</div>';
       c.innerHTML = html;
       var izbori = q.ch.slice().sort(function () { return Math.random() - 0.5; });

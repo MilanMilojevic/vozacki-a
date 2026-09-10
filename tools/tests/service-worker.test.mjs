@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
+import { createHash, webcrypto } from 'node:crypto';
 
 const code = fs.readFileSync(new URL('../../sw.js', import.meta.url), 'utf8');
 const version = 200;
@@ -11,6 +12,9 @@ const index = n => [
   ...coreAssets.slice(1).map(file => `<script src="${file}?v=${n}"></script>`),
 ].join('');
 const storage = () => ({ bins: new Map() });
+const sha = value => createHash('sha256').update(value).digest('hex');
+const oldImage = 'unchanged-image-bytes';
+const oldImageHash = sha(oldImage);
 
 async function snapshot(store, name) {
   const bin = store.bins.get(name);
@@ -18,8 +22,8 @@ async function snapshot(store, name) {
   return Promise.all([...bin.entries()].sort(([a], [b]) => a.localeCompare(b)).map(async ([url, response]) => [url, await response.clone().text()]));
 }
 
-function worker(host = 'example.test', { store = storage(), appVersion = version } = {}) {
-  const base = `https://${host}/vozacki-a/`;
+function worker(host = 'example.test', { store = storage(), appVersion = version, scopePath = '/vozacki-a/', baseline = {1:oldImageHash} } = {}) {
+  const base = `https://${host}${scopePath}`;
   const { bins } = store;
   const handlers = {};
   let offline = false;
@@ -32,14 +36,19 @@ function worker(host = 'example.test', { store = storage(), appVersion = version
   let putGate = null;
   let rejectPuts = false;
   let fetchCount = 0;
+  const fetches = new Map();
+  const imageBodies = new Map([['img/1.jpg', oldImage]]);
   const key = value => new URL(typeof value === 'string' ? value : value.url, base).href;
   const fetcher = async input => {
     const url = key(input);
     fetchCount++;
+    fetches.set(url, (fetches.get(url) || 0) + 1);
     if (offline || (failFile && url.includes(failFile))) throw Error('synthetic interrupted network');
     if (httpFailure && url.includes(httpFailure.file)) return new Response('synthetic HTTP failure', { status: httpFailure.status });
     if (url.endsWith('/') || url.includes('index.html')) return new Response(remoteIndex ?? index(remoteVersion));
     if (url.includes('version.js')) return new Response(remoteVersionText ?? `self.APP_V = ${remoteVersion};`);
+    const relative = new URL(url).pathname.slice(new URL(base).pathname.length);
+    if (imageBodies.has(relative)) return new Response(imageBodies.get(relative), { headers: {'Content-Type':'image/jpeg'} });
     return new Response(`synthetic ${url}`);
   };
   const caches = {
@@ -69,12 +78,17 @@ function worker(host = 'example.test', { store = storage(), appVersion = version
     APP_V: appVersion,
     location: new URL(base + 'sw.js'),
     registration: { scope: base },
-    importScripts() {},
+    importScripts(...urls) {
+      if (urls.some(url => String(url).includes('image-baseline.js'))) {
+        if (baseline === null) throw Error('synthetic missing image baseline');
+        self.VA_IMAGE_BASELINE = structuredClone(baseline);
+      }
+    },
     skipWaiting() { skipped = true; },
     clients: { async claim() {} },
     addEventListener(type, fn) { handlers[type] = fn; },
   };
-  vm.runInNewContext(code, { self, caches, fetch: fetcher, URL, Request, Response, DOMException, console });
+  vm.runInNewContext(code, { self, caches, fetch: fetcher, URL, Request, Response, DOMException, console, crypto:webcrypto });
   return {
     base,
     bins,
@@ -88,6 +102,9 @@ function worker(host = 'example.test', { store = storage(), appVersion = version
     setRemoteVersionText(value) { remoteVersionText = value; },
     setPutGate(value) { putGate = value; },
     setPutFailure(value) { rejectPuts = value; },
+    setImage(path, value) { imageBodies.set(path, value); },
+    removeImage(path) { imageBodies.delete(path); },
+    fetchesFor(path) { return fetches.get(key(path)) || 0; },
     get fetchCount() { return fetchCount; },
     get skipped() { return skipped; },
     async event(type) {
@@ -217,6 +234,100 @@ test('same-version worker rejects an invalid existing core without overwriting o
   assert.deepEqual(await snapshot(shared, 'va-core-v200'), before);
 });
 
+test('a hash-addressed image is fetched once, verified and reused without downloading unchanged bytes', async () => {
+  const w = worker();
+  const path = `./img/1.jpg?h=${oldImageHash}`;
+  assert.equal(await (await w.request(path)).text(), oldImage);
+  w.setOffline(true);
+  assert.equal(await (await w.request(path)).text(), oldImage);
+  assert.equal(w.fetchesFor(path), 1);
+});
+
+test('a changed image gets a new address while an old open tab retains its verified bytes', async () => {
+  const w = worker();
+  const oldPath = `./img/1.jpg?h=${oldImageHash}`;
+  assert.equal(await (await w.request(oldPath)).text(), oldImage);
+  const changed = 'changed-image-bytes', changedHash = sha(changed);
+  w.setImage('img/1.jpg', changed);
+  assert.equal(await (await w.request(`./img/1.jpg?h=${changedHash}`)).text(), changed);
+  assert.equal(await (await w.request(oldPath)).text(), oldImage);
+});
+
+test('hash mismatch fails closed without poisoning cache and a repaired response can retry', async () => {
+  const w = worker();
+  const expected = sha('future-correct-bytes'), path = `./img/1.jpg?h=${expected}`;
+  w.setImage('img/1.jpg', 'wrong-bytes');
+  assert.equal((await w.request(path)).status, 504);
+  assert.equal(await (await w.caches.open('va-img-h1')).match(path), undefined);
+  w.setImage('img/1.jpg', 'future-correct-bytes');
+  assert.equal(await (await w.request(path)).text(), 'future-correct-bytes');
+});
+
+test('legacy bare image continuity requires immutable baseline bytes from cache or network', async () => {
+  const cached = worker();
+  await (await cached.caches.open('va-img-1')).put('./img/1.jpg', new Response(oldImage));
+  cached.setOffline(true);
+  assert.equal(await (await cached.request('./img/1.jpg')).text(), oldImage);
+
+  const network = worker();
+  assert.equal(await (await network.request('./img/1.jpg')).text(), oldImage);
+  network.setImage('img/1.jpg', 'new-release-image');
+  assert.equal(await (await network.request('./img/1.jpg')).text(), oldImage, 'verified legacy entry remains stable');
+
+  const changedMiss = worker();
+  changedMiss.setImage('img/1.jpg', 'new-release-image');
+  assert.equal((await changedMiss.request('./img/1.jpg')).status, 504);
+});
+
+test('cache eviction refetches and verifies the same hash without relying on release caches', async () => {
+  const w = worker();
+  const path = `./img/1.jpg?h=${oldImageHash}`;
+  assert.equal((await w.request(path)).status, 200);
+  w.bins.delete('va-img-h1');
+  assert.equal((await w.request(path)).status, 200);
+  assert.equal(w.fetchesFor(path), 2);
+});
+
+test('malformed image hashes, extra query parameters and unknown bare legacy images fail closed', async () => {
+  const w = worker();
+  for (const path of ['./img/1.jpg?h=bad', `./img/1.jpg?h=${oldImageHash}&x=1`, './img/2.jpg']) {
+    const before=w.fetchCount;
+    assert.ok([400,504].includes((await w.request(path)).status), path);
+    assert.equal(w.fetchCount,before,path);
+  }
+});
+
+test('legacy cache can promote verified bytes to the stable hash cache', async () => {
+  const w = worker();
+  await (await w.caches.open('va-img-1')).put(`./img/1.jpg?h=${oldImageHash}`, new Response(oldImage));
+  w.setOffline(true);
+  const path=`./img/1.jpg?h=${oldImageHash}`;
+  assert.equal(await (await w.request(path)).text(),oldImage);
+  assert.equal(await (await (await w.caches.open('va-img-h1')).match(path)).text(),oldImage);
+});
+
+test('shared image cache keeps fork scopes isolated by their complete request URLs', async () => {
+  const shared=storage();
+  const a=worker('example.test',{store:shared,scopePath:'/fork-a/'}), b=worker('example.test',{store:shared,scopePath:'/fork-b/'});
+  const path=`./img/1.jpg?h=${oldImageHash}`;
+  assert.equal((await a.request(path)).status,200);
+  assert.equal((await b.request(path)).status,200);
+  a.setOffline(true); b.setOffline(true);
+  assert.equal((await a.request(path)).status,200);
+  assert.equal((await b.request(path)).status,200);
+});
+
+test('missing or malformed imported baseline prevents a worker from starting', () => {
+  assert.throws(()=>worker('example.test',{baseline:null}),/baseline|osnovna mapa/i);
+  for(const baseline of [{}, {1:'bad'}, {bad:oldImageHash}]) assert.throws(()=>worker('example.test',{baseline}),/baseline|osnovna mapa/i);
+});
+
+test('frozen baseline coverage is independent from later hash-addressed image coverage', async () => {
+  const w=worker('example.test',{baseline:{99:sha('historic-only-image')}});
+  assert.equal((await w.request(`./img/1.jpg?h=${oldImageHash}`)).status,200);
+  assert.equal((await w.request('./img/1.jpg')).status,504);
+});
+
 test('runtime response remains pending until its successful cache write finishes', async () => {
   const w = worker();
   await w.event('install');
@@ -224,21 +335,21 @@ test('runtime response remains pending until its successful cache write finishes
   const gate = new Promise(resolve => { release = resolve; });
   w.setPutGate(gate);
   let settled = false;
-  const pending = w.request('./img/synthetic.png').then(response => { settled = true; return response; });
+  const pending = w.request(`./img/1.jpg?h=${oldImageHash}`).then(response => { settled = true; return response; });
   await new Promise(resolve => setImmediate(resolve));
   assert.equal(settled, false);
   release();
   assert.equal((await pending).status, 200);
-  assert.ok(await (await w.caches.open('va-img-1')).match('./img/synthetic.png'));
+  assert.ok(await (await w.caches.open('va-img-h1')).match(`./img/1.jpg?h=${oldImageHash}`));
 });
 
 test('runtime cache quota failure still returns the successful network response', async () => {
   const w = worker();
   await w.event('install');
   w.setPutFailure(true);
-  const response = await w.request('./img/quota.png');
+  const response = await w.request(`./img/1.jpg?h=${oldImageHash}`);
   assert.equal(response.status, 200);
-  assert.equal(await (await w.caches.open('va-img-1')).match('./img/quota.png'), undefined);
+  assert.equal(await (await w.caches.open('va-img-h1')).match(`./img/1.jpg?h=${oldImageHash}`), undefined);
 });
 
 test('cache-busted version checks are network-only and never grow the core cache', async () => {

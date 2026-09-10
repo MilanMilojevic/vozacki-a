@@ -1093,6 +1093,23 @@
   // ---------- Hash rutiranje: strelice browsera napred/nazad + deep-link ----------
   let curHash = null;
   const FILE_MODE = location.protocol === 'file:';
+  function putanjaSlike(id) {
+    const path = `img/${id}.jpg`;
+    if (FILE_MODE) return path;
+    const hash = D.imageHashes && D.imageHashes[id];
+    if (typeof hash !== 'string' || !/^[a-f0-9]{64}$/.test(hash)) throw Error('Nedostaje hash javne slike.');
+    return `${path}?h=${hash}`;
+  }
+  function slikeUHtml(html) {
+    if (FILE_MODE) return html;
+    const withAttributes = html.replace(/\b(src|href)(\s*=\s*)(?:"(img\/([1-9]\d*)\.jpg)"|'(img\/([1-9]\d*)\.jpg)'|(img\/([1-9]\d*)\.jpg))/gi,
+      (_whole, attr, equals, doublePath, doubleId, singlePath, singleId, barePath, bareId) => {
+        const quote = doublePath !== undefined ? '"' : (singlePath !== undefined ? "'" : '');
+        return `${attr}${equals}${quote}${putanjaSlike(doubleId || singleId || bareId)}${quote}`;
+      });
+    return withAttributes.replace(/\burl\(\s*(["']?)(img\/([1-9]\d*)\.jpg)\1\s*\)/gi,
+      (_whole, quote, _path, id) => `url(${quote}${putanjaSlike(id)}${quote})`);
+  }
   // U istoriji su samo adresa, redni broj i poreklo prolaza. Spiskovi, izbori i
   // povratne funkcije žive samo u ovoj kartici; ne ulaze u URL ili zajednički napredak.
   const navPrikazi = new Map();
@@ -1325,7 +1342,7 @@
     const key = h.slice('#/pojmovnik/'.length), card = nadjiKarticu(key);
     if (h.startsWith('#/pojmovnik/') && card) {
       const title = document.createElement('h3'); title.textContent = T(card.t); list.appendChild(title);
-      const body = document.createElement('div'); body.className = 'explCard'; body.innerHTML = T(card.h); list.appendChild(body);
+      const body = document.createElement('div'); body.className = 'explCard'; body.innerHTML = slikeUHtml(T(card.h)); list.appendChild(body);
       oziviSekcije(body); dodajAtlas(body, key); dodajSituacije(body, key); oziviCrteze(body);
     } else {
       if (h.startsWith('#/pojmovnik/')) {
@@ -1469,7 +1486,7 @@
     im.className = 'qImg';
     im.alt = L('imgAlt');
     pratiSliku(im);
-    im.src = 'img/' + q.id + '.jpg';   // src tek POSLE osluškivača, da se greška ne propusti
+    im.src = putanjaSlike(q.id);   // src tek POSLE osluškivača, da se greška ne propusti
     dugme.appendChild(im);
     return dugme;
   }
@@ -2023,7 +2040,7 @@
     }
     for (const k of cardKeys) {
       const c = EX.cards[k];
-      inner += `<div><button class="explCardBtn pojBtn" data-card="${k}">📖 ${escapeHtml(T(c.t))}</button><div class="explCard" style="display:none">${T(c.h)}</div></div>`;
+      inner += `<div><button class="explCardBtn pojBtn" data-card="${k}">📖 ${escapeHtml(T(c.t))}</button><div class="explCard" style="display:none">${slikeUHtml(T(c.h))}</div></div>`;
     }
     box.innerHTML = inner;
     box.querySelectorAll('.explCardBtn').forEach((btn) => {
@@ -2096,7 +2113,7 @@
     const n = kaziIste ? istihZnakova(znacenje) : 1;
     const vid = z + (n > 1 ? ` <span class="mut">(${escapeHtml(L('istoZnacenje').split('@1').join(n))})</span>` : '');
     return `<div class="znCell"><button type="button" class="qImgBtn" aria-label="${escapeHtml(L('uvecajSliku'))}: ${z}">`
-      + `<img class="qImg znImg" loading="lazy" decoding="async" src="img/${id}.jpg" alt=""></button><span>${vid}</span></div>`;
+      + `<img class="qImg znImg" loading="lazy" decoding="async" src="${putanjaSlike(id)}" alt=""></button><span>${vid}</span></div>`;
   }
 
   function dodajAtlas(cd, kljuc) {
@@ -2136,7 +2153,7 @@
           const pit = escapeHtml(T(q.t).replace(/\s+/g, ' ').trim());
           const odg = escapeHtml(T(tacniOdgovori(q)));
           return `<div class="znCell"><button type="button" class="qImgBtn" aria-label="${escapeHtml(L('uvecajSliku'))}: ${pit} ${odg}">`
-            + `<img class="qImg znImg" loading="lazy" decoding="async" src="img/${id}.jpg" alt=""></button>`
+            + `<img class="qImg znImg" loading="lazy" decoding="async" src="${putanjaSlike(id)}" alt=""></button>`
             + `<span><i>${pit}</i> <b>${odg}</b></span></div>`;
         }).join('')
         + '</div>';
@@ -2645,7 +2662,7 @@
           <div class="qText">${escapeHtml(T(q.t))}</div>
           ${q.req > 1 ? `<div class="reqNote">${L('requiresN').replace('#', q.req)}</div>` : ''}
           ${chosen && chosen.size === 0 ? `<div class="noAnsw">${L(fresh ? 'notAnswered' : 'reviewNoChoice')}</div>` : ''}
-          ${q.img ? `<button type="button" class="qImgBtn" aria-label="${escapeHtml(L('uvecajSliku'))}"><img class="qImg" loading="lazy" src="img/${q.id}.jpg" alt="${escapeHtml(L('imgAlt'))}"></button>` : ''}
+          ${q.img ? `<button type="button" class="qImgBtn" aria-label="${escapeHtml(L('uvecajSliku'))}"><img class="qImg" loading="lazy" src="${putanjaSlike(q.id)}" alt="${escapeHtml(L('imgAlt'))}"></button>` : ''}
           ${q.ch.map((ch) => `<div class="choice rev${ch.ok ? ' ok' : (chosen && chosen.has(ch.id) ? ' bad' : '')}">${escapeHtml(T(ch.t))}${chips(ch)}</div>`).join('')}`;
         { const im = card.querySelector('img.qImg'); if (im) pratiSliku(im); }
         const ex = explNode(q);
@@ -3970,7 +3987,7 @@
     fq.style.display = '';
     fq.innerHTML = `<div><button class="explCardBtn pojBtn istaknuto">${L('oVezbaonici')}</button>
       <div class="explCard" style="display:none">${L('trustBody').split('@1').join(fmtDatum(BAZA_PROVERENA))}
-      ${(EX.cards && EX.cards.faq) ? `<h4 class="grupaNaslov">${escapeHtml(T(EX.cards.faq.t))}</h4>${T(EX.cards.faq.h)}` : ''}</div></div>`;
+      ${(EX.cards && EX.cards.faq) ? `<h4 class="grupaNaslov">${escapeHtml(T(EX.cards.faq.t))}</h4>${slikeUHtml(T(EX.cards.faq.h))}` : ''}</div></div>`;
     sklopivo(fq.querySelector('.explCardBtn'));
 
     const gc = el('guideCard');
@@ -4019,7 +4036,7 @@
         cd.innerHTML = html;
         // akordeon: otvaranje jedne kartice sklapa prethodno otvorenu
         cd.querySelectorAll('.explCardBtn').forEach((btn) => sklopivo(btn, cd, null, (c2) => {
-          c2.innerHTML = T(EX.cards[btn.dataset.poj].h);
+          c2.innerHTML = slikeUHtml(T(EX.cards[btn.dataset.poj].h));
           oziviSekcije(c2);
           dodajAtlas(c2, btn.dataset.poj);
           dodajSituacije(c2, btn.dataset.poj);

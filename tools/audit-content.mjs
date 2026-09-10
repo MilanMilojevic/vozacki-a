@@ -72,7 +72,7 @@ function validateSources(legalSources) {
 }
 
 function validateContent(quiz, explain, expectedQuestionCount) {
-  keys(quiz, ['generated', 'cats', 'subs', 'questions'], 'data.js');
+  keys(quiz, ['generated', 'cats', 'subs', 'imageHashes', 'questions'], 'data.js');
   keys(explain, ['updated', 'cards', 'byQ', 'bySub', 'atlas', 'situacije', 'zamke'], 'explanations.js');
   ensure(date(quiz.generated) && date(explain.updated), 'Invalid public generation metadata');
   ensure(Array.isArray(quiz.questions), 'Invalid question coverage');
@@ -93,6 +93,11 @@ function validateContent(quiz, explain, expectedQuestionCount) {
     byId.set(q.id, q);
   }
   ensure(byId.size === expectedQuestionCount, 'Question coverage differs from expected count');
+  ensure(isObject(quiz.imageHashes), 'Missing public image hash map');
+  const expectedImageIds = sortIds([...byId.values()].filter(q => q.img).map(q => String(q.id)));
+  const declaredImageIds = sortIds(Object.keys(quiz.imageHashes));
+  ensure(declaredImageIds.length === expectedImageIds.length && declaredImageIds.every((qid, index) => qid === expectedImageIds[index]), 'Public image hash coverage differs from current questions');
+  for (const imageHash of Object.values(quiz.imageHashes)) ensure(hex(imageHash), 'Invalid public image hash');
   ensure(Array.isArray(quiz.cats) && isObject(quiz.subs), 'Invalid category structure');
   const cats = new Map();
   for (const cat of quiz.cats) {
@@ -184,6 +189,9 @@ export function createAudit({quiz, explain, imageHashes, previousQuestions = [],
   const qIds = sortIds([...byId.keys()]), cardIds = sortIds(Object.keys(explain.cards));
   const oldQ = previousMap(previousQuestions, qIds, 'question'), oldCards = previousMap(previousCards, cardIds, 'card');
   ensure(isObject(imageHashes), 'Missing public image hashes');
+  for (const [qid, declared] of Object.entries(quiz.imageHashes)) {
+    ensure(imageHashes[`img/${qid}.jpg`] === declared, 'Declared public image hash differs from image bytes');
+  }
   const image = ref => { ensure(/^img\/[1-9]\d*\.jpg$/.test(ref) && hex(imageHashes[ref]), 'Missing/invalid public image hash'); return {path:ref, sha256:imageHashes[ref]}; };
   const atoms = new Map(qIds.map(qid => {
     const q=byId.get(qid);
