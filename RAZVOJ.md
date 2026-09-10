@@ -216,6 +216,15 @@ npx --yes --package @playwright/cli playwright-cli -s=provera-cilja close
 Провере: `node --test tools/tests/readiness.test.mjs` и CLI
 `tools/tests/readiness.browser.js` (нови контекст, синтетички профили).
 
+Мобилни распоред: CLI `tools/tests/mobile-layout.browser.js`. Резултат је JSON;
+`passed: false` или `failureCount > 0` означава пад чак и ако CLI команда заврши
+кодом 0. Снимци се чувају у игнорисаном `output/playwright/`. Од v135 висину
+доње навигације мери ResizeObserver у `--donjaNavVisina`; подножје и фиксне траке
+користе ту меру у мобилном media правилу. Не враћати фиксних 66px, јер натписи
+могу да се преломе. Испит задржава своје засебне размаке и боје.
+Контраст нормалног текста проверити и при hover-у према
+[W3C критеријуму](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html).
+
 ```bash
 node -e "new Function(require('fs').readFileSync('app.js','utf8'))"   # синтакса
 cd tools && node build-explanations.mjs                               # билд + скенер писма

@@ -3842,6 +3842,19 @@
     }
   });
   bindNav(el('donjaNav'));
+  // Prelom natpisa, veličina slova i bezbedna zona menjaju visinu fiksne navigacije.
+  // Ne menjamo njen raspored: meru koriste samo razmaci ispod sadržaja i traka.
+  if ('ResizeObserver' in window) {
+    const nav = el('donjaNav');
+    const izmeriNav = () => {
+      const visina = nav.getBoundingClientRect().height;
+      // U ispitu/na računaru je sakrivena. Zadrži poslednju vidljivu meru za povratak;
+      // CSS tada zasebno isključuje razmak, bez prolazne nule pri sledećem prikazu.
+      if (visina > 0) document.documentElement.style.setProperty('--donjaNavVisina', `${visina}px`);
+    };
+    new ResizeObserver(izmeriNav).observe(nav, { box: 'border-box' });
+    izmeriNav();
+  }
   // „Preskoči na sadržaj" NE sme da menja adresu: hash '#glavni' ruter ne poznaje i vratio bi
   // korisnika sa Statistike na početnu. Veza samo prebacuje fokus i pogled na sadržaj.
   { const p = document.querySelector('.preskoci');
