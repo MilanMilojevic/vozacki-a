@@ -654,9 +654,9 @@ async function proveraBodovanjaTestovi() {
     }
 
     // ---- 2af) ČITLJIVOST CRTEŽA I ANIMACIJE ----
-    // Telo kartice na telefonu (375px) široko je 306px, pa se svaki crtež skupi na tu širinu
-    // i sa njim sav tekst u njemu. Mera se svodi na 306 bez obzira na širinu prozora u kome
-    // provera radi — inače bi na širokom ekranu prošlo i ono što na telefonu niko ne vidi.
+    // Stvarno ograniči probno telo na najviše 306px, pa meri SVG transformaciju.
+    // Odnos širina pogrešno umanjuje već ograničen SVG i zanemaruje fiksnu visinu.
+    // Prave prozore od 320/375px zasebno proverava tools/tests/drawing.browser.js.
     {
       const presek = (a, b) => {
         const w = Math.min(a.x + a.width, b.x + b.width) - Math.max(a.x, b.x);
@@ -677,33 +677,36 @@ async function proveraBodovanjaTestovi() {
           z.forEach((x) => x.click());
           await cekaj(160);
         }
-        const telo = cd.getBoundingClientRect().width || 306;
-        const na306 = 306 / telo;                       // svođenje na telefon
-        for (const s of cd.querySelectorAll('svg')) {
-          const r = s.getBoundingClientRect();
-          const vb = (s.getAttribute('viewBox') || '').trim().split(/\s+/).map(Number);
-          if (!r.width || vb.length !== 4 || !vb[2]) continue;
-          svgUk++;
-          for (const el of s.querySelectorAll('[class*="anim"]')) {
-            animUk++;
-            if (getComputedStyle(el).animationName === 'none') animBezPravila++;
+        const stilPre = cd.style.cssText;
+        cd.style.width = Math.min(306, cd.getBoundingClientRect().width) + 'px';
+        cd.style.maxWidth = 'none';
+        try {
+          for (const s of cd.querySelectorAll('svg')) {
+            const r = s.getBoundingClientRect();
+            const vb = (s.getAttribute('viewBox') || '').trim().split(/\s+/).map(Number);
+            if (!r.width || vb.length !== 4 || !vb[2]) continue;
+            svgUk++;
+            for (const el of s.querySelectorAll('[class*="anim"]')) {
+              animUk++;
+              if (getComputedStyle(el).animationName === 'none') animBezPravila++;
+            }
+            const txt = [...s.querySelectorAll('text')].filter((x) => x.textContent.trim());
+            if (!txt.length) continue;
+            const bb = txt.map((x) => { try { return x.getBBox(); } catch (e) { return null; } });
+            for (let a = 0; a < bb.length; a++) for (let c = a + 1; c < bb.length; c++)
+              if (bb[a] && bb[c] && bb[a].width && bb[c].width && presek(bb[a], bb[c]) > 0.15) sudara++;
+            prelivi += bb.filter((x) => x && x.width > 0 && (x.x < vb[0] - 0.5 || x.x + x.width > vb[0] + vb[2] + 0.5)).length;
+            for (const x of txt) {
+              const m = x.getScreenCTM();
+              const px = parseFloat(getComputedStyle(x).fontSize) * Math.hypot(m.c, m.d);
+              najmanji = Math.min(najmanji, px);
+              if (px < 10) sitnih++;
+            }
           }
-          const txt = [...s.querySelectorAll('text')].filter((x) => x.textContent.trim());
-          if (!txt.length) continue;
-          const skala = (r.width / vb[2]) * na306;
-          const bb = txt.map((x) => { try { return x.getBBox(); } catch (e) { return null; } });
-          for (let a = 0; a < bb.length; a++) for (let c = a + 1; c < bb.length; c++)
-            if (bb[a] && bb[c] && bb[a].width && bb[c].width && presek(bb[a], bb[c]) > 0.15) sudara++;
-          prelivi += bb.filter((x) => x && x.width > 0 && (x.x < vb[0] - 0.5 || x.x + x.width > vb[0] + vb[2] + 0.5)).length;
-          for (const x of txt) {
-            const px = parseFloat(getComputedStyle(x).fontSize) * skala;
-            najmanji = Math.min(najmanji, px);
-            if (px < 10) sitnih++;
-          }
-        }
+        } finally { cd.style.cssText = stilPre; }
         b.click(); await cekaj(60);
       }
-      ok('crteži: nijedan tekst nije ispod 10px na telefonu (' + svgUk + ' crteža, najmanji ' + Math.round(najmanji * 10) / 10 + 'px)', svgUk > 150 && sitnih === 0);
+      ok('crteži: nijedan tekst nije ispod 10px u probnom telu do 306px (' + svgUk + ' crteža, najmanji ' + Math.round(najmanji * 10) / 10 + 'px)', svgUk > 150 && sitnih === 0);
       ok('crteži: nijedan natpis se ne preklapa sa drugim', sudara === 0);
       ok('crteži: nijedan natpis ne izlazi iz okvira crteža', prelivi === 0);
       ok('animacije: svaka anim klasa u karticama ima svoje pravilo u style.css (' + animUk + ')', animUk > 20 && animBezPravila === 0);
@@ -751,10 +754,16 @@ async function proveraBodovanjaTestovi() {
       ok('dnevnik: tabela ima red po danu', telo.querySelectorAll('tbody tr').length === 3);
       // isto pravilo čitljivosti kao za crteže pojmovnika
       if (svg) {
-        const vb2 = svg.getAttribute('viewBox').trim().split(/\s+/).map(Number);
-        const sk = (svg.getBoundingClientRect().width / vb2[2]) * (306 / (telo.getBoundingClientRect().width || 306));
-        const najm = Math.min(...[...svg.querySelectorAll('text')].map((x) => parseFloat(getComputedStyle(x).fontSize) * sk));
-        ok('dnevnik: tekst u trendu nije ispod 10px na telefonu (' + Math.round(najm * 10) / 10 + 'px)', najm >= 10);
+        const stilPre = telo.style.cssText;
+        telo.style.width = Math.min(306, telo.getBoundingClientRect().width) + 'px';
+        telo.style.maxWidth = 'none';
+        try {
+          const najm = Math.min(...[...svg.querySelectorAll('text')].map((x) => {
+            const m = x.getScreenCTM();
+            return parseFloat(getComputedStyle(x).fontSize) * Math.hypot(m.c, m.d);
+          }));
+          ok('dnevnik: tekst u trendu nije ispod 10px u probnom telu do 306px (' + Math.round(najm * 10) / 10 + 'px)', najm >= 10);
+        } finally { telo.style.cssText = stilPre; }
       }
       S().dani = staroDani; S().day = staroDay;
       document.querySelector('[data-nav="home"]').click(); await cekaj(150);
