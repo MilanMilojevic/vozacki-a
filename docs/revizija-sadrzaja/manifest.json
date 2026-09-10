@@ -3,10 +3,10 @@
   "cards": {
     "in-progress": 1,
     "needs-expert": 0,
-    "reviewed": 1,
-    "unreviewed": 37
+    "reviewed": 2,
+    "unreviewed": 36
   },
-  "contentHash": "ad491738810c88035961276bc0fce6d6181a7af7f417a5299a3895b7337693f9",
+  "contentHash": "25f5a86bda6abb41b08a065b13ffd71c0e9817e6b77424b8053dcdf3de0a2580",
   "hashAlgorithm": "SHA-256 of canonical JSON; image bytes use SHA-256",
   "imageCount": 704,
   "provenance": [
@@ -18,7 +18,7 @@
     {
       "declaredDate": "2026-09-10",
       "path": "explanations.js",
-      "sha256": "12982798b53d907ac4cb945a376ace2a4ae4a66d09eb80a42b7b6c7fae3ba9fc"
+      "sha256": "1b7fdc986429df47ac24e23a69ef2a1d80945775ab8084affe14272a362000d6"
     }
   ],
   "publicSourcesHash": "9bfd0147244ba81ebc4790960aa067e1179e3aa4259e069021069b8d3f7dcfd6",

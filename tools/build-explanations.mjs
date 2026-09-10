@@ -2986,27 +2986,22 @@ CARDS['faq'] = {
   title: 'Česta pitanja',
   html: `
 <p><b>Gde se čuva moj napredak?</b><br>
-U samom browseru, vezano za NAČIN otvaranja: aplikacija otvorena duplim klikom (file://) i preko adrese
-(npr. localhost) su za browser dva odvojena skladišta. Drži se JEDNOG načina otvaranja. Ako ti napredak
-"nestane" — najverovatnije je na onoj drugoj adresi: tamo klikni "Sačuvaj napredak", pa ovde "Učitaj napredak".</p>
+Napredak se čuva u pregledaču, uz njegov profil i adresu aplikacije. Drugi pregledač, privatna kartica, druga adresa ili otvaranje fajla mogu imati odvojeno skladište. Ako ga ne vidiš, proveri gde si ranije vežbao. Za prenos koristi „Sačuvaj napredak”, pa „Učitaj napredak”.</p>
 <p><b>Da li restart računara briše napredak?</b><br>
-Ne. Briše ga samo "brisanje podataka pregledanja" ("Clear browsing data") i slični alati za čišćenje. Zato jednom klikni
-"Poveži fajl za automatsko čuvanje" — od tada se svaka promena upisuje i u fajl na disku.</p>
+Uobičajen restart ne briše trajno sačuvan napredak. On ipak može nestati brisanjem podataka sajta ili profila, završetkom privatne sesije ili greškom skladišta. Izvezi kopiju preko „Sačuvaj napredak”. Ako povežeš fajl za automatsko čuvanje, proveri da li status potvrđuje završen upis; zatvaranje stranice ga ne garantuje.</p>
 <p><b>Zašto simulacija izgleda "siromašnije" od učenja?</b><br>
-Namerno: simulacija je verna pravom ispitu (isti sastav testa, redosled tema, bez objašnjenja, bez pomoći,
-uvek svetla tema). Sve pomoći žive u učenju i u pregledu POSLE predaje.</p>
+Namerno je jednostavnija: tokom pokušaja nema objašnjenja ni pomoći, a tema je svetla. Raspored tema i poena prati šest posmatranih zvaničnih izvlačenja, što ne garantuje sastav svakog budućeg ispita. Objašnjenja su dostupna u učenju i pregledu posle predaje.</p>
 <p><b>Kako radi Ponavljanje?</b><br>
 Razmaknuto ponavljanje: pogrešiš → pitanje je odmah na redu; pogodiš ga → vraća se sutra; opet pogodiš →
 za 3 dana; treći pogodak zaredom → utvrđeno je i izlazi iz reda. I pitanje koje si pogodio iz prve vraća se
 jednom, za 3 dana, da se potvrdi — pa izlazi. Tačan odgovor PRE roka je vežbanje i ne pomera raspored;
 pogrešan važi uvek. U dnevni cilj isto pitanje ulazi najviše jednom dnevno.</p>
 <p><b>Šta je broj #1234 pored pitanja?</b><br>
-Zvanični broj pitanja u MUP bazi — isti broj važi i na eUpravi, pa možeš da uporediš.</p>
+To je identifikator pitanja u uvezenoj bazi. Koristi ga kada porediš isto pitanje ili prijavljuješ grešku.</p>
 <p><b>Zašto odgovori počinju malim slovom, a "km/h" je latinicom i u ćirilici?</b><br>
-Tako stoji u zvaničnoj bazi (odgovori su nastavak rečenice pitanja; SI oznake se uvek pišu latinicom) —
-i tako će izgledati na ispitu. Ne diramo.</p>
+Zadržavamo zapis iz uvezene baze: mnogi odgovori nastavljaju rečenicu pitanja, a oznaka km/h ostaje ista u oba pisma. Time ne menjamo sadržaj zvaničnih pitanja i odgovora.</p>
 <p><b>Da li su objašnjenja zvanična?</b><br>
-Ne — pišemo ih sami, sa osnovom u ZOBS-u (uz broj člana). Tačni odgovori jesu zvanični, iz MUP baze.</p>`,
+Ne. Dodata su za učenje i revizija njihove tačnosti traje. Pitanja i oznake tačnih odgovora preuzeti su iz zvanične baze.</p>`,
 };
 
 const X = {};
