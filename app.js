@@ -1,5 +1,5 @@
 /* Возачки А — локална вежбаоница над званичном базом (eUprava practice, GUID za A kategoriju). */
-(function () {
+(async function () {
   'use strict';
 
   // Svaka neuhvaćena greška se prikazuje u crvenoj traci na vrhu — umesto neme prazne stranice.
@@ -239,7 +239,12 @@
     recoveryLoadCopy: { l: 'Učitaj ispravnu kopiju', c: 'Учитај исправну копију' },
     recoveryRawSaved: { l: 'Nečitljiv zapis je sačuvan u fajl @1', c: 'Нечитљив запис је сачуван у фајл @1' },
     recoveryImportConfirm: { l: 'Ispravna kopija će ZAMENITI nečitljiv sačuvani zapis. Pre toga ga sačuvaj ako želiš da ostane dostupan. Nastaviti?', c: 'Исправна копија ће ЗАМЕНИТИ нечитљив сачувани запис. Пре тога га сачувај ако желиш да остане доступан. Наставити?' },
-    tabUpozorenje: { l: '⚠ Vežbaonica je otvorena u još jednom prozoru ili kartici. Rad u dva prozora se ne spaja — onaj koji poslednji sačuva prepisuje drugog. Zatvori jedan, pa osveži ovaj.', c: '⚠ Вежбаоница је отворена у још једном прозору или картици. Рад у два прозора се не спаја — онај који последњи сачува преписује другог. Затвори један, па освежи овај.' },
+    tabSamoCitanje: { l: 'Vežbaonica je već otvorena u drugoj kartici. Ova kartica je samo za čitanje da se napredak ne bi prepisao.', c: 'Вежбаоница је већ отворена у другој картици. Ова картица је само за читање да се напредак не би преписао.' },
+    tabSukob: { l: 'Napredak je promenila druga ili starija kartica. Ova kartica je zaustavljena. Sačuvaj njen trenutni napredak ako ti treba, zatvori drugu karticu, pa ručno osveži ovu.', c: 'Напредак је променила друга или старија картица. Ова картица је заустављена. Сачувај њен тренутни напредак ако ти треба, затвори другу картицу, па ручно освежи ову.' },
+    tabPovratak: { l: 'Ova vraćena kartica ostaje samo za čitanje. Ručno je osveži ako želiš da nastaviš rad.', c: 'Ова враћена картица остаје само за читање. Ручно је освежи ако желиш да наставиш рад.' },
+    tabIzvoz: { l: 'Sačuvaj napredak ove kartice', c: 'Сачувај напредак ове картице' },
+    tabOsvezi: { l: 'Osveži i pokušaj ponovo', c: 'Освежи и покушај поново' },
+    tabBezBrave: { l: 'Ovaj pregledač ne podržava bezbedno zaključavanje između kartica. Aplikacija radi, ali napredak menjaj samo u jednoj otvorenoj kartici.', c: 'Овај прегледач не подржава безбедно закључавање између картица. Апликација ради, али напредак мењај само у једној отвореној картици.' },
     fsMin: { l: 'Slova su već na najmanjoj veličini', c: 'Слова су већ на најмањој величини' },
     fsMax: { l: 'Slova su već na najvećoj veličini', c: 'Слова су већ на највећој величини' },
     planNaslov: { l: 'Dnevni cilj', c: 'Дневни циљ' },
@@ -461,6 +466,68 @@
     readyModelUnavailable: { l: 'Model trenutno nema potpune podatke za sastav simulacije. Procena nije prikazana.', c: 'Модел тренутно нема потпуне податке за састав симулације. Процена није приказана.' },
   };
 
+  // ---------- Jedan aktivan tab ----------
+  // Web Lock se drži dok dokument živi. Druga nova kartica zato uopšte ne dobija pravo
+  // upisa; stari dokumenti koji ne znaju za bravu otkrivaju se dodatnom proverom zapisa.
+  const LOCK_NAME = 'vozackiA.writer';
+  let rezimPisanja = 'boot';
+  let otpustiZakljucavanje = null;
+  let penzionisanjePisca = null;
+  let aktivniBackupPromise = Promise.resolve();
+  let aktivniIdbPromise = Promise.resolve();
+  let aktivnaIdbTransakcija = null;
+  function mozePisati() { return rezimPisanja === 'writer' || rezimPisanja === 'fallback'; }
+  function odrediRezimPisanja() {
+    if (location.protocol === 'file:' || !navigator.locks || typeof navigator.locks.request !== 'function') {
+      rezimPisanja = 'fallback';
+      return Promise.resolve(rezimPisanja);
+    }
+    return new Promise((resolve) => {
+      let ulogaResena = false;
+      const fallback = () => {
+        if (ulogaResena) return;
+        ulogaResena = true;
+        rezimPisanja = 'fallback';
+        resolve(rezimPisanja);
+      };
+      try {
+        const zahtev = navigator.locks.request(LOCK_NAME, { mode: 'exclusive', ifAvailable: true }, (lock) => {
+          if (!lock) {
+            ulogaResena = true;
+            rezimPisanja = 'reader';
+            resolve(rezimPisanja);
+            return;
+          }
+          ulogaResena = true;
+          rezimPisanja = 'writer';
+          return new Promise((otpusti) => {
+            otpustiZakljucavanje = otpusti;
+            resolve(rezimPisanja);
+          });
+        });
+        Promise.resolve(zahtev).catch(fallback);
+      } catch (e) { fallback(); }
+    });
+  }
+  async function penzionisiPisca() {
+    if (penzionisanjePisca) return penzionisanjePisca;
+    if (rezimPisanja !== 'writer' && rezimPisanja !== 'fallback' && rezimPisanja !== 'conflict') return;
+    rezimPisanja = 'retired';
+    try { zaustaviBackupZaZakljucavanje(); } catch (_) { /* boot još nije stigao do rezerve */ }
+    try {
+      if (sim && sim.timerId) { clearInterval(sim.timerId); sim.timerId = null; }
+    } catch (_) { /* simulacija još nije inicijalizovana */ }
+    try { if (aktivnaIdbTransakcija) aktivnaIdbTransakcija.abort(); }
+    catch (_) { /* transakcija je upravo završena; njen promise se svakako čeka */ }
+    const otpusti = otpustiZakljucavanje;
+    otpustiZakljucavanje = null;
+    penzionisanjePisca = Promise.allSettled([aktivniBackupPromise, aktivniIdbPromise]).then(() => {
+      if (otpusti) otpusti();
+    });
+    return penzionisanjePisca;
+  }
+  const pocetniRezimPisanja = await odrediRezimPisanja();
+
   // ---------- Stanje ----------
   const KEY = 'vozackiA.v1';
   // Granice veličine slova — JEDNO mesto, koriste ih i dugmad i učitavanje stanja.
@@ -496,7 +563,9 @@
     try { return { 'vozackiA.v1': localStorage.getItem(KEY), 'vozackiA.sim': localStorage.getItem('vozackiA.sim') }; }
     catch (_) { return null; }
   }
-  const proveraPocetniZapisi = location.hostname === 'localhost' ? proveraProcitajZapise() : null;
+  const pocetniZapisiZaBravu = proveraProcitajZapise();
+  const proveraPocetniZapisi = location.hostname === 'localhost' ? pocetniZapisiZaBravu : null;
+  let ocekivaniZapisi = pocetniZapisiZaBravu ? { ...pocetniZapisiZaBravu } : null;
   let problemUcitavanja = null;
   let sirovoZaOporavak = null;
   let S = load();
@@ -638,6 +707,18 @@
     sirovoZaOporavak = raw;
     return normalizeState({ q: {} });
   }
+  function zapamtiUpis(key, raw) {
+    if (ocekivaniZapisi) ocekivaniZapisi[key] = raw;
+  }
+  function zapisJeSvez(key) {
+    if (!mozePisati()) { zahtevajZakljucanPrikaz(); return false; }
+    if (!ocekivaniZapisi) { upozoriDaSeNeCuva(); return false; }
+    try {
+      if (localStorage.getItem(key) === ocekivaniZapisi[key]) return true;
+    } catch (_) { upozoriDaSeNeCuva(); return false; }
+    blokirajPisanje('conflict');
+    return false;
+  }
   // Ako pregledač odbije upis (puno skladište, blokirani podaci sajta, strogo blokiranje
   // kolačića), do sada se to videlo SAMO u konzoli: korisnik odradi ceo ispit, vidi rezultat,
   // a ništa nije zapisano — na prvo osvežavanje sve nestane. Zato se sada kaže naglas.
@@ -734,19 +815,89 @@
       drz.appendChild(b);
     } catch (ignore) { /* upozorenje ne sme da obori oporavak */ }
   }
-  // Dva otvorena prozora: stanje se učita JEDNOM pri pokretanju, pa onaj koji poslednji
-  // sačuva prepiše ceo napredak drugog. Namerno NE diramo ni S ni simulaciju u toku —
-  // samo kažemo šta se dešava, jednom.
-  let upozorenODvaProzora = false;
+  let zakljucavanjeUIspremno = false;
+  let zakljucavanjePrikazCeka = false;
+  function zahtevajZakljucanPrikaz() {
+    if (!zakljucavanjeUIspremno) { zakljucavanjePrikazCeka = true; return; }
+    prikaziZakljucanTab();
+  }
+  function blokirajPisanje(razlog) {
+    if (rezimPisanja === 'retired') return;
+    if (razlog === 'conflict' && mozePisati()) rezimPisanja = 'conflict';
+    try { zaustaviBackupZaZakljucavanje(); } catch (_) { /* boot još traje */ }
+    try { if (aktivnaIdbTransakcija) aktivnaIdbTransakcija.abort(); }
+    catch (_) { /* transakcija je možda upravo završena */ }
+    try {
+      if (sim && sim.timerId) { clearInterval(sim.timerId); sim.timerId = null; }
+    } catch (_) { /* simulacija još nije inicijalizovana */ }
+    zahtevajZakljucanPrikaz();
+  }
+  function prikaziZakljucanTab() {
+    if (mozePisati()) return;
+    zakljucavanjePrikazCeka = false;
+    try { if (zatvoriTuruBezCuvanja) zatvoriTuruBezCuvanja(); } catch (_) { /* tura još nije inicijalizovana */ }
+    try { if (zatvoriUvecanjeBezbedno) zatvoriUvecanjeBezbedno(); } catch (_) { /* uvećanje još nije inicijalizovano */ }
+    for (const id of ['repoUpd', 'updBar', 'iosHint']) {
+      const sloj = document.getElementById(id);
+      if (sloj) sloj.remove();
+    }
+    for (const id of ['topbar', 'glavni', 'donjaNav', 'podnozje']) {
+      const deo = document.getElementById(id);
+      if (deo) deo.inert = true;
+    }
+    let b = document.getElementById('tabZakljucan');
+    if (!b) {
+      b = document.createElement('div');
+      b.id = 'tabZakljucan';
+      b.className = 'upozorenjeTraka';
+      b.setAttribute('role', 'alert');
+      let drz = document.getElementById('trakeDrzac');
+      if (!drz) { drz = document.createElement('div'); drz.id = 'trakeDrzac'; document.body.appendChild(drz); }
+      drz.appendChild(b);
+    }
+    b.innerHTML = '';
+    const kljuc = rezimPisanja === 'conflict' ? 'tabSukob' : rezimPisanja === 'retired' ? 'tabPovratak' : 'tabSamoCitanje';
+    b.appendChild(document.createTextNode(L(kljuc) + ' '));
+    const izvoz = document.createElement('button');
+    izvoz.type = 'button'; izvoz.id = 'btnTabExport'; izvoz.className = 'secondary sBtn'; izvoz.textContent = L('tabIzvoz');
+    izvoz.addEventListener('click', async () => {
+      izvoz.disabled = true;
+      try {
+        const blob = new Blob([JSON.stringify(S)], { type: 'application/json' });
+        const ime = 'vozacki-a-napredak-kartica-' + localDay() + '.json';
+        await sacuvajFajl(blob, ime, [{ description: 'JSON', accept: { 'application/json': ['.json'] } }]);
+      } finally { izvoz.disabled = false; }
+    });
+    b.appendChild(izvoz);
+    if (sirovoZaOporavak !== null) {
+      const sirov = document.createElement('button');
+      sirov.type = 'button'; sirov.id = 'btnTabExportRaw'; sirov.className = 'secondary sBtn'; sirov.textContent = L('recoverySaveRaw');
+      sirov.addEventListener('click', async () => {
+        sirov.disabled = true;
+        try {
+          await sacuvajFajl(new Blob([sirovoZaOporavak], { type: 'text/plain;charset=utf-8' }),
+            'vozacki-a-necitljiv-zapis-' + localDay() + '.txt', [{ description: 'Text', accept: { 'text/plain': ['.txt'] } }]);
+        } finally { sirov.disabled = false; }
+      });
+      b.appendChild(sirov);
+    }
+    const osvezi = document.createElement('button');
+    osvezi.type = 'button'; osvezi.id = 'btnTabReload'; osvezi.className = 'primary sBtn'; osvezi.textContent = L('tabOsvezi');
+    osvezi.addEventListener('click', () => location.reload());
+    b.appendChild(osvezi);
+  }
   window.addEventListener('storage', (e) => {
-    if ((e.key !== KEY && e.key !== 'vozackiA.sim') || upozorenODvaProzora) return;
-    upozorenODvaProzora = true;
-    trakaUpozorenja(L('tabUpozorenje'));
+    if ((e.storageArea && e.storageArea !== localStorage) || (e.key !== null && e.key !== KEY && e.key !== 'vozackiA.sim')) return;
+    if (mozePisati()) blokirajPisanje('conflict');
+    else zahtevajZakljucanPrikaz();
   });
   function save(dozvoliOporavak = false) {
+    if (!mozePisati()) { zahtevajZakljucanPrikaz(); return false; }
     if (problemUcitavanja && !dozvoliOporavak) { prikaziOporavakStanja(); return false; }
+    if (!zapisJeSvez(KEY)) return false;
+    const tekst = JSON.stringify(S);
     let upisano = false;
-    try { localStorage.setItem(KEY, JSON.stringify(S)); upisano = true; }
+    try { localStorage.setItem(KEY, tekst); zapamtiUpis(KEY, tekst); upisano = true; }
     catch (e) { console.warn('Napredak nije mogao da se sačuva u pregledaču:', e); upozoriDaSeNeCuva(); }
     if (problemUcitavanja) {
       if (!upisano) return false;
@@ -783,6 +934,7 @@
   // pogrešeno pa odmah ispravljeno može da se utvrdi u istoj sesiji. Ograničenje se ovde
   // NE uvodi bez dogovora, jer menja pravila učenja, a ne ispravlja kvar.
   function record(id, ok) {
+    if (!mozePisati()) { zahtevajZakljucanPrikaz(); return false; }
     const r = qs(id);
     const prviPut = !r.a;             // pre uvećanja: ovo pitanje se danas radi kao NOVO
     const sada = Date.now();
@@ -944,6 +1096,7 @@
     location.replace('#/');
   }
   function routeTo(h) {
+    if (!mozePisati()) { zahtevajZakljucanPrikaz(); return; }
     if (!h || h === '#' || h === '#/') return renderHome();
     if (h === '#/sva') return browseAll();
     if (h.startsWith('#/sek/')) return browse(h.slice(6));
@@ -978,6 +1131,7 @@
     return goHomeReplace();   // '#/vezba' i nepoznato: prolazna vežba se ne rekonstruiše
   }
   window.addEventListener('hashchange', () => {
+    if (!mozePisati()) { zahtevajZakljucanPrikaz(); return; }
     const h = location.hash || '#/';
     if (h === curHash) return;               // naš sopstveni upis, ne korisnikova strelica
     if (sim && !leaveSimOk()) { setHash('#/sim'); return; }   // jedan izlaz iz ispita za sve puteve
@@ -989,6 +1143,10 @@
   // Zato upozorenje ostaje: ko zatvori tab i vrati se posle sat vremena, zatiče istekao ispit.
   window.addEventListener('beforeunload', (e) => {
     if (sim) { e.preventDefault(); e.returnValue = ''; }
+  });
+  window.addEventListener('pagehide', () => { void penzionisiPisca(); });
+  window.addEventListener('pageshow', (e) => {
+    if (e.persisted && !mozePisati()) zahtevajZakljucanPrikaz();
   });
 
   // ---------- Slika uz pitanje ----------
@@ -1840,16 +1998,21 @@
   // posebno od napretka: ispit u toku NIJE napredak i ne ulazi u izvoz.
   const SIM_KEY = 'vozackiA.sim';
   function simSnimi() {
+    if (!mozePisati()) { zahtevajZakljucanPrikaz(); return false; }
     if (problemUcitavanja) { prikaziOporavakStanja(); return; }
     if (!sim) return;
+    if (!zapisJeSvez(SIM_KEY)) return false;
+    const tekst = JSON.stringify({
+      v: 1,
+      d: sim.deadline,
+      i: sim.i,
+      r: sim.showReport ? 1 : 0,
+      qs: sim.qs.map((sq) => ({ id: sq.q.id, o: sq.order.map((c) => c.id), c: [...sq.chosen], m: sq.marked ? 1 : 0 })),
+    });
     try {
-      localStorage.setItem(SIM_KEY, JSON.stringify({
-        v: 1,
-        d: sim.deadline,
-        i: sim.i,
-        r: sim.showReport ? 1 : 0,
-        qs: sim.qs.map((sq) => ({ id: sq.q.id, o: sq.order.map((c) => c.id), c: [...sq.chosen], m: sq.marked ? 1 : 0 })),
-      }));
+      localStorage.setItem(SIM_KEY, tekst);
+      zapamtiUpis(SIM_KEY, tekst);
+      return true;
     } catch (e) {
       // tokom ispita se save() ne zove, pa bi otkaz skladišta ovde bio jedini znak —
       // ista traka kao za napredak, zastavica sprečava ponavljanje na svako crtanje
@@ -1857,8 +2020,10 @@
     }
   }
   function simObrisi() {
+    if (!mozePisati()) { zahtevajZakljucanPrikaz(); return false; }
     if (problemUcitavanja) { prikaziOporavakStanja(); return; }
-    try { localStorage.removeItem(SIM_KEY); } catch (e) { /* nema šta da se radi */ }
+    if (!zapisJeSvez(SIM_KEY)) return false;
+    try { localStorage.removeItem(SIM_KEY); zapamtiUpis(SIM_KEY, null); return true; } catch (e) { return false; }
   }
   // Vraća ispit iz zapisa ili null. Sve što nije tačno onako kako je upisano — druga verzija
   // zapisa, pitanje kog više nema u bazi, izmenjeni odgovori — briše zapis i vraća null:
@@ -1881,6 +2046,7 @@
   }
   // Vraća true ako je ispit nastavljen (ili istekao i završen) — tada rutiranje nema šta da radi.
   function simNastavi() {
+    if (!mozePisati()) { zahtevajZakljucanPrikaz(); return false; }
     if (problemUcitavanja) { prikaziOporavakStanja(); return false; }
     if (sim) return false;
     const s = simVrati();
@@ -1950,6 +2116,7 @@
   }
 
   function startSim() {
+    if (!mozePisati()) { zahtevajZakljucanPrikaz(); return; }
     if (problemUcitavanja) { prikaziOporavakStanja(); return; }
     if (sim) { clearInterval(sim.timerId); sim = null; }   // defanzivno: nikad dva tajmera
     { const ub = document.getElementById('updBar'); if (ub) ub.remove(); }   // ekran ispita je čist, kao pravi
@@ -1979,6 +2146,11 @@
   }
   function tickSim() {
     if (!sim) return;
+    if (!mozePisati()) {
+      if (sim.timerId) { clearInterval(sim.timerId); sim.timerId = null; }
+      zahtevajZakljucanPrikaz();
+      return;
+    }
     const left = Math.max(0, Math.round((sim.deadline - Date.now()) / 1000));
     // isti oblik kao zvanični tajmer (displayTime): minuti bez vodeće nule — 45:00, 9:59, 0:07
     const mm = String(Math.floor(left / 60));
@@ -2014,6 +2186,7 @@
       b.textContent = T(ch.t);
       b.setAttribute('aria-pressed', sq.chosen.has(ch.id) ? 'true' : 'false');
       b.addEventListener('click', () => {
+        if (!mozePisati()) { zahtevajZakljucanPrikaz(); return; }
         if (q.req === 1) { sq.chosen.clear(); sq.chosen.add(ch.id); }
         else if (sq.chosen.has(ch.id)) sq.chosen.delete(ch.id);
         else if (sq.chosen.size < q.req) sq.chosen.add(ch.id);
@@ -2040,6 +2213,7 @@
   // Kao na ispitu (SaveUserInput u ep.js): pitanje sa VIŠE odgovora ne može da se napusti dok
   // nije označen ni jedan ili tačno traženi broj — pola odgovora zaustavlja i poruči.
   function simSmeDalje() {
+    if (!mozePisati()) { zahtevajZakljucanPrikaz(); return false; }
     if (!sim || sim.showReport) return true;
     const sq = sim.qs[sim.i];
     if (sq.chosen.size > 0 && sq.chosen.size !== sq.q.req) { alert(L('simBrojOdgovora')); return false; }
@@ -2047,6 +2221,7 @@
   }
   // "Izveštaj" — kao na ispitu: tabela Pitanje / Broj poena / Odgovoreno / Obeleženo, klik vodi na pitanje
   function renderSimReport() {
+    if (!mozePisati()) { zahtevajZakljucanPrikaz(); return; }
     sim.showReport = true;
     el('simQCard').style.display = 'none';
     const rp = el('simReport');
@@ -2066,11 +2241,13 @@
     simSnimi();
   }
   function finishSim(auto) {
+    if (!mozePisati()) { zahtevajZakljucanPrikaz(); return; }
     if (!sim) return;
     if (!auto) {
       if (!simSmeDalje()) return;
       if (!confirm(L('simConfirm'))) return;   // doslovno pitanje sa ispita, bez brojanja neodgovorenih
     }
+    if (!mozePisati() || !zapisJeSvez(KEY) || !zapisJeSvez(SIM_KEY)) return;
     clearInterval(sim.timerId);
     const total = sim.qs.reduce((a, sq) => a + sq.q.pts, 0);
     let score = 0;
@@ -2679,6 +2856,11 @@
   let fsPending = null;     // sačuvan handle koji čeka klik za dozvolu
   let backupTimer = null;
   const FSA = 'showSaveFilePicker' in window;
+  function zaustaviBackupZaZakljucavanje() {
+    clearTimeout(backupTimer);
+    backupTimer = null;
+    backupZahtev = null;
+  }
 
   // Čuvanje fajla na JEDNOM mestu, za napredak i za sliku rezultata. Gde pregledač to ume
   // (Chrome i Edge na računaru), pita GDE i POD KOJIM IMENOM — kao svaki drugi program.
@@ -2715,7 +2897,28 @@
       r.onerror = () => rej(r.error);
     });
   }
-  async function idbSet(k, v) { const db = await idb(); return new Promise((res, rej) => { const tx = db.transaction('kv', 'readwrite'); tx.objectStore('kv').put(v, k); tx.oncomplete = res; tx.onerror = () => rej(tx.error); }); }
+  async function idbSet(k, v) {
+    if (!mozePisati()) throw new Error('Upis veze sa rezervnim fajlom je zaustavljen.');
+    const db = await idb();
+    if (!mozePisati()) throw new Error('Upis veze sa rezervnim fajlom je zaustavljen.');
+    const posao = new Promise((res, rej) => {
+      let tx;
+      const zavrsi = (fn, vrednost) => {
+        if (aktivnaIdbTransakcija === tx) aktivnaIdbTransakcija = null;
+        fn(vrednost);
+      };
+      try {
+        tx = db.transaction('kv', 'readwrite');
+        aktivnaIdbTransakcija = tx;
+        tx.oncomplete = () => zavrsi(res);
+        tx.onerror = () => zavrsi(rej, tx.error);
+        tx.onabort = () => zavrsi(rej, tx.error || new Error('Upis veze sa rezervnim fajlom je prekinut.'));
+        tx.objectStore('kv').put(v, k);
+      } catch (e) { zavrsi(rej, e); }
+    });
+    aktivniIdbPromise = posao;
+    return posao;
+  }
   async function idbGet(k) { const db = await idb(); return new Promise((res, rej) => { const tx = db.transaction('kv', 'readonly'); const g = tx.objectStore('kv').get(k); g.onsuccess = () => res(g.result); g.onerror = () => rej(g.error); }); }
 
   // Rezerva u fajl se ranije gasila na PRVU grešku, ma kakva bila, i to bez ijedne reči: jedini
@@ -2731,14 +2934,14 @@
   let backupRevizija = 0;
   let backupZahtev = null;
   async function upisiRezervu(handle, tekst) {
-    if (problemUcitavanja) return;
+    if (problemUcitavanja || !mozePisati()) return;
     const w = await handle.createWritable({ keepExistingData: true });
     try {
-      if (problemUcitavanja) throw new Error('Oporavak napretka je u toku.');
+      if (problemUcitavanja || !mozePisati()) throw new Error('Upis napretka je zaustavljen.');
       await w.write({ type: 'write', position: 0, data: tekst });
-      if (problemUcitavanja) throw new Error('Oporavak napretka je u toku.');
+      if (problemUcitavanja || !mozePisati()) throw new Error('Upis napretka je zaustavljen.');
       await w.truncate(new Blob([tekst]).size);
-      if (problemUcitavanja) throw new Error('Oporavak napretka je u toku.');
+      if (problemUcitavanja || !mozePisati()) throw new Error('Upis napretka je zaustavljen.');
       await w.close();
     } catch (e) {
       // Oslobodi pisca i odbaci nezavršen sadržaj pre ponavljanja. Greška čišćenja
@@ -2749,13 +2952,13 @@
   }
   async function isprazniRedRezerve() {
     backupTimer = null;
-    if (problemUcitavanja || !fsHandle || upisUToku || !backupZahtev || backupZahtev.handle !== fsHandle) return;
+    if (problemUcitavanja || !mozePisati() || !fsHandle || upisUToku || !backupZahtev || backupZahtev.handle !== fsHandle) return;
     const handle = backupZahtev.handle;
     let pokusanaRevizija = backupZahtev.revizija;
     upisUToku = true;
     try {
       for (let pokusaj = 0; pokusaj < 2; pokusaj++) {
-        if (problemUcitavanja || fsHandle !== handle || backupZahtev.handle !== handle) return;
+        if (problemUcitavanja || !mozePisati() || fsHandle !== handle || backupZahtev.handle !== handle) return;
         // Ponovni pokušaj uzima najnovije stanje i njegovu reviziju, ali isti fajl.
         pokusanaRevizija = backupZahtev.revizija;
         try {
@@ -2763,13 +2966,13 @@
           upozorenONeuspehuRezerve = false;
           break;
         } catch (e) {
-          if (problemUcitavanja || fsHandle !== handle) return;
+          if (problemUcitavanja || !mozePisati() || fsHandle !== handle) return;
           if (pokusaj === 1 || (e && (e.name === 'NotAllowedError' || e.name === 'SecurityError'))) throw e;
           await new Promise((r) => setTimeout(r, 2000));   // prolazna smetnja — još jedan pokušaj
         }
       }
     } catch (e) {
-      if (fsHandle === handle) {
+      if (mozePisati() && fsHandle === handle) {
         if (e && (e.name === 'NotAllowedError' || e.name === 'SecurityError')) {
           fsPending = handle; fsHandle = null; renderBackupLine();   // dozvola istekla
           trakaUpozorenja(L('rezervaDozvola'));
@@ -2784,20 +2987,27 @@
       if (backupZahtev && backupZahtev.revizija === pokusanaRevizija) backupZahtev = null;
       // Tajmer novijeg save() možda je već istekao dok je pisac bio zauzet.
       // Oznaka ostaje do ovde; bez novije izmene nema beskonačnog ponavljanja.
-      if (!problemUcitavanja && fsHandle && backupZahtev && backupZahtev.handle === fsHandle) {
+      if (!problemUcitavanja && mozePisati() && fsHandle && backupZahtev && backupZahtev.handle === fsHandle) {
         clearTimeout(backupTimer);
-        backupTimer = setTimeout(isprazniRedRezerve, 800);
+        backupTimer = setTimeout(pokreniPraznjenjeRezerve, 800);
       }
     }
   }
+  function pokreniPraznjenjeRezerve() {
+    if (upisUToku) return aktivniBackupPromise;
+    const posao = isprazniRedRezerve();
+    aktivniBackupPromise = Promise.resolve(posao);
+    return posao;
+  }
   function scheduleBackup() {
-    if (problemUcitavanja || !fsHandle) return;
+    if (problemUcitavanja || !mozePisati() || !fsHandle) return;
     backupZahtev = { handle: fsHandle, revizija: ++backupRevizija };
     clearTimeout(backupTimer);
-    backupTimer = setTimeout(isprazniRedRezerve, 800);
+    backupTimer = setTimeout(pokreniPraznjenjeRezerve, 800);
   }
   let povezivanjeUToku = false;
   async function connectBackup() {
+    if (!mozePisati()) { zahtevajZakljucanPrikaz(); return; }
     if (povezivanjeUToku) return;   // sistemski prozor za izbor sme da bude samo jedan
     povezivanjeUToku = true;
     try {
@@ -2805,8 +3015,10 @@
         suggestedName: 'vozacki-a-napredak.json',
         types: [{ description: 'JSON', accept: { 'application/json': ['.json'] } }],
       });
-      fsHandle = h; fsPending = null;
+      if (!mozePisati()) return;
       await idbSet('handle', h);
+      if (!mozePisati()) return;
+      fsHandle = h; fsPending = null;
       scheduleBackup();
       renderBackupLine();
       poruci(L('porPovezano'));
@@ -2814,19 +3026,23 @@
     finally { povezivanjeUToku = false; }
   }
   async function resumeBackup() {
+    if (!mozePisati()) { zahtevajZakljucanPrikaz(); return; }
     if (!fsPending) return;
+    const h = fsPending;
     try {
-      const p = await fsPending.requestPermission({ mode: 'readwrite' });
-      if (p === 'granted') { fsHandle = fsPending; fsPending = null; scheduleBackup(); }
+      const p = await h.requestPermission({ mode: 'readwrite' });
+      if (!mozePisati()) return;
+      if (p === 'granted' && fsPending === h) { fsHandle = h; fsPending = null; scheduleBackup(); }
     } catch (e) { /* ignore */ }
     renderBackupLine();
   }
   async function initBackup() {
-    if (!FSA) return;
+    if (!FSA || !mozePisati()) return;
     try {
       const h = await idbGet('handle');
-      if (!h) return;
+      if (!h || !mozePisati()) return;
       const p = await h.queryPermission({ mode: 'readwrite' });
+      if (!mozePisati()) return;
       if (p === 'granted') { fsHandle = h; scheduleBackup(); }
       else fsPending = h;
     } catch (e) { /* ignore */ }
@@ -2864,7 +3080,9 @@
     { sel: '#pojmovnikCard', key: 'tour6' },
     { sel: '#dataTools', key: 'tour7' },
   ];
+  let zatvoriTuruBezCuvanja = null;
   function tourStart() {
+    if (!mozePisati()) { zahtevajZakljucanPrikaz(); return; }
     if (document.getElementById('tourDim')) return;
     let idx = 0, spot = null;
     const dim = document.createElement('div'); dim.id = 'tourDim';
@@ -2872,12 +3090,17 @@
     tip.setAttribute('role', 'dialog'); tip.setAttribute('aria-modal', 'false'); tip.setAttribute('aria-label', L('tourReplay'));
     document.body.append(dim, tip);
     const clearSpot = () => { if (spot) { spot.classList.remove('tourSpot'); spot = null; } };
-    const end = () => {
+    const skloni = () => {
       clearSpot(); dim.remove(); tip.remove();
       window.removeEventListener('hashchange', end);
       document.removeEventListener('keydown', onKey);
+      zatvoriTuruBezCuvanja = null;
+    };
+    const end = () => {
+      skloni();
       S.tour = 1; save();
     };
+    zatvoriTuruBezCuvanja = skloni;
     const show = () => {
       clearSpot();
       const st = TOUR_STEPS[idx];
@@ -3632,6 +3855,7 @@
     }
     el('btnExport').addEventListener('click', async (ev) => {
       const d = ev.currentTarget;
+      if (!mozePisati()) { zahtevajZakljucanPrikaz(); return; }
       if (problemUcitavanja) { prikaziOporavakStanja(); return; }
       if (d.disabled) return;
       d.disabled = true;
@@ -3643,8 +3867,12 @@
         if (sacuvano) poruci(L('porExport').split('@1').join(sacuvano));
       } finally { d.disabled = false; }
     });
-    el('btnImport').addEventListener('click', () => el('fileImport').click());
+    el('btnImport').addEventListener('click', () => {
+      if (!mozePisati()) { zahtevajZakljucanPrikaz(); return; }
+      el('fileImport').click();
+    });
     el('fileImport').addEventListener('change', (e) => {
+      if (!mozePisati()) { e.target.value = ''; zahtevajZakljucanPrikaz(); return; }
       const f = e.target.files[0];
       e.target.value = '';   // da ponovni izbor ISTOG fajla opet okine 'change'
       if (!f) return;
@@ -3655,19 +3883,20 @@
       const rd = new FileReader();
       rd.onerror = () => alert(L('importBad'));
       rd.onload = () => {
+        if (!mozePisati()) { zahtevajZakljucanPrikaz(); return; }
         let sirovo = null, norm = null;
         try { sirovo = JSON.parse(rd.result); norm = normalizeState(sirovo); } catch (err) { /* nevalidan JSON */ }
         if (!norm) { alert(L('importBad')); return; }
         const oporavak = !!problemUcitavanja;
         const hasProgress = Object.keys(S.q).length > 0 || S.sims.length > 0;
         if (oporavak ? !confirm(L('recoveryImportConfirm')) : (hasProgress && !confirm(L('importConfirm')))) return;
+        if (!mozePisati() || !zapisJeSvez(KEY)) return;
         const prethodno = S;
         S = norm;
-        if (oporavak && !save(true)) { S = prethodno; prikaziOporavakStanja(); return; }
+        if (!save(oporavak)) { S = prethodno; if (oporavak) prikaziOporavakStanja(); return; }
         applyScript(); applyTheme(); applyFont();
         renderHome();
         if (oporavak) ukloniOporavakStanja();
-        else save();
         // Zapisi za pitanja kojih nema u trenutnoj bazi se odbacuju — to je ispravno, ali
         // se do sada dešavalo nemo, pa je uvoz stare kopije izgledao kao pun uspeh.
         const bilo = sirovo && sirovo.q && typeof sirovo.q === 'object' && !Array.isArray(sirovo.q)
@@ -3679,8 +3908,14 @@
       rd.readAsText(f);
     });
     el('btnReset').addEventListener('click', () => {
+      if (!mozePisati()) { zahtevajZakljucanPrikaz(); return; }
       if (problemUcitavanja) { prikaziOporavakStanja(); return; }
-      if (confirm(L('resetConfirm'))) { S = normalizeState({ q: {}, script: S.script, theme: S.theme, fs: S.fs }); save(); renderHome(); poruci(L('porReset')); }
+      if (!confirm(L('resetConfirm'))) return;
+      if (!mozePisati() || !zapisJeSvez(KEY)) return;
+      const prethodno = S;
+      S = normalizeState({ q: {}, script: S.script, theme: S.theme, fs: S.fs });
+      if (!save()) { S = prethodno; return; }
+      renderHome(); poruci(L('porReset'));
     });
     show('home');
     if (problemUcitavanja) prikaziOporavakStanja();
@@ -3691,6 +3926,7 @@
   function leaveSimOk() {
     if (!sim) return true;
     if (!confirm(L('simLeaveConfirm'))) return false;
+    if (!mozePisati() || !zapisJeSvez(KEY) || !zapisJeSvez(SIM_KEY)) return false;
     clearInterval(sim.timerId);
     sim = null;
     simObrisi();       // napušten ispit se ne obnavlja pri sledećem pokretanju
@@ -3700,6 +3936,7 @@
     root.querySelectorAll('[data-nav]').forEach((b) => {
       if (b._navBound) return; b._navBound = true;
       b.addEventListener('click', () => {
+        if (!mozePisati()) { zahtevajZakljucanPrikaz(); return; }
         if (!leaveSimOk()) return;
         const v = b.dataset.nav;
         if (v === 'home') renderHome();
@@ -3735,6 +3972,7 @@
   // Klik na sliku pitanja otvara je preko celog ekrana, u DVA koraka: prvo koliko god stane
   // (slike su 800px, a kartica pitanja na širokom ekranu 860px — zato se ranije ništa nije
   // menjalo osim pozadine), pa onda pravo uvećanje 2× uz pomeranje prstom ili mišem.
+  let zatvoriUvecanjeBezbedno = null;
   document.addEventListener('keydown', (ev) => {
     if (ev.key !== 'Enter' && ev.key !== ' ') return;
     const qn = ev.target && ev.target.closest && ev.target.closest('.qNum[role="button"]');
@@ -3786,6 +4024,7 @@
       document.removeEventListener('keydown', naEscape);
       document.removeEventListener('focusin', zadrziFokus);
       window.removeEventListener('hashchange', zatvori);
+      zatvoriUvecanjeBezbedno = null;
       if (vracaFokus && vracaFokus.focus) vracaFokus.focus({ preventScroll: true });
     };
     const zadrziFokus = (e2) => { if (!dijalog.contains(e2.target)) bZatvori.focus({ preventScroll: true }); };
@@ -3796,6 +4035,7 @@
         (document.activeElement === bZatvori ? bBlize : bZatvori).focus({ preventScroll: true });
       }
     };
+    zatvoriUvecanjeBezbedno = zatvori;
 
     // ✕ zatvori (gore desno) i +/− uvećanje (dole na sredini) — oba su dugmad, ne veze
     const gore = document.createElement('div'); gore.className = 'zoomAlat gore';
@@ -3846,6 +4086,7 @@
 
   // Prečice: ← → kretanje, 1–9 izbor odgovora, Enter potvrda/sledeće
   document.addEventListener('keydown', (e) => {
+    if (!mozePisati()) return;
     if (e.defaultPrevented || document.getElementById('imgZoom')) return;
     if (e.target && (e.target.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT'].includes(e.target.tagName))) return;
     if (e.ctrlKey || e.altKey || e.metaKey) return;
@@ -3893,6 +4134,7 @@
   { const p = document.querySelector('.preskoci');
     if (p) p.addEventListener('click', (e) => { e.preventDefault(); const m = el('glavni'); if (!m) return; m.focus({ preventScroll: true }); m.scrollIntoView({ block: 'start' }); }); }
   el('btnScript').addEventListener('click', () => {
+    if (!mozePisati()) { zahtevajZakljucanPrikaz(); return; }
     S.script = S.script === 'l' ? 'c' : 'l'; save();
     applyScript();
     ponovniPrikaz = true;      // pitanje na ekranu zadržava redosled ponuda, izbor i dat odgovor
@@ -3905,6 +4147,7 @@
     el('btnTheme').textContent = dark ? '☀️' : '🌙';
   }
   el('btnTheme').addEventListener('click', () => {
+    if (!mozePisati()) { zahtevajZakljucanPrikaz(); return; }
     const dark = document.body.classList.contains('dark');
     S.theme = dark ? 'light' : 'dark'; save();
     applyTheme();
@@ -3933,6 +4176,7 @@
   document.addEventListener('click', (e) => {
     const t = e.target && e.target.closest && e.target.closest('#btnFontMinus, #btnFontPlus');
     if (!t || t.disabled) return;
+    if (!mozePisati()) { zahtevajZakljucanPrikaz(); return; }
     const smer = t.id === 'btnFontPlus' ? 1 : -1;
     S.fs = Math.min(FS_MAX, Math.max(FS_MIN, round2((S.fs || 1) + smer * FS_KORAK)));
     save(); applyFont();
@@ -3983,13 +4227,13 @@
   // Dugoživeći tab: na povratak u tab (i na ~5 min) proveri da li postoji nova verzija fajlova.
   const BOOT_V = window.APP_V || 0;
   function checkVersion() {
-    if (!BOOT_V || FILE_MODE || document.getElementById('updBar')) return;
+    if (!mozePisati() || !BOOT_V || FILE_MODE || document.getElementById('updBar')) return;
     if (sim) return;   // usred ispita se traka ne pokazuje: klik na nju osvežava stranu i gasi ispit
     const sc = document.createElement('script');
     sc.src = 'version.js?ts=' + Date.now();
     sc.onload = () => {
       sc.remove();
-      if (window.APP_V !== BOOT_V && !document.getElementById('updBar')) {
+      if (mozePisati() && window.APP_V !== BOOT_V && !document.getElementById('updBar')) {
         const b = document.createElement('div');
         b.id = 'updBar';
         b.innerHTML = `<span>${escapeHtml(L('updNote'))}</span><button class="primary" id="updBtn">${escapeHtml(L('updBtn'))}</button>`;
@@ -4017,7 +4261,7 @@
   }
 
   function prikaziNovuVerziju(nova, rucno) {
-    if (document.getElementById('repoUpd')) return;
+    if (!mozePisati() || document.getElementById('repoUpd')) return;
     const b = document.createElement('div');
     b.id = 'repoUpd';
     b.setAttribute('role', 'status');
@@ -4041,10 +4285,11 @@
     if (dugme) dugme.disabled = true;
     try {
       const nova = await dohvatiUdaljenuVerziju();
+      if (!mozePisati()) return;
       if (nova > BOOT_V && (rucno || nova !== S.updSeen)) { prikaziNovuVerziju(nova, rucno); return; }
       if (rucno) poruci(L('porVerzijaOK').split('@1').join(BOOT_V));
     } catch (e) {
-      if (rucno) alert(L('updRepoFail'));
+      if (rucno && mozePisati()) alert(L('updRepoFail'));
     } finally {
       proveraUToku = false;
       if (dugme) dugme.disabled = false;
@@ -4053,7 +4298,7 @@
 
   // automatska provera najviše jednom dnevno, i to samo ako korisnik nije isključio
   function mozdaProveriRepo() {
-    if (problemUcitavanja || S.noUpd || !BOOT_V) return;
+    if (!mozePisati() || problemUcitavanja || S.noUpd || !BOOT_V) return;
     const dan = 24 * 60 * 60 * 1000;
     if (S.updAt && Date.now() - S.updAt < dan) return;
     S.updAt = Date.now(); save();
@@ -4198,13 +4443,14 @@
   let installEvt = null;
   window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
+    if (!mozePisati()) return;
     installEvt = e;
     const b = el('btnInstall');
     if (b) b.style.display = '';
   });
   const jeStandalone = () => window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
   function renderInstallHint() {
-    if (FILE_MODE || jeStandalone() || S.iosSeen) return;
+    if (!mozePisati() || FILE_MODE || jeStandalone() || S.iosSeen) return;
     const jeIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
     if (!jeIOS) return;
     const strip = document.createElement('div');
@@ -4227,11 +4473,14 @@
   applyScript();
   applyTheme();
   applyFont();
-  if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => { /* nije podržano — u redu */ });
+  if (mozePisati() && navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => { /* nije podržano — u redu */ });
   curHash = FILE_MODE ? '#/' : (location.hash || '#/');
+  zakljucavanjeUIspremno = true;
   // Ispit u toku ima prvenstvo nad adresom: ko je osvežio stranu usred ispita (ili mu je telefon
   // izbacio tab), vraća se u isti ispit sa vremenom koje je i dalje teklo.
-  if (problemUcitavanja) {
+  if (!mozePisati()) {
+    prikaziZakljucanTab();
+  } else if (problemUcitavanja) {
     renderHome();
     prikaziOporavakStanja();
   } else if (!simNastavi()) {
@@ -4241,7 +4490,9 @@
       try { renderHome(); poruci(L('porGreskaAdrese')); } catch (e2) { /* errStrip će prikazati */ }
     }
   }
-  const backupSpreman = initBackup();
+  if (pocetniRezimPisanja === 'fallback') trakaUpozorenja(L('tabBezBrave'));
+  if (zakljucavanjePrikazCeka) prikaziZakljucanTab();
+  const backupSpreman = mozePisati() ? initBackup() : Promise.resolve();
   const proveraPosleUcitavanja = location.hostname === 'localhost' ? { zapisi: proveraProcitajZapise(), s: JSON.stringify(S) } : null;
 
   // ---------- Razvojni prozor (SAMO localhost — za automatske provere bodovanja) ----------
@@ -4249,8 +4500,16 @@
     window.__dev = {
       get S() { return S; },
       get sim() { return sim; },
+      get rezimPisanja() { return rezimPisanja; },
+      proveraPostaviIspit(zapis) {
+        if (rezimPisanja !== 'writer' || problemUcitavanja || !zapisJeSvez(SIM_KEY)) throw Error('Probni ispit ne može bezbedno da se postavi.');
+        const tekst = JSON.stringify(zapis);
+        localStorage.setItem(SIM_KEY, tekst);
+        zapamtiUpis(SIM_KEY, tekst);
+      },
       async proveraBezFajla() {
         await backupSpreman;
+        if (rezimPisanja !== 'writer') throw Error('Provera zahteva jedinu aktivnu karticu sa Web Lock bravom.');
         if (fsHandle || fsPending || upisUToku || povezivanjeUToku) {
           throw Error('Provera zahteva zaseban test-profil bez povezanog fajla za rezervu.');
         }

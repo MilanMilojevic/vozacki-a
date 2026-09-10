@@ -11,7 +11,7 @@ function fixture() {
   c.Q = c.window.QUIZ.questions;
   const slots = app.indexOf('  const SIM_SLOTS = [');
   vm.runInContext(app.slice(slots, app.indexOf('  ];', slots) + 4), c);
-  vm.runInContext(app.slice(app.indexOf('  const STR = {'), app.indexOf('  // ---------- Stanje')), c);
+  vm.runInContext(app.slice(app.indexOf('  const STR = {'), app.indexOf('  // ---------- Jedan aktivan tab')), c);
   vm.runInContext(`let S = {q:{}, sims:[], script:'l'};
     const SIM_PTS_MIN=98, prag=n=>Math.ceil(.85*n);
     const localDay=d=>new Date(d).toISOString().slice(0,10);

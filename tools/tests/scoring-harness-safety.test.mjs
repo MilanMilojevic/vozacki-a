@@ -61,6 +61,11 @@ function bootRestoredApp(b) {
   const receipt = appSource.match(/  const proveraPosleUcitavanja = [^\n]+/);
   const confirm = appSource.match(/async proveraPotvrdiPovratak\(zapisi\) \{[\s\S]*?\n      \},/);
   b.run(`${state}\n const BOOT_V=126, SIM_KEY='vozackiA.sim', SIM_N=41;
+    let rezimPisanja='writer';
+    function mozePisati(){return rezimPisanja==='writer';}
+    function zahtevajZakljucanPrikaz(){}
+    function blokirajPisanje(){rezimPisanja='conflict';}
+    function zapamtiUpis(key,raw){if(ocekivaniZapisi)ocekivaniZapisi[key]=raw;}
     function save() { localStorage.setItem(KEY, JSON.stringify(S)); }
     function prikaziOporavakStanja() {}
     ${update}\n${sim}\nsimVrati();
@@ -110,7 +115,7 @@ test('a file connection after first reload blocks the scoring body', async () =>
 test('the app guard waits for initialization and rejects all active or pending file states', async () => {
   for (const flag of ['fsHandle', 'fsPending', 'upisUToku', 'povezivanjeUToku']) {
     let ready;
-    const state = { backupSpreman: new Promise((resolve) => { ready = resolve; }),
+    const state = { backupSpreman: new Promise((resolve) => { ready = resolve; }), rezimPisanja: 'writer',
       fsHandle: null, fsPending: null, upisUToku: false, povezivanjeUToku: false };
     const guard = vm.runInNewContext(`({ ${hookSource} }).proveraBezFajla`, state);
     let settled = false;

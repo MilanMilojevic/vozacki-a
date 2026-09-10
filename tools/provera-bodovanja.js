@@ -429,10 +429,10 @@ async function proveraBodovanjaTestovi() {
     // ---- 1f) ISTEKAO ISPIT BEZ ODGOVORA SE ODBACUJE ----
     {
       const brojSimova = S().sims.length;
-      localStorage.setItem('vozackiA.sim', JSON.stringify({
+      window.__dev.proveraPostaviIspit({
         v: 1, d: Date.now() - 60000, i: 0, r: 0,
         qs: window.QUIZ.questions.slice(0, 41).map((q) => ({ id: q.id, o: q.ch.map((c) => c.id), c: [], m: 0 })),
-      }));
+      });
       location.hash = '#/sim';
       await cekaj(400);
       ok('ispit: istekao BEZ odgovora se odbacuje, ne upisuje pad', S().sims.length === brojSimova && localStorage.getItem('vozackiA.sim') === null);

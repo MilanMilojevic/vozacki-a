@@ -11,6 +11,7 @@ const failure = name => Object.assign(new Error(`synthetic ${name}`), { name });
 
 function fixture({ storageFails = false } = {}) {
   let now = 0, timerId = 0;
+  let storageWrites = 0;
   const timers = new Map(), errors = [], warnings = [];
   const clock = {
     async flush() { for(let i=0;i<30;i++) await Promise.resolve(); },
@@ -29,7 +30,7 @@ function fixture({ storageFails = false } = {}) {
   const context = vm.createContext({
     Blob,
     console: { warn() {} },
-    localStorage: { setItem() { if(storageFails) throw failure('QuotaExceededError'); } },
+    localStorage: { setItem() { if(storageFails) throw failure('QuotaExceededError'); storageWrites++; } },
     setTimeout(fn,ms) { const id=++timerId; timers.set(id,{fn,at:now+ms}); return id; },
     clearTimeout(id) { timers.delete(id); },
     trakaUpozorenja(text) { warnings.push(text); },
@@ -38,13 +39,20 @@ function fixture({ storageFails = false } = {}) {
   vm.runInContext(`
     let S={q:{},revision:0}, fsHandle=null, fsPending=null, backupTimer=null;
     let problemUcitavanja=null, sirovoZaOporavak=null;
+    let rezimPisanja='writer', aktivniBackupPromise=Promise.resolve();
     const KEY='synthetic';
+    function mozePisati(){return rezimPisanja==='writer'||rezimPisanja==='fallback';}
+    function zahtevajZakljucanPrikaz(){}
+    function zapisJeSvez(){return true;}
+    function zapamtiUpis(){}
     ${backupSource}
     ${saveSource}
     globalThis.api={
       connect(handle){fsHandle=handle;},
       request(revision){S={q:{},revision};return save();},
       block(){problemUcitavanja='invalid-json';},
+      reader(){rezimPisanja='reader';},
+      activePromise(){return aktivniBackupPromise;},
       schedule:scheduleBackup,
       status(){return {active:upisUToku,handle:fsHandle,pending:fsPending};}
     };
@@ -70,7 +78,7 @@ function fixture({ storageFails = false } = {}) {
     };
     return result;
   }
-  return {api:context.api,clock,handle,locks,warnings,errors,timers};
+  return {api:context.api,clock,handle,locks,warnings,errors,timers,get storageWrites(){return storageWrites;}};
 }
 
 for(const stage of ['write','close']) test(`a save during delayed ${stage} drains without requiring a third save`, async()=>{
@@ -166,6 +174,30 @@ test('corrupt recovery blocks new requests and a previously scheduled backup',as
   const f=fixture(), h=f.handle('first');f.api.connect(h);f.api.request(1);f.api.block();
   assert.equal(f.api.request(2),false);f.api.schedule();await f.clock.tick(10000);
   assert.equal(h.calls,0);assert.deepEqual(h.committed,[]);assert.equal(f.api.status().active,false);
+});
+
+test('read-only mode blocks browser storage and queued file writes',async()=>{
+  const f=fixture(), h=f.handle('first');f.api.connect(h);f.api.reader();
+  assert.equal(f.api.request(1),false);f.api.schedule();await f.clock.tick(10000);
+  assert.equal(f.storageWrites,0);assert.equal(h.calls,0);assert.deepEqual(h.committed,[]);
+});
+
+test('demotion during a file write aborts it before commit',async()=>{
+  const f=fixture(), gate=deferred(), h=f.handle('first',[{writeWait:gate}]);
+  f.api.connect(h);f.api.request(1);await f.clock.tick(800);f.api.reader();gate.resolve();
+  await f.clock.flush();await f.clock.tick(10000);
+  assert.equal(h.calls,1);assert.equal(h.writers[0].aborted,true);assert.deepEqual(h.committed,[]);
+});
+
+test('a timer firing during an active write cannot replace the drain promise',async()=>{
+  const f=fixture(), gate=deferred(), h=f.handle('first',[{writeWait:gate}]);
+  f.api.connect(h);f.api.request(1);await f.clock.tick(800);
+  const active=f.api.activePromise();
+  f.api.request(2);await f.clock.tick(800);
+  assert.equal(f.api.activePromise(),active);
+  let settled=false;active.then(()=>{settled=true;});await f.clock.flush();assert.equal(settled,false);
+  f.api.reader();gate.resolve();await f.clock.flush();
+  assert.equal(h.writers[0].aborted,true);assert.deepEqual(h.committed,[]);
 });
 
 test('rapid saves before the first writer starts retain the debounce and latest state',async()=>{

@@ -79,6 +79,13 @@ function runScenario({ initial, readFails = false, writeFails = false, withFile 
     }
     let problemUcitavanja = null;
     let sirovoZaOporavak = null;
+    let rezimPisanja = 'writer';
+    let ocekivaniZapisi = { [KEY]: ${JSON.stringify(initial)} };
+    let aktivniBackupPromise = Promise.resolve();
+    function mozePisati() { return rezimPisanja === 'writer'; }
+    function zahtevajZakljucanPrikaz() {}
+    function zapisJeSvez() { return true; }
+    function zapamtiUpis(key, raw) { ocekivaniZapisi[key] = raw; }
     ${loadSource}
     let S = load();
     let fsHandle = ${withFile ? '{}' : 'null'};
@@ -87,6 +94,7 @@ function runScenario({ initial, readFails = false, writeFails = false, withFile 
     let upozorenONeuspehuRezerve = false;
     let backupRevizija = 0, backupZahtev = null;
     function isprazniRedRezerve() { throw new Error('file write must not start in this test'); }
+    function pokreniPraznjenjeRezerve() { return isprazniRedRezerve(); }
     function upisiRezervu() { throw new Error('file write must not start in this test'); }
     function upozoriDaSeNeCuva() {}
     function prikaziOporavakStanja() {}
@@ -205,9 +213,14 @@ test('recovery mode blocks pending-exam writes, deletes, and new exam starts', (
     const SIM_KEY = 'vozackiA.sim';
     const SIM_SECONDS = 2700;
     let problemUcitavanja = 'invalid-json';
+    let rezimPisanja = 'writer';
     let sim = { deadline: 1, i: 0, showReport: false, qs: [] };
     let current = null;
     function prikaziOporavakStanja() { metrics.warnings++; }
+    function zahtevajZakljucanPrikaz() {}
+    function mozePisati() { return rezimPisanja === 'writer'; }
+    function zapisJeSvez() { return true; }
+    function zapamtiUpis() {}
     function upozoriDaSeNeCuva() {}
     function buildSimSet() { metrics.builds++; return []; }
     function applySimLabels() {}
