@@ -740,3 +740,16 @@ button { transition: background-color .15s ease, border-color .15s ease, color .
   body.uSimulaciji #updBar { bottom: 14px; }
   body.uSimulaciji #repoUpd { bottom: 16px; }
 }
+
+/* Na niskom telefonu, naročito uz uvećan tekst, obe stalne trake mogu da
+   prekriju ceo prostor za dugmad. Tada se pomeraju sa dokumentom; sadržaj
+   ostaje dostupan običnim skrolom i tastaturom. Ispit zadržava svoj raspored. */
+@media (max-width: 700px) and (max-height: 400px) {
+  body:not(.uSimulaciji) #topbar, #donjaNav { position: static; }
+  body:not(.uSimulaciji) #browseList .grupaNaslov { position: static; }
+  #podnozje { padding-bottom: 34px; }
+  #trakeDrzac, #iosHint { bottom: 12px; }
+  #updBar { bottom: 14px; }
+  #repoUpd { bottom: 16px; }
+  body:not(.uSimulaciji) .qActions button { scroll-margin-bottom: 12px; }
+}

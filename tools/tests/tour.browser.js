@@ -81,21 +81,16 @@ async (page) => {
       const after = await p.evaluate(() => ({ saved: JSON.parse(localStorage.getItem('vozackiA.v1')).tour, focus: document.activeElement.id, questions: Object.keys(window.__dev.S.q).length }));
       assert(after.saved === 1 && after.questions === 0, 'Tour completion changed answers or was not saved.');
       assert(after.focus === 'glavni', 'Automatic tour did not return focus to the main content.');
-      // Opening settings on a 240px-high page at 200% is a separate existing
-      // whole-page layout defect. Open replay at normal height, then re-test
-      // the actual guide controls at the short height; no forced clicks.
-      if (height < 400) await p.setViewportSize({ width, height: 844 });
+      // Replay must also open at the actual viewport/text size. No temporary
+      // enlargement or forced click may conceal obstructed settings controls.
       const settings = p.locator('#btnPodesavanja');
       if (await settings.getAttribute('aria-expanded') !== 'true') await settings.click();
       await p.locator('#btnTourReplay').click();
       await p.locator('#tourNext').waitFor();
-      if (height < 400) await p.setViewportSize({ width, height });
       await p.keyboard.press('Escape');
       assert(await p.locator('#tourTip').count() === 0, 'Escape did not close the replay.');
       assert(await p.evaluate(() => document.activeElement.id) === 'btnTourReplay', 'Escape did not restore replay-button focus.');
-      if (height < 400) await p.setViewportSize({ width, height: 844 });
       await p.locator('#btnTourReplay').click();
-      if (height < 400) await p.setViewportSize({ width, height });
       await p.locator('#tourSkip').click();
       assert(await p.evaluate(() => document.activeElement.id) === 'btnTourReplay', 'Skip did not restore replay-button focus.');
       // The guide must not make session-only settings permanently open.
