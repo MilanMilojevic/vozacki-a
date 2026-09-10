@@ -1,5 +1,5 @@
 // Gradi ../explanations.js iz latiničnog izvora (automatska transliteracija u ćirilicu,
-// SI oznake ostaju latinicom kao u zvaničnoj bazi). Pokreni: node build-explanations.mjs
+// SI oznake ostaju latinicom kao u zvaničnoj bazi). Iz korena: node tools/build-explanations.mjs; putanje su vezane za modul.
 import fs from 'node:fs/promises';
 import { napraviAtlas, SUB_KARTICA_SVE } from './atlas.mjs';
 
@@ -6873,7 +6873,7 @@ const out = {
   else console.log('skener pisma: čisto');
 }
 
-await fs.writeFile('../explanations.js', 'window.EXPLAIN = ' + JSON.stringify(out) + ';\n');
+await fs.writeFile(new URL('../explanations.js', import.meta.url), 'window.EXPLAIN = ' + JSON.stringify(out) + ';\n');
 console.log('explanations.js:', Object.keys(out.byQ).length, 'pitanja,', Object.keys(out.cards).length, 'kartica');
 console.log('atlas:', ATLAS_N, 'slika u', Object.keys(ATLAS).length, 'kartica' + (ATLAS_VAN ? ' (van grupa: ' + ATLAS_VAN + ')' : ''));
 console.log('situacije:', SIT_N, 'slika u', Object.keys(SITUACIJE).length, 'kartica');
@@ -6882,7 +6882,7 @@ console.log('proba ćirilice:', toCyr('Vozač ne sme (ZOBS čl. 187) — 0,20 mg
 
 // Мерена покривеност — да број у документацији не може да застари.
 try {
-  const baza = JSON.parse(await fs.readFile('base-A.json', 'utf8'));
+  const baza = JSON.parse(await fs.readFile(new URL('./base-A.json', import.meta.url), 'utf8'));
   const tekst = baza.questions.filter((q) => !q.HasImage);
   const sa = tekst.filter((q) => out.byQ[q.qId] && out.byQ[q.qId].x).length;
   const slika = baza.questions.length - tekst.length;
