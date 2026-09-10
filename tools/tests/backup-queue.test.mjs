@@ -54,7 +54,7 @@ function fixture({ storageFails = false } = {}) {
       reader(){rezimPisanja='reader';},
       activePromise(){return aktivniBackupPromise;},
       schedule:scheduleBackup,
-      status(){return {active:upisUToku,handle:fsHandle,pending:fsPending};}
+      status(){return {active:upisUToku,handle:fsHandle,pending:fsPending,phase:typeof backupFaza==='undefined'?'missing':backupFaza};}
     };
   `, context);
   const locks = { active:0, maximum:0 };
@@ -118,6 +118,38 @@ test('two failures stop automatic retry; a later save can recover',async()=>{
   assert.equal(f.api.status().active,false);assert.equal(f.timers.size,0);
   f.api.request(2);await f.clock.tick(800);
   assert.deepEqual(h.committed.map(s=>s.revision),[2]);assert.equal(f.locks.maximum,1);
+});
+
+test('backup freshness stays pending through debounce and a newer delayed write, then becomes current only after final close',async()=>{
+  const f=fixture(), gate=deferred(), h=f.handle('first',[{closeWait:gate}]);
+  f.api.connect(h);f.api.request(1);
+  assert.equal(f.api.status().phase,'ceka');
+  await f.clock.tick(800);
+  assert.equal(f.api.status().phase,'upisuje');
+  f.api.request(2);
+  assert.equal(f.api.status().phase,'ceka');
+  await f.clock.tick(800);
+  assert.equal(h.calls,1);assert.equal(f.api.status().phase,'ceka');
+  gate.resolve();await f.clock.flush();
+  assert.equal(f.api.status().phase,'ceka');
+  await f.clock.tick(800);
+  assert.deepEqual(h.committed.map(s=>s.revision),[1,2]);
+  assert.equal(f.api.status().phase,'uspesno');
+});
+
+test('terminal backup failure is visible until a later save starts and completes',async()=>{
+  const f=fixture(), h=f.handle('first',[{writeError:failure('UnknownError')},{closeError:failure('UnknownError')}]);
+  f.api.connect(h);f.api.request(1);
+  assert.equal(f.api.status().phase,'ceka');
+  await f.clock.tick(800);
+  assert.equal(f.api.status().phase,'upisuje');
+  await f.clock.tick(2000);await f.clock.tick(5000);
+  assert.equal(f.api.status().phase,'greska');
+  f.api.request(2);
+  assert.equal(f.api.status().phase,'ceka');
+  await f.clock.tick(800);
+  assert.equal(f.api.status().phase,'uspesno');
+  assert.deepEqual(h.committed.map(s=>s.revision),[2]);
 });
 
 test('permission loss stops after one attempt and retains that handle for reconnection',async()=>{

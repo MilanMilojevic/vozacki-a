@@ -121,7 +121,7 @@
     porUvoz: { l: 'Napredak je učitan.', c: 'Напредак је учитан.' },
     porObelezeno: { l: 'Pitanje je obeleženo · ukupno @1', c: 'Питање је обележено · укупно @1' },
     porOdobelezeno: { l: 'Oznaka je uklonjena · ukupno @1', c: 'Ознака је уклоњена · укупно @1' },
-    porPovezano: { l: 'Automatsko čuvanje je uključeno.', c: 'Аутоматско чување је укључено.' },
+    porPovezano: { l: 'Fajl je povezan; prvi upis čeka.', c: 'Фајл је повезан; први упис чека.' },
     porNemaPitanja: { l: 'To pitanje više ne postoji u bazi.', c: 'То питање више не постоји у бази.' },
     porNemaPregleda: { l: 'Taj pregled simulacije ne postoji.', c: 'Тај преглед симулације не постоји.' },
     porSimPrekinuta: { l: 'Taj ispit više nije u toku.', c: 'Тај испит више није у току.' },
@@ -231,7 +231,7 @@
     importPrevelik: { l: 'Ta datoteka je prevelika da bi bila sačuvan napredak. Izaberi datoteku koju je napravilo dugme „Sačuvaj napredak (fajl)".', c: 'Та датотека је превелика да би била сачуван напредак. Изабери датотеку коју је направило дугме „Сачувај напредак (фајл)".' },
     importDeo: { l: 'Uvezeno je # od @ zapisa. Ostali se ne nalaze u trenutnoj bazi pitanja, pa su izostavljeni.', c: 'Увезено је # од @ записа. Остали се не налазе у тренутној бази питања, па су изостављени.' },
     rezervaDozvola: { l: '⚠ Rezerva u fajl je isključena jer je pregledač povukao dozvolu za pisanje. U podešavanjima je dugme da je ponovo uključiš.', c: '⚠ Резерва у фајл је искључена јер је прегледач повукао дозволу за писање. У подешавањима је дугме да је поново укључиш.' },
-    rezervaNeuspeh: { l: '⚠ Rezerva u fajl trenutno ne prolazi — fajl je možda otvoren u drugom programu ili je disk pun. Napredak je i dalje u pregledaču, a upis se pokušava ponovo.', c: '⚠ Резерва у фајл тренутно не пролази — фајл је можда отворен у другом програму или је диск пун. Напредак је и даље у прегледачу, а упис се покушава поново.' },
+    rezervaNeuspeh: { l: '⚠ Rezerva u fajl trenutno ne prolazi — fajl je možda otvoren u drugom programu ili je disk pun. Napredak je i dalje u pregledaču; sledeći upis će biti pokušan pri narednoj promeni.', c: '⚠ Резерва у фајл тренутно не пролази — фајл је можда отворен у другом програму или је диск пун. Напредак је и даље у прегледачу; следећи упис ће бити покушан при наредној промени.' },
     saveFail: { l: '⚠ Napredak ne može da se sačuva u ovom pregledaču — nestaće kad zatvoriš stranicu. Proveri da li su podaci sajta blokirani, ili sačuvaj napredak u datoteku preko „Sačuvaj napredak (fajl)".', c: '⚠ Напредак не може да се сачува у овом прегледачу — нестаће кад затвориш страницу. Провери да ли су подаци сајта блокирани, или сачувај напредак у датотеку преко „Сачувај напредак (фајл)".' },
     recoveryBad: { l: 'Sačuvani napredak ne može da se pročita. Originalni zapis je ostao netaknut. Sačuvaj ga, pa učitaj ispravnu kopiju. Do tada nove promene neće biti sačuvane.', c: 'Сачувани напредак не може да се прочита. Оригинални запис је остао нетакнут. Сачувај га, па учитај исправну копију. До тада нове промене неће бити сачуване.' },
     recoveryUnavailable: { l: 'Pregledač nije dozvolio čitanje sačuvanog napretka. Nijedan zapis neće biti promenjen dok skladište ponovo ne bude dostupno i ne učitaš ispravnu kopiju.', c: 'Прегледач није дозволио читање сачуваног напретка. Ниједан запис неће бити промењен док складиште поново не буде доступно и не учиташ исправну копију.' },
@@ -395,7 +395,10 @@
     persistNote: { l: 'Napredak preživljava restart browsera i računara; briše ga samo „brisanje podataka pregledanja". Za svaki slučaj poveži fajl za automatski upis.', c: 'Напредак преживљава рестарт браузера и рачунара; брише га само „брисање података прегледања". За сваки случај повежи фајл за аутоматски упис.' },
     backupConnect: { l: '🔗 Poveži fajl za automatsko čuvanje', c: '🔗 Повежи фајл за аутоматско чување' },
     backupResume: { l: 'Nastavi automatsko čuvanje u fajl', c: 'Настави аутоматско чување у фајл' },
-    backupOn: { l: 'Automatski se čuva u', c: 'Аутоматски се чува у' },
+    backupCeka: { l: 'Fajl je povezan; najnovija promena čeka upis u', c: 'Фајл је повезан; најновија промена чека упис у' },
+    backupUpisuje: { l: 'Najnovija promena se upisuje u', c: 'Најновија промена се уписује у' },
+    backupUspesno: { l: 'Poslednja promena je upisana u', c: 'Последња промена је уписана у' },
+    backupGreska: { l: 'Fajl je povezan, ali poslednja promena nije upisana u', c: 'Фајл је повезан, али последња промена није уписана у' },
     backupNA: { l: '(automatski upis u fajl nije podržan u ovom browseru — koristi dugme za ručno čuvanje)', c: '(аутоматски упис у фајл није подржан у овом браузеру — користи дугме за ручно чување)' },
     answered: { l: 'odgovoreno', c: 'одговорено' },
     continueBtn: { l: 'Nastavi', c: 'Настави' },
@@ -2933,6 +2936,7 @@
   let upozorenONeuspehuRezerve = false;
   let backupRevizija = 0;
   let backupZahtev = null;
+  let backupFaza = 'ceka';
   async function upisiRezervu(handle, tekst) {
     if (problemUcitavanja || !mozePisati()) return;
     const w = await handle.createWritable({ keepExistingData: true });
@@ -2955,6 +2959,8 @@
     if (problemUcitavanja || !mozePisati() || !fsHandle || upisUToku || !backupZahtev || backupZahtev.handle !== fsHandle) return;
     const handle = backupZahtev.handle;
     let pokusanaRevizija = backupZahtev.revizija;
+    let upisUspeo = false;
+    let krajnjaGreska = false;
     upisUToku = true;
     try {
       for (let pokusaj = 0; pokusaj < 2; pokusaj++) {
@@ -2962,7 +2968,10 @@
         // Ponovni pokušaj uzima najnovije stanje i njegovu reviziju, ali isti fajl.
         pokusanaRevizija = backupZahtev.revizija;
         try {
+          backupFaza = 'upisuje';
+          renderBackupLine();
           await upisiRezervu(handle, JSON.stringify(S));
+          upisUspeo = true;
           upozorenONeuspehuRezerve = false;
           break;
         } catch (e) {
@@ -2972,6 +2981,7 @@
         }
       }
     } catch (e) {
+      krajnjaGreska = true;
       if (mozePisati() && fsHandle === handle) {
         if (e && (e.name === 'NotAllowedError' || e.name === 'SecurityError')) {
           fsPending = handle; fsHandle = null; renderBackupLine();   // dozvola istekla
@@ -2988,8 +2998,14 @@
       // Tajmer novijeg save() možda je već istekao dok je pisac bio zauzet.
       // Oznaka ostaje do ovde; bez novije izmene nema beskonačnog ponavljanja.
       if (!problemUcitavanja && mozePisati() && fsHandle && backupZahtev && backupZahtev.handle === fsHandle) {
+        backupFaza = 'ceka';
+        renderBackupLine();
         clearTimeout(backupTimer);
         backupTimer = setTimeout(pokreniPraznjenjeRezerve, 800);
+      } else if (!problemUcitavanja && mozePisati() && fsHandle === handle) {
+        if (upisUspeo) backupFaza = 'uspesno';
+        else if (krajnjaGreska) backupFaza = 'greska';
+        renderBackupLine();
       }
     }
   }
@@ -3002,6 +3018,8 @@
   function scheduleBackup() {
     if (problemUcitavanja || !mozePisati() || !fsHandle) return;
     backupZahtev = { handle: fsHandle, revizija: ++backupRevizija };
+    backupFaza = 'ceka';
+    renderBackupLine();
     clearTimeout(backupTimer);
     backupTimer = setTimeout(pokreniPraznjenjeRezerve, 800);
   }
@@ -3055,7 +3073,16 @@
     if (!s || !slot) return;
     s.innerHTML = ''; slot.innerHTML = ''; slot.style.display = 'none';
     if (!FSA) { s.textContent = L('backupNA'); return; }
-    if (fsHandle) { s.innerHTML = `✅ ${L('backupOn')}: <b>${escapeHtml(fsHandle.name)}</b>`; return; }
+    if (fsHandle) {
+      const prikaz = {
+        ceka: ['⏳', 'backupCeka'],
+        upisuje: ['⏳', 'backupUpisuje'],
+        uspesno: ['✅', 'backupUspesno'],
+        greska: ['⚠', 'backupGreska'],
+      }[backupFaza] || ['⏳', 'backupCeka'];
+      s.innerHTML = `${prikaz[0]} ${L(prikaz[1])}: <b>${escapeHtml(fsHandle.name)}</b>`;
+      return;
+    }
     slot.style.display = 'contents';
     if (fsPending) {
       slot.innerHTML = `<button type="button" class="secondary" id="btnResumeBackup">🔗 ${L('backupResume')} (${escapeHtml(fsPending.name)})</button>`;
