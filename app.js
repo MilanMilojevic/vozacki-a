@@ -124,6 +124,7 @@
     porPovezano: { l: 'Fajl je povezan; prvi upis čeka.', c: 'Фајл је повезан; први упис чека.' },
     porNemaPitanja: { l: 'To pitanje više ne postoji u bazi.', c: 'То питање више не постоји у бази.' },
     porNemaPregleda: { l: 'Taj pregled simulacije ne postoji.', c: 'Тај преглед симулације не постоји.' },
+    porPrivremeniProlaz: { l: 'Ovaj privremeni prolaz više nije dostupan. Vraćen je spisak; sačuvani napredak ostaje.', c: 'Овај привремени пролаз више није доступан. Враћен је списак; сачувани напредак остаје.' },
     porSimPrekinuta: { l: 'Taj ispit više nije u toku.', c: 'Тај испит више није у току.' },
     porGreskaAdrese: { l: 'Ta adresa nije mogla da se otvori — evo početne strane.', c: 'Та адреса није могла да се отвори — ево почетне стране.' },
     porSimVracena: { l: 'Ispit je nastavljen tamo gde je stao — vreme je teklo i dok si bio odsutan.', c: 'Испит је настављен тамо где је стао — време је текло и док си био одсутан.' },
@@ -1085,18 +1086,101 @@
   // ---------- Hash rutiranje: strelice browsera napred/nazad + deep-link ----------
   let curHash = null;
   const FILE_MODE = location.protocol === 'file:';
+  // U istoriji su samo adresa, redni broj i poreklo prolaza. Spiskovi, izbori i
+  // povratne funkcije žive samo u ovoj kartici; ne ulaze u URL ili zajednički napredak.
+  const navPrikazi = new Map();
+  let navBroj = 0, navTekuci = null, navVraca = false, navOtkazivanje = null;
+  let navProfil = S;
+  const navDokument = Date.now().toString(36) + Math.random().toString(36).slice(2);
+  function navProveriProfil() {
+    if (navProfil === S) return;
+    // Uspešan uvoz/reset zamenjuje profil. Prethodni izbori i članstvo u privremenim
+    // spiskovima više ne važe; otkazivanje/neuspešan upis zadržavaju isti profil.
+    navProfil = S;
+    navPrikazi.clear();
+    prikazPitanja.clear();
+  }
+  function navIzIstorije() {
+    try {
+      const n = history.state && history.state.vozackiNav;
+      return n && typeof n.id === 'string' && Number.isInteger(n.index) &&
+        typeof n.hash === 'string' && n.hash === (location.hash || '#/') ? n : null;
+    } catch (_) { return null; }
+  }
+  function navUpisi(n, push) {
+    try { history[push ? 'pushState' : 'replaceState']({ vozackiNav: n }, '', n.hash); return true; }
+    catch (_) { return false; } // file:// i pregledači sa ograničenim History API-jem koriste hash.
+  }
+  function navNovi(hash, index, origin) {
+    return { id: navDokument + ':' + (++navBroj), index, hash, origin: origin || '#/sva' };
+  }
+  function navZapamtiUI() {
+    if (navVraca || !navTekuci) return;
+    const sn = navPrikazi.get(navTekuci.id);
+    if (!sn) return;
+    const active = document.querySelector('.view.active'), focused = document.activeElement;
+    const search = active && active.querySelector('#qSearch');
+    const focus = active && active.contains(focused) ? focused : null;
+    const row = focus && focus.closest('.qRow[data-qid]');
+    sn.ui = { y: window.scrollY, search: search ? search.value : null,
+      focus: row ? '.qRow[data-qid="' + row.dataset.qid + '"]' : focus && focus.id ? '#' + focus.id : (sn.ui && sn.ui.focus) || null };
+  }
+  function navZapamtiPrikaz() {
+    if (navVraca || !navTekuci || !mozePisati()) return;
+    navProveriProfil();
+    const sn = navPrikazi.get(navTekuci.id) || {};
+    sn.redraw = current.redraw;
+    sn.run = runSeq;
+    sn.learnPos = pozicijaUcenja;
+    sn.list = current.redraw === stepList && listMode ? { ...listMode, ids: listMode.ids.slice() } : null;
+    const key = sn.list ? 'T' + runSeq + '|' + sn.list.i : current.redraw === stepLearn ? 'L' + runSeq + '|' + pozicijaUcenja : null;
+    sn.question = key && prikazPitanja.has(key) ? { key, value: prikazPitanja.get(key) } : null;
+    navPrikazi.set(navTekuci.id, sn);
+    while (navPrikazi.size > 100) navPrikazi.delete(navPrikazi.keys().next().value);
+    navZapamtiUI();
+  }
+  function navVratiUI(ui) {
+    if (!ui) return;
+    const active = document.querySelector('.view.active');
+    if (!active) return;
+    const search = active.querySelector('#qSearch');
+    if (search && ui.search !== null) { search.value = ui.search; search.dispatchEvent(new Event('input')); }
+    if (ui.focus) { const focus = active.querySelector(ui.focus); if (focus) focus.focus({ preventScroll: true }); }
+    window.scrollTo(0, ui.y || 0);
+  }
+  function navPoslePrikaza(ui, obavesti) {
+    queueMicrotask(() => {
+      if (ui) navVratiUI(ui);
+      navZapamtiPrikaz();
+      // Ostali prikazi (vodič/uveličanje) već zatvaraju svoje slojeve na promenu adrese.
+      if (obavesti) window.dispatchEvent(new Event('hashchange'));
+    });
+  }
   function setHash(h) {
+    navProveriProfil();
     curHash = h;
-    if (FILE_MODE) return;                   // file:// — adresa se ne dira (origin je "null")
-    if (location.hash !== h) location.hash = h;
+    if (navVraca) return;
+    if (!navTekuci) { navTekuci = navIzIstorije() || navNovi(h, 0); navUpisi(navTekuci, false); }
+    if (navTekuci.hash === h && (location.hash || '#/') === h) {
+      navPoslePrikaza(navPrikazi.get(navTekuci.id)?.ui);
+      return;
+    }
+    navZapamtiUI();
+    const origin = /^(#\/sva|#\/sek\/[cs]\d+|#\/lista\/(wrong|marked))$/.test(navTekuci.hash) ? navTekuci.hash : navTekuci.origin;
+    navTekuci = navNovi(h, navTekuci.index + 1, origin);
+    const upisano = navUpisi(navTekuci, true);
+    if (!upisano && location.hash !== h) { location.hash = h; navUpisi(navTekuci, false); }
+    navPoslePrikaza(null, upisano);
   }
   // mrtva adresa (#/vezba, ugašena simulacija, loš pregled) se zamenjuje u istoriji —
   // inače bi svaki "Nazad" ponovo sletao na nju i korisnik bi se vrteo u krug
   function goHomeReplace(kljuc) {
     // korisnik koji je otvorio deljenu adresu mora da zna zašto gleda početnu
     if (kljuc) setTimeout(() => poruci(L(kljuc)), 60);
-    if (FILE_MODE) { renderHome(); return; }
-    location.replace('#/');
+    navTekuci = navNovi('#/', navTekuci ? navTekuci.index : 0);
+    curHash = '#/';
+    if (!navUpisi(navTekuci, false)) location.replace('#/');
+    renderHome();
   }
   function routeTo(h) {
     if (!mozePisati()) { zahtevajZakljucanPrikaz(); return; }
@@ -1116,6 +1200,16 @@
     if (h === '#/lista/marked') return browseSet('marked');
     if (h === '#/stats') return renderStats();
     if (h === '#/uci') return startLearn();
+    if (h === '#/vezba') {
+      const origin = navTekuci && navTekuci.origin;
+      const cilj = /^(#\/sva|#\/sek\/[cs]\d+|#\/lista\/(wrong|marked))$/.test(origin || '') ? origin : '#/sva';
+      navTekuci = navNovi(cilj, navTekuci ? navTekuci.index : 0, cilj);
+      if (!navUpisi(navTekuci, false)) location.replace(cilj);
+      curHash = cilj;
+      routeTo(cilj);
+      setTimeout(() => poruci(L('porPrivremeniProlaz')), 60);
+      return;
+    }
     if (h.startsWith('#/p/')) {
       const qid = parseInt(h.slice(4), 10);
       if (byId.has(qid)) return startList([qid], () => '#' + qid, null, 'filter', { origin: () => renderHome(), nazadLbl: L('backHome'), jedno: true, hash: h });
@@ -1133,15 +1227,47 @@
     }
     return goHomeReplace();   // '#/vezba' i nepoznato: prolazna vežba se ne rekonstruiše
   }
-  window.addEventListener('hashchange', () => {
+  function navPromena() {
     if (!mozePisati()) { zahtevajZakljucanPrikaz(); return; }
     const h = location.hash || '#/';
-    if (h === curHash) return;               // naš sopstveni upis, ne korisnikova strelica
-    if (sim && !leaveSimOk()) { setHash('#/sim'); return; }   // jedan izlaz iz ispita za sve puteve
+    let next = navIzIstorije();
+    if (navOtkazivanje) {
+      if (next && next.id === navOtkazivanje) { navOtkazivanje = null; curHash = h; }
+      return;
+    }
+    if (h === curHash && (!next || next.id === navTekuci?.id)) return;
+    navZapamtiPrikaz();
+    if (!next) { next = navNovi(h, navTekuci ? navTekuci.index + 1 : 0); navUpisi(next, false); }
+    if (sim && !leaveSimOk()) {
+      if (navTekuci && next.index !== navTekuci.index && navIzIstorije()) {
+        navOtkazivanje = navTekuci.id;
+        try { history.go(navTekuci.index - next.index); return; } catch (_) { navOtkazivanje = null; }
+      }
+      if (navTekuci && navUpisi(navTekuci, false)) return;
+      setHash('#/sim'); return;
+    }
+    navTekuci = next;
     curHash = h;
-    // greška u rutiranju ne sme da ćuti: korisnik inače završi na početnoj bez ijedne reči
-    try { routeTo(h); } catch (err) { console.warn('Adresa nije mogla da se otvori:', h, err); goHomeReplace('porGreskaAdrese'); }
-  });
+    const sn = navPrikazi.get(next.id);
+    try {
+      if (sn && h !== '#/sim' && !h.startsWith('#/pregled/')) {
+        navVraca = true; ponovniPrikaz = true;
+        runSeq = sn.run;
+        if (sn.question) prikazPitanja.set(sn.question.key, sn.question.value);
+        if (sn.list) { listMode = { ...sn.list, ids: sn.list.ids.slice() }; current = { redraw: stepList }; show('question'); stepList(); }
+        else if (sn.redraw === stepLearn) { pozicijaUcenja = sn.learnPos; current = { redraw: stepLearn }; show('question'); stepLearn(); }
+        else sn.redraw();
+        navVratiUI(sn.ui);
+      } else routeTo(h);
+    } catch (err) { console.warn('Adresa nije mogla da se otvori:', h, err); goHomeReplace('porGreskaAdrese'); }
+    finally { navVraca = false; ponovniPrikaz = false; navPoslePrikaza(); }
+  }
+  window.addEventListener('popstate', navPromena);
+  window.addEventListener('hashchange', navPromena);
+  document.addEventListener('click', navZapamtiPrikaz, true);
+  document.addEventListener('click', () => navPoslePrikaza());
+  document.addEventListener('input', () => navPoslePrikaza());
+  window.addEventListener('scroll', navZapamtiUI, { passive: true });
   // Ispit se od v108 pamti, pa ga osvežavanje ne uništava — ali sat i dalje kuca dok te nema.
   // Zato upozorenje ostaje: ko zatvori tab i vrati se posle sat vremena, zatiče istekao ispit.
   window.addEventListener('beforeunload', (e) => {
@@ -1352,9 +1478,10 @@
     actions.appendChild(markWrap);
     c.appendChild(actions);
     // već odgovoreno u ovom prolazu: pokaži isti ishod (beleženje preskače lastRecordKey čuvar)
-    if (zapamceno && zapamceno.odgovoreno) finish(shuffled.filter((ch) => zapamceno.odgovoreno.includes(ch.id)));
+    zapamti();
+    if (zapamceno && zapamceno.odgovoreno) finish(shuffled.filter((ch) => zapamceno.odgovoreno.includes(ch.id)), true);
 
-    function finish(chosen) {
+    function finish(chosen, obnova) {
       answered = true;
       zapamti(chosen.map((x) => x.id));
       const okSet = new Set(q.ch.filter((x) => x.ok).map((x) => x.id));
@@ -1393,7 +1520,7 @@
         nextBtn.focus({ preventScroll: true });
         if (!vidiSe) nextBtn.scrollIntoView({ block: 'nearest' });
       }
-      if (opts.recordKey && opts.recordKey === lastRecordKey) {
+      if (obnova || (opts.recordKey && opts.recordKey === lastRecordKey)) {
         // isti prikaz istog pitanja (npr. ponovni render posle promene pisma) — ne beleži se dvaput
       } else {
         if (opts.recordKey) lastRecordKey = opts.recordKey;
@@ -1403,35 +1530,39 @@
   }
 
   // ---------- Učenje redom ----------
+  let pozicijaUcenja = 0;
   function startLearn(fromPos) {
-    runSeq++;
+    runSeq = ++najveciRunSeq;
     if (typeof fromPos === 'number') { S.seqPos = fromPos; save(); }
     if (S.seqPos > Q.length) S.seqPos = Q.length;   // tačno Q.length = sva pitanja završena
     if (S.seqPos < 0) S.seqPos = 0;
+    pozicijaUcenja = S.seqPos;
     current = { redraw: stepLearn };
     setHash('#/uci');
     show('question');
     stepLearn();
   }
   function stepLearn() {
-    if (S.seqPos >= Q.length) {
+    if (pozicijaUcenja >= Q.length) {
       krajSpiska({ ids: Q.map((q) => q.id), titleFn: () => L('learn'), secKey: null, origin: browseAll });
       return;
     }
-    const q = Q[S.seqPos];
-    renderProgress(L('learn'), S.seqPos + 1, Q.length, (n) => { lastRecordKey = null; S.seqPos = n; save(); stepLearn(); }, browseAll);
+    const q = Q[pozicijaUcenja];
+    const pomeri = (n) => { lastRecordKey = null; pozicijaUcenja = n; S.seqPos = n; save(); stepLearn(); };
+    renderProgress(L('learn'), pozicijaUcenja + 1, Q.length, pomeri, browseAll);
     renderQuestion({
       container: el('qCard'), q,
-      recordKey: 'L' + runSeq + '|' + S.seqPos,
+      recordKey: 'L' + runSeq + '|' + pozicijaUcenja,
       onAnswered: (ok) => record(q.id, ok),
-      onNext: () => { lastRecordKey = null; S.seqPos++; save(); stepLearn(); },
-      onPrev: S.seqPos > 0 ? () => { lastRecordKey = null; S.seqPos--; save(); stepLearn(); } : null,
+      onNext: () => pomeri(pozicijaUcenja + 1),
+      onPrev: pozicijaUcenja > 0 ? () => pomeri(pozicijaUcenja - 1) : null,
     });
   }
 
   // ---------- Liste (podoblast / oblast / pogrešna / obeležena / mešano) ----------
   let listMode = null; // {ids, i, titleFn, kind, secKey, origin}
   let runSeq = 0;              // raste sa svakim novim prolazom kroz pitanja
+  let najveciRunSeq = 0;       // novi prolaz ne sme ponovo dobiti id vraćen iz istorije
   let lastRecordKey = null;    // "prolaz|pozicija" poslednjeg zabeleženog odgovora
   // Koliko pitanja podoblast nosi na PRAVOM ispitu — izmereno iz pet zvaničnih izvlačenja
   // (fiksne vrednosti su bile identične u svih pet; "0–1" se smenjuju za slobodne slotove).
@@ -1505,7 +1636,7 @@
     }
     let start = opts.startAt || 0;
     if (start < 0 || start >= ids.length) start = 0;
-    runSeq++;
+    runSeq = ++najveciRunSeq;
     listMode = { ids, i: start, titleFn, kind, secKey: opts.secKey || null, chainKey: opts.chainKey || null, origin: opts.origin || null,
       nazadLbl: opts.nazadLbl || null, jedno: !!opts.jedno, hash: opts.hash || '#/vezba' };
     current = { redraw: stepList };
@@ -1520,23 +1651,23 @@
       // pogrešna: red se ponovo računa — možda je nešto i dalje spremno
       if (m.kind === 'drill') {
         const { ready, waiting } = queueSplit();
-        if (ready.length) { runSeq++; listMode = { ...m, ids: ready, i: 0 }; stepList(); return; }
+        if (ready.length) { runSeq = ++najveciRunSeq; listMode = { ...m, ids: ready, i: 0 }; stepList(); return; }
         if (waiting.length) {
           endScreen(`✅ ${(one(waiting.length) ? L('waitInfoOne') : L('waitInfo')).replace('#', waiting.length)}`, m.origin,
             `<button class="primary" id="btnDrillWaiting">${L('drillWaitingBtn')}</button>`);
-          el('btnDrillWaiting').addEventListener('click', () => { runSeq++; listMode = { ...m, ids: waiting, i: 0, kind: 'drill-all' }; stepList(); });
+          el('btnDrillWaiting').addEventListener('click', () => { runSeq = ++najveciRunSeq; listMode = { ...m, ids: waiting, i: 0, kind: 'drill-all' }; stepList(); });
         } else {
           endScreen('🎉 ' + L('endAllClear'), m.origin,
             '<button class="secondary" data-nav="sim">' + L('endSimBtn') + '</button>');
         }
         return;
       }
-      if (m.secKey) { S.secPos[m.secKey] = 0; save(); }
+      if (m.secKey && !navVraca && !ponovniPrikaz) { S.secPos[m.secKey] = 0; save(); }
       krajSpiska(m);
       return;
     }
     const q = byId.get(m.ids[m.i]);
-    if (m.secKey) { S.secPos[m.secKey] = m.i; S.lastSec = m.secKey; save(); }
+    if (m.secKey && !navVraca && !ponovniPrikaz) { S.secPos[m.secKey] = m.i; S.lastSec = m.secKey; save(); }
     // reset čuvara kao kod svakog drugog prelaza (dalje/nazad): bez njega povratak poljem „Idi"
     // na poziciju koja je već odgovorena u ovom prolazu daje isti recordKey, pa se novi odgovor
     // NE beleži — korisnik vidi „Tačno!", a brojači i raspored ponavljanja stoje
@@ -1609,6 +1740,7 @@
       const r = S.q[qid];
       const b = document.createElement('button');
       b.className = 'qRow';
+      b.dataset.qid = q.id;
       b.innerHTML = redPitanjaHtml(q, idx, r, opts.dodatak ? opts.dodatak(q, r) : '');
       b.addEventListener('click', () => opts.naKlik(idx, q));
       b._search = (T(q.t) + ' ' + q.t.l + ' #' + q.id).toLowerCase();
@@ -4525,7 +4657,9 @@
   applyTheme();
   applyFont();
   if (mozePisati() && navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => { /* nije podržano — u redu */ });
-  curHash = FILE_MODE ? '#/' : (location.hash || '#/');
+  curHash = location.hash || '#/';
+  navTekuci = navIzIstorije() || navNovi(curHash, 0);
+  navUpisi(navTekuci, false);
   zakljucavanjeUIspremno = true;
   // Ispit u toku ima prvenstvo nad adresom: ko je osvežio stranu usred ispita (ili mu je telefon
   // izbacio tab), vraća se u isti ispit sa vremenom koje je i dalje teklo.
