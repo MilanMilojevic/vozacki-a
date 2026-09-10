@@ -3,7 +3,7 @@
 async (page) => {
   const origin=await page.evaluate(()=>location.origin);
   if(!/^http:\/\/localhost:\d+$/.test(origin))throw Error('Use an isolated localhost fixture');
-  const keys={9868:[31406,31407],9870:[31414],9873:[31424,31425],9878:[31442],10488:[33317,33319,33321],10489:[33324,33325]};
+  const keys={9868:[31406,31407],9870:[31414],9873:[31424,31425],9878:[31442],9891:[31487],9903:[31532],9946:[31669],9947:[31672],10488:[33317,33319,33321],10489:[33324,33325]};
   const results=[],screenshots=[],stamp=Date.now();
   for(const width of [320,1280])for(const script of ['l','c'])for(const theme of ['light','dark']){
     const context=await page.context().browser().newContext({viewport:{width,height:900},serviceWorkers:'block',reducedMotion:'reduce'});

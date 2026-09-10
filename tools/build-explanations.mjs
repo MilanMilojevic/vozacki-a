@@ -4925,11 +4925,11 @@ const znakJaci = 'Važi broj sa POSTAVLJENOG ZNAKA — konkretan znak je jači o
 X[9878] = { x: znakJaci, card: 'brzine' };
 X[9908] = { x: 'Znak označava završetak motoputa. U prikazanoj situaciji nastavljaš ostalim putem izvan naselja, gde je opšte ograničenje 80 km/h (ZOBS čl. 44).', card: 'brzine' };
 X[9948] = { x: znakJaci, card: 'brzine' };
-X[9946] = { x: 'Znak ograničenja (40) postavljen je uz sam ulazak u naselje — važi ZNAK, a ne opšte pravilo "u naselju 50" (čl. 43: opšte ograničenje važi samo gde znak ne kaže drugačije). Za mopede i motocikle nema posebne opšte granice u ovoj situaciji — čitaj znak.', card: 'brzine' };
-X[9947] = { x: 'U naselju je opšte ograničenje 50, ali saobraćajnim znakom može da se DOZVOLI kretanje i do 80 km/h kada put to omogućava (ZOBS čl. 43 st. 2) — zato ovde važi 80 sa znaka, iako ulaziš u naselje. Ovo je omiljena zamka: znak može i da POVEĆA ograničenje u naselju.', card: 'brzine' };
+X[9946] = { x: "Na slici je uz ulazak u naselje postavljeno ograničenje 40 km/h. Zato i za moped i za motocikl u ovom pitanju važi najviše 40 km/h (ZOBS čl. 43).", card: 'brzine' };
+X[9947] = { x: "Znak na slici dopušta najviše 80 km/h za motocikl. U naselju znak može odrediti i više od opštih 50 km/h, do najviše 80 km/h kada uslovi puta to omogućavaju (ZOBS čl. 43 st. 2).", card: 'brzine' };
 X[9949] = { x: 'Na prikazanom motoputu znak ograničava brzinu na 60 km/h, manje od opštih 100 km/h (ZOBS čl. 20 i 44).', card: 'brzine' };
-X[9891] = { x: 'Motoput van naselja: najviše 100 km/h (ZOBS čl. 44). Merdevine opštih ograničenja: naselje 50 → van naselja 80 → motoput 100 → autoput 130.', card: 'brzine' };
-X[9903] = { x: 'Put van naselja koji nije ni autoput ni motoput: najviše 80 km/h (ZOBS čl. 44). Merdevine: 50 (naselje) → 80 (van naselja) → 100 (motoput) → 130 (autoput).', card: 'brzine' };
+X[9891] = { x: "Motoput van naselja: najviše 100 km/h (ZOBS čl. 44).", card: 'brzine' };
+X[9903] = { x: "Put van naselja koji nije ni autoput ni motoput: najviše 80 km/h (ZOBS čl. 44).", card: 'brzine' };
 X[10491] = { x: 'U naselju, bez znaka koji kaže drugačije: najviše 50 km/h (ZOBS čl. 43). Znakom može da se dozvoli i do 80 kada put to omogućava.', card: 'brzine' };
 X[10641] = { x: 'Autoput van naselja: najviše 130 km/h (ZOBS čl. 44). Merdevine: 50 → 80 → 100 → 130.', card: 'brzine' };
 
