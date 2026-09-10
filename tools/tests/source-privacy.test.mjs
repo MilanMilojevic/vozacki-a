@@ -14,7 +14,7 @@ function findPrivateMetadata(value, path = '$', matches = []) {
   if (!value || typeof value !== 'object') return matches;
 
   for (const [key, child] of Object.entries(value)) {
-    if (key === 'practiceId') matches.push(`${path}.${key}`);
+    if (/^practice(?:id|guid)$/i.test(key)) matches.push(`${path}.${key}`);
     findPrivateMetadata(child, `${path}.${key}`, matches);
   }
   return matches;
@@ -34,10 +34,11 @@ test('harvest public output strips private metadata and preserves question data'
       languageId: '15',
       tree: [{ categoryId: 25, subs: [{ id: 101, desc: 'Synthetic', n: 1 }] }],
       questions: [{
+        practiceId: 'synthetic-private-value',
         qId: 7001,
         Text: 'Synthetic question',
         Choices: [
-          { paId: 8001, Text: 'First choice' },
+          { paId: 8001, Text: 'First choice', PracticeGUID: 'synthetic-private-value' },
           { paId: 8002, Text: 'Second choice' },
         ],
       }],
