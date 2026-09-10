@@ -258,8 +258,8 @@ table.stats td.num, table.stats th.num { text-align: right; font-variant-numeric
   .histDate { grid-column: 1 / -1; }
 }
 .histRow:last-child { border-bottom: none; }
-button.histBtn { width: 100%; background: none; text-align: left; border-radius: 6px; padding: 8px 6px; }
-button.histBtn:hover { background: var(--optHover); }
+:is(button, a).histBtn { font: inherit; color: inherit; text-decoration: none; cursor: pointer; width: 100%; background: none; text-align: left; border-radius: 6px; padding: 8px 6px; }
+:is(button, a).histBtn:hover { background: var(--optHover); }
 .chipWrap { float: right; margin-left: 10px; white-space: nowrap; }
 /* Na telefonu oznake „tačan odgovor / tvoj odgovor" idu u SVOJ red — inače uzmu ceo red,
    a tekst ponude se lomi reč po reč (viđeno na snimku 360px). */

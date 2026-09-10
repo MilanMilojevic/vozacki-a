@@ -1147,6 +1147,7 @@
     const focus = active && active.contains(focused) ? focused : null;
     const row = focus && focus.closest('.qRow[data-qid]');
     sn.ui = { y: window.scrollY, search: search ? search.value : null,
+      histOlder: !!(active && active.querySelector('#histOlder')?.style.display !== 'none' && active.querySelector('#histOlder')),
       focus: row ? '.qRow[data-qid="' + row.dataset.qid + '"]' : focus && focus.id ? '#' + focus.id : (sn.ui && sn.ui.focus) || null };
   }
   function navZapamtiPrikaz() {
@@ -1154,8 +1155,9 @@
     navProveriProfil();
     const sn = navPrikazi.get(navTekuci.id) || {};
     sn.redraw = current.redraw;
+    sn.review = current.review === true;
     if (samoPregled()) {
-      navPrikazi.set(navTekuci.id, { redraw: current.redraw, ui: sn.ui });
+      navPrikazi.set(navTekuci.id, { redraw: current.redraw, review: sn.review, ui: sn.ui });
       while (navPrikazi.size > 100) navPrikazi.delete(navPrikazi.keys().next().value);
       navZapamtiUI(); return;
     }
@@ -1172,6 +1174,7 @@
     if (!ui) return;
     const active = document.querySelector('.view.active');
     if (!active) return;
+    if (ui.histOlder && active.querySelector('#btnHistOlder')?.getAttribute('aria-expanded') === 'false') active.querySelector('#btnHistOlder').click();
     const search = active.querySelector('#qSearch');
     if (search && ui.search !== null) { search.value = ui.search; search.dispatchEvent(new Event('input')); }
     if (ui.focus) { const focus = active.querySelector(ui.focus); if (focus) focus.focus({ preventScroll: true }); }
@@ -1257,11 +1260,7 @@
       if (byId.has(qid)) return startList([qid], () => '#' + qid, null, 'filter', { origin: () => renderHome(), nazadLbl: L('backHome'), jedno: true, hash: h });
       return goHomeReplace('porNemaPitanja');
     }
-    if (h.startsWith('#/pregled/')) {
-      const i = parseInt(h.slice(10), 10);
-      if (S.sims[i]) return renderSimReview(S.sims[i], false);
-      return goHomeReplace('porNemaPregleda');
-    }
+    if (h.startsWith('#/pregled/')) return renderPutanjaPregleda(h);
     if (h === '#/sim') {
       if (sim) { show('sim'); sim.showReport ? renderSimReport() : renderSimQ(); return; }
       if (simNastavi()) return;              // ispit iz zapisa (npr. „nazad" posle vraćanja u aplikaciju)
@@ -1359,6 +1358,7 @@
   }
   function renderPregled(h = '#/', otkriven = false) {
     if (!samoPregled()) return;
+    if (h.startsWith('#/pregled/')) return renderPutanjaPregleda(h);
     if (h === '#/lista/wrong' || h === '#/lista/marked') return browseSet(h.slice(8));
     if (h === '#/stats') return renderStats();
     if (h === '#/pojmovnik' || h.startsWith('#/pojmovnik/')) return renderPojmovnik(h);
@@ -1432,7 +1432,7 @@
     curHash = h;
     const sn = navPrikazi.get(next.id);
     try {
-      if (sn && h !== '#/sim' && !h.startsWith('#/pregled/')) {
+      if (sn && h !== '#/sim' && (!h.startsWith('#/pregled/') || sn.review)) {
         navVraca = true; ponovniPrikaz = true;
         if (!samoPregled()) runSeq = sn.run;
         if (sn.question) prikazPitanja.set(sn.question.key, sn.question.value);
@@ -2590,6 +2590,96 @@
     renderSimReview(rec, true);
   }
 
+  // Adresa označava sadržaj sačuvanog pokušaja, nikad njegov promenljivi indeks.
+  const kljuceviPregleda = new WeakMap();
+  function podaciPregleda(rec) {
+    return JSON.stringify(['vozacki-a-review-v1', rec.d, rec.score, rec.total, !!rec.passed,
+      [...(rec.wrong || [])].sort((a, b) => a - b), Array.isArray(rec.qs)
+        ? rec.qs.map(q => [q.id, [...q.ch].sort((a, b) => a - b)]) : null]);
+  }
+  function kljucPregleda(rec) {
+    const data = podaciPregleda(rec), old = kljuceviPregleda.get(rec);
+    if (old && old.data === data) return old;
+    const entry = { data, key: null, promise: null };
+    entry.promise = Promise.resolve().then(async () => {
+      if (!window.crypto?.subtle?.digest) return null;
+      // Kanonski zapis sadrži samo brojeve, bool/null i ASCII oznaku formata.
+      const bytes = Uint8Array.from(data, c => c.charCodeAt(0));
+      const hash = new Uint8Array(await window.crypto.subtle.digest('SHA-256', bytes));
+      if (hash.length !== 32) return null;
+      entry.key = [...hash].map(b => b.toString(16).padStart(2, '0')).join('');
+      return entry.key;
+    }).catch(() => null);
+    kljuceviPregleda.set(rec, entry);
+    return entry;
+  }
+  function imaPregled(rec) { return !problemUcitavanja && S.sims.includes(rec); }
+  function pregledJosVazi(view, profile, role, hash, rec, data) {
+    return current === view && S === profile && rezimPisanja === role && curHash === hash &&
+      (samoPregled() || mozePisati()) && (!rec || imaPregled(rec) && podaciPregleda(rec) === data);
+  }
+  function renderNedostupanPregled(h, razlog = 'missing') {
+    current = { redraw: () => renderNedostupanPregled(h, razlog) }; setHash(h);
+    const tekst = problemUcitavanja ? {
+      l: 'Sačuvani napredak nije mogao da se učita. Pregled simulacije nije dostupan.',
+      c: 'Сачувани напредак није могао да се учита. Преглед симулације није доступан.',
+    } : razlog === 'legacy' ? {
+      l: 'Ova stara ili privremena adresa ne određuje pouzdano sačuvani pokušaj. Otvorite pokušaj ponovo iz svoje istorije simulacija.',
+      c: 'Ова стара или привремена адреса не одређује поуздано сачувани покушај. Отворите покушај поново из своје историје симулација.',
+    } : razlog === 'crypto' ? {
+      l: 'Pregledač nije mogao da proveri adresu ovog pokušaja. Otvorite pokušaj iz svoje istorije simulacija.',
+      c: 'Прегледач није могао да провери адресу овог покушаја. Отворите покушај из своје историје симулација.',
+    } : {
+      l: 'Taj pokušaj nije pronađen u napretku učitanom u ovoj kartici. Možda je uklonjen ili pripada drugom sačuvanom napretku.',
+      c: 'Тај покушај није пронађен у напретку учитаном у овој картици. Можда је уклоњен или припада другом сачуваном напретку.',
+    };
+    const rc = el('simResultCard'); rc.innerHTML = `<h3>${L('sim')}</h3><p id="reviewUnavailable">${T(tekst)}</p>`;
+    rc.appendChild(noviLink(L('allQuestions'), '#/sva'));
+    el('simWrongList').replaceChildren(); show('simresult'); prikaziTrakuPregleda();
+  }
+  function renderPutanjaPregleda(h) {
+    if (problemUcitavanja) return renderNedostupanPregled(h);
+    const match = h.match(/^#\/pregled\/h\/([a-f0-9]{64})$/);
+    if (!match) return renderNedostupanPregled(h, 'legacy');
+    const view = { redraw: () => renderPutanjaPregleda(h) }, profile = S, role = rezimPisanja;
+    current = view; setHash(h);
+    el('simResultCard').innerHTML = `<h3>${L('sim')}</h3><p id="reviewLoading">${T({ l: 'Pronalazim sačuvani pokušaj…', c: 'Проналазим сачувани покушај…' })}</p>`;
+    el('simWrongList').replaceChildren(); show('simresult'); prikaziTrakuPregleda();
+    const entries = S.sims.map(rec => ({ rec, entry: kljucPregleda(rec) }));
+    Promise.all(entries.map(x => x.entry.promise)).then(() => {
+      if (!pregledJosVazi(view, profile, role, h)) return;
+      const found = entries.filter(x => x.entry.key === match[1] && imaPregled(x.rec) && podaciPregleda(x.rec) === x.entry.data);
+      // Potpuno jednaki duplikati imaju isti prikaz; različite sadržaje ne pogađamo.
+      if (!found.length || new Set(found.map(x => x.entry.data)).size !== 1) return renderNedostupanPregled(h, entries.some(x => !x.entry.key) ? 'crypto' : 'missing');
+      renderSimReview(found[0].rec, false, { hash: h });
+    });
+  }
+  function veziSacuvaniPregled(button, rec) {
+    const profile = S, role = rezimPisanja, view = current, entry = kljucPregleda(rec);
+    const zavrsi = key => {
+      if (!button.isConnected || !pregledJosVazi(view, profile, role, '#/', rec, entry.data)) return;
+      button.disabled = false; button.removeAttribute('aria-busy');
+      if (key) {
+        const h = '#/pregled/h/' + key;
+        const link = veziOdrediste(button, h, () => renderSimReview(rec, false, { hash: h }));
+        // Indeks se pomera pri brisanju istorije; fokus prati sadržaj pokušaja.
+        // Jednaki duplikati imaju isti pregled, ali moraju imati različita DOM id.
+        const id = 'history-record-' + key;
+        let suffix = 0;
+        while (el(id + (suffix ? '-' + suffix : ''))) suffix++;
+        link.id = id + (suffix ? '-' + suffix : '');
+      } else {
+        button.addEventListener('click', () => renderSimReview(rec, false));
+        if (!el('historyLinkUnavailable')) {
+          const note = document.createElement('p'); note.id = 'historyLinkUnavailable'; note.className = 'mut napomena';
+          note.textContent = T({ l: 'Otvaranje pokušaja u novoj kartici trenutno nije dostupno. Pokušaj možete pregledati ovde.', c: 'Отварање покушаја у новој картици тренутно није доступно. Покушај можете прегледати овде.' });
+          el('simHistory').appendChild(note);
+        }
+      }
+    };
+    if (entry.key) zavrsi(entry.key); else entry.promise.then(zavrsi);
+  }
+
   // Pregled jedne simulacije — svež rezultat ili bilo koji pokušaj iz istorije.
   function simDetalji(rec) {
     if (!Array.isArray(rec.qs) || !rec.qs.length) return null;
@@ -2609,9 +2699,22 @@
     return score === rec.score && total === rec.total && storedWrong.size === wrong.length &&
       wrong.every((id) => storedWrong.has(id)) ? items : null;
   }
-  function renderSimReview(rec, fresh) {
-    current = { redraw: () => renderSimReview(rec, fresh) };
-    setHash('#/pregled/' + S.sims.indexOf(rec));
+  function renderSimReview(rec, fresh, prikaz = {}) {
+    if (!imaPregled(rec) || prikaz.data && prikaz.data !== podaciPregleda(rec)) return renderNedostupanPregled(curHash || '#/pregled/lokalni');
+    prikaz.data = podaciPregleda(rec); prikaz.otvorena ||= {};
+    const entry = kljucPregleda(rec);
+    if (prikaz.hash && prikaz.hash !== '#/pregled/h/' + entry.key) return renderNedostupanPregled(prikaz.hash);
+    const h = prikaz.hash || (entry.key ? '#/pregled/h/' + entry.key : '#/pregled/lokalni');
+    const view = { redraw: () => renderSimReview(rec, fresh, prikaz), review: true }, profile = S, role = rezimPisanja;
+    current = view; setHash(h);
+    if (!entry.key) entry.promise.then(key => {
+      if (!key || !pregledJosVazi(view, profile, role, h, rec, prikaz.data)) return;
+      prikaz.hash = '#/pregled/h/' + key;
+      curHash = prikaz.hash;
+      navTekuci = { ...navTekuci, hash: curHash };
+      if (!navUpisi(navTekuci, false)) location.replace(curHash);
+      navPoslePrikaza();
+    });
     const items = simDetalji(rec) || [];
     const hasDetail = items.length > 0;
     const isOk = (it) => {
@@ -2625,7 +2728,10 @@
       if (isOk(it)) { pc.ok++; pc.got += it.q.pts; }
     }
     const rc = el('simResultCard');
-    rc.innerHTML = `<h3>${L('sim')} <span class="mut" style="font-weight:normal">· ${fmtDatum(rec.d, true)}</span></h3>
+    rc.innerHTML = `${samoPregled() ? `<p id="reviewSnapshotNote" class="mut napomena">${T({
+      l: 'Pregled pokušaja iz napretka učitanog pri otvaranju kartice. Za novije podatke osvežite stranicu. Napredak se ovde ne menja.',
+      c: 'Преглед покушаја из напретка учитаног при отварању картице. За новије податке освежите страницу. Напредак се овде не мења.',
+    })}</p>` : ''}<h3>${L('sim')} <span class="mut" style="font-weight:normal">· ${fmtDatum(rec.d, true)}</span></h3>
       <div class="bigScore ${rec.passed ? 'pass' : 'fail'}">${rec.score} / ${rec.total} ${L('points')}</div>
       <p><span class="pill ${rec.passed ? 'pass' : 'fail'}">${rec.passed ? L('passed') : L('failed')}</span>
       &nbsp; <span class="mut">${pragTekst(rec.total)}</span></p>
@@ -2635,9 +2741,13 @@
       <tbody>${Object.entries(perCat).map(([cid, pc]) =>
         `<tr><td>${escapeHtml(T(catName.get(+cid)))}</td><td class="num">${pc.ok}/${pc.n}</td><td class="num">${pc.got}/${pc.pts}</td></tr>`).join('')}
       </tbody></table>` : `<p class="mut napomena">${L('reviewOldNote')}</p>`}
+      ${!fresh ? `<p id="reviewBankNote" class="mut napomena">${T({
+        l: 'Ukupan rezultat je sačuvan. Tekstovi pitanja, tačni odgovori i objašnjenja prikazani su iz trenutno učitane baze.',
+        c: 'Укупан резултат је сачуван. Текстови питања, тачни одговори и објашњења приказани су из тренутно учитане базе.',
+      })}</p>` : ''}
       <div class="qActions">
-        ${fresh ? `<button class="primary" id="btnSimAgain">${L('newSim')}</button>` : ''}
-        <button class="secondary" id="btnShareRes">${L('shareBtn')}</button>
+        ${fresh && !samoPregled() ? `<button class="primary" id="btnSimAgain">${L('newSim')}</button>` : ''}
+        ${!samoPregled() ? `<button class="secondary" id="btnShareRes">${L('shareBtn')}</button>` : ''}
         <button type="button" class="secondary" data-nav="home">${L('backHome')}</button>
       </div>`;
     bindNav(rc);
@@ -2648,7 +2758,14 @@
 
     const wl = el('simWrongList');
     wl.innerHTML = '';
+    const osveziDugmeSve = () => {
+      const stavke = [...wl.querySelectorAll('.pregledStavka > .explCard')];
+      const sveOtvoreno = stavke.length && stavke.every(x => x.style.display !== 'none');
+      wl.querySelectorAll('[data-review-toggle]').forEach(b => { b.textContent = L(sveOtvoreno ? 'zatvoriSve' : 'otvoriSve'); });
+    };
+    let reviewIndex = 0;
     const reviewCard = (q, chosen) => {
+      const key = q.id + ':' + (++reviewIndex);
       // Telo pregleda se pravi tek pri otvaranju: 41 sklopljeno pitanje je inače gradilo oko
       // 552.000 znakova skrivenog HTML-a i povlačilo ~1,3 MB slika koje se ne vide.
       const napraviTelo = () => {
@@ -2673,24 +2790,26 @@
       // Sklopljeno na jedan red: 40 otvorenih pregleda je pravilo stranu od 34.000px na telefonu.
       // Naslov kaže sve što treba za odluku „otvoriti ili ne": ishod, broj i početak pitanja.
       const omot = document.createElement('div');
-      omot.className = 'card pregledStavka';
+      omot.className = 'card pregledStavka'; omot.dataset.reviewKey = key;
       const dobro = chosen && (() => { const okSet = new Set(q.ch.filter((x) => x.ok).map((x) => x.id)); return chosen.size === okSet.size && [...chosen].every((id) => okSet.has(id)); })();
       const znak = !chosen || chosen.size === 0 ? '•' : dobro ? '✓' : '✗';
       const btn = document.createElement('button');
       btn.type = 'button';
-      btn.className = 'explCardBtn pojBtn pregledNaslov';
+      btn.className = 'explCardBtn pojBtn pregledNaslov'; btn.id = 'review-question-' + reviewIndex;
       btn.innerHTML = `<span class="pregZnak ${dobro ? 'qOk' : (!chosen || !chosen.size ? 'qDot' : 'qBad')}">${znak}</span> <span class="pregTekst">${escapeHtml(T(q.t))}</span>`;
       const telo = document.createElement('div');
       telo.className = 'explCard';
       telo.style.display = 'none';
       omot.append(btn, telo);
       sklopivo(btn, null, null, (cd) => cd.appendChild(napraviTelo()));
+      if (prikaz.otvorena[key]) { napuniAko(telo); telo.style.display = ''; btn.setAttribute('aria-expanded', 'true'); }
+      btn.addEventListener('click', () => { prikaz.otvorena[key] = btn.getAttribute('aria-expanded') === 'true'; osveziDugmeSve(); });
       return omot;
     };
     // jedno dugme za sve — ko hoće da pregleda ceo test, ne otvara 40 puta
     const dugmeSve = (drzac) => {
       const b = document.createElement('button');
-      b.type = 'button'; b.className = 'secondary sBtn razmakG';
+      b.type = 'button'; b.className = 'secondary sBtn razmakG'; b.dataset.reviewToggle = '';
       b.textContent = L('otvoriSve');
       b.addEventListener('click', () => {
         // SAMO omotači pitanja: '.pregledStavka .explCard' hvata i karticu pojmovnika unutar
@@ -2700,10 +2819,11 @@
         stavke.forEach((x) => {
           if (otvaram) napuniAko(x);   // tela se prave tek sad, isto kao pri pojedinačnom otvaranju
           x.style.display = otvaram ? '' : 'none';
+          prikaz.otvorena[x.parentElement.dataset.reviewKey] = otvaram;
           const naslov = x.parentElement.querySelector('.pregledNaslov');
           if (naslov) naslov.setAttribute('aria-expanded', otvaram ? 'true' : 'false');
         });
-        b.textContent = otvaram ? L('zatvoriSve') : L('otvoriSve');
+        osveziDugmeSve();
       });
       return b;
     };
@@ -2729,7 +2849,9 @@
         if (q) wl.appendChild(reviewCard(q, null));
       }
     }
+    osveziDugmeSve();
     show('simresult');
+    if (samoPregled()) prikaziTrakuPregleda();
   }
 
   // ---------- Spremnost za ispit: očekivani poeni po zvaničnom šablonu ----------
@@ -4001,7 +4123,7 @@
       const NOVIJIH = 5;
       const redovi = S.sims.slice().reverse().map((s, ri) => {
         const brGresaka = (s.wrong || []).length;
-        return `<button class="histRow histBtn" data-sim="${S.sims.length - 1 - ri}">
+        return `<button type="button" disabled aria-busy="true" class="histRow histBtn" data-sim="${S.sims.length - 1 - ri}">
             <span class="histDate mut">${fmtDatum(s.d, true)}</span>
             <b class="histScore">${s.score} / ${s.total}</b>
             <span class="histPill"><span class="pill ${s.passed ? 'pass' : 'fail'}">${s.passed ? L('passed') : L('failed')}</span></span>
@@ -4015,7 +4137,7 @@
       sh.innerHTML = `<h3>${L('history')}</h3>${ucinak}<p class="mut napomena">${L('historyTip')}</p>` + redovi.slice(0, NOVIJIH).join('')
         + (redovi.length > NOVIJIH ? `<div><button type="button" class="pojBtn" id="btnHistOlder">${L('historyOlder').split('@1').join(redovi.length - NOVIJIH)}</button><div id="histOlder" style="display:none">${redovi.slice(NOVIJIH).join('')}</div></div>` : '');
       const bho = el('btnHistOlder'); if (bho) sklopivo(bho);
-      sh.querySelectorAll('.histBtn').forEach((b) => b.addEventListener('click', () => renderSimReview(S.sims[+b.dataset.sim], false)));
+      sh.querySelectorAll('.histBtn').forEach((b) => veziSacuvaniPregled(b, S.sims[+b.dataset.sim]));
     }
 
     // Milanova odluka (04.09.2026): „Zašto verovati" i „Česta pitanja" su se sadržajno preklapali
@@ -4740,7 +4862,11 @@
     gs.src = 'https://gc.zgo.at/count.js';
     gs.dataset.goatcounter = 'https://vozacki.goatcounter.com/count';
     gs.addEventListener('load', () => {
-      const broji = () => { try { window.goatcounter.count({ path: '/' + (curHash || '#/') }); } catch (e) { /* statistika nije presudna */ } };
+      const broji = () => { try {
+        // Otisak sačuvanog pokušaja ne šaljemo analitici: svi pregledi su ista stranica.
+        const path = curHash?.startsWith('#/pregled/') ? '#/pregled' : curHash || '#/';
+        window.goatcounter.count({ path: '/' + path });
+      } catch (e) { /* statistika nije presudna */ } };
       broji();
       window.addEventListener('hashchange', broji);
     });

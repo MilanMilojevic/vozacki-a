@@ -135,11 +135,14 @@ async (page) => {
   });
   await test('unsupported exam/practice and noncanonical personal routes explain fallback', async c => {
     const p = await c.newPage();
-    for (const hash of ['#/lista/wrong/', '#/lista/marked/extra', '#/pregled/0', '#/sim', '#/uci', '#/vezba', '#/vezba/c25']) {
+    for (const hash of ['#/lista/wrong/', '#/lista/marked/extra', '#/sim', '#/uci', '#/vezba', '#/vezba/c25']) {
       await p.goto(base + '?preview=1' + hash); await ready(p);
       assert(await p.locator('#previewRouteNote').isVisible() && p.url().endsWith(hash), 'Unsupported route silently changed destination: ' + hash);
       assert(await p.locator('#browseList .qRow').count() > 0 && await p.evaluate(() => __ops.length === 0), 'Fallback lacks content or writes: ' + hash);
     }
+    await p.goto(base + '?preview=1#/pregled/0'); await ready(p);
+    assert(await p.locator('#reviewUnavailable').isVisible() && p.url().endsWith('#/pregled/0'), 'Legacy review must report unavailable instead of guessing an index');
+    assert(await p.locator('#simResultCard .bigScore').count() === 0 && await p.evaluate(() => __ops.length === 0), 'Legacy review fabricated a result or wrote data');
   });
   await test('unknown inherited glossary keys remain usable on direct preview and writer loads', async c => {
     await c.addInitScript(() => {
