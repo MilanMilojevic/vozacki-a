@@ -225,6 +225,14 @@ npx --yes --package @playwright/cli playwright-cli -s=provera-cilja close
 Контраст нормалног текста проверити и при hover-у према
 [W3C критеријуму](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html).
 
+Аутоматска резерва од v136 користи `backupZahtev` са handle-ом и ревизијом.
+`isprazniRedRezerve()` држи `upisUToku` током уписа и кратког поновног покушаја,
+па затим распоређује најновији преостали захтев. Само рани повратак из тајмера
+није довољан: тако се губила измена настала током спорог уписа. Сваки писач
+мора да се затвори или покуша `abort()`, а грешка старог handle-а не сме да
+промени дозволу новог. Провера без стварних фајлова:
+`node --test tools/tests/backup-queue.test.mjs`.
+
 ```bash
 node -e "new Function(require('fs').readFileSync('app.js','utf8'))"   # синтакса
 cd tools && node build-explanations.mjs                               # билд + скенер писма

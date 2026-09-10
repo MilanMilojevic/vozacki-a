@@ -85,6 +85,8 @@ function runScenario({ initial, readFails = false, writeFails = false, withFile 
     let backupTimer = null;
     let upisUToku = false;
     let upozorenONeuspehuRezerve = false;
+    let backupRevizija = 0, backupZahtev = null;
+    function isprazniRedRezerve() { throw new Error('file write must not start in this test'); }
     function upisiRezervu() { throw new Error('file write must not start in this test'); }
     function upozoriDaSeNeCuva() {}
     function prikaziOporavakStanja() {}

@@ -2728,40 +2728,73 @@
   //    upisa i zatvaranja ne ostavlja prazan fajl umesto kopije.
   let upisUToku = false;
   let upozorenONeuspehuRezerve = false;
-  async function upisiRezervu() {
+  let backupRevizija = 0;
+  let backupZahtev = null;
+  async function upisiRezervu(handle, tekst) {
     if (problemUcitavanja) return;
-    const tekst = JSON.stringify(S);
-    const w = await fsHandle.createWritable({ keepExistingData: true });
-    await w.write({ type: 'write', position: 0, data: tekst });
-    await w.truncate(new Blob([tekst]).size);
-    await w.close();
+    const w = await handle.createWritable({ keepExistingData: true });
+    try {
+      if (problemUcitavanja) throw new Error('Oporavak napretka je u toku.');
+      await w.write({ type: 'write', position: 0, data: tekst });
+      if (problemUcitavanja) throw new Error('Oporavak napretka je u toku.');
+      await w.truncate(new Blob([tekst]).size);
+      if (problemUcitavanja) throw new Error('Oporavak napretka je u toku.');
+      await w.close();
+    } catch (e) {
+      // Oslobodi pisca i odbaci nezavršen sadržaj pre ponavljanja. Greška čišćenja
+      // ne sme da zameni izvorni razlog, naročito gubitak dozvole.
+      try { await w.abort(); } catch (_) { /* pisac je možda već zatvoren */ }
+      throw e;
+    }
   }
-  function scheduleBackup() {
-    if (problemUcitavanja || !fsHandle) return;
-    clearTimeout(backupTimer);
-    backupTimer = setTimeout(async () => {
-      if (!fsHandle || upisUToku) return;
-      upisUToku = true;
-      try {
+  async function isprazniRedRezerve() {
+    backupTimer = null;
+    if (problemUcitavanja || !fsHandle || upisUToku || !backupZahtev || backupZahtev.handle !== fsHandle) return;
+    const handle = backupZahtev.handle;
+    let pokusanaRevizija = backupZahtev.revizija;
+    upisUToku = true;
+    try {
+      for (let pokusaj = 0; pokusaj < 2; pokusaj++) {
+        if (problemUcitavanja || fsHandle !== handle || backupZahtev.handle !== handle) return;
+        // Ponovni pokušaj uzima najnovije stanje i njegovu reviziju, ali isti fajl.
+        pokusanaRevizija = backupZahtev.revizija;
         try {
-          await upisiRezervu();
+          await upisiRezervu(handle, JSON.stringify(S));
+          upozorenONeuspehuRezerve = false;
+          break;
         } catch (e) {
-          if (e && (e.name === 'NotAllowedError' || e.name === 'SecurityError')) throw e;
+          if (problemUcitavanja || fsHandle !== handle) return;
+          if (pokusaj === 1 || (e && (e.name === 'NotAllowedError' || e.name === 'SecurityError'))) throw e;
           await new Promise((r) => setTimeout(r, 2000));   // prolazna smetnja — još jedan pokušaj
-          await upisiRezervu();
         }
-        upozorenONeuspehuRezerve = false;
-      } catch (e) {
+      }
+    } catch (e) {
+      if (fsHandle === handle) {
         if (e && (e.name === 'NotAllowedError' || e.name === 'SecurityError')) {
-          fsPending = fsHandle; fsHandle = null; renderBackupLine();   // dozvola istekla
+          fsPending = handle; fsHandle = null; renderBackupLine();   // dozvola istekla
           trakaUpozorenja(L('rezervaDozvola'));
         } else if (!upozorenONeuspehuRezerve) {
           upozorenONeuspehuRezerve = true;
           console.warn('Rezerva u fajl nije upisana:', e);
           trakaUpozorenja(L('rezervaNeuspeh'));
         }
-      } finally { upisUToku = false; }
-    }, 800);
+      }
+    } finally {
+      upisUToku = false;
+      if (backupZahtev && backupZahtev.revizija === pokusanaRevizija) backupZahtev = null;
+      // Tajmer novijeg save() možda je već istekao dok je pisac bio zauzet.
+      // Oznaka ostaje do ovde; bez novije izmene nema beskonačnog ponavljanja.
+      if (!problemUcitavanja && fsHandle && backupZahtev && backupZahtev.handle === fsHandle) {
+        clearTimeout(backupTimer);
+        backupTimer = setTimeout(isprazniRedRezerve, 800);
+      }
+    }
+  }
+  function scheduleBackup() {
+    if (problemUcitavanja || !fsHandle) return;
+    backupZahtev = { handle: fsHandle, revizija: ++backupRevizija };
+    clearTimeout(backupTimer);
+    backupTimer = setTimeout(isprazniRedRezerve, 800);
   }
   let povezivanjeUToku = false;
   async function connectBackup() {
