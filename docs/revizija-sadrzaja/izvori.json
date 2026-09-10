@@ -117,6 +117,24 @@
       "checkedOn": "2026-09-10",
       "revision": "Službeni glasnik RS 76/2026-30 od 21.08.2026; po čl. 50 stupanje 29.08.2026. Čl. 18 ne menja tačku 30 čl. 25, čl. 21 ne menja tačke 19–22 ni 74–75 čl. 35, a čl. 28 ne menja predmetne boje III-24/24.1. Provera je ograničena na te tvrdnje; druge odredbe jesu menjane.",
       "contentHash": "a8b10736064baca61cca9277b8f30dc957ff74ab0b45a646318f6d24c2741c7f"
+    },
+    {
+      "id": "zobs-cl7-cl62-cl68-pis-19-2025",
+      "url": "https://reg.pravno-informacioni-sistem.rs/api/viewAct/8b57d1e9-9b34-4fa0-9693-7ceb6da65486?lawActId=438311",
+      "title": "Zakon o bezbednosti saobraćaja na putevima — redakcijski prečišćen tekst Pravno-informacionog sistema Republike Srbije",
+      "article": "Član 7 tačke 13, 71 i 72; članovi 62–68",
+      "checkedOn": "2026-09-10",
+      "revision": "Važeći redakcijski prečišćen tekst kroz Službeni glasnik RS 19/2025. Pročitani su puni članovi 62–68 i relevantne definicije; izmene 19/2025 ne menjaju te odredbe.",
+      "contentHash": "e76c49f7cbdbfc90bf1282e11f1172f2d52626a1435c6940cfb824d5a2cb1904"
+    },
+    {
+      "id": "signalizacija-parkiranje-cl25-cl26-cl67-pis-76-2026",
+      "url": "https://reg.pravno-informacioni-sistem.rs/api/viewdoc?doctype=reg&regactid=440491&uuid=2bd446cf-0965-4141-8323-d207a4216ed1",
+      "title": "Pravilnik o saobraćajnoj signalizaciji — redakcijski prečišćen tekst Pravno-informacionog sistema Republike Srbije",
+      "article": "Član 25 tačka 3 (II-3); član 26 tačka 41 (II-41.1); član 67, odeljak 2.3.2 (polje za usmeravanje saobraćaja)",
+      "checkedOn": "2026-09-10",
+      "revision": "Službeni glasnik RS 85/2017, 14/2021, 21/2024 i 76/2026. Izmena 76/2026 uključila je vozače lakih električnih vozila u II-41.1; ciljane odredbe II-3 i polja za usmeravanje nisu promenjene.",
+      "contentHash": "8f9b78ea7810a5d5028f3b2878773d37080cf9096a2239dc2a306101708c45d7"
     }
   ]
 }

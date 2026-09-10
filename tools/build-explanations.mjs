@@ -1399,13 +1399,14 @@ CARDS['parkiranje'] = {
 <tr><td>pešački/biciklistički prelaz</td><td><b>+ 5 m</b> od njega</td></tr>
 <tr><td>prelaz preko pruge/šina</td><td><b>+ 5 m</b></td></tr>
 <tr><td>raskrsnica</td><td><b>+ 5 m</b> od ivice poprečnog kolovoza</td></tr>
-<tr><td>stajalište javnog prevoza</td><td><b>15 m</b> ispred i iza</td></tr>
-<tr><td>slobodan prolaz pored vozila</td><td>mora ostati <b>≥ 3 m</b></td></tr>
-<tr><td>tunel, podvožnjak, galerija, most, nadvožnjak</td><td>uvek zabranjeno</td></tr>
-<tr><td>prevoj, nepregledna krivina</td><td>uvek zabranjeno</td></tr>
-<tr><td>biciklistička staza/traka, zaklanjanje znaka</td><td>uvek zabranjeno</td></tr>
+<tr><td>Stajalište javnog prevoza</td><td>Na stajalištu i manje od 15 m ispred i iza oznake na kolovozu</td></tr>
+<tr><td>Slobodan prolaz pored vozila</td><td>Najmanje 3 m; merilo i izuzetak za zaustavljanje su objašnjeni ispod</td></tr>
+<tr><td>tunel, podvožnjak, galerija, most, nadvožnjak</td><td>zabranjeno</td></tr>
+<tr><td>blizina vrha prevoja; krivina sa nedovoljnom preglednošću ili nebezbednim obilaženjem</td><td>zabranjeno</td></tr>
+<tr><td>biciklistička staza/traka, zaklanjanje znaka</td><td>zabranjeno</td></tr>
 </table>
-<svg viewBox="0 0 306 132" role="img" aria-label="kolovoz sa pešačkim prelazom i autobuskim stajalištem: zabrana zaustavljanja 5 m sa obe strane prelaza i 15 m sa obe strane stajališta" style="max-width:306px;width:100%;display:block;margin:6px auto">
+<p>Tabela sažima osnovne zabrane. Izuzetak za manje od 5 m posle raskrsnice ili pešačkog/biciklističkog prelaza u jednosmernoj ulici i ostali izuzeci objašnjeni su ispod; ne odnose se automatski na svako mesto sa spiska.</p>
+<svg viewBox="0 0 306 132" role="img" aria-label="dvosmerni put sa pešačkim prelazom i oznakom autobuskog stajališta na kolovozu: osnovna zabrana zaustavljanja i parkiranja 5 m sa obe strane prelaza i 15 m ispred i iza oznake stajališta" style="max-width:306px;width:100%;display:block;margin:6px auto">
   <rect x="0" y="40" width="306" height="46" fill="#9aa7b4"/>
   <rect x="70" y="40" width="26" height="46" fill="#fff" opacity="0.9"/>
   <g fill="#fff"><rect x="72" y="43" width="22" height="6"/><rect x="72" y="54" width="22" height="6"/>
@@ -1422,7 +1423,7 @@ CARDS['parkiranje'] = {
   <text x="215" y="108" text-anchor="middle" font-size="11" fill="currentColor" opacity=".75">zona oko</text>
   <text x="215" y="122" text-anchor="middle" font-size="11" fill="currentColor" opacity=".75">stajališta</text>
 </svg>
-<p class="mut">Pamćenje: "5 - 5 - 5 - 15 - 3": prelazi i raskrsnica po 5 m, stajalište 15 m, prolaz 3 m. Lista "opasnih mesta" (tunel/most/prevoj/krivina) ista je kao kod preticanja i polukružnog.</p>
+<p class="mut"><b>Pamćenje:</b> „5 - 5 - 5 - 15 - 3“ sažima osnovne udaljenosti. Izuzeci i mesta od kojih se meri navedeni su uz pravila ispod.</p>
 
 <!-- ==== dopuna 07.09.2026 (tura 4): crtež + isto to rečima ==== -->
 <!-- IZVORI po temama (brojevi pitanja podoblasti 140 — sve tvrdnje se oslanjaju na tacne odgovore i postojeca objasnjenja tih pitanja):
@@ -1441,9 +1442,10 @@ CARDS['parkiranje'] = {
        animBiciklObilazi, animIzlaziIzSporednog, animVoziloSeKotrlja, animSinskoPrilazi
 -->
 
-<div class="kPodH"><b class="kPodNaslov">Zaustavljanje i parkiranje idu zajedno</b>
+<div class="kPodH"><b class="kPodNaslov">Zaustavljanje, parkiranje i izuzeci</b>
 <p><b>Iznad svih spiskova:</b> tamo gde bi zaustavljeno ili parkirano vozilo ugrožavalo bezbednost drugih učesnika u saobraćaju ili bilo smetnja za normalno odvijanje saobraćaja i kretanje pešaka — ne smeš ni da zaustaviš ni da parkiraš, i onda kad to mesto nije ni na jednom spisku zabrana.</p>
-<p><b>U ovoj podoblasti zabrana nikad ne deli ta dva pojma.</b> Ponuda "dozvoljeno je zaustavljanje, a nije dozvoljeno parkiranje" (i njen blizanac "sme da zaustavi, a ne sme da parkira") nudi se u <b>šest</b> pitanja i ni u jednom nije tačan odgovor. Isto pada i "sme da zaustavi vozilo najduže do 3 minuta", i "dozvoljeno je samo vozilima kojima se obavlja auto-taksi prevoz" — taksi nema nikakvu povlasticu, pravilo važi za sva vozila jednako.</p>
+<p><b>Zaustavljanje</b> traje do tri minuta, a vozač ne napušta vozilo; <b>parkiranje</b> je drugi prekid kretanja koji nije zaustavljanje. Prekidi radi postupanja po saobraćajnom znaku ili pravilu ne spadaju u ove pojmove (čl. 7 t. 71–72). Zabrane u ovoj grupi najčešće obuhvataju obe radnje, ali zakon poznaje i ograničene izuzetke.</p>
+<p><b>Izuzeci nisu opšta dozvola:</b> čl. 66 st. 3 dopušta samo zaustavljanje na taksativno navedenim mestima, bez opasnosti ili smetnje. Auto-taksi sme da stane radi ulaska ili izlaska putnika i na stajalištu javnog prevoza, putu sa fizički odvojenim kolovoznim trakama, trotoaru i traci javnog prevoza kojom ne idu tramvaji; taj izuzetak ne obuhvata biciklističku traku (st. 4). Za određene službene dužnosti i komunalne delatnosti postoje posebni izuzeci pod uslovima iz čl. 62 st. 2.</p>
 </div>
 
 <div class="kPodH"><b class="kPodNaslov">Uz koju ivicu se staje</b>
@@ -1507,8 +1509,8 @@ CARDS['parkiranje'] = {
   <text x="153" y="142" text-anchor="middle" font-size="12" fill="#1f7a3f">kad god za to postoji mogućnost</text>
 </svg>
 <p><b>Šine uz desnu ivicu:</b> ako se uz desnu ivicu kolovoza nalaze tramvajske ili druge šine, tu ne smeš ni da zaustaviš ni da parkiraš (čl. 64 st. 3) — šinsko vozilo ne može da te obiđe. <b>Van naselja:</b> uvek kada za to postoji mogućnost, vozilo se zaustavlja ili parkira <b>van kolovoza</b> (čl. 64 st. 1), dakle na bankinu ili proširenje pre nego uz ivicu kolovoza; ponuda "uvek zaustavi ili parkira vozilo na kolovozu" je zamka.</p>
-<svg viewBox="0 0 306 132" role="img" aria-label="pogled odozgo: sredina kolovoza obeležena belim oznakama za parkiranje, vozilo u obeleženom mestu nosi zelenu kvačicu, a saobraćaj teče trakama sa obe strane" style="max-width:306px;width:100%;display:block;margin:6px auto">
-  <text x="6" y="14" text-anchor="start" font-size="12" font-weight="bold" fill="currentColor">OBELEŽENO SIGNALIZACIJOM</text>
+<svg viewBox="0 0 306 132" role="img" aria-label="pogled odozgo: mesta na sredini kolovoza označena plavim znakom za parkiranje i belim parking linijama; vozilo je u obeleženom mestu, a saobraćaj teče trakama sa obe strane" style="max-width:306px;width:100%;display:block;margin:6px auto">
+  <text x="6" y="14" text-anchor="start" font-size="12" font-weight="bold" fill="currentColor">OBELEŽENO ZNAKOM ZA PARKIRANJE</text>
   <rect x="0" y="22" width="306" height="88" fill="#9aa7b4"/>
   <path d="M40 36 H120 M108 30 L120 36 L108 42" stroke="#fff" stroke-width="2" fill="none"/>
   <rect x="200" y="26" width="60" height="18" rx="3" fill="#2a333d" opacity="0.9"/>
@@ -1518,6 +1520,9 @@ CARDS['parkiranje'] = {
   <path d="M220 70 L228 78 L244 58" stroke="#1f7a3f" stroke-width="4" fill="none" stroke-linecap="round"/>
   <path d="M266 96 H186 M198 90 L186 96 L198 102" stroke="#fff" stroke-width="2" fill="none"/>
   <rect x="46" y="88" width="60" height="18" rx="3" fill="#2a333d" opacity="0.9"/>
+  <path d="M278 79 V90" stroke="currentColor" stroke-width="2"/>
+  <rect x="264" y="48" width="28" height="31" rx="2" fill="#2c6aa0" stroke="#fff" stroke-width="1.5"/>
+  <text x="278" y="71" text-anchor="middle" font-size="23" font-weight="bold" fill="#fff">P</text>
   <text x="153" y="126" text-anchor="middle" font-size="12" fill="#1f7a3f">sme se parkirati</text>
 </svg>
 <svg viewBox="0 0 306 132" role="img" aria-label="pogled odozgo: ista sredina kolovoza bez ijedne oznake, vozilo koje je tu stalo je precrtano crvenom bojom" style="max-width:306px;width:100%;display:block;margin:6px auto">
@@ -1531,11 +1536,11 @@ CARDS['parkiranje'] = {
   <rect x="46" y="88" width="60" height="18" rx="3" fill="#2a333d" opacity="0.9"/>
   <text x="153" y="126" text-anchor="middle" font-size="12" fill="#c0392b">ne sme, ma koliko prostora bilo</text>
 </svg>
-<p><b>Sredina kolovoza:</b> mesta na sredini kolovoza smeju se koristiti samo ako su <b>saobraćajnom signalizacijom obeležena kao mesta za parkiranje</b> (čl. 64 st. 4). Ni "ako postoji dovoljno prostora" ni "ako time ne ometa druge učesnike u saobraćaju" nisu uslov — jedini uslov je signalizacija.</p>
+<p><b>Sredina kolovoza:</b> zaustavljanje ili parkiranje dopušteno je samo na mestima koja su <b>saobraćajnim znakom obeležena za parkiranje</b> (čl. 64 st. 4). Sam slobodan prostor nije dovoljan. I na obeleženom mestu ostaje opšta zabrana ugrožavanja i ometanja drugih (čl. 62).</p>
 </div>
 
 <div class="kPodH"><b class="kPodNaslov">Raskrsnica i pojas od 5 m</b>
-<svg viewBox="0 0 306 206" role="img" aria-label="pogled odozgo na raskrsnicu: crveno je obojena i sama površina raskrsnice i pojas od pet metara sa obe njene strane; u levom pojasu stoji precrtano vozilo, a plava strelica pokazuje tvoj smer kretanja" style="max-width:306px;width:100%;display:block;margin:6px auto">
+<svg viewBox="0 0 306 206" role="img" aria-label="osnovni primer raskrsnice na dvosmernom putu: obeleženi su raskrsnica i pojas od pet metara sa obe strane najbliže ivice poprečnog kolovoza; vozilo u pojasu je precrtano; izuzetak za jednosmernu ulicu objašnjen je u tekstu" style="max-width:306px;width:100%;display:block;margin:6px auto">
   <text x="153" y="14" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">RASKRSNICA I POJAS OD 5 m</text>
   <text x="90" y="34" text-anchor="middle" font-size="12" font-weight="bold" fill="#c0392b">5 m</text>
   <text x="216" y="34" text-anchor="middle" font-size="12" font-weight="bold" fill="#c0392b">5 m</text>
@@ -1553,7 +1558,7 @@ CARDS['parkiranje'] = {
   <text x="246" y="140" text-anchor="middle" font-size="12" fill="currentColor">tvoja desna strana</text>
   <text x="153" y="198" text-anchor="middle" font-size="12" fill="#c0392b">ne staje se ni u pojasu ni na raskrsnici</text>
 </svg>
-<p><b>Rečima:</b> na ispitnoj slici sa desne strane kolovoz preseca poprečni put — dakle reč je o <b>raskrsnici</b>. Zabranjeno je i na <b>samoj raskrsnici</b> i na udaljenosti manjoj od <b>5 m</b> od najbliže ivice poprečnog kolovoza; ponuda "samo na raskrsnici" zato pada. Koja je ivica najbliža, zavisi od toga s koje strane dolaziš — pa pojas stoji sa obe strane poprečnog kolovoza. Zabrana pokriva i kratko stajanje i duže parkiranje, pa ne prolazi ni ponuda po kojoj bi stajanje bilo dopušteno, a samo parkiranje zabranjeno.</p>
+<p><b>Raskrsnica:</b> zabranjeno je zaustavljanje i parkiranje na njoj i na manje od 5 m od najbliže ivice poprečnog kolovoza (čl. 66 st. 1 t. 3). Crtež prikazuje osnovno pravilo za dvosmerni put. U jednosmernoj ulici dozvoljeno je i manje od 5 m <b>posle raskrsnice</b>, gledano u dozvoljenom smeru (st. 2). Primer zaklonjenog pogleda ispod objašnjava opasnost; nije tumačenje zvanične slike #10142.</p>
 <svg viewBox="0 0 306 178" role="img" aria-label="pogled odozgo: vozilo parkirano u pojasu ispred raskrsnice zaklanja pogled vozilu koje izlazi iz poprečnog puta, crvena isprekidana linija pokazuje zaklonjeni pogled" style="max-width:306px;width:100%;display:block;margin:6px auto">
   <text x="6" y="14" text-anchor="start" font-size="12" font-weight="bold" fill="currentColor">ZAŠTO: VOZILO ZAKLANJA POGLED</text>
   <rect x="0" y="24" width="306" height="64" fill="#9aa7b4"/>
@@ -1568,7 +1573,7 @@ CARDS['parkiranje'] = {
   <text x="252" y="130" text-anchor="middle" font-size="12" fill="currentColor">sporednog puta</text>
   <text x="153" y="170" text-anchor="middle" font-size="12" fill="#c0392b">parkirano vozilo mu zaklanja pogled</text>
 </svg>
-<p>Isti pojas od 5 m stoji i uz <b>pešački prelaz</b>, uz <b>prelaz biciklističke staze preko kolovoza</b> i uz <b>prelaz puta preko železničke pruge</b>. U sva četiri pitanja te grupe ponuđene su iste <b>dve</b> zamke:</p>
+<p>Zabrana važi i na pešačkom prelazu, prelazu biciklističke staze preko kolovoza i prelazu puta preko železničke pruge, kao i na manje od 5 m od njih (čl. 66 st. 1 t. 1–2). U jednosmernoj ulici izuzetak dopušta manje od 5 m <b>posle pešačkog ili biciklističkog prelaza</b>; taj izuzetak ne obuhvata prelaz pruge. Četiri pitanja razlikuju samo mesto od mesta sa pojasom i 5 m od ponuđenih 10 m.</p>
 <table>
 <tr><th>Zamka u ponudi</th><th>Kako glasi tačan odgovor</th></tr>
 <tr><td>mesto bez pojasa: "samo na pešačkom prelazu", "samo na raskrsnici"</td><td>i mesto <b>i</b> pojas: "na pešačkom prelazu kao i na udaljenosti manjoj od <b>5 m</b> od prelaza", odnosno "na raskrsnici kao i na udaljenosti manjoj od 5 m od najbliže ivice poprečnog kolovoza"</td></tr>
@@ -1599,7 +1604,7 @@ CARDS['parkiranje'] = {
   <rect x="0" y="126" width="306" height="14" fill="currentColor" opacity="0.22"/>
   <text x="40" y="158" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">IVIČNJAK</text>
 </svg>
-<svg viewBox="0 0 306 158" role="img" aria-label="pogled odozgo: vozilo je stalo na biciklističkoj traci sa crvenom oznakom ne staje se, pa biciklistkinja crvenom isprekidanom putanjom mora da izađe među automobile" style="max-width:306px;width:100%;display:block;margin:6px auto">
+<svg viewBox="0 0 306 158" role="img" aria-label="pogled odozgo: vozilo je stalo na biciklističkoj traci; crvena isprekidana putanja pokazuje da obilaženje tog vozila vodi među automobile" style="max-width:306px;width:100%;display:block;margin:6px auto">
   <text x="6" y="14" text-anchor="start" font-size="12" font-weight="bold" fill="currentColor">AKO TU STANEŠ</text>
   <rect x="0" y="20" width="306" height="52" fill="#9aa7b4"/>
   <rect x="180" y="26" width="54" height="22" rx="4" fill="#2a333d" opacity="0.92"/>
@@ -1618,9 +1623,9 @@ CARDS['parkiranje'] = {
   <path d="M92 100 C 112 92, 122 66, 132 44" stroke="#c0392b" stroke-width="2" stroke-dasharray="6 5" fill="none"/>
   <path d="M124 50 L133 40 L138 52" stroke="#c0392b" stroke-width="2" fill="none"/>
   <rect x="0" y="126" width="306" height="14" fill="currentColor" opacity="0.22"/>
-  <text x="153" y="154" text-anchor="middle" font-size="12" fill="#c0392b">mora da izađe među automobile</text>
+  <text x="153" y="154" text-anchor="middle" font-size="12" fill="#c0392b">obilaženje vodi među automobile</text>
 </svg>
-<p><b>Rečima:</b> na ispitnoj slici pojas desno od pune bele linije <b>nije bankina</b> nego <b>biciklistička traka</b>, deo puta namenjen samo biciklima, i njome se uz sam <b>ivičnjak</b> kreće biciklistkinja. Zato je tu zabranjeno i najkraće stajanje: ona bi zbog tvog vozila morala da izađe <b>među automobile</b>. Parkiranje je isto to, samo duže — vozilo tu ostaje mnogo duže od kratkog stajanja. Zabrana važi i na biciklističkoj <b>traci</b> i na biciklističkoj <b>stazi</b> (čl. 66 st. 1 t. 8), pa su odgovori "samo traka" i "samo staza" pogrešni. Auto-taksi vozila nisu izuzeta: pravilo važi za sva vozila jednako.</p>
+<p><b>Na slikama #10091 i #10092</b> desno od pune bele linije je biciklistička traka. Ona je namenjena lakim električnim vozilima, biciklima, mopedima i lakim triciklima (čl. 7 t. 13). Na biciklističkoj traci i stazi zabranjeni su i zaustavljanje i parkiranje (čl. 66 st. 1 t. 8); zato su odgovori „samo traka“ i „samo staza“ pogrešni. Taksi izuzetak ne obuhvata ove površine. Vozilo na traci ometa njene korisnike i može ih dovesti u opasnost pri obilaženju.</p>
 </div>
 
 <div class="kPodH"><b class="kPodNaslov">Zamka "najmanje 1,60 m"</b>
@@ -1640,15 +1645,15 @@ CARDS['parkiranje'] = {
   <text x="153" y="150" text-anchor="middle" font-size="12" fill="#c0392b">nema znaka — metri ne pomažu</text>
 </svg>
 <p><b>Rečima:</b> ponuda sa slobodnim prolazom za pešake od 1,60 m vraća se u <b>pet</b> pitanja ove podoblasti i <b>ni u jednom nije tačan odgovor</b>. Ta širina je dodatni <b>uslov</b> tamo gde je parkiranje već dopušteno saobraćajnim znakom ili oznakom na kolovozu — nikad sama dozvola. Na crtežu je prolaz i izmeren i pomeren dalje od ivice kolovoza, pa ipak ne vredi: znaka koji bi parkiranje dopustio nema.</p>
-<p class="mut">Ne mešaj taj broj sa redom "slobodan prolaz pored vozila — najmanje 3 m" iz tabele ove kartice: 3 m je prolaz koji mora da ostane pored zaustavljenog vozila, a 1,60 m je prolaz za pešake na trotoaru. Dva različita broja i dve različite stvari.</p>
+<p><b>Ne mešaj 1,60 m i 3 m:</b> 1,60 m je najmanja širina prolaza za pešake kod izuzetka za trotoar. Za slobodan prolaz pored vozila meri se 3 m do neisprekidane uzdužne linije, suprotne ivice kolovoza ili prepreke (čl. 66 st. 1 t. 6). Za samo zaustavljanje postoji ograničeni izuzetak iz st. 3, ako nema opasnosti ili smetnje.</p>
 <table>
 <tr><th>Površina</th><th>Sme li se stati</th></tr>
-<tr><td>Trotoar</td><td><b>Nije dozvoljeno</b> — osim tamo gde znak ili oznaka izričito dozvoljava; tek tada se traži i slobodan prolaz <b>≥ 1,60 m</b> koji nije uz ivicu kolovoza (čl. 66 t. 13)</td></tr>
-<tr><td>Pešačka staza</td><td><b>Nije dozvoljeno</b> — zabrana bez uslova (čl. 66 t. 14)</td></tr>
-<tr><td>Deo trotoara za kretanje lica sa posebnim potrebama</td><td><b>Nije dozvoljeno</b> — bez izuzetka</td></tr>
-<tr><td>Staza za pešake i bicikliste</td><td><b>Nije dozvoljeno</b> — to nije kolovoz nego staza</td></tr>
+<tr><td>Trotoar</td><td>Zaustavljanje ili parkiranje samo ako je dozvoljeno saobraćajnom signalizacijom; kada je vozilo parkirano, mora ostati slobodan prolaz za pešake najmanje 1,60 m, koji nije uz ivicu kolovoza (čl. 66 st. 1 t. 13)</td></tr>
+<tr><td>Pešačka staza</td><td><b>Nije dozvoljeno</b> — izuzetak za trotoar ne važi (čl. 66 st. 1 t. 14)</td></tr>
+<tr><td>Deo trotoara za kretanje lica sa posebnim potrebama</td><td><b>Nije dozvoljeno</b>; ostavljanje 1,60 m ne daje dozvolu (čl. 66 st. 1 t. 14)</td></tr>
+<tr><td>Staza rezervisana za bicikliste i pešake</td><td>Zaustavljanje i parkiranje automobila nisu dozvoljeni na biciklističkoj i pešačkoj stazi (čl. 66 st. 1 t. 8 i 14)</td></tr>
 </table>
-<p>Na slici uz jedno od tih pitanja odgovor donosi baš <b>znak</b> — po njemu prepoznaješ da površina ispod nije kolovoz nego staza:</p>
+<p>Na slici #10118 znak označava <b>stazu rezervisanu za bicikliste i pešake</b>. Po njemu prepoznaješ površine na kojima automobil ne sme da se zaustavi:</p>
 <div class="signRow">
   <div class="signCell">
     <svg viewBox="0 0 78 70" role="img" aria-label="plavi okrugli znak podeljen uspravnom belom linijom: sa jedne strane lik pešaka, sa druge bicikl">
@@ -1658,11 +1663,11 @@ CARDS['parkiranje'] = {
       <g stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"><path d="M24 39 L19 50"/><path d="M24 39 L29 50"/><path d="M24 28 L17 33"/><path d="M24 28 L31 33"/></g>
       <g stroke="#fff" stroke-width="2" fill="none"><circle cx="48" cy="44" r="5.5"/><circle cx="60" cy="44" r="5.5"/><path d="M48 44 L55 35 L60 44"/><path d="M55 35 L59 32"/></g>
     </svg>
-    <b>STAZA ZA PEŠAKE I BICIKLISTE</b><span>plavi krug je porodica obaveze, a ovaj deli površinu na deo za pešake i deo za bicikliste; koja je strana koja, ne pita se — bitno je da to nije kolovoz nego staza, pa vozilo tu ne stoji ni najkraće</span>
+    <b>STAZA REZERVISANA ZA BICIKLISTE I PEŠAKE</b><span>Znak II-41.1 označava put sa odvojenim delovima za bicikliste, pešake i vozače lakih električnih vozila. Raspored simbola odgovara rasporedu delova staze. Na tim površinama zabranjeni su zaustavljanje i parkiranje automobila (čl. 66 st. 1 t. 8 i 14).</span>
   </div>
 </div>
-<p>Na slici uz pitanje o <b>trotoaru</b> odlučuje obrnuto: takvog znaka tu <b>nema</b>, pa zabrana važi bez obzira na to koliko je prostora ostalo iza vozila. Znak, dakle, gledaš da bi znao <b>šta je ta površina</b> — a ne zato što bi neki znak sam po sebi opravdao stajanje.</p>
-<p class="mut">Pamtilica: nema znaka — nema merenja metara.</p>
+<p>Na slici #10113 nije prikazana signalizacija koja dopušta parkiranje na trotoaru. Sam prolaz od 1,60 m zato nije dovoljan. Znak uz #10118 označava vrstu staze; za izuzetak pri parkiranju na trotoaru potrebna je signalizacija koja takvo parkiranje dopušta.</p>
+<p class="mut">Pamtilica: nema signalizacije — nema merenja metara.</p>
 </div>
 
 <div class="kPodH"><b class="kPodNaslov">Izgleda kao slobodan prostor, a nije</b>
@@ -1687,10 +1692,11 @@ CARDS['parkiranje'] = {
 <p><b>Rečima:</b> bele kose pruge oivičene punom linijom su <b>polje za usmeravanje saobraćaja</b> — površina koja mora da ostane prazna da bi se tokovi razdvojili na vreme, pa je i nacrtana između dva toka koja se razilaze. Vozilo na nju ne sme ni da pređe, pa je i ostavljanje vozila tu zabranjeno: vozilo ostavljeno na prugama stoji nepropisno, iako mesto na prvi pogled deluje kao slobodan prostor uz ivicu.</p>
 <table>
 <tr><th>Mesto</th><th>Pravilo</th></tr>
-<tr><td>Kolovozne trake fizički odvojene (razdelno ostrvo)</td><td>Ni zaustavljanje ni parkiranje — nema bezbednog obilaženja</td></tr>
+<tr><td>Kolovozne trake fizički odvojene (razdelno ostrvo)</td><td>Ni zaustavljanje ni parkiranje, osim ako je dozvoljeno saobraćajnim znakom (čl. 66 st. 1 t. 10); taksi izuzetak je naveden iznad</td></tr>
 <tr><td>Površina na kojoj je signalizacijom zabranjen saobraćaj vozila</td><td>Zabranjen saobraćaj znači i zabranjeno zaustavljanje i parkiranje — jače pravilo uključuje slabije</td></tr>
-<tr><td>Trg, pešačka zona, protivpožarni put</td><td>Ni zaustavljanje ni parkiranje — protivpožarni put mora biti prohodan u svakom trenutku</td></tr>
+<tr><td>Trg, pešačka zona, protivpožarni put</td><td>Ni zaustavljanje ni parkiranje (čl. 66 st. 1 t. 15)</td></tr>
 </table>
+<p>Na zvaničnoj slici #10142 beli krug sa crvenim obodom označava zabranu saobraćaja za vozila u oba smera (II-3). Na tako označenoj površini zabranjeni su zaustavljanje i parkiranje (čl. 66 st. 1 t. 22).</p>
 </div>
 
 <div class="kPodH"><b class="kPodNaslov">Uspon i nizbrdica nisu na spisku, blizina vrha prevoja jeste</b>
@@ -1705,7 +1711,7 @@ CARDS['parkiranje'] = {
   <text x="250" y="104" text-anchor="middle" font-size="12" fill="currentColor">nizbrdica</text>
   <text x="153" y="148" text-anchor="middle" font-size="12" fill="#c0392b">i sam vrh i pojas oko njega</text>
 </svg>
-<p><b>Rečima:</b> u pitanjima zabrana glasi <b>"u blizini vrha prevoja"</b>, pa crvena boja na crtežu pokriva i sam vrh i pojas oko njega; tabela ove kartice isti red vodi kao "Prevoj, nepregledna krivina — uvek zabranjeno". Zabranjena je, dakle, i <b>nepregledna krivina</b> (čl. 66 t. 5). Uvek su zabranjeni i tunel, podvožnjak, galerija, most i nadvožnjak (čl. 66).</p>
+<p><b>Rečima:</b> u blizini vrha prevoja, kao i u krivini gde je preglednost nedovoljna ili se obilaženje vozila ne može izvršiti bez opasnosti, zabranjeni su zaustavljanje i parkiranje (čl. 66 st. 1 t. 5). Crveni pojas prikazuje primer blizine vrha prevoja. Zabrana važi i u tunelu, podvožnjaku, galeriji, na mostu i nadvožnjaku (t. 4).</p>
 <svg viewBox="0 0 306 152" role="img" aria-label="pogled odozgo na nepreglednu krivinu: put se savija udesno, u samoj krivini stoji precrtano parkirano vozilo, a plava strelica pokazuje tvoj smer kretanja kroz krivinu" style="max-width:306px;width:100%;display:block;margin:6px auto">
   <text x="6" y="14" text-anchor="start" font-size="12" font-weight="bold" fill="currentColor">NEPREGLEDNA KRIVINA</text>
   <path d="M0 48 H150 A 54 54 0 0 1 204 102 V 152" stroke="#9aa7b4" stroke-width="42" fill="none"/>
@@ -1717,7 +1723,7 @@ CARDS['parkiranje'] = {
   <text x="100" y="140" text-anchor="middle" font-size="12" fill="#c0392b">ne zaustavlja se ni parkira</text>
 </svg>
 <p>Sam <b>uspon</b>, sama <b>nizbrdica</b> i <b>put van naselja</b> nisu na spisku zabranjenih mesta, pa te tri ponude nisu tačni odgovori. To ipak nije dozvola: iznad svih spiskova ostaje pravilo da se ne staje tamo gde vozilo ugrožava ili ometa, a van naselja se vozilo sklanja van kolovoza kad god za to postoji mogućnost (čl. 64 st. 1).</p>
-<p class="mut">Vrh prevoja i nepregledna krivina su ista "opasna mesta" kao kod preticanja i polukružnog okretanja. Ovo nije ceo spisak zabrana — mesta sa metrima (5-5-5-15-3) i ostale zabrane su u tabeli ove kartice i u temama iznad.</p>
+<p>Ovo nije ceo spisak zabrana: ostale površine, udaljenosti i relevantni izuzeci prikazani su u tabelama i temama ove kartice.</p>
 </div>
 
 <div class="kPodH"><b class="kPodNaslov">Kad odlaziš od vozila i kad staneš u kvaru</b>
@@ -1737,20 +1743,7 @@ CARDS['parkiranje'] = {
   <text x="222" y="42" text-anchor="middle" font-size="12" font-weight="bold" fill="#c0392b">sprečiti da se vozilo</text>
   <text x="222" y="62" text-anchor="middle" font-size="12" font-weight="bold" fill="#c0392b">samo pokrene s mesta</text>
 </svg>
-<svg viewBox="0 0 306 128" role="img" aria-label="pogled odozgo na vozilo parkirano uz ivičnjak na nagibu: prednji točkovi su okrenuti ka ivičnjaku" style="max-width:306px;width:100%;display:block;margin:6px auto">
-  <text x="6" y="14" text-anchor="start" font-size="12" font-weight="bold" fill="currentColor">NA NAGIBU: TOČKOVI KA IVIČNJAKU</text>
-  <rect x="0" y="24" width="306" height="60" fill="#9aa7b4"/>
-  <rect x="0" y="84" width="306" height="14" fill="currentColor" opacity="0.25"/>
-  <rect x="80" y="36" width="130" height="34" rx="5" fill="#2a333d" opacity="0.92"/>
-  <rect x="96" y="30" width="20" height="8" rx="2" fill="currentColor"/>
-  <rect x="96" y="68" width="20" height="8" rx="2" fill="currentColor"/>
-  <g transform="translate(186 34) rotate(28)"><rect x="-10" y="-4" width="20" height="8" rx="2" fill="currentColor"/></g>
-  <g transform="translate(186 72) rotate(28)"><rect x="-10" y="-4" width="20" height="8" rx="2" fill="currentColor"/></g>
-  <path d="M200 78 L212 90 M204 88 L213 91 L210 82" stroke="#1f7a3f" stroke-width="2" fill="none"/>
-  <text x="264" y="94" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">IVIČNJAK</text>
-  <text x="153" y="118" text-anchor="middle" font-size="12" fill="currentColor">ručna kočnica · brzina · točkovi ka ivičnjaku</text>
-</svg>
-<p><b>Pre nego što napustiš parkirano vozilo:</b> preduzmi mere kojima se sprečava da se vozilo samo pokrene sa mesta na kome je parkirano. To je ceo tačan odgovor — ni sigurnosni trougao iza vozila ni uključeni pokazivači pravca nisu rešenje. Te mere su <b>ručna kočnica</b>, ostavljena <b>brzina</b> i, na nagibu, <b>točkovi okrenuti ka ivičnjaku</b>.</p>
+<p><b>Pre nego što napustiš parkirano vozilo:</b> preduzmi sve potrebne mere da se ono ne pokrene samo. Član 68 zahteva i obezbeđenje od neovlašćene upotrebe. U pitanju #10528 traži se sprečavanje samopokretanja: trougao i pokazivači pravca to ne mogu da zamene.</p>
 <svg viewBox="0 0 306 180" role="img" aria-label="vozilo u kvaru stoji na šinama, sa leve strane po šinama nailazi šinsko vozilo, a između njih je crveni znak upozorenja" style="max-width:306px;width:100%;display:block;margin:6px auto">
   <text x="153" y="16" text-anchor="middle" font-size="12" font-weight="bold" fill="#c0392b">1. vozilo ODMAH ukloni sa šina</text>
   <g stroke="#3c4a56" stroke-width="3" opacity="0.45" fill="none"><path d="M8 84 V112"/><path d="M30 84 V112"/><path d="M52 84 V112"/><path d="M74 84 V112"/><path d="M96 84 V112"/><path d="M118 84 V112"/><path d="M140 84 V112"/><path d="M162 84 V112"/><path d="M184 84 V112"/><path d="M206 84 V112"/><path d="M228 84 V112"/><path d="M250 84 V112"/><path d="M272 84 V112"/><path d="M294 84 V112"/></g>
@@ -1768,23 +1761,13 @@ CARDS['parkiranje'] = {
   <text x="153" y="154" text-anchor="middle" font-size="12" fill="#c0392b">2. ako ne može — odmah upozori</text>
   <text x="153" y="174" text-anchor="middle" font-size="12" fill="#c0392b">vozače šinskog vozila</text>
 </svg>
-<p><b>Kvar na šinama:</b> vozilo <b>odmah</b> ukloni sa šina; ako to nije moguće, odmah preduzmi mere da vozači šinskog vozila na vreme budu upozoreni na opasnost (čl. 63 st. 2). Ni popravka na licu mesta ni trougao sa pokazivačima pravca nisu rešenje.</p>
-<div class="signRow wrapRow">
-  <div class="signCell">
-    <svg viewBox="0 0 78 70" role="img" aria-label="precrtani sigurnosni trougao sa upaljenim pokazivačima pravca">
-      <path d="M39 12 L66 56 L12 56 Z" fill="none" stroke="#c0392b" stroke-width="4" stroke-linejoin="round"/>
-      <path d="M39 24 L39 42" stroke="#c0392b" stroke-width="3"/><circle cx="39" cy="48" r="2.5" fill="#c0392b"/>
-      <path d="M10 8 L70 64" stroke="#c0392b" stroke-width="4"/>
-    </svg>
-    <b>TROUGAO I POKAZIVAČI PRAVCA</b><span>nudi se i uz napuštanje parkiranog vozila i uz kvar na šinama — ni u jednom od ta dva pitanja nije tačan odgovor</span>
-  </div>
-</div>
+<p><b>Kvar na šinama:</b> vozilo <b>odmah</b> ukloni sa šina; ako to nije moguće, odmah preduzmi mere da vozači šinskog vozila na vreme budu upozoreni na opasnost (čl. 63 st. 2). Postavljanje trougla i uključivanje pokazivača pravca ne zamenjuju tu obavezu; obeležavanje vozila u propisanim situacijama posebno uređuje čl. 67.</p>
 </div>
 
 <div class="kPodH"><b class="kPodNaslov">Sve zamke na jednom mestu</b>
-<p>Ponude se kroz ovu podoblast ponavljaju. Nijedna dole nabrojana <b>nijednom nije tačan odgovor</b> — dužina trake pokazuje u koliko se pitanja ta ponuda javlja.</p>
-<svg viewBox="0 0 306 318" role="img" aria-label="vodoravni grafikon: zaustavljanje da a parkiranje ne šest puta, slobodan prolaz 1,60 m pet puta, manje od 10 m umesto 5 m četiri puta, samo na mestu bez pojasa četiri puta, izuzetak za auto-taksi dva puta, trougao i pokazivači pravca dva puta, samo staza ili samo traka jednom, najduže do 3 minuta jednom; nijedna od tih ponuda nije nijednom tačna" style="max-width:306px;width:100%;display:block;margin:6px auto">
-  <text x="6" y="16" text-anchor="start" font-size="12" fill="currentColor">koliko puta se ponuda javlja — tačna: nijednom</text>
+<p>Grafikon i tabela ispod opisuju ponude u <b>ovih 27 pitanja</b> podoblasti „Zaustavljanje i parkiranje“. Dužina trake pokazuje u koliko se pitanja ponuda javlja; nijedna od nabrojanih ponuda nije tačna u tim pitanjima. To je opis ove grupe pitanja, a ne opšte pravilo za sve saobraćajne situacije.</p>
+<svg viewBox="0 0 306 318" role="img" aria-label="grafikon pogrešnih ponuda samo u 27 pitanja ove banke, ne opšte pravilo za druge situacije: zaustavljanje da a parkiranje ne šest puta, slobodan prolaz 1,60 m pet puta, manje od 10 m umesto 5 m četiri puta, samo na mestu bez pojasa četiri puta, izuzetak za auto-taksi dva puta, trougao i pokazivači pravca dva puta, samo staza ili samo traka jednom, najduže do 3 minuta jednom; nijedna od tih ponuda nije nijednom tačna" style="max-width:306px;width:100%;display:block;margin:6px auto">
+  <text x="6" y="16" text-anchor="start" font-size="12" fill="currentColor">u ovih 27 pitanja — nijednom tačno</text>
   <text x="6" y="42" text-anchor="start" font-size="12" fill="currentColor">zaustavljanje da, parkiranje ne</text>
   <rect x="6" y="46" width="180" height="14" fill="#c0392b"/>
   <text x="286" y="57" text-anchor="end" font-size="12" fill="currentColor">6</text>
@@ -1816,12 +1799,12 @@ CARDS['parkiranje'] = {
 <tr><td>"slobodan prolaz za pešake najmanje širine 1,60 m"</td><td>uslov tamo gde je parkiranje već dopušteno znakom ili oznakom, nikad sama dozvola</td></tr>
 <tr><td>"na udaljenosti manjoj od 10 m"</td><td>meri se 5 m</td></tr>
 <tr><td>"samo na pešačkom prelazu", "samo na raskrsnici"</td><td>i mesto i pojas od 5 m oko njega</td></tr>
-<tr><td>"dozvoljeno samo vozilima auto-taksi prevoza"</td><td>pravilo važi za sva vozila jednako</td></tr>
+<tr><td>"dozvoljeno samo vozilima auto-taksi prevoza"</td><td>U pitanjima #10091 i #10092 taksi nije izuzet od zabrane na biciklističkoj traci</td></tr>
 <tr><td>"sigurnosni trougao", "svi pokazivači pravca"</td><td>mere protiv samopokretanja vozila, odnosno uklanjanje sa šina i upozorenje</td></tr>
 <tr><td>"samo na biciklističkoj stazi", "samo na biciklističkoj traci"</td><td>i na stazi i na traci</td></tr>
 <tr><td>"sme da zaustavi vozilo najduže do 3 minuta"</td><td>ne sme ni da zaustavi ni da parkira</td></tr>
 </table>
-<p class="mut">Pamtilica: zamka je skoro uvek ona ponuda koja nešto <b>dopušta</b> — pod uslovom, na kraće vreme, samo za taksi, uz izmerenih 1,60 m. U dvanaest pitanja ove podoblasti pita se da li je na nekoj površini dozvoljeno zaustavljanje ili parkiranje i u svih dvanaest tačan odgovor glasi da <b>nije dozvoljeno</b>. Pitanja u kojima tačan odgovor nešto dopušta ne pitaju da li se sme, nego <b>gde</b> i pod kojim uslovom — sva su u temi "Uz koju ivicu se staje" (čl. 64).</p>
+<p class="mut">Odgovor biraj po konkretnoj površini, signalizaciji i uslovima iz pitanja. Reči „dozvoljeno“, „samo“ ili navedena udaljenost same ne određuju tačan odgovor.</p>
 </div>
 `,
 };
@@ -6776,6 +6759,101 @@ const out = {
     return 'aria-label="' + toCyr(label) + '"';
   });
   if (count !== 6) throw new Error('Kartica brzine: očekivano šest pristupačnih opisa');
+}
+
+// Lokalni, pregledani opisi preostalih 19 crteža kartice parkiranje.
+// Nepoznat novi opis zahteva novi pregled; opšti toCyr i druge kartice ostaju isti.
+{
+  const opisi = new Map([
+  [
+    "dvosmerni put sa pešačkim prelazom i oznakom autobuskog stajališta na kolovozu: osnovna zabrana zaustavljanja i parkiranja 5 m sa obe strane prelaza i 15 m ispred i iza oznake stajališta",
+    "двосмерни пут са пешачким прелазом и ознаком аутобуског стајалишта на коловозу: основна забрана заустављања и паркирања 5 m са обе стране прелаза и 15 m испред и иза ознаке стајалишта"
+  ],
+  [
+    "pogled odozgo na dvosmerni put: vozilo uz levu ivicu je precrtano, a vozilo uz desnu ivicu u tvom smeru nosi zelenu kvačicu",
+    "поглед одозго на двосмерни пут: возило уз леву ивицу је прецртано, а возило уз десну ивицу у твом смеру носи зелену квачицу"
+  ],
+  [
+    "pogled odozgo na jednosmerni put: i vozilo uz levu i vozilo uz desnu ivicu nose zelenu kvačicu, oba su dozvoljena",
+    "поглед одозго на једносмерни пут: и возило уз леву и возило уз десну ивицу носе зелену квачицу, оба су дозвољена"
+  ],
+  [
+    "pogled odozgo: uz desnu ivicu kolovoza idu tramvajske šine, vozilo koje je uz tu ivicu stalo na njima je precrtano, a sa leve strane po šinama nailazi šinsko vozilo",
+    "поглед одозго: уз десну ивицу коловоза иду трамвајске шине, возило које је уз ту ивицу стало на њима је прецртано, а са леве стране по шинама наилази шинско возило"
+  ],
+  [
+    "pogled odozgo na put van naselja: vozilo sklonjeno van kolovoza na bankinu nosi zelenu kvačicu, a vozilo koje je ostalo na kolovozu nosi napomenu samo ako van kolovoza ne može",
+    "поглед одозго на пут ван насеља: возило склоњено ван коловоза на банкину носи зелену квачицу, а возило које је остало на коловозу носи напомену само ако ван коловоза не може"
+  ],
+  [
+    "pogled odozgo: mesta na sredini kolovoza označena plavim znakom za parkiranje i belim parking linijama; vozilo je u obeleženom mestu, a saobraćaj teče trakama sa obe strane",
+    "поглед одозго: места на средини коловоза означена плавим знаком за паркирање и белим паркинг линијама; возило је у обележеном месту, а саобраћај тече тракама са обе стране"
+  ],
+  [
+    "pogled odozgo: ista sredina kolovoza bez ijedne oznake, vozilo koje je tu stalo je precrtano crvenom bojom",
+    "поглед одозго: иста средина коловоза без иједне ознаке, возило које је ту стало је прецртано црвеном бојом"
+  ],
+  [
+    "osnovni primer raskrsnice na dvosmernom putu: obeleženi su raskrsnica i pojas od pet metara sa obe strane najbliže ivice poprečnog kolovoza; vozilo u pojasu je precrtano; izuzetak za jednosmernu ulicu objašnjen je u tekstu",
+    "основни пример раскрснице на двосмерном путу: обележени су раскрсница и појас од пет метара са обе стране најближе ивице попречног коловоза; возило у појасу је прецртано; изузетак за једносмерну улицу објашњен је у тексту"
+  ],
+  [
+    "pogled odozgo: vozilo parkirano u pojasu ispred raskrsnice zaklanja pogled vozilu koje izlazi iz poprečnog puta, crvena isprekidana linija pokazuje zaklonjeni pogled",
+    "поглед одозго: возило паркирано у појасу испред раскрснице заклања поглед возилу које излази из попречног пута, црвена испрекидана линија показује заклоњени поглед"
+  ],
+  [
+    "pogled odozgo: gore je deo puta kojim idu automobili, ispod njega puna bela linija, a desno od nje biciklistička traka po kojoj se uz sam ivičnjak kreće biciklistkinja na biciklu",
+    "поглед одозго: горе је део пута којим иду аутомобили, испод њега пуна бела линија, а десно од ње бициклистичка трака по којој се уз сам ивичњак креће бициклисткиња на бициклу"
+  ],
+  [
+    "pogled odozgo: vozilo je stalo na biciklističkoj traci; crvena isprekidana putanja pokazuje da obilaženje tog vozila vodi među automobile",
+    "поглед одозго: возило је стало на бициклистичкој траци; црвена испрекидана путања показује да обилажење тог возила води међу аутомобиле"
+  ],
+  [
+    "pogled odozgo na trotoar: vozilo je parkirano uz ivicu kolovoza, iza njega prema zgradi ostaje izmeren slobodan prolaz od 1,60 metara, a crvena napomena kaže da znaka nema pa metri ne pomažu",
+    "поглед одозго на тротоар: возило је паркирано уз ивицу коловоза, иза њега према згради остаје измерен слободан пролаз од 1,60 метара, а црвена напомена каже да знака нема па метри не помажу"
+  ],
+  [
+    "plavi okrugli znak podeljen uspravnom belom linijom: sa jedne strane lik pešaka, sa druge bicikl",
+    "плави округли знак подељен усправном белом линијом: са једне стране лик пешака, са друге бицикл"
+  ],
+  [
+    "pogled odozgo: dva toka saobraćaja se razdvajaju levo i desno, a između njih je polje za usmeravanje saobraćaja, bele kose pruge oivičene punom linijom; vozilo koje je stalo na polju je precrtano",
+    "поглед одозго: два тока саобраћаја се раздвајају лево и десно, а између њих је поље за усмеравање саобраћаја, беле косе пруге оивичене пуном линијом; возило које је стало на пољу је прецртано"
+  ],
+  [
+    "uzdužni profil puta sa prevojem: crvenom bojom obeležen je i sam vrh prevoja i pojas oko njega u kome se ne sme zaustaviti ni parkirati, dok su niži delovi uspona i nizbrdice samo imenovani",
+    "уздужни профил пута са превојем: црвеном бојом обележен је и сам врх превоја и појас око њега у коме се не сме зауставити ни паркирати, док су нижи делови успона и низбрдице само именовани"
+  ],
+  [
+    "pogled odozgo na nepreglednu krivinu: put se savija udesno, u samoj krivini stoji precrtano parkirano vozilo, a plava strelica pokazuje tvoj smer kretanja kroz krivinu",
+    "поглед одозго на непрегледну кривину: пут се савија удесно, у самој кривини стоји прецртано паркирано возило, а плава стрелица показује твој смер кретања кроз кривину"
+  ],
+  [
+    "vozilo parkirano na nagibu dok se vozač udaljava; crvena isprekidana strelica pokazuje kako se vozilo samo kotrlja niz nagib",
+    "возило паркирано на нагибу док се возач удаљава; црвена испрекидана стрелица показује како се возило само котрља низ нагиб"
+  ],
+  [
+    "vozilo u kvaru stoji na šinama, sa leve strane po šinama nailazi šinsko vozilo, a između njih je crveni znak upozorenja",
+    "возило у квару стоји на шинама, са леве стране по шинама наилази шинско возило, а између њих је црвени знак упозорења"
+  ],
+  [
+    "grafikon pogrešnih ponuda samo u 27 pitanja ove banke, ne opšte pravilo za druge situacije: zaustavljanje da a parkiranje ne šest puta, slobodan prolaz 1,60 m pet puta, manje od 10 m umesto 5 m četiri puta, samo na mestu bez pojasa četiri puta, izuzetak za auto-taksi dva puta, trougao i pokazivači pravca dva puta, samo staza ili samo traka jednom, najduže do 3 minuta jednom; nijedna od tih ponuda nije nijednom tačna",
+    "графикон погрешних понуда само у 27 питања ове банке, не опште правило за друге ситуације: заустављање да а паркирање не шест пута, слободан пролаз 1,60 m пет пута, мање од 10 m уместо 5 m четири пута, само на месту без појаса четири пута, изузетак за ауто-такси два пута, троугао и показивачи правца два пута, само стаза или само трака једном, најдуже до 3 минута једном; ниједна од тих понуда није ниједном тачна"
+  ]
+]);
+  let prevedeno = 0;
+  out.cards.parkiranje.h.c = out.cards.parkiranje.h.c.replace(/aria-label="([^"]*)"/g, (_, label) => {
+    if (!opisi.has(label)) throw new Error("Kartica parkiranje: nepoznat pristupačni opis");
+    prevedeno++;
+    return 'aria-label="' + opisi.get(label) + '"';
+  });
+  if (prevedeno !== 19) throw new Error("Kartica parkiranje: očekivano 19 pristupačnih opisa");
+  // Oznake znakova ostaju službeni identifikatori, sa rimskim brojevima.
+  for (const [staro, novo] of [["ИИ-3", "II-3"], ["ИИ-41.1", "II-41.1"]]) {
+    if (out.cards.parkiranje.h.c.split(staro).length - 1 !== 1) throw new Error("Kartica parkiranje: neočekivana oznaka znaka");
+    out.cards.parkiranje.h.c = out.cards.parkiranje.h.c.replace(staro, novo);
+  }
 }
 
 // Automatski skener: mešani latinično-ćirilični tokeni i zaostali digrafi u ćiriličnom izlazu

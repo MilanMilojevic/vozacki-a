@@ -455,6 +455,14 @@ CLI `tools/tests/tour.browser.js` проверава свих седам кор�
 тачност наставног текста и не посећује изворе прописа. Провера самог алата:
 `node --test tools/tests/content-audit.test.mjs`.
 
+Од v160 `parkiranje-card.test.mjs` проверава знак P, писма/римске ознаке и
+усклађеност графикона са стварним кључевима 27 питања. Засебни
+`parkiranje-card.browser.js` користи нове localhost контексте за свих 27 питања,
+оба писма/теме, 320/1280 px и директни/уграђени појмовник. Проверава приказ,
+слике, одговоре и геометрију 19 SVG-ова; не потврђује пуну приступачност.
+Познати ситни натписи и контраст остају отворени у
+[групи 008](docs/revizija-sadrzaja/grupe/008-zaustavljanje-i-parkiranje-kartica.md).
+
 ```bash
 node -e "new Function(require('fs').readFileSync('app.js','utf8'))"   # синтакса
 cd tools && node build-explanations.mjs                               # билд + скенер писма
