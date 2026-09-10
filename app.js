@@ -2984,7 +2984,9 @@
         }
         if (!(S.plan && S.plan.prio)) lostovi.push(`<button type="button" class="secondary sBtn" id="btnLostPrio">${L('lostPrio')}</button>`);
         const dugmad = lostovi.length ? `<div class="razmakG">${lostovi.join(' ')}</div>` : '';
-        if (!stigneGradivo && p.cNovih > 0) {
+        // Nula novih dnevno takođe ostavlja neotvoreno gradivo: kvota samo za
+        // ponavljanje ne sme obećati da će kandidat otvoriti celu bazu do ispita.
+        if (!stigneGradivo) {
           neStize = `<div class="mut napomena">${L('sudNeStize').split('@1').join(p.cNovih).split('@2').join(otvoriS).split('@3').join(neodg).split('@4').join(neodg - otvoriS)}</div>${dugmad}`;
         } else if (potrebnoPon > kapacitetPon) {
           neStize = neodg === 0

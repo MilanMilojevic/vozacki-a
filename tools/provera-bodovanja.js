@@ -204,6 +204,11 @@ async function proveraBodovanjaTestovi() {
       ok('tempo: premali tempo se prijavljuje kao prepreka', planTekst().includes('NE stižeš gradivo') && planTekst().includes('To jeste prepreka'));
       ok('tempo: uz prepreku stoji i dugme koje diže tempo', !!document.getElementById('btnLostTempo'));
 
+      S().plan = { novih: null, pon: 30, auto: 0, prio: 0 };
+      await naPocetnu();
+      ok('tempo: samo ponavljanje uz neotvorena pitanja ne obećava da stižeš gradivo', planTekst().includes('NE stižeš gradivo') && !planTekst().includes('Ovim tempom stižeš:'));
+      ok('tempo: plan samo za ponavljanje nudi podizanje tempa', !!document.getElementById('btnLostTempo'));
+
       // višak preko cilja se vidi; u auto režimu uz to kaže i da snižava sutrašnju kvotu
       S().plan = { novih: 10, pon: 10, auto: 0, prio: 0 };
       S().day = { d: danasStr, n: 40, ok: 30, novih: 40, pon: 0 };

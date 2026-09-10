@@ -178,6 +178,20 @@ tврдила да је почетак аутопута плава табла, �
 имати документоване раније кварове који се решавају у наредном пакету.
 Сам поступак опоравка проверава `node --test tools/tests/scoring-harness-safety.test.mjs`.
 
+Дневни циљ има и проверу са **стварним освежавањем** после сваког корака
+(auto → датум → ручни режим → ручна квота, уз план само за понављање):
+
+```bash
+npx --yes --package @playwright/cli playwright-cli -s=provera-cilja open http://localhost:18764
+npx --yes --package @playwright/cli playwright-cli -s=provera-cilja run-code --filename tools/tests/daily-goal.browser.js
+npx --yes --package @playwright/cli playwright-cli -s=provera-cilja close
+```
+
+Претходно покренути засебан сервер радне копије на том порту (`PORT=18764`).
+Скрипта ствара нови контекст са синтетичким подацима и затвара га у `finally`.
+Поређује сачувани план, живо стање, квоте, контроле и текстове пре/после reload-а.
+Склапање подешавања остаје намерно по сесији; није услов да остану отворена после reload-а.
+
 ```bash
 node -e "new Function(require('fs').readFileSync('app.js','utf8'))"   # синтакса
 cd tools && node build-explanations.mjs                               # билд + скенер писма
