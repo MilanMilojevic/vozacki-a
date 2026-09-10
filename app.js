@@ -1351,7 +1351,11 @@
       }
       for (const k of Object.keys(cards)) {
         const c = nadjiKarticu(k);
-        if (k !== 'faq' && c) list.appendChild(noviLink('📖 ' + T(c.t), '#/pojmovnik/' + k, 'explCardBtn pojBtn'));
+        if (k !== 'faq' && c) {
+          const link = noviLink('📖 ' + T(c.t), '#/pojmovnik/' + k, 'explCardBtn pojBtn');
+          link.id = 'pojam-' + k;
+          list.appendChild(link);
+        }
       }
     }
     show('browse'); if (samoPregled()) prikaziTrakuPregleda();
@@ -4497,7 +4501,7 @@
   document.addEventListener('click', (ev) => {
     const qn = ev.target.closest && ev.target.closest('.qNum[data-qid]');
     if (!qn || FILE_MODE) return;
-    const adresa = location.origin + location.pathname + '#/p/' + qn.dataset.qid;
+    const adresa = adresaSadrzaja('#/p/' + qn.dataset.qid);
     const potvrdi = () => {
       const staro = qn.textContent;
       qn.textContent = L('linkCopied');
