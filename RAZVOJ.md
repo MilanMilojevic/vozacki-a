@@ -198,6 +198,16 @@ npx --yes --package @playwright/cli playwright-cli -s=provera-cilja close
 фокус унутра, Tab/Shift+Tab, Escape, неактивна позадина и повратак фокуса.
 Ово је провера тих токова, а не потврда пуне WCAG усаглашености или читача екрана.
 
+Од v133 нечитљив, празан или недоступан запис напретка блокира нормалне уписе,
+резерву у фајл и покретање/наставак симулације. `load()` разликује одсутан запис
+од поквареног. `save(true)` сме да позове само успешно проверен увоз; неуспео
+упис оставља заштиту укључену. Оригинал се може сачувати као текст, без
+„поправљања” његових бајтова. Ово не спаја рад из више табова.
+
+Провере: `node --test tools/tests/storage-recovery.test.mjs tools/tests/scoring-harness-safety.test.mjs`
+и исти CLI поступак са `tools/tests/storage-recovery.browser.js` (localhost:18764).
+Браузерска провера користи синтетички испит и извоз у меморију, без корисничког фајла.
+
 ```bash
 node -e "new Function(require('fs').readFileSync('app.js','utf8'))"   # синтакса
 cd tools && node build-explanations.mjs                               # билд + скенер писма

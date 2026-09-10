@@ -233,6 +233,12 @@
     rezervaDozvola: { l: '⚠ Rezerva u fajl je isključena jer je pregledač povukao dozvolu za pisanje. U podešavanjima je dugme da je ponovo uključiš.', c: '⚠ Резерва у фајл је искључена јер је прегледач повукао дозволу за писање. У подешавањима је дугме да је поново укључиш.' },
     rezervaNeuspeh: { l: '⚠ Rezerva u fajl trenutno ne prolazi — fajl je možda otvoren u drugom programu ili je disk pun. Napredak je i dalje u pregledaču, a upis se pokušava ponovo.', c: '⚠ Резерва у фајл тренутно не пролази — фајл је можда отворен у другом програму или је диск пун. Напредак је и даље у прегледачу, а упис се покушава поново.' },
     saveFail: { l: '⚠ Napredak ne može da se sačuva u ovom pregledaču — nestaće kad zatvoriš stranicu. Proveri da li su podaci sajta blokirani, ili sačuvaj napredak u datoteku preko „Sačuvaj napredak (fajl)".', c: '⚠ Напредак не може да се сачува у овом прегледачу — нестаће кад затвориш страницу. Провери да ли су подаци сајта блокирани, или сачувај напредак у датотеку преко „Сачувај напредак (фајл)".' },
+    recoveryBad: { l: 'Sačuvani napredak ne može da se pročita. Originalni zapis je ostao netaknut. Sačuvaj ga, pa učitaj ispravnu kopiju. Do tada nove promene neće biti sačuvane.', c: 'Сачувани напредак не може да се прочита. Оригинални запис је остао нетакнут. Сачувај га, па учитај исправну копију. До тада нове промене неће бити сачуване.' },
+    recoveryUnavailable: { l: 'Pregledač nije dozvolio čitanje sačuvanog napretka. Nijedan zapis neće biti promenjen dok skladište ponovo ne bude dostupno i ne učitaš ispravnu kopiju.', c: 'Прегледач није дозволио читање сачуваног напретка. Ниједан запис неће бити промењен док складиште поново не буде доступно и не учиташ исправну копију.' },
+    recoverySaveRaw: { l: 'Sačuvaj nečitljiv zapis', c: 'Сачувај нечитљив запис' },
+    recoveryLoadCopy: { l: 'Učitaj ispravnu kopiju', c: 'Учитај исправну копију' },
+    recoveryRawSaved: { l: 'Nečitljiv zapis je sačuvan u fajl @1', c: 'Нечитљив запис је сачуван у фајл @1' },
+    recoveryImportConfirm: { l: 'Ispravna kopija će ZAMENITI nečitljiv sačuvani zapis. Pre toga ga sačuvaj ako želiš da ostane dostupan. Nastaviti?', c: 'Исправна копија ће ЗАМЕНИТИ нечитљив сачувани запис. Пре тога га сачувај ако желиш да остане доступан. Наставити?' },
     tabUpozorenje: { l: '⚠ Vežbaonica je otvorena u još jednom prozoru ili kartici. Rad u dva prozora se ne spaja — onaj koji poslednji sačuva prepisuje drugog. Zatvori jedan, pa osveži ovaj.', c: '⚠ Вежбаоница је отворена у још једном прозору или картици. Рад у два прозора се не спаја — онај који последњи сачува преписује другог. Затвори један, па освежи овај.' },
     fsMin: { l: 'Slova su već na najmanjoj veličini', c: 'Слова су већ на најмањој величини' },
     fsMax: { l: 'Slova su već na najvećoj veličini', c: 'Слова су већ на највећој величини' },
@@ -489,6 +495,8 @@
     catch (_) { return null; }
   }
   const proveraPocetniZapisi = location.hostname === 'localhost' ? proveraProcitajZapise() : null;
+  let problemUcitavanja = null;
+  let sirovoZaOporavak = null;
   let S = load();
   const proveraUcitanProfil = location.hostname === 'localhost' ? JSON.stringify(S) : null;
   // Svako stanje (učitano ili uvezeno) prolazi kroz normalizaciju — nedostajuća polja
@@ -610,10 +618,22 @@
     };
   }
   function load() {
+    let raw;
     try {
-      const raw = localStorage.getItem(KEY);
-      if (raw) { const norm = normalizeState(JSON.parse(raw)); if (norm) return norm; }
-    } catch (e) { /* korumpiran zapis — kreni ispočetka */ }
+      raw = localStorage.getItem(KEY);
+    } catch (e) {
+      problemUcitavanja = 'unavailable';
+      return normalizeState({ q: {} });
+    }
+    if (raw === null) return normalizeState({ q: {} });
+    try {
+      const norm = normalizeState(JSON.parse(raw));
+      if (norm) return norm;
+      problemUcitavanja = 'invalid-shape';
+    } catch (e) {
+      problemUcitavanja = 'invalid-json';
+    }
+    sirovoZaOporavak = raw;
     return normalizeState({ q: {} });
   }
   // Ako pregledač odbije upis (puno skladište, blokirani podaci sajta, strogo blokiranje
@@ -644,7 +664,8 @@
   }
   // Kratka potvrda radnje: ista traka kao upozorenja, ali tiša i sama nestaje. Jedan oblik za
   // sve radnje — ranije je isti tip radnje čas ćutao, čas dizao sistemski prozor.
-  function poruci(tekst) {
+  function poruci(tekst, dozvoliOporavak = false) {
+    if (problemUcitavanja && !dozvoliOporavak) { prikaziOporavakStanja(); return; }
     try {
       let drz = document.getElementById('trakeDrzac');
       if (!drz) { drz = document.createElement('div'); drz.id = 'trakeDrzac'; document.body.appendChild(drz); }
@@ -664,6 +685,53 @@
     upozorenONeuspehu = true;
     trakaUpozorenja(L('saveFail'));
   }
+  function ukloniOporavakStanja() {
+    const b = document.getElementById('oporavakStanja');
+    if (b) b.remove();
+  }
+  function prikaziOporavakStanja() {
+    if (!problemUcitavanja) return;
+    for (const id of ['btnExport', 'btnReset']) {
+      const dugme = document.getElementById(id);
+      if (dugme) dugme.disabled = true;
+    }
+    if (document.getElementById('oporavakStanja')) return;
+    try {
+      const b = document.createElement('div');
+      b.id = 'oporavakStanja';
+      b.className = 'upozorenjeTraka';
+      b.setAttribute('role', 'alert');
+      b.appendChild(document.createTextNode(L(problemUcitavanja === 'unavailable' ? 'recoveryUnavailable' : 'recoveryBad') + ' '));
+      if (sirovoZaOporavak !== null) {
+        const sacuvaj = document.createElement('button');
+        sacuvaj.type = 'button';
+        sacuvaj.className = 'secondary sBtn';
+        sacuvaj.textContent = L('recoverySaveRaw');
+        sacuvaj.addEventListener('click', async () => {
+          sacuvaj.disabled = true;
+          try {
+            const ime = 'vozacki-a-necitljiv-zapis-' + localDay() + '.txt';
+            const blob = new Blob([sirovoZaOporavak], { type: 'text/plain;charset=utf-8' });
+            const sacuvano = await sacuvajFajl(blob, ime, [{ description: 'Text', accept: { 'text/plain': ['.txt'] } }]);
+            if (sacuvano) poruci(L('recoveryRawSaved').split('@1').join(sacuvano), true);
+          } finally { sacuvaj.disabled = false; }
+        });
+        b.appendChild(sacuvaj);
+      }
+      const uvezi = document.createElement('button');
+      uvezi.type = 'button';
+      uvezi.className = 'secondary sBtn';
+      uvezi.textContent = L('recoveryLoadCopy');
+      uvezi.addEventListener('click', () => {
+        const input = document.getElementById('fileImport');
+        if (input) input.click();
+      });
+      b.appendChild(uvezi);
+      let drz = document.getElementById('trakeDrzac');
+      if (!drz) { drz = document.createElement('div'); drz.id = 'trakeDrzac'; document.body.appendChild(drz); }
+      drz.appendChild(b);
+    } catch (ignore) { /* upozorenje ne sme da obori oporavak */ }
+  }
   // Dva otvorena prozora: stanje se učita JEDNOM pri pokretanju, pa onaj koji poslednji
   // sačuva prepiše ceo napredak drugog. Namerno NE diramo ni S ni simulaciju u toku —
   // samo kažemo šta se dešava, jednom.
@@ -673,10 +741,18 @@
     upozorenODvaProzora = true;
     trakaUpozorenja(L('tabUpozorenje'));
   });
-  function save() {
-    try { localStorage.setItem(KEY, JSON.stringify(S)); }
+  function save(dozvoliOporavak = false) {
+    if (problemUcitavanja && !dozvoliOporavak) { prikaziOporavakStanja(); return false; }
+    let upisano = false;
+    try { localStorage.setItem(KEY, JSON.stringify(S)); upisano = true; }
     catch (e) { console.warn('Napredak nije mogao da se sačuva u pregledaču:', e); upozoriDaSeNeCuva(); }
+    if (problemUcitavanja) {
+      if (!upisano) return false;
+      problemUcitavanja = null;
+      sirovoZaOporavak = null;
+    }
     scheduleBackup();
+    return upisano;
   }
   function qs(id) { let r = S.q[id]; if (!r) { r = { a: 0, w: 0, streak: 0, marked: 0 }; S.q[id] = r; } return r; }
   // Samo ČITANJE napretka (za prikaz) — ne pravi prazan zapis kao qs().
@@ -1762,6 +1838,7 @@
   // posebno od napretka: ispit u toku NIJE napredak i ne ulazi u izvoz.
   const SIM_KEY = 'vozackiA.sim';
   function simSnimi() {
+    if (problemUcitavanja) { prikaziOporavakStanja(); return; }
     if (!sim) return;
     try {
       localStorage.setItem(SIM_KEY, JSON.stringify({
@@ -1777,7 +1854,10 @@
       upozoriDaSeNeCuva();
     }
   }
-  function simObrisi() { try { localStorage.removeItem(SIM_KEY); } catch (e) { /* nema šta da se radi */ } }
+  function simObrisi() {
+    if (problemUcitavanja) { prikaziOporavakStanja(); return; }
+    try { localStorage.removeItem(SIM_KEY); } catch (e) { /* nema šta da se radi */ }
+  }
   // Vraća ispit iz zapisa ili null. Sve što nije tačno onako kako je upisano — druga verzija
   // zapisa, pitanje kog više nema u bazi, izmenjeni odgovori — briše zapis i vraća null:
   // pola ispita je gore od nijednog.
@@ -1799,6 +1879,7 @@
   }
   // Vraća true ako je ispit nastavljen (ili istekao i završen) — tada rutiranje nema šta da radi.
   function simNastavi() {
+    if (problemUcitavanja) { prikaziOporavakStanja(); return false; }
     if (sim) return false;
     const s = simVrati();
     if (!s) return false;
@@ -1867,6 +1948,7 @@
   }
 
   function startSim() {
+    if (problemUcitavanja) { prikaziOporavakStanja(); return; }
     if (sim) { clearInterval(sim.timerId); sim = null; }   // defanzivno: nikad dva tajmera
     { const ub = document.getElementById('updBar'); if (ub) ub.remove(); }   // ekran ispita je čist, kao pravi
     const set = buildSimSet();
@@ -2643,6 +2725,7 @@
   let upisUToku = false;
   let upozorenONeuspehuRezerve = false;
   async function upisiRezervu() {
+    if (problemUcitavanja) return;
     const tekst = JSON.stringify(S);
     const w = await fsHandle.createWritable({ keepExistingData: true });
     await w.write({ type: 'write', position: 0, data: tekst });
@@ -2650,7 +2733,7 @@
     await w.close();
   }
   function scheduleBackup() {
-    if (!fsHandle) return;
+    if (problemUcitavanja || !fsHandle) return;
     clearTimeout(backupTimer);
     backupTimer = setTimeout(async () => {
       if (!fsHandle || upisUToku) return;
@@ -3441,7 +3524,10 @@
     {
       const pn = el('planNovih'), pp = el('planPon');
       const neodg = neodgovorenih();
-      const kaziPosle = (t) => { const m = el('planPoruka'); if (m) m.textContent = t; };
+      const kaziPosle = (t) => {
+        if (problemUcitavanja) { prikaziOporavakStanja(); return; }
+        const m = el('planPoruka'); if (m) m.textContent = t;
+      };
       const prazno = (x) => String(x.value || '').trim() === '';
       if (!neodg && !autoUkljucen) { pn.disabled = true; pn.value = ''; pn.placeholder = L('planSveOdgovoreno'); }
       [pn, pp].forEach((x) => x.addEventListener('input', () => { ocistiPoruku(x); kaziPosle(''); }));
@@ -3509,6 +3595,7 @@
     }
     el('btnExport').addEventListener('click', async (ev) => {
       const d = ev.currentTarget;
+      if (problemUcitavanja) { prikaziOporavakStanja(); return; }
       if (d.disabled) return;
       d.disabled = true;
       try {
@@ -3534,12 +3621,16 @@
         let sirovo = null, norm = null;
         try { sirovo = JSON.parse(rd.result); norm = normalizeState(sirovo); } catch (err) { /* nevalidan JSON */ }
         if (!norm) { alert(L('importBad')); return; }
+        const oporavak = !!problemUcitavanja;
         const hasProgress = Object.keys(S.q).length > 0 || S.sims.length > 0;
-        if (hasProgress && !confirm(L('importConfirm'))) return;
+        if (oporavak ? !confirm(L('recoveryImportConfirm')) : (hasProgress && !confirm(L('importConfirm')))) return;
+        const prethodno = S;
         S = norm;
+        if (oporavak && !save(true)) { S = prethodno; prikaziOporavakStanja(); return; }
         applyScript(); applyTheme(); applyFont();
         renderHome();
-        save();
+        if (oporavak) ukloniOporavakStanja();
+        else save();
         // Zapisi za pitanja kojih nema u trenutnoj bazi se odbacuju — to je ispravno, ali
         // se do sada dešavalo nemo, pa je uvoz stare kopije izgledao kao pun uspeh.
         const bilo = sirovo && sirovo.q && typeof sirovo.q === 'object' && !Array.isArray(sirovo.q)
@@ -3551,9 +3642,11 @@
       rd.readAsText(f);
     });
     el('btnReset').addEventListener('click', () => {
+      if (problemUcitavanja) { prikaziOporavakStanja(); return; }
       if (confirm(L('resetConfirm'))) { S = normalizeState({ q: {}, script: S.script, theme: S.theme, fs: S.fs }); save(); renderHome(); poruci(L('porReset')); }
     });
     show('home');
+    if (problemUcitavanja) prikaziOporavakStanja();
   }
 
   // ---------- Navigacija / init ----------
@@ -3910,7 +4003,7 @@
 
   // automatska provera najviše jednom dnevno, i to samo ako korisnik nije isključio
   function mozdaProveriRepo() {
-    if (S.noUpd || !BOOT_V) return;
+    if (problemUcitavanja || S.noUpd || !BOOT_V) return;
     const dan = 24 * 60 * 60 * 1000;
     if (S.updAt && Date.now() - S.updAt < dan) return;
     S.updAt = Date.now(); save();
@@ -4088,7 +4181,10 @@
   curHash = FILE_MODE ? '#/' : (location.hash || '#/');
   // Ispit u toku ima prvenstvo nad adresom: ko je osvežio stranu usred ispita (ili mu je telefon
   // izbacio tab), vraća se u isti ispit sa vremenom koje je i dalje teklo.
-  if (!simNastavi()) {
+  if (problemUcitavanja) {
+    renderHome();
+    prikaziOporavakStanja();
+  } else if (!simNastavi()) {
     try { routeTo(curHash); }
     catch (err) {
       console.warn('Adresa nije mogla da se otvori:', curHash, err);

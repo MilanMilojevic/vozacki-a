@@ -62,6 +62,7 @@ function bootRestoredApp(b) {
   const confirm = appSource.match(/async proveraPotvrdiPovratak\(zapisi\) \{[\s\S]*?\n      \},/);
   b.run(`${state}\n const BOOT_V=126, SIM_KEY='vozackiA.sim', SIM_N=41;
     function save() { localStorage.setItem(KEY, JSON.stringify(S)); }
+    function prikaziOporavakStanja() {}
     ${update}\n${sim}\nsimVrati();
     ${receipt ? receipt[0] : ''}
     Object.defineProperty(window.__dev, 'S', { get() { return S; } });
@@ -250,7 +251,7 @@ test('fresh-page verification refuses to discard backup if storage has changed',
   assert.ok(Object.keys(b.session.snapshot()).length);
 });
 
-for (const raw of [null, '', '{"q":{}}']) {
+for (const raw of [null, '{"q":{}}']) {
   test(`real boot receipt confirms restored ${JSON.stringify(raw)} profile despite startup normalization`, async () => {
     const first = browser(storage({ ...(raw === null ? {} : { [keys[0]]: raw }), [keys[1]]: '' }));
     await first.run('proveraBodovanja()');
@@ -263,6 +264,18 @@ for (const raw of [null, '', '{"q":{}}']) {
     assert.deepEqual(restored.session.snapshot(), {});
   });
 }
+
+test('real boot receipt preserves an empty corrupt profile and pending-exam record for recovery', async () => {
+  const first = browser(storage({ [keys[0]]: '', [keys[1]]: '' }));
+  await first.run('proveraBodovanja()');
+  await first.nextPage().run('proveraBodovanjaVrati()');
+  const restored = first.nextPage();
+  bootRestoredApp(restored);
+  assert.equal(restored.local.getItem(keys[0]), '');
+  assert.equal(restored.local.getItem(keys[1]), '');
+  await restored.run('proveraBodovanjaPotvrdi()');
+  assert.deepEqual(restored.session.snapshot(), {});
+});
 
 for (const edit of ['S.theme = "dark";', 'localStorage.setItem("vozackiA.v1", "late overwrite");']) {
   test(`boot receipt retains backup after a later change: ${edit}`, async () => {

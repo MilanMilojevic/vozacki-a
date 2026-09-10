@@ -3,6 +3,7 @@ node_modules/
 
 # извоз напретка (лични подаци, не иде у репо)
 vozacki-a-napredak*.json
+vozacki-a-necitljiv-zapis*.txt
 
 # смеће оперативних система и уређивача
 Thumbs.db
