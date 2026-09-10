@@ -414,7 +414,8 @@
     notAnswered: { l: 'Nisi odgovorio na ovo pitanje.', c: 'Ниси одговорио на ово питање.' },
     requiresN: { l: 'Traži # odgovora — priznaje se samo ako su označena SVA tačna.', c: 'Тражи # одговора — признаје се само ако су означена СВА тачна.' },
     correctOnesTitle: { l: 'Tačno odgovorena pitanja', c: 'Тачно одговорена питања' },
-    reviewOldNote: { l: 'Ova simulacija je iz starije verzije aplikacije (pre 27.08.2026), kad se tvoji odgovori još nisu čuvali — prikazana su samo pogrešna pitanja sa tačnim odgovorima.', c: 'Ова симулација је из старије верзије апликације (пре 27.08.2026), кад се твоји одговори још нису чували — приказана су само погрешна питања са тачним одговорима.' },
+    reviewOldNote: { l: 'Detalji odgovora ove simulacije nisu sačuvani ili se ne slažu sa rezultatom. Ukupan rezultat je sačuvan; prikazana su zabeležena pogrešna pitanja sa tačnim odgovorima. Izabrane odgovore nije moguće pouzdano obnoviti.', c: 'Детаљи одговора ове симулације нису сачувани или се не слажу са резултатом. Укупан резултат је сачуван; приказана су забележена погрешна питања са тачним одговорима. Изабране одговоре није могуће поуздано обновити.' },
+    reviewNoChoice: { l: 'Za ovo pitanje nema sačuvanog izabranog odgovora.', c: 'За ово питање нема сачуваног изабраног одговора.' },
     historyTip: { l: 'Klikni na pokušaj za ceo pregled: svako pitanje, tvoj i tačan odgovor.', c: 'Кликни на покушај за цео преглед: свако питање, твој и тачан одговор.' },
     report: { l: 'Izveštaj', c: 'Извештај' },
     repAnswered: { l: 'Odgovoreno', c: 'Одговорено' },
@@ -533,8 +534,15 @@
         total: nInt(s.total, 0, 1000, 0),
         passed: !!s.passed,
         wrong: ids(s.wrong),
-        qs: Array.isArray(s.qs) ? s.qs.slice(0, 200).map((x) => (x && Number.isInteger(x.id) && byId.has(x.id)
-          ? { id: x.id, ch: ids(x.ch) } : null)).filter(Boolean) : undefined,
+        qs: Array.isArray(s.qs) ? s.qs.slice(0, 200).map((x) => {
+          const pitanje = x && Number.isInteger(x.id) ? byId.get(x.id) : null;
+          if (!pitanje) return null;
+          // ID odgovora nije ID pitanja. Pri učitavanju su se zbog mešanja tih
+          // skupova brisali izabrani odgovori, a ukupan rezultat je ostajao isti.
+          const izbori = new Set(pitanje.ch.map((c) => c.id));
+          const ch = [...new Set((Array.isArray(x.ch) ? x.ch : []).filter((id) => izbori.has(id)))];
+          return { id: x.id, ch };
+        }).filter(Boolean) : undefined,
       };
     }).filter(Boolean);
 
@@ -2006,10 +2014,28 @@
   }
 
   // Pregled jedne simulacije — svež rezultat ili bilo koji pokušaj iz istorije.
+  function simDetalji(rec) {
+    if (!Array.isArray(rec.qs) || !rec.qs.length) return null;
+    const items = rec.qs.map((e) => ({ q: byId.get(e.id), chosen: new Set(e.ch) }));
+    if (items.some((it) => !it.q) || new Set(items.map((it) => it.q.id)).size !== items.length) return null;
+    let score = 0, total = 0;
+    const wrong = [];
+    for (const it of items) {
+      const correct = it.q.ch.filter((c) => c.ok);
+      total += it.q.pts;
+      if (it.chosen.size === correct.length && correct.every((c) => it.chosen.has(c.id))) score += it.q.pts;
+      else wrong.push(it.q.id);
+    }
+    // Stara greška je već mogla izbrisati izbore. Ne izmišljamo odgovore iz
+    // zbira poena i ne prikazujemo međusobno protivrečne rezultate po oblastima.
+    const storedWrong = new Set(rec.wrong || []);
+    return score === rec.score && total === rec.total && storedWrong.size === wrong.length &&
+      wrong.every((id) => storedWrong.has(id)) ? items : null;
+  }
   function renderSimReview(rec, fresh) {
     current = { redraw: () => renderSimReview(rec, fresh) };
     setHash('#/pregled/' + S.sims.indexOf(rec));
-    const items = (rec.qs || []).map((e) => ({ q: byId.get(e.id), chosen: new Set(e.ch) })).filter((x) => x.q);
+    const items = simDetalji(rec) || [];
     const hasDetail = items.length > 0;
     const isOk = (it) => {
       const okSet = new Set(it.q.ch.filter((x) => x.ok).map((x) => x.id));
@@ -2059,7 +2085,7 @@
         card.innerHTML = `<div class="qMeta"><span>${escapeHtml(catOf(q))}</span><span><span class="qNum" title="${escapeHtml(L('qNumTip'))}">#${q.id}</span> · ${poeni(q.pts)}</span></div>
           <div class="qText">${escapeHtml(T(q.t))}</div>
           ${q.req > 1 ? `<div class="reqNote">${L('requiresN').replace('#', q.req)}</div>` : ''}
-          ${chosen && chosen.size === 0 ? `<div class="noAnsw">${L('notAnswered')}</div>` : ''}
+          ${chosen && chosen.size === 0 ? `<div class="noAnsw">${L(fresh ? 'notAnswered' : 'reviewNoChoice')}</div>` : ''}
           ${q.img ? `<button type="button" class="qImgBtn" aria-label="${escapeHtml(L('uvecajSliku'))}"><img class="qImg" loading="lazy" src="img/${q.id}.jpg" alt="${escapeHtml(L('imgAlt'))}"></button>` : ''}
           ${q.ch.map((ch) => `<div class="choice rev${ch.ok ? ' ok' : (chosen && chosen.has(ch.id) ? ' bad' : '')}">${escapeHtml(T(ch.t))}${chips(ch)}</div>`).join('')}`;
         { const im = card.querySelector('img.qImg'); if (im) pratiSliku(im); }
