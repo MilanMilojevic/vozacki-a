@@ -325,10 +325,11 @@ button.histBtn:hover { background: var(--optHover); }
 .podnozjeRed { margin-bottom: 6px; }
 .podnozjeRed b { color: var(--ink); }
 .podnozjeAkcije { display: flex; gap: 14px; align-items: center; justify-content: center; flex-wrap: wrap; margin: 10px 0 8px; }
+#podnozje a { color: var(--blue); }
+#podnozje a:hover { color: var(--blue-d); }
 /* podnožje: veze u redu radnji nisu deo teksta, pa moraju da poštuju najmanju metu (24px) */
-.podnozjeAkcije a { color: var(--blue); text-decoration: underline; border: none;
+.podnozjeAkcije a { text-decoration: underline; border: none;
   display: inline-flex; align-items: center; min-height: 26px; padding: 2px 4px; border-radius: 6px; }
-.podnozjeAkcije a:hover { color: var(--blue-d); }
 body.uSimulaciji #podnozje { display: none; }
 @media (min-width: 1200px) { #podnozje { max-width: 1240px; } }
 
