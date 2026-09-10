@@ -147,7 +147,7 @@ main { max-width: 880px; width: 100%; margin: 0 auto; padding: 16px 12px 60px; f
 .catBar .good { position: absolute; inset: 0 auto 0 0; background: var(--blue); }
 .catCnt { flex: 0 0 90px; text-align: right; font-size: var(--fs-sm); color: var(--mut); }
 .catAcc { flex: 0 0 50px; text-align: right; font-size: var(--fs-sm); font-weight: 600; }
-.statLink { cursor: pointer; }
+.statLink a { display: block; }
 .statLink:hover td { background: var(--optHover); }
 .signRow.wrapRow { grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); }
 .catSubRow { margin: 0; padding: 3px 0; border-bottom: 1px dashed var(--line); border-radius: 0; }
@@ -759,8 +759,8 @@ button { transition: background-color .15s ease, border-color .15s ease, color .
 :where(a:is(.brand, .menuBtn, .catMain, .subRow, .qRow, .bcLink, .secondary, .pojBtn)),
 #donjaNav a { font: inherit; color: inherit; cursor: pointer; text-decoration: none; border-radius: 8px; }
 a:is(.secondary, .pojBtn) { display: inline-block; }
-.samoPregled #donjaNav [data-nav]:not([data-nav="home"]):not([data-nav="learn"]) { display: none; }
-.samoPregled #donjaNav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.samoPregled #donjaNav [data-nav]:not([data-nav="home"]):not([data-nav="learn"]):not([data-nav="stats"]) { display: none; }
+.samoPregled #donjaNav { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .samoPregled #qProgress { display: none; }
 .samoPregled .choice { cursor: default; }
 .samoPregled .choice.ok { color: var(--ok); font-weight: 600; }

@@ -135,7 +135,7 @@ async (page) => {
   });
   await test('progress/exam routes explicitly explain content-only fallback', async c => {
     const p = await c.newPage();
-    for (const hash of ['#/stats', '#/lista/wrong', '#/lista/marked', '#/pregled/0', '#/sim', '#/uci', '#/vezba', '#/vezba/c25']) {
+    for (const hash of ['#/lista/wrong', '#/lista/marked', '#/pregled/0', '#/sim', '#/uci', '#/vezba', '#/vezba/c25']) {
       await p.goto(base + '?preview=1' + hash); await ready(p);
       assert(await p.locator('#previewRouteNote').isVisible() && p.url().endsWith(hash), 'Unsupported route silently changed destination: ' + hash);
       assert(await p.locator('#browseList .qRow').count() > 0 && await p.evaluate(() => __ops.length === 0), 'Fallback lacks content or writes: ' + hash);

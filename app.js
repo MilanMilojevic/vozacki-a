@@ -1342,6 +1342,7 @@
   }
   function renderPregled(h = '#/', otkriven = false) {
     if (!samoPregled()) return;
+    if (h === '#/stats') return renderStats();
     if (h === '#/pojmovnik' || h.startsWith('#/pojmovnik/')) return renderPojmovnik(h);
     current = { redraw: () => renderPregled(h, otkriven) }; setHash(h);
     if (/^#\/p\/\d+$/.test(h) && byId.has(+h.slice(4))) {
@@ -2832,28 +2833,43 @@
       ${lista}
       <h3>${L('readyLoss')}</h3>
       <table class="stats"><tbody>${top.map((t) =>
-        `<tr class="statLink" data-sub="${t.subs[0]}" tabindex="0" title="${escapeHtml(L('catOpen'))}"><td>${t.subs.map((s) => escapeHtml(subShortName(s))).join(' / ')}</td>
+        `<tr class="statLink" data-sub="${t.subs[0]}"><td><a class="bcLink" title="${escapeHtml(L('catOpen'))}">${t.subs.map((s) => escapeHtml(subShortName(s))).join(' / ')}</a></td>
          <td class="num accBad">−${t.pts.toFixed(1)} ${L('points')}</td></tr>`).join('')}
       </tbody></table>
       <p class="mut napomena">${L('readyNote').split('@1').join(prag(SIM_PTS_MIN))}</p>`;
     el('readyCard').querySelectorAll('.statLink').forEach((tr) => {
-      const idi = () => browse('s' + tr.dataset.sub);
-      tr.addEventListener('click', idi);
-      tr.addEventListener('keydown', (ev) => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); idi(); } });
+      veziOdrediste(tr.querySelector('a'), '#/sek/s' + tr.dataset.sub, () => browse('s' + tr.dataset.sub));
     });
   }
 
   // ---------- Statistika ----------
-  function renderStats() {
-    current = { redraw: renderStats };
+  function renderStats(prikaz = { oblast: null, dani: false }) {
+    // Accordion state belongs to this history entry, never to shared progress.
+    current = { redraw: () => renderStats(prikaz) };
     setHash('#/stats');
+    if (problemUcitavanja) {
+      el('readyCard').replaceChildren(); el('daniCard').replaceChildren();
+      el('statsCard').innerHTML = `<h3>${L('statsTitle')}</h3><p id="statsUnavailable">${T({
+        l: 'Sačuvani napredak nije mogao da se učita. Statistika nije dostupna; pitanja i objašnjenja možete i dalje pregledati.',
+        c: 'Сачувани напредак није могао да се учита. Статистика није доступна; питања и објашњења можете и даље прегледати.',
+      })}</p>`;
+      show('stats'); prikaziTrakuPregleda(); return;
+    }
     renderReady();
+    const napomena = samoPregled() ? `<p id="statsSnapshotNote" class="mut napomena">${T({
+      l: 'Prikaz sačuvanog napretka učitanog pri otvaranju kartice. Za novije podatke osvežite stranicu. Napredak se ovde ne menja.',
+      c: 'Приказ сачуваног напретка учитаног при отварању картице. За новије податке освежите страницу. Напредак се овде не мења.',
+    })}</p>` : '';
+    if (napomena) el('readyCard').insertAdjacentHTML('afterbegin', napomena);
     el('statsCard').innerHTML = `<h3>${L('statsTitle')}</h3><p class="mut napomena">${L('statsTip')}</p><div id="statsBars"></div>`;
-    nacrtajOblasti(el('statsBars'), { tacnost: true });
+    nacrtajOblasti(el('statsBars'), { tacnost: true, otvorena: prikaz.oblast, naOtvaranje: id => { prikaz.oblast = id; } });
     el('daniCard').innerHTML = `<button type="button" class="explCardBtn pojBtn istaknuto" id="btnDani">${L('daniNaslov')}</button>
       <div class="explCard" id="daniTelo" style="display:none"></div>`;
     sklopivo(el('btnDani'), null, el('daniTelo'), (cd) => { cd.innerHTML = daniBlok(); oziviCrteze(cd); });
+    if (prikaz.dani) { napuniAko(el('daniTelo')); el('daniTelo').style.display = ''; el('btnDani').setAttribute('aria-expanded', 'true'); }
+    el('btnDani').addEventListener('click', () => { prikaz.dani = el('btnDani').getAttribute('aria-expanded') === 'true'; });
     show('stats');
+    if (samoPregled()) prikaziTrakuPregleda();
   }
 
   // ---------- Po danima: koliko je urađeno i kakva je bila tačnost ----------
@@ -3791,6 +3807,7 @@
         };
         const bioOtvoren = row.classList.contains('open');
         cont.querySelectorAll('.catRow.open').forEach(zatvoriRed);
+        if (opts.naOtvaranje) opts.naOtvaranje(bioOtvoren ? null : c.id);
         if (bioOtvoren) return;
         row.classList.add('open');
         const chev = row.querySelector('.catChevBtn');
@@ -3808,6 +3825,7 @@
         }
       });
       cont.appendChild(row);
+      if (opts.otvorena === c.id) row.querySelector('.catChevBtn').click();
     }
   }
 
