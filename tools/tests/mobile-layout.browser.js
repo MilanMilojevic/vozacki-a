@@ -27,13 +27,39 @@ async (page) => {
         await p.evaluate(() => document.fonts.ready);
         const base = width <= 560 ? 15 : 16;
         const sizes = Array.from({length:Math.round(base*1.25)-Math.round(base*.9)+1}, (_,i)=>Math.round(base*.9)+i);
+        if(width===320) {
+          // Long source URLs must reflow at 200% text size without changing their
+          // visible label/destination or clipping the surrounding FAQ content.
+          const originalLink=await p.locator('#faqCard .trustList a[href*="github.com"]').evaluate(a=>({text:a.textContent,href:a.href}));
+          if(!originalLink.text.trim() || !originalLink.href) throw Error('FAQ source link must have nonempty text and destination');
+          await p.evaluate(px=>document.documentElement.style.fontSize=px+'px',base*2);
+          const before=await p.evaluate(()=>localStorage.getItem('vozackiA.v1'));
+          const faq=p.locator('#faqCard .explCardBtn');await faq.click();
+          const result=await p.evaluate(()=>{
+            const a=document.querySelector('#faqCard .trustList a[href*="github.com"]');
+            const parent=a.parentElement.getBoundingClientRect(),range=document.createRange();range.selectNodeContents(a);
+            const lines=[...range.getClientRects()];
+            return {pageWidth:document.documentElement.scrollWidth,viewport:innerWidth,text:a.textContent,href:a.href,
+              wrapped:lines.length>1,inside:lines.every(r=>r.left>=parent.left-.5&&r.right<=parent.right+.5)};
+          });
+          cases++;
+          if(result.pageWidth>result.viewport+.5 || !result.wrapped || !result.inside ||
+              result.text!==originalLink.text || result.href!==originalLink.href) {
+            failures.push({width,script,theme,px:base*2,issue:'faq-source-link-overflow',...result});
+          }
+          await faq.click();
+          if(await faq.getAttribute('aria-expanded')!=='false' || await p.evaluate(()=>localStorage.getItem('vozackiA.v1'))!==before) {
+            failures.push({width,script,theme,issue:'faq-close-or-progress-change'});
+          }
+          await p.evaluate(px=>{document.documentElement.style.fontSize=px+'px';scrollTo(0,0);},Math.round(base*1.08));
+        }
         const measure = async (px, target=p) => target.evaluate(async px => {
               document.documentElement.style.fontSize = px + 'px';
               // Let layout and the navigation's ResizeObserver settle after font changes.
               await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
               const rect = el => { const r=el.getBoundingClientRect(); return {left:r.left,top:r.top,right:r.right,bottom:r.bottom,width:r.width,height:r.height}; };
               const visible = el => el.getBoundingClientRect().width > 0 && el.getBoundingClientRect().height > 0;
-              const buttons = [...document.querySelectorAll('#topbar button')].filter(visible).map(el=>({id:el.id||'brand',...rect(el)}));
+              const buttons = [...document.querySelectorAll('#topbar button, #topbar a[href]')].filter(visible).map(el=>({id:el.id||'brand',...rect(el)}));
               const issues=[];
               for(const b of buttons) {
                 if(b.left < -.5 || b.right > innerWidth+.5) issues.push('outside:' + b.id);
@@ -45,7 +71,7 @@ async (page) => {
               }
               const brand = document.querySelector('.brand');
               if(brand.scrollWidth > brand.clientWidth+1) issues.push('clipped-brand');
-              for(const el of document.querySelectorAll('#donjaNav button')) {
+              for(const el of document.querySelectorAll('#donjaNav button, #donjaNav a[href]')) {
                 if(!visible(el)) continue;
                 const b=rect(el);
                 if(b.left < -.5 || b.right > innerWidth+.5) issues.push('outside:bottom-nav');
@@ -111,13 +137,18 @@ async (page) => {
           await p.evaluate(()=>window.scrollTo(0,document.documentElement.scrollHeight));
           await p.screenshot({path:footerPath}); screenshots.push(footerPath);
           await p.evaluate(()=>window.scrollTo(0,0));
-          const fallbackPage=await ctx.newPage();
+          const fallbackContext=await browser.newContext({viewport:{width:320,height:844},serviceWorkers:'block'});
           try {
-            await fallbackPage.addInitScript(()=>{ delete window.ResizeObserver; });
+            await fallbackContext.route('**/*', route=>route.request().url().startsWith(origin+'/')?route.continue():route.abort());
+            await fallbackContext.addInitScript(settings=>{
+              delete window.ResizeObserver;
+              localStorage.setItem('vozackiA.v1',JSON.stringify({q:{},guide:1,tour:1,noUpd:1,fs:1.08,...settings}));
+            },{script,theme});
+            const fallbackPage=await fallbackContext.newPage();
             await fallbackPage.goto(origin+'/');
             await fallbackPage.locator('#btnPodesavanja').waitFor();
             await recordOffset('without-resize-observer',19,fallbackPage);
-          } finally { await fallbackPage.close(); }
+          } finally { await fallbackContext.close(); }
         }
         const readContrast = async locator => locator.evaluate(el => {
           const rgb = s => s.match(/[\d.]+/g).map(Number);
@@ -144,6 +175,20 @@ async (page) => {
         if(hoverContrast.ratio<4.5) failures.push({width,script,theme,issue:'blue-text-hover-contrast',...hoverContrast});
         await p.evaluate(() => { location.hash='#/'; });
         await p.locator('#view-home.active').waitFor();
+        const faqToggle=p.locator('#faqCard .explCardBtn');await faqToggle.click();
+        const sourceLinks=p.locator('#faqCard .trustList a');
+        for(let i=0;i<await sourceLinks.count();i++) {
+          const link=sourceLinks.nth(i);
+          for(const state of ['normal','hover']) {
+            if(state==='hover')await link.hover();else await p.mouse.move(0,0);
+            const result=await readContrast(link);
+            contrasts.push({width,script,theme,state:'source-link-'+state,...result});
+            if(result.ratio<4.5 || !(await link.evaluate(a=>getComputedStyle(a).textDecorationLine.includes('underline')))) {
+              failures.push({width,script,theme,issue:'source-link-contrast-or-underline',state,...result});
+            }
+          }
+        }
+        await faqToggle.click();
         // Exercise every existing instructional CSS animation; compare the
         // preference modes in the same loaded document without another profile.
         const motionResult = {width,script,theme};
