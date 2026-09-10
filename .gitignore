@@ -1,6 +1,11 @@
 # зависности (апликација их нема, али алати могу)
 node_modules/
 
+# локални извештаји, снимци и привремени профили провера
+output/
+.playwright-cli/
+.superpowers/
+
 # извоз напретка (лични подаци, не иде у репо)
 vozacki-a-napredak*.json
 vozacki-a-necitljiv-zapis*.txt
