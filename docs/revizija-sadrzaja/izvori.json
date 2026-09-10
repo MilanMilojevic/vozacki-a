@@ -27,6 +27,60 @@
       "checkedOn": "2026-09-10",
       "revision": "Službeni glasnik RS 19/2025; doneto 6. marta 2025. prema zvaničnoj listi donetih zakona Narodne skupštine",
       "contentHash": "1d7580ea086508deb83cd0cf40adfc11e08d4134f415cd359acdf100e97174d3"
+    },
+    {
+      "url": "https://www.mgsi.gov.rs/sites/default/files/zakon_o_bezbednosti_saobracaja_na_putevima.pdf",
+      "title": "Zakon o bezbednosti saobraćaja na putevima — tekst na sajtu MGSI",
+      "checkedOn": "2026-09-10",
+      "revision": "Tekst zaključno sa Službenim glasnikom RS 76/2023; pune relevantne odredbe upoređene sa izmenama 19/2025, koje ih ne menjaju",
+      "contentHash": "f0ba25df5eda00ef7172f6421a26c2dc4a543e7de96e23a97de0fa7fa0975aeb",
+      "id": "zobs-cl20-cl47-mgsi-76-2023",
+      "article": "Član 20 (redosled postupanja); član 47, naročito stavovi 3, 4 i 6–8 (desna strana i levo skretanje pri istovremeno dozvoljenom prolazu)"
+    },
+    {
+      "url": "https://www.mgsi.gov.rs/sites/default/files/zakon_o_bezbednosti_saobracaja_na_putevima.pdf",
+      "title": "Zakon o bezbednosti saobraćaja na putevima — tekst na sajtu MGSI",
+      "checkedOn": "2026-09-10",
+      "revision": "Tekst zaključno sa Službenim glasnikom RS 76/2023; pune relevantne odredbe upoređene sa izmenama 19/2025, koje ih ne menjaju",
+      "contentHash": "f0ba25df5eda00ef7172f6421a26c2dc4a543e7de96e23a97de0fa7fa0975aeb",
+      "id": "zobs-cl20-cl42-cl44-mgsi-76-2023",
+      "article": "Član 20 st. 6–7 (strože zakonsko ograničenje); članovi 42, 43 i 44 (prilagođena brzina i opšta ograničenja)"
+    },
+    {
+      "id": "signalizacija-cl26-cl35-mgsi-14-2021",
+      "url": "https://mgsi.gov.rs/sites/default/files/Pravilnik%20o%20saobracajnoj%20signalizaciji_3.pdf",
+      "title": "Pravilnik o saobraćajnoj signalizaciji — tekst na sajtu MGSI",
+      "article": "Član 25 tačka 30 (II-30, ograničenje brzine); član 26 tačka 45 (II-45.2, kružni tok); član 35 tačka 75 (III-69.1, završetak motoputa)",
+      "checkedOn": "2026-09-10",
+      "revision": "Objavljeni MGSI PDF navodi Službeni glasnik RS 85/2017 i 14/2021; preuzet preko zvanične rubrike Bezbednost saobraćaja",
+      "contentHash": "4afd748221eef0e312ead0d06f96b02f75270ad293bc2aaec97237d653c2cd5d"
+    },
+    {
+      "id": "signalizacija-cl25-cl26-cl35-putevi-21-2024",
+      "url": "https://putevi-srbije.rs/images/pdf/regulativa/Pravilnik_o_saobracajnoj_signalizaciji-21-24.pdf",
+      "title": "Pravilnik o saobraćajnoj signalizaciji — konsolidacija koju objavljuju Putevi Srbije",
+      "article": "Član 25 tačka 30 (PDF strana 20), član 26 tačka 45 (strana 23), član 35 tačka 75 (strana 41); tekst i izgled znakova II-30, II-45.2 i III-69.1",
+      "checkedOn": "2026-09-10",
+      "revision": "Službeni glasnik RS 85/2017, 14/2021 i 21/2024. Tri ciljane definicije i slike upoređene sa starijim MGSI tekstom; važeća revizija dodatno proverena kroz zasebno registrovanu konsolidaciju i izvorne izmene PIS 76/2026.",
+      "contentHash": "6945b4d703c8fe06f0404712638f91a0821cb6a25ef643a537d91239cf6af179"
+    },
+    {
+      "id": "signalizacija-cl25-cl26-cl35-pis-76-2026",
+      "url": "https://reg.pravno-informacioni-sistem.rs/api/viewdoc?doctype=reg&regactid=440491&uuid=2bd446cf-0965-4141-8323-d207a4216ed1",
+      "title": "Pravilnik o saobraćajnoj signalizaciji — redakcijski prečišćen tekst Pravno-informacionog sistema Republike Srbije",
+      "article": "Član 25 tačka 30 (II-30); član 26 tačka 45 (II-45.2); član 35 tačka 75 (III-69.1); zaglavlje i samostalni čl. 49–50 izmena 76/2026",
+      "checkedOn": "2026-09-10",
+      "revision": "Službeni glasnik RS 85/2017, 14/2021, 21/2024 i 76/2026. Zaglavlje navodi objavljivanje 21.08.2026; prema samostalnom čl. 50 stupanje osmog dana, izračunato 29.08.2026. Pročitane tri ciljane definicije ostale su istog značenja.",
+      "contentHash": "8f9b78ea7810a5d5028f3b2878773d37080cf9096a2239dc2a306101708c45d7"
+    },
+    {
+      "id": "signalizacija-izmene-pis-76-2026",
+      "url": "https://slgl.pravno-informacioni-sistem.rs/api/prins/viewdoc?uuid=a9a8f425-2be7-4056-af48-ec9bac188e36",
+      "title": "Pravilnik o izmenama i dopunama Pravilnika o saobraćajnoj signalizaciji — izvorni tekst Službenog glasnika preko PIS",
+      "article": "Čl. 18 menja čl. 25 tač. 12–14; čl. 19 menja čl. 26 tač. 40–41; čl. 21 menja druge tačke čl. 35, ne tačku 75; čl. 49 prelazni rok i čl. 50 stupanje na snagu",
+      "checkedOn": "2026-09-10",
+      "revision": "Službeni glasnik RS 76/2026-30 od 21.08.2026; stupanje 29.08.2026 izračunato po čl. 50. Čl. 49 daje tri godine za usklađivanje postojeće signalizacije, ne odlaže stupanje propisa. Tri ciljane definicije nisu menjane; druge povezane odredbe jesu menjane.",
+      "contentHash": "a8b10736064baca61cca9277b8f30dc957ff74ab0b45a646318f6d24c2741c7f"
     }
   ]
 }

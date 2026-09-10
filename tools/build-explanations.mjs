@@ -74,7 +74,7 @@ CARDS['prvenstvo-prolaza'] = {
   title: 'Prvenstvo prolaza, rotacije i hijerarhija znakova',
   html: `
 <div class="kSek" data-sub="131">
-<p><b>Hijerarhija (ZOBS čl. 20)</b> — jače pobija slabije:</p>
+<p><b>Hijerarhija (ZOBS čl. 20)</b> — redosled postupanja kada se značenja razlikuju:</p>
 <svg viewBox="0 0 320 246" role="img" aria-label="Redosled prvenstva prolaza: 1. saobraćajac, 2. semafor, 3. saobraćajni znakovi, 4. oznake na kolovozu, 5. pravila (desna strana)" style="max-width:320px;width:100%;display:block;margin:6px auto">
   <rect x="60"   y="6"   width="200" height="40" rx="8" fill="#c0392b"/>
   <text x="160" y="31" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">1. SAOBRAĆAJAC</text>
@@ -92,7 +92,7 @@ CARDS['prvenstvo-prolaza'] = {
   <text x="160" y="211" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">5. PRAVILA</text>
   <text x="160" y="230" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">(desna strana...)</text>
 </svg>
-<p class="mut" style="text-align:center;font-size:var(--fs-sm)">što je traka viša — to je jača: saobraćajac pobija semafor, semafor pobija znakove...</p>
+<p class="mut" style="text-align:center;font-size:var(--fs-sm)">Prati viši nalog kada se razlikuje od nižeg. Pravila koja nisu njime drugačije uređena i dalje važe.</p>
 </div>
 <div class="kSek" data-sub="148">
 <div class="signRow" style="max-width:340px;margin:6px auto">
@@ -117,7 +117,7 @@ CARDS['prvenstvo-prolaza'] = {
 </div>
 <div class="kSek" data-sub="136">
 <p><b>A) Nesignalisana raskrsnica — pet pravila (čl. 47)</b><br>
-Ovo je poslednja traka piramide, razvijena. Svih pet pravila je u istom članu i sva važe samo <b>ako prvenstvo prolaza nije regulisano na drugi način</b> — čim se pojavi saobraćajac, semafor, žuti romb, trougao ili STOP, pravilo pada.</p>
+Signalizacija određuje kome je prolaz dozvoljen. Među vozilima sa istovremenim pravom prolaza i dalje važe <b>pravila desne strane i levog skretanja</b>, uključujući kada im prolaz istovremeno dozvole semafor ili ovlašćeno lice (čl. 47 st. 6–8).</p>
 <table>
 <tr><th>Pravilo</th><th>Šta se stvarno pita</th></tr>
 <tr><td><b>1. Tramvaj</b></td><td>Propuštaš ga u <b>SVIM slučajevima</b> — i kad ti dolazi <b>sleva</b>, i kad iz suprotnog smera skreće preko tvoje putanje. Ponuda „samo ako dolazi sa desne strane" je netačna. Zakon ima jedan izuzetak: ni tramvaj nema prednost kad preseca biciklističku stazu ili traku.</td></tr>
@@ -126,7 +126,7 @@ Ovo je poslednja traka piramide, razvijena. Svih pet pravila je u istom članu i
 <tr><td><b>4. Zemljani put</b></td><td>Kad se uključuješ sa zemljanog puta (ili sa površine na kojoj se ne vrši javni saobraćaj — dvorište, parking) na put sa savremenim kolovoznim zastorom, propuštaš <b>SVA</b> vozila, <b>i onda kad taj put nije znakom označen kao put sa prvenstvom</b>. Netačno: „samo motorna vozila", „samo kada je to određeno znakom".</td></tr>
 <tr><td><b>5. Biciklistička staza i traka</b></td><td>Kad skretanjem presecaš stazu ili traku, propuštaš <b>sva</b> vozila koja se njome kreću — ne samo ona koja ti dolaze zdesna.</td></tr>
 </table>
-<p style="margin-top:12px"><b>Četiri od pet pravila iz ptičje perspektive</b> — zeleno ide prvo, crveno čeka; ti si uvek plavo vozilo dole. Crteži važe dok <i>nema znaka</i>: čim se između tebe i poprečnog puta pojavi trougao, STOP ili žuti romb, on odlučuje umesto pravila — ali prema vozilu iz suprotnog smera i dalje važi pravilo levog skretanja (zato i uz znak STOP, kad skrećeš ulevo, propuštaš i onog preko puta koji ide pravo).</p>
+<p style="margin-top:12px"><b>Četiri od pet pravila iz ptičje perspektive</b> — zeleno ide prvo, crveno čeka; ti si uvek plavo vozilo dole. Crteži prikazuju raskrsnice bez signalizacije. Kada signalizacija drugačije uređuje prvenstvo, postupi po njoj. Pravilo levog skretanja primeni kad tebi i vozilu iz suprotnog smera istovremeno pripada pravo prolaza.</p>
 <div class="signRow lineRow">
   <div class="signCell">
     <svg viewBox="0 0 120 136"><rect x="0" y="34" width="120" height="44" fill="#9aa7b4"/><rect x="38" y="0" width="44" height="136" fill="#9aa7b4"/>
@@ -217,7 +217,7 @@ Ovo je poslednja traka piramide, razvijena. Svih pet pravila je u istom članu i
     <b>ZEMLJANI PUT</b><span>sa zemlje (ili sa parkinga, iz dvorišta) na asfalt: propuštaš SVA vozila iz oba smera, i bez znaka</span>
   </div>
 </div>
-<p><b>Kako to izgleda na slici.</b> Skoro sva pitanja ove grupe su slikovna i rešavaju se u dva koraka: prvo <i>ima li znaka</i>, pa tek onda pravilo.</p>
+<p><b>Kako to izgleda na slici.</b> Na slici prvo proveri signalizaciju, zatim pravilo koje uređuje odnos sa konkretnim vozilom.</p>
 <table>
 <tr><th>Na slici vidiš</th><th>Tačan odgovor</th></tr>
 <tr><td>Tramvaj ti dolazi <b>iz suprotnog smera, tvojim putem</b>, i skreće preko tvoje putanje — svejedno da li pored puta stoji žuti romb</td><td>Propuštaš <b>tramvaj</b>. Romb tu ne pomaže: i ti i tramvaj ste na istom putu sa prvenstvom</td></tr>
@@ -230,7 +230,7 @@ Ovo je poslednja traka piramide, razvijena. Svih pet pravila je u istom članu i
 <tr><td>Ispred tebe <b>trougao „ustupi prvenstvo"</b> (i beli trouglići na kolovozu) ili <b>STOP</b></td><td>Propuštaš <b>sve</b> — i bicikl sleva i taksi zdesna</td></tr>
 </table>
 <p><b>UPOZORENJE — vrsta vozila NE menja prvenstvo.</b> Traktor, autobus, kamion, bicikl: prvenstvo određuju samo <b>pravac</b> i <b>znak</b>. Kad ti traktor dolazi sa desne strane, tačan odgovor je „dužni ste da propustite oba vozila" — nikad „propustite putničko vozilo, a imate prvenstvo u odnosu na traktor". Ponude su namerno pisane tako da razdvajaju vozila po vrsti; ta razlika ne postoji. Isto važi i za bicikl: on nije „slabiji učesnik kome se ne daje prednost", nego vozilo kao i svako drugo.</p>
-<p><b>Kružni tok je jedino mesto gde je „sleva" tačan odgovor.</b> Prepoznaješ ga po paru znakova na ulazu: <b>trougao „ustupi prvenstvo" + plavi okrugli znak kružnog toka</b>. Kad tek ulaziš — propuštaš vozilo koje ti dolazi <b>sa leve strane</b>. Kad si već u krugu (razdelno ostrvo ti je s leve strane) — prednost je <b>tvoja</b> u odnosu na vozilo sleva. Pravilo desne strane ovde ne odlučuje ništa; odlučuje znak na ulazu.</p>
+<p><b>Kružni tok: proveri znakove koji uređuju prvenstvo.</b> Plavi znak određuje kružni smer kretanja, ne prvenstvo. U #9987 uz njega stoji trougao „ustupi prvenstvo", pa propuštaš vozilo sleva. U #9991 na prikazanom prilazu nema znaka ustupanja prvenstva: imaš prednost prema vozilu sleva po pravilu desne strane, jer mu dolaziš zdesna (čl. 47).</p>
 <p><b>Kad se svi blokiraju.</b> Postoji i pitanje sa četiri vozila gde svako ima prednost u odnosu na ono sa svoje leve strane, pa niko ne može prvi. Tačan odgovor nije „pokažite odlučnost i prvi prođite", nego: <b>vizuelnim kontaktom i odgovarajućim znakom rukom</b> omogući prolaz onom vozilu koje ima prednost u odnosu na treće, a sam propusti vozilo koje tebi dolazi zdesna.</p>
 </div>
 
@@ -262,7 +262,7 @@ Tabela iznad je „ko je ko". Ostatak podoblasti (najveće u pravilima, sa preko
 <tr><td>Saobraćajni znakovi i oznake na kolovozu</td><td>vozilo pod pratnjom / sa prvenstvom <b>ima</b> prednost — čak i kad na njegovom prilazu stoji STOP, a na poprečnom putu žuti romb</td></tr>
 <tr><td>Samo pravila saobraćaja</td><td>vozilo <b>ima</b> prednost; zamka je ponuda „prednost ima žuto vozilo, po pravilu desne strane"</td></tr>
 </table>
-<p>Međusobno: <b>pod pratnjom &gt; sa pravom prvenstva prolaza</b>. A kad se sretnu dva ista (dva vozila sa upaljenom rotacijom), njihovo međusobno prvenstvo rešava se po <b>opštim odredbama o prvenstvu prolaza</b> — dakle celom lestvicom: prvo policajac i semafor, pa <b>znakovi i oznake na kolovozu</b> (STOP, žuti romb, linija zaustavljanja), i tek ako ničega od toga nema — desna strana i levo skretanje. <span class="mut">Baza to proverava parovima skoro istih slika: bez ijednog znaka odlučuje desna strana, a čim se pojavi linija zaustavljanja ili STOP pred jednim vozilom — prednost ima drugo.</span></p>
+<p>Međusobno: <b>pod pratnjom &gt; sa pravom prvenstva prolaza</b>. A kad se sretnu dva ista (dva vozila sa upaljenom rotacijom), njihovo međusobno prvenstvo rešava se po <b>opštim odredbama o prvenstvu prolaza</b> — dakle celom lestvicom: prvo policajac i semafor, pa <b>znakovi i oznake na kolovozu</b> (STOP, žuti romb, linija zaustavljanja); među vozilima kojima je istovremeno dozvoljen prolaz primenjuju se desna strana i levo skretanje (čl. 47). <span class="mut">Baza to proverava parovima skoro istih slika: bez ijednog znaka odlučuje desna strana, a čim se pojavi linija zaustavljanja ili STOP pred jednim vozilom — prednost ima drugo.</span></p>
 <p><b>Samo svetla, bez sirene.</b> Pravilo je da ta vozila <b>moraju</b> davati i zvučne i svetlosne znake; davanje samo svetlosnih je izuzetak i traži <b>sva tri</b> uslova istovremeno: dovoljna vidljivost tog vozila i bezbednost učesnika · vozilo se kreće brzinom dozvoljenom na tom delu puta · to je neophodno za neometano izvršenje službenog zadatka. „U naselju" i „van naselja" nisu uslovi.</p>
 <p><b>Uređaji za posebne znake</b> smeju se ugrađivati i postavljati <b>samo na vozila nadležnih državnih organa</b> — ne „uz dozvolu nadležnog organa" i ne „ako ih posle ugradnje ispita ovlašćena organizacija". Upotrebljavaju se samo dok se vrši pratnja, odnosno kad je to neophodno za efikasno i bezbedno izvršenje službene radnje koja ne trpi odlaganje — ne „kad se odstupa od pravila saobraćaja" i ne „noću i u uslovima smanjene vidljivosti".</p>
 <p><b>Tvoja obaveza je „po potrebi", nikad „obavezno" (čl. 107 i 109).</b> Ponude „obavezno zaustavite vozilo" i „obavezno pomerite vozilo sa kolovoza" su uvek netačne. Tačno je: propusti ta vozila, omogući im mimoilaženje i preticanje odnosno obilaženje, <b>po potrebi</b> zaustavi vozilo i <b>po potrebi</b> ga pomeri sa kolovoza, pridržavaj se naredbi lica iz pratnje i kreni tek kad prođu <b>sva</b> vozila. Kad vozilo sa prvenstvom obezbeđuje prolaz koloni iza sebe, prema celoj toj koloni postupaš kao prema vozilima sa prvenstvom — a ne tako što joj se i sam priključiš. I obrnuta zamka: preticanje <b>pojedinačnog</b> vozila sa prvenstvom prolaza jeste dozvoljeno, ako policijski službenik iz vozila ne daje druge znake i naredbe; <b>kolonu</b> vozila pod pratnjom ne smeš da pretičeš.</p>
@@ -280,7 +280,7 @@ Tabela iznad je „ko je ko". Ostatak podoblasti (najveće u pravilima, sa preko
 CARDS['brzine'] = {
   title: 'Ograničenja brzine (50-80-100-130)',
   html: `
-<svg viewBox="0 0 320 300" role="img" aria-label="ograničenja brzine po vrsti puta: 50 u naselju, 80 van naselja, 100 na motoputu, 130 na autoputu" style="max-width:320px;width:100%;display:block;margin:6px auto">
+<svg viewBox="0 0 320 300" role="img" aria-label="Opšta ograničenja: u naselju 50; izvan naselja 80 na ostalim putevima, 100 na motoputu, 130 na autoputu" style="max-width:320px;width:100%;display:block;margin:6px auto">
   <g>
     <circle cx="48" cy="44" r="30" fill="#fff" stroke="#c0392b" stroke-width="8"/>
     <text x="48" y="52" text-anchor="middle" font-size="23" font-weight="bold" fill="#111">50</text>
@@ -290,7 +290,7 @@ CARDS['brzine'] = {
   <g>
     <circle cx="48" cy="116" r="30" fill="#fff" stroke="#c0392b" stroke-width="8"/>
     <text x="48" y="124" text-anchor="middle" font-size="23" font-weight="bold" fill="#111">80</text>
-    <text x="94" y="114" font-size="14" font-weight="bold" fill="currentColor">VAN NASELJA</text>
+    <text x="94" y="114" font-size="14" font-weight="bold" fill="currentColor">OSTALI PUTEVI</text>
     <rect x="94" y="124" width="121" height="7" rx="3" fill="currentColor" opacity="0.35"/>
   </g>
   <g>
@@ -306,31 +306,31 @@ CARDS['brzine'] = {
     <rect x="94" y="268" width="196" height="7" rx="3" fill="currentColor" opacity="0.35"/>
   </g>
 </svg>
-<p><b>Opšta ograničenja</b> (kad znak ne kaže drugačije): naselje 50 (čl. 43), van naselja 80, motoput 100, autoput 130 (čl. 44). Pamti merdevine: <b>50 → 80 → 100 → 130</b> — što bolji put, to više.</p>
-<p><b>Znak uvek pobija opšte pravilo</b> — i naniže i naviše: znakom se u naselju može dozvoliti i do 80 (čl. 43 st. 2).</p>
+<p><b>Opšta ograničenja:</b> u naselju 50 km/h (čl. 43); izvan naselja 80 na ostalim putevima, 100 na motoputu i 130 na autoputu (čl. 44). Pamti <b>50 → 80 → 100 → 130</b> uz odgovarajuću vrstu puta.</p>
+<p><b>Proveri znak i zakonsko ograničenje.</b> U naselju znak može odrediti niže ograničenje ili, kada uslovi puta dopuštaju, najviše 80 km/h (čl. 43). Ako se primenjuje strože zakonsko ograničenje, poštuje se ono (čl. 20 st. 6–7).</p>
 <p><b>Čemu se brzina prilagođava (čl. 42):</b> osobinama i stanju PUTA, VIDLJIVOSTI, preglednosti, ATMOSFERSKIM prilikama, stanju VOZILA i tereta, GUSTINI saobraćaja — tako da možeš da staneš pred svakom preprekom koju vidiš ili imaš razloga da predvidiš.</p>
-<p><b>Zamka u odgovorima:</b> varijante sa "raspoloživim vremenom", "udobnošću" ili "da što pre stigneš" su UVEK netačne — vreme dolaska nikad nije zakonski faktor.</p>
+<p><b>U #10488 i #10489</b> biraju se uslovi vožnje iz čl. 42; ponuđeni raspoloživo vreme, žurba i udobnost ne zamenjuju te uslove.</p>
 
 <!-- ==== dopuna 07.09.2026 (tura 4): crtež + isto to rečima ==== -->
-<div class="kPodH"><b class="kPodNaslov">Pitanja sa znakom: prvo traži broj NA znaku</b>
-<svg viewBox="0 0 320 178" style="max-width:320px;width:100%;display:block;margin:6px auto" role="img" aria-label="odluka: ako znak nosi broj vazi taj broj, ako znak nema broj citas sta znak znaci">
+<div class="kPodH"><b class="kPodNaslov">Ograničenje brzine: pročitaj značenje znaka</b>
+<svg viewBox="0 0 320 178" style="max-width:320px;width:100%;display:block;margin:6px auto" role="img" aria-label="Pročitaj znak: ograničenje brzine uporedi sa zakonskim ograničenjem; za druge znakove utvrdi značenje i primeni odgovarajuća pravila">
   <rect x="6" y="4" width="308" height="30" rx="5" fill="none" stroke="currentColor" stroke-width="2"/>
-  <text x="160" y="24" text-anchor="middle" font-size="12" fill="currentColor">pitanje: „nakon saobraćajnog znaka"</text>
+  <text x="160" y="24" text-anchor="middle" font-size="12" fill="currentColor">Koliko je dozvoljeno?</text>
   <line x1="160" y1="34" x2="160" y2="46" stroke="currentColor" stroke-width="2"/>
   <rect x="48" y="46" width="224" height="30" rx="5" fill="none" stroke="currentColor" stroke-width="2"/>
-  <text x="160" y="66" text-anchor="middle" font-size="13" font-weight="bold" fill="currentColor">ima li NA ZNAKU broj?</text>
+  <text x="160" y="66" text-anchor="middle" font-size="13" font-weight="bold" fill="currentColor">znak ograničenja brzine?</text>
   <path d="M160 76L160 88M80 88L240 88M80 88L80 106M240 88L240 106" fill="none" stroke="currentColor" stroke-width="2"/>
   <text x="96" y="103" font-size="12" font-weight="bold" fill="#1f7a3f">DA</text>
   <text x="224" y="103" text-anchor="end" font-size="12" font-weight="bold" fill="#2c6aa0">NE</text>
   <rect x="6" y="106" width="148" height="62" rx="6" fill="none" stroke="#1f7a3f" stroke-width="2"/>
-  <text x="80" y="132" text-anchor="middle" font-size="13" font-weight="bold" fill="currentColor">važi TAJ broj</text>
-  <text x="80" y="154" text-anchor="middle" font-size="11.5" fill="currentColor">opšte pravilo pada</text>
+  <text x="80" y="132" text-anchor="middle" font-size="13" font-weight="bold" fill="currentColor">uporedi ograničenja</text>
+  <text x="80" y="154" text-anchor="middle" font-size="11.5" fill="currentColor">primeni strože</text>
   <rect x="166" y="106" width="148" height="62" rx="6" fill="none" stroke="#2c6aa0" stroke-width="2"/>
-  <text x="240" y="132" text-anchor="middle" font-size="13" font-weight="bold" fill="currentColor">čitaš ŠTA znak</text>
-  <text x="240" y="154" text-anchor="middle" font-size="13" font-weight="bold" fill="currentColor">znači</text>
+  <text x="240" y="132" text-anchor="middle" font-size="13" font-weight="bold" fill="currentColor">pročitaj značenje</text>
+  <text x="240" y="154" text-anchor="middle" font-size="13" font-weight="bold" fill="currentColor">primeni pravila</text>
 </svg>
-<svg viewBox="0 0 320 172" style="max-width:320px;width:100%;display:block;margin:6px auto" role="img" aria-label="kad znak nosi broj: 40 je ispod opsteg pravila, 80 je iznad njega u naselju, 60 tamo gde bi bilo 100">
-  <text x="160" y="16" text-anchor="middle" font-size="13" font-weight="bold" fill="#1f7a3f">ZNAK NOSI BROJ → važi taj broj</text>
+<svg viewBox="0 0 320 172" style="max-width:320px;width:100%;display:block;margin:6px auto" role="img" aria-label="Primeri ograničenja: 40 u naselju, 80 u naselju kada je dozvoljeno znakom, 60 na motoputu">
+  <text x="160" y="16" text-anchor="middle" font-size="13" font-weight="bold" fill="#1f7a3f">PRIMERI OGRANIČENJA BRZINE</text>
   <g fill="none" stroke="#c0392b" stroke-width="5"><circle cx="40" cy="54" r="21"/><circle cx="40" cy="98" r="21"/><circle cx="40" cy="142" r="21"/></g>
   <text x="40" y="61" text-anchor="middle" font-size="17" font-weight="bold" fill="currentColor">40</text>
   <text x="40" y="105" text-anchor="middle" font-size="17" font-weight="bold" fill="currentColor">80</text>
@@ -354,17 +354,17 @@ CARDS['brzine'] = {
   <text x="130" y="111" font-size="12" fill="currentColor">prestanak naselja</text>
   <text x="130" y="127" font-size="11.5" fill="currentColor">put koji nije auto/motoput</text>
 </svg>
-<p><b>Kad pitanje kaže „nakon saobraćajnog znaka", odgovor je broj</b> — ostaje samo da odlučiš odakle taj broj dolazi. Nosi li znak broj, važi taj broj, a opšte pravilo pada (#9908, #9946, #9947, #9949). Nema li broja, čitaš šta znak znači i primenjuješ merdevine po vrsti puta sa slike gore (#9878, #9948).</p>
+<p><b>Prepoznaj konkretan znak.</b> U #9946, #9947 i #9949 znak ograničava brzinu na 40, 80 i 60 km/h. U #9878 i #9948 znak označava početak odnosno završetak naselja. U #9908 označava završetak motoputa, pa se primenjuje ograničenje za put kojim nastavljaš.</p>
 <table>
 <tr><th>Šta znak kaže</th><th>Koliko smeš</th></tr>
 <tr><td>broj 40 uz ulazak u naselje</td><td><b>40</b> — znak obara opštih 50 (#9946)</td></tr>
 <tr><td>broj 80 uz ulazak u naselje</td><td><b>80</b> — znakom sme da se dozvoli i više od 50, kada put to omogućava (#9947, čl. 43 st. 2)</td></tr>
 <tr><td>broj 60 na putu za motorna vozila</td><td><b>60</b>, a ne opštih 100 (#9949)</td></tr>
-<tr><td>postavljen znak sa brojem 80</td><td><b>80</b> — konkretan znak jači je od opšteg ograničenja (#9908)</td></tr>
+<tr><td>završetak motoputa, bez broja na znaku</td><td><b>80</b> — u prikazanoj situaciji nastavljaš ostalim putem izvan naselja (#9908, čl. 44)</td></tr>
 <tr><td>ulazak u naselje, bez broja</td><td><b>50</b> — opšte ograničenje u naselju (#9878, čl. 43)</td></tr>
 <tr><td>prestanak naselja, bez broja</td><td><b>80</b> na putu koji nije ni autoput ni motoput (#9948, čl. 44)</td></tr>
 </table>
-<p><b>Vrsta vozila te ne spasava:</b> i kad pitanje kaže „vozač mopeda, odnosno motocikla", odgovor je i dalje broj sa znaka — u ovim situacijama za njih nema posebne opšte granice (#9946, #9947, #9949).</p>
+<p>Proveri i navedeno vozilo: #9946 obuhvata moped i motocikl; #9947 i #9949 pitaju za motocikl.</p>
 </div>
 <div class="kPodH"><b class="kPodNaslov">Kad pitanje traži da PRILAGODIŠ brzinu (čl. 42)</b>
 <svg viewBox="0 0 320 175" role="img" aria-label="vozilo staje pre prepreke, unutar rastojanja koje vozač vidi ili ima razloga da predvidi" style="max-width:320px;width:100%;display:block;margin:6px auto">
@@ -396,8 +396,8 @@ CARDS['brzine'] = {
   <rect x="284" y="84" width="26" height="28" fill="#c0392b"/>
   <text x="313" y="162" text-anchor="end" font-size="13" font-weight="bold" fill="#c0392b">PREPREKA</text>
 </svg>
-<p><b>Merilo nije broj nego rastojanje:</b> smeš onoliko brzo koliko ti treba da vozilo blagovremeno zaustaviš pred svakom preprekom koju pod datim okolnostima možeš da vidiš ili imaš razloga da predvidiš. Zato u ovim pitanjima nijedan broj ni procenat nije tačan — ni „najmanje 20% manje od dozvoljene", ni „najviše 60 km/h", ni „najviše 80 km/h" (#9870, #9873).</p>
-<p><b>Dva oblika pitanja traže dva oblika tačnog odgovora:</b></p>
+<p><b>Prilagođena brzina</b> mora omogućiti blagovremeno zaustavljanje pred preprekom koju možeš da vidiš ili imaš razloga da predvidiš. To može zahtevati vožnju sporiju od najveće dozvoljene brzine. U #9870 (magla) i #9873 (oštećen kolovoz) ponuđeni brojevi i procenat ne zamenjuju taj uslov (čl. 42).</p>
+<p><b>U ovim primerima razlikuj uslove vožnje i potreban ishod:</b></p>
 <ul>
 <li><b>„…prilagodi TAKO DA…"</b> → tačno je ono što opisuje ISHOD: da vozilo blagovremeno zaustaviš pred preprekom (#9868, #9870, #9873), da ne ugrožavaš bezbednost saobraćaja (#9868), da ne ugrožavaš sebe i druge učesnike u saobraćaju (#9873).</li>
 <li><b>„…prilagodi:"</b> pa spisak → tačno je ono što je USLOV vožnje: osobine i stanje puta, vidljivost i preglednost, stanje vozila i tereta (#10488), atmosferske prilike, gustina saobraćaja i drugi saobraćajni uslovi (#10489).</li>
@@ -425,7 +425,7 @@ CARDS['brzine'] = {
 <tr><td>najviše 60 km/h · najviše 80 km/h</td><td>netačno (#9870, #9873)</td></tr>
 <tr><td>prema vozilima koja se najbrže kreću</td><td>netačno (#10488)</td></tr>
 </table>
-<p class="mut">Pamtilica na formulaciju: „nakon saobraćajnog znaka" → odgovor je BROJ (#9878, #9908, #9946, #9947, #9948, #9949); „u situaciji prikazanoj na slici" bez pomena znaka → odgovor je rečenica o zaustavljanju pred preprekom, nikad broj (#9870, #9873).</p>
+<p class="mut">Svaki ponuđeni odgovor proceni prema situaciji i pravilu, ne samo prema formulaciji pitanja.</p>
 </div>
 `,
 };
@@ -4847,7 +4847,7 @@ X[9971] = { ...(X[9971] || {}), x: 'Znak i semafor nisu ravnopravni: semafor je 
 X[9973] = { ...(X[9973] || {}), x: 'Zeleno svetlo daje pravo da uđeš u raskrsnicu, ali ne rešava sukob putanja. Ti zadržavaš pravac, a vozilo koje skreće ulevo preseca ti putanju, pa je ono dužno da te propusti — pravilo levog skretanja važi i kada oba vozača istovremeno dobiju zeleno. Znak STOP iznad semafora tu ništa ne menja, jer je semafor jači od znaka.' };
 X[9984] = { ...(X[9984] || {}), x: 'Žuti romb pored tvog puta znači da si na putu sa prvenstvom, pa putničko vozilo sa poprečnog puta mora da propusti tebe. Tramvaju taj romb ne oduzima ništa: on ti dolazi iz suprotnog smera tvojim istim putem, dakle i on je na putu sa prvenstvom, a tada važi pravilo da se tramvaj propušta.' };
 X[9987] = { ...(X[9987] || {}), x: 'Trougao sa vrhom naniže obavezuje te da ustupiš prvenstvo svim vozilima na putu na koji se uključuješ, pa i onom koje ti dolazi sa leve strane — znak je jači od pravila desne strane. Plavi okrugli znak uz njega ne daje prvenstvo nikome, on samo pokazuje da se saobraćaj odvija u krug oko ostrva. Zato je baš ovde odgovor sa levom stranom tačan.' };
-X[9991] = { ...(X[9991] || {}), x: 'Ti si već u kružnom toku, ostrvo ti je sa leve strane, pa prema vozilu koje ti dolazi sleva prednost pripada tebi. Prvenstvo u krugu određuju znakovi na ulazima, a ne pravilo desne strane, i zato je ovo jedino mesto gde leva strana daje drugačiji ishod. Zamka je da se pravilo desne strane primeni naopako, pa da tražiš propuštanje tamo gde ga nema.' };
+X[9991] = { ...(X[9991] || {}), x: 'Plavi znak određuje kružni smer kretanja, ne prvenstvo. Na prikazanom prilazu nema znaka ustupanja prvenstva. Prema vozilu sleva imaš prednost po pravilu desne strane, jer mu dolaziš zdesna (ZOBS čl. 47).' };
 X[9995] = { ...(X[9995] || {}), x: 'Trougao sa vrhom naniže obavezuje te da propustiš sva vozila na putu sa prvenstvom, i ona sleva i ona zdesna. Bicikl je pritom vozilo isto koliko i automobil, pa za njega nema izuzetka. Zato ne prolazi ni varijanta u kojoj propuštaš samo automobil, ni pozivanje na desnu stranu: uz ovaj znak nemaš prednost ni prema kome.' };
 X[9998] = { ...(X[9998] || {}), x: 'Sa zemljanog puta na put sa savremenim kolovoznim zastorom uključuješ se tako što propuštaš sva vozila, i onda kada nema nijednog znaka — odlučuje vrsta podloge sa koje izlaziš. Bicikl je vozilo isto koliko i autobus, pa ni za njega nema izuzetka, a pravilo desne strane se ovde uopšte ne primenjuje.' };
 X[10000] = { ...(X[10000] || {}), x: 'Ti se već krećeš putem, a oba vozila tek izlaze sa površine pored puta na kojoj se ne obavlja javni saobraćaj. Ko se tako uključuje na put dužan je da propusti sva vozila koja se njime kreću, pa prednost imaš i prema levom i prema desnom. Pravilo desne strane ovde uopšte ne dolazi na red — ono rešava susret vozila koja su na putevima.' };
@@ -4929,11 +4929,11 @@ X[9870] = { x: prilagodi, card: 'brzine' };
 X[9873] = { x: prilagodi, card: 'brzine' };
 const znakJaci = 'Važi broj sa POSTAVLJENOG ZNAKA — konkretan znak je jači od opšteg ograničenja (ZOBS čl. 43 i 44: opšta pravila važe samo tamo gde znak ne kaže drugačije).';
 X[9878] = { x: znakJaci, card: 'brzine' };
-X[9908] = { x: znakJaci, card: 'brzine' };
+X[9908] = { x: 'Znak označava završetak motoputa. U prikazanoj situaciji nastavljaš ostalim putem izvan naselja, gde je opšte ograničenje 80 km/h (ZOBS čl. 44).', card: 'brzine' };
 X[9948] = { x: znakJaci, card: 'brzine' };
 X[9946] = { x: 'Znak ograničenja (40) postavljen je uz sam ulazak u naselje — važi ZNAK, a ne opšte pravilo "u naselju 50" (čl. 43: opšte ograničenje važi samo gde znak ne kaže drugačije). Za mopede i motocikle nema posebne opšte granice u ovoj situaciji — čitaj znak.', card: 'brzine' };
 X[9947] = { x: 'U naselju je opšte ograničenje 50, ali saobraćajnim znakom može da se DOZVOLI kretanje i do 80 km/h kada put to omogućava (ZOBS čl. 43 st. 2) — zato ovde važi 80 sa znaka, iako ulaziš u naselje. Ovo je omiljena zamka: znak može i da POVEĆA ograničenje u naselju.', card: 'brzine' };
-X[9949] = { x: 'Na putu za motorna vozila / motoputu opšte ograničenje je 100 km/h (čl. 44), ali postavljeni znak (60) je jači — važi 60. Znak uvek pobija opšte pravilo.', card: 'brzine' };
+X[9949] = { x: 'Na prikazanom motoputu znak ograničava brzinu na 60 km/h, manje od opštih 100 km/h (ZOBS čl. 20 i 44).', card: 'brzine' };
 X[9891] = { x: 'Motoput van naselja: najviše 100 km/h (ZOBS čl. 44). Merdevine opštih ograničenja: naselje 50 → van naselja 80 → motoput 100 → autoput 130.', card: 'brzine' };
 X[9903] = { x: 'Put van naselja koji nije ni autoput ni motoput: najviše 80 km/h (ZOBS čl. 44). Merdevine: 50 (naselje) → 80 (van naselja) → 100 (motoput) → 130 (autoput).', card: 'brzine' };
 X[10491] = { x: 'U naselju, bez znaka koji kaže drugačije: najviše 50 km/h (ZOBS čl. 43). Znakom može da se dozvoli i do 80 kada put to omogućava.', card: 'brzine' };
