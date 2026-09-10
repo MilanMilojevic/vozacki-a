@@ -481,7 +481,15 @@
     const p = (n) => String(n).padStart(2, '0');
     return `${p(d.getDate())}.${p(d.getMonth() + 1)}.${d.getFullYear()}.` + (vreme ? ` ${p(d.getHours())}:${p(d.getMinutes())}` : '');
   }
+  // Samo localhost: potvrda oporavka mora znati šta je novi dokument zatekao PRE
+  // normalizacije, dnevne provere verzije i nastavka ispita. Ne upisuje nove kopije.
+  function proveraProcitajZapise() {
+    try { return { 'vozackiA.v1': localStorage.getItem(KEY), 'vozackiA.sim': localStorage.getItem('vozackiA.sim') }; }
+    catch (_) { return null; }
+  }
+  const proveraPocetniZapisi = location.hostname === 'localhost' ? proveraProcitajZapise() : null;
   let S = load();
+  const proveraUcitanProfil = location.hostname === 'localhost' ? JSON.stringify(S) : null;
   // Svako stanje (učitano ili uvezeno) prolazi kroz normalizaciju — nedostajuća polja
   // dobijaju podrazumevane vrednosti, pa ni stari/oštećeni fajl ne može da obori aplikaciju.
   // Pomoćnici: iz nepouzdanog izvora (uvezeni fajl) uzimamo SAMO brojeve u očekivanom
@@ -4036,13 +4044,35 @@
       try { renderHome(); poruci(L('porGreskaAdrese')); } catch (e2) { /* errStrip će prikazati */ }
     }
   }
-  initBackup();
+  const backupSpreman = initBackup();
+  const proveraPosleUcitavanja = location.hostname === 'localhost' ? { zapisi: proveraProcitajZapise(), s: JSON.stringify(S) } : null;
 
   // ---------- Razvojni prozor (SAMO localhost — za automatske provere bodovanja) ----------
   if (location.hostname === 'localhost') {
     window.__dev = {
       get S() { return S; },
       get sim() { return sim; },
+      async proveraBezFajla() {
+        await backupSpreman;
+        if (fsHandle || fsPending || upisUToku || povezivanjeUToku) {
+          throw Error('Provera zahteva zaseban test-profil bez povezanog fajla za rezervu.');
+        }
+      },
+      async proveraPotvrdiPovratak(zapisi) {
+        await this.proveraBezFajla();
+        const isti = (a, b) => a && b && [KEY, 'vozackiA.sim'].every((key) => a[key] === b[key]);
+        if (!isti(proveraPocetniZapisi, zapisi)) throw Error('Ovaj dokument nije učitao originalnu kopiju; kopija ostaje.');
+        let norm = null;
+        try { norm = normalizeState(zapisi[KEY] ? JSON.parse(zapisi[KEY]) : { q: {} }); } catch (_) { /* ne potvrđuj oštećen original */ }
+        if (!norm || JSON.stringify(norm) !== proveraUcitanProfil) throw Error('Originalni profil nije ispravno učitan; kopija ostaje.');
+        if (!proveraPosleUcitavanja || !isti(proveraPosleUcitavanja.zapisi, proveraProcitajZapise()) ||
+            proveraPosleUcitavanja.s !== JSON.stringify(S)) throw Error('Stanje je promenjeno posle učitavanja; kopija ostaje.');
+        // Prazan zapis ispita boot uklanja. Neprazan izgubljen/istekao ispit traži pregled,
+        // pa ne brišemo jedinu originalnu kopiju samo zato što je boot obradio taj zapis.
+        if (zapisi['vozackiA.sim'] && proveraPosleUcitavanja.zapisi['vozackiA.sim'] !== zapisi['vozackiA.sim']) {
+          throw Error('Originalni ispit je promenjen pri učitavanju; kopija ostaje.');
+        }
+      },
       normalizeState,
       pocetakDanaZa,
       record,

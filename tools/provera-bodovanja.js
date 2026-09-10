@@ -1,29 +1,124 @@
 // PROVERA BODOVANJA — pokreće se u konzoli pregledača na http://localhost:8137
 // (ili je pokreće alat kroz ugrađeni pregledač pre svake objave).
-// Radi na PRIVREMENOM stanju: postojeći napredak se sačuva i vrati na kraju.
-// Ispisuje PASS/FAIL po stavci i vraća zbirni rezultat.
-async function proveraBodovanja() {
-  if (!window.__dev) return 'GREŠKA: nema __dev (nisi na localhost?)';
-  const rez = [];
-  const ok = (naziv, uslov) => rez.push((uslov ? 'PASS' : 'FAIL') + ' — ' + naziv);
-  const cekaj = (ms) => new Promise((r) => setTimeout(r, ms));
-  const sacuvano = localStorage.getItem('vozackiA.v1');
-  const sacuvanIspit = localStorage.getItem('vozackiA.sim');   // i ispit u toku, ako ga ima
+// Koristi ZASEBAN test-profil bez povezanog fajla za rezervu i bez drugih tabova aplikacije.
+// 1. proveraBodovanja(); posle reload-a ponovo učitaj ovaj fajl.
+// 2. proveraBodovanja2(); sačuvaj ispis konzole (Preserve log), aplikacija se ponovo učitava.
+// 3. Ponovo učitaj fajl i pozovi proveraBodovanjaPotvrdi() da proveriš povratak i ukloniš kopiju.
+// Posle prekida: proveraBodovanjaVrati(), pa posle reload-a proveraBodovanjaPotvrdi().
+// Kopija ostaje u sessionStorage dok povratak nije potvrđen; ne zatvaraj test-tab pre toga.
+function proveraStranica() {
+  // Ostaje isto i kada se skripta ponovo nalepi u isti dokument.
+  if (!window.__proveraStranica) window.__proveraStranica = { id: crypto.randomUUID(), radi: false };
+  return window.__proveraStranica;
+}
 
-  try {
-    // čisto stanje
-    localStorage.removeItem('vozackiA.v1');
-    localStorage.removeItem('vozackiA.sim');   // inače bi se posle osvežavanja vratio ispit umesto početne
-    location.hash = '#/';
-    location.reload();
-    return 'PONOVO POKRENI proveraBodovanja2() POSLE OSVEŽAVANJA';
-  } finally {
-    sessionStorage.setItem('provera.backup', sacuvano || '');
-    sessionStorage.setItem('provera.backupSim', sacuvanIspit || '');
+function proveraKontekst(obavezan = true) {
+  const raw = sessionStorage.getItem('provera.kontekst');
+  if (raw === null) {
+    if (obavezan) throw Error('Nema važećeg konteksta: prvo pokreni proveraBodovanja().');
+    return null;
   }
+  let k;
+  try { k = JSON.parse(raw); } catch (_) { /* odbij oštećenu kopiju */ }
+  if (!k || k.v !== 1 || k.origin !== location.origin || typeof k.stranica !== 'string' || !k.stranica ||
+      !['pripremljen', 'radi', 'vracanje', 'vracen'].includes(k.faza) ||
+      !k.zapisi || !['vozackiA.v1', 'vozackiA.sim'].every((key) =>
+        Object.prototype.hasOwnProperty.call(k.zapisi, key) && (k.zapisi[key] === null || typeof k.zapisi[key] === 'string'))) {
+    throw Error('Nevažeći kontekst provere. Sačuvaj sessionStorage kopiju za ručni oporavak; nije menjana.');
+  }
+  return k;
+}
+
+function proveraUpisiKontekst(k) {
+  const raw = JSON.stringify(k);
+  sessionStorage.setItem('provera.kontekst', raw);
+  if (sessionStorage.getItem('provera.kontekst') !== raw) throw Error('Rezervna kopija konteksta nije potvrđena.');
+}
+
+function proveraZapisiVraceni(k) {
+  return ['vozackiA.v1', 'vozackiA.sim'].every((key) => localStorage.getItem(key) === k.zapisi[key]);
+}
+
+async function proveraBezFajla() {
+  if (!window.__dev || typeof window.__dev.proveraBezFajla !== 'function') {
+    throw Error('Nema bezbednog __dev pristupa. Učitaj novu aplikaciju na localhost.');
+  }
+  await window.__dev.proveraBezFajla();
+}
+
+function proveraOsvezi() {
+  // Testni ispit može aktivirati app-ov beforeunload dijalog. Reload je deo oporavka.
+  window.addEventListener('beforeunload', (e) => e.stopImmediatePropagation(), { capture: true, once: true });
+  location.reload();
+}
+
+async function proveraBodovanja() {
+  await proveraBezFajla();
+  if (proveraKontekst(false)) throw Error('Kontekst već postoji. Nastavi drugu fazu ili pokreni proveraBodovanjaVrati(); originalna kopija ostaje.');
+  if (sessionStorage.getItem('provera.backup') !== null || sessionStorage.getItem('provera.backupSim') !== null) {
+    throw Error('Postoji stara rezervna kopija provere. Sačuvaj je za ručni oporavak pre novog testa.');
+  }
+  const k = { v: 1, origin: location.origin, stranica: proveraStranica().id, faza: 'pripremljen', zapisi: {} };
+  for (const key of ['vozackiA.v1', 'vozackiA.sim']) k.zapisi[key] = localStorage.getItem(key);
+  proveraUpisiKontekst(k); // Oba originala su potvrđena PRE prve izmene.
+  localStorage.removeItem('vozackiA.v1');
+  localStorage.removeItem('vozackiA.sim');
+  // replaceState ne šalje hashchange koji bi ponovo sačuvao stari ispit pre reload-a.
+  history.replaceState(null, '', '#/');
+  proveraOsvezi();
+  return 'POSLE OSVEŽAVANJA ponovo učitaj skriptu i pokreni proveraBodovanja2().';
 }
 
 async function proveraBodovanja2() {
+  let k = proveraKontekst(); // Bez konteksta nema ni dodira sa aplikacijom.
+  if (k.faza !== 'pripremljen') throw Error('Provera je već pokrenuta ili prekinuta. Oporavak: proveraBodovanjaVrati().');
+  if (k.stranica === proveraStranica().id) throw Error('Prvo osveži stranicu, pa ponovo učitaj skriptu.');
+  await proveraBezFajla();
+  k = proveraKontekst(); // Ponovna provera posle async inicijalizacije sprečava dva starta.
+  if (k.faza !== 'pripremljen' || proveraStranica().radi) throw Error('Provera je već pokrenuta.');
+  k.faza = 'radi';
+  proveraUpisiKontekst(k);
+  proveraStranica().radi = true;
+  try {
+    return await proveraBodovanjaTestovi();
+  } finally {
+    proveraStranica().radi = false;
+    await proveraBodovanjaVrati();
+  }
+}
+
+async function proveraBodovanjaVrati() {
+  const k = proveraKontekst();
+  if (proveraStranica().radi) throw Error('Provera još radi. Za oporavak je prvo prekini osvežavanjem.');
+  k.faza = 'vracanje';
+  k.stranica = proveraStranica().id;
+  proveraUpisiKontekst(k);
+  for (const key of ['vozackiA.v1', 'vozackiA.sim']) {
+    if (k.zapisi[key] === null) localStorage.removeItem(key);
+    else localStorage.setItem(key, k.zapisi[key]);
+  }
+  if (!proveraZapisiVraceni(k)) throw Error('Vraćanje nije potvrđeno. Kopija ostaje; ponovi proveraBodovanjaVrati().');
+  k.faza = 'vracen';
+  proveraUpisiKontekst(k);
+  console.log('Zapisi su vraćeni; sledi reload. Posle učitavanja skripte: proveraBodovanjaPotvrdi().');
+  proveraOsvezi(); // Uklanja sintetički S i njegove tajmere iz živog dokumenta.
+  return 'Vraćeno u skladište; potvrdi posle osvežavanja.';
+}
+
+async function proveraBodovanjaPotvrdi() {
+  const k = proveraKontekst();
+  if (k.faza !== 'vracen' || k.stranica === proveraStranica().id) throw Error('Prvo vrati podatke i osveži stranicu.');
+  if (!window.__dev || typeof window.__dev.proveraPotvrdiPovratak !== 'function') {
+    throw Error('Nema potvrde učitavanja nove aplikacije; kopija ostaje.');
+  }
+  await window.__dev.proveraPotvrdiPovratak(k.zapisi);
+  if (JSON.stringify(proveraKontekst()) !== JSON.stringify(k)) throw Error('Kontekst je promenjen tokom potvrde; kopija ostaje.');
+  sessionStorage.removeItem('provera.kontekst');
+  return 'Povratak oba zapisa potvrđen posle reload-a; rezervna kopija provere je uklonjena.';
+}
+
+async function proveraBodovanjaTestovi() {
+  if (!proveraStranica().radi || proveraKontekst().faza !== 'radi') throw Error('Testovi zahtevaju proveraBodovanja2() i važeći kontekst.');
   const rez = [];
   const ok = (naziv, uslov) => rez.push((uslov ? 'PASS' : 'FAIL') + ' — ' + naziv);
   // NE setTimeout: sakriven tab (ugrađeni pregledač alata) prigušuje tajmere i do jednom u
@@ -43,9 +138,7 @@ async function proveraBodovanja2() {
     return !!b;
   };
 
-  // Telo je u try/finally: pravi napredak razvijaoca se vraća i kad neka tvrdnja pukne usred
-  // rada. Ranije je vraćanje bilo poslednja naredba, pa je greška u sredini ostavljala obrisano
-  // stanje, a jedinu kopiju u sessionStorage.
+  // Javni proveraBodovanja2() poseduje try/finally za povratak i reload čak i pri grešci.
   try {
     const skip = document.getElementById('tourSkip'); if (skip) skip.click();
 
@@ -783,16 +876,6 @@ async function proveraBodovanja2() {
   } catch (e) {
     rez.push('FAIL - provera je pukla usred rada: ' + ((e && e.message) || e));
     console.error(e);
-  } finally {
-    // ---- kraj: vrati pravo stanje ----
-    const backup = sessionStorage.getItem('provera.backup');
-    if (backup) localStorage.setItem('vozackiA.v1', backup);
-    else localStorage.removeItem('vozackiA.v1');
-    const backupSim = sessionStorage.getItem('provera.backupSim');
-    if (backupSim) localStorage.setItem('vozackiA.sim', backupSim);
-    else localStorage.removeItem('vozackiA.sim');
-    sessionStorage.removeItem('provera.backup');
-    sessionStorage.removeItem('provera.backupSim');
   }
 
   const pao = rez.filter((x) => x.startsWith('FAIL'));
