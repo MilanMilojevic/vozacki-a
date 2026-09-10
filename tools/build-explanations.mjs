@@ -280,7 +280,7 @@ Tabela iznad je „ko je ko". Ostatak podoblasti (najveće u pravilima, sa preko
 CARDS['brzine'] = {
   title: 'Ograničenja brzine (50-80-100-130)',
   html: `
-<svg viewBox="0 0 320 300" role="img" aria-label="Opšta ograničenja: u naselju 50; izvan naselja 80 na ostalim putevima, 100 na motoputu, 130 na autoputu" style="max-width:320px;width:100%;display:block;margin:6px auto">
+<svg viewBox="0 0 320 300" role="img" aria-label="Opšta ograničenja: u naselju 50; izvan naselja 80 na ostalim putevima, 100 na motoputu, 130 na autoputu." style="max-width:320px;width:100%;display:block;margin:6px auto">
   <g>
     <circle cx="48" cy="44" r="30" fill="#fff" stroke="#c0392b" stroke-width="8"/>
     <text x="48" y="52" text-anchor="middle" font-size="23" font-weight="bold" fill="#111">50</text>
@@ -307,47 +307,47 @@ CARDS['brzine'] = {
   </g>
 </svg>
 <p><b>Opšta ograničenja:</b> u naselju 50 km/h (čl. 43); izvan naselja 80 na ostalim putevima, 100 na motoputu i 130 na autoputu (čl. 44). Pamti <b>50 → 80 → 100 → 130</b> uz odgovarajuću vrstu puta.</p>
-<p><b>Proveri znak i zakonsko ograničenje.</b> U naselju znak može odrediti niže ograničenje ili, kada uslovi puta dopuštaju, najviše 80 km/h (čl. 43). Ako se primenjuje strože zakonsko ograničenje, poštuje se ono (čl. 20 st. 6–7).</p>
+<p><b>Proveri znak i zakonsko ograničenje.</b> U naselju znak može odrediti niže ograničenje ili, kada uslovi puta dopuštaju, najviše 80 km/h (čl. 43). Izvan naselja uporedi znak sa ograničenjem za vrstu puta i primeni strože (čl. 20 st. 6 i čl. 44). Proveri i posebna ograničenja za konkretno vozilo i vozača (čl. 20 st. 6–7).</p>
 <p><b>Čemu se brzina prilagođava (čl. 42):</b> osobinama i stanju PUTA, VIDLJIVOSTI, preglednosti, ATMOSFERSKIM prilikama, stanju VOZILA i tereta, GUSTINI saobraćaja — tako da možeš da staneš pred svakom preprekom koju vidiš ili imaš razloga da predvidiš.</p>
 <p><b>U #10488 i #10489</b> biraju se uslovi vožnje iz čl. 42; ponuđeni raspoloživo vreme, žurba i udobnost ne zamenjuju te uslove.</p>
 
 <!-- ==== dopuna 07.09.2026 (tura 4): crtež + isto to rečima ==== -->
 <div class="kPodH"><b class="kPodNaslov">Ograničenje brzine: pročitaj značenje znaka</b>
-<svg viewBox="0 0 320 178" style="max-width:320px;width:100%;display:block;margin:6px auto" role="img" aria-label="Pročitaj znak: ograničenje brzine uporedi sa zakonskim ograničenjem; za druge znakove utvrdi značenje i primeni odgovarajuća pravila">
+<svg viewBox="0 0 320 178" style="max-width:320px;width:100%;display:block;margin:6px auto" role="img" aria-label="Ograničenje brzine: pročitaj znak i primeni odgovarajuća zakonska pravila. U naselju znak može dozvoliti do 80 km/h; posebna stroža ograničenja ostaju važeća.">
   <rect x="6" y="4" width="308" height="30" rx="5" fill="none" stroke="currentColor" stroke-width="2"/>
   <text x="160" y="24" text-anchor="middle" font-size="12" fill="currentColor">Koliko je dozvoljeno?</text>
   <line x1="160" y1="34" x2="160" y2="46" stroke="currentColor" stroke-width="2"/>
   <rect x="48" y="46" width="224" height="30" rx="5" fill="none" stroke="currentColor" stroke-width="2"/>
   <text x="160" y="66" text-anchor="middle" font-size="13" font-weight="bold" fill="currentColor">znak ograničenja brzine?</text>
   <path d="M160 76L160 88M80 88L240 88M80 88L80 106M240 88L240 106" fill="none" stroke="currentColor" stroke-width="2"/>
-  <text x="96" y="103" font-size="12" font-weight="bold" fill="#1f7a3f">DA</text>
-  <text x="224" y="103" text-anchor="end" font-size="12" font-weight="bold" fill="#2c6aa0">NE</text>
+  <text x="96" y="103" font-size="12" font-weight="bold" fill="currentColor">DA</text>
+  <text x="224" y="103" text-anchor="end" font-size="12" font-weight="bold" fill="currentColor">NE</text>
   <rect x="6" y="106" width="148" height="62" rx="6" fill="none" stroke="#1f7a3f" stroke-width="2"/>
-  <text x="80" y="132" text-anchor="middle" font-size="13" font-weight="bold" fill="currentColor">uporedi ograničenja</text>
-  <text x="80" y="154" text-anchor="middle" font-size="11.5" fill="currentColor">primeni strože</text>
+  <text x="80" y="132" text-anchor="middle" font-size="13" font-weight="bold" fill="currentColor">znak + važeća pravila</text>
+  <text x="80" y="154" text-anchor="middle" font-size="11.5" fill="currentColor">uključi i izuzetke</text>
   <rect x="166" y="106" width="148" height="62" rx="6" fill="none" stroke="#2c6aa0" stroke-width="2"/>
   <text x="240" y="132" text-anchor="middle" font-size="13" font-weight="bold" fill="currentColor">pročitaj značenje</text>
   <text x="240" y="154" text-anchor="middle" font-size="13" font-weight="bold" fill="currentColor">primeni pravila</text>
 </svg>
-<svg viewBox="0 0 320 172" style="max-width:320px;width:100%;display:block;margin:6px auto" role="img" aria-label="Primeri ograničenja: 40 u naselju, 80 u naselju kada je dozvoljeno znakom, 60 na motoputu">
-  <text x="160" y="16" text-anchor="middle" font-size="13" font-weight="bold" fill="#1f7a3f">PRIMERI OGRANIČENJA BRZINE</text>
-  <g fill="none" stroke="#c0392b" stroke-width="5"><circle cx="40" cy="54" r="21"/><circle cx="40" cy="98" r="21"/><circle cx="40" cy="142" r="21"/></g>
-  <text x="40" y="61" text-anchor="middle" font-size="17" font-weight="bold" fill="currentColor">40</text>
-  <text x="40" y="105" text-anchor="middle" font-size="17" font-weight="bold" fill="currentColor">80</text>
-  <text x="40" y="149" text-anchor="middle" font-size="17" font-weight="bold" fill="currentColor">60</text>
+<svg viewBox="0 0 320 172" style="max-width:320px;width:100%;display:block;margin:6px auto" role="img" aria-label="Primeri: 40 km/h u naselju; 80 km/h u naselju kada je dozvoljeno znakom; 60 km/h na motoputu.">
+  <text x="160" y="16" text-anchor="middle" font-size="13" font-weight="bold" fill="currentColor">PRIMERI OGRANIČENJA BRZINE</text>
+  <g fill="#fff" stroke="#c0392b" stroke-width="5"><circle cx="40" cy="54" r="21"/><circle cx="40" cy="98" r="21"/><circle cx="40" cy="142" r="21"/></g>
+  <text x="40" y="61" text-anchor="middle" font-size="17" font-weight="bold" fill="#111">40</text>
+  <text x="40" y="105" text-anchor="middle" font-size="17" font-weight="bold" fill="#111">80</text>
+  <text x="40" y="149" text-anchor="middle" font-size="17" font-weight="bold" fill="#111">60</text>
   <text x="76" y="60" font-size="12.5" fill="currentColor">ispod opšteg pravila</text>
   <text x="76" y="104" font-size="12.5" fill="currentColor">iznad njega, u naselju</text>
   <text x="76" y="148" font-size="12.5" fill="currentColor">tamo gde bi bilo 100</text>
 </svg>
-<svg viewBox="0 0 320 152" style="max-width:320px;width:100%;display:block;margin:6px auto" role="img" aria-label="kad znak nema broj: znak ulazak u naselje znaci 50, znak prestanak naselja znaci 80 na putu koji nije autoput ni motoput">
-  <text x="160" y="16" text-anchor="middle" font-size="13" font-weight="bold" fill="#2c6aa0">ZNAK BEZ BROJA → čitaš značenje</text>
-  <rect x="8" y="34" width="54" height="38" rx="3" fill="#2c6aa0" stroke="currentColor" stroke-width="1.5"/>
-  <g fill="#e9eef3"><path d="M14 66L14 54L22 47L30 54L30 66Z"/><rect x="34" y="52" width="10" height="14"/><rect x="47" y="57" width="8" height="9"/></g>
+<svg viewBox="0 0 320 152" style="max-width:320px;width:100%;display:block;margin:6px auto" role="img" aria-label="Znak naselje i znak završetak naselja. U prikazanim primerima bez drugog ograničenja: 50 km/h u naselju, 80 km/h na ostalom putu izvan naselja.">
+  <text x="160" y="16" text-anchor="middle" font-size="13" font-weight="bold" fill="currentColor">ZNAK BEZ BROJA → čitaš značenje</text>
+  <rect x="8" y="34" width="54" height="38" rx="3" fill="#fff" stroke="#111" stroke-width="1.5"/>
+  <g fill="#111"><path d="M14 66L14 54L22 47L30 54L30 66Z"/><rect x="34" y="52" width="10" height="14"/><rect x="47" y="57" width="8" height="9"/></g>
   <path d="M70 53L92 53M86 48L92 53L86 58" fill="none" stroke="currentColor" stroke-width="2"/>
   <text x="100" y="61" font-size="18" font-weight="bold" fill="currentColor">50</text>
   <text x="130" y="58" font-size="12" fill="currentColor">ulazak u naselje</text>
-  <rect x="8" y="93" width="54" height="38" rx="3" fill="#2c6aa0" stroke="currentColor" stroke-width="1.5"/>
-  <g fill="#e9eef3"><path d="M14 125L14 113L22 106L30 113L30 125Z"/><rect x="34" y="111" width="10" height="14"/><rect x="47" y="116" width="8" height="9"/></g>
+  <rect x="8" y="93" width="54" height="38" rx="3" fill="#fff" stroke="#111" stroke-width="1.5"/>
+  <g fill="#111"><path d="M14 125L14 113L22 106L30 113L30 125Z"/><rect x="34" y="111" width="10" height="14"/><rect x="47" y="116" width="8" height="9"/></g>
   <line x1="10" y1="129" x2="60" y2="95" stroke="#c0392b" stroke-width="3"/>
   <path d="M70 112L92 112M86 107L92 112L86 117" fill="none" stroke="currentColor" stroke-width="2"/>
   <text x="100" y="120" font-size="18" font-weight="bold" fill="currentColor">80</text>
@@ -367,7 +367,7 @@ CARDS['brzine'] = {
 <p>Proveri i navedeno vozilo: #9946 obuhvata moped i motocikl; #9947 i #9949 pitaju za motocikl.</p>
 </div>
 <div class="kPodH"><b class="kPodNaslov">Kad pitanje traži da PRILAGODIŠ brzinu (čl. 42)</b>
-<svg viewBox="0 0 320 175" role="img" aria-label="vozilo staje pre prepreke, unutar rastojanja koje vozač vidi ili ima razloga da predvidi" style="max-width:320px;width:100%;display:block;margin:6px auto">
+<svg viewBox="0 0 320 175" role="img" aria-label="Prilagođena brzina omogućava zaustavljanje pre prepreke koju vozač može da vidi ili ima razloga da predvidi." style="max-width:320px;width:100%;display:block;margin:6px auto">
   <text x="160" y="18" text-anchor="middle" font-size="13" fill="currentColor">koliko VIDIŠ ili imaš razloga</text>
   <text x="160" y="39" text-anchor="middle" font-size="13" fill="currentColor">da PREDVIDIŠ</text>
   <g stroke="currentColor" stroke-width="2" fill="none">
@@ -379,13 +379,13 @@ CARDS['brzine'] = {
     <line x1="34" y1="63" x2="34" y2="112"/>
     <line x1="298" y1="63" x2="298" y2="84"/>
   </g>
-  <g stroke="#1f7a3f" stroke-width="3" fill="none">
+  <g stroke="currentColor" stroke-width="3" fill="none">
     <line x1="34" y1="78" x2="232" y2="78"/>
     <line x1="34" y1="71" x2="34" y2="85"/>
     <line x1="232" y1="71" x2="232" y2="85"/>
   </g>
   <text x="133" y="101" text-anchor="middle" font-size="13" font-weight="bold" fill="currentColor">staješ PRE prepreke</text>
-  <rect x="0" y="112" width="320" height="34" fill="#9aa7b4"/>
+  <rect x="0" y="112" width="320" height="34" fill="none"/>
   <g fill="none" stroke="currentColor" stroke-width="2.5">
     <circle cx="26" cy="132" r="8"/>
     <circle cx="56" cy="132" r="8"/>
@@ -393,8 +393,8 @@ CARDS['brzine'] = {
     <path d="M34 120L46 120"/>
     <path d="M38 118L44 110"/>
   </g>
-  <rect x="284" y="84" width="26" height="28" fill="#c0392b"/>
-  <text x="313" y="162" text-anchor="end" font-size="13" font-weight="bold" fill="#c0392b">PREPREKA</text>
+  <rect x="284" y="84" width="26" height="28" fill="#c0392b" stroke="currentColor" stroke-width="1"/>
+  <text x="313" y="162" text-anchor="end" font-size="13" font-weight="bold" fill="currentColor">PREPREKA</text>
 </svg>
 <p><b>Prilagođena brzina</b> mora omogućiti blagovremeno zaustavljanje pred preprekom koju možeš da vidiš ili imaš razloga da predvidiš. To može zahtevati vožnju sporiju od najveće dozvoljene brzine. U #9870 (magla) i #9873 (oštećen kolovoz) ponuđeni brojevi i procenat ne zamenjuju taj uslov (čl. 42).</p>
 <p><b>U ovim primerima razlikuj uslove vožnje i potreban ishod:</b></p>
@@ -402,15 +402,15 @@ CARDS['brzine'] = {
 <li><b>„…prilagodi TAKO DA…"</b> → tačno je ono što opisuje ISHOD: da vozilo blagovremeno zaustaviš pred preprekom (#9868, #9870, #9873), da ne ugrožavaš bezbednost saobraćaja (#9868), da ne ugrožavaš sebe i druge učesnike u saobraćaju (#9873).</li>
 <li><b>„…prilagodi:"</b> pa spisak → tačno je ono što je USLOV vožnje: osobine i stanje puta, vidljivost i preglednost, stanje vozila i tereta (#10488), atmosferske prilike, gustina saobraćaja i drugi saobraćajni uslovi (#10489).</li>
 </ul>
-<svg viewBox="0 0 320 196" style="max-width:320px;width:100%;display:block;margin:6px auto" role="img" aria-label="dva oblika pitanja: prilagodi tako da trazi ishod, a prilagodi pa spisak trazi uslov voznje">
+<svg viewBox="0 0 320 196" style="max-width:320px;width:100%;display:block;margin:6px auto" role="img" aria-label="U ovim primerima razlikuju se uslovi vožnje od ishoda: blagovremeno zaustavljanje pred preprekom i bezbedno upravljanje.">
   <rect x="6" y="4" width="308" height="80" rx="6" fill="none" stroke="#1f7a3f" stroke-width="2"/>
   <text x="160" y="25" text-anchor="middle" font-size="12.5" font-weight="bold" fill="currentColor">„…prilagodi TAKO DA…"</text>
-  <text x="160" y="46" text-anchor="middle" font-size="12" font-weight="bold" fill="#1f7a3f">odgovor opisuje ISHOD</text>
+  <text x="160" y="46" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">odgovor opisuje ISHOD</text>
   <text x="160" y="64" text-anchor="middle" font-size="11.5" fill="currentColor">zaustaviš pred preprekom</text>
   <text x="160" y="79" text-anchor="middle" font-size="11.5" fill="currentColor">ne ugrožavaš sebe ni druge</text>
   <rect x="6" y="94" width="308" height="96" rx="6" fill="none" stroke="#2c6aa0" stroke-width="2"/>
   <text x="160" y="115" text-anchor="middle" font-size="12.5" font-weight="bold" fill="currentColor">„…prilagodi:" pa spisak</text>
-  <text x="160" y="136" text-anchor="middle" font-size="12" font-weight="bold" fill="#2c6aa0">odgovor je USLOV vožnje</text>
+  <text x="160" y="136" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">odgovor je USLOV vožnje</text>
   <text x="160" y="154" text-anchor="middle" font-size="11.5" fill="currentColor">stanje puta · vidljivost i preglednost</text>
   <text x="160" y="169" text-anchor="middle" font-size="11.5" fill="currentColor">stanje vozila i tereta · atmosferske prilike</text>
   <text x="160" y="184" text-anchor="middle" font-size="11.5" fill="currentColor">gustina saobraćaja i drugi uslovi</text>
@@ -6772,6 +6772,17 @@ const out = {
   situacije: SITUACIJE,
   zamke: ZAMKE,
 };
+
+// Lokalno prevedi šest pristupačnih opisa kartice brzine. Opšti toCyr štiti HTML tagove.
+// Broj je nameran: dodavanje opisa u ovu karticu zahteva ponovni pregled oba pisma.
+{
+  let count = 0;
+  out.cards.brzine.h.c = out.cards.brzine.h.c.replace(/aria-label="([^"]*)"/g, (_, label) => {
+    count++;
+    return 'aria-label="' + toCyr(label) + '"';
+  });
+  if (count !== 6) throw new Error('Kartica brzine: očekivano šest pristupačnih opisa');
+}
 
 // Automatski skener: mešani latinično-ćirilični tokeni i zaostali digrafi u ćiriličnom izlazu
 {

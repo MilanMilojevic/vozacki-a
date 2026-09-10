@@ -90,6 +90,33 @@
       "checkedOn": "2026-09-10",
       "revision": "Tekst zaključno sa Službenim glasnikom RS 76/2023; pročitan ceo Zakon o izmenama i dopunama 19/2025 (devet članova, obe strane), koji ne menja članove 106–110 osnovnog zakona",
       "contentHash": "f0ba25df5eda00ef7172f6421a26c2dc4a543e7de96e23a97de0fa7fa0975aeb"
+    },
+    {
+      "id": "signalizacija-brzine-cl25-cl35-cl50-pis-76-2026",
+      "url": "https://reg.pravno-informacioni-sistem.rs/api/viewdoc?doctype=reg&regactid=440491&uuid=2bd446cf-0965-4141-8323-d207a4216ed1",
+      "title": "Pravilnik o saobraćajnoj signalizaciji — redakcijski prečišćen tekst Pravno-informacionog sistema Republike Srbije",
+      "article": "Član 25 tačka 30 (II-30); član 35 tačke 19–22 (III-23/23.1 i III-24/24.1) i 74–75 (III-69/69.1); pun član 50 (boje znakova)",
+      "checkedOn": "2026-09-10",
+      "revision": "Službeni glasnik RS 85/2017, 14/2021, 21/2024 i 76/2026. Pročitane navedene definicije i ceo član 50; upoređene izvorne izmene, posebno čl. 18, 21 i 28. Ciljane definicije i bele/crne boje III-24/24.1 sa crvenom kosom trakom za završetak ostaju iste; ovo nije tvrdnja da su sva okolna pravila neizmenjena. Stupanje izmena 29.08.2026.",
+      "contentHash": "8f9b78ea7810a5d5028f3b2878773d37080cf9096a2239dc2a306101708c45d7"
+    },
+    {
+      "id": "signalizacija-naselje-slike-putevi-21-2024",
+      "url": "https://putevi-srbije.rs/images/pdf/regulativa/Pravilnik_o_saobracajnoj_signalizaciji-21-24.pdf",
+      "title": "Pravilnik o saobraćajnoj signalizaciji — konsolidacija koju objavljuju Putevi Srbije",
+      "article": "PDF strana 30: neposredni vizuelni pregled propisanih znakova III-23, III-23.1, III-24 i III-24.1, uz član 35 tačke 19–22",
+      "checkedOn": "2026-09-10",
+      "revision": "Zvanično objavljena konsolidacija kroz 21/2024. Slike naselja i završetka naselja proverene vizuelno; važeće značenje i boje dodatno upoređeni sa primarnim PIS tekstom i izmenama 76/2026. Nije pripisan neposredni vizuelni pregled pojedinačnim nedostupnim PIS JPEG-ovima.",
+      "contentHash": "6945b4d703c8fe06f0404712638f91a0821cb6a25ef643a537d91239cf6af179"
+    },
+    {
+      "id": "signalizacija-brzine-izmene-pis-76-2026",
+      "url": "https://slgl.pravno-informacioni-sistem.rs/api/prins/viewdoc?uuid=a9a8f425-2be7-4056-af48-ec9bac188e36",
+      "title": "Pravilnik o izmenama i dopunama Pravilnika o saobraćajnoj signalizaciji — izvorni tekst Službenog glasnika preko PIS",
+      "article": "Izvorni članovi 18, 21 i 28, uz čl. 49–50: izmene čl. 25, 35 i 50 osnovnog pravilnika; relevantna provera II-30, III-24/24.1 i III-69/69.1",
+      "checkedOn": "2026-09-10",
+      "revision": "Službeni glasnik RS 76/2026-30 od 21.08.2026; po čl. 50 stupanje 29.08.2026. Čl. 18 ne menja tačku 30 čl. 25, čl. 21 ne menja tačke 19–22 ni 74–75 čl. 35, a čl. 28 ne menja predmetne boje III-24/24.1. Provera je ograničena na te tvrdnje; druge odredbe jesu menjane.",
+      "contentHash": "a8b10736064baca61cca9277b8f30dc957ff74ab0b45a646318f6d24c2741c7f"
     }
   ]
 }
