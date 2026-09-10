@@ -231,6 +231,7 @@ main { max-width: 880px; width: 100%; margin: 0 auto; padding: 16px 12px 60px; f
 table.stats { width: 100%; border-collapse: collapse; font-size: var(--fs-md); }
 table.stats th, table.stats td { padding: 7px 8px; border-bottom: 1px solid var(--line); text-align: left; }
 table.stats th { color: var(--mut); font-weight: 600; font-size: var(--fs-sm); }
+#daniTelo th { color: var(--ink); }
 table.stats td.num, table.stats th.num { text-align: right; font-variant-numeric: tabular-nums; }
 .accGood { color: var(--ok); font-weight: 600; }
 .accMid { color: var(--mark); font-weight: 600; }

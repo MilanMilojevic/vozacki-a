@@ -2900,7 +2900,7 @@
         return `<rect x="${x0}" y="${dno - h}" width="${sirina}" height="${h}" rx="3" fill="${boja}"/>`
           + (p === null ? '' : `<text x="${x0 + sirina / 2}" y="${dno - h - 4}" text-anchor="middle" font-size="11" fill="currentColor">${p}%</text>`)
           + `<text x="${x0 + sirina / 2}" y="${dno + 15}" text-anchor="middle" font-size="11" fill="currentColor" opacity=".7">${kratak(x.d)}</text>`
-          + `<text x="${x0 + sirina / 2}" y="${dno + 30}" text-anchor="middle" font-size="11" fill="currentColor" opacity=".55">${x.n}</text>`;
+          + `<text x="${x0 + sirina / 2}" y="${dno + 30}" text-anchor="middle" font-size="11" fill="currentColor" opacity=".7">${x.n}</text>`;
       }).join('');
       const prag = dno - Math.round((dno - vrh) * 0.85);
       crtez = `<svg viewBox="0 0 ${W} ${H}" role="img" style="max-width:306px;width:100%;display:block;margin:8px auto"
