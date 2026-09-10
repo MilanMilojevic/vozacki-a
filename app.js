@@ -474,6 +474,9 @@
   // Web Lock se drži dok dokument živi. Druga nova kartica zato uopšte ne dobija pravo
   // upisa; stari dokumenti koji ne znaju za bravu otkrivaju se dodatnom proverom zapisa.
   const LOCK_NAME = 'vozackiA.writer';
+  // App links opened in another tab explicitly request content only, also on file://.
+  const izricitPregled = new URLSearchParams(location.search).get('preview') === '1';
+  const lokalniPrikaz = {};
   let rezimPisanja = 'boot';
   let otpustiZakljucavanje = null;
   let penzionisanjePisca = null;
@@ -481,7 +484,9 @@
   let aktivniIdbPromise = Promise.resolve();
   let aktivnaIdbTransakcija = null;
   function mozePisati() { return rezimPisanja === 'writer' || rezimPisanja === 'fallback'; }
+  function samoPregled() { return rezimPisanja === 'preview' || rezimPisanja === 'reader'; }
   function odrediRezimPisanja() {
+    if (izricitPregled) { rezimPisanja = 'preview'; return Promise.resolve(rezimPisanja); }
     if (location.protocol === 'file:' || !navigator.locks || typeof navigator.locks.request !== 'function') {
       rezimPisanja = 'fallback';
       return Promise.resolve(rezimPisanja);
@@ -838,6 +843,7 @@
   }
   function prikaziZakljucanTab() {
     if (mozePisati()) return;
+    if (samoPregled()) { zakljucavanjePrikazCeka = false; prikaziTrakuPregleda(); return; }
     zakljucavanjePrikazCeka = false;
     try { if (zatvoriTuruBezCuvanja) zatvoriTuruBezCuvanja(); } catch (_) { /* tura još nije inicijalizovana */ }
     try { if (zatvoriUvecanjeBezbedno) zatvoriUvecanjeBezbedno(); } catch (_) { /* uvećanje još nije inicijalizovano */ }
@@ -893,7 +899,7 @@
   window.addEventListener('storage', (e) => {
     if ((e.storageArea && e.storageArea !== localStorage) || (e.key !== null && e.key !== KEY && e.key !== 'vozackiA.sim')) return;
     if (mozePisati()) blokirajPisanje('conflict');
-    else zahtevajZakljucanPrikaz();
+    else if (!samoPregled()) zahtevajZakljucanPrikaz();
   });
   function save(dozvoliOporavak = false) {
     if (!mozePisati()) { zahtevajZakljucanPrikaz(); return false; }
@@ -916,8 +922,9 @@
   const PRAZAN = Object.freeze({ a: 0, w: 0, streak: 0, marked: 0 });
   const qr = (id) => S.q[id] || PRAZAN;
 
-  const L = (k) => STR[k][S.script];
-  const T = (obj) => obj[S.script];
+  const pismoPrikaza = () => samoPregled() ? lokalniPrikaz.script || S.script : S.script;
+  const L = (k) => STR[k][pismoPrikaza()];
+  const T = (obj) => obj[pismoPrikaza()];
   const el = (id) => document.getElementById(id);
   const catOf = (q) => T(catName.get(q.cat));
   const nQ = (n) => n + ' ' + (one(n) ? L('qOne') : L('allQuestions').toLowerCase());
@@ -1126,10 +1133,15 @@
       focus: row ? '.qRow[data-qid="' + row.dataset.qid + '"]' : focus && focus.id ? '#' + focus.id : (sn.ui && sn.ui.focus) || null };
   }
   function navZapamtiPrikaz() {
-    if (navVraca || !navTekuci || !mozePisati()) return;
+    if (navVraca || !navTekuci || (!mozePisati() && !samoPregled())) return;
     navProveriProfil();
     const sn = navPrikazi.get(navTekuci.id) || {};
     sn.redraw = current.redraw;
+    if (samoPregled()) {
+      navPrikazi.set(navTekuci.id, { redraw: current.redraw, ui: sn.ui });
+      while (navPrikazi.size > 100) navPrikazi.delete(navPrikazi.keys().next().value);
+      navZapamtiUI(); return;
+    }
     sn.run = runSeq;
     sn.learnPos = pozicijaUcenja;
     sn.list = current.redraw === stepList && listMode ? { ...listMode, ids: listMode.ids.slice() } : null;
@@ -1175,6 +1187,17 @@
   // mrtva adresa (#/vezba, ugašena simulacija, loš pregled) se zamenjuje u istoriji —
   // inače bi svaki "Nazad" ponovo sletao na nju i korisnik bi se vrteo u krug
   function goHomeReplace(kljuc) {
+    // Ni neuspešan prikaz u pregledu ne sme da konstruiše početnu sa podešavanjima.
+    if (samoPregled()) {
+      navTekuci = navNovi('#/sva', navTekuci ? navTekuci.index : 0);
+      curHash = '#/sva';
+      if (!navUpisi(navTekuci, false)) location.replace('#/sva');
+      renderPregled('#/sva');
+      const note = document.createElement('p'); note.id = 'previewRouteNote';
+      note.textContent = T({ l: 'Traženi sadržaj nije mogao da se prikaže. Vraćen je spisak pitanja; napredak ostaje nepromenjen.', c: 'Тражени садржај није могао да се прикаже. Враћен је списак питања; напредак остаје непромењен.' });
+      el('browseHead').appendChild(note);
+      return;
+    }
     // korisnik koji je otvorio deljenu adresu mora da zna zašto gleda početnu
     if (kljuc) setTimeout(() => poruci(L(kljuc)), 60);
     navTekuci = navNovi('#/', navTekuci ? navTekuci.index : 0);
@@ -1183,7 +1206,9 @@
     renderHome();
   }
   function routeTo(h) {
+    if (samoPregled()) return renderPregled(h);
     if (!mozePisati()) { zahtevajZakljucanPrikaz(); return; }
+    if (h === '#/pojmovnik' || h.startsWith('#/pojmovnik/')) return renderPojmovnik(h);
     if (!h || h === '#' || h === '#/') return renderHome();
     if (h === '#/sva') return browseAll();
     if (h.startsWith('#/sek/')) return browse(h.slice(6));
@@ -1227,8 +1252,146 @@
     }
     return goHomeReplace();   // '#/vezba' i nepoznato: prolazna vežba se ne rekonstruiše
   }
+
+  function adresaSadrzaja(hash, pregled = true) {
+    const u = new URL(location.href);
+    if (pregled) u.searchParams.set('preview', '1'); else u.searchParams.delete('preview');
+    u.hash = hash;
+    return u.href;
+  }
+  // Only a plain primary activation is handled here. Native modifiers, middle click
+  // and the browser's link menu retain their usual destination/opening behavior.
+  function veziOdrediste(element, hash, radnja) {
+    let a = element;
+    if (a.tagName !== 'A') {
+      a = document.createElement('a');
+      for (const attr of element.attributes) if (attr.name !== 'type') a.setAttribute(attr.name, attr.value);
+      a.append(...element.childNodes);
+      element.replaceWith(a);
+    }
+    a.href = adresaSadrzaja(hash);
+    a.addEventListener('click', e => {
+      if (e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
+      e.preventDefault();
+      if (samoPregled()) { renderPregled(hash); return; }
+      if (!mozePisati()) { zahtevajZakljucanPrikaz(); return; }
+      if (!leaveSimOk()) return;
+      radnja();
+    });
+    return a;
+  }
+  function noviLink(tekst, hash, klasa = 'secondary') {
+    const a = document.createElement('a'); a.className = klasa; a.textContent = tekst;
+    return veziOdrediste(a, hash, () => routeTo(hash));
+  }
+  function naslovPregleda() { return T({ l: 'Pregled — napredak se ne menja', c: 'Преглед — напредак се не мења' }); }
+  function prikaziTrakuPregleda() {
+    if (!samoPregled()) return;
+    document.body.classList.add('samoPregled');
+    let traka = el('trakaPregleda');
+    if (!traka) {
+      traka = document.createElement('div'); traka.id = 'trakaPregleda';
+      traka.className = 'upozorenjeTraka'; traka.dataset.preview = '';
+      el('glavni').prepend(traka);
+    }
+    traka.replaceChildren(document.createTextNode(naslovPregleda() + '. '));
+    if (rezimPisanja === 'reader') traka.appendChild(document.createTextNode(T({
+      l: 'Vežbanje je otvoreno u drugoj kartici. Da biste vežbali ovde, prvo zatvorite tu karticu. ',
+      c: 'Вежбање је отворено у другој картици. Да бисте вежбали овде, прво затворите ту картицу. ',
+    })));
+    const link = document.createElement('a'); link.className = 'secondary sBtn'; link.dataset.practiceLink = '';
+    link.href = adresaSadrzaja(curHash || '#/', false);
+    link.textContent = T({ l: 'Vežbaj u ovoj kartici', c: 'Вежбај у овој картици' });
+    link.addEventListener('click', e => {
+      // An implicit reader already has the ordinary URL. A same-URL anchor would
+      // only revisit its hash; this explicit action must start a fresh lock check.
+      if (e.button === 0 && !e.ctrlKey && !e.metaKey && !e.shiftKey && !e.altKey && link.href === location.href) {
+        e.preventDefault(); location.reload();
+      }
+    });
+    traka.appendChild(link);
+  }
+  function renderPojmovnik(h) {
+    current = { redraw: () => renderPojmovnik(h) }; setHash(h);
+    const head = el('browseHead'), list = el('browseList'); list.hidden = false;
+    head.replaceChildren(noviLink(L('allQuestions'), '#/sva'), noviLink(T({ l: 'Pojmovnik', c: 'Појмовник' }), '#/pojmovnik'));
+    list.replaceChildren();
+    const cards = EX.cards || {};
+    const nadjiKarticu = key => {
+      if (!Object.prototype.hasOwnProperty.call(cards, key)) return null;
+      const card = cards[key];
+      return card && ['t', 'h'].every(part => card[part] && ['l', 'c'].every(script => typeof card[part][script] === 'string')) ? card : null;
+    };
+    const key = h.slice('#/pojmovnik/'.length), card = nadjiKarticu(key);
+    if (h.startsWith('#/pojmovnik/') && card) {
+      const title = document.createElement('h3'); title.textContent = T(card.t); list.appendChild(title);
+      const body = document.createElement('div'); body.className = 'explCard'; body.innerHTML = T(card.h); list.appendChild(body);
+      oziviSekcije(body); dodajAtlas(body, key); dodajSituacije(body, key); oziviCrteze(body);
+    } else {
+      if (h.startsWith('#/pojmovnik/')) {
+        const note = document.createElement('p'); note.id = 'glossaryUnknown';
+        note.textContent = T({ l: 'Kartica nije pronađena. Izaberite pojam sa spiska.', c: 'Картица није пронађена. Изаберите појам са списка.' });
+        head.appendChild(note);
+      }
+      for (const k of Object.keys(cards)) {
+        const c = nadjiKarticu(k);
+        if (k !== 'faq' && c) list.appendChild(noviLink('📖 ' + T(c.t), '#/pojmovnik/' + k, 'explCardBtn pojBtn'));
+      }
+    }
+    show('browse'); if (samoPregled()) prikaziTrakuPregleda();
+  }
+  function renderPregled(h = '#/', otkriven = false) {
+    if (!samoPregled()) return;
+    if (h === '#/pojmovnik' || h.startsWith('#/pojmovnik/')) return renderPojmovnik(h);
+    current = { redraw: () => renderPregled(h, otkriven) }; setHash(h);
+    if (/^#\/p\/\d+$/.test(h) && byId.has(+h.slice(4))) {
+      const q = byId.get(+h.slice(4)), c = el('qCard'); c.dataset.qid = q.id; c.replaceChildren();
+      const meta = document.createElement('div'); meta.className = 'qMeta';
+      meta.append(noviLink(catOf(q), '#/sek/c' + q.cat, 'bcLink'), noviLink(subShortName(q.sub), '#/sek/s' + q.sub, 'bcLink'));
+      const num = document.createElement('span'); num.className = 'qNum'; num.textContent = '#' + q.id; meta.appendChild(num); c.appendChild(meta);
+      const text = document.createElement('div'); text.className = 'qText'; text.textContent = T(q.t); c.appendChild(text);
+      if (q.img) c.appendChild(slikaPitanja(q));
+      for (const choice of q.ch) {
+        const row = document.createElement('div'); row.className = 'choice';
+        row.textContent = (otkriven && choice.ok ? '✓ ' : '') + T(choice.t);
+        if (otkriven && choice.ok) row.classList.add('ok'); c.appendChild(row);
+      }
+      const actions = document.createElement('div'); actions.className = 'qActions'; c.appendChild(actions);
+      if (!otkriven) {
+        const reveal = document.createElement('button'); reveal.id = 'previewAnswer'; reveal.className = 'primary';
+        reveal.textContent = T({ l: 'Prikaži odgovor i objašnjenje', c: 'Прикажи одговор и објашњење' });
+        reveal.addEventListener('click', () => { renderPregled(h, true); el('previewExplanation')?.focus({ preventScroll: true }); }); actions.appendChild(reveal);
+      } else {
+        const explanation = explNode(q);
+        if (explanation) { explanation.id = 'previewExplanation'; explanation.tabIndex = -1; c.appendChild(explanation); }
+      }
+      const idx = Q.indexOf(q);
+      if (idx > 0) actions.appendChild(noviLink('← ' + L('prev'), '#/p/' + Q[idx - 1].id));
+      if (idx < Q.length - 1) actions.appendChild(noviLink(L('next') + ' →', '#/p/' + Q[idx + 1].id));
+      show('question');
+    } else {
+      const head = el('browseHead'), list = el('browseList'); list.hidden = false;
+      head.replaceChildren(); list.replaceChildren();
+      const key = /^#\/sek\/[cs]\d+$/.test(h) ? h.slice(6) : null;
+      const info = key && Q.some(q => (key[0] === 'c' ? q.cat : q.sub) === +key.slice(1)) ? secInfo(key) : null;
+      const title = document.createElement('h3'); title.textContent = info ? info.name : L('allQuestions'); head.appendChild(title);
+      const links = document.createElement('div'); links.className = 'qActions';
+      links.append(noviLink(L('allQuestions'), '#/sva'), noviLink(T({ l: 'Pojmovnik', c: 'Појмовник' }), '#/pojmovnik')); head.appendChild(links);
+      if (h !== '#/' && h !== '#/sva' && !info) {
+        const note = document.createElement('p'); note.id = 'previewRouteNote';
+        note.textContent = T({ l: 'Ovaj prikaz nije dostupan u pregledu sadržaja. Ovde možete čitati pitanja i objašnjenja bez menjanja napretka.', c: 'Овај приказ није доступан у прегледу садржаја. Овде можете читати питања и објашњења без мењања напретка.' }); head.appendChild(note);
+      }
+      if (!info) for (const cat of CATS) list.appendChild(noviLink(T(cat), '#/sek/c' + cat.id, 'subRow skrijUPretrazi'));
+      if (info && info.type === 'c') for (const sid of [...new Set(info.ids.map(id => byId.get(id).sub))]) list.appendChild(noviLink(subShortName(sid), '#/sek/s' + sid, 'subRow skrijUPretrazi'));
+      const ids = info ? info.ids : Q.map(q => q.id);
+      list.insertAdjacentHTML('beforeend', pretragaHtml(ids.length));
+      crtajRedove(list, ids, { bezNapretka: true, naKlik: (_, q) => renderPregled('#/p/' + q.id) });
+      veziPretragu(list); pamtiSkrolSpiska(h); show('browse');
+    }
+    prikaziTrakuPregleda();
+  }
   function navPromena() {
-    if (!mozePisati()) { zahtevajZakljucanPrikaz(); return; }
+    if (!mozePisati() && !samoPregled()) { zahtevajZakljucanPrikaz(); return; }
     const h = location.hash || '#/';
     let next = navIzIstorije();
     if (navOtkazivanje) {
@@ -1252,7 +1415,7 @@
     try {
       if (sn && h !== '#/sim' && !h.startsWith('#/pregled/')) {
         navVraca = true; ponovniPrikaz = true;
-        runSeq = sn.run;
+        if (!samoPregled()) runSeq = sn.run;
         if (sn.question) prikazPitanja.set(sn.question.key, sn.question.value);
         if (sn.list) { listMode = { ...sn.list, ids: sn.list.ids.slice() }; current = { redraw: stepList }; show('question'); stepList(); }
         else if (sn.redraw === stepLearn) { pozicijaUcenja = sn.learnPos; current = { redraw: stepLearn }; show('question'); stepLearn(); }
@@ -1402,7 +1565,7 @@
       : '';
     meta.innerHTML = `<span><button type="button" class="bcLink" data-bc="c${q.cat}">${escapeHtml(catOf(q))}</button> › <button type="button" class="bcLink" data-bc="s${q.sub}" title="${escapeHtml(subOf(q))}">${escapeHtml(subShortName(q.sub))}</button></span>
       <span><span class="qNum" data-qid="${q.id}" ${FILE_MODE ? '' : 'role="button" tabindex="0"'} title="${escapeHtml(FILE_MODE ? L('qNumTip') : L('qNumTip2'))}">#${q.id}</span> · ${poeni(q.pts)}${hist}</span>`;
-    meta.querySelectorAll('.bcLink').forEach((b) => b.addEventListener('click', () => browse(b.dataset.bc)));
+    meta.querySelectorAll('.bcLink').forEach((b) => veziOdrediste(b, '#/sek/' + b.dataset.bc, () => browse(b.dataset.bc)));
     c.appendChild(meta);
 
     const txt = document.createElement('div'); txt.className = 'qText'; txt.textContent = T(q.t);
@@ -1736,12 +1899,12 @@
         d._search = '';
         list.appendChild(d);
       }
-      const r = S.q[qid];
-      const b = document.createElement('button');
+      const r = opts.bezNapretka ? null : S.q[qid];
+      const b = document.createElement('a');
       b.className = 'qRow';
       b.dataset.qid = q.id;
       b.innerHTML = redPitanjaHtml(q, idx, r, opts.dodatak ? opts.dodatak(q, r) : '');
-      b.addEventListener('click', () => opts.naKlik(idx, q));
+      veziOdrediste(b, '#/p/' + q.id, () => opts.naKlik(idx, q));
       b._search = (T(q.t) + ' ' + q.t.l + ' #' + q.id).toLowerCase();
       list.appendChild(b);
     });
@@ -2823,13 +2986,13 @@
         let sAtt = 0, sWr = 0;
         for (const q of sq) { const r = S.q[q.id]; if (r) { sAtt += r.a; sWr += r.w; } }
         const sAcc = sAtt ? Math.round(100 * (sAtt - sWr) / sAtt) : null;
-        const b = document.createElement('button'); b.className = 'subRow skrijUPretrazi';
+        const b = document.createElement('a'); b.className = 'subRow skrijUPretrazi';
         b.title = T({ l: D.subs[sid].l, c: D.subs[sid].c });
         const naIsp = naIspitu(sid);
         b.innerHTML = `<span class="subName">${escapeHtml(subShortName(sid))}${naIsp ? ` <span class="subExam" title="${escapeHtml(L('naIspituTip'))}">${L('naIspitu').replace('#', naIsp)}</span>` : ''}</span>
           <span class="subCnt">${sSeen}/${sq.length}</span>
           <span class="subAcc">${sAcc !== null ? `<span class="${accClass(sAcc)}">${sAcc}%</span>` : ''}</span>`;
-        b.addEventListener('click', () => browse('s' + sid));
+        veziOdrediste(b, '#/sek/s' + sid, () => browse('s' + sid));
         list.appendChild(b);
       }
     }
@@ -3607,7 +3770,7 @@
       const st = stat(Q);
       const row = document.createElement('div'); row.className = 'catRow catTotal';
       row.innerHTML = '<span class="catChevSpacer"></span>' + redHtml(L('ukupno'), st, Q.length, true);
-      row.querySelector('.catMain').addEventListener('click', () => browseAll());
+      veziOdrediste(row.querySelector('.catMain'), '#/sva', browseAll);
       cont.appendChild(row);
     }
     for (const c of CATS) {
@@ -3616,7 +3779,7 @@
       const row = document.createElement('div'); row.className = 'catRow';
       row.innerHTML = `<button type="button" class="catChevBtn" aria-expanded="false" title="${escapeHtml(L('catExpand'))}" aria-label="${escapeHtml(L('catExpand'))}">▸</button>` + redHtml(escapeHtml(T(c)), st, qq.length, false);
       row.querySelector('.catMain').setAttribute('title', L('catOpen'));
-      row.querySelector('.catMain').addEventListener('click', () => browse('c' + c.id));
+      veziOdrediste(row.querySelector('.catMain'), '#/sek/c' + c.id, () => browse('c' + c.id));
       row.querySelector('.catChevBtn').addEventListener('click', () => {
         // akordeon: otvaranje jedne oblasti sklapa prethodno otvorenu
         const zatvoriRed = (r) => {
@@ -3640,7 +3803,7 @@
           sr.className = 'catRow catSubRow' + (zi++ % 2 ? ' zebra' : '');
           sr.title = T({ l: D.subs[sid].l, c: D.subs[sid].c });
           sr.innerHTML = '<span class="catChevSpacer"></span>' + redHtml(escapeHtml(subShortName(sid)), stat(sq), sq.length, false);
-          sr.querySelector('.catMain').addEventListener('click', () => browse('s' + sid));
+          veziOdrediste(sr.querySelector('.catMain'), '#/sek/s' + sid, () => browse('s' + sid));
           ref.after(sr); ref = sr;
         }
       });
@@ -3833,6 +3996,7 @@
       pk.innerHTML = `<button type="button" class="explCardBtn pojBtn istaknuto" id="btnPojmovnik">${L('pojmovnikDugme').split('@1').join(cardKeys.length)}</button>
         <div class="mut napomena">${L('pojmovnikPod')}</div>
         <div id="pojmovnikTelo" style="display:none"></div>`;
+      pk.querySelector('.mut').appendChild(noviLink(' ' + T({ l: 'Otvori pojmovnik', c: 'Отвори појмовник' }), '#/pojmovnik', 'bcLink'));
       sklopivo(el('btnPojmovnik'), null, el('pojmovnikTelo'), (cd) => {
         cd.innerHTML = html;
         // akordeon: otvaranje jedne kartice sklapa prethodno otvorenu
@@ -4115,19 +4279,19 @@
     return true;
   }
   function bindNav(root) {
+    const routes = { home: '#/', learn: '#/sva', drill: '#/lista/wrong', marked: '#/lista/marked', stats: '#/stats' };
     root.querySelectorAll('[data-nav]').forEach((b) => {
-      if (b._navBound) return; b._navBound = true;
-      b.addEventListener('click', () => {
-        if (!mozePisati()) { zahtevajZakljucanPrikaz(); return; }
-        if (!leaveSimOk()) return;
-        const v = b.dataset.nav;
-        if (v === 'home') renderHome();
-        else if (v === 'learn') browseAll();
-        else if (v === 'drill') browseSet('wrong');
-        else if (v === 'marked') browseSet('marked');
-        else if (v === 'sim') startSim();
-        else if (v === 'stats') renderStats();
-      });
+      if (b._navBound) return;
+      const v = b.dataset.nav;
+      if (routes[v]) {
+        const a = veziOdrediste(b, routes[v], () => routeTo(routes[v])); a._navBound = true;
+      } else {
+        b._navBound = true;
+        b.addEventListener('click', () => {
+          if (!mozePisati()) { zahtevajZakljucanPrikaz(); return; }
+          if (leaveSimOk() && v === 'sim') startSim();
+        });
+      }
     });
   }
   bindNav(document);
@@ -4316,6 +4480,7 @@
   { const p = document.querySelector('.preskoci');
     if (p) p.addEventListener('click', (e) => { e.preventDefault(); const m = el('glavni'); if (!m) return; m.focus({ preventScroll: true }); m.scrollIntoView({ block: 'start' }); }); }
   el('btnScript').addEventListener('click', () => {
+    if (samoPregled()) { lokalniPrikaz.script = pismoPrikaza() === 'l' ? 'c' : 'l'; applyScript(); current.redraw(); return; }
     if (!mozePisati()) { zahtevajZakljucanPrikaz(); return; }
     S.script = S.script === 'l' ? 'c' : 'l'; save();
     applyScript();
@@ -4324,11 +4489,13 @@
   });
   // Tema: podrazumevano prati sistem; prekidač pamti izbor. Simulacija je uvek svetla (CSS).
   function applyTheme() {
-    const dark = S.theme === 'dark' || (S.theme == null && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    const theme = samoPregled() && lokalniPrikaz.theme ? lokalniPrikaz.theme : S.theme;
+    const dark = theme === 'dark' || (theme == null && window.matchMedia('(prefers-color-scheme: dark)').matches);
     document.body.classList.toggle('dark', dark);
     el('btnTheme').textContent = dark ? '☀️' : '🌙';
   }
   el('btnTheme').addEventListener('click', () => {
+    if (samoPregled()) { lokalniPrikaz.theme = document.body.classList.contains('dark') ? 'light' : 'dark'; applyTheme(); return; }
     if (!mozePisati()) { zahtevajZakljucanPrikaz(); return; }
     const dark = document.body.classList.contains('dark');
     S.theme = dark ? 'light' : 'dark'; save();
@@ -4365,9 +4532,9 @@
   });
   function applyScript() {
     el('btnScript').innerHTML =
-      `<span class="${S.script === 'c' ? 'segOn' : 'segOff'}">ЋИР</span><span class="segSep">|</span><span class="${S.script === 'l' ? 'segOn' : 'segOff'}">LAT</span>`;
+      `<span class="${pismoPrikaza() === 'c' ? 'segOn' : 'segOff'}">ЋИР</span><span class="segSep">|</span><span class="${pismoPrikaza() === 'l' ? 'segOn' : 'segOff'}">LAT</span>`;
     // čitač ekrana mora da zna KOJIM pismom je tekst — inače srpski čita kao da je latinica uvek
-    document.documentElement.lang = S.script === 'c' ? 'sr-Cyrl' : 'sr-Latn';
+    document.documentElement.lang = pismoPrikaza() === 'c' ? 'sr-Cyrl' : 'sr-Latn';
     { const n = el('naslovStrane'); if (n) n.textContent = L('brand') + ' — ' + L('podnozjeOpis'); }
     { const p = document.querySelector('.preskoci'); if (p) p.textContent = L('preskoci'); }
     el('brandTitle').textContent = L('brand');
@@ -4384,7 +4551,7 @@
     el('btnFinishSim').textContent = L('finishSim');
     el('btnSimReport').textContent = L('report');
     { const os = el('offlineStrip'); if (os) os.textContent = L('offline'); }
-    document.title = L('brand') + ' — ' + (S.script === 'l' ? 'vežbanje' : 'вежбање');
+    document.title = L('brand') + ' — ' + (pismoPrikaza() === 'l' ? 'vežbanje' : 'вежбање');
     renderPodnozje();
   }
 
@@ -4647,7 +4814,7 @@
   // Service worker daje rad bez interneta i mogućnost "Dodaj na početni ekran".
   // updateViaCache: 'none' — worker i version.js se uvek proveravaju sveži, da
   // ažuriranja nikad ne zaglave u kešu.
-  if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+  if (mozePisati() && 'serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
     navigator.serviceWorker.register('./sw.js', { updateViaCache: 'none' }).catch(() => { /* nije presudno */ });
   }
   document.addEventListener('visibilitychange', () => { if (!document.hidden) checkVersion(); });
@@ -4662,7 +4829,10 @@
   zakljucavanjeUIspremno = true;
   // Ispit u toku ima prvenstvo nad adresom: ko je osvežio stranu usred ispita (ili mu je telefon
   // izbacio tab), vraća se u isti ispit sa vremenom koje je i dalje teklo.
-  if (!mozePisati()) {
+  if (samoPregled()) {
+    try { renderPregled(curHash); }
+    catch (err) { console.warn('Adresa pregleda nije mogla da se otvori:', curHash, err); goHomeReplace('porGreskaAdrese'); }
+  } else if (!mozePisati()) {
     prikaziZakljucanTab();
   } else if (problemUcitavanja) {
     renderHome();

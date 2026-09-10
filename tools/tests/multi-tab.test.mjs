@@ -40,6 +40,7 @@ function fixture({ lock = 'grant', protocol = 'https:' } = {}) {
   }
   const context = vm.createContext({
     navigator,
+    URLSearchParams,
     location: { protocol },
     Promise,
     console: { warn() {} },

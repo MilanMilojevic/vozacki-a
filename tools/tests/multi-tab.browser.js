@@ -57,7 +57,7 @@ async (page) => {
     try {
       const writer = await open(context);
       const reader = await open(context);
-      await reader.waitForFunction(() => !!document.getElementById('tabZakljucan'));
+      await reader.waitForFunction(() => !!document.querySelector('[data-preview]'));
       const roles = await Promise.all([
         writer.evaluate(() => window.__dev.rezimPisanja),
         reader.evaluate(() => window.__dev.rezimPisanja),
@@ -76,8 +76,7 @@ async (page) => {
       }));
 
       const readerBlocked = await reader.evaluate(async () => {
-        const shells = ['topbar', 'glavni', 'donjaNav', 'podnozje'];
-        const inert = shells.every((id) => document.getElementById(id)?.inert === true);
+        const inert = document.getElementById('glavni').inert;
         document.getElementById('btnTheme').click();
         location.hash = '#/sim';
         await new Promise((resolve) => setTimeout(resolve, 80));
@@ -87,7 +86,7 @@ async (page) => {
         state: localStorage.getItem('vozackiA.v1'),
         exam: localStorage.getItem('vozackiA.sim'),
       }));
-      assert(readerBlocked.inert && readerBlocked.sim === null && readerBlocked.role === 'reader', 'Read-only UI or exam guard failed.');
+      assert(!readerBlocked.inert && readerBlocked.sim === null && readerBlocked.role === 'reader', 'Read-only UI or exam guard failed.');
       assert(afterReaderAttempt.state === writerBytes.state && afterReaderAttempt.exam === writerBytes.exam,
         'Reader changed progress or the pending exam.');
 
@@ -105,24 +104,20 @@ async (page) => {
       assert(await reader.evaluate(() => JSON.stringify(window.__dev.S)) === readerMemory, 'Reader import changed its in-memory profile.');
       assert(await writer.evaluate(() => localStorage.getItem('vozackiA.v1')) === writerBytes.state, 'Reader import changed stored progress.');
 
-      await tabTo(reader, 'btnTabExport');
-      await reader.keyboard.press('Enter');
-      await reader.waitForFunction(() => window.__syntheticExports.length === 1);
-      const exported = await reader.evaluate(() => window.__syntheticExports[0]);
-      assert(exported === readerMemory, 'Reader export did not preserve its exact in-memory profile.');
-      assert(JSON.parse(exported).q && typeof JSON.parse(exported).q === 'object', 'Reader export is not compatible with progress import.');
-      results.push({ step: 'reader cannot mutate/import/resume and can export its in-memory profile', pass: true });
+      assert(await reader.locator('[data-preview]').count() === 1, 'Reader lacks content preview label.');
+      assert(await reader.evaluate(() => JSON.stringify(window.__dev.S)) === readerMemory, 'Reader display changes mutated the loaded profile.');
+      results.push({ step: 'reader browses content but cannot mutate/import/resume', pass: true });
 
       await writer.close();
       await reader.waitForTimeout(200);
       assert(await reader.evaluate(() => window.__dev.rezimPisanja) === 'reader', 'Reader automatically took over after writer closed.');
       assert(await reader.evaluate(() => window.__documentToken) === readerToken, 'Reader automatically reloaded after writer closed.');
-      await tabTo(reader, 'btnTabReload');
+      await reader.locator('[data-practice-link]').focus();
       await reader.keyboard.press('Enter');
       await reader.waitForFunction(() => !!window.__dev && window.__dev.rezimPisanja === 'writer' && !!window.__dev.sim);
       assert(await reader.evaluate(() => localStorage.getItem('vozackiA.v1')) === writerBytes.state, 'Explicit takeover did not load the latest progress.');
       assert(await reader.evaluate(() => localStorage.getItem('vozackiA.sim')) === writerBytes.exam, 'Explicit takeover did not resume the pending exam.');
-      results.push({ step: 'writer close does not take over until explicit reload, then pending work resumes', pass: true });
+      results.push({ step: 'writer close does not take over until explicit practice action, then pending work resumes', pass: true });
     } finally {
       await context.close();
     }

@@ -99,9 +99,9 @@ body { font-family: "Segoe UI", system-ui, -apple-system, sans-serif; background
     background: var(--card); border-top: 1px solid var(--line);
     padding: 4px 4px calc(4px + env(safe-area-inset-bottom, 0px));
     box-shadow: 0 -2px 10px rgba(16,24,40,.10); }
-  #donjaNav button { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+  #donjaNav :is(button, a) { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
     background: none; color: var(--mut); padding: 6px 2px; min-width: 0; min-height: 52px; border-radius: 10px; }
-  #donjaNav button[aria-current="page"] { color: var(--navNa); background: var(--optSel); font-weight: 600; }
+  #donjaNav :is(button, a)[aria-current="page"] { color: var(--navNa); background: var(--optSel); font-weight: 600; }
   .dnIkona { font-size: 1.2rem; line-height: 1; }
   .dnTekst { font-size: var(--fs-xs); line-height: 1.1; text-align: center; max-width: 100%; overflow-wrap: anywhere; }
   body.uSimulaciji #donjaNav { display: none; }
@@ -753,3 +753,13 @@ button { transition: background-color .15s ease, border-color .15s ease, color .
   #repoUpd { bottom: 16px; }
   body:not(.uSimulaciji) .qActions button { scroll-margin-bottom: 12px; }
 }
+
+/* Destination links keep the established controls' layout and keyboard focus. */
+:where(a:is(.brand, .menuBtn, .catMain, .subRow, .qRow, .bcLink, .secondary, .pojBtn)),
+#donjaNav a { font: inherit; color: inherit; cursor: pointer; text-decoration: none; border-radius: 8px; }
+a:is(.secondary, .pojBtn) { display: inline-block; }
+.samoPregled #donjaNav [data-nav]:not([data-nav="home"]):not([data-nav="learn"]) { display: none; }
+.samoPregled #donjaNav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.samoPregled #qProgress { display: none; }
+.samoPregled .choice { cursor: default; }
+.samoPregled .choice.ok { color: var(--ok); font-weight: 600; }
