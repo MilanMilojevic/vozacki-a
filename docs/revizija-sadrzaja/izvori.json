@@ -1,4 +1,32 @@
 {
   "schemaVersion": 1,
-  "sources": []
+  "sources": [
+    {
+      "id": "zobs-cl7-t34-t36-mgsi-76-2023",
+      "url": "https://www.mgsi.gov.rs/sites/default/files/zakon_o_bezbednosti_saobracaja_na_putevima.pdf",
+      "title": "Zakon o bezbednosti saobraćaja na putevima — tekst na sajtu MGSI",
+      "article": "Član 7, tačke 34 i 36; PDF strana 7: moped i motocikl",
+      "checkedOn": "2026-09-10",
+      "revision": "Tekst sa izmenama zaključno sa Službenim glasnikom RS 76/2023; odredbe upoređene sa izmenama 19/2025 koje ne menjaju član 7 osnovnog zakona",
+      "contentHash": "f0ba25df5eda00ef7172f6421a26c2dc4a543e7de96e23a97de0fa7fa0975aeb"
+    },
+    {
+      "id": "zobs-cl7-t80-mgsi-76-2023",
+      "url": "https://www.mgsi.gov.rs/sites/default/files/zakon_o_bezbednosti_saobracaja_na_putevima.pdf",
+      "title": "Zakon o bezbednosti saobraćaja na putevima — tekst na sajtu MGSI",
+      "article": "Član 7, tačka 80; PDF strana 11: uslovi smanjene vidljivosti",
+      "checkedOn": "2026-09-10",
+      "revision": "Tekst sa izmenama zaključno sa Službenim glasnikom RS 76/2023; odredba upoređena sa izmenama 19/2025 koje ne menjaju član 7 osnovnog zakona",
+      "contentHash": "f0ba25df5eda00ef7172f6421a26c2dc4a543e7de96e23a97de0fa7fa0975aeb"
+    },
+    {
+      "id": "zobs-izmene-19-2025",
+      "url": "https://www.parlament.gov.rs/upload/archive/files/lat/pdf/zakoni/14_saziv/2943-24-lat.pdf",
+      "title": "Zakon o izmenama i dopunama Zakona o bezbednosti saobraćaja na putevima — Narodna skupština",
+      "article": "Celih devet članova, obe PDF strane: izmene čl. 178, 203, 246, 249, 295, dopuna čl. 318a i izmene čl. 331a i 333; član 7 osnovnog zakona nije menjan",
+      "checkedOn": "2026-09-10",
+      "revision": "Službeni glasnik RS 19/2025; doneto 6. marta 2025. prema zvaničnoj listi donetih zakona Narodne skupštine",
+      "contentHash": "1d7580ea086508deb83cd0cf40adfc11e08d4134f415cd359acdf100e97174d3"
+    }
+  ]
 }
