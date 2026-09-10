@@ -249,6 +249,14 @@ npx --yes --package @playwright/cli playwright-cli -s=provera-cilja close
 [Cache.addAll](https://developer.mozilla.org/en-US/docs/Web/API/Cache/addAll)
 одбија непотпун пакет, али провера/упис у већ активан кеш захтева засебну заштиту.
 
+Садржајна ревизија се води по ID-јевима у `docs/revizija-sadrzaja/`.
+Поступак је у [методологији](docs/revizija-sadrzaja/METODOLOGIJA.md).
+`node tools/audit-content.mjs --check` проверава потпуност и актуелност евиденције;
+`--write` је освежава после прегледа измена; `--require-reviewed` тражи завршене
+појединачне прегледе. Почетно је све непрегледано. Алат никада сам не потврђује
+тачност наставног текста и не посећује изворе прописа. Провера самог алата:
+`node --test tools/tests/content-audit.test.mjs`.
+
 ```bash
 node -e "new Function(require('fs').readFileSync('app.js','utf8'))"   # синтакса
 cd tools && node build-explanations.mjs                               # билд + скенер писма
