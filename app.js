@@ -1359,6 +1359,7 @@
   }
   function renderPregled(h = '#/', otkriven = false) {
     if (!samoPregled()) return;
+    if (h === '#/lista/wrong' || h === '#/lista/marked') return browseSet(h.slice(8));
     if (h === '#/stats') return renderStats();
     if (h === '#/pojmovnik' || h.startsWith('#/pojmovnik/')) return renderPojmovnik(h);
     current = { redraw: () => renderPregled(h, otkriven) }; setHash(h);
@@ -3108,17 +3109,52 @@
 
   // ---------- Strane "Pogrešna" i "Obeležena" (spisak + vežbanje) ----------
   function browseSet(setKind) {
+    const pregled = samoPregled();
     current = { redraw: () => browseSet(setKind) };
     setHash('#/lista/' + (setKind === 'wrong' ? 'wrong' : 'marked'));
     pamtiSkrolSpiska('#/lista/' + (setKind === 'wrong' ? 'wrong' : 'marked'));
     const isWrong = setKind === 'wrong';
     const title = isWrong ? L('drill') : L('marked');
+    const head = el('browseHead');
+    if (problemUcitavanja) {
+      head.innerHTML = `<h3>${escapeHtml(title)}</h3><p id="listUnavailable">${T({
+        l: 'Sačuvani napredak nije mogao da se učita. Lični spisak nije dostupan; pitanja i objašnjenja možete i dalje pregledati.',
+        c: 'Сачувани напредак није могао да се учита. Лични списак није доступан; питања и објашњења можете и даље прегледати.',
+      })}</p>`;
+      head.appendChild(noviLink(L('allQuestions'), '#/sva'));
+      el('browseList').replaceChildren(); el('browseList').hidden = true;
+      show('browse'); prikaziTrakuPregleda(); return;
+    }
     let ids, ready = [], waiting = [], stale = [];
     if (isWrong) { ({ ready, waiting } = queueSplit()); stale = zaOsvezavanje(); ids = ready.concat(waiting); }
     else ids = markedIds();
 
-    const head = el('browseHead');
-    if (!ids.length && !(isWrong && stale.length)) {
+    if (pregled) {
+      head.innerHTML = `<h3>${escapeHtml(title)}</h3><p id="listSnapshotNote" class="mut napomena">${T({
+        l: 'Prikaz sačuvanog napretka učitanog pri otvaranju kartice. Za novije podatke osvežite stranicu. Napredak se ovde ne menja.',
+        c: 'Приказ сачуваног напретка учитаног при отварању картице. За новије податке освежите страницу. Напредак се овде не мења.',
+      })}</p><div class="mut opisRed">${isWrong
+        ? `${ids.length} ${L('inQueue')}: ${ready.length} ${L('ponDanas')} · ${waiting.length} ${L('ponKasnije')}${pomocHtml()}`
+        : nQ(ids.length)}</div>${isWrong ? pomocTekstHtml('') : ''}
+        ${isWrong && stale.length ? `<p id="listStaleNote" class="mut napomena">${stale.length} ${L('osveziLbl')}. ${T({
+          l: 'Davno naučena pitanja nisu deo ovog reda za ponavljanje.',
+          c: 'Давно научена питања нису део овог реда за понављање.',
+        })}</p>` : ''}`;
+      if (!ids.length) head.insertAdjacentHTML('beforeend', `<p id="listEmpty">${T(isWrong ? {
+        l: 'U učitanom napretku nema pitanja u redu za ponavljanje.',
+        c: 'У учитаном напретку нема питања у реду за понављање.',
+      } : {
+        l: 'U učitanom napretku nema obeleženih pitanja.',
+        c: 'У учитаном напретку нема обележених питања.',
+      })}</p>`);
+      head.appendChild(noviLink(L('allQuestions'), '#/sva'));
+      veziPomoc(head);
+      if (!ids.length) {
+        el('browseList').replaceChildren(); el('browseList').hidden = true;
+        show('browse'); prikaziTrakuPregleda(); veziNaVrh(); return;
+      }
+    }
+    if (!pregled && !ids.length && !(isWrong && stale.length)) {
       // prazno stanje mora da vodi NAPRED (u radnju koja ga puni), a ne samo nazad;
       // i tekst mora da odgovara stanju: ko nije odgovorio nijedno pitanje nije ništa „savladao"
       const nista = !Q.some((q) => S.q[q.id] && S.q[q.id].a);
@@ -3138,28 +3174,29 @@
     }
     el('browseList').hidden = false;
     const origin = () => browseSet(setKind);
-    head.innerHTML = `<h3>${escapeHtml(title)}</h3>
-      <div class="mut opisRed">${isWrong
-        ? `${ids.length} ${L('inQueue')}: ${ready.length} ${L('ponDanas')} · ${waiting.length} ${L('ponKasnije')}${stale.length ? ` · ${stale.length} ${L('osveziLbl')}` : ''}${pomocHtml()}`
-        : nQ(ids.length)}</div>
-      ${isWrong ? pomocTekstHtml(stale.length ? L('osveziTip') : '') : ''}
-      <div class="qActions">
-        ${isWrong
-          ? `${ready.length ? `<button class="primary" id="bReady">${L('vezbajReady')} (${ready.length})${sfx()}</button>` : ''}
-             ${waiting.length ? `<button class="secondary" id="bAll">${L('drillWaitingBtn')} (${ids.length})${sfx()}</button>` : ''}
-             ${stale.length ? `<button class="secondary" id="bStale" title="${escapeHtml(L('osveziTip'))}">${L('osveziBtn')} (${stale.length})${sfx()}</button>` : ''}`
-          : `<button class="primary" id="bAllM">${L('vezbaj')} (${ids.length})${sfx()}</button>`}
-        ${shuffleBoxHtml()}
-      </div>
-      ${isWrong && waiting.length ? `<div class="mut napomena razmakG">${L('preRokaNapomena')}</div>` : ''}`;
-    bindNav(head);
-    bindShuffleBox(head);
-    veziPomoc(head);
-    const br = el('bReady'); if (br) br.addEventListener('click', () => startList(maybeShuffle(queueSplit().ready), shufTag(() => L('drill')), () => L('drillEmpty'), shuffleOn ? 'drill-all' : 'drill', { origin }));
-    const ba = el('bAll'); if (ba) ba.addEventListener('click', () => startList(maybeShuffle(ids), shufTag(() => L('drill')), null, 'drill-all', { origin }));
-    const bo = el('bStale'); if (bo) bo.addEventListener('click', () => startList(maybeShuffle(zaOsvezavanje()), shufTag(() => L('osveziTitle')), () => L('drillEmpty'), 'filter', { origin }));
-    const bm = el('bAllM'); if (bm) bm.addEventListener('click', () => startList(maybeShuffle(ids), shufTag(() => L('marked')), null, 'filter', { origin }));
-
+    if (!pregled) {
+      head.innerHTML = `<h3>${escapeHtml(title)}</h3>
+        <div class="mut opisRed">${isWrong
+          ? `${ids.length} ${L('inQueue')}: ${ready.length} ${L('ponDanas')} · ${waiting.length} ${L('ponKasnije')}${stale.length ? ` · ${stale.length} ${L('osveziLbl')}` : ''}${pomocHtml()}`
+          : nQ(ids.length)}</div>
+        ${isWrong ? pomocTekstHtml(stale.length ? L('osveziTip') : '') : ''}
+        <div class="qActions">
+          ${isWrong
+            ? `${ready.length ? `<button class="primary" id="bReady">${L('vezbajReady')} (${ready.length})${sfx()}</button>` : ''}
+               ${waiting.length ? `<button class="secondary" id="bAll">${L('drillWaitingBtn')} (${ids.length})${sfx()}</button>` : ''}
+               ${stale.length ? `<button class="secondary" id="bStale" title="${escapeHtml(L('osveziTip'))}">${L('osveziBtn')} (${stale.length})${sfx()}</button>` : ''}`
+            : `<button class="primary" id="bAllM">${L('vezbaj')} (${ids.length})${sfx()}</button>`}
+          ${shuffleBoxHtml()}
+        </div>
+        ${isWrong && waiting.length ? `<div class="mut napomena razmakG">${L('preRokaNapomena')}</div>` : ''}`;
+      bindNav(head);
+      bindShuffleBox(head);
+      veziPomoc(head);
+      const br = el('bReady'); if (br) br.addEventListener('click', () => startList(maybeShuffle(queueSplit().ready), shufTag(() => L('drill')), () => L('drillEmpty'), shuffleOn ? 'drill-all' : 'drill', { origin }));
+      const ba = el('bAll'); if (ba) ba.addEventListener('click', () => startList(maybeShuffle(ids), shufTag(() => L('drill')), null, 'drill-all', { origin }));
+      const bo = el('bStale'); if (bo) bo.addEventListener('click', () => startList(maybeShuffle(zaOsvezavanje()), shufTag(() => L('osveziTitle')), () => L('drillEmpty'), 'filter', { origin }));
+      const bm = el('bAllM'); if (bm) bm.addEventListener('click', () => startList(maybeShuffle(ids), shufTag(() => L('marked')), null, 'filter', { origin }));
+    }
     const list = el('browseList');
     list.innerHTML = pretragaHtml(ids.length) + legendHtml();
     const now = Date.now();
@@ -3169,13 +3206,14 @@
         const days = Math.ceil((r.due - now) / DAY);
         return ` <span class="mut">(${days <= 1 ? L('dueTomorrow') : (one(days) ? L('dueDaysOne') : L('dueDays')).replace('#', days)})</span>`;
       },
-      naKlik: (idx) => {
+      naKlik: pregled ? (_, q) => renderPregled('#/p/' + q.id) : (idx) => {
         if (shuffleOn) rowStart(ids, idx, () => title, origin);
         else startList(ids, () => title, null, isWrong ? 'drill-all' : 'filter', { startAt: idx, origin });
       },
     });
     veziPretragu(list);
     show('browse');
+    if (pregled) prikaziTrakuPregleda();
     // i ova strana ume da bude duboka (svi pogrešni, sve obeleženo) — dugme „na vrh" je i
     // ranije umelo da se pojavi ovde, ali samo ako se pre toga posetila strana koja ga pravi
     veziNaVrh();

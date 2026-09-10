@@ -133,9 +133,9 @@ async (page) => {
     const q = await c.newPage(); await q.goto(observations.href); await ready(q);
     assert(await q.locator('[data-preview]').count() === 1, 'Copied/context-menu URL cannot load preview.');
   });
-  await test('progress/exam routes explicitly explain content-only fallback', async c => {
+  await test('unsupported exam/practice and noncanonical personal routes explain fallback', async c => {
     const p = await c.newPage();
-    for (const hash of ['#/lista/wrong', '#/lista/marked', '#/pregled/0', '#/sim', '#/uci', '#/vezba', '#/vezba/c25']) {
+    for (const hash of ['#/lista/wrong/', '#/lista/marked/extra', '#/pregled/0', '#/sim', '#/uci', '#/vezba', '#/vezba/c25']) {
       await p.goto(base + '?preview=1' + hash); await ready(p);
       assert(await p.locator('#previewRouteNote').isVisible() && p.url().endsWith(hash), 'Unsupported route silently changed destination: ' + hash);
       assert(await p.locator('#browseList .qRow').count() > 0 && await p.evaluate(() => __ops.length === 0), 'Fallback lacks content or writes: ' + hash);
