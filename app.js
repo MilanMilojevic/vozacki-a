@@ -3085,20 +3085,51 @@
     if (!mozePisati()) { zahtevajZakljucanPrikaz(); return; }
     if (document.getElementById('tourDim')) return;
     let idx = 0, spot = null;
+    const fokusPre = document.activeElement;
     const dim = document.createElement('div'); dim.id = 'tourDim';
     const tip = document.createElement('div'); tip.id = 'tourTip';
     tip.setAttribute('role', 'dialog'); tip.setAttribute('aria-modal', 'false'); tip.setAttribute('aria-label', L('tourReplay'));
     document.body.append(dim, tip);
+    const pozicioniraj = () => {
+      if (!spot || !tip.isConnected) return;
+      const gornja = el('topbar').getBoundingClientRect();
+      const donja = el('donjaNav').getBoundingClientRect();
+      let vrh = Math.max(10, gornja.bottom + 10);
+      let dno = Math.min(window.innerHeight, donja.height ? donja.top : window.innerHeight) - 10;
+      // Dug tekst se pomera zasebno: dugmad vodiča ostaju vidljiva. Ako su stalne
+      // trake zauzele skoro ceo nizak ekran, vodič privremeno koristi visinu ekrana.
+      const red = tip.querySelector('.tourRow');
+      const minimum = red.offsetHeight + 40 + parseFloat(getComputedStyle(tip).fontSize) * 2.9;
+      const nizakEkran = dno - vrh < minimum;
+      if (nizakEkran) { vrh = 10; dno = window.innerHeight - 10; }
+      tip.style.zIndex = nizakEkran ? '1400' : '';
+      tip.style.maxHeight = Math.max(0, dno - vrh) + 'px';
+      const tekst = tip.querySelector('.tourText');
+      if (tekst.scrollHeight > tekst.clientHeight + 1) tekst.tabIndex = 0;
+      else tekst.removeAttribute('tabindex');
+      const r = spot.getBoundingClientRect(), th = tip.offsetHeight;
+      let top = r.bottom + 10;
+      if (top + th > dno) top = r.top - th - 10;
+      tip.style.top = Math.max(vrh, Math.min(top, dno - th)) + 'px';
+    };
+    window.addEventListener('resize', pozicioniraj);
     const clearSpot = () => { if (spot) { spot.classList.remove('tourSpot'); spot = null; } };
     const skloni = () => {
       clearSpot(); dim.remove(); tip.remove();
       window.removeEventListener('hashchange', end);
       document.removeEventListener('keydown', onKey);
+      window.removeEventListener('resize', pozicioniraj);
       zatvoriTuruBezCuvanja = null;
     };
     const end = () => {
       skloni();
       S.tour = 1; save();
+      if (el('view-home').classList.contains('active') && mozePisati()) {
+        const prethodniJeVidljiv = fokusPre && fokusPre !== document.body && fokusPre.isConnected
+          && fokusPre.getClientRects().length && !fokusPre.closest('[inert]');
+        const cilj = prethodniJeVidljiv ? fokusPre : el('glavni');
+        cilj.focus({ preventScroll: !prethodniJeVidljiv });
+      }
     };
     zatvoriTuruBezCuvanja = skloni;
     const show = () => {
@@ -3116,14 +3147,7 @@
         <span style="flex:1"></span>
         <button type="button" class="secondary sBtn" id="tourSkip">${escapeHtml(L('tourSkip'))}</button>
         <button class="primary" id="tourNext">${escapeHtml(idx === TOUR_STEPS.length - 1 ? L('tourDone') : L('tourNext'))}</button></div>`;
-      requestAnimationFrame(() => {
-        if (!spot || !tip.isConnected) return;
-        const r = spot.getBoundingClientRect();
-        const th = tip.offsetHeight;
-        let top = r.bottom + 10;
-        if (top + th > window.innerHeight - 10) top = Math.max(10, r.top - th - 10);
-        tip.style.top = top + 'px';
-      });
+      requestAnimationFrame(pozicioniraj);
       const btnNext = tip.querySelector('#tourNext');
       btnNext.addEventListener('click', next);
       btnNext.focus({ preventScroll: true });   // фокус улази у водич — тастатура ради одмах, али страна не скаче
