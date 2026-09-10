@@ -11,6 +11,14 @@ const root = path.dirname(fileURLToPath(import.meta.url));
 const HOST = '127.0.0.1';
 const PORT = Number(process.env.PORT) || 8137;
 
+// Samo javni resursi aplikacije. .gitignore ne štiti fajlove koje HTTP server čita:
+// u istoj fascikli mogu biti privatni izvozi, sirove baze i Git metapodaci.
+const PUBLIC_FILES = new Set([
+  '/index.html', '/app.js', '/style.css', '/data.js', '/explanations.js',
+  '/version.js', '/sw.js', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png',
+  '/embed.html', '/plakat.html', '/robots.txt', '/sitemap.xml',
+]);
+
 const mime = {
   '.html': 'text/html; charset=utf-8',
   '.js': 'text/javascript; charset=utf-8',
@@ -43,6 +51,12 @@ http.createServer((req, res) => {
       return;
     }
     if (p === '/') p = '/index.html';
+
+    if (!PUBLIC_FILES.has(p) && !/^\/img\/\d+\.jpg$/.test(p)) {
+      res.writeHead(403, { 'Content-Type': 'text/plain; charset=utf-8' });
+      res.end('403');
+      return;
+    }
 
     const f = path.normalize(path.join(root, p));
     // Поређење са завршним раздвојником: без тога би и суседни фолдер чије име
