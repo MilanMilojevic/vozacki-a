@@ -285,15 +285,15 @@
     autoBezDatuma: { l: '⚠ Cilj se ne može sam računati bez datuma ispita — upiši ga iznad.', c: '⚠ Циљ се не може сам рачунати без датума испита — упиши га изнад.' },
     prosaoDatum: { l: '⚠ Upisani datum ispita (@1) je prošao. Upiši novi datum, pa će cilj i procene ponovo raditi.', c: '⚠ Уписани датум испита (@1) је прошао. Упиши нови датум, па ће циљ и процене поново радити.' },
     prioNaslov: { l: 'Prioritet po težini na ispitu', c: 'Приоритет по тежини на испиту' },
-    sansaNaslov: { l: 'Šansa da položiš', c: 'Шанса да положиш' },
-    sansaKako: { l: 'Računato iz tvoje tačnosti po podoblastima i zvaničnog sastava testa (41 pitanje, @1 poena, prag @2): za svako mesto na testu koliko je verovatno da ga pogodiš, pa tačna raspodela zbira. Procena, ne obećanje — pretpostavlja da su pitanja nezavisna i da ti tačnost ostaje ista.', c: 'Рачунато из твоје тачности по подобластима и званичног састава теста (41 питање, @1 поена, праг @2): за свако место на тесту колико је вероватно да га погодиш, па тачна расподела збира. Процена, не обећање — претпоставља да су питања независна и да ти тачност остаје иста.' },
-    spremanNaslov: { l: 'Kad smeš da kažeš „spreman sam"', c: 'Кад смеш да кажеш „спреман сам"' },
+    sansaNaslov: { l: 'Uslovna procena modela', c: 'Условна процена модела' },
+    sansaKako: { l: 'Ovo nije izmerena šansa polaganja. Model koristi tvoje dosadašnje odgovore na svako pitanje i šablon ove simulacije (41 pitanje, @1 poena, prag @2). Pretpostavlja nepromenjenu tačnost i nezavisne odgovore; nije proveren prema ishodima kandidata na stvarnom ispitu.', c: 'Ово није измерена шанса полагања. Модел користи твоје досадашње одговоре на свако питање и шаблон ове симулације (41 питање, @1 поена, праг @2). Претпоставља непромењену тачност и независне одговоре; није проверен према исходима кандидата на стварном испиту.' },
+    spremanNaslov: { l: 'Kontrolna lista vežbanja', c: 'Контролна листа вежбања' },
     spremanBroj: { l: 'Bar @1 simulacija ukupno (imaš @2)', c: 'Бар @1 симулација укупно (имаш @2)' },
     spremanDani: { l: 'Rađene bar @1 različita dana (imaš @2)', c: 'Рађене бар @1 различита дана (имаш @2)' },
     spremanNiz: { l: 'Poslednje @1 položene, svaka sa bar @2 poena preko praga', c: 'Последње @1 положене, свака са бар @2 поена преко прага' },
-    spremanSansa: { l: 'Procena bar @1% (sada @2%)', c: 'Процена бар @1% (сада @2%)' },
-    spremanDa: { l: '✅ Sve četiri stavke stoje — ovo je samopouzdanje koje ima pokriće.', c: '✅ Све четири ставке стоје — ово је самопоуздање које има покриће.' },
-    spremanNe: { l: 'Jedna položena simulacija nije dokaz: da ti je stvarna šansa 70%, tri zaredom bi ti se desile u trećini slučajeva. Zato ide i procena, i razmak od bar dan između simulacija.', c: 'Једна положена симулација није доказ: да ти је стварна шанса 70%, три заредом би ти се десиле у трећини случајева. Зато иде и процена, и размак од бар дан између симулација.' },
+    spremanSansa: { l: 'Uslovna procena modela bar @1% (sada @2%)', c: 'Условна процена модела бар @1% (сада @2%)' },
+    spremanDa: { l: 'Sve stavke ovog podsetnika su ispunjene. To ne potvrđuje ishod stvarnog ispita.', c: 'Све ставке овог подсетника су испуњене. То не потврђује исход стварног испита.' },
+    spremanNe: { l: 'Ovo su ciljevi vežbanja, ne potvrda spremnosti. Pregledaj greške i vežbaj različita pitanja; ni dobre simulacije ne garantuju sledeći rezultat.', c: 'Ово су циљеви вежбања, не потврда спремности. Прегледај грешке и вежбај различита питања; ни добре симулације не гарантују следећи резултат.' },
     simUcinak: { l: 'Položeno @1 od @2 · prosek @3 poena', c: 'Положено @1 од @2 · просек @3 поена' },
     prioOpis: { l: 'Nova pitanja idu redom od podoblasti koje ispit najviše nosi (preticanje 5 pitanja, brzine 3…), pa ono što se izostavi bude ono što se retko i pojavi.', c: 'Нова питања иду редом од подобласти које испит највише носи (претицање 5 питања, брзине 3…), па оно што се изостави буде оно што се ретко и појави.' },
     planUskladi: { l: 'Uskladi cilj', c: 'Усклади циљ' },
@@ -431,10 +431,10 @@
     nextQ: { l: 'Sledeće pitanje', c: 'Следеће питање' },
     explTitle: { l: '💡 Objašnjenje', c: '💡 Објашњење' },
     explNote: { l: 'nezvanično; osnov: Zakon o bezbednosti saobraćaja (ZOBS)', c: 'незванично; основ: Закон о безбедности саобраћаја (ЗОБС)' },
-    readyTitle: { l: '🎯 Spremnost za ispit (procena)', c: '🎯 Спремност за испит (процена)' },
-    readyNote: { l: 'Ukrštanje tvoje tačnosti sa zvaničnim šablonom testa (41 pitanje, 98 poena, prag @1). Procena je pouzdanija što više vežbaš.', c: 'Укрштање твоје тачности са званичним шаблоном теста (41 питање, 98 поена, праг @1). Процена је поузданија што више вежбаш.' },
-    readyLoss: { l: 'Najviše te košta', c: 'Највише те кошта' },
-    readyRough: { l: '⚠ gruba procena — još je malo odgovora', c: '⚠ груба процена — још је мало одговора' },
+    readyTitle: { l: '🎯 Pregled pripreme', c: '🎯 Преглед припреме' },
+    readyNote: { l: 'Prikaz koristi šablon ove simulacije (41 pitanje, 98 poena, prag @1). Ponavljanje istih pitanja nije nezavisan dokaz znanja na ispitu.', c: 'Приказ користи шаблон ове симулације (41 питање, 98 поена, праг @1). Понављање истих питања није независан доказ знања на испиту.' },
+    readyLoss: { l: 'Gde model očekuje najveći gubitak poena', c: 'Где модел очекује највећи губитак поена' },
+    readyRough: { l: 'Model nije potvrđen stvarnim ishodima ispita.', c: 'Модел није потврђен стварним исходима испита.' },
     searchPh: { l: '🔎 Pretraga pitanja (tekst ili #broj)…', c: '🔎 Претрага питања (текст или #број)…' },
     // čuvar je @1, a NE #: u samoj rečenici stoji i doslovno „#broj pitanja"
     searchEmpty: { l: 'Nema pogodaka za „@1". Probaj kraću reč ili #broj pitanja.', c: 'Нема погодака за „@1". Пробај краћу реч или #број питања.' },
@@ -456,7 +456,9 @@
     simConfirm: { l: 'Da li sigurno želite završiti teorijski ispit? Nakon potvrde više nećete moći uneti bilo koju izmenu u date odgovore.', c: 'Да ли сигурно желите завршити теоријски испит? Након потврде више нећете моћи унети било коју измену у дате одговоре.' },
     importBad: { l: 'Fajl nije prepoznat kao ispravan napredak — ništa nije promenjeno.', c: 'Фајл није препознат као исправан напредак — ништа није промењено.' },
     importConfirm: { l: 'Učitavanje će ZAMENITI postojeći napredak ovim iz fajla. Nastaviti?', c: 'Учитавање ће ЗАМЕНИТИ постојећи напредак овим из фајла. Наставити?' },
-    readyNoData: { l: 'Procena se prikazuje kada odgovoriš na bar 30 pitanja (do sada: #). Uradi prvi krug, pa se vrati ovde.', c: 'Процена се приказује када одговориш на бар 30 питања (до сада: #). Уради први круг, па се врати овде.' },
+    readyNoData: { l: 'Nema dovoljno podataka za model: nedostaju odgovori na @1 pitanja. Odgovoreno: @2 / @3. Procena se prikazuje tek posle prvog odgovora na svako pitanje; tačnost iz jedne oblasti ne prenosi se na neotvorena pitanja.', c: 'Нема довољно података за модел: недостају одговори на @1 питања. Одговорено: @2 / @3. Процена се приказује тек после првог одговора на свако питање; тачност из једне области не преноси се на неотворена питања.' },
+    readyNoDataShort: { l: 'Bez procene: još @1 pitanja bez odgovora.', c: 'Без процене: још @1 питања без одговора.' },
+    readyModelUnavailable: { l: 'Model trenutno nema potpune podatke za sastav simulacije. Procena nije prikazana.', c: 'Модел тренутно нема потпуне податке за састав симулације. Процена није приказана.' },
   };
 
   // ---------- Stanje ----------
@@ -2239,42 +2241,38 @@
 
   // ---------- Spremnost za ispit: očekivani poeni po zvaničnom šablonu ----------
   function readiness() {
-    let ta = 0, tw = 0;
-    for (const q of Q) { const r = S.q[q.id]; if (r) { ta += r.a; tw += r.w; } }
-    const overall = ta >= 20 ? (ta - tw) / ta : null;
-    const subAcc = {};
-    for (const q of Q) { const r = S.q[q.id]; if (r && r.a) { const s = subAcc[q.sub] = subAcc[q.sub] || { a: 0, w: 0 }; s.a += r.a; s.w += r.w; } }
     const pOf = (q) => {
       const r = S.q[q.id];
       if (r && r.a) return (r.a - r.w + 1) / (r.a + 2);          // ublažena lična tačnost
-      const s = subAcc[q.sub];
-      if (s && s.a >= 5) return (s.a - s.w) / s.a;               // tačnost podoblasti
-      if (overall != null) return overall;                       // ukupna tačnost
-      return 0.45;                                               // nepoznato — konzervativno
+      return null; // Nepoznato nije ni netačno, ni tačnost pozajmljena iz druge oblasti.
     };
     let exp = 0;
     const loss = {};   // subs-key -> {pts, subs}
     const slotovi = [];   // {pts, p} po slotu — ulaz za tačnu raspodelu poena
     for (const slot of SIM_SLOTS) {
       const pool = Q.filter((q) => slot.s.includes(q.sub) && q.pts === slot.p);
-      if (!pool.length) continue;
-      const p = pool.reduce((a, q) => a + pOf(q), 0) / pool.length;
+      const poznato = pool.map(pOf);
+      const p = poznato.length && poznato.every((v) => v !== null)
+        ? poznato.reduce((a, v) => a + v, 0) / poznato.length : null;
       slotovi.push({ pts: slot.p, p });
+      if (p === null) continue;
       exp += slot.p * p;
       const key = slot.s.join('/');
       (loss[key] = loss[key] || { pts: 0, subs: slot.s }).pts += slot.p * (1 - p);
     }
     const answered = Q.filter((q) => S.q[q.id] && S.q[q.id].a > 0).length;
-    return { exp, loss, answered, slotovi };
+    const missing = Q.length - answered;
+    // Potpun prvi krug je uslov pokrivenosti, ne potvrda pouzdanosti modela.
+    // Broj ponavljanja jednog pitanja ne može popuniti nepoznata pitanja.
+    const modelDostupan = missing === 0 && slotovi.length > 0 && slotovi.every((s) => s.p !== null);
+    return { exp: modelDostupan ? exp : null, loss: modelDostupan ? loss : {}, answered, missing, modelDostupan, slotovi };
   }
 
-  // Šansa da položiš — TAČAN račun, ne procena. Ispit je 41 slot sa poznatim poenima (2 ili 3);
-  // ako je p verovatnoća da slot bude tačan, raspodela ZBIRA poena se dobija dinamičkim
-  // programiranjem preko 99 mogućih poena (41 × 99 koraka). Odatle P(zbir ≥ prag).
-  // Pretpostavka je nezavisnost slotova — ona je i inače pretpostavka svakog ovakvog računa,
-  // a marginale su tačne: verovatnoća slota je prosek po skupu pitanja koja u njega mogu.
+  // Tačan uslovni račun raspodele zbira za ZADATE p i nezavisne slotove.
+  // To ne potvrđuje ulazne p, šablon izvlačenja ni stvarnu šansu kandidata.
   function sansaZaProlaz(slotovi) {
-    if (!slotovi || !slotovi.length) return null;
+    if (!Array.isArray(slotovi) || !slotovi.length || slotovi.some((s) =>
+      !s || !Number.isFinite(s.p) || s.p < 0 || s.p > 1 || !Number.isInteger(s.pts) || s.pts <= 0)) return null;
     const ukupno = slotovi.reduce((a, s) => a + s.pts, 0);
     let raspodela = new Float64Array(ukupno + 1);
     raspodela[0] = 1;
@@ -2294,15 +2292,14 @@
     return { sansa, ukupno, prag: prag_ };
   }
 
-  // Kad se sme reći „spreman sam" — četiri uslova, ne osećaj. Jedna položena simulacija ne dokazuje
-  // ništa: ako je stvarna šansa 70%, tri zaredom dešavaju se u 34% slučajeva. Zato ide i procena.
+  // Postojeći ciljevi vežbanja ostaju podsetnik, ne statistički potvrđen test spremnosti.
   const SIM_MIN = 5;            // najmanje toliko simulacija ukupno
   const SIM_NIZ = 3;            // poslednje toliko moraju biti položene
   const SIM_MARGINA = 5;        // svaka sa bar toliko poena preko praga
-  const SIM_SANSA = 0.85;       // i procenjena šansa bar tolika
+  const SIM_SANSA = 0.85;       // cilj na uslovnom modelu, ne prag stvarne šanse
   function spremnost() {
     const r = readiness();
-    const s = sansaZaProlaz(r.slotovi);
+    const s = r.modelDostupan ? sansaZaProlaz(r.slotovi) : null;
     const sims = S.sims || [];
     const zadnje = sims.slice(-SIM_NIZ);
     const nizOk = zadnje.length === SIM_NIZ && zadnje.every((x) => x.score >= prag(x.total) + SIM_MARGINA);
@@ -2313,6 +2310,9 @@
       ukupno: s ? s.ukupno : SIM_PTS_MIN,
       exp: r.exp,
       odgovoreno: r.answered,
+      nedostaje: r.missing,
+      ukupnoPitanja: Q.length,
+      modelDostupan: !!s,
       broj: sims.length,
       dana: dani.size,
       nizOk,
@@ -2323,35 +2323,39 @@
       sansaOk: !!s && Math.round(s.sansa * 100) >= Math.round(SIM_SANSA * 100),
     };
   }
+  function razlogBezProcene(sp, kratko = false) {
+    return sp.nedostaje > 0 ? L(kratko ? 'readyNoDataShort' : 'readyNoData').split('@1').join(sp.nedostaje)
+      .split('@2').join(sp.odgovoreno).split('@3').join(sp.ukupnoPitanja) : L('readyModelUnavailable');
+  }
   function renderReady() {
     const { exp, loss, answered } = readiness();
-    if (answered < 30) {
-      el('readyCard').innerHTML = `<h3>${L('readyTitle')}</h3><p class="mut">${L('readyNoData').replace('#', answered)}</p>
+    const sp = spremnost();
+    const pct = sp.sansa === null ? null : Math.round(sp.sansa * 100);
+    // Činjenice o urađenim simulacijama ostaju vidljive i kada model nema podatke.
+    const stavka = (ok, tekst) => `<div class="brRed"><span>${ok ? '✓' : '✗'}</span> <span class="${ok ? '' : 'mut'}">${tekst}</span></div>`;
+    const lista = `<h3>${L('spremanNaslov')}</h3>
+      ${stavka(sp.brojOk, L('spremanBroj').split('@1').join(SIM_MIN).split('@2').join(sp.broj))}
+      ${stavka(sp.daniOk, L('spremanDani').split('@1').join(SIM_NIZ).split('@2').join(sp.dana))}
+      ${stavka(sp.nizOk, L('spremanNiz').split('@1').join(SIM_NIZ).split('@2').join(SIM_MARGINA))}
+      ${stavka(sp.sansaOk, pct === null ? razlogBezProcene(sp, true)
+        : L('spremanSansa').split('@1').join(Math.round(SIM_SANSA * 100)).split('@2').join(pct))}
+      <p class="mut napomena">${sp.brojOk && sp.daniOk && sp.nizOk && sp.sansaOk ? L('spremanDa') : L('spremanNe')}</p>`;
+    if (!sp.modelDostupan) {
+      el('readyCard').innerHTML = `<h3>${L('readyTitle')}</h3><p class="mut">${razlogBezProcene(sp)}</p>
+        ${lista}
         <div class="qActions"><button type="button" class="primary" data-nav="learn">${L('krenimo')}</button></div>`;
       bindNav(el('readyCard'));
       return;
     }
     const e = Math.round(exp);
-    const pass = e >= prag(SIM_PTS_MIN);
     const top = Object.values(loss).sort((a, b) => b.pts - a.pts).slice(0, 5);
-    const sp = spremnost();
-    const pct = sp.sansa === null ? null : Math.round(sp.sansa * 100);
-    // stavka pravila: ✓ ili ✗ i tačan broj — da se vidi šta tačno fali
-    const stavka = (ok, tekst) => `<div class="brRed"><span>${ok ? '✓' : '✗'}</span> <span class="${ok ? '' : 'mut'}">${tekst}</span></div>`;
     el('readyCard').innerHTML = `<h3>${L('readyTitle')}</h3>
-      <div class="bigScore ${pass ? 'pass' : 'fail'}">≈ ${e} / ${SIM_PTS_MIN}</div>
-      <p><span class="pill ${pass ? 'pass' : 'fail'}">${pass ? L('passed') : L('failed')}</span>
-      &nbsp;<span class="mut">${pragTekst(SIM_PTS_MIN)}</span>
-      ${answered < 150 ? `&nbsp;<span class="mut">${L('readyRough')} (${answered}/${Q.length})</span>` : ''}</p>
+      <div class="bigScore">≈ ${e} / ${SIM_PTS_MIN}</div>
+      <p><span class="mut">${pragTekst(SIM_PTS_MIN)} · ${L('readyRough')} (${answered}/${Q.length})</span></p>
       ${pct === null ? '' : `<h3>${L('sansaNaslov')}</h3>
-      <div class="bigScore ${pct >= 85 ? 'pass' : 'fail'}">${pct}%</div>
+      <div class="bigScore">${pct}%</div>
       <p class="mut napomena">${L('sansaKako').split('@1').join(sp.ukupno).split('@2').join(sp.prag)}</p>`}
-      <h3>${L('spremanNaslov')}</h3>
-      ${stavka(sp.brojOk, L('spremanBroj').split('@1').join(SIM_MIN).split('@2').join(sp.broj))}
-      ${stavka(sp.daniOk, L('spremanDani').split('@1').join(SIM_NIZ).split('@2').join(sp.dana))}
-      ${stavka(sp.nizOk, L('spremanNiz').split('@1').join(SIM_NIZ).split('@2').join(SIM_MARGINA))}
-      ${stavka(sp.sansaOk, L('spremanSansa').split('@1').join(Math.round(SIM_SANSA * 100)).split('@2').join(pct === null ? '—' : pct))}
-      <p class="mut napomena">${sp.brojOk && sp.daniOk && sp.nizOk && sp.sansaOk ? L('spremanDa') : L('spremanNe')}</p>
+      ${lista}
       <h3>${L('readyLoss')}</h3>
       <table class="stats"><tbody>${top.map((t) =>
         `<tr class="statLink" data-sub="${t.subs[0]}" tabindex="0" title="${escapeHtml(L('catOpen'))}"><td>${t.subs.map((s) => escapeHtml(subShortName(s))).join(' / ')}</td>
@@ -3107,8 +3111,8 @@
       // predlog simulacije: JEDNO pravilo za sažetak, vodič i turu — procena spremnosti
       // blizu praga (80+ od 98) i nijedna simulacija danas; u poslednjih 7 dana pred
       // ispit: po jedna dnevno.
-      const { exp, answered } = readiness();
-      const procena = answered >= 30 ? Math.round(exp) : null;
+      const sp = spremnost();
+      const procena = sp.modelDostupan ? Math.round(sp.exp) : null;
       const zadnja = S.sims.length ? S.sims[S.sims.length - 1].d : 0;
       const simDanas = zadnja && new Date(zadnja).toDateString() === new Date().toDateString();
       const doIspita = danaDoIspita();
@@ -3310,8 +3314,8 @@
     {
       // procena stoji uz dugme za ispit — tamo je i odluka „hoću li danas na simulaciju"
       const sp = spremnost();
-      const pct = sp.odgovoreno >= 30 && sp.sansa !== null ? Math.round(sp.sansa * 100) : null;
-      el('mSimSub').textContent = L('simSub') + (pct === null ? '' : ` · ${L('sansaNaslov').toLowerCase()} ${pct}%`);
+      const pct = sp.modelDostupan ? Math.round(sp.sansa * 100) : null;
+      el('mSimSub').textContent = L('simSub') + ' · ' + (pct === null ? razlogBezProcene(sp, true) : `${L('sansaNaslov').toLowerCase()} ${pct}%`);
     }
     el('mStats').textContent = L('stats');
     el('mStatsSub').textContent = L('statsSub');

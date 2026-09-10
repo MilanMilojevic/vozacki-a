@@ -819,6 +819,18 @@ async function proveraBodovanjaTestovi() {
       // monotonost: veće p nikad ne daje manju šansu
       ok('šansa: raste sa tačnošću', sz(slot(0.9)).sansa > sz(slot(0.8)).sansa);
 
+      ok('model: nepoznata verovatnoća se ne pretvara u nulu', sz([{ pts: 1, p: null }]) === null);
+      const staroQ = S().q;
+      try {
+        const Q = window.QUIZ.questions;
+        const usko150 = Q.filter((q) => q.sub === 159).concat(Q.filter((q) => q.sub === 160)).slice(0, 150);
+        for (const uzorak of [Q.slice(0, 30), usko150]) {
+          S().q = Object.fromEntries(uzorak.map((q) => [q.id, { a: 1, w: 0 }]));
+          const sp = window.__dev.spremnost();
+          ok('model: ' + uzorak.length + ' tačnih iz uskog dela baze ne daje procenu za ostatak', sp.sansa === null && !sp.sansaOk && sp.nedostaje === Q.length - uzorak.length);
+        }
+      } finally { S().q = staroQ; }
+
       // pravilo: sve četiri stavke stoje tek kad su i broj, i dani, i niz, i procena na mestu
       const staroSims = S().sims;
       const dan = 86400000, sada = Date.now();

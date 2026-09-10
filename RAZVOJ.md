@@ -208,6 +208,14 @@ npx --yes --package @playwright/cli playwright-cli -s=provera-cilja close
 и исти CLI поступак са `tools/tests/storage-recovery.browser.js` (localhost:18764).
 Браузерска провера користи синтетички испит и извоз у меморију, без корисничког фајла.
 
+Од v134 `readiness()` враћа `null` за непознате вероватноће и очекиване поене,
+а `spremnost()` излаже `modelDostupan` и број недостајућих питања. Не претварати
+`null` у нулу или тачност друге области. Први одговор на свих 1.327 питања
+омогућава условни модел, али га не валидира. Број/дани/резултати симулација
+приказују се и без модела. Историјски описи испод о „шанси” важе за старе верзије.
+Провере: `node --test tools/tests/readiness.test.mjs` и CLI
+`tools/tests/readiness.browser.js` (нови контекст, синтетички профили).
+
 ```bash
 node -e "new Function(require('fs').readFileSync('app.js','utf8'))"   # синтакса
 cd tools && node build-explanations.mjs                               # билд + скенер писма
