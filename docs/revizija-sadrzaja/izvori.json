@@ -135,6 +135,15 @@
       "checkedOn": "2026-09-10",
       "revision": "Službeni glasnik RS 85/2017, 14/2021, 21/2024 i 76/2026. Izmena 76/2026 uključila je vozače lakih električnih vozila u II-41.1; ciljane odredbe II-3 i polja za usmeravanje nisu promenjene.",
       "contentHash": "8f9b78ea7810a5d5028f3b2878773d37080cf9096a2239dc2a306101708c45d7"
+    },
+    {
+      "id": "zobs-cl7-definicije-cl51-pis-19-2025",
+      "url": "https://reg.pravno-informacioni-sistem.rs/api/viewAct/8b57d1e9-9b34-4fa0-9693-7ceb6da65486?lawActId=438311",
+      "title": "Закон о безбедности саобраћаја на путевима — редакцијски пречишћен текст",
+      "article": "Član 7, tačke 1–2, 7, 9, 21, 25–27, 68–80, 82, 86–87; član 51 stavovi 1–3",
+      "checkedOn": "2026-09-11",
+      "revision": "Службени гласник РС закључно са 19/2025, према свеже прочитаном заглављу PIS",
+      "contentHash": "8796f6a1718bea08ea4fe1dedb3c9a71001b1c6c5245a93526f365a61e668d5d"
     }
   ]
 }

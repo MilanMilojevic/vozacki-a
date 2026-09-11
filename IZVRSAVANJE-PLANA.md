@@ -30,7 +30,7 @@
 | А3 Циљ и процена спремности | Завршено | v131: reload циља; v134: непознато градиво не добија позајмљену тачност; условни модел јасно означен |
 | А4 Телефон и приступачност | Делимично, употребљива проба v165 | Тастатура, водич, ниски екран, дуге адресе, део контраста и увећање слика исправљени; остају ситни натписи/остали цртежи, читач екрана и стварни телефони |
 | А5 Кеш и алати издавања | Делимично | v128/v137: издање/кеш; алати/CI проверени; v157: аутоматски отисци слика и провера бајтова у SW; ограничење старих кешева још отворено |
-| А6 Садржај 1.327 питања | У току, почетни део базе | На v165: 15 питања reviewed, 29 in-progress, 1.283 unreviewed; картице 2 reviewed, 2 in-progress, 35 unreviewed. Свих 27 питања паркирања садржајно прочитано; део повезане визуелне провере остаје отворен |
+| А6 Садржај 1.327 питања | У току, почетни део базе | На v166: 15 питања reviewed, 60 in-progress, 2 needs-expert, 1.250 unreviewed; картице 2 reviewed, 2 in-progress, 35 unreviewed. Започета питања нису урачуната у завршена; повезане картице морају бити посебно проверене |
 | А7 Документација / права | У току | CONTRIBUTING, README, школска упутства и fork поступак допуњени; v147 поруке/метаподаци и v151 FAQ усклађени; преостаје одлука власника о лиценци |
 | Б1–Б3 Побољшања | Чека | После учвршћивања, пилот по пилот |
 | Навигација — накнадни захтев | Основни токови завршени; доградња одвојена | v146 Назад/Напред; v150 стварни линкови; v154 статистика; v158 лични спискови. v162 додаје преглед конкретног старог испита; то је доградња, не услов основне безбедности учења. v163 исправља копирани линк питања и повратак фокуса у појмовник |
@@ -406,3 +406,10 @@
 - Проба је покренута на **http://localhost:18980/** и отворена у Codex Browser-у као трајни резултат задатка. Почетна показује нула одговорених питања и аутоматски водич 1/7; нема грешака странице. То је засебно пробно стање. Оригинални Chrome и напредак нису приступани; оригинални checkout остаје чист на `main`/`dea0c10`, runtime v126.
 - За поновно локално покретање после гашења рачунара: `output/Pokreni-probu-v165.ps1`. Сервер слуша само на овом рачунару. Пробни фајлови су одвојени од даљих измена развојног checkout-а; јавни GitHub Pages сајт није објављен овим поступком.
 - Аутоматски наставак је паузиран. Садржајна ревизија остаје 15 потпуно прегледаних / 29 у току / 1.283 непрегледана питања. Следеће ограничене целине: 011 ситни натписи, преостале групе садржаја, читач екрана/стварни телефони и одлука о лиценци. Не отварати нове функције као услов ове пробе.
+
+### v166 — osam preciznijih objašnjenja osnovnih definicija
+
+- A6-013: pročitana 34 pitanja sa svim opcijama i oba pisma; upoređena sa važećim PIS tekstom ZOBS-a i originalnim slikama. Osam objašnjenja ispravljeno: 7937, 7938, 7950, 7952, 7957, 7961, 7966, 7970. Opseg i pojedinačni nalazi: `docs/revizija-sadrzaja/grupe/013-osnovne-definicije-prvi-deo.md`.
+- Nema promene zvaničnih pitanja, odgovora, ključeva, bodovanja, slika ili napretka. Ostalih 1.319 objašnjenja i svih 39 kartica ostaju identični. Izvorne zamene imaju tačnu bajtnu inverziju; sačuvana su sva četiri NUL razdvajača generatora.
+- Nezavisan sadržajni pregled, zatim root provera generisanih tekstova i originalnih slika. Stvarni browser: **32/32** (osam pitanja × dva pisma × 320/1280 px), bez grešaka stranice, horizontalnog prelivanja i upisa u sintetički S/SIM. Root direktno pregledao nove mobile/desktop snimke.
+- `node tools/verify.mjs`: **249/249**, izdanje i evidencija prolaze. Dva pitanja (7930/7931) pošteno ostaju `needs-expert`; preostale zavisne kartice nisu unapred označene kao proverene. Lokalni dokazi: `output/revizija-20260911/013/`.
