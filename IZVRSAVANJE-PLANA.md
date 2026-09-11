@@ -30,7 +30,7 @@
 | А3 Циљ и процена спремности | Завршено | v131: reload циља; v134: непознато градиво не добија позајмљену тачност; условни модел јасно означен |
 | А4 Телефон и приступачност | У току; корисничка проба остаје v165 | Развојне v169–171 поправљају табелу возила, ситне натписе паркирања и преливање дугих речи при увећању текста; раније тастатура/водич/контраст/увећање. Остали цртежи, читач екрана и стварни телефони остају у прегледу |
 | А5 Кеш и алати издавања | Делимично | v128/v137: издање/кеш; алати/CI проверени; v157: аутоматски отисци слика и провера бајтова у SW; ограничење старих кешева још отворено |
-| А6 Садржај 1.327 питања | У току, почетни део базе | На v173: 113 питања reviewed, 3 in-progress, 2 needs-expert, 1.209 unreviewed; картице 5 reviewed, 1 in-progress, 33 unreviewed. Започета питања нису урачуната у завршена; повезане картице морају бити посебно проверене |
+| А6 Садржај 1.327 питања | У току, почетни део базе | На v174: 132 питања reviewed, 28 in-progress, 2 needs-expert, 1.165 unreviewed; картице 5 reviewed, 1 in-progress, 33 unreviewed. Започета питања нису урачуната у завршена; повезане картице морају бити посебно проверене |
 | А7 Документација / права | У току | CONTRIBUTING, README, школска упутства и fork поступак допуњени; v147 поруке/метаподаци и v151 FAQ усклађени; преостаје одлука власника о лиценци |
 | Б1–Б3 Побољшања | Чека | После учвршћивања, пилот по пилот |
 | Навигација — накнадни захтев | Основни токови завршени; доградња одвојена | v146 Назад/Напред; v150 стварни линкови; v154 статистика; v158 лични спискови. v162 додаје преглед конкретног старог испита; то је доградња, не услов основне безбедности учења. v163 исправља копирани линк питања и повратак фокуса у појмовник |
@@ -462,3 +462,10 @@
 - Sačuvani svi ostali bajtovi, ključevi, bodovi, redosledi, datumi i slike. Puni builder baze nije pokrenut zbog ranije dokumentovane razlike u redosledu opcija; nije dodata nova runtime funkcija.
 - Root pročitao sve konkretne L/C parove. Chromium 72/72 prikaza, četiri prava osvežavanja, bez upisa napretka; `node tools/verify.mjs`: 249/249. Dokument: `docs/revizija-sadrzaja/grupe/021-ispravke-pisma.md`.
 - Zatvoreno još sedam ranije pregledanih pitanja koja su čekala ispravku pisma: ukupno 113 reviewed, 3 in-progress, 2 needs-expert, 1.209 unreviewed. Ovo nije semantička potvrda ostalih pitanja čiji je tekst urednički ispravljen. Oznaka `v173`, razvojna grana.
+
+### v174 — putevi, trake i zone u 44 pitanja
+
+- Pročitana cela grupa podoblasti 109/115 i sve 24 slike. Primarni propisi i svih 19 predloga prošli nezavisni drugi pregled; root dodatno pogledao svih 10 slika uz izmenjena objašnjenja.
+- Ispravljeni pogrešno imenovan prelaz, položaj bicikliste, tumačenje strelica i nepotpune definicije/uslovi. Ključevi, pitanja, slike i kartice nisu menjani.
+- Chromium 76/76, `node tools/verify.mjs` 249/249, tačna inverzija source izmena. Dokument: `docs/revizija-sadrzaja/grupe/017-putevi-i-zone.md`.
+- 19 pitanja završeno, 25 čeka završetak zajedničkih kartica; ukupno 132 reviewed, 28 in-progress, 2 needs-expert, 1.165 unreviewed. Oznaka `v174`, razvojna grana.
