@@ -431,6 +431,11 @@ body.uSimulaciji #podnozje { display: none; }
   }
   /* Uz odgovor postoji još 14px margine u unutrašnjem objašnjenju. */
   #view-question .explCard svg[style*="width:100%"] { --crtezRub: 30px; }
+  /* Pojmovnik ima 18px prostora do spoljašnjeg okvira kartice sa svake strane. */
+  #view-browse .explCard svg[style*="width:100%"] {
+    width: calc(100% + 36px) !important;
+    margin-left: -18px !important; margin-right: -18px !important;
+  }
 }
 /* traka zamki uz odgovoreno pitanje — odvojena crtom, ali bez sopstvene kartice */
 .zamkaBox { margin: 10px 0 2px; padding-top: 8px; border-top: 1px dashed var(--line); }
