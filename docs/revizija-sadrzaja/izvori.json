@@ -205,6 +205,15 @@
       "checkedOn": "2026-09-11",
       "revision": "Službeni glasnik RS zaključno sa 76/2026; aktuelni tekst i stvarne slike za pregledanu grupu",
       "contentHash": "8f9b78ea7810a5d5028f3b2878773d37080cf9096a2239dc2a306101708c45d7"
+    },
+    {
+      "id": "zobs-zdravlje-alkohol-pis-19-2025",
+      "url": "https://reg.pravno-informacioni-sistem.rs/api/viewAct/8b57d1e9-9b34-4fa0-9693-7ceb6da65486?lawActId=438311",
+      "title": "Zakon o bezbednosti saobraćaja na putevima — redakcijski prečišćen tekst PIS",
+      "article": "Članovi 91, 182, 187, 191–193 i 279–281: zdravlje, alkohol, pregledi i isključenje vozača",
+      "checkedOn": "2026-09-11",
+      "revision": "Službeni glasnik RS zaključno sa 19/2025; ponovo preuzet i upoređen 11.09.2026.",
+      "contentHash": "8796f6a1718bea08ea4fe1dedb3c9a71001b1c6c5245a93526f365a61e668d5d"
     }
   ]
 }

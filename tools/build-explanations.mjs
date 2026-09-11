@@ -3751,13 +3751,13 @@ CARDS['svetlosne-oznake'] = {
 
 CARDS['vozac-zdravlje-alkohol'] = {
   title: 'Vozač — zdravlje, umor i alkohol',
-  html: `<p><b>Osam pitanja, i jedno od njih te sigurno čeka.</b> Po izmerenom zvaničnom šablonu testa za A kategoriju, ova oblast ima <b>fiksni slot</b> — jedno pitanje, uvek <b>3 poena</b>. U bazi postoji svega 8 takvih pitanja i <b>svih 8 vredi po tri poena</b>. Test ima 41 pitanje i 98 poena, a prolaz je 84 — smeš da izgubiš svega 14 poena, pa ti jedan promašaj ovde pojede više od petine cele rezerve. A celo gradivo staje u četiri pravila.</p>
+  html: `<p><b>Osam pitanja o zdravlju, umoru i alkoholu.</b> U ovoj bazi svih osam vredi po <b>3 poena</b>. Šablon ove simulacije bira jedno pitanje iz te podoblasti; to nije garancija sastava svakog stvarnog ispita.</p>
 
 <table>
 <tr><th>Pravilo</th><th>Šta ti nude kao mamac</th></tr>
 <tr><td><b>1. Vozač A kategorije ne sme da ima alkohola u krvi</b> — nula <span class="mut">(zakon govori i o alkoholu u organizmu, ali odgovori u bazi glase „u krvi")</span></td><td>„sme najviše do 0,30 mg/ml", „sme najviše do 0,50 mg/ml"</td></tr>
-<tr><td><b>2. Umoran, bolestan ili u lošem psihičkom stanju — ne sme da vozi</b>, bez ijednog izuzetka</td><td>„na kratkom delu puta", „ako time ne ometa, odnosno ne ugrožava druge", „ne sme <b>samo</b> na javnom putu"</td></tr>
-<tr><td><b>3. Umor i bolest se utvrđuju stručnim pregledom</b></td><td>„neposrednim uvidom policijskog službenika", „pomoću odgovarajućih uređaja"</td></tr>
+<tr><td><b>2. Ako zbog umora, bolesti ili psihičkog stanja nije sposoban da bezbedno upravlja — ne sme da vozi</b></td><td>„na kratkom delu puta", „ako time ne ometa, odnosno ne ugrožava druge", „ne sme <b>samo</b> na javnom putu"</td></tr>
+<tr><td><b>3. Nesposobnost za bezbedno upravljanje zbog umora, bolesti ili psihofizičkog stanja utvrđuje se stručnim pregledom</b></td><td>„neposrednim uvidom policijskog službenika", „pomoću odgovarajućih uređaja"</td></tr>
 <tr><td><b>4. Kontrolni zdravstveni pregled: osnov je SUMNJA, cena neodazivanja je ODUZIMANJE dozvole</b></td><td>„jer je učestvovao u nezgodi", „jer je učinio više prekršaja", „privremeno će mu se zabraniti upravljanje"</td></tr>
 </table>
 
@@ -3766,15 +3766,15 @@ CARDS['vozac-zdravlje-alkohol'] = {
 <p><b>1. Nula alkohola (ZOBS čl. 187).</b> Opšte pravilo kaže da je „pod dejstvom alkohola" onaj kome se utvrdi sadržaj <b>veći od 0,20 mg/ml</b>. Tebe to ne dodiruje: vozači kategorija <b>AM, A1, A2 i A</b> su na zakonskoj listi onih kojima nije dozvoljena nijedna kap.</p>
 
 <div class="vgrid" style="grid-template-columns:1fr 1fr">
-  <div class="vg vgFast"><b>TI — moped i motocikl (AM, A1, A2, A)</b></div><div class="vg vgSlow"><b>Ostali vozači (npr. B kategorija)</b></div>
+  <div class="vg vgFast"><b>Vozači vozila kategorija AM, A1, A2 i A</b></div><div class="vg vgSlow"><b>Vozači van liste nulte tolerancije</b></div>
   <div class="vg">Ne sme da ima alkohola u organizmu — <b>0,00</b></div>
   <div class="vg">Pod dejstvom alkohola je tek <b>preko 0,20 mg/ml</b></div>
 </div>
-<p class="mut">Ni ta granica od 0,20 nije „dozvoljena čašica" — ona samo definiše od kada si po zakonu pod dejstvom alkohola. Za tebe na dvotočkašu ni nje nema. Zato se 0,20 u bazi nikada i ne pojavljuje kao ponuđen odgovor, a odgovori tipa „sme najviše do 0,30 / 0,50 mg/ml" ponuđeni su četiri puta i nijednom nisu tačni.</p>
+<p class="mut">Ni ta granica od 0,20 nije „dozvoljena čašica" — ona samo definiše od kada si po zakonu pod dejstvom alkohola. Za vozače navedenih kategorija ta opšta granica ne važi. Zato se 0,20 u bazi nikada i ne pojavljuje kao ponuđen odgovor, a odgovori tipa „sme najviše do 0,30 / 0,50 mg/ml" ponuđeni su četiri puta i nijednom nisu tačni.</p>
 
 <p><b>Ko sve mora imati nulu</b> — vredi pročitati celu listu iz istog člana, jer se pitanja prave tako što se iz nje neko izbaci ili se ubaci neko ko na njoj nije:</p>
 <table>
-<tr><td>Vozač vozila kategorija <b>AM, A1, A2 i A</b> — dakle <b>moped i motocikl</b></td></tr>
+<tr><td>Vozač vozila kategorija <b>AM, A1, A2 i A</b></td></tr>
 <tr><td><b>Kandidat za vozača</b> tokom praktične obuke i polaganja praktičnog ispita</td></tr>
 <tr><td><b>Instruktor vožnje</b> kada obavlja praktičnu obuku i <b>ispitivač</b> na praktičnom ispitu</td></tr>
 <tr><td>Vozač sa <b>probnom vozačkom dozvolom</b> i lice koje ga nadzire</td></tr>
@@ -3789,14 +3789,14 @@ CARDS['vozac-zdravlje-alkohol'] = {
 <p><b>3. Čime se šta utvrđuje.</b> Ovo pitanje se najlakše promaši, jer se u ponuđenim odgovorima mešaju aparat i pregled:</p>
 <table>
 <tr><th>Šta se utvrđuje</th><th>Čime</th></tr>
-<tr><td>Umor, bolest, psihofizičko stanje</td><td><b>Stručnim pregledom</b> — ne neposrednim uvidom policajca i ne uređajem</td></tr>
+<tr><td>Nesposobnost za bezbedno upravljanje zbog umora, bolesti ili psihofizičkog stanja</td><td><b>Stručnim pregledom</b> — ne neposrednim uvidom policajca i ne uređajem</td></tr>
 <tr><td>Alkohol i psihoaktivne supstance</td><td><b>Alkometrom, droga testom</b> i sličnim sredstvima na licu mesta; ako osporavaš rezultat, možeš tražiti analizu krvi, odnosno krvi i urina — pismeno, na licu mesta, u zapisnik</td></tr>
 </table>
 <p class="mut">Stručni pregled je po zakonu (čl. 281) pregled kojim se utvrđuju znaci poremećenosti u ponašanju koji mogu da prouzrokuju nebezbedno ponašanje u saobraćaju; na njemu stručno lice može odrediti i analizu telesnih materija. Pamti kratko: <b>aparat meri alkohol, stručno lice procenjuje stanje.</b></p>
 
 <p><b>Detalj koji se tiče baš dvotočkaša:</b> policijski službenik sme alkometru da podvrgne i <b>lice koje se prevozi</b> na biciklu, mopedu, triciklu odnosno motociklu (čl. 280) — a ti kao vozač mopeda, tricikla ili motocikla <b>ne smeš da prevoziš lice pod uticajem alkohola ni psihoaktivnih supstanci</b>. Za to odgovara <b>vozač</b> — putnikovo stanje postaje tvoja obaveza.</p>
 
-<p><b>4. Kontrolni zdravstveni pregled (čl. 191 i 192).</b> Osnov je jedan jedini: <b>sumnja</b> da zbog psihofizičkih smetnji, odnosno nedostataka, nisi u stanju bezbedno da upravljaš. Ni saobraćajna nezgoda, ni broj prekršaja u toku godine nisu zakonski osnov.</p>
+<p><b>4. Kontrolni zdravstveni pregled (čl. 191 i 192).</b> Za upućivanje prema čl. 191 potrebna je <b>sumnja</b> da zbog psihofizičkih smetnji, odnosno nedostataka, nisi u stanju bezbedno da upravljaš. Sama nezgoda ili broj prekršaja ne zamenjuju taj uslov.</p>
 <table>
 <tr><th>Pitanje</th><th>Odgovor iz zakona</th></tr>
 <tr><td>Ko se upućuje?</td><td>Vozač (i instruktor vožnje) za koga se <b>posumnja</b> da zbog psihofizičkih smetnji, odnosno nedostataka, nije u stanju bezbedno da upravlja vozilom</td></tr>
@@ -3810,12 +3810,12 @@ CARDS['vozac-zdravlje-alkohol'] = {
 <p><b>Ne mešaj tri mere</b> — test ih namerno nudi jednu umesto druge:</p>
 <table>
 <tr><th>Mera</th><th>Kad nastupa</th><th>Šta ti se dešava</th></tr>
-<tr><td>Privremeno <b>isključenje</b> vozača iz saobraćaja</td><td>Na licu mesta: očigledan umor ili bolest, alkohol, odbijanje ispitivanja ili stručnog pregleda</td><td>Ne smeš da voziš dok mera traje — <b>dozvola ostaje tvoja</b></td></tr>
+<tr><td>Privremeno <b>isključenje</b> vozača iz saobraćaja</td><td>Primeri: očigledno smanjena sposobnost zbog umora ili bolesti, nedozvoljena alkoholisanost, odbijanje ispitivanja ili stručnog pregleda</td><td>Ne smeš da voziš dok mera traje; <b>isključenje nije ista mera kao oduzimanje dozvole</b></td></tr>
 <tr><td><b>Oduzimanje dozvole</b> zbog zdravlja</td><td>Nisi se odazvao kontrolnom pregledu u roku, ili je na njemu utvrđena nesposobnost</td><td>Gubiš pravo da upravljaš vozilima tih kategorija</td></tr>
 <tr><td><b>Oduzimanje dozvole</b> zbog kaznenih poena</td><td>Kad skupiš zakonski prag poena</td><td>Vidi karticu o dozvolama</td></tr>
 </table>
 
-<p><b>Veza sa karticom „Vozačka dozvola, kazneni poeni i probna dozvola":</b> tamo, u tabeli probne dozvole, stoji red „Alkohol 0,00". Ovde vidiš odakle ta nula i zašto ti probna dozvola tu ništa ne dodaje — kao vozač <b>A kategorije</b> ti si na listi nulte tolerancije po sopstvenom osnovu, iz istog člana. Probna dozvola ti obara brzine, ne alkohol: alkohol ti je nula i sa njom i bez nje.</p>
+<p><b>Veza sa karticom „Vozačka dozvola, kazneni poeni i probna dozvola":</b> tamo, u tabeli probne dozvole, stoji red „Alkohol 0,00". Ovde vidiš odakle ta nula i zašto ti probna dozvola tu ništa ne dodaje — kao vozač <b>A kategorije</b> ti si na listi nulte tolerancije po sopstvenom osnovu, iz istog člana. Probna dozvola ti po opštem pravilu obara brzine, ne alkohol: alkohol ti je nula i sa njom i bez nje.</p>
 <p class="mut">Dalje: šta policija radi na licu mesta — kartica „Isključenje vozača iz saobraćaja i zadržavanje"; kolika je sankcija — kartica „Kaznene klase".</p>`,
 };
 

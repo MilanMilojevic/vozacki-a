@@ -30,7 +30,7 @@
 | А3 Циљ и процена спремности | Завршено | v131: reload циља; v134: непознато градиво не добија позајмљену тачност; условни модел јасно означен |
 | А4 Телефон и приступачност | У току; корисничка проба остаје v165 | Развојне v169–171 поправљају табелу возила, ситне натписе паркирања и преливање дугих речи при увећању текста; раније тастатура/водич/контраст/увећање. Остали цртежи, читач екрана и стварни телефони остају у прегледу |
 | А5 Кеш и алати издавања | Делимично | v128/v137: издање/кеш; алати/CI проверени; v157: аутоматски отисци слика и провера бајтова у SW; ограничење старих кешева још отворено |
-| А6 Садржај 1.327 питања | У току, почетни део базе | На v175: 156 питања reviewed, 4 in-progress, 2 needs-expert, 1.165 unreviewed; картице 6 reviewed, 1 in-progress, 32 unreviewed. Започета питања нису урачуната у завршена; повезане картице морају бити посебно проверене |
+| А6 Садржај 1.327 питања | У току, почетни део базе | На v176: 156 питања reviewed, 4 in-progress, 2 needs-expert, 1.165 unreviewed; картице 7 reviewed, 1 in-progress, 31 unreviewed. Започета питања нису урачуната у завршена; повезане картице морају бити посебно проверене |
 | А7 Документација / права | У току | CONTRIBUTING, README, школска упутства и fork поступак допуњени; v147 поруке/метаподаци и v151 FAQ усклађени; преостаје одлука власника о лиценци |
 | Б1–Б3 Побољшања | Чека | После учвршћивања, пилот по пилот |
 | Навигација — накнадни захтев | Основни токови завршени; доградња одвојена | v146 Назад/Напред; v150 стварни линкови; v154 статистика; v158 лични спискови. v162 додаје преглед конкретног старог испита; то је доградња, не услов основне безбедности учења. v163 исправља копирани линк питања и повратак фокуса у појмовник |
@@ -476,3 +476,9 @@
 - Root pročitao završni tekst oba pisma i pregledao crtež. Chromium 12/12 prikaza pojmovnika i 8/8 uz pitanje; deset situacija i svi njihovi natpisi tačno odgovaraju bazi, bez prelivanja ili preklapanja. Najmanji font12,09375px u pojmovniku i13,5px uz pitanje; kontrast najmanje4,795:1.
 - `node tools/verify.mjs`:249/249; izvorna inverzija i četiri NUL očuvani. Dokument: `docs/revizija-sadrzaja/grupe/019-put-pojmovi.md`.
 - Zatvorena kartica i24 zavisna pitanja: ukupno156 reviewed,4 in-progress,2 needs-expert,1.165 unreviewed. Oznaka `v175`, razvojna grana; korisnička proba18980 i dalje je v165.
+
+### v176 — tačni uslovi zdravlja, umora i alkohola
+
+- Završena cela kartica vozac-zdravlje-alkohol: 12 zamena teksta, bez novih funkcija ili promene pitanja i ključeva. Precizirani zakonski uslovi i nulta tolerancija; uklonjena garancija pitanja na budućem ispitu.
+- Root proverio primarni propis i oba završna pisma; Chromium 16/16 pojmovnika i 16/16 veza uz pitanja, bez prelivanja ili upisa napretka. `node tools/verify.mjs`: 249/249.
+- Dokument: `docs/revizija-sadrzaja/grupe/026-zdravlje-umor-alkohol.md`. Kartice ukupno 7 reviewed, 1 in-progress, 31 unreviewed. Broj završenih pitanja se ne povećava dok se ne primeni njihov pojedinačni pregled A6-018. Korisnička proba 18980 i dalje je v165.
