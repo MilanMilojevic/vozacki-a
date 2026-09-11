@@ -28,9 +28,9 @@
 | А1 Безбедна провера бодовања | Завршено | v129: 27 синтетичких провера и стварни reload/опоравак; поступак у RAZVOJ.md |
 | А2 Опоравак, историја и копије | Основне исправке завршене | v130/v133/v136/v140/v143: историја, опоравак, ред уписа, један писач и тачан статус резерве; нови захтев за преглед у другом табу мора очувати ове заштите |
 | А3 Циљ и процена спремности | Завршено | v131: reload циља; v134: непознато градиво не добија позајмљену тачност; условни модел јасно означен |
-| А4 Телефон и приступачност | Делимично, употребљива проба v165 | Тастатура, водич, ниски екран, дуге адресе, део контраста и увећање слика исправљени; остају ситни натписи/остали цртежи, читач екрана и стварни телефони |
+| А4 Телефон и приступачност | У току; корисничка проба остаје v165 | Развојна v169 поправља табелу возила, v170 ситне натписе паркирања; раније тастатура/водич/контраст/увећање. Остали цртежи, преломи при200% текста, читач екрана и стварни телефони остају у прегледу |
 | А5 Кеш и алати издавања | Делимично | v128/v137: издање/кеш; алати/CI проверени; v157: аутоматски отисци слика и провера бајтова у SW; ограничење старих кешева још отворено |
-| А6 Садржај 1.327 питања | У току, почетни део базе | На v169: 29 питања reviewed, 87 in-progress, 2 needs-expert, 1.209 unreviewed; картице 3 reviewed, 2 in-progress, 34 unreviewed. Започета питања нису урачуната у завршена; повезане картице морају бити посебно проверене |
+| А6 Садржај 1.327 питања | У току, почетни део базе | На v170: 55 питања reviewed, 61 in-progress, 2 needs-expert, 1.209 unreviewed; картице 4 reviewed, 1 in-progress, 34 unreviewed. Започета питања нису урачуната у завршена; повезане картице морају бити посебно проверене |
 | А7 Документација / права | У току | CONTRIBUTING, README, школска упутства и fork поступак допуњени; v147 поруке/метаподаци и v151 FAQ усклађени; преостаје одлука власника о лиценци |
 | Б1–Б3 Побољшања | Чека | После учвршћивања, пилот по пилот |
 | Навигација — накнадни захтев | Основни токови завршени; доградња одвојена | v146 Назад/Напред; v150 стварни линкови; v154 статистика; v158 лични спискови. v162 додаје преглед конкретног старог испита; то је доградња, не услов основне безбедности учења. v163 исправља копирани линк питања и повратак фокуса у појмовник |
@@ -434,3 +434,10 @@
 - Uklonjene četiri nerelevantne direktne veze (7990,8667–8669). Sva individualna objašnjenja, originalna pitanja/slike/ključevi i 38 drugih kartica identični su v168. Root proverio tačnu inverziju izvornih zamena i nepromenjene SVG oblike/boje.
 - Browser **24/24** (oba pisma/teme,320/390/1280,normalan i povećan font) + **6/6** stvarnih tokova veza; novi snimci direktno pregledani. `node tools/verify.mjs`: **249/249** i evidencija prolaze.
 - Po završenoj kartici i ranijem pojedinačnom pregledu014 zatvoreno je14 pitanja; druga pitanja nisu zatvarana preko nerelevantne kartice. Detalji u `docs/revizija-sadrzaja/grupe/015-kategorije-vozila.md`.
+
+### v170 — čitljiviji natpisi parkiranja
+
+- Završen A6-011: 90 oznaka u18 postojećih SVG sada ima najmanje12,65 umesto9,27px na320px ekranu. Lokalno prelamanje i pomeranje čuva sve reči, ARIA, pravila, tabele, boje i postojeću animaciju. Nema promene pitanja/ključeva, individualnih objašnjenja ili ostalih kartica.
+- Root nezavisno potvrdio **48/912** prikaza, **54/54** toka pitanja, **24/24** uvećanja i **8/8** položaja animacije; pregledao12 kandidatskih ičetiri nova integrisana crteža i uvećani prikaz17. Autor ponovio trajne kontrastne provere728 teksta i120+216 oblika/obruba. Precizni izvori i granice su u `docs/revizija-sadrzaja/grupe/011-parkiranje-citljivost.md`.
+- Kartica i26 pitanja su sada završeni;10061 ostaje otvoren zbog druge kartice. Horizontalno prelivanje jednog pasusa pri200% teksta već je izdvojeno u zasebni A4-020, nije problem SVG-a i nije prećutano.
+- `node tools/verify.mjs`: **249/249**, izdanje i evidencija prolaze. GitHub CI za v167, v168 i v169 potvrđen success (34575995527,34576603536,34577603081).

@@ -1398,26 +1398,26 @@ CARDS['parkiranje'] = {
 <tr><td>biciklistička staza/traka, zaklanjanje znaka</td><td>zabranjeno</td></tr>
 </table>
 <p>Tabela sažima osnovne zabrane. Izuzetak za manje od 5 m posle raskrsnice ili pešačkog/biciklističkog prelaza u jednosmernoj ulici i ostali izuzeci objašnjeni su ispod; ne odnose se automatski na svako mesto sa spiska.</p>
-<svg viewBox="0 0 306 132" role="img" aria-label="dvosmerni put sa pešačkim prelazom i oznakom autobuskog stajališta na kolovozu: osnovna zabrana zaustavljanja i parkiranja 5 m sa obe strane prelaza i 15 m ispred i iza oznake stajališta" style="max-width:306px;width:100%;display:block;margin:6px auto">
+<svg viewBox="0 0 306 142" role="img" aria-label="dvosmerni put sa pešačkim prelazom i oznakom autobuskog stajališta na kolovozu: osnovna zabrana zaustavljanja i parkiranja 5 m sa obe strane prelaza i 15 m ispred i iza oznake stajališta" style="max-width:306px;width:100%;display:block;margin:6px auto">
   <rect x="0" y="40" width="306" height="46" fill="#6b7280"/>
   <rect x="70" y="40" width="26" height="46" fill="none"/>
   <g fill="#fff"><rect x="72" y="43" width="22" height="6"/><rect x="72" y="54" width="22" height="6"/>
 <rect x="72" y="65" width="22" height="6"/><rect x="72" y="76" width="22" height="6"/></g>
   <rect x="190" y="40" width="50" height="46" fill="#e0a030" opacity="0.55"/>
-<text x="215" y="68" text-anchor="middle" font-size="12" font-weight="bold" fill="#111827">BUS</text>
+<text x="215" y="68" text-anchor="middle" font-size="15" font-weight="bold" fill="#111827">BUS</text>
   <path d="M40 26 L70 26" stroke="#fff" stroke-width="4"/>
 <path d="M40 26 L70 26" stroke="#c0392b" stroke-width="2"/><path d="M96 26 L126 26" stroke="#fff" stroke-width="4"/>
 <path d="M96 26 L126 26" stroke="#c0392b" stroke-width="2"/>
-  <text x="55" y="19" text-anchor="middle" font-size="12" fill="currentColor" font-weight="bold">5 m</text>
-  <text x="111" y="19" text-anchor="middle" font-size="12" fill="currentColor" font-weight="bold">5 m</text>
+  <text x="55" y="19" text-anchor="middle" font-size="15" fill="currentColor" font-weight="bold">5 m</text>
+  <text x="111" y="19" text-anchor="middle" font-size="15" fill="currentColor" font-weight="bold">5 m</text>
   <path d="M150 26 L190 26" stroke="#fff" stroke-width="4"/>
 <path d="M150 26 L190 26" stroke="#c0392b" stroke-width="2"/><path d="M240 26 L280 26" stroke="#fff" stroke-width="4"/>
 <path d="M240 26 L280 26" stroke="#c0392b" stroke-width="2"/>
-  <text x="215" y="19" text-anchor="middle" font-size="12" fill="currentColor" font-weight="bold">15 m + 15 m</text>
-  <text x="83" y="108" text-anchor="middle" font-size="11" fill="currentColor" opacity=".75">zona zabrane</text>
-  <text x="83" y="122" text-anchor="middle" font-size="11" fill="currentColor" opacity=".75">oko prelaza</text>
-  <text x="215" y="108" text-anchor="middle" font-size="11" fill="currentColor" opacity=".75">zona oko</text>
-  <text x="215" y="122" text-anchor="middle" font-size="11" fill="currentColor" opacity=".75">stajališta</text>
+  <text x="215" y="19" text-anchor="middle" font-size="15" fill="currentColor" font-weight="bold">15 m + 15 m</text>
+  <text x="83" y="110" text-anchor="middle" font-size="15" fill="currentColor" opacity=".75">zona zabrane</text>
+  <text x="83" y="130" text-anchor="middle" font-size="15" fill="currentColor" opacity=".75">oko prelaza</text>
+  <text x="215" y="110" text-anchor="middle" font-size="15" fill="currentColor" opacity=".75">zona oko</text>
+  <text x="215" y="130" text-anchor="middle" font-size="15" fill="currentColor" opacity=".75">stajališta</text>
 </svg>
 <p class="mut"><b>Pamćenje:</b> „5 - 5 - 5 - 15 - 3“ sažima osnovne udaljenosti. Izuzeci i mesta od kojih se meri navedeni su uz pravila ispod.</p>
 
@@ -1446,8 +1446,8 @@ CARDS['parkiranje'] = {
 
 <div class="kPodH"><b class="kPodNaslov">Uz koju ivicu se staje</b>
 <svg viewBox="0 0 306 140" role="img" aria-label="pogled odozgo na dvosmerni put: vozilo uz levu ivicu je precrtano, a vozilo uz desnu ivicu u tvom smeru nosi zelenu kvačicu" style="max-width:306px;width:100%;display:block;margin:6px auto">
-  <text x="6" y="14" text-anchor="start" font-size="12" font-weight="bold" fill="currentColor">DVOSMERNI PUT</text>
-  <text x="72" y="33" text-anchor="middle" font-size="12" fill="currentColor">leva ivica — ne sme</text>
+  <text x="6" y="17" text-anchor="start" font-size="15" font-weight="bold" fill="currentColor">DVOSMERNI PUT</text>
+  <text x="80" y="34.5" text-anchor="middle" font-size="15" fill="currentColor">leva ivica — ne sme</text>
   <rect x="0" y="38" width="306" height="70" fill="#6b7280"/>
   <path d="M0 73 H306" stroke="#fff" stroke-width="2" stroke-dasharray="14 10" fill="none"/>
   <path d="M210 52 H150 M162 46 L150 52 L162 58" stroke="#fff" stroke-width="2" fill="none"/>
@@ -1458,12 +1458,12 @@ CARDS['parkiranje'] = {
   <path d="M114 93 L122 101 L138 81" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round"/>
 <path d="M114 93 L122 101 L138 81" stroke="#1f7a3f" stroke-width="4" fill="none" stroke-linecap="round"/>
   <path d="M170 92 H250 M238 86 L250 92 L238 98" stroke="#06223a" stroke-width="3" fill="none"/>
-  <text x="164" y="96" text-anchor="end" font-size="12" font-weight="bold" fill="#fff">TI</text>
-  <text x="72" y="126" text-anchor="middle" font-size="12" fill="currentColor">desna ivica — sme</text>
+  <text x="164" y="96" text-anchor="end" font-size="15" font-weight="bold" fill="#fff">TI</text>
+  <text x="72" y="126" text-anchor="middle" font-size="15" fill="currentColor">desna ivica — sme</text>
 </svg>
 <svg viewBox="0 0 306 140" role="img" aria-label="pogled odozgo na jednosmerni put: i vozilo uz levu i vozilo uz desnu ivicu nose zelenu kvačicu, oba su dozvoljena" style="max-width:306px;width:100%;display:block;margin:6px auto">
-  <text x="6" y="14" text-anchor="start" font-size="12" font-weight="bold" fill="currentColor">JEDNOSMERNI PUT</text>
-  <text x="72" y="33" text-anchor="middle" font-size="12" fill="currentColor">leva ivica — sme</text>
+  <text x="6" y="17" text-anchor="start" font-size="15" font-weight="bold" fill="currentColor">JEDNOSMERNI PUT</text>
+  <text x="72" y="34.5" text-anchor="middle" font-size="15" fill="currentColor">leva ivica — sme</text>
   <rect x="0" y="38" width="306" height="70" fill="#6b7280"/>
   <path d="M0 73 H306" stroke="#fff" stroke-width="2" stroke-dasharray="14 10" fill="none"/>
   <path d="M150 52 H210 M198 46 L210 52 L198 58" stroke="#fff" stroke-width="2" fill="none"/>
@@ -1474,16 +1474,16 @@ CARDS['parkiranje'] = {
   <path d="M114 93 L122 101 L138 81" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round"/>
 <path d="M114 93 L122 101 L138 81" stroke="#1f7a3f" stroke-width="4" fill="none" stroke-linecap="round"/>
   <path d="M170 92 H250 M238 86 L250 92 L238 98" stroke="#06223a" stroke-width="3" fill="none"/>
-  <text x="164" y="96" text-anchor="end" font-size="12" font-weight="bold" fill="#fff">TI</text>
-  <text x="72" y="126" text-anchor="middle" font-size="12" fill="currentColor">desna ivica — sme</text>
+  <text x="164" y="96" text-anchor="end" font-size="15" font-weight="bold" fill="#fff">TI</text>
+  <text x="72" y="126" text-anchor="middle" font-size="15" fill="currentColor">desna ivica — sme</text>
 </svg>
 <p><b>Rečima:</b> na putu na kome se saobraćaj odvija <b>u oba smera</b> vozilo se zaustavlja i parkira neposredno uz <b>desnu</b> ivicu kolovoza, pa ponude "desnu ili levu ivicu" i "levu ivicu" padaju. Na <b>jednosmernom</b> putu smeš uz <b>desnu ili levu</b> ivicu, pa tu padaju ponude "samo uz desnu" i "samo uz levu" (čl. 64 st. 2). Ponude su u ta dva pitanja gotovo iste (desna · desna ili leva · leva), pa prvo pročitaj da li se saobraćaj odvija u oba smera ili samo u jednom — od toga zavisi koja od njih je tačna.</p>
 <p class="mut">Boje na crtežima: zeleno je ono što pitanje dopušta, crveno je zabrana ili opasnost (pa i pojas koji se meri i putanja koja preti), a plava strelica pokazuje tvoj smer kretanja.</p>
 <svg viewBox="0 0 306 152" role="img" aria-label="pogled odozgo: uz desnu ivicu kolovoza idu tramvajske šine, vozilo koje je uz tu ivicu stalo na njima je precrtano, a sa leve strane po šinama nailazi šinsko vozilo" style="max-width:306px;width:100%;display:block;margin:6px auto">
-  <text x="6" y="14" text-anchor="start" font-size="12" font-weight="bold" fill="currentColor">ŠINE UZ DESNU IVICU KOLOVOZA</text>
+  <text x="6" y="18" text-anchor="start" font-size="15" font-weight="bold" fill="currentColor">ŠINE UZ DESNU IVICU KOLOVOZA</text>
   <rect x="0" y="22" width="306" height="94" fill="#6b7280"/>
   <path d="M60 44 H140 M128 38 L140 44 L128 50" stroke="#06223a" stroke-width="3" fill="none"/>
-  <text x="54" y="48" text-anchor="end" font-size="12" font-weight="bold" fill="#fff">TI</text>
+  <text x="54" y="48" text-anchor="end" font-size="15" font-weight="bold" fill="#fff">TI</text>
   <g stroke="#111827" stroke-width="3" opacity="1" fill="none"><path d="M8 84 V112"/><path d="M32 84 V112"/><path d="M56 84 V112"/><path d="M80 84 V112"/><path d="M104 84 V112"/><path d="M128 84 V112"/><path d="M152 84 V112"/><path d="M176 84 V112"/><path d="M200 84 V112"/><path d="M224 84 V112"/><path d="M248 84 V112"/><path d="M272 84 V112"/><path d="M296 84 V112"/></g>
   <path d="M0 90 H306 M0 106 H306" stroke="#111827" stroke-width="4" fill="none"/>
   <g class="animSinskoPrilazi">
@@ -1496,24 +1496,24 @@ CARDS['parkiranje'] = {
   <rect x="150" y="82" width="96" height="30" rx="5" fill="#111827"/>
   <path d="M156 85 L240 109 M240 85 L156 109" stroke="#fff" stroke-width="5" fill="none"/>
 <path d="M156 85 L240 109 M240 85 L156 109" stroke="#c0392b" stroke-width="3" fill="none"/>
-  <text x="153" y="140" text-anchor="middle" font-size="12" fill="currentColor">tu se ne zaustavlja i ne parkira</text>
+  <text x="153" y="140" text-anchor="middle" font-size="15" fill="currentColor">tu se ne zaustavlja i ne parkira</text>
 </svg>
 <svg viewBox="0 0 306 146" role="img" aria-label="pogled odozgo na put van naselja: vozilo sklonjeno van kolovoza na bankinu nosi zelenu kvačicu, a vozilo koje je ostalo na kolovozu nosi napomenu samo ako van kolovoza ne može" style="max-width:306px;width:100%;display:block;margin:6px auto">
-  <text x="6" y="14" text-anchor="start" font-size="12" font-weight="bold" fill="currentColor">PUT VAN NASELJA</text>
+  <text x="6" y="18" text-anchor="start" font-size="15" font-weight="bold" fill="currentColor">PUT VAN NASELJA</text>
   <rect x="0" y="20" width="306" height="20" fill="currentColor" opacity="0.14"/>
   <rect x="0" y="40" width="306" height="62" fill="#6b7280"/>
   <rect x="0" y="102" width="306" height="26" fill="currentColor" opacity="0.14"/>
   <rect x="20" y="46" width="80" height="24" rx="4" fill="#111827"/>
-  <text x="196" y="60" text-anchor="middle" font-size="12" fill="#fff">samo ako van kolovoza ne može</text>
+  <text x="196" y="60" text-anchor="middle" font-size="15" fill="#fff"><tspan x="196" y="52">samo ako van kolovoza </tspan><tspan x="196" y="72">ne može</tspan></text>
   <rect x="176" y="104" width="80" height="24" rx="4" fill="#111827" stroke="currentColor" stroke-width="1.5"/>
   <path d="M264 118 L272 126 L288 106" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round"/>
 <path d="M264 118 L272 126 L288 106" stroke="#1f7a3f" stroke-width="4" fill="none" stroke-linecap="round"/>
-  <text x="86" y="122" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">VAN KOLOVOZA</text>
-  <text x="153" y="142" text-anchor="middle" font-size="12" fill="currentColor">kad god za to postoji mogućnost</text>
+  <text x="86" y="122" text-anchor="middle" font-size="15" font-weight="bold" fill="currentColor">VAN KOLOVOZA</text>
+  <text x="153" y="142" text-anchor="middle" font-size="15" fill="currentColor">kad god za to postoji mogućnost</text>
 </svg>
 <p><b>Šine uz desnu ivicu:</b> ako se uz desnu ivicu kolovoza nalaze tramvajske ili druge šine, tu ne smeš ni da zaustaviš ni da parkiraš (čl. 64 st. 3) — šinsko vozilo ne može da te obiđe. <b>Van naselja:</b> uvek kada za to postoji mogućnost, vozilo se zaustavlja ili parkira <b>van kolovoza</b> (čl. 64 st. 1), dakle na bankinu ili proširenje pre nego uz ivicu kolovoza; ponuda "uvek zaustavi ili parkira vozilo na kolovozu" je zamka.</p>
 <svg viewBox="0 0 306 132" role="img" aria-label="pogled odozgo: mesta na sredini kolovoza označena plavim znakom za parkiranje i belim parking linijama; vozilo je u obeleženom mestu, a saobraćaj teče trakama sa obe strane" style="max-width:306px;width:100%;display:block;margin:6px auto">
-  <text x="6" y="14" text-anchor="start" font-size="12" font-weight="bold" fill="currentColor">OBELEŽENO ZNAKOM ZA PARKIRANJE</text>
+  <text x="6" y="18" text-anchor="start" font-size="15" font-weight="bold" fill="currentColor">OBELEŽENO ZNAKOM ZA PARKIRANJE</text>
   <rect x="0" y="22" width="306" height="88" fill="#6b7280"/>
   <path d="M40 36 H120 M108 30 L120 36 L108 42" stroke="#fff" stroke-width="2" fill="none"/>
   <rect x="200" y="26" width="60" height="18" rx="3" fill="#111827"/>
@@ -1527,10 +1527,10 @@ CARDS['parkiranje'] = {
   <path d="M278 79 V90" stroke="currentColor" stroke-width="2"/>
   <rect x="264" y="48" width="28" height="31" rx="2" fill="#2c6aa0" stroke="#fff" stroke-width="1.5"/>
   <text x="278" y="71" text-anchor="middle" font-size="23" font-weight="bold" fill="#fff">P</text>
-  <text x="153" y="126" text-anchor="middle" font-size="12" fill="currentColor">sme se parkirati</text>
+  <text x="153" y="126" text-anchor="middle" font-size="15" fill="currentColor">sme se parkirati</text>
 </svg>
 <svg viewBox="0 0 306 132" role="img" aria-label="pogled odozgo: ista sredina kolovoza bez ijedne oznake, vozilo koje je tu stalo je precrtano crvenom bojom" style="max-width:306px;width:100%;display:block;margin:6px auto">
-  <text x="6" y="14" text-anchor="start" font-size="12" font-weight="bold" fill="currentColor">NIJE OBELEŽENO</text>
+  <text x="6" y="18" text-anchor="start" font-size="15" font-weight="bold" fill="currentColor">NIJE OBELEŽENO</text>
   <rect x="0" y="22" width="306" height="88" fill="#6b7280"/>
   <path d="M40 36 H120 M108 30 L120 36 L108 42" stroke="#fff" stroke-width="2" fill="none"/>
   <rect x="200" y="26" width="60" height="18" rx="3" fill="#111827"/>
@@ -1539,16 +1539,16 @@ CARDS['parkiranje'] = {
 <path d="M124 56 L186 78 M186 56 L124 78" stroke="#c0392b" stroke-width="3" fill="none"/>
   <path d="M266 96 H186 M198 90 L186 96 L198 102" stroke="#fff" stroke-width="2" fill="none"/>
   <rect x="46" y="88" width="60" height="18" rx="3" fill="#111827"/>
-  <text x="153" y="126" text-anchor="middle" font-size="12" fill="currentColor">ne sme, ma koliko prostora bilo</text>
+  <text x="153" y="126" text-anchor="middle" font-size="15" fill="currentColor">ne sme, ma koliko prostora bilo</text>
 </svg>
 <p><b>Sredina kolovoza:</b> zaustavljanje ili parkiranje dopušteno je samo na mestima koja su <b>saobraćajnim znakom obeležena za parkiranje</b> (čl. 64 st. 4). Sam slobodan prostor nije dovoljan. I na obeleženom mestu ostaje opšta zabrana ugrožavanja i ometanja drugih (čl. 62).</p>
 </div>
 
 <div class="kPodH"><b class="kPodNaslov">Raskrsnica i pojas od 5 m</b>
 <svg viewBox="0 0 306 206" role="img" aria-label="osnovni primer raskrsnice na dvosmernom putu: obeleženi su raskrsnica i pojas od pet metara sa obe strane najbliže ivice poprečnog kolovoza; vozilo u pojasu je precrtano; izuzetak za jednosmernu ulicu objašnjen je u tekstu" style="max-width:306px;width:100%;display:block;margin:6px auto">
-  <text x="153" y="14" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">RASKRSNICA I POJAS OD 5 m</text>
-  <text x="90" y="34" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">5 m</text>
-  <text x="216" y="34" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">5 m</text>
+  <text x="153" y="18" text-anchor="middle" font-size="15" font-weight="bold" fill="currentColor">RASKRSNICA I POJAS OD 5 m</text>
+  <text x="90" y="38" text-anchor="middle" font-size="15" font-weight="bold" fill="currentColor">5 m</text>
+  <text x="216" y="38" text-anchor="middle" font-size="15" font-weight="bold" fill="currentColor">5 m</text>
   <g stroke="#fff" stroke-width="3.5" fill="none"><path d="M63 40 H118"/><path d="M63 36 V44"/><path d="M118 36 V44"/><path d="M188 40 H243"/><path d="M188 36 V44"/><path d="M243 36 V44"/></g>
 <g stroke="#c0392b" stroke-width="1.5" fill="none"><path d="M63 40 H118"/><path d="M63 36 V44"/><path d="M118 36 V44"/><path d="M188 40 H243"/><path d="M188 36 V44"/><path d="M243 36 V44"/></g>
   <rect x="0" y="48" width="306" height="64" fill="#6b7280"/>
@@ -1557,18 +1557,18 @@ CARDS['parkiranje'] = {
   <rect x="118" y="48" width="70" height="64" fill="#c0392b" opacity="0.34"/>
   <path d="M63 46 V116 M243 46 V116" stroke="#fff" stroke-width="3.5" stroke-dasharray="5 5" fill="none"/>
 <path d="M63 46 V116 M243 46 V116" stroke="#c0392b" stroke-width="1.5" stroke-dasharray="5 5" fill="none"/>
-  <text x="153" y="84" text-anchor="middle" font-size="12" fill="#fff">raskrsnica</text>
+  <text x="153" y="84" text-anchor="middle" font-size="15" fill="#fff">raskrsnica</text>
   <rect x="68" y="60" width="46" height="22" rx="4" fill="#111827"/>
   <path d="M72 62 L110 80 M110 62 L72 80" stroke="#fff" stroke-width="4.5" fill="none"/>
 <path d="M72 62 L110 80 M110 62 L72 80" stroke="#c0392b" stroke-width="2.5" fill="none"/>
-  <text x="6" y="104" text-anchor="start" font-size="12" font-weight="bold" fill="#fff">TI</text>
+  <text x="6" y="104" text-anchor="start" font-size="15" font-weight="bold" fill="#fff">TI</text>
   <path d="M24 100 H58 M48 94 L58 100 L48 106" stroke="#06223a" stroke-width="3" fill="none"/>
-  <text x="246" y="140" text-anchor="middle" font-size="12" fill="currentColor">tvoja desna strana</text>
-  <text x="153" y="198" text-anchor="middle" font-size="12" fill="currentColor">ne staje se ni u pojasu ni na raskrsnici</text>
+  <text x="246" y="140" text-anchor="middle" font-size="15" fill="currentColor"><tspan x="246" y="134">tvoja desna </tspan><tspan x="246" y="154">strana</tspan></text>
+  <text x="153" y="198" text-anchor="middle" font-size="15" fill="currentColor">ne staje se ni u pojasu ni na raskrsnici</text>
 </svg>
 <p><b>Raskrsnica:</b> zabranjeno je zaustavljanje i parkiranje na njoj i na manje od 5 m od najbliže ivice poprečnog kolovoza (čl. 66 st. 1 t. 3). Crtež prikazuje osnovno pravilo za dvosmerni put. U jednosmernoj ulici dozvoljeno je i manje od 5 m <b>posle raskrsnice</b>, gledano u dozvoljenom smeru (st. 2). Primer zaklonjenog pogleda ispod objašnjava opasnost; nije tumačenje zvanične slike #10142.</p>
 <svg viewBox="0 0 306 178" role="img" aria-label="pogled odozgo: vozilo parkirano u pojasu ispred raskrsnice zaklanja pogled vozilu koje izlazi iz poprečnog puta, crvena isprekidana linija pokazuje zaklonjeni pogled" style="max-width:306px;width:100%;display:block;margin:6px auto">
-  <text x="6" y="14" text-anchor="start" font-size="12" font-weight="bold" fill="currentColor">ZAŠTO: VOZILO ZAKLANJA POGLED</text>
+  <text x="6" y="18" text-anchor="start" font-size="15" font-weight="bold" fill="currentColor">ZAŠTO: VOZILO ZAKLANJA POGLED</text>
   <rect x="0" y="24" width="306" height="64" fill="#6b7280"/>
   <rect x="140" y="88" width="70" height="66" fill="#6b7280"/>
   <rect x="70" y="40" width="56" height="24" rx="4" fill="#111827"/>
@@ -1579,9 +1579,9 @@ CARDS['parkiranje'] = {
   <g class="animIzlaziIzSporednog">
     <rect x="150" y="96" width="48" height="30" rx="4" fill="#111827"/>
   </g>
-  <text x="252" y="110" text-anchor="middle" font-size="12" fill="currentColor">vozilo iz</text>
-  <text x="252" y="130" text-anchor="middle" font-size="12" fill="currentColor">sporednog puta</text>
-  <text x="153" y="170" text-anchor="middle" font-size="12" fill="currentColor">parkirano vozilo mu zaklanja pogled</text>
+  <text x="252" y="110" text-anchor="middle" font-size="15" fill="currentColor">vozilo iz</text>
+  <text x="252" y="130" text-anchor="middle" font-size="15" fill="currentColor"><tspan x="252" y="128">sporednog </tspan><tspan x="252" y="148">puta</tspan></text>
+  <text x="153" y="170" text-anchor="middle" font-size="15" fill="currentColor">parkirano vozilo mu zaklanja pogled</text>
 </svg>
 <p>Zabrana važi i na pešačkom prelazu, prelazu biciklističke staze preko kolovoza i prelazu puta preko železničke pruge, kao i na manje od 5 m od njih (čl. 66 st. 1 t. 1–2). U jednosmernoj ulici izuzetak dopušta manje od 5 m <b>posle pešačkog ili biciklističkog prelaza</b>; taj izuzetak ne obuhvata prelaz pruge. Četiri pitanja razlikuju samo mesto od mesta sa pojasom i 5 m od ponuđenih 10 m.</p>
 <table>
@@ -1594,17 +1594,17 @@ CARDS['parkiranje'] = {
 
 <div class="kPodH"><b class="kPodNaslov">Pojas desno od pune bele linije</b>
 <svg viewBox="0 0 306 162" role="img" aria-label="pogled odozgo: gore je deo puta kojim idu automobili, ispod njega puna bela linija, a desno od nje biciklistička traka po kojoj se uz sam ivičnjak kreće biciklistkinja na biciklu" style="max-width:306px;width:100%;display:block;margin:6px auto">
-  <text x="6" y="14" text-anchor="start" font-size="12" font-weight="bold" fill="currentColor">ŠTA JE DESNO OD PUNE LINIJE</text>
+  <text x="6" y="17" text-anchor="start" font-size="15" font-weight="bold" fill="currentColor">ŠTA JE DESNO OD PUNE LINIJE</text>
   <rect x="0" y="20" width="306" height="52" fill="#6b7280"/>
-  <text x="86" y="36" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff">TUDA IDU AUTOMOBILI</text>
+  <text x="86" y="36" text-anchor="middle" font-size="15" font-weight="bold" fill="#fff"><tspan x="86" y="40">TUDA IDU </tspan><tspan x="86" y="60">AUTOMOBILI</tspan></text>
   <rect x="180" y="26" width="54" height="22" rx="4" fill="#111827"/>
   <rect x="244" y="26" width="54" height="22" rx="4" fill="#111827"/>
-  <text x="238" y="64" text-anchor="middle" font-size="12" fill="#fff">puna bela linija</text>
+  <text x="238" y="64" text-anchor="middle" font-size="15" fill="#fff">puna bela linija</text>
   <rect x="0" y="72" width="306" height="54" fill="#6b7280"/>
   <rect x="0" y="69" width="306" height="5" fill="#fff"/>
-  <text x="6" y="90" text-anchor="start" font-size="12" font-weight="bold" fill="#fff">BICIKLISTIČKA TRAKA</text>
-  <text x="100" y="112" text-anchor="middle" font-size="12" fill="#fff">biciklistkinja</text>
-  <path d="M154 108 H186" stroke="#fff" stroke-width="1.5" fill="none"/>
+  <text x="6" y="90" text-anchor="start" font-size="15" font-weight="bold" fill="#fff">BICIKLISTIČKA TRAKA</text>
+  <text x="100" y="112" text-anchor="middle" font-size="15" fill="#fff">biciklistkinja</text>
+  <path d="M162 108 H186" stroke="#fff" stroke-width="1.5" fill="none"/>
   <g stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round">
     <circle cx="200" cy="114" r="9"/><circle cx="242" cy="114" r="9"/>
     <path d="M200 114 L224 114 L233 98 L242 114"/><path d="M224 114 L216 98 L233 98"/>
@@ -1612,18 +1612,18 @@ CARDS['parkiranje'] = {
     <circle cx="216" cy="78" r="6"/><path d="M216 84 L222 99"/><path d="M218 88 L233 97"/><path d="M222 99 L228 112"/><path d="M222 99 L214 110"/>
   </g>
   <rect x="0" y="126" width="306" height="14" fill="currentColor" opacity="0.22"/>
-  <text x="40" y="158" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">IVIČNJAK</text>
+  <text x="47" y="158" text-anchor="middle" font-size="15" font-weight="bold" fill="currentColor">IVIČNJAK</text>
 </svg>
 <svg viewBox="0 0 306 158" role="img" aria-label="pogled odozgo: vozilo je stalo na biciklističkoj traci; crvena isprekidana putanja pokazuje da obilaženje tog vozila vodi među automobile" style="max-width:306px;width:100%;display:block;margin:6px auto">
-  <text x="6" y="14" text-anchor="start" font-size="12" font-weight="bold" fill="currentColor">AKO TU STANEŠ</text>
+  <text x="6" y="18" text-anchor="start" font-size="15" font-weight="bold" fill="currentColor">AKO TU STANEŠ</text>
   <rect x="0" y="20" width="306" height="52" fill="#6b7280"/>
   <rect x="180" y="26" width="54" height="22" rx="4" fill="#111827"/>
   <rect x="244" y="26" width="54" height="22" rx="4" fill="#111827"/>
   <rect x="0" y="72" width="306" height="54" fill="#6b7280"/>
   <rect x="0" y="69" width="306" height="5" fill="#fff"/>
   <rect x="150" y="80" width="130" height="40" rx="5" fill="#111827"/>
-  <rect x="178" y="89" width="74" height="20" rx="10" fill="#c0392b"/>
-  <text x="215" y="103" text-anchor="middle" font-size="12" fill="#fff">ne staje se</text>
+  <rect x="169" y="86" width="92" height="24" rx="10" fill="#c0392b"/>
+  <text x="215" y="103" text-anchor="middle" font-size="15" fill="#fff">ne staje se</text>
   <g class="animBiciklObilazi" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round">
     <circle cx="34" cy="114" r="9"/><circle cx="76" cy="114" r="9"/>
     <path d="M34 114 L58 114 L67 98 L76 114"/><path d="M58 114 L50 98 L67 98"/>
@@ -1635,7 +1635,7 @@ CARDS['parkiranje'] = {
   <path d="M124 50 L133 40 L138 52" stroke="#fff" stroke-width="4" fill="none"/>
 <path d="M124 50 L133 40 L138 52" stroke="#c0392b" stroke-width="2" fill="none"/>
   <rect x="0" y="126" width="306" height="14" fill="currentColor" opacity="0.22"/>
-  <text x="153" y="154" text-anchor="middle" font-size="12" fill="currentColor">obilaženje vodi među automobile</text>
+  <text x="153" y="154" text-anchor="middle" font-size="15" fill="currentColor">obilaženje vodi među automobile</text>
 </svg>
 <p><b>Na slikama #10091 i #10092</b> desno od pune bele linije je biciklistička traka. Ona je namenjena lakim električnim vozilima, biciklima, mopedima i lakim triciklima (čl. 7 t. 13). Na biciklističkoj traci i stazi zabranjeni su i zaustavljanje i parkiranje (čl. 66 st. 1 t. 8); zato su odgovori „samo traka“ i „samo staza“ pogrešni. Taksi izuzetak ne obuhvata ove površine. Vozilo na traci ometa njene korisnike i može ih dovesti u opasnost pri obilaženju.</p>
 </div>
@@ -1644,17 +1644,17 @@ CARDS['parkiranje'] = {
 <svg viewBox="0 0 306 156" role="img" aria-label="pogled odozgo na trotoar: vozilo je parkirano uz ivicu kolovoza, iza njega prema zgradi ostaje izmeren slobodan prolaz od 1,60 metara, a crvena napomena kaže da znaka nema pa metri ne pomažu" style="max-width:306px;width:100%;display:block;margin:6px auto">
   <rect x="0" y="6" width="306" height="12" fill="currentColor" opacity="0.3"/>
   <rect x="0" y="18" width="306" height="78" fill="currentColor" opacity="0.12"/>
-  <text x="298" y="32" text-anchor="end" font-size="12" font-weight="bold" fill="currentColor">TROTOAR</text>
+  <text x="298" y="90" text-anchor="end" font-size="15" font-weight="bold" fill="currentColor">TROTOAR</text>
   <g stroke="currentColor" stroke-width="1.5" fill="none"><path d="M30 26 V54"/><path d="M24 26 H36"/><path d="M24 54 H36"/></g>
-  <text x="62" y="44" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">1,60 m</text>
-  <text x="180" y="36" text-anchor="middle" font-size="12" fill="currentColor">slobodan prolaz</text>
-  <text x="180" y="56" text-anchor="middle" font-size="12" fill="currentColor">nije uz ivicu kolovoza</text>
+  <text x="62" y="44" text-anchor="middle" font-size="15" font-weight="bold" fill="currentColor">1,60 m</text>
+  <text x="180" y="36" text-anchor="middle" font-size="15" fill="currentColor">slobodan prolaz</text>
+  <text x="180" y="56" text-anchor="middle" font-size="15" fill="currentColor">nije uz ivicu kolovoza</text>
   <rect x="34" y="60" width="156" height="32" rx="5" fill="#111827"/>
-  <rect x="66" y="66" width="92" height="20" rx="10" fill="#c0392b"/>
-  <text x="112" y="80" text-anchor="middle" font-size="12" fill="#fff">ne parkira se</text>
+  <rect x="53" y="63" width="118" height="24" rx="10" fill="#c0392b"/>
+  <text x="112" y="80" text-anchor="middle" font-size="15" fill="#fff">ne parkira se</text>
   <rect x="0" y="96" width="306" height="40" fill="#6b7280"/>
-  <text x="40" y="120" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff">KOLOVOZ</text>
-  <text x="153" y="150" text-anchor="middle" font-size="12" fill="currentColor">nema znaka — metri ne pomažu</text>
+  <text x="40" y="120" text-anchor="middle" font-size="15" font-weight="bold" fill="#fff">KOLOVOZ</text>
+  <text x="153" y="150" text-anchor="middle" font-size="15" fill="currentColor">nema znaka — metri ne pomažu</text>
 </svg>
 <p><b>Rečima:</b> ponuda sa slobodnim prolazom za pešake od 1,60 m vraća se u <b>pet</b> pitanja ove podoblasti i <b>ni u jednom nije tačan odgovor</b>. Ta širina je dodatni <b>uslov</b> tamo gde je parkiranje već dopušteno saobraćajnim znakom ili oznakom na kolovozu — nikad sama dozvola. Na crtežu je prolaz i izmeren i pomeren dalje od ivice kolovoza, pa ipak ne vredi: znaka koji bi parkiranje dopustio nema.</p>
 <p><b>Ne mešaj 1,60 m i 3 m:</b> 1,60 m je najmanja širina prolaza za pešake kod izuzetka za trotoar. Za slobodan prolaz pored vozila meri se 3 m do neisprekidane uzdužne linije, suprotne ivice kolovoza ili prepreke (čl. 66 st. 1 t. 6). Za samo zaustavljanje postoji ograničeni izuzetak iz st. 3, ako nema opasnosti ili smetnje.</p>
@@ -1685,10 +1685,10 @@ CARDS['parkiranje'] = {
 <div class="kPodH"><b class="kPodNaslov">Izgleda kao slobodan prostor, a nije</b>
 <svg viewBox="0 0 306 168" role="img" aria-label="pogled odozgo: dva toka saobraćaja se razdvajaju levo i desno, a između njih je polje za usmeravanje saobraćaja, bele kose pruge oivičene punom linijom; vozilo koje je stalo na polju je precrtano" style="max-width:306px;width:100%;display:block;margin:6px auto">
   <defs><clipPath id="pusPolje140"><rect x="110" y="52" width="86" height="86"/></clipPath></defs>
-  <text x="153" y="14" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">POLJE ZA USMERAVANJE SAOBRAĆAJA</text>
+  <text x="153" y="18" text-anchor="middle" font-size="15" font-weight="bold" fill="currentColor">POLJE ZA USMERAVANJE SAOBRAĆAJA</text>
   <rect x="0" y="22" width="306" height="124" fill="#6b7280"/>
-  <text x="56" y="42" text-anchor="middle" font-size="12" fill="#fff">jedan tok</text>
-  <text x="250" y="42" text-anchor="middle" font-size="12" fill="#fff">drugi tok</text>
+  <text x="56" y="42" text-anchor="middle" font-size="15" fill="#fff">jedan tok</text>
+  <text x="250" y="42" text-anchor="middle" font-size="15" fill="#fff">drugi tok</text>
   <path d="M96 140 L66 62" stroke="#fff" stroke-width="3" fill="none"/>
   <path d="M80 74 L66 62 L63 80" stroke="#fff" stroke-width="3" fill="none" stroke-linejoin="round"/>
   <path d="M210 140 L240 62" stroke="#fff" stroke-width="3" fill="none"/>
@@ -1700,7 +1700,7 @@ CARDS['parkiranje'] = {
   <rect x="118" y="82" width="70" height="26" rx="4" fill="#111827"/>
   <path d="M122 84 L184 106 M184 84 L122 106" stroke="#fff" stroke-width="5" fill="none"/>
 <path d="M122 84 L184 106 M184 84 L122 106" stroke="#c0392b" stroke-width="3" fill="none"/>
-  <text x="153" y="160" text-anchor="middle" font-size="12" fill="currentColor">ovde se ne prelazi ni ne staje</text>
+  <text x="153" y="160" text-anchor="middle" font-size="15" fill="currentColor">ovde se ne prelazi ni ne staje</text>
 </svg>
 <p><b>Rečima:</b> bele kose pruge oivičene punom linijom su <b>polje za usmeravanje saobraćaja</b> — površina koja mora da ostane prazna da bi se tokovi razdvojili na vreme, pa je i nacrtana između dva toka koja se razilaze. Vozilo na nju ne sme ni da pređe, pa je i ostavljanje vozila tu zabranjeno: vozilo ostavljeno na prugama stoji nepropisno, iako mesto na prvi pogled deluje kao slobodan prostor uz ivicu.</p>
 <table>
@@ -1718,26 +1718,26 @@ CARDS['parkiranje'] = {
   <path d="M6 112 L70 112 L133 64 Q153 50 173 64 L236 112 L300 112" fill="none" stroke="currentColor" stroke-width="2.5"/>
   <path d="M113 79 L133 64 Q153 50 173 64 L193 79" fill="none" stroke="#fff" stroke-width="8"/>
 <path d="M113 79 L133 64 Q153 50 173 64 L193 79" fill="none" stroke="#c0392b" stroke-width="6"/>
-  <text x="153" y="20" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">blizina vrha prevoja</text>
-  <text x="153" y="40" text-anchor="middle" font-size="12" fill="currentColor">ne zaustavlja se ni parkira</text>
+  <text x="153" y="20" text-anchor="middle" font-size="15" font-weight="bold" fill="currentColor">blizina vrha prevoja</text>
+  <text x="153" y="40" text-anchor="middle" font-size="15" fill="currentColor">ne zaustavlja se ni parkira</text>
   <g stroke="#fff" stroke-width="3.5" fill="none"><path d="M113 86 V132" stroke-dasharray="4 4"/><path d="M193 86 V132" stroke-dasharray="4 4"/><path d="M113 130 H193"/></g>
 <g stroke="#c0392b" stroke-width="1.5" fill="none"><path d="M113 86 V132" stroke-dasharray="4 4"/><path d="M193 86 V132" stroke-dasharray="4 4"/><path d="M113 130 H193"/></g>
-  <text x="60" y="104" text-anchor="middle" font-size="12" fill="currentColor">uspon</text>
-  <text x="250" y="90" text-anchor="middle" font-size="12" fill="currentColor">nizbrdica</text>
-  <text x="153" y="148" text-anchor="middle" font-size="12" fill="currentColor">i sam vrh i pojas oko njega</text>
+  <text x="60" y="96" text-anchor="middle" font-size="15" fill="currentColor">uspon</text>
+  <text x="250" y="90" text-anchor="middle" font-size="15" fill="currentColor">nizbrdica</text>
+  <text x="153" y="148" text-anchor="middle" font-size="15" fill="currentColor">i sam vrh i pojas oko njega</text>
 </svg>
 <p><b>Rečima:</b> u blizini vrha prevoja, kao i u krivini gde je preglednost nedovoljna ili se obilaženje vozila ne može izvršiti bez opasnosti, zabranjeni su zaustavljanje i parkiranje (čl. 66 st. 1 t. 5). Crveni pojas prikazuje primer blizine vrha prevoja. Zabrana važi i u tunelu, podvožnjaku, galeriji, na mostu i nadvožnjaku (t. 4).</p>
 <svg viewBox="0 0 306 152" role="img" aria-label="pogled odozgo na nepreglednu krivinu: put se savija udesno, u samoj krivini stoji precrtano parkirano vozilo, a plava strelica pokazuje tvoj smer kretanja kroz krivinu" style="max-width:306px;width:100%;display:block;margin:6px auto">
-  <text x="6" y="14" text-anchor="start" font-size="12" font-weight="bold" fill="currentColor">NEPREGLEDNA KRIVINA</text>
+  <text x="6" y="18" text-anchor="start" font-size="15" font-weight="bold" fill="currentColor">NEPREGLEDNA KRIVINA</text>
   <path d="M0 48 H150 A 54 54 0 0 1 204 102 V 152" stroke="#6b7280" stroke-width="42" fill="none"/>
   <path d="M0 48 H150 A 54 54 0 0 1 204 102 V 152" stroke="#fff" stroke-width="2" stroke-dasharray="12 9" fill="none"/>
   <path d="M40 48 H104 M92 42 L104 48 L92 54" stroke="#06223a" stroke-width="3" fill="none"/>
-  <rect x="15" y="35" width="22" height="21" fill="#6b7280"/>
-<text x="34" y="52" text-anchor="end" font-size="12" font-weight="bold" fill="#fff">TI</text>
+  <rect x="10" y="34" width="28" height="23" fill="#6b7280"/>
+<text x="34" y="52" text-anchor="end" font-size="15" font-weight="bold" fill="#fff">TI</text>
   <g transform="translate(186 72) rotate(45)"><rect x="-24" y="-9" width="48" height="18" rx="4" fill="#111827"/></g>
   <path d="M166 54 L206 92 M206 54 L166 92" stroke="#fff" stroke-width="5" fill="none"/>
 <path d="M166 54 L206 92 M206 54 L166 92" stroke="#c0392b" stroke-width="3" fill="none"/>
-  <text x="100" y="140" text-anchor="middle" font-size="12" fill="currentColor">ne zaustavlja se ni parkira</text>
+  <text x="100" y="140" text-anchor="middle" font-size="15" fill="currentColor"><tspan x="92" y="130">ne zaustavlja se </tspan><tspan x="92" y="148">ni parkira</tspan></text>
 </svg>
 <p>Sam <b>uspon</b>, sama <b>nizbrdica</b> i <b>put van naselja</b> nisu na spisku zabranjenih mesta, pa te tri ponude nisu tačni odgovori. To ipak nije dozvola: iznad svih spiskova ostaje pravilo da se ne staje tamo gde vozilo ugrožava ili ometa, a van naselja se vozilo sklanja van kolovoza kad god za to postoji mogućnost (čl. 64 st. 1).</p>
 <p>Ovo nije ceo spisak zabrana: ostale površine, udaljenosti i relevantni izuzeci prikazani su u tabelama i temama ove kartice.</p>
@@ -1750,7 +1750,7 @@ CARDS['parkiranje'] = {
   <g stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round">
     <circle cx="46" cy="44" r="5"/><path d="M46 49 V62"/><path d="M46 62 L40 72"/><path d="M46 62 L53 72"/><path d="M46 53 L37 49"/><path d="M46 53 L55 57"/>
   </g>
-  <text x="46" y="28" text-anchor="middle" font-size="12" fill="currentColor">vozač odlazi</text>
+  <text x="46" y="28" text-anchor="middle" font-size="15" fill="currentColor">vozač odlazi</text>
   <g transform="translate(116 68) rotate(9)"><g class="animVoziloSeKotrlja">
     <rect x="-40" y="-16" width="80" height="24" rx="5" fill="#111827" stroke="currentColor" stroke-width="1.5"/>
     <circle cx="-24" cy="10" r="6" fill="currentColor"/><circle cx="24" cy="10" r="6" fill="currentColor"/>
@@ -1759,12 +1759,12 @@ CARDS['parkiranje'] = {
 <path d="M168 78 L224 87" stroke="#c0392b" stroke-width="2.5" stroke-dasharray="6 5" fill="none"/>
   <path d="M217 81 L232 88 L216 93" stroke="#fff" stroke-width="4.5" fill="none" stroke-linejoin="round"/>
 <path d="M217 81 L232 88 L216 93" stroke="#c0392b" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
-  <text x="222" y="42" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">sprečiti da se vozilo</text>
-  <text x="222" y="62" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">samo pokrene s mesta</text>
+  <text x="216" y="18" text-anchor="middle" font-size="15" font-weight="bold" fill="currentColor">sprečiti da se vozilo</text>
+  <text x="216" y="38" text-anchor="middle" font-size="15" font-weight="bold" fill="currentColor">samo pokrene s mesta</text>
 </svg>
 <p><b>Pre nego što napustiš parkirano vozilo:</b> preduzmi sve potrebne mere da se ono ne pokrene samo. Član 68 zahteva i obezbeđenje od neovlašćene upotrebe. U pitanju #10528 traži se sprečavanje samopokretanja: trougao i pokazivači pravca to ne mogu da zamene.</p>
 <svg viewBox="0 0 306 180" role="img" aria-label="vozilo u kvaru stoji na šinama, sa leve strane po šinama nailazi šinsko vozilo, a između njih je crveni znak upozorenja" style="max-width:306px;width:100%;display:block;margin:6px auto">
-  <text x="153" y="16" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">1. vozilo ODMAH ukloni sa šina</text>
+  <text x="153" y="20" text-anchor="middle" font-size="15" font-weight="bold" fill="currentColor">1. vozilo ODMAH ukloni sa šina</text>
   <g stroke="currentColor" stroke-width="3" opacity="1" fill="none"><path d="M8 84 V112"/><path d="M30 84 V112"/><path d="M52 84 V112"/><path d="M74 84 V112"/><path d="M96 84 V112"/><path d="M118 84 V112"/><path d="M140 84 V112"/><path d="M162 84 V112"/><path d="M184 84 V112"/><path d="M206 84 V112"/><path d="M228 84 V112"/><path d="M250 84 V112"/><path d="M272 84 V112"/><path d="M294 84 V112"/></g>
   <path d="M0 90 H306 M0 106 H306" stroke="currentColor" stroke-width="4" fill="none"/>
   <g class="animSinskoPrilazi">
@@ -1777,9 +1777,9 @@ CARDS['parkiranje'] = {
   <circle cx="140" cy="46" r="14" fill="#c0392b" stroke="currentColor" stroke-width="1.5"/>
   <rect x="137" y="38" width="6" height="12" rx="2" fill="#fff"/><circle cx="140" cy="54" r="2.5" fill="#fff"/>
   <rect x="176" y="80" width="96" height="38" rx="6" fill="#111827" stroke="currentColor" stroke-width="1.5"/>
-  <text x="224" y="134" text-anchor="middle" font-size="12" fill="currentColor">vozilo u kvaru</text>
-  <text x="153" y="154" text-anchor="middle" font-size="12" fill="currentColor">2. ako ne može — odmah upozori</text>
-  <text x="153" y="174" text-anchor="middle" font-size="12" fill="currentColor">vozače šinskog vozila</text>
+  <text x="224" y="134" text-anchor="middle" font-size="15" fill="currentColor">vozilo u kvaru</text>
+  <text x="153" y="154" text-anchor="middle" font-size="15" fill="currentColor">2. ako ne može — odmah upozori</text>
+  <text x="153" y="174" text-anchor="middle" font-size="15" fill="currentColor">vozače šinskog vozila</text>
 </svg>
 <p><b>Kvar na šinama:</b> vozilo <b>odmah</b> ukloni sa šina; ako to nije moguće, odmah preduzmi mere da vozači šinskog vozila na vreme budu upozoreni na opasnost (čl. 63 st. 2). Postavljanje trougla i uključivanje pokazivača pravca ne zamenjuju tu obavezu; obeležavanje vozila u propisanim situacijama posebno uređuje čl. 67.</p>
 </div>
@@ -1787,31 +1787,31 @@ CARDS['parkiranje'] = {
 <div class="kPodH"><b class="kPodNaslov">Sve zamke na jednom mestu</b>
 <p>Grafikon i tabela ispod opisuju ponude u <b>ovih 27 pitanja</b> podoblasti „Zaustavljanje i parkiranje“. Dužina trake pokazuje u koliko se pitanja ponuda javlja; nijedna od nabrojanih ponuda nije tačna u tim pitanjima. To je opis ove grupe pitanja, a ne opšte pravilo za sve saobraćajne situacije.</p>
 <svg viewBox="0 0 306 318" role="img" aria-label="grafikon pogrešnih ponuda samo u 27 pitanja ove banke, ne opšte pravilo za druge situacije: zaustavljanje da a parkiranje ne šest puta, slobodan prolaz 1,60 m pet puta, manje od 10 m umesto 5 m četiri puta, samo na mestu bez pojasa četiri puta, izuzetak za auto-taksi dva puta, trougao i pokazivači pravca dva puta, samo staza ili samo traka jednom, najduže do 3 minuta jednom; nijedna od tih ponuda nije nijednom tačna" style="max-width:306px;width:100%;display:block;margin:6px auto">
-  <text x="6" y="16" text-anchor="start" font-size="12" fill="currentColor">u ovih 27 pitanja — nijednom tačno</text>
-  <text x="6" y="42" text-anchor="start" font-size="12" fill="currentColor">zaustavljanje da, parkiranje ne</text>
+  <text x="6" y="20" text-anchor="start" font-size="15" fill="currentColor">u ovih 27 pitanja — nijednom tačno</text>
+  <text x="6" y="38" text-anchor="start" font-size="15" fill="currentColor">zaustavljanje da, parkiranje ne</text>
   <rect x="6" y="46" width="180" height="14" fill="#c0392b" stroke="currentColor" stroke-width="1"/>
-  <text x="286" y="57" text-anchor="end" font-size="12" fill="currentColor">6</text>
-  <text x="6" y="78" text-anchor="start" font-size="12" fill="currentColor">slobodan prolaz 1,60 m</text>
+  <text x="286" y="57" text-anchor="end" font-size="15" fill="currentColor">6</text>
+  <text x="6" y="74" text-anchor="start" font-size="15" fill="currentColor">slobodan prolaz 1,60 m</text>
   <rect x="6" y="82" width="150" height="14" fill="#c0392b" stroke="currentColor" stroke-width="1"/>
-  <text x="286" y="93" text-anchor="end" font-size="12" fill="currentColor">5</text>
-  <text x="6" y="114" text-anchor="start" font-size="12" fill="currentColor">manje od 10 m umesto 5 m</text>
+  <text x="286" y="93" text-anchor="end" font-size="15" fill="currentColor">5</text>
+  <text x="6" y="110" text-anchor="start" font-size="15" fill="currentColor">manje od 10 m umesto 5 m</text>
   <rect x="6" y="118" width="120" height="14" fill="#c0392b" stroke="currentColor" stroke-width="1"/>
-  <text x="286" y="129" text-anchor="end" font-size="12" fill="currentColor">4</text>
-  <text x="6" y="150" text-anchor="start" font-size="12" fill="currentColor">samo na mestu, bez pojasa</text>
+  <text x="286" y="129" text-anchor="end" font-size="15" fill="currentColor">4</text>
+  <text x="6" y="146" text-anchor="start" font-size="15" fill="currentColor">samo na mestu, bez pojasa</text>
   <rect x="6" y="154" width="120" height="14" fill="#c0392b" stroke="currentColor" stroke-width="1"/>
-  <text x="286" y="165" text-anchor="end" font-size="12" fill="currentColor">4</text>
-  <text x="6" y="186" text-anchor="start" font-size="12" fill="currentColor">izuzetak za auto-taksi</text>
+  <text x="286" y="165" text-anchor="end" font-size="15" fill="currentColor">4</text>
+  <text x="6" y="182" text-anchor="start" font-size="15" fill="currentColor">izuzetak za auto-taksi</text>
   <rect x="6" y="190" width="60" height="14" fill="#c0392b" stroke="currentColor" stroke-width="1"/>
-  <text x="286" y="201" text-anchor="end" font-size="12" fill="currentColor">2</text>
-  <text x="6" y="222" text-anchor="start" font-size="12" fill="currentColor">trougao i pokazivači pravca</text>
+  <text x="286" y="201" text-anchor="end" font-size="15" fill="currentColor">2</text>
+  <text x="6" y="218" text-anchor="start" font-size="15" fill="currentColor">trougao i pokazivači pravca</text>
   <rect x="6" y="226" width="60" height="14" fill="#c0392b" stroke="currentColor" stroke-width="1"/>
-  <text x="286" y="237" text-anchor="end" font-size="12" fill="currentColor">2</text>
-  <text x="6" y="258" text-anchor="start" font-size="12" fill="currentColor">samo staza ili samo traka</text>
+  <text x="286" y="237" text-anchor="end" font-size="15" fill="currentColor">2</text>
+  <text x="6" y="254" text-anchor="start" font-size="15" fill="currentColor">samo staza ili samo traka</text>
   <rect x="6" y="262" width="30" height="14" fill="#c0392b" stroke="currentColor" stroke-width="1"/>
-  <text x="286" y="273" text-anchor="end" font-size="12" fill="currentColor">1</text>
-  <text x="6" y="294" text-anchor="start" font-size="12" fill="currentColor">najduže do 3 minuta</text>
+  <text x="286" y="273" text-anchor="end" font-size="15" fill="currentColor">1</text>
+  <text x="6" y="290" text-anchor="start" font-size="15" fill="currentColor">najduže do 3 minuta</text>
   <rect x="6" y="298" width="30" height="14" fill="#c0392b" stroke="currentColor" stroke-width="1"/>
-  <text x="286" y="309" text-anchor="end" font-size="12" fill="currentColor">1</text>
+  <text x="286" y="309" text-anchor="end" font-size="15" fill="currentColor">1</text>
 </svg>
 <table>
 <tr><th>Ponuda koja se stalno vraća</th><th>Šta stvarno stoji</th></tr>
