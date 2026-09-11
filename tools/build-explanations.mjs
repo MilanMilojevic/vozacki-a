@@ -934,16 +934,17 @@ CARDS['znakovi-porodice'] = {
 CARDS['semafori'] = {
   title: 'Semafori — boje, kombinacije i strelice',
   html: `
+<p class="mut">Crteži prikazuju raspored i oblike svetala, ne njihovo istovremeno uključenje.</p>
 <div style="display:flex;gap:18px;justify-content:center;align-items:center;margin:6px 0">
-<svg viewBox="0 0 56 150" style="height:130px"><rect x="8" y="4" width="40" height="142" rx="10" fill="#2a333d"/><circle cx="28" cy="30" r="16" fill="#e34b3a"/><circle cx="28" cy="74" r="16" fill="#5a4a22"/><circle cx="28" cy="118" r="16" fill="#1f4a2e"/></svg>
-<svg viewBox="0 0 150 56" style="height:52px"><rect x="4" y="8" width="142" height="40" rx="10" fill="#2a333d"/><circle cx="30" cy="28" r="16" fill="#e34b3a"/><circle cx="75" cy="28" r="16" fill="#5a4a22"/><circle cx="120" cy="28" r="16" fill="#4bb36b"/></svg>
+<svg role="img" aria-label="Uspravni trobojni semafor: crveno gore, žuto u sredini, zeleno dole; prikaz rasporeda." viewBox="0 0 56 150" style="height:130px"><rect x="8" y="4" width="40" height="142" rx="10" fill="#2a333d"/><circle cx="28" cy="30" r="16" fill="#e34b3a"/><circle cx="28" cy="74" r="16" fill="#5a4a22"/><circle cx="28" cy="118" r="16" fill="#1f4a2e"/></svg>
+<svg role="img" aria-label="Vodoravni trobojni semafor: crveno levo, žuto u sredini, zeleno desno; prikaz rasporeda, ne jedne faze." viewBox="0 0 150 56" style="height:52px"><rect x="4" y="8" width="142" height="40" rx="10" fill="#2a333d"/><circle cx="30" cy="28" r="16" fill="#e34b3a"/><circle cx="75" cy="28" r="16" fill="#5a4a22"/><circle cx="120" cy="28" r="16" fill="#4bb36b"/></svg>
 </div>
 <p class="mut" style="text-align:center;font-size:var(--fs-sm)">vertikalno: crveno GORE · horizontalno: crveno LEVO (zeleno desno)</p>
 <div class="vgrid" style="grid-template-columns:auto 1fr">
   <div class="vg" style="background:#b91c1c;color:#fff"><b>🔴 CRVENO</b></div><div class="vg" style="text-align:left">zabranjen prolaz</div>
   <div class="vg" style="background:#b45309;color:#fff"><b>🔴+🟡 CRVENO + ŽUTO</b></div><div class="vg" style="text-align:left">i dalje zabranjen prolaz — najava zelenog (pripremi se)</div>
   <div class="vg" style="background:#8a5a00;color:#fff"><b>🟡 ŽUTO postojano</b></div><div class="vg" style="text-align:left">zabranjen prolaz — OSIM ako si toliko blizu da ne možeš bezbedno da se zaustaviš</div>
-  <div class="vg" style="background:#8a5a00;color:#fff"><b>🟡 ŽUTO trepćuće</b></div><div class="vg" style="text-align:left">prolaz uz POJAČANU OPREZNOST i poštovanje znakova/pravila prvenstva (semafor "ne radi")</div>
+  <div class="vg" style="background:#8a5a00;color:#fff"><b>🟡 ŽUTO trepćuće</b></div><div class="vg" style="text-align:left">obaveza POJAČANE OPREZNOSTI; poštuješ znakove i pravila prvenstva</div>
   <div class="vg" style="background:#15803d;color:#fff"><b>🟢 ZELENO</b></div><div class="vg" style="text-align:left">slobodan prolaz (uz propuštanje pešaka na prelazu pri skretanju!)</div>
   <div class="vg" style="background:#15803d;color:#fff"><b>🟢 ZELENO trepćuće</b></div><div class="vg" style="text-align:left">najava prestanka zelenog — prolaz još uvek slobodan</div>
 </div>
@@ -952,42 +953,38 @@ CARDS['semafori'] = {
 <p style="margin-top:10px"><b>Posebne vrste semafora</b> — baza ih pita, prepoznaj oblik:</p>
 <div class="signRow wrapRow">
   <div class="signCell">
-    <svg viewBox="0 0 120 62"><rect x="2" y="4" width="36" height="54" rx="6" fill="#2a333d"/><rect x="10" y="26" width="20" height="6" rx="2" fill="#fff"/>
+    <svg role="img" aria-label="Oblici belih svetala tramvajskog semafora: položena crta za zabranu, uspravna i kosa za slobodan prolaz u odgovarajućem smeru." viewBox="0 0 120 62"><rect x="2" y="4" width="36" height="54" rx="6" fill="#2a333d"/><rect x="10" y="26" width="20" height="6" rx="2" fill="#fff"/>
       <rect x="42" y="4" width="36" height="54" rx="6" fill="#2a333d"/><rect x="57" y="14" width="6" height="34" rx="2" fill="#fff"/>
       <rect x="82" y="4" width="36" height="54" rx="6" fill="#2a333d"/><rect x="97" y="12" width="6" height="38" rx="2" fill="#fff" transform="rotate(35 100 31)"/></svg>
-    <b>TRAMVAJSKI (bele crte)</b><span>položena ― = zabrana · uspravna i kosa = slobodan prolaz (čl. 147); važe i za autobus u zajedničkoj traci</span>
+    <b>TRAMVAJSKI (bele crte)</b><span>položena ― = zabrana · uspravna i kosa = slobodan prolaz (čl. 147); važe i za autobus u zajedničkoj traci. Primeri svetlosnih znakova; na uređaju su svetla jedno ispod drugog.</span>
   </div>
   <div class="signCell">
-    <svg viewBox="0 0 60 100"><rect x="8" y="2" width="44" height="96" rx="8" fill="#2a333d"/>
-      <circle cx="30" cy="27" r="17" fill="#c0392b"/><text x="30" y="34" text-anchor="middle" font-size="18">🚶</text>
-      <circle cx="30" cy="72" r="17" fill="#1f7a3f"/><text x="30" y="79" text-anchor="middle" font-size="18">🚶</text></svg>
-    <b>PEŠAČKI</b><span>dvobojni: crveno gore, zeleno dole; trepćuće zeleno = uskoro crveno (čl. 146)</span>
+    <svg role="img" aria-label="Raspored pešačkih svetala sa siluetom pešaka: crveno gore, zeleno dole; ta svetla ne smeju biti uključena istovremeno." viewBox="0 0 60 100"><rect x="8" y="2" width="44" height="96" rx="8" fill="#2a333d"/><circle cx="30" cy="27" r="17" fill="#e34b3a"/><g transform="translate(20 13)" fill="#000" stroke="#000" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="3" r="2.8" stroke="none"/><path d="M10 8 L8 16 L3 25 M8 16 L15 25 M9 10 L3 15 M9 10 L15 15" fill="none"/></g><circle cx="30" cy="72" r="17" fill="#2a333d"/><g transform="translate(20 58)" fill="#4bb36b" stroke="#4bb36b" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="3" r="2.8" stroke="none"/><path d="M10 8 L8 16 L3 25 M8 16 L15 25 M9 10 L3 15 M9 10 L15 15" fill="none"/></g></svg>
+    <b>PEŠAČKI</b><span>dvobojni: crveno gore, zeleno dole; trepćuće zeleno = prolaz dozvoljen, uskoro crveno (čl. 146)</span>
   </div>
   <div class="signCell">
-    <svg viewBox="0 0 60 120"><rect x="8" y="2" width="44" height="116" rx="8" fill="#2a333d"/>
-      <circle cx="30" cy="24" r="15" fill="#c0392b"/><text x="30" y="30" text-anchor="middle" font-size="15">🚲</text>
-      <circle cx="30" cy="60" r="15" fill="#8a5a00"/><text x="30" y="66" text-anchor="middle" font-size="15">🚲</text>
-      <circle cx="30" cy="96" r="15" fill="#1f7a3f"/><text x="30" y="102" text-anchor="middle" font-size="15">🚲</text></svg>
-    <b>BICIKLISTIČKI</b><span>trobojni sa simbolom bicikla — za biciklističke trake/staze (čl. 140), ista značenja svetala</span>
+    <svg role="img" aria-label="Biciklistički semafor: crni simbol bicikla u crvenom i žutom krugu, zeleni simbol na tamnoj površini; prikaz rasporeda." viewBox="0 0 60 120"><rect x="8" y="2" width="44" height="116" rx="8" fill="#2a333d"/><circle cx="30" cy="24" r="15" fill="#e34b3a"/><g transform="translate(18 16) scale(.75)" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="15" r="6"/><circle cx="26" cy="15" r="6"/><path d="M6 15 L13 3 L19 15 Z M13 3 L23 3 L26 15 M13 3 L11 0 M9 0 L15 0 M21 0 L24 1 L23 3"/></g><circle cx="30" cy="60" r="15" fill="#d99a17"/><g transform="translate(18 52) scale(.75)" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="15" r="6"/><circle cx="26" cy="15" r="6"/><path d="M6 15 L13 3 L19 15 Z M13 3 L23 3 L26 15 M13 3 L11 0 M9 0 L15 0 M21 0 L24 1 L23 3"/></g><circle cx="30" cy="96" r="15" fill="#2a333d"/><g transform="translate(18 88) scale(.75)" fill="none" stroke="#4bb36b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="15" r="6"/><circle cx="26" cy="15" r="6"/><path d="M6 15 L13 3 L19 15 Z M13 3 L23 3 L26 15 M13 3 L11 0 M9 0 L15 0 M21 0 L24 1 L23 3"/></g></svg>
+    <b>BICIKLISTIČKI</b><span>trobojni sa simbolom bicikla — za bicikle i mopede na biciklističkim trakama/stazama (čl. 140), ista značenja svetala</span>
   </div>
   <div class="signCell">
-    <svg viewBox="0 0 130 56"><rect x="2" y="4" width="38" height="48" rx="6" fill="#2a333d"/><path d="M12 16 L30 40 M30 16 L12 40" stroke="#c0392b" stroke-width="6" stroke-linecap="round"/>
+    <svg role="img" aria-label="Tri različita znaka iznad trake: crveni ukršteni signal, zelena strelica nadole i kosa žuta strelica koja pri treptanju nalaže promenu trake." viewBox="0 0 130 56"><rect x="2" y="4" width="38" height="48" rx="6" fill="#2a333d"/><path d="M12 16 L30 40 M30 16 L12 40" stroke="#e34b3a" stroke-width="6" stroke-linecap="round"/>
       <rect x="46" y="4" width="38" height="48" rx="6" fill="#2a333d"/><path d="M65 14 L65 40 M65 40 L56 30 M65 40 L74 30" stroke="#1f9d55" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
       <rect x="90" y="4" width="38" height="48" rx="6" fill="#2a333d"/><path d="M100 14 L118 36 M118 36 L106 34 M118 36 L116 24" stroke="#d99a17" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
     <b>IZNAD SAOBRAĆAJNE TRAKE</b><span>crveni ✕ = traka zabranjena · zelena ↓ = slobodna · žuta trepćuća kosa = obavezno pređi u traku na koju pokazuje (čl. 145)</span>
   </div>
   <div class="signCell">
-    <svg viewBox="0 0 96 62"><rect x="4" y="4" width="40" height="54" rx="8" fill="#2a333d"/><circle cx="24" cy="20" r="11" fill="#c0392b"/><circle cx="24" cy="44" r="11" fill="#3a3f45"/>
-      <rect x="50" y="14" width="40" height="34" rx="6" fill="#2a333d"/><path d="M58 31 L80 31 M80 31 L71 23 M80 31 L71 39" stroke="#1f9d55" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    <b>USLOVNA ZELENA STRELICA</b><span>uz crveno/žuto: smeš u smeru strelice, ali propuštaš SVA vozila i pešake (čl. 143)</span>
+    <svg role="img" aria-label="Trobojni semafor sa upaljenim crvenim i dodatnom zelenom strelicom udesno, u visini donjeg zelenog svetla." viewBox="0 0 96 62"><rect x="4" y="4" width="40" height="54" rx="8" fill="#2a333d"/><circle cx="24" cy="14" r="7" fill="#e34b3a"/><circle cx="24" cy="31" r="7" fill="#5a4a22"/><circle cx="24" cy="48" r="7" fill="#1f4a2e"/><rect x="50" y="36" width="40" height="24" rx="6" fill="#2a333d"/><path d="M58 48 L80 48 M80 48 L73 41 M80 48 L73 55" stroke="#1f9d55" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <b>USLOVNA ZELENA STRELICA</b><span>uz crveno/žuto: smeš u smeru strelice, ali propuštaš sva vozila na putu na koji ulaziš i pešake koji prelaze kolovoz (čl. 143)</span>
   </div>
   <div class="signCell">
-    <svg viewBox="0 0 96 60"><rect x="10" y="6" width="76" height="48" rx="8" fill="#2a333d"/>
-      <circle cx="34" cy="30" r="15" fill="#c0392b"/><circle cx="62" cy="30" r="15" fill="#5a2320"/></svg>
-    <b>PRUGA — DVA CRVENA</b><span>naizmenično trepću = najava voza, OBAVEZNO zaustavljanje (čl. 101)</span>
+    <svg role="img" aria-label="Raniji uređaj na pruzi: dva crvena svetla koja naizmeničnim treptanjem najavljuju voz; nacrtano je jedno uključeno i jedno isključeno svetlo." viewBox="0 0 96 60"><rect x="10" y="6" width="76" height="48" rx="8" fill="#2a333d"/>
+      <circle cx="34" cy="30" r="15" fill="#e34b3a"/><circle cx="62" cy="30" r="15" fill="#5a2320"/></svg>
+    <b>PRUGA — RANIJI TIP SA DVA CRVENA</b><span>naizmenično trepću = najava voza, OBAVEZNO zaustavljanje (čl. 101); uređaji postavljeni po ranijim propisima zadržavaju značenje do zamene</span>
   </div>
 </div>
-<p class="mut">Zamka: zeleno NE znači "prolaz bez obaveza" — pri skretanju propuštaš pešake na prelazu i vozila iz suprotnog smera kad skrećeš ulevo.</p>`,
+<p><b>Još dve vrste iz galerije:</b> pristup vozila regulišu crveno i zeleno svetlo — zabrana ili dozvola pristupa (čl. 144). Beli broj na tamnoj podlozi preporučuje brzinu za slobodan prolaz na narednom semaforu (čl. 148).</p>
+<p class="mut">Za nove uređaje na pruzi propisana su crveno i žuto svetlo (čl. 149; Pravilnik čl. 81); prethodni crtež prikazuje raniji tip.</p>
+<p class="mut">Zamka: zeleno NE znači "prolaz bez obaveza" — pri skretanju propuštaš pešake na prelazu. Pri skretanju ulevo propuštaš vozila iz suprotnog smera koja zadržavaju pravac ili skreću udesno, ako istovremeno imaju pravo prolaza (čl. 47).</p>`,
 };
 
 CARDS['iskljucenje'] = {
@@ -4778,24 +4775,24 @@ X[9234] = { ...(X[9234] || {}), x: 'Vozilo je celo na nižem delu, ispred ivičn
 X[9235] = { ...(X[9235] || {}), x: 'Simbol osobe u invalidskim kolicima na tabli ne opisuje prostor za kretanje, nego bliže određuje kome je namenjeno ono što znak iznad označava. Pošto je znak iznad parkiralište, i tabla govori o parkiranju: mesto je rezervisano za vozila lica sa invaliditetom. Garaža se označava drugim znakom, a tabla nikada ne menja vrstu objekta sa znaka.' };
 X[9236] = { ...(X[9236] || {}), x: 'Na tabli su dve poruke: crtež i natpis kažu koja vrsta oštećenja te čeka na kolovozu — kolotrazi, udubljenja izlokana u tragovima točkova — a broj sa dve strelice nagore kazuje kolika je deonica na kojoj to važi. Zato tabla nije najava udaljenosti: takva nosi samo broj, bez strelica, i do označenog mesta znak još ne deluje. Ovde odredba znaka počinje odmah i prati te celom naznačenom dužinom.' };
 X[9346] = { ...(X[9346] || {}), x: 'Na sva tri semafora iznad kolovoza gori donje, zeleno svetlo, a zeleno znači slobodan prolaz. Povećana opreznost kao obaveza vezuje se za žuto trepćuće svetlo, kada semafor praktično ne reguliše raskrsnicu, a zabrana za crveno — nijedno od njih ovde ne svetli. Zeleno ipak nije bezuslovno: ako skrećeš, propuštaš pešake koji prelaze kolovoz na koji ulaziš.' };
-X[9348] = { ...(X[9348] || {}), x: 'Gori srednje, žuto svetlo, i ono je zabrana prolaza, ali sa jednim izuzetkom: ako si prišao toliko blizu da ne možeš bezbedno da se zaustaviš ispred semafora, prolaziš. Zato dozvola bez uslova nije tačna. Najavu skorog crvenog ne daje žuto nego zeleno trepćuće svetlo, a najavu zelenog kombinacija crvenog i žutog.' };
-X[9351] = { ...(X[9351] || {}), x: 'Na semaforima gori gornje, crveno svetlo, a crveno je čista zabrana prolaza, bez izuzetka — zaustavljaš se ispred znaka. Ublažavanje sa izuzetkom kada se ne možeš bezbedno zaustaviti vezano je za žuto svetlo, ne za crveno. Prolaz uz povećanu opreznost daje samo žuto trepćuće, kada semafor u stvari ne reguliše raskrsnicu.' };
+X[9348] = { ...(X[9348] || {}), x: 'Gori srednje, žuto svetlo, i ono je zabrana prolaza, ali sa jednim izuzetkom: ako si prišao toliko blizu da ne možeš bezbedno da se zaustaviš ispred semafora, prolaziš. Zato dozvola bez uslova nije tačna. Postojano žuto je faza između zelenog i crvenog (čl. 141).' };
+X[9351] = { ...(X[9351] || {}), x: 'Na semaforima gori gornje, crveno svetlo, a crveno je čista zabrana prolaza — zaustavljaš se ispred znaka. Ublažavanje sa izuzetkom kada se ne možeš bezbedno zaustaviti vezano je za žuto svetlo, ne za crveno. Prolaz uz povećanu opreznost daje samo žuto trepćuće, kada semafor u stvari ne reguliše raskrsnicu.' };
 X[9353] = { ...(X[9353] || {}), x: 'Istovremeno gore crveno i žuto svetlo, a ta kombinacija je i dalje zabrana: žuto uz crveno samo najavljuje da će se upaliti zeleno, da spremiš vozilo za polazak. Zato nijedna ponuda sa dozvoljenim prolazom ne stoji. Prestanak zelenog najavljuje zeleno trepćuće, a povećanu opreznost žuto trepćuće svetlo.' };
-X[9358] = { ...(X[9358] || {}), x: 'Na semaforima svetli zelena strelica ulevo, a strelica sužava dejstvo svetla samo na smer koji pokazuje — smeš ulevo, ne i pravo ili udesno. Obavezu kretanja uz povećanu opreznost daje žuto trepćuće svetlo. Puna zelena strelica nije uslovna: uslovna zelena strelica pali se uz crveno i tek uz nju propuštaš sva vozila i pešake.' };
+X[9358] = { ...(X[9358] || {}), x: 'Na semaforima svetli zelena strelica ulevo, a strelica sužava dejstvo svetla samo na smer koji pokazuje — smeš ulevo, ne i pravo ili udesno. Obavezu kretanja uz povećanu opreznost daje žuto trepćuće svetlo. Ovo je direkcioni semafor, a ne dodatna uslovna strelica uz crveno ili žuto. Uz dodatnu strelicu propuštaš vozila na putu na koji ulaziš i pešake koji prelaze kolovoz (čl. 143).' };
 X[9359] = { ...(X[9359] || {}), x: 'Iznad tvoje trake svetle dve zelene strelice, jedna ulevo i jedna pravo, pa su ti oba ta smera slobodna. Svaka strelica važi samo za svoj smer, zato nije tačno da je dozvoljen samo jedan od njih. Nije dozvoljeno ni u svim smerovima: za desno nema upaljene strelice, a smer koji nijedna strelica ne pokriva nije dozvoljen.' };
-X[9360] = { ...(X[9360] || {}), x: 'Semafor koji reguliše levo skretanje pokazuje žutu strelicu, a žuto svetlo je zabrana sa poznatim izuzetkom: prolaziš samo ako si prišao toliko blizu da se ne možeš bezbedno zaustaviti ispred njega. Zato dozvola bez uslova nije tačna. Žuto ne najavljuje crveno — to radi zeleno trepćuće; smer pravo ovde je već na crvenoj strelici.' };
-X[9361] = { ...(X[9361] || {}), x: 'Na oba semafora svetli crvena strelica, pa je prolaz zabranjen u smerovima koje strelice pokazuju, i to bez izuzetka. Ublažavanje kada se vozilo ne može bezbedno zaustaviti pripada žutoj strelici, a prolaz uz povećanu opreznost žutoj trepćućoj. Strelica menja samo opseg smera na koji se svetlo odnosi, ne i značenje boje.' };
+X[9360] = { ...(X[9360] || {}), x: 'Semafor koji reguliše levo skretanje pokazuje žutu strelicu, a žuto svetlo je zabrana sa poznatim izuzetkom: prolaziš samo ako si prišao toliko blizu da se ne možeš bezbedno zaustaviti ispred njega. Zato dozvola bez uslova nije tačna. Postojano žuto je faza između zelenog i crvenog (čl. 141); smer pravo ovde je već na crvenom svetlu.' };
+X[9361] = { ...(X[9361] || {}), x: 'Na oba semafora svetli crvena strelica, pa je prolaz zabranjen u smerovima koje strelice pokazuju. Ublažavanje kada se vozilo ne može bezbedno zaustaviti pripada žutoj strelici, a prolaz uz povećanu opreznost žutoj trepćućoj. Strelica menja samo opseg smera na koji se svetlo odnosi, ne i značenje boje.' };
 X[9364] = { ...(X[9364] || {}), x: 'Iz te trake oba smera regulišu dve strelice: za ulevo gori crvena, a za pravo gore crveno i žuto zajedno. Crveno sa žutim je i dalje zabrana, samo najava skorog zelenog, pa nemaš prolaz ni pravo ni ulevo. Zamka je što žuto podseća na trepćuće; da bi prolaz pravo bio dozvoljen uz opreznost, žuto bi moralo da trepće samo, bez crvenog.' };
 X[9371] = { ...(X[9371] || {}), x: 'Signali iznad traka govore koja traka radi. Iznad leve trake svetli crveni ukršteni signal koji kretanje njome zabranjuje, pa putanja 3 otpada. Iznad srednje i desne trake svetli zelena strelica nadole, što znači slobodan prolaz duž tih traka, i zato ostaju putanje 1 i 2. Nije ni samo putanja 1, jer i desna traka ima svoju zelenu strelicu.' };
-X[9373] = { ...(X[9373] || {}), x: 'Žuta trepćuća kosa strelica iznad trake nije upozorenje nego naredba: napusti traku iznad koje svetli i nastavi onom trakom na koju vrh strelice pokazuje. Povećanu opreznost traži obično žuto trepćuće svetlo, puni žuti krug bez strelice. Levo od nje zelena strelica nadole pokazuje traku koja je slobodna, dakle onu u koju treba da pređeš.' };
-X[9377] = { ...(X[9377] || {}), x: 'Brojka na tamnoj podlozi uz semafor nije ograničenje brzine, jer se ograničenje daje znakom u crvenom krugu na belom polju. Ovo je preporučena brzina zelenog talasa: krećeš li se približno tako, na naredni semafor stižeš dok je još zeleno. Najmanja dozvoljena brzina takođe je znak, plav krug sa brojem, i nema veze sa semaforom.' };
+X[9373] = { ...(X[9373] || {}), x: 'Žuta trepćuća kosa strelica iznad trake nije upozorenje nego naredba: napusti traku iznad koje svetli i nastavi onom trakom na koju vrh strelice pokazuje. Povećanu opreznost označava trepćuće žuto na trobojnom semaforu, i kada ima crni simbol strelice; kosa žuta strelica iznad trake je drugi znak (čl. 142 i 145). Levo od nje zelena strelica nadole pokazuje traku koja je slobodna, dakle onu u koju treba da pređeš.' };
+X[9377] = { ...(X[9377] || {}), x: 'Beli broj na tamnoj podlozi je semafor za preporučenu brzinu (ZOBS čl. 148). Ovo je preporučena brzina zelenog talasa: krećeš li se približno tako, na naredni semafor stižeš dok je još zeleno. Najmanja dozvoljena brzina takođe je znak, plav krug sa brojem, i nema veze sa semaforom.' };
 X[9380] = { ...(X[9380] || {}), x: 'Simbol bicikla u sva tri svetla kaže kome je semafor namenjen: biciklima i mopedima na biciklističkim trakama. Motocikl tu ne spada, jer nema pravo kretanja biciklističkom trakom ni stazom, pa svaka ponuda koja ga ubaci u ovu grupu pada. Boje znače isto kao na semaforu za vozila, samo važe za korisnike trake.' };
-X[9381] = { ...(X[9381] || {}), x: 'Svetli zelena figura pešaka u donjem polju, pa je prelazak dozvoljen; brojač u zasebnom polju iznad njega pokazuje koliko sekundi zelenog još imaš, da proceniš stižeš li da pređeš. Sam pešački semafor je dvobojan — samo crvena i zelena figura, bez žutog međusvetla — pa se sa zelenog prelazi pravo na crveno. Kada zeleno počne da trepće ili brojač istekne, na prelaz se više ne stupa.' };
+X[9381] = { ...(X[9381] || {}), x: 'Svetli zelena figura pešaka u donjem polju, pa je prelazak dozvoljen; brojač u zasebnom polju iznad njega pokazuje koliko sekundi zelenog još imaš, da proceniš stižeš li da pređeš. Sam pešački semafor je dvobojan — samo crvena i zelena figura, bez žutog međusvetla — pa se sa zelenog prelazi pravo na crveno. Trepćuće zeleno i dalje dozvoljava prolaz, uz najavu skorog crvenog; zabrana nastaje crvenim svetlom (čl. 146).' };
 X[9382] = { ...(X[9382] || {}), x: 'Gori gornje svetlo sa crvenom figurom pešaka, a to je zabrana prelaska — čekaš na trotoaru, iza ivice kolovoza. Pešački semafor nema žuto međusvetlo, pa se sa crvenog prelazi pravo na zeleno, i zeleno bi bila figura u donjem polju. Sama upaljena crvena figura dovoljna je: pravilo ne zavisi od toga da li baš tada nailazi vozilo.' };
 X[9386] = { ...(X[9386] || {}), x: 'Uređaj za tramvaje ne radi bojama nego belim svetlećim crtama, i oblik crte odlučuje: vodoravna, položena crta znači zabranu prolaska. Slobodan prolaz daju uspravna crta za kretanje pravo i kosa crta za skretanje, pa ponuda o slobodnom prolazu u pravcu crte ovde ne stoji. Uređaj ne prikazuje kuda se pružaju šine.' };
 X[9388] = { ...(X[9388] || {}), x: 'Na uređaju za tramvaje svetle bela kosa i bela uspravna crta, a takve crte znače slobodan prolaz: uspravna za nastavak pravo, kosa za skretanje na stranu na koju je nagnuta. Zabranu bi dala jedino vodoravna, položena crta, a nje ovde nema. Uređaj ne crta pružanje šina, nego kao i semafor daje ili uskraćuje pravo prolaza.' };
-X[9389] = { ...(X[9389] || {}), x: 'Ovi semafori imaju samo crveno i zeleno, bez žutog međusvetla, i takvi dvobojni uređaji služe za regulisanje pristupa vozila — ulazi, rampe, naplatna mesta i slična mesta gde se propušta vozilo po vozilo. Tramvajski uređaj radi belim crtama, a biciklistički ima tri svetla sa simbolom bicikla; ovde nema ni crta ni simbola.' };
-X[9391] = { ...(X[9391] || {}), x: 'Za tvoje kretanje važe svi semafori postavljeni uz tvoju stranu kolovoza i iznad njega, a ovde ih ima tri: levo, desno i na konzolnom nosaču iznad puta. Postavljeni su tako da signal vidiš i kada ti veće vozilo zakloni jedan od njih, i svi prikazuju isto stanje. Zato nije tačno da važi samo levi ili samo desni semafor.' };
+X[9389] = { ...(X[9389] || {}), x: 'Ovi semafori imaju samo crveno i zeleno, bez žutog međusvetla, i takvi dvobojni uređaji služe za regulisanje pristupa vozila — ulazi, rampe, naplatna mesta i slična mesta gde se pristup vozila otvara ili zatvara. Tramvajski uređaj radi belim crtama, a biciklistički ima tri svetla sa simbolom bicikla; ovde nema ni crta ni simbola.' };
+X[9391] = { ...(X[9391] || {}), x: 'U prikazanoj situaciji tvoje kretanje regulišu tri semafora: levo, desno i na konzolnom nosaču iznad puta. Postavljeni su tako da signal vidiš i kada ti veće vozilo zakloni jedan od njih, i svi prikazuju isto stanje. Zato nije tačno da važi samo levi ili samo desni semafor.' };
 X[9438] = { ...(X[9438] || {}), x: 'Radnik drži obe zastavice, ali poruku nosi samo ona koja je podignuta, a to je zelena; crvena mu visi niz nogu i ne znači ništa. Znaci i naredbe ovlašćenih lica imaju prvenstvo nad saobraćajnom signalizacijom i nad pravilima, pa moraš da postupiš po njegovom znaku. Zato pada varijanta po kojoj bi to bila samo informacija koju smeš da zanemariš.' };
 X[9440] = { ...(X[9440] || {}), x: 'Zelena zastavica je podignuta, a crvena mu visi uz telo, pa važi poruka podignute: prolaz je za tebe slobodan. Zastavicama se daju samo dve poruke, slobodno i zabranjeno, pa ne postoji znak kojim bi ti radnik naložio da usporiš; da hoće da te zaustavi, podigao bi crvenu. Zato otpadaju i zaustavljanje i usporavanje.' };
 X[9444] = { ...(X[9444] || {}), x: 'Podignuta je crvena zastavica, a zelena visi uz telo i ne nosi nikakvu poruku, pa moraš da staneš i sačekaš. Zastavicama se daju samo dve poruke, slobodan i zabranjen prolaz, pa usporavanja u tom sistemu znakova uopšte nema. Ne pomaže ni to što je kolovoz ispred tebe trenutno prazan: radnici naizmenično propuštaju vozila iz jednog pa iz drugog smera.' };
@@ -4883,8 +4880,8 @@ X[10304] = { ...(X[10304] || {}), x: 'Traka za uključivanje postoji da bi ubrza
 X[10322] = { ...(X[10322] || {}), x: 'Prolaz u razdelnom pojasu koji vidiš nije poziv da se okreneš: polukružno okretanje na autoputu zabranjeno je bez ijednog izuzetka, kao i vožnja unazad i zaustavljanje van uređenih mesta. Vozila iza tebe nailaze velikom brzinom i ne očekuju nikoga ko preseca kolovoz. Zato dodaci da se okretanje izvodi bez manevrisanja ili bez ugrožavanja drugih ništa ne menjaju, jer zabrana ne zavisi od tvoje procene.' };
 X[10323] = { ...(X[10323] || {}), x: 'Na motoputu važe ista posebna pravila kao na autoputu, pa i ovde okretanje u suprotan smer otpada bez izuzetka. Brzine su velike, a vozilo koje se okreće preseca ceo kolovoz i stvara prepreku koju onaj ko nailazi ne očekuje i ne stiže da izbegne. Uslovi da nema manevrisanja i da niko nije ugrožen su mamac, jer zabrana ne zavisi od procene vozača.' };
 X[10409] = { ...(X[10409] || {}), x: 'Uz upaljeno crveno svetlo svetli dopunska zelena strelica udesno, a ona je uslovna dozvola: prolaziš samo u smeru strelice i tek pošto propustiš sva vozila na putu na koji ulaziš i pešake koji prelaze kolovoz. Ne daje ti prvenstvo, nego obrnuto, ti propuštaš. I ne odnosi se samo na javni prevoz, već na svakoga iz te trake.' };
-X[10411] = { ...(X[10411] || {}), x: 'Crveni ukršteni signal iznad saobraćajne trake zabranjuje kretanje tom trakom celom njenom dužinom, dakle traka je zatvorena i blagovremeno prelaziš u susednu iznad koje svetli zelena strelica. Ne znači zaustavljanje ispod samog znaka, jer se zabrana odnosi na traku, a ne na tačku. Izuzetka za javni prevoz ovde nema.' };
-X[10412] = { ...(X[10412] || {}), x: 'Žuta kosa strelica koja trepće iznad trake je naredba, ne obaveštenje: traku iznad koje stoji moraš da napustiš i da nastaviš onom trakom na koju vrh strelice pokazuje. Povećanu opreznost traži obično žuto trepćuće svetlo, puni žuti krug bez strelice. Traku za javni prevoz označavaju oznake na kolovozu i znak pored puta.' };
+X[10411] = { ...(X[10411] || {}), x: 'Crveni ukršteni signal zabranjuje kretanje duž saobraćajne trake iznad koje se nalazi (čl. 145). Ne znači zaustavljanje ispod samog znaka, jer se zabrana odnosi na traku, a ne na tačku. Izuzetka za javni prevoz ovde nema.' };
+X[10412] = { ...(X[10412] || {}), x: 'Žuta kosa strelica koja trepće iznad trake je naredba, ne obaveštenje: traku iznad koje stoji moraš da napustiš i da nastaviš onom trakom na koju vrh strelice pokazuje. Povećanu opreznost označava trepćuće žuto na trobojnom semaforu, i kada ima crni simbol strelice; kosa žuta strelica iznad trake je drugi znak (čl. 142 i 145). Traku za javni prevoz označavaju oznake na kolovozu i znak pored puta.' };
 X[10413] = { ...(X[10413] || {}), x: 'Zelena strelica okrenuta nadole iznad trake znači da je ta traka otvorena i da njome smeš da se krećeš. Vezuje se za traku iznad koje visi, a ne za vrstu vozila, pa nije namenjena samo tramvajima. Obavezan prelazak u drugu traku nalaže žuta kosa trepćuća strelica, a traku zatvara crveni ukršteni signal.' };
 X[10416] = { ...(X[10416] || {}), x: 'Ovde je vidiš na prikolici zaustavljenoj kod radova: lampe slažu veliku strelicu ulevo, a plavi znak ispod njih govori da radilište obilaziš s leve strane. Takva tabla ide na zadnji deo motornog vozila ili prikolice i poruku nosi samo dok to vozilo stoji. Razdvajajuća ograda i čeoni branik postavljaju se na sam put, pa ih na vozilu ni ne tražiš.' };
 X[10419] = { ...(X[10419] || {}), x: 'Crvena zastavica je podignuta, pa je prolaz za tebe zatvoren, a zelena koja visi uz telo nije poruka. Znak radnika koji reguliše saobraćaj na radilištu ima prvenstvo nad signalizacijom i nad pravilima, pa je obavezujući za tebe. Prazna traka ispred tebe nije izgovor: radnik vidi kada pušta suprotni smer, a ti sa svog mesta to ne možeš da proceniš.' };
@@ -5611,7 +5608,7 @@ X[10686] = { ...(X[10686]||{}), x: "NAJVEĆU DOZVOLJENU MASU deklariše proizvo�
 // --- Semafori (sub 162), 20 tekstualnih pitanja — pisano pojedinačno (ZOBS čl. 136-147) ---
 X[9339] = { x: 'Zakon obe namene navodi u istoj rečenici: semafori se upotrebljavaju "za regulisanje saobraćaja i označavanje radova i prepreka na putu" (ZOBS čl. 136). Obaveštenja i poruke sa izmenjivim sadržajem daju drugi uređaji, a vozila se semaforima ne označavaju.' };
 X[9340] = { x: 'Svetlosne saobraćajne znakove emituju SEMAFORI (ZOBS čl. 136). Svetlosne oznake na putu i znakovi sa izmenljivim sadržajem poruka su druge kategorije signalizacije — nisu uređaji za davanje svetlosnih saobraćajnih znakova.' };
-X[9341] = { x: 'Crveno svetlo = ZABRANJEN PROLAZ, bez ikakvog izuzetka (ZOBS čl. 142 t. 1). Izuzetak "osim kada se vozilo ne može bezbedno zaustaviti" važi za ŽUTO svetlo (t. 2) — to je glavni mamac; "prolaz uz povećanu opreznost" je trepćuće žuto.' };
+X[9341] = { x: 'Crveno svetlo = ZABRANJEN PROLAZ (ZOBS čl. 142 t. 1). Izuzetak "osim kada se vozilo ne može bezbedno zaustaviti" važi za ŽUTO svetlo (t. 2) — to je glavni mamac; "prolaz uz povećanu opreznost" je trepćuće žuto.' };
 X[9342] = { x: 'Zeleno svetlo = DOZVOLJEN PROLAZ (ZOBS čl. 142 t. 3). "Povećana opreznost" je značenje trepćućeg žutog, a zabrana je crveno — samo zapamti da pri skretanju i dalje propuštaš pešake na prelazu.' };
 X[9343] = { x: 'Crveno + žuto ISTOVREMENO = i dalje ZABRANJEN prolaz + nagoveštaj da će se uključiti zeleno (ZOBS čl. 142 t. 4) — "pripremi se", ali kretanje još nije dozvoljeno. Najava crvenog ovom kombinacijom ne postoji: žuto uz crveno se pali samo pre zelenog (čl. 141).' };
 X[9344] = { x: "Isto značenje kao crveno+žuto bez strelica, samo suženo na smer strelice: ZABRANJEN prolaz u smeru označenom strelicom + nagoveštaj da će se uključiti zeleno (ZOBS čl. 142 t. 4; direkcioni semafor po čl. 138 reguliše kretanje po smerovima). Oba mamca nude \"dozvoljen prolaz\" — dok je na ovom znaku uključeno crveno, prolaz u smeru strelice je zabranjen." };
@@ -5620,7 +5617,7 @@ X[9354] = { x: "Zeleno svetlo sa strelicom (direkcioni semafor, ZOBS čl. 138) z
 X[9355] = { x: 'Trepćuće žuto = obaveza za SVE učesnike da se kreću uz povećanu opreznost (ZOBS čl. 142 t. 5) — semafor tada ništa ne zabranjuje, raskrsnicom vladaju znakovi i pravila prvenstva. Zabrana sa izuzetkom je značenje POSTOJANOG žutog.' };
 X[9356] = { x: 'Trepćuće zeleno = prolaz i dalje DOZVOLJEN + nagoveštaj skorog prestanka: uključiće se žuto, pa crveno (ZOBS čl. 142 t. 6). Zabrane tu nema — to je najava kraja zelene faze.' };
 X[9362] = { x: 'Žuto sa strelicom = ZABRANJEN prolaz u smeru strelice, OSIM ako se vozilo ne može bezbedno zaustaviti ispred znaka (ZOBS čl. 142 t. 2; smerovi po čl. 138). Žuto nikad ne znači "dozvoljen prolaz uz najavu crvenog" — žuto je zabrana sa jednim izuzetkom.' };
-X[9365] = { x: 'Crveno sa strelicom = ZABRANJEN prolaz u smeru strelice, BEZ izuzetka (ZOBS čl. 142 t. 1; smerovi po čl. 138). Izuzetak "ne može bezbedno da se zaustavi" pripada žutom svetlu — kod crvenog ne postoji.' };
+X[9365] = { x: 'Crveno sa strelicom = ZABRANJEN prolaz u smeru strelice (ZOBS čl. 142 t. 1; smerovi po čl. 138). Izuzetak "ne može bezbedno da se zaustavi" pripada žutom svetlu — kod crvenog ne postoji.' };
 X[9366] = { x: 'Trepćuće žuto (i sa strelicom) = obaveza povećane opreznosti za sve učesnike (ZOBS čl. 142 t. 5) — ne zabranjuje prolaz. Par za pamćenje: POSTOJANO žuto = zabrana s izuzetkom; TREPĆUĆE žuto = oprez.' };
 X[9367] = { x: 'Zelena strelica dodata semaforu (uslovni znak) dozvoljava prolaz SAMO u smeru strelice dok gori crveno ili žuto — ali uz obavezu da propustiš pešake koji prelaze kolovoz i SVA vozila na putu na koji ulaziš (ZOBS čl. 143). Uslovni prolaz znači: bez ikakvog prvenstva; ne važi samo za javni prevoz.' };
 X[9369] = { x: 'Vertikalni raspored: CRVENO GORE, žuto u sredini, zeleno dole (ZOBS čl. 139). Pomoć za pamćenje: što opasnije, to više — crveno je na vrhu.' };
@@ -6977,6 +6974,51 @@ for (const [key, expected] of [['brzine', 6], ['kategorije-vozila', 4], ['put-po
     if (out.cards['uredjaji-oprema'].h.c.split(staro).length - 1 !== broj) throw new Error('Kartica opreme: neočekivana oznaka');
     out.cards['uredjaji-oprema'].h.c = out.cards['uredjaji-oprema'].h.c.replaceAll(staro, novo);
   }
+}
+
+// Lokalni pristupačni opisi kartice semafori; globalna transliteracija se ne menja.
+{
+  const opisi = new Map([
+  [
+    "Uspravni trobojni semafor: crveno gore, žuto u sredini, zeleno dole; prikaz rasporeda.",
+    "Усправни тробојни семафор: црвено горе, жуто у средини, зелено доле; приказ распореда."
+  ],
+  [
+    "Vodoravni trobojni semafor: crveno levo, žuto u sredini, zeleno desno; prikaz rasporeda, ne jedne faze.",
+    "Водоравни тробојни семафор: црвено лево, жуто у средини, зелено десно; приказ распореда, не једне фазе."
+  ],
+  [
+    "Oblici belih svetala tramvajskog semafora: položena crta za zabranu, uspravna i kosa za slobodan prolaz u odgovarajućem smeru.",
+    "Облици белих светала трамвајског семафора: положена црта за забрану, усправна и коса за слободан пролаз у одговарајућем смеру."
+  ],
+  [
+    "Raspored pešačkih svetala sa siluetom pešaka: crveno gore, zeleno dole; ta svetla ne smeju biti uključena istovremeno.",
+    "Распоред пешачких светала са силуетом пешака: црвено горе, зелено доле; та светла не смеју бити укључена истовремено."
+  ],
+  [
+    "Biciklistički semafor: crni simbol bicikla u crvenom i žutom krugu, zeleni simbol na tamnoj površini; prikaz rasporeda.",
+    "Бициклистички семафор: црни симбол бицикла у црвеном и жутом кругу, зелени симбол на тамној површини; приказ распореда."
+  ],
+  [
+    "Tri različita znaka iznad trake: crveni ukršteni signal, zelena strelica nadole i kosa žuta strelica koja pri treptanju nalaže promenu trake.",
+    "Три различита знака изнад траке: црвени укрштени сигнал, зелена стрелица надоле и коса жута стрелица која при трептању налаже промену траке."
+  ],
+  [
+    "Trobojni semafor sa upaljenim crvenim i dodatnom zelenom strelicom udesno, u visini donjeg zelenog svetla.",
+    "Тробојни семафор са упаљеним црвеним и додатном зеленом стрелицом удесно, у висини доњег зеленог светла."
+  ],
+  [
+    "Raniji uređaj na pruzi: dva crvena svetla koja naizmeničnim treptanjem najavljuju voz; nacrtano je jedno uključeno i jedno isključeno svetlo.",
+    "Ранији уређај на прузи: два црвена светла која наизменичним трептањем најављују воз; нацртано је једно укључено и једно искључено светло."
+  ]
+]);
+  let prevedeno = 0;
+  out.cards.semafori.h.c = out.cards.semafori.h.c.replace(/aria-label="([^"]*)"/g, (_, label) => {
+    if (!opisi.has(label)) throw new Error('Kartica semafori: nepoznat pristupačni opis');
+    prevedeno++;
+    return 'aria-label="' + opisi.get(label) + '"';
+  });
+  if (prevedeno !== 8) throw new Error('Kartica semafori: očekivano osam pristupačnih opisa');
 }
 
 // Automatski skener: mešani latinično-ćirilični tokeni i zaostali digrafi u ćiriličnom izlazu
