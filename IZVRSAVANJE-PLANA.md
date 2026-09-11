@@ -30,7 +30,7 @@
 | А3 Циљ и процена спремности | Завршено | v131: reload циља; v134: непознато градиво не добија позајмљену тачност; условни модел јасно означен |
 | А4 Телефон и приступачност | У току; корисничка проба остаје v165 | Развојне v169–171 поправљају табелу возила, ситне натписе паркирања и преливање дугих речи при увећању текста; раније тастатура/водич/контраст/увећање. Остали цртежи, читач екрана и стварни телефони остају у прегледу |
 | А5 Кеш и алати издавања | Делимично | v128/v137: издање/кеш; алати/CI проверени; v157: аутоматски отисци слика и провера бајтова у SW; ограничење старих кешева још отворено |
-| А6 Садржај 1.327 питања | У току, почетни део базе | На v177: 156 питања reviewed, 4 in-progress, 2 needs-expert, 1.165 unreviewed; картице 7 reviewed, 1 in-progress, 31 unreviewed. Започета питања нису урачуната у завршена; повезане картице морају бити посебно проверене |
+| А6 Садржај 1.327 питања | У току, почетни део базе | На v178: 164 питања reviewed, 36 in-progress, 2 needs-expert, 1.125 unreviewed; картице 7 reviewed, 1 in-progress, 31 unreviewed. Започета питања нису урачуната у завршена; повезане картице морају бити посебно проверене |
 | А7 Документација / права | У току | CONTRIBUTING, README, школска упутства и fork поступак допуњени; v147 поруке/метаподаци и v151 FAQ усклађени; преостаје одлука власника о лиценци |
 | Б1–Б3 Побољшања | Чека | После учвршћивања, пилот по пилот |
 | Навигација — накнадни захтев | Основни токови завршени; доградња одвојена | v146 Назад/Напред; v150 стварни линкови; v154 статистика; v158 лични спискови. v162 додаје преглед конкретног старог испита; то је доградња, не услов основне безбедности учења. v163 исправља копирани линк питања и повратак фокуса у појмовник |
@@ -488,3 +488,9 @@
 - Pet redova CSS-a dopušta SVG crtežima pune širine u pojmovniku da koriste postojeće bočne margine do širine ekrana 370 px. Tipično platno na 320 px raste sa 258 na 294 px, unutar spoljašnjeg okvira. Bez promene podataka ili toka ispita.
 - Root proverio svih 26 kartica sa SVG-om: 312/312 pre/posle kandidata i 312/312 pre/posle stvarnog pravila v177, oba pisma/teme i širine 320/370/371. Nema novih izlazaka iz kartice, preklapanja crteža, smanjenja natpisa, prelivanja ili upisa napretka. `node tools/verify.mjs`: 249/249.
 - Dokument: `docs/revizija-sadrzaja/grupe/022-sirina-crteza-na-telefonu.md`. Ovo je zajedničko poboljšanje čitljivosti; preostale male legende ne proglašavamo završenim. Sadržajni brojači ostaju isti. Korisnička proba 18980 i dalje je v165.
+
+### v178 — pojedinačni pregled 40 pitanja zdravlja, registracije i pregleda
+
+- Sedamnaest neophodnih ispravki objašnjenja nakon dva sadržajna pregleda; ostala 23 objašnjenja očuvana. Nema promene pitanja, ključeva, redosleda, bodovanja ili kartica. Opšte ispitno pravilo nije proglašeno spornim samo zato što poseban režim ima dodatne uslove.
+- Root potvrdio konačne delte i primarne odredbe; 14 tačnih izvornih operacija, inverzija i četiri NUL očuvani. Chromium 160/160, svih 40 pitanja i njihovih stvarnih veza na oba pisma i 320/1280; `node tools/verify.mjs`: 249/249.
+- Osam pitanja završeno uz već pregledanu zdravstvenu karticu; 32 čeka celu tehničku karticu A6-025. Ukupno 164 reviewed, 36 in-progress, 2 needs-expert, 1.125 unreviewed. Dokument: `docs/revizija-sadrzaja/grupe/018-zdravlje-registracija-pregledi.md`. Korisnička proba 18980 ostaje v165.

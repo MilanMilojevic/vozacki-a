@@ -214,6 +214,24 @@
       "checkedOn": "2026-09-11",
       "revision": "Službeni glasnik RS zaključno sa 19/2025; ponovo preuzet i upoređen 11.09.2026.",
       "contentHash": "8796f6a1718bea08ea4fe1dedb3c9a71001b1c6c5245a93526f365a61e668d5d"
+    },
+    {
+      "id": "zobs-registracija-tehnicki-pis-19-2025",
+      "url": "https://reg.pravno-informacioni-sistem.rs/api/viewAct/8b57d1e9-9b34-4fa0-9693-7ceb6da65486?lawActId=438311",
+      "title": "Zakon o bezbednosti saobraćaja na putevima — redakcijski prečišćen tekst",
+      "revision": "Službeni glasnik RS zaključno sa 19/2025",
+      "checkedOn": "2026-09-11",
+      "contentHash": "8796f6a1718bea08ea4fe1dedb3c9a71001b1c6c5245a93526f365a61e668d5d",
+      "article": "Članovi 246, 249, 253–254, 264–266, 268–269, 274, 276 i 287: vozilo, registracija i tehnički pregledi"
+    },
+    {
+      "id": "tehnicki-pregled-cl29-mup-62-2022",
+      "url": "https://www.mup.gov.rs/wps/wcm/connect/985a565c-1d19-4cad-9176-8b321b2287cd/pdf-lat-%D0%9F%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%D0%BD%D0%B8%D0%BA%2B%D0%BE%2B%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D1%87%D0%BA%D0%BE%D0%BC%2B%D0%BF%D1%80%D0%B5%D0%B3%D0%BB%D0%B5%D0%B4%D1%83%2B%D0%B2%D0%BE%D0%B7%D0%B8%D0%BB%D0%B0.pdf?CVID=og8WVAF&MOD=AJPERES",
+      "title": "Pravilnik o tehničkom pregledu vozila",
+      "revision": "Službeni glasnik RS 31/2018, 70/2018 i 62/2022; aktuelna kopija na sajtu MUP-a",
+      "checkedOn": "2026-09-11",
+      "contentHash": "c5a5c1c079941b88d0c59838223f74ee9e242d0713059ba7f1f60e44b0e757cc",
+      "article": "Član 29: stanje vozila, opterećenje i isprave pri tehničkom pregledu"
     }
   ]
 }
