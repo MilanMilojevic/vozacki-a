@@ -30,7 +30,7 @@
 | А3 Циљ и процена спремности | Завршено | v131: reload циља; v134: непознато градиво не добија позајмљену тачност; условни модел јасно означен |
 | А4 Телефон и приступачност | У току; корисничка проба остаје v165 | Развојне v169–171 поправљају табелу возила, ситне натписе паркирања и преливање дугих речи при увећању текста; раније тастатура/водич/контраст/увећање. Остали цртежи, читач екрана и стварни телефони остају у прегледу |
 | А5 Кеш и алати издавања | Делимично | v128/v137: издање/кеш; алати/CI проверени; v157: аутоматски отисци слика и провера бајтова у SW; ограничење старих кешева још отворено |
-| А6 Садржај 1.327 питања | У току, почетни део базе | На v170: 55 питања reviewed, 61 in-progress, 2 needs-expert, 1.209 unreviewed; картице 4 reviewed, 1 in-progress, 34 unreviewed. Започета питања нису урачуната у завршена; повезане картице морају бити посебно проверене |
+| А6 Садржај 1.327 питања | У току, почетни део базе | На v172: 106 питања reviewed, 10 in-progress, 2 needs-expert, 1.209 unreviewed; картице 5 reviewed, 1 in-progress, 33 unreviewed. Започета питања нису урачуната у завршена; повезане картице морају бити посебно проверене |
 | А7 Документација / права | У току | CONTRIBUTING, README, школска упутства и fork поступак допуњени; v147 поруке/метаподаци и v151 FAQ усклађени; преостаје одлука власника о лиценци |
 | Б1–Б3 Побољшања | Чека | После учвршћивања, пилот по пилот |
 | Навигација — накнадни захтев | Основни токови завршени; доградња одвојена | v146 Назад/Напред; v150 стварни линкови; v154 статистика; v158 лични спискови. v162 додаје преглед конкретног старог испита; то је доградња, не услов основне безбедности учења. v163 исправља копирани линк питања и повратак фокуса у појмовник |
@@ -448,3 +448,10 @@
 - Stvarni Chromium, zasebni prazni konteksti: 44/44 slučaja kroz pet kartica i parkiranje uz pitanje, oba pisma i teme, širina 320 px, osnovni i dvostruki tekst. Stari stil privremeno vraćen radi reprodukcije; zatim proveravan stvarno poslužen CSS v171.
 - Sačuvani sadržaj, širine tabela, dimenzije SVG-a i sintetički napredak; raspored teksta na osnovnoj veličini nepromenjen. Root pregledao snimke pre/posle. To nije provera izvornog browser zoom-a ni fizičkog telefona.
 - `node tools/verify.mjs`: 249/249. Dokazi: `output/revizija-20260911/020/root-result.json` i `root-verify.log`. Nema novog produkcionog JavaScript-a ni testnog okvira; oznaka `v171`, razvojna grana.
+
+### v172 — precizniji i jasnije raspoređeni slični pojmovi
+
+- Završena sadržajna revizija kartice: ceo tekst oba pisma, 17 SVG i 22 originalne situacije, uz nezavisan pregled predloga. Ispravljene definicije i izostavljeni uslovi; ispitni primeri jasno odvojeni od opšteg pravila.
+- Naslovi otkrivaju postojeće teme bez odsecanja ili nove podele: očuvano istih sedam odeljaka. Svi crteži, pitanja, ključevi, veze i pojedinačna objašnjenja ostaju nepromenjeni.
+- Chromium: 16/16 prikaza kartice i 10/10 otvaranja uz pitanje; oba pisma, teme, telefon/desktop i dvostruki tekst. `node tools/verify.mjs`: 249/249. Detalji: `docs/revizija-sadrzaja/grupe/016-slicni-pojmovi.md`.
+- Zatvorena 51 prethodno pojedinačno pregledana pitanja: ukupno 106 reviewed. Pitanja 7930/7931 ostaju needs-expert; 10613 čeka odvojeno ćirilično slovo. Sitni postojeći SVG natpisi prate se zasebno u A4-022. Oznaka `v172`, razvojna grana.

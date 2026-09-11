@@ -178,6 +178,15 @@
       "article": "čl. 2",
       "checkedOn": "2026-09-11",
       "revision": "Službeni glasnik RS 11/2024-60"
+    },
+    {
+      "id": "signalizacija-zaustavna-linija-cl66-pis-76-2026",
+      "url": "https://reg.pravno-informacioni-sistem.rs/api/viewdoc?doctype=reg&regactid=440491&uuid=2bd446cf-0965-4141-8323-d207a4216ed1",
+      "title": "Pravilnik o saobraćajnoj signalizaciji — redakcijski prečišćen tekst PIS",
+      "article": "Član 66, odeljak 2.2.1: neisprekidana linija zaustavljanja V-1, uključujući značenje kada znak II-1 ili II-2 nije postavljen",
+      "checkedOn": "2026-09-11",
+      "revision": "Službeni glasnik RS zaključno sa 76/2026; provereno značenje postojeće linije na crtežu propuštanja",
+      "contentHash": "8f9b78ea7810a5d5028f3b2878773d37080cf9096a2239dc2a306101708c45d7"
     }
   ]
 }

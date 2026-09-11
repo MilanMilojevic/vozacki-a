@@ -6177,7 +6177,7 @@ X[8341] = { x: 'Kada vozač koji je učinio prekršaj NIJE identifikovan, vlasni
 CARDS['slicni-pojmovi'] = {
   title: 'Slični pojmovi — u čemu je razlika',
   html: `
-<p><b>Četiri radnje prolaženja (čl. 7):</b> pitaj se samo — ŠTA radi onaj pored koga prolaziš?</p>
+<p><b>Četiri saobraćajne radnje (čl. 7):</b> kod mimoilaženja, preticanja i obilaženja gledaj kretanje drugog učesnika ili prepreku; kod propuštanja omogućavaš prolaz onome ko ima prvenstvo.</p>
 <div class="signRow">
   <div class="signCell">
     <svg viewBox="0 0 110 100"><rect x="25" y="0" width="60" height="100" fill="#9aa7b4"/><line x1="55" y1="0" x2="55" y2="100" stroke="#fff" stroke-dasharray="8 7" stroke-width="2"/>
@@ -6205,7 +6205,7 @@ CARDS['slicni-pojmovi'] = {
     <b>PROPUŠTANJE</b><span>omogućavaš prolaz onome KO IMA PRVENSTVO — on ne menja način kretanja</span>
   </div>
 </div>
-<p><b>Odstojanje i rastojanje (čl. 7):</b> ista reč "udaljenost", različit pravac merenja.</p>
+<p><b>Razmaci, vidljivost, preglednost, zaustavljanje i parkiranje:</b> ista reč "udaljenost", različit pravac merenja.</p>
 <div class="signRow" style="max-width:460px;margin:0 auto">
   <div class="signCell">
     <svg viewBox="0 0 90 120"><rect x="20" y="0" width="50" height="120" fill="#9aa7b4"/>
@@ -6221,12 +6221,12 @@ CARDS['slicni-pojmovi'] = {
   </div>
 </div>
 <div class="vgrid" style="grid-template-columns:auto 1fr">
-  <div class="vg vgHead"><b>VIDLJIVOST</b></div><div class="vg" style="text-align:left">koliko jasno vidiš KOLOVOZ — zavisi od svetlosnih uslova (noć, magla, padavine). Smanjena: ispod 200 m van naselja, ispod 100 m u naselju</div>
+  <div class="vg vgHead"><b>VIDLJIVOST</b></div><div class="vg" style="text-align:left">odstojanje na kome jasno vidiš KOLOVOZ — zavisi od osvetljenja, magle i padavina. Smanjena: ispod 200 m van naselja, ispod 100 m u naselju</div>
   <div class="vg vgHead"><b>PREGLEDNOST</b></div><div class="vg" style="text-align:left">dokle vidiš DRUGOG UČESNIKA ili prepreku s obzirom na FIZIČKE prepreke (krivina, breg, objekat) — pri normalnoj vidljivosti</div>
   <div class="vg vgHead"><b>ZAUSTAVLJANJE</b></div><div class="vg" style="text-align:left">prekid do TRI minuta + vozač NE napušta vozilo (i nije po znaku/pravilu)</div>
-  <div class="vg vgHead"><b>PARKIRANJE</b></div><div class="vg" style="text-align:left">svaki drugi prekid kretanja — i kraći od 3 minuta ako vozač NAPUSTI vozilo</div>
+  <div class="vg vgHead"><b>PARKIRANJE</b></div><div class="vg" style="text-align:left">prekid koji nije zaustavljanje, osim prekida radi postupanja po znaku ili pravilu; i kraći od 3 minuta ako vozač NAPUSTI vozilo</div>
 </div>
-<p><b>Kolona (čl. 7):</b> najmanje TRI vozila, jedno iza drugog u ISTOJ traci, međusobno uslovljeno kretanje (bez mesta za ubacivanje).</p>
+<p><b>Kolona, vozač, pešak i saobraćaj (čl. 7):</b> najmanje TRI vozila, jedno iza drugog u ISTOJ traci i ISTOM smeru, međusobno uslovljeno kretanje; između njih drugo vozilo ne može da uđe bez ometanja.</p>
 <div class="signRow" style="max-width:460px;margin:0 auto">
   <div class="signCell">
     <svg viewBox="0 0 90 130"><rect x="20" y="0" width="50" height="130" fill="#9aa7b4"/>
@@ -6255,9 +6255,9 @@ CARDS['slicni-pojmovi'] = {
 </div>
 <p><span class="mut">Mamci: „svako lice koje ima vozačku dozvolu" (dozvola u novčaniku ne čini nikoga vozačem) i „lice koje po putu sopstvenom snagom gura ili vuče vozilo" (to je pešak). Na ispitnoj slici pešaci su čovek koji rukama gura automobil i čovek na koturaljkama, dok su biciklista i kočijaš na zaprežnim kolima vozači.</span></p>
 
-<p><b>Saobraćaj = kretanje vozila i lica po PUTU (čl. 7).</b> Svako pitanje prevedi na jedno: <b>da li je ta površina put?</b> Ako nije put, nema ni saobraćaja — pa makar se vozilo kretalo 200 km/h.</p>
+<p><b>Saobraćaj = kretanje vozila i lica po PUTU (čl. 7).</b> Put mogu koristiti svi ili određeni učesnici pod propisanim uslovima. Tabela prenosi <b>konkretne ispitne primere</b>.</p>
 <table>
-<tr><th>JESTE saobraćaj</th><th>NIJE saobraćaj</th></tr>
+<tr><th>U ova dva ispitna pitanja: SMATRA SE saobraćajem</th><th>U ova dva ispitna pitanja: NE SMATRA SE saobraćajem</th></tr>
 <tr><td>kretanje vozila ulicom</td><td>kretanje vozila <b>trkačkom stazom</b></td></tr>
 <tr><td>kretanje zaprežnog vozila zemljanim putem</td><td>kretanje traktora <b>njivom</b></td></tr>
 <tr><td>kretanje motokultivatora zemljanim putem</td><td>kretanje vozila <b>poligonom</b> za probne vožnje ili sportske priredbe</td></tr>
@@ -6265,7 +6265,7 @@ CARDS['slicni-pojmovi'] = {
 <tr><td>kretanje bicikla biciklističkom stazom</td><td>kretanje lica po <b>trgu</b></td></tr>
 <tr><td>guranje bicikla pešačkom stazom</td><td>kretanje po <b>privatnoj površini</b> koju smeju da koriste samo vozila i lica kojima je vlasnik to omogućio</td></tr>
 </table>
-<p><span class="mut">Zemljani put jeste put — i onda kad na priključku na drugi put ima izgrađen kolovozni zastor. Njiva, trkačka staza, poligon, plato i trg nisu. Biciklistička staza i trotoar jesu, pa guranje bicikla po njima jeste saobraćaj; samo je učesnik u njemu pešak, a ne vozač.</span></p>
+<p><span class="mut">Zemljani put ostaje zemljani i sa kolovoznim zastorom na priključku. Biciklistička staza je put, a trotoar deo puta; lice koje tu gura bicikl učestvuje kao pešak. Sam naziv ili vlasništvo ostalih površina iz tabele ne određuje njihov pravni status.</span></p>
 
 <p><b>Saobraćajna nezgoda (čl. 7)</b> — tri uslova moraju da se poklope: (1) dogodila se <b>na putu ili je započeta na putu</b>, (2) učestvovalo je <b>najmanje jedno vozilo u pokretu</b>, (3) neko je <b>poginuo ili je povređen</b>, <b>ili</b> je nastala <b>materijalna šteta</b>.</p>
 <div class="signRow lineRow" style="max-width:460px;margin:0 auto">
@@ -6310,7 +6310,7 @@ CARDS['slicni-pojmovi'] = {
 <tr><td><b>Bicikl</b></td><td><b>najmanje</b> dva točka <b>i</b> pokreće ga snaga vozača ili putnika, preneta pedalama ili ručicama na točkove</td><td><b>monocikl</b> (jedan točak) i <b>moped</b> (ima motor); četvorotočkaš na pedale JESTE bicikl, jer uslov glasi „najmanje dva", a ne „tačno dva"</td></tr>
 <tr><td><b>Motorno vozilo</b></td><td>pokreće ga snaga <b>sopstvenog</b> motora — traktor, motokultivator, automobil (šinska vozila su izuzeta)</td><td><b>prikolica i poluprikolica</b> (priključna vozila, nemaju svoj pogon), bicikl, zaprežno vozilo</td></tr>
 <tr><td><b>Zaprežno vozilo</b></td><td>namenjeno i osposobljeno da ga vuče <b>upregnuta životinja</b></td><td>traktorska prikolica, plug i druga priključna oruđa, motokultivator sa prikolicom</td></tr>
-<tr><td><b>Teretno vozilo</b></td><td>motorno vozilo sa <b>najmanje četiri točka</b>, namenjeno prevozu tereta</td><td>poluprikolica i prikolica (nemaju motor); trotočkaš sa sandukom nema četiri točka, pa nije teretno vozilo — po rasporedu točkova je tricikl, laki ili teški zavisno od brzine i motora (vidi karticu o kategorijama)</td></tr>
+<tr><td><b>Teretno vozilo</b></td><td>motorno vozilo sa <b>najmanje četiri točka</b>, masom <b>većom od 550 kg</b> i najvećom efektivnom, odnosno trajnom nominalnom snagom motora <b>većom od 15 kW</b>; namenjeno prevozu tereta, radu pri kojem se ne može prevoziti drugi teret ili vuči priključnih vozila</td><td>poluprikolica i prikolica (nemaju motor); trotočkaš sa sandukom nema četiri točka, pa nije teretno vozilo — po rasporedu točkova je tricikl, laki ili teški zavisno od brzine i motora (vidi karticu o kategorijama)</td></tr>
 </table>
 
 <p><b>Tramvaj, trolejbus, autobus</b> — na slici ih razlikuješ za dve sekunde: prvo gledaj <b>šine</b>, pa <b>motke</b>.</p>
@@ -6340,22 +6340,22 @@ CARDS['slicni-pojmovi'] = {
       <rect x="10" y="30" width="100" height="38" rx="6" fill="#e08a1e"/>
       <rect x="16" y="36" width="34" height="16" rx="2" fill="#eef3f7"/><rect x="56" y="36" width="22" height="16" rx="2" fill="#eef3f7"/><rect x="84" y="36" width="20" height="16" rx="2" fill="#eef3f7"/>
       <circle cx="32" cy="70" r="8" fill="currentColor"/><circle cx="92" cy="70" r="8" fill="currentColor"/></svg>
-    <b>AUTOBUS</b><span>ni šina ni motki; više od devet mesta za sedenje, sa vozačem</span>
+    <b>AUTOBUS NA SLICI</b><span>bez šina i priključka na vod; autobus ima više od devet mesta za sedenje, sa vozačem</span>
   </div>
 </div>
 <p><span class="mut">Zakonski: <b>trolejbus je autobus</b> koji se preko provodnika napaja električnom energijom, a tramvaj je <b>šinsko</b> vozilo povezano na električni vod. Putničko vozilo ima <b>najviše devet</b> mesta za sedenje uključujući i mesto vozača, autobus <b>više od devet</b>. Turistički vozić na gumenim točkovima nije tramvaj.</span></p>
 
-<p><b>Mase (čl. 7)</b> — ključ je <b>ko određuje broj</b>: proizvođač deklariše šta vozilo jeste, država propisuje šta se sme, a ukupna masa je ono što se skupi na dan vožnje.</p>
+<p><b>Mase, brzina, isprave i zahvati na vozilu (čl. 7)</b> — ključ je <b>ko određuje broj</b>: proizvođač deklariše šta vozilo jeste, država propisuje šta se sme, a ukupna masa je ono što se skupi na dan vožnje.</p>
 <table>
 <tr><th>Pojam</th><th>Šta obuhvata</th><th>Ko ga određuje</th></tr>
-<tr><td><b>Masa praznog vozila</b></td><td>neopterećeno vozilo sa karoserijom (ili šasija sa kabinom ako proizvođač ne ugrađuje karoseriju), najmanje 90% goriva, puni rezervoari tehničkih tečnosti, stalni teret (trajno ugrađeni uređaji, npr. kran ili dizalica), rezervni točak i pripadajući alat</td><td><b>proizvođač</b></td></tr>
-<tr><td><b>Masa vozila</b></td><td>masa praznog vozila + vozač od 75 kg, pri čemu se <b>tih 75 kg NE dodaje vozilima na dva i tri točka</b>, plus drugi član posade u autobusu i vučni uređaj gde postoje</td><td><b>proizvođač</b></td></tr>
+<tr><td><b>Masa praznog vozila</b></td><td>neopterećeno vozilo sa karoserijom (ili šasija sa kabinom ako proizvođač ne ugrađuje karoseriju), najmanje 90% goriva, puni rezervoari tehničkih tečnosti, stalni teret (trajno ugrađeni uređaji, npr. kran ili dizalica), rezervni točak <b>ukoliko postoji</b> i pripadajući alat</td><td><b>proizvođač</b></td></tr>
+<tr><td><b>Masa vozila</b></td><td>masa praznog vozila + vozač od 75 kg, pri čemu se <b>tih 75 kg NE dodaje vozilima na dva i tri točka</b>; kod autobusa i drugi član posade od 75 kg ako ima sedište; kod vučnog vozila <b>izuzev vrste M1</b> i masa vučnog uređaja ukoliko postoji</td><td><b>proizvođač</b></td></tr>
 <tr><td><b>Najveća dozvoljena masa vozila</b></td><td>gornja granica mase za to vozilo</td><td><b>proizvođač</b></td></tr>
 <tr><td><b>Ukupna masa vozila</b></td><td>masa vozila + masa kojom je vozilo opterećeno, tj. <b>lica i teret</b></td><td>niko je ne deklariše — <b>zbir na licu mesta</b></td></tr>
 <tr><td><b>Najveća dozvoljena ukupna masa</b></td><td>najveća masa opterećenog vozila, odnosno skupa vozila</td><td><b>nadležni državni organ</b></td></tr>
 <tr><td><b>Nosivost vozila</b></td><td>razlika <b>najveće dozvoljene mase</b> vozila i <b>mase</b> vozila</td><td>računica iz prethodna dva broja</td></tr>
 </table>
-<p><span class="mut">Zamke: definicija „masa koju deklariše proizvođač vozila" bez ijednog dodatka je <b>najveća dozvoljena masa</b>; dugačak opis sa 90% goriva i rezervnim točkom je <b>masa praznog vozila</b>; „vozilo + lica + teret" je <b>ukupna masa</b>, a ne „najveća dozvoljena ukupna". Osovinsko opterećenje je deo ukupne mase kojim jedna osovina pritiska kolovoz dok vozilo <b>miruje</b>.</span></p>
+<p><span class="mut">Zamke: definicija „masa koju deklariše proizvođač vozila" bez ijednog dodatka je <b>najveća dozvoljena masa</b>; dugačak opis sa 90% goriva i rezervnim točkom je <b>masa praznog vozila</b>; „vozilo + lica + teret" je <b>ukupna masa</b>, a ne „najveća dozvoljena ukupna". Osovinsko opterećenje je deo ukupne mase kojim jedna osovina opterećuje kolovoz dok vozilo <b>miruje u horizontalnom položaju</b>.</span></p>
 
 <p><b>Srednja (prosečna) brzina (čl. 7)</b> = <b>dužina deonice podeljena vremenom</b> za koje je vozilo pređe. Ništa se ne prosečuje po očitavanjima brzinomera — samo se deli.</p>
 <div class="vgrid" style="grid-template-columns:auto 1fr">
@@ -6378,9 +6378,9 @@ CARDS['slicni-pojmovi'] = {
   <div class="vg vgHead"><b>POPRAVKA</b></div><div class="vg" style="text-align:left">dovođenje vozila, odnosno uređaja i sklopova vozila, u <b>ispravno stanje</b> — vraćaš ono što je bilo</div>
   <div class="vg vgHead"><b>PREPRAVKA</b></div><div class="vg" style="text-align:left">promena <b>konstruktivnih karakteristika</b> kojom se menja namena ili vrsta vozila, odnosno deklarisane tehničke karakteristike vozila ili njegovih uređaja i sklopova — dobijaš drugačije vozilo</div>
 </div>
-<p><span class="mut">Mamci su „održavanje vozila" i „tehnički pregled vozila": održavanje je redovna briga, a tehnički pregled je provera — ni jedno ni drugo nije zahvat kojim se nešto menja ili vraća u ispravno stanje.</span></p>
+<p><span class="mut">Kod ovih pitanja traži se tačan naziv definisane radnje: dovođenje u ispravno stanje je popravka, a promena navedenih konstruktivnih ili deklarisanih karakteristika je prepravka. Tehnički pregled utvrđuje ispravnost i ispunjenost propisanih uslova; ne obavlja popravku.</span></p>
 
-<p><b>Oznaka na leku sa psihoaktivnom supstancom</b>, koji se ne sme upotrebljavati pre i za vreme vožnje, jeste <b>pun, ispunjen crveni trougao</b> na pakovanju.</p>
+<p><b>Pun crveni trougao na pakovanju leka</b> označava snažan uticaj na sposobnost upravljanja vozilima ili mašinama (ALIMS, obrazac informacija o leku, 01/2026). U ispitnom primeru traži se taj simbol: trouglast oblik i puna crvena površina, bez uzvičnika.</p>
 <div class="signRow" style="max-width:520px;margin:0 auto">
   <div class="signCell">
     <svg viewBox="0 0 60 56"><rect x="0" y="0" width="60" height="56" rx="4" fill="#eceff2"/><path d="M30 10 L52 46 L8 46 Z" fill="#d40000"/></svg>
