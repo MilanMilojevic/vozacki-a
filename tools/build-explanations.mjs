@@ -5706,33 +5706,23 @@ X[10417] = { x: "Na delu puta gde se izvode radovi saobraćaj regulišu najmanje
 
 
 // --- Kaznene mere (sub 182) — kartica + podtura A: najteža klasa (ZOBS čl. 330), 14 pitanja ---
-// PRISTUP (Milan): BEZ dinarskih iznosa u našim tekstovima — iznosi se menjaju izmenama zakona
-// (u ovoj kopiji ZOBS-a čl. 332 već ima drugačiji raspon od ispitne baze!); učimo KLASE i logiku.
+// Sačuvani ključevi i važeće sankcije su odvojeni; razlike imaju pojedinačne izvore.
+// Revizija 024: ne menjati ključ bez potvrde aktuelne zvanične baze.
 CARDS['kaznene-klase'] = {
-  title: 'Kaznene klase — logika umesto iznosa',
+  title: 'Kazne, poeni i zabrana upravljanja',
   html: `
-<p><b>Za ispit, prvo ovo:</b> u zvaničnom šablonu ispita za A kategoriju ova oblast
-<b>nema nijedno pitanje</b> (provereno na 4 zvanična izvlačenja). Uči je radi razumevanja posledica, ne radi bodova.</p>
-<p><b>Prekršaji su poređani u klase po težini</b> — ne pamti svaki iznos, prepoznaj klasu:</p>
+<p><b>Ova oblast i ispit:</b> u šest izvlačenja opisanih u aplikaciji nije bilo pitanja ove podoblasti. Zato je trenutni simulator ne bira. To nije garancija za budući zvanični ispit; oblast ostaje u vežbanju.</p>
+<p><b>Važeći propis i postojeći odgovori baze nisu isto.</b> ZOBS propisuje različite vrste sankcija prema tačno opisanim uslovima:</p>
 <table>
-<tr><th>Klasa</th><th>Kazna</th><th>Šta tu spada</th></tr>
-<tr><td><b>Vrh: nasilnička vožnja</b> (čl. 329)</td><td>zatvor I novčana kazna ZAJEDNO + najviše kaznenih poena + najduža obavezna zabrana</td>
-<td>gruba, bezobzirna vožnja (čl. 41): potpuna alkoholisanost (preko 2,00 mg/ml), dva prolaska na crveno u 10 minuta,
-preticanje kolone preko pune linije, najekstremnija prekoračenja brzine</td></tr>
-<tr><td><b>Najteža klasa prekršaja</b> (čl. 330)</td><td>zatvor ILI najviša novčana kazna + visoki kazneni poeni</td>
-<td>vožnja bez dozvole; vožnja za vreme isključenja ili zabrane; odbijanje alko/droga testa;
-prekoračenja preko zakonskih pragova u zonama; noću bez ijednog svetla; prolaz na crveno preko prelaza sa pešacima;
-napuštanje nezgode sa povređenima. (Ispitna baza ovde svrstava i poneki prekršaj koji su kasnije izmene zakona
-preselile u drugu klasu — npr. zaustavnu traku autoputa.)</td></tr>
-<tr><td><b>Srednje</b></td><td>novčani rasponi + kazneni poeni (više stepenika)</td><td>opasne radnje bez ekstremnog rizika (nepropisno preticanje, svetla, prelazi...)</td></tr>
-<tr><td><b>Lakše</b></td><td>fiksne manje novčane kazne, po pravilu bez poena</td><td>administrativni propusti i oprema</td></tr>
+<tr><th>Osnov</th><th>Vrsta sankcije</th><th>Uslov</th></tr>
+<tr><td>Nasilnička vožnja (čl. 329)</td><td>Zatvor ili rad u javnom interesu, u oba slučaja uz novčanu kaznu; poeni i obavezna mera</td><td>Grubo postupanje iz čl. 41; posebno propisani slučajevi poput više od 2,00 mg/ml i najmanje dva prolaska na crveno u razmaku do deset minuta.</td></tr>
+<tr><td>Član 330</td><td>Zatvor ili novčana kazna; poeni i mera prema konkretnom osnovu</td><td>Tačno propisani slučajevi: isključenje ili zabrana, odbijanje testa, određena prekoračenja, noćna vožnja bez propisanih svetala i drugi pobrojani prekršaji. Nisu svaki nedostatak kategorije ili svaka zaustavna traka ovaj osnov.</td></tr>
+<tr><td>Članovi 331 i 332</td><td>331: novčani raspon ili zatvor; 332: novčani raspon. Poeni kada su posebno propisani.</td><td>Različiti taksativno pobrojani prekršaji; ne zaključuje se samo prema utisku o riziku.</td></tr>
+<tr><td>Članovi 332a, 333 i 334</td><td>Fiksni iznosi prema konkretnoj odredbi</td><td>Nisu ograničeni samo na administrativne propuste i opremu.</td></tr>
 </table>
-<p><b>Kazneni poeni</b> idu UZ kaznu (čl. 335); kad ih skupiš <b>18</b>, MUP ti ODUZIMA vozačku dozvolu —
-zakon to zove "ne upravlja savesno i na propisan način" (čl. 197); za PROBNU dozvolu prag je već <b>9</b> poena.</p>
-<p><b>Zaštitna mera zabrane upravljanja</b> izriče se obavezno, uz kaznu, za pobrojane prekršaje (čl. 338);
-opšti okvir trajanja: od 30 dana do jedne godine (Zakon o prekršajima čl. 58).</p>
-<p class="mut">Iznosi u dinarima se menjaju izmenama zakona — u vežbanju ih čitaj iz ponuđenih odgovora
-(baza se osvežava), a trajno pamti klasu i logiku: što neposrednije ugrožava život, to viša klasa.</p>
+<p><b>Kazneni poeni</b> izriču se uz kaznu kada su propisani, vozaču kome je vozačka ili probna dozvola izdata u Srbiji (čl. 323 i 335). Prag za oduzimanje dozvole je <b>18 poena</b>, a za probnu <b>9</b> (čl. 197).</p>
+<p><b>Obavezna zabrana upravljanja</b> propisana je za pobrojane prekršaje. Sud može izreći meru i u drugim slučajevima pod uslovima čl. 338 st. 2. Opšti okvir je 30 dana–jedna godina (Zakon o prekršajima, čl. 58).</p>
+<p class="mut">U ovoj bazi postoje stari iznosi i promenjeni kazneni osnovi. <b>Očekivani odgovor baze ne mora biti važeća kazna.</b> U nastavku su obrasci postojećih odgovora posebno odvojeni od pregleda propisa.</p>
 
 <!-- ==== dopuna 07.09.2026 (tura 4): crtež + isto to rečima ==== -->
 <!-- ISPRAVKA U POSTOJECOJ KARTICI (ne ide u tekst kartice, nego se menja postojeci red):
@@ -5743,7 +5733,7 @@ opšti okvir trajanja: od 30 dana do jedne godine (Zakon o prekršajima čl. 58)
 
 <!-- OGRADA: ponavlja tvrdnju iz prve recenice postojece kartice ("u zvanicnom sablonu ispita za A
      kategoriju ova oblast nema nijedno pitanje"). Bez nje ceo dodatak zvuci ispitno-takticki. -->
-<p class="mut">Pre svega ostalog: u zvaničnom šablonu ispita za A kategoriju ova oblast <b>nema nijedno pitanje</b> — to piše i na vrhu kartice. Sve ispod je za vežbanje baze i za razumevanje posledica, ne za bodove na ispitu.</p>
+<p class="mut"><b>Ovaj odeljak opisuje odgovore postojeće baze, ne važeće zakonske klase.</b> Može pomoći pri vežbanju ovih konkretnih pitanja; ne dokazuje pravilo budućeg zvaničnog ispita.</p>
 
 <!-- CELINA 1 - izvor: prebrojane sve 4 klase u 89 pitanja o klasi; oblici odgovora doslovno iz
      #8224 (nasilnicka), #8228/#8229/#8230/#8231/#8235/#8237/#8241/#8246/#8247 (najteza),
@@ -5751,10 +5741,10 @@ opšti okvir trajanja: od 30 dana do jedne godine (Zakon o prekršajima čl. 58)
      peti oblik "kaznom zatvora do 30 dana" - prebrojano: javlja se tacno jednom (#8227) i nije tacan
      (tacan je raspon 6.000-20.000 + 2 poena); pamtilica 3 = 70 ponuda najstrozeg odgovora na 89
      pitanja, tacan 15 puta. -->
-<div class="kPodH"><b class="kPodNaslov">Prepoznaj klasu po OBLIKU odgovora, ne po iznosu</b>
-<p>Od 111 pitanja ove podoblasti, <b>89</b> pita isto: na koji stepenik pada prekršaj. Ponuđeni odgovori se razlikuju po obliku, i taj oblik ih razvrstava i pre nego što pročitaš cifre. Klase su četiri — a postoji i peti oblik, koji nije klasa nego mamac.</p>
+<div class="kPodH"><b class="kPodNaslov">Obrasci odgovora u postojećoj bazi</b>
+<p>Od 111 pitanja, 89 pita za kaznu. Njihovi postojeći izabrani odgovori imaju četiri oblika: fiksni iznos, raspon, zatvor ili novčana kazna, odnosno zatvor uz poene. Sledeći brojevi odnose se samo na tu bazu.</p>
 <div style="display:flex;justify-content:center;margin:8px 0">
-<svg viewBox="0 0 306 298" style="max-width:306px;width:100%" role="img" aria-label="Četiri klase po obliku tačnog odgovora, jedna ispod druge: lakša — jedan iznos, bez poena, 25 pitanja; srednja — raspon od-do uz poene, 48 pitanja; najteža — zatvor ILI novčana i 14 poena, 15 pitanja; nasilnička vožnja — zatvor od 30 do 60 dana i 15 poena, bez novčane, 1 pitanje. Peti red je isprekidan i nije klasa: mamac koji glasi zatvor do 30 dana, bez reči ili, bez novčane i bez poena, nudi se jednom i nikad nije tačan.">
+<svg viewBox="0 0 306 318" style="max-width:306px;width:100%" role="img" aria-label="Četiri oblika postojećih izabranih odgovora baze: 25 fiksnih iznosa, 48 raspona, 15 zatvor ili novčana uz 14 poena, jedna opcija zatvor 30–60 dana i 15 poena. To nisu važeće zakonske klase. Jedna ponuđena opcija samog zatvora do 30 dana nije izabrana."><text x="153" y="13" font-size="13" text-anchor="middle" fill="currentColor">OBRASCI ODGOVORA U BAZI</text><g transform="translate(0 20)">
 <rect x="6" y="6" width="294" height="46" fill="#1f7a3f" fill-opacity="0.16" stroke="#1f7a3f"/>
 <rect x="6" y="6" width="6" height="46" fill="#1f7a3f" fill-opacity="0.55"/>
 <rect x="6" y="58" width="294" height="46" fill="#e8b000" fill-opacity="0.20" stroke="#e8b000"/>
@@ -5765,33 +5755,33 @@ opšti okvir trajanja: od 30 dana do jedne godine (Zakon o prekršajima čl. 58)
 <rect x="6" y="162" width="21" height="62" fill="#c0392b" fill-opacity="0.85"/>
 <rect x="6" y="230" width="294" height="62" fill="none" stroke="currentColor" stroke-dasharray="5 4" opacity="0.8"/>
 <g fill="currentColor">
-<text x="30" y="26" font-size="13">LAKŠA</text>
-<text x="30" y="43" font-size="12">jedan iznos, bez poena</text>
-<text x="294" y="26" font-size="12" text-anchor="end" opacity="0.8">25 pitanja</text>
-<text x="30" y="78" font-size="13">SREDNJA</text>
-<text x="30" y="95" font-size="12">raspon „od–do“, uz poene</text>
-<text x="294" y="78" font-size="12" text-anchor="end" opacity="0.8">48 pitanja</text>
-<text x="30" y="130" font-size="13">NAJTEŽA</text>
-<text x="30" y="147" font-size="12">zatvor ILI novčana + 14 poena</text>
-<text x="294" y="130" font-size="12" text-anchor="end" opacity="0.8">15 pitanja</text>
-<text x="34" y="182" font-size="13">NASILNIČKA</text>
-<text x="34" y="199" font-size="12">zatvor 30–60 dana + 15 poena</text>
-<text x="34" y="216" font-size="12">bez novčane, bez reči „ili“</text>
-<text x="294" y="182" font-size="12" text-anchor="end" opacity="0.8">1 pitanje</text>
-<text x="30" y="250" font-size="13">MAMAC — nije klasa</text>
-<text x="30" y="267" font-size="12">zatvor do 30 dana, bez „ili“</text>
-<text x="30" y="284" font-size="12">bez novčane i bez poena</text>
-<text x="294" y="250" font-size="12" text-anchor="end" opacity="0.8">0 tačnih</text>
+<text x="30" y="26" font-size="13">FIKSNI IZNOS</text>
+<text x="30" y="43" font-size="13">jedan iznos, bez poena</text>
+<text x="294" y="26" font-size="13" text-anchor="end" opacity="0.8">25 pitanja</text>
+<text x="30" y="78" font-size="13">RASPON</text>
+<text x="30" y="95" font-size="13">raspon, sa poenima ili bez njih</text>
+<text x="294" y="78" font-size="13" text-anchor="end" opacity="0.8">48 pitanja</text>
+<text x="30" y="130" font-size="13">ZATVOR ILI NOVČANA</text>
+<text x="30" y="147" font-size="13">zatvor ILI novčana + 14 poena</text>
+<text x="294" y="130" font-size="13" text-anchor="end" opacity="0.8">15 pitanja</text>
+<text x="34" y="182" font-size="13">ZATVOR + POENI</text>
+<text x="34" y="199" font-size="13">zatvor 30–60 dana + 15 poena</text>
+<text x="34" y="216" font-size="13">bez novčane, bez reči „ili“</text>
+<text x="294" y="182" font-size="13" text-anchor="end" opacity="0.8">1 pitanje</text>
+<text x="30" y="250" font-size="13">NEIZABRANA PONUDA</text>
+<text x="30" y="267" font-size="13">zatvor do 30 dana, bez „ili“</text>
+<text x="30" y="284" font-size="13">bez novčane i bez poena</text>
+<text x="294" y="250" font-size="13" text-anchor="end" opacity="0.8">0 tačnih</text>
 </g>
-</svg>
+</g></svg>
 </div>
-<p class="mut" style="text-align:center;font-size:var(--fs-sm)">širina leve trake = težina klase · broj desno = koliko od 89 pitanja pada u tu klasu · isprekidani red nije klasa nego jedini zatvorski mamac u bazi</p>
-<p><b>Isto rečima:</b> <b>jedan iznos, bez poena</b> = lakša klasa. <b>Raspon „od–do“</b> (u tri četvrtine slučajeva uz kaznene poene) = srednja. <b>„Zatvor od najmanje 15 dana ILI novčana kazna“ + 14 poena</b> = najteža — tu su zatvor i novčana <i>alternativa</i>, i to je jedini oblik odgovora u kome se pominju oboje. <b>„Zatvor od 30 do 60 dana“ + 15 poena</b> = nasilnička vožnja — fiksni broj dana, bez reči „ili“ i <b>bez novčane kazne</b>. Na tom jedinom pitanju o nasilničkoj vožnji druge dve ponude su jedan fiksni iznos i raspon sa 6 poena, dakle obe iz blažih klasa: odgovora u kome stoje i zatvor i novčana kazna tu uopšte nema, pa ga i ne traži.</p>
-<p><b>Peti oblik je zamka:</b> „kaznom zatvora <b>do 30 dana</b>“ — zatvor bez reči „ili“, bez novčane kazne i bez poena. Po tom opisu liči na nasilničku, ali nije: nudi se tačno jednom, na pitanju o zaustavljanju dok putnici ulaze i izlaze iz tramvaja, i nije tačan (tamo je tačan raspon uz 2 kaznena poena). Zato ključ za nasilničku glasi punije — traži <b>i broj dana (30 do 60) i 15 poena</b>, a ne samo reč „zatvor“.</p>
+<p class="mut" style="text-align:center;font-size:var(--fs-sm)">boje odvajaju oblike odgovora u bazi · broj desno = broj izabranih odgovora tog oblika · isprekidani red je jedna netačna ponuđena opcija</p>
+<p><b>Oblik u bazi:</b> 25 odgovora daje jedan iznos bez poena, 48 daje raspon sa poenima ili bez njih, 15 navodi zatvor ili novčanu kaznu i 14 poena, a jedan navodi zatvor 30–60 dana i 15 poena. Poslednja opcija ne navodi novčanu kaznu, <b>ali važeći član 329 je propisuje</b>. Ne pretvaraj odsustvo nekog dela sankcije iz ponude u zakonsko pravilo.</p>
+<p>Ponuda „zatvor do 30 dana” bez drugih delova javlja se samo u pitanju 8227 o putnicima tramvaja i tamo nije označena tačno. To nije opšti dokaz da je zatvor do 30 dana mamac: važeći član 331 dopušta upravo takvu alternativu uz određene prekršaje.</p>
 <table>
-<tr><th>Klasa</th><th>Šta tačno spada (spisak iz baze)</th></tr>
+<tr><th>Oblik odgovora u bazi</th><th>Pitanja čiji postojeći ključ ima taj oblik</th></tr>
 <tr><td><b>NASILNIČKA</b><br>zatvor + 15 poena</td><td>Jedno pitanje, sa slikom: nepropisno postupanje u <b>gruboj suprotnosti</b> sa pravilima — izlazak u suprotnu traku pred vozilima koja ti dolaze u susret.<br><i>Zamka:</i> alkohol preko 2,00 mg/ml zakon takođe zove nasilničkom vožnjom, ali je u bazi tačan odgovor onaj u obliku <b>najteže</b> klase (zatvor ILI novčana + 14 poena).</td></tr>
-<tr><td><b>NAJTEŽA</b><br>zatvor ILI novčana, 14 poena</td><td>nemaš dozvolu za kategoriju kojom upravljaš (osim kad je dozvoli istekao rok) · alkohol preko 2,00 mg/ml · odbiješ alkotest ili droga-test · voziš dok traje <b>tvoje</b> isključenje iz saobraćaja · voziš <b>vozilom</b> koje je isključeno · voziš dok traje zabrana upravljanja · u naselju prekoračenje preko 70 km/h · van naselja prekoračenje preko 70 km/h · zona usporenog saobraćaja: preko 50 · zona škole u naselju: preko 60 · noću na neosvetljenom putu bez ijednog svetla · ne staneš kad ti je prolaz zabranjen, a na prelazu je pešak · učesnik si nezgode <b>sa povređenima</b> pa ne staneš odnosno ne javiš policiji · preticanje zaustavnom trakom motoputa · kretanje zaustavnom trakom autoputa.<br><span class="mut">15 stavki na 15 pitanja — spisak je potpun.</span></td></tr>
+<tr><td><b>NAJTEŽA</b><br>zatvor ILI novčana, 14 poena</td><td>nemaš dozvolu za kategoriju kojom upravljaš (osim kad je dozvoli istekao rok) · alkohol preko 2,00 mg/ml · odbiješ alkotest ili droga-test · voziš dok traje <b>tvoje</b> isključenje iz saobraćaja · voziš <b>vozilom</b> koje je isključeno · voziš dok traje zabrana upravljanja · u naselju 140 km/h uz ograničenje 50 · van naselja 170 km/h uz ograničenje 80 · zona usporenog saobraćaja: preko 50 · zona škole u naselju: preko 60 · noću na neosvetljenom putu bez ijednog svetla · ne staneš kad ti je prolaz zabranjen, a na prelazu je pešak · učesnik si nezgode <b>sa povređenima</b> pa ne staneš odnosno ne javiš policiji · preticanje zaustavnom trakom motoputa · kretanje zaustavnom trakom autoputa.<br><span class="mut">15 stavki na 15 pitanja — spisak je potpun.</span></td></tr>
 <tr><td><b>LAKŠA</b><br>jedan iznos, bez poena</td><td>ne omogućiš autobusu da krene sa stajališta u naselju · mobilni telefon na nepropisan način · traka kojom tvoja vrsta vozila ne sme · u naselju prekoračenje 11–20 · van naselja prekoračenje 30 · preticanje preko prelaza puta preko železničke pruge · parkiranje uz levu ivicu na dvosmernom putu · parkiranje na pešačkom prelazu · parkiranje na raskrsnici · duga svetla uz uličnu rasvetu · duga svetla u magli · bez zakopčane homologovane kacige · ne propustiš pešaka kad skrećeš na bočni put bez pešačkog prelaza · na autoputu ne držiš krajnju desnu traku · postupanje suprotno postavljenom znaku · moped ili motocikl u blagoj i umerenoj alkoholisanosti · kandidat bez dokaza o zdravstvenoj sposobnosti kod sebe · neispravan pokazivač pravca.<br><i>Najniži stepenik iste klase:</i> u naselju prekoračenje 7 · van naselja prekoračenje 15 · ne pomeriš se udesno dok te pretiču · danju bez kratkih odnosno dnevnih svetala · slušalice na oba uva (moped, motocikl) · motor radi dok vozilo stoji duže od tri minuta · dozvola nije kod tebe (a imaš je).<br><span class="mut">18 + 7 stavki na 25 pitanja — spisak je potpun.</span></td></tr>
 <tr><td><b>SREDNJA</b><br>raspon</td><td>Sve ostalo među 89 pitanja o klasi — njih 48. Gornja tri reda nabrajaju svoje klase do kraja (nasilnička ima tačno jedno pitanje), pa: ako prekršaj nije naveden ni u jednom od njih, odgovor je <b>raspon</b>.</td></tr>
 </table>
@@ -5806,35 +5796,35 @@ opšti okvir trajanja: od 30 dana do jedne godine (Zakon o prekršajima čl. 58)
      Crtez: strelice na susretnim vozilima nose razliku prema obicnom preticanju - bez njih slika
      izgleda kao kolona u istom smeru. -->
 <div class="kPodH"><b class="kPodNaslov">Vrh lestvice: šta se vidi na toj jednoj slici</b>
-<p>Nasilnička vožnja je u bazi <b>jedno jedino pitanje</b>, i ono ima sliku. Isplati se da znaš šta se na njoj dešava, jer se po tome razlikuje od običnog nepropisnog preticanja (koje je srednja klasa).</p>
+<p>Samo jedna izabrana opcija u ovoj bazi navodi <b>zatvor 30–60 dana i 15 poena</b>: pitanje 8224 sa slikom. Na toj slici motociklisti u susret dolazi automobil koji iz suprotnog toka pretiče kolonu.</p>
 <div style="display:flex;justify-content:center;margin:8px 0">
-<svg viewBox="0 0 306 166" style="max-width:306px;width:100%" role="img" aria-label="Dvosmerni put odozgo: plavo vozilo je izašlo iz svoje trake u traku suprotnog smera i vozi udesno, a iz suprotnog smera dolaze dva vozila čije strelice pokazuju ulevo, pravo prema njemu. Isprekidana strelica pokazuje put kojim je plavo vozilo izašlo iz svoje trake. Kazna: zatvor od 30 do 60 dana i 15 kaznenih poena, izriču se zajedno.">
-<text x="78" y="14" font-size="12" text-anchor="middle" fill="currentColor">suprotan smer</text>
-<text x="228" y="14" font-size="12" text-anchor="middle" fill="#c0392b">dolaze ti u susret</text>
-<rect x="6" y="22" width="294" height="82" fill="#9aa7b4"/>
+<svg viewBox="0 0 306 166" style="max-width:306px;width:100%" role="img" aria-label="Šematski prikaz automobila koji čini prekršaj izlaskom prema suprotnom toku. Ne označava motociklistu kao učinioca sa izvorne fotografije. Važeći član 329 predviđa zatvor ili rad u javnom interesu, uz novčanu kaznu i 15 poena za osnovni slučaj.">
+<text x="78" y="14" font-size="13" text-anchor="middle" fill="currentColor">suprotan smer</text>
+<text x="228" y="14" font-size="13" text-anchor="middle" fill="var(--bad)">suprotni tok</text>
+<rect x="6" y="22" width="294" height="82" fill="#7f8c99"/>
 <line x1="6" y1="63" x2="300" y2="63" stroke="#fff" stroke-width="2" stroke-dasharray="12 9"/>
 <g class="animSusret">
 <g><rect x="202" y="32" width="40" height="16" rx="4" fill="#2a333d"/><rect x="212" y="26" width="22" height="7" rx="3" fill="#2a333d"/><circle cx="212" cy="49" r="3" fill="#2a333d"/><circle cx="232" cy="49" r="3" fill="#2a333d"/></g>
 <g><rect x="250" y="32" width="40" height="16" rx="4" fill="#2a333d"/><rect x="260" y="26" width="22" height="7" rx="3" fill="#2a333d"/><circle cx="260" cy="49" r="3" fill="#2a333d"/><circle cx="280" cy="49" r="3" fill="#2a333d"/></g>
 </g>
-<line x1="196" y1="40" x2="182" y2="40" stroke="#c0392b" stroke-width="2"/>
-<polygon points="182,34 172,40 182,46" fill="#c0392b"/>
+<line x1="196" y1="40" x2="182" y2="40" stroke="#612017" stroke-width="2"/>
+<polygon points="182,34 172,40 182,46" fill="#612017"/>
 <g class="animIzlazak">
-<rect x="90" y="32" width="40" height="16" rx="4" fill="#2c6aa0"/><rect x="100" y="26" width="22" height="7" rx="3" fill="#2c6aa0"/><circle cx="100" cy="49" r="3" fill="#2a333d"/><circle cx="120" cy="49" r="3" fill="#2a333d"/>
+<rect x="90" y="32" width="40" height="16" rx="4" fill="#0b3555"/><rect x="100" y="26" width="22" height="7" rx="3" fill="#0b3555"/><circle cx="100" cy="49" r="3" fill="#2a333d"/><circle cx="120" cy="49" r="3" fill="#2a333d"/>
 </g>
-<line x1="136" y1="40" x2="150" y2="40" stroke="#2c6aa0" stroke-width="2"/>
-<polygon points="150,34 160,40 150,46" fill="#2c6aa0"/>
-<g opacity="0.6"><rect x="26" y="74" width="40" height="16" rx="4" fill="none" stroke="#2c6aa0" stroke-dasharray="4 3"/><rect x="36" y="68" width="22" height="7" rx="3" fill="none" stroke="#2c6aa0" stroke-dasharray="4 3"/></g>
-<line x1="70" y1="84" x2="86" y2="52" stroke="#2c6aa0" stroke-width="2" stroke-dasharray="5 4"/>
-<polygon points="90,46 80,56 87,60" fill="#2c6aa0"/>
-<g opacity="0.55"><rect x="140" y="74" width="40" height="16" rx="4" fill="#2a333d"/><rect x="150" y="68" width="22" height="7" rx="3" fill="#2a333d"/></g>
-<text x="60" y="122" font-size="12" text-anchor="middle" fill="currentColor">tvoja traka</text>
-<text x="153" y="144" font-size="12" text-anchor="middle" fill="#c0392b">zatvor 30–60 dana + 15 poena</text>
-<text x="153" y="161" font-size="12" text-anchor="middle" fill="#c0392b">izriču se ZAJEDNO, nije „ili“</text>
+<line x1="136" y1="40" x2="150" y2="40" stroke="#0b3555" stroke-width="2"/>
+<polygon points="150,34 160,40 150,46" fill="#0b3555"/>
+<g><rect x="26" y="74" width="40" height="16" rx="4" fill="none" stroke="#0b3555" stroke-dasharray="4 3"/><rect x="36" y="68" width="22" height="7" rx="3" fill="none" stroke="#0b3555" stroke-dasharray="4 3"/></g>
+<line x1="70" y1="84" x2="86" y2="52" stroke="#0b3555" stroke-width="2" stroke-dasharray="5 4"/>
+<polygon points="90,46 80,56 87,60" fill="#0b3555"/>
+<g><rect x="140" y="74" width="40" height="16" rx="4" fill="#2a333d"/><rect x="150" y="68" width="22" height="7" rx="3" fill="#2a333d"/></g>
+<text x="60" y="122" font-size="13" text-anchor="middle" fill="currentColor">njegova traka</text>
+<text x="153" y="144" font-size="13" text-anchor="middle" fill="var(--bad)">čl. 329: 15 poena</text>
+<text x="153" y="161" font-size="13" text-anchor="middle" fill="var(--bad)">zatvor/rad i novčana kazna</text>
 </svg>
 </div>
-<p class="mut" style="text-align:center;font-size:var(--fs-sm)">plavo = ti · sivo = ostali · strelice = smer kretanja, pa se vidi da su ona dva vozila u susretu · isprekidano vozilo i isprekidana strelica = odakle si i kojim putem izašao iz svoje trake</p>
-<p><b>Isto rečima:</b> ovo nije obično nepropisno preticanje. Izlazak u <b>traku suprotnog smera pred vozilima koja ti dolaze u susret</b> je gruba, bezobzirna vožnja — otud sam vrh lestvice. Zato se ovde zatvor i kazneni poeni izriču <b>zajedno, kumulativno</b>, a ne jedno ili drugo, i zato u tačnom odgovoru nema reči „ili“. Obično nepropisno preticanje, bez te neposredne opasnosti od čeonog sudara, ostaje srednja klasa: raspon uz 6 poena.</p>
+<p class="mut" style="text-align:center;font-size:var(--fs-sm)">plavo = automobil koji čini prekršaj u šematskom prikazu · sivo = drugi tok · ovo nije tvrdnja da na izvornoj fotografiji motociklista pretiče</p>
+<p><b>Važeći član 329:</b> za osnovni slučaj nasilničke vožnje propisuje zatvor 30–60 dana uz 120.000–140.000 dinara, ili rad u javnom interesu 240–360 sati uz isti novčani raspon, uz 15 poena i zabranu najmanje devet meseci. Postojeća opcija pitanja 8224 navodi samo zatvor i poene. Nije svako nepropisno preticanje automatski nasilnička vožnja; potrebni su uslovi člana 41.</p>
 <p class="mut">Pamtilica: formulacija <b>„zatvor od 30 do 60 dana“</b> u celoj podoblasti postoji samo na tom jednom pitanju — i tamo je tačna. Ali pazi: zatvor <i>uopšte</i> nije siguran znak za nasilničku — jednom se nudi i „zatvor do 30 dana“, i to kao mamac (v. celinu iznad).</p>
 </div>
 
@@ -5849,67 +5839,67 @@ opšti okvir trajanja: od 30 dana do jedne godine (Zakon o prekršajima čl. 58)
      potvrdjene raspon-tacke stoji isprekidani procep sa znakom pitanja. -->
 <div class="kPodH"><b class="kPodNaslov">Brzina: ista brojka, druga klasa</b>
 <div style="display:flex;justify-content:center;margin:8px 0">
-<svg viewBox="0 0 306 190" style="max-width:306px;width:100%" role="img" aria-label="U naselju, dozvoljeno 50. Osa prekoračenja od 0 do 100 km/h: do plus 20 fiksna kazna bez poena, između plus 20 i plus 30 baza ne pita pa je procep, od plus 30 raspon uz kaznene poene, preko 70 najteža klasa. Zaštitna mera zabrane upravljanja: na plus 10 se ne izriče, na plus 30 se izriče.">
+<svg viewBox="0 0 306 190" style="max-width:306px;width:100%" role="img" aria-label="U naselju, ograničenje 50. Za pozitivno prekoračenje do 30 fiksni iznosi, više od 30 do 70 novčani rasponi uz poene. Više od 70 do 90 član 330, više od 90 nasilnička vožnja. Za prikazanih plus 10 i tačno plus 30 nije obavezno propisana zabrana.">
 <text x="153" y="16" font-size="13" text-anchor="middle" fill="currentColor">U NASELJU — dozvoljeno 50</text>
-<g font-size="12" text-anchor="middle" fill="currentColor" opacity="0.85"><text x="20" y="34">0</text><text x="73.2" y="34">20</text><text x="126.4" y="34">40</text><text x="179.6" y="34">60</text><text x="232.8" y="34">80</text><text x="286" y="34">100</text></g>
-<text x="206.2" y="34" font-size="12" text-anchor="middle" fill="#c0392b">70</text>
-<line x1="20" y1="40" x2="286" y2="40" stroke="currentColor" opacity="0.5"/>
-<g stroke="currentColor" opacity="0.5"><line x1="20" y1="40" x2="20" y2="45"/><line x1="73.2" y1="40" x2="73.2" y2="45"/><line x1="126.4" y1="40" x2="126.4" y2="45"/><line x1="179.6" y1="40" x2="179.6" y2="45"/><line x1="232.8" y1="40" x2="232.8" y2="45"/><line x1="286" y1="40" x2="286" y2="45"/></g>
-<line x1="206.2" y1="38" x2="206.2" y2="47" stroke="#c0392b" stroke-width="1.5"/>
-<rect x="20" y="48" width="53.2" height="26" fill="#1f7a3f" fill-opacity="0.28"/>
-<rect x="73.2" y="48" width="26.6" height="26" fill="none" stroke="currentColor" stroke-dasharray="3 3" opacity="0.75"/>
-<rect x="99.8" y="48" width="106.4" height="26" fill="#e8b000" fill-opacity="0.32"/>
-<rect x="206.2" y="48" width="79.8" height="26" fill="#c0392b" fill-opacity="0.40"/>
-<g font-size="12" text-anchor="middle" fill="currentColor">
-<text x="46.6" y="90">fiksna</text><text x="46.6" y="107">bez poena</text>
-<text x="86.5" y="90">?</text>
-<text x="153" y="90">raspon</text><text x="153" y="107">+ poeni</text>
-<text x="246" y="90">NAJTEŽA</text><text x="246" y="107">preko 70</text>
-</g>
-<text x="153" y="129" font-size="12" text-anchor="middle" fill="currentColor">zaštitna mera zabrane upravljanja</text>
-<circle cx="46.6" cy="152" r="11" fill="none" stroke="#1f7a3f"/>
-<text x="46.6" y="157" font-size="15" text-anchor="middle" fill="#1f7a3f">✗</text>
-<circle cx="99.8" cy="152" r="11" fill="none" stroke="#c0392b"/>
-<text x="99.8" y="157" font-size="15" text-anchor="middle" fill="#c0392b">✓</text>
-<g font-size="12" text-anchor="middle" fill="currentColor" opacity="0.85"><text x="46.6" y="182">+10</text><text x="99.8" y="182">+30</text></g>
-</svg>
-</div>
-<div style="display:flex;justify-content:center;margin:8px 0">
-<svg viewBox="0 0 306 190" style="max-width:306px;width:100%" role="img" aria-label="Van naselja, dozvoljeno 80. Ista osa i ista razmera: do plus 30 fiksna kazna bez poena, između plus 30 i plus 50 baza ne pita pa je procep, od plus 50 raspon uz kaznene poene, preko 70 najteža klasa — isto mesto kao u naselju. Zaštitna mera: na plus 30 se ne izriče, na plus 60 se izriče.">
-<text x="153" y="16" font-size="13" text-anchor="middle" fill="currentColor">VAN NASELJA — dozvoljeno 80</text>
-<g font-size="12" text-anchor="middle" fill="currentColor" opacity="0.85"><text x="20" y="34">0</text><text x="73.2" y="34">20</text><text x="126.4" y="34">40</text><text x="179.6" y="34">60</text><text x="232.8" y="34">80</text><text x="286" y="34">100</text></g>
-<text x="206.2" y="34" font-size="12" text-anchor="middle" fill="#c0392b">70</text>
+<g font-size="13" text-anchor="middle" fill="currentColor" opacity="0.85"><text x="20" y="34">0</text><text x="73.2" y="34">20</text><text x="126.4" y="34">40</text><text x="179.6" y="34">60</text><text x="232.8" y="34">80</text><text x="286" y="34">100</text></g>
+<text x="206.2" y="34" font-size="13" text-anchor="middle" fill="var(--bad)">70</text>
 <line x1="20" y1="40" x2="286" y2="40" stroke="currentColor" opacity="0.5"/>
 <g stroke="currentColor" opacity="0.5"><line x1="20" y1="40" x2="20" y2="45"/><line x1="73.2" y1="40" x2="73.2" y2="45"/><line x1="126.4" y1="40" x2="126.4" y2="45"/><line x1="179.6" y1="40" x2="179.6" y2="45"/><line x1="232.8" y1="40" x2="232.8" y2="45"/><line x1="286" y1="40" x2="286" y2="45"/></g>
 <line x1="206.2" y1="38" x2="206.2" y2="47" stroke="#c0392b" stroke-width="1.5"/>
 <rect x="20" y="48" width="79.8" height="26" fill="#1f7a3f" fill-opacity="0.28"/>
-<rect x="99.8" y="48" width="53.2" height="26" fill="none" stroke="currentColor" stroke-dasharray="3 3" opacity="0.75"/>
-<rect x="153" y="48" width="53.2" height="26" fill="#e8b000" fill-opacity="0.32"/>
+
+<rect x="99.8" y="48" width="106.4" height="26" fill="#e8b000" fill-opacity="0.32"/>
 <rect x="206.2" y="48" width="79.8" height="26" fill="#c0392b" fill-opacity="0.40"/>
-<g font-size="12" text-anchor="middle" fill="currentColor">
-<text x="59.9" y="90">fiksna</text><text x="59.9" y="107">bez poena</text>
-<text x="126.4" y="90">?</text>
-<text x="179.6" y="90">raspon</text><text x="179.6" y="107">+ poeni</text>
-<text x="246" y="90">NAJTEŽA</text><text x="246" y="107">preko 70</text>
+<g font-size="13" text-anchor="middle" fill="currentColor">
+<text x="46.6" y="90">fiksna</text><text x="46.6" y="107">bez poena</text>
+
+<text x="153" y="90">raspon</text><text x="153" y="107">+ poeni</text>
+<text x="246" y="90">330 / 329</text><text x="246" y="107">više 70 / 90</text>
 </g>
-<text x="153" y="129" font-size="12" text-anchor="middle" fill="currentColor">zaštitna mera zabrane upravljanja</text>
-<circle cx="99.8" cy="152" r="11" fill="none" stroke="#1f7a3f"/>
-<text x="99.8" y="157" font-size="15" text-anchor="middle" fill="#1f7a3f">✗</text>
-<circle cx="179.6" cy="152" r="11" fill="none" stroke="#c0392b"/>
-<text x="179.6" y="157" font-size="15" text-anchor="middle" fill="#c0392b">✓</text>
-<g font-size="12" text-anchor="middle" fill="currentColor" opacity="0.85"><text x="99.8" y="182">+30</text><text x="179.6" y="182">+60</text></g>
+<text x="153" y="129" font-size="13" text-anchor="middle" fill="currentColor">obavezna mera — osnovni slučaj</text>
+<circle cx="46.6" cy="152" r="11" fill="none" stroke="var(--ok)"/>
+<text x="46.6" y="157" font-size="15" text-anchor="middle" fill="var(--ok)">✗</text>
+<circle cx="99.8" cy="152" r="11" fill="none" stroke="var(--ok)"/>
+<text x="99.8" y="157" font-size="15" text-anchor="middle" fill="var(--ok)">✗</text>
+<g font-size="13" text-anchor="middle" fill="currentColor" opacity="0.85"><text x="46.6" y="182">+10</text><text x="99.8" y="182">+30</text></g>
 </svg>
 </div>
-<p class="mut" style="text-align:center;font-size:var(--fs-sm)">oba crteža imaju istu osu i istu razmeru — vodoravno je za koliko km/h prelaziš dozvoljeno · isprekidani procep sa <b>?</b> = zona u kojoj baza ne pita, pa granica nije povučena · ✗ = mera se ne izriče, ✓ = izriče se, i to samo na tačkama koje baza pita · crvena crta na 70 = mesto na kome se dve lestvice spajaju</p>
-<p><b>Isto rečima:</b> ista brojka prekoračenja pada za stepenik niže van naselja nego u naselju — <b>osim na vrhu, gde se lestvice spajaju</b>: preko 70 km/h prekoračenja je najteža klasa i u naselju i van njega (crvena crta na oba crteža, na istom mestu). Na <b>+30 km/h</b>: u naselju — raspon, kazneni poeni <b>i</b> zabrana upravljanja; van naselja — jedan iznos, bez poena i <b>bez</b> zabrane. Baza pita tačke, ne granice: u naselju potvrđuje fiksnu kaznu na +7 i na +11 do +20, a raspon sa poenima već na +30; van naselja fiksnu na +15 i na +30, a raspon sa poenima na +50. Zato između te dve potvrđene tačke na crtežu stoji procep sa znakom pitanja, a ne ivica: prelaz je negde između +20 i +30 u naselju, odnosno između +30 i +50 van naselja, a gde tačno — baza ne kaže. <b>Tačno 70 još nije najteža klasa</b> — jedno pitanje se lomi baš na toj razlici.</p>
+<div style="display:flex;justify-content:center;margin:8px 0">
+<svg viewBox="0 0 306 190" style="max-width:306px;width:100%" role="img" aria-label="Van naselja, ograničenje 80 za prikazani motocikl. Pozitivno prekoračenje do 40 ima fiksne iznose, više od 40 do 80 novčane raspone uz poene. Više od 80 do 100 pripada članu 330; više od 100 nasilničkoj vožnji. Na plus 30 nema obavezne mere, na plus 60 je obavezna.">
+<text x="153" y="16" font-size="13" text-anchor="middle" fill="currentColor">VAN NASELJA — dozvoljeno 80</text>
+<g font-size="13" text-anchor="middle" fill="currentColor" opacity="0.85"><text x="20" y="34">0</text><text x="73.2" y="34">20</text><text x="126.4" y="34">40</text><text x="179.6" y="34">60</text><text x="232.8" y="34">80</text><text x="286" y="34">100</text></g>
+
+<line x1="20" y1="40" x2="286" y2="40" stroke="currentColor" opacity="0.5"/>
+<g stroke="currentColor" opacity="0.5"><line x1="20" y1="40" x2="20" y2="45"/><line x1="73.2" y1="40" x2="73.2" y2="45"/><line x1="126.4" y1="40" x2="126.4" y2="45"/><line x1="179.6" y1="40" x2="179.6" y2="45"/><line x1="232.8" y1="40" x2="232.8" y2="45"/><line x1="286" y1="40" x2="286" y2="45"/></g>
+<line x1="232.8" y1="38" x2="232.8" y2="47" stroke="#c0392b" stroke-width="1.5"/>
+<rect x="20" y="48" width="106.4" height="26" fill="#1f7a3f" fill-opacity="0.28"/>
+
+<rect x="126.4" y="48" width="106.4" height="26" fill="#e8b000" fill-opacity="0.32"/>
+<rect x="232.8" y="48" width="53.2" height="26" fill="#c0392b" fill-opacity="0.40"/>
+<g font-size="13" text-anchor="middle" fill="currentColor">
+<text x="59.9" y="90">fiksna</text><text x="59.9" y="107">bez poena</text>
+
+<text x="179.6" y="90">raspon</text><text x="179.6" y="107">+ poeni</text>
+<text x="259" y="90">čl. 330</text><text x="259" y="107">više 80</text>
+</g>
+<text x="153" y="129" font-size="13" text-anchor="middle" fill="currentColor">obavezna mera — osnovni slučaj</text>
+<circle cx="99.8" cy="152" r="11" fill="none" stroke="var(--ok)"/>
+<text x="99.8" y="157" font-size="15" text-anchor="middle" fill="var(--ok)">✗</text>
+<circle cx="179.6" cy="152" r="11" fill="none" stroke="var(--bad)"/>
+<text x="179.6" y="157" font-size="15" text-anchor="middle" fill="var(--bad)">✓</text>
+<g font-size="13" text-anchor="middle" fill="currentColor" opacity="0.85"><text x="99.8" y="182">+30</text><text x="179.6" y="182">+60</text></g>
+</svg>
+</div>
+<p class="mut" style="text-align:center;font-size:var(--fs-sm)">vodoravno = pozitivno prekoračenje dozvoljene brzine · boje prikazuju grupe važećih sankcija · crvena granica čl. 330 nije ista u naselju i van njega · ✗ = mera nije obavezno propisana, ✓ = jeste, za označene osnovne slučajeve</p>
+<p><b>Prema važećem ZOBS-u:</b> tačno <b>+30 km/h</b> i u naselju i van njega nosi 10.000 dinara, bez ovim osnovom propisanih poena i obavezne zabrane. U naselju član 330 obuhvata više od 70 do 90, van naselja za prikazani motocikl više od 80 do 100 km/h prekoračenja. Više od 90 u naselju, odnosno više od 100 van naselja, jeste nasilnička vožnja po članu 41. Ovo ispravlja stare ili preširoke zaključke iz ponuđenih odgovora baze.</p>
 <table>
-<tr><th>Gde voziš</th><th>Dozvoljeno</th><th>Najteža klasa počinje na prekoračenju od</th></tr>
-<tr><td>naselje / van naselja</td><td>50 / 80</td><td><b>preko 70</b></td></tr>
-<tr><td>zona škole u naselju</td><td>30, od 7 do 21 č.</td><td><b>preko 60</b></td></tr>
-<tr><td>zona „30“</td><td>—</td><td><b>preko 60</b></td></tr>
-<tr><td>zona usporenog saobraćaja</td><td>10</td><td><b>preko 50</b></td></tr>
+<tr><th>Gde voziš</th><th>Ograničenje</th><th>Prekoračenje obuhvaćeno čl. 330</th></tr>
+<tr><td>Naselje / van naselja</td><td>50 / 80 km/h</td><td>Više od 70 do 90 / više od 80 do 100 km/h</td></tr>
+<tr><td>Zona škole u naselju</td><td>30 km/h, od 7 do 21, osim drugačije signalizacije</td><td>Više od 60 km/h</td></tr>
+<tr><td>Zona „30”</td><td>30 km/h</td><td>Više od 60 km/h</td></tr>
+<tr><td>Zona usporenog saobraćaja</td><td>Brzina pešaka, najviše 10 km/h</td><td>Više od 50 km/h</td></tr>
 </table>
-<p class="mut">Za zonu „30“ baza navodi samo prag (preko 60), ne i sâmo ograničenje — zato je to polje prazno.<br>Pamtilica: pragovi idu <b>70 · 60 · 50</b> — što je zona osetljivija, to ti manje treba da upadneš u najtežu klasu.<br>Druga pamtilica, i pazi na ogradu: <b>na brzinskim tačkama koje baza pita</b> poeni i zabrana idu u paru — gde ima kaznenih poena, izriče se i zabrana; gde ih nema, ne izriče se. Van brzine to <b>ne</b> važi: dva prekršaja nose po 2 kaznena poena, a mera se ipak ne izriče — istekla registraciona nalepnica i vozačka dozvola istekla najviše šest meseci (oba su niže, među sličicama).</p>
+<p class="mut">Zona „30” ima ograničenje 30 km/h; zona usporenog saobraćaja dopušta brzinu pešaka, najviše 10. Kod škole je važno vreme važenja ograničenja. Ne izvodi sve granice iz samo nekoliko pitanja baze: zakon razlikuje i tačnu graničnu vrednost od <b>više od</b> te vrednosti. Poeni i zabrana su različite sankcije, uređene posebnim odredbama.</p>
 </div>
 
 <!-- CELINA 4 - izvor: #8405 (0,30-0,50 mera se NE izrice, "kazna DA, zastitna mera NE"),
@@ -5923,50 +5913,50 @@ opšti okvir trajanja: od 30 dana do jedne godine (Zakon o prekršajima čl. 58)
      a ne na levom kraju promilne ose. -->
 <div class="kPodH"><b class="kPodNaslov">Alkohol: gde je koja granica</b>
 <div style="display:flex;justify-content:center;margin:8px 0">
-<svg viewBox="0 0 306 88" style="max-width:306px;width:100%" role="img" aria-label="Zaštitna mera zabrane upravljanja po sadržini alkohola: od 0,30 do 0,50 mg/ml mera se ne izriče, više od 0,50 do 1,20 mera se izriče. Ispod 0,30 i preko 1,20 baza ne pita, pa su ti krajevi isprekidani i označeni znakom pitanja.">
-<text x="153" y="14" font-size="12" text-anchor="middle" fill="currentColor">zaštitna mera zabrane upravljanja</text>
+<svg viewBox="0 0 306 88" style="max-width:306px;width:100%" role="img" aria-label="Prikaz obavezne mere za osnovni slučaj: više od 0,30 do 0,50 nema obavezne zabrane; više od 0,50 do 1,20 ima. Drugi intervali nisu prikazani. Sudska mogućnost po članu 338 stav 2 nije isključena.">
+<text x="153" y="14" font-size="13" text-anchor="middle" fill="currentColor">obavezna mera — osnovni slučaj</text>
 <rect x="30" y="22" width="54.9" height="30" fill="none" stroke="currentColor" stroke-dasharray="3 3" opacity="0.75"/>
 <rect x="84.9" y="22" width="36.5" height="30" fill="#1f7a3f" fill-opacity="0.28"/>
 <rect x="121.4" y="22" width="128.1" height="30" fill="#c0392b" fill-opacity="0.38"/>
 <rect x="249.5" y="22" width="36.5" height="30" fill="none" stroke="currentColor" stroke-dasharray="3 3" opacity="0.75"/>
 <text x="57.4" y="43" font-size="14" text-anchor="middle" fill="currentColor" opacity="0.8">?</text>
-<text x="103.1" y="43" font-size="15" text-anchor="middle" fill="#1f7a3f">✗</text>
-<text x="185.4" y="42" font-size="12" text-anchor="middle" fill="currentColor">✓ mera se izriče</text>
+<text x="103.1" y="43" font-size="15" text-anchor="middle" fill="currentColor">✗</text>
+<text x="185.4" y="42" font-size="13" text-anchor="middle" fill="currentColor">✓ obavezna mera</text>
 <text x="267.7" y="43" font-size="14" text-anchor="middle" fill="currentColor" opacity="0.8">?</text>
 <line x1="30" y1="56" x2="286" y2="56" stroke="currentColor" opacity="0.5"/>
 <g stroke="currentColor" opacity="0.6"><line x1="84.9" y1="56" x2="84.9" y2="62"/><line x1="121.4" y1="56" x2="121.4" y2="62"/><line x1="249.5" y1="56" x2="249.5" y2="62"/></g>
-<g font-size="12" text-anchor="middle" fill="currentColor"><text x="84.9" y="76">0,30</text><text x="121.4" y="76">0,50</text><text x="249.5" y="76">1,20</text></g>
+<g font-size="13" text-anchor="middle" fill="currentColor"><text x="84.9" y="76">0,30</text><text x="121.4" y="76">0,50</text><text x="249.5" y="76">1,20</text></g>
 </svg>
 </div>
-<p class="mut" style="text-align:center;font-size:var(--fs-sm)">vodoravno = mg/ml alkohola · ✗ kazna da, mera ne · ✓ uz kaznu ide i mera · <b>?</b> = baza tu ništa ne pita, ni ispod 0,30 ni preko 1,20</p>
-<p><b>Isto rečima:</b> granica za <b>zabranu upravljanja je 0,50</b> — od 0,30 do 0,50 ide kazna ali ne i zabrana; više od 0,50 do 1,20 uz kaznu obavezno ide i zabrana. To su tačno dva opsega koja baza pita; preko 1,20 o meri ne pita ništa, pa crtež tu ne tvrdi ništa.</p>
+<p class="mut" style="text-align:center;font-size:var(--fs-sm)">vodoravno = mg/ml alkohola · ✗ = nema obavezno propisane mere za označeni osnovni slučaj · ✓ = mera je obavezna · krajevi sa ? nisu obuhvaćeni ovim crtežom</p>
+<p>Za više od 0,30 do 0,50 mg/ml u osnovnom slučaju nije obavezno propisana zabrana. Za više od 0,50 do 0,80 obavezna je najmanje tri meseca, a za više od 0,80 do 1,20 najmanje četiri (čl. 338). Crtež ne opisuje sankcije van tih opsega niti isključuje mogućnost iz stava 2.</p>
 <div style="display:flex;justify-content:center;margin:8px 0">
-<svg viewBox="0 0 306 200" style="max-width:306px;width:100%" role="img" aria-label="Lestvica klasa kazne po stepenu alkoholisanosti, od najblažeg ka najtežem: moped i motocikl u blagoj i umerenoj alkoholisanosti — lakša klasa, jedan iznos; srednja alkoholisanost — raspon i 6 kaznenih poena; psihoaktivna supstanca — raspon i 8 poena; 1,80 mg/ml — raspon i 12 poena; preko 2,00 — najteža klasa, 14 poena; odbijanje testa — isto kao preko 2,00.">
+<svg viewBox="0 0 306 200" style="max-width:306px;width:100%" role="img" aria-label="Različiti važeći osnovi: moped/motocikl blaga i umerena alkoholisanost 10.000 dinara; srednja raspon i šest poena; psihoaktivna supstanca član 331 i osam; 1,80 član 330 i 14; više od 2,00 nasilnička vožnja i 15; odbijanje testa član 330 i 14. Za poene važe uslovi člana 323.">
 <rect x="6" y="6" width="294" height="38" fill="#1f7a3f" fill-opacity="0.16" stroke="#1f7a3f"/>
 <rect x="6" y="6" width="6" height="38" fill="#1f7a3f" fill-opacity="0.55"/>
 <rect x="6" y="49" width="294" height="25" fill="#e8b000" fill-opacity="0.20" stroke="#e8b000"/>
-<rect x="6" y="49" width="10" height="25" fill="#e8b000" fill-opacity="0.65"/>
+<rect x="6" y="49" width="6" height="25" fill="#e8b000" fill-opacity="0.65"/>
 <rect x="6" y="79" width="294" height="25" fill="#e8b000" fill-opacity="0.28" stroke="#e8b000"/>
-<rect x="6" y="79" width="13" height="25" fill="#e8b000" fill-opacity="0.8"/>
+<rect x="6" y="79" width="6" height="25" fill="#e8b000" fill-opacity="0.8"/>
 <rect x="6" y="109" width="294" height="25" fill="#e8b000" fill-opacity="0.38" stroke="#e8b000"/>
-<rect x="6" y="109" width="16" height="25" fill="#e8b000" fill-opacity="0.95"/>
+<rect x="6" y="109" width="6" height="25" fill="#e8b000" fill-opacity="0.95"/>
 <rect x="6" y="139" width="294" height="25" fill="#c0392b" fill-opacity="0.35" stroke="#c0392b"/>
-<rect x="6" y="139" width="20" height="25" fill="#c0392b" fill-opacity="0.85"/>
+<rect x="6" y="139" width="6" height="25" fill="#c0392b" fill-opacity="0.85"/>
 <rect x="6" y="169" width="294" height="25" fill="#c0392b" fill-opacity="0.35" stroke="#c0392b"/>
-<rect x="6" y="169" width="20" height="25" fill="#c0392b" fill-opacity="0.85"/>
-<g font-size="12" fill="currentColor">
+<rect x="6" y="169" width="6" height="25" fill="#c0392b" fill-opacity="0.85"/>
+<g font-size="13" fill="currentColor">
 <text x="30" y="22">moped i motocikl, blaga i umerena</text>
-<text x="30" y="39">lakša klasa — jedan iznos</text>
+<text x="30" y="39">10.000 dinara</text>
 <text x="30" y="66">srednja — raspon + 6 poena</text>
-<text x="30" y="96">psihoaktivna — raspon + 8 poena</text>
-<text x="30" y="126">1,80 mg/ml — raspon + 12 poena</text>
-<text x="30" y="156">preko 2,00 — najteža, 14 poena</text>
-<text x="30" y="186">odbijanje testa — isto kao 2,00</text>
+<text x="30" y="96">psihoaktivna — čl. 331, 8 poena</text>
+<text x="30" y="126">1,80 mg/ml — čl. 330, 14 poena</text>
+<text x="30" y="156">preko 2,00 — čl. 329, 15 poena</text>
+<text x="30" y="186">odbijanje — čl. 330, 14 poena</text>
 </g>
 </svg>
 </div>
-<p class="mut" style="text-align:center;font-size:var(--fs-sm)">redovi idu od najblažeg ka najtežem · leva traka raste sa težinom · poslednja dva reda su isti odgovor: odbijanjem se ništa ne dobija</p>
-<p><b>Isto rečima:</b> granica za <b>najtežu klasu je 2,00</b>: preko toga je zatvor ILI najviša novčana uz 14 poena, a po slovu zakona takva vožnja je već nasilnička (čl. 41) — ipak, u bazi je tačan odgovor u obliku najteže klase. <b>Odbijanje</b> alkotesta ili droga-testa kažnjava se istim odgovorom kao preko 2,00. Za <b>mopedistu i motociklistu</b>, kao i za kandidata na praktičnoj obuci, važi <b>nulta tolerancija</b> (ZOBS čl. 187): zabranjen je svaki alkohol, a stepen alkoholisanosti određuje samo visinu kazne — zato blaga i umerena kod njih ostaju lakša klasa, a srednja već nosi raspon uz 6 poena, isto kao i kod kandidata na obuci.</p>
+<p class="mut" style="text-align:center;font-size:var(--fs-sm)">svaki red je zaseban važeći osnov; boje grupišu redove, a širina leve trake ne predstavlja broj poena niti rang sankcije</p>
+<p><b>Važeće razlike:</b> 1,80 mg/ml pripada čl. 330 sa 14 poena; više od 2,00 je nasilnička vožnja iz čl. 329 sa 15 poena. Odbijanje testa je poseban osnov čl. 330, a ne pretpostavljeni najgori nalaz. Za vozače mopeda i motocikla i kandidate na praktičnoj obuci važi nulta tolerancija; poene za kandidata treba čitati uz čl. 323 o izdatoj dozvoli. Stari odgovori baze ne predstavljaju ovu celu važeću lestvicu.</p>
 </div>
 
 <!-- CELINA 5 - izvor: #8225 (trajanje mere: najmanje 30 dana do najvise jedne godine; oba pogresna
@@ -5981,82 +5971,82 @@ opšti okvir trajanja: od 30 dana do jedne godine (Zakon o prekršajima čl. 58)
 <p>Jedno pitanje pita samo <b>trajanje</b> mere. Tačan odgovor je najširi ponuđeni okvir; oba mamca ga sužavaju, svaki sa svoje strane.</p>
 <div style="display:flex;justify-content:center;margin:8px 0">
 <svg viewBox="0 0 306 146" style="max-width:306px;width:100%" role="img" aria-label="Trajanje zaštitne mere zabrane upravljanja: tačan okvir je od 30 dana do jedne godine; prvi netačan odgovor skraćuje gornju granicu na šest meseci, drugi podiže donju granicu na tri meseca.">
-<g text-anchor="end" fill="currentColor" font-size="12"><text x="46" y="23">tačno</text><text x="46" y="53">mamac</text><text x="46" y="83">mamac</text></g>
+<g text-anchor="end" fill="currentColor" font-size="13"><text x="46" y="23">tačno</text><text x="46" y="53">mamac</text><text x="46" y="83">mamac</text></g>
 <rect x="52" y="8" width="234" height="22" fill="#1f7a3f" fill-opacity="0.30" stroke="#1f7a3f"/>
-<text x="169" y="23" font-size="12" text-anchor="middle" fill="currentColor">od 30 dana do 1 godine</text>
+<text x="169" y="23" font-size="13" text-anchor="middle" fill="currentColor">od 30 dana do 1 godine</text>
 <rect x="52" y="38" width="106.5" height="22" fill="#c0392b" fill-opacity="0.20" stroke="#c0392b" stroke-dasharray="4 3"/>
-<text x="165" y="53" font-size="12" text-anchor="start" fill="currentColor">30 dana – 6 meseci</text>
+<text x="165" y="53" font-size="13" text-anchor="start" fill="currentColor">30 dana – 6 meseci</text>
 <rect x="94.5" y="68" width="191.5" height="22" fill="#c0392b" fill-opacity="0.20" stroke="#c0392b" stroke-dasharray="4 3"/>
-<text x="190" y="83" font-size="12" text-anchor="middle" fill="currentColor">3 meseca – 1 godina</text>
+<text x="190" y="83" font-size="13" text-anchor="middle" fill="currentColor">3 meseca – 1 godina</text>
 <line x1="52" y1="100" x2="286" y2="100" stroke="currentColor" opacity="0.5"/>
 <g stroke="currentColor" opacity="0.6"><line x1="52" y1="100" x2="52" y2="106"/><line x1="94.5" y1="100" x2="94.5" y2="106"/><line x1="158.5" y1="100" x2="158.5" y2="106"/><line x1="286" y1="100" x2="286" y2="106"/></g>
-<g font-size="12" fill="currentColor" opacity="0.85"><text x="52" y="122" text-anchor="middle">30 dana</text><text x="158.5" y="122" text-anchor="middle">6 meseci</text><text x="298" y="122" text-anchor="end">1 godina</text><text x="94.5" y="140" text-anchor="middle">3 meseca</text></g>
+<g font-size="13" fill="currentColor" opacity="0.85"><text x="52" y="122" text-anchor="middle">30 dana</text><text x="158.5" y="122" text-anchor="middle">6 meseci</text><text x="298" y="122" text-anchor="end">1 godina</text><text x="94.5" y="140" text-anchor="middle">3 meseca</text></g>
 </svg>
 </div>
 <p class="mut" style="text-align:center;font-size:var(--fs-sm)">puna zelena ivica = tačan okvir · isprekidane crvene = ponude koje sužavaju okvir, svaka sa svoje strane</p>
 <p><b>Isto rečima:</b> mera traje <b>najmanje 30 dana, najviše jednu godinu</b>. Jedan mamac ti skraćuje gornju granicu na šest meseci, drugi ti podiže donju na tri meseca. Zapamti obe krajnje tačke i biraj najširu ponudu.</p>
-<p>Dvadeset pitanja pita samo da li se mera izriče, a odgovor su dve reči. Nauči spisak — pravilo ispod pokriva većinu, ali ne sve.</p>
+<p>Dvadeset pitanja traži da li se mera izriče. Sledeći pregled pokazuje <b>da li je obavezno propisana po važećem ZOBS-u za osnovni slučaj</b>. Baza se razlikuje kod tačno +30 u naselju (8397) i isteka dozvole preko šest meseci (8413); sudska mogućnost iz čl. 338 st. 2 ostaje odvojena.</p>
 <table>
-<tr><th>IZRIČE SE</th><th>NE IZRIČE SE</th></tr>
-<tr><td>u naselju: prekoračenje 30 km/h</td><td>u naselju: prekoračenje 10 km/h</td></tr>
+<tr><th>OBAVEZNO PROPISANA</th><th>NIJE OBAVEZNO PROPISANA</th></tr>
+<tr><td>—</td><td>U naselju: tačno +30 i +10 km/h</td></tr>
 <tr><td>van naselja: prekoračenje 60 km/h</td><td>van naselja: prekoračenje 30 km/h</td></tr>
-<tr><td>alkohol preko 0,50 mg/ml</td><td>alkohol preko 0,30 do 0,50 mg/ml</td></tr>
-<tr><td>preticanje preko neisprekidane linije, uz ulazak u traku suprotnog smera</td><td>pretičeš vozilo koje je već dalo znak da i samo pretiče</td></tr>
-<tr><td>prolazak kad ti je svetlosnim znakom prolaz zabranjen</td><td>postupanje suprotno postavljenom saobraćajnom znaku</td></tr>
+<tr><td>Alkohol: više od 0,50 do 1,20 mg/ml</td><td>Alkohol: više od 0,30 do 0,50 mg/ml</td></tr>
+<tr><td>Zabranjeno preticanje preko neisprekidane linije uz suprotnu traku; uz izuzetke čl. 55 st. 7</td><td>Preticanje vozila koje je već dalo znak da pretiče</td></tr>
+<tr><td>Prolazak na zabranjen svetlosni znak</td><td>Zabrana skretanja desno sa slike</td></tr>
 <tr><td>uslovna zelena strelica: ne propustiš vozilo na putu na koji ulaziš</td><td>parkiranje na pešačkom prelazu</td></tr>
 <tr><td>vozilo nije upisano u jedinstveni registar</td><td>istekla registraciona nalepnica</td></tr>
-<tr><td>dozvola istekla više od šest meseci</td><td>dozvola istekla najviše šest meseci</td></tr>
+<tr><td>—</td><td>Dozvola istekla do šest meseci ili preko šest meseci</td></tr>
 <tr><td>voziš vozilom isključenim iz saobraćaja</td><td></td></tr>
 <tr><td>noću na neosvetljenom putu bez ijednog svetla</td><td></td></tr>
 <tr><td>dete mlađe od 12 godina u krilu</td><td></td></tr>
 <tr><td>ne staneš pred prugom kad svetlosni znak najavljuje voz (prelaz bez branika)</td><td></td></tr>
 </table>
-<p><b>Isto rečima:</b> mera prati <b>opasnu radnju u vožnji</b> — brzinu sa poenima, alkohol preko 0,50, crveno, mrak bez svetala, dete u krilu, prugu, kršenje isključenja. Ne prati <b>parkiranje, sam prekršeni znak, blago prekoračenje i blagi alkohol</b>. Ostaju tri reda koje to pravilo ne pokriva — dva preticanja i uslovna strelica — i dva para koja liče na čistu papirologiju. Njih zapamti kao slike i ključeve.</p>
+<p>Obavezna mera prati konkretan spisak iz zakona, <b>ne pouzdanu prečicu „opasno = zabrana”</b>. Ne zaključuj da parkiranje ili nepoštovanje znaka ne mogu ugroziti život, niti da sudska mera nikad nije moguća kada nije obavezno propisana.</p>
 <div style="display:flex;justify-content:center;margin:8px 0">
-<svg viewBox="0 0 306 196" style="max-width:306px;width:100%" role="img" aria-label="Dva preticanja, jedno ispod drugog. Gore: prelaziš preko pune uzdužne linije u traku suprotnog smera — zaštitna mera se izriče. Dole: pretičeš vozilo koje je već dalo znak da i samo pretiče, ostaješ u svojoj traci — mera se ne izriče.">
-<text x="153" y="14" font-size="12" text-anchor="middle" fill="#c0392b">preko PUNE linije u suprotnu traku</text>
-<rect x="8" y="20" width="214" height="50" fill="#9aa7b4"/>
+<svg viewBox="0 0 306 196" style="max-width:306px;width:100%" role="img" aria-label="Gornji crtež: zabranjeno preticanje preko neisprekidane linije uz korišćenje suprotne trake, obavezna mera uz zakonske izuzetke. Donji: početni položaj vozila iza vozila koje je već dalo znak; za preticanje iz člana 55 stav 3 tačka 3 nije propisana obavezna mera. Ne prikazuje se cela putanja drugog manevra.">
+<text x="153" y="14" font-size="13" text-anchor="middle" fill="var(--bad)">preko PUNE linije u suprotnu traku</text>
+<rect x="8" y="20" width="214" height="50" fill="#7f8c99"/>
 <line x1="8" y1="45" x2="222" y2="45" stroke="#fff" stroke-width="2.5"/>
-<g class="animIzlazak"><rect x="64" y="26" width="40" height="14" rx="4" fill="#2c6aa0"/><rect x="74" y="21" width="22" height="6" rx="3" fill="#2c6aa0"/></g>
-<line x1="44" y1="58" x2="58" y2="42" stroke="#2c6aa0" stroke-width="2" stroke-dasharray="4 3"/>
-<polygon points="62,38 53,47 60,51" fill="#2c6aa0"/>
-<g opacity="0.6"><rect x="120" y="54" width="40" height="14" rx="4" fill="#2a333d"/><rect x="130" y="48" width="22" height="6" rx="3" fill="#2a333d"/></g>
-<circle cx="262" cy="45" r="17" fill="none" stroke="#c0392b" stroke-width="2"/>
-<text x="262" y="52" font-size="18" text-anchor="middle" fill="#c0392b">✓</text>
-<text x="153" y="88" font-size="12" text-anchor="middle" fill="#c0392b">zaštitna mera SE IZRIČE</text>
-<text x="153" y="112" font-size="12" text-anchor="middle" fill="currentColor">pretičeš onog ko je već dao znak</text>
-<rect x="8" y="120" width="214" height="50" fill="#9aa7b4"/>
+<g class="animIzlazak"><rect x="64" y="26" width="40" height="14" rx="4" fill="#0b3555"/><rect x="74" y="21" width="22" height="6" rx="3" fill="#0b3555"/></g>
+<line x1="44" y1="58" x2="58" y2="42" stroke="#0b3555" stroke-width="2" stroke-dasharray="4 3"/>
+<polygon points="62,38 53,47 60,51" fill="#0b3555"/>
+<g><rect x="120" y="54" width="40" height="14" rx="4" fill="#2a333d"/><rect x="130" y="48" width="22" height="6" rx="3" fill="#2a333d"/></g>
+<circle cx="262" cy="45" r="17" fill="none" stroke="var(--bad)" stroke-width="2"/>
+<text x="262" y="52" font-size="18" text-anchor="middle" fill="var(--bad)">✓</text>
+<text x="153" y="88" font-size="13" text-anchor="middle" fill="var(--bad)">obavezna — uz zakonske izuzetke</text>
+<text x="153" y="112" font-size="13" text-anchor="middle" fill="currentColor">vozilo ispred već daje znak</text>
+<rect x="8" y="120" width="214" height="50" fill="#7f8c99"/>
 <line x1="8" y1="145" x2="222" y2="145" stroke="#fff" stroke-width="2" stroke-dasharray="12 9"/>
-<g opacity="0.75"><rect x="130" y="126" width="40" height="14" rx="4" fill="#2a333d"/><rect x="140" y="121" width="22" height="6" rx="3" fill="#2a333d"/></g>
-<circle class="animMigavac" cx="134" cy="123" r="3.5" fill="#e8b000"/>
-<g><rect x="60" y="126" width="40" height="14" rx="4" fill="#2c6aa0"/><rect x="70" y="121" width="22" height="6" rx="3" fill="#2c6aa0"/></g>
-<circle cx="262" cy="145" r="17" fill="none" stroke="#1f7a3f" stroke-width="2"/>
-<text x="262" y="152" font-size="18" text-anchor="middle" fill="#1f7a3f">✗</text>
-<text x="153" y="188" font-size="12" text-anchor="middle" fill="#1f7a3f">zaštitna mera se NE izriče</text>
+<g><rect x="130" y="126" width="40" height="14" rx="4" fill="#2a333d"/><rect x="140" y="121" width="22" height="6" rx="3" fill="#2a333d"/></g>
+<circle class="animMigavac" stroke="#101820" stroke-width="1.2" cx="134" cy="123" r="3.5" fill="#e8b000"/>
+<g><rect x="60" y="126" width="40" height="14" rx="4" fill="#0b3555"/><rect x="70" y="121" width="22" height="6" rx="3" fill="#0b3555"/></g>
+<circle cx="262" cy="145" r="17" fill="none" stroke="var(--ok)" stroke-width="2"/>
+<text x="262" y="152" font-size="18" text-anchor="middle" fill="var(--ok)">✗</text>
+<text x="153" y="188" font-size="13" text-anchor="middle" fill="var(--ok)">za taj osnov nije obavezna</text>
 </svg>
 </div>
-<p class="mut" style="text-align:center;font-size:var(--fs-sm)">plavo = ti · žuta tačka = pokazivač pravca vozila ispred tebe, koje je već dalo znak da i samo pretiče · gore je puna linija i tuđa traka, dole si ostao u svojoj</p>
-<p><b>Ključ za ta tri reda:</b> mera prati <b>traku suprotnog smera</b> — preticanje preko neisprekidane linije uz ulazak u tuđu traku je isti scenario kao kod nasilničke vožnje, čeoni sudar, pa mera ide. Preticanje onoga ko je već dao znak da i sâm pretiče je zabranjeno i kažnjivo, ali se odigrava u <b>tvojoj</b> traci — mera ne ide. Uslovna zelena strelica je treći slučaj i on je <b>kontraprimer intuiciji</b> „mala kazna, dakle nema mere“: kazna je raspon uz svega 2 poena, a mera se ipak <b>izriče</b>, jer je propuštanje vozila sam uslov pod kojim smeš da prođeš strelicu — prekršiš uslov, pao je ceo osnov prolaska.</p>
+<p class="mut" style="text-align:center;font-size:var(--fs-sm)">plavo = vozilo iza · žuta tačka = pokazivač pravca vozila ispred · donji crtež prikazuje početni položaj, a ne celu putanju preticanja</p>
+<p>Za zabranjeni prelazak preko neisprekidane linije uz korišćenje suprotne trake propisana je obavezna mera; ostaju izuzeci čl. 55 st. 7 za određena spora vozila uz bezbednosne uslove. Preticanje vozila koje je već dalo znak da pretiče je druga tačka zabrane, bez ovde propisane obavezne mere. Razlika nije u pretpostavci da drugi manevar ostaje u istoj traci. Kod uslovne strelice nepropuštanje vozila ima obaveznu meru najmanje 30 dana.</p>
 <p>Ostaju još dva para koja liče na čistu papirologiju, a razdvajaju se:</p>
 <div class="signRow">
   <div class="signCell">
-    <svg viewBox="0 0 78 70" role="img" aria-label="istekla registraciona nalepnica — zaštitna mera se ne izriče"><rect x="4" y="4" width="42" height="26" rx="3" fill="none" stroke="currentColor"/><circle cx="25" cy="15" r="7" fill="none" stroke="currentColor"/><line x1="9" y1="25" x2="41" y2="25" stroke="currentColor" opacity="0.6"/><circle cx="63" cy="12" r="10" fill="none" stroke="#1f7a3f"/><text x="63" y="17" font-size="13" text-anchor="middle" fill="#1f7a3f">✗</text><text x="39" y="47" font-size="11" text-anchor="middle" fill="currentColor">rok</text><text x="39" y="63" font-size="11" text-anchor="middle" fill="currentColor">istekao</text></svg>
-    <b>NALEPNICA ISTEKLA</b><span>vozilo jeste u registru, samo je nalepnici istekao rok — mera se NE izriče</span>
+    <svg viewBox="0 0 78 70" role="img" aria-label="Istekla nalepnica: obavezna zabrana nije propisana za osnovni slučaj."><rect x="4" y="4" width="42" height="26" rx="3" fill="none" stroke="currentColor"/><circle cx="25" cy="15" r="7" fill="none" stroke="currentColor"/><line x1="9" y1="25" x2="41" y2="25" stroke="currentColor" opacity="0.6"/><circle cx="63" cy="12" r="10" fill="none" stroke="var(--ok)"/><text x="63" y="17" font-size="13" text-anchor="middle" fill="var(--ok)">✗</text><text x="39" y="47" font-size="13" text-anchor="middle" fill="currentColor">rok</text><text x="39" y="63" font-size="13" text-anchor="middle" fill="currentColor">istekao</text></svg>
+    <b>NALEPNICA ISTEKLA</b><span>istek nalepnice — obavezna zabrana nije propisana</span>
   </div>
   <div class="signCell">
-    <svg viewBox="0 0 78 70" role="img" aria-label="vozilo nije upisano u jedinstveni registar — zaštitna mera se izriče"><rect x="4" y="14" width="44" height="14" rx="4" fill="none" stroke="currentColor"/><rect x="14" y="7" width="24" height="8" rx="3" fill="none" stroke="currentColor"/><rect x="31" y="17" width="15" height="8" rx="2" fill="none" stroke="#c0392b" stroke-dasharray="3 2"/><circle cx="63" cy="12" r="10" fill="none" stroke="#c0392b"/><text x="63" y="17" font-size="13" text-anchor="middle" fill="#c0392b">✓</text><text x="39" y="47" font-size="11" text-anchor="middle" fill="currentColor">nije u</text><text x="39" y="63" font-size="11" text-anchor="middle" fill="currentColor">registru</text></svg>
-    <b>NIJE U REGISTRU</b><span>vozilo van svake evidencije i kontrole — mera se IZRIČE</span>
+    <svg viewBox="0 0 78 70" role="img" aria-label="Vozilo nije upisano u registar: obavezna zabrana je propisana."><rect x="4" y="14" width="44" height="14" rx="4" fill="none" stroke="currentColor"/><rect x="14" y="7" width="24" height="8" rx="3" fill="none" stroke="currentColor"/><rect x="31" y="17" width="15" height="8" rx="2" fill="none" stroke="#c0392b" stroke-dasharray="3 2"/><circle cx="63" cy="12" r="10" fill="none" stroke="var(--bad)"/><text x="63" y="17" font-size="13" text-anchor="middle" fill="var(--bad)">✓</text><text x="39" y="47" font-size="13" text-anchor="middle" fill="currentColor">nije u</text><text x="39" y="63" font-size="13" text-anchor="middle" fill="currentColor">registru</text></svg>
+    <b>NIJE U REGISTRU</b><span>vozilo nije upisano u jedinstveni registar — zabrana je obavezna</span>
   </div>
   <div class="signCell">
-    <svg viewBox="0 0 78 70" role="img" aria-label="vozačka dozvola istekla najviše šest meseci — zaštitna mera se ne izriče"><rect x="4" y="4" width="44" height="26" rx="4" fill="none" stroke="currentColor"/><circle cx="15" cy="14" r="5" fill="none" stroke="currentColor"/><line x1="24" y1="12" x2="43" y2="12" stroke="currentColor" opacity="0.6"/><line x1="24" y1="20" x2="43" y2="20" stroke="currentColor" opacity="0.6"/><circle cx="63" cy="12" r="10" fill="none" stroke="#1f7a3f"/><text x="63" y="17" font-size="13" text-anchor="middle" fill="#1f7a3f">✗</text><text x="39" y="47" font-size="11" text-anchor="middle" fill="currentColor">do 6</text><text x="39" y="63" font-size="11" text-anchor="middle" fill="currentColor">meseci</text></svg>
-    <b>DOZVOLA ISTEKLA DO 6 MESECI</b><span>administrativni propust — mera se NE izriče</span>
+    <svg viewBox="0 0 78 70" role="img" aria-label="Dozvola istekla do šest meseci: obavezna zabrana nije propisana za osnovni slučaj."><rect x="4" y="4" width="44" height="26" rx="4" fill="none" stroke="currentColor"/><circle cx="15" cy="14" r="5" fill="none" stroke="currentColor"/><line x1="24" y1="12" x2="43" y2="12" stroke="currentColor" opacity="0.6"/><line x1="24" y1="20" x2="43" y2="20" stroke="currentColor" opacity="0.6"/><circle cx="63" cy="12" r="10" fill="none" stroke="var(--ok)"/><text x="63" y="17" font-size="13" text-anchor="middle" fill="var(--ok)">✗</text><text x="39" y="47" font-size="13" text-anchor="middle" fill="currentColor">do 6</text><text x="39" y="63" font-size="13" text-anchor="middle" fill="currentColor">meseci</text></svg>
+    <b>DOZVOLA ISTEKLA DO 6 MESECI</b><span>istek do šest meseci — obavezna zabrana nije propisana</span>
   </div>
   <div class="signCell">
-    <svg viewBox="0 0 78 70" role="img" aria-label="vozačka dozvola istekla više od šest meseci — zaštitna mera se izriče"><rect x="4" y="4" width="44" height="26" rx="4" fill="none" stroke="#c0392b"/><circle cx="15" cy="14" r="5" fill="none" stroke="#c0392b"/><line x1="24" y1="12" x2="43" y2="12" stroke="#c0392b" opacity="0.7"/><line x1="24" y1="20" x2="43" y2="20" stroke="#c0392b" opacity="0.7"/><circle cx="63" cy="12" r="10" fill="none" stroke="#c0392b"/><text x="63" y="17" font-size="13" text-anchor="middle" fill="#c0392b">✓</text><text x="39" y="47" font-size="11" text-anchor="middle" fill="currentColor">preko 6</text><text x="39" y="63" font-size="11" text-anchor="middle" fill="currentColor">meseci</text></svg>
-    <b>DOZVOLA ISTEKLA PREKO 6 MESECI</b><span>predugo voziš bez provere uslova — mera se IZRIČE</span>
+    <svg viewBox="0 0 78 70" role="img" aria-label="Dozvola istekla preko šest meseci: obavezna zabrana nije propisana za osnovni slučaj."><rect x="4" y="4" width="44" height="26" rx="4" fill="none" stroke="var(--ok)"/><circle cx="15" cy="14" r="5" fill="none" stroke="var(--ok)"/><line x1="24" y1="12" x2="43" y2="12" stroke="var(--ok)" opacity="0.7"/><line x1="24" y1="20" x2="43" y2="20" stroke="var(--ok)" opacity="0.7"/><circle cx="63" cy="12" r="10" fill="none" stroke="var(--ok)"/><text x="63" y="17" font-size="13" text-anchor="middle" fill="var(--ok)">✗</text><text x="39" y="47" font-size="13" text-anchor="middle" fill="currentColor">preko 6</text><text x="39" y="63" font-size="13" text-anchor="middle" fill="currentColor">meseci</text></svg>
+    <b>DOZVOLA ISTEKLA PREKO 6 MESECI</b><span>istek preko šest meseci — obavezna zabrana nije propisana</span>
   </div>
 </div>
-<p class="mut">Pamtilica: u oba para <b>teža sličica je ona kod koje je nadzor prestao da postoji</b> — vozilo nije ni upisano, dozvola je istekla toliko davno da provera uslova više ne stoji ni na papiru. Zeleni ✗ znači „mera se ne izriče“, crveni ✓ znači „izriče se“ — isto kao na crtežima brzine. Ta dva ✗ su ujedno i dokaz da poeni ne odlučuju o meri: oba prekršaja nose po 2 kaznena poena, a mere nema.</p>
+<p class="mut"><b>Važeći propis:</b> obavezna mera postoji za vozilo koje nije upisano u registar, ali nije samo po osnovu isteka nalepnice ili dozvole, ni kada je dozvola istekla preko šest meseci. ✗ znači „nije obavezno propisana”, ne „sud je nikad ne može izreći”. Sam istek ne dokazuje da pregled ili provera uslova nisu obavljeni; tvrdnje o po dva poena za ove istekle isprave su zastarele.</p>
 </div>
 
 <!-- CELINA 6 - izvor parova: zaustavna traka #8314 (zaustavio se - srednja, nizi raspon, bez poena) vs
@@ -6069,37 +6059,37 @@ opšti okvir trajanja: od 30 dana do jedne godine (Zakon o prekršajima čl. 58)
      #8421; crveno #8271 (srednja, 6 poena; postojece objasnjenje: sa pesakom na prelazu najteza,
      dvaput na crveno u kratkom roku nasilnicka); odgovornost vlasnika #8340 i kazna #8341. -->
 <div class="kPodH"><b class="kPodNaslov">Parovi i formulacije koje se stalno nude jedna uz drugu</b>
-<p>Šest tema u bazi ima blažu i težu verziju, a razlikuju se u jednoj reči ili u jednoj okolnosti. Najopasniji par je zaustavna traka: sve zavisi od toga da li se <b>krećeš</b> ili <b>stojiš</b>.</p>
+<p>U sledećim parovima važne su tačne okolnosti. Kod zaustavne trake razlikuj <b>nedozvoljeno kretanje</b>, <b>neprinudno stajanje</b> i dopušteno prinudno zaustavljanje.</p>
 <div style="display:flex;justify-content:center;margin:8px 0">
-<svg viewBox="0 0 306 202" style="max-width:306px;width:100%" role="img" aria-label="Zaustavna traka, dva slučaja jedan ispod drugog. Gore: vozilo stoji na zaustavnoj traci — srednja klasa, niži raspon bez kaznenih poena. Dole: vozilo se kreće zaustavnom trakom — najteža klasa, zatvor ili novčana kazna i 14 kaznenih poena.">
-<text x="153" y="14" font-size="12" text-anchor="middle" fill="currentColor">ZAUSTAVIŠ SE NA NJOJ</text>
-<rect x="8" y="22" width="290" height="32" fill="#9aa7b4"/>
+<svg viewBox="0 0 306 202" style="max-width:306px;width:100%" role="img" aria-label="Gore je neprinudno stajanje na zaustavnoj traci: član 332 i novčani raspon bez ovim osnovom propisanih poena. Dole je nedozvoljeno kretanje ili preticanje: član 331 i šest poena. Dopušteno prinudno zaustavljanje i službeni izuzeci su odvojeni slučajevi.">
+<text x="153" y="14" font-size="13" text-anchor="middle" fill="currentColor">NEPRINUDNO SE ZAUSTAVIŠ</text>
+<rect x="8" y="22" width="290" height="32" fill="#7f8c99"/>
 <rect x="8" y="54" width="290" height="26" fill="#9aa7b4" fill-opacity="0.55"/>
 <line x1="8" y1="54" x2="298" y2="54" stroke="#fff" stroke-width="2.5"/>
-<g><rect x="110" y="62" width="40" height="14" rx="4" fill="#2c6aa0"/><rect x="120" y="57" width="22" height="6" rx="3" fill="#2c6aa0"/></g>
-<text x="153" y="96" font-size="12" text-anchor="middle" fill="currentColor">stoji — SREDNJA klasa, bez poena</text>
-<text x="153" y="120" font-size="12" text-anchor="middle" fill="#c0392b">VOZIŠ ILI PRETIČEŠ NJOME</text>
-<rect x="8" y="128" width="290" height="32" fill="#9aa7b4"/>
+<g><rect x="110" y="62" width="40" height="14" rx="4" fill="#2c6aa0" stroke="#101820" stroke-width="1.2"/><rect x="120" y="57" width="22" height="6" rx="3" fill="#2c6aa0" stroke="#101820" stroke-width="1.2"/></g>
+<text x="153" y="96" font-size="13" text-anchor="middle" fill="currentColor">čl. 332: raspon bez poena</text>
+<text x="153" y="120" font-size="13" text-anchor="middle" fill="var(--bad)">VOZIŠ ILI PRETIČEŠ NJOME</text>
+<rect x="8" y="128" width="290" height="32" fill="#7f8c99"/>
 <rect x="8" y="160" width="290" height="26" fill="#9aa7b4" fill-opacity="0.55"/>
 <line x1="8" y1="160" x2="298" y2="160" stroke="#fff" stroke-width="2.5"/>
-<g stroke="#c0392b" stroke-width="2" opacity="0.85"><line x1="112" y1="168" x2="130" y2="168"/><line x1="106" y1="174" x2="124" y2="174"/><line x1="112" y1="180" x2="130" y2="180"/></g>
-<g class="animVoziTrakom"><rect x="140" y="167" width="40" height="14" rx="4" fill="#2c6aa0"/><rect x="150" y="162" width="22" height="6" rx="3" fill="#2c6aa0"/></g>
-<text x="153" y="198" font-size="12" text-anchor="middle" fill="#c0392b">najteža — zatvor ILI novčana, 14 poena</text>
+<g stroke="#101820" stroke-width="2"><line x1="112" y1="168" x2="130" y2="168"/><line x1="106" y1="174" x2="124" y2="174"/><line x1="112" y1="180" x2="130" y2="180"/></g>
+<g class="animVoziTrakom"><rect x="140" y="167" width="40" height="14" rx="4" fill="#2c6aa0" stroke="#101820" stroke-width="1.2"/><rect x="150" y="162" width="22" height="6" rx="3" fill="#2c6aa0" stroke="#101820" stroke-width="1.2"/></g>
+<text x="153" y="198" font-size="13" text-anchor="middle" fill="var(--bad)">čl. 331: raspon ili zatvor + 6 poena</text>
 </svg>
 </div>
-<p class="mut" style="text-align:center;font-size:var(--fs-sm)">gornji pojas = saobraćajna traka, donji svetliji = zaustavna traka · plavo = ti · razlika između dva panela je samo u tome da li se vozilo pomera</p>
-<p><b>Isto rečima:</b> zaustavna traka nije saobraćajna traka — po njoj se ne vozi, jer je to jedini prostor za vozila u kvaru i za hitne službe. Zato <b>zaustavljanje</b> na njoj ostaje srednja klasa (niži raspon), a <b>kretanje</b> odnosno <b>preticanje</b> njome ide u najtežu: takvim manevrom udaraš u zaustavljene i blokiraš pomoć.</p>
+<p class="mut" style="text-align:center;font-size:var(--fs-sm)">gornji pojas = traka za redovan saobraćaj, donji = zaustavna traka · gore je neprinudno stajanje; ne prikazuje dopušteno zaustavljanje zbog kvara</p>
+<p>Po zaustavnoj traci zabranjeno je kretanje, uz izuzetke iz čl. 104 st. 3. Za nedozvoljeno kretanje ili preticanje važe član 331 i šest poena; za neprinudno stajanje član 332. Kada je vozač prinuđen da stane, član 105 st. 3 nalaže zaustavnu traku i što brže uklanjanje vozila; to nije isti prekršaj.</p>
 <table>
 <tr><th>Tema</th><th>Blaže</th><th>Teže</th></tr>
-<tr><td>Zaustavna traka</td><td><b>zaustaviš se</b> na njoj — raspon, bez poena</td><td><b>voziš</b> odnosno <b>pretičeš</b> njome — najteža, 14 poena</td></tr>
-<tr><td>Svetla noću</td><td>samo poziciona, ili bez zadnjih pozicionih — raspon, 6 poena</td><td><b>nijedno</b> svetlo na neosvetljenom putu — najteža, 14 poena</td></tr>
-<tr><td>Nezgoda</td><td>naiđeš i ne javiš — raspon, bez poena · učesnik si, ima materijalne štete i neko <b>zahteva uviđaj</b>, a ti ne ostaneš do kraja uviđaja — raspon, 2 poena</td><td>učesnik si, <b>ima povređenih</b>, ne staneš odnosno ne javiš — najteža, 14 poena</td></tr>
-<tr><td>Vozačka dozvola</td><td>nije kod tebe — lakša · istekla do šest meseci — raspon, 2 poena · preko šest meseci — raspon, 5 poena</td><td><b>nemaš je za tu kategoriju</b> — najteža, 14 poena</td></tr>
-<tr><td>Registracija</td><td>istekla <b>nalepnica</b> — raspon, 2 poena, bez zabrane</td><td>vozilo <b>nije u registru</b> — raspon, 6 poena, sa zabranom</td></tr>
-<tr><td>Crveno svetlo</td><td>prođeš na crveno — raspon, 6 poena</td><td>na crveno, a <b>pešak je na prelazu</b> — najteža, 14 poena · dvaput na crveno u kratkom roku — nasilnička</td></tr>
+<tr><td>Zaustavna traka</td><td>Neprinudno stajanje: 10.000–20.000 dinara, bez ovim osnovom propisanih poena</td><td>Nedozvoljeno kretanje / preticanje: 20.000–40.000 dinara ili zatvor do 30 dana i šest poena</td></tr>
+<tr><td>Svetla noću</td><td>Na neosvetljenom putu samo poziciona, ili bez zadnjih pozicionih: čl. 331 i šest poena</td><td>Na neosvetljenom putu bez putnih i prednjih pozicionih: čl. 330 i 14 poena</td></tr>
+<tr><td>Nezgoda</td><td>Prolaznik ne obaveštava: čl. 332, bez ovde propisanih poena; učesnik napusti uviđaj kod manje materijalne štete: čl. 331 i dva poena</td><td>Učesnik ne stane / ne obavesti kod povređenih ili velike materijalne štete: čl. 330 i 14 poena</td></tr>
+<tr><td>Vozačka dozvola</td><td>Nije kod vozača: 3.000; istek do šest meseci: 5.000; preko šest meseci: 10.000 dinara</td><td>Bez izdate dozvole ni za jednu kategoriju / oduzeta dozvola: čl. 330. Položena druga kategorija: drugi osnov iz čl. 331.</td></tr>
+<tr><td>Registracija</td><td>Istek nalepnice do 30 dana: 5.000; preko 30 dana: 10.000, bez ovde propisanih poena i obavezne mere</td><td>Vozilo nije upisano: čl. 331, šest poena i obavezna mera</td></tr>
+<tr><td>Crveno svetlo</td><td>Prolazak na crveno: čl. 331 i šest poena</td><td>Zabranjen prolaz uz pešaka na prelazu: čl. 330; najmanje dva prolaska na crveno u razmaku do deset minuta: nasilnička vožnja</td></tr>
 </table>
-<p class="mut">Pamtilica: teža strana je ona u kojoj je <b>nečiji život neposredno ugrožen</b> — pešak na prelazu, povređeni u nezgodi, zaustavljeni na zaustavnoj traci, ti sam kao nevidljivo vozilo u mraku — ili ona u kojoj <b>uopšte nemaš pravo</b> da voziš to vozilo. Jedini red koji ne ide po tom ključu je Registracija: tamo je teža strana vozilo koje uopšte <b>nije u registru</b> — van svake evidencije i kontrole.</p>
-<p><b>Jedno pitanje ne pita kaznu nego odgovornost.</b> Kad vozač koji je učinio prekršaj nije identifikovan, vlasnik vozila <b>odgovoran je što je omogućio</b> da se njegovim vozilom učini prekršaj. Nije tačno ni „odgovoran je za prekršaj koji je tim vozilom učinjen“ ni „nije odgovoran“ — odgovara za propust nadzora nad svojim vozilom, ne za sam prekršaj. Blizanačko pitanje, koje pita kaznu za to isto, ide po opštem pravilu: raspon.</p>
+<p class="mut">Ne određuj sankciju samo prema utisku o težini. Razlikuj opisane uslove: učesnik ili prolaznik, manja ili velika šteta, istek ili neupisanost, odsustvo dozvole kod sebe ili nepostojanje odgovarajućeg prava. Za svaku razliku postoji konkretan pravni osnov.</p>
+<p>Pitanja 8340/8341 u ovoj bazi koriste staro pravilo odgovornosti vlasnika zbog omogućavanja prekršaja. Današnji član 247 traži podatke i dokaz o vozaču u roku od osam dana od poziva, uz izuzetak dokazane neovlašćene upotrebe. Sama neidentifikacija ne dokazuje te uslove. Za stvarnu povredu te obaveze član 330 st. 1 t. 23 izričito izuzima poene i zaštitnu meru; stari raspon iz ponude nije sadašnja kazna.</p>
 </div>
 `,
 };
@@ -6764,7 +6754,7 @@ const out = {
 
 // Lokalno prevedi pregledane pristupačne opise; opšti toCyr štiti HTML tagove.
 // Novi opis u ovim karticama zahteva ponovni pregled oba pisma.
-for (const [key, expected] of [['brzine', 6], ['kategorije-vozila', 4], ['put-pojmovi', 1], ['vozilo-tehnika', 4]]) {
+for (const [key, expected] of [['brzine', 6], ['kategorije-vozila', 4], ['put-pojmovi', 1], ['vozilo-tehnika', 4], ['kaznene-klase', 13]]) {
   let count = 0;
   out.cards[key].h.c = out.cards[key].h.c.replace(/aria-label="([^"]*)"/g, (_, label) => {
     count++;
