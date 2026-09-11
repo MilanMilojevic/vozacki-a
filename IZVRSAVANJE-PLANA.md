@@ -545,4 +545,10 @@ Svaka grupa ima zasebno izdanje i pojedinačne zapise sa izvorima. Brojevi prika
 
 Četiri započeta pitanja su7924/7925,8113 i9689; zavise od nedovršenih kartica. Svih66 spornih pitanja ima odvojene nalaze, bez prepravljanja ključa po pretpostavci. Slede puni pregledi prvenstva prolaza, pruge i znakova policajca, zatim preostale kartice i samostalna pitanja. Drugi prolaz plana, stvarni telefoni/čitači ekrana i odluka o licenci ostaju zasebni zadaci.
 
-Izdanja184–188 poslata su na `origin/codex/stabilizacija` sa oznakama; v189 prati ista procedura posle završenih provera. Nisu dodavane kopije runtime-a ili banke slika za ove preglede. Originalna aplikacija ostaje v126, a samostalna korisnička proba na18980 ostaje v165.
+Izdanja184–189 poslata su na `origin/codex/stabilizacija` sa oznakama. Nisu dodavane kopije runtime-a ili banke slika za ove preglede. Originalna aplikacija ostaje v126, a samostalna korisnička proba na18980 ostaje v165.
+
+### v190 — tačni primeri u kartici ponuđenih odgovora
+
+Cela kartica,3 pitanja/12 opcija i13 statističkih obrazaca nezavisno su provereni. Uklonjeni su netačan apsolut za250m, zamena znakova sa žmigavcima i savet da se bira stroži odgovor. Ispravljeno je brojanje50.000; kontekst i dve smislene mobilne sekcije su sačuvani. Nema izmene byQ objašnjenja, ključeva ili ponašanja aplikacije. [Pojedinačni dokaz A6-051](docs/revizija-sadrzaja/grupe/051-zamke-odgovori.md).
+
+Chromium16/16 kartice +12/12 pitanja, bez prelivanja stranice/grešaka/sintetičkih upisa; `node tools/verify.mjs`:249/249 automatizovanih testova. Ukupno697 reviewed,560 unreviewed,4 in-progress (7924/7925,8113,9531),66 needs-expert; kartice18 reviewed,1 in-progress,20 unreviewed. Preostali obuhvat i ograničenja iz prethodnog odeljka ostaju otvoreni.

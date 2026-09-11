@@ -427,26 +427,27 @@ CARDS['brzine'] = {
 CARDS['zamke-odgovori'] = {
   title: 'Zamke u ponuđenim odgovorima',
   html: `
-<p><b>Zakon ne poznaje "malo sme".</b> Odgovori koji UBLAŽAVAJU obavezu su gotovo uvek netačni — izmereno na celoj bazi:</p>
+<p><b>Čitaj ceo odgovor i uslove iz pitanja.</b> Sledeći izrazi se u sačuvanoj bazi često pojavljuju među netačnim opcijama, ali sama formulacija ne određuje tačnost:</p>
 <table>
 <tr><th>Obrazac u odgovoru</th><th>Tačan u bazi</th></tr>
 <tr><td>"na kratkom delu puta"</td><td>0 od 3</td></tr>
-<tr><td>"raspoloživom vremenu" / "udobnost"</td><td>0 od 3</td></tr>
+<tr><td>"raspoloživom vremenu" / "najudobnija"</td><td>0 od 3</td></tr>
 <tr><td>"ako time ne ometa, odnosno ne ugrožava druge" (kao izgovor za zabranjeno)</td><td>0 od 3</td></tr>
-<tr><td>"što pre (stigne)"</td><td>1 od 9</td></tr>
+<tr><td>"što pre"</td><td>1 od 9</td></tr>
 <tr><td>"uz povećanu opreznost"</td><td>2 od 16</td></tr>
 </table>
-<p><b>Zabrana naspram dozvole:</b> "nije dozvoljeno" je tačno u 84% svojih pojavljivanja, a "je dozvoljeno" u samo 22% — kad dvoumiš, zakon je verovatno STROŽIJI nego što misliš.</p>
-<p><b>Brojevi-mamci</b> — vrednosti koje se u ponuđenim odgovorima pojavljuju više puta, a NIJEDNOM nisu tačne (izmereno na celoj trenutnoj bazi):</p>
+<p><b>Zabrana naspram dozvole:</b> ne biraj „nije dozvoljeno” samo zato što zvuči strože. Proveri baš uslov iz pitanja: zabranu, dozvolu ili propisani izuzetak. Učestalost reči u sačuvanoj bazi ne dokazuje pravilo za drugo pitanje.</p>
+<p><b>Brojevi-mamci</b> — vrednosti koje se u navedenim ponuđenim odgovorima ove sačuvane baze pojavljuju samo kao netačne opcije. To ne znači da su same brojke pogrešne u drugim situacijama:</p>
 <table>
 <tr><th>Tema</th><th>Mamac</th><th>Koliko puta ponuđen</th></tr>
 <tr><td>Brzina</td><td><b>120 km/h</b> · <b>20 km/h</b></td><td>7× · 4×</td></tr>
-<tr><td>Rastojanje</td><td><b>250 m</b> · <b>1 m</b> · <b>0,5 m</b></td><td>7× · 4× · 5×</td></tr>
-<tr><td>Novčane kazne</td><td><b>10.000</b> · <b>50.000 dinara</b></td><td>8× · 7×</td></tr>
+<tr><td>Rastojanje</td><td><b>1 m</b> · <b>0,5 m</b></td><td>4× · 5×</td></tr>
+<tr><td>Novčane kazne</td><td><b>10.000</b> · <b>50.000 dinara</b></td><td>8× · 10×</td></tr>
 <tr><td>Kazneni poeni</td><td><b>10 poena</b></td><td>8×</td></tr>
 <tr><td>Rokovi</td><td><b>24 sata/časa</b></td><td>8×</td></tr>
 </table>
-<p><b>Večiti tekst-mamci</b> (nikad tačni u bazi): "potvrdu pravca kretanja posle prolaska raskrsnice" — mamac SAMO kod pitanja o POKAZIVAČIMA PRAVCA (11×: žmigavac se isključuje kad završiš radnju). Pažnja: znak obaveštenja „Potvrda pravca" POSTOJI — kod pitanja #9176 to je tačan odgovor · "put sa jednosmernim saobraćajem" kao opis autoputa/motoputa (10×) · "laki tricikl" (9×) · "imate prednost u odnosu na oba vozila" (5×).</p>
+<p><b>Primer zašto kontekst odlučuje:</b> 250 m je deo tačnog raspona 150–250 m za postavljanje znakova opasnosti (#8950, #10781; Pravilnik čl. 22). Kod držanja odstojanja i rastojanja (#9531) i pri mimoilaženju (#9689) traži se bezbedno, dovoljno rastojanje — ne ponuđena fiksna mera od 1 m ili 0,5 m.</p>
+<p><b>Isti izraz u drugom kontekstu</b></p><p>„Potvrdu pravca kretanja posle prolaska raskrsnice” jeste tačan odgovor uz znak <b>Potvrda pravca</b> (#9176), a nije tačan uz znak za prethodno prestrojavanje (#10944) ni uz znak <b>Raskrsnica</b> (#10954). Sva tri su pitanja o <b>saobraćajnim znakovima</b>, a ne o žmigavcima. Izraz proveri prema prikazanom znaku, umesto da ga pamtiš kao uvek netačan.</p>
 <p class="mut"><b>Važno:</b> ovo su tendencije za proveru intuicije, NE pravila za slepo zaokruživanje — izuzeci postoje ("uz povećanu opreznost" je 2 puta tačno!). Prvo znanje, pa tek onda ovaj filter.</p>`,
 };
 
