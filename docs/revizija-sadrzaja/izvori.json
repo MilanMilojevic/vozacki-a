@@ -421,6 +421,24 @@
       "checkedOn": "2026-09-11",
       "revision": "Službeni glasnik RS zaključno sa76/2026",
       "contentHash": "8f9b78ea7810a5d5028f3b2878773d37080cf9096a2239dc2a306101708c45d7"
+    },
+    {
+      "id": "zobs-prvenstvo-cela-pis-19-2025",
+      "url": "https://reg.pravno-informacioni-sistem.rs/api/viewAct/8b57d1e9-9b34-4fa0-9693-7ceb6da65486?lawActId=438311",
+      "title": "Zakon o bezbednosti saobraćaja na putevima — PIS",
+      "article": "Celi čl.20,21,23,47,48,55,106–111; relevantni32 i289(8): hijerarhija, posebna vozila i izuzeci",
+      "checkedOn": "2026-09-11",
+      "revision": "Službeni glasnik RS zaključno sa19/2025",
+      "contentHash": "8796f6a1718bea08ea4fe1dedb3c9a71001b1c6c5245a93526f365a61e668d5d"
+    },
+    {
+      "id": "signalizacija-prvenstvo-cela-pis-76-2026",
+      "url": "https://reg.pravno-informacioni-sistem.rs/api/viewdoc?doctype=reg&regactid=440491&uuid=2bd446cf-0965-4141-8323-d207a4216ed1",
+      "title": "Pravilnik o saobraćajnoj signalizaciji — PIS",
+      "article": "Čl.25(1–2),26(43–45),35(3),63,66: znakovi i oznake koje uređuju konkretne prikazane odnose",
+      "checkedOn": "2026-09-11",
+      "revision": "Službeni glasnik RS zaključno sa76/2026",
+      "contentHash": "8f9b78ea7810a5d5028f3b2878773d37080cf9096a2239dc2a306101708c45d7"
     }
   ]
 }

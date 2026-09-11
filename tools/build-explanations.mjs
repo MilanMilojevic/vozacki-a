@@ -67,142 +67,142 @@ CARDS['prvenstvo-prolaza'] = {
   html: `
 <div class="kSek" data-sub="131">
 <p><b>Hijerarhija (ZOBS čl. 20)</b> — redosled postupanja kada se značenja razlikuju:</p>
-<svg viewBox="0 0 320 246" role="img" aria-label="Redosled prvenstva prolaza: 1. saobraćajac, 2. semafor, 3. saobraćajni znakovi, 4. oznake na kolovozu, 5. pravila (desna strana)" style="max-width:320px;width:100%;display:block;margin:6px auto">
+<svg viewBox="0 0 320 246" role="img" aria-label="Redosled postupanja kada se značenja razlikuju: 1. saobraćajac, 2. semafor, 3. saobraćajni znakovi, 4. oznake na kolovozu, 5. pravila (desna strana)" style="max-width:320px;width:100%;display:block;margin:6px auto">
   <rect x="60"   y="6"   width="200" height="40" rx="8" fill="#c0392b"/>
-  <text x="160" y="31" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">1. SAOBRAĆAJAC</text>
+  <text x="160" y="31" text-anchor="middle" fill="#fff" font-size="15" font-weight="bold">1. SAOBRAĆAJAC</text>
 
   <rect x="47.5" y="52"  width="225" height="40" rx="8" fill="#8a5a00"/>
-  <text x="160" y="77" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">2. SEMAFOR</text>
+  <text x="160" y="77" text-anchor="middle" fill="#fff" font-size="15" font-weight="bold">2. SEMAFOR</text>
 
   <rect x="32.5" y="98"  width="255" height="40" rx="8" fill="#2c6aa0"/>
-  <text x="160" y="123" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">3. SAOBRAĆAJNI ZNAKOVI</text>
+  <text x="160" y="123" text-anchor="middle" fill="#fff" font-size="15" font-weight="bold">3. SAOBRAĆAJNI ZNAKOVI</text>
 
   <rect x="20"   y="144" width="280" height="40" rx="8" fill="#64748b"/>
-  <text x="160" y="169" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">4. OZNAKE NA KOLOVOZU</text>
+  <text x="160" y="169" text-anchor="middle" fill="#fff" font-size="15" font-weight="bold">4. OZNAKE NA KOLOVOZU</text>
 
   <rect x="7"    y="190" width="306" height="50" rx="8" fill="#94a3b8"/>
-  <text x="160" y="211" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">5. PRAVILA</text>
-  <text x="160" y="230" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">(desna strana...)</text>
+  <text x="160" y="211" text-anchor="middle" fill="#101820" font-size="15" font-weight="bold">5. PRAVILA</text>
+  <text x="160" y="230" text-anchor="middle" fill="#101820" font-size="15" font-weight="bold">(desna strana...)</text>
 </svg>
 <p class="mut" style="text-align:center;font-size:var(--fs-sm)">Prati viši nalog kada se razlikuje od nižeg. Pravila koja nisu njime drugačije uređena i dalje važe.</p>
 </div>
 <div class="kSek" data-sub="148">
 <div class="signRow" style="max-width:340px;margin:6px auto">
   <div class="signCell">
-    <svg viewBox="0 0 120 46"><rect x="10" y="26" width="100" height="14" rx="7" fill="#4a5a6a"/><circle cx="45" cy="18" r="12" fill="#c0392b"/><circle cx="75" cy="18" r="12" fill="#2c6aa0"/></svg>
+    <svg viewBox="0 0 120 46" role="img" aria-label="Crveno i plavo trepćuće svetlo označavaju vozilo pod pratnjom."><rect x="10" y="26" width="100" height="14" rx="7" fill="#4a5a6a"/><circle cx="45" cy="18" r="12" fill="#c0392b" stroke="currentColor" stroke-width="1.25"/><circle cx="75" cy="18" r="12" fill="#2c6aa0" stroke="currentColor" stroke-width="1.25"/></svg>
     <span><b>POD PRATNJOM</b><br>crveno + plavo</span>
   </div>
   <div class="signCell">
-    <svg viewBox="0 0 120 46"><rect x="10" y="26" width="100" height="14" rx="7" fill="#4a5a6a"/><circle cx="60" cy="18" r="12" fill="#2c6aa0"/></svg>
+    <svg viewBox="0 0 120 46" role="img" aria-label="Plavo trepćuće ili rotaciono svetlo označava vozilo sa prvenstvom prolaza."><rect x="10" y="26" width="100" height="14" rx="7" fill="#4a5a6a"/><circle cx="60" cy="18" r="12" fill="#2c6aa0" stroke="currentColor" stroke-width="1.25"/></svg>
     <span><b>PRAVO PRVENSTVA</b><br>samo plavo</span>
   </div>
 </div>
 <table>
 <tr><th></th><th>Vozilo POD PRATNJOM</th><th>Vozilo SA PRAVOM PRVENSTVA</th></tr>
 <tr><td><b>svetla</b></td><td><b>crveno + plavo</b> trepćuće (čl. 106)</td><td><b>plavo</b> trepćuće/rotaciono (čl. 108)</td></tr>
-<tr><td><b>ko</b></td><td>vozila koja prati policija/vojska/BIA + samo policijsko/vojno vozilo kad daje te znake</td><td>policija, hitna pomoć, vatrogasci, vojska, BIA...</td></tr>
+<tr><td><b>ko</b></td><td>vozilo kome je dodeljena pratnja policije, BIA, Vojske Srbije ili VBA + samo vozilo tih organa kada daje posebne znake</td><td>policija, BIA, Vojska Srbije, VBA, hitna medicinska pomoć, vatrogasna služba i propisano vozilo izvršenja zavodskih sankcija</td></tr>
 <tr><td><b>tvoja obaveza</b></td><td colspan="2">propusti ga, omogući mimoilaženje/preticanje, po potrebi se skloni ili zaustavi (čl. 107 i 109)</td></tr>
 </table>
 </div>
 <div class="kSek" data-sub="131,148">
-<p><b>Za test zapamti:</b> rotacija NE gasi semafor — na semaforizovanoj raskrsnici prvenstvo je „regulisano semaforom"; semafor „gasi" samo saobraćajac. Obaveza propuštanja važi kad te takvo vozilo susretne ili sustigne na putu.</p>
+<p><b>Za test zapamti:</b> rotacija NE gasi semafor — u prikazanim pitanjima #10363 i #10574 semafor posebnom vozilu pokazuje crveno, pa je prvenstvo „regulisano semaforom"; semafor „gasi" samo saobraćajac. Obaveza propuštanja važi kad te takvo vozilo susretne ili sustigne na putu.</p>
 </div>
 <div class="kSek" data-sub="136">
 <p><b>A) Nesignalisana raskrsnica — pet pravila (čl. 47)</b><br>
 Signalizacija određuje kome je prolaz dozvoljen. Među vozilima sa istovremenim pravom prolaza i dalje važe <b>pravila desne strane i levog skretanja</b>, uključujući kada im prolaz istovremeno dozvole semafor ili ovlašćeno lice (čl. 47 st. 6–8).</p>
 <table>
 <tr><th>Pravilo</th><th>Šta se stvarno pita</th></tr>
-<tr><td><b>1. Tramvaj</b></td><td>Propuštaš ga u <b>SVIM slučajevima</b> — i kad ti dolazi <b>sleva</b>, i kad iz suprotnog smera skreće preko tvoje putanje. Ponuda „samo ako dolazi sa desne strane" je netačna. Zakon ima jedan izuzetak: ni tramvaj nema prednost kad preseca biciklističku stazu ili traku.</td></tr>
+<tr><td><b>1. Tramvaj</b></td><td>Na raskrsnici na kojoj prvenstvo nije drugačije regulisano, tramvaj ima prvenstvo u svim slučajevima osim kada preseca biciklističku stazu ili traku. Međusobno prvenstvo tramvaja uređuju desna strana i levo skretanje. Kada signalizacija ili ovlašćeno lice uređuju raskrsnicu, postupi po njima i po pravilima za međusobni odnos istovremeno propuštenih učesnika (čl. 47 st. 5–8).</td></tr>
 <tr><td><b>2. Desna strana</b></td><td>Propuštaš vozilo koje ti dolazi <b>zdesna</b> — i na raskrsnici i pri susretu sa drugim vozilom.</td></tr>
 <tr><td><b>3. Levo skretanje</b></td><td>Kad skrećeš ulevo, propuštaš vozilo iz suprotnog smera koje <b>zadržava pravac ILI skreće udesno</b> — dakle oba. Zamka je ponuda koja ih razdvaja („onaj koji ide pravo ima prednost, a onaj koji skreće udesno nema"). Obrnuto važi isto: kad ti ideš pravo, a neko iz suprotnog smera skreće ulevo, prednost je tvoja.</td></tr>
 <tr><td><b>4. Zemljani put</b></td><td>Kad se uključuješ sa zemljanog puta (ili sa površine na kojoj se ne vrši javni saobraćaj — dvorište, parking) na put sa savremenim kolovoznim zastorom, propuštaš <b>SVA</b> vozila, <b>i onda kad taj put nije znakom označen kao put sa prvenstvom</b>. Netačno: „samo motorna vozila", „samo kada je to određeno znakom".</td></tr>
 <tr><td><b>5. Biciklistička staza i traka</b></td><td>Kad skretanjem presecaš stazu ili traku, propuštaš <b>sva</b> vozila koja se njome kreću — ne samo ona koja ti dolaze zdesna.</td></tr>
 </table>
-<p style="margin-top:12px"><b>Četiri od pet pravila iz ptičje perspektive</b> — zeleno ide prvo, crveno čeka; ti si uvek plavo vozilo dole. Crteži prikazuju raskrsnice bez signalizacije. Kada signalizacija drugačije uređuje prvenstvo, postupi po njoj. Pravilo levog skretanja primeni kad tebi i vozilu iz suprotnog smera istovremeno pripada pravo prolaza.</p>
+<p style="margin-top:12px"><b>Četiri od pet pravila iz ptičje perspektive</b> — zelena putanja ima prvenstvo, crvena čeka; ti si uvek plavo vozilo dole. Crteži prikazuju raskrsnice bez signalizacije. Kada signalizacija drugačije uređuje prvenstvo, postupi po njoj. Pravilo levog skretanja primeni kad tebi i vozilu iz suprotnog smera istovremeno pripada pravo prolaza.</p>
 <div class="signRow lineRow">
   <div class="signCell">
-    <svg viewBox="0 0 120 136"><rect x="0" y="34" width="120" height="44" fill="#9aa7b4"/><rect x="38" y="0" width="44" height="136" fill="#9aa7b4"/>
+    <svg viewBox="0 0 120 136" role="img" aria-label="Na raskrsnici bez signalizacije tvoje plavo vozilo propušta vozilo koje mu dolazi zdesna."><rect x="0" y="34" width="120" height="44" fill="#617784"/><rect x="38" y="0" width="44" height="136" fill="#617784"/>
       <line x1="2" y1="56" x2="34" y2="56" stroke="#fff" stroke-width="2.5" stroke-dasharray="7 6"/><line x1="86" y1="56" x2="118" y2="56" stroke="#fff" stroke-width="2.5" stroke-dasharray="7 6"/>
       <line x1="60" y1="2" x2="60" y2="30" stroke="#fff" stroke-width="2.5" stroke-dasharray="7 6"/><line x1="60" y1="82" x2="60" y2="134" stroke="#fff" stroke-width="2.5" stroke-dasharray="7 6"/>
-      <path d="M71 100 L71 40" stroke="#c0392b" stroke-width="3" fill="none" stroke-dasharray="6 5"/>
+      <path d="M71 100 L71 40" stroke="#ffd4cf" stroke-width="3" fill="none" stroke-dasharray="6 5"/>
       <g transform="translate(102 45) rotate(-90)">
   <rect x="-11" y="-13" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="-13" width="4.5" height="8" rx="2" fill="#333"/>
   <rect x="-11" y="6" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="6" width="4.5" height="8" rx="2" fill="#333"/>
-  <rect x="-9" y="-17" width="18" height="34" rx="7" fill="#5f6d7a"/>
+  <rect x="-9" y="-17" width="18" height="34" rx="7" fill="#5f6d7a" stroke="#101820" stroke-width="1.2"/>
   <path d="M-6 -9 Q0 -13 6 -9 L6 -4 Q0 -7 -6 -4 Z" fill="#fff" opacity=".85"/>
   <path d="M-6 9 Q0 12 6 9 L6 13 Q0 15 -6 13 Z" fill="#fff" opacity=".5"/>
-</g><path d="M84 45 L26 45 M34.10402392117409 41.085310192998925 L26 45 L34.10402392117409 48.914689807001075" stroke="#2e7d32" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</g><path d="M84 45 L26 45 M34.10402392117409 41.085310192998925 L26 45 L34.10402392117409 48.914689807001075" stroke="#bdffcc" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
       <g transform="translate(71 118) rotate(0)">
   <rect x="-11" y="-13" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="-13" width="4.5" height="8" rx="2" fill="#333"/>
   <rect x="-11" y="6" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="6" width="4.5" height="8" rx="2" fill="#333"/>
-  <rect x="-9" y="-17" width="18" height="34" rx="7" fill="#2c6aa0"/>
+  <rect x="-9" y="-17" width="18" height="34" rx="7" fill="#2c6aa0" stroke="#101820" stroke-width="1.2"/>
   <path d="M-6 -9 Q0 -13 6 -9 L6 -4 Q0 -7 -6 -4 Z" fill="#fff" opacity=".85"/>
   <path d="M-6 9 Q0 12 6 9 L6 13 Q0 15 -6 13 Z" fill="#fff" opacity=".5"/>
 </g><g transform="translate(71 88)"><circle r="11" fill="#fff" stroke="#c0392b" stroke-width="3"/><path d="M-5 -5 L5 5 M5 -5 L-5 5" stroke="#c0392b" stroke-width="3" stroke-linecap="round"/></g></svg>
-    <b>DESNA STRANA</b><span>propuštaš vozilo koje ti dolazi zdesna — i na raskrsnici i pri prestrojavanju u istu traku</span>
+    <b>DESNA STRANA</b><span>propuštaš vozilo koje ti dolazi zdesna — i na raskrsnici i pri susretu sa drugim vozilom</span>
   </div>
   <div class="signCell">
-    <svg viewBox="0 0 120 136"><rect x="0" y="34" width="120" height="44" fill="#9aa7b4"/><rect x="38" y="0" width="44" height="136" fill="#9aa7b4"/>
+    <svg viewBox="0 0 120 136" role="img" aria-label="Na raskrsnici bez signalizacije tvoje plavo vozilo skreće ulevo i propušta vozilo iz suprotnog smera koje ide pravo ili skreće udesno."><rect x="0" y="34" width="120" height="44" fill="#617784"/><rect x="38" y="0" width="44" height="136" fill="#617784"/>
       <line x1="2" y1="56" x2="34" y2="56" stroke="#fff" stroke-width="2.5" stroke-dasharray="7 6"/><line x1="86" y1="56" x2="118" y2="56" stroke="#fff" stroke-width="2.5" stroke-dasharray="7 6"/>
       <line x1="60" y1="2" x2="60" y2="30" stroke="#fff" stroke-width="2.5" stroke-dasharray="7 6"/><line x1="60" y1="82" x2="60" y2="134" stroke="#fff" stroke-width="2.5" stroke-dasharray="7 6"/>
-      <path d="M71 100 Q71 45 30 45" stroke="#c0392b" stroke-width="3" fill="none" stroke-dasharray="6 5"/>
+      <path d="M71 100 Q71 45 30 45" stroke="#ffd4cf" stroke-width="3" fill="none" stroke-dasharray="6 5"/>
       <g transform="translate(49 16) rotate(180)">
   <rect x="-11" y="-13" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="-13" width="4.5" height="8" rx="2" fill="#333"/>
   <rect x="-11" y="6" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="6" width="4.5" height="8" rx="2" fill="#333"/>
-  <rect x="-9" y="-17" width="18" height="34" rx="7" fill="#5f6d7a"/>
+  <rect x="-9" y="-17" width="18" height="34" rx="7" fill="#5f6d7a" stroke="#101820" stroke-width="1.2"/>
   <path d="M-6 -9 Q0 -13 6 -9 L6 -4 Q0 -7 -6 -4 Z" fill="#fff" opacity=".85"/>
   <path d="M-6 9 Q0 12 6 9 L6 13 Q0 15 -6 13 Z" fill="#fff" opacity=".5"/>
-</g><path d="M49 36 L49 104 M45.085310192998925 95.89597607882591 L49 104 L52.914689807001075 95.89597607882591" stroke="#2e7d32" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M49 36 Q49 45 26 45 M32 40 L26 45 L32 50" stroke="#2e7d32" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</g><path d="M49 36 L49 104 M45.085310192998925 95.89597607882591 L49 104 L52.914689807001075 95.89597607882591" stroke="#bdffcc" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M49 36 Q49 45 26 45 M32 40 L26 45 L32 50" stroke="#bdffcc" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
       <g transform="translate(71 118) rotate(0)">
   <rect x="-11" y="-13" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="-13" width="4.5" height="8" rx="2" fill="#333"/>
   <rect x="-11" y="6" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="6" width="4.5" height="8" rx="2" fill="#333"/>
-  <rect x="-9" y="-17" width="18" height="34" rx="7" fill="#2c6aa0"/>
+  <rect x="-9" y="-17" width="18" height="34" rx="7" fill="#2c6aa0" stroke="#101820" stroke-width="1.2"/>
   <path d="M-6 -9 Q0 -13 6 -9 L6 -4 Q0 -7 -6 -4 Z" fill="#fff" opacity=".85"/>
   <path d="M-6 9 Q0 12 6 9 L6 13 Q0 15 -6 13 Z" fill="#fff" opacity=".5"/>
 </g><g transform="translate(71 88)"><circle r="11" fill="#fff" stroke="#c0392b" stroke-width="3"/><path d="M-5 -5 L5 5 M5 -5 L-5 5" stroke="#c0392b" stroke-width="3" stroke-linecap="round"/></g></svg>
-    <b>LEVO SKRETANJE</b><span>iz suprotnog smera propuštaš i onog koji ide pravo (preseca ti putanju) i onog koji skreće udesno (ulazi u istu traku kao ti)</span>
+    <b>LEVO SKRETANJE</b><span>iz suprotnog smera propuštaš i onog koji ide pravo i onog koji skreće udesno — tako nalaže pravilo levog skretanja</span>
   </div>
   <div class="signCell">
-    <svg viewBox="0 0 120 136"><rect x="0" y="34" width="120" height="44" fill="#9aa7b4"/><rect x="38" y="0" width="44" height="136" fill="#9aa7b4"/>
+    <svg viewBox="0 0 120 136" role="img" aria-label="Na raskrsnici bez signalizacije tvoje plavo vozilo propušta tramvaj."><rect x="0" y="34" width="120" height="44" fill="#617784"/><rect x="38" y="0" width="44" height="136" fill="#617784"/>
       <line x1="2" y1="56" x2="34" y2="56" stroke="#fff" stroke-width="2.5" stroke-dasharray="7 6"/><line x1="86" y1="56" x2="118" y2="56" stroke="#fff" stroke-width="2.5" stroke-dasharray="7 6"/>
       <line x1="60" y1="2" x2="60" y2="30" stroke="#fff" stroke-width="2.5" stroke-dasharray="7 6"/><line x1="60" y1="82" x2="60" y2="134" stroke="#fff" stroke-width="2.5" stroke-dasharray="7 6"/>
-      <line x1="0" y1="62" x2="120" y2="62" stroke="#7a8a99" stroke-width="1.5"/><line x1="0" y1="72" x2="120" y2="72" stroke="#7a8a99" stroke-width="1.5"/>
-      <path d="M71 100 L71 40" stroke="#c0392b" stroke-width="3" fill="none" stroke-dasharray="6 5"/>
-      <rect x="-4" y="60" width="48" height="14" rx="3" fill="#c0392b"/><rect x="2" y="63" width="10" height="8" rx="1" fill="#eef3f7"/><rect x="16" y="63" width="10" height="8" rx="1" fill="#eef3f7"/><rect x="30" y="63" width="10" height="8" rx="1" fill="#eef3f7"/>
-      <path d="M48 67 L106 67 M97.89597607882591 70.91468980700107 L106 67 L97.89597607882591 63.085310192998925" stroke="#2e7d32" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="0" y1="62" x2="120" y2="62" stroke="#cad5df" stroke-width="1.5"/><line x1="0" y1="72" x2="120" y2="72" stroke="#cad5df" stroke-width="1.5"/>
+      <path d="M71 100 L71 40" stroke="#ffd4cf" stroke-width="3" fill="none" stroke-dasharray="6 5"/>
+      <rect x="-4" y="60" width="48" height="14" rx="3" fill="#c0392b" stroke="#101820" stroke-width="1.2"/><rect x="2" y="63" width="10" height="8" rx="1" fill="#eef3f7"/><rect x="16" y="63" width="10" height="8" rx="1" fill="#eef3f7"/><rect x="30" y="63" width="10" height="8" rx="1" fill="#eef3f7"/>
+      <path d="M48 67 L106 67 M97.89597607882591 70.91468980700107 L106 67 L97.89597607882591 63.085310192998925" stroke="#bdffcc" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
       <g transform="translate(71 118) rotate(0)">
   <rect x="-11" y="-13" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="-13" width="4.5" height="8" rx="2" fill="#333"/>
   <rect x="-11" y="6" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="6" width="4.5" height="8" rx="2" fill="#333"/>
-  <rect x="-9" y="-17" width="18" height="34" rx="7" fill="#2c6aa0"/>
+  <rect x="-9" y="-17" width="18" height="34" rx="7" fill="#2c6aa0" stroke="#101820" stroke-width="1.2"/>
   <path d="M-6 -9 Q0 -13 6 -9 L6 -4 Q0 -7 -6 -4 Z" fill="#fff" opacity=".85"/>
   <path d="M-6 9 Q0 12 6 9 L6 13 Q0 15 -6 13 Z" fill="#fff" opacity=".5"/>
 </g><g transform="translate(71 88)"><circle r="11" fill="#fff" stroke="#c0392b" stroke-width="3"/><path d="M-5 -5 L5 5 M5 -5 L-5 5" stroke="#c0392b" stroke-width="3" stroke-linecap="round"/></g></svg>
-    <b>TRAMVAJ</b><span>propuštaš ga u svim slučajevima — „dolazi mi sleva" nije izgovor</span>
+    <b>TRAMVAJ</b><span>na raskrsnici bez drugačije regulacije propuštaš ga i kada ti dolazi sleva</span>
   </div>
   <div class="signCell">
-    <svg viewBox="0 0 120 136"><rect x="0" y="34" width="120" height="44" fill="#9aa7b4"/><rect x="38" y="78" width="44" height="58" fill="#e8dcc2"/>
+    <svg viewBox="0 0 120 136" role="img" aria-label="Tvoje plavo vozilo dolazi sa zemljanog prilaza i propušta vozila na putu sa savremenim kolovoznim zastorom."><rect x="0" y="34" width="120" height="44" fill="#617784"/><rect x="38" y="78" width="44" height="58" fill="#e8dcc2"/>
       <g fill="#c9b892"><circle cx="46" cy="92" r="1.6"/><circle cx="58" cy="104" r="1.6"/><circle cx="76" cy="96" r="1.6"/><circle cx="44" cy="120" r="1.6"/><circle cx="56" cy="128" r="1.6"/><circle cx="78" cy="126" r="1.6"/><circle cx="66" cy="84" r="1.6"/></g>
       <line x1="2" y1="56" x2="118" y2="56" stroke="#fff" stroke-width="2.5" stroke-dasharray="7 6"/>
-      <path d="M71 100 L71 50" stroke="#c0392b" stroke-width="3" fill="none" stroke-dasharray="6 5"/>
+      <path d="M71 100 L71 50" stroke="#101820" stroke-width="5" fill="none" stroke-dasharray="6 5"/><path d="M71 100 L71 50" stroke="#c0392b" stroke-width="3" fill="none" stroke-dasharray="6 5"/>
       <g transform="translate(18 67) rotate(90)">
   <rect x="-11" y="-13" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="-13" width="4.5" height="8" rx="2" fill="#333"/>
   <rect x="-11" y="6" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="6" width="4.5" height="8" rx="2" fill="#333"/>
-  <rect x="-9" y="-17" width="18" height="34" rx="7" fill="#5f6d7a"/>
+  <rect x="-9" y="-17" width="18" height="34" rx="7" fill="#5f6d7a" stroke="#101820" stroke-width="1.2"/>
   <path d="M-6 -9 Q0 -13 6 -9 L6 -4 Q0 -7 -6 -4 Z" fill="#fff" opacity=".85"/>
   <path d="M-6 9 Q0 12 6 9 L6 13 Q0 15 -6 13 Z" fill="#fff" opacity=".5"/>
-</g><path d="M38 67 L108 67 M99.89597607882591 70.91468980700107 L108 67 L99.89597607882591 63.085310192998925" stroke="#2e7d32" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</g><path d="M38 67 L108 67 M99.89597607882591 70.91468980700107 L108 67 L99.89597607882591 63.085310192998925" stroke="#bdffcc" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
       <g transform="translate(102 45) rotate(-90)">
   <rect x="-11" y="-13" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="-13" width="4.5" height="8" rx="2" fill="#333"/>
   <rect x="-11" y="6" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="6" width="4.5" height="8" rx="2" fill="#333"/>
-  <rect x="-9" y="-17" width="18" height="34" rx="7" fill="#5f6d7a"/>
+  <rect x="-9" y="-17" width="18" height="34" rx="7" fill="#5f6d7a" stroke="#101820" stroke-width="1.2"/>
   <path d="M-6 -9 Q0 -13 6 -9 L6 -4 Q0 -7 -6 -4 Z" fill="#fff" opacity=".85"/>
   <path d="M-6 9 Q0 12 6 9 L6 13 Q0 15 -6 13 Z" fill="#fff" opacity=".5"/>
-</g><path d="M82 45 L12 45 M20.10402392117409 41.085310192998925 L12 45 L20.10402392117409 48.914689807001075" stroke="#2e7d32" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</g><path d="M82 45 L12 45 M20.10402392117409 41.085310192998925 L12 45 L20.10402392117409 48.914689807001075" stroke="#bdffcc" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
       <g transform="translate(71 118) rotate(0)">
   <rect x="-11" y="-13" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="-13" width="4.5" height="8" rx="2" fill="#333"/>
   <rect x="-11" y="6" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="6" width="4.5" height="8" rx="2" fill="#333"/>
-  <rect x="-9" y="-17" width="18" height="34" rx="7" fill="#2c6aa0"/>
+  <rect x="-9" y="-17" width="18" height="34" rx="7" fill="#2c6aa0" stroke="#101820" stroke-width="1.2"/>
   <path d="M-6 -9 Q0 -13 6 -9 L6 -4 Q0 -7 -6 -4 Z" fill="#fff" opacity=".85"/>
   <path d="M-6 9 Q0 12 6 9 L6 13 Q0 15 -6 13 Z" fill="#fff" opacity=".5"/>
 </g><g transform="translate(71 88)"><circle r="11" fill="#fff" stroke="#c0392b" stroke-width="3"/><path d="M-5 -5 L5 5 M5 -5 L-5 5" stroke="#c0392b" stroke-width="3" stroke-linecap="round"/></g></svg>
@@ -212,7 +212,7 @@ Signalizacija određuje kome je prolaz dozvoljen. Među vozilima sa istovremenim
 <p><b>Kako to izgleda na slici.</b> Na slici prvo proveri signalizaciju, zatim pravilo koje uređuje odnos sa konkretnim vozilom.</p>
 <table>
 <tr><th>Na slici vidiš</th><th>Tačan odgovor</th></tr>
-<tr><td>Tramvaj ti dolazi <b>iz suprotnog smera, tvojim putem</b>, i skreće preko tvoje putanje — svejedno da li pored puta stoji žuti romb</td><td>Propuštaš <b>tramvaj</b>. Romb tu ne pomaže: i ti i tramvaj ste na istom putu sa prvenstvom</td></tr>
+
 <tr><td>Tramvaj ti dolazi <b>sa poprečnog puta, sleva</b>, i nema nijednog znaka</td><td>Propuštaš <b>tramvaj</b> — „dolazi mi sleva" nije izgovor</td></tr>
 <tr><td>Tramvaj je na <b>poprečnom</b> putu, a uz tvoj put stoji <b>žuti romb</b> (put sa prvenstvom, obično uz plavi znak pešačkog prelaza)</td><td>Prednost je <b>tvoja</b>, i u odnosu na tramvaj. To je ono „ako znakom nije drugačije određeno"</td></tr>
 <tr><td>Tramvaj <b>i</b> putničko vozilo koje ti dolazi <b>zdesna</b>, bez ijednog znaka</td><td>Propuštaš <b>oba</b> (tramvaj po pravilu tramvaja, vozilo po pravilu desne strane)</td></tr>
@@ -221,7 +221,7 @@ Signalizacija određuje kome je prolaz dozvoljen. Među vozilima sa istovremenim
 <tr><td>Stojiš na <b>neasfaltiranom, zemljanom prilazu</b>; sleva bicikl, zdesna autobus</td><td>Propuštaš <b>oba</b> — vrsta vozila i strana ne menjaju ništa</td></tr>
 <tr><td>Ispred tebe <b>trougao „ustupi prvenstvo"</b> (i beli trouglići na kolovozu) ili <b>STOP</b></td><td>Propuštaš <b>sve</b> — i bicikl sleva i taksi zdesna</td></tr>
 </table>
-<p><b>UPOZORENJE — vrsta vozila NE menja prvenstvo.</b> Traktor, autobus, kamion, bicikl: prvenstvo određuju samo <b>pravac</b> i <b>znak</b>. Kad ti traktor dolazi sa desne strane, tačan odgovor je „dužni ste da propustite oba vozila" — nikad „propustite putničko vozilo, a imate prvenstvo u odnosu na traktor". Ponude su namerno pisane tako da razdvajaju vozila po vrsti; ta razlika ne postoji. Isto važi i za bicikl: on nije „slabiji učesnik kome se ne daje prednost", nego vozilo kao i svako drugo.</p>
+<p><b>UPOZORENJE — među običnim drumskim vozilima sama vrsta ne daje prvenstvo.</b> U prikazanim zadacima traktor, autobus ili kamion ne dobija niti gubi prvenstvo samo zbog svoje vrste; proveri signalizaciju, podlogu i primenjiva pravila. Bicikl takođe nije „slabiji učesnik kome se ne daje prednost". Posebna pravila za tramvaj i vozila sa uključenim posebnim znacima obrađena su odvojeno.</p>
 <p><b>Kružni tok: proveri znakove koji uređuju prvenstvo.</b> Plavi znak određuje kružni smer kretanja, ne prvenstvo. U #9987 uz njega stoji trougao „ustupi prvenstvo", pa propuštaš vozilo sleva. U #9991 na prikazanom prilazu nema znaka ustupanja prvenstva: imaš prednost prema vozilu sleva po pravilu desne strane, jer mu dolaziš zdesna (čl. 47).</p>
 <p><b>Kad se svi blokiraju.</b> Postoji i pitanje sa četiri vozila gde svako ima prednost u odnosu na ono sa svoje leve strane, pa niko ne može prvi. Tačan odgovor nije „pokažite odlučnost i prvi prođite", nego: <b>vizuelnim kontaktom i odgovarajućim znakom rukom</b> omogući prolaz onom vozilu koje ima prednost u odnosu na treće, a sam propusti vozilo koje tebi dolazi zdesna.</p>
 </div>
@@ -229,14 +229,14 @@ Signalizacija određuje kome je prolaz dozvoljen. Među vozilima sa istovremenim
 <div class="kSek" data-sub="148">
 <p><b>B) Vozila pod pratnjom i sa pravom prvenstva — ono na čemu se pada</b><br>
 Tabela iznad je „ko je ko". Ostatak podoblasti (najveće u pravilima, sa preko pedeset pitanja) pita dve stvari: <b>šta za njih prestaje da važi</b> i <b>kad ni oni nemaju prednost</b>.</p>
-<p><b>Prvo pogledaj da li svetla GORE.</b> Bez uključenih posebnih znakova policijsko vozilo je obično vozilo i tačan odgovor je „nije vozilo pod pratnjom, ni vozilo sa pravom prvenstva prolaza". Na fotografijama se upaljena rampa vidi po <b>sjaju (oreolu)</b> oko lampi — ista slika sa ugašenom rampom daje suprotan odgovor. Na crtežima to su nacrtani bljesci oko vozila: <b>crveni + plavi = pod pratnjom</b>, <b>samo plavi = sa pravom prvenstva</b>, a <b>žuti bljesak je samo žmigavac</b> i ne znači ništa. Na slici sa tri vozila (dva policijska i vozilo hitne pomoći) vozilo sa prvenstvom prolaza je jedino ono kome plava svetla gore.</p>
+<p><b>Prvo pogledaj da li svetla GORE.</b> Bez uključenih posebnih znakova policijsko vozilo je obično vozilo i tačan odgovor je „nije vozilo pod pratnjom, ni vozilo sa pravom prvenstva prolaza". Na fotografijama se upaljena rampa vidi po <b>sjaju (oreolu)</b> oko lampi — ista slika sa ugašenom rampom daje suprotan odgovor. Na crtežima to su nacrtani bljesci oko vozila: <b>crveni + plavi = pod pratnjom</b>, <b>samo plavi = sa pravom prvenstva</b>, a <b>žuti bljesak na ovim crtežima je žmigavac</b> i ne daje poseban status. Na slici sa tri vozila (dva policijska i vozilo hitne pomoći) vozilo sa prvenstvom prolaza je jedino ono kome plava svetla gore.</p>
 <div class="signRow" style="max-width:340px;margin:6px auto">
   <div class="signCell">
-    <svg viewBox="0 0 120 46"><circle cx="45" cy="18" r="19" fill="#c0392b" opacity=".3"/><circle cx="75" cy="18" r="19" fill="#2c6aa0" opacity=".3"/><rect x="10" y="26" width="100" height="14" rx="7" fill="#4a5a6a"/><circle cx="45" cy="18" r="12" fill="#c0392b"/><circle cx="75" cy="18" r="12" fill="#2c6aa0"/></svg>
+    <svg viewBox="0 0 120 46" role="img" aria-label="Crveno i plavo svetlo sa oreolom prikazuju uključene posebne svetlosne znake."><circle cx="45" cy="18" r="19" fill="#c0392b" opacity=".3"/><circle cx="75" cy="18" r="19" fill="#2c6aa0" opacity=".3"/><rect x="10" y="26" width="100" height="14" rx="7" fill="#4a5a6a"/><circle cx="45" cy="18" r="12" fill="#c0392b" stroke="currentColor" stroke-width="1.25"/><circle cx="75" cy="18" r="12" fill="#2c6aa0" stroke="currentColor" stroke-width="1.25"/></svg>
     <span><b>SVETLA GORE</b><br>pod pratnjom / sa prvenstvom</span>
   </div>
   <div class="signCell">
-    <svg viewBox="0 0 120 46"><rect x="10" y="26" width="100" height="14" rx="7" fill="#4a5a6a"/><circle cx="45" cy="18" r="12" fill="#94a3b8"/><circle cx="75" cy="18" r="12" fill="#94a3b8"/></svg>
+    <svg viewBox="0 0 120 46" role="img" aria-label="Siva svetla bez oreola prikazuju isključene posebne svetlosne znake."><rect x="10" y="26" width="100" height="14" rx="7" fill="#4a5a6a"/><circle cx="45" cy="18" r="12" fill="#94a3b8"/><circle cx="75" cy="18" r="12" fill="#94a3b8"/></svg>
     <span><b>SVETLA NE GORE</b><br>obično vozilo</span>
   </div>
 </div>
@@ -245,12 +245,12 @@ Tabela iznad je „ko je ko". Ostatak podoblasti (najveće u pravilima, sa preko
 <tr><td>ograničenje brzine<br>propuštanje pešaka<br>zabrana presecanja kolone pešaka<br>zabrana preticanja i obilaženja vozila</td><td>postupanje po svetlosnim saobraćajnim znakovima<br>dozvoljeni smer kretanja<br>upotreba svetala<br>i uvek: da ne ugroze bezbednost ostalih</td></tr>
 </table>
 <p class="mut">Leva kolona važi samo <b>pod uslovom da ne ugrožavaju bezbednost drugih učesnika u saobraćaju</b> — ta rečenica stoji u oba člana i u skoro svakom tačnom odgovoru. Vozač takvog vozila je i dalje dužan da vodi računa o bezbednosti ostalih, a ne o „efikasnosti izvršenja zadatka".</p>
-<p><b>Iste slike, jedina razlika je rotacija.</b> Policijsko vozilo u naselju (znak sa crnom siluetom grada pored puta) sa upaljenom rotacijom <b>sme</b> da se kreće brže od 50 km/h, tako da ne ugrožava druge; isto vozilo sa ugašenom rampom <b>ne sme</b>. Na pešačkom prelazu, sa upaljenim znacima <b>ne mora</b> da propusti pešaka (pod uslovom da ga ne ugrožava), a bez znakova <b>mora</b>. Preko pune razdelne linije, sa upaljenom plavom rotacijom preticanje <b>jeste</b> dozvoljeno, a kad gori samo žmigavac <b>nije</b>.</p>
+<p><b>Iste slike, jedina razlika je rotacija.</b> Policijsko vozilo u naselju (znak sa crnom siluetom grada pored puta) sa upaljenom rotacijom <b>sme</b> da se kreće brže od 50 km/h, tako da ne ugrožava druge; isto vozilo sa ugašenom rampom <b>ne sme</b>. Na pešačkom prelazu, sa upaljenim znacima <b>ne mora</b> da propusti pešaka (pod uslovom da ga ne ugrožava), a bez znakova <b>mora</b>. U prikazanim pitanjima #10345 i #10371 ne primenjuje se zabrana preticanja preko neisprekidane linije u suprotnu traku, pod uslovom da posebno vozilo ne ugrožava druge (čl. 55 st. 3 tač. 15 i čl. 106/108 st. 7). Kad gore samo žmigavci (#10372), tog izuzeća nema.</p>
 <p><b>Kad ni oni nemaju prednost.</b></p>
 <table>
 <tr><th>Raskrsnicom upravlja</th><th>Tačan odgovor</th></tr>
-<tr><td>Semafor</td><td>„prvenstvo prolaza je regulisano semaforom"</td></tr>
-<tr><td>Policajac</td><td>„prvenstvo prolaza je regulisano znakovima koje daje policijski službenik" — i kad iza njega stoji vozilo sa upaljenom rotacijom</td></tr>
+<tr><td>Semafor koji posebnom vozilu zabranjuje prolaz</td><td>„prvenstvo prolaza je regulisano semaforom"</td></tr>
+<tr><td>Policajac čiji znak posebnom vozilu zabranjuje prolaz</td><td>„prvenstvo prolaza je regulisano znakovima koje daje policijski službenik" — i kad iza njega stoji vozilo sa upaljenom rotacijom</td></tr>
 <tr><td>Saobraćajni znakovi i oznake na kolovozu</td><td>vozilo pod pratnjom / sa prvenstvom <b>ima</b> prednost — čak i kad na njegovom prilazu stoji STOP, a na poprečnom putu žuti romb</td></tr>
 <tr><td>Samo pravila saobraćaja</td><td>vozilo <b>ima</b> prednost; zamka je ponuda „prednost ima žuto vozilo, po pravilu desne strane"</td></tr>
 </table>
@@ -2997,7 +2997,7 @@ Ne. Dodata su za učenje i revizija njihove tačnosti traje. Pitanja i oznake ta
 };
 
 const X = {};
-X[10574] = { x: 'Na semaforizovanoj raskrsnici prvenstvo prolaza određuje SEMAFOR — po hijerarhiji iz ZOBS čl. 20 od semafora su jače samo naredbe ovlašćenog lica (saobraćajca). Obaveza da propustiš vozilo pod pratnjom (čl. 107) nastaje kada te ono susretne ili sustigne na putu i ne menja odgovor na pitanje ČIME je regulisano prvenstvo na ovoj raskrsnici. Zapamti: rotacija ne gasi semafor.', card: 'prvenstvo-prolaza' };
+X[10574] = { x: 'Na slici semafor vozilu pod pratnjom pokazuje crveno, pa prolaz određuje SEMAFOR — po hijerarhiji iz ZOBS čl. 20 od semafora su jače samo naredbe ovlašćenog lica (saobraćajca). Obaveza da propustiš vozilo pod pratnjom (čl. 107) nastaje kada te ono susretne ili sustigne na putu i ne menja odgovor na pitanje ČIME je regulisano prvenstvo na ovoj raskrsnici. Zapamti: rotacija ne gasi semafor.', card: 'prvenstvo-prolaza' };
 X[10363] = { x: 'Isti princip kao kod vozila pod pratnjom: na semaforizovanoj raskrsnici prvenstvo je regulisano SEMAFOROM (hijerarhija iz ZOBS čl. 20 — jači od semafora je samo saobraćajac). Policijsko vozilo sa plavim svetlom je „vozilo sa pravom prvenstva" (čl. 108) i propuštaš ga kad te susretne na putu (čl. 109), ali pitanje traži čime je prvenstvo regulisano — semaforom.', card: 'prvenstvo-prolaza' };
 X[8062] = { x: 'Na kontrolni zdravstveni pregled upućuje se vozač za koga se POSUMNJA da zbog psihofizičkih smetnji ili nedostataka nije u stanju da bezbedno upravlja vozilom (ZOBS čl. 191). Sama saobraćajna nezgoda ili broj prekršaja nisu zakonski osnov — presudna je sumnja u psihofizičku sposobnost.' };
 X[8063] = { x: "Vozaču koji se u određenom roku ne podvrgne kontrolnom zdravstvenom pregledu nadležni organ oduzima vozačku dozvolu (ZOBS čl. 192)." };
@@ -4559,20 +4559,20 @@ X[9493] = { x: 'Policajac stoji na tvojoj polovini kolovoza, okrenut ka tebi, i 
 X[9495] = { x: 'Policajac je žutim krugom označen daleko na levoj strani puta i crvenom lampom zaustavlja vozilo koje dolazi iz suprotnog smera, dakle ne tebe. Zato ne staješ, nego smanjuješ brzinu i krećeš se sa povećanom opreznošću, jer se vozilo zaustavlja tik pored tvoje putanje, a policajac stoji uz samu ivicu kolovoza. Da je znak tvoj, on bi stajao na tvojoj strani, okrenut ka tebi.' };
 X[9497] = { x: 'Na zadnjem staklu policijskog vozila ispred tebe naizmenično se pale natpisi POLICIJA i USPORITE. Postupaš doslovno po tekstu: usporavaš i dalje se krećeš brzinom kojom se kreće policijsko vozilo dok daje taj znak. To je obaveza, a ne preporuka, i ne zavisi od toga da li si prekoračio dozvoljenu brzinu ili napravio bilo kakav prekršaj.' };
 X[9499] = { x: 'Displej na zadnjem staklu policijskog vozila naizmenično prikazuje POLICIJA i PRATITE NAS. Znak znači da se krećeš za tim vozilom sve dok ga ono daje. Nije reč o preporuci za bezbedno kretanje, niti obaveza zavisi od toga da li si u vožnji napravio prekršaj: svetlosni znaci sa policijskog vozila su uvek bezuslovna obaveza.' };
-X[9502] = { x: 'Po hijerarhiji postupanja svetlosni znak je jači od saobraćajnog znaka, a slabiji jedino od naredbe ovlašćenog lica. Uz put crvenog vozila stoje i STOP tabla i semafor koji mu pokazuje zeleno — dok semafor radi, tabla se ne primenjuje. Opšte pravilo o prvenstvu dolazi na red tek kada nema ni semafora ni znaka.' };
-X[9504] = { x: 'Semafor pobija saobraćajni znak, pa iako se desno vidi STOP tabla, tvoje postupanje određuje upaljeno svetlo — a ono je crveno, što znači zaustavljanje ispred raskrsnice. Opšte pravilo o prvenstvu prolaza ovde uopšte ne dolazi na red, jer se ono primenjuje samo kada prvenstvo nije regulisano ni semaforom ni znakom.' };
-X[9505] = { x: 'Ovde prema tebi nema ni semafora ni saobraćajnog znaka, ali kolovoz nije prazan: pred tobom su iscrtani pešački prelaz i neisprekidana bela linija koja preseca ulaz u raskrsnicu. I jedno i drugo su oznake na kolovozu, a one su u hijerarhiji iznad opštih pravila saobraćaja. Zato tvrdnja da postupanje nije regulisano zato što nema znaka pada — izostanak znaka ne znači izostanak regulacije, a opšte pravilo dolazi na red tek kada nema ni znaka ni oznake.' };
+X[9502] = { x: 'Po hijerarhiji postupanja svetlosni znak je jači od saobraćajnog znaka, a slabiji jedino od naredbe ovlašćenog lica. U ovom pitanju crveno vozilo za ulazak u raskrsnicu postupa po semaforu, koji potiskuje STOP. To ne ukida pravila za odnose koje semafor nije rešio: među učesnicima kojima je prolaz istovremeno dozvoljen i dalje važe pravilo desne strane i pravilo levog skretanja (ZOBS čl. 47 st. 6–8).' };
+X[9504] = { x: 'Crveno svetlo određuje tvoj ulazak u raskrsnicu i potiskuje STOP iznad njega (ZOBS čl. 20), pa je označeni odgovor tačan. Semafor ipak ne ukida sva pravila prvenstva: desna strana i levo skretanje i dalje uređuju međusobni odnos učesnika kojima je prolaz istovremeno dozvoljen (čl. 47 st. 7).' };
+X[9505] = { x: 'Pred tobom je poprečna linija zaustavljanja, oznaka na kolovozu koja uređuje traženo postupanje; njen značaj postoji i kada nema uspravnog znaka (Pravilnik čl. 66). Oznake su iznad pravila u hijerarhiji iz ZOBS čl. 20. Pravila i dalje uređuju samo one međusobne odnose koji tom oznakom nisu drugačije rešeni.' };
 X[9509] = { x: 'Na ovoj raskrsnici nema semafora, niti znaka ili oznake koja bi delila prvenstvo, pa se spuštaš do poslednje stepenice hijerarhije — opšteg pravila saobraćaja. Ono ti nalaže da propustiš vozilo koje nailazi sa tvoje desne strane, a odatle ti se i približava crveni automobil. Pešački prelaz uređuje odnos prema pešacima, a ne prvenstvo među vozilima.' };
-X[9510] = { x: 'Saobraćajni znak je u hijerarhiji iznad oznake na kolovozu. Uz kolovoz je postavljen plavi znak obaveznog smera i on određuje kuda smeš da se krećeš, iako su na kolovozu iscrtane strelice koje govore drugačije. Kada se to dvoje razilazi, jača karika odlučuje, a slabija se zanemaruje — zato smer kretanja ovde diktira znak, ne strelica.' };
-X[9511] = { x: 'I ovde odlučuje odnos znaka i oznake: plavi znak obaveznog smera kraj kolovoza dopušta samo smerove prikazane na njemu, a skretanje ulevo nije među njima. Strelica iscrtana na kolovozu je slabija karika i ne daje ti pravo koje joj znak oduzima. Ovakva neusaglašenost signalizacije je česta zamka — uvek gledaj znak.' };
-X[9512] = { x: 'Na kraku kojim vozilo prilazi raskrsnici postavljen je trougaoni znak za ustupanje prvenstva, a saobraćajni znak je jači i od oznake na kolovozu i od opštih pravila. Zato kratka poprečna linija na kolovozu ne odlučuje sama za sebe — ona samo pokazuje gde se ustupa prvenstvo koje je znakom već određeno, a pravilo o desnoj strani pada čim se pojavi znak.' };
+X[9510] = { x: 'Saobraćajni znak je u hijerarhiji iznad oznake na kolovozu. Uz kolovoz je postavljen plavi znak dozvoljenih smerova i on određuje kuda smeš da se krećeš, iako su na kolovozu iscrtane strelice koje govore drugačije. Kada se to dvoje razilazi, jača karika odlučuje, a slabija se zanemaruje — zato smer kretanja ovde diktira znak, ne strelica.' };
+X[9511] = { x: 'Plavi znak dozvoljenih smerova ne dopušta skretanje ulevo. U neposrednom sukobu tog saobraćajnog znaka i strelice na kolovozu postupaš po znaku, jer je u hijerarhiji iz ZOBS čl. 20 iznad oznake. Zato skretanje ulevo iz prikazane trake nije dozvoljeno.' };
+X[9512] = { x: 'Trougao „ustupi prvenstvo” uređuje odnos tvog prilaza prema putu kome daješ prvenstvo, a isprekidana poprečna linija pokazuje mesto ustupanja. U tom odnosu ne odlučuje pravilo desne strane. Među vozilima na istom putu sa prvenstvom, odnosno na istom sporednom putu, desna strana i levo skretanje i dalje uređuju međusobno prvenstvo (ZOBS čl. 47 st. 6).' };
 X[9517] = { x: 'Iako je iznad semafora postavljena STOP tabla, dok semafor radi važi njegovo svetlo — ono je u hijerarhiji odmah ispod naredbe ovlašćenog lica, a iznad saobraćajnog znaka. Žutom vozilu je upaljeno zeleno, pa prolazi bez zaustavljanja, dok poprečnom pravcu gori crveno. Opštem pravilu o prvenstvu ovde nema šta da se reši.' };
-X[9518] = { x: 'Na semaforizovanoj raskrsnici odlučuje semafor: jači je od svakog saobraćajnog znaka, pa STOP tabla gore desno ne traži zaustavljanje dok svetla rade. Tebi je upaljeno zeleno i to je ono po čemu postupaš. Pravilo o prvenstvu prolaza primenjuje se tek kada prvenstvo nije regulisano ni semaforom ni znakom, a ovde jeste.' };
+X[9518] = { x: 'Zeleno svetlo određuje tvoj ulazak u raskrsnicu i potiskuje STOP iznad semafora (ZOBS čl. 20), pa je označeni odgovor tačan. Ako više učesnika istovremeno dobije pravo prolaza, njihov međusobni odnos i dalje uređuju pravilo desne strane i pravilo levog skretanja (čl. 47 st. 7).' };
 X[9519] = { x: 'Ulazak u raskrsnicu ti određuje semafor — zeleno ti daje slobodan prolaz i time gasi i STOP tablu iznad njega. Ali semafor ne rešava sve: vozilo iz suprotnog smera takođe ima zeleno i skreće preko tvoje putanje, a njihov međusobni odnos deli opšte pravilo, po kojem onaj ko skreće ulevo propušta vozilo iz suprotnog smera. Zato su tačna oba odgovora, dok dopunska tabla samo opisuje oblik raskrsnice.' };
-X[9521] = { x: 'Semafor ti pokazuje zeleno i on određuje ulazak u raskrsnicu — jači je od STOP table iznad njega, pa se ona ne primenjuje dok svetla rade. Semafor ipak ne rešava odnos prema vozilu koje u istom trenutku preseca tvoju putanju; tu odlučuje opšte pravilo o prvenstvu prolaza, zbog čega su tačna oba odgovora. Oznake na kolovozu su najslabija karika i ovde ništa ne menjaju.' };
-X[9524] = { x: 'Na vrhu hijerarhije je naredba ovlašćenog lica: kada policajac reguliše saobraćaj, njegovi znaci gase i semafor i svaki saobraćajni znak, pa i STOP tablu desno. Zato ne gledaš upaljeno zeleno svetlo nego njega. Opšte pravilo o prvenstvu prolaza je poslednja stepenica i primenjuje se samo kada nema ničeg jačeg — ovde ima.' };
-X[9526] = { x: 'Policajac koji reguliše saobraćaj je najjača karika — njegovi znaci pobijaju i semafor i saobraćajni znak. Zato ni žuti romb sa desne strane, znak koji označava put sa prvenstvom prolaza, ne odlučuje umesto njega. Postupaš isključivo po njegovim znacima, a opšte pravilo o prvenstvu dolazi na red tek kada saobraćaj niko i ništa ne reguliše.' };
-X[9528] = { x: 'Ovlašćeno lice je iznad svega ostalog u hijerarhiji, pa i iznad oznaka na kolovozu — linija zaustavljanja te ne obavezuje dok saobraćajem upravlja policajac. On stoji bokom prema tvom pravcu, a to je položaj koji znači slobodan prolaz. Opšte pravilo o prvenstvu važi samo kada saobraćaj nije regulisan ni ovlašćenim licem, ni semaforom, ni znakom.' };
+X[9521] = { x: 'Semafor ti pokazuje zeleno i on određuje ulazak u raskrsnicu — jači je od STOP table iznad njega, pa se ona ne primenjuje dok svetla rade. Semafor ipak ne rešava odnos prema vozilu koje u istom trenutku preseca tvoju putanju; tu odlučuje opšte pravilo o prvenstvu prolaza, zbog čega su tačna oba odgovora. Oznake na kolovozu ovde ne menjaju taj odnos prvenstva.' };
+X[9524] = { x: 'Za ulazak u ovu raskrsnicu postupaš po znaku ovlašćenog lica, koji je iznad semafora, znaka i oznake (ZOBS čl. 20). Ako policajac istovremeno dozvoli prolaz učesnicima sa putanjama koje se ukrštaju, njihov međusobni odnos i dalje uređuju pravilo desne strane i pravilo levog skretanja (čl. 47 st. 8).' };
+X[9526] = { x: 'Za ulazak u ovu raskrsnicu postupaš po znaku policajca, koji potiskuje žuti romb i ostalu nižu signalizaciju (ZOBS čl. 20). Pravila prvenstva ipak mogu urediti međusobni odnos učesnika kojima policajac istovremeno dozvoli prolaz (čl. 47 st. 8).' };
+X[9528] = { x: 'Ovlašćeno lice je iznad oznake na kolovozu, pa linija zaustavljanja ne zahteva da staneš kada ti policajac dozvoljava prolaz (ZOBS čl. 20). Pravila desne strane i levog skretanja i dalje mogu urediti međusobni odnos učesnika kojima je policajac istovremeno dozvolio prolaz (čl. 47 st. 8).' };
 X[9530] = { x: 'Znak ovlašćenog lica je jači od oznake na kolovozu, pa linija zaustavljanja ne traži da staneš kada ti policajac daje prolaz — on stoji bokom prema tvom pravcu, a taj položaj znači slobodno kretanje. Zato tu i nema pravog sukoba dva znaka: hijerarhija ga rešava odmah, a opšte pravilo o prvenstvu se u ovakvoj situaciji uopšte ne primenjuje.' };
 X[9538] = { x: 'Posebnu pažnju duguješ pešacima koji su na kolovozu, jer su oni neposredno ugroženi: jedan prelazi preko kolovoza ispred tebe, a drugi se kreće duž kolovoza uz desnu ivicu, izvan zaštićene površine. Pešaci koji su na trotoaru, uključujući i onog koji je prelaz već završio, nisu u tvojoj putanji i zato nisu tačan izbor.' };
 X[9542] = { x: 'Autobus stoji na stajalištu uz trotoar i iz njega izlaze odrasli putnici — tada se traži da prilagodiš brzinu tako da vozilo možeš bezbedno zaustaviti i ne ugroziti ta lica. Bezuslovno zaustavljanje propisano je kod vozila kojim se prevoze deca, što ovde nije slučaj. Nastavak vožnje bez usporavanja takođe otpada, jer se ljudi kreću po kolovozu oko autobusa.' };
@@ -4647,20 +4647,20 @@ X[9862] = { x: 'Ispred tebe je uzdignuto ostrvo, a na njemu plavi okrugli znak s
 X[9865] = { x: 'Radovi zatvaraju sredinu kolovoza, a na prepreci stoje dva plava okrugla znaka sa strelicama — jedna usmerena nadole ulevo, druga nadole udesno. To znači da se zatvorena površina obilazi sa obe strane, što potvrđuju i čunjevi koji vode i levo i desno. Kad ti signalizacija otvara oba prolaza, ponude koje biraju samo jednu stranu su netačne.' };
 X[10343] = { x: 'Na krovu naizmenično sevaju crveno i plavo trepćuće svetlo, pa ovo nije obično policijsko vozilo nego vozilo pod pratnjom. Vozač takvog vozila ne mora da se drži propisa o ograničenju brzine, pa ga ne veže ni 50 km/h koje važi u naselju označenom znakom pored puta — jedini uslov je da ne ugrozi ostale učesnike. Zamka je baš taj znak naselja: on stoji na slici, ali za ovo vozilo ne odlučuje.' };
 X[10344] = { x: 'Rampa na krovu je ugašena: nema ni crvenog ni plavog trepćućeg svetla, pa policijsko vozilo ovde nije ni vozilo pod pratnjom ni vozilo sa pravom prvenstva prolaza. Za njega važe ista pravila kao za tebe, a znak sa siluetom zgrada označava naselje, gde je najveća dozvoljena brzina 50 km/h. Boja i natpis na vozilu ne daju nikakva prava — daju ih samo upaljeni posebni znaci.' };
-X[10345] = { x: 'Policijsko vozilo je prešlo u traku za suprotan smer i pokazivačima pravca najavljuje preticanje žutog vozila, a na krovu mu naizmenično sevaju crveno i plavo svetlo — to je vozilo pod pratnjom. Njegov vozač ne mora da se drži pravila o preticanju ni pune razdelne linije, pod uslovom da ne ugrožava druge, pa je manevar dozvoljen. Bez upaljenih svetala isto preticanje ne bi smelo.' };
-X[10346] = { x: 'Vozilo daje crveno i plavo trepćuće svetlo, dakle reč je o vozilu pod pratnjom, a njegov vozač ne mora da postupa po pravilima o pešačkom prelazu. Zato nema obavezu da propusti pešaka, ali mora da vozi sa naročitom pažnjom i ne sme da ga ugrozi — zbog toga je odgovor uslovljen, a ne bezuslovan. Da svetla nisu upaljena, propuštanje bi bilo obavezno.' };
-X[10347] = { x: 'Na krovu nema nijednog upaljenog posebnog svetla, pa je ovo obično vozilo u saobraćaju, bez obzira na oznake policije. Pešak je već stupio na obeleženi pešački prelaz, a vozač koji mu se približava dužan je da ga propusti. Poseban status i oslobađanje od ovog pravila daju samo upaljeni posebni svetlosni i zvučni znaci, kojih ovde nema.' };
+X[10345] = { x: 'Policijsko vozilo je prešlo u traku za suprotan smer i pokazivačima pravca najavljuje preticanje žutog vozila, a na krovu mu naizmenično sevaju crveno i plavo svetlo — to je vozilo pod pratnjom. Na prikazano vozilo pod pratnjom ne primenjuje se zabrana ovog preticanja preko neisprekidane linije u suprotnu traku, pod uslovom da ne ugrožava druge (ZOBS čl. 106 st. 7 i čl. 55 st. 3 tač. 15). Bez upaljenih svetala isto preticanje ne bi smelo.' };
+X[10346] = { x: 'Vozilo daje crveno i plavo trepćuće svetlo, dakle reč je o vozilu pod pratnjom, a na njega se ne primenjuje odredba o propuštanju pešaka. Zato nema obavezu da propusti pešaka, ali mora da vozi sa naročitom pažnjom i ne sme da ga ugrozi — zbog toga je odgovor uslovljen, a ne bezuslovan. Da svetla nisu upaljena, propuštanje bi bilo obavezno.' };
+X[10347] = { x: 'Na krovu nema uključenog crvenog ni plavog posebnog svetla, pa slika ne prikazuje vozilo pod pratnjom. Zato ovo policijsko vozilo postupa kao obično vozilo i mora da propusti pešaka. Izuzetak iz ZOBS čl. 106 st. 3 dopušta da vozilo pod pratnjom pod propisanim uslovima daje samo svetlosne znake, ali ovde ni oni nisu uključeni.' };
 X[10350] = { x: 'Oba vozila daju naizmenično crveno i plavo svetlo, dakle oba su vozila pod pratnjom i nijedno drugom ne može da nametne prvenstvo — odlučuje ono što je na kolovozu. Ispred vozila 2, tik pre pešačkog prelaza, povučena je puna poprečna linija zaustavljanja, pa ono staje i propušta vozilo 1. Zbog te linije se ne primenjuje pravilo desne strane, iako vozilo 2 nailazi vozilu 1 zdesna.' };
 X[10351] = { x: 'Naredba ovlašćenog lica jača je od svih ostalih načina regulisanja, pa i od posebnih svetala koja daju oba policijska vozila. Kod raširenih ruku staje onaj kome je policajac okrenut licem ili leđima, a prolazi onaj ko nailazi sa strane, u pravcu ruku. Vozilo 2 nailazi baš duž ose njegovog tela i mora da čeka, dok vozilo 1 raskrsnicu preseca bočno i slobodno prolazi.' };
 X[10352] = { x: 'Oba vozila daju crveno i plavo svetlo, pa nijedno nema prednost nad onim drugim i odlučuje postavljena signalizacija. Vozilo 1 se kreće putem sa prvenstvom prolaza (žuti romb), a pred vozilom 2 su znak obavezno zaustavljanje i puna linija zaustavljanja, pa ono mora da stane i propusti. Zato prolazi vozilo 1, iako mu vozilo 2 dolazi sa desne strane.' };
 X[10353] = { x: 'Oba policijska vozila daju crveno i plavo svetlo, pa se njihov poseban status međusobno poništava i vrede obična pravila o prvenstvu. Vozilo 2 pokazivačem pravca najavljuje skretanje ulevo i time preseca putanju vozila 1, koje mu dolazi iz suprotnog smera. Ko skreće ulevo dužan je da propusti vozila iz suprotnog smera, pa prednost ima vozilo 1.' };
-X[10354] = { x: 'Pravo prvenstva prolaza daje samo upaljeno plavo trepćuće svetlo uz zvučni znak, a jedino ga ima sanitetsko vozilo pod brojem 2, sa upaljenim plavim rotacijama na krovu. Vozila 1 i 3 jesu policijska, ali su im posebna svetla ugašena, pa se u saobraćaju vladaju kao svako drugo vozilo. Status daju upaljeni znaci, a ne boja i natpis na karoseriji.' };
-X[10365] = { x: 'Policijsko vozilo daje samo plavo trepćuće svetlo, pa je vozilo sa pravom prvenstva prolaza. Njegovog vozača ne vezuju propisi o prvenstvu prolaza, tako da ga ne zaustavlja ni znak obavezno zaustavljanje na njegovom prilazu, a ostali su dužni da ga propuste — i žuto vozilo koje nailazi putem sa prvenstvom, obeleženim žutim rombom. Zato o prvenstvu ovde ne odlučuju postavljeni znakovi.' };
+X[10354] = { x: 'Vozilo broj 2 jedino ima vidljivo uključena plava trepćuća ili rotaciona svetla, pa je to na prikazanoj fotografiji vozilo sa prvenstvom prolaza. Posebni znaci po pravilu obuhvataju plavo svetlo i sirenu (ZOBS čl. 108 st. 3), ali st. 4 pod propisanim uslovima dopušta samo svetlosne znake; zvuk se iz fotografije ne može utvrditi. Vozilima 1 i 3 svetla su ugašena.' };
+X[10365] = { x: 'Policijsko vozilo daje samo plavo trepćuće svetlo, pa je vozilo sa pravom prvenstva prolaza. U prikazanom odnosu njegovo posebno prvenstvo ima prednost nad znakom obaveznog zaustavljanja na njegovom prilazu, a ostali su dužni da ga propuste — i žuto vozilo koje nailazi putem sa prvenstvom, obeleženim žutim rombom. Zato o prvenstvu ovde ne odlučuju postavljeni znakovi.' };
 X[10366] = { x: 'Policijsko vozilo sa upaljenim plavim trepćućim svetlom je vozilo sa pravom prvenstva prolaza i svi ostali su dužni da ga propuste, iako na ovoj raskrsnici nema nijednog znaka. Da svetlo nije upaljeno, prednost bi po pravilu desne strane imalo žuto vozilo, jer policijskom vozilu nailazi zdesna — na to te vuče ponuđeni odgovor o pravilima saobraćaja.' };
 X[10369] = { x: 'Upaljeno plavo trepćuće svetlo znači da je ovo vozilo sa pravom prvenstva prolaza, pa njegovog vozača ne vezuju propisi o ograničenju brzine — ni 50 km/h u naselju, ni bilo koji drugi broj. Jedina granica mu je bezbednost ostalih učesnika u saobraćaju, zbog čega su oba odgovora sa konkretnim kilometrima netačna.' };
-X[10370] = { x: 'Rampa na krovu ne svetli, nema ni plavog ni crvenog trepćućeg svetla, pa je ovo obično vozilo u saobraćaju. Znak sa siluetom zgrada označava naselje, u kome je najveća dozvoljena brzina 50 km/h, i policijsko vozilo mora da poštuje to ograničenje. Oslobađanje od ograničenja brzine donose samo upaljeni posebni svetlosni i zvučni znaci.' };
-X[10371] = { x: 'Policijsko vozilo daje plavo trepćuće svetlo, pokazivačem pravca najavljuje preticanje žutog vozila i već je prešlo preko pune razdelne linije u traku za suprotan smer. Kao vozilo sa pravom prvenstva prolaza ne mora da se drži pravila o preticanju ni oznaka na kolovozu, uz uslov da ne ugrožava druge, pa je manevar dozvoljen. Ostali su dužni da mu ga još i olakšaju.' };
-X[10372] = { x: 'Policijsko vozilo nema upaljeno plavo rotaciono svetlo ni sirenu, pa u ovoj situaciji nije ni vozilo pod pratnjom ni vozilo sa pravom prvenstva prolaza — za njega važe ista pravila kao za tebe. Da bi preteklo žuti automobil, prešlo je preko neisprekidane uzdužne linije, u traku za suprotni smer, a to je zabranjeno. Sam natpis na vozilu ne daje nikakvu privilegiju; nju daju samo propisani svetlosni i zvučni znaci, dok se daju.' };
+X[10370] = { x: 'Na rampi nema uključenog plavog posebnog svetla, pa slika ne prikazuje vozilo sa prvenstvom prolaza. Za njega zato važi ograničenje od 50 km/h u naselju. Čl. 108 st. 4 dopušta vožnju samo sa svetlosnim znakom pod posebnim uslovima, ali ovde ni taj znak nije uključen.' };
+X[10371] = { x: 'Policijsko vozilo daje plavo trepćuće svetlo, pokazivačem pravca najavljuje preticanje žutog vozila i već je prešlo preko pune razdelne linije u traku za suprotan smer. Na prikazano vozilo sa prvenstvom prolaza ne primenjuje se zabrana ovog preticanja preko neisprekidane linije u suprotnu traku, pod uslovom da ne ugrožava druge (ZOBS čl. 108 st. 7 i čl. 55 st. 3 tač. 15). Ostali su dužni da mu ga još i olakšaju.' };
+X[10372] = { x: 'Policijsko vozilo nema uključeno plavo posebno svetlo, pa slika ne prikazuje vozilo sa prvenstvom prolaza. Preticanjem prelazi preko neisprekidane razdelne linije u traku za suprotan smer, što je zabranjeno (Pravilnik čl. 63). Mogućnost davanja samo svetlosnog znaka iz ZOBS čl. 108 st. 4 ovde ništa ne menja, jer je i svetlo ugašeno.' };
 X[10373] = { x: 'Plavo trepćuće svetlo znači da je to vozilo sa pravom prvenstva prolaza, a takvo vozilo sme da odstupi od pravila saobraćaja, pa i od obaveze propuštanja pešaka na obeleženom prelazu, dok izvršava hitan zadatak. Granica je bezbednost: ako bi prolaskom ugrozilo pešaka koji je već na prelazu, mora da ga propusti. Znak pešačkog prelaza tu ništa ne menja, jer se odnosi na uobičajena pravila.' };
 X[10376] = { x: 'Oba vozila daju isti znak, plavo trepćuće svetlo, pa nijedno nema prednost nad drugim: kad se sretnu dva vozila sa pravom prvenstva prolaza, među njima važe obična pravila. Raskrsnica nema ni znakove ni semafor, pa odlučuje pravilo desne strane, a vozilu broj 1, koje se kreće gornjom ulicom udesno, drugo vozilo prilazi zdesna. Zato ono ide prvo, iako su oba policijska.' };
 X[10377] = { x: 'Naredba ovlašćenog lica je na vrhu hijerarhije i jača je i od semafora, i od znakova, i od prava prvenstva prolaza, pa i vozilo sa upaljenim plavim svetlom mora da postupi po njoj. Policajac stoji raširenih ruku: prolaz je slobodan onima koji mu nailaze bočno, a zabranjen onima kojima je okrenut licem ili leđima. Vozilo broj 1 dolazi iz poprečne ulice, sa strane, pa prolazi prvo.' };
@@ -4672,11 +4672,11 @@ X[10432] = { x: 'Na displeju policijskog vozila smenjuju se natpisi STOP i POLIC
 X[10433] = { x: 'Displej ispisuje poruku da staneš ispred službenog vozila, i baš ta reč odlučuje: zaustavljaš se ispred policijskog vozila, a ne iza njega, kao kod golog natpisa STOP. Sam displej je dovoljna naredba, ne traži se da uz njega dobiješ i znak stop tablicom, i ne zavisi od toga da li si u vožnji napravio prekršaj.' };
 X[10436] = { x: 'Kraj ovog kraka nema nijednog saobraćajnog znaka, ali kolovoz nije prazan: ispred raskrsnice je iscrtana debela poprečna linija koja crvenom vozilu pokazuje dokle sme i gde propušta. Oznaka na kolovozu je u hijerarhiji iznad opštih pravila, pa se pravilo o desnoj strani ovde ne primenjuje — dok postoji jača karika, ona odlučuje.' };
 X[10479] = { x: 'Zakon ne postavlja granicu od dva ili tri vozila. Ovde je presudan uslov iz pitanja da se vozač može bez ometanja vratiti između vozila: takva grupa ne ispunjava definiciju kolone, između čijih vozila se ne može ući bez ometanja (ZOBS čl. 7 tač. 77), dok je preticanje kolone zabranjeno. Pod datim uslovima i uz opštu bezbednost, sme da pretekne sva prikazana vozila.' };
-X[10566] = { x: 'Vozilo postaje vozilo pod pratnjom ili vozilo sa pravom prvenstva prolaza tek dok daje propisane znake: naizmenično crveno i plavo trepćuće svetlo uz sirenu za pratnju, odnosno plavo trepćuće svetlo za pravo prvenstva. Na krovnoj rampi ovog vozila ništa ne svetli i ono se kreće u koloni kao i ostali. Boja i oznake vozila same po sebi ne daju nikakvu prednost.' };
+X[10566] = { x: 'Za prikazano policijsko vozilo proveravaš da li daje posebne svetlosne znake: naizmenično crveno i plavo svetlo za pratnju, odnosno plavo za prvenstvo prolaza. Na krovnoj rampi ovog vozila ništa ne svetli i ono se kreće u koloni kao i ostali. Boja i oznake vozila same po sebi ne daju nikakvu prednost.' };
 X[10575] = { x: 'Vozilo daje crveno i plavo trepćuće svetlo, dakle reč je o pratnji, ali naredba ovlašćenog lica stoji iznad svega ostalog. I vozač vozila pod pratnjom sme da odstupi od pravila saobraćaja, ali ne i od znakova policajca koji reguliše saobraćaj na raskrsnici. Zato o tome ko prolazi ovde odlučuje čovek nasred ulice, a ne rotaciona svetla na krovu.' };
-X[10576] = { x: 'Crvena i plava trepćuća svetla koja se naizmenično pale znak su vozila pod pratnjom, a takvo vozilo sme da odstupi od pravila i od saobraćajnih znakova; ostali su dužni da mu omoguće prolaz. Zato znak obaveznog zaustavljanja ispred njega ne prenosi prednost na crveni automobil, iako on nailazi putem sa prvenstvom prolaza. Znakovi uređuju odnose ostalih vozila, ali ne i ovog.' };
+X[10576] = { x: 'Crvena i plava trepćuća svetla koja se naizmenično pale znak su vozila pod pratnjom, a takvo vozilo ovde ima prvenstvo i ostali su dužni da mu omoguće prolaz. Zato znak obaveznog zaustavljanja ispred njega ne prenosi prednost na crveni automobil, iako on nailazi putem sa prvenstvom prolaza. U ovom odnosu prednost vozilu pod pratnjom daje čl. 106 st. 7.' };
 X[10577] = { x: 'Raskrsnica nije obeležena znakovima, pa bi inače odlučivalo pravilo desne strane i žuti automobil bi zaista nailazio zdesna. To pravilo je poslednje u hijerarhiji i pada čim se pojavi vozilo pod pratnjom, koje se prepoznaje po naizmeničnom crvenom i plavom trepćućem svetlu. Njemu moraš da omogućiš prolaz, po potrebi i da se skloniš ili zaustaviš.' };
-X[10581] = { x: 'Na krovnoj rampi ovog vozila ne gori nijedno svetlo, vide se samo crveno i plavo staklo, i ništa ne ukazuje da se daje zvučni signal. Bez tih znakova policijsko vozilo je obično vozilo u saobraćaju i za njega važe ista pravila kao i za ostale. Prednost daju upaljena svetla i sirena dok traje zadatak, a ne izgled i natpis na vozilu.' };
+X[10581] = { x: 'Na krovnoj rampi ne gori nijedno posebno svetlo, pa fotografija ne prikazuje ni vozilo pod pratnjom ni vozilo sa prvenstvom prolaza. Boja i natpis policije sami ne daju taj status. Zakon pod određenim uslovima dopušta samo svetlosne znake bez sirene, ali ovde ni svetla nisu uključena (ZOBS čl. 106 st. 3 i čl. 108 st. 4).' };
 X[10589] = { x: 'Policajac koji reguliše saobraćaj je na vrhu hijerarhije: njegovi znaci jači su od semafora, saobraćajnih znakova i opštih pravila, pa i od prava prvenstva prolaza. Zato ovde plavo trepćuće svetlo i sirena ne rešavaju ko ide prvi, nego vozač takvog vozila mora da postupi po naredbi ovlašćenog lica. Prvenstvo se čita sa ruku policajca, a ne sa krova vozila.' };
 X[10631] = { x: 'Autobus je obeležen narandžastom tablom za organizovan prevoz dece i stoji dok deca izlaze — tada nije dovoljno prilagoditi brzinu, nego se vozila moraju zaustaviti dok ulaženje i izlaženje ne prestane. Obaveza važi za oba smera, pa ni prolazak pored autobusa bez ugrožavanja drugih nije dopušten. Dete može iznenada da istrči na kolovoz.' };
 X[10632] = { x: 'Ključ je narandžasta tabla na autobusu: kod organizovanog prevoza dece staje i vozilo koje nailazi iza autobusa i vozilo iz suprotnog smera, sve dok deca ulaze i izlaze. Zato ne prolazi ni odgovor da suprotni smer može da produži, ni onaj da se autobus sme obići pošto propustiš vozilo iz suprotnog smera — dete se pojavljuje ispred ili iza autobusa.' };
@@ -4834,7 +4834,7 @@ X[9965] = { ...(X[9965] || {}), x: 'Znak STOP te obavezuje da se zaustaviš i pr
 X[9967] = { ...(X[9967] || {}), x: 'I ovde uz tvoj put stoji STOP: zaustavljaš se i propuštaš traktor, koji se kreće putem sa prvenstvom — to što je sporiji od tebe nije razlog da mu oduzmeš prednost. Putničko vozilo ti dolazi iz suprotnog smera, a ti skrećeš ulevo, pa si i njemu dužan da ustupiš prolaz. Zato pada svaka ponuda u kojoj propuštaš samo jedno od ta dva vozila.' };
 X[9971] = { ...(X[9971] || {}), x: 'Znak i semafor nisu ravnopravni: semafor je jači od saobraćajnog znaka, pa zeleno svetlo poništava obavezu iz znaka STOP koji stoji iznad njega i ti se ne zaustavljaš. Prednost prema putničkom vozilu imaš i po pravilima: ti zadržavaš pravac, a ono skreće ulevo i preseca ti putanju. Jače od semafora je samo naredba ovlašćenog lica.' };
 X[9973] = { ...(X[9973] || {}), x: 'Zeleno svetlo daje pravo da uđeš u raskrsnicu, ali ne rešava sukob putanja. Ti zadržavaš pravac, a vozilo koje skreće ulevo preseca ti putanju, pa je ono dužno da te propusti — pravilo levog skretanja važi i kada oba vozača istovremeno dobiju zeleno. Znak STOP iznad semafora tu ništa ne menja, jer je semafor jači od znaka.' };
-X[9984] = { ...(X[9984] || {}), x: 'Žuti romb pored tvog puta znači da si na putu sa prvenstvom, pa putničko vozilo sa poprečnog puta mora da propusti tebe. Tramvaju taj romb ne oduzima ništa: on ti dolazi iz suprotnog smera tvojim istim putem, dakle i on je na putu sa prvenstvom, a tada važi pravilo da se tramvaj propušta.' };
+X[9984] = { ...(X[9984] || {}), x: 'U sačuvanoj bazi označeno je: propuštaš tramvaj, a imaš prvenstvo u odnosu na putničko vozilo. Motocikl i tramvaj su na istom putu sa prvenstvom, a tramvaj skreće ulevo preko tvoje putanje. Čl. 47 st. 6 njihov međusobni odnos uređuje pravilom levog skretanja, pa označeni ishod zahteva proveru; ne treba iz njega učiti da tramvaj uvek ima prvenstvo.' };
 X[9987] = { ...(X[9987] || {}), x: 'Trougao sa vrhom naniže obavezuje te da ustupiš prvenstvo svim vozilima na putu na koji se uključuješ, pa i onom koje ti dolazi sa leve strane — znak je jači od pravila desne strane. Plavi okrugli znak uz njega ne daje prvenstvo nikome, on samo pokazuje da se saobraćaj odvija u krug oko ostrva. Zato je baš ovde odgovor sa levom stranom tačan.' };
 X[9991] = { ...(X[9991] || {}), x: 'Plavi znak određuje kružni smer kretanja, ne prvenstvo. Na prikazanom prilazu nema znaka ustupanja prvenstva. Prema vozilu sleva imaš prednost po pravilu desne strane, jer mu dolaziš zdesna (ZOBS čl. 47).' };
 X[9995] = { ...(X[9995] || {}), x: 'Trougao sa vrhom naniže obavezuje te da propustiš sva vozila na putu sa prvenstvom, i ona sleva i ona zdesna. Bicikl je pritom vozilo isto koliko i automobil, pa za njega nema izuzetka. Zato ne prolazi ni varijanta u kojoj propuštaš samo automobil, ni pozivanje na desnu stranu: uz ovaj znak nemaš prednost ni prema kome.' };
@@ -4893,10 +4893,10 @@ X[10616] = { ...(X[10616] || {}), x: 'Ovo je zatvoren krug: svako propušta onog
 X[10618] = { ...(X[10618] || {}), x: 'Nema nijednog saobraćajnog znaka, pa odlučuju opšta pravila, i to dva odjednom. Teretno vozilo ti dolazi sa desne strane i propuštaš ga po pravilu desne strane. Pošto skrećeš ulevo, dužan si da propustiš i putničko vozilo iz suprotnog smera koje ti preseca putanju. Nijednom od njih ne možeš da oduzmeš prednost.' };
 X[10620] = { ...(X[10620] || {}), x: 'Ovde nema znaka koji bi odredio prvenstvo, pa važe opšta pravila. Traktor ti je sa desne strane i propuštaš ga — to što sporo ide nije razlog da mu oduzmeš prednost. Pošto skrećeš ulevo, propuštaš i putničko vozilo iz suprotnog smera. Dakle čekaš oba, pa tek onda ulaziš u skretanje.' };
 X[10622] = { ...(X[10622] || {}), x: 'Bez saobraćajnog znaka raskrsnicu rešavaju opšta pravila. Traktor ti dolazi sa desne strane, pa ga propuštaš. Pošto skrećeš ulevo, propuštaš i vozilo iz suprotnog smera, jer pri levom skretanju prednost ima onaj ko zadržava pravac ili skreće udesno. Dva različita pravila vode do istog zaključka — čekaš oba.' };
-X[10624] = { ...(X[10624] || {}), x: 'Tramvaj se propušta u svim slučajevima, pa i kada ti dolazi sa leve strane: pravilo o tramvaju stoji ispred pravila desne strane, pa „dolazi mi sleva” nije izgovor. Prema putničkom vozilu prednost je tvoja, jer ono skreće ulevo i preseca ti putanju, a onaj ko skreće ulevo propušta vozilo iz suprotnog smera.' };
+X[10624] = { ...(X[10624] || {}), x: 'Na ovoj raskrsnici bez signalizacije propuštaš tramvaj i kada ti dolazi sa leve strane: pravilo o tramvaju stoji ispred pravila desne strane, pa „dolazi mi sleva” nije izgovor. Prema putničkom vozilu prednost je tvoja, jer ono skreće ulevo i preseca ti putanju, a onaj ko skreće ulevo propušta vozilo iz suprotnog smera.' };
 X[10626] = { ...(X[10626] || {}), x: 'Žuti romb znači da si na putu sa prvenstvom, a pravilo o tramvaju važi samo ako znakom nije drugačije određeno. Tramvaj je ovde na poprečnom putu, pa i on mora da propusti tebe — to je ona retka situacija u kojoj tramvaj na raskrsnici nema prednost. Vozilo koje skreće ulevo takođe te propušta, pa prolaziš ispred oba.' };
 X[10628] = { ...(X[10628] || {}), x: 'Nema znaka koji bi ti dao prvenstvo, pa važe dva opšta pravila. Tramvaj propuštaš uvek, bez obzira na to odakle ti dolazi i da li ti putanju preseca iz suprotnog smera. Putničko vozilo ti dolazi sa desne strane, pa i njega propuštaš. Zato nije tačna nijedna ponuda u kojoj prolaziš ispred jednog od njih.' };
-X[10630] = { ...(X[10630] || {}), x: 'Dva pravila ovde daju dva različita ishoda. Tramvaj se propušta u svim slučajevima, pa ni to što ti dolazi tvojim putem ništa ne menja. Putničko vozilo ti dolazi sa leve strane, a prema levoj strani prednost je tvoja — pravilo te obavezuje samo prema onome ko ti je zdesna. Zato jedno čekaš, a ispred drugog prolaziš.' };
+X[10630] = { ...(X[10630] || {}), x: 'Dva pravila ovde daju dva različita ishoda. Na ovoj raskrsnici bez signalizacije propuštaš tramvaj i kada skreće preko tvoje putanje iz suprotnog smera. Putničko vozilo ti dolazi sa leve strane, a prema levoj strani prednost je tvoja — pravilo te obavezuje samo prema onome ko ti je zdesna. Zato jedno čekaš, a ispred drugog prolaziš.' };
 X[10988] = { ...(X[10988] || {}), x: 'Kada na tabli stoji samo broj metara, bez strelica, on meri rastojanje od mesta gde znak stoji do početka dela puta, odnosno mesta na koje se znak odnosi. Do tog mesta odredba znaka još ne deluje. Isti broj sa dve strelice nagore značio bi nešto sasvim drugo: dužinu deonice na kojoj znak važi od samog mesta postavljanja.' };
 X[10989] = { ...(X[10989] || {}), x: 'Dve strelice nagore uz broj metara znače da odredba znaka iznad table važi celom tom deonicom, od mesta gde znak stoji pa do kraja te dužine. Isti broj bez strelica značio bi samo udaljenost do mesta na koje se znak odnosi, a dotle znak ne bi ni delovao. Zato ovde odmah moraš da se ponašaš po znaku.' };
 X[10990] = { ...(X[10990] || {}), x: 'Na tabli piše goli vremenski raspon, pa on kazuje kada odredba znaka iznad nje uopšte deluje: van tog dela dana znak nema dejstvo. Tabla, dakle, ne ukida znak nego mu ograničava vreme važenja. Zamka je da isti raspon pročitaš obrnuto, kao vreme u kome zabrana miruje — a tabla ovde ne kaže ništa o izuzimanju. Nije ni obaveštenje o načinu korišćenja znaka.' };
@@ -5074,11 +5074,11 @@ BYSUB[182] = 'kazne';
 
 // --- Prvenstvo prolaza (sub 136), tekstualna ---
 const hijer = 'Hijerarhija postupanja (ZOBS čl. 20): naredbe ovlašćenog lica > svetlosni znak (semafor) > saobraćajni znak > oznake na kolovozu > pravila saobraćaja. Kad se dva izvora ne slažu, postupaš po JAČEM.';
-X[9959] = { x: 'Pri skretanju ULEVO propuštaš vozila koja iz suprotnog smera idu pravo ili skreću udesno (ZOBS čl. 47) — levo skretanje je "najslabije" na raskrsnici bez druge regulacije.' };
-X[9974] = { x: 'Tramvaj se propušta U SVIM SLUČAJEVIMA (i kad ti dolazi sleva!), osim ako saobraćajnim znakom nije drugačije određeno — šinsko vozilo teško staje.' };
+X[9959] = { x: 'Pri skretanju ULEVO propuštaš vozila koja iz suprotnog smera idu pravo ili skreću udesno (ZOBS čl. 47).' };
+X[9974] = { x: 'Od ponuđenih odgovora označeni prenosi opšte pravilo: na raskrsnici na kojoj prvenstvo nije drugačije regulisano, tramvaj ima prvenstvo u svim slučajevima osim kada preseca biciklističku stazu ili traku (ZOBS čl. 47 st. 5). Međusobno prvenstvo tramvaja uređuju desna strana i levo skretanje, a na regulisanoj raskrsnici postupa se po signalizaciji i pravilima iz st. 6–8.' };
 X[9996] = { x: 'Sa zemljanog puta (ili površine bez javnog saobraćaja) ulaziš kao "gost": propuštaš SVA vozila na putu na koji se uključuješ, čak i ona koja dolaze sleva (ZOBS čl. 47 st. 1).' };
 X[10459] = { x: 'Pravilo DESNE strane (ZOBS čl. 47 st. 3): kad prvenstvo nije regulisano ničim drugim, propuštaš vozilo koje dolazi sa tvoje desne strane.' };
-const stazaTraka = 'Pri skretanju preko biciklističke staze/trake propuštaš bicikle koji se njome kreću (ZOBS čl. 47 st. 2) — staza je njihova "traka sa prvenstvom".';
+const stazaTraka = 'Pri skretanju preko biciklističke staze/trake propuštaš vozila koja se njome kreću (ZOBS čl. 47 st. 2) — staza je njihova "traka sa prvenstvom".';
 X[10497] = { x: stazaTraka };
 X[10498] = { x: stazaTraka };
 // --- Raskrsnica (sub 137) ---
@@ -5405,22 +5405,21 @@ X[10381] = { x: 'Kad vozilo sa prvenstvom OBEZBEĐUJE prolaz vozilima iza sebe (
 X[10382] = { x: 'Ni vozač sa pravom prvenstva nije iznad bezbednosti: DUŽAN je da vodi računa o ostalim učesnicima (ZOBS čl. 109 st. 3) — rotacija ne ukida odgovornost.' };
 X[10383] = { x: 'Policijsko vozilo sa plavim svetlom + SVETLOSNI ZNAK UPOZORENJA (blicanje) vozilu ISPRED: odmah bezbedno stani uz desnu ivicu, po mogućstvu van kolovoza (ZOBS čl. 110 st. 1) — tebe zaustavljaju.' };
 X[10384] = { x: 'Vozilo NEPOSREDNO IZA policijskog sa znacima: prati policijsko vozilo do pogodnog mesta i bezbedno se zaustavi iza njega — postupaš po znacima policajca (ZOBS čl. 110 st. 2).' };
-X[10567] = { x: 'Vozila koja VRŠE pratnju moraju davati posebne zvučne i svetlosne znake — bez znakova nema statusa pratnje.' };
+X[10567] = { x: 'Po opštem pravilu vozila koja VRŠE pratnju daju posebne zvučne i svetlosne znake. Samo svetlosni znaci dopušteni su pod uslovima iz čl. 106 st. 3 — blicanje dugim svetlima nije njihova zamena.' };
 X[10568] = { x: 'Znaci vozila POD PRATNJOM: CRVENO i PLAVO trepćuće svetlo (naizmenično) + sirena promenljive frekvencije (ZOBS čl. 106 st. 2). Crveno+plavo = pratnja; samo plavo = pravo prvenstva.' };
-X[10583] = { x: "Znaci vozila SA PRVENSTVOM PROLAZA: najmanje JEDNO PLAVO trepćuće/rotaciono svetlo + sirena (ZOBS čl. 108 st. 3). Crveno i plavo svetlo koja se naizmenično pale + sirena su znaci vozila POD PRATNJOM (ZOBS čl. 106), a žuta rotaciona ili trepćuća svetla nose vozila koja obavljaju radove ili pomoć na putu (čl. 111) — nijedno od ta dva nije znak prvenstva prolaza." };
+X[10583] = { x: "Znaci vozila sa prvenstvom prolaza su najmanje jedno plavo trepćuće ili rotaciono svetlo i sirena (ZOBS čl. 108 st. 3). Crveno i plavo svetlo koja se naizmenično pale uz sirenu označavaju vozilo pod pratnjom (čl. 106). Žuto rotaciono ili trepćuće svetlo jeste znak upozorenja iz čl. 111 i samo po sebi ne daje pravo prvenstva prolaza." };
 const bezSirene = 'Bez sirene, samo sa posebnim svetlosnim znacima, sme se kada su ISTOVREMENO ispunjeni uslovi: dovoljna vidljivost vozila i bezbednost učesnika, kretanje brzinom koja nije veća od dozvoljene, i kada je to neophodno za neometano izvršenje službenog zadatka (ZOBS čl. 106 i 108).';
 X[10569] = { x: bezSirene };
 X[10584] = { x: bezSirene };
 X[10585] = { x: bezSirene };
-const ugradnja = 'Rotacije i sirene smeju biti ugrađene SAMO na vozilima nadležnih državnih organa (i službi iz zakona) — privatna ugradnja je razlog za isključenje vozila.';
-X[10571] = { x: ugradnja };
-X[10586] = { x: ugradnja };
+X[10571] = { x: "Uređaji za pratnju smeju se ugrađivati samo na zakonom određena vozila nadležnih državnih organa, namenjena da vrše pratnju (ZOBS čl. 106 st. 1 i 5). Dozvola ili ispitivanje ne dopuštaju ugradnju na druga vozila." };
+X[10586] = { x: "U sačuvanoj bazi označeno je „samo na vozilima nadležnih državnih organa”. Čl. 108 st. 5 dopušta ugradnju samo na vozila navedena u st. 1 i 2, među kojima su i vozila hitne medicinske pomoći i vatrogasne službe. Izraz iz opcije zato zahteva terminološko razjašnjenje; ugradnja van zakonom navedenih vozila nije dozvoljena." };
 X[10572] = { x: 'Uređaji se koriste samo KADA SE VRŠI PRATNJA — ne za "probijanje gužve" van zadatka.' };
-X[10587] = { x: 'Znaci se upotrebljavaju samo kad je to NEOPHODNO za bezbedno i efikasno izvršenje SLUŽBENE radnje — upotreba je vezana za zadatak, ne za vozilo.' };
-const prednostNad = 'Prvenstvo tih vozila važi u odnosu na prvenstvo regulisano ZNAKOVIMA, OZNAKAMA i PRAVILIMA — ali ne "gasi" semafor za ostale učesnike niti obavezu prema pešacima (hijerarhija: kartica).';
+X[10587] = { x: 'Znaci se upotrebljavaju samo kad je to NEOPHODNO za bezbedno i efikasno izvršenje SLUŽBENE radnje KOJA NE TRPI ODLAGANJE — upotreba je vezana za zadatak, ne za vozilo.' };
+const prednostNad = 'Vozila pod pratnjom imaju prvenstvo na raskrsnicama na kojima je saobraćaj regulisan saobraćajnim znakovima, oznakama na kolovozu ili pravilima saobraćaja. Nemaju prvenstvo kada im svetlosni znak ili znak policijskog službenika zabranjuje prolaz (ZOBS čl. 106 st. 7).';
 X[10573] = { x: prednostNad };
 X[10588] = { x: prednostNad };
-X[10582] = { x: 'I vozila sa prvenstvom prolaza moraju DAVATI posebne znake da bi imala taj status — plavo svetlo + sirena; ugašena rotacija = obično vozilo.' };
+X[10582] = { x: 'Po opštem pravilu vozila sa prvenstvom prolaza daju plavo svetlo i sirenu. Samo svetlosni znaci dopušteni su pod uslovima iz čl. 108 st. 4 — blicanje dugim svetlima nije njihova zamena.' };
 // --- Put: pojam i vrste (sub 109) ---
 const staJePut = 'PUT je svaka površina namenjena saobraćaju: i ulica, i pešačka staza, i biciklistička staza, i zemljani put — "put" je širi pojam od kolovoza i asfalta.';
 X[8083] = { x: staJePut };
@@ -5504,7 +5503,7 @@ X[10591] = { ...(X[10591] || {}), x: "Na vozila sa prvenstvom prolaza, dok daju 
 X[9673] = { ...(X[9673] || {}), x: "Polukružno okretanje je zabranjeno u tunelu, na mostu, vijaduktu, podvožnjaku i nadvožnjaku, u uslovima smanjene vidljivosti, na mestu nedovoljne preglednosti i na delu puta koji nema dovoljnu širinu za okretanje tog vozila (ZOBS čl. 50). Pažnja: ova lista NIJE ista kao za preticanje — preticanje na mostu, vijaduktu, nadvožnjaku i u podvožnjaku nije izričito zabranjeno (čl. 55), a polukružno okretanje jeste." };
 X[10438] = { ...(X[10438] || {}), x: "Kada dva ucesnika na semaforu istovremeno dobiju pravo prolaza (npr. vozilo koje skrece ulevo i vozilo iz suprotnog smera), njihov medjusobni odnos resavaju pravila saobracaja — pravilo desne strane i pravilo levog skretanja (ZOBS cl. 47). Semafor taj medjusobni odnos ne resava." };
 X[10569] = { ...(X[10569] || {}), x: "Vozilo pod pratnjom sme davati samo posebne svetlosne znake, bez sirene, ako je omogućena dovoljna vidljivost tog vozila i bezbednost učesnika u saobraćaju — osim kada se kreće brzinom većom od dozvoljene na tom delu puta (ZOBS čl. 106 st. 3). Uslov vezan za izvršenje službenog zadatka odnosi se na vozila sa prvenstvom prolaza (čl. 108), ne na vozila pod pratnjom." };
-X[10588] = { ...(X[10588] || {}), x: "Vozila sa prvenstvom prolaza imaju prvenstvo u odnosu na sva druga vozila, osim u odnosu na vozila pod pratnjom i na raskrsnicama na kojima je saobraćaj regulisan svetlosnim znacima ili znacima policijskog službenika, kada im je tim znacima zabranjen prolaz (ZOBS čl. 108). Zato njihovo prvenstvo važi na raskrsnicama regulisanim saobraćajnim znakovima, oznakama na kolovozu i pravilima saobraćaja — a ne semaforom i policajcem." };
+X[10588] = { ...(X[10588] || {}), x: "Vozila sa prvenstvom prolaza imaju prvenstvo u odnosu na sva druga vozila osim vozila pod pratnjom. Izuzetak na raskrsnici regulisanoj semaforom ili policajcem važi kada im je tim znakom zabranjen prolaz (ZOBS čl. 108 st. 7). Zato su od ponuđenog tačni saobraćajni znakovi odnosno oznake na kolovozu i pravila saobraćaja." };
 X[8638] = { ...(X[8638] || {}), x: "Teret koji na teretnom ili priključnom vozilu prelazi najudaljeniju tačku na zadnjoj strani vozila označava se PROPISANOM TABLOM — kvadratnom, sa naizmeničnim kosim crveno-belim odsevnim prugama (tabla br. 1). Kod ostalih vozila teret se označava crvenom tkaninom, a u uslovima smanjene vidljivosti crvenim svetlom ili svetloodbojnom materijom crvene boje (ZOBS čl. 113)." };
 X[9878] = { ...(X[9878] || {}), x: "Znak „naselje” označava početak naselja. Ovde nije prikazan znak koji određuje drugačije ograničenje, pa važi opštih 50 km/h (ZOBS čl. 43)." };
 X[9948] = { ...(X[9948] || {}), x: "Znak na slici označava prestanak naselja — iza njega važi opšte ograničenje brzine van naselja (ZOBS čl. 44): 130 km/h na auto-putu, 100 km/h na motoputu, a na ostalim putevima 80 km/h. Prikazani put nije ni auto-put ni motoput, pa je najveća dozvoljena brzina 80 km/h." };
@@ -6692,9 +6691,9 @@ X[11044] = { ...(X[11044] || {}), nocard: 1 };
 X[9677] = { ...(X[9677] || {}), card: 'znakovi-naredbi' };   // znak „obavezan smer" uz skretanje (#9677)
 X[9762] = { ...(X[9762] || {}), card: 'znakovi-naredbi' };   // zabrana preticanja važi od mesta znaka (#9762)
 X[9813] = { ...(X[9813] || {}), card: 'znakovi-naredbi' };   // zabrana preticanja svih motornih vozila (#9813)
-X[9539] = { ...(X[9539] || {}), card: 'pesaci-bicikli' };   // obaveza prema pešacima na prelazu (#9539)
+X[9539] = { ...(X[9539] || {}), nocard: 1, card: 'pesaci-bicikli' };   // posebna opreznost prema deci (#9539)
 
-X[9531] = { ...(X[9531] || {}), card: 'zamke-odgovori' };   // večiti mamci u ponuđenim odgovorima (#9531)
+X[9531] = { ...(X[9531] || {}), nocard: 1, card: 'zamke-odgovori' };   // kontekst ponuđenih odgovora (#9531)
 X[9689] = { ...(X[9689] || {}), card: 'zamke-odgovori', nocard: 1 };   // večiti mamci u ponuđenim odgovorima (#9689)
 X[7925] = { ...(X[7925] || {}), card: 'zamke-odgovori' };   // večiti mamci u ponuđenim odgovorima (#7925)
 
@@ -6749,9 +6748,13 @@ const out = {
   zamke: ZAMKE,
 };
 
+// B je oznaka odeljka ove kartice, a ne međunarodna oznaka kategorije.
+if (out.cards['prvenstvo-prolaza'].h.c.split('B) Возила под пратњом').length !== 2) throw new Error('Kartica prvenstvo-prolaza: neočekivan naslov');
+out.cards['prvenstvo-prolaza'].h.c = out.cards['prvenstvo-prolaza'].h.c.replace('B) Возила под пратњом', 'Б) Возила под пратњом');
+
 // Lokalno prevedi pregledane pristupačne opise; opšti toCyr štiti HTML tagove.
 // Novi opis u ovim karticama zahteva ponovni pregled oba pisma.
-for (const [key, expected] of [['brzine', 6], ['kategorije-vozila', 4], ['put-pojmovi', 1], ['vozilo-tehnika', 4], ['kaznene-klase', 13], ['preticanje', 3], ['skretanje', 2], ['iskljucenje', 3], ['oznake-kolovoz', 12]]) {
+for (const [key, expected] of [['brzine', 6], ['kategorije-vozila', 4], ['put-pojmovi', 1], ['vozilo-tehnika', 4], ['kaznene-klase', 13], ['preticanje', 3], ['skretanje', 2], ['iskljucenje', 3], ['oznake-kolovoz', 12], ['prvenstvo-prolaza', 9]]) {
   let count = 0;
   out.cards[key].h.c = out.cards[key].h.c.replace(/aria-label="([^"]*)"/g, (_, label) => {
     count++;

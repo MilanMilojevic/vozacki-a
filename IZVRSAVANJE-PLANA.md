@@ -30,7 +30,7 @@
 | А3 Циљ и процена спремности | Завршено | v131: reload циља; v134: непознато градиво не добија позајмљену тачност; условни модел јасно означен |
 | А4 Телефон и приступачност | У току; корисничка проба остаје v165 | Развојне v169–171 поправљају табелу возила, ситне натписе паркирања и преливање дугих речи при увећању текста; раније тастатура/водич/контраст/увећање. Остали цртежи, читач екрана и стварни телефони остају у прегледу |
 | А5 Кеш и алати издавања | Делимично | v128/v137: издање/кеш; алати/CI проверени; v157: аутоматски отисци слика и провера бајтова у SW; ограничење старих кешева још отворено |
-| А6 Садржај 1.327 питања | У току | На v189: 696 питања reviewed, 4 in-progress, 66 needs-expert, 561 unreviewed; картице 17 reviewed, 1 in-progress, 21 unreviewed. Актуелни машински збир: [manifest.json](docs/revizija-sadrzaja/manifest.json). Започета и спорна питања нису урачуната у завршена |
+| А6 Садржај 1.327 питања | У току | На v191: 801 питање reviewed, 4 in-progress, 68 needs-expert, 454 unreviewed; картице 19 reviewed, 20 unreviewed. Актуелни машински збир: [manifest.json](docs/revizija-sadrzaja/manifest.json). Започета и спорна питања нису урачуната у завршена |
 | А7 Документација / права | У току | CONTRIBUTING, README, школска упутства и fork поступак допуњени; v147 поруке/метаподаци и v151 FAQ усклађени; преостаје одлука власника о лиценци |
 | Б1–Б3 Побољшања | Чека | После учвршћивања, пилот по пилот |
 | Навигација — накнадни захтев | Основни токови завршени; доградња одвојена | v146 Назад/Напред; v150 стварни линкови; v154 статистика; v158 лични спискови. v162 додаје преглед конкретног старог испита; то је доградња, не услов основне безбедности учења. v163 исправља копирани линк питања и повратак фокуса у појмовник |
@@ -552,3 +552,9 @@ Izdanja184–189 poslata su na `origin/codex/stabilizacija` sa oznakama. Nisu do
 Cela kartica,3 pitanja/12 opcija i13 statističkih obrazaca nezavisno su provereni. Uklonjeni su netačan apsolut za250m, zamena znakova sa žmigavcima i savet da se bira stroži odgovor. Ispravljeno je brojanje50.000; kontekst i dve smislene mobilne sekcije su sačuvani. Nema izmene byQ objašnjenja, ključeva ili ponašanja aplikacije. [Pojedinačni dokaz A6-051](docs/revizija-sadrzaja/grupe/051-zamke-odgovori.md).
 
 Chromium16/16 kartice +12/12 pitanja, bez prelivanja stranice/grešaka/sintetičkih upisa; `node tools/verify.mjs`:249/249 automatizovanih testova. Ukupno697 reviewed,560 unreviewed,4 in-progress (7924/7925,8113,9531),66 needs-expert; kartice18 reviewed,1 in-progress,20 unreviewed. Preostali obuhvat i ograničenja iz prethodnog odeljka ostaju otvoreni.
+
+### v191 — prvenstvo prolaza i posebna vozila
+
+Dva potpuna pregleda107 pitanja/319 opcija/66 slika i cele kartice;38 uskih EX ispravki,9 postojeća crteža čitljivija. Uklonjene su dve nerelevantne implicitne veze, uz očuvane eksplicitne.9531 je zatvoreno,9539 čeka karticu pešaka.9984/10586 imaju konkretne nedoumice vidljive u objašnjenju, bez samovoljne izmene ključa. Četiri prvobitna upozorenja razrešena su ponovnim čitanjem celog propisa i pitanja. [Pojedinačni dokaz A6-041/046](docs/revizija-sadrzaja/grupe/041-prvenstvo-prolaza.md).
+
+Chromium16/16 kartica i428/428 prikaza pitanja; min SVG tekst13,78px, svi nazivi i natpisi odgovaraju, bez prelivanja stranice/grešaka/sintetičkih upisa. `node tools/verify.mjs`:249/249 automatizovanih testova. Ukupno801 reviewed,454 unreviewed,4 in-progress (7924/7925,8113,9539),68 needs-expert;19 pregledanih kartica,20 preostalih. Nema novog runtime-a ili kopije banke slika.
