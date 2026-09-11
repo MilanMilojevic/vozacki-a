@@ -3541,106 +3541,107 @@ CARDS['uredjaji-oprema'] = {
 <p><b>Dometi svetala — tabela koja nosi najviše pitanja:</b></p>
 <table>
 <tr><th>Svetlo</th><th>Mora da osvetli</th><th>Šta je mamac</th></tr>
-<tr><td><b>Kratko svetlo</b> (sva motorna vozila osim traktora)</td><td><b>najmanje 40 m, najviše 80 m</b></td><td>„najmanje 40 m" bez gornje granice</td></tr>
-<tr><td><b>Kratko svetlo MOPEDA</b></td><td><b>najmanje 10 m, najviše 50 m</b></td><td>„najmanje 40 m", „20–60 m"</td></tr>
-<tr><td><b>Dugo svetlo</b> (osim traktora)</td><td><b>najmanje 100 m</b>, bez gornje granice</td><td>„najmanje 80 m", „najmanje 40 m"</td></tr>
+<tr><td><b>Opšti raspon kratkog svetla</b></td><td><b>najmanje 40 m, najviše 80 m</b></td><td>posebna pravila ispod</td></tr>
+<tr><td><b>Kratko svetlo T, TR i K5a</b></td><td><b>najmanje 10 m, najviše 30 m</b></td><td>„10–50 m" važi za moped i bicikl</td></tr>
+<tr><td><b>Kratko svetlo mopeda ili bicikla</b></td><td><b>najmanje 10 m, najviše 50 m</b></td><td>„najmanje 40 m", „20–60 m"</td></tr>
+<tr><td><b>Dugo svetlo — opšte pravilo</b></td><td><b>najmanje 100 m</b>, bez gornje granice</td><td>„najmanje 80 m", „najmanje 40 m"</td></tr>
 <tr><td><b>Svetlo za maglu</b></td><td><b>najviše 35 m</b>, bez donje granice</td><td>„<b>najmanje</b> 35 m" — ista cifra, obrnuta reč</td></tr>
 </table>
-<svg viewBox="0 0 306 380" role="img" aria-label="Dometi svetala na zajedničkoj metarskoj skali od vozila: svetlo za maglu najviše 35 m, kratko svetlo na mopedu 10 do 50 m, kratko svetlo 40 do 80 m, dugo svetlo najmanje 100 m bez gornje granice" style="max-width:306px;width:100%;display:block;margin:8px auto">
-  <defs><linearGradient id="uoDugoFade" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#ffd84d"/><stop offset=".55" stop-color="#ffd84d"/><stop offset="1" stop-color="#ffd84d" stop-opacity="0"/></linearGradient></defs>
+<svg viewBox="0 0 306 460" role="img" aria-label="Izabrani rasponi svetala na zajedničkoj skali od vozila: magla najviše 35 m; moped i bicikl 10 do 50 m; opšte kratko svetlo 40 do 80 m; dugo svetlo najmanje 100 m. Posebne vrste i izuzeci navedeni su u tabeli i tekstu." style="max-width:306px;width:100%;display:block;margin:8px auto">
+  <defs><linearGradient id="uoDugoFade" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#ffd84d" /><stop offset=".55" stop-color="#ffd84d" /><stop offset="1" stop-color="#ffd84d" stop-opacity="0" /></linearGradient></defs>
 
-  <g fill="currentColor" font-size="11" opacity=".7">
-    <text x="6" y="14">domet u metrima, mereno od vozila</text>
+  <g fill="currentColor" font-size="14">
+    <text x="6" y="18">izabrani rasponi · metri od vozila</text>
   </g>
 
   <g stroke="currentColor" stroke-width="1" stroke-dasharray="2 3" opacity=".2">
-    <line x1="30" y1="20" x2="30" y2="340"/>
-    <line x1="53" y1="20" x2="53" y2="340"/>
-    <line x1="110.5" y1="20" x2="110.5" y2="340"/>
-    <line x1="122" y1="20" x2="122" y2="340"/>
-    <line x1="145" y1="20" x2="145" y2="340"/>
-    <line x1="214" y1="20" x2="214" y2="340"/>
-    <line x1="260" y1="20" x2="260" y2="340"/>
+    <line x1="30" y1="20" x2="30" y2="408" />
+    <line x1="53" y1="20" x2="53" y2="408" />
+    <line x1="110.5" y1="20" x2="110.5" y2="408" />
+    <line x1="122" y1="20" x2="122" y2="408" />
+    <line x1="145" y1="20" x2="145" y2="408" />
+    <line x1="214" y1="20" x2="214" y2="408" />
+    <line x1="260" y1="20" x2="260" y2="408" />
   </g>
 
   <g fill="#ffd84d" opacity=".28">
-    <polygon points="30,143 53,138 53,156 30,151"/>
-    <polygon points="30,221 122,216 122,234 30,229"/>
-    <polygon points="30,299 260,294 260,312 30,307"/>
+    <polygon points="30,163 53,158 53,176 30,171" />
+    <polygon points="30,253 122,248 122,266 30,261" />
+    <polygon points="30,343 260,338 260,356 30,351" />
   </g>
 
   <g fill="#ffd84d" stroke="#b58900" stroke-width="1.5">
-    <rect x="30" y="60" width="80.5" height="18"/>
-    <rect x="53" y="138" width="92" height="18"/>
-    <rect x="122" y="216" width="92" height="18"/>
+    <rect x="30" y="60" width="80.5" height="18" />
+    <rect x="53" y="158" width="92" height="18" />
+    <rect x="122" y="248" width="92" height="18" />
   </g>
-  <rect x="260" y="294" width="42" height="18" fill="url(#uoDugoFade)"/>
-  <path d="M260 294 h28 M260 312 h28" stroke="#b58900" stroke-width="1.5" fill="none"/>
-  <path d="M288 297 l5 6 l-5 6 M295 297 l5 6 l-5 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/>
+  <rect x="260" y="338" width="42" height="18" fill="url(#uoDugoFade)" />
+  <path d="M260 338 h28 M260 356 h28" stroke="#b58900" stroke-width="1.5" fill="none" />
+  <path d="M288 341 l5 6 l-5 6 M295 341 l5 6 l-5 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".7" />
 
   <g fill="currentColor">
-    <path d="M16 63 h6 a6 6 0 0 1 0 12 h-6 z"/>
-    <path d="M16 141 h6 a6 6 0 0 1 0 12 h-6 z"/>
-    <path d="M16 219 h6 a6 6 0 0 1 0 12 h-6 z"/>
-    <path d="M16 297 h6 a6 6 0 0 1 0 12 h-6 z"/>
+    <path d="M16 63 h6 a6 6 0 0 1 0 12 h-6 z" />
+    <path d="M16 161 h6 a6 6 0 0 1 0 12 h-6 z" />
+    <path d="M16 251 h6 a6 6 0 0 1 0 12 h-6 z" />
+    <path d="M16 341 h6 a6 6 0 0 1 0 12 h-6 z" />
   </g>
 
   <g stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-    <line x1="110.5" y1="56" x2="110.5" y2="82"/>
-    <line x1="53" y1="134" x2="53" y2="160"/><line x1="145" y1="134" x2="145" y2="160"/>
-    <line x1="122" y1="212" x2="122" y2="238"/><line x1="214" y1="212" x2="214" y2="238"/>
-    <line x1="260" y1="290" x2="260" y2="316"/>
+    <line x1="110.5" y1="56" x2="110.5" y2="82" />
+    <line x1="53" y1="154" x2="53" y2="180" /><line x1="145" y1="154" x2="145" y2="180" />
+    <line x1="122" y1="244" x2="122" y2="270" /><line x1="214" y1="244" x2="214" y2="270" />
+    <line x1="260" y1="334" x2="260" y2="360" />
   </g>
 
-  <g fill="currentColor" font-size="13" font-weight="bold">
+  <g fill="currentColor" font-size="14" font-weight="bold">
     <text x="6" y="37">MAGLA</text><text x="300" y="37" text-anchor="end">do 35 m</text>
-    <text x="6" y="115">MOPED</text><text x="300" y="115" text-anchor="end">10–50 m</text>
-    <text x="6" y="193">KRATKO</text><text x="300" y="193" text-anchor="end">40–80 m</text>
-    <text x="6" y="271">DUGO</text><text x="300" y="271" text-anchor="end">od 100 m</text>
+    <text x="6" y="135">MOPED / BICIKL</text><text x="300" y="135" text-anchor="end">10–50 m</text>
+    <text x="6" y="225">KRATKO</text><text x="300" y="225" text-anchor="end">40–80 m</text>
+    <text x="6" y="315">DUGO</text><text x="300" y="315" text-anchor="end">od 100 m</text>
   </g>
 
-  <g fill="currentColor" font-size="11" opacity=".7">
+  <g fill="currentColor" font-size="14">
     <text x="6" y="55">svetlo za maglu</text>
-    <text x="6" y="133">kratko svetlo</text>
-    <text x="6" y="211">osim traktora</text>
-    <text x="6" y="289">osim traktora</text>
+    <text x="6" y="153">kratko svetlo</text>
+    <text x="6" y="243">opšti raspon</text>
+    <text x="6" y="333">dugo svetlo</text>
   </g>
 
-  <g fill="currentColor" font-size="11" opacity=".85">
-    <text x="30" y="92">najviše 35 m · bez donje granice</text>
-    <text x="30" y="170">najmanje 10 m · najviše 50 m</text>
-    <text x="30" y="248">najmanje 40 m · najviše 80 m</text>
-    <text x="30" y="326">najmanje 100 m · bez gornje granice</text>
-  </g>
+  <g fill="currentColor" font-size="14">
+    <text x="30" y="92">najviše 35 m</text>
+    <text x="30" y="190">najmanje 10 m · najviše 50 m</text>
+    <text x="30" y="280">najmanje 40 m · najviše 80 m</text>
+    <text x="30" y="370">najmanje 100 m</text>
+  <text x="30" y="112">bez donje granice</text><text x="30" y="390">bez gornje granice</text></g>
 
-  <line x1="26" y1="340" x2="302" y2="340" stroke="currentColor" stroke-width="1.5"/>
+  <line x1="26" y1="408" x2="302" y2="408" stroke="currentColor" stroke-width="1.5" />
   <g stroke="currentColor" stroke-width="1.5">
-    <line x1="30" y1="340" x2="30" y2="345"/>
-    <line x1="53" y1="340" x2="53" y2="345"/>
-    <line x1="110.5" y1="340" x2="110.5" y2="361"/>
-    <line x1="122" y1="340" x2="122" y2="345"/>
-    <line x1="145" y1="340" x2="145" y2="345"/>
-    <line x1="214" y1="340" x2="214" y2="345"/>
-    <line x1="260" y1="340" x2="260" y2="345"/>
+    <line x1="30" y1="408" x2="30" y2="413" />
+    <line x1="53" y1="408" x2="53" y2="413" />
+    <line x1="110.5" y1="408" x2="110.5" y2="429" />
+    <line x1="122" y1="408" x2="122" y2="413" />
+    <line x1="145" y1="408" x2="145" y2="413" />
+    <line x1="214" y1="408" x2="214" y2="413" />
+    <line x1="260" y1="408" x2="260" y2="413" />
   </g>
-  <g fill="currentColor" font-size="11" text-anchor="middle">
-    <text x="30" y="357">0</text><text x="53" y="357">10</text><text x="122" y="357">40</text><text x="145" y="357">50</text><text x="214" y="357">80</text><text x="260" y="357">100 m</text>
-    <text x="110.5" y="375">35</text>
+  <g fill="currentColor" font-size="14" text-anchor="middle">
+    <text x="30" y="425">0</text><text x="53" y="425">10</text><text x="122" y="425">40</text><text x="145" y="425">50</text><text x="214" y="425">80</text><text x="260" y="425">100 m</text>
+    <text x="110.5" y="443">35</text>
   </g>
 </svg>
-<p class="mut">Puna crta je granica koju tačan odgovor mora da sadrži, otvoren kraj znači da granice nema: kratko svetlo ima <i>obe</i> (mora da osvetli, a ne sme da zaslepi), dugo samo donju, magla samo gornju — snop koji bi išao dalje odbijao bi se od magle nazad u oči. Moped je jedini sa sopstvenim, znatno kraćim rasponom — ista slika kao kratko, samo pomerena ulevo.</p>
-<p><b>Oblik snopa:</b> kratko svetlo <b>traktora, mopeda, tricikla i četvorocikla</b> sme biti izvedeno kao simetrično <b>ili</b> desnosmerno asimetrično. <span class="mut">Motocikla u tom spisku nema.</span></p>
+<p class="mut">Crtež prikazuje četiri izabrana raspona, a tabela i poseban raspon 10–30 m. Kratko svetlo ima donju i gornju granicu; dugo samo donju, a svetlo za maglu samo gornju. Za T, TR i K5a važi 10–30 m, a za moped i bicikl 10–50 m (čl. 49). Iako čl. 49 navodi i Tm, novija posebna odredba čl. 47 za Tm ne postavlja zahteve za karakteristike svetlosnog snopa.</p>
+<p><b>Oblik snopa:</b> kratko svetlo vozila vrste <b>L, T, Tm i TR</b> može biti simetrično ili desnosmerno asimetrično (Pravilnik čl. 49). Vrsta L obuhvata mopede, motocikle, tricikle i četvorocikle.</p>
 
-<p><b>Boje — celo pravilo staje u dve reči: napred NIKAD crvena, nazad NIKAD bela.</b> Sve ostalo je spisak koji se uči napamet:</p>
+<p><b>Boje:</b> osnovno pravilo je bez crvene svetlosti vidljive spreda i bele vidljive pozadi, uz izuzetke iz čl. 43. Za uređaje iz pitanja važi:</p>
 <table>
 <tr><th>Uređaj</th><th>Boja svetlosti</th><th>Zamka u odgovorima</th></tr>
-<tr><td>Glavni farovi</td><td><b>bela</b></td><td>„plave ili žute"</td></tr>
+<tr><td>Glavni farovi</td><td><b>bela</b></td><td>proizvedeni, odnosno prvi put registrovani pre 1.10.1994. mogu biti i žuti</td></tr>
 <tr><td>Dnevna svetla</td><td><b>samo bela</b></td><td>„bela ili žuta" — to važi za maglu, ne za dnevna</td></tr>
 <tr><td>Svetla za maglu</td><td><b>bela ili žuta</b></td><td>„samo žuta"</td></tr>
-<tr><td>Pokazivači pravca</td><td><b>žuta</b></td><td>„žute ili crvene", „bele"</td></tr>
+<tr><td>Pokazivači pravca</td><td><b>žuta</b></td><td>na vozilu od istorijskog značaja može crvena</td></tr>
 <tr><td>Svetlo za vožnju unazad</td><td><b>bela</b></td><td>„crvene"</td></tr>
-<tr><td>Svetlo zadnje registarske tablice</td><td><b>bela</b></td><td>ne mora ga biti na četvorociklima, motokultivatorima i priključnim vozilima za traktor</td></tr>
-<tr><td>Zadnje poziciono svetlo na <b>mopedu i motociklu</b></td><td><b>crvena — jedno ili dva</b></td><td>„crvene <b>ili žute</b>", „ne moraju biti ugrađena"</td></tr>
+<tr><td>Svetlo zadnje registarske tablice</td><td><b>bela</b></td><td>izuzeti L6, L7, Tm, R i S; uslovno i L1/L3 proizvedeni i homologovani bez tog svetla</td></tr>
+<tr><td>Zadnje poziciono svetlo na <b>mopedu i motociklu sa dva točka</b></td><td><b>crvena — jedno ili dva</b></td><td>na L4 dva ili tri, jedno na bočnoj prikolici (čl. 58)</td></tr>
 <tr><td>Zadnji katadiopteri</td><td><b>crvena</b></td><td>„žute ili crvene"</td></tr>
 </table>
 <p class="mut">Odgovor „boje određene od strane proizvođača vozila" ponuđen je uz skoro svako pitanje o boji i <b>nijednom nije tačan</b>. Boje su propisane, proizvođač ih ne bira.</p>
@@ -3652,9 +3653,9 @@ CARDS['uredjaji-oprema'] = {
 <tr><td><b>Duga</b> svetla</td><td><b>plava</b> kontrolna lampa, automatski <span class="mut">(mamci: žuta, zelena)</span></td></tr>
 <tr><td><b>Kratka</b> svetla</td><td><b>ne mora biti uključena lampa bilo koje boje</b> <span class="mut">(mamci: žuta, zelena)</span></td></tr>
 </table>
-<p>Ugradnja te plave lampe na motociklima je <b>obavezna, osim na motociklima čija radna zapremina motora ne prelazi 50 cm³</b>; na <b>lakim četvorociklima nije obavezna</b>. Kod vozila prvi put registrovanih u Srbiji <b>pre 1. jula 2011.</b> kontrola uključenosti pokazivača pravca obezbeđuje se <b>optičkom ILI zvučnom</b> napravom. <span class="mut">Mamac je „optičkom I zvučnom" — razlika je jedno slovo.</span></p>
+<p>Plava lampa je obavezna na motociklima, lakim četvorociklima i četvorociklima, osim na <b>motociklu i lakom četvorociklu sa motorom do 50 cm³</b> (čl. 79). Kod vozila prvi put registrovanih u Srbiji <b>pre 1. jula 2011.</b> kontrola pokazivača pravca obezbeđuje se <b>optičkom ILI zvučnom</b> napravom. <span class="mut">Mamac je „optičkom I zvučnom" — razlika je jedno slovo.</span></p>
 
-<p><b>Kočenje — kod dvotočkaša manje funkcija, ali više točkova:</b></p>
+<p><b>Kočenje — funkcije i točkovi:</b></p>
 <table>
 <tr><th>Pitanje</th><th>Tačno</th><th>Mamac</th></tr>
 <tr><td>Kočni sistem mopeda i motocikla mora da ostvari funkcije</td><td><b>radnog kočenja</b>, i to je sve</td><td>odgovori koji dodaju pomoćno i parkirno kočenje</td></tr>
@@ -3662,28 +3663,29 @@ CARDS['uredjaji-oprema'] = {
 <tr><td>Stop svetla se uključuju pri aktiviranju</td><td><b>radnog kočenja</b></td><td>parkirnog kočenja; dugotrajnog usporavanja</td></tr>
 <tr><td>Stop svetlo ne moraju imati vozila koja na ravnom putu ne mogu preko</td><td><b>25 km/h</b></td><td>30 km/h, 45 km/h</td></tr>
 </table>
-<p class="mut">Isto „na sve točkove" važi i za vozila za prevoz putnika, teretna i priključna vozila — izuzeti su samo traktori, radne mašine i priključna vozila za traktor.</p>
+<p class="mut">To je opšte pravilo čl. 36. Posebne izvedbe uređuju naredni članovi: za L1/L3 predviđene su odvojene komande prednjeg i zadnjeg kočenja (čl. 37), a za bočni točak L4 poseban uslov efikasnosti kočenja (čl. 39).</p>
 
-<p><b>Zadnji katadiopteri</b> su uvek <b>crveni</b> i <b>nisu trouglasti</b> (trouglasti oblik je rezervisan za priključna vozila). Razlikuje se samo broj:</p>
+<p><b>Zadnji katadiopteri vrste L</b> su crveni i netrouglasti; broj zavisi od podvrste i širine:</p>
 <table>
 <tr><th>Vozilo</th><th>Broj zadnjih katadioptera</th></tr>
-<tr><td>Motorno vozilo na <b>dva točka</b>, i ono na tri točka koje <b>nije šire od 1,3 m</b></td><td><b>jedan</b></td></tr>
-<tr><td><b>Motocikl sa tri točka</b></td><td><b>dva</b></td></tr>
-<tr><td><b>Četvorocikl širi od 1 m</b></td><td><b>dva</b></td></tr>
+<tr><td><b>L1 i L3</b></td><td><b>jedan ili dva</b></td></tr>
+<tr><td><b>L2, L5, L6 i L7 do 1 m širine</b></td><td><b>jedan ili dva</b></td></tr>
+<tr><td><b>L2, L5, L6 i L7 preko 1 m širine</b></td><td><b>dva</b></td></tr>
+<tr><td><b>L4</b></td><td><b>dva ili tri</b>, jedan na bočnoj prikolici</td></tr>
 </table>
-<p class="mut">Prvo pogledaj <b>vrstu vozila</b>, pa tek onda širinu: „motocikl sa tri točka" ide na <b>dva</b> i kad širina uopšte nije navedena. Broj nije dovoljan — i pogrešne ponude znaju da kažu „dva", pa uvek proveri i da su katadiopteri <b>crveni</b> i da <b>nisu trouglasti</b>. Odgovor „ne moraju biti ugrađeni" nije tačan ni u jednom od ta tri pitanja.</p>
+<p class="mut">Trouglasti zadnji katadiopteri propisani su za priključna vozila i Tm. Pitanje 8752 zadržava stari prag 1,3 m. U pitanju 8753 dva katadioptera jesu dopuštena konfiguracija L4, a 8754 odgovara pravilu za L6/L7 šire od 1 m.</p>
 
 <p><b>Dimenzije i registarska tablica:</b></p>
 <table>
 <tr><th>Šta se meri</th><th>Granica</th></tr>
 <tr><td>Najveća dozvoljena dužina mopeda, motocikla, tricikla i četvorocikla</td><td><b>4,00 m</b> <span class="mut">(mamci 5,00 i 3,00)</span></td></tr>
 <tr><td>Najveća dozvoljena visina istih vozila</td><td><b>2,50 m</b> <span class="mut">(mamci 1,50 i 2,00)</span></td></tr>
-<tr><td>Priključno vozilo koje vuče moped ili motocikl</td><td>ne sme biti šire od <b>jednog metra</b> <span class="mut">(mamac: „širine vozila koje ga vuče")</span></td></tr>
+<tr><td>Priključno vozilo koje vuče moped ili motocikl</td><td>ne sme biti šire od <b>jednog metra</b> (ZOBS čl. 92) <span class="mut">(mamac: „širine vozila koje ga vuče")</span></td></tr>
 <tr><td>Nagib registarske tablice u odnosu na ravan upravnu na podlogu</td><td>najviše <b>30° prema gore</b> i <b>15° prema dole</b></td></tr>
 </table>
 <p class="mut">Kod tablice je u bazi ispao znak za stepen, pa u odgovorima piše „300 prema gore" i „150 prema dole" — to su uglovi 30° i 15°. Redosled je zamka: veći ugao ide <b>nagore</b>.</p>
 
-<p><b>Oznaka pneumatika — razloži je jednom i pokrio si devet pitanja:</b></p>
+<p><b>Oznaka pneumatika — razloži je jednom i pokrio si deset pitanja:</b></p>
 <table>
 <tr><th>Kod u oznaci <b>195/65 R 16 89 N</b></th><th>Šta znači</th><th>Kako to pitanje zove</th></tr>
 <tr><td><b>195</b></td><td>širina pneumatika</td><td>dimenzija</td></tr>
@@ -3694,13 +3696,13 @@ CARDS['uredjaji-oprema'] = {
 <tr><td><b>N</b></td><td>brzinska oznaka</td><td><b>indeks brzine</b></td></tr>
 </table>
 <p>Pitanje „dimenzije su iskazane kodovima" traži <b>dva</b> odgovora: <b>195/65 i 16</b>. R, 89 i N nisu dimenzije. Ista podela radi i na drugom primeru iz baze, 180/60 R 14 82 T.</p>
-<p><b>Istrošenost:</b> <b>TWI</b> označava <b>položaj indikatora istrošenosti pneumatika</b> <span class="mut">(mamci: indeks nosivosti, indeks brzine, „namenjen za letnju upotrebu", „može da se protektira")</span>. Dubina gazećeg sloja mora biti <b>veća od dubine označene TWI oznakama, odnosno najmanje 1,6 mm ako TWI oznaka nema</b>. <span class="mut">Pazi na formulaciju pitanja. Ako pitanje ne pominje TWI („dubina gazećeg sloja… mora biti"), tačan odgovor prvo pominje TWI pa tek onda cifru — goli „najmanje 1,6 mm" je tu mamac. Ali ako pitanje samo kaže „kada ne postoji TWI oznaka", tačan odgovor je upravo gola cifra <b>1,6 mm</b>, a mamci su 2,0 i 4,0 mm.</span> Sami pneumatici moraju biti <b>dimenzija koje je deklarisao proizvođač vozila</b>, ne „najvećih koje mogu da stanu".</p>
+<p><b>Istrošenost:</b> <b>TWI</b> označava <b>položaj indikatora istrošenosti pneumatika</b>. Dubina gazećeg sloja <b>ne sme biti manja od fabrički dozvoljene dubine označene TWI oznakama</b>; ako TWI nema, najmanje je <b>1,6 mm za L i M1</b>, a <b>2 mm za ostale vrste</b> (čl. 86). Uvezeni odgovor u pitanju 8830 kaže „veća od” i zato ostaje otvoren za proveru ključa. Sami pneumatici moraju biti dimenzija, nosivosti i indeksa brzine koje je deklarisao proizvođač vozila.</p>
 
 <p><b>Oprema i sirena.</b> Oprema za pružanje prve pomoći veličine „A" mora postojati u <b>motociklima, teškim triciklima i teškim četvorociklima</b> — <b>moped je ne mora imati</b>, a mamac je upravo odgovor koji moped ubacuje u spisak. Uređaj za davanje zvučnih znakova mora proizvoditi zvuk <b>čija je jačina u propisanim granicama</b>: ni „što veće jačine", ni „jačina nije propisana".</p>
 
 <p><b>Tri oznake koje dolaze kao slika</b> — pitanje je uvek isto, koju vrstu vozila označavaju:</p>
 <div class="signRow lineRow">
-  <div class="signCell"><svg viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg">
+  <div class="signCell"><svg role="img" aria-label="Oznaka teškog vozila: kose crvene i žute pruge" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg">
     <rect x="8" y="8" width="134" height="28" fill="#f3c000"/>
     <g fill="#d81f26">
       <polygon points="8,10 10,8 8,8"/>
@@ -3715,18 +3717,18 @@ CARDS['uredjaji-oprema'] = {
     </g>
     <rect x="4" y="4" width="142" height="36" fill="none" stroke="#e8b400" stroke-width="4"/>
   </svg><b>TEŠKA vozila</b><span>pravougaonik: naizmenične kose <b>crvene i žute</b> pruge preko celog polja, uz tanak žuti obod</span></div>
-  <div class="signCell"><svg viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg">
+  <div class="signCell"><svg role="img" aria-label="Oznaka dugog vozila: žuto polje sa crvenim okvirom" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg">
     <rect x="8" y="8" width="134" height="28" fill="#f3c000"/>
     <rect x="5" y="5" width="140" height="34" fill="none" stroke="#d81f26" stroke-width="6"/>
   </svg><b>DUGA vozila</b><span>isti pravougaonik, ali čisto <b>žuto polje bez pruga</b>, uokvireno <b>širokom crvenom trakom</b></span></div>
-  <div class="signCell"><svg viewBox="0 0 150 140" xmlns="http://www.w3.org/2000/svg">
+  <div class="signCell"><svg role="img" aria-label="Oznaka sporog vozila: crveni trouglasti okvir, narandžasta sredina" viewBox="0 0 150 140" xmlns="http://www.w3.org/2000/svg">
     <polygon points="53,20 97,20 137,116 127,130 23,130 13,116" fill="#d81f26" stroke="#111" stroke-width="3"/>
     <polygon points="75,38 116,116 34,116" fill="#f0821c"/>
   </svg><b>SPORA vozila</b><span>trougao zasečenih uglova: crveni okvir, narandžasta sredina</span></div>
 </div>
 <p class="mut">Razlikuj ih po polju i obodu: <b>kose crveno-žute pruge preko celog polja = TEŠKA</b> vozila (obod je tanak i žut), a <b>čisto žuto polje u širokom crvenom okviru = DUGA</b> vozila; jedina tabla u obliku trougla je ona za <b>spora</b> vozila.</p>
 
-<p class="mut"><b>Rezime mamaca u ovoj oblasti:</b> „najmanje" umesto „najviše" kod magle, 40 m umesto 10–50 m kod mopeda, „bela ili žuta" kod dnevnih svetala, „boju određuje proizvođač", „optička I zvučna", trouglasti katadiopteri, goli „1,6 mm" bez pominjanja TWI, i moped ubačen u spisak vozila koja moraju imati opremu prve pomoći.</p>
+<p class="mut"><b>Rezime mamaca:</b> „najmanje" umesto „najviše" kod magle, mešanje raspona 10–30, 10–50 i 40–80 m, „bela ili žuta" kod dnevnih svetala, „boju određuje proizvođač", „optička I zvučna", pogrešna podvrsta ili širina kod katadioptera, „veća” umesto „ne sme biti manja” kod TWI i moped ubačen među vozila sa kompletom prve pomoći A.</p>
 `,
 };
 
@@ -4758,8 +4760,8 @@ X[8399] = { ...(X[8399] || {}), x: 'U pitanju je 60−50=10 km/h preko ograniče
 X[8401] = { ...(X[8401] || {}), x: 'Znak označava kraj naselja. Brzina navedena u pitanju je 140 km/h uz ograničenje 80: prekoračenje je 60 km/h. Za taj opseg propisana je zabrana najmanje 30 dana (čl. 338 st. 1 t. 7) i tri poena (čl. 335 st. 1 t. 11).' };
 X[8403] = { ...(X[8403] || {}), x: 'U pitanju je 110−80=30 km/h preko ograničenja van naselja; obavezna zabrana nije propisana za taj osnovni slučaj. I tačno +30 km/h u naselju je ispod pragova za poene i obaveznu zabranu, koji počinju tek preko 30 (čl. 335 st. 1 t. 9 i 338 st. 1 t. 5).' };
 X[8409] = { ...(X[8409] || {}), x: 'Na slici je zabrana skretanja desno. Za nepoštovanje tog znaka nije propisana obavezna zabrana upravljanja, pa sačuvana baza očekuje „ne izriče se”. To ne isključuje sudsku mogućnost iz čl. 338 st. 2; odsustvo obavezne mere ne znači da prekršaj nije opasan.' };
-X[8760] = { ...(X[8760] || {}), x: 'Žuta tabla sa crvenim kosim prugama, postavljena pozadi na vozilo, obeležava teško vozilo — po njoj iz daljine prepoznaješ vozilo velike mase kojem treba mnogo duži put za zaustavljanje. Ne meša se sa tablom za duga vozila, koja je puno žuto polje sa crvenim okvirom i bez pruga, ni sa oznakom za spora vozila, koja je trougaona.' };
-X[8761] = { ...(X[8761] || {}), x: 'Žuto polje uokvireno crvenim, bez kosih pruga i postavljeno pozadi, obeležava dugo vozilo — govori ti koliko dužine treba da pretekneš i koliko prostora to vozilo zauzima u krivini. Kose crveno-žute pruge nosi tabla za teška vozila, a spora vozila se obeležavaju trougaonom tablom sa crvenim rubom i narandžastim poljem.' };
+X[8760] = { ...(X[8760] || {}), x: 'Žuta tabla sa crvenim kosim prugama, postavljena pozadi na vozilo, obeležava teško vozilo. Ne meša se sa tablom za duga vozila, koja je puno žuto polje sa crvenim okvirom i bez pruga, ni sa oznakom za spora vozila, koja je trougaona.' };
+X[8761] = { ...(X[8761] || {}), x: 'Žuto polje uokvireno crvenim, bez kosih pruga i postavljeno pozadi, obeležava dugo vozilo. Kose crveno-žute pruge nosi tabla za teška vozila, a spora vozila se obeležavaju trougaonom tablom sa crvenim rubom i narandžastim poljem.' };
 X[8762] = { ...(X[8762] || {}), x: 'Trougaona tabla sa crvenim rubom i narandžastim poljem obeležava sporo vozilo, ono koje po svojoj konstrukciji ne može da razvije veću brzinu, kao što su traktor ili radna mašina. Cilj je da onaj ko nailazi mnogo brže na vreme shvati razliku u brzini. Kose pruge i puno žuto polje sa crvenim okvirom pripadaju teškim, odnosno dugim vozilima.' };
 X[9203] = { ...(X[9203] || {}), x: 'Dopunska tabla uvek pripada znaku neposredno iznad sebe, a ovde stoji ispod donjeg kruga sa brojem, pa bliže određuje samo ograničenje brzine. Gornji crveni krug sa dva vozila je zaseban znak zabrane i važi nezavisno od table. Zato ni odgovor da tabla važi za oba znaka ne stoji: jedna tabla se ne deli na dva znaka na istom stubu.' };
 X[9208] = { ...(X[9208] || {}), x: 'Bela tabla sa tekstom stoji ispod plavog znaka obaveštenja o parkiralištu sa naplatom, pa rečima objašnjava kako se to parkiralište koristi i koliko dugo sme da se stoji. Ona sama ne uvodi novu zabranu ni obavezu, jer to nose znakovi u crvenom, odnosno plavom krugu. Nije ni poruka nevezana za znak: bez znaka iznad sebe tabla nema nikakvo značenje.' };
@@ -5303,42 +5305,42 @@ X[10717] = { x: 'Ne predaš tablice isključenog vozila → privođenje prekrša
 
 // --- Vozilo: uređaji i oprema (sub 118), tekstualna ---
 X[8678] = { x: 'Detalje tehničkih uslova propisuje Pravilnik o podeli motornih i priključnih vozila i tehničkim uslovima — ZOBS daje okvir, pravilnik cifre.' };
-X[8681] = { x: 'Gabariti dvotočkaša: najveća dozvoljena DUŽINA mopeda/motocikla/tricikla/četvorocikla je 4,00 m.' };
+X[8681] = { x: 'Najveća dozvoljena dužina vozila vrste L — mopeda, motocikla, tricikla i četvorocikla — iznosi 4,00 m (Pravilnik čl. 17).' };
 X[8688] = { x: 'Najveća dozvoljena VISINA mopeda/motocikla/tricikla/četvorocikla: 2,50 m (kao i za ostala vozila).' };
-X[8682] = { x: 'Prikolica uz moped/motocikl: najviše 1 METAR širine — šira bi virila iz gabarita vučnog vozila.' };
-X[8695] = { x: "Kočni sistem mopeda/motocikla mora da ostvari RADNO kočenje (parkirno nije obavezno kod dvotočkaša — drže se na osloncu). Ni pomoćno kočenje nije propisano za njih — obavezna je samo funkcija radnog kočenja." };
-const kocSvi = 'Radno kočenje mora dejstvovati NA SVE TOČKOVE (i kod mopeda, motocikala, tricikala i četvorocikala) — kočenje samo jednim točkom je neispravnost.';
+X[8682] = { x: 'Priključno vozilo koje vuče moped ili motocikl ne sme biti šire od 1 m (ZOBS čl. 92). Granica nije određena širinom vučnog vozila.' };
+X[8695] = { x: "Kočni sistem mopeda/motocikla mora da ostvari RADNO kočenje (parkirno nije obavezno kod dvotočkaša). Ni pomoćno kočenje nije propisano za njih — obavezna je samo funkcija radnog kočenja." };
+const kocSvi = 'Opšte pravilo je da radno kočenje deluje na sve točkove. To nije zahtev da svaka pojedinačna komanda koči sve točkove: na mopedu i motociklu sa dva točka propisana su dva sistema sa nezavisnim komandama, za prednji i zadnji točak (čl. 36–37).';
 X[8707] = { x: kocSvi };
 X[8709] = { x: kocSvi };
-X[8710] = { x: "Uređaji koji DAJU ili ODBIJAJU svetlost mimo propisa (zatamnjene folije, neonke, svetleći prstenovi i trake bez homologacije) — zabranjeni. Zabrana je bezuslovna: nema izuzetka ni po boji svetlosti (napred/pozadi), ni po tome da li uređaj nekoga ometa." };
+X[8710] = { x: "ZOBS čl. 246 zabranjuje postavljanje ili korišćenje uređaja na vozilu koji daju ili odbijaju svetlost u bojama koje propisi o uslovima za vozila ne predviđaju. Ponuđeni odgovori koji bi to dopuštali pod dodatnim uslovom zato nisu tačni." };
 X[8711] = { x: 'Napred NIKAD crveno: uređaji na prednjoj strani ne smeju davati crvenu svetlost vidljivu spreda — crveno je rezervisano za zadnji kraj vozila.' };
-X[8712] = { x: 'Nazad NIKAD belo (osim svetla za vožnju unazad i osvetljenja tablice) — belo pozadi zbunjuje: izgleda kao da ti vozilo dolazi u susret.' };
+X[8712] = { x: 'Pozadi po pravilu ne sme biti bela svetlost. Član 43 izuzima svetla za vožnju unazad, pokretno svetlo za istraživanje, svetlo zadnje registarske tablice i njenu belu reflektujuću materiju, kao i konturne oznake.' };
 X[8713] = { x: 'Udvojeni (parni) svetlosni uređaji: ista veličina, ista boja, ujednačen intenzitet — asimetrija je neispravnost.' };
-X[8719] = { x: 'Glavni farovi: BELA svetlost.' };
-X[8720] = { x: 'Kontrolna lampa DUGIH svetala na tabli: PLAVE boje (standard u svim vozilima).' };
+X[8719] = { x: 'Opšte pravilo je bela svetlost glavnih farova. Na vozilima proizvedenim, odnosno prvi put registrovanim pre 1. oktobra 1994. glavni farovi mogu biti i žuti (Pravilnik čl. 47).' };
+X[8720] = { x: 'Kada se uključe duga svetla, propisana kontrolna lampa je plave boje. Član 79 predviđa izuzetak od obavezne ugradnje na motociklu i lakom četvorociklu sa motorom radne zapremine do 50 cm³.' };
 X[8721] = { x: 'Za kratka svetla kontrolna lampa NIJE obavezna (najčešće zelena postoji, ali ne mora).' };
-X[8724] = { x: 'Domet KRATKIH svetala (osim traktora): najmanje 40 m, najviše 80 m.' };
+X[8724] = { x: 'Opšti raspon kratkog svetla je najmanje 40 m i najviše 80 m (Pravilnik čl. 49). Za moped i bicikl važi 10–50 m, a za T, TR i K5a 10–30 m. Za Tm čl. 47 posebno ne zahteva karakteristike svetlosnog snopa.' };
 X[8726] = { x: "Domet DUGIH svetala: najmanje 100 m — zato su \"duga\". Mamci 40 i 80 su cifre KRATKIH svetala (ona osvetljavaju najmanje 40, a najviše 80 m)." };
 X[8728] = { x: 'Kratko svetlo traktora/mopeda/tricikla/četvorocikla sme biti simetrično ili desnosmerno asimetrično (asimetrija osvetljava desnu ivicu, ne zaslepljuje susret).' };
 X[8729] = { x: 'Svetla za maglu: osvetljavaju NAJVIŠE 35 m — široko i nisko, ne daleko.' };
-X[8730] = { x: 'Kratko svetlo MOPEDA: najmanje 10 m, najviše 50 m (slabije od motocikla — moped je sporiji).' };
-X[8732] = { x: 'Svetlo za vožnju unazad: BELE boje — jedini dozvoljeni beli izvor pozadi (uz osvetljenje tablice).' };
+X[8730] = { x: 'Kratko svetlo MOPEDA: najmanje 10 m, najviše 50 m.' };
+X[8732] = { x: 'Svetlo za vožnju unazad daje belu svetlost (Pravilnik čl. 50). Ono je jedan od izuzetaka od opšte zabrane bele svetlosti vidljive pozadi iz čl. 43.' };
 X[8735] = { x: 'Svetla za maglu: BELA ili ŽUTA.' };
 X[8737] = { x: 'Dnevna svetla: SAMO bela (žuta nisu dozvoljena kao dnevna).' };
 X[8745] = { x: 'Moped/motocikl pozadi: jedno ili dva poziciona svetla CRVENE boje.' };
-X[8752] = { x: 'Vozila na 2 točka (i uska na 3): JEDAN zadnji katadiopter, crven, NE-trouglast (trouglasti katadiopteri su rezervisani za prikolice!).' };
-X[8753] = { x: 'Motocikl sa tri točka: DVA zadnja crvena katadioptera, ne-trouglasta.' };
+X[8752] = { x: 'Ova sačuvana baza očekuje jedan crveni netrouglasti katadiopter. Važeći čl. 64 dopušta jedan ili dva na L1/L3 i na L2/L5/L6/L7 do 1 m širine; na poslednjim vrstama preko 1 m zahteva dva. Zato stari prag 1,3 m iz pitanja više ne važi.' };
+X[8753] = { x: 'Motocikl sa tri točka je motocikl sa bočnom prikolicom, vrsta L4. Dva crvena netrouglasta katadioptera jesu dozvoljena konfiguracija; važeći čl. 64 dopušta dva ili tri, od kojih jedan mora biti na bočnoj prikolici.' };
 X[8754] = { x: 'Četvorocikl širi od 1 m: DVA zadnja crvena katadioptera, ne-trouglasta — pravilo prati širinu vozila.' };
 X[8770] = { x: 'STOP svetla se pale pri aktiviranju RADNOG kočenja (ne parkirnog, ne motornog kočenja).' };
-X[8772] = { x: 'Pokazivači pravca: ŽUTA svetlost — uvek i svuda.' };
+X[8772] = { x: 'Pokazivači pravca daju žutu svetlost. Na vozilima od istorijskog značaja svetlost može biti crvena (Pravilnik čl. 70).' };
 X[8773] = { x: 'Starija vozila (pre 1.7.2011): kontrola pokazivača pravca može biti optička ILI zvučna naprava.' };
-X[8781] = { x: 'Sirena: jačina zvuka u PROPISANIM granicama — ni preslaba ni "vazdušna truba".' };
+X[8781] = { x: 'Uređaj za davanje zvučnih znakova mora proizvoditi zvuk čija je jačina u propisanim granicama. Član 77 određuje granice prema vrsti vozila i snazi motora.' };
 X[8783] = { x: 'Plava kontrolna lampa dugih svetala na motociklu: obavezna, OSIM do 50 cm³.' };
-X[8784] = { x: 'Na LAKIM triciklima/četvorociklima plava kontrolna lampa NIJE obavezna.' };
+X[8784] = { x: 'Plava kontrolna lampa nije obavezna na lakom četvorociklu sa motorom radne zapremine do 50 cm³ (Pravilnik čl. 79). Pitanje ne navodi taj uslov, pa označeni odgovor nije potvrđen za svaki laki četvorocikl.' };
 X[8791] = { x: 'Brojevi u pitanju su UGLOVI (stepen se izgubio u bazi): najviše 30° prema gore i 15° prema dole.' };
 X[8809] = { x: 'Oprema prve pomoći veličine "A": motocikli, TEŠKI tricikli i TEŠKI četvorocikli (moped i laki ne moraju).' };
 X[8814] = { x: 'Pneumatici moraju biti DIMENZIJA KOJE JE DEKLARISAO PROIZVOĐAČ VOZILA — ne "šta može da stane".' };
-const gume = 'Oznaka pneumatika, npr. 195/65 R 16 89 N: 195 = ŠIRINA (mm) · 65 = odnos visine i širine u % · R = radijalna konstrukcija · 16 = prečnik naplatka (coli) · 89 = indeks NOSIVOSTI · N = brzinska oznaka. Dimenzije su prva i četvrta vrednost (širina + naplatak).';
+const gume = 'Oznaka pneumatika, npr. 195/65 R 16 89 N: 195 = ŠIRINA (mm) · 65 = odnos visine i širine u % · R = radijalna konstrukcija · 16 = prečnik naplatka (coli) · 89 = indeks NOSIVOSTI · N = brzinska oznaka. Dimenzije opisuju kodovi 195/65 i 16: širina, odnos visine i širine, i prečnik naplatka.';
 X[8815] = { x: gume };
 X[8816] = { x: gume };
 X[8817] = { x: gume };
@@ -5349,13 +5351,13 @@ X[8821] = { x: gume };
 X[8822] = { x: gume };
 X[8823] = { x: gume };
 X[8824] = { x: gume };
-const twi = 'TWI = utisnuta oznaka na boku gume koja pokazuje gde su u kanalima šare INDIKATORI ISTROŠENOSTI. Minimalna dubina šare za moped/motocikl: 1,6 mm, odnosno dublje od tih ispupčenja ako oznaka postoji.';
+const twi = 'TWI označava mesto indikatora istrošenosti u kanalima šare. Dubina gazećeg sloja ne sme biti manja od fabrički dozvoljene dubine označene TWI oznakama; ako TWI nema, najmanja dozvoljena dubina je 1,6 mm za vozila vrsta L i M1, a 2 mm za ostale vrste (Pravilnik čl. 86).';
 X[8827] = { x: twi };
 X[8828] = { x: twi };
 X[8829] = { x: twi };
 X[8830] = { x: twi };
-X[10653] = { x: 'Osvetljenje zadnje registarske tablice: BELA svetlost (drugi dozvoljeni beli izvor pozadi).' };
-X[10657] = { x: 'Stop svetlo ne moraju imati vozila koja na ravnom putu ne prelaze 25 km/h — ispod te brzine ni kočenje nije naglo.' };
+X[10653] = { x: 'Svetlo zadnje registarske tablice daje belu svetlost (Pravilnik čl. 62) i jedan je od izuzetaka od opšte zabrane bele svetlosti vidljive pozadi iz čl. 43.' };
+X[10657] = { x: 'Motorna i priključna vozila koja na ravnom putu ne mogu razviti brzinu veću od 25 km/h ne moraju imati stop svetlo (Pravilnik čl. 69). To je propisani prag; iz njega se ne izvodi kakvo je kočenje vozila.' };
 // --- Registracija (sub 126) ---
 const regTri = "Saobraćajna dozvola, registarske tablice i registraciona nalepnica jesu opšte pravilo za učešće motornog i priključnog vozila u saobraćaju (ZOBS čl. 268 st. 1).";
 X[8423] = { x: regTri };
@@ -5528,7 +5530,7 @@ X[10568] = { ...(X[10568] || {}), x: "Znaci vozila POD PRATNJOM: crveno i plavo 
 X[8815] = { ...(X[8815] || {}), x: "Oznaka pneumatika 195/65 R 16 89 N: 195/65 = sirina u mm i odnos visine i sirine u % (dimenzija) · R = radijalna konstrukcija · 16 = precnik naplatka u colima (dimenzija) · 89 = indeks nosivosti · N = brzinska oznaka. Dimenzije su, dakle, iskazane kodovima 195/65 i 16." };
 X[9766] = { ...(X[9766] || {}), x: "Zabrane preticanja/obilazenja (ZOBS cl. 55 i 57): kolona, kad te neko vec pretice, kad je vozac ispred dao znak, kad ne mozes da se vratis u svoju traku, zaustavnom i sporom trakom, preko neisprekidane linije, prevoj/nepregledna krivina i tunel (osim sa >=2 trake u smeru), neposredno pred raskrsnicom i na njoj, prelaz preko pruge, kod pesackog prelaza. Zona \"30\" i zona skole NISU na listi — tamo vazi samo ogranicenje brzine, ne i zabrana preticanja." };
 X[8588] = { ...(X[8588] || {}), x: "Vozilo se isključuje iz saobraćaja (ZOBS čl. 289) kada je umesto registarskim tablicama označeno nepropisnim tablicama i kada ima nedozvoljeno ugrađene uređaje za davanje posebnih svetlosnih i zvučnih znakova, a vozač ih ne ukloni u roku određenom naredbom policijskog službenika. Zamke: žuto rotaciono/trepćuće svetlo i nepropisno postavljene (ali propisne) tablice nisu razlozi za isključenje vozila." };
-X[8711] = { ...(X[8711] || {}), x: "Svetlosni uređaji na prednjoj strani vozila ne smeju davati crvenu svetlost vidljivu spreda, osim u slučajevima predviđenim propisima o uslovima za vozila — crvena je po pravilu rezervisana za zadnju stranu, dok su bela i žuta napred dozvoljene." };
+X[8711] = { ...(X[8711] || {}), x: "Svetlosni i svetlosno-signalni uređaji na prednjoj strani ne smeju davati crvenu svetlost vidljivu spreda, osim slučajeva koje Pravilnik posebno predviđa (čl. 43). Boja ostalih svetala zavisi od konkretnog uređaja." };
 X[9698] = { ...(X[9698] || {}), x: "Kad je mimoilaženje onemogućeno zbog širine puta, vozač kome je to s obzirom na karakteristike i stanje puta i saobraćajnu situaciju LAKŠE da izvede dužan je da se prvi zaustavi i, po potrebi, kretanjem unazad ili na drugi način pomeri vozilo i zauzme položaj koji omogućava mimoilaženje (ZOBS čl. 51). Obe tačne opcije su dve polovine iste obaveze istog vozača." };
 X[8088] = { ...(X[8088] || {}), x: "Motoput je državni put namenjen isključivo za saobraćaj motocikala, putničkih vozila, teretnih vozila i autobusa, sa ili bez priključnih vozila, i kao takav obeležen propisanim saobraćajnim znakom (ZOBS čl. 7). Nije za SVA motorna vozila (mopedi, traktori i radne mašine ne smeju), a za razliku od autoputa ne mora imati fizički odvojene smerove ni zaustavnu traku." };
 X[9834] = { ...(X[9834] || {}), x: "Obilaženje zaustavljene kolone zabranjeno je ako se vozač nakon obilaženja ne bi mogao bezbedno uključiti u saobraćajnu traku namenjenu kretanju u smeru kojim se kreće (ZOBS čl. 55 st. 4)." };
@@ -6885,6 +6887,95 @@ for (const [key, expected] of [['brzine', 6], ['kategorije-vozila', 4], ['put-po
   ]) {
     if (out.cards['znakovi-naredbi'].h.c.split(staro).length !== 2) throw new Error('Kartica znakovi-naredbi: neočekivana oznaka');
     out.cards['znakovi-naredbi'].h.c = out.cards['znakovi-naredbi'].h.c.replace(staro, novo);
+  }
+}
+
+// Očuvaj oznake pneumatika i vrsta vozila, uz prevedena imena četiri crteža.
+// Tačni konteksti i broj zamena važe samo za pregledana pitanja i karticu opreme.
+{
+  for (const [ids, staro, novo, broj] of [
+    [[8681],"врсте Л —","врсте L —",1],
+    [[8724],"за Т, ТР","за T, TR",1],
+    [[8724],"и К5а 10–30","и K5a 10–30",1],
+    [[8724],"За Тм чл.","За Tm чл.",1],
+    [[8752],"на Л1/Л3 и","на L1/L3 и",1],
+    [[8752],"на Л2/Л5/Л6/Л7 до","на L2/L5/L6/L7 до",1],
+    [[8753],"врста Л4. Два","врста L4. Два",1],
+    [[8815,8816,8817,8818,8819,8820,8822,8823],"195/65 Р 16","195/65 R 16",1],
+    [[8815],"89 Н: димензије","89 N: димензије",1],
+    [[8815],"у мм и","у mm и",1],
+    [[8815],"цолима). Р је","цолима). R је",1],
+    [[8815],"носивост, Н брзинска","носивост, N брзинска",1],
+    [[8816,8817,8818,8819,8820,8822,8823],"89 Н: 195","89 N: 195",1],
+    [[8816,8817,8818,8819,8820,8822,8823],"ШИРИНА (мм) ·","ШИРИНА (mm) ·",1],
+    [[8816,8817,8818,8819,8820,8822,8823],"· Р =","· R =",1],
+    [[8816,8817,8818,8819,8820,8822,8823],"· Н =","· N =",1],
+    [[8821,8824],"180/60 Р 14","180/60 R 14",1],
+    [[8821],"82 Т број","82 T број",1],
+    [[8821,8824],"у мм, 60","у mm, 60",1],
+    [[8821,8824],"%, Р =","%, R =",1],
+    [[8821],"носивост, Т =","носивост, T =",1],
+    [[8824],"82 Т: 180","82 T: 180",1],
+    [[8824],"слово Т =","слово T =",1],
+    [[8827,8828,8829,8830],"1,6 мм за","1,6 mm за",1],
+    [[8827,8828,8829,8830],"врста Л и","врста L и",1],
+    [[8827,8828,8829,8830],"и М1, а","и M1, а",1],
+    [[8827,8828,8829,8830],"2 мм за","2 mm за",1]
+  ]) {
+    for (const id of ids) {
+      if (out.byQ[id].x.c.split(staro).length - 1 !== broj) throw new Error('Pitanje ' + id + ': neočekivana oznaka opreme');
+      out.byQ[id].x.c = out.byQ[id].x.c.replaceAll(staro, novo);
+    }
+  }
+  for (const [staro, novo, broj] of [
+    ["светло Т, ТР","светло T, TR",1],
+    ["и К5а","и K5a",2],
+    ["aria-label=\"Izabrani rasponi svetala na zajedničkoj skali od vozila: magla najviše 35 m; moped i bicikl 10 do 50 m; opšte kratko svetlo 40 do 80 m; dugo svetlo najmanje 100 m. Posebne vrste i izuzeci navedeni su u tabeli i tekstu.\"","aria-label=\"Изабрани распони светала на заједничкој скали од возила: магла највише 35 m; мопед и бицикл 10 до 50 m; опште кратко светло 40 до 80 m; дуго светло најмање 100 m. Посебне врсте и изузеци наведени су у табели и тексту.\"",1],
+    ["За Т, ТР","За T, TR",1],
+    ["и Тм, новија","и Tm, новија",1],
+    ["за Тм не","за Tm не",1],
+    ["Л, Т,","L, T,",1],
+    ["T, Тм и","T, Tm и",1],
+    ["и ТР","и TR",1],
+    ["Врста Л обухвата","Врста L обухвата",1],
+    ["Изузети Л6, Л7,","Изузети L6, L7,",1],
+    ["L7, Тм, Р","L7, Tm, R",1],
+    ["и С; условно","и S; условно",1],
+    ["и Л1/Л3 произведени","и L1/L3 произведени",1],
+    ["На Л4 два","На L4 два",1],
+    ["за Л1/Л3 предвиђене","за L1/L3 предвиђене",1],
+    ["точак Л4 посебан","точак L4 посебан",1],
+    ["врсте Л","врсте L",1],
+    ["Л1 и","L1 и",1],
+    ["и Л3","и L3",1],
+    ["Л2, Л5,","L2, L5,",2],
+    ["L5, Л6 и","L5, L6 и",2],
+    ["и Л7 до","и L7 до",1],
+    ["и Л7 преко","и L7 преко",1],
+    ["<b>Л4</b>","<b>L4</b>",1],
+    ["и Тм. Питање","и Tm. Питање",1],
+    ["конфигурација Л4, а","конфигурација L4, а",1],
+    ["за Л6/Л7 шире","за L6/L7 шире",1],
+    ["195/65 Р 16","195/65 R 16",1],
+    ["89 Н","89 N",1],
+    ["<b>Р</b>","<b>R</b>",1],
+    ["<b>Н</b>","<b>N</b>",1],
+    [". Р, 89",". R, 89",1],
+    ["и Н нису","и N нису",1],
+    ["180/60 Р 14","180/60 R 14",1],
+    ["82 Т.","82 T.",1],
+    ["1,6 мм за","1,6 mm за",1],
+    ["за Л и","за L и",1],
+    ["и М1","и M1",1],
+    ["2 мм за","2 mm за",1],
+    ["величине „А\" мора","величине „A\" мора",1],
+    ["aria-label=\"Oznaka teškog vozila: kose crvene i žute pruge\"","aria-label=\"Ознака тешког возила: косе црвене и жуте пруге\"",1],
+    ["aria-label=\"Oznaka dugog vozila: žuto polje sa crvenim okvirom\"","aria-label=\"Ознака дугог возила: жуто поље са црвеним оквиром\"",1],
+    ["aria-label=\"Oznaka sporog vozila: crveni trouglasti okvir, narandžasta sredina\"","aria-label=\"Ознака спорог возила: црвени троугласти оквир, наранџаста средина\"",1],
+    ["помоћи А.","помоћи A.",1]
+  ]) {
+    if (out.cards['uredjaji-oprema'].h.c.split(staro).length - 1 !== broj) throw new Error('Kartica opreme: neočekivana oznaka');
+    out.cards['uredjaji-oprema'].h.c = out.cards['uredjaji-oprema'].h.c.replaceAll(staro, novo);
   }
 }
 

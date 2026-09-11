@@ -304,6 +304,24 @@
       "checkedOn": "2026-09-11",
       "revision": "Službeni glasnik RS zaključno sa 19/2025",
       "contentHash": "8796f6a1718bea08ea4fe1dedb3c9a71001b1c6c5245a93526f365a61e668d5d"
+    },
+    {
+      "id": "tehnicki-uslovi-oprema-cela-mgsi-54-2026",
+      "url": "https://www.mgsi.gov.rs/sites/default/files/pravilnik_o_podeli_motornih_i_prikljucnih_vozila_i_tehnickim_uslovima_za_vozila_u_saobracaju_na_putevima.pdf",
+      "title": "Pravilnik o podeli motornih i priključnih vozila i tehničkim uslovima — MGSI",
+      "article": "Celi relevantni čl. 2, 6, 17, 19, 29–31, 36–39, 42–70, 76–79, 86, 92 i 108: dimenzije, kočenje, svetla, oznake, pneumatici i oprema",
+      "checkedOn": "2026-09-11",
+      "revision": "Službeni glasnik RS zaključno sa 54/2026",
+      "contentHash": "bbc837b7168e7f670c88881d5f125fc68b4535192992dc814228728f03dab400"
+    },
+    {
+      "id": "zobs-oprema-cela-pis-19-2025",
+      "url": "https://reg.pravno-informacioni-sistem.rs/api/viewAct/8b57d1e9-9b34-4fa0-9693-7ceb6da65486?lawActId=438311",
+      "title": "Zakon o bezbednosti saobraćaja na putevima — PIS",
+      "article": "Čl. 7, 92 i 246: vrste vozila, širina priključnog vozila i okvir uslova za vozila",
+      "checkedOn": "2026-09-11",
+      "revision": "Službeni glasnik RS zaključno sa 19/2025",
+      "contentHash": "8796f6a1718bea08ea4fe1dedb3c9a71001b1c6c5245a93526f365a61e668d5d"
     }
   ]
 }
