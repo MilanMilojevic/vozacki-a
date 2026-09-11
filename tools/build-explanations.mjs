@@ -28,45 +28,37 @@ const CARDS = {
   'kategorije-vozila': {
     title: 'Kategorije vozila (moped, tricikl, motocikl...)',
     html: `
-<p><b>Ključ za pamćenje:</b> raspored točkova ti kaže <i>vrstu</i> (2 = moped/motocikl; 3 asimetrična = motocikl sa bočnim sedištem; 3 simetrična = tricikl; 4 = četvorocikl),
-a granice su <b>45 km/h</b>, <b>50 cm³</b> (motor sa unutrašnjim sagorevanjem) i <b>4 kW</b> (električni pogon):
-<b>sve u granicama = moped / "laki"</b>; <b>bilo koja granica probijena = motocikl / "teški"</b>. (ZOBS čl. 7)</p>
-<p class="mut" style="text-align:center;">Iz ptice: isprekidana linija je <b>srednja podužna ravan</b> vozila. Da li su točkovi raspoređeni ogledalski oko nje (simetrično) ili jedan stoji sa strane (asimetrično) — to odlučuje tricikl ili motocikl.</p>
+<p><b>Ključ za pamćenje:</b> kod motornih vozila u ovoj tabeli prvo proveri broj i raspored točkova, a zatim vrstu pogona i odgovarajuće pragove. Broj i raspored sami nisu dovoljni: motocikl može imati dva ili tri asimetrično raspoređena točka, teški tricikl ima tri simetrično raspoređena, a četvorocikli imaju i posebne granice mase i snage. Kod teškog četvorocikla to su gornje granice — njihovo prekoračenje ga ne čini „težim” četvorociklom. Brzina u tabeli je najveća konstruktivna; snaga je najveća efektivna, odnosno trajna nominalna, prema vrsti pogona. (ZOBS čl. 7 tač. 34–39)</p>
+<p class="mut" style="text-align:center;">Iz ptice: isprekidana linija je <b>srednja podužna ravan</b> vozila. Crteži pokazuju broj i raspored točkova; završnu kategoriju odredi tek kada proveriš i odgovarajući red tabele.</p>
 <div class="signRow lineRow" style="grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:12px">
   <div class="signCell">
     <svg viewBox="0 0 120 150" role="img" aria-label="dva točka na osi"><line x1="60" y1="6" x2="60" y2="144" stroke="currentColor" stroke-width="1.5" stroke-dasharray="6 5" opacity=".55"/><rect x="53" y="42" width="14" height="66" rx="7" fill="currentColor" opacity=".18"/><line x1="42" y1="50" x2="78" y2="50" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".6"/><rect x="55" y="16" width="10" height="24" rx="4" fill="currentColor"/><rect x="55" y="108" width="10" height="24" rx="4" fill="currentColor"/></svg>
-    <b>2 TOČKA</b><span>oba na osi — moped / motocikl</span>
+    <b>2 TOČKA</b><span>kod motornih vozila u tabeli — proveri pragove za moped ili motocikl</span>
   </div>
   <div class="signCell">
     <svg viewBox="0 0 120 150" role="img" aria-label="tri točka asimetrično"><line x1="44" y1="6" x2="44" y2="144" stroke="currentColor" stroke-width="1.5" stroke-dasharray="6 5" opacity=".55"/><rect x="37" y="42" width="14" height="66" rx="7" fill="currentColor" opacity=".18"/><line x1="26" y1="50" x2="62" y2="50" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".6"/><rect x="39" y="16" width="10" height="24" rx="4" fill="currentColor"/><rect x="39" y="108" width="10" height="24" rx="4" fill="currentColor"/><line x1="51" y1="70" x2="74" y2="70" stroke="currentColor" stroke-width="3" opacity=".6"/><line x1="51" y1="96" x2="74" y2="96" stroke="currentColor" stroke-width="3" opacity=".6"/><rect x="72" y="56" width="28" height="52" rx="8" fill="currentColor" opacity=".18"/><rect x="93" y="86" width="10" height="24" rx="4" fill="currentColor" stroke="#2c6aa0" stroke-width="2.5"/></svg>
-    <b>3 ASIMETRIČNO</b><span>treći točak SA STRANE (bočno sedište) — i dalje MOTOCIKL</span>
+    <b>3 ASIMETRIČNO</b><span>raspored motocikla sa bočnim sedištem — proveri i jedan prag iz reda motocikla</span>
   </div>
   <div class="signCell">
     <svg viewBox="0 0 120 150" role="img" aria-label="tri točka simetrično"><line x1="60" y1="6" x2="60" y2="144" stroke="currentColor" stroke-width="1.5" stroke-dasharray="6 5" opacity=".55"/><path d="M50 30 H70 L92 112 H28 Z" fill="currentColor" opacity=".18"/><line x1="42" y1="50" x2="78" y2="50" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".6"/><rect x="55" y="16" width="10" height="24" rx="4" fill="currentColor"/><rect x="31" y="106" width="10" height="24" rx="4" fill="currentColor" stroke="#2c6aa0" stroke-width="2.5"/><rect x="79" y="106" width="10" height="24" rx="4" fill="currentColor" stroke="#2c6aa0" stroke-width="2.5"/></svg>
-    <b>3 SIMETRIČNO</b><span>par točkova jednako oko ose (ili dva napred, jedan pozadi) — TRICIKL</span>
+    <b>3 SIMETRIČNO</b><span>raspored tricikla — zatim proveri lake ili teške pragove</span>
   </div>
   <div class="signCell">
     <svg viewBox="0 0 120 150" role="img" aria-label="četiri točka"><line x1="60" y1="6" x2="60" y2="144" stroke="currentColor" stroke-width="1.5" stroke-dasharray="6 5" opacity=".55"/><rect x="34" y="24" width="52" height="102" rx="12" fill="currentColor" opacity=".18"/><rect x="31" y="20" width="10" height="24" rx="4" fill="currentColor"/><rect x="79" y="20" width="10" height="24" rx="4" fill="currentColor"/><rect x="31" y="106" width="10" height="24" rx="4" fill="currentColor"/><rect x="79" y="106" width="10" height="24" rx="4" fill="currentColor"/></svg>
-    <b>4 TOČKA</b><span>po dva sa svake strane — ČETVOROCIKL</span>
+    <b>4 TOČKA</b><span>proveri uslove za laki ili teški četvorocikl, uključujući masu i snagu</span>
   </div>
 </div>
-<div class="vgrid">
-  <div class="vg vgHead"></div><div class="vg vgHead">2 točka</div><div class="vg vgHead">3 točka (simetrično)</div><div class="vg vgHead">4 točka</div>
-  <div class="vg vgHead">sve u granicama</div><div class="vg vgSlow">🛵 MOPED</div><div class="vg vgSlow">LAKI TRICIKL</div><div class="vg vgSlow">LAKI ČETVOROCIKL</div>
-  <div class="vg vgHead">preko bilo koje granice</div><div class="vg vgFast">🏍️ MOTOCIKL</div><div class="vg vgFast">TEŠKI TRICIKL</div><div class="vg vgFast">TEŠKI ČETVOROCIKL</div>
-</div>
+
 <table>
-<tr><th>Vozilo</th><th>Točkovi</th><th>Brzina/motor</th></tr>
-<tr><td><b>moped</b></td><td>2</td><td>do 45 km/h; motor sa unutrašnjim sagorevanjem do 50 cm³, električni do 4 kW</td></tr>
-<tr><td><b>motocikl</b></td><td>2 (ili 3 asimetrična — sa bočnim sedištem)</td><td>preko 45 km/h, ili motor sa unutrašnjim sagorevanjem preko 50 cm³, ili električni preko 4 kW</td></tr>
-<tr><td><b>laki tricikl</b></td><td>3</td><td>do 45 km/h; benzinski do 50 cm³, ostali motori do 4 kW</td></tr>
-<tr><td><b>teški tricikl</b></td><td>3 (simetrična)</td><td>preko 45 km/h, ili benzinski preko 50 cm³, ili ostali motori preko 4 kW</td></tr>
-<tr><td><b>laki četvorocikl</b></td><td>4</td><td>granice kao laki tricikl + masa praznog vozila do 350 kg (bez baterija)</td></tr>
-<tr><td><b>teški četvorocikl</b></td><td>4</td><td>ostali četvorocikli: masa praznog vozila do 400 kg (teretni 550 kg; bez baterija), snaga do 15 kW</td></tr>
+<tr><th scope="col" style="width:34%">Vozilo i točkovi</th><th scope="col">Brzina, pogon i masa</th></tr>
+<tr><td><b>moped</b><br>2</td><td>do 45 km/h; motor sa unutrašnjim sagorevanjem do 50 cm³ ili električni pogon do 4 kW trajne nominalne snage</td></tr>
+<tr><td><b>motocikl</b><br>2 (ili 3 asimetrična — sa bočnim sedištem)</td><td>preko 45 km/h, ili motor sa unutrašnjim sagorevanjem preko 50 cm³, ili električni pogon preko 4 kW trajne nominalne snage</td></tr>
+<tr><td><b>laki tricikl</b><br>3</td><td>do 45 km/h; benzinski motor do 50 cm³, drugi motor sa unutrašnjim sagorevanjem do 4 kW efektivne snage ili električni pogon do 4 kW trajne nominalne snage</td></tr>
+<tr><td><b>teški tricikl</b><br>3 (simetrična)</td><td>preko 45 km/h, ili benzinski motor preko 50 cm³, ili drugi motor sa unutrašnjim sagorevanjem preko 4 kW efektivne snage, ili električni pogon preko 4 kW trajne nominalne snage</td></tr>
+<tr><td><b>laki četvorocikl</b><br>4</td><td>pragovi brzine i pogona kao kod lakog tricikla + masa praznog vozila do 350 kg (bez baterija)</td></tr>
+<tr><td><b>teški četvorocikl</b><br>4</td><td>četvorocikl koji nije laki: masa praznog vozila do 400 kg (550 kg za teretno vozilo; bez baterija) i do 15 kW najveće efektivne, odnosno trajne nominalne snage</td></tr>
 </table>
-<p><b>Zamka:</b> granica od 50 cm³ kod mopeda i motocikla važi za SVAKI motor sa unutrašnjim sagorevanjem (i dizel!),
-a samo kod tricikala i četvorocikala isključivo za benzinski — ostali se tamo cene po snazi (4 kW).
-Moped sa motorom sa unutrašnjim sagorevanjem NEMA granicu snage: 5 kW efektivne, a i dalje je moped ako su brzina i kubikaža u granicama.</p>`,
+<p><b>Zamka:</b> granica od 50 cm³ kod mopeda i motocikla važi za svaki motor sa unutrašnjim sagorevanjem. Kod lakog i teškog tricikla i lakog četvorocikla 50 cm³ se odnosi na benzinski motor; za drugi motor sa unutrašnjim sagorevanjem koristi se efektivna, a za električni trajna nominalna snaga, sa pragom 4 kW. Teški četvorocikl mora biti izvan uslova za laki, a unutar sopstvenih granica mase i najveće snage od 15 kW. Moped sa motorom sa unutrašnjim sagorevanjem nema granicu snage: može imati 5 kW efektivne snage i ostati moped ako su brzina i zapremina u granicama.</p>`,
   },
 };
 
@@ -3030,9 +3022,9 @@ X[8624] = { x: 'Teret mora biti smešten i obezbeđen tako da NE umanjuje stabil
 X[8638] = { x: 'Teret koji na teretnom ili priključnom vozilu prelazi najudaljeniju tačku na zadnjoj strani vozila označava se PROPISANOM TABLOM — kvadratnom, sa naizmeničnim kosim crveno-belim odsevnim prugama (ZOBS čl. 112). Kod ostalih vozila teret se označava crvenom tkaninom, a u uslovima smanjene vidljivosti crvenim svetlom ili odsevnom materijom.' };
 X[8652] = { x: 'Sme se prevoziti tačno onoliko lica koliko je UPISANO U SAOBRAĆAJNOJ DOZVOLI, na mestima koja su za to predviđena (ZOBS čl. 116). Broj sedišta ili "koliko može da stane" nisu merilo — merodavan je isključivo upis u dozvoli.' };
 const deca = 'Dete mlađe od 12 godina ne sme se prevoziti na mopedu, triciklu, motociklu ni četvorociklu (ZOBS čl. 118). Pravilo je jedno, a u bazi se pojavljuje kao više odvojenih pitanja za svako vozilo — zapamti samo granicu: 12 godina.';
-X[8667] = { x: deca, card: 'kategorije-vozila' };
-X[8668] = { x: deca, card: 'kategorije-vozila' };
-X[8669] = { x: deca, card: 'kategorije-vozila' };
+X[8667] = { x: deca };
+X[8668] = { x: deca };
+X[8669] = { x: deca };
 // pojmovnik uz pitanja o definicijama vozila (Značenje izraza)
 for (const id of [8005, 8006, 8007, 8011, 10406]) X[id] = { card: 'kategorije-vozila' };
 
@@ -6721,7 +6713,7 @@ X[9677] = { ...(X[9677] || {}), card: 'znakovi-naredbi' };   // znak „obavezan
 X[9762] = { ...(X[9762] || {}), card: 'znakovi-naredbi' };   // zabrana preticanja važi od mesta znaka (#9762)
 X[9813] = { ...(X[9813] || {}), card: 'znakovi-naredbi' };   // zabrana preticanja svih motornih vozila (#9813)
 X[9539] = { ...(X[9539] || {}), card: 'pesaci-bicikli' };   // obaveza prema pešacima na prelazu (#9539)
-X[7990] = { ...(X[7990] || {}), card: 'kategorije-vozila' };   // pojam vozila po kategoriji (#7990)
+
 X[9531] = { ...(X[9531] || {}), card: 'zamke-odgovori' };   // večiti mamci u ponuđenim odgovorima (#9531)
 X[9689] = { ...(X[9689] || {}), card: 'zamke-odgovori' };   // večiti mamci u ponuđenim odgovorima (#9689)
 X[7925] = { ...(X[7925] || {}), card: 'zamke-odgovori' };   // večiti mamci u ponuđenim odgovorima (#7925)
@@ -6777,15 +6769,15 @@ const out = {
   zamke: ZAMKE,
 };
 
-// Lokalno prevedi šest pristupačnih opisa kartice brzine. Opšti toCyr štiti HTML tagove.
-// Broj je nameran: dodavanje opisa u ovu karticu zahteva ponovni pregled oba pisma.
-{
+// Lokalno prevedi pregledane pristupačne opise; opšti toCyr štiti HTML tagove.
+// Novi opis u ovim karticama zahteva ponovni pregled oba pisma.
+for (const [key, expected] of [['brzine', 6], ['kategorije-vozila', 4]]) {
   let count = 0;
-  out.cards.brzine.h.c = out.cards.brzine.h.c.replace(/aria-label="([^"]*)"/g, (_, label) => {
+  out.cards[key].h.c = out.cards[key].h.c.replace(/aria-label="([^"]*)"/g, (_, label) => {
     count++;
     return 'aria-label="' + toCyr(label) + '"';
   });
-  if (count !== 6) throw new Error('Kartica brzine: očekivano šest pristupačnih opisa');
+  if (count !== expected) throw new Error('Kartica ' + key + ': neočekivan broj pristupačnih opisa');
 }
 
 // Lokalni, pregledani opisi preostalih 19 crteža kartice parkiranje.
