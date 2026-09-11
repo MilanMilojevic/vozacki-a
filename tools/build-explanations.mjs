@@ -2520,44 +2520,38 @@ CARDS['put-pojmovi'] = {
   title: 'Put, kolovoz, trake — osnovni pojmovi',
   html: `
 <div class="kSek" data-sub="109">
-<p><b>Slojevi puta:</b> PUT (celina) ⊃ KOLOVOZ (deo za vozila) ⊃ KOLOVOZNA TRAKA (jedan smer) ⊃ SAOBRAĆAJNA TRAKA (jedan red vozila). Trotoar je deo puta za pešake, bankina je uz kolovoz.</p>
-<svg viewBox="0 0 320 330" role="img" aria-label="Put kao celina: u putu su kolovoz i trotoar; u kolovozu je kolovozna traka za jedan smer, a u njoj saobraćajna traka za jedan red vozila" style="max-width:320px;width:100%;display:block;margin:6px auto">
+<p><b>Slojevi puta:</b> PUT (celina) ⊃ KOLOVOZ (prvenstveno za vozila) ⊃ KOLOVOZNA TRAKA (jedan smer) ⊃ SAOBRAĆAJNA TRAKA (jedna kolona vozila). Trotoar je posebno uređen deo puta pored kolovoza, prvenstveno za pešake; bankina je uz kolovoz. Šema prikazuje odnos pojmova, ne obavezni poprečni presek svakog puta.</p>
+<svg viewBox="0 0 320 330" role="img" aria-label="Šema odnosa pojmova: kolovozna traka za jedan smer nalazi se u kolovozu, a saobraćajna traka za jednu kolonu vozila u kolovoznoj traci; jedan automobil simbolično predstavlja vozila te trake. Trotoar je prikazan odvojeno od kolovoza, unutar puta." style="max-width:320px;width:100%;display:block;margin:6px auto">
   <rect x="5" y="5" width="310" height="317" rx="10" fill="none" stroke="currentColor" stroke-width="2"/>
-  <text x="16" y="28" font-size="15" font-weight="bold" fill="currentColor">PUT (celina)</text>
-  <text x="16" y="46" font-size="12" fill="currentColor">kolovoz + trotoar + bankina…</text>
+  <text x="16" y="26.5" font-size="15" font-weight="bold" fill="currentColor">PUT (celina)</text>
+  <text x="16" y="47.5" font-size="15" fill="currentColor">kolovoz + trotoar + bankina…</text>
 
-  <rect x="14" y="56" width="292" height="188" rx="8" fill="#9aa7b4" fill-opacity=".28" stroke="currentColor" stroke-width="1.5"/>
-  <text x="24" y="76" font-size="13" font-weight="bold" fill="currentColor">KOLOVOZ (za vozila)</text>
+  <rect x="14" y="56" width="292" height="188" rx="8" fill="#9aa7b4" fill-opacity=".20" stroke="currentColor" stroke-width="1.5"/>
+  <text x="24" y="76" font-size="15" font-weight="bold" fill="currentColor">KOLOVOZ (za vozila)</text>
 
-  <rect x="24" y="86" width="272" height="152" rx="6" fill="#9aa7b4" fill-opacity=".3" stroke="currentColor" stroke-width="1.5"/>
-  <text x="34" y="105" font-size="13" font-weight="bold" fill="currentColor">KOLOVOZNA TRAKA</text>
-  <text x="34" y="123" font-size="12" fill="currentColor">(jedan smer)</text>
+  <rect x="24" y="86" width="272" height="152" rx="6" fill="#9aa7b4" fill-opacity=".20" stroke="currentColor" stroke-width="1.5"/>
+  <text x="34" y="103.5" font-size="15" font-weight="bold" fill="currentColor">KOLOVOZNA TRAKA</text>
+  <text x="34" y="124.5" font-size="15" fill="currentColor">(jedan smer)</text>
   <g stroke="currentColor" stroke-width="2" fill="none">
     <line x1="200" y1="110" x2="274" y2="110"/>
     <path d="M266 103L280 110L266 117"/>
   </g>
 
-  <rect x="34" y="130" width="252" height="100" rx="5" fill="#9aa7b4" fill-opacity=".32" stroke="currentColor" stroke-width="1.5"/>
-  <text x="44" y="149" font-size="13" font-weight="bold" fill="currentColor">SAOBRAĆAJNA TRAKA</text>
-  <text x="44" y="167" font-size="12" fill="currentColor">(jedan red vozila)</text>
+  <rect x="34" y="130" width="252" height="100" rx="5" fill="#9aa7b4" fill-opacity=".20" stroke="currentColor" stroke-width="1.5"/>
+  <text x="44" y="147.5" font-size="15" font-weight="bold" fill="currentColor">SAOBRAĆAJNA TRAKA</text>
+  <text x="44" y="168.5" font-size="15" fill="currentColor">(jedna kolona)</text>
   <g stroke="currentColor" stroke-width="1.5">
     <g fill="currentColor" fill-opacity=".25">
-      <rect x="68" y="182" width="48" height="26" rx="6"/>
-      <rect x="78" y="173" width="28" height="11" rx="4"/>
       <rect x="136" y="182" width="48" height="26" rx="6"/>
       <rect x="146" y="173" width="28" height="11" rx="4"/>
-      <rect x="204" y="182" width="48" height="26" rx="6"/>
-      <rect x="214" y="173" width="28" height="11" rx="4"/>
     </g>
     <g fill="none">
-      <circle cx="81" cy="209" r="4"/><circle cx="103" cy="209" r="4"/>
       <circle cx="149" cy="209" r="4"/><circle cx="171" cy="209" r="4"/>
-      <circle cx="217" cy="209" r="4"/><circle cx="239" cy="209" r="4"/>
     </g>
   </g>
 
   <rect x="14" y="256" width="292" height="56" rx="8" fill="currentColor" fill-opacity=".07" stroke="currentColor" stroke-width="1.5"/>
-  <text x="24" y="289" font-size="14" font-weight="bold" fill="currentColor">TROTOAR</text>
+  <text x="24" y="289" font-size="15" font-weight="bold" fill="currentColor">TROTOAR</text>
   <g stroke="currentColor" stroke-width="1.2" stroke-opacity=".55" fill="none">
     <line x1="152" y1="284" x2="292" y2="284"/>
     <line x1="166" y1="264" x2="166" y2="304"/>
@@ -2567,33 +2561,33 @@ CARDS['put-pojmovi'] = {
     <line x1="278" y1="264" x2="278" y2="304"/>
   </g>
 </svg>
-<p><b>Vrste puteva:</b> autoput (fizički razdvojene kolovozne trake, bez ukrštanja u nivou) · motoput (za motorna vozila, može i bez razdvajanja) · javni put · zemljani put (sa njega propuštaš SVE pri uključenju!).</p>
-<p><b>Ključne definicije (čl. 7):</b> ZAUSTAVLJANJE = prekid kretanja do 3 MINUTA (vozač ne napušta vozilo, osim po znaku/pravilu) · PARKIRANJE = svaki duži prekid · NASELJE = izgrađen prostor čije su granice obeležene znakom.</p>
+<p><b>Vrste puteva:</b> autoput, između ostalog, ima fizički razdvojene kolovozne trake i nema ukrštanja u nivou. Motoput je državni put namenjen isključivo motociklima, putničkim vozilima, teretnim vozilima i autobusima, sa ili bez priključnih vozila, i obeležen propisanim znakom; fizičko razdvajanje nije uslov njegove definicije. Zemljani put nema izgrađen kolovozni zastor, čak i kada ga ima na priključku. Pri uključenju sa zemljanog puta na put sa savremenim kolovoznim zastorom propuštaš sva vozila koja se kreću tim putem (čl. 47).</p>
+<p><b>Ključne definicije (čl. 7):</b> ZAUSTAVLJANJE je prekid kretanja vozila na putu do 3 minuta, pri čemu vozač ne napušta vozilo. PARKIRANJE je prekid koji se ne smatra zaustavljanjem — i kraći prekid može biti parkiranje ako vozač napusti vozilo. Iz oba pojma izuzet je prekid radi postupanja po znaku ili pravilu kojim se reguliše saobraćaj. NASELJE je izgrađen, funkcionalno objedinjen prostor za život i rad stanovnika, čije su granice obeležene odgovarajućim saobraćajnim znakom.</p>
 </div>
 <div class="kSek" data-sub="115">
 <p><b>Zone (čl. 160-163) — četiri pojma koja baza vrti jedan protiv drugog.</b> Pitanja idu u OBA smera: jednom „Zona 30 je…", drugi put „Deo puta u kojoj je brzina ograničena do 30 km/h je…" — i tu se traži naziv. Zato uči par NAZIV ↔ DEFINICIJA, ne samo brzinu.</p>
 <table>
 <tr><th>Zona</th><th>Po čemu se prepoznaje</th><th>Brzina</th></tr>
-<tr><td><b>Pešačka zona</b><br><span class="mut">čl. 160</span></td><td>prvenstveno namenjena saobraćaju PEŠAKA; vozila samo izuzetno, kad opština dozvoli</td><td><b>brzina kretanja pešaka</b> — bez ijedne brojke u km/h</td></tr>
-<tr><td><b>Zona usporenog saobraćaja</b><br><span class="mut">čl. 161</span></td><td>kolovoz DELE pešaci i vozila</td><td>brzina kretanja pešaka, <b>a najviše 10 km/h</b></td></tr>
+<tr><td><b>Pešačka zona</b><br><span class="mut">čl. 160</span></td><td>prvenstveno namenjena saobraćaju PEŠAKA; nadležni organ opštine ili grada može u određenom vremenu dozvoliti određena vozila, bez ugrožavanja pešaka</td><td><b>brzina kretanja pešaka</b> — bez ijedne brojke u km/h</td></tr>
+<tr><td><b>Zona usporenog saobraćaja</b><br><span class="mut">čl. 161</span></td><td>kolovoz koriste pešaci i vozila; vozač ne sme ometati pešake i bicikliste</td><td>brzina kretanja pešaka, <b>a najviše 10 km/h</b></td></tr>
 <tr><td><b>Zona „30"</b><br><span class="mut">čl. 162</span></td><td>samo ograničenje brzine — u definiciji nema pešaka</td><td><b>do 30 km/h</b></td></tr>
-<tr><td><b>Zona škole</b><br><span class="mut">čl. 163</span></td><td>deo puta ili ulice u neposrednoj blizini škole</td><td><b>u naselju 30, van naselja 50</b> km/h, u vremenu od 7,00 do 21,00 (osim ako znak ne odredi drugačije)</td></tr>
+<tr><td><b>Zona škole</b><br><span class="mut">čl. 163</span></td><td>deo puta ili ulice u neposrednoj blizini škole</td><td><b>u naselju 30, van naselja 50</b> km/h, u vremenu od 7,00 do 21,00 (osim ako saobraćajni znak drugačije odredi vreme zabrane)</td></tr>
 </table>
-<p><b>Tri zamke koje nose sve poene ove podoblasti:</b><br>
+<p><b>Tri česte zamke u ovim pitanjima:</b><br>
 1) <b>Pešačka zona je jedina bez brojke.</b> Kad se traži brzina u pešačkoj zoni, ponuđeni „20 km/h" i „30 km/h" su mamci — tačan odgovor je „kretanja pešaka" i tu se staje. Brojku imaju usporena zona (10) i zona „30" (30).<br>
 2) <b>Brzina pešaka se javlja dva puta</b> — u pešačkoj zoni i u zoni usporenog saobraćaja — ali samo usporena zona ima i tavanicu: najviše 10 km/h.<br>
-3) <b>Dvojka je uvek mamac.</b> Kroz celu ovu podoblast, i kod zona i kod gašenja motora, „20 km/h" i „dva minuta" pojavljuju se isključivo kao netačni odgovori. Tačne brojke su 10, 30, 50, vreme 7,00-21,00, jedan minut i tri minuta.</p>
+3) <b>Proveri šta broj opisuje.</b> U ovih 12 pitanja podoblasti, „20 km/h" i „dva minuta" pojavljuju se samo u netačnim ponudama. To je podsetnik za ovu grupu, ne opšte pravilo za druge saobraćajne situacije. Tačne brojke su 10, 30, 50, vreme 7,00-21,00, jedan minut i tri minuta.</p>
 <p class="mut">Sve četiri zone moraju biti obeležene propisanom saobraćajnom signalizacijom — nema zone koja se podrazumeva bez znaka.</p>
 <p><b>Kad se gasi motor (čl. 164)</b> — zakon nabraja tačno četiri situacije:</p>
 <table>
 <tr><th>Vozač mora isključiti motor</th><th>Zapamti</th></tr>
 <tr><td>na zahtev policajca ili drugog službenog lica</td><td>bez rasprave, odmah</td></tr>
 <tr><td>kada je to određeno saobraćajnom signalizacijom</td><td>znak koji to nalaže; crveno svetlo na semaforu nije nalog za gašenje</td></tr>
-<tr><td>kad je vozilo zaustavljeno u <b>tunelu duže od jednog minuta</b></td><td>u tunelu je strože: izduvni gasovi nemaju kuda</td></tr>
-<tr><td>kad vozilo <b>stoji duže od tri minuta</b></td><td>ista granica kao u definiciji zaustavljanja gore</td></tr>
+<tr><td>kad je vozilo zaustavljeno u <b>tunelu duže od jednog minuta</b></td><td>u tunelu je rok kraći</td></tr>
+<tr><td>kad vozilo <b>stoji duže od tri minuta</b></td><td>poseban uslov za gašenje motora, nezavisno od naziva prekida</td></tr>
 </table>
-<p><b>Semafor NIJE razlog za gašenje motora.</b> Kao mamac se dva puta nudi „prekid kretanja radi postupanja po svetlosnom znaku zabrane prolaska koji daje semafor" — jednom sa dodatkom „duže od dva minuta", jednom bez njega. Ni jedno ni drugo nije u zakonu: crveno svetlo motor ne gasi, gasi ga tunel (jedan minut), stajanje (tri minuta), znak i službeno lice.</p>
-<p><b>Otpad i buka (isti čl. 164):</b> ispuštanje, odnosno odlaganje materija i otpada kojima se ugrožava život i zdravlje ljudi, životinja, biljaka ili zagađuje životna sredina <b>nije dozvoljeno</b> — ni na putu ni pored njega, dakle nigde. Svako sužavanje te zabrane rečju „samo" („samo van naseljenog mesta", „samo tamo gde postoji znak") je mamac. Iz istog člana je i pravilo da vozilo u saobraćaju ne sme da prouzrokuje prekomernu buku — kod motocikla to praktično znači neprepravljan, propisan izduvni sistem.</p>
+<p><b>Crveno svetlo i trajanje stajanja</b> Samo crveno svetlo, niti dodatak „duže od dva minuta”, nisu poseban uslov za gašenje motora u čl. 164. Ipak, kada vozilo stoji duže od tri minuta, važi obaveza gašenja iz istog člana; u tunelu je rok duže od jednog minuta. Netačan ponuđeni razlog ne ukida ta odvojena pravila.</p>
+<p><b>Otpad i buka (čl. 164):</b> učesnicima u saobraćaju <b>nije dozvoljeno</b> da na putu ili pored njega ispuštaju ili odlažu materije i otpad kojima ugrožavaju život i zdravlje ljudi, životinja i biljaka ili zagađuju životnu sredinu. Zabrana ne zavisi od posebnog saobraćajnog znaka niti od toga da li je put u naselju. Vozilo u saobraćaju ne sme da prouzrokuje prekomernu buku; sama činjenica da izduvni sistem nije prepravljan ne dokazuje da je buka dozvoljena.</p>
 </div>
 `,
 };
@@ -6771,7 +6765,7 @@ const out = {
 
 // Lokalno prevedi pregledane pristupačne opise; opšti toCyr štiti HTML tagove.
 // Novi opis u ovim karticama zahteva ponovni pregled oba pisma.
-for (const [key, expected] of [['brzine', 6], ['kategorije-vozila', 4]]) {
+for (const [key, expected] of [['brzine', 6], ['kategorije-vozila', 4], ['put-pojmovi', 1]]) {
   let count = 0;
   out.cards[key].h.c = out.cards[key].h.c.replace(/aria-label="([^"]*)"/g, (_, label) => {
     count++;
