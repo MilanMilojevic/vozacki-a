@@ -30,7 +30,7 @@
 | А3 Циљ и процена спремности | Завршено | v131: reload циља; v134: непознато градиво не добија позајмљену тачност; условни модел јасно означен |
 | А4 Телефон и приступачност | Делимично, употребљива проба v165 | Тастатура, водич, ниски екран, дуге адресе, део контраста и увећање слика исправљени; остају ситни натписи/остали цртежи, читач екрана и стварни телефони |
 | А5 Кеш и алати издавања | Делимично | v128/v137: издање/кеш; алати/CI проверени; v157: аутоматски отисци слика и провера бајтова у SW; ограничење старих кешева још отворено |
-| А6 Садржај 1.327 питања | У току, почетни део базе | На v167: 15 питања reviewed, 93 in-progress, 2 needs-expert, 1.217 unreviewed; картице 2 reviewed, 2 in-progress, 35 unreviewed. Започета питања нису урачуната у завршена; повезане картице морају бити посебно проверене |
+| А6 Садржај 1.327 питања | У току, почетни део базе | На v168: 15 питања reviewed, 101 in-progress, 2 needs-expert, 1.209 unreviewed; картице 2 reviewed, 2 in-progress, 35 unreviewed. Започета питања нису урачуната у завршена; повезане картице морају бити посебно проверене |
 | А7 Документација / права | У току | CONTRIBUTING, README, школска упутства и fork поступак допуњени; v147 поруке/метаподаци и v151 FAQ усклађени; преостаје одлука власника о лиценци |
 | Б1–Б3 Побољшања | Чека | После учвршћивања, пилот по пилот |
 | Навигација — накнадни захтев | Основни токови завршени; доградња одвојена | v146 Назад/Напред; v150 стварни линкови; v154 статистика; v158 лични спискови. v162 додаје преглед конкретног старог испита; то је доградња, не услов основне безбедности учења. v163 исправља копирани линк питања и повратак фокуса у појмовник |
@@ -420,3 +420,10 @@
 - Posebno razdvojeni obavezni raspored točkova i alternativni pragovi, dopušteni slučajevi privremenih tablica i različiti pojmovi mase. Sačuvani zvanični ključevi, 1.316 ostalih objašnjenja, 39 kartica i sav ostali runtime sadržaj. Root prihvatio i ugradio dorade nezavisnog recenzenta; oba pisma pročitana nakon generisanja.
 - Stvarni browser nad v167: **44/44**, oba pisma, 320/1280 px, tačan prikaz odgovora i objašnjenja, bez horizontalnog prelivanja i upisa u sintetički S/SIM. Root pregledao novi snimak 10406 na telefonu. `node tools/verify.mjs`: **249/249** i aktuelnost evidencije prolaze.
 - Zavisne kartice i slovna greška u izvornom ćiriličnom 10613 ostaju jasno otvoreni. v166 je prethodno potvrđen i na GitHub CI: 34575563666, success.
+
+### v168 — pet ispravki osnovnih načela
+
+- A6-012: osam pitanja i svih 29 ponuđenih odgovora pročitani na oba pisma. Ispravljeni samo byQ tekstovi 7921, 7922, 7924, 7925 i 7929: pravni osnov uniforme, uslovi rada policije i radnika, bezbednosni uslov za otklanjanje opasnosti i odgovornost za programe/patrole. Dokaz i otvorene granice u `docs/revizija-sadrzaja/grupe/012-osnovna-nacela.md`.
+- Nezavisan pregled A0/root; pet izvornih zamena ima tačnu inverziju, generator zadržava četiri NUL razdvajača. Obe generisane verzije su pročitane i identične odobrenom predlogu. Ostala 1.322 objašnjenja, kartice i svi zvanični podaci ne menjaju se.
+- Browser nad v168: **20/20**, oba pisma i 320/1280 px, bez grešaka, horizontalnog prelivanja ili upisa u sintetički S/SIM. Root pregledao novi mobile snimak7925. `node tools/verify.mjs`: **249/249**, izdanje i evidencija prolaze.
+- Dve pronađene slovne greške nisu potajno proglašene rešenim. Odvojen pokušaj ponovnog generisanja baze promenio bi i redosled opcija; povučen je i radi se provera uzroka. Taj redosled nije ušao u izdanje. Dokumentacija i manifest razlikuju pročitane slojeve od potpuno završenih pitanja.

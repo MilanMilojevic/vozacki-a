@@ -5252,10 +5252,10 @@ X[10546] = { x: kaciga };
 X[10547] = { x: kaciga };
 // --- Osnovna načela (sub 91) ---
 X[7921] = { x: 'NEPOSREDNO regulisanje saobraćaja na putevima vrše UNIFORMISANI policijski službenici (ZOBS čl. 157) — "neposredno" znači znacima na licu mesta; zato komunalna policija i inspektori nisu tačni.' };
-X[7922] = { x: 'KONTROLU (nadzor) nad vozačima i vozilima vrše policijski službenici — i uniformisani I u građanskom odelu; kontrola je šira od neposrednog regulisanja.' };
+X[7922] = { x: "Kontrolu saobraćaja policijski službenici po pravilu vrše u uniformi, a izuzetno kontrolu vozača i vozila mogu vršiti u građanskom odelu (Pravilnik o načinu vršenja kontrole i neposrednog regulisanja saobraćaja, čl. 2). Zato su tačna oba ponuđena policijska odgovora; kontrola nije isto što i neposredno regulisanje." };
 X[7923] = { x: 'U ZONI ŠKOLE regulisanje mogu vršiti i školske saobraćajne patrole i patrole građana (uz policiju) — poseban izuzetak za bezbednost đaka.' };
 X[7924] = { x: 'Na RADOVIMA NA PUTU saobraćaj mogu regulisati i radnici izvođača/upravljača puta (uz policiju) — drugi poseban izuzetak.' };
-X[7925] = { x: 'Dva osnovna načela ponašanja (ZOBS čl. 3): ne ometaj/ne ugrožavaj/ne povredi druge + preduzmi sve mere da opasnost izbegneš ili otkloniš.' };
+X[7925] = { x: "ZOBS čl. 3 propisuje oba načela: učesnik ne sme da ometa, ugrožava ili povredi druge i mora da preduzme sve potrebne mere radi izbegavanja ili otklanjanja opasnih situacija nastalih ponašanjem drugih, ali samo ako sebe ili drugog time ne dovodi u opasnost." };
 X[7927] = { x: 'Vlasnik/korisnik vozila odgovara da njegovo vozilo u saobraćaju bude TEHNIČKI ISPRAVNO — odgovornost postoji i kad ne voziš ti.' };
 X[7928] = { x: 'Odgovornost PORODICE za decu u saobraćaju: sticanje znanja, veština i navika + pozitivni stavovi — zakon izričito imenuje porodicu, ne samo školu.' };
 X[7929] = { x: 'Isto kao prethodno: porodica unapređuje i učvršćuje pozitivne stavove i ponašanja dece značajna za bezbedno učešće.' };
@@ -5468,9 +5468,9 @@ X[10611] = { x: 'Ispuštanje/odlaganje materija i otpada kojima se ugrožavaju l
 
 
 // ===== REVIZIJA (nezavisna provera 415 tekstova, primenjeno 2026-08-26) =====
-X[7921] = { ...(X[7921] || {}), x: "NEPOSREDNO regulisanje saobraćaja (znacima na licu mesta) vrše uniformisani policijski službenici — kontrolu i neposredno regulisanje vrši MUP (ZOBS čl. 2). Tehničko regulisanje je posao ministarstva i lokalne samouprave — zato komunalni policajci i inspektori nisu tačan odgovor." };
-X[7924] = { ...(X[7924] || {}), x: "Na delu puta gde se izvode radovi saobraćaj, pored uniformisanih policijskih službenika, mogu neposredno regulisati i za to određeni radnici izvođača radova, odnosno upravljača puta (ZOBS čl. 166). Komunalni policajci nemaju to ovlašćenje." };
-X[7929] = { ...(X[7929] || {}), x: "Porodica je odgovorna za saobraćajno obrazovanje i vaspitanje dece — unapređivanje i učvršćivanje pozitivnih stavova i ponašanja značajnih za bezbedno učešće u saobraćaju (ZOBS čl. 6). Programi i patrole su na ustanovama i školama." };
+X[7921] = { ...(X[7921] || {}), x: "Neposredno regulisanje saobraćaja policijski službenici vrše u uniformi (Pravilnik o načinu vršenja kontrole i neposrednog regulisanja saobraćaja, čl. 2). ZOBS čl. 2 taj posao poverava MUP-u, uz posebne zakonske izuzetke, pa ponuđeni komunalni policajci i inspektori za drumski saobraćaj nisu tačan odgovor." };
+X[7924] = { ...(X[7924] || {}), x: "Na delu puta na kome se izvode radovi neposredno regulisanje mogu vršiti uniformisani policijski službenici. Ako je nastala prepreka koja se ne može odmah ukloniti, ZOBS čl. 166 dopušta i najmanje dva za to određena radnika izvođača radova, odnosno upravljača puta." };
+X[7929] = { ...(X[7929] || {}), x: "Porodica je odgovorna za saobraćajno obrazovanje i vaspitanje dece, uključujući unapređivanje i učvršćivanje pozitivnih stavova i ponašanja značajnih za bezbedno učešće u saobraćaju (ZOBS čl. 6). Donošenje programa i rad školskih saobraćajnih patrola i saobraćajnih patrola građana zakon poverava drugim nadležnim organima, a ne porodici." };
 X[8083] = { ...(X[8083] || {}), x: "Put je izgrađena ili utvrđena površina koju kao saobraćajnu koriste učesnici u saobraćaju pod uslovima određenim zakonom — zato su i ulica i pešačka staza put (ZOBS čl. 7). Površina koju sme da koristi samo onaj kome vlasnik dozvoli, poligon i sportski teren nisu put — njihovu namenu određuje vlasnik, a ne propisi o saobraćaju." };
 X[8084] = { ...(X[8084] || {}), x: "Put je izgrađena, odnosno utvrđena površina koju kao saobraćajnu koriste učesnici u saobraćaju (ZOBS čl. 7) — zato su i biciklistička staza i zemljani put putevi. Trkačka staza, plato za okupljanje i travnjaci nisu namenjeni saobraćaju na putu, pa nisu put." };
 X[8102] = { ...(X[8102] || {}), x: "Raskrsnica je deo KOLOVOZA na kome se PUTEVI ukrštaju, spajaju ili razdvajaju u istom nivou (ZOBS čl. 7). Zamka: ukrštanje puta i pruge u istom nivou nije raskrsnica nego prelaz puta preko pruge." };

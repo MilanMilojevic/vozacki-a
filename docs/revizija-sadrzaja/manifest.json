@@ -6,7 +6,7 @@
     "reviewed": 2,
     "unreviewed": 35
   },
-  "contentHash": "dd37cb9b0dd32c0873c2005890a9e9e802eb2ee7bc6a08acbe37cc1eb2a56b8e",
+  "contentHash": "9227c68bfd5aa59c3e0022d320b8bd9ae2222b70581029b59a42ae909ae7cbae",
   "hashAlgorithm": "SHA-256 of canonical JSON; image bytes use SHA-256",
   "imageCount": 704,
   "provenance": [
@@ -18,16 +18,16 @@
     {
       "declaredDate": "2026-09-11",
       "path": "explanations.js",
-      "sha256": "242d0dcef24e0f9f4ac2b11785635e7522fcf9047037ccf09647040108c87eaf"
+      "sha256": "5497f9f088a9b02de1eb6377ce9345df25dfbb53d4e0638ab8f36e3f4245c795"
     }
   ],
-  "publicSourcesHash": "4ad134afb8338a01616faf1f9ec7e7e3a029733c7c666b90f5c7dee71f5ec63d",
+  "publicSourcesHash": "feae3083e65065d368d66ca876791249f2040ecdd5fd3cb4d2251d4a8cf913a6",
   "questionCount": 1327,
   "questions": {
-    "in-progress": 93,
+    "in-progress": 101,
     "needs-expert": 2,
     "reviewed": 15,
-    "unreviewed": 1217
+    "unreviewed": 1209
   },
   "schemaVersion": 1,
   "semanticAccuracy": "not-established-by-this-tool"

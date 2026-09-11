@@ -161,6 +161,23 @@
       "article": "Strana 22, odeljak 7; strana 34: trougao i uticaj na sposobnost upravljanja vozilima i mašinama",
       "checkedOn": "2026-09-11",
       "revision": "Verzija 1.0, januar 2026; pun crveni trougao označava snažan uticaj"
+    },
+    {
+      "id": "zobs-osnovna-nacela-pis-19-2025",
+      "url": "https://reg.pravno-informacioni-sistem.rs/api/viewAct/8b57d1e9-9b34-4fa0-9693-7ceb6da65486?lawActId=438311",
+      "title": "Zakon o bezbednosti saobraćaja na putevima — redakcijski prečišćen tekst",
+      "article": "čl. 2, 3, 5, 6 i 166",
+      "checkedOn": "2026-09-11",
+      "revision": "Službeni glasnik RS zaključno sa 19/2025, prema sveže pročitanom zaglavlju PIS",
+      "contentHash": "8796f6a1718bea08ea4fe1dedb3c9a71001b1c6c5245a93526f365a61e668d5d"
+    },
+    {
+      "id": "pravilnik-kontrola-neposredno-regulisanje-pis-11-2024",
+      "url": "https://pravno-informacioni-sistem.rs/eli/rep/sgrs/ministarstva/pravilnik/2024/11/5/reg",
+      "title": "Pravilnik o načinu vršenja kontrole i neposrednog regulisanja saobraćaja na putevima i vođenju obaveznih evidencija o primeni posebnih mera i ovlašćenja",
+      "article": "čl. 2",
+      "checkedOn": "2026-09-11",
+      "revision": "Službeni glasnik RS 11/2024-60"
     }
   ]
 }
