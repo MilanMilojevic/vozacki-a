@@ -1187,9 +1187,9 @@ CARDS['skretanje'] = {
   title: 'Skretanje, prestrojavanje i polukružno okretanje',
   html: `
 <div class="kSek" data-sub="133,137">
-<p><b>Prestrojavanje (čl. 48):</b> na DOVOLJNOM ODSTOJANJU pred raskrsnicom zauzmi traku za svoj smer: za levo — krajnja leva, za desno — krajnja desna (na dvosmernom putu "krajnja leva" je uz središnju liniju!).</p>
-<svg viewBox="0 0 306 190" role="img" aria-label="Kolovoz sa tri trake i strelice: za skretanje levo zauzimaš krajnju levu traku, za skretanje desno krajnju desnu traku, srednja traka vodi pravo." style="max-width:306px;width:100%;display:block;margin:6px auto">
-  <rect x="20" y="8" width="266" height="130" fill="#9aa7b4"/>
+<p><b>Prestrojavanje (čl. 48):</b> na DOVOLJNOM ODSTOJANJU pred raskrsnicom zauzmi traku za svoj smer: po opštem pravilu za levo — krajnja leva, za desno — krajnja desna, ako signalizacijom nije drugačije određeno (na dvosmernom putu "krajnja leva" je uz središnju liniju!).</p>
+<svg viewBox="0 0 306 190" role="img" aria-label="Prikazane strelice na tri trake istog smera: leva traka vodi ulevo, srednja pravo, desna udesno." style="max-width:306px;width:100%;display:block;margin:6px auto">
+  <rect x="20" y="8" width="266" height="130" fill="#7f8c99"/>
   <line x1="109" y1="8" x2="109" y2="138" stroke="#fff" stroke-width="3" stroke-dasharray="10 8"/>
   <line x1="197" y1="8" x2="197" y2="138" stroke="#fff" stroke-width="3" stroke-dasharray="10 8"/>
   <g stroke="#fff" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -1200,18 +1200,18 @@ CARDS['skretanje'] = {
     <path d="M242 126 L242 60 L270 60"/>
     <path d="M270 60 L258 50 M270 60 L258 70"/>
   </g>
-  <text x="64" y="158" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">levo:</text>
-  <text x="64" y="175" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">krajnja leva</text>
-  <text x="242" y="158" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">desno:</text>
-  <text x="242" y="175" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">krajnja desna</text>
+  <text x="64" y="158" text-anchor="middle" font-size="14" font-weight="bold" fill="currentColor">levo:</text>
+  <text x="64" y="175" text-anchor="middle" font-size="14" font-weight="bold" fill="currentColor">krajnja leva</text>
+  <text x="242" y="158" text-anchor="middle" font-size="14" font-weight="bold" fill="currentColor">desno:</text>
+  <text x="242" y="175" text-anchor="middle" font-size="14" font-weight="bold" fill="currentColor">krajnja desna</text>
 </svg>
-<p><b>Propuštanja pri skretanju (čl. 47):</b> sa zemljanog puta/parkinga propuštaš SVE · pri skretanju preko biciklističke staze propuštaš bicikle · pravilo desne strane kad ništa drugo ne reguliše · pri skretanju ULEVO propuštaš vozila iz suprotnog smera.</p>
+<p><b>Propuštanja pri skretanju (čl. 47):</b> sa zemljanog puta ili površine bez javnog saobraćaja, pri uključivanju na put sa savremenim kolovoznim zastorom propuštaš sva vozila na tom putu · preko biciklističke staze ili trake propuštaš vozila koja se njom kreću · pravilo desne strane važi kad prvenstvo nije uređeno drugačije · po pravilu levog skretanja propuštaš vozila iz suprotnog smera koja idu pravo ili skreću udesno. Na regulisanoj raskrsnici pravila desne strane i levog skretanja uređuju međusobno prvenstvo onih koji istovremeno dobiju pravo prolaza.</p>
 </div>
 <div class="kSek" data-sub="137">
 <p><b>Ne ulazi u raskrsnicu (čl. 49)</b> — ni kad imaš zeleno/prvenstvo — ako bi zbog gužve ostao na raskrsnici ili pešačkom prelazu i blokirao druge.</p>
 </div>
 <div class="kSek" data-sub="133">
-<p><b>Polukružno okretanje ZABRANJENO (čl. 50):</b> tunel, most, vijadukt, podvožnjak, nadvožnjak, smanjena vidljivost, nedovoljna preglednost, nedovoljna širina puta. (Prepoznaješ listu? Skoro ista kao za preticanje — "opasna mesta".)</p>
+<p><b>Polukružno okretanje ZABRANJENO (čl. 50):</b> tunel, most, vijadukt, podvožnjak, nadvožnjak, smanjena vidljivost, nedovoljna preglednost, nedovoljna širina puta.</p>
 </div>
 <div class="kSek" data-sub="137">
 <p style="margin-top:18px"><b>PRILAZ RASKRSNICI I PROLAZAK KROZ NJU (čl. 48 i 49)</b></p>
@@ -1225,12 +1225,12 @@ CARDS['skretanje'] = {
 <tr><td>„dužan je da na <b>dovoljnom odstojanju</b> pred raskrsnicom izvrši prestrojavanje"</td><td><b>TAČNO</b> (čl. 48, stav 2)</td></tr>
 </table>
 <p><b>Ulazak na put sa prvenstvom prolaza:</b> propuštaš <b>SVA vozila</b> koja se kreću tim putem. Ne „samo ona zdesna", ne „samo ona sleva", ne „samo motorna". Tako glasi i sam znak <b>II-1 „ustupanje prvenstva prolaza"</b>: naredba vozaču da ustupi prvenstvo <b>vozilima koja se kreću putem na koji nailazi</b> (Pravilnik o saobraćajnoj signalizaciji, čl. 25).</p>
-<p class="mut">Zašto ovde ne odlučuje „pravilo desne strane"? Zato što se ono primenjuje tek kad prvenstvo <b>nije regulisano na drugi način</b>. Pažnja: na raskrsnici koja jeste regulisana (znakom, semaforom ili policajcem) pravila desne strane i levog skretanja i dalje važe — ali samo za <b>međusobno</b> prvenstvo onih koji istovremeno dobiju pravo prolaza. Čim stoji znak II-1 ili II-2, prvenstvo <b>jeste</b> regulisano — i ti propuštaš ceo taj put, a ne polovinu.</p>
+<p class="mut">Zašto ovde ne odlučuje „pravilo desne strane"? Zato što se ono primenjuje tek kad prvenstvo <b>nije regulisano na drugi način</b>. Pažnja: na raskrsnici koja jeste regulisana (znakom, semaforom ili policajcem) pravila desne strane i levog skretanja i dalje važe — ali samo za <b>međusobno</b> prvenstvo onih koji istovremeno dobiju pravo prolaza. Kada prvenstvo uređuje znak II-1 ili II-2, propuštaš vozila sa celog puta na koji nailaziš, a ne samo iz jednog smera.</p>
 </div>
 
 <div class="kSek" data-sub="133">
 <p style="margin-top:16px"><b>Strelica u traci je naredba — slikovna pitanja</b></p>
-<p>Kad si se već zaustavio u traci, smeš <b>samo tamo gde strelica na asfaltu pokazuje</b>. Zeleno svetlo ti ne otvara drugi smer, i nema „popravnog" iz pogrešne trake — jedini ispravan postupak je da nastaviš kuda strelica kaže i da se vratiš kasnije.</p>
+<p>U prikazanim slikovnim pitanjima iz zauzete trake smeš <b>samo tamo gde strelica na asfaltu pokazuje</b>. Zeleno svetlo ti ne otvara drugi smer: za željeni smer moraš se blagovremeno prestrojiti u odgovarajuću traku.</p>
 <table>
 <tr><th>Šta se vidi na slici</th><th>Šta se sme</th></tr>
 <tr><td>Široka gradska ulica, pogled sa mopeda: <b>tri trake</b>, u levoj strelica savijena <b>ulevo</b>, u tvojoj (srednjoj) strelica <b>pravo</b>, u desnoj strelice savijene <b>udesno</b>. Ispred je pešački prelaz, semafor desno je <b>zelen</b>.</td><td>Samo <b>pravo</b>. Skretanje ulevo <b>nije dozvoljeno</b>, skretanje udesno <b>nije dozvoljeno</b> — bez obzira na zeleno.</td></tr>
@@ -1245,8 +1245,8 @@ CARDS['skretanje'] = {
 <p>Zakon kaže: vozač <b>ne sme</b> vozilom da uđe u raskrsnicu, <b>iako ima prvenstvo prolaza ili mu je semaforom to dozvoljeno</b>, ako će se zbog gustine saobraćaja zaustaviti <b>na raskrsnici ili pešačkom prelazu</b> i time ometati ili onemogućiti saobraćaj vozila, odnosno pešaka.</p>
 <p>U testu se to isto pravilo pojavljuje u <b>dva ruha</b> — jednom kao „imam zeleno", drugi put kao „ja sam na putu sa prvenstvom prolaza". Odgovor je oba puta isti: <b>staneš i čekaš da se izlaz oslobodi</b>.</p>
 <svg viewBox="0 0 306 232" role="img" aria-label="Raskrsnica: za tebe je zeleno svetlo, ali vozilo ispred stoji iza raskrsnice, pa ne ulaziš u raskrsnicu; ispred tebe je pešački prelaz." style="max-width:306px;width:100%;display:block;margin:8px auto">
-  <rect x="96" y="0" width="114" height="214" fill="#9aa7b4"/>
-  <rect x="0" y="60" width="306" height="80" fill="#9aa7b4"/>
+  <rect x="96" y="0" width="114" height="214" fill="#7f8c99"/>
+  <rect x="0" y="60" width="306" height="80" fill="#7f8c99"/>
   <line x1="153" y1="0" x2="153" y2="58" stroke="#fff" stroke-width="3" stroke-dasharray="10 8"/>
   <line x1="153" y1="170" x2="153" y2="212" stroke="#fff" stroke-width="3" stroke-dasharray="10 8"/>
   <line x1="0" y1="100" x2="94" y2="100" stroke="#fff" stroke-width="3" stroke-dasharray="10 8"/>
@@ -1259,34 +1259,34 @@ CARDS['skretanje'] = {
     <rect x="176" y="148" width="11" height="20"/>
     <rect x="195" y="148" width="11" height="20"/>
   </g>
-  <rect x="96" y="60" width="114" height="80" fill="#c0392b" opacity=".5" stroke="#c0392b" stroke-width="2"/>
-  <text x="153" y="106" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">NE ULAZI</text>
-  <rect x="168" y="22" width="34" height="32" rx="6" fill="#e0c53a" stroke="#8a7a10" stroke-width="1.5"/>
-  <rect x="168" y="176" width="34" height="32" rx="6" fill="#c0392b" stroke="#7f1d1d" stroke-width="1.5"/>
-  <text x="185" y="198" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">ti</text>
+  <rect x="96" y="60" width="114" height="80" fill="#612017" opacity="1" stroke="#612017" stroke-width="2"/>
+  <text x="153" y="106" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">NE ULAZI</text>
+  <rect x="168" y="22" width="34" height="32" rx="6" fill="#e0c53a" stroke="#101820" stroke-width="1.5"/>
+  <rect x="168" y="176" width="34" height="32" rx="6" fill="#c0392b" stroke="#612017" stroke-width="1.5"/>
+  <text x="185" y="198" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">ti</text>
   <rect x="56" y="176" width="20" height="30" rx="5" fill="#4a5560"/>
   <circle cx="66" cy="191" r="7" fill="#22c55e"/>
   <line x1="204" y1="38" x2="221" y2="38" stroke="currentColor" stroke-width="1.5"/>
   <line x1="208" y1="157" x2="221" y2="157" stroke="currentColor" stroke-width="1.5"/>
-  <text x="224" y="18" font-size="12" fill="currentColor">vozilo</text>
-  <text x="224" y="35" font-size="12" fill="currentColor">ispred</text>
-  <text x="224" y="52" font-size="12" fill="currentColor">stoji</text>
-  <text x="224" y="158" font-size="12" fill="currentColor">pešački</text>
-  <text x="224" y="175" font-size="12" fill="currentColor">prelaz</text>
-  <text x="48" y="188" text-anchor="end" font-size="12" fill="currentColor">zeleno</text>
-  <text x="48" y="205" text-anchor="end" font-size="12" fill="currentColor">svetlo</text>
+  <text x="224" y="18" font-size="14" fill="currentColor">vozilo</text>
+  <text x="224" y="35" font-size="14" fill="currentColor">ispred</text>
+  <text x="224" y="52" font-size="14" fill="currentColor">stoji</text>
+  <text x="224" y="158" font-size="14" fill="currentColor">pešački</text>
+  <text x="224" y="175" font-size="14" fill="currentColor">prelaz</text>
+  <text x="48" y="188" text-anchor="end" font-size="14" fill="currentColor">zeleno</text>
+  <text x="48" y="205" text-anchor="end" font-size="14" fill="currentColor">svetlo</text>
 </svg>
 <p class="mut" style="text-align:center;font-size:var(--fs-sm)">imaš zeleno, ali izlaz iz raskrsnice je zauzet — ostaješ ispred zebre</p>
 <p><b>Četiri odgovora koji su ovde UVEK netačni</b> (vrte se kroz sva pitanja o gužvi na raskrsnici):</p>
 <table>
 <tr><th>Ponuđeno</th><th>Zašto pada</th></tr>
-<tr><td>„<b>mora</b> da uđe, bez obzira na gustinu, da ne bi ometao vozila koja se kreću iza njega"</td><td>Kolona iza tebe nije zakonski razlog ni za šta</td></tr>
+<tr><td>„<b>mora</b> da uđe, bez obzira na gustinu, da ne bi ometao vozila koja se kreću iza njega"</td><td>Kolona iza tebe nije razlog da blokiraš raskrsnicu</td></tr>
 <tr><td>„može da uđe i stane na pešačkom prelazu, <b>ako je pešacima semaforom zabranjen prolaz</b>"</td><td>Crveno za pešake ne pretvara zebru u parking</td></tr>
 <tr><td>„može, jer se <b>kreće putem sa prvenstvom prolaza</b>"</td><td>Čl. 49 izričito pominje prvenstvo — i svejedno zabranjuje ulazak</td></tr>
 <tr><td>„može ako gustina dozvoljava da <b>ne stane na pešačkom prelazu</b>, iako time ometa saobraćaj vozila"</td><td>Zabrana pokriva i zebru <b>i</b> raskrsnicu; smetnja vozilima je isto smetnja</td></tr>
 </table>
 <p class="mut">Slikovne varijante su prepoznatljive: sa mopeda vidiš zebru tik ispred sebe, a iza nje kolonu koja stoji; ili je nacrtan pogled odozgo gde crveno vozilo ima <b>zeleno svetlo</b>, ali žuto vozilo odmah iza raskrsnice ne miče; ili crveno vozilo ide <b>putem sa prvenstvom prolaza</b> (žuti romb pored kolovoza), a ispred njega pešački prelaz i zaglavljena kolona. Situacija je različita, odgovor isti.</p>
-<p><b>Ključ za celu ovu podoblast:</b> na raskrsnici te uvek pitaju tri iste stvari — <b>možeš li da staneš</b> (brzina na prilazu), <b>jesi li u pravoj traci</b> (prestrojavanje i strelica), i <b>gde ćeš stati</b> (nikad u raskrsnici, nikad na zebri). Prvenstvo prolaza i zeleno svetlo daju ti <b>pravo da prođeš</b>, ali ti nikad ne daju <b>pravo da blokiraš</b>.</p>
+<p><b>Ključ za celu ovu podoblast:</b> u ovim pitanjima razlikuj tri stvari — <b>možeš li da staneš</b> (brzina na prilazu), <b>jesi li u pravoj traci</b> (prestrojavanje i strelica), i <b>gde ćeš stati</b> (ne ulazi zbog gužve ako ćeš zaustavljanjem blokirati vozila ili pešake). Prvenstvo prolaza i zeleno svetlo daju ti <b>pravo da prođeš</b>, ali ti nikad ne daju <b>pravo da blokiraš</b>.</p>
 </div>
 `,
 };
@@ -4812,22 +4812,22 @@ X[9628] = { ...(X[9628] || {}), x: 'Obavezu propuštanja imaš samo kad se sused
 X[9630] = { ...(X[9630] || {}), x: 'Pošto je krajnjom desnom trakom saobraćaj onemogućen, vozila iz nje moraju u tvoju traku, pa nije tačno da nemaš nikakvu obavezu. Ali je obaveza precizna: omogućavaš uključenje jednog vozila, ne oba i ne cele kolone, jer se uključivanje odvija naizmenično. Kad ti propustiš prvo, drugo je briga vozača koji dolazi iza tebe, i tako se zatvorena traka prazni bez zastoja.' };
 X[9633] = { ...(X[9633] || {}), x: 'Naglo usporavanje zabranjeno je kao način vožnje, ali ne i onda kad njime izbegavaš neposrednu opasnost — a dete koje sa biciklom ulazi na kolovoz ispred tebe upravo je takva opasnost. Zato smeš naglo da usporiš. Izbegavanje skretanjem je lošije rešenje: promenom pravca odlaziš ka suprotnom smeru ili ka parkiranim vozilima, pa umesto da staneš, sam biraš u šta ćeš da udariš.' };
 X[9635] = { ...(X[9635] || {}), x: 'U ogledalima vidiš autobus neposredno iza sebe, a ispred je raskrsnica — brzinu moraš smanjiti, ali tako da vozača iza sebe ne ugroziš niti ometeš, dakle rano i postepeno. Naglo kočenje bi bilo dozvoljeno samo radi izbegavanja neposredne opasnosti, a nje ovde nema. Zato ne stoji ni da brzinu ne treba menjati: raskrsnici se ne prilazi istom brzinom kao otvorenom delu puta.' };
-X[9640] = { ...(X[9640] || {}), x: 'Kad na kolovozu nema strelica koje određuju smer, važi opšte pravilo prestrojavanja: za skretanje udesno zauzimaš traku uz desnu ivicu kolovoza. To je ovde traka 1, ona uz ivičnjak. Traka 2 je uz razdelno ostrvo i iz nje se udesno ne skreće, pa pada i ponuda koja spaja obe trake — dve trake za isti smer postoje samo kad su tako obeležene strelicama.' };
+X[9640] = { ...(X[9640] || {}), x: 'Na prikazanoj slici važi opšte pravilo prestrojavanja: za skretanje udesno zauzimaš traku uz desnu ivicu kolovoza. To je ovde traka 1, ona uz ivičnjak. Traka 2 je uz razdelno ostrvo i iz nje se udesno ne skreće, pa pada i ponuda koja spaja obe trake.' };
 X[9644] = { ...(X[9644] || {}), x: 'Oba vozila skreću ulevo istovremeno, pa im se putanje ne smeju preseći: svako ulazi u traku koja odgovara onoj iz koje je krenulo. Žuto vozilo, iz leve trake, ostaje uz razdelno ostrvo i propisno se kreće putanjom 4, a crveno, iz desne trake, ulazi u traku odmah do njega, dakle putanjom 1. Putanja 3 bi žuto vozilo odvela u traku koja pripada crvenom, a putanja 2 je nepotreban zamah crvenog preko susedne trake, skroz do spoljne ivice kolovoza.' };
 X[9645] = { ...(X[9645] || {}), x: 'Vozilo 2 dolazi iz leve trake, pa i posle skretanja mora da ostane levo, uz razdelno ostrvo — to je putanja 4. Putanja 3 bi ga odvela u traku u koju ulazi vozilo iz desne trake, dakle preko tuđe putanje. Kad dva vozila skreću ulevo jedno pored drugog, jedini bezbedan raspored je onaj u kome zadržavaju redosled iz traka iz kojih su krenula.' };
 X[9646] = { ...(X[9646] || {}), x: 'Vozilo 1 skreće iz desne trake, pa i posle skretanja ulazi u traku koja toj traci odgovara — u onu odmah do trake uz razdelno ostrvo, a to je putanja 1. Putanja 2 ga vodi preko susedne trake, skroz uz spoljnu ivicu novog kolovoza, dakle širokim zamahom preko trake koja mu ne pripada. Pravilo je jednostavno: ulaziš u traku koja odgovara onoj iz koje si krenuo.' };
-X[9647] = { ...(X[9647] || {}), x: 'Za skretanje ulevo prestrojavaš se u krajnju levu traku svog smera. Sa leve strane je razdelno ostrvo, pa je tvoja krajnja leva traka ona označena brojem 2. Traka 1 je uz desnu ivicu kolovoza i iz nje se ide pravo ili udesno. Ponuda sa obe trake bi važila samo da su strelice na kolovozu tako odredile, a njih ovde nema.' };
+X[9647] = { ...(X[9647] || {}), x: 'Za skretanje ulevo prestrojavaš se u krajnju levu traku svog smera. Sa leve strane je razdelno ostrvo, pa je tvoja krajnja leva traka ona označena brojem 2. Traka 1 je uz desnu ivicu kolovoza i iz nje se ide pravo ili udesno. Ponuda sa obe trake bi važila kada bi saobraćajnom signalizacijom bilo tako određeno, a to ovde nije prikazano.' };
 X[9649] = { ...(X[9649] || {}), x: 'Znakovi zabranjenog saobraćaja u jednom smeru, postavljeni sa obe strane ulaza, pokazuju da se u ovu ulicu ne sme ući sa poprečnog puta — ulica je jednosmerna, pa su obe trake namenjene tvom smeru. Zato je krajnja leva traka ona uz levu ivicu kolovoza, dakle traka 1, i iz nje se skreće ulevo. Traka 2 je uz desnu ivicu, a strelica koja bi levo dozvolila iz obe trake ovde nije iscrtana.' };
 X[9650] = { ...(X[9650] || {}), x: 'Ovde odlučuju strelice na kolovozu, a ne opšte pravilo. U traci 1 iscrtana je strelica koja pokazuje samo ulevo, a u traci 2 dvostruka strelica — jedan krak ulevo, drugi udesno. Pošto obe trake imaju krak za levo, skretanje ulevo je dozvoljeno iz obe. Zato ovde pada navika da se ulevo sme isključivo iz krajnje leve trake.' };
 X[9653] = { ...(X[9653] || {}), x: 'Skretanje udesno se izvodi iz trake uz desnu ivicu kolovoza, a ti si u traci levo od nje, odvojen žutom linijom. Zato se prvo prestrojavaš udesno, a pri prestrojavanju ustupaš prolaz vozilu koje se već kreće tom trakom — u desnom retrovizoru ti se približava autobus. Prvenstvo, dakle, nije tvoje, ali nije rešenje ni da skreneš iz trake u kojoj si sada.' };
 X[9675] = { ...(X[9675] || {}), x: 'Plavi krug je naredba, a ovaj pokazuje dva dozvoljena smera: pravo i udesno. Polukružno okretanje je po smeru kretanje ulevo, a levo ti znak ne daje, pa ono otpada bez obzira na to što bi propustio vozila iz suprotnog smera. Crveno svetlo te samo zaustavlja; ono ne menja koje ti je smerove znak dozvolio.' };
-X[9677] = { ...(X[9677] || {}), x: 'Plavi krug ovde dozvoljava pravo i ulevo, a i strelica na kolovozu ispred tebe ima krak za pravo i krak za levo. Nijedno od to dvoje ne zabranjuje polukružno okretanje — ono ide uz skretanje ulevo, pa je dozvoljeno tamo gde je levo dozvoljeno i gde posebnom zabranom nije isključeno. Zato padaju obe ponude koje se pozivaju na znak, odnosno na oznaku.' };
+X[9677] = { ...(X[9677] || {}), x: 'Plavi krug ovde dozvoljava pravo i ulevo, a i strelica na kolovozu ispred tebe ima krak za pravo i krak za levo. Nijedno od to dvoje ne zabranjuje polukružno okretanje. Zato padaju obe ponude koje se pozivaju na znak, odnosno na oznaku.' };
 X[9679] = { ...(X[9679] || {}), x: 'Oba plava kruga pored kolovoza pokazuju samo pravu strelicu, a i strelica na asfaltu ispred tebe je prava — dozvoljen smer je jedino pravo. Polukružno okretanje bi značilo kretanje ulevo, što ti naredba iz plavog kruga ne dopušta. Zeleno svetlo ti daje pravo prolaza, ali ne i pravo da biraš smer koji je znakom isključen.' };
 X[9681] = { ...(X[9681] || {}), x: 'Nalaziš se u tunelu, a tunel je jedno od mesta na kojima je polukružno okretanje izričito zabranjeno. Zabrana je bezuslovna: ne pomaže ni to što bi propustio vozila iz suprotnog smera, ni to što bi okret izveo iz jednog poteza. Uz tunel su na istom spisku most, vijadukt, nadvožnjak i podvožnjak, kao i mesta sa nedovoljnom preglednošću.' };
-X[9682] = { ...(X[9682] || {}), x: 'Ispred tebe je most, a most je jedno od mesta na kojima se polukružno okretanje ne sme izvesti. Zabrana ne trpi izuzetke: ne ukida je ni propuštanje vozila iz suprotnog smera ni okret bez manevrisanja. Razlog je isti kao kod tunela i nadvožnjaka — sužen prostor u kome nema kuda da se izmakne ni tebi ni onome ko naiđe.' };
+X[9682] = { ...(X[9682] || {}), x: 'Ispred tebe je most, a most je jedno od mesta na kojima se polukružno okretanje ne sme izvesti. Zabrana ne trpi izuzetke: ne ukida je ni propuštanje vozila iz suprotnog smera ni okret bez manevrisanja.' };
 X[9685] = { ...(X[9685] || {}), x: 'Trake razdvaja puna razdelna linija, a preko nje se ne sme prelaziti — polukružno okretanje bi značilo baš to, prelazak na deo kolovoza namenjen suprotnom smeru. Zato ovde otpada bez obzira na to što bi propustio vozila koja nailaze i što bi okret izveo iz jednog poteza: nijedno od toga ne ukida zabranu koju nosi sama linija. Okrenuti se smeš tek tamo gde je razdelna linija isprekidana.' };
 X[9686] = { ...(X[9686] || {}), x: 'Put je ovde prav, širok i pregledan, razdelna linija je isprekidana, a nema ni znaka ni oznake koji bi okretanje zabranili. Nema ni jednog mesta sa spiska na kome je polukruženje zabranjeno — ni mosta, ni tunela, ni nadvožnjaka, ni smanjene preglednosti. Uslov da se okret izvede bez manevrisanja ne postoji u propisu; ti samo moraš da propustiš vozila i radnju izvedeš bezbedno.' };
-X[9687] = { ...(X[9687] || {}), x: 'Prolaziš ispod nadvožnjaka, dakle kroz podvožnjak, a to je jedno od mesta na kojima je polukružno okretanje zabranjeno. Zabrana važi sama po sebi, pa je ne ukida ni propuštanje vozila iz suprotnog smera ni to što bi okret izveo bez manevrisanja. Isti spisak pokriva tunel, most, vijadukt i nadvožnjak — svuda gde je prostor skučen, a izmicanje nemoguće.' };
+X[9687] = { ...(X[9687] || {}), x: 'Prolaziš ispod nadvožnjaka, dakle kroz podvožnjak, a to je jedno od mesta na kojima je polukružno okretanje zabranjeno. Zabrana važi sama po sebi, pa je ne ukida ni propuštanje vozila iz suprotnog smera ni to što bi okret izveo bez manevrisanja. Isti spisak pokriva tunel, most, vijadukt i nadvožnjak.' };
 X[9693] = { ...(X[9693] || {}), x: 'Radovi i prepreka su na tvojoj polovini kolovoza, a plavi znak sa kosom strelicom te upućuje da ih obiđeš sa leve strane. Time ulaziš u deo kolovoza namenjen suprotnom smeru, pa nemaš nikakvo prvenstvo: usporavaš i, ako treba, zaustavljaš se dok ne prođu vozila iz suprotnog smera. I to ne samo prvo od njih, nego sva, jer je prepreka na tvojoj strani.' };
 X[9706] = { ...(X[9706] || {}), x: 'Prepreka je na tvojoj strani kolovoza i mimoilaženje tu nije moguće, a vozilo iz suprotnog smera je već stupilo u suženi deo. Zato ti zaustavljaš vozilo, i to na mestu na kome se možete bezbedno mimoići. Uzbrdica ti sama po sebi ne daje prvenstvo, a od drugog vozača ne smeš da tražiš da se vraća unazad ni da izlazi na trotoar.' };
 X[9715] = { ...(X[9715] || {}), x: 'Plavi krug sa kružnim strelicama najavljuje kružni tok, a obrnuti trougao iznad njega ti nalaže da propustiš vozila koja se u njemu već kreću. Kad izlaziš na prvom izlazu udesno, ostrvo ne obilaziš — skreneš udesno uz spoljnu ivicu i odmah izađeš. Obilaženje oko ostrva potrebno je tek za izlaze koji su dalje ulevo i za polukružno okretanje, ne i za prvi desni izlaz.' };
@@ -4846,9 +4846,9 @@ X[10000] = { ...(X[10000] || {}), x: 'Ti se već krećeš putem, a oba vozila te
 X[10004] = { ...(X[10004] || {}), x: 'Skretanjem presecaš biciklističku stazu, a tada si dužan da propustiš sva vozila koja se njome kreću, bez obzira na to da li ti dolaze sleva ili zdesna. Bicikl je vozilo, a ne pešak, i ne postoji pravilo po kome bi motocikl imao prednost zato što je brži ili veći. Zato ovde čekaš da biciklista prođe.' };
 X[10005] = { ...(X[10005] || {}), x: 'Bicikl je vozilo i u raskrsnici ima ista prava kao automobil — pravilo po kome veće ili brže vozilo ima prednost ne postoji. Kreće se uz desnu ivicu kolovoza, pa se obojici vozača nalazi sa desne strane, a onome koji skreće udesno preseca i putanju. Zato ga propuštaju i jedan i drugi, bez obzira na to što je sporiji.' };
 X[10010] = { ...(X[10010] || {}), x: 'Strelica na kolovozu u tvojoj traci je naredba, a ne predlog: u srednjoj traci nacrtana je strelica pravo, pa iz nje smeš samo pravo. Leva traka ima strelicu savijenu ulevo, desna udesno — njihove mogućnosti nisu tvoje. Zeleno svetlo ti dozvoljava da prođeš raskrsnicu u smeru koji tvoja traka propisuje, ne otvara ti sva tri smera, pa zamka sa uslovom da nikoga ne ometaš pada.' };
-X[10012] = { ...(X[10012] || {}), x: 'Zauzeo si srednju traku, a u njoj je na asfaltu strelica koja pokazuje pravo. Za skretanje ulevo moraš se blagovremeno prestrojiti u krajnju levu traku, gde je nacrtana strelica savijena ulevo. Kada si već stao u traci za pravo, nema popravnog: skretanje ulevo odatle nije dozvoljeno, nego nastavljaš pravo i vraćaš se drugim putem.' };
+X[10012] = { ...(X[10012] || {}), x: 'Zauzeo si srednju traku, a u njoj je na asfaltu strelica koja pokazuje pravo. Za skretanje ulevo moraš se blagovremeno prestrojiti u krajnju levu traku, gde je nacrtana strelica savijena ulevo. Na ovoj slici iz zauzete trake smeš da nastaviš pravo; skretanje ulevo odatle nije dozvoljeno.' };
 X[10014] = { ...(X[10014] || {}), x: 'Iz srednje trake, u kojoj je nacrtana strelica pravo, ne smeš udesno — za desno se prestrojava u krajnju desnu traku, obeleženu strelicom savijenom udesno. Prestrojavanje se obavlja na dovoljnom odstojanju pred raskrsnicom, a ne u poslednjem trenutku ili prelaskom preko trake. Zato je i pored zelenog svetla jedini dozvoljen smer iz tvoje trake pravo.' };
-X[10019] = { ...(X[10019] || {}), x: 'U tvojoj traci na kolovozu je strelica savijena ulevo, pa si u pravoj traci za taj smer i skretanje odatle nije sporno. Strelica ti, međutim, daje samo smer, ne i slobodan prolaz: pri skretanju ulevo prvo propuštaš vozila iz suprotnog smera, a zatim i pešake koji prelaze ulicu u koju ulaziš. Zamka je navika da na ovakvim slikama uvek odgovoriš da nije dozvoljeno.' };
+X[10019] = { ...(X[10019] || {}), x: 'U tvojoj traci na kolovozu je strelica savijena ulevo, pa si u pravoj traci za taj smer i skretanje odatle nije sporno. Strelica ti, međutim, daje samo smer, ne i slobodan prolaz: pri skretanju ulevo propuštaš vozila iz suprotnog smera koja istovremeno imaju prolaz i idu pravo ili skreću udesno, kao i pešake koji prelaze ulicu u koju ulaziš. Zamka je navika da na ovakvim slikama uvek odgovoriš da nije dozvoljeno.' };
 X[10021] = { ...(X[10021] || {}), x: 'Prvenstvo prolaza ti daje pravo da prođeš pre drugih, ali ne i pravo da uđeš tamo gde nema mesta. Vozila ispred tebe stoje, pa bi ulaskom ostao na pešačkom prelazu ili u samoj raskrsnici i blokirao pešake i vozila sa poprečnog puta. Zato čekaš ispred prelaza dok se prostor iza raskrsnice ne oslobodi, iako imaš prvenstvo.' };
 X[10022] = { ...(X[10022] || {}), x: 'Zeleno svetlo je dozvola da uđeš, a ne naredba: u raskrsnicu se ne ulazi ako zbog gužve ne možeš i da je napustiš. Zeleno i žuto vozilo ispred stoje, pa bi crveno vozilo ostalo zaustavljeno u raskrsnici i, čim se svetla promene, preseklo bi put onima koji tada dobiju zeleno. Ni pritisak vozila iza tebe nije razlog da uđeš.' };
 X[10023] = { ...(X[10023] || {}), x: 'Isto pravilo važi i kada ideš putem sa prvenstvom prolaza, obeleženim žutim rombom: prvenstvo ne ukida zabranu blokiranja raskrsnice. Kolona ispred crvenog vozila stoji, pa bi ono ostalo na pešačkom prelazu ili u raskrsnici i smetalo pešacima i vozilima sa sporednog puta. Sačekaš ispred, pa uđeš tek kada možeš i da izađeš.' };
@@ -4885,7 +4885,7 @@ X[10412] = { ...(X[10412] || {}), x: 'Žuta kosa strelica koja trepće iznad tra
 X[10413] = { ...(X[10413] || {}), x: 'Zelena strelica okrenuta nadole iznad trake znači da je ta traka otvorena i da njome smeš da se krećeš. Vezuje se za traku iznad koje visi, a ne za vrstu vozila, pa nije namenjena samo tramvajima. Obavezan prelazak u drugu traku nalaže žuta kosa trepćuća strelica, a traku zatvara crveni ukršteni signal.' };
 X[10416] = { ...(X[10416] || {}), x: 'Ovde je vidiš na prikolici zaustavljenoj kod radova: lampe slažu veliku strelicu ulevo, a plavi znak ispod njih govori da radilište obilaziš s leve strane. Takva tabla ide na zadnji deo motornog vozila ili prikolice i poruku nosi samo dok to vozilo stoji. Razdvajajuća ograda i čeoni branik postavljaju se na sam put, pa ih na vozilu ni ne tražiš.' };
 X[10419] = { ...(X[10419] || {}), x: 'Crvena zastavica je podignuta, pa je prolaz za tebe zatvoren, a zelena koja visi uz telo nije poruka. Znak radnika koji reguliše saobraćaj na radilištu ima prvenstvo nad signalizacijom i nad pravilima, pa je obavezujući za tebe. Prazna traka ispred tebe nije izgovor: radnik vidi kada pušta suprotni smer, a ti sa svog mesta to ne možeš da proceniš.' };
-X[10462] = { ...(X[10462] || {}), x: 'U obe trake iscrtana je strelica sa dva kraka — jedan pokazuje pravo, drugi savija udesno. Kad je smer određen oznakom na kolovozu, ona je jača od opšteg pravila po kome se udesno skreće samo iz krajnje desne trake, pa se ovde udesno sme i iz trake 1 i iz trake 2. Zato padaju ponude koje izdvajaju samo jednu od njih.' };
+X[10462] = { ...(X[10462] || {}), x: 'U obe trake strelica dozvoljava skretanje udesno. Kad je smer određen oznakom na kolovozu, ona je jača od opšteg pravila po kome se udesno skreće samo iz krajnje desne trake, pa se ovde udesno sme i iz trake 1 i iz trake 2. Zato padaju ponude koje izdvajaju samo jednu od njih.' };
 X[10464] = { ...(X[10464] || {}), x: 'U traci 2, koja je uz levu ivicu kolovoza, strelica pokazuje ulevo, a u traci 1 do nje iscrtana je strelica sa dva kraka: pravo i ulevo. Pošto obe trake imaju krak za levo, skretanje ulevo je dozvoljeno iz obe. Oznaka na kolovozu ovde određuje smerove, pa se ne primenjuje opšte pravilo po kome bi levo bilo samo iz krajnje leve trake.' };
 X[10550] = { ...(X[10550] || {}), x: 'Znak policijskog službenika jači je od svega ostalog na raskrsnici. On stoji okrenut prednjom stranom tela prema tebi, a taj položaj za tvoj smer znači zabranjen prolaz, pa zaustavljaš vozilo ispred linije zaustavljanja i tu čekaš. Propuštanje pešaka nije dovoljan odgovor, jer ti ionako ne smeš da pređeš liniju, a truba ne služi da bi pešaci brže prešli.' };
 X[10563] = { ...(X[10563] || {}), x: 'Iz trake za uključivanje prelaziš u traku koja ti je sa leve strane, a pokazivač uvek najavljuje stranu na koju se pomeraš. Desni bi značio da ideš ka bankini i poslao bi pogrešnu poruku onima iza tebe. Nameru najavljuješ i onda kada si se već uverio da je manevar bezbedan, jer taj znak nije za tebe nego za druge koji ti se približavaju.' };
@@ -5088,7 +5088,7 @@ X[10498] = { x: stazaTraka };
 X[10006] = { x: 'Približavanje raskrsnici (ZOBS čl. 48): prilagodi vožnju USLOVIMA na raskrsnici i vozi brzinom pri kojoj možeš da se zaustaviš i propustiš one koji imaju prvenstvo.' };
 X[10007] = { x: 'Prestrojavanje se vrši NA DOVOLJNOM ODSTOJANJU PRED raskrsnicom (ZOBS čl. 48 st. 2) — zauzmi traku za svoj smer na vreme, ne u poslednji čas.' };
 X[10008] = { x: 'Ko ULAZI na put sa prvenstvom prolaza — propušta SVA vozila na tom putu (znak "ustupi prvenstvo" ili STOP na tvom prilazu).' };
-const gustina = 'ZOBS čl. 49: ne ulazi u raskrsnicu — ni sa prvenstvom, ni na zeleno — ako bi zbog gužve stao NA raskrsnici ili pešačkom prelazu i blokirao poprečni saobraćaj. Zeleno svetlo nije dozvola da zapušiš raskrsnicu.';
+const gustina = 'ZOBS čl. 49: ne ulazi u raskrsnicu — ni sa prvenstvom, ni na zeleno — ako bi zbog gužve stao NA raskrsnici ili pešačkom prelazu i ometao saobraćaj vozila ili pešaka. Zeleno svetlo nije dozvola da zapušiš raskrsnicu.';
 X[10015] = { x: gustina };
 X[10016] = { x: gustina };
 // --- Opšte odredbe / hijerarhija (sub 131) ---
@@ -5178,7 +5178,7 @@ X[10528] = { x: "Pre napuštanja parkiranog vozila moraš preduzeti sve potrebne
 X[9639] = { x: 'Skretanje UDESNO: iz krajnje desne trake, uz desnu ivicu kolovoza (ZOBS čl. 48) — bez "sečenja" iz srednje trake.' };
 X[9643] = { x: 'Na JEDNOSMERNOM putu skretanje ulevo vrši se iz krajnje LEVE trake uz LEVU ivicu kolovoza — nema saobraćaja iz suprotnog smera pa je leva ivica tvoja.' };
 X[10463] = { x: 'Skretanje ULEVO na dvosmernom putu: iz krajnje leve trake SVOJE kolovozne trake — uz razdelnu liniju, ne preko nje (ZOBS čl. 48).' };
-const poluList = 'Polukružno okretanje je zabranjeno (ZOBS čl. 50): tunel, most, vijadukt, podvožnjak, nadvožnjak, smanjena vidljivost, nedovoljna preglednost, nedovoljna širina puta. Ista lista "opasnih mesta" kao za preticanje — nauči je jednom.';
+const poluList = 'Polukružno okretanje je zabranjeno (ZOBS čl. 50): tunel, most, vijadukt, podvožnjak, nadvožnjak, smanjena vidljivost, nedovoljna preglednost, nedovoljna širina puta.';
 X[9673] = { x: poluList };
 X[10470] = { x: poluList };
 X[9689] = { x: 'Mimoilaženje (ZOBS čl. 51): po potrebi pomeri vozilo ka DESNOJ ivici i ostavi dovoljno bočno rastojanje sa svoje leve strane.' };
@@ -6698,7 +6698,7 @@ X[9813] = { ...(X[9813] || {}), card: 'znakovi-naredbi' };   // zabrana pretican
 X[9539] = { ...(X[9539] || {}), card: 'pesaci-bicikli' };   // obaveza prema pešacima na prelazu (#9539)
 
 X[9531] = { ...(X[9531] || {}), card: 'zamke-odgovori' };   // večiti mamci u ponuđenim odgovorima (#9531)
-X[9689] = { ...(X[9689] || {}), card: 'zamke-odgovori' };   // večiti mamci u ponuđenim odgovorima (#9689)
+X[9689] = { ...(X[9689] || {}), card: 'zamke-odgovori', nocard: 1 };   // večiti mamci u ponuđenim odgovorima (#9689)
 X[7925] = { ...(X[7925] || {}), card: 'zamke-odgovori' };   // večiti mamci u ponuđenim odgovorima (#7925)
 
 for (const id of [7996, 7997, 7998, 8008, 8009, 8010, 8013, 8015, 8016]) X[id] = { ...(X[id] || {}), card: 'kategorije-vozila' };
@@ -6754,7 +6754,7 @@ const out = {
 
 // Lokalno prevedi pregledane pristupačne opise; opšti toCyr štiti HTML tagove.
 // Novi opis u ovim karticama zahteva ponovni pregled oba pisma.
-for (const [key, expected] of [['brzine', 6], ['kategorije-vozila', 4], ['put-pojmovi', 1], ['vozilo-tehnika', 4], ['kaznene-klase', 13], ['preticanje', 3]]) {
+for (const [key, expected] of [['brzine', 6], ['kategorije-vozila', 4], ['put-pojmovi', 1], ['vozilo-tehnika', 4], ['kaznene-klase', 13], ['preticanje', 3], ['skretanje', 2]]) {
   let count = 0;
   out.cards[key].h.c = out.cards[key].h.c.replace(/aria-label="([^"]*)"/g, (_, label) => {
     count++;
@@ -7019,6 +7019,25 @@ for (const [key, expected] of [['brzine', 6], ['kategorije-vozila', 4], ['put-po
     return 'aria-label="' + opisi.get(label) + '"';
   });
   if (prevedeno !== 8) throw new Error('Kartica semafori: očekivano osam pristupačnih opisa');
+}
+
+// Kartica skretanja: sačuvaj izvorne oznake znakova i u ćirilici.
+{
+  for (const [staro, novo, broj] of [
+  [
+    "ИИ-1",
+    "II-1",
+    2
+  ],
+  [
+    "ИИ-2",
+    "II-2",
+    1
+  ]
+]) {
+    if (out.cards.skretanje.h.c.split(staro).length - 1 !== broj) throw new Error('Kartica skretanje: neočekivan opis ili oznaka');
+    out.cards.skretanje.h.c = out.cards.skretanje.h.c.replaceAll(staro, novo);
+  }
 }
 
 // Automatski skener: mešani latinično-ćirilični tokeni i zaostali digrafi u ćiriličnom izlazu
