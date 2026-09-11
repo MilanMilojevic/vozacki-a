@@ -439,6 +439,33 @@
       "checkedOn": "2026-09-11",
       "revision": "Službeni glasnik RS zaključno sa76/2026",
       "contentHash": "8f9b78ea7810a5d5028f3b2878773d37080cf9096a2239dc2a306101708c45d7"
+    },
+    {
+      "id": "zobs-pruga-cela-pis-19-2025",
+      "url": "https://reg.pravno-informacioni-sistem.rs/api/viewAct/8b57d1e9-9b34-4fa0-9693-7ceb6da65486?lawActId=438311",
+      "title": "Zakon o bezbednosti saobraćaja na putevima — PIS",
+      "article": "Čl.55(3)(11),66(1)(2),100,101,149,153; sačuvani prelazni čl.71/74 izmene76/2023",
+      "checkedOn": "2026-09-11",
+      "revision": "Službeni glasnik RS zaključno sa19/2025",
+      "contentHash": "8796f6a1718bea08ea4fe1dedb3c9a71001b1c6c5245a93526f365a61e668d5d"
+    },
+    {
+      "id": "signalizacija-pruga-cela-pis-76-2026",
+      "url": "https://reg.pravno-informacioni-sistem.rs/api/viewdoc?doctype=reg&regactid=440491&uuid=2bd446cf-0965-4141-8323-d207a4216ed1",
+      "title": "Pravilnik o saobraćajnoj signalizaciji — PIS",
+      "article": "Čl.18(27–30),19–21,23,81,84; prelazni21/2024 čl.3–5 i76/2026 čl.49–50; službeni I-34/I-34.1 iVI-9",
+      "checkedOn": "2026-09-11",
+      "revision": "Službeni glasnik RS zaključno sa76/2026",
+      "contentHash": "8f9b78ea7810a5d5028f3b2878773d37080cf9096a2239dc2a306101708c45d7"
+    },
+    {
+      "id": "zobs-pruga-prelazni-parlament-76-2023",
+      "url": "https://www.parlament.gov.rs/upload/archive/files/lat/pdf/zakoni/13_saziv/1456-23%20-%20lat..pdf",
+      "title": "Usvojene izmene ZOBS-a — Narodna skupština",
+      "article": "Čl.71 i74: zamena železničkih semafora i stupanje na snagu",
+      "checkedOn": "2026-09-11",
+      "revision": "Usvojeni tekst objavljen u Službenom glasniku76/2023 dana7.9.2023",
+      "contentHash": "f773494e376c9148b8d954a8ab51415ad80da88d38b4589c36235f5cf3f74b25"
     }
   ]
 }

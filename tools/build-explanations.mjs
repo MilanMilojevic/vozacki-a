@@ -2483,32 +2483,33 @@ CARDS['pesaci-bicikli'] = {
 CARDS['pruga'] = {
   title: 'Prelaz puta preko železničke pruge',
   html: `
-<p><b>Gvozdeno pravilo (čl. 100):</b> šinsko vozilo UVEK propuštaš — voz ne može da stane.</p>
-<p><b>Približavanje prelazu:</b> brzina takva da možeš da staneš pred branikom/uređajem, odnosno pre pruge · spušten ili se spušta branik / crveno svetlo / zvučni signal = STOP · na prelazu je zabranjeno preticanje, obilaženje i zaustavljanje (+ 5 m zona za parkiranje).</p>
-<p><b>Prelaz bez branika i uredjaja:</b> zaustavi se, pogledaj oba smera, pređi tek kad si siguran da voz ne nailazi.</p>
+<p><b>Pravilo na prelazu (čl. 100):</b> dužan si da propustiš šinsko vozilo. Prilazi tako da svoje vozilo možeš da zaustaviš pred uređajem ili pre stupanja na prugu.</p>
+<p><b>Približavanje prelazu:</b> podesi brzinu tako da možeš da staneš pred branikom ili semaforom, odnosno pre pruge · spušten ili se spušta branik, crveno svetlo ili zvučni znak = stani · postojano žuto svetlo zabranjuje prolaz, osim kada se vozilo ne može bezbedno zaustaviti. Trepćuće žuto nalaže povećanu opreznost zbog mogućeg nailaska voza, jer semafor, odnosno semafor i uređaj za zatvaranje saobraćaja, nije ispravan ili se ne koristi. Na samom prelazu zabranjeni su preticanje i obilaženje; na prelazu i na manje od 5 m od njega zabranjeni su i zaustavljanje i parkiranje.</p>
+<p><b>Prelaz bez branika, polubranika i uređaja za najavu voza:</b> zaustavi se, pogledaj oba smera i pređi tek kada se uveriš da voz ili drugo šinsko vozilo ne nailazi (čl. 101 st. 2).</p>
 <p style="margin-top:10px"><b>Šta ćeš videti na putu</b> — prepoznaj svaki znak:</p>
 <div class="signRow lineRow">
   <div class="signCell">
-    <svg viewBox="0 0 120 120"><rect x="4" y="4" width="112" height="112" rx="8" fill="#fff" stroke="#c0392b" stroke-width="6"/>
-      <path d="M26 26 L94 94 M94 26 L26 94" stroke="#111" stroke-width="9" stroke-linecap="round"/></svg>
-    <b>ANDREJIN KRST — jedan kolosek</b><span>obeležava sam prelaz; postavlja se neposredno pred prugu</span>
+    <svg role="img" aria-label="Andrejin krst za jedan kolosek" viewBox="0 0 120 120"><rect x="4" y="20" width="112" height="80" rx="5" fill="#fff" stroke="#111" stroke-width="3"/>
+      <path d="M22 34 L98 86 M98 34 L22 86" stroke="#c0392b" stroke-width="12" stroke-linecap="round"/><path d="M22 34 L98 86 M98 34 L22 86" stroke="#fff" stroke-width="6" stroke-linecap="round"/></svg>
+    <b>ANDREJIN KRST — jedan kolosek</b><span>obeležava sam prelaz; postavlja se 5 m od najbliže šine, a prema okolnostima 3–10 m</span>
   </div>
   <div class="signCell">
-    <svg viewBox="0 0 120 120"><rect x="4" y="4" width="112" height="112" rx="8" fill="#fff" stroke="#c0392b" stroke-width="6"/>
-      <path d="M26 34 L94 84 M94 34 L26 84 M26 56 L94 106 M94 56 L26 106" stroke="#111" stroke-width="8" stroke-linecap="round"/></svg>
-    <b>DVOSTRUKI KRST — dva ili više koloseka</b><span>posle prvog voza može naići i drugi iz suprotnog smera</span>
+    <svg role="img" aria-label="Andrejin krst za dva ili više koloseka" viewBox="0 0 120 120"><rect x="4" y="8" width="112" height="104" rx="5" fill="#fff" stroke="#111" stroke-width="3"/>
+      <path d="M22 22 L98 52 M98 22 L22 52 M22 98 L60 68 M60 68 L98 98" stroke="#c0392b" stroke-width="11" stroke-linecap="round"/><path d="M22 22 L98 52 M98 22 L22 52 M22 98 L60 68 M60 68 L98 98" stroke="#fff" stroke-width="5" stroke-linecap="round"/></svg>
+    <b>DVOSTRUKI ANDREJIN KRST — dva ili više koloseka</b><span>posle prvog voza može naići i drugo šinsko vozilo</span>
   </div>
   <div class="signCell">
-    <svg viewBox="0 0 120 120"><rect x="38" y="4" width="44" height="112" rx="3" fill="#fff" stroke="#8a99a8" stroke-width="2"/><g fill="#e0451c"><polygon points="38,30 82,12 82,24 38,42"/><polygon points="38,56 82,38 82,50 38,68"/><polygon points="38,82 82,64 82,76 38,94"/></g></svg>
+    <svg role="img" aria-label="Znak za približavanje mestu ukrštanja puta i železničke pruge sa tri kose trake, 240 metara" viewBox="0 0 120 120"><rect x="38" y="4" width="44" height="112" rx="3" fill="#fff" stroke="#111" stroke-width="2"/><g fill="#c0392b"><polygon points="38,30 82,12 82,24 38,42"/><polygon points="38,56 82,38 82,50 38,68"/><polygon points="38,82 82,64 82,76 38,94"/></g></svg>
     <b>KOSNICI — 240 · 160 · 80 m</b><span>uspravna tabla ispod znaka: tri kose pruge = 240 m do pruge, dve = 160 m, jedna = 80 m</span>
   </div>
   <div class="signCell">
-    <svg viewBox="0 0 120 120"><rect x="0" y="70" width="120" height="50" fill="#9aa7b4"/>
-      <rect x="10" y="30" width="100" height="12" rx="4" fill="#c0392b"/><rect x="10" y="30" width="25" height="12" fill="#fff"/><rect x="60" y="30" width="25" height="12" fill="#fff"/>
-      <circle cx="24" cy="58" r="9" fill="#c0392b"/><circle cx="52" cy="58" r="9" fill="#5a2320"/></svg>
-    <b>BRANIK + DVA CRVENA</b><span>spušten ili se spušta branik, odnosno naizmenično trepću crvena svetla = obavezno stajanje</span>
+    <svg role="img" aria-label="Spušten crveno-žuti branik i železnički semafor sa crvenim i žutim svetlom" viewBox="0 0 120 120"><rect x="0" y="78" width="120" height="42" fill="#9aa7b4"/>
+      <rect x="8" y="26" width="104" height="14" rx="3" fill="#f3c000"/><path d="M8 26h22v14H8zm44 0h22v14H52zm44 0h16v14H96z" fill="#c0392b"/>
+      <rect x="31" y="49" width="58" height="27" rx="4" fill="#242424"/><circle cx="48" cy="62.5" r="9" fill="#d8362a"/><circle cx="72" cy="62.5" r="9" fill="#f3c000"/></svg>
+    <b>BRANIK + CRVENO/ŽUTO</b><span>spušten ili se spušta branik = stani · crveno zabranjuje prolaz · postojano žuto zabranjuje prolaz osim kada ne možeš bezbedno da se zaustaviš</span>
   </div>
-</div>`,
+</div>
+<p class="mut"><b>Stari uređaj sa dva crvena svetla:</b> fotografije i pitanje 10415 prikazuju raniji semafor. On zadržava isto značenje do zamene, ali najkasnije do 15. septembra 2026. Rok zamene ne znači dozvolu za prelazak uz aktivan crveni signal. Posle tog roka pitanje 10415 mora ponovo da se proveri prema izvornoj ispitnoj bazi (ZOBS 76/2023, čl. 71; Pravilnik 21/2024, čl. 3).</p>`,
 };
 
 CARDS['put-pojmovi'] = {
@@ -4203,18 +4204,18 @@ pre nego što si siguran — a znak ide pre radnje, ne u toku nje.</p>
 };
 
 // --- objašnjenja za slikovna pitanja (talas 1) ---
-X[9404] = { x: 'Uređaj koji zatvara prelaz prepoznaje se po tome koliki deo kolovoza pokriva: ova spuštena greda ide preko cele širine puta, od jedne ivice do druge, pa nijedna traka nije ostala prohodna - zato su to branici. Polubranik bi zatvorio samo polovinu kolovoza i ostavio suprotnu stranu otvorenu, što ovde nije slučaj. Zaprečne trake su prenosive prepreke kojima se put privremeno zatvara ili sužava, najčešće kod radova, i sa prugom nemaju veze.' };
+X[9404] = { x: 'Branik obustavlja saobraćaj čitavom širinom puta, dok polubranik zatvara samo polovinu širine. Na slici spuštene grede zatvaraju ceo kolovoz, pa su tačan odgovor branici (Pravilnik, čl. 84). Zaprečna traka je privremena oprema za obeležavanje nezgode ili radova i nije uređaj prikazan na ovoj slici.' };
 X[9405] = { x: 'Ovde svaka greda pokriva samo polovinu kolovoza sa svoje strane i suprotna traka ostaje otvorena - po tome se polubranik razlikuje od branika, koji zatvara celu širinu kolovoza. Ta slobodna polovina nije poziv da se prelaz obiđe, nego način da se vozila zatečena na prelazu isprazne sa njega. Zaprečna traka je prepreka za privremeno zatvaranje puta, a ne uređaj koji čuva prugu.' };
-X[10276] = { x: 'Prelaz je obeležen samo Andrejinim krstom - nema ni branika ni uređaja koji bi te zaustavio, pa odluku donosiš sam, na osnovu onoga što vidiš. A vidiš voz koji sa leve strane već prilazi prelazu: on ne može da skrene niti da zakoči na vreme, pa prvenstvo nije na tvojoj strani. Ponuđeno prvenstvo u odnosu na šinsko vozilo ne postoji ni na jednom prelazu, bez obzira na to kako je obeležen.' };
-X[10278] = { x: 'Situacija se ne menja kad voz nailazi sa desne strane: krst uz put govori da si na samom prelazu, a šinsko vozilo koje mu prilazi ima prednost i onda kad prelaz nije zatvoren branikom niti ga čuva svetlosni uređaj. Voz koji je već toliko blizu ne može da stane pred tobom, pa se ti zaustavljaš i sačekaš da prođe. Ponuda o tvom prvenstvu je zamka koja se ponavlja kroz celu ovu oblast - na pruzi ga nemaš nikada.' };
-X[10282] = { x: 'Branici uz kolovoz stoje podignuti i uređaj ne daje znake, ali to nije dozvola da voziš kao da prelaza nema: prilazak podešavaš tako da možeš bezbedno da staneš pre branika ako se on aktivira dok mu se približavaš. Zato nastavak nepromenjenom brzinom pada - brzina se prilagođava unapred, a ne tek kad greda krene nadole. Zaustavljanje pred samom prugom je pravilo za prelaz koji nema ni branik ni uređaj, a ovaj ih ima.' };
+X[10276] = { x: 'Andrejin krst označava sam prelaz, a na slici nema branika, polubranika ni uređaja za najavu voza. Na takvom prelazu moraš prethodno da se zaustaviš i uveriš da voz ne nailazi (ZOBS čl. 101 st. 2). Voz se već približava sa leve strane, a šinsko vozilo si uvek dužan da propustiš (čl. 100 st. 1).' };
+X[10278] = { x: 'Ni smer nailaska voza ne menja pravilo: vozač je dužan da propusti šinsko vozilo (ZOBS čl. 100 st. 1). Pošto prelaz nema branik, polubranik ni uređaj za najavu, pre prelaska moraš da se zaustaviš i uveriš da voz ne nailazi (čl. 101 st. 2). Na slici voz nailazi sa desne strane, pa ga propuštaš.' };
+X[10282] = { x: 'Branici uz kolovoz stoje podignuti i uređaj ne daje znake, ali to nije dozvola da voziš kao da prelaza nema: prilazak podešavaš tako da možeš bezbedno da staneš pre branika ako se on aktivira dok mu se približavaš. Zato nastavak nepromenjenom brzinom pada - brzina se prilagođava unapred, a ne tek kad greda krene nadole. Zaustavljanje pred samom prugom je pravilo za prelaz koji nema ni branik ni polubranik ni uređaj za najavu voza, a ovaj ih ima.' };
 X[10284] = { x: 'Ovaj prelaz nema branik - čuva ga samo uređaj koji svetlosnim znakom najavljuje voz, i on trenutno ćuti. Ipak prilaziš brzinom iz koje možeš da staneš pre tog uređaja, jer se znak može uključiti dok si još na prilazu, a ispred tebe je i vozilo koje tek prelazi prugu. Zato nastavak nepromenjenom brzinom nije tačan, a zaustavljanje pred samom prugom je obaveza sa prelaza koji ovakav uređaj uopšte nema.' };
 X[10288] = { x: 'Podignuti branici i uređaj koji ne daje znake ne menjaju način prilaska: brzinu držiš takvu da vozilo možeš da zaustaviš pre branika, jer se on može spustiti u svakom trenutku - a automobil ispred tebe već koči pred prelazom. Nastavak nepromenjenom brzinom pada baš zato što se prilagođavanje traži pre nego što se bilo šta desi. Zaustavljanje pred prugom je pravilo za prelaz bez ikakvog uređaja, a ovde branik postoji.' };
 X[10290] = { x: 'Branici zahvataju celu širinu kolovoza i upravo se spuštaju, a to je isti nalog kao i kad su već dole: staje se pre njih i čeka. Prostor ispod grede nije pravna rupa - prelaz važi za zatvoren od trenutka kad branik krene nadole, jer voz može naići pre nego što se provučeš, a i sama greda može da te zahvati u prolazu. Zato provlačenje ispod branika ne postoji kao dozvoljena radnja.' };
-X[10292] = { x: 'Polubranik zatvara samo tvoju polovinu kolovoza i suprotna traka ostaje slobodna - baš to je zamka, jer izgleda kao da je zaobilaženje moguće. Spušten polubranik je zabrana prelaska bez izuzetka: ni tvoja procena da stižeš pre voza ni znak nekog lica sa strane nemaju nikakvu snagu, jer niko osim železnice ne zna šta dolazi po koloseku. Staje se pre polubranika i čeka da se podigne.' };
-X[10294] = { x: 'Obe grede su spuštene i spojile su se preko celog kolovoza, pa je prelaz zatvoren i tu se svaka procena završava. Ni tvoja ocena da bi stigao pre voza ni znak nekog lica pored puta ne mogu da zamene ono što branik saopštava - samo železnica zna kada koloseci postaju slobodni. Krećeš tek pošto se branik podigne, i to je jedini znak na koji ovde smeš da se osloniš.' };
-X[10415] = { x: 'Ista dva crvena svetla pokrivaju tri stanja odjednom: da voz nailazi, da greda kreće da se spušta i da je već spuštena. Zato se pale pre nego što se branik ili polubranik uopšte pokrene i ne gase se dok prelaz ponovo ne bude slobodan, pa naizmenično treptanje u svakom od ta tri trenutka znači isto - zabranu prelaska. Tramvajski prelaz, blizina raskrsnice sa semaforom i opasna raskrsnica najavljuju se sasvim drugom signalizacijom.' };
-X[10557] = { x: 'Uređaj pored puta je uključen i daje crveno svetlo kojim se najavljuje nailazak voza, a to je izričita zabrana prelaska, iste snage kao spušten branik. Zaustavljaš se pre samog uređaja, dakle još pre pruge, jer se tu završava deo puta na kome smeš da budeš. Sopstvena procena da stižeš bezbedno tu ne vredi ništa, a nastavak nepromenjenom brzinom vodi pravo na kolosek po kome voz već dolazi.' };
+X[10292] = { x: 'Polubranik zatvara samo polovinu širine puta, ali slobodna suprotna traka nije prolaz oko njega. Kada je polubranik spušten, dužan si da se zaustaviš ispred uređaja (ZOBS čl. 101 st. 1). Ni sopstvena procena ni znak neodređenog lica iz ponuđenih odgovora ne ukidaju taj nalog; nastavljaš tek kada uređaj i signali više ne zabranjuju prolaz.' };
+X[10294] = { x: 'Spušteni branici zatvaraju prelaz čitavom širinom puta. Kada je branik spušten, dužan si da se zaustaviš ispred njega (ZOBS čl. 101 st. 1); sopstvena procena i znak neodređenog lica iz ponuđenih odgovora to ne menjaju. Nastavi tek kada branik više nije spušten i svetlosni ili zvučni znak ne zabranjuje prolaz.' };
+X[10415] = { x: 'Na slici je raniji tip železničkog semafora sa dva naizmenično trepćuća crvena svetla. On označava približavanje voza, spuštanje branika ili polubranika ili da je uređaj spušten, pa su označena tri odgovora tačna. Prelazne odredbe mu čuvaju isto značenje do zamene crveno-žutim semaforom, ali najkasnije do 15. septembra 2026. (ZOBS 76/2023, čl. 71; Pravilnik 21/2024, čl. 3). Posle tog roka ovo pitanje mora ponovo da se proveri prema izvornoj ispitnoj bazi.' };
+X[10557] = { x: 'Uređaj pored puta je uključen i daje crveno svetlo kojim se najavljuje nailazak voza, a to je izričita zabrana prelaska, iste snage kao spušten branik. Zaustavljaš se pre samog uređaja, dakle još pre pruge, jer se tu završava deo puta na kome smeš da budeš. Sopstvena procena da stižeš bezbedno tu ne vredi ništa, a nastavak nepromenjenom brzinom vodi na prelaz uprkos izričitoj zabrani.' };
 X[10783] = { x: 'Trougao sa crvenim okvirom te samo upozorava na ono što sledi, a savijena strelica pokazuje na koju stranu put skreće — ovde ulevo. Zato tačan odgovor govori o približavanju opasnoj krivini, a ne o nekakvoj obavezi. Ponuda o smeru kojim se vozila moraju kretati je naredba iz plavog kruga, a jednosmerni put je plava tabla obaveštenja.' };
 X[10784] = { x: 'Trougao sa crvenim okvirom samo najavljuje ono što sledi, a ovde se strelica povija nadesno, pa je reč o opasnoj krivini na tu stranu — uspori pre ulaska u nju. Obaveza kretanja u određenom smeru je plavi krug naredbe, a jednosmerni put plava tabla obaveštenja; trougao nikada ne naređuje smer kretanja.' };
 X[10785] = { x: 'Strelica je dvostruko izlomljena, dakle iza prve krivine odmah dolazi sledeća — nije reč o jednoj krivini nego o nizu. Odgovor se određuje po prvoj krivini gledano iz tvog pravca, a ovde se donji deo strelice prvo povija ulevo. Zato pada i ponuda o običnoj krivini nalevo i ona kojoj niz počinje nadesno.' };
@@ -5110,8 +5111,8 @@ X[9557] = { x: 'Telefon za vreme vožnje: SAMO preko opreme koja omogućava razg
 X[9561] = { x: 'Maskiranje/ometanje očitavanja registarskih tablica: ZABRANJENO — bez izuzetaka i "opravdanih razloga".' };
 X[10443] = { x: "U naselju: autobusu javnog prevoza koji isključuje sa stajališta i najavljuje pokazivačem — OMOGUĆI uključivanje (posebno pravilo u korist javnog prevoza). Zamka su krajnosti: nisi dužan da se UVEK zaustaviš (staješ samo kad je to potrebno), ali ne smeš ni produžiti kao da imaš bezuslovno prvenstvo." };
 // --- Pruga (sub 146) ---
-X[10274] = { x: 'Šinsko vozilo na prelazu preko pruge propuštaš UVEK (ZOBS čl. 100 st. 1) — voz ne može da stane niti da skrene.' };
-X[10285] = { x: 'Spušten (ili se spušta) uređaj za zatvaranje = zaustavi se ISPRED uređaja i čekaj da se potpuno podigne — ne "provuci se".' };
+X[10274] = { x: 'Na prelazu puta preko železničke pruge vozač je dužan da propusti šinsko vozilo, bez obzira na stranu sa koje ono nailazi (ZOBS čl. 100 st. 1). Zato je tačan odgovor obaveza propuštanja.' };
+X[10285] = { x: 'Kada je branik ili polubranik spušten ili je počeo da se spušta, dužan si da se zaustaviš ispred uređaja (ZOBS čl. 101 st. 1). Ne pokušavaj da prođeš ispod ili pored njega; nastavi tek kada uređaj više nije spušten i svetlosni ili zvučni znak ne zabranjuje prolaz.' };
 X[10286] = { x: "Približavanje pruzi: brzina takva da možeš da staneš pred branikom/svetlosnim znakom, odnosno PRE stupanja na prugu (ZOBS čl. 100 st. 2). Obavezno zaustavljanje postoji samo kad je naloženo (ZOBS čl. 101): spušteni branici ili se spuštaju, svetlosni/zvučni znaci najave voza, odnosno prelaz bez branika i bez uređaja za najavu — tamo se prelazi tek posle zaustavljanja i uveravanja da voz ne nailazi. Inače je dužnost da MOŽEŠ da staneš, ne da uvek staneš." };
 // --- Autoput/motoput (sub 147) ---
 X[10308] = { x: 'Autoput: krajnja DESNA traka je tvoja podrazumevana (ZOBS čl. 104), osim kad je zauzeta kolonom i pri preticanju. Leva nije "brza traka za krstarenje".' };
@@ -6754,7 +6755,7 @@ out.cards['prvenstvo-prolaza'].h.c = out.cards['prvenstvo-prolaza'].h.c.replace(
 
 // Lokalno prevedi pregledane pristupačne opise; opšti toCyr štiti HTML tagove.
 // Novi opis u ovim karticama zahteva ponovni pregled oba pisma.
-for (const [key, expected] of [['brzine', 6], ['kategorije-vozila', 4], ['put-pojmovi', 1], ['vozilo-tehnika', 4], ['kaznene-klase', 13], ['preticanje', 3], ['skretanje', 2], ['iskljucenje', 3], ['oznake-kolovoz', 12], ['prvenstvo-prolaza', 9]]) {
+for (const [key, expected] of [['brzine', 6], ['kategorije-vozila', 4], ['put-pojmovi', 1], ['vozilo-tehnika', 4], ['kaznene-klase', 13], ['preticanje', 3], ['skretanje', 2], ['iskljucenje', 3], ['oznake-kolovoz', 12], ['prvenstvo-prolaza', 9], ['pruga', 4]]) {
   let count = 0;
   out.cards[key].h.c = out.cards[key].h.c.replace(/aria-label="([^"]*)"/g, (_, label) => {
     count++;

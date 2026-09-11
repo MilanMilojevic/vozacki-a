@@ -558,3 +558,11 @@ Chromium16/16 kartice +12/12 pitanja, bez prelivanja stranice/grešaka/sintetič
 Dva potpuna pregleda107 pitanja/319 opcija/66 slika i cele kartice;38 uskih EX ispravki,9 postojeća crteža čitljivija. Uklonjene su dve nerelevantne implicitne veze, uz očuvane eksplicitne.9531 je zatvoreno,9539 čeka karticu pešaka.9984/10586 imaju konkretne nedoumice vidljive u objašnjenju, bez samovoljne izmene ključa. Četiri prvobitna upozorenja razrešena su ponovnim čitanjem celog propisa i pitanja. [Pojedinačni dokaz A6-041/046](docs/revizija-sadrzaja/grupe/041-prvenstvo-prolaza.md).
 
 Chromium16/16 kartica i428/428 prikaza pitanja; min SVG tekst13,78px, svi nazivi i natpisi odgovaraju, bez prelivanja stranice/grešaka/sintetičkih upisa. `node tools/verify.mjs`:249/249 automatizovanih testova. Ukupno801 reviewed,454 unreviewed,4 in-progress (7924/7925,8113,9539),68 needs-expert;19 pregledanih kartica,20 preostalih. Nema novog runtime-a ili kopije banke slika.
+
+### v192 — pruga, oblik znakova i prelazni rok
+
+Pregledano15 pitanja/45 opcija/12 originalnih JPEG i cela kartica sa4SVG. Deset EX ispravki; nepotrebno prepisivanje10282 odbijeno u korist lokalne dopune. Ispravljeni su Andrejini krstovi, crveno-žuti uređaj i razlika stalnog/trepćućeg žutog, zabrane u zoni5m i nepotpuni uslovi prelaska. [Pojedinačni dokaz A6-047/053](docs/revizija-sadrzaja/grupe/047-pruga.md).
+
+10415 ostaje needs-expert zbog obavezne ponovne provere posle roka zamene15.9.2026, uz izričito potvrđen današnji ključ; ovaj status nije tvrdnja da je današnji odgovor pogrešan. Objašnjenje i kartica navode rok, a kartica jasno kaže da on nije dozvola za prelazak uz aktivan crveni signal.
+
+Chromium16/16 kartice +60/60 pitanja, konačno grupisanje i12galerijskih odgovora potvrđeni; bez prelivanja stranice/grešaka/sintetičkih upisa. `node tools/verify.mjs`:249/249 automatizovanih testova. Ukupno815 reviewed,440 unreviewed,3 in-progress (7924/7925,9539),69 needs-expert;20 reviewed kartica,19 unreviewed. Izvorna banka, glavna aplikacija i korisnička proba su očuvane.
