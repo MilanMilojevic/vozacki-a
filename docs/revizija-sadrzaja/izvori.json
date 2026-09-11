@@ -241,6 +241,15 @@
       "checkedOn": "2026-09-11",
       "revision": "MGSI prečišćeni tekst zaključno sa Službenim glasnikom RS 54/2026",
       "contentHash": "bbc837b7168e7f670c88881d5f125fc68b4535192992dc814228728f03dab400"
+    },
+    {
+      "id": "zobs-kaznene-odredbe-pis-19-2025",
+      "url": "https://reg.pravno-informacioni-sistem.rs/api/viewAct/8b57d1e9-9b34-4fa0-9693-7ceb6da65486?lawActId=438311",
+      "title": "Zakon o bezbednosti saobraćaja na putevima — redakcijski prečišćen tekst PIS",
+      "article": "Članovi 329–338 i povezane osnovne radnje, naročito 25–26, 32–34, 41, 43–45, 55, 57, 66, 99, 101, 104–105, 132, 178, 183, 187, 247, 268, 320 i 323",
+      "checkedOn": "2026-09-11",
+      "revision": "Službeni glasnik RS zaključno sa 19/2025; nezavisno ponovo preuzeto i provereno 11.09.2026.",
+      "contentHash": "8796f6a1718bea08ea4fe1dedb3c9a71001b1c6c5245a93526f365a61e668d5d"
     }
   ]
 }

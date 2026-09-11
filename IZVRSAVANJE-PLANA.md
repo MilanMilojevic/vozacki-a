@@ -30,7 +30,7 @@
 | А3 Циљ и процена спремности | Завршено | v131: reload циља; v134: непознато градиво не добија позајмљену тачност; условни модел јасно означен |
 | А4 Телефон и приступачност | У току; корисничка проба остаје v165 | Развојне v169–171 поправљају табелу возила, ситне натписе паркирања и преливање дугих речи при увећању текста; раније тастатура/водич/контраст/увећање. Остали цртежи, читач екрана и стварни телефони остају у прегледу |
 | А5 Кеш и алати издавања | Делимично | v128/v137: издање/кеш; алати/CI проверени; v157: аутоматски отисци слика и провера бајтова у SW; ограничење старих кешева још отворено |
-| А6 Садржај 1.327 питања | У току, почетни део базе | На v179: 196 питања reviewed, 4 in-progress, 2 needs-expert, 1.125 unreviewed; картице 8 reviewed, 1 in-progress, 30 unreviewed. Започета питања нису урачуната у завршена; повезане картице морају бити посебно проверене |
+| А6 Садржај 1.327 питања | У току, почетни део базе | На v180: 196 питања reviewed, 55 in-progress, 62 needs-expert, 1.014 unreviewed; картице 8 reviewed, 1 in-progress, 30 unreviewed. Започета питања нису урачуната у завршена; повезане картице морају бити посебно проверене |
 | А7 Документација / права | У току | CONTRIBUTING, README, школска упутства и fork поступак допуњени; v147 поруке/метаподаци и v151 FAQ усклађени; преостаје одлука власника о лиценци |
 | Б1–Б3 Побољшања | Чека | После учвршћивања, пилот по пилот |
 | Навигација — накнадни захтев | Основни токови завршени; доградња одвојена | v146 Назад/Напред; v150 стварни линкови; v154 статистика; v158 лични спискови. v162 додаје преглед конкретног старог испита; то је доградња, не услов основне безбедности учења. v163 исправља копирани линк питања и повратак фокуса у појмовник |
@@ -501,3 +501,10 @@
 - Četiri SVG-a koriste postojeće boje za obe teme i veće natpise sa proverenim razmakom. Na 320 px font najmanje 12,74 px, kontrast najmanje 5,015:1. Chromium 16/16 kartice +64/64 povezivanja, zasebna provera kontrasta 4/4; bez prelivanja, grešaka ili upisa u sintetički napredak.
 - Ukupno 196 reviewed, 4 in-progress, 2 needs-expert, 1.125 unreviewed; kartice 8 reviewed, 1 in-progress, 30 unreviewed. Dokument: `docs/revizija-sadrzaja/grupe/025-vozilo-tehnika-kartica.md`. Korisnička proba 18980 ostaje v165.
 - `node tools/verify.mjs`: 249/249; `git diff --check` bez grešaka. Izvor, oba pisma, slike crteža i dokazi pregledani pre Git oznake `v179`.
+
+### v180 — 111 kaznenih pitanja, 73 ispravke objašnjenja
+
+- Završeni pojedinačni pregledi svih111 pitanja/opcija oba pisma i23 slike. U sačuvanim ključevima57 neslaganja sa sadašnjim osnovnim propisom,50 saglasnih,3 različita činjenična osnova i1 delimičan prikaz sankcije. Ključevi ostaju identični izvorima; aktuelni portalni ključ nije potvrđen.
+- 73 objašnjenja popravljena,38 sačuvano. Dva sadržajna pregleda, root pregled svih završnih tekstova i ključnih primarnih odredaba; tačna inverzija/NUL i nepromenjeni ostali EX podaci. Chromium444/444, bez prelivanja, grešaka ili upisa napretka.
+- Ukupno196 reviewed,55 in-progress,62 needs-expert,1.014 unreviewed. Kartica kaznene-klase još čeka zaseban završni pregled; nema uvećanja broja potpuno završenih pitanja samo zbog završenih byQ objašnjenja. Dokument: `docs/revizija-sadrzaja/grupe/024-kaznena-pitanja.md`.
+- `node tools/verify.mjs`: 249/249. Git oznaka `v180`; original i korisnička proba 18980 ostaju nepromenjeni.
