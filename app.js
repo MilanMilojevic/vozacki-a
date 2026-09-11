@@ -213,10 +213,10 @@
     sekCela: { l: 'Prikaži celu karticu', c: 'Прикажи целу картицу' },
     atlasDugme: { l: '🖼️ Slike iz baze (@1)', c: '🖼️ Слике из базе (@1)' },
     situacijeDugme: { l: '📷 Situacije sa ispita (@1)', c: '📷 Ситуације са испита (@1)' },
-    situacijeNapomena: { l: 'Slikovna pitanja iz ove oblasti, sa tačnim odgovorom uz svaku sliku — iste slike te čekaju na ispitu. Dodirni sliku da je uvećaš.', c: 'Сликовна питања из ове области, са тачним одговором уз сваку слику — исте слике те чекају на испиту. Додирни слику да је увећаш.' },
+    situacijeNapomena: { l: 'Slikovna pitanja iz sačuvane baze, sa odgovorom koji je u toj bazi označen kao tačan uz svaku sliku. Dodirni sliku da je uvećaš.', c: 'Сликовна питања из сачуване базе, са одговором који је у тој бази означен као тачан уз сваку слику. Додирни слику да је увећаш.' },
     istoZnacenje: { l: 'isto značenje nosi @1 znakova — svi su u „Slike iz baze"', c: 'исто значење носи @1 знакова — сви су у „Слике из базе"' },
-    zamkaNaslov: { l: 'Ponuđeni odgovori koji NISU tačni ovde su zvanično značenje ovih znakova:', c: 'Понуђени одговори који НИСУ тачни овде су званично значење ових знакова:' },
-    atlasNapomena: { l: 'Slike su iz same baze pitanja — isti znak koji te čeka na ispitu, uz zvanično značenje (tačan odgovor na to pitanje). Dodirni sliku da je uvećaš.', c: 'Слике су из саме базе питања — исти знак који те чека на испиту, уз званично значење (тачан одговор на то питање). Додирни слику да је увећаш.' },
+    zamkaNaslov: { l: 'Odgovori koji ovde nisu tačni pripadaju ovim znakovima u sačuvanoj bazi:', c: 'Одговори који овде нису тачни припадају овим знаковима у сачуваној бази:' },
+    atlasNapomena: { l: 'Slike i prikazani odgovori su iz sačuvane baze pitanja. Kartica može sadržati dopune prema važećim propisima. Dodirni sliku da je uvećaš.', c: 'Слике и приказани одговори су из сачуване базе питања. Картица може садржати допуне према важећим прописима. Додирни слику да је увећаш.' },
     statsTip: { l: 'Isti pregled kao na početnoj, uz tačnost: klik na naziv otvara spisak pitanja, strelica otklapa podoblasti. Boja tačnosti: zeleno od 85% (prag ispita), žuto 70–84%, crveno ispod 70%.', c: 'Исти преглед као на почетној, уз тачност: клик на назив отвара списак питања, стрелица отклапа подобласти. Боја тачности: зелено од 85% (праг испита), жуто 70–84%, црвено испод 70%.' },
     grupaNapredak: { l: 'Napredak', c: 'Напредак' },
     grupaAplikacija: { l: 'Aplikacija', c: 'Апликација' },
@@ -2082,16 +2082,15 @@
   }
 
   // ---------- Atlas znakova: slike iz same baze pitanja ----------
-  // U bazi 313 pitanja glasi „znak prikazan na slici označava:" — slika je znak, tačan odgovor
-  // je njegovo zvanično značenje. Zato se atlas ne piše rukom nego se izvodi (explanations.js
-  // → EXPLAIN.atlas), pa ne može da se razmimoiđe sa ispitom.
+  // Atlas se izvodi iz EXPLAIN.atlas i sačuvanih odgovora u data.js, bez prepisivanja.
+  // Odgovor baze može biti stariji ili uži od važećeg značenja; dopuna pripada kartici.
   // Stoji iza JEDNOG dugmeta unutar kartice i pravi se tek kad se otvori: kartica koju korisnik
   // već zove velikom ne sme da dobije 58 slika u telo, a ni 58 <img> elemenata pri svakom crtanju.
   // Značenje znaka po broju pitanja + koliko znakova nosi baš to značenje (mape se prave
   // pri prvom traženju, 311 stavki). Drugo je važno: pet različitih znakova znači „smer kojim
   // se vozila moraju kretati", pa se ne sme ćutke pokazati jedan kao da je jedini.
   let _znacenja = null, _istih = null;
-  // Značenje znaka JESTE tačan odgovor tog pitanja, a pitanja su već učitana (data.js).
+  // Natpis uz znak je odgovor označen kao tačan u već učitanom data.js.
   // Zato explanations.js nosi samo BROJEVE — ista istina na dva mesta pre ili kasnije
   // postane dve istine (i dva pisma da se održavaju).
   const tacniOdgovori = (q) => {
@@ -2138,9 +2137,8 @@
   }
 
   // ---------- Situacije sa ispita ----------
-  // Od 704 slike u bazi, 311 su znakovi (atlas). Ostalih 334 prikazuju SITUACIJU na putu i
-  // vezane su za temu kartice — uz svaku ide njeno pitanje i tačan odgovor. Bez ovoga te
-  // slike vidi samo onaj ko naiđe baš na to pitanje.
+  // Slikovne situacije vezane su za temu kartice; uz svaku ide pitanje i odgovor baze.
+  // Bez ovog pregleda korisnik bi slike viđao samo pri otvaranju pojedinačnih pitanja.
   function dodajSituacije(cd, kljuc) {
     const st = (EX.situacije || {})[kljuc];
     if (!cd || !st || !st.length) return;
