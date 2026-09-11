@@ -144,6 +144,23 @@
       "checkedOn": "2026-09-11",
       "revision": "Службени гласник РС закључно са 19/2025, према свеже прочитаном заглављу PIS",
       "contentHash": "8796f6a1718bea08ea4fe1dedb3c9a71001b1c6c5245a93526f365a61e668d5d"
+    },
+    {
+      "id": "zobs-cl7-vozila-mase-isprave-pis-19-2025",
+      "url": "https://reg.pravno-informacioni-sistem.rs/api/viewAct/8b57d1e9-9b34-4fa0-9693-7ceb6da65486?lawActId=438311",
+      "title": "Zakon o bezbednosti saobraćaja na putevima — redakcijski prečišćen tekst PIS",
+      "article": "Član 7, tačke 31–79, 93–96 i 99; član 249 stavovi 2–5, članovi 254 i 269",
+      "checkedOn": "2026-09-11",
+      "revision": "Službeni glasnik RS zaključno sa 19/2025; pročitane relevantne definicije i izuzeci za ovu grupu",
+      "contentHash": "8796f6a1718bea08ea4fe1dedb3c9a71001b1c6c5245a93526f365a61e668d5d"
+    },
+    {
+      "id": "alims-obelezavanje-lekova-2026-01",
+      "url": "https://www.alims.gov.rs/wp-content/uploads/2026/01/RS_PI_QRD_annotated_template_202601_v1.0.pdf",
+      "title": "ALIMS — uputstvo za pripremu teksta informacija o leku, anotirani obrazac",
+      "article": "Strana 22, odeljak 7; strana 34: trougao i uticaj na sposobnost upravljanja vozilima i mašinama",
+      "checkedOn": "2026-09-11",
+      "revision": "Verzija 1.0, januar 2026; pun crveni trougao označava snažan uticaj"
     }
   ]
 }

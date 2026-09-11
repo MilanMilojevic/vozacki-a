@@ -30,7 +30,7 @@
 | А3 Циљ и процена спремности | Завршено | v131: reload циља; v134: непознато градиво не добија позајмљену тачност; условни модел јасно означен |
 | А4 Телефон и приступачност | Делимично, употребљива проба v165 | Тастатура, водич, ниски екран, дуге адресе, део контраста и увећање слика исправљени; остају ситни натписи/остали цртежи, читач екрана и стварни телефони |
 | А5 Кеш и алати издавања | Делимично | v128/v137: издање/кеш; алати/CI проверени; v157: аутоматски отисци слика и провера бајтова у SW; ограничење старих кешева још отворено |
-| А6 Садржај 1.327 питања | У току, почетни део базе | На v166: 15 питања reviewed, 60 in-progress, 2 needs-expert, 1.250 unreviewed; картице 2 reviewed, 2 in-progress, 35 unreviewed. Започета питања нису урачуната у завршена; повезане картице морају бити посебно проверене |
+| А6 Садржај 1.327 питања | У току, почетни део базе | На v167: 15 питања reviewed, 93 in-progress, 2 needs-expert, 1.217 unreviewed; картице 2 reviewed, 2 in-progress, 35 unreviewed. Започета питања нису урачуната у завршена; повезане картице морају бити посебно проверене |
 | А7 Документација / права | У току | CONTRIBUTING, README, школска упутства и fork поступак допуњени; v147 поруке/метаподаци и v151 FAQ усклађени; преостаје одлука власника о лиценци |
 | Б1–Б3 Побољшања | Чека | После учвршћивања, пилот по пилот |
 | Навигација — накнадни захтев | Основни токови завршени; доградња одвојена | v146 Назад/Напред; v150 стварни линкови; v154 статистика; v158 лични спискови. v162 додаје преглед конкретног старог испита; то је доградња, не услов основне безбедности учења. v163 исправља копирани линк питања и повратак фокуса у појмовник |
@@ -413,3 +413,10 @@
 - Nema promene zvaničnih pitanja, odgovora, ključeva, bodovanja, slika ili napretka. Ostalih 1.319 objašnjenja i svih 39 kartica ostaju identični. Izvorne zamene imaju tačnu bajtnu inverziju; sačuvana su sva četiri NUL razdvajača generatora.
 - Nezavisan sadržajni pregled, zatim root provera generisanih tekstova i originalnih slika. Stvarni browser: **32/32** (osam pitanja × dva pisma × 320/1280 px), bez grešaka stranice, horizontalnog prelivanja i upisa u sintetički S/SIM. Root direktno pregledao nove mobile/desktop snimke.
 - `node tools/verify.mjs`: **249/249**, izdanje i evidencija prolaze. Dva pitanja (7930/7931) pošteno ostaju `needs-expert`; preostale zavisne kartice nisu unapred označene kao proverene. Lokalni dokazi: `output/revizija-20260911/013/`.
+
+### v167 — jedanaest ispravki vozila, masa i isprava
+
+- A6-014: pregledana druga grupa od 34 pitanja definicija i osam slika. Ispravljeni samo tekstovi objašnjenja za 7984, 7987, 7992, 8005, 8006, 8011, 8043, 8059, 10406, 10613 i 10686. Detalji i izvori: `docs/revizija-sadrzaja/grupe/014-vozila-mase-i-isprave.md`.
+- Posebno razdvojeni obavezni raspored točkova i alternativni pragovi, dopušteni slučajevi privremenih tablica i različiti pojmovi mase. Sačuvani zvanični ključevi, 1.316 ostalih objašnjenja, 39 kartica i sav ostali runtime sadržaj. Root prihvatio i ugradio dorade nezavisnog recenzenta; oba pisma pročitana nakon generisanja.
+- Stvarni browser nad v167: **44/44**, oba pisma, 320/1280 px, tačan prikaz odgovora i objašnjenja, bez horizontalnog prelivanja i upisa u sintetički S/SIM. Root pregledao novi snimak 10406 na telefonu. `node tools/verify.mjs`: **249/249** i aktuelnost evidencije prolaze.
+- Zavisne kartice i slovna greška u izvornom ćiriličnom 10613 ostaju jasno otvoreni. v166 je prethodno potvrđen i na GitHub CI: 34575563666, success.
