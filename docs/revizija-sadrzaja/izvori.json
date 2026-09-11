@@ -232,6 +232,15 @@
       "checkedOn": "2026-09-11",
       "contentHash": "c5a5c1c079941b88d0c59838223f74ee9e242d0713059ba7f1f60e44b0e757cc",
       "article": "Član 29: stanje vozila, opterećenje i isprave pri tehničkom pregledu"
+    },
+    {
+      "id": "tehnicki-uslovi-pneumatici-mgsi-54-2026",
+      "url": "https://www.mgsi.gov.rs/sites/default/files/pravilnik_o_podeli_motornih_i_prikljucnih_vozila_i_tehnickim_uslovima_za_vozila_u_saobracaju_na_putevima.pdf",
+      "title": "Pravilnik o podeli motornih i priključnih vozila i tehničkim uslovima za vozila u saobraćaju na putevima",
+      "article": "Članovi 86 i 113: pneumatici, TWI i zimska oprema",
+      "checkedOn": "2026-09-11",
+      "revision": "MGSI prečišćeni tekst zaključno sa Službenim glasnikom RS 54/2026",
+      "contentHash": "bbc837b7168e7f670c88881d5f125fc68b4535192992dc814228728f03dab400"
     }
   ]
 }

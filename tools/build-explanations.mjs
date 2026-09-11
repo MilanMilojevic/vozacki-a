@@ -2682,32 +2682,31 @@ CARDS['vozilo-tehnika'] = {
   title: 'Vozilo, registracija i tehnički pregled',
   html: `
 <div class="kSek" data-sub="126,127">
-<p><b>U saobraćaju sme samo vozilo koje je:</b> REGISTROVANO (važeća registraciona nalepnica) + TEHNIČKI ISPRAVNO. Registracija važi godinu dana.</p>
+<p><b>Opšte pravilo:</b> vozilo u saobraćaju mora biti REGISTROVANO (važeća registraciona nalepnica) + TEHNIČKI ISPRAVNO. Nalepnica po pravilu važi godinu dana; zakon za pojedina vozila predviđa kraći rok ili trajno važenje i posebne režime učešća u saobraćaju (čl. 268 i 269).</p>
 </div>
 <div class="kSek" data-sub="127">
-<p><b>Tehnički pregled:</b> redovni — pre izdavanja registracione nalepnice · vozilo mora imati ispravne propisane uređaje (kočnice, upravljač, svetla, pneumatike...).</p>
-<p><b>Pneumatici:</b> na istoj osovini ISTI (dimenzija, vrsta) · dubina šare: dublja od TWI oznake, a bez TWI oznake NAJMANJE 1,6 mm (moped/motocikl) · zimska oprema kad je propisana.</p>
-<p><b>Za motocikl posebno:</b> ogledala, svetla i kočnice na oba točka su bezbednosno kritični — na testu se traži šta je OBAVEZNA oprema.</p>
+<p><b>Tehnički pregled:</b> redovni se po opštem pravilu obavlja pre izdavanja registracione nalepnice. Tehnički ispravno vozilo zadovoljava sve normative i ima ispravne sve propisane uređaje i opremu.</p>
+<p><strong>Pneumatici:</strong> na istoj osovini, osim propisanih izuzetaka, jednaki su po proizvođaču, tipu, vrsti, konstrukciji, nosivosti i dimenzijama. Dubina šare ne sme biti manja od TWI pokazatelja; bez TWI pokazatelja najmanje je <b>1,6 mm za &#76; i &#77;1</b>, a <b>2 mm za ostala vozila</b>. Pneumatik koji se koristi kao zimska oprema mora imati najmanje <b>4 mm</b>.</p>
 <p style="margin-top:18px"><b>REDOVNI · VANREDNI · KONTROLNI TEHNIČKI PREGLED</b></p>
 <p>Tri vrste pregleda su tri različita pitanja na testu, a zamke su gotovo uvek odgovori <b>pozajmljeni od druge vrste</b>. Razvrstaj jednom i ne mešaj:</p>
 <table>
 <tr><th></th><th>Redovni</th><th>Vanredni</th><th>Kontrolni</th></tr>
-<tr><td><b>Šta je</b></td><td>Može biti <b>godišnji i šestomesečni</b></td><td>Pregled <b>pre puštanja u saobraćaj</b> vozila koje je „ispalo iz stroja"</td><td>Kontrola tehničke ispravnosti <b>po nalogu</b></td></tr>
+<tr><td><b>Šta je</b></td><td>Može biti <b>godišnji i šestomesečni</b></td><td>Pregled <b>posle opravke, a pre puštanja u saobraćaj</b> vozila iz propisanih slučajeva</td><td>Kontrola tehničke ispravnosti <b>po nalogu</b></td></tr>
 <tr><td><b>Kada / povod</b></td><td>Godišnjem se vozilo podvrgava <b>pre upisa u jedinstveni registar vozila, odnosno izdavanja registracione nalepnice</b> · može se izvršiti <b>najranije 30 dana pre podnošenja zahteva</b> za upis/nalepnicu</td><td>1) kod vozila su <b>u saobraćajnoj nezgodi ili na drugi način oštećeni vitalni sklopovi i uređaji</b> bitni za bezbednost, odnosno vozilo posle toga <b>nije bilo u voznom stanju</b> · 2) vozilo je <b>isključeno iz saobraćaja zbog tehničke neispravnosti utvrđene na kontrolnom pregledu</b></td><td>Može se uputiti vozilo <b>koje je u voznom stanju</b></td></tr>
-<tr><td><b>Ko upućuje</b></td><td>Vezan za registraciju (nalepnicu)</td><td>Obavlja se pre puštanja u saobraćaj — ne po nečijem nalogu</td><td><b>Po nalogu ovlašćenog lica MUP-a</b> ili <b>inspektora za drumski saobraćaj</b> — NE po zahtevu vozača ni vlasnika</td></tr>
+<tr><td><b>Ko upućuje</b></td><td>Vezan za registraciju (nalepnicu)</td><td>Obavezan je u navedenim slučajevima posle opravke; može se obaviti i <b>na zahtev vozača</b> radi provere tehničke ispravnosti</td><td><b>Po nalogu ovlašćenog lica MUP-a</b> ili <b>inspektora za drumski saobraćaj</b> — NE po zahtevu vozača ni vlasnika</td></tr>
 </table>
 <p class="mut">Zamke po vrstama: kod redovnog nude „tromesečni" i „petogodišnji" (ne postoje) i „najkasnije jednu godinu nakon prethodnog pregleda" — tačan odgovor je vezan za <b>nalepnicu</b>, ne za datum prošlog pregleda. Kod vanrednog nude „radi kontrole od strane ovlašćenog lica MUP-a/inspektora" (to je kontrolni!) i „pre isteka roka od šest meseci od početka važenja nalepnice" (to miriše na šestomesečni redovni). Kod kontrolnog nude vozilo „kojem su u nezgodi oštećeni uređaji" — to ide na <b>vanredni</b>; na kontrolni se može uputiti vozilo <b>u voznom stanju</b>.</p>
-<p><b>Zajednička pravila za redovni i vanredni pregled:</b> vrše se samo na <b>čistom</b> vozilu koje je <b>u voznom stanju</b> i <b>neopterećeno</b> — zamka „na tehnički ispravnom vozilu" je besmislena, jer se ispravnost na pregledu tek utvrđuje. Lice koje je dovezlo vozilo kontroloru daje na uvid <b>saobraćajnu dozvolu i SVOJU ličnu kartu</b> (ne ličnu kartu vlasnika, ne vozačku dozvolu). Registrovano, neodjavljeno vozilo na redovnom pregledu mora imati <b>sve propisane registarske tablice, postavljene na predviđenim mestima</b> — „bar jedna tablica" nije dovoljna.</p>
+<p><b>Redovni i vanredni pregled:</b> vozilo mora biti čisto i u voznom stanju. Po pravilu je neopterećeno, ali pravilnik navodi izuzetke; kontrolni pregled može biti i opterećen kada linija to omogućava. Standardno se daju na uvid saobraćajna dozvola i lična karta lica koje je vozilo dovezlo, uz propisane zamenske dokaze. Registrovano, neodjavljeno vozilo na redovnom pregledu ima sve propisane tablice, a pravilnik prihvata i tablice za privremeno označavanje ili potvrdu o njihovom oduzimanju.</p>
 </div>
 
 
 <!-- ==== dopuna 07.09.2026 (tura 4): crtež + isto to rečima ==== -->
 <!-- DODATAK kartici vozilo-tehnika (podoblasti 126, 127). Sledljivost: ispred svakog bloka stoji HTML komentar sa brojevima pitanja iz gradje na koja se blok oslanja. Komentari se ne vide u kartici. -->
 <div class="kSek" data-sub="126,127">
-<div class="kPodH"><b class="kPodNaslov">Bez ovo troje vozilo ne sme na put</b>
+<div class="kPodH"><b class="kPodNaslov">Dokumenti i oznake — opšte pravilo i izuzeci</b>
 <!-- izvor: #8423, #8424 -->
 <div style="display:flex;justify-content:center;margin:6px 0">
-<svg viewBox="0 0 300 316" style="width:100%;max-width:340px" role="img" aria-label="sema: saobracajna dozvola plus registarske tablice plus registraciona nalepnica znaci da vozilo sme na put; ako fali bilo koje od troje, vozilo ne sme na put">
+<svg viewBox="0 0 300 316" style="width:100%;max-width:340px" role="img" aria-label="opšte pravilo za dokumente i oznake: saobraćajna dozvola plus registarske tablice plus važeća registraciona nalepnica dozvoljavaju učešće u saobraćaju; bez neke od njih vozilo ne sme na put, osim u posebnom zakonskom režimu opisanom ispod crteža">
 <g fill="none" stroke="currentColor" stroke-width="1.5">
 <rect x="20" y="6" width="260" height="32" rx="4"/>
 <rect x="20" y="58" width="260" height="32" rx="4"/>
@@ -2723,7 +2722,7 @@ CARDS['vozilo-tehnika'] = {
 </g>
 <rect x="26" y="67" width="7" height="14" fill="#2c6aa0"/>
 <polygon points="144,156 156,156 150,166" fill="currentColor"/>
-<g fill="currentColor" text-anchor="middle" font-size="12">
+<g fill="currentColor" text-anchor="middle" font-size="13">
 <text x="172" y="27">SAOBRAĆAJNA DOZVOLA</text>
 <text x="172" y="79">REGISTARSKE TABLICE</text>
 <text x="172" y="131">REGISTRACIONA NALEPNICA</text>
@@ -2732,44 +2731,44 @@ CARDS['vozilo-tehnika'] = {
 <text x="150" y="53">+</text>
 <text x="150" y="105">+</text>
 </g>
-<rect x="64" y="170" width="172" height="34" rx="4" fill="none" stroke="#1f7a3f" stroke-width="1.8"/>
-<polyline points="80,188 87,195 100,180" fill="none" stroke="#1f7a3f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="172" y="192" font-size="13" text-anchor="middle" fill="#1f7a3f">SME NA PUT</text>
+<rect x="64" y="170" width="172" height="34" rx="4" fill="none" stroke="var(--ok)" stroke-width="1.8"/>
+<polyline points="80,188 87,195 100,180" fill="none" stroke="var(--ok)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="172" y="192" font-size="13" text-anchor="middle" fill="var(--ok)">SME NA PUT</text>
 <line x1="12" y1="212" x2="288" y2="212" stroke="currentColor" stroke-width="1" stroke-dasharray="2 4" opacity="0.45"/>
-<rect x="20" y="222" width="260" height="30" rx="4" fill="none" stroke="#c0392b" stroke-width="1.8" stroke-dasharray="6 4"/>
-<text x="150" y="242" font-size="12" text-anchor="middle" fill="#c0392b">fali BILO KOJE od troje</text>
-<line x1="150" y1="252" x2="150" y2="264" stroke="#c0392b" stroke-width="1.5"/>
-<polygon points="144,264 156,264 150,274" fill="#c0392b"/>
-<rect x="64" y="278" width="172" height="34" rx="4" fill="none" stroke="#c0392b" stroke-width="1.8"/>
-<g fill="none" stroke="#c0392b" stroke-width="2.4" stroke-linecap="round">
+<rect x="20" y="222" width="260" height="30" rx="4" fill="none" stroke="var(--bad)" stroke-width="1.8" stroke-dasharray="6 4"/>
+<text x="150" y="242" font-size="13" text-anchor="middle" fill="var(--bad)">fali BILO KOJE od troje</text>
+<line x1="150" y1="252" x2="150" y2="264" stroke="var(--bad)" stroke-width="1.5"/>
+<polygon points="144,264 156,264 150,274" fill="var(--bad)"/>
+<rect x="64" y="278" width="172" height="34" rx="4" fill="none" stroke="var(--bad)" stroke-width="1.8"/>
+<g fill="none" stroke="var(--bad)" stroke-width="2.4" stroke-linecap="round">
 <circle cx="90" cy="295" r="9"/>
 <line x1="84" y1="289" x2="96" y2="301"/>
 </g>
-<text x="172" y="300" font-size="13" text-anchor="middle" fill="#c0392b">NE SME NA PUT</text>
+<text x="172" y="300" font-size="13" text-anchor="middle" fill="var(--bad)">NE SME NA PUT</text>
 </svg>
 </div>
 <!-- izvor: #8423, #8424 -->
-<p><b>Sva tri dokumenta zajedno:</b> saobraćajna dozvola + registarske tablice + registraciona nalepnica. Svejedno je koje od troje fali — vozilo ne sme na put.</p>
+<p><b>Opšte pravilo za registrovano vozilo:</b> saobraćajna dozvola + registarske tablice + registraciona nalepnica. ZOBS ipak ima posebne režime i izuzetke, među njima odlazak vozila sa isteklom nalepnicom do tehničkog pregleda, opravke ili ispitivanja uz tablice za privremeno označavanje i odgovarajuću potvrdu (čl. 269).</p>
 <!-- izvor: #8423, #8424 -->
 <p><b>Mamci su uvek nepotpuni spiskovi:</b> „dozvola i tablice" (fali nalepnica), „dozvola i potvrda o tehničkoj ispravnosti" (fale i tablice i nalepnica), „potvrda o tehničkoj ispravnosti i registracioni list" (nema ni same dozvole). Tačan odgovor nabraja sva tri dokumenta, a „potvrda o tehničkoj ispravnosti" i „registracioni list" u tom spisku uopšte ne postoje.</p>
 <!-- izvor: #8435, #8443 -->
-<p><b>Isključeno vozilo</b> ne sme u saobraćaj — ni na kratkom delu puta, ni kad nikoga ne ometa. <b>Vozilo na lizingu ili u zakupu</b> smeš da voziš tek kad je podatak o korišćenju upisan u saobraćajnu dozvolu, ne odmah po zaključenju ugovora.</p>
+<p><b>Isključeno vozilo</b> ne sme u saobraćaj — ni na kratkom delu puta, ni kad nikoga ne ometa. <b>Vozilo na lizingu ili u zakupu</b> po opštem pravilu smeš da voziš tek kad je podatak o korišćenju upisan u saobraćajnu dozvolu; vozilo uzeto u rentakaru izričito je izuzeto.</p>
 <!-- izvor: #8433, #8434 (prvi red) · #8437, #8438 (drugi red) · #10707 (treći red) -->
 <table>
 <tr><th>Situacija</th><th>Kod sebe i na uvid</th><th>Ne zamenjuje ga</th></tr>
 <tr><td>vožnja sa registarskim tablicama</td><td><b>saobraćajna dozvola</b></td><td>polisa osiguranja · važeća nalepnica</td></tr>
 <tr><td>vožnja sa tablicama za privremeno označavanje</td><td><b>potvrda o korišćenju tih tablica</b></td><td>polisa osiguranja · potvrda o tehničkoj ispravnosti · dokaz o vlasništvu</td></tr>
-<tr><td>dolazak na redovni ili vanredni pregled</td><td><b>saobraćajna dozvola + tvoja lična karta</b></td><td>vozačka dozvola · lična karta vlasnika</td></tr>
+<tr><td>dolazak na redovni ili vanredni pregled</td><td><b>standardno: saobraćajna dozvola + tvoja lična karta</b>; pravilnik poznaje i zamenske dokaze</td><td>vozačka dozvola · lična karta vlasnika</td></tr>
 </table>
 <!-- izvor: #8434, #8438 -->
-<p class="mut">Pamtilica: na kontroli je odgovor uvek „Da" — i saobraćajna dozvola i potvrda o korišćenju privremenih tablica daju se na uvid, nijedan drugi papir ih ne menja.</p>
+<p class="mut">U pitanjima 8434 i 8438 odgovor je „Da": saobraćajna dozvola, odnosno potvrda o korišćenju tablica za privremeno označavanje, daje se na uvid ovlašćenom licu.</p>
 </div>
 </div>
 <div class="kSek" data-sub="126,127">
-<div class="kPodH"><b class="kPodNaslov">Godina registracije — vremenska osa</b>
+<div class="kPodH"><b class="kPodNaslov">Opšti jednogodišnji rok — vremenska osa</b>
 <!-- izvor: #10688 (30 dana) · #10687 (pregled pre izdavanja nalepnice) · #8428, #8429 (1 godina) · #8425 (po isteku ne sme) -->
 <div style="display:flex;justify-content:center;margin:6px 0">
-<svg viewBox="0 0 300 304" style="width:100%;max-width:340px" role="img" aria-label="uspravna vremenska osa u razmeri: prozor od 30 dana pre podnosenja zahteva, zatim zahtev i izdavanje nalepnice, pa godina dana vazenja nalepnice, i istek posle koga vozilo ne sme na put">
+<svg viewBox="0 0 300 304" style="width:100%;max-width:340px" role="img" aria-label="opšti jednogodišnji režim: pregled najranije 30 dana pre zahteva, zatim zahtev i izdavanje nalepnice, godina važenja i istek posle koga vozilo ne sme na put; izuzetak za odlazak do pregleda, opravke ili ispitivanja uz privremene tablice i potvrdu objašnjen je ispod crteža">
 <g fill="none" stroke="currentColor" stroke-width="1.5">
 <rect x="24" y="44" width="16" height="18" stroke-dasharray="3 3"/>
 <rect x="24" y="62" width="16" height="216" rx="3"/>
@@ -2779,20 +2778,20 @@ CARDS['vozilo-tehnika'] = {
 <path d="M40 62 H48 V72 H54"/>
 <path d="M40 170 H54"/>
 </g>
-<line x1="16" y1="280" x2="54" y2="280" stroke="#c0392b" stroke-width="3"/>
+<line x1="16" y1="280" x2="54" y2="280" stroke="var(--bad)" stroke-width="3"/>
 <g fill="currentColor">
-<text x="58" y="28" font-size="12">PREGLED</text>
-<text x="58" y="45" font-size="11">najranije 30 dana pre zahteva</text>
-<text x="58" y="68" font-size="12">ZAHTEV</text>
-<text x="58" y="85" font-size="11">izdavanje registracione nalepnice</text>
-<text x="58" y="166" font-size="12">NALEPNICA VAŽI</text>
-<text x="58" y="187" font-size="14">1 GODINU</text>
+<text x="58" y="28" font-size="13">PREGLED</text>
+<text x="58" y="45" font-size="13">najranije 30 dana pre zahteva</text>
+<text x="58" y="68" font-size="13">ZAHTEV</text>
+<text x="58" y="85" font-size="13">izdavanje registracione nalepnice</text>
+<text x="58" y="166" font-size="13">NALEPNICA VAŽI</text>
+<text x="58" y="187" font-size="14">PO PRAVILU 1 GODINU</text>
 </g>
-<g fill="#c0392b">
-<text x="58" y="276" font-size="12">ISTEK</text>
+<g fill="var(--bad)">
+<text x="58" y="276" font-size="13">ISTEK</text>
 <text x="58" y="296" font-size="13">NE SME NA PUT</text>
 </g>
-<g fill="none" stroke="#c0392b" stroke-width="2.2" stroke-linecap="round">
+<g fill="none" stroke="var(--bad)" stroke-width="2.2" stroke-linecap="round">
 <circle cx="185" cy="291" r="9"/>
 <line x1="179" y1="285" x2="191" y2="297"/>
 </g>
@@ -2800,9 +2799,9 @@ CARDS['vozilo-tehnika'] = {
 </div>
 <p class="mut" style="text-align:center;font-size:var(--fs-sm)">osa je u razmeri: prozor od 30 dana je dvanaest puta kraći od godine važenja</p>
 <!-- izvor: #10688, #10687, #8428, #8429 -->
-<p><b>Redosled:</b> redovni godišnji tehnički pregled → zahtev za upis u jedinstveni registar, odnosno za izdavanje registracione nalepnice → nalepnica važi <b>godinu dana</b>. Pregled se sme obaviti <b>najranije 30 dana pre podnošenja zahteva</b>, a vozilo mu se podvrgava <b>pre</b> upisa u registar odnosno izdavanja nalepnice — ne „najkasnije godinu dana od prethodnog pregleda" i ne „svake dve godine".</p>
+<p><b>Opšti redosled:</b> redovni godišnji tehnički pregled → zahtev za upis u jedinstveni registar, odnosno za izdavanje registracione nalepnice → nalepnica po pravilu važi <b>godinu dana</b>. Pregled se sme obaviti <b>najranije 30 dana pre podnošenja zahteva</b>, a vozilo mu se podvrgava <b>pre</b> upisa u registar odnosno izdavanja nalepnice — ne „najkasnije godinu dana od prethodnog pregleda" i ne „svake dve godine".</p>
 <!-- izvor: #8425 -->
-<p><b>Kad nalepnica istekne:</b> vozilo <b>ne sme</b> da učestvuje u saobraćaju — nema odlaganja ni od 5 ni od 15 dana.</p>
+<p><b>Kad nalepnica istekne:</b> po opštem pravilu vozilo <b>ne sme</b> da učestvuje u saobraćaju — nema automatskog produženja od 5 ili 15 dana.</p>
 <!-- izvor: #8436, #8427, #8439 -->
 <p><b>Jedini izlaz</b> je odlazak <b>na tehnički pregled, opravku ili ispitivanje</b>, i to samo ako je vozilo označeno <b>tablicama za privremeno označavanje</b> i ako mu je izdata <b>potvrda o njihovom korišćenju</b>. Tablice i potvrda izdaju se sa rokom važenja <b>najduže 15 dana</b>, a dužan si da se krećeš <b>relacijom i u vreme označeno u potvrdi</b> — ne po celoj Srbiji ni slobodno po području organa koji ih je izdao.</p>
 <!-- izvor: #8444 (ODMAH) · #8427 (najduže 15 dana) · #8441, #8442 (u roku od 15 dana) · #10688 (30 dana) · #8428, #8429 (1 godina) -->
@@ -2812,7 +2811,7 @@ CARDS['vozilo-tehnika'] = {
 <tr><td><b>najduže 15 dana</b></td><td>rok važenja tablica za privremeno označavanje i potvrde o njihovom korišćenju</td></tr>
 <tr><td><b>u roku od 15 dana</b></td><td>odjava uništenog ili otpisanog vozila · prijava promene bilo kog podatka koji se upisuje u saobraćajnu dozvolu</td></tr>
 <tr><td><b>najranije 30 dana</b></td><td>toliko pre podnošenja zahteva sme se obaviti redovni godišnji pregled</td></tr>
-<tr><td><b>1 godina</b></td><td>rok važenja registracione nalepnice</td></tr>
+<tr><td><b>po pravilu 1 godina</b></td><td>rok važenja registracione nalepnice; postoje posebni kraći rokovi i trajno važenje</td></tr>
 </table>
 <!-- izvor: #8441, #8442, #8444, #10688, #8436 -->
 <p class="mut">Pamtilica: administrativne obaveze su <b>15 dana</b> (odjava, prijava promene), a gubitak tablice ili nalepnice nema rok — <b>ODMAH</b>, i to <b>najbližoj</b> jedinici MUP-a. „7 dana" nije tačan odgovor ni u jednom od ovih pitanja, a „30 dana" je tačno samo za pregled pre zahteva. Za vožnju posle isteka ne postoji nikakva „posebna dozvola nadležnog organa".</p>
@@ -2822,32 +2821,33 @@ CARDS['vozilo-tehnika'] = {
 <div class="kPodH"><b class="kPodNaslov">Put nazad u saobraćaj</b>
 <!-- izvor: #8461 (prva dva reda) · #8449 (treći red) -->
 <div style="display:flex;justify-content:center;margin:6px 0">
-<svg viewBox="0 0 300 248" style="width:100%;max-width:340px" role="img" aria-label="sema: vozilo kome su u saobracajnoj nezgodi osteceni vitalni sklopovi i uredjaji, ili vozilo iskljuceno zbog neispravnosti utvrdjene na kontrolnom pregledu, ide na vanredni pregled pa tek onda sme na put">
+<svg viewBox="0 0 300 264" style="width:100%;max-width:340px" role="img" aria-label="posle opravke vozila sa oštećenim vitalnim sklopovima i uređajima, odnosno vozila koje nakon oštećenja nije bilo u voznom stanju, ili vozila isključenog zbog neispravnosti sa kontrolnog pregleda, sledi vanredni pregled pre povratka u saobraćaj">
 <g fill="none" stroke="currentColor" stroke-width="1.5">
 <rect x="4" y="6" width="292" height="58" rx="4"/>
 <rect x="4" y="84" width="292" height="42" rx="4"/>
-<rect x="40" y="154" width="220" height="32" rx="4"/>
+<rect x="40" y="154" width="220" height="42" rx="4"/>
 <line x1="150" y1="126" x2="150" y2="140"/>
-<line x1="150" y1="186" x2="150" y2="198"/>
+<line x1="150" y1="196" x2="150" y2="208"/>
 </g>
 <polygon points="144,140 156,140 150,150" fill="currentColor"/>
-<polygon points="144,198 156,198 150,208" fill="currentColor"/>
+<polygon points="144,208 156,208 150,218" fill="currentColor"/>
 <g fill="currentColor" text-anchor="middle">
-<text x="150" y="24" font-size="11">u saobraćajnoj nezgodi oštećeni</text>
-<text x="150" y="41" font-size="12">VITALNI SKLOPOVI I UREĐAJI</text>
-<text x="150" y="57" font-size="11">ili vozilo nije bilo u voznom stanju</text>
-<text x="150" y="78" font-size="11">ILI</text>
-<text x="150" y="102" font-size="11">isključeno zbog neispravnosti sa</text>
-<text x="150" y="118" font-size="12">KONTROLNOG PREGLEDA</text>
-<text x="150" y="175" font-size="13">VANREDNI PREGLED</text>
+<text x="150" y="22" font-size="13">u nezgodi ili drugačije oštećeni</text>
+<text x="150" y="40" font-size="13">VITALNI SKLOPOVI I UREĐAJI</text>
+<text x="150" y="58" font-size="13">ili vozilo nije bilo u voznom stanju</text>
+<text x="150" y="78" font-size="13">ILI</text>
+<text x="150" y="101" font-size="13">isključeno zbog neispravnosti sa</text>
+<text x="150" y="119" font-size="13">KONTROLNOG PREGLEDA</text>
+<text x="150" y="171" font-size="13">NAKON OPRAVKE</text>
+<text x="150" y="188" font-size="13">VANREDNI PREGLED</text>
 </g>
-<rect x="64" y="212" width="172" height="32" rx="4" fill="none" stroke="#1f7a3f" stroke-width="1.8"/>
-<polyline points="82,228 89,235 102,220" fill="none" stroke="#1f7a3f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="172" y="233" font-size="13" text-anchor="middle" fill="#1f7a3f">NA PUT</text>
+<rect x="64" y="222" width="172" height="32" rx="4" fill="none" stroke="var(--ok)" stroke-width="1.8"/>
+<polyline points="82,238 89,245 102,230" fill="none" stroke="var(--ok)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="172" y="243" font-size="13" text-anchor="middle" fill="var(--ok)">NA PUT</text>
 </svg>
 </div>
 <div style="display:flex;justify-content:center;margin:6px 0">
-<svg viewBox="0 0 300 176" style="width:100%;max-width:340px" role="img" aria-label="sema: prepravljeno vozilo ide na ispitivanje kojim se utvrdjuje da ispunjava propisane uslove, pa tek onda sme na put">
+<svg viewBox="0 0 300 176" style="width:100%;max-width:340px" role="img" aria-label="šema: prepravljeno vozilo ide na ispitivanje kojim se utvrđuje da ispunjava propisane uslove, pa tek onda sme na put">
 <g fill="none" stroke="currentColor" stroke-width="1.5">
 <rect x="30" y="6" width="240" height="32" rx="4"/>
 <rect x="16" y="70" width="268" height="46" rx="4"/>
@@ -2858,20 +2858,20 @@ CARDS['vozilo-tehnika'] = {
 <polygon points="144,128 156,128 150,138" fill="currentColor"/>
 <g fill="currentColor" text-anchor="middle">
 <text x="150" y="27" font-size="13">PREPRAVLJENO VOZILO</text>
-<text x="150" y="92" font-size="13">ISPITIVANJE</text>
-<text x="150" y="108" font-size="11">utvrđuje se da ispunjava uslove</text>
+<text x="150" y="90" font-size="13">ISPITIVANJE</text>
+<text x="150" y="109" font-size="13">utvrđuje se da ispunjava uslove</text>
 </g>
-<rect x="64" y="142" width="172" height="32" rx="4" fill="none" stroke="#1f7a3f" stroke-width="1.8"/>
-<polyline points="82,158 89,165 102,150" fill="none" stroke="#1f7a3f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="172" y="163" font-size="13" text-anchor="middle" fill="#1f7a3f">NA PUT</text>
+<rect x="64" y="142" width="172" height="32" rx="4" fill="none" stroke="var(--ok)" stroke-width="1.8"/>
+<polyline points="82,158 89,165 102,150" fill="none" stroke="var(--ok)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="172" y="163" font-size="13" text-anchor="middle" fill="var(--ok)">NA PUT</text>
 </svg>
 </div>
 <!-- izvor: #8461 -->
-<p><b>Vanredni pregled</b> traži se u dva slučaja, oba <b>pre puštanja u saobraćaj</b>: kad su u saobraćajnoj nezgodi ili na drugi način oštećeni vitalni sklopovi i uređaji bitni za bezbedno učestvovanje u saobraćaju, odnosno kad vozilo nakon toga nije bilo u voznom stanju; i kad je vozilo isključeno iz saobraćaja zbog tehničke neispravnosti utvrđene na kontrolnom pregledu.</p>
+<p><b>Obavezni vanredni pregled</b> obavlja se <b>posle opravke, a pre puštanja u saobraćaj</b>: kada su u nezgodi ili na drugi način oštećeni vitalni sklopovi i uređaji bitni za bezbednost, odnosno kada vozilo nakon toga nije bilo u voznom stanju; i kada je vozilo isključeno zbog tehničke neispravnosti utvrđene na kontrolnom pregledu. Vanredni pregled može se obaviti i na zahtev vozača radi provere tehničke ispravnosti.</p>
 <!-- izvor: #8449 -->
 <p><b>Prepravljeno vozilo</b> ne rešava tehnički pregled — traži se <b>ispitivanje</b> i utvrđivanje da ispunjava propisane uslove, pa tek onda sme u saobraćaj. Nikako „odmah nakon izvršene prepravke".</p>
 <!-- izvor: #8446, #8461 -->
-<p class="mut">Pamtilica: na <b>kontrolni</b> pregled ide samo vozilo <b>u voznom stanju</b>; vozilo kojem su u nezgodi oštećeni sklopovi ide na <b>vanredni</b> — to je par koji se najčešće zamenjuje.</p>
+<p class="mut">Pamtilica: na <b>kontrolni</b> pregled upućuje se vozilo u voznom stanju; kod vozila posle nezgode ne sme biti mehaničkog oštećenja uređaja bitnih za bezbedno upravljanje. Oštećeno vozilo koje nije bilo u voznom stanju posle opravke ide na <b>vanredni</b> pregled.</p>
 </div>
 <div class="kPodH"><b class="kPodNaslov">Ispravnost i identitet vozila</b>
 <!-- izvor: #8448 -->
@@ -2884,7 +2884,7 @@ CARDS['vozilo-tehnika'] = {
 <!-- izvor: #8447 -->
 <p><b>Gde važi:</b> tehnički uslovi i ispravnost traže se <b>kada vozilo učestvuje u saobraćaju na putu</b> — na svakom putu, ne „samo na javnom putu" ni „samo na putu sa savremenim kolovoznim zastorom".</p>
 <!-- izvor: #8451 -->
-<p><b>Identitet:</b> vozilo jednoznačno određuje <b>identifikaciona oznaka koju određuje proizvođač</b>. Ne oznaka „i broj motora" (motor je zamenljiv deo), ni registraciona nalepnica (menja se pri svakoj registraciji).</p>
+<p><b>Identitet:</b> vozilo jednoznačno određuje <b>identifikaciona oznaka koju određuje proizvođač</b>. Ne oznaka „i broj motora" (motor je zamenljiv deo), ni registraciona nalepnica (vezana je za registraciju).</p>
 </div>
 </div>
 `,
@@ -6764,7 +6764,7 @@ const out = {
 
 // Lokalno prevedi pregledane pristupačne opise; opšti toCyr štiti HTML tagove.
 // Novi opis u ovim karticama zahteva ponovni pregled oba pisma.
-for (const [key, expected] of [['brzine', 6], ['kategorije-vozila', 4], ['put-pojmovi', 1]]) {
+for (const [key, expected] of [['brzine', 6], ['kategorije-vozila', 4], ['put-pojmovi', 1], ['vozilo-tehnika', 4]]) {
   let count = 0;
   out.cards[key].h.c = out.cards[key].h.c.replace(/aria-label="([^"]*)"/g, (_, label) => {
     count++;
