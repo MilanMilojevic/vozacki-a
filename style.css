@@ -386,7 +386,7 @@ body.uSimulaciji #podnozje { display: none; }
 .planPolje input[aria-invalid="true"] { border-color: var(--bad); }
 .explCardBtn { padding: 4px 0; }
 .explCard { margin-top: 8px; line-height: 1.55; }
-.explCard p { margin: 0 0 10px; }
+.explCard p { margin: 0 0 10px; overflow-wrap: anywhere; }
 .explCard ul, .explCard ol { padding-left: 22px; margin: 6px 0 10px; }
 .explCard li { margin-bottom: 4px; }
 /* zbirna kartica uz pitanje: prikazan je samo odeljak podoblasti */
