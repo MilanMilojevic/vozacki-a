@@ -30,7 +30,7 @@
 | А3 Циљ и процена спремности | Завршено | v131: reload циља; v134: непознато градиво не добија позајмљену тачност; условни модел јасно означен |
 | А4 Телефон и приступачност | У току; корисничка проба остаје v165 | Развојне v169–171 поправљају табелу возила, ситне натписе паркирања и преливање дугих речи при увећању текста; раније тастатура/водич/контраст/увећање. Остали цртежи, читач екрана и стварни телефони остају у прегледу |
 | А5 Кеш и алати издавања | Делимично | v128/v137: издање/кеш; алати/CI проверени; v157: аутоматски отисци слика и провера бајтова у SW; ограничење старих кешева још отворено |
-| А6 Садржај 1.327 питања | У току, почетни део базе | На v183: 411 питања reviewed, 5 in-progress, 62 needs-expert, 849 unreviewed; картице 11 reviewed, 1 in-progress, 27 unreviewed. Започета питања нису урачуната у завршена; повезане картице морају бити посебно проверене |
+| А6 Садржај 1.327 питања | У току | На v189: 696 питања reviewed, 4 in-progress, 66 needs-expert, 561 unreviewed; картице 17 reviewed, 1 in-progress, 21 unreviewed. Актуелни машински збир: [manifest.json](docs/revizija-sadrzaja/manifest.json). Започета и спорна питања нису урачуната у завршена |
 | А7 Документација / права | У току | CONTRIBUTING, README, школска упутства и fork поступак допуњени; v147 поруке/метаподаци и v151 FAQ усклађени; преостаје одлука власника о лиценци |
 | Б1–Б3 Побољшања | Чека | После учвршћивања, пилот по пилот |
 | Навигација — накнадни захтев | Основни токови завршени; доградња одвојена | v146 Назад/Напред; v150 стварни линкови; v154 статистика; v158 лични спискови. v162 додаје преглед конкретног старог испита; то је доградња, не услов основне безбедности учења. v163 исправља копирани линк питања и повратак фокуса у појмовник |
@@ -529,3 +529,20 @@
 - Šest tabela, 58 atlas slika i 11 situacija očuvani. Precizirani izuzeci, najveća dozvoljena masa i jedinice; uklonjena izmišljena obeležja slika. Tri zajedničke poruke i odgovarajući komentari razlikuju sačuvanu banku od aktuelnog značenja i budućeg ispita; poslednja poruka poređenja znakova dodatno proverena 4/4 na oba pisma.
 - Chromium 16/16 kartice +288/288 pitanja; bez page overflow, grešaka ili sintetičkih upisa. Neke tabele zadržavaju lokalno horizontalno pomeranje pri uvećanom tekstu; to ostaje vidljivo u dokumentu `docs/revizija-sadrzaja/grupe/032-znakovi-naredbi.md`.
 - Zatvoreno 71 pitanje; 9677 čeka karticu skretanja. Ukupno 411 reviewed, 5 in-progress, 62 needs-expert, 849 unreviewed; kartice 11 reviewed, 1 in-progress, 27 unreviewed. `node tools/verify.mjs`: 249/249. Git oznaka `v183`; korisnička proba 18980 ostaje v165.
+
+### v184–v189 — završene sadržinske grupe
+
+Svaka grupa ima zasebno izdanje i pojedinačne zapise sa izvorima. Brojevi prikaza pitanja ispod obuhvataju oba pisma i širine320/1280; to nisu dodatna različita pitanja. Uz svaku grupu provereno je16 prikaza cele kartice, oba pisma/teme i100/200% osnovnog fonta. `node tools/verify.mjs` je na svakom izdanju prošao sa249/249 automatizovanih testova; to nije dokaz pravne tačnosti, koja je zasebno pregledana.
+
+| Izdanje | Obuhvat | Ispravljena objašnjenja | Prikazi pitanja | Pojedinačni dokaz |
+|---|---|---:|---:|---|
+| v184 `23ccc15` | Uređaji/oprema:54 pitanja,4 SVG; tri nesklada sa aktuelnim propisom izdvojena |36|216/216|[A6-038](docs/revizija-sadrzaja/grupe/038-uredjaji-oprema.md)|
+| v185 `9ae9f34` | Semafori:44 pitanja,8 SVG |14|176/176|[A6-036](docs/revizija-sadrzaja/grupe/036-semafori.md)|
+| v186 `e77e54f` | Znakovi opasnosti:57 pitanja,53 originalne slike |10|228/228|[A6-037](docs/revizija-sadrzaja/grupe/037-znakovi-opasnosti.md)|
+| v187 `4065388` | Skretanje:30 pitanja,2 SVG; suvišna veza9689 uklonjena |11|120/120|[A6-043](docs/revizija-sadrzaja/grupe/043-skretanje.md)|
+| v188 `7f69fa8` | Isključenje:46 pitanja,3 SVG; tačno1,20 i postupak uklanjanja |9|184/184|[A6-045](docs/revizija-sadrzaja/grupe/045-iskljucenje.md)|
+| v189 | Oznake kolovoza:59 pitanja,12 SVG;9288 ostaje terminološka nedoumica |17|236/236|[A6-044](docs/revizija-sadrzaja/grupe/044-oznake-kolovoz.md)|
+
+Četiri započeta pitanja su7924/7925,8113 i9689; zavise od nedovršenih kartica. Svih66 spornih pitanja ima odvojene nalaze, bez prepravljanja ključa po pretpostavci. Slede puni pregledi prvenstva prolaza, pruge i znakova policajca, zatim preostale kartice i samostalna pitanja. Drugi prolaz plana, stvarni telefoni/čitači ekrana i odluka o licenci ostaju zasebni zadaci.
+
+Izdanja184–188 poslata su na `origin/codex/stabilizacija` sa oznakama; v189 prati ista procedura posle završenih provera. Nisu dodavane kopije runtime-a ili banke slika za ove preglede. Originalna aplikacija ostaje v126, a samostalna korisnička proba na18980 ostaje v165.
