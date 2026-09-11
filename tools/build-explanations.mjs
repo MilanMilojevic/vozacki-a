@@ -3399,15 +3399,17 @@ CARDS['zn-ob-ostalo'] = {
 CARDS['policajac-znaci'] = {
   title: 'Znaci i naredbe policijskog službenika',
   html: `
-<p><b>Ovo je najjači znak na putu.</b> Znaci i naredbe ovlašćenog lica <b>imaju prvenstvo u odnosu na saobraćajnu signalizaciju i propisana pravila saobraćaja</b> (ZOBS čl. 166). Zato na slikama iz ove oblasti namerno stoje i STOP znak i zeleno svetlo na semaforu — dok policajac reguliše, oni se ne gledaju. Isto važi i za pravilo desne strane: odgovor „mogu pravo kad propustim vozila sa puta koji se ukršta" je uvek mamac.</p>
+<p><b>Ovo je najjači znak na putu.</b> Znaci i naredbe ovlašćenog lica <b>imaju prvenstvo u odnosu na saobraćajnu signalizaciju i propisana pravila saobraćaja</b> (ZOBS čl. 166). Ako je njegov znak suprotan zelenom svetlu ili znaku STOP, postupaš po znaku policajca. Kada ti zabranjuje prolaz, ne možeš nastaviti samo zato što si propustio druga vozila. Pravila koja nisu u suprotnosti sa njegovim znakom i dalje se primenjuju.</p>
 
-<p><b>Čime se daju znaci:</b> rukama, odnosno <b>položajem tela</b>, uređajima za davanje svetlosnih i zvučnih znakova i <b>„stop tablicom"</b>. <span class="mut">Mamci: „zastavicom za regulisanje saobraćaja" — zastavice (crvena i zelena) idu uz regulisanje na mestu radova, gde saobraćaj regulišu najmanje dva radnika izvođača; „usmeno" — usmeno se daju <i>naredbe</i>, a ne znaci; „znakovima sa izmenljivim sadržajem poruka" — to je signalizacija na putu, ne znak policajca.</span></p>
+<p><b>Čime se daju znaci:</b> rukama, odnosno <b>položajem tela</b>, uređajima za davanje svetlosnih i zvučnih znakova i <b>„stop tablicom"</b>. <span class="mut">Mamci: „zastavicom za regulisanje saobraćaja" — zastavice (crvena i zelena) idu uz regulisanje na mestu radova, gde saobraćaj regulišu najmanje dva radnika izvođača;  „znakovima sa izmenljivim sadržajem poruka" — to je signalizacija na putu, ne znak policajca.</span></p>
+<p><b>Napomena uz #10420:</b> sačuvani ključ bira tri načina iz čl. 1 st. 1. Međutim, st. 2 kaže da se znaci i naredbe mogu davati i usmeno. Ponuđeno „usmeno” zato ostaje za stručno razjašnjenje; ne uči ga kao pouzdano netačan način.</p>
 
-<p><b>Šest znakova rukama.</b> Leva kolona je ono što stvarno vidiš na fotografiji, srednja je formulacija kojom to pitanje zove:</p>
+<p><b>Znaci rukama: razlikuj položaj dlana.</b> Uporedi vidljivi gest sa propisanim položajem i značenjem:</p>
 <table>
-<tr><th>Šta vidiš na slici</th><th>Kako to zove pitanje</th><th>Značenje</th></tr>
-<tr><td>Ruka ispružena <b>pravo uvis</b>, otvorena šaka</td><td>ruka podignuta uvis</td><td><b>Obavezno zaustavljanje za SVE</b> učesnike — bez obzira na to da li mu vidiš prsa ili leđa. <span class="mut">Položaj tela je merilo samo kad su ruke spuštene ili odručene.</span></td></tr>
-<tr><td>Ruka ispružena <b>vodoravno napred</b>, šaka ravna, <b>dlan okrenut nadole</b></td><td>predručena ruka</td><td><b>Zabrana prolaza</b> za sve čiji smer kretanja <b>seče</b> smer te ruke</td></tr>
+<tr><th>Šta vidiš na slici</th><th>Znak / propisani položaj</th><th>Značenje</th></tr>
+<tr><td>Desna ruka <b>vertikalno uvis</b>, dlan <b>prema levo</b></td><td>Znak na raskrsnici — čl. 2 st. 1 tač. 1</td><td>Zabrana prolaza za sve vozače, <b>osim onih koji se u času podizanja ruke ne mogu bezbedno zaustaviti</b>; pešaci ne smeju da prelaze kolovoz.</td></tr>
+<tr><td>Desna ruka <b>vertikalno uvis</b>, dlan <b>prema napred</b></td><td>Znak van raskrsnice — čl. 2 st. 1 tač. 2</td><td>Obavezno zaustavljanje vozača <b>prema kojima su okrenuti dlan i prsa</b>. Policajac stoji na preglednom i bezbednom mestu na kolovozu.</td></tr>
+<tr><td>Ruka ispružena <b>vodoravno napred</b>, šaka ravna, <b>dlan usmeren prema levo</b></td><td>predručena ruka</td><td><b>Zabrana prolaza</b> za sve čiji smer kretanja <b>seče</b> smer te ruke</td></tr>
 <tr><td><b>Pun otvoren dlan uspravno okrenut ka tebi</b> (vidiš celu unutrašnjost šake), ruka ispružena ili savijena u laktu</td><td>znak kojim se naređuje zaustavljanje</td><td><b>Zaustaviš vozilo</b></td></tr>
 <tr><td>Ruka ispružena <b>vodoravno u stranu</b>, dlan nadole, pored šake <b>strelica gore-dole</b></td><td>lagano mahanje horizontalno odručenom rukom gore-dole, dlanom nadole</td><td><b>Smanjiš brzinu</b></td></tr>
 <tr><td>Podlaktica podignuta, otvorena šaka, oko šake <b>kružna strelica</b></td><td>predručena ruka savijena u laktu, kružno kretanje podlaktice i šake</td><td><b>Ubrzaš</b> kretanje</td></tr>
@@ -3421,55 +3423,55 @@ CARDS['policajac-znaci'] = {
     <rect x="0" y="112" width="320" height="76"/>
     <rect x="112" y="0" width="76" height="300"/>
   </g>
-  <path d="M150 40 L150 80" stroke="#c0392b" stroke-width="7" fill="none"/>
-  <path d="M138 78 L150 94 L162 78" stroke="#c0392b" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="150" y="30" text-anchor="middle" font-size="13" font-weight="bold" fill="#c0392b">STAJE</text>
-  <path d="M150 260 L150 220" stroke="#c0392b" stroke-width="7" fill="none"/>
-  <path d="M138 222 L150 206 L162 222" stroke="#c0392b" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="150" y="286" text-anchor="middle" font-size="13" font-weight="bold" fill="#c0392b">STAJE</text>
-  <path d="M16 130 L92 130" stroke="#1f7a3f" stroke-width="7" fill="none"/>
-  <path d="M88 120 L104 130 L88 140" stroke="#1f7a3f" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="58" y="100" text-anchor="middle" font-size="13" font-weight="bold" fill="#1f7a3f">PROLAZI</text>
-  <path d="M304 170 L228 170" stroke="#1f7a3f" stroke-width="7" fill="none"/>
-  <path d="M232 160 L216 170 L232 180" stroke="#1f7a3f" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="252" y="212" text-anchor="middle" font-size="13" font-weight="bold" fill="#1f7a3f">PROLAZI</text>
+  <path d="M150 40 L150 80" stroke="var(--bad)" stroke-width="7" fill="none"/>
+  <path d="M138 78 L150 94 L162 78" stroke="var(--bad)" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="150" y="30" text-anchor="middle" font-size="14" font-weight="bold" fill="currentColor">STAJE</text>
+  <path d="M150 260 L150 220" stroke="var(--bad)" stroke-width="7" fill="none"/>
+  <path d="M138 222 L150 206 L162 222" stroke="var(--bad)" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="150" y="286" text-anchor="middle" font-size="14" font-weight="bold" fill="currentColor">STAJE</text>
+  <path d="M16 130 L92 130" stroke="var(--ok)" stroke-width="7" fill="none"/>
+  <path d="M88 120 L104 130 L88 140" stroke="var(--ok)" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="58" y="100" text-anchor="middle" font-size="14" font-weight="bold" fill="currentColor">PROLAZI</text>
+  <path d="M304 170 L228 170" stroke="var(--ok)" stroke-width="7" fill="none"/>
+  <path d="M232 160 L216 170 L232 180" stroke="var(--ok)" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="252" y="212" text-anchor="middle" font-size="14" font-weight="bold" fill="currentColor">PROLAZI</text>
   <line x1="110" y1="150" x2="190" y2="150" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
   <circle cx="150" cy="150" r="14" fill="currentColor"/>
-  <path d="M136 150 A14 14 0 0 1 164 150 Z" fill="#c0392b"/>
+  <path d="M136 150 A14 14 0 0 1 164 150 Z" fill="var(--bad)"/>
   <path d="M92 244 L130 164" stroke="currentColor" stroke-width="1.5" opacity=".5" fill="none"/>
-  <text x="58" y="256" text-anchor="middle" font-size="12" fill="#64748b">policajac</text>
+  <text x="58" y="256" text-anchor="middle" font-size="14" fill="currentColor">policajac</text>
 </svg>
 <p class="mut" style="text-align:center;font-size:var(--fs-sm)">crvena polovina figure = prsa; crta kroz figuru = odručene ruke, koje ovde ništa ne menjaju</p>
 
 <p><b>Predručena ruka se gleda drugačije.</b> Zamisli je kao rampu koja se pruža u smeru u kome pokazuje: ako <b>tvoja putanja preseca tu rampu</b> — ne smeš. Ako je ne dodiruješ (na primer, prolaziš iza njegovih leđa, mimo pravca ruke) — smeš pravo.</p>
 <svg viewBox="0 0 320 340" role="img" aria-label="Dva prikaza odozgo: gore vozilo čija putanja ne seče predručenu ruku policajca, pa može da prođe; dole vozilo čija putanja seče predručenu ruku, pa mora da stane" style="max-width:320px;width:100%;display:block;margin:8px auto">
-  <text x="186" y="34" text-anchor="middle" font-size="12" fill="currentColor">smer predručene ruke</text>
+  <text x="186" y="34" text-anchor="middle" font-size="14" fill="currentColor">smer predručene ruke</text>
   <circle cx="95" cy="72" r="14" fill="currentColor"/>
   <line x1="109" y1="72" x2="245" y2="72" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
   <rect x="239" y="62" width="26" height="20" rx="6" fill="currentColor"/>
-  <text x="95" y="102" text-anchor="middle" font-size="12" fill="#64748b">policajac</text>
-  <path d="M38 132 L38 46" stroke="#1f7a3f" stroke-width="7" fill="none"/>
-  <path d="M26 56 L38 34 L50 56" stroke="#1f7a3f" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="72" y="158" text-anchor="middle" font-size="12" font-weight="bold" fill="#1f7a3f">ne seče = možeš</text>
+  <text x="95" y="102" text-anchor="middle" font-size="14" fill="currentColor">policajac</text>
+  <path d="M38 132 L38 46" stroke="var(--ok)" stroke-width="7" fill="none"/>
+  <path d="M26 56 L38 34 L50 56" stroke="var(--ok)" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="86" y="158" text-anchor="middle" font-size="14" font-weight="bold" fill="currentColor">ne seče = možeš</text>
   <line x1="12" y1="176" x2="308" y2="176" stroke="currentColor" stroke-width="1" opacity=".25"/>
   <circle cx="95" cy="248" r="14" fill="currentColor"/>
   <line x1="109" y1="248" x2="245" y2="248" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
   <rect x="239" y="238" width="26" height="20" rx="6" fill="currentColor"/>
-  <text x="95" y="278" text-anchor="middle" font-size="12" fill="#64748b">policajac</text>
-  <path d="M186 300 L186 214" stroke="#c0392b" stroke-width="7" fill="none"/>
-  <path d="M174 224 L186 202 L198 224" stroke="#c0392b" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="186" cy="248" r="9" fill="none" stroke="#c0392b" stroke-width="3"/>
-  <text x="186" y="326" text-anchor="middle" font-size="12" font-weight="bold" fill="#c0392b">SEČE = stani</text>
+  <text x="95" y="278" text-anchor="middle" font-size="14" fill="currentColor">policajac</text>
+  <path d="M186 300 L186 214" stroke="var(--bad)" stroke-width="7" fill="none"/>
+  <path d="M174 224 L186 202 L198 224" stroke="var(--bad)" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="186" cy="248" r="9" fill="none" stroke="var(--bad)" stroke-width="3"/>
+  <text x="186" y="326" text-anchor="middle" font-size="14" font-weight="bold" fill="currentColor">SEČE = stani</text>
 </svg>
 <p><b>Nemoj mešati dva pravila.</b> Kad su mu ruke spuštene ili obe odručene — gledaš <b>kuda je okrenut</b>. Kad je jedna ruka <b>predručena</b> — telo više nije merilo, gledaš samo <b>da li joj sečeš smer</b>. Zato na jednoj slici gledaš policajcu u leđa i moraš da staneš, a na drugoj mu takođe gledaš u leđa, ali je ruka predručena mimo tvoje putanje — i smeš pravo. I još jedno: predručena ruka <b>ne naređuje</b> da se krećeš u njenom smeru, ona samo zabranjuje onima koji je seku.</p>
 
 <p><b>Zamke koje se ponavljaju kroz celu oblast</b></p>
 <table>
 <tr><th>Ponuđeni odgovor</th><th>Zašto je netačan</th></tr>
-<tr><td>„...osim za one vozače čija se vozila, u času kada policijski službenik podigne ruku, ne mogu na bezbedan način zaustaviti"</td><td>Nudi se uz uzdignutu ruku, uz predručenu i uz oba položaja tela — <b>nijednom nije tačan</b>. Nema izuzetka „nisam stigao da stanem".</td></tr>
-<tr><td>„obavezan je da ukloni vozilo sa kolovoza"</td><td>Nijedan znak rukom ne znači „skloni vozilo sa kolovoza".</td></tr>
-<tr><td>„možete nastaviti pravo kada propustite vozila sa puta sa kojim se ukršta"</td><td>Dok policajac reguliše, prvenstvo ne odlučuju pravila ni znakovi — odlučuje njegov znak.</td></tr>
-<tr><td>„preporuka za bezbedno kretanje" · „samo ako ste učinili prekršaj" · „samo ako ste prekoračili brzinu"</td><td>Svetlosni znaci sa policijskog vozila su uvek <b>obaveza</b>, i uvek bezuslovna.</td></tr>
+<tr><td>„...osim za one vozače čija se vozila, u času kada policijski službenik podigne ruku, ne mogu na bezbedan način zaustaviti"</td><td>Ovaj izuzetak <b>postoji</b> uz vertikalno podignutu desnu ruku sa dlanom prema levo, na raskrsnici. Ne pripisuj ga drugom znaku: dlan prema napred, predručena ruka i položaj tela imaju druga propisana značenja.</td></tr>
+<tr><td>„obavezan je da ukloni vozilo sa kolovoza"</td><td>Prikazani otvoreni dlan naređuje zaustavljanje. Uz vertikalno podignutu desnu ruku sa dlanom napred (čl. 2 st. 1 tač. 2), policajac može dodatnim znakom pokazati gde da pomeriš i zaustaviš vozilo radi bezbedne kontrole.</td></tr>
+<tr><td>„možete nastaviti pravo kada propustite vozila sa puta sa kojim se ukršta"</td><td>Ako ti policajac zabranjuje prolaz, propuštanje drugih vozila ne daje ti dozvolu da nastaviš.</td></tr>
+<tr><td>„preporuka za bezbedno kretanje" · „samo ako ste učinili prekršaj" · „samo ako ste prekoračili brzinu"</td><td>Vozač kome je prikazana poruka namenjena <b>mora postupiti po njoj</b>; to ne zavisi od toga da li je prethodno učinio prekršaj.</td></tr>
 </table>
 
 <p><b>Pištaljka</b> — daje se <b>samo kad je policajac van vozila</b>, i to u kombinaciji sa znacima rukama. Nijedan zvižduk sam po sebi nije naredba za zaustavljanje:</p>
@@ -3482,34 +3484,34 @@ CARDS['policajac-znaci'] = {
 
 <p><b>Iz vozila i sa motocikla.</b> Znake za <b>smanjenje brzine</b>, <b>ubrzanje</b> i <b>zaustavljanje</b> policijski službenik <b>može</b> davati i iz vozila, odnosno sa motocikla — kada policajac, odnosno vozilo, <b>ima vidno obeležje policije</b> (ZOBS čl. 166: znaci i naredbe mogu se davati i iz vozila). Mamci su „ne može iz vozila" i „samo iz vozila sa prvenstvom prolaza" — <b>ne traži se rotacija, traži se obeležje</b>. Obrnuto od toga, pištaljka ide samo van vozila.</p>
 
-<p><b>Baterijska lampa sa postojanim crvenim svetlom, kojom maše upravno na uzdužnu osu puta.</b> Dve noćne slike, dva različita odgovora:</p>
+<p><b>Crvena baterijska lampa.</b> Policajac maše lampom sa postojanim crvenim svetlom upravno na uzdužnu osu puta. Dve noćne slike, dva različita odgovora:</p>
 <table>
 <tr><th>Šta je na slici</th><th>Šta radiš</th></tr>
 <tr><td>Policajac stoji na <b>tvom</b> kolovozu, okrenut ka tebi, i maše crvenom lampom preko tvoje trake</td><td>Bezbedno zaustaviš vozilo na kolovozu, a <b>po mogućnosti van kolovoza</b> — <b>neposredno ISPRED policajca</b> koji daje znak</td></tr>
-<tr><td>Policajac je <b>na drugoj strani puta</b> (zaokružen je žutim) i znak daje vozilu koje ide ka tebi iz suprotnog smera</td><td><b>Smanjiš brzinu</b>, odnosno krećeš se sa <b>povećanom opreznošću</b> — ne zaustavljaš se</td></tr>
+<tr><td>Policajac je <b>na drugoj strani puta</b> (zaokružen je žutim) i znak daje vozilu koje ide ka tebi iz suprotnog smera</td><td><b>Smanjiš brzinu</b>, odnosno krećeš se sa <b>povećanom opreznošću</b> — ovaj znak ti sam po sebi ne naređuje zaustavljanje</td></tr>
 </table>
-<p class="mut">Reč koja odlučuje je „neposredno <b>ispred</b> policijskog službenika" — ne iza njega, ne pored njega. A kad znak nije upućen tebi, ostaje samo obaveza opreza.</p>
+<p class="mut">Reč koja odlučuje je „neposredno <b>ispred</b> policijskog službenika" — ne iza njega, ne pored njega. Kada znak nije upućen tebi, smanjiš brzinu, odnosno krećeš se sa povećanom opreznošću.</p>
 
 <p><b>Displej na policijskom vozilu.</b> Poruka je ispisana crvenim slovima na tamnoj podlozi, na zadnjem staklu vozila ispred tebe, i naizmenično se smenjuje sa rečju POLICIJA. Postupaš doslovno po tekstu — to je <b>obaveza</b>, a ne preporuka, i ne zavisi od toga da li si napravio prekršaj:</p>
 <div class="signRow wrapRow" style="margin:10px 0">
   <div class="signCell">
-    <svg viewBox="0 0 100 58"><rect x="3" y="7" width="94" height="44" rx="4" fill="#141414"/><text x="50" y="37" text-anchor="middle" fill="#ff4522" font-size="19" font-weight="bold" font-family="monospace">STOP</text></svg>
+    <svg viewBox="0 0 100 58" role="img" aria-label="STOP: zaustavi se iza policijskog vozila" style="width:100px;height:auto"><rect x="3" y="7" width="94" height="44" rx="4" fill="#141414"/><text x="50" y="37" text-anchor="middle" fill="#ff4522" font-size="19" font-weight="bold" font-family="monospace">STOP</text></svg>
     <span><b>Staješ IZA</b><br>policijskog vozila</span>
   </div>
   <div class="signCell">
-    <svg viewBox="0 0 100 58"><rect x="3" y="7" width="94" height="44" rx="4" fill="#141414"/><text x="50" y="26" text-anchor="middle" fill="#ff4522" font-size="13" font-weight="bold" font-family="monospace">STANITE</text><text x="50" y="44" text-anchor="middle" fill="#ff4522" font-size="13" font-weight="bold" font-family="monospace">ISPRED</text></svg>
+    <svg viewBox="0 0 100 58" role="img" aria-label="STANITE ISPRED: zaustavi se ispred službenog vozila" style="width:100px;height:auto"><rect x="3" y="7" width="94" height="44" rx="4" fill="#141414"/><text x="50" y="26" text-anchor="middle" fill="#ff4522" font-size="13" font-weight="bold" font-family="monospace">STANITE</text><text x="50" y="44" text-anchor="middle" fill="#ff4522" font-size="13" font-weight="bold" font-family="monospace">ISPRED</text></svg>
     <span><b>Staješ ISPRED</b><br>službenog vozila</span>
   </div>
   <div class="signCell">
-    <svg viewBox="0 0 100 58"><rect x="3" y="7" width="94" height="44" rx="4" fill="#141414"/><text x="50" y="37" text-anchor="middle" fill="#ff4522" font-size="14" font-weight="bold" font-family="monospace">USPORITE</text></svg>
+    <svg viewBox="0 0 100 58" role="img" aria-label="USPORITE: prati brzinu policijskog vozila" style="width:100px;height:auto"><rect x="3" y="7" width="94" height="44" rx="4" fill="#141414"/><text x="50" y="37" text-anchor="middle" fill="#ff4522" font-size="14" font-weight="bold" font-family="monospace">USPORITE</text></svg>
     <span><b>Voziš brzinom</b><br>policijskog vozila</span>
   </div>
   <div class="signCell">
-    <svg viewBox="0 0 100 58"><rect x="3" y="7" width="94" height="44" rx="4" fill="#141414"/><text x="50" y="26" text-anchor="middle" fill="#ff4522" font-size="13" font-weight="bold" font-family="monospace">PRATITE</text><text x="50" y="44" text-anchor="middle" fill="#ff4522" font-size="13" font-weight="bold" font-family="monospace">NAS</text></svg>
+    <svg viewBox="0 0 100 58" role="img" aria-label="PRATITE NAS: kreći se za policijskim vozilom" style="width:100px;height:auto"><rect x="3" y="7" width="94" height="44" rx="4" fill="#141414"/><text x="50" y="26" text-anchor="middle" fill="#ff4522" font-size="13" font-weight="bold" font-family="monospace">PRATITE</text><text x="50" y="44" text-anchor="middle" fill="#ff4522" font-size="13" font-weight="bold" font-family="monospace">NAS</text></svg>
     <span><b>Voziš za njim</b><br>dok daje znak</span>
   </div>
 </div>
-<p>Zašto goli „STOP" znači <i>iza</i>: vozač koji se kreće <b>neposredno iza</b> policijskog vozila koje daje posebne znake dužan je da postupi po znacima i naredbama policajca, odnosno da prati vozilo do pogodnog mesta i bezbedno se zaustavi <b>iza</b> njega (ZOBS čl. 110). Ispred staješ samo kad na displeju izričito piše da staneš ispred službenog vozila. Mamac na oba pitanja: „dužan sam samo ako uz displej dobijem i znak stop tablicom" — nije tačno, displej je dovoljan.</p>
+<p>Zašto goli „STOP" znači <i>iza</i>: vozač koji se kreće <b>neposredno iza</b> policijskog vozila koje daje posebne znake dužan je da postupi po znacima i naredbama policajca, odnosno da prati vozilo do pogodnog mesta i bezbedno se zaustavi <b>iza</b> njega (ZOBS čl. 110). Na drugoj prikazanoj slici poruka izričito traži da staneš ispred službenog vozila. Mamac na oba pitanja: „dužan sam samo ako uz displej dobijem i znak stop tablicom" — nije tačno, displej je dovoljan.</p>
 
 <p><b>Duga svetla iza tebe.</b> Kada policijsko vozilo pod pratnjom, odnosno sa prvenstvom prolaza, uz posebna svetla daje i <b>svetlosni znak upozorenja</b> — a to je <b>uzastopno ili naizmenično paljenje dugih svetala</b> (ZOBS čl. 60) — vozač koji se kreće <b>neposredno ispred</b> njega mora <b>odmah bezbedno da zaustavi vozilo uz desnu ivicu kolovoza, a po mogućnosti van kolovoza</b> (ZOBS čl. 110). Mamci: „smanji brzinu" i „omogući mu preticanje". Ne — <b>staješ</b>, i to uz desnu ivicu.</p>
 
@@ -3517,13 +3519,13 @@ CARDS['policajac-znaci'] = {
 <table>
 <tr><th>Svetlo</th><th>Vozilo</th><th>Tvoje obaveze</th></tr>
 <tr><td><b>Crveno + plavo</b>, naizmenično</td><td>Vozilo <b>pod pratnjom</b>, u kretanju</td><td>Propustiš ga i omogućiš mu mimoilaženje, preticanje, odnosno obilaženje · <b>po potrebi</b> staneš ili skloniš vozilo sa kolovoza · strogo se pridržavaš naredbi <b>lica iz pratnje</b> · nastaviš tek pošto prođu <b>sva</b> vozila pod pratnjom (čl. 107)</td></tr>
-<tr><td><b>Dva plava</b></td><td>Vozilo sa prvenstvom prolaza, <b>u kretanju</b></td><td>Obratiš pažnju na njega <b>i na vozila kojima ono obezbeđuje prolaz</b>, pa ih propustiš · po potrebi staneš ili skloniš vozilo dok prođu · strogo se pridržavaš naredbi lica iz tog vozila (čl. 109)</td></tr>
-<tr><td><b>Jedno plavo</b></td><td>Vozilo sa prvenstvom prolaza, <b>u kretanju</b></td><td>Obratiš pažnju i <b>ustupiš mu prvenstvo</b>, odnosno propustiš ga · po potrebi staneš ili skloniš vozilo dok prođe <span class="mut">(bez dela o vozilima kojima obezbeđuje prolaz — to ide uz dva svetla)</span></td></tr>
+<tr><td><b>Dva plava</b></td><td>Vozilo sa prvenstvom prolaza koje <b>obezbeđuje prolaz drugim vozilima</b></td><td>Obratiš pažnju na njega <b>i na vozila kojima ono obezbeđuje prolaz</b>, pa ih propustiš · po potrebi staneš ili skloniš vozilo dok prođu · strogo se pridržavaš naredbi lica iz tog vozila (čl. 109)</td></tr>
+<tr><td><b>Jedno plavo</b></td><td>Vozilo sa prvenstvom prolaza, <b>u kretanju</b></td><td>Obratiš pažnju i <b>ustupiš mu prvenstvo</b>, odnosno propustiš ga · po potrebi staneš ili skloniš vozilo dok prođe <span class="mut">(ako vozilo obezbeđuje prolaz drugim vozilima, i njih propuštaš prema ZOBS čl. 109)</span></td></tr>
 <tr><td><b>Jedno ili dva plava</b></td><td>Vozilo sa prvenstvom prolaza koje <b>STOJI</b> na kolovozu</td><td><b>Smanjiš brzinu</b> · <b>po potrebi</b> staneš · <b>postupaš po naredbama policijskog službenika</b> — potpuno isto za jedno i za dva svetla</td></tr>
 </table>
-<p class="mut">Dva ključa: kod vozila <b>u kretanju</b> nikad se ne bira ni „smanji brzinu i nastavi kretanje" ni bezuslovno „zaustavi se" — bira se propuštanje uz zaustavljanje <b>po potrebi</b>. Kod <b>zaustavljenog</b> vozila „smanji brzinu" jeste tačno, ali opet uz „po potrebi zaustavi" i „postupaj po naredbama" — nikada samo suvo „zaustavi se".</p>
+<p class="mut">Dva ključa: u prikazanim pitanjima o <b>propuštanju vozila u kretanju</b> ne bira se ni „smanji brzinu i nastavi kretanje" ni bezuslovno „zaustavi se" — bira se propuštanje uz zaustavljanje <b>po potrebi</b>. Kod <b>zaustavljenog</b> vozila „smanji brzinu" jeste tačno, ali opet uz „po potrebi zaustavi" i „postupaj po naredbama" — nikada samo suvo „zaustavi se".</p>
 
-<p><b>Za test zapamti:</b> ruka uvis i pun dlan ka tebi znače stani; predručena ruka je rampa koju ne smeš da presečeš; spuštene i odručene ruke znače isto — prsa i leđa staju, bokovi prolaze; zvižduk nije naredba za zaustavljanje; crvena lampa znači stani <b>neposredno ispred</b> policajca, a iz suprotnog smera samo uspori; displej se čita doslovno; duga svetla iza tebe znače odmah uz desnu ivicu.</p>
+<p><b>Za test zapamti:</b> kod ruke uvis razlikuj dlan levo od dlana napred; otvoren dlan usmeren ka tvom vozilu znači stani; predručena ruka je rampa koju ne smeš da presečeš; spuštene i odručene ruke znače isto — prsa i leđa staju, bokovi prolaze; zvižduk nije naredba za zaustavljanje; crvena lampa znači stani <b>neposredno ispred</b> policajca, ostali učesnici usporavaju i kreću se oprezno; displej se čita doslovno; posebni znaci policijskog vozila iza tebe uz znak dugim svetlima znače odmah bezbedno zaustavljanje uz desnu ivicu.</p>
 `,
 };
 
@@ -4537,29 +4539,29 @@ X[11070] = { x: 'Na šemi se desna traka uliva nazad u kolovoz, a strelica iz nj
 X[11071] = { x: 'Zelena podloga te odmah stavlja na autoput, a broj metara ispod šeme znači da je ovo najava, a ne oznaka samog mesta. Traka koja se gasi odvojena je sa leve strane isprekidanom linijom, dakle to je saobraćajna traka; zaustavnu traku bi od kolovoza delila puna ivična linija. Suženje kolovoza sa desne strane najavljuje trougao opasnosti, a ovo je tabla obaveštenja: ona ne upozorava, nego kaže šta te čeka za petsto metara.' };
 
 // --- objašnjenja za slikovna pitanja (talas 4) ---
-X[9447] = { x: 'Na slici policajac stoji okrenut prsima ka tebi, sa rukom ispruženom pravo uvis i otvorenim dlanom. Uzdignuta ruka je naredba za obavezno zaustavljanje, i odnosi se na sve, pa i na tebe koji mu gledaš u prsa i u dlan. Ponuđeni izuzetak za vozila koja ne mogu bezbedno da se zaustave ne postoji. Pravilo o leđima, prsima i bočnim stranama gleda se samo kada su mu ruke spuštene ili odručene, a ovde nisu.' };
-X[9448] = { x: 'Policajca vidiš iz profila, sa jednom rukom ispruženom vodoravno napred i dlanom okrenutim nadole. To je predručena ruka: ona zabranjuje prolaz svakome čiji smer kretanja preseca smer u kome je ruka upravljena. Ona ti ne naređuje da se krećeš u smeru ruke, pa je taj ponuđeni odgovor mamac, a izuzetka za one koji ne stignu bezbedno da se zaustave nema.' };
-X[9450] = { x: 'Policajac stoji na kolovozu ispred tebe, okrenut ka tebi, sa rukom ispruženom pravo uvis i otvorenom šakom. Uzdignuta ruka znači obavezno zaustavljanje za sve učesnike u saobraćaju, bez izuzetka i bez obzira na to kojim se putem krećeš. Zato ni nastavak kretanja ni puko smanjenje brzine ne dolaze u obzir: zaustavljaš se i čekaš njegov sledeći znak.' };
+X[9447] = { x: 'Na slici su desna ruka podignuta vertikalno, dlan okrenut napred i prsa policajca prema tebi. Taj znak naređuje zaustavljanje vozačima prema kojima su okrenuti dlan i prsa (čl. 2 st. 1 tač. 2). Ponuđeni izuzetak za nemogućnost bezbednog zaustavljanja pripada drugom znaku: podignutoj desnoj ruci sa dlanom prema levo, na raskrsnici.' };
+X[9448] = { x: 'Policajca vidiš iz profila, sa jednom rukom ispruženom vodoravno napred i dlanom usmerenim prema levo. To je predručena ruka: ona zabranjuje prolaz svakome čiji smer kretanja preseca smer u kome je ruka upravljena. Ona ti ne naređuje da se krećeš u smeru ruke, pa je taj ponuđeni odgovor mamac, a ponuđeni izuzetak za nemogućnost bezbednog zaustavljanja nije propisan uz ovaj znak.' };
+X[9450] = { x: 'Policajac stoji na kolovozu ispred tebe, okrenut ka tebi, sa rukom ispruženom pravo uvis i otvorenom šakom. Otvoreni dlan i prsa okrenuti su prema tebi, pa prikazani znak za tebe znači zaustavljanje. Zato ni nastavak kretanja ni puko smanjenje brzine ne dolaze u obzir: zaustavljaš se i čekaš njegov sledeći znak.' };
 X[9452] = { x: 'Policajac je na raskrsnici sa rukom predručenom preko kolovoza, a u kadru namerno stoje i STOP znak i zeleno svetlo na semaforu. Dok on reguliše saobraćaj, njegov znak je jači i od znaka i od semafora. Predručena ruka zabranjuje prolaz svakome čija putanja preseca smer te ruke, pa smeš samo onuda gde je ne sečeš. Ona ti ne naređuje da se krećeš u njenom smeru.' };
 X[9454] = { x: 'Policajac stoji uz desnu ivicu puta, okrenut ka tebi, sa rukom odručenom vodoravno u stranu i dlanom nadole, a strelica pored šake pokazuje lagano mahanje gore-dole. To je znak da smanjiš brzinu. Da traži ubrzanje, podlaktica bi bila podignuta i kružila; da traži primicanje, šaka bi bila okrenuta bočno i mahala savijanjem u laktu.' };
 X[9455] = { x: 'Ruka je odručena vodoravno u stranu, dlan otvorene šake gleda nadole, a strelice gore-dole pokazuju lagano mahanje. Taj znak od tebe traži da smanjiš brzinu kretanja. Ne meša se sa ubrzavanjem, gde je podlaktica podignuta i kruži, ni sa primicanjem, gde je šaka okrenuta bočno i maše se savijanjem u laktu. Ovde se šaka drži ravno i pomera samo gore-dole.' };
-X[9457] = { x: 'Ovde policajcu gledaš u leđa, pa je lako pomisliti da se znak ne odnosi na tebe. Ruka mu je ispružena pravo uvis, a uzdignuta ruka znači obavezno zaustavljanje za sve učesnike, bez obzira na to sa koje mu strane prilaziš. Položaj tela bi bio merilo samo da su mu ruke spuštene ili odručene. Zato staješ, a ne nastavljaš smanjenom brzinom.' };
+X[9457] = { x: 'Na raskrsnici policajac drži desnu ruku vertikalno podignutu. Znak sa dlanom prema levo zabranjuje prolaz svim vozačima, osim onima koji se u času podizanja ruke ne mogu bezbedno zaustaviti (čl. 2 st. 1 tač. 1). U pitanju nije navedena takva nemogućnost: zaustavljaš vozilo, a ne nastavljaš samo smanjenom brzinom.' };
 X[9459] = { x: 'Policajac je okrenut ka tebi, podlaktica mu je podignuta i savijena u laktu, šaka otvorena, a kružna strelica oko šake pokazuje kružno kretanje podlaktice. To je znak da ubrzaš kretanje vozila. Za smanjenje brzine ruka bi bila odručena u stranu sa dlanom nadole, a za primicanje bi strelica pokazivala ka policajcu; ovde je strelica kružna.' };
-X[9460] = { x: 'Levog policajca gledaš spreda: ruka mu je savijena u laktu, a pun otvoren dlan uspravno je okrenut ka tebi. Desni je snimljen sa strane, sa ispruženom rukom i dlanom okrenutim ka vozaču u tom smeru. Oba puta je to znak da zaustaviš vozilo. Smanjenje brzine izgleda drugačije: ruka je odručena u stranu, dlan gleda nadole i maše gore-dole. Nijedan znak rukom ne znači da vozilo ukloniš sa kolovoza.' };
-X[9462] = { x: 'Policajac stoji na kolovozu ispred tebe, ruka mu je savijena u laktu, a pun otvoren dlan okrenut je ka tebi. To je znak za zaustavljanje vozila i odnosi se upravo na tebe, jer dlan gleda u tvom smeru. Da traži smanjenje brzine, ruka bi bila odručena u stranu, dlanom nadole, uz mahanje gore-dole. Uklanjanje vozila sa kolovoza nije značenje nijednog znaka rukom.' };
+X[9460] = { x: 'Levog policajca gledaš spreda: ruka mu je savijena u laktu, a pun otvoren dlan uspravno je okrenut ka tebi. Desni je snimljen sa strane, sa ispruženom rukom i dlanom okrenutim ka vozaču u tom smeru. Oba puta je to znak da zaustaviš vozilo. Smanjenje brzine izgleda drugačije: ruka je odručena u stranu, dlan gleda nadole i maše gore-dole. Prikazani dlan sam po sebi ne određuje mesto van kolovoza.' };
+X[9462] = { x: 'Policajac stoji na kolovozu ispred tebe, ruka mu je savijena u laktu, a pun otvoren dlan okrenut je ka tebi. To je znak za zaustavljanje vozila i odnosi se upravo na tebe, jer dlan gleda u tvom smeru. Da traži smanjenje brzine, ruka bi bila odručena u stranu, dlanom nadole, uz mahanje gore-dole. Ovaj prikazani znak naređuje zaustavljanje, a ne uklanjanje vozila sa kolovoza.' };
 X[9464] = { x: 'Policajac je okrenut ka tebi, podlaktica mu je podignuta sa otvorenom šakom, a velika žuta strelica pored njega pokazuje pravo napred, ka mestu na kome on stoji. Ta strelica je ključ: traži se da vozilo pomeriš bliže raskrsnici, odnosno njemu. Da traži ubrzanje, strelica bi bila kružna oko šake; da traži usporenje, ruka bi bila odručena u stranu sa dlanom nadole.' };
 X[9466] = { x: 'Policajac ti stoji leđima okrenut, sa obe ruke spuštene niz telo. Kada su ruke spuštene, znak je položaj tela: ko dolazi iz pravca u kome su okrenuta njegova leđa, odnosno prsa, zaustavlja vozilo, a ko mu prilazi sa bočnih strana, prolazi. Ti mu gledaš u leđa, pa staješ. Dok on reguliše saobraćaj, pravilo o propuštanju vozila sa puta koji se ukršta ne odlučuje.' };
 X[9467] = { x: 'Policajac stoji sa obe ruke odručene vodoravno, i taj se znak čita po položaju tela. Vozači kojima su okrenuta njegova leđa, odnosno prsa, zaustavljaju svoja vozila, a oni koji dolaze sa njegovih bočnih strana imaju pravo prolaza. Raširene ruke tu ništa ne menjaju, samo ga čine uočljivijim. Obrnuta verzija te rečenice je stalni mamac, zato je čitaj do kraja.' };
 X[9469] = { x: 'Na raskrsnici je policajac okrenut prsima ka tebi, sa obe ruke odručene vodoravno. Kada su ruke odručene, merilo je položaj tela: prsa i leđa znače stani, bočne strane znače prolaz. Ti mu dolaziš pravo u prsa, pa zaustavljaš vozilo. Nijedan njegov znak ti ne dozvoljava prolaz pravo, a dok on reguliše, propuštanje vozila sa puta koji se ukršta ništa ne menja.' };
 X[9470] = { x: 'Na obe figure podlaktica je podignuta, a šaka okrenuta bočno tako da joj vidiš ivicu; strelice levo-desno pokazuju mahanje savijanjem u laktu. Taj znak znači da vozilo pomeriš bliže raskrsnici, odnosno policajcu koji ga daje. Za ubrzanje bi strelica bila kružna oko šake, a za smanjenje brzine ruka bi bila odručena u stranu, sa dlanom okrenutim nadole.' };
-X[9471] = { x: 'Policajac na slici stoji mirno, sa obe ruke spuštene niz telo, i ne daje nikakav znak rukom. Tada odlučuje položaj njegovog tela: ko dolazi iz pravca u kome su okrenuta njegova leđa, odnosno prsa, zaustavlja vozilo, a ko dolazi sa bočnih strana, prolazi. Izuzetak za vozila koja ne mogu bezbedno da se zaustave ne postoji ni uz jedan njegov znak.' };
+X[9471] = { x: 'Policajac na slici stoji mirno, sa obe ruke spuštene niz telo, i ne daje nikakav znak rukom. Tada odlučuje položaj njegovog tela: ko dolazi iz pravca u kome su okrenuta njegova leđa, odnosno prsa, zaustavlja vozilo, a ko dolazi sa bočnih strana, prolazi. Ponuđeni izuzetak odnosi se na drugačiji znak: vertikalno podignutu desnu ruku sa dlanom prema levo, a ne na prikazani položaj tela.' };
 X[9472] = { x: 'Ruka je predručena i savijena u laktu, šaka otvorena, a kružna strelica pokazuje kružno kretanje podlaktice i šake. To je poziv da ubrzaš kretanje vozila. Smanjenje brzine izgleda drugačije, kao odručena ruka sa dlanom nadole i mahanje gore-dole, a primicanje traži bočno okrenutu šaku i mahanje levo-desno, bez kružnice.' };
 X[9474] = { x: 'Policajac ti stoji bočno, a ruka mu je predručena preko druge polovine kolovoza, ka vozilima koja dolaze iz suprotnog smera. Predručena ruka zaustavlja samo one čiji smer kretanja seče smer te ruke, a tvoja putanja pravo prolazi pored njega i tu ruku ne preseca. Zato nastavljaš pravo; ni zaustavljanje ni primicanje ovim znakom ti se ne naređuje.' };
 X[9490] = { x: 'Ispred tebe je zaustavljeno policijsko vozilo sa upaljenim plavim trepćućim svetlima, a ljudi stoje tik uz kolovoz. Zato prilaziš smanjenom brzinom, postupaš po naredbama policijskog službenika i, po potrebi, zaustavljaš svoje vozilo. Bezuslovno zaustavljanje nije propisano, a ubrzavanje pored zaustavljenog policijskog vozila je suprotno svemu što ta svetla znače.' };
 X[9493] = { x: 'Policajac stoji na tvojoj polovini kolovoza, okrenut ka tebi, i crvenom lampom maše popreko preko tvoje trake, pa je znak upućen upravo tebi. Zato bezbedno zaustavljaš vozilo na kolovozu, a po mogućnosti van njega, i to neposredno ispred policajca koji znak daje, ne pored njega i ne iza njega. Samo usporavanje nije dovoljno kada crveni znak dobiješ ti.' };
 X[9495] = { x: 'Policajac je žutim krugom označen daleko na levoj strani puta i crvenom lampom zaustavlja vozilo koje dolazi iz suprotnog smera, dakle ne tebe. Zato ne staješ, nego smanjuješ brzinu i krećeš se sa povećanom opreznošću, jer se vozilo zaustavlja tik pored tvoje putanje, a policajac stoji uz samu ivicu kolovoza. Da je znak tvoj, on bi stajao na tvojoj strani, okrenut ka tebi.' };
 X[9497] = { x: 'Na zadnjem staklu policijskog vozila ispred tebe naizmenično se pale natpisi POLICIJA i USPORITE. Postupaš doslovno po tekstu: usporavaš i dalje se krećeš brzinom kojom se kreće policijsko vozilo dok daje taj znak. To je obaveza, a ne preporuka, i ne zavisi od toga da li si prekoračio dozvoljenu brzinu ili napravio bilo kakav prekršaj.' };
-X[9499] = { x: 'Displej na zadnjem staklu policijskog vozila naizmenično prikazuje POLICIJA i PRATITE NAS. Znak znači da se krećeš za tim vozilom sve dok ga ono daje. Nije reč o preporuci za bezbedno kretanje, niti obaveza zavisi od toga da li si u vožnji napravio prekršaj: svetlosni znaci sa policijskog vozila su uvek bezuslovna obaveza.' };
+X[9499] = { x: 'Displej na zadnjem staklu policijskog vozila naizmenično prikazuje POLICIJA i PRATITE NAS. Znak znači da se krećeš za tim vozilom sve dok ga ono daje. Nije reč o preporuci za bezbedno kretanje, niti obaveza zavisi od toga da li si u vožnji napravio prekršaj: vozač neposredno iza policijskog vozila mora postupiti po prikazanoj poruci.' };
 X[9502] = { x: 'Po hijerarhiji postupanja svetlosni znak je jači od saobraćajnog znaka, a slabiji jedino od naredbe ovlašćenog lica. U ovom pitanju crveno vozilo za ulazak u raskrsnicu postupa po semaforu, koji potiskuje STOP. To ne ukida pravila za odnose koje semafor nije rešio: među učesnicima kojima je prolaz istovremeno dozvoljen i dalje važe pravilo desne strane i pravilo levog skretanja (ZOBS čl. 47 st. 6–8).' };
 X[9504] = { x: 'Crveno svetlo određuje tvoj ulazak u raskrsnicu i potiskuje STOP iznad njega (ZOBS čl. 20), pa je označeni odgovor tačan. Semafor ipak ne ukida sva pravila prvenstva: desna strana i levo skretanje i dalje uređuju međusobni odnos učesnika kojima je prolaz istovremeno dozvoljen (čl. 47 st. 7).' };
 X[9505] = { x: 'Pred tobom je poprečna linija zaustavljanja, oznaka na kolovozu koja uređuje traženo postupanje; njen značaj postoji i kada nema uspravnog znaka (Pravilnik čl. 66). Oznake su iznad pravila u hijerarhiji iz ZOBS čl. 20. Pravila i dalje uređuju samo one međusobne odnose koji tom oznakom nisu drugačije rešeni.' };
@@ -5651,14 +5653,14 @@ X[11051] = { x: 'Linija zaustavljanja ispred znaka "Zabrana prolaska bez zaustav
 X[9475] = { x: 'Znake za SMANJENJE brzine, UBRZANJE i ZAUSTAVLJANJE policijski službenik može davati i iz vozila, odnosno sa motocikla — pod uslovom da službenik, odnosno vozilo, ima VIDNO OBELEŽJE policije (Pravilnik o znacima policijskih službenika čl. 2). Nije ograničeno na vozila sa prvenstvom prolaza — dovoljno je obeležje.' };
 X[9476] = { x: 'Ista odredba kao za smanjenje brzine i zaustavljanje: ova tri znaka smeju se davati i iz vozila, odnosno sa motocikla, kada postoji vidno obeležje policije (Pravilnik o znacima policijskih službenika čl. 2). Uslov je obeležje, ne prvenstvo prolaza.' };
 X[9477] = { x: "I znaci za zaustavljanje vozila spadaju u tri znaka koja se smeju davati iz vozila, odnosno sa motocikla sa vidnim obeležjem policije (Pravilnik o znacima policijskih službenika čl. 2) — zajedno sa smanjenjem brzine i ubrzanjem kretanja. Uslov je vidno obeležje, ne prvenstvo prolaza." };
-X[9478] = { x: 'Pištaljka ide SAMO uz znake rukama i SAMO kad je policijski službenik VAN vozila (Pravilnik o znacima policijskih službenika čl. 6). Logika: zvižduk prati gestikulaciju pri regulisanju na raskrsnici — iz vozila ne bi imao smisla.' };
+X[9478] = { x: 'Pištaljka ide SAMO uz znake rukama i SAMO kad je policijski službenik VAN vozila (Pravilnik o znacima policijskih službenika čl. 6).' };
 X[9479] = { x: 'Jedan DUŽI zvižduk = poziv da obratiš pažnju na policijskog službenika koji će dati odgovarajući znak (Pravilnik o znacima policijskih službenika čl. 6). Prekršaj označava VIŠE KRATKIH zvižduka, a obavezu zaustavljanja pištaljka sama po sebi ne izriče.' };
 X[9480] = { x: "VIŠE uzastopnih KRATKIH zvižduka = neko je postupio protivno datom znaku, pravilima saobraćaja ili znakovima (Pravilnik o znacima policijskih službenika čl. 6). Par za pamćenje: jedan dug = \"pažnja\", više kratkih = \"prekršaj\" — a obavezu zaustavljanja pištaljka sama po sebi ne izriče." };
 X[9481] = { x: 'Kad čuješ više kratkih zvižduka, dužnost je: OSMATRANJEM policijskog službenika utvrdi da li se znak odnosi na tebe (Pravilnik o znacima policijskih službenika čl. 6) — službenik istovremeno rukom pokazuje na koga se odnosi i šta treba da učini. Ne staješ automatski, a ubrzanje pogotovo nije odgovor.' };
-X[10420] = { x: "Znaci policijskog službenika daju se: RUKAMA i položajem tela, UREĐAJIMA za svetlosne i zvučne znakove i \"stop tablicom\" (Pravilnik o znacima policijskih službenika čl. 1; ZOBS čl. 166). Zamke: usmeno se po ZOBS čl. 166 daju naredbe, zastavice koriste RADNICI na radovima na putu, a znakovi sa izmenjivim sadržajem poruka su saobraćajna signalizacija, ne znaci policijskog službenika." };
+X[10420] = { x: "Sačuvani ključ bira rukama i položajem tela, uređajima za svetlosne i zvučne znakove i „stop tablicom“ (Pravilnik čl. 1 st. 1). Međutim, st. 2 izričito navodi da se znaci i naredbe mogu davati i usmeno. Zato ponuđeno „usmeno” ostaje za stručno razjašnjenje. Zastavice su ovde način regulisanja radova na putu, a saobraćajni znak sa izmenljivim porukama ne treba mešati sa porukom na displeju policijskog vozila." };
 X[10422] = { x: "Crveno i plavo naizmenično = vozilo POD PRATNJOM: propusti ih i omogući mimoilaženje/preticanje/obilaženje, PO POTREBI zaustavi ili ukloni vozilo s kolovoza, strogo se pridržavaj naredbi lica iz pratnje, a nastavi tek kad SVA vozila pod pratnjom prođu (Pravilnik o znacima policijskih službenika čl. 9 t. 1; ZOBS čl. 107). Oba mamca padaju: bezuslovno \"zaustavi se\" — zaustavljanje je samo PO POTREBI, a \"smanji brzinu i nastavi\" — obaveza je propuštanje, ne samo usporavanje." };
-X[10423] = { x: 'DVA plava svetla na vozilu s prvenstvom prolaza koje se KREĆE = ono obezbeđuje prolaz vozilima iza sebe: obrati pažnju na njega I na vozila kojima obezbeđuje prolaz, propusti ih, po potrebi zaustavi ili ukloni svoje vozilo, pridržavaj se naredbi lica iz vozila (Pravilnik o znacima policijskih službenika čl. 9 t. 2; ZOBS čl. 109). "Smanji brzinu i nastavi" i bezuslovno zaustavljanje su mamci.' };
-X[10424] = { x: "JEDNO plavo svetlo na vozilu s prvenstvom prolaza u kretanju = obrati pažnju, ustupi mu prvenstvo odnosno propusti ga, i PO POTREBI zaustavi ili ukloni svoje vozilo dok prođe (Pravilnik o znacima policijskih službenika čl. 9 t. 3). Jedno svetlo = samo to vozilo; dva svetla znače da obezbeđuje prolaz i vozilima iza sebe. Mamci: \"smanji brzinu i nastavi\" nije propisana obaveza, a bezuslovno \"zaustavi se dok sva vozila prođu\" greši dvostruko — zaustavljanje je samo po potrebi, a reč je o JEDNOM vozilu." };
+X[10423] = { x: 'Kada vozilo sa DVA plava svetla obezbeđuje prolaz drugim vozilima: obrati pažnju na njega I na vozila kojima obezbeđuje prolaz, propusti ih, po potrebi zaustavi ili ukloni svoje vozilo, pridržavaj se naredbi lica iz vozila (Pravilnik o znacima policijskih službenika čl. 9 t. 2; ZOBS čl. 109). "Smanji brzinu i nastavi" i bezuslovno zaustavljanje su mamci.' };
+X[10424] = { x: "JEDNO plavo svetlo na vozilu s prvenstvom prolaza u kretanju = obrati pažnju, ustupi mu prvenstvo odnosno propusti ga, i PO POTREBI zaustavi ili ukloni svoje vozilo dok prođe (Pravilnik o znacima policijskih službenika čl. 9 t. 3). U pitanju se traži propuštanje prikazanog vozila. Ako ono obezbeđuje prolaz drugim vozilima, i njih propuštaš prema ZOBS čl. 109. Mamci: \"smanji brzinu i nastavi\" nije propisana obaveza, a bezuslovno \"zaustavi se dok sva vozila prođu\" nije tačno jer je zaustavljanje propisano po potrebi." };
 X[10425] = { x: 'Plavo svetlo na vozilu s prvenstvom prolaza koje STOJI na kolovozu = smanji brzinu, PO POTREBI zaustavi i postupaj po naredbama policijskog službenika (Pravilnik o znacima policijskih službenika čl. 9, poslednji stav). Vozilo koje stoji ne traži propuštanje nego oprez — bezuslovno zaustavljanje je opet mamac.' };
 X[10426] = { x: 'Isto pravilo kao za jedno svetlo: i DVA plava svetla na vozilu koje STOJI znače — smanji brzinu, po potrebi zaustavi, postupaj po naredbama službenika (Pravilnik o znacima policijskih službenika čl. 9, poslednji stav pokriva i t. 2 i t. 3 kad vozilo stoji). Razlika jedno/dva svetla ima značaj samo za vozilo U KRETANJU.' };
 X[10427] = { x: 'Kompletna obaveza prema vozilima POD PRATNJOM u jednoj rečenici: propusti + omogući mimoilaženje/preticanje/obilaženje + po potrebi zaustavi ili ukloni s kolovoza + pridržavaj se naredbi pratnje + nastavi tek kad SVA prođu (Pravilnik o znacima policijskih službenika čl. 9 t. 1; ZOBS čl. 107). Ponuđene kraće verzije ispuštaju delove obaveze — tačan je pun opis.' };
@@ -6755,7 +6757,7 @@ out.cards['prvenstvo-prolaza'].h.c = out.cards['prvenstvo-prolaza'].h.c.replace(
 
 // Lokalno prevedi pregledane pristupačne opise; opšti toCyr štiti HTML tagove.
 // Novi opis u ovim karticama zahteva ponovni pregled oba pisma.
-for (const [key, expected] of [['brzine', 6], ['kategorije-vozila', 4], ['put-pojmovi', 1], ['vozilo-tehnika', 4], ['kaznene-klase', 13], ['preticanje', 3], ['skretanje', 2], ['iskljucenje', 3], ['oznake-kolovoz', 12], ['prvenstvo-prolaza', 9], ['pruga', 4]]) {
+for (const [key, expected] of [['brzine', 6], ['kategorije-vozila', 4], ['put-pojmovi', 1], ['vozilo-tehnika', 4], ['kaznene-klase', 13], ['preticanje', 3], ['skretanje', 2], ['iskljucenje', 3], ['oznake-kolovoz', 12], ['prvenstvo-prolaza', 9], ['pruga', 4], ['policajac-znaci', 6]]) {
   let count = 0;
   out.cards[key].h.c = out.cards[key].h.c.replace(/aria-label="([^"]*)"/g, (_, label) => {
     count++;

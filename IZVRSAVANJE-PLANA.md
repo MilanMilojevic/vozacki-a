@@ -30,7 +30,7 @@
 | А3 Циљ и процена спремности | Завршено | v131: reload циља; v134: непознато градиво не добија позајмљену тачност; условни модел јасно означен |
 | А4 Телефон и приступачност | У току; корисничка проба остаје v165 | Развојне v169–171 поправљају табелу возила, ситне натписе паркирања и преливање дугих речи при увећању текста; раније тастатура/водич/контраст/увећање. Остали цртежи, читач екрана и стварни телефони остају у прегледу |
 | А5 Кеш и алати издавања | Делимично | v128/v137: издање/кеш; алати/CI проверени; v157: аутоматски отисци слика и провера бајтова у SW; ограничење старих кешева још отворено |
-| А6 Садржај 1.327 питања | У току | На v191: 801 питање reviewed, 4 in-progress, 68 needs-expert, 454 unreviewed; картице 19 reviewed, 20 unreviewed. Актуелни машински збир: [manifest.json](docs/revizija-sadrzaja/manifest.json). Започета и спорна питања нису урачуната у завршена |
+| А6 Садржај 1.327 питања | У току | На v193: 856 питања reviewed, 4 in-progress, 70 needs-expert, 397 unreviewed; картице 21 reviewed, 18 unreviewed. Актуелни машински збир: [manifest.json](docs/revizija-sadrzaja/manifest.json). Започета и спорна питања нису урачуната у завршена |
 | А7 Документација / права | У току | CONTRIBUTING, README, школска упутства и fork поступак допуњени; v147 поруке/метаподаци и v151 FAQ усклађени; преостаје одлука власника о лиценци |
 | Б1–Б3 Побољшања | Чека | После учвршћивања, пилот по пилот |
 | Навигација — накнадни захтев | Основни токови завршени; доградња одвојена | v146 Назад/Напред; v150 стварни линкови; v154 статистика; v158 лични спискови. v162 додаје преглед конкретног старог испита; то је доградња, не услов основне безбедности учења. v163 исправља копирани линк питања и повратак фокуса у појмовник |
@@ -566,3 +566,9 @@ Pregledano15 pitanja/45 opcija/12 originalnih JPEG i cela kartica sa4SVG. Deset 
 10415 ostaje needs-expert zbog obavezne ponovne provere posle roka zamene15.9.2026, uz izričito potvrđen današnji ključ; ovaj status nije tvrdnja da je današnji odgovor pogrešan. Objašnjenje i kartica navode rok, a kartica jasno kaže da on nije dozvola za prelazak uz aktivan crveni signal.
 
 Chromium16/16 kartice +60/60 pitanja, konačno grupisanje i12galerijskih odgovora potvrđeni; bez prelivanja stranice/grešaka/sintetičkih upisa. `node tools/verify.mjs`:249/249 automatizovanih testova. Ukupno815 reviewed,440 unreviewed,3 in-progress (7924/7925,9539),69 needs-expert;20 reviewed kartica,19 unreviewed. Izvorna banka, glavna aplikacija i korisnička proba su očuvane.
+
+### v193 — znaci policajca i precizni uslovi
+
+Dva potpuna pregleda43 pitanja/142 opcije/26 originalnih JPEG i cele kartice;12 uskih EX ispravki i čitljiviji natpisi/kontrast na6 postojećih crteža. Razlikovani su položaji dlana i uslov dodatnog znaka za mesto zaustavljanja.10420 ostaje needs-expert zbog usmenih znakova iz Pravilnika1(2) i formulacije ZOBS166, sa vidljivom ogradom u EX/kartici i očuvanim ključem.10550 čeka drugu zavisnu karticu pešaka. [Pojedinačni dokaz A6-050/054](docs/revizija-sadrzaja/grupe/050-policajac-znaci.md).
+
+Chromium16/16 kartica i172/172 prikaza pitanja;26 galerijskih odgovora/ARIA/redosleda tačno, bez grešaka/prelivanja/sintetičkih upisa. Izvor i konačni L/C izlaz tačno rekonstruisani; bez drugih EX promena. Ukupno856 reviewed,397 unreviewed,4 in-progress,70 needs-expert;21 reviewed kartica,18 unreviewed. `node tools/verify.mjs`:249/249 automatizovanih testova; završna provera sadržaja/verzije/sintakse takođe prolazi.
