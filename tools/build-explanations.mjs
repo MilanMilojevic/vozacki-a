@@ -614,9 +614,9 @@ CARDS['nezgoda'] = {
 CARDS['dozvole'] = {
   title: 'Vozačka dozvola, kazneni poeni i probna dozvola',
   html: `
-<p><b>Dozvola:</b> uvek KOD SEBE i daje se na uvid · koristi pomagala upisana u dozvolu · promenu prebivališta prijavi u roku od 30 dana · ne smeš: dve dozvole (ni naša+strana), prijavljeno-nestalu, međunarodnu izdatu u Srbiji na teritoriji Srbije.</p>
+<p><b>Dozvola:</b> uvek KOD SEBE i daje se na uvid · koristi pomagala upisana u dozvolu · promenu prebivališta prijavi u roku od 30 dana · ne smeš istovremeno koristiti dve dozvole iz različitih država, obrazac čiji je nestanak prijavljen, ni međunarodnu dozvolu izdatu u Srbiji za vožnju u Srbiji. Ako imaš važeću srpsku i stranu dozvolu koja nije izdata zamenom srpske, u Srbiji koristiš srpsku (čl. 183, 184 i 186).</p>
 <p><b>Sa dozvolom A kategorije smeš:</b> motocikl + moped + teški tricikl (i sve niže A potkategorije).</p>
-<p><b>Kazneni poeni:</b> 18 poena = oduzimanje dozvole · brišu se posle 24 meseca od pravnosnažnosti (ZOBS čl. 196-198).</p>
+<p><b>Kazneni poeni:</b> najmanje 18 poena (9 za probnu) = oduzimanje dozvole · rok za brisanje je 24 meseca od pravnosnažnosti, uz zastoj roka iz čl. 198 st. 5 (ZOBS čl. 197–198).</p>
 <table>
 <tr><th colspan="2">PROBNA DOZVOLA (čl. 182) — stroža pravila</th></tr>
 <tr><td>autoput</td><td><b>najviše 110 km/h</b></td></tr>
@@ -624,56 +624,43 @@ CARDS['dozvole'] = {
 <tr><td>ostali putevi</td><td><b>najviše 90% ograničenja</b> na tom delu puta</td></tr>
 <tr><td>alkohol</td><td><b>0,00</b> (kao i svi vozači A kategorija)</td></tr>
 </table>
-<p class="mut">Pamćenje: probna skida "deseticu": 130→110 na autoputu, 100→90 na motoputu, ostalo −10%.</p>
+<p class="mut">Pamćenje: autoput najviše 110 km/h, motoput najviše 90 km/h, ostali putevi najviše 90% dozvoljene brzine. Niže ograničenje na putu i dalje poštuješ.</p>
 
 <!-- ==== dopuna 07.09.2026 (tura 4): crtež + isto to rečima ==== -->
 <div class="kPodH"><b class="kPodNaslov">A dozvola: šta smeš, a šta ne</b>
 <div style="display:flex;justify-content:center;margin:6px 0">
-<svg viewBox="0 0 306 278" style="max-width:330px;width:100%" role="img" aria-label="vozačka dozvola A kategorije: smeš moped, motocikl i teški tricikl; ne smeš teški četvorocikl, koji ide uz B1 odnosno B kategoriju, ni radnu mašinu, koja ide uz F kategoriju">
+<svg viewBox="0 0 306 306" style="max-width:330px;width:100%" role="img" aria-label="vozačka dozvola A kategorije: smeš moped, motocikl i teški tricikl; ne smeš teški četvorocikl, koji ide uz &#66;1 odnosno B kategoriju, ni radnu mašinu, koja ide uz &#70; kategoriju">
 <rect x="86" y="6" width="134" height="44" rx="6" stroke="currentColor" fill="none"/>
-<text x="153" y="25" font-size="11" text-anchor="middle" fill="currentColor">VOZAČKA DOZVOLA</text>
-<text x="153" y="43" font-size="13" font-weight="600" text-anchor="middle" fill="currentColor">kategorija A</text>
+<text x="153" y="25" font-size="14" text-anchor="middle" fill="currentColor">VOZAČKA DOZVOLA</text>
+<text x="153" y="43" font-size="14" font-weight="600" text-anchor="middle" fill="currentColor">kategorija A</text>
 <path d="M153 50 L153 62" stroke="currentColor" stroke-width="1.5"/>
-<rect x="6" y="64" width="294" height="94" rx="8" stroke="#1f7a3f" fill="none"/>
-<text x="18" y="84" font-size="13" font-weight="600" fill="#1f7a3f">SMEŠ</text>
-<g stroke="#1f7a3f" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M18 103 l5 6 l10 -13"/><path d="M18 125 l5 6 l10 -13"/><path d="M18 147 l5 6 l10 -13"/></g>
-<text x="42" y="108" font-size="12.5" fill="currentColor">moped</text>
-<text x="42" y="130" font-size="12.5" fill="currentColor">motocikl</text>
-<text x="42" y="152" font-size="12.5" fill="currentColor">teški tricikl</text>
-<rect x="6" y="168" width="294" height="104" rx="8" stroke="#c0392b" fill="none"/>
-<text x="18" y="188" font-size="13" font-weight="600" fill="#c0392b">NE SMEŠ</text>
-<g stroke="#c0392b" stroke-width="2.5" stroke-linecap="round"><path d="M19 202 L31 214 M31 202 L19 214"/><path d="M19 238 L31 250 M31 238 L19 250"/></g>
-<text x="42" y="208" font-size="12.5" fill="currentColor">teški četvorocikl</text>
-<text x="42" y="224" font-size="11" fill="currentColor">ide uz B1, odnosno B</text>
-<text x="42" y="244" font-size="12.5" fill="currentColor">radna mašina</text>
-<text x="42" y="260" font-size="11" fill="currentColor">ide uz F kategoriju</text>
+<rect x="6" y="64" width="294" height="94" rx="8" stroke="var(--ok)" fill="none"/>
+<text x="18" y="84" font-size="14" font-weight="600" fill="var(--ok)">SMEŠ</text>
+<g stroke="var(--ok)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M18 103 l5 6 l10 -13"/><path d="M18 125 l5 6 l10 -13"/><path d="M18 147 l5 6 l10 -13"/></g>
+<text x="42" y="108" font-size="14" fill="currentColor">moped</text>
+<text x="42" y="130" font-size="14" fill="currentColor">motocikl</text>
+<text x="42" y="152" font-size="14" fill="currentColor">teški tricikl</text>
+<rect x="6" y="168" width="294" height="130" rx="8" stroke="var(--bad)" fill="none"/>
+<text x="18" y="188" font-size="14" font-weight="600" fill="var(--bad)">NE SMEŠ</text>
+<g stroke="var(--bad)" stroke-width="2.5" stroke-linecap="round"><path d="M19 202 L31 214 M31 202 L19 214"/><path d="M19 252 L31 264 M31 252 L19 264"/></g>
+<text x="42" y="212" font-size="14" fill="currentColor">teški četvorocikl</text>
+<text x="42" y="232" font-size="14" fill="currentColor">ide uz &#66;1, odnosno B</text>
+<text x="42" y="262" font-size="14" fill="currentColor">radna mašina</text>
+<text x="42" y="282" font-size="14" fill="currentColor">ide uz &#70; kategoriju</text>
 </svg>
 </div>
-<p><b>Rečima:</b> sa dozvolom A kategorije smeš <b>moped, motocikl i teški tricikl</b>. <b>Teški četvorocikl</b> ne smeš — četvorocikli idu uz B1, odnosno B kategoriju. <b>Radnom mašinom</b> sme da upravlja samo vozač sa F kategorijom (čl. 195). Pitanje se rešava po nazivu vozila, ne po izgledu — uči spisak.</p>
+<p><b>Rečima:</b> sa dozvolom A kategorije smeš <b>moped, motocikl i teški tricikl</b>. <b>Teški četvorocikl</b> ne smeš — <b>teški</b> četvorocikli idu uz &#66;1, odnosno B kategoriju. Laki četvorocikli pripadaju AM, pa njima smeš upravljati i sa A kategorijom. <b>Radnom mašinom</b> sme da upravlja samo vozač sa &#70; kategorijom (čl. 195). Pitanje se rešava po nazivu vozila, ne po izgledu — uči spisak.</p>
 <p class="mut">Pamtilica: u obe verzije ovog pitanja netačna su ista dva — teški ČETVOROcikl i RADNA MAŠINA. Sve ostalo što se u njima nudi (moped, motocikl, teški tricikl) je tačno. Tricikl se ne pojavi u svakoj verziji — ne traži ga po svaku cenu.</p>
 </div>
 
 <div class="kPodH"><b class="kPodNaslov">Kad MUP oduzima dozvolu (čl. 197)</b>
 <div style="display:flex;justify-content:center;margin:6px 0">
-<svg viewBox="0 0 306 212" style="max-width:330px;width:100%" role="img" aria-label="četiri stanja vode do istog ishoda: najmanje osamnaest kaznenih poena, odnosno devet za probnu dozvolu; jedna pravnosnažna presuda za krivično delo protiv bezbednosti javnog saobraćaja sa smrtnom posledicom; više od jedne takve presude u pet godina za teške telesne povrede; više od jedne takve presude u tri godine za telesne povrede ili imovinsku štetu. U svakom od ta četiri slučaja MUP oduzima vozačku dozvolu.">
-<rect x="6" y="4" width="294" height="28" rx="6" stroke="currentColor" fill="none"/>
-<text x="16" y="23" font-size="12" font-weight="600" fill="currentColor">KAZNENI POENI</text>
-<text x="290" y="23" font-size="12" text-anchor="end" fill="currentColor">najmanje 18 (probna: 9)</text>
-<rect x="6" y="38" width="294" height="28" rx="6" stroke="currentColor" fill="none"/>
-<text x="16" y="57" font-size="12" font-weight="600" fill="currentColor">SMRT LICA</text>
-<text x="290" y="57" font-size="12" text-anchor="end" fill="currentColor">dovoljna 1 presuda</text>
-<rect x="6" y="72" width="294" height="28" rx="6" stroke="currentColor" fill="none"/>
-<text x="16" y="91" font-size="12" font-weight="600" fill="currentColor">TEŠKE POVREDE</text>
-<text x="290" y="91" font-size="12" text-anchor="end" fill="currentColor">više od 1 u 5 godina</text>
-<rect x="6" y="106" width="294" height="28" rx="6" stroke="currentColor" fill="none"/>
-<text x="16" y="125" font-size="12" font-weight="600" fill="currentColor">POVREDE / ŠTETA</text>
-<text x="290" y="125" font-size="12" text-anchor="end" fill="currentColor">više od 1 u 3 godine</text>
-<path d="M153 136 L153 150" stroke="currentColor" stroke-width="2"/>
-<path d="M148 148 L153 158 L158 148 Z" fill="currentColor"/>
-<rect x="6" y="162" width="294" height="46" rx="8" stroke="currentColor" stroke-width="2" fill="none"/>
-<text x="153" y="181" font-size="11" text-anchor="middle" fill="currentColor">u svakom od ova četiri slučaja</text>
-<text x="153" y="200" font-size="13" font-weight="600" text-anchor="middle" fill="currentColor">MUP ODUZIMA VOZAČKU DOZVOLU</text>
-</svg>
+<svg viewBox="0 0 306 314" style="max-width:330px;width:100%" role="img" aria-label="četiri stanja vode do istog ishoda: najmanje osamnaest kaznenih poena, odnosno devet za probnu dozvolu; jedna pravnosnažna presuda za krivično delo protiv bezbednosti javnog saobraćaja sa smrtnom posledicom; više od jedne takve presude u pet godina za teške telesne povrede; više od jedne takve presude u tri godine za telesne povrede ili imovinsku štetu. U svakom od ta četiri slučaja MUP oduzima vozačku dozvolu.">
+<rect x="6" y="4" width="294" height="44" rx="6" stroke="currentColor" fill="none"/><text x="16" y="22" font-size="14" font-weight="600" fill="currentColor">KAZNENI POENI</text><text x="16" y="41" font-size="14" fill="currentColor">najmanje 18 (probna: 9)</text>
+<rect x="6" y="54" width="294" height="44" rx="6" stroke="currentColor" fill="none"/><text x="16" y="72" font-size="14" font-weight="600" fill="currentColor">SMRT LICA</text><text x="16" y="91" font-size="14" fill="currentColor">dovoljna 1 presuda</text>
+<rect x="6" y="104" width="294" height="44" rx="6" stroke="currentColor" fill="none"/><text x="16" y="122" font-size="14" font-weight="600" fill="currentColor">TEŠKE POVREDE</text><text x="16" y="141" font-size="14" fill="currentColor">više od 1 u 5 godina</text>
+<rect x="6" y="154" width="294" height="44" rx="6" stroke="currentColor" fill="none"/><text x="16" y="172" font-size="14" font-weight="600" fill="currentColor">POVREDE / ŠTETA</text><text x="16" y="191" font-size="14" fill="currentColor">više od 1 u 3 godine</text>
+<path d="M153 202 L153 220" stroke="currentColor" stroke-width="2"/><path d="M148 218 L153 228 L158 218 Z" fill="currentColor"/><rect x="6" y="234" width="294" height="74" rx="8" stroke="currentColor" stroke-width="2" fill="none"/><text x="153" y="255" font-size="14" text-anchor="middle" fill="currentColor">u svakom od ova četiri slučaja</text><text x="153" y="278" font-size="14" font-weight="600" text-anchor="middle" fill="currentColor">MUP ODUZIMA</text><text x="153" y="299" font-size="14" font-weight="600" text-anchor="middle" fill="currentColor">VOZAČKU DOZVOLU</text></svg>
 </div>
 <table>
 <tr><th colspan="2">Ne upravlja savesno i na propisan način vozač koji…</th></tr>
@@ -683,36 +670,37 @@ CARDS['dozvole'] = {
 <tr><td>je za isto delo osuđen sa posledicom <b>telesne povrede ili imovinska šteta</b></td><td><b>više od jednom u 3 godine</b></td></tr>
 </table>
 <p><b>Šta sledi:</b> u sva četiri slučaja organizaciona jedinica MUP-a koja te vodi u evidenciji <b>oduzeće vozačku dozvolu</b> — neće ti „izreći odgovarajući broj kaznenih poena" ni „privremeno zabraniti upravljanje u trajanju do jedne godine". To su dve ponuđene zamke.</p>
-<p class="mut">Pamtilica: 5 godina ide uz TEŠKE povrede, 3 godine uz obične povrede i štetu, a za smrt se ne broji — dovoljna je jedna presuda. Prag poena je 18, a za probnu dozvolu upola manje — 9.</p>
+<p class="mut">Pamtilica: 5 godina ide uz TEŠKE povrede, 3 godine uz telesne povrede i štetu, a za smrt je dovoljna jedna presuda. Prag poena je 18, a za probnu dozvolu 9.</p>
+<p class="mut"><b>Napomena uz pitanje 8476:</b> sačuvani ključ označava odgovor sa jednom pravnosnažnom osudom sa smrtnom posledicom. Ponuđene najmanje dve takve osude u pet godina takođe obuhvataju taj zakonski uslov, iako taj dodatni prag nije potreban. Formulacija opcija zato zahteva stručnu proveru; ključ nije menjan.</p>
 </div>
 
 <div class="kPodH"><b class="kPodNaslov">Kazneni poeni: odakle se meri 24 meseca</b>
 <div style="display:flex;justify-content:center;margin:6px 0">
-<svg viewBox="0 0 306 196" style="max-width:330px;width:100%" role="img" aria-label="vremenska traka odozgo nadole: prekršaj, zatim pravnosnažnost odluke kao početak roka, pa 24 meseca do brisanja kaznenih poena">
+<svg viewBox="0 0 306 236" style="max-width:330px;width:100%" role="img" aria-label="vremenska traka odozgo nadole: prekršaj, zatim pravnosnažnost odluke kao početak roka, pa 24 meseca do brisanja kaznenih poena; rok ne teče za vreme zatvora i zabrane upravljanja u slučajevima iz člana 198 stav 5">
 <path d="M30 22 L30 178" stroke="currentColor"/>
 <path d="M25 176 L30 190 L35 176 Z" fill="currentColor"/>
 <path d="M30 96 L30 170" stroke="currentColor" stroke-width="5"/>
 <circle cx="30" cy="44" r="5" fill="currentColor"/>
-<text x="46" y="41" font-size="12.5" fill="currentColor">prekršaj</text>
-<text x="46" y="59" font-size="11" fill="#c0392b">rok NE kreće ovde</text>
-<path d="M18 96 L42 96" stroke="#1f7a3f" stroke-width="4"/>
-<text x="48" y="93" font-size="12.5" fill="currentColor">pravnosnažna odluka</text>
-<text x="48" y="111" font-size="11" font-weight="600" fill="#1f7a3f">START</text>
+<text x="46" y="41" font-size="14" fill="currentColor">prekršaj</text>
+<text x="46" y="59" font-size="14" fill="var(--bad)">rok NE kreće ovde</text>
+<path d="M18 96 L42 96" stroke="var(--ok)" stroke-width="4"/>
+<text x="48" y="93" font-size="14" fill="currentColor">pravnosnažna odluka</text>
+<text x="48" y="111" font-size="14" font-weight="600" fill="var(--ok)">START</text>
 <path d="M30 134 L54 134" stroke="currentColor" stroke-dasharray="3 3"/>
 <rect x="54" y="120" width="196" height="28" rx="6" stroke="currentColor" fill="none"/>
-<text x="152" y="139" font-size="13" font-weight="600" text-anchor="middle" fill="currentColor">24 meseca</text>
+<text x="152" y="139" font-size="14" font-weight="600" text-anchor="middle" fill="currentColor">24 meseca</text>
 <path d="M18 170 L42 170" stroke="currentColor" stroke-width="4"/>
-<text x="48" y="167" font-size="12.5" fill="currentColor">poeni se brišu</text>
-</svg>
+<text x="48" y="167" font-size="14" fill="currentColor">poeni se brišu</text>
+<text x="153" y="211" font-size="14" text-anchor="middle" fill="currentColor">Rok ne teče u slučajevima</text><text x="153" y="230" font-size="14" text-anchor="middle" fill="currentColor">iz čl. 198 st. 5</text></svg>
 </div>
-<p><b>Rečima:</b> poeni se brišu <b>nakon isteka 24 meseca od dana pravnosnažnosti odluke o prekršaju</b> (čl. 198) — a ne od dana kada je prekršaj izvršen. Same poene ne izriče MUP: izriču se odlukom kojom si kažnjen za prekršaj, a jedinica MUP-a ih samo vodi u evidenciji.</p>
-<p class="mut">Zamka iz baze: „ako u toku 24 meseca nije ponovo kažnjen…" — takav uslov ne postoji; rok teče od pravnosnažnosti i gotovo.</p>
+<p><b>Rečima:</b> poeni se brišu <b>nakon isteka 24 meseca od dana pravnosnažnosti odluke o prekršaju</b> (čl. 198), a ne od dana izvršenja prekršaja. Rok <b>ne teče</b> za vreme izdržavanja zatvora zbog prekršaja iz ZOBS-a ili krivičnih dela iz čl. 197 st. 3 tač. 2–4, niti za vreme trajanja izrečene zaštitne mere ili mere bezbednosti zabrane upravljanja (čl. 198 st. 5). Same poene izriče prekršajna odluka, a MUP ih evidentira.</p>
+<p class="mut">Nova kazna nije uslov koji resetuje rok ranijih poena: svaki rok počinje od pravnosnažnosti odgovarajuće odluke. Zakonski zastoj iz čl. 198 st. 5 ipak mora da se uračuna.</p>
 </div>
 
-<div class="kPodH"><b class="kPodNaslov">Zabrana, isključenje, zaštitna mera — nula izuzetaka</b>
+<div class="kPodH"><b class="kPodNaslov">Zabrana, isključenje i zaštitna mera</b>
 <table>
 <tr><th>Ponuđeni „izuzetak"</th><th>Tačno</th></tr>
-<tr><td>Zabranjeno ti je upravljanje odlukom nadležnog organa — „ali smem samo lokalne puteve / samo skup vozila / samo vozila čija najveća konstruktivna brzina nije veća od 45 km/h"</td><td>NE — nije dozvoljeno upravljanje motornim vozilom, odnosno skupom vozila. Bez izuzetaka.</td></tr>
+<tr><td>Zabranjeno ti je upravljanje odlukom nadležnog organa — „ali smem samo lokalne puteve / samo skup vozila / samo vozila čija najveća konstruktivna brzina nije veća od 45 km/h"</td><td>NE — u obimu i za vreme zabrane ne smeš upravljati. Lokalni put, skup vozila ili mala konstruktivna brzina nisu izuzeci.</td></tr>
 <tr><td>Isključen si iz saobraćaja — „ali smem samo do prebivališta, odnosno do sedišta firme"</td><td>NE — nema vožnje ni do kuće ni do sedišta</td></tr>
 <tr><td>Isključen si — „zabrana važi samo za kategoriju kojom sam upravljao"</td><td>NE — važi za sva motorna vozila i skupove vozila</td></tr>
 <tr><td>Traje ti zaštitna mera, odnosno mera bezbednosti zabrane upravljanja — „ali smem obuku, ili bar teorijsku obuku i teorijski ispit"</td><td>NE — dok mera traje ne možeš ni započeti obuku, ni vršiti je, ni polagati ispit</td></tr>
@@ -720,10 +708,10 @@ CARDS['dozvole'] = {
 <p class="mut">Pamtilica: kod zabrane odlukom organa i kod isključenja iz saobraćaja svaki netačan odgovor ima reč „samo" — tačan je onaj bez nje. Kod zaštitne mere zamka je drugačija: nude ti pola prava (samo obuka, ili samo teorija i teorijski ispit) — tačno je da ne smeš ništa od toga.</p>
 </div>
 
-<div class="kPodH"><b class="kPodNaslov">Papiri: obuka &rarr; ispit &rarr; dozvola</b>
+<div class="kPodH"><b class="kPodNaslov">Papiri: obuka → ispit → dozvola</b>
 <p><b>Na praktičnoj obuci kandidat kod sebe mora imati i staviti na uvid tri stvari:</b></p>
 <ul>
-<li>ličnu kartu</li>
+<li>ličnu kartu — odnosno drugi dokument sa fotografijom ako zbog starosti ne ispunjava uslov za izdavanje lične karte</li>
 <li>dokaz o zdravstvenoj sposobnosti za vozača</li>
 <li>potvrdu o položenom teorijskom ispitu</li>
 </ul>
@@ -737,7 +725,7 @@ CARDS['dozvole'] = {
 </div>
 
 <div class="kPodH"><b class="kPodNaslov">Probna dozvola: uz 90% idu dve zamke</b>
-<p><b>Rečima:</b> na putu koji nije autoput ni motoput vozaču sa probnom dozvolom <b>nije dozvoljena</b> brzina veća od <b>90% od brzine dozvoljene na tom delu puta</b> (čl. 182). Bez ograda — važi sve dok traje probna dozvola.</p>
+<p><b>Rečima:</b> na putu koji nije autoput ni motoput vozaču sa probnom dozvolom <b>nije dozvoljena</b> brzina veća od <b>90% od brzine dozvoljene na tom delu puta</b> (čl. 182). Ograničenje ne prestaje samim punoletstvom i nije vezano samo za noć. Poseban izuzetak iz čl. 182 st. 11 važi dok se upravlja vozilom koje koriste MUP, Vojska Srbije ili službe bezbednosti; tada se ne primenjuju navedena ograničenja brzine i vremena vožnje.</p>
 <table>
 <tr><th>Ponuđena zamka</th><th>Zašto pada</th></tr>
 <tr><td>„nije dozvoljeno <b>samo do navršenih 18 godina</b> života"</td><td>ograničenje ne prestaje na 18. rođendan — traje koliko i probna dozvola</td></tr>
@@ -4958,10 +4946,10 @@ BYSUB[175] = 'nezgoda';
 
 // --- Vozačke dozvole (sub 172) + probna (sub 173) ---
 const nesavestan = 'Dozvola se oduzima vozaču koji ne upravlja savesno i na propisan način — pragovi su: 18 ili više kaznenih poena (9 za probnu dozvolu), ili pravnosnažne osude za krivična dela protiv bezbednosti saobraćaja (ZOBS čl. 197). Pitanja iz ove grupe razlikuju se po broju osuda i periodu — čitaj pažljivo koje se tačno stanje traži.';
-X[8464] = { x: 'Zabrana upravljanja odlukom nadležnog organa znači: ne smeš da upravljaš — bez izuzetaka i "osim ako" varijanti.' };
+X[8464] = {"x":"Dok zabrana upravljanja traje, ne smeš upravljati vozilom na koje se ona odnosi. Lokalni put, skup vozila ili mala konstruktivna brzina nisu ponuđeni izuzeci od zabrane (ZOBS čl. 178 st. 4; čl. 201)."};
 X[8465] = { x: "Isključen vozač ne sme da upravlja vozilom dok isključenje traje — isključenje se izriče na licu mesta (npr. alkohol, umor). Zabrana je potpuna: važi za sva motorna vozila i skupove vozila, ne samo za kategoriju kojom je vozio u trenutku isključenja, i nema vožnje \"do kuće\" ni do sedišta firme." };
-X[8466] = { x: 'Dve vozačke dozvole dve države — korišćenje OBE nije dozvoljeno; koristi se jedna.' };
-X[8467] = { x: 'Dozvola čiji si nestanak prijavio više ne važi (dobijaš novu) — korišćenje stare nije dozvoljeno čak i ako je nađeš.' };
+X[8466] = {"x":"Nije dozvoljeno istovremeno korišćenje dve vozačke dozvole izdate u različitim državama. Ako imaš važeću srpsku i stranu dozvolu koja nije izdata zamenom srpske, pri vožnji u Srbiji dužan si da koristiš srpsku (ZOBS čl. 183 st. 2)."};
+X[8467] = {"x":"Obrazac vozačke dozvole čiji si nestanak prijavio nadležnom organu ne smeš koristiti, čak i ako ga kasnije pronađeš (ZOBS čl. 183 st. 3)."};
 X[8468] = { x: 'Promena prebivališta se prijavljuje nadležnom organu u roku od 30 DANA radi upisa u evidenciju vozača.' };
 X[8469] = { x: "Vozačka (odnosno probna) dozvola mora biti KOD TEBE dok voziš — ne kod kuće, ne \"naknadno na uvid\". Ni lična karta uz \"proveru u registru\" ni međunarodna dozvola nisu zamena — međunarodna vozačka dozvola izdata u Srbiji ne sme se ni koristiti za upravljanje na teritoriji Srbije (ZOBS čl. 186)." };
 X[8471] = { x: 'Međunarodna vozačka dozvola izdata u Srbiji služi za inostranstvo — na teritoriji Srbije se NE koristi (ovde važi tvoja obična).' };
@@ -4972,12 +4960,12 @@ X[8475] = { x: "Dozvola se oduzima vozaču koji ne upravlja savesno i na propisa
 X[8476] = { x: nesavestan };
 X[8477] = { x: nesavestan };
 X[8478] = { x: nesavestan };
-X[8479] = { x: 'Kazneni poeni se brišu nakon 24 MESECA od pravnosnažnosti odluke o prekršaju (ZOBS čl. 198). Pamti: 2 godine.' };
+X[8479] = {"x":"Kazneni poeni se brišu nakon isteka 24 meseca od pravnosnažnosti odluke o prekršaju (ZOBS čl. 198 st. 3). Rok ne teče za vreme zatvora zbog prekršaja iz ZOBS-a ili krivičnih dela iz čl. 197 st. 3 tač. 2–4, niti za vreme trajanja zaštitne mere ili mere bezbednosti zabrane upravljanja (čl. 198 st. 5)."};
 X[8480] = { x: 'Dok traje zaštitna mera/zabrana upravljanja: ne može se ni započeti obuka ni polagati ispit — zabrana pokriva i sticanje prava.' };
-X[8481] = { x: "Kandidat na praktičnoj obuci kod sebe mora imati: ličnu kartu + dokaz o zdravstvenoj sposobnosti + potvrdu o položenom teorijskom ispitu — sve tri stvari. Zamka: potvrda o završenoj teorijskoj OBUCI nije isto što i potvrda o položenom teorijskom ISPITU — traži se ova druga; ugovor o obuci i knjižica obuke nisu na spisku." };
-X[8496] = { x: "Dozvola A kategorije pokriva i niže: smeš MOPED i MOTOCIKL (i teški tricikl). Vidi karticu za celu tabelu. Teški ČETVOROCIKL nije pokriven — četvorocikli idu uz B1, odnosno B kategoriju, a radnom mašinom sme da upravlja samo vozač sa F kategorijom (ZOBS čl. 195)." };
+X[8481] = {"x":"Na praktičnoj obuci kandidat ima dokaz o zdravstvenoj sposobnosti, potvrdu o položenom teorijskom ispitu i ličnu kartu — odnosno drugi dokument sa fotografijom ako zbog starosti ne ispunjava uslov za izdavanje lične karte (ZOBS čl. 228 st. 2). Potvrda o završenoj teorijskoj obuci, ugovor i knjižica obuke nisu zamena za navedene dokumente."};
+X[8496] = {"x":"Dozvola A kategorije pokriva i A1, A2 i AM: smeš da upravljaš mopedom i motociklom, kao i teškim triciklom. Teški četvorocikl zahteva B1, odnosno B kategoriju; laki četvorocikl je u AM i A ga pokriva. Radnom mašinom sme da upravlja samo vozač sa F kategorijom (ZOBS čl. 195)."};
 X[8501] = { x: 'Dozvola A kategorije: smeš MOTOCIKL i TEŠKI TRICIKL (i moped). A je najšira "dvotočkaška" dozvola.' };
-X[10718] = { x: "Samostalno upravlja vozač koji ispunjava propisane uslove i ima dozvolu ZA TU KATEGORIJU vozila — dozvola druge kategorije ne pokriva. Uverenje o položenom ispitu nije dozvola — položen ispit je samo uslov za izdavanje, pa do preuzimanja vozačke dozvole samostalna vožnja nije dozvoljena." };
+X[10718] = {"x":"Samostalno upravlja vozač koji ispunjava propisane uslove i ima dozvolu koja mu daje pravo da upravlja tom kategorijom vozila (ZOBS čl. 178 st. 1 i čl. 195). Uverenje o položenom ispitu nije vozačka dozvola. Dozvola može pokrivati i druge kategorije u skladu sa zakonom, kao što A pokriva A1, A2 i AM."};
 X[10691] = { x: 'Probna dozvola na AUTOPUTU: najviše 110 km/h (umesto 130) — ZOBS čl. 182.' };
 X[10692] = { x: "Probna dozvola na MOTOPUTU: najviše 90 km/h (umesto 100) — ZOBS čl. 182. Zamka: 110 km/h je ograničenje probne dozvole na AUTOPUTU, a na ostalim putevima važi 90% od brzine dozvoljene na tom delu puta (čl. 182)." };
 X[10693] = { x: "Probna dozvola na ostalim putevima: najviše 90% od ograničenja na tom delu puta (ZOBS čl. 182) — npr. gde važi 80, tebi važi 72. Ograničenje važi sve dok traje probna dozvola — ne samo do 18. godine. Period 23,00-06,00 je poseban mamac: tada vozač sa probnom dozvolom uopšte NE SME da upravlja (čl. 182), pa to nije \"prozor\" za ograničenje brzine." };
@@ -5457,7 +5445,7 @@ X[8084] = { ...(X[8084] || {}), x: "Biciklistička staza i zemljani put izričit
 X[8102] = { ...(X[8102] || {}), x: "Raskrsnica je deo KOLOVOZA na kome se PUTEVI ukrštaju, spajaju ili razdvajaju u istom nivou (ZOBS čl. 7). Zamka: ukrštanje puta i pruge u istom nivou nije raskrsnica nego prelaz puta preko pruge." };
 X[8438] = { ...(X[8438] || {}), x: "Da — potvrdu o korišćenju tablica za privremeno označavanje vozač daje na uvid pri kontroli; polisa osiguranja ili dokaz o tehničkoj ispravnosti je NE zamenjuju." };
 X[8446] = { x: "Na kontrolni tehnički pregled može se uputiti samo vozilo u voznom stanju kojem u nezgodi nisu mehanički oštećeni sklopovi od presudnog značaja za bezbedno upravljanje (ZOBS čl. 266 st. 2)." };
-X[8476] = { ...(X[8476] || {}), x: "Ne upravlja savesno i na propisan način vozač pravnosnažno osuđen za krivično delo protiv bezbednosti saobraćaja sa SMRTNOM posledicom — dovoljna je već JEDNA osuda (ZOBS čl. 197). Zamke: za teške telesne povrede uslov je više od jedne osude u 5 godina." };
+X[8476] = {"x":"Već jedna pravnosnažna osuda za krivično delo protiv bezbednosti javnog saobraćaja sa smrtnom posledicom ispunjava uslov iz ZOBS čl. 197 st. 3 tač. 2. Sačuvani ključ označava taj odgovor. Ograda: ponuđene najmanje dve takve osude u pet godina takođe podrazumevaju bar jednu; dodatni prag nije potreban, pa formulacija opcija zahteva stručnu proveru. Ključ nije menjan."};
 X[8477] = { ...(X[8477] || {}), x: "Vozač ne upravlja savesno i na propisan način ako je VIŠE OD JEDNOM u roku od 5 GODINA pravnosnažno osuđen za krivično delo protiv bezbednosti saobraćaja sa TEŠKIM telesnim povredama (ZOBS čl. 197). Zamke: jedna osuda dovoljna je samo za smrtnu posledicu, a rok od 3 godine važi za lakše povrede i štetu." };
 X[8478] = { ...(X[8478] || {}), x: "Vozač ne upravlja savesno i na propisan način ako je VIŠE OD JEDNOM u roku od 3 GODINE pravnosnažno osuđen za krivično delo protiv bezbednosti saobraćaja sa telesnim povredama ili imovinskom štetom (ZOBS čl. 197). Rok od 5 godina je zamka — on važi za TEŠKE telesne povrede." };
 X[8533] = { ...(X[8533] || {}), x: "Lice koje se ZATEKNE na mestu nezgode sa povređenima dužno je da pomogne u skladu sa svojim znanjem i mogućnostima i da preduzme sve što može da spreči uvećavanje posledica (ZOBS čl. 167). Odgovori \"nije obavezno\" i \"udalji se\" su zamke — obaveza pomoći važi za svakoga, ne samo za učesnike." };
@@ -6755,7 +6743,7 @@ out.cards['prvenstvo-prolaza'].h.c = out.cards['prvenstvo-prolaza'].h.c.replace(
 
 // Lokalno prevedi pregledane pristupačne opise; opšti toCyr štiti HTML tagove.
 // Novi opis u ovim karticama zahteva ponovni pregled oba pisma.
-for (const [key, expected] of [['brzine', 6], ['kategorije-vozila', 4], ['put-pojmovi', 1], ['vozilo-tehnika', 4], ['kaznene-klase', 13], ['preticanje', 3], ['skretanje', 2], ['iskljucenje', 3], ['oznake-kolovoz', 12], ['prvenstvo-prolaza', 9], ['pruga', 4], ['policajac-znaci', 6], ['parking-table', 9], ['pesaci-bicikli', 11]]) {
+for (const [key, expected] of [['brzine', 6], ['kategorije-vozila', 4], ['put-pojmovi', 1], ['vozilo-tehnika', 4], ['kaznene-klase', 13], ['preticanje', 3], ['skretanje', 2], ['iskljucenje', 3], ['oznake-kolovoz', 12], ['prvenstvo-prolaza', 9], ['pruga', 4], ['policajac-znaci', 6], ['parking-table', 9], ['pesaci-bicikli', 11], ['dozvole', 3]]) {
   let count = 0;
   out.cards[key].h.c = out.cards[key].h.c.replace(/aria-label="([^"]*)"/g, (_, label) => {
     count++;
@@ -6863,6 +6851,8 @@ for (const [key, expected] of [['brzine', 6], ['kategorije-vozila', 4], ['put-po
 // Korekcije važe samo za ove izvore; promenjen opis zahteva novi pregled oba pisma.
 {
   for (const [id, staro, novo] of [
+    [8496,"Б1","B1"],
+    [8496,"Ф категоријом","F категоријом"],
     [10892,"слово Х","слово H"],
     [10894,"слово Х","слово H"],
     [10849,"слова У","слова U"],
