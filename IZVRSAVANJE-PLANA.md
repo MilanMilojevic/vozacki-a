@@ -30,7 +30,7 @@
 | А3 Циљ и процена спремности | Завршено | v131: reload циља; v134: непознато градиво не добија позајмљену тачност; условни модел јасно означен |
 | А4 Телефон и приступачност | У току; корисничка проба остаје v165 | Развојне v169–171 поправљају табелу возила, ситне натписе паркирања и преливање дугих речи при увећању текста; раније тастатура/водич/контраст/увећање. Остали цртежи, читач екрана и стварни телефони остају у прегледу |
 | А5 Кеш и алати издавања | Делимично | v128/v137: издање/кеш; алати/CI проверени; v157: аутоматски отисци слика и провера бајтова у SW; ограничење старих кешева још отворено |
-| А6 Садржај 1.327 питања | У току | На v199: 992 питања reviewed, 0 in-progress, 72 needs-expert, 263 unreviewed; картице 26 reviewed, 13 unreviewed. Актуелни машински збир: [manifest.json](docs/revizija-sadrzaja/manifest.json). Започета и спорна питања нису урачуната у завршена |
+| А6 Садржај 1.327 питања | У току | На v200: 1.031 питање reviewed, 0 in-progress, 74 needs-expert, 222 unreviewed; картице 28 reviewed, 11 unreviewed. Актуелни машински збир: [manifest.json](docs/revizija-sadrzaja/manifest.json). Започета и спорна питања нису урачуната у завршена |
 | А7 Документација / права | У току | CONTRIBUTING, README, школска упутства и fork поступак допуњени; v147 поруке/метаподаци и v151 FAQ усклађени; преостаје одлука власника о лиценци |
 | Б1–Б3 Побољшања | Чека | После учвршћивања, пилот по пилот |
 | Навигација — накнадни захтев | Основни токови завршени; доградња одвојена | v146 Назад/Напред; v150 стварни линкови; v154 статистика; v158 лични спискови. v162 додаје преглед конкретног старог испита; то је доградња, не услов основне безбедности учења. v163 исправља копирани линк питања и повратак фокуса у појмовник |
@@ -608,3 +608,9 @@ Root integrisani Chromium128/128 i nezavisni64/64 mobilnih tokova; bez grešaka/
 Dva potpuna pregleda22 pitanja/73 opcije, cele karticeL/C, pet tabela, šest odeljaka i tri postojeća SVG. Osam EX korekcija i17 kartičnih fragmenata preciziraju dozvole, zastoj roka24meseca, izvedene kategorije, probnu dozvolu i dokumenta na obuci. B1/F i tri ARIA opisa očuvani su u oba pisma.8476 zadržava ključ uz vidljivu ogradu zbog preklopljenih odgovora. [Pojedinačni dokaz A6-064/068](docs/revizija-sadrzaja/grupe/064-dozvole.md).
 
 Root integrisani Chromium16/16 kartičnih konteksta i88/88 pitanja; nezavisni88 stvarnih tokova na200% i292 prikaza opcija. Tačan generator i samo11 predviđenih source operacija,4NUL i svi ostali EX sačuvani; nema promena podataka, CSS ili app.js. Ukupno992 reviewed,263 unreviewed,0 in-progress,72 needs-expert;26 reviewed kartica,13 unreviewed. `node tools/verify.mjs`:249/249, tačni otisci/verzija/sintaksa; dokaz064/root-verify-v199.log.
+
+### v200 — auto-put i znakovi traka
+
+Dva potpuna pregleda41 pitanja/122 opcije/33 originalna JPEG, dve karticeL/C, četiri tabele i dva postojeća SVG. Sedamnaest EX korekcija i23 kartična fragmenta čuvaju izuzetke, koridor iz35(5)/104(6), konkretne šeme/udaljenosti i prelazni rok starih izlaznih tabli do29.8.2029.10304/10328 ostaju needs-expert sa vidljivim ogradama i nepromenjenim ključevima. Dva crteža imaju čitljive natpise/kontrast i lokalniARIA; bele oznake, vozila i putanje sačuvani. [Pojedinačni dokaz A6-063/069](docs/revizija-sadrzaja/grupe/063-autoput-znaci.md).
+
+Root integrisani Chromium32/32 kartična konteksta i164/164 pitanja, nezavisni164 prikaza na200% sa488 opcija/132 slike i32 table-pan provere. Tačna puna semantika generatora,20 source operacija/4NUL, ostali EX nepromenjeni. Ukupno1031 reviewed,222 unreviewed,0 in-progress,74 needs-expert;28 reviewed kartica,11 unreviewed. `node tools/verify.mjs`:249/249, tačni otisci/verzija/sintaksa; dokaz063/root-verify-v200.log.
