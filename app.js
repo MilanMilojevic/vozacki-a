@@ -4872,7 +4872,8 @@
   setInterval(checkVersion, 5 * 60 * 1000);
 
   // ---------- Anonimna statistika poseta (GoatCounter — bez kolačića) ----------
-  // Broji samo posete i koji se delovi aplikacije koriste; nikakvi lični podaci ni napredak.
+  // Broji posete i delove aplikacije; ne šalje napredak. Mrežne podatke i granice
+  // privatnosti opisuje README (GoatCounter), bez pretpostavke o podešavanjima naloga.
   // Učitava se ISKLJUČIVO na javnoj adresi (nikad lokalno ni sa file://) i poštuje "Do Not Track".
   if (location.protocol === 'https:' && location.hostname !== 'localhost' && navigator.doNotTrack !== '1') {
     window.goatcounter = { no_onload: true };

@@ -3,7 +3,8 @@
 // Начело (исто као NA_ISPITU из SIM_SLOTS у в118): веза слика↔значење се НЕ пише руком.
 // У бази постоји 313 питања облика „Саобраћајни знак приказан на слици означава:" — тачан
 // одговор ЈЕ званично значење тог знака, а слика већ стоји у `img/<qId>.jpg` и трајно се
-// кешира (sw.js, keš va-img-1). Дакле: атлас се ГЕНЕРИШЕ, па не може да се разиђе са испитом.
+// кешира према садржају (sw.js, va-img-h1; va-img-1 је стари fallback). Атлас се
+// генерише из сачуване базе; њен одговор није сам по себи провера данашњег прописа.
 //
 // Свесно се НЕ сажима по значењу: пет различитих знакова дели значење „смер којим се возила
 // морају кретати" (права десно, кривина десно, права лево…). Управо то шаренило се на испиту
@@ -43,7 +44,8 @@ function jeAtlasPitanje(q) {
 }
 
 // X = mapiranja pitanja na kartice iz build-explanations.mjs (za podoblast 159).
-// Vraća { atlas: { kljucKartice: [{ i: qId, z: značenje }] }, ukupno, bezGrupe }.
+// Vraća atlas, situacije i zamke kao mape ključ → niz ID-jeva pitanja,
+// uz brojače ukupno, bezGrupe, vezaUkupno i situacijaN.
 export function napraviAtlas(X) {
   // data.js je običan skript koji upisuje window.QUIZ — učitava se preko require-a sa
   // podmetnutim window objektom (isto što radi i pregledač), bez ijedne zavisnosti.
@@ -73,7 +75,7 @@ export function napraviAtlas(X) {
 
   // ---- SITUACIJE: сликовна питања која нису „знак → значење" ----
   // Од 704 слике у бази, 311 су знакови (атлас). Остале приказују СИТУАЦИЈУ на путу, а тачан
-  // одговор каже шта се сме или мора. Уз картицу теме то је још 335 слика са испита — исте
+  // одговор каже шта се сме или мора. Број прихваћених слика даје situacijaN — исте
   // оне које ће се видети на испиту, са питањем и тачним одговором.
   const uAtlasu = new Set([].concat(...Object.values(atlas)));
   const situacije = {};

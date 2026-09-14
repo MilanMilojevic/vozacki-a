@@ -1,4 +1,4 @@
-// Pravi QR kod za adresu vežbaonice i upisuje ga kao SVG u plakat.html.
+// Pravi qr.svg u radnoj fascikli tools/. U plakat.html se unosi zasebno.
 // Bez ijedne spoljne biblioteke — mali generator (verzija 4, nivo ispravke M, bajt režim).
 // Pokretanje:  node napravi-qr.mjs
 import fs from 'node:fs';
