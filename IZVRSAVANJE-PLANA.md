@@ -30,7 +30,7 @@
 | А3 Циљ и процена спремности | Завршено | v131: reload циља; v134: непознато градиво не добија позајмљену тачност; условни модел јасно означен |
 | А4 Телефон и приступачност | У току; корисничка проба остаје v165 | Развојне v169–171 поправљају табелу возила, ситне натписе паркирања и преливање дугих речи при увећању текста; раније тастатура/водич/контраст/увећање. Остали цртежи, читач екрана и стварни телефони остају у прегледу |
 | А5 Кеш и алати издавања | Делимично | v128/v137: издање/кеш; алати/CI проверени; v157: аутоматски отисци слика и провера бајтова у SW; ограничење старих кешева још отворено |
-| А6 Садржај 1.327 питања | У току | На v214: 1.250 питања reviewed, 0 in-progress, 77 needs-expert, 0 unreviewed; картице 39 reviewed, 0 unreviewed. Актуелни машински збир: [manifest.json](docs/revizija-sadrzaja/manifest.json). Започета и спорна питања нису урачуната у завршена |
+| А6 Садржај 1.327 питања | У току | На v215: 1.250 питања reviewed, 0 in-progress, 77 needs-expert, 0 unreviewed; картице 39 reviewed, 0 unreviewed. Актуелни машински збир: [manifest.json](docs/revizija-sadrzaja/manifest.json). Започета и спорна питања нису урачуната у завршена |
 | А7 Документација / права | У току | CONTRIBUTING, README, школска упутства и fork поступак допуњени; v147 поруке/метаподаци и v151 FAQ усклађени; преостаје одлука власника о лиценци |
 | Б1–Б3 Побољшања | Чека | После учвршћивања, пилот по пилот |
 | Навигација — накнадни захтев | Основни токови завршени; доградња одвојена | v146 Назад/Напред; v150 стварни линкови; v154 статистика; v158 лични спискови. v162 додаје преглед конкретног старог испита; то је доградња, не услов основне безбедности учења. v163 исправља копирани линк питања и повратак фокуса у појмовник |
@@ -698,3 +698,9 @@ Nezavisna provera zamrznutog paketa092; root na stvarnoj v213:32 odgovora/88 opc
 Umetak za sajtove auto-škola sada razlikuje tačnu opciju i pogrešan izbor i bez boje; poruka rezultata ima status ulogu. Tri uske izmene čuvaju banku, ključeve, originalne opcije, iframe protokol i ćirilični interfejs.
 
 Nezavisni kandidat56/56 funkcionalnih slučajeva; root18/18 grupa zamrznutih dokaza,12 stvarnih direktnih prikaza v214 i izvršen dopunjen blok postojeće browser regresije za oba ishoda. Nema horizontalnog prelivanja ili JavaScript grešaka u toj proveri. Ukupno1250 reviewed,0 unreviewed,77 needs-expert;39 reviewed kartica,0 unreviewed. node tools/verify.mjs:249/249; dokaz output/revizija-20260911/096-root/root-verify-v214.log. [Detaljni dokaz](docs/provere-ugradjenog-kviza.md).
+
+### v215 — namerno pokretanje i pauza postojećih crteža
+
+Svih28 postojećih animiranih SVG počinje mirno, sa lokalnim action dugmetom. Reduced-motion ima prednost; navigacija, sklapanje i zoom pauziraju pozadinu. Nema novih animacija, promene EX/banke/bodovanja ili trajnog stanja. Sedam uskih app/CSS operacija dodaje ukupno3487 bajtova; dopunjen postojeći keyboard test.
+
+Nezavisni098/103 pregledi rekonstruišu tačne operacije i očuvanu geometriju kroz160 redova; završni kandidat ima sopstvene male provere. Root na stvarnojv215:14/14 keyboard i10 prikaza pet kartica/56 animiranih instanci pri200% teksta, sa nepromenjenim S/SIM. Početna greška mernog fonta i poznata about:blank init poruka odvojeno dokumentovane. Ukupno1250 reviewed,0 unreviewed,77 needs-expert;39 reviewed kartica,0 unreviewed. node tools/verify.mjs:249/249; dokaz output/revizija-20260911/098-root/root-verify-v215.log. [Detaljni dokaz](docs/provere-pokreta-crteza.md).

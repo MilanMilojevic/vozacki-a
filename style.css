@@ -682,6 +682,14 @@ button { transition: background-color .15s ease, border-color .15s ease, color .
 .animPutanjaSkretanja { animation: vaTok 1.4s linear infinite; }
 /* magla se pomera i gusne */
 .animMaglaProlazi { animation: vaMagla 3.4s ease-in-out infinite; }
+/* Pokret počinje samo lokalnim dugmetom; pauza zadržava trenutni kadar. */
+.animVoziTrakom, .animUkljuci, .animIzlazak, .animBiciklObilazi, .animSinskoPrilazi, .animPropusti, .animUlazUTunel, .animVoziloSeKotrlja, .animSusret, .animVoziloUSusret, .animDolaziUSusret, .animPesakPrelazi, .animKolonaPrelazi, .animPrilaziGranici, .animIzlaziIzSporednog, .animTrepti, .animMigavac, .animKoridorTok, .animPutanjaSkretanja, .animMaglaProlazi { animation-play-state: paused; }
+svg[data-pokret="1"] * { animation-play-state: running; }
+.crtezPokretGrupa { display: flex; flex-direction: column; align-items: center; width: 100%; min-width: 0; }
+.crtezPokret { margin: 0 0 12px; }
+.crtezPokret button { max-width: 100%; min-height: 44px; white-space: normal; overflow-wrap: anywhere; }
+.crtezPokret button:disabled { opacity: 1; }
+.crtezPokret p { margin: 6px 0 0; font-size: var(--fs-sm); color: var(--ink); overflow-wrap: anywhere; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
 }

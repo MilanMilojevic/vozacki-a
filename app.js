@@ -348,6 +348,9 @@
     qNumTip2: { l: 'Klik: kopiraj adresu ovog pitanja', c: 'Клик: копирај адресу овог питања' },
     uvecajSliku: { l: 'Uvećaj sliku', c: 'Увећај слику' },
     uvecajCrtez: { l: 'Uvećaj crtež', c: 'Увећај цртеж' },
+    pokreniPrikaz: { l: 'Pokreni prikaz', c: 'Покрени приказ' },
+    pauzirajPrikaz: { l: 'Pauziraj prikaz', c: 'Паузирај приказ' },
+    prikazBezPokreta: { l: 'Uključeno je smanjeno kretanje.', c: 'Укључено је смањено кретање.' },
     zoomVise: { l: 'Bliže', c: 'Ближе' },
     zoomManje: { l: 'Dalje', c: 'Даље' },
     imgAlt: { l: 'Slika uz pitanje — saobraćajna situacija ili znak; pitanje se odnosi na ono što je na slici.', c: 'Слика уз питање — саобраћајна ситуација или знак; питање се односи на оно што је на слици.' },
@@ -1076,6 +1079,7 @@
     skrolKljuc = kljuc;
   }
   function show(v) {
+    pauzirajCrteze();
     const bio = views.find((x) => el('view-' + x).classList.contains('active'));
     if (bio === 'browse' && v === 'question' && skrolKljuc) skrolSpisak = { kljuc: skrolKljuc, y: window.scrollY };
     postaviNazad(null);
@@ -2166,6 +2170,25 @@
   // ---------- Crtež u kartici se uvećava kao i fotografija ----------
   // Telo kartice je na telefonu 306 px: i dobro nacrtan dijagram tu ima sitan tekst.
   // Zato je svaki crtež u kartici dugme — dodir ga otvara preko celog ekrana.
+  const smanjenPokretCrteza = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const kontroleCrteza = new WeakMap();
+  let brojKontroleCrteza = 0;
+  function postaviPokretCrteza(s, pokreni) {
+    const k = kontroleCrteza.get(s);
+    if (!k) return;
+    const radi = !!pokreni && !smanjenPokretCrteza.matches;
+    s.dataset.pokret = radi ? '1' : '0';
+    k.dugme.textContent = L(radi ? 'pauzirajPrikaz' : 'pokreniPrikaz');
+    k.dugme.disabled = smanjenPokretCrteza.matches;
+    if (smanjenPokretCrteza.matches) k.dugme.setAttribute('aria-describedby', k.napomena.id);
+    else k.dugme.removeAttribute('aria-describedby');
+    k.napomena.hidden = !smanjenPokretCrteza.matches;
+    k.napomena.textContent = L('prikazBezPokreta');
+  }
+  function pauzirajCrteze(cd = document) {
+    cd.querySelectorAll('svg[data-pokret]').forEach(s => postaviPokretCrteza(s, false));
+  }
+  smanjenPokretCrteza.addEventListener('change', () => pauzirajCrteze());
   function oziviCrteze(cd) {
     if (!cd) return;
     cd.querySelectorAll('svg').forEach((s) => {
@@ -2175,6 +2198,19 @@
       s.setAttribute('role', 'button');
       const opis = s.getAttribute('aria-label');
       s.setAttribute('aria-label', L('uvecajCrtez') + (opis ? ': ' + opis : ''));
+      if (!s.querySelector('.animVoziTrakom, .animUkljuci, .animIzlazak, .animBiciklObilazi, .animSinskoPrilazi, .animPropusti, .animUlazUTunel, .animVoziloSeKotrlja, .animSusret, .animVoziloUSusret, .animDolaziUSusret, .animPesakPrelazi, .animKolonaPrelazi, .animPrilaziGranici, .animIzlaziIzSporednog, .animTrepti, .animMigavac, .animKoridorTok, .animPutanjaSkretanja, .animMaglaProlazi')) return;
+      const omot = document.createElement('div'); omot.className = 'crtezPokret';
+      const dugme = document.createElement('button'); dugme.type = 'button'; dugme.className = 'secondary';
+      const napomena = document.createElement('p');
+      const id = ++brojKontroleCrteza;
+      if (!s.id) s.id = 'crtez-pokret-' + id;
+      napomena.id = 'crtez-pokret-napomena-' + id;
+      dugme.setAttribute('aria-controls', s.id);
+      const grupa = document.createElement('div'); grupa.className = 'crtezPokretGrupa';
+      omot.append(dugme, napomena); s.before(grupa); grupa.append(s, omot);
+      kontroleCrteza.set(s, { dugme, napomena });
+      postaviPokretCrteza(s, false);
+      dugme.addEventListener('click', () => postaviPokretCrteza(s, s.dataset.pokret !== '1'));
     });
   }
   // SVG se prepisuje u sliku da bi prošao kroz ISTO uvećanje kao fotografija.
@@ -2250,9 +2286,10 @@
       if (otvaram) napuniAko(cd);
       const preTop = btn.getBoundingClientRect().top;
       if (grupa) {
-        grupa.querySelectorAll('.explCard').forEach((x) => { x.style.display = 'none'; });
+        grupa.querySelectorAll('.explCard').forEach((x) => { pauzirajCrteze(x); x.style.display = 'none'; });
         grupa.querySelectorAll('.explCardBtn').forEach((b) => b.setAttribute('aria-expanded', 'false'));
       }
+      if (!otvaram) pauzirajCrteze(cd);
       cd.style.display = otvaram ? '' : 'none';
       btn.setAttribute('aria-expanded', otvaram ? 'true' : 'false');
       // 1) prikuj dugme tamo gde je bilo (poništi i pomeraj koji pregledač sam napravi)
@@ -4543,6 +4580,7 @@
       izvor = slika.src; opisSlike = slika.alt;
     }
     if (document.getElementById('imgZoom')) return;   // jedno uvećanje, ne gomila njih jedno preko drugog
+    pauzirajCrteze();
     const vracaFokus = document.activeElement;
     const dijalog = document.createElement('div');
     dijalog.className = 'imgZoomDialog';

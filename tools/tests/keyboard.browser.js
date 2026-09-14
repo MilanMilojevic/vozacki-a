@@ -55,6 +55,28 @@ async (page) => {
     await p.keyboard.press('Enter');
     results.push({name:'Keyboard opens a real glossary diagram',pass:await p.locator('#imgZoom img.crtezZum').count()===1});
     await p.keyboard.press('Escape');
+    // Local instructional motion must require intent and never change study state.
+    await p.locator('[data-poj="kretanje-po-putu"]').click();
+    const motionCard = p.locator('[data-poj="kretanje-po-putu"]').locator('xpath=following-sibling::*[1]');
+    await motionCard.evaluate(e=>e.querySelectorAll('.kPod>button[aria-expanded="false"]').forEach(b=>b.click()));
+    const motion = motionCard.locator('svg[data-pokret]').first(), play = motionCard.locator('.crtezPokret button').first();
+    if(await motion.count()!==1) throw Error('Existing animated drawing has no local control.');
+    const motionState = () => motion.evaluate(s=>s.getAnimations({subtree:true}).map(a=>({state:a.playState,time:a.currentTime})));
+    const studyState = () => p.evaluate(()=>JSON.stringify({s:__dev.S,raw:localStorage.getItem('vozackiA.v1'),sim:localStorage.getItem('vozackiA.sim')}));
+    const studyBefore = await studyState(), initialMotion = await motionState();
+    results.push({name:'Instructional drawing begins paused with a native control',pass:initialMotion.length>0&&initialMotion.every(a=>a.state==='paused')&&await play.evaluate(b=>b.tagName==='BUTTON'&&b.type==='button'&&!b.hasAttribute('aria-pressed'))});
+    await play.focus(); await p.keyboard.press('Enter'); await p.waitForTimeout(160);
+    const runningMotion = await motionState();
+    await p.keyboard.press('Space'); await p.waitForTimeout(40); const pausedMotion = await motionState();
+    await p.waitForTimeout(160); const heldMotion = await motionState();
+    results.push({name:'Native keyboard control starts then holds the drawing frame',pass:runningMotion.every((a,i)=>a.state==='running'&&a.time>initialMotion[i].time)&&pausedMotion.every(a=>a.state==='paused')&&JSON.stringify(pausedMotion)===JSON.stringify(heldMotion)&&await p.locator('#imgZoom').count()===0});
+    await play.click(); await p.emulateMedia({reducedMotion:'reduce'}); await p.waitForTimeout(40);
+    const reducedStopped=(await motionState()).length===0&&await play.isDisabled();
+    await p.emulateMedia({reducedMotion:'no-preference'}); await p.waitForTimeout(200);
+    results.push({name:'Reduced motion overrides play and returning does not resume',pass:reducedStopped&&(await motionState()).every(a=>a.state==='paused')&&!await play.isDisabled()});
+    await play.click(); await motion.focus(); await p.keyboard.press('Enter'); await p.locator('#imgZoom img.crtezZum').waitFor();
+    const zoomPaused=(await motionState()).every(a=>a.state==='paused'); await p.keyboard.press('Escape');
+    results.push({name:'Zoom pauses motion, returns focus, and preserves study bytes',pass:zoomPaused&&await motion.evaluate(s=>document.activeElement===s)&&(await motionState()).every(a=>a.state==='paused')&&await studyState()===studyBefore});
     await p.locator('[data-nav="sim"]').first().click();
     await p.evaluate(() => {
       const record=JSON.parse(localStorage.getItem('vozackiA.sim'));
