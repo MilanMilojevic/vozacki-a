@@ -619,6 +619,33 @@
       "checkedOn": "2026-09-14",
       "revision": "Službeni glasnik RS zaključno sa 19/2025, prema zaglavlju PIS",
       "contentHash": "8796f6a1718bea08ea4fe1dedb3c9a71001b1c6c5245a93526f365a61e668d5d"
+    },
+    {
+      "id": "zobs-stajalista-pis-19-2025",
+      "url": "https://reg.pravno-informacioni-sistem.rs/api/viewAct/8b57d1e9-9b34-4fa0-9693-7ceb6da65486?lawActId=438311",
+      "title": "ZOBS, PIS kroz19/2025",
+      "article": "22–32,42,268(6)",
+      "checkedOn": "2026-09-14",
+      "revision": "19/2025",
+      "contentHash": "8796f6a1718bea08ea4fe1dedb3c9a71001b1c6c5245a93526f365a61e668d5d"
+    },
+    {
+      "id": "signalizacija-skola-pis-76-2026",
+      "url": "https://reg.pravno-informacioni-sistem.rs/api/viewdoc?doctype=reg&regactid=440491&uuid=2bd446cf-0965-4141-8323-d207a4216ed1",
+      "title": "Pravilnik o saobraćajnoj signalizaciji, PIS kroz76/2026",
+      "article": "18,19,35; završni49–50 izmena76/2026",
+      "checkedOn": "2026-09-14",
+      "revision": "76/2026",
+      "contentHash": "8f9b78ea7810a5d5028f3b2878773d37080cf9096a2239dc2a306101708c45d7"
+    },
+    {
+      "id": "znak-prevoz-dece-mgsi-3-2011",
+      "url": "https://www.mgsi.gov.rs/sites/default/files/Pravilnik%20o%20izgledu%20i%20nacinu%20postavljanja%20znaka%20za%20obelezavanje%20vozila%20kojim%20se%20vrsi%20organizovan%20prevoz%20dece.pdf",
+      "title": "Pravilnik o izgledu i načinu postavljanja znaka za obeležavanje vozila kojim se vrši organizovan prevoz dece, MGSI",
+      "article": "1–9,slike1–2",
+      "checkedOn": "2026-09-14",
+      "revision": "3/2011; naveden na aktuelnoj ministarskoj listi",
+      "contentHash": "e23cde5921c39700d9a604d6989837e6e8cd5cf4243af1ff200525e2fc6d0301"
     }
   ]
 }
