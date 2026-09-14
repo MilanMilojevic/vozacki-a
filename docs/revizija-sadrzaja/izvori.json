@@ -655,6 +655,33 @@
       "checkedOn": "2026-09-14",
       "revision": "76/2026",
       "contentHash": "8f9b78ea7810a5d5028f3b2878773d37080cf9096a2239dc2a306101708c45d7"
+    },
+    {
+      "id": "zobs-svetla-signali-19-2025",
+      "url": "https://reg.pravno-informacioni-sistem.rs/api/viewAct/8b57d1e9-9b34-4fa0-9693-7ceb6da65486?lawActId=438311",
+      "title": "Zakon o bezbednosti saobraćaja na putevima, PIS važeći prečišćen tekst zaključno sa19/2025",
+      "article": "23(3), 26, 32, 42, 55, 59, 60, 61, 77, 78, 79, 80",
+      "checkedOn": "2026-09-14",
+      "revision": "19/2025",
+      "contentHash": "8796f6a1718bea08ea4fe1dedb3c9a71001b1c6c5245a93526f365a61e668d5d"
+    },
+    {
+      "id": "signalizacija-radovi-signali-76-2026",
+      "url": "https://reg.pravno-informacioni-sistem.rs/api/viewdoc?doctype=reg&regactid=440491&uuid=2bd446cf-0965-4141-8323-d207a4216ed1",
+      "title": "Pravilnik o saobraćajnoj signalizaciji,76/2026, PIS",
+      "article": "18(16), 22, 23(1)",
+      "checkedOn": "2026-09-14",
+      "revision": "76/2026",
+      "contentHash": "8f9b78ea7810a5d5028f3b2878773d37080cf9096a2239dc2a306101708c45d7"
+    },
+    {
+      "id": "mgsi-svetla-signali-54-2026",
+      "url": "https://www.mgsi.gov.rs/sites/default/files/pravilnik_o_podeli_motornih_i_prikljucnih_vozila_i_tehnickim_uslovima_za_vozila_u_saobracaju_na_putevima.pdf",
+      "title": "Pravilnik o podeli motornih i priključnih vozila i tehničkim uslovima za vozila u saobraćaju na putevima, MGSI tekst zaključno sa54/2026",
+      "article": "45, 47, 57, 58",
+      "checkedOn": "2026-09-14",
+      "revision": "54/2026",
+      "contentHash": "bbc837b7168e7f670c88881d5f125fc68b4535192992dc814228728f03dab400"
     }
   ]
 }

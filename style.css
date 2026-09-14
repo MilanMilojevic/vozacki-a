@@ -277,7 +277,7 @@ table.stats td.num, table.stats th.num { text-align: right; font-variant-numeric
 .explBox { background: var(--explBg); border: 1px solid var(--explLine); border-radius: 10px; padding: 12px 14px; margin: 10px 0; font-size: var(--fs-md); line-height: 1.5; }
 .explHead { font-weight: 700; color: var(--explInk); margin-bottom: 6px; }
 .explSmall { font-size: var(--fs-xs); font-weight: 400; }
-.explBox p { margin: 0 0 6px; }
+.explBox p { margin: 0 0 6px; overflow-wrap: anywhere; }
 /* Široka tabela sme da se skroluje u svom okviru, ali NIKAD da razvuče celu stranu.
    Tabela statistike je na 320px izlazila 36px preko kartice i pravila vodoravni skrol. */
 /* ---- Podešavanja: imenovane grupe umesto jednog reda nabacanih dugmadi ---- */

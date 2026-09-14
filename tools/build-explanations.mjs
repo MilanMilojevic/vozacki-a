@@ -1281,15 +1281,15 @@ CARDS['skretanje'] = {
 CARDS['pokazivaci'] = {
   title: 'Pokazivači pravca i sva 4 žmigavca',
   html: `
-<p><b>Pokazivač pravca daješ:</b> pre svake promene pravca ili trake — prestrojavanje, skretanje, preticanje, obilaženje, polukružno, uključivanje u saobraćaj — i to pre početka radnje, a prestaje čim radnju završiš.</p>
-<p><b>SVA 4 pokazivača (čl. 61) obavezno uključuješ:</b></p>
+<p><b>Pokazivač pravca (čl. 32 st. 3–4):</b> pre radnje se uveri da je bezbedna i propisna. Druge učesnike jasno i blagovremeno obavesti propisanim pokazivačem, a ako on ne postoji — odgovarajućim znakom rukom. Znak daješ za sve vreme radnje, a prestaješ po njenom završetku. To važi za uključivanje, promenu trake, prestrojavanje, skretanje, polukružno okretanje, obilaženje, preticanje, vožnju unazad, isključenje, zaustavljanje, parkiranje i druge radnje.</p>
+<p><b>Svi pokazivači pravca (čl. 61):</b> na javnom putu, ako je za vozilo propisana obaveza postojanja takvog uređaja, obavezno ih uključuješ u sledećim slučajevima:</p>
 <table>
 <tr><td>1</td><td>za vreme ulaska/izlaska putnika</td></tr>
 <tr><td>2</td><td>kad upozoravaš druge na OPASNOST u saobraćaju</td></tr>
 <tr><td>3</td><td>u izrazito smanjenoj vidljivosti (gusta magla, dim)</td></tr>
-<tr><td>4</td><td>kad si POSLEDNJI u zaustavljenoj koloni van naselja</td></tr>
+<tr><td>4</td><td>kad si POSLEDNJI u zaustavljenoj koloni van naselja, osim ako je kolona stala zbog postupanja po saobraćajnom znaku ili pravilu saobraćaja</td></tr>
 <tr><td>5</td><td>kretanje UNAZAD</td></tr>
-<tr><td>6</td><td>zaustavljanje na kolovozu (osim propisnog parkiranja/znaka)</td></tr>
+<tr><td>6</td><td>zaustavljanje na kolovozu, osim pri parkiranju na obeleženom parkingu ili zbog postupanja po saobraćajnom znaku ili pravilu saobraćaja</td></tr>
 </table>
 <p><b>Zvučni i svetlosni znak upozorenja (čl. 59 i 60)</b> — cela ova podoblast staje u jednu rečenicu: <b>truba je za OPASNOST, nikad za nervozu.</b> Čim u pitanju piše da hoćeš nekoga da požuriš, tačan odgovor je strpljenje.</p>
 
@@ -1300,7 +1300,7 @@ CARDS['pokazivaci'] = {
 <tr><td>Pored kolovoza je <b>dete</b> koje ne obraća pažnju na kretanje vozila</td><td>svuda</td></tr>
 <tr><td>Pre ulaska u <b>nepreglednu i uzanu krivinu</b> ili dolaska na <b>prevoj</b>, gde je mimoilaženje otežano</td><td>na putu <b>van naselja</b></td></tr>
 </table>
-<p class="mut">Reč „naročito" znači da lista nije zatvorena — obaveza postoji kad god bezbednost to traži. Zato i u gradskoj ulici (slika sa taksijem koji stoji sa uključenim pokazivačima, a ti ga obilaziš) tačan odgovor glasi da si dužan da daš zvučni znak, iako to nije nijedna od tri nabrojane tačke.</p>
+<p class="mut">Reč „naročito" znači da lista nije zatvorena — obaveza postoji kad god bezbednost to traži. Zato i u gradskoj ulici (slika sa taksijem ukoso uz levi red parkiranih vozila, sa desnim pokazivačem prema tvojoj putanji) tačan odgovor glasi da si dužan da daš zvučni znak, iako to nije nijedna od tri nabrojane tačke.</p>
 
 <p><b>Koliko dugo?</b> „U meri koja je dovoljna da se drugi učesnici u saobraćaju upozore." Zakon ne pominje sekunde — i „ne duže od 3 sekunde" i „najmanje 5 sekundi" su izmišljene brojke. Zabranjen je zvučni znak <b>promenljive frekvencije</b> (sirena), osim u slučajevima koje zakon predviđa.</p>
 
@@ -1308,46 +1308,31 @@ CARDS['pokazivaci'] = {
 <table>
 <tr><th>Šta vidiš</th><th>Tačan odgovor</th></tr>
 <tr><td>Put van naselja, vozilo <b>2</b> već pretiče u levoj traci, a vozilo <b>1</b> ispred njega uključilo levi pokazivač</td><td>dužan je zvučni znak</td></tr>
-<tr><td>Gradska ulica, taksi zaustavljen ispred kolone parkiranih vozila sa uključenim pokazivačima — obilaziš ga</td><td>dužan si zvučni znak</td></tr>
+<tr><td>Gradska ulica, taksi ukoso izlazi iz levog reda parkiranih vozila, desnim pokazivačem najavljuje uključivanje u tvoju putanju</td><td>dužan si zvučni znak</td></tr>
 <tr><td>Uzan put uz odsečenu stenu, iza odbojne ograde se ništa ne vidi — nepregledna krivina</td><td>dužan si zvučni znak</td></tr>
-<tr><td>Dvoje dece trči za loptom preko kolovoza, ne gledaju u saobraćaj</td><td>dužan si zvučni znak</td></tr>
+<tr><td>Dvoje dece igra se loptom na kolovozu, ne gledaju ka vozilu</td><td>dužan si zvučni znak</td></tr>
 <tr><td>Iza vozila auto-škole si, leva traka zauzeta — nema uslova za preticanje</td><td><b>strpljivo</b> nastaviš vožnju do mesta gde smeš da pretekneš</td></tr>
 <tr><td>Zeleno svetlo na semaforu, a vozilo auto-škole ispred tebe još nije krenulo</td><td><b>strpljivo</b> sačekaš da krene</td></tr>
-<tr><td>Zaustavljena kolona na putu van naselja (radovi), ti si poslednji</td><td>pališ <b>sva četiri</b> pokazivača</td></tr>
+<tr><td>Zaustavljena kolona na putu van naselja, ti si poslednji; znak radova upozorava na radove za 500 m</td><td>pališ <b>sva četiri</b> pokazivača</td></tr>
 </table>
 <p class="mut">U dva slučaja sa strpljivim čekanjem (vozilo auto-škole i kolona na semaforu) nije tačan ni zvučni, ni svetlosni, ni „oba" — požurivanje nije razlog za znak upozorenja. A tamo gde jeste obavezan, traži se <b>samo zvučni</b>: ponuda „i zvučni i svetlosni znak" je pogrešna, jer je svetlosni tvoja mogućnost, a ne dodatna obaveza.</p>
 
 <p><b>Svetlosni znak upozorenja</b> = <b>uzastopno ili naizmenično paljenje DUGIH svetala</b> — ne pozicionih, ne stop-svetala, ne pokazivača pravca — uz pažnju da ne zaslepiš vozače iz suprotnog smera.</p>
-<svg viewBox="0 0 320 230" role="img" aria-label="Svetlosni znak upozorenja: uzastopno i naizmenično paljenje dugih svetala" style="max-width:320px;width:100%;display:block;margin:8px auto">
+<svg viewBox="0 0 320 114" role="img" aria-label="Primer uzastopnog svetlosnog znaka dugim svetlima: uključena, ugašena, uključena." style="max-width:320px;width:100%;display:block;margin:8px auto">
   <rect x="8" y="6" width="304" height="30" rx="6" fill="#2c6aa0"/>
-  <text x="160" y="26" text-anchor="middle" fill="#fff" font-size="15" font-weight="bold">UZASTOPNO</text>
+  <text x="160" y="26" text-anchor="middle" fill="#fff" font-size="16" font-weight="bold">UZASTOPNO</text>
 
   <rect x="8" y="44" width="96" height="62" rx="8" fill="#3a3f47" stroke="currentColor" stroke-width="1.5"/>
-  <circle cx="36" cy="75" r="14" fill="#ffd84d" stroke="#b58900" stroke-width="2"/>
-  <circle cx="76" cy="75" r="14" fill="#ffd84d" stroke="#b58900" stroke-width="2"/>
+  <circle cx="36" cy="75" r="14" fill="#fff" stroke="#a7b2bd" stroke-width="2"/>
+  <circle cx="76" cy="75" r="14" fill="#fff" stroke="#a7b2bd" stroke-width="2"/>
 
   <rect x="112" y="44" width="96" height="62" rx="8" fill="#3a3f47" stroke="currentColor" stroke-width="1.5"/>
-  <circle cx="140" cy="75" r="14" fill="#6b7280" stroke="#4b5563" stroke-width="2"/>
-  <circle cx="180" cy="75" r="14" fill="#6b7280" stroke="#4b5563" stroke-width="2"/>
+  <circle cx="140" cy="75" r="14" fill="#121820" stroke="#a7b2bd" stroke-width="2"/>
+  <circle cx="180" cy="75" r="14" fill="#121820" stroke="#a7b2bd" stroke-width="2"/>
 
   <rect x="216" y="44" width="96" height="62" rx="8" fill="#3a3f47" stroke="currentColor" stroke-width="1.5"/>
-  <circle cx="244" cy="75" r="14" fill="#ffd84d" stroke="#b58900" stroke-width="2"/>
-  <circle cx="284" cy="75" r="14" fill="#ffd84d" stroke="#b58900" stroke-width="2"/>
-
-  <rect x="8" y="122" width="304" height="30" rx="6" fill="#8a5a00"/>
-  <text x="160" y="142" text-anchor="middle" fill="#fff" font-size="15" font-weight="bold">NAIZMENIČNO</text>
-
-  <rect x="8" y="160" width="96" height="62" rx="8" fill="#3a3f47" stroke="currentColor" stroke-width="1.5"/>
-  <circle cx="36" cy="191" r="14" fill="#ffd84d" stroke="#b58900" stroke-width="2"/>
-  <circle cx="76" cy="191" r="14" fill="#6b7280" stroke="#4b5563" stroke-width="2"/>
-
-  <rect x="112" y="160" width="96" height="62" rx="8" fill="#3a3f47" stroke="currentColor" stroke-width="1.5"/>
-  <circle cx="140" cy="191" r="14" fill="#6b7280" stroke="#4b5563" stroke-width="2"/>
-  <circle cx="180" cy="191" r="14" fill="#ffd84d" stroke="#b58900" stroke-width="2"/>
-
-  <rect x="216" y="160" width="96" height="62" rx="8" fill="#3a3f47" stroke="currentColor" stroke-width="1.5"/>
-  <circle cx="244" cy="191" r="14" fill="#ffd84d" stroke="#b58900" stroke-width="2"/>
-  <circle cx="284" cy="191" r="14" fill="#6b7280" stroke="#4b5563" stroke-width="2"/>
+  <circle cx="244" cy="75" r="14" fill="#fff" stroke="#a7b2bd" stroke-width="2"/>
+  <circle cx="284" cy="75" r="14" fill="#fff" stroke="#a7b2bd" stroke-width="2"/>
 </svg>
 <table>
 <tr><td>Noću, <b>umesto</b> zvučnog znaka</td><td>sme</td></tr>
@@ -1362,7 +1347,7 @@ CARDS['pokazivaci'] = {
 <tr><td>„kada se <b>kreće</b> kao poslednji u koloni na putu van naselja"</td><td>Obaveza važi samo za <b>zaustavljenu</b> kolonu — i ni tada, ako je kolona stala zbog postupanja po saobraćajnom znaku ili pravilu saobraćaja (semafor, ustupanje prvenstva, pešački prelaz)</td></tr>
 <tr><td>„kada se zaustavio <b>iza</b> vozila u koje ulaze ili izlaze deca"</td><td>Sva četiri pali vozilo <b>iz kojeg</b> putnici ulaze ili izlaze, a ne ono koje stoji iza njega</td></tr>
 </table>
-<p class="mut">Na slici sa zaustavljenom kolonom van naselja poslednji vozač pali <b>sva četiri</b> pokazivača — ne levi.</p>
+<p class="mut">Na slici sa zaustavljenom kolonom van naselja poslednji vozač pali <b>sve</b> pokazivače, ne samo levi. Znak radova za 500 m sam po sebi ne nalaže zaustavljanje. Član 61 tačka 4 izuzima kolonu koja je stala zbog postupanja po saobraćajnom znaku ili pravilu saobraćaja; fotografija ne pokazuje uzrok zastoja.</p>
 `,
 };
 
@@ -1817,9 +1802,10 @@ CARDS['parkiranje'] = {
 CARDS['svetla'] = {
   title: 'Upotreba svetala (kratka, duga, magla)',
   html: `
-<p><b>Osnovno (čl. 77):</b> DANJU — kratka ili dnevna svetla (uvek uključena!). NOĆU — duga svetla.</p>
+<p><b>Osnovno (čl. 77):</b> na motornom vozilu za vreme vožnje na putu DANJU — kratka, odnosno dnevna; NOĆU — duga svetla. Pravila o dugim svetlima i kratkim umesto njih ne odnose se na vozača vozila za koje nije obavezna ugradnja dugih svetala (st. 4).</p>
 <p><b>Kratka UMESTO dugih (čl. 77):</b> mimoilaženje kad zaslepljuješ (a UVEK na manje od <b>200 m</b>) · kad ometaš vozača ispred sebe · ulica sa rasvetom · tunel · kad ometaš šinsko vozilo/plovilo · MAGLA · kad je vozilo zaustavljeno.</p>
 <p><b>Magla (čl. 79):</b> kratka svetla i/ili svetla za maglu; ZADNJE svetlo za maglu samo po magli/smanjenoj vidljivosti.</p>
+<p><b>Poziciona svetla (čl. 78):</b> uključena su sve vreme uz duga, kratka ili svetla za maglu. Zadnja poziciona moraju biti uključena noću i danju u uslovima smanjene vidljivosti; dnevna svetla sama ne zamenjuju tu obavezu. Svetla i katadiopteri u vožnji ne smeju biti zaklonjeni ili toliko zaprljani da su neuočljivi, a priključak za radove mora biti propisno označen.</p>
 <p class="mut">Zamka: duga svetla NISU dozvoljena "uvek noću" — sedam izuzetaka gore. I obrnuto: danju svetla MORAJU (kratka/dnevna), nisu opcija.</p>
 <p style="margin-top:10px"><b>Tabela za ispit — situacija → svetlo koje MORA da bude uključeno:</b></p>
 <table>
@@ -1852,40 +1838,40 @@ CARDS['svetla'] = {
 <div class="kPodH"><b class="kPodNaslov">Osnovno: danju i noću svetla MORAJU</b>
 <div class="signRow lineRow" style="max-width:306px;margin:6px auto">
   <div class="signCell">
-    <svg viewBox="0 0 150 120" style="width:100%;max-width:300px" role="img" aria-label="Vožnja danju: na vozilu su uključena kratka, odnosno dnevna svetla">
-      <rect x="35" y="0" width="80" height="120" fill="#9aa7b4"/>
+    <svg viewBox="0 0 150 120" style="width:100%;max-width:300px;background:#fff;color:#1c2733" role="img" aria-label="Vožnja danju: na vozilu su uključena kratka, odnosno dnevna svetla">
+      <rect x="35" y="0" width="80" height="120" fill="#e5e7eb"/>
       <rect x="35" y="0" width="6" height="120" fill="#e8dcc2"/><rect x="109" y="0" width="6" height="120" fill="#e8dcc2"/>
-      <line x1="75" y1="0" x2="75" y2="120" stroke="#fff" stroke-width="3" stroke-dasharray="12 9"/>
-      <circle cx="17" cy="22" r="9" fill="#e8b000"/>
-      <line x1="17" y1="5" x2="17" y2="10" stroke="#e8b000" stroke-width="2.5" stroke-linecap="round"/>
-      <line x1="17" y1="34" x2="17" y2="39" stroke="#e8b000" stroke-width="2.5" stroke-linecap="round"/>
-      <line x1="0" y1="22" x2="5" y2="22" stroke="#e8b000" stroke-width="2.5" stroke-linecap="round"/>
-      <line x1="29" y1="22" x2="34" y2="22" stroke="#e8b000" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="75" y1="0" x2="75" y2="120" stroke="#303a43" stroke-width="5" stroke-dasharray="12 9"/><line x1="75" y1="0" x2="75" y2="120" stroke="#fff" stroke-width="3" stroke-dasharray="12 9"/>
+      <circle cx="17" cy="22" r="9" fill="#987000"/>
+      <line x1="17" y1="5" x2="17" y2="10" stroke="#765300" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="17" y1="34" x2="17" y2="39" stroke="#765300" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="0" y1="22" x2="5" y2="22" stroke="#765300" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="29" y1="22" x2="34" y2="22" stroke="#765300" stroke-width="2.5" stroke-linecap="round"/>
       <g transform="translate(94 68)">
-        <circle cx="-5" cy="-17" r="7" fill="#e8b000" opacity=".3"/><circle cx="5" cy="-17" r="7" fill="#e8b000" opacity=".3"/>
+        <circle cx="-5" cy="-17" r="7" fill="#fff" opacity=".3"/><circle cx="5" cy="-17" r="7" fill="#fff" opacity=".3"/>
         <rect x="-13.5" y="-15" width="5" height="9" rx="2" fill="#333"/><rect x="8.5" y="-15" width="5" height="9" rx="2" fill="#333"/>
         <rect x="-13.5" y="6" width="5" height="9" rx="2" fill="#333"/><rect x="8.5" y="6" width="5" height="9" rx="2" fill="#333"/>
-        <rect x="-10" y="-19" width="20" height="38" rx="8" fill="#2c6aa0"/>
+        <rect x="-10" y="-19" width="20" height="38" rx="8" fill="#17476b"/>
         <path d="M-7 -10 Q0 -14 7 -10 L7 -4 Q0 -7 -7 -4 Z" fill="#fff" opacity=".85"/>
-        <circle cx="-5" cy="-17" r="3" fill="#e8b000"/><circle cx="5" cy="-17" r="3" fill="#e8b000"/>
+        <circle cx="-5" cy="-17" r="3" fill="#fff"/><circle cx="5" cy="-17" r="3" fill="#fff"/>
       </g>
     </svg>
     <b>DANJU — KRATKA, ODNOSNO DNEVNA</b><span>moraju biti uključena za vreme vožnje na putu (čl. 77 st. 1)</span>
   </div>
   <div class="signCell">
-    <svg viewBox="0 0 150 120" style="width:100%;max-width:300px" role="img" aria-label="Vožnja noću: na vozilu su uključena duga svetla, snop dopire daleko">
-      <rect x="35" y="0" width="80" height="120" fill="#9aa7b4"/>
+    <svg viewBox="0 0 150 120" style="width:100%;max-width:300px;background:#fff;color:#1c2733" role="img" aria-label="Vožnja noću: na vozilu su uključena duga svetla, snop dopire daleko">
+      <rect x="35" y="0" width="80" height="120" fill="#e5e7eb"/>
       <rect x="35" y="0" width="6" height="120" fill="#e8dcc2"/><rect x="109" y="0" width="6" height="120" fill="#e8dcc2"/>
       <rect x="0" y="0" width="150" height="120" fill="#1c2e40" opacity=".42"/>
-      <line x1="75" y1="0" x2="75" y2="120" stroke="#fff" stroke-width="3" stroke-dasharray="12 9" opacity=".8"/>
+      <line x1="75" y1="0" x2="75" y2="120" stroke="#303a43" stroke-width="5" stroke-dasharray="12 9"/><line x1="75" y1="0" x2="75" y2="120" stroke="#fff" stroke-width="3" stroke-dasharray="12 9"/>
       <circle cx="14" cy="14" r="2" fill="#fff" opacity=".8"/><circle cx="26" cy="31" r="1.6" fill="#fff" opacity=".7"/><circle cx="9" cy="44" r="1.6" fill="#fff" opacity=".7"/><circle cx="136" cy="19" r="2" fill="#fff" opacity=".8"/>
-      <polygon points="84,73 104,73 120,2 68,2" fill="#e8b000" opacity=".3"/>
+      <polygon points="84,73 104,73 120,2 68,2" fill="#e8b000" fill-opacity=".3" stroke="#4a3500" stroke-width="1.2"/>
       <g transform="translate(94 92)">
         <rect x="-13.5" y="-15" width="5" height="9" rx="2" fill="#333"/><rect x="8.5" y="-15" width="5" height="9" rx="2" fill="#333"/>
         <rect x="-13.5" y="6" width="5" height="9" rx="2" fill="#333"/><rect x="8.5" y="6" width="5" height="9" rx="2" fill="#333"/>
-        <rect x="-10" y="-19" width="20" height="38" rx="8" fill="#2c6aa0"/>
+        <rect x="-10" y="-19" width="20" height="38" rx="8" fill="#17476b"/>
         <path d="M-7 -10 Q0 -14 7 -10 L7 -4 Q0 -7 -7 -4 Z" fill="#fff" opacity=".85"/>
-        <circle cx="-5" cy="-17" r="3" fill="#e8b000"/><circle cx="5" cy="-17" r="3" fill="#e8b000"/>
+        <circle cx="-5" cy="-17" r="3" fill="#fff"/><circle cx="5" cy="-17" r="3" fill="#fff"/>
       </g>
     </svg>
     <b>NOĆU — DUGA</b><span>moraju biti uključena za vreme vožnje na putu (čl. 77 st. 2)</span>
@@ -1899,31 +1885,31 @@ CARDS['svetla'] = {
 <div class="kPodH"><b class="kPodNaslov">Sedam situacija za kratka umesto dugih</b>
 <div class="signRow wrapRow">
   <div class="signCell">
-    <svg viewBox="0 0 78 70" role="img" aria-label="Dva vozila se mimoilaze iz suprotnih smerova, snopovi su kratki i ne dosežu do drugog vozila"><rect x="14" y="0" width="50" height="70" fill="#9aa7b4"/><rect x="14" y="0" width="50" height="70" fill="#1c2e40" opacity=".22"/><line x1="39" y1="0" x2="39" y2="70" stroke="#fff" stroke-width="2.5" stroke-dasharray="7 6"/><polygon points="46,41 58,41 60,32 44,32" fill="#e8b000" opacity=".32"/><g class="animDolaziUSusret"><polygon points="20,29 32,29 34,38 18,38" fill="#e8b000" opacity=".32"/><g transform="translate(26 18) rotate(180)"><rect x="-6" y="-11" width="12" height="22" rx="4" fill="#5f6d7a"/><path d="M-4 -5 Q0 -8 4 -5 L4 -1 Q0 -3 -4 -1 Z" fill="#fff" opacity=".8"/><circle cx="-3.2" cy="-9.6" r="1.5" fill="#e8b000"/><circle cx="3.2" cy="-9.6" r="1.5" fill="#e8b000"/></g></g><g transform="translate(52 52)"><rect x="-6" y="-11" width="12" height="22" rx="4" fill="#2c6aa0"/><path d="M-4 -5 Q0 -8 4 -5 L4 -1 Q0 -3 -4 -1 Z" fill="#fff" opacity=".8"/><circle cx="-3.2" cy="-9.6" r="1.5" fill="#e8b000"/><circle cx="3.2" cy="-9.6" r="1.5" fill="#e8b000"/></g></svg>
+    <svg viewBox="0 0 78 70" role="img" aria-label="Dva vozila se mimoilaze iz suprotnih smerova, snopovi su kratki i ne dosežu do drugog vozila" style="background:#fff;color:#1c2733"><rect x="14" y="0" width="50" height="70" fill="#e5e7eb"/><rect x="14" y="0" width="50" height="70" fill="#1c2e40" opacity=".22"/><line x1="39" y1="0" x2="39" y2="70" stroke="#303a43" stroke-width="4.5" stroke-dasharray="7 6"/><line x1="39" y1="0" x2="39" y2="70" stroke="#fff" stroke-width="2.5" stroke-dasharray="7 6"/><polygon points="46,41 58,41 60,32 44,32" fill="#e8b000" fill-opacity=".32" stroke="#4a3500" stroke-width="1.2"/><g class="animDolaziUSusret"><polygon points="20,29 32,29 34,38 18,38" fill="#e8b000" fill-opacity=".32" stroke="#4a3500" stroke-width="1.2"/><g transform="translate(26 18) rotate(180)"><rect x="-6" y="-11" width="12" height="22" rx="4" fill="#394755"/><path d="M-4 -5 Q0 -8 4 -5 L4 -1 Q0 -3 -4 -1 Z" fill="#fff" opacity=".8"/><circle cx="-3.2" cy="-9.6" r="1.5" fill="#fff"/><circle cx="3.2" cy="-9.6" r="1.5" fill="#fff"/></g></g><g transform="translate(52 52)"><rect x="-6" y="-11" width="12" height="22" rx="4" fill="#17476b"/><path d="M-4 -5 Q0 -8 4 -5 L4 -1 Q0 -3 -4 -1 Z" fill="#fff" opacity=".8"/><circle cx="-3.2" cy="-9.6" r="1.5" fill="#fff"/><circle cx="3.2" cy="-9.6" r="1.5" fill="#fff"/></g></svg>
     <b>1 · MIMOILAŽENJE</b><span>kad oceniš da zaslepljuješ vozača iz susreta — a uvek na odstojanju manjem od 200 m</span>
   </div>
   <div class="signCell">
-    <svg viewBox="0 0 78 70" role="img" aria-label="Vozilo vozi iza drugog vozila u istoj traci, snop staje pre vozila ispred"><rect x="14" y="0" width="50" height="70" fill="#9aa7b4"/><rect x="14" y="0" width="50" height="70" fill="#1c2e40" opacity=".22"/><line x1="39" y1="0" x2="39" y2="70" stroke="#fff" stroke-width="2.5" stroke-dasharray="7 6"/><polygon points="46,43 58,43 60,33 44,33" fill="#e8b000" opacity=".32"/><g transform="translate(52 20)"><rect x="-6" y="-11" width="12" height="22" rx="4" fill="#5f6d7a"/><path d="M-4 -5 Q0 -8 4 -5 L4 -1 Q0 -3 -4 -1 Z" fill="#fff" opacity=".8"/><circle cx="-3.2" cy="9.6" r="1.5" fill="#c0392b"/><circle cx="3.2" cy="9.6" r="1.5" fill="#c0392b"/></g><g transform="translate(52 54)"><rect x="-6" y="-11" width="12" height="22" rx="4" fill="#2c6aa0"/><path d="M-4 -5 Q0 -8 4 -5 L4 -1 Q0 -3 -4 -1 Z" fill="#fff" opacity=".8"/><circle cx="-3.2" cy="-9.6" r="1.5" fill="#e8b000"/><circle cx="3.2" cy="-9.6" r="1.5" fill="#e8b000"/></g></svg>
+    <svg viewBox="0 0 78 70" role="img" aria-label="Vozilo vozi iza drugog vozila u istoj traci, snop staje pre vozila ispred" style="background:#fff;color:#1c2733"><rect x="14" y="0" width="50" height="70" fill="#e5e7eb"/><rect x="14" y="0" width="50" height="70" fill="#1c2e40" opacity=".22"/><line x1="39" y1="0" x2="39" y2="70" stroke="#303a43" stroke-width="4.5" stroke-dasharray="7 6"/><line x1="39" y1="0" x2="39" y2="70" stroke="#fff" stroke-width="2.5" stroke-dasharray="7 6"/><polygon points="46,43 58,43 60,33 44,33" fill="#e8b000" fill-opacity=".32" stroke="#4a3500" stroke-width="1.2"/><g transform="translate(52 20)"><rect x="-6" y="-11" width="12" height="22" rx="4" fill="#394755"/><path d="M-4 -5 Q0 -8 4 -5 L4 -1 Q0 -3 -4 -1 Z" fill="#fff" opacity=".8"/><circle cx="-3.2" cy="9.6" r="1.5" fill="#c0392b" stroke="#fff" stroke-width="0.8"/><circle cx="3.2" cy="9.6" r="1.5" fill="#c0392b" stroke="#fff" stroke-width="0.8"/></g><g transform="translate(52 54)"><rect x="-6" y="-11" width="12" height="22" rx="4" fill="#17476b"/><path d="M-4 -5 Q0 -8 4 -5 L4 -1 Q0 -3 -4 -1 Z" fill="#fff" opacity=".8"/><circle cx="-3.2" cy="-9.6" r="1.5" fill="#fff"/><circle cx="3.2" cy="-9.6" r="1.5" fill="#fff"/></g></svg>
     <b>2 · VOZILO ISPRED</b><span>ako ometaš vozača koji je ispred tebe</span>
   </div>
   <div class="signCell">
-    <svg viewBox="0 0 78 70" role="img" aria-label="Ulična svetiljka osvetljava kolovoz sa vozilom"><rect x="14" y="0" width="50" height="70" fill="#9aa7b4"/><rect x="14" y="0" width="50" height="70" fill="#1c2e40" opacity=".22"/><line x1="39" y1="0" x2="39" y2="70" stroke="#fff" stroke-width="2.5" stroke-dasharray="7 6"/><polygon points="54,11 64,11 74,60 34,60" fill="#e8b000" opacity=".3"/><line x1="70" y1="68" x2="70" y2="12" stroke="currentColor" stroke-width="2"/><path d="M70 13 L61 9" stroke="currentColor" stroke-width="2" fill="none"/><rect x="53" y="5" width="12" height="4.5" rx="2" fill="currentColor"/><g transform="translate(52 46)"><rect x="-6" y="-11" width="12" height="22" rx="4" fill="#2c6aa0"/><path d="M-4 -5 Q0 -8 4 -5 L4 -1 Q0 -3 -4 -1 Z" fill="#fff" opacity=".8"/><circle cx="-3.2" cy="-9.6" r="1.5" fill="#e8b000"/><circle cx="3.2" cy="-9.6" r="1.5" fill="#e8b000"/></g></svg>
+    <svg viewBox="0 0 78 70" role="img" aria-label="Ulična svetiljka osvetljava kolovoz sa vozilom" style="background:#fff;color:#1c2733"><rect x="14" y="0" width="50" height="70" fill="#e5e7eb"/><rect x="14" y="0" width="50" height="70" fill="#1c2e40" opacity=".22"/><line x1="39" y1="0" x2="39" y2="70" stroke="#303a43" stroke-width="4.5" stroke-dasharray="7 6"/><line x1="39" y1="0" x2="39" y2="70" stroke="#fff" stroke-width="2.5" stroke-dasharray="7 6"/><polygon points="54,11 64,11 74,60 34,60" fill="#e8b000" fill-opacity=".3" stroke="#4a3500" stroke-width="1.2"/><line x1="70" y1="68" x2="70" y2="12" stroke="currentColor" stroke-width="2"/><path d="M70 13 L61 9" stroke="currentColor" stroke-width="2" fill="none"/><rect x="53" y="5" width="12" height="4.5" rx="2" fill="currentColor"/><g transform="translate(52 46)"><rect x="-6" y="-11" width="12" height="22" rx="4" fill="#17476b"/><path d="M-4 -5 Q0 -8 4 -5 L4 -1 Q0 -3 -4 -1 Z" fill="#fff" opacity=".8"/><circle cx="-3.2" cy="-9.6" r="1.5" fill="#fff"/><circle cx="3.2" cy="-9.6" r="1.5" fill="#fff"/></g></svg>
     <b>3 · ULIČNA RASVETA</b><span>put je osvetljen uličnom rasvetom — razlog je rasveta, NE „naselje"</span>
   </div>
   <div class="signCell">
-    <svg viewBox="0 0 78 70" role="img" aria-label="Vozilo ulazi u tunel"><path d="M4 62 Q39 4 74 62 Z" fill="#5f6d7a" opacity=".45"/><path d="M22 62 V40 A17 17 0 0 1 56 40 V62 Z" fill="#2a333d"/><rect x="22" y="58" width="34" height="12" fill="#9aa7b4"/><g class="animUlazUTunel"><g transform="translate(39 58)"><rect x="-6" y="-11" width="12" height="22" rx="4" fill="#2c6aa0"/><path d="M-4 -5 Q0 -8 4 -5 L4 -1 Q0 -3 -4 -1 Z" fill="#fff" opacity=".8"/><circle cx="-3.2" cy="-9.6" r="1.5" fill="#e8b000"/><circle cx="3.2" cy="-9.6" r="1.5" fill="#e8b000"/></g></g></svg>
+    <svg viewBox="0 0 78 70" role="img" aria-label="Vozilo ulazi u tunel" style="background:#fff;color:#1c2733"><path d="M4 62 Q39 4 74 62 Z" fill="#394755" opacity=".45"/><path d="M22 62 V40 A17 17 0 0 1 56 40 V62 Z" fill="#2a333d"/><rect x="22" y="58" width="34" height="12" fill="#e5e7eb"/><g class="animUlazUTunel"><g transform="translate(39 58)"><rect x="-6" y="-11" width="12" height="22" rx="4" fill="#17476b" stroke="#fff" stroke-width="1.2"/><path d="M-4 -5 Q0 -8 4 -5 L4 -1 Q0 -3 -4 -1 Z" fill="#fff" opacity=".8"/><circle cx="-3.2" cy="-9.6" r="1.5" fill="#fff"/><circle cx="3.2" cy="-9.6" r="1.5" fill="#fff"/></g></g></svg>
     <b>4 · TUNEL</b><span>u tunelu</span>
   </div>
   <div class="signCell">
-    <svg viewBox="0 0 78 70" role="img" aria-label="Vozilo sa kratkim snopom koji staje pre šina sa tramvajem i pre vode sa plovilom"><rect x="0" y="36" width="78" height="34" fill="#9aa7b4"/><rect x="0" y="36" width="78" height="34" fill="#1c2e40" opacity=".22"/><line x1="7" y1="2" x2="7" y2="32" stroke="#4d5761" stroke-width="1.6"/><line x1="25" y1="2" x2="25" y2="32" stroke="#4d5761" stroke-width="1.6"/><line x1="4" y1="6" x2="28" y2="6" stroke="#4d5761" stroke-width="1.4"/><line x1="4" y1="28" x2="28" y2="28" stroke="#4d5761" stroke-width="1.4"/><rect x="10" y="8" width="12" height="21" rx="3" fill="#b7332b"/><rect x="12" y="10" width="8" height="5" rx="1.5" fill="#fff" opacity=".8"/><rect x="12" y="18" width="8" height="4" rx="1.5" fill="#fff" opacity=".5"/><path d="M44 24 H73 L68 31 H49 Z" fill="#5f6d7a"/><rect x="54" y="17" width="8" height="7" rx="2" fill="#5f6d7a"/><path d="M40 33 q5 -3 10 0 t10 0 t10 0" stroke="#2c6aa0" fill="none" stroke-width="1.8" opacity=".85"/><polygon points="33,52 45,52 48,42 30,42" fill="#e8b000" opacity=".32"/><g transform="translate(39 60)"><rect x="-6" y="-9" width="12" height="18" rx="4" fill="#2c6aa0"/><path d="M-4 -4 Q0 -7 4 -4 L4 0 Q0 -2 -4 0 Z" fill="#fff" opacity=".8"/><circle cx="-3.2" cy="-6.6" r="1.5" fill="#e8b000"/><circle cx="3.2" cy="-6.6" r="1.5" fill="#e8b000"/></g></svg>
-    <b>5 · ŠINSKO VOZILO / PLOVILO</b><span>ako ometaš upravljača šinskog vozila ili plovila — na crtežu kratak snop staje pre šina, odnosno pre vode</span>
+    <svg viewBox="0 0 78 70" role="img" aria-label="Vozilo sa kratkim snopom koji staje pre šina sa tramvajem i pre vode sa plovilom" style="background:#fff;color:#1c2733"><rect x="0" y="36" width="78" height="34" fill="#e5e7eb"/><rect x="0" y="36" width="78" height="34" fill="#1c2e40" opacity=".22"/><line x1="7" y1="2" x2="7" y2="32" stroke="#4d5761" stroke-width="1.6"/><line x1="25" y1="2" x2="25" y2="32" stroke="#4d5761" stroke-width="1.6"/><line x1="4" y1="6" x2="28" y2="6" stroke="#4d5761" stroke-width="1.4"/><line x1="4" y1="28" x2="28" y2="28" stroke="#4d5761" stroke-width="1.4"/><rect x="10" y="8" width="12" height="21" rx="3" fill="#b7332b"/><rect x="12" y="10" width="8" height="5" rx="1.5" fill="#fff" opacity=".8"/><rect x="12" y="18" width="8" height="4" rx="1.5" fill="#fff" opacity=".5"/><path d="M44 24 H73 L68 31 H49 Z" fill="#394755"/><rect x="54" y="17" width="8" height="7" rx="2" fill="#394755"/><path d="M40 33 q5 -3 10 0 t10 0 t10 0" stroke="#2c6aa0" fill="none" stroke-width="1.8" opacity=".85"/><polygon points="33,52 45,52 48,42 30,42" fill="#e8b000" fill-opacity=".32" stroke="#4a3500" stroke-width="1.2"/><g transform="translate(39 60)"><rect x="-6" y="-9" width="12" height="18" rx="4" fill="#17476b"/><path d="M-4 -4 Q0 -7 4 -4 L4 0 Q0 -2 -4 0 Z" fill="#fff" opacity=".8"/><circle cx="-3.2" cy="-6.6" r="1.5" fill="#fff"/><circle cx="3.2" cy="-6.6" r="1.5" fill="#fff"/></g></svg>
+    <b>5 · ŠINSKO VOZILO / PLOVILO</b><span>ako ometaš upravljača šinskog vozila ili plovila — crtež samo razlikuje učesnike; kratka koristiš ako ometaš njihovog upravljača</span>
   </div>
   <div class="signCell">
-    <svg viewBox="0 0 78 70" role="img" aria-label="Vozilo u magli, pojasevi magle preko puta"><rect x="14" y="0" width="50" height="70" fill="#9aa7b4"/><rect x="14" y="0" width="50" height="70" fill="#1c2e40" opacity=".22"/><line x1="39" y1="0" x2="39" y2="70" stroke="#fff" stroke-width="2.5" stroke-dasharray="7 6"/><polygon points="46,29 58,29 61,17 43,17" fill="#e8b000" opacity=".32"/><g transform="translate(52 40)"><rect x="-6" y="-11" width="12" height="22" rx="4" fill="#2c6aa0"/><path d="M-4 -5 Q0 -8 4 -5 L4 -1 Q0 -3 -4 -1 Z" fill="#fff" opacity=".8"/><circle cx="-3.2" cy="-9.6" r="1.5" fill="#e8b000"/><circle cx="3.2" cy="-9.6" r="1.5" fill="#e8b000"/></g><g class="animMaglaProlazi"><rect x="-14" y="13" width="106" height="7" rx="3.5" fill="#dfe6ec" opacity=".5"/><rect x="-14" y="33" width="106" height="7" rx="3.5" fill="#dfe6ec" opacity=".5"/><rect x="-14" y="53" width="106" height="7" rx="3.5" fill="#dfe6ec" opacity=".5"/></g></svg>
+    <svg viewBox="0 0 78 70" role="img" aria-label="Vozilo u magli, pojasevi magle preko puta" style="background:#fff;color:#1c2733"><rect x="14" y="0" width="50" height="70" fill="#e5e7eb"/><rect x="14" y="0" width="50" height="70" fill="#1c2e40" opacity=".22"/><line x1="39" y1="0" x2="39" y2="70" stroke="#303a43" stroke-width="4.5" stroke-dasharray="7 6"/><line x1="39" y1="0" x2="39" y2="70" stroke="#fff" stroke-width="2.5" stroke-dasharray="7 6"/><polygon points="46,29 58,29 61,17 43,17" fill="#e8b000" fill-opacity=".32" stroke="#4a3500" stroke-width="1.2"/><g transform="translate(52 40)"><rect x="-6" y="-11" width="12" height="22" rx="4" fill="#17476b"/><path d="M-4 -5 Q0 -8 4 -5 L4 -1 Q0 -3 -4 -1 Z" fill="#fff" opacity=".8"/><circle cx="-3.2" cy="-9.6" r="1.5" fill="#fff"/><circle cx="3.2" cy="-9.6" r="1.5" fill="#fff"/></g><g class="animMaglaProlazi"><rect x="-14" y="13" width="106" height="7" rx="3.5" fill="#dfe6ec" fill-opacity=".5" stroke="#303a43" stroke-width="1"/><rect x="-14" y="33" width="106" height="7" rx="3.5" fill="#dfe6ec" fill-opacity=".5" stroke="#303a43" stroke-width="1"/><rect x="-14" y="53" width="106" height="7" rx="3.5" fill="#dfe6ec" fill-opacity=".5" stroke="#303a43" stroke-width="1"/></g></svg>
     <b>6 · MAGLA</b><span>za vreme magle — magla ima i sopstveno pitanje, vidi temu o magli</span>
   </div>
   <div class="signCell">
-    <svg viewBox="0 0 78 70" role="img" aria-label="Zaustavljeno vozilo, strelica kretanja precrtana"><rect x="14" y="0" width="50" height="70" fill="#9aa7b4"/><rect x="14" y="0" width="50" height="70" fill="#1c2e40" opacity=".22"/><line x1="39" y1="0" x2="39" y2="70" stroke="#fff" stroke-width="2.5" stroke-dasharray="7 6"/><polygon points="46,35 58,35 61,24 43,24" fill="#e8b000" opacity=".28"/><g transform="translate(52 46)"><rect x="-6" y="-11" width="12" height="22" rx="4" fill="#2c6aa0"/><path d="M-4 -5 Q0 -8 4 -5 L4 -1 Q0 -3 -4 -1 Z" fill="#fff" opacity=".8"/><circle cx="-3.2" cy="-9.6" r="1.5" fill="#e8b000"/><circle cx="3.2" cy="-9.6" r="1.5" fill="#e8b000"/></g><path d="M52 21 V8 M47 13 L52 7 L57 13" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="44" y1="6" x2="60" y2="21" stroke="#c0392b" stroke-width="3.5" stroke-linecap="round"/></svg>
+    <svg viewBox="0 0 78 70" role="img" aria-label="Zaustavljeno vozilo, strelica kretanja precrtana" style="background:#fff;color:#1c2733"><rect x="14" y="0" width="50" height="70" fill="#e5e7eb"/><rect x="14" y="0" width="50" height="70" fill="#1c2e40" opacity=".22"/><line x1="39" y1="0" x2="39" y2="70" stroke="#303a43" stroke-width="4.5" stroke-dasharray="7 6"/><line x1="39" y1="0" x2="39" y2="70" stroke="#fff" stroke-width="2.5" stroke-dasharray="7 6"/><polygon points="46,35 58,35 61,24 43,24" fill="#e8b000" fill-opacity=".28" stroke="#4a3500" stroke-width="1.2"/><g transform="translate(52 46)"><rect x="-6" y="-11" width="12" height="22" rx="4" fill="#17476b"/><path d="M-4 -5 Q0 -8 4 -5 L4 -1 Q0 -3 -4 -1 Z" fill="#fff" opacity=".8"/><circle cx="-3.2" cy="-9.6" r="1.5" fill="#fff"/><circle cx="3.2" cy="-9.6" r="1.5" fill="#fff"/></g><path d="M52 21 V8 M47 13 L52 7 L57 13" stroke="#303a43" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M52 21 V8 M47 13 L52 7 L57 13" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="44" y1="6" x2="60" y2="21" stroke="#b7332b" stroke-width="3.5" stroke-linecap="round"/></svg>
     <b>7 · ZAUSTAVLJENO VOZILO</b><span>kada je vozilo zaustavljeno — vidi temu o zaustavljenom vozilu, tu je zamka</span>
   </div>
 </div>
@@ -1938,33 +1924,33 @@ CARDS['svetla'] = {
      pa oznaka 250 m pada na x=215,5. -->
 <div class="kPodH"><b class="kPodNaslov">200 m — jedina brojka koja se javlja u tačnom odgovoru</b>
 <div style="display:flex;justify-content:center;margin:6px 0">
-<svg viewBox="0 0 300 188" style="max-width:300px;width:100%" role="img" aria-label="Odstojanje pri mimoilaženju: tvoje vozilo levo, vozilo iz susreta desno, uspravna isprekidana crta na 200 metara i precrtana oznaka 250 metara desno od nje">
-  <rect x="0" y="52" width="300" height="72" fill="#9aa7b4"/>
+<svg viewBox="0 0 300 188" style="max-width:300px;width:100%;background:#fff;color:#1c2733" role="img" aria-label="Odstojanje pri mimoilaženju: tvoje vozilo levo, vozilo iz susreta desno, uspravna isprekidana crta na 200 metara i oznaka 250 metara sa crvenim krstićem desno od nje">
+  <rect x="0" y="52" width="300" height="72" fill="#e5e7eb"/>
   <rect x="0" y="52" width="300" height="72" fill="#1c2e40" opacity=".3"/>
   <rect x="0" y="52" width="300" height="5" fill="#e8dcc2"/><rect x="0" y="119" width="300" height="5" fill="#e8dcc2"/>
-  <line x1="0" y1="88" x2="300" y2="88" stroke="#fff" stroke-width="3" stroke-dasharray="14 10" opacity=".85"/>
+  <line x1="0" y1="88" x2="300" y2="88" stroke="#303a43" stroke-width="5" stroke-dasharray="14 10"/><line x1="0" y1="88" x2="300" y2="88" stroke="#fff" stroke-width="3" stroke-dasharray="14 10"/>
   <line x1="215.5" y1="28" x2="215.5" y2="52" stroke="currentColor" stroke-width="1.5" opacity=".65"/>
-  <text x="215" y="24" text-anchor="middle" font-size="11" fill="currentColor">250 m</text>
-  <line x1="196" y1="20" x2="235" y2="20" stroke="#c0392b" stroke-width="2.5" stroke-linecap="round"/>
+  <text x="225" y="24" text-anchor="middle" font-size="14" fill="currentColor">250 m</text>
+  <line x1="192" y1="12" x2="199" y2="26" stroke="#c0392b" stroke-width="2.5" stroke-linecap="round"/><line x1="199" y1="12" x2="192" y2="26" stroke="#c0392b" stroke-width="2.5" stroke-linecap="round"/>
   <line x1="178" y1="46" x2="178" y2="130" stroke="currentColor" stroke-width="2" stroke-dasharray="6 5"/>
-  <text x="178" y="42" text-anchor="middle" font-size="13" font-weight="700" fill="currentColor">200 m</text>
+  <text x="178" y="42" text-anchor="middle" font-size="14" font-weight="700" fill="currentColor">200 m</text>
   <g transform="translate(28 104) rotate(90) scale(1.3)">
-    <rect x="-6" y="-11" width="12" height="22" rx="4" fill="#2c6aa0"/>
+    <rect x="-6" y="-11" width="12" height="22" rx="4" fill="#17476b"/>
     <path d="M-4 -5 Q0 -8 4 -5 L4 -1 Q0 -3 -4 -1 Z" fill="#fff" opacity=".8"/>
-    <circle cx="-3.2" cy="-9.6" r="1.5" fill="#e8b000"/><circle cx="3.2" cy="-9.6" r="1.5" fill="#e8b000"/>
+    <circle cx="-3.2" cy="-9.6" r="1.5" fill="#fff"/><circle cx="3.2" cy="-9.6" r="1.5" fill="#fff"/>
   </g>
   <g class="animPrilaziGranici"><g transform="translate(266 72) rotate(-90) scale(1.3)">
-    <rect x="-6" y="-11" width="12" height="22" rx="4" fill="#5f6d7a"/>
+    <rect x="-6" y="-11" width="12" height="22" rx="4" fill="#394755"/>
     <path d="M-4 -5 Q0 -8 4 -5 L4 -1 Q0 -3 -4 -1 Z" fill="#fff" opacity=".8"/>
-    <circle cx="-3.2" cy="-9.6" r="1.5" fill="#e8b000"/><circle cx="3.2" cy="-9.6" r="1.5" fill="#e8b000"/>
+    <circle cx="-3.2" cy="-9.6" r="1.5" fill="#fff"/><circle cx="3.2" cy="-9.6" r="1.5" fill="#fff"/>
   </g></g>
   <line x1="28" y1="140" x2="178" y2="140" stroke="currentColor" stroke-width="1.5"/>
   <line x1="28" y1="135" x2="28" y2="145" stroke="currentColor" stroke-width="1.5"/>
   <line x1="178" y1="135" x2="178" y2="145" stroke="currentColor" stroke-width="1.5"/>
   <line x1="182" y1="140" x2="294" y2="140" stroke="currentColor" stroke-width="1.5" stroke-dasharray="5 4"/>
   <line x1="294" y1="135" x2="294" y2="145" stroke="currentColor" stroke-width="1.5"/>
-  <text x="103" y="160" text-anchor="middle" font-size="12" fill="currentColor">MANJE OD 200 m — UVEK KRATKA</text>
-  <text x="150" y="180" text-anchor="middle" font-size="11" fill="currentColor">preko 200 m: kratka ako oceniš da zaslepljuješ</text>
+  <text x="150" y="160" text-anchor="middle" font-size="14" fill="currentColor">ISPOD 200 m — UVEK KRATKA</text>
+  <text x="150" y="180" text-anchor="middle" font-size="14" fill="currentColor">od 200 m: kratka ako zaslepljuješ</text>
 </svg>
 </div>
 <p><b>Rečima:</b> tačan odgovor ima <b>dva dela</b>. Prvi: kad pri mimoilaženju <b>oceniš</b> da svetlom svog vozila zaslepljuješ vozača koji ti dolazi u susret. Drugi: <b>uvek</b> na odstojanju <b>manjem od 200 m</b>. Drugi deo ne traži nikakvu ocenu — ispod 200 m kratka idu bez razmišljanja; iznad toga i dalje važi prvi deo, pa ako oceniš da zaslepljuješ — opet kratka.</p>
@@ -1976,52 +1962,52 @@ CARDS['svetla'] = {
 <div class="kPodH"><b class="kPodNaslov">Magla se pita na dva mesta</b>
 <div class="signRow lineRow" style="max-width:306px;margin:6px auto">
   <div class="signCell">
-    <svg viewBox="0 0 150 120" style="width:100%;max-width:300px" role="img" aria-label="Vozilo u magli sa kratkim snopom koji ne udara u pojas magle">
-      <rect x="35" y="0" width="80" height="120" fill="#9aa7b4"/>
+    <svg viewBox="0 0 150 120" style="width:100%;max-width:300px;background:#fff;color:#1c2733" role="img" aria-label="Vozilo u magli sa kratkim svetlima; pojasevi označavaju maglu">
+      <rect x="35" y="0" width="80" height="120" fill="#e5e7eb"/>
       <rect x="35" y="0" width="6" height="120" fill="#e8dcc2"/><rect x="109" y="0" width="6" height="120" fill="#e8dcc2"/>
-      <line x1="75" y1="0" x2="75" y2="120" stroke="#fff" stroke-width="3" stroke-dasharray="12 9"/>
-      <polygon points="66,74 84,74 88,56 62,56" fill="#e8b000" opacity=".4"/>
+      <line x1="75" y1="0" x2="75" y2="120" stroke="#303a43" stroke-width="5" stroke-dasharray="12 9"/><line x1="75" y1="0" x2="75" y2="120" stroke="#fff" stroke-width="3" stroke-dasharray="12 9"/>
+      <polygon points="66,74 84,74 88,56 62,56" fill="#e8b000" fill-opacity=".4" stroke="#4a3500" stroke-width="1.2"/>
       <g transform="translate(75 92)">
-        <rect x="-10" y="-19" width="20" height="38" rx="8" fill="#2c6aa0"/>
+        <rect x="-10" y="-19" width="20" height="38" rx="8" fill="#17476b"/>
         <path d="M-7 -10 Q0 -14 7 -10 L7 -4 Q0 -7 -7 -4 Z" fill="#fff" opacity=".85"/>
-        <circle cx="-5" cy="-17" r="3" fill="#e8b000"/><circle cx="5" cy="-17" r="3" fill="#e8b000"/>
+        <circle cx="-5" cy="-17" r="3" fill="#fff"/><circle cx="5" cy="-17" r="3" fill="#fff"/>
       </g>
       <g class="animMaglaProlazi">
-        <rect x="-16" y="8" width="182" height="8" rx="4" fill="#dfe6ec" opacity=".45"/>
-        <rect x="-16" y="22" width="182" height="10" rx="5" fill="#dfe6ec" opacity=".55"/>
-        <rect x="-16" y="38" width="182" height="10" rx="5" fill="#dfe6ec" opacity=".55"/>
+        <rect x="-16" y="8" width="182" height="8" rx="4" fill="#dfe6ec" fill-opacity=".45" stroke="#303a43" stroke-width="1"/>
+        <rect x="-16" y="22" width="182" height="10" rx="5" fill="#dfe6ec" fill-opacity=".55" stroke="#303a43" stroke-width="1"/>
+        <rect x="-16" y="38" width="182" height="10" rx="5" fill="#dfe6ec" fill-opacity=".55" stroke="#303a43" stroke-width="1"/>
       </g>
     </svg>
     <b>KRATKA — TAČNO</b><span>kratka svetla, odnosno svetla za maglu ili obe vrste svetala (čl. 79)</span>
   </div>
   <div class="signCell">
-    <svg viewBox="0 0 150 120" style="width:100%;max-width:300px" role="img" aria-label="Duga svetla u magli: snop udara u pojas magle i vraća se ka vozilu, preko snopa je crveni krst">
-      <rect x="35" y="0" width="80" height="120" fill="#9aa7b4"/>
+    <svg viewBox="0 0 150 120" style="width:100%;max-width:300px;background:#fff;color:#1c2733" role="img" aria-label="Duga svetla u magli: snop udara u pojas magle i vraća se ka vozilu, preko snopa je crveni krst">
+      <rect x="35" y="0" width="80" height="120" fill="#e5e7eb"/>
       <rect x="35" y="0" width="6" height="120" fill="#e8dcc2"/><rect x="109" y="0" width="6" height="120" fill="#e8dcc2"/>
-      <line x1="75" y1="0" x2="75" y2="120" stroke="#fff" stroke-width="3" stroke-dasharray="12 9"/>
-      <polygon points="66,74 84,74 92,48 58,48" fill="#e8b000" opacity=".32"/>
+      <line x1="75" y1="0" x2="75" y2="120" stroke="#303a43" stroke-width="5" stroke-dasharray="12 9"/><line x1="75" y1="0" x2="75" y2="120" stroke="#fff" stroke-width="3" stroke-dasharray="12 9"/>
+      <polygon points="66,74 84,74 92,48 58,48" fill="#e8b000" fill-opacity=".32" stroke="#4a3500" stroke-width="1.2"/>
       <g class="animMaglaProlazi">
-        <rect x="-16" y="10" width="182" height="9" rx="4.5" fill="#dfe6ec" opacity=".5"/>
-        <rect x="-16" y="28" width="182" height="18" rx="9" fill="#dfe6ec" opacity=".75"/>
+        <rect x="-16" y="10" width="182" height="9" rx="4.5" fill="#dfe6ec" fill-opacity=".5" stroke="#303a43" stroke-width="1"/>
+        <rect x="-16" y="28" width="182" height="18" rx="9" fill="#dfe6ec" fill-opacity=".75" stroke="#303a43" stroke-width="1"/>
       </g>
-      <path d="M60 48 Q50 60 62 70" stroke="#e8b000" stroke-width="2.5" fill="none"/>
-      <path d="M58 63 L62 72 L67 64" stroke="#e8b000" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M90 48 Q100 60 88 70" stroke="#e8b000" stroke-width="2.5" fill="none"/>
-      <path d="M83 64 L88 72 L92 63" stroke="#e8b000" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M60 48 Q50 60 62 70" stroke="#765300" stroke-width="2.5" fill="none"/>
+      <path d="M58 63 L62 72 L67 64" stroke="#765300" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M90 48 Q100 60 88 70" stroke="#765300" stroke-width="2.5" fill="none"/>
+      <path d="M83 64 L88 72 L92 63" stroke="#765300" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
       <g transform="translate(75 92)">
-        <rect x="-10" y="-19" width="20" height="38" rx="8" fill="#2c6aa0"/>
+        <rect x="-10" y="-19" width="20" height="38" rx="8" fill="#17476b"/>
         <path d="M-7 -10 Q0 -14 7 -10 L7 -4 Q0 -7 -7 -4 Z" fill="#fff" opacity=".85"/>
-        <circle cx="-5" cy="-17" r="3" fill="#e8b000"/><circle cx="5" cy="-17" r="3" fill="#e8b000"/>
+        <circle cx="-5" cy="-17" r="3" fill="#fff"/><circle cx="5" cy="-17" r="3" fill="#fff"/>
       </g>
       <line x1="61" y1="24" x2="89" y2="50" stroke="#c0392b" stroke-width="4" stroke-linecap="round"/>
       <line x1="89" y1="24" x2="61" y2="50" stroke="#c0392b" stroke-width="4" stroke-linecap="round"/>
     </svg>
-    <b>DUGA — NETAČNO</b><span>u magli se odbijaju o kapljice, zato nisu tačan odgovor</span>
+    <b>DUGA — NETAČNO</b><span>u magli se koriste kratka, svetla za maglu ili obe vrste (čl. 79)</span>
   </div>
 </div>
 <p><b>Rečima — dva različita pitanja:</b> (1) <b>za vreme vožnje noću</b> magla je jedna od sedam situacija u kojima umesto dugih ideš na kratka (čl. 77 st. 3); (2) kad pitanje traži koja svetla <b>moraju da budu uključena za vreme magle</b>, tačan odgovor je <b>kratka svetla, odnosno svetla za maglu ili obe vrste svetala</b> (čl. 79). U tom pitanju su ponuđena samo tri odgovora, a mamci su <b>dnevna</b> i <b>duga</b> svetla.</p>
 <table>
-<tr><th>Šta je uključeno</th><th>Da li je to u skladu s pravilom o magli?</th></tr>
+<tr><th>Izbor prednjih svetala (uz poziciona, čl. 78)</th><th>Da li je to u skladu s pravilom o magli?</th></tr>
 <tr><td>samo <b>kratka</b> svetla</td><td><b>Da</b> — pravilo ih dozvoljava</td></tr>
 <tr><td>samo <b>svetla za maglu</b></td><td><b>Da</b> — pravilo ih dozvoljava</td></tr>
 <tr><td><b>obe vrste</b> zajedno</td><td><b>Da</b> — pravilo izričito kaže „ili obe vrste svetala"</td></tr>
@@ -2037,74 +2023,74 @@ CARDS['svetla'] = {
 <div style="display:flex;justify-content:center;margin:6px 0">
 <svg viewBox="0 0 300 312" style="max-width:300px;width:100%" role="img" aria-label="Stablo odluke sa tri grane: pitanje o svetlima umesto dugih pri vožnji noću vodi na kratka; pitanje o vozilu koje stoji na kolovozu noću i u uslovima smanjene vidljivosti vodi na poziciona odnosno parkirna; isto to uz posebno obeleženo mesto i uličnu rasvetu vodi na to da poziciona odnosno parkirna ne moraju biti uključena">
   <rect x="26" y="4" width="268" height="30" rx="8" fill="none" stroke="currentColor" stroke-width="1.6"/>
-  <text x="160" y="24" text-anchor="middle" font-size="13" font-weight="700" fill="currentColor">ŠTA PITANJE PITA?</text>
+  <text x="160" y="24" text-anchor="middle" font-size="14" font-weight="700" fill="currentColor">ŠTA PITANJE PITA?</text>
   <path d="M14 34 V240" stroke="currentColor" stroke-width="1.5" fill="none"/>
   <path d="M26 34 H14" stroke="currentColor" stroke-width="1.5" fill="none"/>
   <path d="M14 58 H26 M14 146 H26 M14 240 H26" stroke="currentColor" stroke-width="1.5" fill="none"/>
   <rect x="26" y="44" width="268" height="28" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"/>
-  <text x="160" y="63" text-anchor="middle" font-size="12" fill="currentColor">UMESTO DUGIH — VOŽNJA NOĆU</text>
+  <text x="160" y="63" text-anchor="middle" font-size="14" fill="currentColor">UMESTO DUGIH — VOŽNJA NOĆU</text>
   <path d="M160 72 V80" stroke="currentColor" stroke-width="1.5" fill="none"/>
   <polygon points="160,90 153,78 167,78" fill="currentColor"/>
   <rect x="56" y="90" width="208" height="28" rx="8" fill="none" stroke="currentColor" stroke-width="1.6"/>
-  <text x="160" y="109" text-anchor="middle" font-size="13" font-weight="700" fill="currentColor">KRATKA</text>
+  <text x="160" y="109" text-anchor="middle" font-size="14" font-weight="700" fill="currentColor">KRATKA</text>
   <rect x="26" y="126" width="268" height="40" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"/>
-  <text x="160" y="144" text-anchor="middle" font-size="12" fill="currentColor">STOJI NA KOLOVOZU, NOĆU</text>
-  <text x="160" y="160" text-anchor="middle" font-size="11" fill="currentColor">i u uslovima smanjene vidljivosti</text>
+  <text x="160" y="144" text-anchor="middle" font-size="14" fill="currentColor">STOJI NA KOLOVOZU, NOĆU</text>
+  <text x="160" y="160" text-anchor="middle" font-size="14" fill="currentColor">i u uslovima smanjene vidljivosti</text>
   <path d="M160 166 V174" stroke="currentColor" stroke-width="1.5" fill="none"/>
   <polygon points="160,184 153,172 167,172" fill="currentColor"/>
   <rect x="26" y="184" width="268" height="28" rx="8" fill="none" stroke="currentColor" stroke-width="1.6"/>
-  <text x="160" y="203" text-anchor="middle" font-size="12" font-weight="700" fill="currentColor">POZICIONA, ODNOSNO PARKIRNA</text>
+  <text x="160" y="203" text-anchor="middle" font-size="14" font-weight="700" fill="currentColor">POZICIONA / PARKIRNA</text>
   <rect x="26" y="220" width="268" height="40" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"/>
-  <text x="160" y="238" text-anchor="middle" font-size="12" fill="currentColor">ISTO TO + OBELEŽENO MESTO</text>
-  <text x="160" y="254" text-anchor="middle" font-size="11" fill="currentColor">i ulična rasveta ga čini vidljivim</text>
+  <text x="160" y="238" text-anchor="middle" font-size="14" fill="currentColor">ISTO TO + OBELEŽENO MESTO</text>
+  <text x="160" y="254" text-anchor="middle" font-size="14" fill="currentColor">i ulična rasveta ga čini vidljivim</text>
   <path d="M160 260 V268" stroke="currentColor" stroke-width="1.5" fill="none"/>
   <polygon points="160,278 153,266 167,266" fill="currentColor"/>
   <rect x="26" y="278" width="268" height="28" rx="8" fill="none" stroke="currentColor" stroke-width="1.6"/>
-  <text x="160" y="297" text-anchor="middle" font-size="12" font-weight="700" fill="currentColor">NE MORAJU POZICIONA / PARKIRNA</text>
+  <text x="160" y="297" text-anchor="middle" font-size="14" font-weight="700" fill="currentColor">NE MORAJU BITI UKLJUČENA</text>
 </svg>
 </div>
 <p class="mut" style="text-align:center">Ne odlučuje slika na putu — odlučuje početak pitanja.</p>
 <div class="signRow lineRow" style="max-width:306px;margin:6px auto">
   <div class="signCell">
-    <svg viewBox="0 0 300 152" style="width:100%;max-width:300px" role="img" aria-label="Vozilo stoji na kolovozu noću, poziciona svetla su upaljena: žuta napred i crvena nazad">
-      <text x="150" y="14" text-anchor="middle" font-size="12" font-weight="700" fill="currentColor">STOJI NA KOLOVOZU, NOĆU</text>
-      <rect x="0" y="22" width="300" height="130" fill="#9aa7b4"/>
+    <svg viewBox="0 0 300 152" style="width:100%;max-width:300px;background:#fff;color:#1c2733" role="img" aria-label="Vozilo stoji na kolovozu noću, poziciona svetla su upaljena: bela napred i crvena nazad">
+      <text x="150" y="16" text-anchor="middle" font-size="14" font-weight="700" fill="currentColor">STOJI NA KOLOVOZU, NOĆU</text>
+      <rect x="0" y="22" width="300" height="130" fill="#e5e7eb"/>
       <rect x="0" y="22" width="16" height="130" fill="#e8dcc2"/><rect x="284" y="22" width="16" height="130" fill="#e8dcc2"/>
       <rect x="0" y="22" width="300" height="130" fill="#1c2e40" opacity=".34"/>
-      <line x1="150" y1="24" x2="150" y2="150" stroke="#fff" stroke-width="4" stroke-dasharray="14 10"/>
-      <circle cx="201" cy="65" r="11" fill="#e8b000" opacity=".35"/><circle cx="219" cy="65" r="11" fill="#e8b000" opacity=".35"/>
+      <line x1="150" y1="24" x2="150" y2="150" stroke="#303a43" stroke-width="6" stroke-dasharray="14 10"/><line x1="150" y1="24" x2="150" y2="150" stroke="#fff" stroke-width="4" stroke-dasharray="14 10"/>
+      <circle cx="201" cy="65" r="11" fill="#fff" opacity=".35"/><circle cx="219" cy="65" r="11" fill="#fff" opacity=".35"/>
       <circle cx="201" cy="107" r="11" fill="#c0392b" opacity=".35"/><circle cx="219" cy="107" r="11" fill="#c0392b" opacity=".35"/>
       <g transform="translate(210 86) scale(1.5)">
         <rect x="-11" y="-13" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="-13" width="4.5" height="8" rx="2" fill="#333"/>
         <rect x="-11" y="6" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="6" width="4.5" height="8" rx="2" fill="#333"/>
-        <rect x="-9" y="-17" width="18" height="34" rx="7" fill="#2c6aa0"/>
+        <rect x="-9" y="-17" width="18" height="34" rx="7" fill="#17476b"/>
         <path d="M-6 -9 Q0 -13 6 -9 L6 -4 Q0 -7 -6 -4 Z" fill="#fff" opacity=".85"/>
       </g>
-      <circle cx="201" cy="65" r="4" fill="#e8b000"/><circle cx="219" cy="65" r="4" fill="#e8b000"/>
-      <circle cx="201" cy="107" r="4" fill="#c0392b"/><circle cx="219" cy="107" r="4" fill="#c0392b"/>
+      <circle cx="201" cy="65" r="4" fill="#fff"/><circle cx="219" cy="65" r="4" fill="#fff"/>
+      <circle cx="201" cy="107" r="4" fill="#c0392b" stroke="#fff" stroke-width="0.8"/><circle cx="219" cy="107" r="4" fill="#c0392b" stroke="#fff" stroke-width="0.8"/>
     </svg>
     <b>MORAJU — POZICIONA (PARKIRNA)</b><span>zaustavljeno ili parkirano na kolovozu, noću i u uslovima smanjene vidljivosti</span>
   </div>
   <div class="signCell">
-    <svg viewBox="0 0 300 152" style="width:100%;max-width:300px" role="img" aria-label="Vozilo na posebno obeleženom mestu na kolovozu ispod ulične rasvete, sva četiri svetla su ugašena">
-      <text x="150" y="14" text-anchor="middle" font-size="12" font-weight="700" fill="currentColor">OBELEŽENO MESTO + RASVETA</text>
-      <rect x="0" y="22" width="300" height="130" fill="#9aa7b4"/>
+    <svg viewBox="0 0 300 152" style="width:100%;max-width:300px;background:#fff;color:#1c2733" role="img" aria-label="Vozilo na posebno obeleženom mestu na kolovozu ispod ulične rasvete, sva četiri svetla su ugašena">
+      <text x="150" y="16" text-anchor="middle" font-size="14" font-weight="700" fill="currentColor">OBELEŽENO MESTO + RASVETA</text>
+      <rect x="0" y="22" width="300" height="130" fill="#e5e7eb"/>
       <rect x="0" y="22" width="16" height="130" fill="#e8dcc2"/><rect x="284" y="22" width="16" height="130" fill="#e8dcc2"/>
       <rect x="0" y="22" width="300" height="130" fill="#1c2e40" opacity=".34"/>
-      <line x1="150" y1="24" x2="150" y2="150" stroke="#fff" stroke-width="4" stroke-dasharray="14 10"/>
-      <polygon points="258,34 274,34 296,140 150,140" fill="#e8b000" opacity=".3"/>
+      <line x1="150" y1="24" x2="150" y2="150" stroke="#303a43" stroke-width="6" stroke-dasharray="14 10"/><line x1="150" y1="24" x2="150" y2="150" stroke="#fff" stroke-width="4" stroke-dasharray="14 10"/>
+      <polygon points="258,34 274,34 296,140 150,140" fill="#e8b000" fill-opacity=".3" stroke="#4a3500" stroke-width="1.2"/>
       <line x1="284" y1="34" x2="284" y2="150" stroke="currentColor" stroke-width="2.5"/>
       <path d="M284 36 L268 31" stroke="currentColor" stroke-width="2.5" fill="none"/>
       <rect x="254" y="26" width="16" height="6" rx="2" fill="currentColor"/>
-      <path d="M180 54 V128 M244 54 V128 M180 128 H244" stroke="#fff" stroke-width="3.5" fill="none" opacity=".9"/>
+      <path d="M180 54 V128 M244 54 V128 M180 128 H244" stroke="#303a43" stroke-width="5.5" fill="none"/><path d="M180 54 V128 M244 54 V128 M180 128 H244" stroke="#fff" stroke-width="3.5" fill="none"/>
       <g transform="translate(212 90) scale(1.5)">
         <rect x="-11" y="-13" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="-13" width="4.5" height="8" rx="2" fill="#333"/>
         <rect x="-11" y="6" width="4.5" height="8" rx="2" fill="#333"/><rect x="6.5" y="6" width="4.5" height="8" rx="2" fill="#333"/>
-        <rect x="-9" y="-17" width="18" height="34" rx="7" fill="#2c6aa0"/>
+        <rect x="-9" y="-17" width="18" height="34" rx="7" fill="#17476b"/>
         <path d="M-6 -9 Q0 -13 6 -9 L6 -4 Q0 -7 -6 -4 Z" fill="#fff" opacity=".85"/>
       </g>
-      <circle cx="203" cy="69" r="3.6" fill="#7d8792" stroke="#2a333d" stroke-width="1.2"/><circle cx="221" cy="69" r="3.6" fill="#7d8792" stroke="#2a333d" stroke-width="1.2"/>
-      <circle cx="203" cy="111" r="3.6" fill="#7d8792" stroke="#2a333d" stroke-width="1.2"/><circle cx="221" cy="111" r="3.6" fill="#7d8792" stroke="#2a333d" stroke-width="1.2"/>
+      <circle cx="203" cy="69" r="3.6" fill="#b4bdc5" stroke="#2a333d" stroke-width="1.2"/><circle cx="221" cy="69" r="3.6" fill="#b4bdc5" stroke="#2a333d" stroke-width="1.2"/>
+      <circle cx="203" cy="111" r="3.6" fill="#b4bdc5" stroke="#2a333d" stroke-width="1.2"/><circle cx="221" cy="111" r="3.6" fill="#b4bdc5" stroke="#2a333d" stroke-width="1.2"/>
     </svg>
     <b>NE MORAJU</b><span>posebno obeleženo mesto, a ulično osvetljenje čini vozilo dovoljno vidljivim — izuzetak (ZOBS čl. 80)</span>
   </div>
@@ -2116,6 +2102,7 @@ CARDS['svetla'] = {
 <tr><td><b>Zaustavljeno ili parkirano na kolovozu</b>, noću i u uslovima smanjene vidljivosti</td><td><b>Poziciona, odnosno parkirna</b> — kratka su tu mamac</td></tr>
 <tr><td>Isto, ali na <b>posebno obeleženom mestu</b> gde ga ulično osvetljenje čini dovoljno vidljivim</td><td><b>Ne moraju</b> biti uključena poziciona, odnosno parkirna</td></tr>
 </table>
+<p><b>Strana prema sredini puta (čl. 80 st. 2):</b> vozilo koje stoji na kolovozu u naselju mora imati najmanje poziciona, odnosno parkirna svetla na strani bližoj sredini puta. Izuzetak za posebno obeleženo mesto uz dovoljnu uličnu rasvetu ostaje važeći (st. 3).</p>
 <p class="mut">Zamka na kraju: dve ponude počinju odricanjem. „Ne mora imati uključena svetla" nudi se u pitanju bez obeleženog mesta i netačno je; „ne moraju biti uključena <b>poziciona, odnosno parkirna</b>, svetla" tačno je samo uz obeleženo mesto i dovoljnu uličnu rasvetu.</p>
 </div>
 
@@ -4853,13 +4840,13 @@ X[10022] = { ...(X[10022] || {}), x: 'Zeleno svetlo je dozvola da uđeš, a ne n
 X[10023] = { ...(X[10023] || {}), x: 'Isto pravilo važi i kada ideš putem sa prvenstvom prolaza, obeleženim žutim rombom: prvenstvo ne ukida zabranu blokiranja raskrsnice. Kolona ispred crvenog vozila stoji, pa bi ono ostalo na pešačkom prelazu ili u raskrsnici i smetalo pešacima i vozilima sa sporednog puta. Sačekaš ispred, pa uđeš tek kada možeš i da izađeš.' };
 X[10025] = { ...(X[10025] || {}), x: 'Vozilo iz suprotnog smera pretiče kolonu i pri tom prelazi preko neisprekidane linije u tvoju traku, pa ti dolazi pravo u susret. Takvo postupanje zakon izdvaja kao grubo suprotno pravilima, jer se sudar izbegava samo tuđom reakcijom. Njegova procena da će stići da se vrati ništa ti ne vredi: ti si na mopedu, nemaš kud da se skloniš, a odluku o tom susretu doneo je neko drugi umesto tebe.' };
 X[10027] = { ...(X[10027] || {}), x: 'Kolovozi su fizički razdvojeni ostrvom, a plavi znak na njemu okrenut je ka tebi i pokazuje na koju stranu ide saobraćaj — dakle ti se krećeš pogrešnom stranom. To potvrđuje i automobil koji ti tvojom trakom dolazi pravo u susret. Vožnja suprotnim smerom na razdvojenom putu je upravo ono što zakon izdvaja kao grubo suprotno pravilima, jer sudar izbegava neko drugi umesto tebe.' };
-X[10029] = { ...(X[10029] || {}), x: 'Van naselja si dužan da daš zvučni znak kada upozoravaš vozača koga pretičeš ili obilaziš, a bez tog znaka bi postojala opasnost od nezgode. Vozilo 2 je već u levoj traci, a vozilo 1 pokazivačem najavljuje izlazak iz svoje trake — upravo situacija u kojoj truba sprečava sudar. Svetlosni znak je tvoja mogućnost, nikad dodatna obaveza, pa je ponuda sa oba znaka netačna.' };
-X[10031] = { ...(X[10031] || {}), x: 'Obilaziš zaustavljeno vozilo koje je uključilo pokazivače, a između parkiranih kola i tvoje putanje niko nikoga ne vidi na vreme — bezbednost ovde traži zvučni znak, pa si dužan da ga daš. Obaveza ne postoji samo u tri slučaja koje zakon nabraja, jer u njemu stoji reč naročito: važi kad god razlozi bezbednosti to zahtevaju, pa i u gradskoj ulici.' };
+X[10029] = { ...(X[10029] || {}), x: "Vozilo 2 već pretiče u levoj traci, dok vozilo 1 levim pokazivačem najavljuje izlazak iz svoje trake. Zbog opasnosti od nezgode vozač vozila 2, ako nastavlja preticanje, mora da upotrebi zvučni znak (ZOBS čl. 59 st. 1 t. 1). Svetlosni znak ovde nije dodatna obaveza, pa ponuda koja obavezno traži oba znaka nije tačna." };
+X[10031] = { ...(X[10031] || {}), x: "Taksi je ukoso uz levi red parkiranih vozila i desnim pokazivačem najavljuje uključivanje prema putanji motocikla. Ako nastavljaš kretanje, dužan si da upotrebiš zvučni znak zbog opasnosti od nezgode (ZOBS čl. 59 st. 1). Ta opšta obaveza važi i u naselju; tri nabrojana slučaja nisu zatvoren spisak." };
 X[10033] = { ...(X[10033] || {}), x: 'Truba i duga svetla postoje zbog opasnosti, nikad zbog nervoze. Ispred tebe je vozilo auto-škole, a leva traka je zauzeta vozilom koje se kreće, pa uslova za preticanje nema i strpljivo nastavljaš vožnju do mesta gde smeš da pretekneš. Znak upozorenja kojim bi nekoga požurio nije dozvoljena upotreba ni zvučnog ni svetlosnog signala.' };
-X[10036] = { ...(X[10036] || {}), x: 'Van naselja si dužan da daš zvučni znak pre ulaska u nepreglednu i uzanu krivinu, kao i pred prevojem, gde je mimoilaženje otežano. Put je ovde uzan, sa jedne strane odsečena stena, sa druge odbojna ograda, a iza krivine se ne vidi ništa — vozač iz suprotnog smera može da sazna da nailaziš jedino po zvuku.' };
-X[10039] = { ...(X[10039] || {}), x: 'Zeleno svetlo ti ne daje pravo da požuruješ onoga ispred sebe. Vozilo auto-škole tek kreće, nikakve opasnosti na koju bi upozoravao nema, pa strpljivo čekaš da nastavi kretanje. Zvučni i svetlosni znak upozorenja rezervisani su za opasnost, a upotreba trube da bi neko brže krenuo nije dozvoljena, ni sama ni uz duga svetla.' };
-X[10042] = { ...(X[10042] || {}), x: 'Zvučni znak si dužan da daš kada je pored kolovoza ili na njemu dete koje ne obraća pažnju na kretanje vozila. Deca trče za loptom preko puta i ne gledaju u tvom pravcu, pa je truba tu upravo ono za šta služi — upozorenje na opasnost. Uz to smanjuješ brzinu tako da možeš odmah da staneš, jer se i lopta i dete kreću nepredvidivo.' };
-X[10049] = { ...(X[10049] || {}), x: 'Sva četiri pokazivača pravca obavezno pališ kada si poslednji u zaustavljenoj koloni na putu van naselja — to je jedini način da vozač koji nailazi punom brzinom na vreme shvati da kolona stoji. Samo levi pokazivač značio bi nameru da se pomeriš ulevo, što ovu situaciju ne opisuje, a ne uključiti ništa znači nadati se da će te neko primetiti.' };
+X[10036] = { ...(X[10036] || {}), x: "Prikazan je uzan put sa nepreglednom krivinom uz stenu. Zvučni znak je obavezan pre ulaska u nepreglednu i uzanu krivinu van naselja, odnosno dolaska na prevoj gde je mimoilaženje otežano (ZOBS čl. 59 st. 1 t. 3). Njime upozoravaš učesnika koji može naići iz suprotnog smera." };
+X[10039] = { ...(X[10039] || {}), x: "Ispred tebe je vozilo auto-škole, a na semaforu je zeleno. Ponuđena upotreba znakova služi samo požurivanju vozača, pa strpljivo čekaš da nastavi kretanje. Zvučni znak koristi se kada ga zahtevaju razlozi bezbednosti; svetlosni znak je takođe znak upozorenja (ZOBS čl. 59–60)." };
+X[10042] = { ...(X[10042] || {}), x: "Deca se igraju loptom na kolovozu i ne gledaju ka vozilu. Zbog vidljive opasnosti dužan si da upotrebiš zvučni znak (ZOBS čl. 59 st. 1), uz brzinu koja omogućava blagovremeno zaustavljanje. Zvučno upozorenje ne zamenjuje obavezu da izbegneš ugrožavanje dece." };
+X[10049] = { ...(X[10049] || {}), x: "U prikazanoj zaustavljenoj koloni van naselja zvanični odgovor traži sve pokazivače, ne samo levi (ZOBS čl. 61 t. 4). Znak upozorava na radove za 500 m; sam ne nalaže zaustavljanje. Pravilo izuzima kolonu koja je stala zbog postupanja po saobraćajnom znaku ili pravilu saobraćaja. Fotografija ne pokazuje uzrok zastoja, pa se iz nje ne može zaključiti zašto je kolona stala." };
 X[10061] = { ...(X[10061] || {}), x: 'Bele kose pruge oivičene punom linijom su polje za usmeravanje saobraćaja, površina koja mora da ostane prazna da bi se tokovi razdvojili na vreme. Na nju vozilo ne sme ni da pređe, pa je ostavljanje vozila tu zabranjeno. Automobili koje vidiš na prugama stoje nepropisno, iako mesto na prvi pogled deluje kao slobodan prostor uz ivicu.' };
 X[10091] = { ...(X[10091] || {}), x: "Vozilo bi stalo na biciklističkoj traci, desno od pune bele linije. Na njoj je zabranjeno zaustavljanje; izuzetak za auto-taksi ne obuhvata biciklističku traku (ZOBS čl. 66 st. 1 t. 8 i st. 4)." };
 X[10092] = { ...(X[10092] || {}), x: "Parkiranje na biciklističkoj traci prikazanoj na slici nije dozvoljeno, ni auto-taksi vozilima (ZOBS čl. 66 st. 1 t. 8 i st. 4)." };
@@ -5131,8 +5118,8 @@ X[10559] = { x: apKo };
 X[10562] = { x: 'Uključivanje/isključivanje SAMO prilaznim putem (petljom) — nikakvo skretanje preko razdelnog pojasa niti vožnja unazad do izlaza (ZOBS čl. 105a/104).' };
 // --- Svetla (sub 142) ---
 X[10210] = { x: 'DANJU: kratka ili dnevna svetla obavezno uključena (ZOBS čl. 77 st. 1) — u Srbiji se vozi sa svetlima 24/7.' };
-X[10211] = { x: 'NOĆU: podrazumevano DUGA svetla (ZOBS čl. 77 st. 2) — a kratka umesto njih u sedam propisanih situacija (vidi karticu).' };
-X[10217] = { x: 'Vozilo zaustavljeno na KOLOVOZU noću/u magli: poziciona (parkirna) svetla moraju biti uključena — da te vide.' };
+X[10211] = { ...(X[10211] || {}), x: "Osnovno pravilo za motorno vozilo u vožnji noću jesu duga svetla (ZOBS čl. 77 st. 2); u sedam situacija iz st. 3 koriste se kratka umesto dugih. Stav 4 izuzima vozača vozila za koje nije obavezna ugradnja dugih svetala. Pitanje traži osnovno pravilo, pa je tačna ponuđena stavka „duga svetla”." };
+X[10217] = { ...(X[10217] || {}), x: "Zaustavljeno ili parkirano vozilo na kolovozu noću i u uslovima smanjene vidljivosti mora imati uključena poziciona, odnosno parkirna svetla (ZOBS čl. 80). U naselju su dovoljna najmanje ona na strani bližoj sredini puta. Ne moraju biti uključena na posebno obeleženom mestu gde ga ulično osvetljenje čini dovoljno vidljivim; taj uslov nije naveden u ovom pitanju." };
 X[10218] = { x: 'Van kolovoza (npr. na obeleženom parkingu) poziciona svetla NE moraju — obaveza važi za vozilo ostavljeno na kolovozu.' };
 const kratkaUmesto = 'Sedam situacija za kratka umesto dugih (ZOBS čl. 77 st. 3): zaslepljivanje pri mimoilaženju (uvek ispod 200 m) · ometanje vozača ispred · ulična rasveta · tunel · ometanje šinskog vozila ili plovila · magla · zaustavljeno vozilo. Pitanja traže po dve — nauči celu listu.';
 X[10539] = { x: kratkaUmesto };
@@ -5144,11 +5131,11 @@ X[10543] = { x: 'Magla (ZOBS čl. 79): kratka svetla, svetla za maglu, ili OBOJE
 X[10028] = { x: 'Zvučni znak VAN naselja: upozorenje da prestižeš/obilaziš, ako bi bez njega postojala opasnost nezgode (ZOBS čl. 59).' };
 X[10034] = { x: 'Van naselja, pred nepreglednu uzanu krivinu ili prevoj gde je mimoilaženje otežano: zvučni znak je DUŽNOST (ZOBS čl. 59 st. 1 t. 3).' };
 X[10037] = { x: 'Trubi se U MERI DOVOLJNOJ da se drugi upozore (ZOBS čl. 59 st. 2) — ne duže; sirena promenljive frekvencije je zabranjena običnim vozilima.' };
-X[10040] = { x: 'Dete pored kolovoza koje ne obraća pažnju: zvučni znak je DUŽNOST (ZOBS čl. 59 st. 1 t. 2) — jedina situacija u naselju gde se trubljenje izričito traži.' };
+X[10040] = { ...(X[10040] || {}), x: "Ako se pored kolovoza nalazi dete koje ne obraća pažnju na kretanje vozila, zvučni znak je obavezan i u naselju i van njega (ZOBS čl. 59 st. 1 t. 2). To nije jedini razlog za upozorenje u naselju: opšta obaveza važi kad god je zahtevaju razlozi bezbednosti saobraćaja." };
 X[10043] = { x: 'Noću umesto trube: SVETLOSNI znak upozorenja (blicanje dugih) — ZOBS čl. 60 st. 2.' };
 X[10044] = { x: 'Svetlosni znak upozorenja = uzastopno/naizmenično paljenje DUGIH svetala (ZOBS čl. 60 st. 1), pazeći da ne zaslepiš druge.' };
 X[10045] = { x: 'Svetlosni znak smeš i DANJU ako više odgovara uslovima (ZOBS čl. 60 st. 3) — i noću umesto zvučnog, i u naselju pri preticanju.' };
-X[10048] = { x: 'Sva 4 pokazivača — lista iz ZOBS čl. 61: ulazak/izlazak putnika, upozorenje na opasnost, izrazito smanjena vidljivost, poslednji u zaustavljenoj koloni van naselja, kretanje unazad, zaustavljanje na kolovozu. Pitanja izvlače po dve stavke.' };
+X[10048] = { ...(X[10048] || {}), x: "Tačne su izrazito smanjena vidljivost i položaj poslednjeg vozila u zaustavljenoj koloni van naselja, uz izuzetak kada je kolona stala zbog saobraćajnog znaka ili pravila (ZOBS čl. 61 t. 3–4). Sam položaj na kraju kolone koja se kreće nije taj slučaj. Zaustavljanje iza vozila u koje deca ulaze ili izlaze jeste postupanje po pravilu, dok obaveza tokom ulaska/izlaska putnika iz t. 1 važi za vozilo koje ih prima ili iz kojeg izlaze. Član 61 važi na javnom putu ako je takav uređaj za vozilo obavezan." };
 
 
 // --- Zaustavljanje i parkiranje (sub 140), tekstualna ---
@@ -6757,7 +6744,7 @@ out.cards['prvenstvo-prolaza'].h.c = out.cards['prvenstvo-prolaza'].h.c.replace(
 
 // Lokalno prevedi pregledane pristupačne opise; opšti toCyr štiti HTML tagove.
 // Novi opis u ovim karticama zahteva ponovni pregled oba pisma.
-for (const [key, expected] of [['brzine', 6], ['kategorije-vozila', 4], ['put-pojmovi', 1], ['vozilo-tehnika', 4], ['kaznene-klase', 13], ['preticanje', 3], ['skretanje', 2], ['iskljucenje', 3], ['oznake-kolovoz', 12], ['prvenstvo-prolaza', 9], ['pruga', 4], ['policajac-znaci', 6], ['parking-table', 9], ['kretanje-po-putu', 19], ['svetlosne-oznake', 3], ['pesaci-bicikli', 11], ['nezgoda', 7], ['autoput', 2], ['dozvole', 3]]) {
+for (const [key, expected] of [['brzine', 6], ['kategorije-vozila', 4], ['put-pojmovi', 1], ['vozilo-tehnika', 4], ['kaznene-klase', 13], ['preticanje', 3], ['skretanje', 2], ['iskljucenje', 3], ['oznake-kolovoz', 12], ['prvenstvo-prolaza', 9], ['pruga', 4], ['policajac-znaci', 6], ['parking-table', 9], ['kretanje-po-putu', 19], ['svetlosne-oznake', 3], ['pesaci-bicikli', 11], ['nezgoda', 7], ['autoput', 2], ['dozvole', 3], ['svetla', 15], ['pokazivaci', 1]]) {
   let count = 0;
   out.cards[key].h.c = out.cards[key].h.c.replace(/aria-label="([^"]*)"/g, (_, label) => {
     count++;
