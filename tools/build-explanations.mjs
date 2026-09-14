@@ -855,71 +855,66 @@ CARDS['preticanje'] = {
 };
 
 CARDS['znakovi-porodice'] = {
-  title: 'Porodice saobraćajnih znakova (oblik + boja = vrsta)',
+  title: 'Porodice saobraćajnih znakova: oblik, boja i značenje',
   html: `
-<div class="signRow">
+<div class="signRow wrapRow">
   <div class="signCell">
-    <svg viewBox="0 0 80 70"><polygon points="40,5 75,64 5,64" fill="#fff" stroke="#c0392b" stroke-width="8" stroke-linejoin="round"/><text x="40" y="56" text-anchor="middle" font-size="30" font-weight="bold" fill="#111">!</text></svg>
-    <b>OPASNOSTI</b><span>trougao, crveni rub — upozorenje unapred</span>
+    <svg role="img" aria-label="Znak opasnosti: crveni trougao sa uzvičnikom upozorava na opasnost." viewBox="0 0 80 70"><polygon points="40,5 75,64 5,64" fill="#fff" stroke="#c0392b" stroke-width="8" stroke-linejoin="round"/><text x="40" y="56" text-anchor="middle" font-size="30" font-weight="bold" fill="#111">!</text></svg>
+    <b>OPASNOSTI</b><span>najčešće trougao sa crvenim okvirom — upozorenje na opasnost</span>
   </div>
   <div class="signCell">
-    <svg viewBox="0 0 80 70"><circle cx="40" cy="35" r="30" fill="#fff" stroke="#c0392b" stroke-width="9"/><text x="40" y="45" text-anchor="middle" font-size="24" font-weight="bold" fill="#111">40</text></svg>
-    <b>ZABRANE</b><span>krug, crveni rub — šta NE SMEŠ</span>
+    <svg role="img" aria-label="Ograničenje brzine 40: beli krug sa crvenim okvirom." viewBox="0 0 80 70"><circle cx="40" cy="35" r="30" fill="#fff" stroke="#c0392b" stroke-width="9"/><text x="40" y="45" text-anchor="middle" font-size="24" font-weight="bold" fill="#111">40</text></svg>
+    <b>ZABRANE I OGRANIČENJA</b><span>krug, obično crveni okvir — zabrana ili ograničenje</span>
   </div>
   <div class="signCell">
-    <svg viewBox="0 0 80 70"><circle cx="40" cy="35" r="31" fill="#2c6aa0"/><path d="M40 52 L40 22 M40 22 L30 33 M40 22 L50 33" stroke="#fff" stroke-width="7" fill="none" stroke-linecap="round"/></svg>
-    <b>OBAVEZE</b><span>krug, plava podloga — šta MORAŠ</span>
+    <svg role="img" aria-label="Obavezan smer pravo: bela strelica na plavom krugu." viewBox="0 0 80 70"><circle cx="40" cy="35" r="31" fill="#2c6aa0" stroke="#fff" stroke-width="2"/><path d="M40 52 L40 22 M40 22 L30 33 M40 22 L50 33" stroke="#fff" stroke-width="7" fill="none" stroke-linecap="round"/></svg>
+    <b>OBAVEZE</b><span>najčešće plavi krug — propisana obaveza</span>
   </div>
   <div class="signCell">
-    <svg viewBox="0 0 80 70"><rect x="8" y="4" width="64" height="62" rx="8" fill="#2c6aa0"/><text x="40" y="53" text-anchor="middle" font-size="42" font-weight="bold" fill="#fff">P</text></svg>
-    <b>OBAVEŠTENJA</b><span>kvadrat/pravougaonik — informacija</span>
+    <svg role="img" aria-label="Parkiralište: bela oznaka parkiranja na plavoj četvorougaonoj tabli." viewBox="0 0 80 70"><rect x="8" y="4" width="64" height="62" rx="8" fill="#2c6aa0" stroke="#fff" stroke-width="2"/><text x="40" y="53" text-anchor="middle" font-size="42" font-weight="bold" fill="#fff">P</text></svg>
+    <b>OBAVEŠTENJA</b><span>kvadrat, pravougaonik ili krug, uz izuzetke — obaveštenje o putu ili režimu saobraćaja</span>
   </div>
 </div>
-<p style="margin-top:10px"><b>Zone i prestanak važenja</b> — jedan princip pokriva desetine znakova:</p>
+<p style="margin-top:10px"><b>Zone i prestanak važenja</b> — primeri početka i završetka režima saobraćaja:</p>
 <div class="signRow lineRow">
   <div class="signCell">
-    <svg viewBox="0 0 110 130"><rect x="4" y="4" width="102" height="122" rx="8" fill="#fff" stroke="#2c6aa0" stroke-width="5"/>
-      <circle cx="55" cy="52" r="30" fill="#fff" stroke="#c0392b" stroke-width="7"/><text x="55" y="63" text-anchor="middle" font-size="27" font-weight="bold" fill="#111">30</text>
-      <text x="55" y="107" text-anchor="middle" font-size="17" font-weight="bold" fill="#111">ZONA</text></svg>
+    <svg role="img" aria-label="Početak zone 30: natpis ZONA iznad umetnutog znaka ograničenja brzine 30." viewBox="0 0 110 130"><rect x="4" y="4" width="102" height="122" rx="8" fill="#fff" stroke="#111" stroke-width="5"/><text x="55" y="34" text-anchor="middle" font-size="20" font-weight="800" fill="#111">ZONA</text><circle cx="55" cy="79" r="30" fill="#fff" stroke="#c0392b" stroke-width="7"/><text x="55" y="90" text-anchor="middle" font-size="27" font-weight="800" fill="#111">30</text></svg>
     <b>POČETAK ZONE</b><span>od ovog mesta važi režim zone (npr. 30 km/h)</span>
   </div>
   <div class="signCell">
-    <svg viewBox="0 0 110 130"><rect x="4" y="4" width="102" height="122" rx="8" fill="#fff" stroke="#7d8792" stroke-width="5"/>
-      <circle cx="55" cy="52" r="30" fill="#fff" stroke="#7d8792" stroke-width="7"/><text x="55" y="63" text-anchor="middle" font-size="27" font-weight="bold" fill="#5b636b">30</text>
-      <text x="55" y="107" text-anchor="middle" font-size="17" font-weight="bold" fill="#5b636b">ZONA</text>
-      <path d="M14 118 L98 16" stroke="#c0392b" stroke-width="7" stroke-linecap="round"/></svg>
-    <b>KRAJ ZONE</b><span>isti znak, precrtan kosom crtom = režim prestaje</span>
+    <svg role="img" aria-label="Kraj zone 30: natpis ZONA iznad crno-belog znaka 30, precrtanog crnim kosim crtama." viewBox="0 0 110 130"><rect x="4" y="4" width="102" height="122" rx="8" fill="#fff" stroke="#111" stroke-width="5"/><text x="55" y="34" text-anchor="middle" font-size="20" font-weight="800" fill="#111">ZONA</text><circle cx="55" cy="79" r="30" fill="#fff" stroke="#7d8792" stroke-width="7"/><text x="55" y="90" text-anchor="middle" font-size="27" font-weight="800" fill="#111">30</text><path d="M10 120 L96 10 M15 122 L101 12 M20 124 L106 14" fill="none" stroke="#111" stroke-width="2.5"/></svg>
+    <b>KRAJ ZONE</b><span>završetak zone 30: crno-beli umetnuti znak sa crnim kosim crtama</span>
   </div>
   <div class="signCell">
-    <svg viewBox="0 0 110 110"><circle cx="55" cy="55" r="48" fill="#fff" stroke="#111" stroke-width="4"/>
+    <svg role="img" aria-label="Prestanak ograničenja brzine 60: crne kose crte preko crno-belog kruga sa brojem 60." viewBox="0 0 110 110"><circle cx="55" cy="55" r="48" fill="#fff" stroke="#111" stroke-width="4"/>
       <text x="55" y="70" text-anchor="middle" font-size="34" font-weight="bold" fill="#111">60</text>
       <path d="M22 88 L88 22 M30 96 L96 30 M14 80 L80 14" stroke="#111" stroke-width="4"/></svg>
-    <b>PRESTANAK ZABRANE</b><span>bela podloga + kose crte preko znaka = ograničenje više ne važi</span>
+    <b>PRESTANAK OGRANIČENJA BRZINE</b><span>od ovog mesta prestaje prethodno označeno ograničenje brzine; ostala primenljiva ograničenja i dalje važe</span>
   </div>
   <div class="signCell">
-    <svg viewBox="0 0 220 110">
+    <svg role="img" aria-label="Levo zelena tabla autoputa sa simbolom traka i nadvožnjaka; desno plava tabla motoputa sa simbolom automobila." viewBox="0 0 220 110">
       <rect x="4" y="14" width="100" height="82" rx="8" fill="#1e8a3c"/>
       <path d="M34 88 L44 40 M74 88 L64 40 M24 62 L84 62" stroke="#fff" stroke-width="7" fill="none" stroke-linecap="round"/>
-      <rect x="116" y="14" width="100" height="82" rx="8" fill="#2c6aa0"/>
+      <rect x="116" y="14" width="100" height="82" rx="8" fill="#2c6aa0" stroke="#fff" stroke-width="2"/>
       <path d="M140 74 L140 56 Q140 42 166 42 Q192 42 192 56 L192 74 Z" fill="#fff"/>
       <circle cx="150" cy="72" r="6" fill="#2c6aa0"/><circle cx="182" cy="72" r="6" fill="#2c6aa0"/></svg>
     <b>AUTOPUT / MOTOPUT</b><span>autoput — <b>ZELENA</b> tabla (dve trake i nadvožnjak); motoput — <b>PLAVA</b> tabla (automobil spreda). Kraj: ista tabla precrtana crvenom trakom</span>
   </div>
 </div>
-<p class="mut" style="text-align:center">Zabrane i obaveze su zajedno jedna zakonska porodica — znakovi IZRIČITIH NAREDBI (ZOBS čl. 135); porodice su dakle tri: opasnosti, izričite naredbe, obaveštenja.</p>
-<p style="text-align:center"><b>Dva oblika koja moraš da prepoznaš i naopako:</b></p>
-<div class="signRow" style="max-width:260px;margin:0 auto">
+<p class="mut" style="text-align:center">Zakonske grupe su tri: znakovi opasnosti, izričitih naredbi i obaveštenja (ZOBS čl. 135). Grupa IZRIČITIH NAREDBI obuhvata znake kojima je propisano prvenstvo prolaza, zabrane i ograničenja i obaveze (Pravilnik čl. 24).</p>
+<p style="text-align:center"><b>Dva prepoznatljiva oblika znakova izričitih naredbi:</b></p>
+<div class="signRow wrapRow" style="max-width:260px;margin:0 auto">
   <div class="signCell">
-    <svg viewBox="0 0 80 70"><polygon points="5,6 75,6 40,64" fill="#fff" stroke="#c0392b" stroke-width="8" stroke-linejoin="round"/></svg>
+    <svg role="img" aria-label="Ustupanje prvenstva prolaza: beli trougao sa crvenim okvirom i vrhom nadole." viewBox="0 0 80 70"><polygon points="5,6 75,6 40,64" fill="#fff" stroke="#c0392b" stroke-width="8" stroke-linejoin="round"/></svg>
     <span>obrnuti trougao = ustupi prvenstvo</span>
   </div>
   <div class="signCell">
-    <svg viewBox="0 0 80 70"><polygon points="26,5 54,5 74,25 74,46 54,66 26,66 6,46 6,25" fill="#c0392b" stroke="#fff" stroke-width="3"/><text x="40" y="43" text-anchor="middle" font-size="17" font-weight="bold" fill="#fff">STOP</text></svg>
+    <svg role="img" aria-label="Obavezno zaustavljanje: crveni osmougao sa belim natpisom STOP." viewBox="0 0 80 70"><polygon points="26,5 54,5 74,25 74,46 54,66 26,66 6,46 6,25" fill="#c0392b" stroke="#fff" stroke-width="3"/><text x="40" y="43" text-anchor="middle" font-size="17" font-weight="bold" fill="#fff">STOP</text></svg>
     <span>osmougao = obavezno zaustavljanje</span>
   </div>
 </div>
 <p><b>Dopunska tabla</b> stoji ISPOD znaka i precizira ga (udaljenost, dužina, vrsta vozila, vreme) — važi samo uz znak na kome je.</p>
-<p><b>Taktika za slikovna pitanja:</b> prvo prepoznaj PORODICU po obliku i boji, pa tek onda simbol — većina zamki su znakovi iste porodice sa sličnim simbolom.</p>`,
+<p><b>Taktika za slikovna pitanja:</b> oblik i boja pomažu u prepoznavanju. Proveri simbol, natpis i dopunsku tablu da utvrdiš značenje konkretnog znaka. Podela na grupe ne menja obavezu postupanja po značenju saobraćajnog znaka (ZOBS čl. 20 i 135).</p>`,
 };
 
 CARDS['semafori'] = {
@@ -4747,7 +4742,7 @@ X[8760] = { ...(X[8760] || {}), x: 'Žuta tabla sa crvenim kosim prugama, postav
 X[8761] = { ...(X[8761] || {}), x: 'Žuto polje uokvireno crvenim, bez kosih pruga i postavljeno pozadi, obeležava dugo vozilo. Kose crveno-žute pruge nosi tabla za teška vozila, a spora vozila se obeležavaju trougaonom tablom sa crvenim rubom i narandžastim poljem.' };
 X[8762] = { ...(X[8762] || {}), x: 'Trougaona tabla sa crvenim rubom i narandžastim poljem obeležava sporo vozilo, ono koje po svojoj konstrukciji ne može da razvije veću brzinu, kao što su traktor ili radna mašina. Cilj je da onaj ko nailazi mnogo brže na vreme shvati razliku u brzini. Kose pruge i puno žuto polje sa crvenim okvirom pripadaju teškim, odnosno dugim vozilima.' };
 X[9203] = { ...(X[9203] || {}), x: 'Dopunska tabla uvek pripada znaku neposredno iznad sebe, a ovde stoji ispod donjeg kruga sa brojem, pa bliže određuje samo ograničenje brzine. Gornji crveni krug sa dva vozila je zaseban znak zabrane i važi nezavisno od table. Zato ni odgovor da tabla važi za oba znaka ne stoji: jedna tabla se ne deli na dva znaka na istom stubu.' };
-X[9208] = { ...(X[9208] || {}), x: 'Bela tabla sa tekstom stoji ispod plavog znaka obaveštenja o parkiralištu sa naplatom, pa rečima objašnjava kako se to parkiralište koristi i koliko dugo sme da se stoji. Ona sama ne uvodi novu zabranu ni obavezu, jer to nose znakovi u crvenom, odnosno plavom krugu. Nije ni poruka nevezana za znak: bez znaka iznad sebe tabla nema nikakvo značenje.' };
+X[9208] = { ...(X[9208] || {}), x: "Na slici znak označava vremenski ograničeno parkiranje, a tabla tekstom određuje trajanje: jedan sat. Ona daje dodatno obaveštenje o korišćenju označenog parkirališta i čita se zajedno sa znakom, čiji je sastavni deo (Pravilnik čl. 6 i 55 t. 5). Zato poruka nije nevezana za znak niti tabla predstavlja samostalan znak izričite naredbe. Prikazani parking-sat sam po sebi ne dokazuje naplatu; njegovo propisano značenje je vremenski ograničeno parkiranje (čl. 35 t. 35)." };
 X[9214] = { ...(X[9214] || {}), x: 'Crtež čitaj kao poprečni presek ulice: niži deo je kolovoz, a viši, iza ivičnjaka, trotoar. Vozilo je celo na nižem delu, dakle na kolovozu, i vidiš ga s prednje strane, što znači da je okrenuto duž ulice, paralelno sa podužnom osom. Da je upravno, bilo bi nacrtano iz čistog bočnog profila, a kod parkiranja pod uglom crtež je kos, u tri četvrtine.' };
 X[9215] = { ...(X[9215] || {}), x: 'Niža linija je kolovoz, a viša, iza ivičnjaka, trotoar; vozilo stoji celo na tom višem delu, pa je reč o parkiranju na trotoaru. Prikazano je s prednje strane, a prednji izgled znači da je okrenuto duž ulice, dakle paralelno sa podužnom osom kolovoza. Bočni profil bi značio upravno parkiranje, a kosi crtež parkiranje pod uglom.' };
 X[9220] = { ...(X[9220] || {}), x: 'Na tabli je debelim potezom nacrtan put sa prvenstvom prolaza i pokazano kuda se on pruža, dok su tanke crte sporedni krakovi. Uz osmougaoni znak koji te obavezuje da se zaustaviš, tabla ti unapred kaže odakle nailaze vozila kojima moraš da ustupiš prolaz. Strelica smera kretanja i oznaka slepog puta izgledaju sasvim drugačije.' };
@@ -4889,9 +4884,9 @@ X[10630] = { ...(X[10630] || {}), x: 'Dva pravila ovde daju dva različita ishod
 X[10988] = { ...(X[10988] || {}), x: "Kada na prikazanoj tabli stoji 400 m, bez strelica, taj broj meri rastojanje od znaka do početka dela puta, odnosno mesta na koje se znak odnosi. Tabla sa dve strelice nagore označavala bi dužinu deonice na kojoj važi odredba znaka (Pravilnik o signalizaciji čl. 55). Postupanje vozača zavisi i od znaka iznad table: upozorenje na opasnost traži pripremu pre opasnog mesta." };
 X[10989] = { ...(X[10989] || {}), x: "Dve strelice nagore uz 250 m označavaju dužinu dela puta na kojoj važi odredba znaka iznad table. Broj bez tih strelica označavao bi udaljenost do početka dela puta, odnosno mesta na koje se znak odnosi (Pravilnik o signalizaciji čl. 55). Sama prikazana tabla ne određuje vrstu odredbe: ona zavisi od znaka iznad nje, pa tabla nije posebna oznaka zabrane parkiranja ili zaustavljanja." };
 X[10990] = { ...(X[10990] || {}), x: 'Na tabli piše goli vremenski raspon, pa on kazuje kada odredba znaka iznad nje uopšte deluje: van tog dela dana znak nema dejstvo. Tabla, dakle, ne ukida znak nego mu ograničava vreme važenja. Zamka je da isti raspon pročitaš obrnuto, kao vreme u kome zabrana miruje — a tabla ovde ne kaže ništa o izuzimanju. Nije ni obaveštenje o načinu korišćenja znaka.' };
-X[10991] = { ...(X[10991] || {}), x: 'Poruka je data simbolom vozila, a simbol vozila na dopunskoj tabli uvek sužava krug onih na koje se znak iznad odnosi, ovde na teretna vozila. Sama tabla ne uvodi zabranu, ograničenje ni obavezu; to nosi znak iznad nje, a tabla samo kaže na koga se on primenjuje. Zato njena poruka nikada nije nevezana za značenje znaka.' };
+X[10991] = { ...(X[10991] || {}), x: "Poruka je data simbolom vozila, a na prikazanoj tabli označena je vrsta vozila na koju se znak odnosi: teretna vozila (Pravilnik čl. 55 t. 6). Sama tabla ne uvodi zabranu, ograničenje ni obavezu; to nosi znak iznad nje, a tabla samo kaže na koga se on primenjuje. Zato njena poruka nikada nije nevezana za značenje znaka." };
 X[10992] = { ...(X[10992] || {}), x: 'Trougao okrenut vrhom nadole obavezuje te da ustupiš prvenstvo prolaza, a tabla ispod njega crta oblik raskrsnice: debeli potez je put sa prvenstvom i pokazuje kuda se on pruža, dok su tanke crte sporedni krakovi. Tako unapred znaš odakle nailaze vozila kojima daješ prolaz. Strelica smera i oznaka slepog puta izgledaju drugačije.' };
-X[10993] = { ...(X[10993] || {}), x: 'Tekst na tabli ne uvodi nikakvo novo pravilo, već bliže određuje značenje znaka iznad nje tako što izuzima jednu grupu korisnika. Zabranu, ograničenje ili obavezu nosi sam znak, a tabla mu samo sužava dejstvo. Zato poruka table nikada nije nezavisna od znaka: bez znaka iznad sebe ovaj tekst ne bi imao nikakav smisao.' };
+X[10993] = { ...(X[10993] || {}), x: "Na tabli piše „Osim za stanare”. Tekst bliže određuje značenje znaka uz koji je postavljena tako što izuzima navedene korisnike (Pravilnik čl. 55 t. 5). Tabla je sastavni deo tog znaka i čita se sa njim; nije samostalan znak izričite naredbe niti poruka nevezana za saobraćajni znak (čl. 6)." };
 
 const BYSUB = {
   148: 'prvenstvo-prolaza',   // vozila pod pratnjom i sa pravom prvenstva (56 pitanja)
@@ -5664,15 +5659,15 @@ X[10531] = { x: 'Motorno vozilo ne sme da vuče motocikl, moped, laki tricikl ni
 X[10222] = { x: 'Odredbe ZOBS-a primenjuju se I NA vozače tramvaja — osim kad to isključuju konstrukcione osobine tih vozila ili način njihovog kretanja (ZOBS čl. 84). Tramvaj se, na primer, ne može skloniti sa šina, ali pravila za vozače važe i za tramvajdžije.' };
 X[10225] = { x: 'Životinje je ZABRANJENO voditi iz vozila ili sa vozila (ZOBS čl. 87) — bez izuzetka za put van naselja. Domaće životinje na putu vode lica koja idu uz njih i obezbeđuju ih da ne ugrožavaju saobraćaj.' };
 X[10400] = { x: 'Žuto rotaciono/trepćuće svetlo (radovi, vanredni prevoz, prinudno zaustavljeno vozilo...) = POVEĆAJ OPREZNOST i prilagodi brzinu i način kretanja (ZOBS čl. 111). Ne traži ni obavezno zaustavljanje ni pomeranje s kolovoza — takve obaveze nose plava svetla i znaci ovlašćenih lica.' };
-X[8936] = { x: 'Dužnost vozača je dvostruka: pridržavaj se ograničenja, zabrana i obaveza iz saobraćajne signalizacije I prilagodi kretanje opasnostima na koje upozoravaju znakovi opasnosti (ZOBS čl. 132). Mamci nude "sopstvenu procenu" umesto signalizacije — sopstvena procena nikad ne pobija znak; a znakovi obaveštenja ne izriču naredbe.' };
+X[8936] = { ...(X[8936] || {}), x: "Dužnost vozača je dvostruka: pridržavaj se ograničenja, zabrana i obaveza iz saobraćajne signalizacije I prilagodi kretanje opasnostima na koje upozoravaju znakovi opasnosti (ZOBS čl. 132). Mamci nude \"sopstvenu procenu\" umesto signalizacije — sopstvena procena nikad ne pobija znak; ponuđeni odgovor sa „naredbama izraženim znakovima obaveštenja” meša zakonske grupe. I po značenju znaka obaveštenja moraš da postupaš kada određuje režim saobraćaja (ZOBS čl. 20 i 135)." };
 X[8937] = { ...(X[8937] || {}), x: "Učesnicima u saobraćaju NIJE dozvoljeno neovlašćeno postavljanje, uklanjanje ni izmena značenja signalizacije i opreme puta (ZOBS čl. 134). To što značenje signalizacije ne odgovara saobraćajnoj situaciji ne daje ovlašćenje da je sam menjaš. Izuzetak za garaže i kolske prilaze ne postoji." };
 X[8938] = { x: 'Zaklanjanje ili umanjivanje uočljivosti signalizacije tablama, znakovima, svetlima, stubovima i sličnim predmetima je ZABRANJENO (ZOBS čl. 134) — bez izuzetaka, pa ni uz odobrenje lokalne samouprave.' };
 X[8939] = { x: 'Predmeti koji podražavaju ili liče na signalizaciju, zaslepljuju učesnike ili odvraćaju pažnju u meri opasnoj za bezbednost — ZABRANJENI su (ZOBS čl. 134). Nikakvo odobrenje ni namena (garaža, prilaz) to ne legalizuje.' };
 X[8941] = { x: 'Znakovi sa izmenljivim sadržajem poruka mogu biti STALNO aktivirani ili se aktiviraju PREMA POTREBI — i isključuju kad potrebe nema (ZOBS čl. 135). Ne moraju se uklanjati niti stalno davati poruku — u tome i jeste smisao izmenljivog sadržaja.' };
 X[8944] = { x: "SAOBRAĆAJNI ZNAKOVI su tri porodice: znakovi OPASNOSTI, IZRIČITIH NAREDBI i OBAVEŠTENJA (ZOBS čl. 135; dopunska tabla je sastavni deo znaka). Semafori i oznake na kolovozu jesu saobraćajna signalizacija, ali kao DRUGI njeni elementi (čl. 133) — nisu saobraćajni znakovi. Znaci koje daju policijski službenici uopšte nisu signalizacija: to su znaci i naredbe ovlašćenog lica, po kojima postupaš i kad su suprotni signalizaciji (čl. 166)." };
 X[8946] = { x: 'Zabrane, ograničenja i obaveze izriču znakovi IZRIČITIH NAREDBI (ZOBS čl. 135). Znakovi opasnosti upozoravaju, znakovi obaveštenja obaveštavaju — naredbe naređuju.' };
-X[8947] = { x: "Upozorenje na opasnost na određenom mestu ili delu puta i obaveštenje o prirodi te opasnosti daju znakovi OPASNOSTI (ZOBS čl. 135). Izričite naredbe zabranjuju i obavezuju, obaveštenja informišu — jedino znakovi opasnosti upozoravaju unapred." };
-X[8948] = { x: "Potrebna obaveštenja o putu kojim se krećeš i druga korisna obaveštenja pružaju znakovi OBAVEŠTENJA (ZOBS čl. 135). Opasnosti upozoravaju, naredbe zabranjuju i obavezuju — kad znak samo informiše, to je znak obaveštenja." };
+X[8947] = { ...(X[8947] || {}), x: "Upozorenje na opasnost na određenom mestu ili delu puta i obaveštenje o prirodi te opasnosti daju znakovi OPASNOSTI (ZOBS čl. 135). Pitanje navodi zakonsku definiciju baš ove grupe. To nije pravilo da samo ona može najavljivati situaciju niti da se svaki znak opasnosti postavlja unapred (Pravilnik čl. 22–23)." };
+X[8948] = { ...(X[8948] || {}), x: "Potrebna obaveštenja o putu kojim se krećeš i druga korisna obaveštenja pružaju znakovi OBAVEŠTENJA (ZOBS čl. 135). Pitanje navodi definiciju ove grupe. Obaveštenje može označavati i režim saobraćaja, na primer jednosmerni put, pa se po njegovom značenju mora postupati (ZOBS čl. 20; Pravilnik čl. 35)." };
 X[8949] = { x: 'Dopunska tabla: SASTAVNI je deo saobraćajnog znaka uz koji je postavljena i BLIŽE ODREĐUJE njegovo značenje (ZOBS čl. 135) — zato idu oba odgovora. Nije samostalan tekstualni znak niti putokaz.' };
 X[10780] = { ...(X[10780] || {}), x: "Znakovi se po pravilu postavljaju sa DESNE strane puta; kad je potrebna bolja uočljivost ili dodatno upozorenje iz razloga bezbednosti, znak se postavlja I NA LEVOJ strani — zato su tačna oba ponuđena odgovora. To nije slobodan izbor strane: izuzetno, znak sme biti samo levo ako prostorno nije moguće postaviti ga desno i ako se time ostvaruje svrha njegovog postavljanja (Pravilnik o signalizaciji čl. 10)." };
 X[8950] = { x: 'Znakovi opasnosti postavljaju se, po pravilu, na 150 m do 250 m ISPRED opasnog mesta (Pravilnik o signalizaciji čl. 22) — dovoljno unapred da stigneš da reaguješ. Za pojedine znakove opasnosti čl. 23 propisuje posebna mesta postavljanja.' };
@@ -6744,7 +6739,7 @@ out.cards['prvenstvo-prolaza'].h.c = out.cards['prvenstvo-prolaza'].h.c.replace(
 
 // Lokalno prevedi pregledane pristupačne opise; opšti toCyr štiti HTML tagove.
 // Novi opis u ovim karticama zahteva ponovni pregled oba pisma.
-for (const [key, expected] of [['brzine', 6], ['kategorije-vozila', 4], ['put-pojmovi', 1], ['vozilo-tehnika', 4], ['kaznene-klase', 13], ['preticanje', 3], ['skretanje', 2], ['iskljucenje', 3], ['oznake-kolovoz', 12], ['prvenstvo-prolaza', 9], ['pruga', 4], ['policajac-znaci', 6], ['parking-table', 9], ['kretanje-po-putu', 19], ['svetlosne-oznake', 3], ['pesaci-bicikli', 11], ['nezgoda', 7], ['autoput', 2], ['dozvole', 3], ['svetla', 15], ['pokazivaci', 1]]) {
+for (const [key, expected] of [['brzine', 6], ['kategorije-vozila', 4], ['put-pojmovi', 1], ['vozilo-tehnika', 4], ['kaznene-klase', 13], ['preticanje', 3], ['skretanje', 2], ['iskljucenje', 3], ['oznake-kolovoz', 12], ['prvenstvo-prolaza', 9], ['pruga', 4], ['policajac-znaci', 6], ['parking-table', 9], ['kretanje-po-putu', 19], ['svetlosne-oznake', 3], ['pesaci-bicikli', 11], ['nezgoda', 7], ['autoput', 2], ['dozvole', 3], ['svetla', 15], ['pokazivaci', 1], ['znakovi-porodice', 10]]) {
   let count = 0;
   out.cards[key].h.c = out.cards[key].h.c.replace(/aria-label="([^"]*)"/g, (_, label) => {
     count++;
