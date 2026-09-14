@@ -2886,18 +2886,18 @@ CARDS['razno-pravila'] = {
   title: 'Nasilnička vožnja, vučenje i ostala pravila',
   html: `
 <div class="kSek" data-sub="138">
-<p><b>Nasilnička vožnja (čl. 41):</b> 2+ prolaska kroz crveno u 10 minuta · preticanje kolone preko neisprekidane linije · vožnja u naselju 90+ km/h preko ograničenja · gruba nepažnja prema drugima.</p>
+<p><b>Nasilnička vožnja (čl. 41):</b> dva ili više prolazaka na crveno, uz najviše 10 minuta između dva uzastopna prolaska · preticanje kolone preko neisprekidane linije · vožnja u naselju brzinom za više od 90 km/h većom od dozvoljene · postupanje u gruboj suprotnosti sa pravilima ili bez obzira prema bezbednosti drugih.</p>
 </div>
 <div class="kSek" data-sub="141">
-<p><b>Vučenje vozila:</b> užetom (≥3 m), krutom vezom (rudom) ili oslanjanjem/podizanjem; noću i pri smanjenoj vidljivosti vučeno vozilo mora biti osvetljeno; brzina ograničena (40 km/h).</p>
+<p><b>Vučenje vozila:</b> užetom (3–5 m), krutom vezom (do 5 m; može i manje od 3 m) ili oslanjanjem/podizanjem. Noću i pri smanjenoj vidljivosti vučeno vozilo mora imati uključena zadnja poziciona svetla ili vučno vozilo mora koristiti žuto rotaciono svetlo; brzina je najviše 40 km/h (čl. 72, 74 i 75).</p>
 </div>
 <div class="kSek" data-sub="149">
-<p><b>Žuto rotaciono svetlo (čl. 111):</b> radovi na putu, vozila pomoći na putu, vanredni prevoz, traktor/radna mašina noću.</p>
+<p><b>Žuto rotaciono svetlo (čl. 111):</b> radovi i pomoć na putu, vanredni prevoz, traktor i radna mašina noću ili pri smanjenoj vidljivosti, kao i drugi slučajevi iz čl. 111.</p>
 </div>
 <div class="kSek" data-sub="165">
-<p><b>Prepreke na putu (čl. 112 i Pravilnik):</b> obeležavaju se propisanim znakovima/svetlima — noću crveno svetlo.</p>
+<p><b>Radovi i prepreke (Pravilnik čl. 85–86):</b> obeležavaju se propisanom saobraćajnom signalizacijom; signalna tabla je jedna od oznaka zone radova.</p>
 </div>
-<p><b>Osnovna načela:</b> poverenje u druge učesnike + tvoja obaveza da ne ugrožavaš i ometaš druge — svaki učesnik odgovara za svoje postupke.</p>
+<p><b>Osnovna načela (ZOBS čl. 3):</b> ne ometaj, ne ugrožavaj i ne povređuj druge; preduzmi potrebne mere da izbegneš ili otkloniš opasnost nastalu ponašanjem drugih, ako time ne dovodiš sebe ili drugog u opasnost.</p>
 
 <div class="kSek" data-sub="143">
 <p style="margin-top:18px"><b>TRAMVAJ I ŽIVOTINJE (čl. 84 i 87)</b></p>
@@ -2908,7 +2908,7 @@ CARDS['razno-pravila'] = {
 </div>
 <div class="kSek" data-sub="165">
 <p style="margin-top:18px"><b>RADOVI NA PUTU — RADNIK SA ZASTAVICOM (čl. 155 i 166)</b></p>
-<p>Tamo gde se izvode radovi i gde je nastala prepreka koja se ne može odmah ukloniti, saobraćaj mogu da regulišu <b>najmanje DVA radnika</b> određena od strane izvođača radova, odnosno upravljača puta. Ne jedan — dva, jer se propušta naizmenično iz dva smera.</p>
+<p>Tamo gde se izvode radovi i gde je nastala prepreka koja se ne može odmah ukloniti, saobraćaj mogu da regulišu <b>najmanje DVA radnika</b> određena od strane izvođača radova, odnosno upravljača puta.</p>
 <table>
 <tr><th>Znak</th><th>Značenje za tvoj smer</th></tr>
 <tr><td><b>Podignuta CRVENA zastavica</b></td><td>Prolaz <b>zabranjen</b></td></tr>
@@ -2917,7 +2917,7 @@ CARDS['razno-pravila'] = {
 <p class="mut">Pamti da je <b>svaka</b> poruka nošena <b>podignutom</b> zastavicom — nema „spuštena crvena znači slobodno". Zato su netačni svi odgovori tipa „regulisanje se vrši samo zastavicom crvene boje, podignuta zabranjuje a spuštena dozvoljava" i isto to sa zelenom. Na slikama radnik uvek drži <b>obe</b> zastavice: ona koju je podigao je poruka, ona koja mu visi niz nogu ne znači ništa.</p>
 <p><b>Znak radnika je OBAVEZUJUĆI za tebe.</b> Znaci i naredbe ovlašćenih lica <b>imaju prvenstvo u odnosu na saobraćajnu signalizaciju i propisana pravila saobraćaja</b>. U dva slikovna pitanja tačni odgovori zato glase „slobodan prolaz <b>i obavezujući je za Vas</b>" i „zabranjen prolaz <b>i obavezujući je za Vas</b>", a zamke su upravo one koje ti nude izgovor: „nije obavezujući za Vas" i „nije obavezujući ako prohodna saobraćajna traka nije zauzeta vozilima iz suprotnog smera". Prazna traka ispred tebe nije dozvola.</p>
 <p><b>Dve dužnosti kod radova (pitanje traži DVA odgovora):</b> ne smeš da <b>ometaš radnika</b> koji obavlja radove na putu ili pored puta, i <b>dužan si da ukloniš svoje vozilo na zahtev izvođača radova</b> — a taj zahtev može biti dat i kao javni poziv. Zamka je „moram ukloniti vozilo samo na zahtev saobraćajne policije": izvođač radova je ovde dovoljan.</p>
-<p><b>Signalna tabla</b> (tabla sa treptavim strelicama, obično na prikolici) postavlja se <b>na zadnji deo motornog vozila ili prikolice, kada je vozilo zaustavljeno</b>. Zamke se lako razdvajaju po nameni: „razdvajajuća ograda" skreće saobraćaj u stranu, a „čeoni branik" ograđuje radilište sa čeone strane — ni jedno ni drugo se ne kači na vozilo.</p>
+<p><b>Signalna tabla</b> označava radove na putu i prema važećem Pravilniku može se postaviti <b>na zadnji deo vozila ili prikolice koji se koriste u zoni radova</b> (čl. 2 tač. 20 i čl. 86 tač. 8). Od ponuđenog samo prvi odgovor prepoznaje to mesto, ali sadašnji propis ne ograničava tablu samo na zaustavljeno vozilo. „Razdvajajuća ograda" i „čeona zapreka" druge su vrste signalizacije na putu.</p>
 
 </div>
 <div class="kSek" data-sub="138">
@@ -2929,21 +2929,21 @@ CARDS['razno-pravila'] = {
 <tr><td>Brzina <b>van naselja</b></td><td>za više od <b>100 km/h</b> veća od dozvoljene</td><td>80, 90</td></tr>
 <tr><td><b>Alkohol</b> — potpuna alkoholisanost</td><td>više od <b>2,00 mg/ml</b></td><td>„veoma teška" (više od 1,60 do 2,00) i „teška" (više od 1,20 do 1,60)</td></tr>
 </table>
-<p class="mut">Merdevine za pamćenje: <b>90 u naselju, 100 van naselja</b> — veći broj ide tamo gde je i osnovno ograničenje veće. Kod alkohola pamti samo <b>najviši</b> stepen: teška i veoma teška alkoholisanost jesu teški prekršaji, ali <b>nisu</b> nasilnička vožnja; nasilnička je tek <b>potpuna</b>.</p>
+<p class="mut">Merdevine za pamćenje: <b>90 u naselju, 100 van naselja</b> — veći broj ide tamo gde je i osnovno ograničenje veće. Po samom stepenu alkoholisanosti, izričit osnov nasilničke vožnje je <b>potpuna alkoholisanost</b>, preko 2,00 mg/ml. To ne isključuje nasilničku vožnju pri nižem stepenu alkoholisanosti po drugim osnovima iz čl. 41.</p>
 <p><b>Kako to izgleda na slici.</b> Dva slikovna pitanja gađaju isti ishod iz dva različita ugla. U prvom sa mopeda vidiš vozilo koje ti <b>dolazi u susret tvojom saobraćajnom trakom</b> jer pretiče kolonu preko neisprekidane linije. U drugom nema ni kolone ni preticanja: put je <b>fizički razdvojen ostrvom</b>, na ostrvu stoji znak obaveznog smera okrenut ka tebi, a ti se krećeš <b>suprotnim smerom</b>. U oba slučaja tačan odgovor je isti i doslovno glasi „nepropisno postupanje koje je <b>u gruboj suprotnosti sa pravilima saobraćaja (nasilnička vožnja)</b>".</p>
-<p class="mut">Zamka glasi: „nepropisno postupanje, <b>koje nije</b> u gruboj suprotnosti sa pravilima saobraćaja" (kod pitanja o preticanju kolone nastavlja se i sa „s obzirom da preticanje može izvesti bez ugrožavanja drugih učesnika u saobraćaju". Procena da „stiže da se vrati" ne skida kvalifikaciju — puna linija je tu upravo zato što se preglednost na tom mestu ne može proceniti.</p>
+<p class="mut">Zamka glasi: „nepropisno postupanje, <b>koje nije</b> u gruboj suprotnosti sa pravilima saobraćaja" (kod pitanja o preticanju kolone nastavlja se i sa „s obzirom da preticanje može izvesti bez ugrožavanja drugih učesnika u saobraćaju"). Procena da „stiže da se vrati" ne menja izričitu kvalifikaciju preticanja kolone preko neisprekidane linije iz čl. 41 st. 2 tač. 2.</p>
 
 </div>
 <div class="kSek" data-sub="141">
 <p style="margin-top:18px"><b>VUČENJE — DOPUNA (čl. 71, 72 i 73)</b></p>
-<p><b>Šta se uopšte NE SME vući.</b> Motorno vozilo ne sme da vuče <b>moped, motocikl, laki tricikl ni teški tricikl</b> — dakle jednotračna vozila i tricikle. Sme da vuče putničko vozilo, laki i teški četvorocikl i teretno vozilo. Pitanje traži <b>tri</b> odgovora.</p>
-<p class="mut">Ovo pravilo samo rešava i slikovno pitanje o propisnom vučenju: vozilo broj 1 vuče <b>motocikl</b>, pa je nepropisno već po vrsti vučenog vozila, bez obzira na to čime ga vuče. Tačan odgovor je vozilo broj 2.</p>
+<p><b>Šta se uopšte NE SME vući.</b> Motorno vozilo ne sme da vuče <b>moped, motocikl, laki tricikl ni teški tricikl</b> (čl. 71). Ponuđeni putničko i teretno vozilo, laki i teški četvorocikl nisu na tom spisku zabrane, ali se mogu vući samo uz ostale propisane uslove. Pitanje traži <b>tri</b> odgovora.</p>
+<p class="mut">Na slici vozilo broj 1 vuče <b>motocikl</b>, pa je nepropisno već po vrsti vučenog vozila. Vozilo broj 2 prikazuje putničko vozilo i krutu vezu, koji sami po sebi nisu zabranjeni; drugi uslovi vuče ne mogu se utvrditi samo sa slike. Zato se od ponuđenog bira vozilo broj 2.</p>
 <table>
 <tr><th>Način vuče</th><th>Kada NE SME</th></tr>
 <tr><td><b>Uže</b></td><td>Vučeno vozilo ima neispravan <b>uređaj za upravljanje</b> ili <b>uređaj za zaustavljanje</b>; užetom se, uz to, ne vuku teretno vozilo i autobus</td></tr>
 <tr><td><b>Kruta veza (ruda)</b></td><td>Vučeno vozilo nema <b>ispravan uređaj za upravljanje</b>; ili mu je ukupna masa veća od ukupne mase vučnog vozila, a neispravna mu je radna kočnica</td></tr>
 </table>
-<p class="mut">Logika iza tabele: <b>uže</b> traži da vučeno vozilo ume i da skreće i da koči samo za sebe, jer ga ništa ne drži; <b>ruda</b> pomaže oko kočenja, ali upravljač i dalje mora da radi. Zato je ispravan upravljač uslov kod <b>oba</b> načina, a ispravne kočnice samo kod užeta. Vuče se, uz to, isključivo vozilo koje zbog neispravnosti ili nedostatka delova ne može samo da se kreće.</p>
+<p class="mut">Kod vuče <b>užetom</b> moraju biti ispravni i uređaj za upravljanje i uređaj za zaustavljanje. Kod <b>krute veze</b> uređaj za upravljanje mora biti ispravan; neispravna radna kočnica zabranjuje takvu vuču kada je ukupna masa vučenog vozila veća od ukupne mase vučnog vozila. Vuče se, uz to, samo motorno vozilo koje zbog neispravnosti ili nedostatka delova ne može samo da se kreće.</p>
 <p><b>Obeležavanje:</b> sigurnosni trougao mora biti postavljen na <b>OBA</b> vozila — na vučnom sa <b>prednje</b> strane, na vučenom sa <b>zadnje</b>. Na vučnom vozilu moraju biti uključeni <b>svi pokazivači pravca</b>, a na vučenom ako su ispravni. Vučenim vozilom je zabranjen prevoz lica, osim vozača koji njime upravlja.</p>
 
 </div>
@@ -4864,7 +4864,7 @@ X[10092] = { ...(X[10092] || {}), x: "Parkiranje na biciklističkoj traci prikaz
 X[10113] = { ...(X[10113] || {}), x: 'Trotoar je namenjen pešacima i vozilo se na njega ostavlja samo tamo gde to izričito dopušta saobraćajni znak ili oznaka na kolovozu. Ovde takvog znaka nema, pa zabrana važi bez obzira na to koliko je prostora ostalo iza vozila. Zato pada i zamka sa 1,60 m: ta širina slobodnog prolaza je dodatni uslov tamo gde je parkiranje već dopušteno, a ne sama dozvola.' };
 X[10118] = { ...(X[10118] || {}), x: "Plavi znak „staza rezervisana za bicikliste i pešake” označava odvojene delove za kretanje pešaka, biciklista i vozača lakih električnih vozila. Srebrni automobil stoji na toj stazi, gde zaustavljanje nije dozvoljeno. Prolaz od 1,60 m odnosi se na izuzetak za parkiranje na trotoaru i ne dopušta zaustavljanje automobila na stazi." };
 X[10142] = { ...(X[10142] || {}), x: "Na slici je znak zabrane saobraćaja za vozila u oba smera. Na tako označenoj površini zabranjeni su i zaustavljanje i parkiranje (ZOBS čl. 66 st. 1 t. 22)." };
-X[10187] = { ...(X[10187] || {}), x: 'Motorno vozilo uopšte ne sme da vuče motocikl, moped ni tricikl, pa prvi prikaz pada već po vrsti vučenog vozila, ma koliko uže bilo uredno vezano. U drugom se vuče putničko vozilo, i to krutom vezom, pa su i vrsta vozila i način vuče u redu. Zbog toga ne mogu biti ispravna oba prikaza.' };
+X[10187] = { ...(X[10187] || {}), x: 'Prvi prikaz je nepropisan jer motorno vozilo vuče motocikl, što ZOBS čl. 71 izričito zabranjuje. Drugi prikazuje putničko vozilo koje se vuče krutom vezom: ni vrsta vozila ni prikazani način vuče nisu zabranjeni, pa se od ponuđenog bira vozilo broj 2. Ostali uslovi vuče, poput ispravnosti upravljanja i odnosa masa i kočnice, ne mogu se utvrditi samo sa slike (čl. 72).' };
 X[10226] = { ...(X[10226] || {}), x: 'Vođenje životinje sa vozila zabranjeno je bez ijednog izuzetka, a ovde vozač mopeda jednom rukom drži upravljač, a drugom povodac psa. Pas može da povuče, da stane ili da skrene, i tada nemaš pod kontrolom ni upravljanje ni kočenje. Brzina tu ništa ne menja: formulacija o kretanju brzinom pešaka pozajmljena je iz drugih pravila i na ovo se ne odnosi.' };
 X[10237] = { ...(X[10237] || {}), x: 'Propisno upravlja onaj ko sedi na sedištu, drži upravljač obema rukama i nosi kacigu, a to je drugi vozač na slici. Prvi je skrstio ruke i uopšte ne drži upravljač, treći nosi alat preko ramena koji ga ometa i može nekoga da zakači, a četvrti vozi teret toliko širok i visok da zaklanja i vozilo i pogled unazad.' };
 X[10255] = { ...(X[10255] || {}), x: 'Policajca vidiš sa boka, pa ti je prolaz dozvoljen, ali ostaje obaveza prema pešacima: znak koji ti dozvoljava prolaz nikada ne znači i pravo da prođeš kroz ljude koji su već na obeleženom prelazu ispred tebe. Zato ih propuštaš. Zvučni znak nije rešenje — truba je za opasnost, a ne za rasterivanje pešaka koji propisno prelaze kolovoz.' };
@@ -4880,7 +4880,7 @@ X[10409] = { ...(X[10409] || {}), x: 'Uz upaljeno crveno svetlo svetli dopunska 
 X[10411] = { ...(X[10411] || {}), x: 'Crveni ukršteni signal zabranjuje kretanje duž saobraćajne trake iznad koje se nalazi (čl. 145). Ne znači zaustavljanje ispod samog znaka, jer se zabrana odnosi na traku, a ne na tačku. Izuzetka za javni prevoz ovde nema.' };
 X[10412] = { ...(X[10412] || {}), x: 'Žuta kosa strelica koja trepće iznad trake je naredba, ne obaveštenje: traku iznad koje stoji moraš da napustiš i da nastaviš onom trakom na koju vrh strelice pokazuje. Povećanu opreznost označava trepćuće žuto na trobojnom semaforu, i kada ima crni simbol strelice; kosa žuta strelica iznad trake je drugi znak (čl. 142 i 145). Traku za javni prevoz označavaju oznake na kolovozu i znak pored puta.' };
 X[10413] = { ...(X[10413] || {}), x: 'Zelena strelica okrenuta nadole iznad trake znači da je ta traka otvorena i da njome smeš da se krećeš. Vezuje se za traku iznad koje visi, a ne za vrstu vozila, pa nije namenjena samo tramvajima. Obavezan prelazak u drugu traku nalaže žuta kosa trepćuća strelica, a traku zatvara crveni ukršteni signal.' };
-X[10416] = { ...(X[10416] || {}), x: 'Ovde je vidiš na prikolici zaustavljenoj kod radova: lampe slažu veliku strelicu ulevo, a plavi znak ispod njih govori da radilište obilaziš s leve strane. Takva tabla ide na zadnji deo motornog vozila ili prikolice i poruku nosi samo dok to vozilo stoji. Razdvajajuća ograda i čeoni branik postavljaju se na sam put, pa ih na vozilu ni ne tražiš.' };
+X[10416] = { ...(X[10416] || {}), x: 'Na slici je signalna tabla za označavanje radova na putu. Važeći Pravilnik je određuje kao signalizaciju koja se može postaviti na zadnji deo vozila ili prikolice koji se koriste u zoni radova (čl. 2 tač. 20 i čl. 86 tač. 8). Od ponuđenog samo prvi odgovor prepoznaje to mesto, ali sadašnji propis ne ograničava tablu samo na zaustavljeno vozilo. Razdvajajuća ograda i čeona zapreka druge su vrste signalizacije na putu.' };
 X[10419] = { ...(X[10419] || {}), x: 'Crvena zastavica je podignuta, pa je prolaz za tebe zatvoren, a zelena koja visi uz telo nije poruka. Znak radnika koji reguliše saobraćaj na radilištu ima prvenstvo nad signalizacijom i nad pravilima, pa je obavezujući za tebe. Prazna traka ispred tebe nije izgovor: radnik vidi kada pušta suprotni smer, a ti sa svog mesta to ne možeš da proceniš.' };
 X[10462] = { ...(X[10462] || {}), x: 'U obe trake strelica dozvoljava skretanje udesno. Kad je smer određen oznakom na kolovozu, ona je jača od opšteg pravila po kome se udesno skreće samo iz krajnje desne trake, pa se ovde udesno sme i iz trake 1 i iz trake 2. Zato padaju ponude koje izdvajaju samo jednu od njih.' };
 X[10464] = { ...(X[10464] || {}), x: 'U traci 2, koja je uz levu ivicu kolovoza, strelica pokazuje ulevo, a u traci 1 do nje iscrtana je strelica sa dva kraka: pravo i ulevo. Pošto obe trake imaju krak za levo, skretanje ulevo je dozvoljeno iz obe. Oznaka na kolovozu ovde određuje smerove, pa se ne primenjuje opšte pravilo po kome bi levo bilo samo iz krajnje leve trake.' };
@@ -5670,8 +5670,8 @@ X[10431] = { x: "Kad vozilo pod pratnjom ili s prvenstvom prolaza uz svoje poseb
 // (ZOBS čl. 41/71/84/87/111/132/134/135/155/166; Pravilnik o signalizaciji čl. 6/10/22/32/87) ---
 X[10711] = { x: 'NASILNIČKA vožnja u NASELJU: prekoračenje za više od 90 km/h preko dozvoljene (ZOBS čl. 41). Van naselja granica je 100 km/h preko dozvoljene — pamti par 90/100, u naselju je strože.' };
 X[10712] = { x: 'NASILNIČKA vožnja VAN naselja: prekoračenje za više od 100 km/h preko dozvoljene (ZOBS čl. 41); u naselju je granica 90 km/h preko dozvoljene.' };
-X[10713] = { x: 'Nasilnička vožnja je i upravljanje u stanju POTPUNE alkoholisanosti — više od 2,00 mg/ml (ZOBS čl. 41). Teška i veoma teška alkoholisanost su kažnjive, ali tek potpuna (preko 2,00) čini vožnju nasilničkom.' };
-X[10531] = { x: 'Motorno vozilo NE SME da vuče: motocikl, moped i laki i teški TRICIKL (ZOBS čl. 71 — spisak je izričit). Četvorocikli, putnička i teretna vozila smeju da se vuku po pravilima o vuči; dvotočkaši i tricikli ne — vučeni su nestabilni.' };
+X[10713] = { x: 'Nasilnička vožnja je i upravljanje u stanju POTPUNE alkoholisanosti — više od 2,00 mg/ml (ZOBS čl. 41). Ovaj osnov nasilničke vožnje vezan je za potpunu alkoholisanost; nasilnička vožnja može postojati i pri nižem stepenu alkoholisanosti po drugim osnovima iz čl. 41.' };
+X[10531] = { x: 'Motorno vozilo ne sme da vuče motocikl, moped, laki tricikl ni teški tricikl (ZOBS čl. 71). Ponuđeni putničko vozilo, teretno vozilo i laki i teški četvorocikl nisu na tom spisku zabrane; njihova vuča je dozvoljena samo uz ostale uslove iz čl. 71–76. Zato se bira tačno tri odgovora iz izričitog spiska.' };
 X[10222] = { x: 'Odredbe ZOBS-a primenjuju se I NA vozače tramvaja — osim kad to isključuju konstrukcione osobine tih vozila ili način njihovog kretanja (ZOBS čl. 84). Tramvaj se, na primer, ne može skloniti sa šina, ali pravila za vozače važe i za tramvajdžije.' };
 X[10225] = { x: 'Životinje je ZABRANJENO voditi iz vozila ili sa vozila (ZOBS čl. 87) — bez izuzetka za put van naselja. Domaće životinje na putu vode lica koja idu uz njih i obezbeđuju ih da ne ugrožavaju saobraćaj.' };
 X[10400] = { x: 'Žuto rotaciono/trepćuće svetlo (radovi, vanredni prevoz, prinudno zaustavljeno vozilo...) = POVEĆAJ OPREZNOST i prilagodi brzinu i način kretanja (ZOBS čl. 111). Ne traži ni obavezno zaustavljanje ni pomeranje s kolovoza — takve obaveze nose plava svetla i znaci ovlašćenih lica.' };
@@ -5698,7 +5698,7 @@ X[9202] = { x: 'Dopunska tabla postavlja se ISPOD DONJE IVICE znaka na koji se o
 X[11056] = { x: 'Ivicu KOLOVOZA obeležavaju: SMEROKAZI (crveni sa desne, beli sa leve strane), KATADIOPTERI (na ogradama i bočnim smetnjama) i ŠTAP za označavanje puta u zimskim uslovima (Pravilnik o signalizaciji čl. 87). Table stalnih prepreka i indikator obeležavaju PUTNE OBJEKTE — to je drugi par iz istog člana.' };
 X[11057] = { x: 'PUTNE OBJEKTE obeležavaju: INDIKATOR za označavanje putnog objekta i zona izdignutih ivičnjaka i TABLE za označavanje stalnih prepreka unutar gabarita slobodnog profila puta (Pravilnik o signalizaciji čl. 87). Smerokazi, katadiopteri i zimski štap obeležavaju ivicu kolovoza.' };
 X[9406] = { x: 'Kod radova na putu: NE SMEŠ da ometaš radnika koji obavlja radove na putu ili pored puta i DUŽAN si da ukloniš vozilo na zahtev izvođača radova — zahtev može biti i javni poziv (ZOBS čl. 155). Znaci radnika koga je odredio izvođač obavezuju te (čl. 166), ne samo postavljena signalizacija; a zahtev ne mora doći od policije.' };
-X[10417] = { x: "Na delu puta gde se izvode radovi saobraćaj regulišu najmanje DVA radnika određena od strane izvođača, zastavicama CRVENE i ZELENE boje: podignuta CRVENA = zabranjen prolaz, podignuta ZELENA = slobodan prolaz, za smer iz koga je zastavica podignuta (ZOBS čl. 166). Jedna zastavica sa \"podignuto/spušteno\" logikom nije propisani način." };
+X[10417] = { x: "Na delu puta na kome se izvode radovi i gde je nastala prepreka koja se ne može odmah ukloniti, saobraćaj mogu regulisati najmanje dva određena radnika izvođača radova, odnosno upravljača puta. Oni daju znake crvenom i zelenom zastavicom: podignuta crvena zabranjuje, a podignuta zelena dozvoljava prolaz za smer iz kog je podignuta (ZOBS čl. 166 st. 4–6). Jedna zastavica sa logikom „podignuta/spuštena” nije propisani način." };
 
 
 // --- Kaznene mere (sub 182) — kartica + podtura A: najteža klasa (ZOBS čl. 330), 14 pitanja ---
