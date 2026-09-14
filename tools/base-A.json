@@ -15893,7 +15893,7 @@
    "Choices": [
     {
      "paId": 31762,
-     "Text": "imate pravo prvenstva prolazau odnosu na vozilo koje skreće ulevo",
+     "Text": "imate pravo prvenstva prolaza u odnosu na vozilo koje skreće ulevo",
      "isChosen": false,
      "isCorrect": true
     },
@@ -15926,7 +15926,7 @@
     },
     {
      "paId": 31766,
-     "Text": "jedužan da propusti tramvaj, samo ako dolazi sa nјegove desne strane",
+     "Text": "je dužan da propusti tramvaj, samo ako dolazi sa nјegove desne strane",
      "isChosen": false,
      "isCorrect": false
     },
@@ -20324,7 +20324,7 @@
     },
     {
      "paId": 32690,
-     "Text": "kretanјe vozila prilogodi tako da može da zaustavi vozilo pre nego što stupi na železničku prugu",
+     "Text": "kretanјe vozila prilagodi tako da može da zaustavi vozilo pre nego što stupi na železničku prugu",
      "isChosen": false,
      "isCorrect": true
     },
@@ -35894,7 +35894,7 @@
     },
     {
      "paId": 29868,
-     "Text": "zabranјen prolazu smeru označenom strelicom, odnosno smerovima označenim strelicama, osim u slučaju kada se vozilo ne može bezbedno zaustaviti ispred navedenog znaka",
+     "Text": "zabranјen prolaz u smeru označenom strelicom, odnosno smerovima označenim strelicama, osim u slučaju kada se vozilo ne može bezbedno zaustaviti ispred navedenog znaka",
      "isChosen": false,
      "isCorrect": false
     },
