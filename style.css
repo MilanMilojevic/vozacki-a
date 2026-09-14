@@ -458,6 +458,7 @@ body.uSimulaciji #podnozje { display: none; }
 .pojBtn[aria-expanded]::after { content: '▸'; color: var(--mut); font-size: var(--fs-sm); flex: 0 0 auto; }
 .pojBtn[aria-expanded="true"]::after { content: '▾'; }
 .pojEntry .explCard { margin: 0 4px 18px; }
+#browseList > h3 { overflow-wrap: anywhere; }
 /* pregled rezultata: jedno pitanje = jedan red dok se ne otvori */
 .pregledStavka { padding: 4px 12px; margin-bottom: 8px; }
 .pregledNaslov { font-weight: 500; color: var(--ink); gap: 8px; }

@@ -6445,22 +6445,22 @@ X[8422] = { x: "Dozvola istekla NAJVIŠE ŠEST meseci: kazna DA (blaga), zaštit
 CARDS['parking-table'] = {
   title: 'Dopunske table uz znak "Parkiralište"',
   html: `
-<p>Tabla ti kaže dve stvari odjednom: <b>GDE</b> se parkira (u odnosu na crtu ivičnjaka) i <b>KAKO</b> vozilo stoji.</p>
-<p class="mut">Crta na tabli je ivičnjak: <b>iznad crte = trotoar</b>, <b>ispod crte = kolovoz</b>, <b>preko crte = i trotoar i kolovoz</b>.</p>
+<p>Dopunske table za način parkiranja pokazuju: <b>GDE</b> se parkira (u odnosu na crtu ivičnjaka) i <b>KAKO</b> vozilo stoji.</p>
+<p class="mut">Na stvarnim tablama sa vozilom vidi se <b>niži kolovoz i viši trotoar</b>. Prednji izgled vozila označava paralelno parkiranje, bočni upravno, a kosi pod uglom. <b>Šeme ispod prikazuju iste položaje odozgo</b>: iznad crte je trotoar, ispod kolovoz, a vozilo preko crte zauzima oba.</p>
 <div class="signRow lineRow">
-  <div class="signCell"><svg viewBox="0 0 96 96"><rect x="2" y="2" width="92" height="92" rx="6" fill="#fff" stroke="#111" stroke-width="3"/>
+  <div class="signCell"><svg aria-label="Šema odozgo: na kolovozu, paralelno sa podužnom osom kolovoza." viewBox="0 0 96 96"><rect x="2" y="2" width="92" height="92" rx="6" fill="#fff" stroke="#111" stroke-width="3"/>
     <line x1="8" y1="44" x2="88" y2="44" stroke="#111" stroke-width="3"/>
     <g transform="translate(48 62) rotate(90) scale(0.85)">
       <rect x="-9" y="-16" width="18" height="32" rx="6" fill="#111"/>
       <rect x="-6" y="-10" width="12" height="7" rx="2" fill="#fff"/>
     </g></svg><b>NA KOLOVOZU · paralelno</b><span>vozilo uz podužnu osu kolovoza, celo ispod crte</span></div>
-  <div class="signCell"><svg viewBox="0 0 96 96"><rect x="2" y="2" width="92" height="92" rx="6" fill="#fff" stroke="#111" stroke-width="3"/>
+  <div class="signCell"><svg aria-label="Šema odozgo: na kolovozu, upravno na podužnu osu kolovoza." viewBox="0 0 96 96"><rect x="2" y="2" width="92" height="92" rx="6" fill="#fff" stroke="#111" stroke-width="3"/>
     <line x1="8" y1="44" x2="88" y2="44" stroke="#111" stroke-width="3"/>
     <g transform="translate(48 62) rotate(0) scale(0.85)">
       <rect x="-9" y="-16" width="18" height="32" rx="6" fill="#111"/>
       <rect x="-6" y="-10" width="12" height="7" rx="2" fill="#fff"/>
     </g></svg><b>NA KOLOVOZU · upravno</b><span>vozilo pod pravim uglom na osu kolovoza</span></div>
-  <div class="signCell"><svg viewBox="0 0 96 96"><rect x="2" y="2" width="92" height="92" rx="6" fill="#fff" stroke="#111" stroke-width="3"/>
+  <div class="signCell"><svg aria-label="Šema odozgo: na kolovozu, pod uglom u odnosu na podužnu osu kolovoza." viewBox="0 0 96 96"><rect x="2" y="2" width="92" height="92" rx="6" fill="#fff" stroke="#111" stroke-width="3"/>
     <line x1="8" y1="44" x2="88" y2="44" stroke="#111" stroke-width="3"/>
     <g transform="translate(48 62) rotate(55) scale(0.85)">
       <rect x="-9" y="-16" width="18" height="32" rx="6" fill="#111"/>
@@ -6468,19 +6468,19 @@ CARDS['parking-table'] = {
     </g></svg><b>NA KOLOVOZU · pod uglom</b><span>vozilo koso u odnosu na osu kolovoza</span></div>
 </div>
 <div class="signRow lineRow">
-  <div class="signCell"><svg viewBox="0 0 96 96"><rect x="2" y="2" width="92" height="92" rx="6" fill="#fff" stroke="#111" stroke-width="3"/>
+  <div class="signCell"><svg aria-label="Šema odozgo: na trotoaru, paralelno sa podužnom osom kolovoza." viewBox="0 0 96 96"><rect x="2" y="2" width="92" height="92" rx="6" fill="#fff" stroke="#111" stroke-width="3"/>
     <line x1="8" y1="44" x2="88" y2="44" stroke="#111" stroke-width="3"/>
     <g transform="translate(48 26) rotate(90) scale(0.85)">
       <rect x="-9" y="-16" width="18" height="32" rx="6" fill="#111"/>
       <rect x="-6" y="-10" width="12" height="7" rx="2" fill="#fff"/>
     </g></svg><b>NA TROTOARU · paralelno</b><span>celo vozilo iznad crte</span></div>
-  <div class="signCell"><svg viewBox="0 0 96 96"><rect x="2" y="2" width="92" height="92" rx="6" fill="#fff" stroke="#111" stroke-width="3"/>
+  <div class="signCell"><svg aria-label="Šema odozgo: na trotoaru, upravno na podužnu osu kolovoza." viewBox="0 0 96 96"><rect x="2" y="2" width="92" height="92" rx="6" fill="#fff" stroke="#111" stroke-width="3"/>
     <line x1="8" y1="44" x2="88" y2="44" stroke="#111" stroke-width="3"/>
     <g transform="translate(48 26) rotate(0) scale(0.85)">
       <rect x="-9" y="-16" width="18" height="32" rx="6" fill="#111"/>
       <rect x="-6" y="-10" width="12" height="7" rx="2" fill="#fff"/>
     </g></svg><b>NA TROTOARU · upravno</b><span>celo vozilo iznad crte, pod pravim uglom</span></div>
-  <div class="signCell"><svg viewBox="0 0 96 96"><rect x="2" y="2" width="92" height="92" rx="6" fill="#fff" stroke="#111" stroke-width="3"/>
+  <div class="signCell"><svg aria-label="Šema odozgo: na trotoaru, pod uglom u odnosu na podužnu osu kolovoza." viewBox="0 0 96 96"><rect x="2" y="2" width="92" height="92" rx="6" fill="#fff" stroke="#111" stroke-width="3"/>
     <line x1="8" y1="44" x2="88" y2="44" stroke="#111" stroke-width="3"/>
     <g transform="translate(48 26) rotate(55) scale(0.85)">
       <rect x="-9" y="-16" width="18" height="32" rx="6" fill="#111"/>
@@ -6488,26 +6488,27 @@ CARDS['parking-table'] = {
     </g></svg><b>NA TROTOARU · pod uglom</b><span>celo vozilo iznad crte, koso</span></div>
 </div>
 <div class="signRow lineRow">
-  <div class="signCell"><svg viewBox="0 0 96 96"><rect x="2" y="2" width="92" height="92" rx="6" fill="#fff" stroke="#111" stroke-width="3"/>
+  <div class="signCell"><svg aria-label="Šema odozgo: delom na trotoaru i delom na kolovozu, paralelno sa podužnom osom kolovoza." viewBox="0 0 96 96"><rect x="2" y="2" width="92" height="92" rx="6" fill="#fff" stroke="#111" stroke-width="3"/>
     <line x1="8" y1="44" x2="88" y2="44" stroke="#111" stroke-width="3"/>
     <g transform="translate(48 44) rotate(90) scale(0.85)">
       <rect x="-9" y="-16" width="18" height="32" rx="6" fill="#111"/>
       <rect x="-6" y="-10" width="12" height="7" rx="2" fill="#fff"/>
     </g></svg><b>TROTOAR I KOLOVOZ · paralelno</b><span>vozilo preseca crtu — pola gore, pola dole</span></div>
-  <div class="signCell"><svg viewBox="0 0 96 96"><rect x="2" y="2" width="92" height="92" rx="6" fill="#fff" stroke="#111" stroke-width="3"/>
+  <div class="signCell"><svg aria-label="Šema odozgo: delom na trotoaru i delom na kolovozu, upravno na podužnu osu kolovoza." viewBox="0 0 96 96"><rect x="2" y="2" width="92" height="92" rx="6" fill="#fff" stroke="#111" stroke-width="3"/>
     <line x1="8" y1="44" x2="88" y2="44" stroke="#111" stroke-width="3"/>
     <g transform="translate(48 44) rotate(0) scale(0.85)">
       <rect x="-9" y="-16" width="18" height="32" rx="6" fill="#111"/>
       <rect x="-6" y="-10" width="12" height="7" rx="2" fill="#fff"/>
     </g></svg><b>TROTOAR I KOLOVOZ · upravno</b><span>preseca crtu, pod pravim uglom</span></div>
-  <div class="signCell"><svg viewBox="0 0 96 96"><rect x="2" y="2" width="92" height="92" rx="6" fill="#fff" stroke="#111" stroke-width="3"/>
+  <div class="signCell"><svg aria-label="Šema odozgo: delom na trotoaru i delom na kolovozu, pod uglom u odnosu na podužnu osu kolovoza." viewBox="0 0 96 96"><rect x="2" y="2" width="92" height="92" rx="6" fill="#fff" stroke="#111" stroke-width="3"/>
     <line x1="8" y1="44" x2="88" y2="44" stroke="#111" stroke-width="3"/>
     <g transform="translate(48 44) rotate(55) scale(0.85)">
       <rect x="-9" y="-16" width="18" height="32" rx="6" fill="#111"/>
       <rect x="-6" y="-10" width="12" height="7" rx="2" fill="#fff"/>
     </g></svg><b>TROTOAR I KOLOVOZ · pod uglom</b><span>preseca crtu, koso</span></div>
 </div>
-<p class="mut">Na trotoaru se parkira samo tamo gde je to signalizacijom dozvoljeno, i mora ostati slobodan prolaz za pešake najmanje 1,60 m (ZOBS čl. 66).</p>`,
+<p class="mut">Na trotoaru se parkira samo tamo gde je to signalizacijom dozvoljeno, i mora ostati slobodan prolaz za pešake najmanje 1,60 m, koji ne sme biti uz ivicu kolovoza (ZOBS čl. 66).</p>
+<p><b>Rezervisano mesto:</b> simbol osobe u invalidskim kolicima uz znak „Parkiralište” označava mesto rezervisano za vozila lica sa invaliditetom (#9235). Ne označava garažu niti prostor za kretanje u kolicima.</p>`,
 };
 X[9214] = { ...(X[9214]||{}), card: 'parking-table' };
 X[9215] = { ...(X[9215]||{}), card: 'parking-table' };
@@ -6757,7 +6758,7 @@ out.cards['prvenstvo-prolaza'].h.c = out.cards['prvenstvo-prolaza'].h.c.replace(
 
 // Lokalno prevedi pregledane pristupačne opise; opšti toCyr štiti HTML tagove.
 // Novi opis u ovim karticama zahteva ponovni pregled oba pisma.
-for (const [key, expected] of [['brzine', 6], ['kategorije-vozila', 4], ['put-pojmovi', 1], ['vozilo-tehnika', 4], ['kaznene-klase', 13], ['preticanje', 3], ['skretanje', 2], ['iskljucenje', 3], ['oznake-kolovoz', 12], ['prvenstvo-prolaza', 9], ['pruga', 4], ['policajac-znaci', 6]]) {
+for (const [key, expected] of [['brzine', 6], ['kategorije-vozila', 4], ['put-pojmovi', 1], ['vozilo-tehnika', 4], ['kaznene-klase', 13], ['preticanje', 3], ['skretanje', 2], ['iskljucenje', 3], ['oznake-kolovoz', 12], ['prvenstvo-prolaza', 9], ['pruga', 4], ['policajac-znaci', 6], ['parking-table', 9]]) {
   let count = 0;
   out.cards[key].h.c = out.cards[key].h.c.replace(/aria-label="([^"]*)"/g, (_, label) => {
     count++;
