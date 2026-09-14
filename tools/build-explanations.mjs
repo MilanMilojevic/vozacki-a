@@ -3822,17 +3822,17 @@ CARDS['kretanje-po-putu'] = {
 <p><b>Osnovno (čl. 35):</b> vozilo se kreće <b>desnom stranom kolovoza</b> i drži se <b>što bliže desnoj ivici</b> —
 toliko blizu da, s obzirom na brzinu i stanje puta, ne ugrožava druge ni sebe.</p>
 <p><b>U naselju, kad za tvoj smer ima najmanje dve trake</b>, smeš i trakom koja nije uz desnu ivicu — ali samo
-ako time <b>ne ometaš one iza sebe</b>. To ne važi za teretno vozilo preko 3.500 kg, za vozilo koje na ravnom
-putu ne može preko 40 km/h i za vozila koja nisu motorna: oni ostaju desno, osim pred raskrsnicom, pred
-skretanjem ulevo i pri preticanju.</p>
+ako time <b>ne ometaš one iza sebe</b>. To ne važi za teretno vozilo čija je <b>najveća dozvoljena masa veća od 3.500 kg</b>, za vozilo koje na ravnom
+putu ne može preko 40 km/h i za vozila koja nisu motorna, osim na delu puta ispred raskrsnice ili drugog mesta
+na kome <b>skreću ulevo</b>, odnosno kada vrše <b>preticanje ili obilaženje</b>.</p>
 
 <p style="margin-top:10px"><b>Dvosmerni put — koja traka sme, a koja ne (čl. 36):</b></p>
 <table>
 <tr><th>Kakav je put</th><th>Pravilo</th><th>Zamka</th></tr>
-<tr><td><b>TRI</b> saobraćajne trake</td><td>traka uz <b>levu ivicu</b> puta u tvom smeru je <b>zabranjena</b></td><td>zabrana nema izuzetak — <b>ni za preticanje ni za obilaženje ni zbog zastoja</b>; pretiče se srednjom trakom</td></tr>
+<tr><td><b>TRI</b> saobraćajne trake</td><td>traka uz <b>levu ivicu</b> puta u tvom smeru je <b>zabranjena</b></td><td><b>preticanje, obilaženje i zastoj</b> ne dopuštaju korišćenje te krajnje leve trake</td></tr>
 <tr><td><b>ČETIRI</b> i više traka</td><td>ne smeš da se krećeš ni da prelaziš na kolovoznu traku za suprotan smer</td><td>„samo da zaobiđem" ne postoji</td></tr>
 <tr><td>kolovozne trake <b>fizički odvojene</b></td><td>ne smeš na traku namenjenu suprotnom smeru</td><td>—</td></tr>
-<tr><td><b>jednosmerni</b> put</td><td>ne smeš da se krećeš u zabranjenom smeru</td><td>ni unazad, ni „kratko"</td></tr>
+<tr><td><b>jednosmerni</b> put</td><td>ne smeš da se krećeš u zabranjenom smeru</td><td>ni odsustvo drugih vozila ni veći broj traka ne dopuštaju zabranjeni smer</td></tr>
 <tr><td>traka se <b>završava</b> ili je na njoj saobraćaj onemogućen</td><td>vozač u traci pored dužan je da omogući uključenje <b>jednog</b> vozila</td><td>jednog, ne kolone</td></tr>
 </table>
 
@@ -3847,8 +3847,7 @@ položaj" nikad nije opravdanje.</p>
 <p><b>Uključivanje iz dvorišta ili garaže</b> kad je preglednost ili vidljivost nedovoljna (čl. 33): uključenje se
 izvodi <b>uz pomoć lica van vozila</b> koje ti daje znakove.</p>
 <p><b>U naselju</b> si dužan da omogućiš uključenje <b>autobusu koji propisno kreće sa stajališta</b> (čl. 27).</p>
-<p class="mut">Pamtilica: desno koliko možeš, levu ivicu na dvosmernom nikad, i nijedna radnja ne počinje
-pre nego što si siguran — a znak ide pre radnje, ne u toku nje.</p>
+<p class="mut">Pamtilica: drži se desno uz bezbedno odstojanje od ivice; na dvosmernom putu sa tri trake ne koristi krajnju levu. Pre radnje se uveri da je bezbedna i propisna, najavi je i održavaj znak dok traje.</p>
 
 <!-- ==== dopuna 07.09.2026 (tura 4): crtež + isto to rečima ==== -->
 <!-- DODATAK kartici kretanje-po-putu. Uz svaku celinu stoji izvor: brojevi pitanja iz gradje. -->
@@ -3857,65 +3856,65 @@ pre nego što si siguran — a znak ide pre radnje, ne u toku nje.</p>
 <!-- izvor: 9616 (tri saobracajne trake), 9612 (najmanje cetiri saobracajne trake), 9619 (fizicki odvojene kolovozne trake), 9621 (zeleno ostrvo + plavi znak, pitanje sa slikom) -->
 <div class="kPodH"><b class="kPodNaslov">Koja traka je tvoja</b>
 <div style="display:flex;justify-content:center;margin:6px 0">
-<svg viewBox="0 0 306 134" style="max-width:306px;width:100%" role="img" aria-label="Dvosmerni put sa tri saobraćajne trake, pogled odozgo. Traka uz levu ivicu puta u tvom smeru obojena je crveno, u njoj je strelica koja pokazuje suprotan smer, a preko nje je crveni krst. Srednja traka je slobodna i kroz nju vodi zelena putanja preticanja. Tvoje plavo vozilo je u traci uz desnu ivicu.">
-<text x="153" y="14" font-size="12" text-anchor="middle" fill="currentColor">DVOSMERNI · TRI SAOBRAĆAJNE TRAKE</text>
-<rect x="8" y="20" width="290" height="72" rx="3" fill="#9aa7b4"/>
+<svg viewBox="0 -4 306 138" style="max-width:306px;width:100%" role="img" aria-label="Dvosmerni put sa tri saobraćajne trake, pogled odozgo. Traka uz levu ivicu puta u tvom smeru obojena je crveno, u njoj je strelica koja pokazuje suprotan smer, a preko nje je crveni krst. Zelena putanja ka srednjoj traci prikazuje samo uslovnu mogućnost: mora biti dopuštena signalizacijom i pravilima preticanja. Tvoje plavo vozilo je u traci uz desnu ivicu.">
+<text x="153" y="14" font-size="14" text-anchor="middle" fill="currentColor">DVOSMERNI · TRI SAOBRAĆAJNE TRAKE</text>
+<rect x="8" y="20" width="290" height="72" rx="3" fill="#697782"/>
 <rect x="8" y="20" width="290" height="24" fill="#c0392b" opacity=".3"/>
-<path d="M14 44 H292 M14 68 H292" stroke="#fff" stroke-width="2" stroke-dasharray="9 7" opacity=".85" fill="none"/>
-<path d="M250 32 H200" stroke="currentColor" stroke-width="2.2" fill="none"/>
-<path d="M200 27 L190 32 L200 37 Z" fill="currentColor"/>
-<path d="M258 22 L286 42 M286 22 L258 42" stroke="#c0392b" stroke-width="3" fill="none"/>
-<rect x="30" y="71" width="44" height="15" rx="4" fill="#2c6aa0"/>
-<text x="52" y="82.5" font-size="12" text-anchor="middle" fill="#fff">ti</text>
-<path d="M80 78 H140" stroke="currentColor" stroke-width="2.2" fill="none"/>
-<path d="M140 72 L152 78 L140 84 Z" fill="currentColor"/>
-<path d="M158 78 C182 78 186 56 210 56" stroke="#1f7a3f" stroke-width="2.4" fill="none"/>
-<path d="M222 56 L210 50 L210 62 Z" fill="#1f7a3f"/>
-<text x="153" y="110" font-size="12" text-anchor="middle" fill="currentColor">traka uz LEVU ivicu nije tvoja</text>
-<text x="153" y="126" font-size="12" text-anchor="middle" fill="currentColor">pretiče se SREDNJOM trakom</text>
+<path d="M14 44 H292 M14 68 H292" stroke="#fff" stroke-width="2" stroke-dasharray="9 7" opacity="1" fill="none"/>
+<path d="M250 32 H200" stroke="#17212b" stroke-width="2.2" fill="none"/>
+<path d="M200 27 L190 32 L200 37 Z" fill="#17212b"/>
+<path d="M258 22 L286 42 M286 22 L258 42" stroke="#fff" stroke-width="5" fill="none" aria-hidden="true"/><path d="M258 22 L286 42 M286 22 L258 42" stroke="#c0392b" stroke-width="3" fill="none"/>
+<rect x="30" y="71" width="44" height="15" rx="4" fill="#2c6aa0" stroke="#fff" stroke-width="1.4" paint-order="stroke"/>
+<text x="52" y="82.5" font-size="14" text-anchor="middle" fill="#fff">ti</text>
+<path d="M80 78 H140" stroke="#17212b" stroke-width="2.2" fill="none"/>
+<path d="M140 72 L152 78 L140 84 Z" fill="#17212b"/>
+<path d="M158 78 C182 78 186 56 210 56" stroke="#fff" stroke-width="4.4" fill="none" aria-hidden="true"/><path d="M158 78 C182 78 186 56 210 56" stroke="#1f7a3f" stroke-width="2.4" fill="none"/>
+<path d="M222 56 L210 50 L210 62 Z" fill="#1f7a3f" stroke="#fff" stroke-width="1.5" paint-order="stroke"/>
+<text x="153" y="110" font-size="14" text-anchor="middle" fill="currentColor">traka uz LEVU ivicu nije tvoja</text>
+<text x="153" y="126" font-size="14" text-anchor="middle" fill="currentColor">srednja: samo ako je dopušteno</text>
 </svg>
 </div>
 <div style="display:flex;justify-content:center;margin:6px 0">
-<svg viewBox="0 0 306 162" style="max-width:306px;width:100%" role="img" aria-label="Dvosmerni put sa četiri saobraćajne trake, bez ikakve pregrade, pogled odozgo. Gornja polovina kolovoza, namenjena suprotnom smeru, obojena je crveno, u njoj su dve strelice suprotnog smera i preko nje je crveni krst. Isprekidane bele linije nacrtane su samo između traka istog smera; na granici dva smera nema nikakve linije — tu se samo menja boja, iz crvene u sivu. Tvoje plavo vozilo je u traci uz desnu ivicu.">
-<text x="153" y="14" font-size="12" text-anchor="middle" fill="currentColor">DVOSMERNI PUT</text>
-<text x="153" y="31" font-size="12" text-anchor="middle" fill="currentColor">NAJMANJE ČETIRI SAOBRAĆAJNE TRAKE</text>
-<rect x="8" y="36" width="290" height="72" rx="3" fill="#9aa7b4"/>
+<svg viewBox="0 -4 306 166" style="max-width:306px;width:100%" role="img" aria-label="Dvosmerni put sa četiri saobraćajne trake, bez ikakve pregrade, pogled odozgo. Gornja polovina kolovoza, namenjena suprotnom smeru, obojena je crveno, u njoj su dve strelice suprotnog smera i preko nje je crveni krst. Isprekidane bele linije nacrtane su samo između traka istog smera; na granici dva smera nema nikakve linije — tu se samo menja boja, iz crvene u sivu. Tvoje plavo vozilo je u traci uz desnu ivicu.">
+<text x="153" y="14" font-size="14" text-anchor="middle" fill="currentColor">DVOSMERNI PUT</text>
+<text x="153" y="31" font-size="14" text-anchor="middle" fill="currentColor">NAJMANJE ČETIRI SAOBRAĆAJNE TRAKE</text>
+<rect x="8" y="36" width="290" height="72" rx="3" fill="#697782"/>
 <rect x="8" y="36" width="290" height="36" fill="#c0392b" opacity=".3"/>
-<path d="M14 54 H292 M14 90 H292" stroke="#fff" stroke-width="2" stroke-dasharray="9 7" opacity=".85" fill="none"/>
-<path d="M250 45 H200 M250 63 H200" stroke="currentColor" stroke-width="2" fill="none"/>
-<path d="M200 40.5 L191 45 L200 49.5 Z M200 58.5 L191 63 L200 67.5 Z" fill="currentColor"/>
-<path d="M258 44 L286 64 M286 44 L258 64" stroke="#c0392b" stroke-width="3" fill="none"/>
-<rect x="96" y="74" width="44" height="14" rx="4" fill="#2a333d"/>
-<path d="M148 81 H190" stroke="currentColor" stroke-width="2.2" fill="none"/>
-<path d="M190 75 L202 81 L190 87 Z" fill="currentColor"/>
-<rect x="30" y="92" width="44" height="14" rx="4" fill="#2c6aa0"/>
-<text x="52" y="102.5" font-size="12" text-anchor="middle" fill="#fff">ti</text>
-<path d="M80 99 H140" stroke="currentColor" stroke-width="2.2" fill="none"/>
-<path d="M140 93 L152 99 L140 105 Z" fill="currentColor"/>
-<text x="153" y="126" font-size="12" text-anchor="middle" fill="currentColor">suprotna kolovozna traka je zabranjena</text>
-<text x="153" y="142" font-size="12" text-anchor="middle" fill="currentColor">i onda kad nema nikakve pregrade</text>
-<text x="153" y="158" font-size="12" text-anchor="middle" fill="currentColor">o vrsti linije ovo pitanje ne govori</text>
+<path d="M14 54 H292 M14 90 H292" stroke="#fff" stroke-width="2" stroke-dasharray="9 7" opacity="1" fill="none"/>
+<path d="M250 45 H200 M250 63 H200" stroke="#17212b" stroke-width="2" fill="none"/>
+<path d="M200 40.5 L191 45 L200 49.5 Z M200 58.5 L191 63 L200 67.5 Z" fill="#17212b"/>
+<path d="M258 44 L286 64 M286 44 L258 64" stroke="#fff" stroke-width="5" fill="none" aria-hidden="true"/><path d="M258 44 L286 64 M286 44 L258 64" stroke="#c0392b" stroke-width="3" fill="none"/>
+<rect x="96" y="74" width="44" height="14" rx="4" fill="#2a333d" stroke="#fff" stroke-width="1.4" paint-order="stroke"/>
+<path d="M148 81 H190" stroke="#17212b" stroke-width="2.2" fill="none"/>
+<path d="M190 75 L202 81 L190 87 Z" fill="#17212b"/>
+<rect x="30" y="92" width="44" height="14" rx="4" fill="#2c6aa0" stroke="#fff" stroke-width="1.4" paint-order="stroke"/>
+<text x="52" y="102.5" font-size="14" text-anchor="middle" fill="#fff">ti</text>
+<path d="M80 99 H140" stroke="#17212b" stroke-width="2.2" fill="none"/>
+<path d="M140 93 L152 99 L140 105 Z" fill="#17212b"/>
+<text x="153" y="126" font-size="14" text-anchor="middle" fill="currentColor">suprotna kolovozna traka je zabranjena</text>
+<text x="153" y="142" font-size="14" text-anchor="middle" fill="currentColor">i onda kad nema nikakve pregrade</text>
+<text x="153" y="158" font-size="14" text-anchor="middle" fill="currentColor">o vrsti linije ovo pitanje ne govori</text>
 </svg>
 </div>
 <div style="display:flex;justify-content:center;margin:6px 0">
-<svg viewBox="0 0 306 130" style="max-width:306px;width:100%" role="img" aria-label="Dve kolovozne trake fizički odvojene zelenim ostrvom, pogled odozgo. Gornja kolovozna traka, namenjena suprotnom smeru, obojena je crveno, u njoj je strelica suprotnog smera i preko nje je crveni krst. Zeleno ostrvo naleže na obe kolovozne trake, bez razmaka. Tvoje plavo vozilo je u donjoj kolovoznoj traci.">
-<text x="153" y="14" font-size="12" text-anchor="middle" fill="currentColor">FIZIČKI ODVOJENE KOLOVOZNE TRAKE</text>
-<rect x="8" y="20" width="290" height="28" rx="3" fill="#9aa7b4"/>
+<svg viewBox="0 -4 306 134" style="max-width:306px;width:100%" role="img" aria-label="Dve kolovozne trake fizički odvojene zelenim ostrvom, pogled odozgo. Gornja kolovozna traka, namenjena suprotnom smeru, obojena je crveno, u njoj je strelica suprotnog smera i preko nje je crveni krst. Zeleno ostrvo naleže na obe kolovozne trake, bez razmaka. Tvoje plavo vozilo je u donjoj kolovoznoj traci.">
+<text x="153" y="14" font-size="14" text-anchor="middle" fill="currentColor">FIZIČKI ODVOJENE KOLOVOZNE TRAKE</text>
+<rect x="8" y="20" width="290" height="28" rx="3" fill="#697782"/>
 <rect x="8" y="20" width="290" height="28" rx="3" fill="#c0392b" opacity=".3"/>
-<path d="M250 34 H200" stroke="currentColor" stroke-width="2.2" fill="none"/>
-<path d="M200 29 L190 34 L200 39 Z" fill="currentColor"/>
-<path d="M258 24 L286 44 M286 24 L258 44" stroke="#c0392b" stroke-width="3" fill="none"/>
-<rect x="8" y="48" width="290" height="16" fill="#1f7a3f" opacity=".65"/>
-<rect x="8" y="64" width="290" height="28" rx="3" fill="#9aa7b4"/>
-<rect x="30" y="71" width="44" height="14" rx="4" fill="#2c6aa0"/>
-<text x="52" y="81.5" font-size="12" text-anchor="middle" fill="#fff">ti</text>
-<path d="M80 78 H140" stroke="currentColor" stroke-width="2.2" fill="none"/>
-<path d="M140 72 L152 78 L140 84 Z" fill="currentColor"/>
-<text x="153" y="108" font-size="12" text-anchor="middle" fill="currentColor">zeleno ostrvo razdvaja smerove</text>
-<text x="153" y="124" font-size="12" text-anchor="middle" fill="currentColor">prelazak je zabranjen — bez izuzetka</text>
+<path d="M250 34 H200" stroke="#17212b" stroke-width="2.2" fill="none"/>
+<path d="M200 29 L190 34 L200 39 Z" fill="#17212b"/>
+<path d="M258 24 L286 44 M286 24 L258 44" stroke="#fff" stroke-width="5" fill="none" aria-hidden="true"/><path d="M258 24 L286 44 M286 24 L258 44" stroke="#c0392b" stroke-width="3" fill="none"/>
+<rect x="8" y="48" width="290" height="16" fill="#073114" opacity="1"/>
+<rect x="8" y="64" width="290" height="28" rx="3" fill="#697782"/>
+<rect x="30" y="71" width="44" height="14" rx="4" fill="#2c6aa0" stroke="#fff" stroke-width="1.4" paint-order="stroke"/>
+<text x="52" y="81.5" font-size="14" text-anchor="middle" fill="#fff">ti</text>
+<path d="M80 78 H140" stroke="#17212b" stroke-width="2.2" fill="none"/>
+<path d="M140 72 L152 78 L140 84 Z" fill="#17212b"/>
+<text x="153" y="108" font-size="14" text-anchor="middle" fill="currentColor">zeleno ostrvo razdvaja smerove</text>
+<text x="153" y="124" font-size="14" text-anchor="middle" fill="currentColor">ne prelazi u suprotan smer</text>
 </svg>
 </div>
-<p class="mut" style="text-align:center;font-size:var(--fs-sm)">plavo = ti · crveno = zabranjeno · zelena strelica = dozvoljeno kretanje</p>
+<p class="mut" style="text-align:center;font-size:var(--fs-sm)">plavo = ti · crveno = zabranjeno · zelena strelica = kretanje uz navedene uslove</p>
 <p><b>Dva izraza, ne jedan.</b> Zabranjeni deo puta ne zove se u sva tri pitanja isto, pa se lako pomeša. Kod <b>tri</b> trake to je <b>saobraćajna traka koja se nalazi uz levu ivicu puta u pravcu kretanja vozila</b>; kod <b>najmanje četiri</b> trake i kod <b>fizički odvojenih</b> kolovoznih traka to je <b>kolovozna traka namenjena za saobraćaj vozila iz suprotnog smera</b>. Ni uslov nije uvek broj traka: u trećem pitanju se nikakav broj ne pominje — dovoljno je da su kolovozne trake fizički odvojene.</p>
 <table>
 <tr><th>Kako pitanje opisuje put</th><th>Šta ti je zabranjeno — rečima iz pitanja</th><th>Gde je to na crtežu</th></tr>
@@ -3923,33 +3922,33 @@ pre nego što si siguran — a znak ide pre radnje, ne u toku nje.</p>
 <tr><td>oba smera, <b>NAJMANJE ČETIRI</b> saobraćajne trake</td><td><b>kolovozna traka namenjena za saobraćaj vozila iz suprotnog smera</b></td><td>2. crtež — crvena polovina, bez ikakve pregrade</td></tr>
 <tr><td>oba smera, <b>FIZIČKI ODVOJENE</b> kolovozne trake <i>(broj traka se ne pominje)</i></td><td><b>kolovozna traka namenjena za saobraćaj vozila iz suprotnog smera</b></td><td>3. crtež — iza zelenog ostrva</td></tr>
 </table>
-<p>U sva tri pitanja netačne ponude su <b>iste dve</b>: „u slučaju <b>preticanja ili obilaženja</b>" i „u slučaju <b>zastoja</b>". Nijedna od njih ne otključava ništa — zabrana je <b>bezuslovna</b> u sva tri slučaja.</p>
-<p class="mut">Samo kod <b>tri</b> trake objašnjenje ide korak dalje i kaže gde se onda pretiče: <b>srednjom</b> trakom, po opštim pravilima preticanja. Kod četiri trake i kod fizički odvojenih kolovoznih traka srednje trake nema — tu se pretiče levom trakom <b>svoje</b> kolovozne trake.</p>
+<p>U sva tri pitanja netačne ponude su <b>iste dve</b>: „u slučaju <b>preticanja ili obilaženja</b>" i „u slučaju <b>zastoja</b>". Te okolnosti ne dopuštaju korišćenje zabranjenog dela puta opisanog u pitanju (čl. 36).</p>
+<p class="mut">Zabrana krajnje leve trake na dvosmernom putu sa tri trake <b>ne znači da je srednja uvek raspoloživa za preticanje</b>: proveri smerove, signalizaciju i uslove za preticanje. Na putevima sa najmanje četiri trake i na fizički odvojenim kolovoznim trakama ostaješ na delu namenjenom svom smeru; broj traka u njemu može biti različit.</p>
 <p><b>Pitanje sa slikom:</b> zeleno ostrvo i plavi znak zajedno.</p>
 <div style="display:flex;justify-content:center;margin:6px 0">
-<svg viewBox="0 0 306 166" style="max-width:306px;width:100%" role="img" aria-label="Situacija sa slike: dve kolovozne trake razdvojene zelenim ostrvom. Tvoje plavo vozilo nacrtano je u gornjoj kolovoznoj traci, onoj namenjenoj suprotnom smeru, i preko njega je veliki crveni krst. U toj traci je i strelica koja pokazuje da ona vodi u suprotnom smeru. Na ostrvu stoji plavi okrugli znak sa belom strelicom ukošenom naviše nadesno. U donjoj kolovoznoj traci je zelena strelica koja pokazuje gde je trebalo da budeš.">
-<text x="153" y="14" font-size="12" text-anchor="middle" fill="currentColor">SA SLIKE: KREĆEŠ SE NEPROPISNO</text>
-<rect x="8" y="22" width="290" height="32" rx="3" fill="#9aa7b4"/>
-<path d="M280 38 H230" stroke="currentColor" stroke-width="2.2" fill="none"/>
-<path d="M230 33 L220 38 L230 43 Z" fill="currentColor"/>
-<rect x="104" y="30" width="62" height="16" rx="4" fill="#2c6aa0"/>
-<text x="120" y="42" font-size="12" text-anchor="middle" fill="#fff">ti</text>
-<path d="M138 26 L176 50 M176 26 L138 50" stroke="#c0392b" stroke-width="3.4" fill="none"/>
-<rect x="8" y="54" width="290" height="26" fill="#1f7a3f" opacity=".65"/>
-<circle cx="44" cy="67" r="12" fill="#2c6aa0"/>
-<path d="M37 73 L47 63" stroke="#fff" stroke-width="3.5" fill="none"/>
-<path d="M53 57 L43 60 L50 67 Z" fill="#fff"/>
-<rect x="8" y="80" width="290" height="32" rx="3" fill="#9aa7b4"/>
-<path d="M100 96 H180" stroke="#1f7a3f" stroke-width="3" fill="none"/>
-<path d="M192 96 L180 90 L180 102 Z" fill="#1f7a3f"/>
-<text x="153" y="130" font-size="12" text-anchor="middle" fill="currentColor">ti si na kolovoznoj traci suprotnog smera</text>
-<text x="153" y="146" font-size="12" text-anchor="middle" fill="currentColor">znak: prepreku obilaziš S DESNE strane</text>
-<text x="153" y="162" font-size="12" text-anchor="middle" fill="currentColor">tvoja je ona sa zelenom strelicom</text>
+<svg viewBox="0 -4 306 170" style="max-width:306px;width:100%" role="img" aria-label="Situacija sa slike: dve kolovozne trake razdvojene zelenim ostrvom. Tvoje plavo vozilo nacrtano je u gornjoj kolovoznoj traci, onoj namenjenoj suprotnom smeru, i preko njega je veliki crveni krst. U toj traci je i strelica koja pokazuje da ona vodi u suprotnom smeru. Na ostrvu je frontalni simbol znaka obaveznog obilaženja sa desne strane: plavi krug sa belom strelicom nadole udesno. U donjoj kolovoznoj traci je zelena strelica koja pokazuje gde je trebalo da budeš.">
+<text x="153" y="14" font-size="14" text-anchor="middle" fill="currentColor">SA SLIKE: KREĆEŠ SE NEPROPISNO</text>
+<rect x="8" y="22" width="290" height="32" rx="3" fill="#697782"/>
+<path d="M280 38 H230" stroke="#17212b" stroke-width="2.2" fill="none"/>
+<path d="M230 33 L220 38 L230 43 Z" fill="#17212b"/>
+<rect x="104" y="30" width="62" height="16" rx="4" fill="#2c6aa0" stroke="#fff" stroke-width="1.4" paint-order="stroke"/>
+<text x="120" y="42" font-size="14" text-anchor="middle" fill="#fff">ti</text>
+<path d="M138 26 L176 50 M176 26 L138 50" stroke="#fff" stroke-width="5.4" fill="none" aria-hidden="true"/><path d="M138 26 L176 50 M176 26 L138 50" stroke="#c0392b" stroke-width="3.4" fill="none"/>
+<rect x="8" y="54" width="290" height="26" fill="#073114" opacity="1"/>
+<circle cx="44" cy="67" r="12" fill="#2c6aa0" stroke="#fff" stroke-width="1.4" paint-order="stroke"/>
+<path d="M37 61 L47 71" stroke="#fff" stroke-width="3.5" fill="none" opacity="1"/>
+<path d="M53 77 L43 74 L50 67 Z" fill="#fff"/>
+<rect x="8" y="80" width="290" height="32" rx="3" fill="#697782"/>
+<path d="M100 96 H180" stroke="#fff" stroke-width="5" fill="none" aria-hidden="true"/><path d="M100 96 H180" stroke="#1f7a3f" stroke-width="3" fill="none"/>
+<path d="M192 96 L180 90 L180 102 Z" fill="#1f7a3f" stroke="#fff" stroke-width="1.5" paint-order="stroke"/>
+<text x="153" y="130" font-size="14" text-anchor="middle" fill="currentColor">ti si na kolovoznoj traci suprotnog smera</text>
+<text x="153" y="146" font-size="14" text-anchor="middle" fill="currentColor">znak: prepreku obilaziš S DESNE strane</text>
+<text x="153" y="162" font-size="14" text-anchor="middle" fill="currentColor">tvoja je ona sa zelenom strelicom</text>
 </svg>
 </div>
 <div class="signRow">
   <div class="signCell">
-    <svg viewBox="0 0 78 70" role="img" aria-label="plavi okrugli znak sa belom strelicom ukošenom naviše nadesno"><circle cx="39" cy="34" r="26" fill="#2c6aa0"/><path d="M28 45 L47 26" stroke="#fff" stroke-width="5" fill="none"/><path d="M56 17 L40 21 L52 33 Z" fill="#fff"/></svg>
+    <svg viewBox="0 0 78 70" role="img" aria-label="znak obaveznog obilaženja: plavi krug sa belom strelicom nadole udesno, obavezno obilaženje sa desne strane"><circle cx="39" cy="34" r="26" fill="#2c6aa0" stroke="#fff" stroke-width="1.4" paint-order="stroke"/><path d="M28 23 L47 42" stroke="#fff" stroke-width="5" fill="none" opacity="1"/><path d="M56 51 L40 47 L52 35 Z" fill="#fff"/></svg>
     <b>PLAVI KRUG · STRELICA NADESNO</b><span>prepreka se obilazi s desne strane — tvoja kolovozna traka je ona desno</span>
   </div>
 </div>
@@ -3967,177 +3966,178 @@ pre nego što si siguran — a znak ide pre radnje, ne u toku nje.</p>
 </ul>
 <p class="mut">Prve dve idu uz pitanje o <b>strani kolovoza</b>, druge dve uz pitanje o tome <b>čemu si blizu</b>. Odgovor je oba puta desno: desna strana, desna ivica.</p>
 <div style="display:flex;justify-content:center;margin:6px 0">
-<svg viewBox="0 0 306 140" style="max-width:306px;width:100%" role="img" aria-label="Dve saobraćajne trake u istom smeru. Donja traka, uz desnu ivicu, prekrivena je žutom bojom; u njoj je tvoje plavo vozilo i preko njega je crveni krst. Gornjom trakom se kreće drugo vozilo. Nijedan natpis ne stoji na samom kolovozu — svi su iznad i ispod njega.">
-<text x="153" y="14" font-size="12" text-anchor="middle" fill="currentColor">TRAKA ZA JAVNI PREVOZ I TAKSI</text>
-<rect x="8" y="20" width="290" height="64" rx="3" fill="#9aa7b4"/>
+<svg viewBox="0 -4 306 144" style="max-width:306px;width:100%" role="img" aria-label="Dve saobraćajne trake u istom smeru. Donja traka, uz desnu ivicu, prekrivena je žutom bojom; u njoj je tvoje plavo vozilo i preko njega je crveni krst. Gornjom trakom se kreće drugo vozilo. Nijedan natpis ne stoji na samom kolovozu — svi su iznad i ispod njega.">
+<text x="153" y="14" font-size="14" text-anchor="middle" fill="currentColor">TRAKA ZA JAVNI PREVOZ I TAKSI</text>
+<rect x="8" y="20" width="290" height="64" rx="3" fill="#697782"/>
 <rect x="8" y="52" width="290" height="32" fill="#e8b000" opacity=".3"/>
-<path d="M14 52 H292" stroke="#fff" stroke-width="2" stroke-dasharray="9 7" opacity=".85" fill="none"/>
-<rect x="130" y="28" width="46" height="16" rx="4" fill="#2a333d"/>
-<path d="M184 36 H222" stroke="currentColor" stroke-width="2.2" fill="none"/>
-<path d="M222 30 L234 36 L222 42 Z" fill="currentColor"/>
-<rect x="30" y="60" width="58" height="15" rx="4" fill="#2c6aa0"/>
-<text x="44" y="71.5" font-size="12" text-anchor="middle" fill="#fff">ti</text>
-<path d="M58 54 L96 82 M96 54 L58 82" stroke="#c0392b" stroke-width="3.4" fill="none"/>
-<text x="153" y="102" font-size="12" text-anchor="middle" fill="currentColor">žuta boja i natpisi na kolovozu</text>
-<text x="153" y="118" font-size="12" text-anchor="middle" fill="currentColor">moped i motocikl tu ne spadaju</text>
-<text x="153" y="134" font-size="12" text-anchor="middle" fill="currentColor">kretanje je nepropisno</text>
+<path d="M14 52 H292" stroke="#fff" stroke-width="2" stroke-dasharray="9 7" opacity="1" fill="none"/>
+<rect x="130" y="28" width="46" height="16" rx="4" fill="#2a333d" stroke="#fff" stroke-width="1.4" paint-order="stroke"/>
+<path d="M184 36 H222" stroke="#17212b" stroke-width="2.2" fill="none"/>
+<path d="M222 30 L234 36 L222 42 Z" fill="#17212b"/>
+<rect x="30" y="60" width="58" height="15" rx="4" fill="#2c6aa0" stroke="#fff" stroke-width="1.4" paint-order="stroke"/>
+<text x="44" y="71.5" font-size="14" text-anchor="middle" fill="#fff">ti</text>
+<path d="M58 54 L96 82 M96 54 L58 82" stroke="#fff" stroke-width="5.4" fill="none" aria-hidden="true"/><path d="M58 54 L96 82 M96 54 L58 82" stroke="#c0392b" stroke-width="3.4" fill="none"/>
+<text x="153" y="102" font-size="14" text-anchor="middle" fill="currentColor">žuta boja i natpisi na kolovozu</text>
+<text x="153" y="118" font-size="14" text-anchor="middle" fill="currentColor">moped i motocikl tu ne spadaju</text>
+<text x="153" y="134" font-size="14" text-anchor="middle" fill="currentColor">kretanje je nepropisno</text>
 </svg>
 </div>
-<p><b>Žuta traka za javni prevoz:</b> traka obeležena <b>žutom bojom i natpisima</b> namenjena je vozilima javnog prevoza i taksi vozilima, a moped odnosno motocikl u njih ne spada — krećeš se površinom koja <b>nije namenjena vozilu kojim upravljaš</b>, dakle nepropisno. Ne daje ti dodatno pravo ni to što je vozilo za osposobljavanje kandidata za vozača, a ne pomaže ni „ipak sam na desnoj strani kolovoza": desno se držiš <b>unutar traka koje smeš da koristiš</b>.</p>
+<p><b>Prikazana traka za autobuski i taksi prevoz:</b> njenu namenu određuju <b>žute oznake i natpisi na fotografiji</b>, a moped odnosno motocikl kojim ovde upravljaš ne pripada vozilima za koja je ta traka namenjena — krećeš se površinom koja <b>nije namenjena vozilu kojim upravljaš</b>, dakle nepropisno. Ne daje ti dodatno pravo ni to što je vozilo za osposobljavanje kandidata za vozača, a ne pomaže ni „ipak sam na desnoj strani kolovoza": desno se držiš <b>unutar traka koje smeš da koristiš</b>.</p>
 <div style="display:flex;justify-content:center;margin:6px 0">
-<svg viewBox="0 0 306 122" style="max-width:306px;width:100%" role="img" aria-label="Dve saobraćajne trake u istom smeru, u naselju. Tvoje plavo vozilo je u gornjoj, levoj traci; ispred njega je drugo vozilo koje ga sprečava u bržem kretanju. Zelena strelica pokazuje kako to vozilo prelazi u donju, desnu traku i propušta te.">
-<text x="153" y="14" font-size="12" text-anchor="middle" fill="currentColor">U NASELJU · SPREČAVA TE</text>
-<rect x="8" y="20" width="290" height="64" rx="3" fill="#9aa7b4"/>
-<path d="M14 52 H292" stroke="#fff" stroke-width="2" stroke-dasharray="9 7" opacity=".85" fill="none"/>
-<rect x="26" y="28" width="46" height="16" rx="4" fill="#2c6aa0"/>
-<text x="49" y="40" font-size="12" text-anchor="middle" fill="#fff">ti</text>
-<path d="M80 36 H118" stroke="currentColor" stroke-width="2.2" fill="none"/>
-<path d="M118 30 L130 36 L118 42 Z" fill="currentColor"/>
-<g class="animPropusti"><rect x="142" y="28" width="46" height="16" rx="4" fill="#2a333d"/></g>
-<path d="M194 36 C220 36 226 48 230 60" stroke="#1f7a3f" stroke-width="2.6" fill="none"/>
-<path d="M230 72 L222 58 L238 58 Z" fill="#1f7a3f"/>
-<text x="153" y="102" font-size="12" text-anchor="middle" fill="currentColor">dužan je da te propusti</text>
-<text x="153" y="118" font-size="12" text-anchor="middle" fill="currentColor">promenom saobraćajne trake</text>
+<svg viewBox="0 -4 306 126" style="max-width:306px;width:100%" role="img" aria-label="Dve saobraćajne trake u istom smeru, u naselju. Tvoje plavo vozilo je u gornjoj, levoj traci; ispred njega je drugo vozilo koje ga sprečava u bržem kretanju. Zelena strelica pokazuje kako to vozilo prelazi u donju, desnu traku i propušta te.">
+<text x="153" y="14" font-size="14" text-anchor="middle" fill="currentColor">U NASELJU · SPREČAVA TE</text>
+<rect x="8" y="20" width="290" height="64" rx="3" fill="#697782"/>
+<path d="M14 52 H292" stroke="#fff" stroke-width="2" stroke-dasharray="9 7" opacity="1" fill="none"/>
+<rect x="26" y="28" width="46" height="16" rx="4" fill="#2c6aa0" stroke="#fff" stroke-width="1.4" paint-order="stroke"/>
+<text x="49" y="40" font-size="14" text-anchor="middle" fill="#fff">ti</text>
+<path d="M80 36 H118" stroke="#17212b" stroke-width="2.2" fill="none"/>
+<path d="M118 30 L130 36 L118 42 Z" fill="#17212b"/>
+<g class="animPropusti"><rect x="142" y="28" width="46" height="16" rx="4" fill="#2a333d" stroke="#fff" stroke-width="1.4" paint-order="stroke"/></g>
+<path d="M194 36 C220 36 226 48 230 60" stroke="#fff" stroke-width="4.6" fill="none" aria-hidden="true"/><path d="M194 36 C220 36 226 48 230 60" stroke="#1f7a3f" stroke-width="2.6" fill="none"/>
+<path d="M230 72 L222 58 L238 58 Z" fill="#1f7a3f" stroke="#fff" stroke-width="1.5" paint-order="stroke"/>
+<text x="153" y="102" font-size="14" text-anchor="middle" fill="currentColor">dužan je da te propusti</text>
+<text x="153" y="118" font-size="14" text-anchor="middle" fill="currentColor">promenom saobraćajne trake</text>
 </svg>
 </div>
-<p><b>U naselju</b>, ako se vozilo ispred tebe kreće trakom koja nije uz desnu ivicu i time te <b>sprečava u bržem kretanju</b>, dužno je da te propusti <b>promenom saobraćajne trake</b>. Ne stoji izgovor da vozi najvećom dozvoljenom brzinom — pravilo se vezuje za <b>ometanje</b>, a ne za brzinomer. Ne stoji ni „preteci me zdesna": pretiče se s leve strane, a zdesna samo u posebnim, propisom određenim slučajevima.</p>
+<p><b>U naselju</b>, ako se vozilo ispred tebe kreće trakom koja nije uz desnu ivicu i time te <b>sprečava u bržem kretanju</b>, dužno je da te propusti <b>promenom saobraćajne trake</b>. Ne stoji izgovor da vozi najvećom dozvoljenom brzinom — pravilo se vezuje za <b>ometanje</b>, a ne za brzinomer. Ni mogućnost prolaska desnom trakom ne ukida tu obavezu. Na putu u naselju sa najmanje dve trake za isti smer, prolazak sa desne strane vozila koje nije u krajnjoj desnoj traci <b>ne smatra se preticanjem</b> (čl. 53); i tada moraš postupati bezbedno i po propisima.</p>
 </div>
 <!-- izvor: 9615 (dvostruka puna, cekanje isprekidanog dela), 9618 (kombinovana) -->
 <div class="kPodH"><b class="kPodNaslov">Razdelna linija između smerova</b>
 <div class="signRow lineRow">
   <div class="signCell">
-    <svg viewBox="0 0 120 62" role="img" aria-label="puna razdelna linija; strelica koja je prelazi precrtana je crvenim krstom"><rect x="2" y="8" width="116" height="46" rx="3" fill="#9aa7b4"/><path d="M8 31 H112" stroke="#fff" stroke-width="3" fill="none"/><path d="M60 50 V22" stroke="#c0392b" stroke-width="2.4" fill="none"/><path d="M60 10 L53 22 L67 22 Z" fill="#c0392b"/><path d="M52 28 L68 42 M68 28 L52 42" stroke="#c0392b" stroke-width="2.6" fill="none"/></svg>
-    <b>PUNA</b><span>ne prelaziš — ni radi preticanja ni radi obilaženja</span>
+    <svg viewBox="0 0 120 62" role="img" aria-label="puna razdelna linija; crveni krst prikazuje opštu zabranu prelaska, uz zakonske izuzetke navedene u tekstu"><rect x="2" y="8" width="116" height="46" rx="3" fill="#697782"/><path d="M8 31 H112" stroke="#fff" stroke-width="3" fill="none" opacity="1"/><path d="M60 50 V22" stroke="#fff" stroke-width="4.4" fill="none" aria-hidden="true"/><path d="M60 50 V22" stroke="#c0392b" stroke-width="2.4" fill="none"/><path d="M60 10 L53 22 L67 22 Z" fill="#c0392b" stroke="#fff" stroke-width="1.5" paint-order="stroke"/><path d="M52 28 L68 42 M68 28 L52 42" stroke="#fff" stroke-width="4.6" fill="none" aria-hidden="true"/><path d="M52 28 L68 42 M68 28 L52 42" stroke="#c0392b" stroke-width="2.6" fill="none"/></svg>
+    <b>PUNA</b><span>opšte pravilo: zabrana prelaska; izuzeci su ispod</span>
   </div>
   <div class="signCell">
-    <svg viewBox="0 0 120 62" role="img" aria-label="dvostruka puna razdelna linija; strelice sa obe strane koje je prelaze precrtane su crvenim krstovima"><rect x="2" y="8" width="116" height="46" rx="3" fill="#9aa7b4"/><path d="M8 28 H112 M8 34 H112" stroke="#fff" stroke-width="2.6" fill="none"/><path d="M34 50 V22" stroke="#c0392b" stroke-width="2.2" fill="none"/><path d="M34 10 L28 22 L40 22 Z" fill="#c0392b"/><path d="M27 27 L41 41 M41 27 L27 41" stroke="#c0392b" stroke-width="2.4" fill="none"/><path d="M86 12 V40" stroke="#c0392b" stroke-width="2.2" fill="none"/><path d="M86 52 L80 40 L92 40 Z" fill="#c0392b"/><path d="M79 21 L93 35 M93 21 L79 35" stroke="#c0392b" stroke-width="2.4" fill="none"/></svg>
-    <b>DVOSTRUKA PUNA</b><span>ne sme se preći ni sa jedne strane</span>
+    <svg viewBox="0 0 120 62" role="img" aria-label="dvostruka puna razdelna linija; crveni krstovi prikazuju opštu zabranu prelaska sa obe strane, uz zakonske izuzetke navedene u tekstu"><rect x="2" y="8" width="116" height="46" rx="3" fill="#697782"/><path d="M8 28 H112 M8 34 H112" stroke="#fff" stroke-width="2.6" fill="none" opacity="1"/><path d="M34 50 V22" stroke="#fff" stroke-width="4.2" fill="none" aria-hidden="true"/><path d="M34 50 V22" stroke="#c0392b" stroke-width="2.2" fill="none"/><path d="M34 10 L28 22 L40 22 Z" fill="#c0392b" stroke="#fff" stroke-width="1.5" paint-order="stroke"/><path d="M27 27 L41 41 M41 27 L27 41" stroke="#fff" stroke-width="4.4" fill="none" aria-hidden="true"/><path d="M27 27 L41 41 M41 27 L27 41" stroke="#c0392b" stroke-width="2.4" fill="none"/><path d="M86 12 V40" stroke="#fff" stroke-width="4.2" fill="none" aria-hidden="true"/><path d="M86 12 V40" stroke="#c0392b" stroke-width="2.2" fill="none"/><path d="M86 52 L80 40 L92 40 Z" fill="#c0392b" stroke="#fff" stroke-width="1.5" paint-order="stroke"/><path d="M79 21 L93 35 M93 21 L79 35" stroke="#fff" stroke-width="4.4" fill="none" aria-hidden="true"/><path d="M79 21 L93 35 M93 21 L79 35" stroke="#c0392b" stroke-width="2.4" fill="none"/></svg>
+    <b>DVOSTRUKA PUNA</b><span>opšte pravilo: zabrana sa obe strane</span>
   </div>
   <div class="signCell">
-    <svg viewBox="0 0 120 62" role="img" aria-label="kombinovana razdelna linija: sa gornje strane je isprekidana i odatle zelena strelica sme da je pređe, sa donje strane je puna i strelica koja odatle prelazi precrtana je crvenim krstom"><rect x="2" y="8" width="116" height="46" rx="3" fill="#9aa7b4"/><path d="M8 34 H112" stroke="#fff" stroke-width="2.6" fill="none"/><path d="M8 27 H112" stroke="#fff" stroke-width="2.6" stroke-dasharray="8 6" fill="none"/><path d="M32 12 V40" stroke="#1f7a3f" stroke-width="2.4" fill="none"/><path d="M32 52 L26 40 L38 40 Z" fill="#1f7a3f"/><path d="M88 50 V22" stroke="#c0392b" stroke-width="2.4" fill="none"/><path d="M88 10 L82 22 L94 22 Z" fill="#c0392b"/><path d="M81 28 L95 42 M95 28 L81 42" stroke="#c0392b" stroke-width="2.6" fill="none"/></svg>
-    <b>KOMBINOVANA</b><span>prelazi samo onaj kome je bliža isprekidana strana</span>
+    <svg viewBox="0 0 120 62" role="img" aria-label="kombinovana razdelna linija: gore je isprekidana, dole puna. Zelena strelica i crveni krst prikazuju opšte pravilo; ostali uslovi i zakonski izuzeci navedeni su u tekstu"><rect x="2" y="8" width="116" height="46" rx="3" fill="#697782"/><path d="M8 34 H112" stroke="#fff" stroke-width="2.6" fill="none" opacity="1"/><path d="M8 27 H112" stroke="#fff" stroke-width="2.6" stroke-dasharray="8 6" fill="none" opacity="1"/><path d="M32 12 V40" stroke="#fff" stroke-width="4.4" fill="none" aria-hidden="true"/><path d="M32 12 V40" stroke="#1f7a3f" stroke-width="2.4" fill="none"/><path d="M32 52 L26 40 L38 40 Z" fill="#1f7a3f" stroke="#fff" stroke-width="1.5" paint-order="stroke"/><path d="M88 50 V22" stroke="#fff" stroke-width="4.4" fill="none" aria-hidden="true"/><path d="M88 50 V22" stroke="#c0392b" stroke-width="2.4" fill="none"/><path d="M88 10 L82 22 L94 22 Z" fill="#c0392b" stroke="#fff" stroke-width="1.5" paint-order="stroke"/><path d="M81 28 L95 42 M95 28 L81 42" stroke="#fff" stroke-width="4.6" fill="none" aria-hidden="true"/><path d="M81 28 L95 42 M95 28 L81 42" stroke="#c0392b" stroke-width="2.6" fill="none"/></svg>
+    <b>KOMBINOVANA</b><span>opšte pravilo: sa isprekidane strane, uz ostale uslove</span>
   </div>
 </div>
-<p>Preko <b>pune</b> razdelne linije se ne prelazi — ni radi preticanja, ni radi obilaženja; čeka se deo puta na kome je linija <b>isprekidana</b>. <b>Dvostruku punu</b> ne sme da pređe nijedna strana, pa su na crtežu precrtane obe strelice. Kod <b>kombinovane</b> gledaš koja je polovina okrenuta tebi: pređe je samo onaj kome je bliža <b>isprekidana</b> strana — zato je na crtežu jedna strelica zelena, a ona sa pune strane precrtana. Ako je sa tvoje strane puna, izlazak u levu traku je nepropisan i sa uključenim pokazivačem.</p>
+<p><b>Opšte pravilo:</b> puna razdelna linija zabranjuje prelazak i kretanje po njoj; dvostruka puna važi za obe strane. Kod kombinovane zabrana važi za stranu kojoj je bliža puna linija. Isprekidana linija sama po sebi ne znači da je svako preticanje bezbedno i dozvoljeno (Pravilnik, čl. 63).</p>
+<p><b>Izuzeci iz čl. 55 ZOBS:</b> obilaženje je dozvoljeno i u slučaju zabrane iz stava 3. tačka 15), prelaska preko neisprekidane uzdužne linije uz korišćenje suprotne trake, pod uslovima iz stava 1. Preticanje ili obilaženje <b>lakog električnog vozila, bicikla, radne mašine, traktora, motokultivatora ili zaprežnog vozila</b> dopušteno je i kod zabrana iz tač. 14) i 15), uz iste uslove. To znači: dovoljno prostora, bez ometanja vozila iz suprotnog smera i bez ugrožavanja drugih; ostale zabrane i dalje važe. Moped i motocikl nisu na tom spisku.</p>
 <p class="mut">Pamtilica: uključen pokazivač ne pretvara zabranjenu radnju u dozvoljenu — on najavljuje nameru, ništa više.</p>
 </div>
 <!-- izvor: 9622 (netacne ponude: nema vozila iz suprotnog smera / najmanje dve trake), 9623 (znak sa slike i stanovanje) -->
 <div class="kPodH"><b class="kPodNaslov">Jednosmerni put</b>
 <div class="signRow">
   <div class="signCell">
-    <svg viewBox="0 0 78 70" role="img" aria-label="saobraćajni znak: crveni krug sa belom vodoravnom prečkom"><circle cx="39" cy="34" r="26" fill="#c0392b"/><rect x="19" y="29" width="40" height="10" rx="2" fill="#fff"/></svg>
+    <svg viewBox="0 0 78 70" role="img" aria-label="saobraćajni znak: crveni krug sa belom vodoravnom prečkom"><circle cx="39" cy="34" r="26" fill="#c0392b" stroke="#fff" stroke-width="1.4" paint-order="stroke"/><rect x="19" y="29" width="40" height="10" rx="2" fill="#fff"/></svg>
     <b>CRVENI KRUG · BELA PREČKA</b><span>zabranjuje ulazak u ulicu iz tog smera</span>
   </div>
 </div>
 <p>Na putu za saobraćaj vozila u <b>jednom smeru</b> ne smeš da se krećeš u smeru suprotnom od dozvoljenog. Ne otključava to ni „nema vozila iz suprotnog smera", ni „ima najmanje dve saobraćajne trake u tom smeru" — broj traka tu ništa ne menja.</p>
-<p><b>Znak sa slike:</b> crveni krug sa belom vodoravnom prečkom zabranjuje <b>ulazak u ulicu iz tog smera</b>. Na toj slici je <b>postavljen sa obe strane kolovoza</b>, pa važi za celu širinu — vozilo se jednosmernom ulicom kreće u zabranjenom smeru. Zabrana <b>nema izuzetak po osnovu toga ko gde stanuje</b>: do kuće u toj ulici stiže se iz smera u kojem je saobraćaj dozvoljen, makar to značilo duži put oko bloka.</p>
+<p><b>Znak sa slike:</b> crveni krug sa belom vodoravnom prečkom zabranjuje <b>ulazak u ulicu iz tog smera</b>. Na slici je znak <b>postavljen sa obe strane kolovoza</b>. Vozilo ulazi iz zabranjenog smera; zabrana ne nastaje tek zato što je znak ponovljen. Zabrana <b>nema izuzetak po osnovu toga ko gde stanuje</b>: do kuće u toj ulici stiže se iz smera u kojem je saobraćaj dozvoljen, makar to značilo duži put oko bloka.</p>
 </div>
 <!-- izvor: 10454 (koridor spasa; tacan odgovor: vozila pod pratnjom i vozila sa pravom prvenstva prolaza) -->
 <div class="kPodH"><b class="kPodNaslov">Zastoj — prolaz koji ostavljaš</b>
 <div style="display:flex;justify-content:center;margin:6px 0">
-<svg viewBox="0 0 306 188" style="max-width:306px;width:100%" role="img" aria-label="Zastoj na putu sa dve kolovozne trake koje su fizički odvojene zelenim ostrvom; ostrvo naleže na obe kolovozne trake, bez razmaka. U svakoj kolovoznoj traci vozila iz jedne saobraćajne trake stoje uz njenu jednu ivicu, a vozila iz druge uz drugu, pa u sredini ostaje slobodan prolaz označen zelenom strelicom. Tako je nacrtano u obe kolovozne trake. Tvoje vozilo je plavo, u donjoj kolovoznoj traci.">
-<text x="153" y="14" font-size="12" text-anchor="middle" fill="currentColor">ZASTOJ · ODVOJENE KOLOVOZNE TRAKE</text>
-<rect x="8" y="20" width="290" height="56" rx="3" fill="#9aa7b4"/>
-<path d="M14 48 H292" stroke="#fff" stroke-width="2" stroke-dasharray="9 7" opacity=".35" fill="none"/>
-<rect x="16" y="22" width="48" height="14" rx="4" fill="#2a333d"/>
-<rect x="72" y="22" width="48" height="14" rx="4" fill="#2a333d"/>
-<rect x="128" y="22" width="48" height="14" rx="4" fill="#2a333d"/>
-<rect x="184" y="22" width="48" height="14" rx="4" fill="#2a333d"/>
-<rect x="44" y="60" width="48" height="14" rx="4" fill="#2a333d"/>
-<rect x="100" y="60" width="48" height="14" rx="4" fill="#2a333d"/>
-<rect x="156" y="60" width="48" height="14" rx="4" fill="#2a333d"/>
-<rect x="212" y="60" width="48" height="14" rx="4" fill="#2a333d"/>
-<path d="M272 48 H52" stroke="#1f7a3f" stroke-width="3.2" fill="none" class="animKoridorTok"/>
-<path d="M40 48 L54 41 L54 55 Z" fill="#1f7a3f"/>
-<rect x="8" y="76" width="290" height="16" fill="#1f7a3f" opacity=".65"/>
-<rect x="8" y="92" width="290" height="56" rx="3" fill="#9aa7b4"/>
-<path d="M14 120 H292" stroke="#fff" stroke-width="2" stroke-dasharray="9 7" opacity=".35" fill="none"/>
-<rect x="16" y="94" width="48" height="14" rx="4" fill="#2a333d"/>
-<rect x="72" y="94" width="48" height="14" rx="4" fill="#2a333d"/>
-<rect x="128" y="94" width="48" height="14" rx="4" fill="#2a333d"/>
-<rect x="184" y="94" width="48" height="14" rx="4" fill="#2a333d"/>
-<rect x="44" y="132" width="48" height="14" rx="4" fill="#2a333d"/>
-<rect x="100" y="132" width="48" height="14" rx="4" fill="#2c6aa0"/>
-<text x="124" y="142.5" font-size="12" text-anchor="middle" fill="#fff">ti</text>
-<rect x="156" y="132" width="48" height="14" rx="4" fill="#2a333d"/>
-<rect x="212" y="132" width="48" height="14" rx="4" fill="#2a333d"/>
-<path d="M34 120 H254" stroke="#1f7a3f" stroke-width="3.2" fill="none" class="animKoridorTok"/>
-<path d="M266 120 L252 113 L252 127 Z" fill="#1f7a3f"/>
-<text x="153" y="166" font-size="12" text-anchor="middle" fill="currentColor">slobodan prolaz za vozila POD PRATNJOM</text>
-<text x="153" y="182" font-size="12" text-anchor="middle" fill="currentColor">i za vozila SA PRAVOM PRVENSTVA PROLAZA</text>
+<svg viewBox="0 -4 306 192" style="max-width:306px;width:100%" role="img" aria-label="Zastoj na putu sa dve kolovozne trake koje su fizički odvojene zelenim ostrvom; ostrvo naleže na obe kolovozne trake, bez razmaka. U svakoj kolovoznoj traci vozila iz jedne saobraćajne trake stoje uz njenu jednu ivicu, a vozila iz druge uz drugu, pa u sredini ostaje slobodan prolaz označen zelenom strelicom. Tako je nacrtano u obe kolovozne trake. Tvoje vozilo je plavo, u donjoj kolovoznoj traci.">
+<text x="153" y="14" font-size="14" text-anchor="middle" fill="currentColor">ZASTOJ · ODVOJENE KOLOVOZNE TRAKE</text>
+<rect x="8" y="20" width="290" height="56" rx="3" fill="#697782"/>
+<path d="M14 48 H292" stroke="#fff" stroke-width="2" stroke-dasharray="9 7" opacity="1" fill="none"/>
+<rect x="16" y="22" width="48" height="14" rx="4" fill="#2a333d" stroke="#fff" stroke-width="1.4" paint-order="stroke"/>
+<rect x="72" y="22" width="48" height="14" rx="4" fill="#2a333d" stroke="#fff" stroke-width="1.4" paint-order="stroke"/>
+<rect x="128" y="22" width="48" height="14" rx="4" fill="#2a333d" stroke="#fff" stroke-width="1.4" paint-order="stroke"/>
+<rect x="184" y="22" width="48" height="14" rx="4" fill="#2a333d" stroke="#fff" stroke-width="1.4" paint-order="stroke"/>
+<rect x="44" y="60" width="48" height="14" rx="4" fill="#2a333d" stroke="#fff" stroke-width="1.4" paint-order="stroke"/>
+<rect x="100" y="60" width="48" height="14" rx="4" fill="#2a333d" stroke="#fff" stroke-width="1.4" paint-order="stroke"/>
+<rect x="156" y="60" width="48" height="14" rx="4" fill="#2a333d" stroke="#fff" stroke-width="1.4" paint-order="stroke"/>
+<rect x="212" y="60" width="48" height="14" rx="4" fill="#2a333d" stroke="#fff" stroke-width="1.4" paint-order="stroke"/>
+<path d="M272 48 H52" stroke="#fff" stroke-width="5.2" fill="none" class="animKoridorTok" aria-hidden="true"/><path d="M272 48 H52" stroke="#1f7a3f" stroke-width="3.2" fill="none" class="animKoridorTok"/>
+<path d="M40 48 L54 41 L54 55 Z" fill="#1f7a3f" stroke="#fff" stroke-width="1.5" paint-order="stroke"/>
+<rect x="8" y="76" width="290" height="16" fill="#073114" opacity="1"/>
+<rect x="8" y="92" width="290" height="56" rx="3" fill="#697782"/>
+<path d="M14 120 H292" stroke="#fff" stroke-width="2" stroke-dasharray="9 7" opacity="1" fill="none"/>
+<rect x="16" y="94" width="48" height="14" rx="4" fill="#2a333d" stroke="#fff" stroke-width="1.4" paint-order="stroke"/>
+<rect x="72" y="94" width="48" height="14" rx="4" fill="#2a333d" stroke="#fff" stroke-width="1.4" paint-order="stroke"/>
+<rect x="128" y="94" width="48" height="14" rx="4" fill="#2a333d" stroke="#fff" stroke-width="1.4" paint-order="stroke"/>
+<rect x="184" y="94" width="48" height="14" rx="4" fill="#2a333d" stroke="#fff" stroke-width="1.4" paint-order="stroke"/>
+<rect x="44" y="132" width="48" height="14" rx="4" fill="#2a333d" stroke="#fff" stroke-width="1.4" paint-order="stroke"/>
+<rect x="100" y="132" width="48" height="14" rx="4" fill="#2c6aa0" stroke="#fff" stroke-width="1.4" paint-order="stroke"/>
+<text x="124" y="142.5" font-size="14" text-anchor="middle" fill="#fff">ti</text>
+<rect x="156" y="132" width="48" height="14" rx="4" fill="#2a333d" stroke="#fff" stroke-width="1.4" paint-order="stroke"/>
+<rect x="212" y="132" width="48" height="14" rx="4" fill="#2a333d" stroke="#fff" stroke-width="1.4" paint-order="stroke"/>
+<path d="M34 120 H254" stroke="#fff" stroke-width="5.2" fill="none" class="animKoridorTok" aria-hidden="true"/><path d="M34 120 H254" stroke="#1f7a3f" stroke-width="3.2" fill="none" class="animKoridorTok"/>
+<path d="M266 120 L252 113 L252 127 Z" fill="#1f7a3f" stroke="#fff" stroke-width="1.5" paint-order="stroke"/>
+<text x="153" y="166" font-size="14" text-anchor="middle" fill="currentColor">slobodan prolaz za vozila POD PRATNJOM</text>
+<text x="153" y="182" font-size="14" text-anchor="middle" fill="currentColor">i za vozila SA PRAVOM PRVENSTVA PROLAZA</text>
 </svg>
 </div>
-<p>U zastoju saobraćaja na putu sa <b>fizički odvojenim kolovoznim trakama</b> vozači su <b>uvek</b> dužni da zauzmu položaj <b>uz desnu, odnosno levu ivicu saobraćajne trake</b> i tako ostave slobodan prostor namenjen da, u slučaju potrebe, omogući prolaz <b>vozilima pod pratnjom i vozilima sa pravom prvenstva prolaza</b>. Reč <b>uvek</b> je u pitanju, pa nema situacije u kojoj se to preskače — zato je koridor nacrtan u <b>obe</b> kolovozne trake.</p>
+<p>U zastoju saobraćaja na putu sa <b>fizički odvojenim kolovoznim trakama</b> vozači su <b>uvek</b> dužni da zauzmu položaj <b>uz desnu, odnosno levu ivicu saobraćajne trake</b> i tako ostave slobodan prostor namenjen da, u slučaju potrebe, omogući prolaz <b>vozilima pod pratnjom i vozilima sa pravom prvenstva prolaza</b>. Obaveza važi u opisanim uslovima zastoja (čl. 35). Vozila u krajnjoj levoj traci zauzimaju položaj uz njenu <b>levu</b> ivicu, a vozila u desnoj i srednjim trakama uz njihovu <b>desnu</b> ivicu. Crtež prikazuje put sa dve trake po smeru.</p>
 <p>Taj prostor nije za „vozila koja vrše javni prevoz putnika", ni za „vozila čija širina omogućava kretanje tim prostorom".</p>
 </div>
 <!-- izvor: 9626 + 9630 (susedna traka zatvorena: duzan si, jedno vozilo), 9628 (najava i „zapocela radnju": nisi duzan), 9586 (auto-taksi sa parkinga, „zapoceo radnju", „javni prevoz": nisi duzan) -->
 <div class="kPodH"><b class="kPodNaslov">Uključivanje u tvoju traku — kad si dužan, a kad nisi</b>
 <div style="display:flex;justify-content:center;margin:6px 0">
-<svg viewBox="0 0 306 104" style="max-width:306px;width:100%" role="img" aria-label="Saobraćajna traka pored tebe zatvorena je crvenom preprekom; u njoj su dva vozila, a prvo se zelenom strelicom uključuje u tvoju traku ispred tebe. Tvoje vozilo je plavo, u donjoj traci.">
-<text x="153" y="14" font-size="12" text-anchor="middle" fill="currentColor">TRAKA PORED TEBE JE ZATVORENA</text>
-<rect x="8" y="20" width="290" height="56" rx="3" fill="#9aa7b4"/>
+<svg viewBox="0 -4 306 108" style="max-width:306px;width:100%" role="img" aria-label="Saobraćajna traka pored tebe zatvorena je crvenom preprekom; u njoj su dva vozila, a prvo se zelenom strelicom uključuje u tvoju traku ispred tebe. Tvoje vozilo je plavo, u donjoj traci.">
+<text x="153" y="14" font-size="14" text-anchor="middle" fill="currentColor">TRAKA PORED TEBE JE ZATVORENA</text>
+<rect x="8" y="20" width="290" height="56" rx="3" fill="#697782"/>
 <rect x="8" y="20" width="290" height="28" fill="#c0392b" opacity=".22"/>
-<path d="M14 48 H292" stroke="#fff" stroke-width="2" stroke-dasharray="9 7" opacity=".85" fill="none"/>
-<rect x="266" y="23" width="26" height="22" rx="3" fill="#c0392b" opacity=".85"/>
-<g class="animUkljuci"><rect x="160" y="26" width="46" height="15" rx="4" fill="#2a333d"/><text x="183" y="37.5" font-size="12" text-anchor="middle" fill="#fff">1</text></g>
-<rect x="96" y="26" width="46" height="15" rx="4" fill="#2a333d"/>
-<text x="119" y="37.5" font-size="12" text-anchor="middle" fill="#fff">2</text>
-<rect x="40" y="54" width="46" height="15" rx="4" fill="#2c6aa0"/>
-<text x="63" y="65.5" font-size="12" text-anchor="middle" fill="#fff">ti</text>
-<path d="M210 34 C232 35 236 44 240 52" stroke="#1f7a3f" stroke-width="2.6" fill="none"/>
-<path d="M240 64 L232 50 L248 50 Z" fill="#1f7a3f"/>
-<text x="153" y="96" font-size="12" text-anchor="middle" fill="currentColor">DUŽAN SI — propuštaš jedno vozilo</text>
+<path d="M14 48 H292" stroke="#fff" stroke-width="2" stroke-dasharray="9 7" opacity="1" fill="none"/>
+<rect x="266" y="23" width="26" height="22" rx="3" fill="#c0392b" opacity="1" stroke="#fff" stroke-width="1.4" paint-order="stroke"/>
+<g class="animUkljuci"><rect x="160" y="26" width="46" height="15" rx="4" fill="#2a333d" stroke="#fff" stroke-width="1.4" paint-order="stroke"/><text x="183" y="37.5" font-size="14" text-anchor="middle" fill="#fff">1</text></g>
+<rect x="96" y="26" width="46" height="15" rx="4" fill="#2a333d" stroke="#fff" stroke-width="1.4" paint-order="stroke"/>
+<text x="119" y="37.5" font-size="14" text-anchor="middle" fill="#fff">2</text>
+<rect x="40" y="54" width="46" height="15" rx="4" fill="#2c6aa0" stroke="#fff" stroke-width="1.4" paint-order="stroke"/>
+<text x="63" y="65.5" font-size="14" text-anchor="middle" fill="#fff">ti</text>
+<path d="M210 34 C232 35 236 44 240 52" stroke="#fff" stroke-width="4.6" fill="none" aria-hidden="true"/><path d="M210 34 C232 35 236 44 240 52" stroke="#1f7a3f" stroke-width="2.6" fill="none"/>
+<path d="M240 64 L232 50 L248 50 Z" fill="#1f7a3f" stroke="#fff" stroke-width="1.5" paint-order="stroke"/>
+<text x="153" y="96" font-size="14" text-anchor="middle" fill="currentColor">DUŽAN SI — propuštaš jedno vozilo</text>
 </svg>
 </div>
 <div style="display:flex;justify-content:center;margin:6px 0">
-<svg viewBox="0 0 306 104" style="max-width:306px;width:100%" role="img" aria-label="Saobraćajna traka pored tebe se nastavlja, nije zatvorena. Dva vozila u njoj upaljenim žutim pokazivačem samo najavljuju ulazak u tvoju traku, a njihova namera nacrtana je isprekidanom strelicom. Tvoje vozilo je plavo, u donjoj traci.">
-<text x="153" y="14" font-size="12" text-anchor="middle" fill="currentColor">TRAKA PORED TEBE SE NASTAVLJA</text>
-<rect x="8" y="20" width="290" height="56" rx="3" fill="#9aa7b4"/>
-<path d="M14 48 H292" stroke="#fff" stroke-width="2" stroke-dasharray="9 7" opacity=".85" fill="none"/>
-<rect x="84" y="26" width="46" height="15" rx="4" fill="#2a333d"/>
-<circle cx="132" cy="42" r="4.5" fill="#e8b000" class="animTrepti"/>
-<path d="M134 40 C152 42 156 47 158 55" stroke="currentColor" stroke-width="2" stroke-dasharray="6 5" opacity=".7" fill="none"/>
-<path d="M158 66 L151 52 L165 52 Z" fill="currentColor" opacity=".7"/>
-<rect x="176" y="26" width="46" height="15" rx="4" fill="#2a333d"/>
-<circle cx="224" cy="42" r="4.5" fill="#e8b000" class="animTrepti"/>
-<path d="M226 40 C244 42 248 47 250 55" stroke="currentColor" stroke-width="2" stroke-dasharray="6 5" opacity=".7" fill="none"/>
-<path d="M250 66 L243 52 L257 52 Z" fill="currentColor" opacity=".7"/>
-<rect x="22" y="54" width="46" height="15" rx="4" fill="#2c6aa0"/>
-<text x="45" y="65.5" font-size="12" text-anchor="middle" fill="#fff">ti</text>
-<text x="153" y="96" font-size="12" text-anchor="middle" fill="currentColor">NISI dužan — samo najavljuju nameru</text>
+<svg viewBox="0 -4 306 108" style="max-width:306px;width:100%" role="img" aria-label="Saobraćajna traka pored tebe se nastavlja, nije zatvorena. Dva vozila u njoj upaljenim žutim pokazivačem samo najavljuju ulazak u tvoju traku, a njihova namera nacrtana je isprekidanom strelicom. Tvoje vozilo je plavo, u donjoj traci.">
+<text x="153" y="14" font-size="14" text-anchor="middle" fill="currentColor">TRAKA PORED TEBE SE NASTAVLJA</text>
+<rect x="8" y="20" width="290" height="56" rx="3" fill="#697782"/>
+<path d="M14 48 H292" stroke="#fff" stroke-width="2" stroke-dasharray="9 7" opacity="1" fill="none"/>
+<rect x="84" y="26" width="46" height="15" rx="4" fill="#2a333d" stroke="#fff" stroke-width="1.4" paint-order="stroke"/>
+<circle cx="132" cy="42" r="4.5" fill="#e8b000" class="animTrepti" stroke="#17212b" stroke-width="1.4" paint-order="stroke"/>
+<path d="M134 40 C152 42 156 47 158 55" stroke="#17212b" stroke-width="2" stroke-dasharray="6 5" opacity="1" fill="none"/>
+<path d="M158 66 L151 52 L165 52 Z" fill="#17212b" opacity="1"/>
+<rect x="176" y="26" width="46" height="15" rx="4" fill="#2a333d" stroke="#fff" stroke-width="1.4" paint-order="stroke"/>
+<circle cx="224" cy="42" r="4.5" fill="#e8b000" class="animTrepti" stroke="#17212b" stroke-width="1.4" paint-order="stroke"/>
+<path d="M226 40 C244 42 248 47 250 55" stroke="#17212b" stroke-width="2" stroke-dasharray="6 5" opacity="1" fill="none"/>
+<path d="M250 66 L243 52 L257 52 Z" fill="#17212b" opacity="1"/>
+<rect x="22" y="54" width="46" height="15" rx="4" fill="#2c6aa0" stroke="#fff" stroke-width="1.4" paint-order="stroke"/>
+<text x="45" y="65.5" font-size="14" text-anchor="middle" fill="#fff">ti</text>
+<text x="153" y="96" font-size="14" text-anchor="middle" fill="currentColor">najava ne daje prvenstvo prolaza</text>
 </svg>
 </div>
-<p><b>Obaveza da omogućiš uključivanje u tvoju saobraćajnu traku ima tačno dva izvora:</b> susedna traka koja se <b>završava</b> ili u kojoj je <b>onemogućen saobraćaj</b> — tada za <b>jedno</b> vozilo — i <b>autobus koji propisno kreće sa stajališta u naselju</b>. Sve ostalo što ponude nude kao razlog nije na tom spisku i ne stvara ti tu obavezu.</p>
+<p><b>U ovim pitanjima razlikuj posebnu obavezu uključivanja od sprečavanja opasnosti:</b> kad se susedna traka <b>završava</b> ili je u njoj <b>onemogućen saobraćaj</b>, omogućavaš uključenje <b>jednog</b> vozila (čl. 36). U naselju omogućavaš i uključivanje autobusa koji propisno kreće sa stajališta (čl. 27). Sama najava ili započinjanje promene trake, kao ni izlazak taksija sa parking mesta, ne daju takvo prvenstvo. Ipak, po čl. 3 moraš preduzeti potrebne mere da izbegneš opasnost koju je drugi izazvao, ako time ne dovodiš sebe ili drugog u opasnost.</p>
 <table>
-<tr><th>Šta se dešava pored tebe</th><th>Tvoja obaveza</th></tr>
+<tr><th>Šta se dešava pored tebe</th><th>Posebna obaveza omogućavanja uključenja</th></tr>
 <tr><td>Susedna traka se <b>završava</b> ili je u njoj <b>onemogućen saobraćaj</b></td><td><b>DUŽAN SI</b> — omogućavaš uključenje <b>jednog</b> vozila; sledeće pušta vozač iza tebe</td></tr>
 <tr><td>Jedno ili više vozila ti pokazivačem samo <b>najavljuje</b> ulazak u tvoju traku</td><td><b>NISI</b> — najava sama po sebi ne stvara obavezu, ni za jedno ni za oba vozila</td></tr>
-<tr><td>Vozilo je već <b>započelo</b> radnju uključivanja u saobraćaj</td><td><b>NISI</b> — započeta radnja nije na spisku razloga; ni jedno vozilo, ni oba koja su „započela izvođenje te radnje"</td></tr>
+<tr><td>Vozilo je već <b>započelo</b> radnju uključivanja u saobraćaj</td><td><b>NISI po tom osnovu</b> — započinjanje radnje samo po sebi ne daje prvenstvo; obaveza sprečavanja opasnosti ostaje</td></tr>
 <tr><td><b>Auto-taksi</b> se sa parking mesta uključuje u saobraćaj</td><td><b>NISI</b> — parking mesto nije traka koja se završava, a ni „vozilo za javni prevoz putnika" nije razlog</td></tr>
 </table>
-<p><b>Gde onda „započeta radnja" ipak stoji:</b> u tačnom odgovoru, ali kao razlog <b>opreza</b>, a ne obaveze — nisi dužan, ali ćeš propustiti jer si nameru uočio <b>na vreme</b>, i tako izbeći opasnu situaciju <b>ukoliko vozač nastavi započetu radnju</b>. Ko to pomeša, izabraće ponudu „dužni ste… jer je vozilo započelo radnju uključivanja".</p>
-<p>Kod zatvorene trake nije važno da li je ona <b>levo ili desno</b> od tebe — obaveza je ista i uvek za <b>jedno</b> vozilo. Netačno je i da propuštaš <b>sva</b> vozila redom, i da <b>imaš prvenstvo prolaza</b> nad vozilima iz trake u kojoj je saobraćaj onemogućen: kad bi ga imao, ta traka se nikad ne bi ispraznila.</p>
-<p class="mut">Pamtilica: kad je susedna traka <b>zatvorena</b>, „niste dužni" je netačan odgovor — dužan si, za jedno vozilo. Kad se traka <b>nastavlja</b>, obaveze nemaš, ali tačan odgovor tu nije samo „niste dužni": ide sa nastavkom da ćeš ih ipak propustiti jer si nameru uočio na vreme i tako izbeći opasnu situaciju ako vozači nastave započetu radnju.</p>
+<p><b>Zašto ih ipak propuštaš u prikazanoj situaciji:</b> nameru si uočio <b>na vreme</b> i time izbegavaš opasnost ako vozač nastavi radnju. To ne znači da je samo započinjanjem radnje stekao prvenstvo; razlikuj taj netačan razlog od obaveze sprečavanja opasnosti iz čl. 3, pod navedenim uslovom.</p>
+<p>Kod zatvorene trake nije važno da li je ona <b>levo ili desno</b> od tebe — obaveza je ista i uvek za <b>jedno</b> vozilo. Netačno je i da propuštaš <b>sva</b> vozila redom, i da <b>imaš prvenstvo prolaza</b> nad vozilima iz trake u kojoj je saobraćaj onemogućen — dužnost da omogućiš uključenje jednog vozila propisana je čl. 36.</p>
+<p class="mut">Pamtilica: kad je susedna traka <b>zatvorena</b>, „niste dužni" je netačan odgovor — dužan si, za jedno vozilo. Kad se traka <b>nastavlja</b>, sama najava ne daje prvenstvo. U prikazanom pitanju tačan odgovor nije samo „niste dužni": ide sa nastavkom da ćeš ih ipak propustiti jer si nameru uočio na vreme i tako izbeći opasnu situaciju ako vozači nastave započetu radnju.</p>
 </div>
 <!-- izvor: 9575 + 9576 (skretanje udesno iz leve trake) -->
 <div class="kPodH"><b class="kPodNaslov">Udesno se skreće iz desne trake</b>
 <div style="display:flex;justify-content:center;margin:6px 0">
 <svg viewBox="0 0 306 156" style="max-width:306px;width:100%" role="img" aria-label="Dve saobraćajne trake u istom smeru. Tvoje plavo vozilo je u levoj traci, sa upaljenim desnim pokazivačem; desnom trakom pored tebe kreće se drugo vozilo. Putanja skretanja udesno u sporednu ulicu nacrtana je crvenom isprekidanom linijom i precrtana crvenim krstom.">
-<rect x="0" y="20" width="306" height="64" fill="#9aa7b4"/>
-<rect x="186" y="84" width="56" height="52" fill="#9aa7b4"/>
-<path d="M6 52 H300" stroke="#fff" stroke-width="2" stroke-dasharray="9 7" opacity=".85" fill="none"/>
-<rect x="44" y="28" width="46" height="16" rx="4" fill="#2c6aa0"/>
-<text x="67" y="40" font-size="12" text-anchor="middle" fill="#fff">ti</text>
-<circle cx="92" cy="46" r="4.5" fill="#e8b000" class="animTrepti"/>
-<rect x="54" y="60" width="46" height="16" rx="4" fill="#2a333d"/>
-<path d="M108 68 H150" stroke="currentColor" stroke-width="2.2" fill="none"/>
-<path d="M150 62 L162 68 L150 74 Z" fill="currentColor"/>
-<path d="M96 40 C150 40 182 54 202 96" stroke="#c0392b" stroke-width="2.6" stroke-dasharray="7 6" fill="none"/>
-<path d="M192 100 L232 132 M232 100 L192 132" stroke="#c0392b" stroke-width="4" fill="none"/>
-<text x="153" y="152" font-size="12" text-anchor="middle" fill="currentColor">iz LEVE trake se ne skreće udesno</text>
+<rect x="0" y="20" width="306" height="64" fill="#697782"/>
+<rect x="186" y="84" width="56" height="52" fill="#697782"/>
+<path d="M6 52 H300" stroke="#fff" stroke-width="2" stroke-dasharray="9 7" opacity="1" fill="none"/>
+<rect x="44" y="28" width="46" height="16" rx="4" fill="#2c6aa0" stroke="#fff" stroke-width="1.4" paint-order="stroke"/>
+<text x="67" y="40" font-size="14" text-anchor="middle" fill="#fff">ti</text>
+<circle cx="92" cy="46" r="4.5" fill="#e8b000" class="animTrepti" stroke="#17212b" stroke-width="1.4" paint-order="stroke"/>
+<rect x="54" y="60" width="46" height="16" rx="4" fill="#2a333d" stroke="#fff" stroke-width="1.4" paint-order="stroke"/>
+<path d="M108 68 H150" stroke="#17212b" stroke-width="2.2" fill="none"/>
+<path d="M150 62 L162 68 L150 74 Z" fill="#17212b"/>
+<path d="M96 40 C150 40 182 54 202 96" stroke="#fff" stroke-width="4.6" stroke-dasharray="7 6" fill="none" aria-hidden="true"/><path d="M96 40 C150 40 182 54 202 96" stroke="#c0392b" stroke-width="2.6" stroke-dasharray="7 6" fill="none"/>
+<path d="M192 100 L232 132 M232 100 L192 132" stroke="#fff" stroke-width="6" fill="none" aria-hidden="true"/><path d="M192 100 L232 132 M232 100 L192 132" stroke="#c0392b" stroke-width="4" fill="none"/>
+<text x="153" y="152" font-size="14" text-anchor="middle" fill="currentColor">OVDE nema skretanja iz leve trake</text>
 </svg>
 </div>
-<p>Udesno se skreće iz položaja <b>uz desnu ivicu kolovoza</b>. Ako si u <b>levoj</b> traci, a desnom pored tebe se kreće drugo vozilo, <b>ne smeš da skreneš udesno</b> — ni kad si uključio pokazivač: pokazivač je najava namere, a ne pravo prolaza. Ne smeš ni <b>naglo da usporiš</b> da bi sebi napravio mesto za skretanje, jer se naglo usporava samo radi izbegavanja neposredne opasnosti.</p>
+<p>Udesno se skreće iz krajnje desne saobraćajne trake, iz položaja <b>uz desnu ivicu kolovoza</b>, <b>osim ako je signalizacijom drugačije određeno</b> (čl. 46). Ako si u <b>levoj</b> traci, a desnom pored tebe se kreće drugo vozilo, <b>ne smeš da skreneš udesno</b> — ni kad si uključio pokazivač: pokazivač je najava namere, a ne pravo prolaza. Ne smeš ni <b>naglo da usporiš</b> da bi sebi napravio mesto za skretanje, jer se naglo usporava samo radi izbegavanja neposredne opasnosti.</p>
 </div>
 <!-- izvor: 9582 + 9583 (znak dok se uverava), 9580 (znak istovremeno / bez znaka), 10451 (samo znak / samo signalizacija), 9581 (samo na pocetku / dok drugi ne shvate), 9583 (levi pokazivac pri ukljucivanju sa desne ivice), 9589 (garaza na nepreglednom mestu), 9633 + 9635 + 10456 + 9574 (naglo; ponuda „nije blagovremeno zauzeo polozaj" stoji i u 9574 i u 10456) -->
 <div class="kPodH"><b class="kPodNaslov">Znak i naglo kočenje — ponude koje padaju</b>
@@ -4145,24 +4145,24 @@ pre nego što si siguran — a znak ide pre radnje, ne u toku nje.</p>
 <svg viewBox="0 0 306 98" style="max-width:306px;width:100%" role="img" aria-label="Traka od četiri koraka: prvi korak uveri se, drugi korak daj znak pokazivačem — ispod njega je žuta tačka koja trepće, treći korak radnja — žuta tačka i dalje trepće, četvrti korak kraj — tačka je ugašena.">
 <rect x="2" y="6" width="68" height="54" rx="6" fill="none" stroke="currentColor" stroke-width="1.4"/>
 <text x="36" y="28" font-size="14" text-anchor="middle" fill="currentColor">1</text>
-<text x="36" y="44" font-size="11" text-anchor="middle" fill="currentColor">UVERI SE</text>
+<text x="36" y="44" font-size="14" text-anchor="middle" fill="currentColor">UVERI SE</text>
 <path d="M70 28 L77 33 L70 38 Z" fill="currentColor"/>
 <rect x="78" y="6" width="68" height="54" rx="6" fill="none" stroke="currentColor" stroke-width="1.4"/>
 <text x="112" y="28" font-size="14" text-anchor="middle" fill="currentColor">2</text>
-<text x="112" y="44" font-size="11" text-anchor="middle" fill="currentColor">DAJ ZNAK</text>
-<circle cx="112" cy="53" r="4.5" fill="#e8b000" class="animTrepti"/>
+<text x="112" y="44" font-size="14" text-anchor="middle" fill="currentColor">DAJ ZNAK</text>
+<circle cx="112" cy="53" r="4.5" fill="#e8b000" class="animTrepti" stroke="#17212b" stroke-width="1.4" paint-order="stroke"/>
 <path d="M146 28 L153 33 L146 38 Z" fill="currentColor"/>
 <rect x="154" y="6" width="68" height="54" rx="6" fill="none" stroke="currentColor" stroke-width="1.4"/>
 <text x="188" y="28" font-size="14" text-anchor="middle" fill="currentColor">3</text>
-<text x="188" y="44" font-size="11" text-anchor="middle" fill="currentColor">RADNJA</text>
-<circle cx="188" cy="53" r="4.5" fill="#e8b000" class="animTrepti"/>
+<text x="188" y="44" font-size="14" text-anchor="middle" fill="currentColor">RADNJA</text>
+<circle cx="188" cy="53" r="4.5" fill="#e8b000" class="animTrepti" stroke="#17212b" stroke-width="1.4" paint-order="stroke"/>
 <path d="M222 28 L229 33 L222 38 Z" fill="currentColor"/>
 <rect x="230" y="6" width="68" height="54" rx="6" fill="none" stroke="currentColor" stroke-width="1.4"/>
 <text x="264" y="28" font-size="14" text-anchor="middle" fill="currentColor">4</text>
-<text x="264" y="44" font-size="11" text-anchor="middle" fill="currentColor">KRAJ</text>
-<circle cx="264" cy="53" r="4.5" fill="#2a333d"/>
-<text x="153" y="78" font-size="12" text-anchor="middle" fill="currentColor">znak traje sve vreme radnje</text>
-<text x="153" y="94" font-size="12" text-anchor="middle" fill="currentColor">i prestaje čim je završiš</text>
+<text x="264" y="44" font-size="14" text-anchor="middle" fill="currentColor">KRAJ</text>
+<circle cx="264" cy="53" r="4.5" fill="#2a333d" stroke="currentColor" stroke-width="1.2" paint-order="stroke"/>
+<text x="153" y="78" font-size="14" text-anchor="middle" fill="currentColor">znak traje sve vreme radnje</text>
+<text x="153" y="94" font-size="14" text-anchor="middle" fill="currentColor">i prestaje čim je završiš</text>
 </svg>
 </div>
 <p>Redosled <b>uveri se → daj znak → izvedi radnju</b> već stoji na kartici. Ovo su ponude koje uz njega padaju, a lako zvuče tačno:</p>
@@ -4174,26 +4174,26 @@ pre nego što si siguran — a znak ide pre radnje, ne u toku nje.</p>
 </ul>
 <div class="signRow lineRow">
   <div class="signCell">
-    <svg viewBox="0 0 120 62" role="img" aria-label="tvoje plavo vozilo stoji uz desnu ivicu, pored kolovoza; zelena strelica pokazuje ulazak u traku koja je levo, a na prednjoj levoj strani vozila trepće žuta tačka"><rect x="2" y="6" width="116" height="26" rx="2" fill="#9aa7b4"/><rect x="16" y="36" width="34" height="12" rx="3" fill="#2c6aa0"/><circle cx="52" cy="35" r="3.5" fill="#e8b000" class="animTrepti"/><path d="M56 40 C68 40 70 30 72 24" stroke="#1f7a3f" stroke-width="2.4" fill="none"/><path d="M74 14 L66 25 L78 27 Z" fill="#1f7a3f"/></svg>
+    <svg viewBox="0 0 120 62" role="img" aria-label="tvoje plavo vozilo stoji uz desnu ivicu, pored kolovoza; zelena strelica pokazuje ulazak u traku koja je levo, a na prednjoj levoj strani vozila trepće žuta tačka"><rect x="2" y="6" width="116" height="26" rx="2" fill="#697782"/><rect x="16" y="36" width="34" height="12" rx="3" fill="#2c6aa0" stroke="#fff" stroke-width="1.4" paint-order="stroke"/><circle cx="52" cy="35" r="3.5" fill="#e8b000" class="animTrepti" stroke="#17212b" stroke-width="1.4" paint-order="stroke"/><path d="M56 40 C68 40 70 30 72 24" stroke="#fff" stroke-width="4.4" fill="none" aria-hidden="true"/><path d="M56 40 C68 40 70 30 72 24" stroke="#1f7a3f" stroke-width="2.4" fill="none"/><path d="M74 14 L66 25 L78 27 Z" fill="#1f7a3f" stroke="#fff" stroke-width="1.5" paint-order="stroke"/></svg>
     <b>UKLJUČENJE SA DESNE IVICE</b><span>znak <b>levim</b> pokazivačem</span>
   </div>
 </div>
 <p><b>Uključivanje u saobraćaj sa desne ivice:</b> ulaziš u traku koja ti je sa <b>leve</b> strane, pa je i pokazivač levi — desnim bi najavio suprotno. Redosled je i tu isti: prvo uveravanje, pa znak.</p>
-<p><b>Iz garaže na nepreglednom mestu</b> (moped odnosno motocikl) ne pomaže ni „postepeno ću pomerati vozilo i zauzeti položaj tela koji mi omogućava potrebnu preglednost", ni „uključiću se na nekom drugom, preglednijem mestu": propis ti kaže kako da se uključiš <b>baš tu gde jesi</b> — <b>uz pomoć lica koje se nalazi na pogodnom mestu van vozila</b> i daje ti odgovarajuće znakove.</p>
+<p><b>Iz garaže pri nedovoljnoj preglednosti ili vidljivosti</b> uključuješ se <b>uz pomoć lica na pogodnom mestu van vozila</b>, koje daje odgovarajuće znakove (čl. 33). Ponuđeno postepeno pomeranje ne zamenjuje tu pomoć kada su ti uslovi prisutni. Zakon propisuje način uključivanja u opisanim uslovima, bez tvrdnje da moraš koristiti baš taj izlaz.</p>
 <div class="signRow lineRow">
   <div class="signCell">
-    <svg viewBox="0 0 120 62" role="img" aria-label="kolovoz na kome je tvoje plavo vozilo, a ispred njega dete sa biciklom ulazi na kolovoz"><rect x="2" y="14" width="116" height="40" rx="3" fill="#9aa7b4"/><rect x="8" y="30" width="34" height="12" rx="3" fill="#2c6aa0"/><circle cx="83" cy="8" r="4" fill="currentColor"/><path d="M83 12 V22" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="76" cy="28" r="6" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="90" cy="28" r="6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M76 28 L83 20 L90 28" stroke="currentColor" stroke-width="1.6" fill="none"/><path d="M83 36 V44" stroke="currentColor" stroke-width="2" fill="none"/><path d="M83 52 L78 42 L88 42 Z" fill="currentColor"/></svg>
+    <svg viewBox="0 0 120 62" role="img" aria-label="kolovoz na kome je tvoje plavo vozilo, a ispred njega dete sa biciklom ulazi na kolovoz"><rect x="2" y="14" width="116" height="40" rx="3" fill="#697782"/><rect x="8" y="30" width="34" height="12" rx="3" fill="#2c6aa0" stroke="#fff" stroke-width="1.4" paint-order="stroke"/><circle cx="83" cy="8" r="4" fill="currentColor"/><path d="M83 12 V22" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="76" cy="28" r="6" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="90" cy="28" r="6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M76 28 L83 20 L90 28" stroke="currentColor" stroke-width="1.6" fill="none"/><path d="M83 36 V44" stroke="currentColor" stroke-width="2" fill="none"/><path d="M83 52 L78 42 L88 42 Z" fill="currentColor"/></svg>
     <b>NEPOSREDNA OPASNOST</b><span>dete sa biciklom ulazi na kolovoz pred tobom — <b>smeš</b> naglo da usporiš</span>
   </div>
   <div class="signCell">
-    <svg viewBox="0 0 120 62" role="img" aria-label="tvoje plavo vozilo prilazi raskrsnici, a neposredno iza njega je autobus — duže i više vozilo, sa nizom prozora"><rect x="2" y="18" width="116" height="30" fill="#9aa7b4"/><rect x="88" y="2" width="26" height="58" fill="#9aa7b4"/><rect x="4" y="21" width="46" height="22" rx="2" fill="#2a333d"/><rect x="8" y="25" width="8" height="7" rx="1" fill="#9aa7b4"/><rect x="19" y="25" width="8" height="7" rx="1" fill="#9aa7b4"/><rect x="30" y="25" width="8" height="7" rx="1" fill="#9aa7b4"/><rect x="41" y="25" width="7" height="7" rx="1" fill="#9aa7b4"/><rect x="56" y="29" width="30" height="12" rx="3" fill="#2c6aa0"/></svg>
-    <b>NEMA OPASNOSTI</b><span>raskrsnica ispred, autobus neposredno iza — usporavaš <b>rano i postepeno</b></span>
+    <svg viewBox="0 0 120 62" role="img" aria-label="tvoje plavo vozilo prilazi raskrsnici, a neposredno iza njega je autobus — duže i više vozilo, sa nizom prozora"><rect x="2" y="18" width="116" height="30" fill="#697782"/><rect x="88" y="2" width="26" height="58" fill="#697782"/><rect x="4" y="21" width="46" height="22" rx="2" fill="#2a333d" stroke="#fff" stroke-width="1.4" paint-order="stroke"/><rect x="8" y="25" width="8" height="7" rx="1" fill="#9aa7b4"/><rect x="19" y="25" width="8" height="7" rx="1" fill="#9aa7b4"/><rect x="30" y="25" width="8" height="7" rx="1" fill="#9aa7b4"/><rect x="41" y="25" width="7" height="7" rx="1" fill="#9aa7b4"/><rect x="56" y="29" width="30" height="12" rx="3" fill="#2c6aa0" stroke="#fff" stroke-width="1.4" paint-order="stroke"/></svg>
+    <b>PRILAZ RASKRSNICI</b><span>raskrsnica ispred, autobus neposredno iza — usporavaš <b>rano i postepeno</b></span>
   </div>
 </div>
 <table>
 <tr><th>Situacija</th><th>Smeš li naglo</th></tr>
-<tr><td>Dete sa biciklom izlazi na kolovoz pred tobom</td><td><b>DA</b> — neposredna opasnost; rešenje je naglo usporavanje, a ne skretanje ka suprotnom smeru ili ka parkiranim vozilima</td></tr>
-<tr><td>Prilaziš raskrsnici, neposredno iza tebe je autobus</td><td><b>NE</b> naglo — ali brzinu <b>moraš</b> smanjiti: rano i postepeno, tako da onog iza sebe ne ugroziš ni ometeš</td></tr>
+<tr><td>Dete sa biciklom izlazi na kolovoz pred tobom</td><td><b>DA</b> — radi izbegavanja neposredne opasnosti smeš naglo usporiti; netačna je ponuda koja to zabranjuje i nalaže skretanje</td></tr>
+<tr><td>Prilaziš raskrsnici, neposredno iza tebe je autobus</td><td><b>NE</b> naglo samo zbog prilaska raskrsnici — vožnju prilagodi uslovima; kada smanjuješ brzinu, uradi to tako da onog iza sebe ne ugroziš ni ometeš</td></tr>
 <tr><td>Da uskladiš brzinu sa znakom ograničenja</td><td><b>NE</b> — to se radi postepeno</td></tr>
 <tr><td>„samo pri radnjama koje podrazumevaju obavezno uključivanje pokazivača pravca"</td><td><b>NE</b> — naglo se sme <b>samo</b> radi izbegavanja neposredne opasnosti</td></tr>
 <tr><td>„u slučaju da <b>nije blagovremeno zauzeo položaj</b> vozilom na kolovozu za izvršenje određene radnje"</td><td><b>NE</b> — zakasneli položaj nije neposredna opasnost; ta ista ponuda stoji u <b>oba</b> pitanja o naglom, pa se isplati zapamtiti je</td></tr>
@@ -4796,19 +4796,19 @@ X[9444] = { ...(X[9444] || {}), x: 'Podignuta je crvena zastavica, a zelena visi
 X[9575] = { ...(X[9575] || {}), x: 'Skretanje udesno se izvodi iz položaja uz desnu ivicu kolovoza, a vozilo 1 je u levoj traci — desnom, uz njega, kreće se vozilo 2. Zato ono ovde ne sme da skrene udesno, ma šta radilo pokazivačem: pokazivač je najava namere, a ne pravo prolaza. Naglo usporavanje smeš samo radi izbegavanja neposredne opasnosti, pa ni tako ne možeš sebi da napraviš mesto za skretanje.' };
 X[9576] = { ...(X[9576] || {}), x: 'Crveno vozilo je u levoj traci, a desnom trakom pored njega kreće se sivo vozilo — udesno se skreće tek kad si prestrojen uz desnu ivicu, pa crveni ovde ne sme da skrene. Uključen pokazivač govori šta vozač namerava, ali mu ne daje prednost nad onim ko već ide tom trakom. Naglo kočenje dozvoljeno je samo zbog neposredne opasnosti, a ne da bi se napravilo mesto za sopstvenu radnju.' };
 X[9583] = { ...(X[9583] || {}), x: 'Redosled je uvek isti: prvo se uveriš da radnju možeš bezbedno i propisno da izvedeš, pa tek onda daješ znak i krećeš. Zato ne valja ni varijanta u kojoj pokazivač ide prvi, ni ona u kojoj trepćeš dok se tek uveravaš — znak ide pre radnje i traje sve dok je izvodiš. Levi pokazivač je pravi, jer sa desne ivice ulaziš u traku koja ti je sa leve strane; desnim bi najavio suprotno.' };
-X[9586] = { ...(X[9586] || {}), x: 'Dužan si da propustiš samo autobus koji propisno kreće sa stajališta u naselju i vozilo iz trake koja se završava ili u kojoj je saobraćaj onemogućen — auto-taksi koji izlazi sa parking mesta nije ništa od toga, pa te propis ne obavezuje. Time pada i obrazloženje da se radi o javnom prevozu putnika. Pošto si njegovu nameru uočio na vreme, pustićeš ga iz opreza: ako započetu radnju nastavi, nastaje opasna situacija.' };
-X[9589] = { ...(X[9589] || {}), x: 'Kad se iz garaže uključuješ na nepreglednom mestu, postepeno primicanje ne rešava ništa: na kolovoz izlaziš pre nego što si bilo šta video, a drugi te uočavaju tek kad si već pred njima. Zato se takvo uključivanje izvodi uz pomoć lica koje stoji na pogodnom mestu van vozila i daje ti znakove. Ni odlazak na drugo mesto nije odgovor — pravilo ti kaže kako da se uključiš baš tu gde jesi.' };
+X[9586] = { ...(X[9586] || {}), x: "Auto-taksi koji izlazi sa parking mesta ne stiče prvenstvo samo zato što je započeo uključivanje ili što obavlja javni prevoz. Posebno pravilo za autobus koji u naselju propisno kreće sa stajališta (čl. 27) ovde se ne primenjuje, niti je ovo susedna traka koja se završava (čl. 36). Nameru si uočio na vreme, pa ga propuštaš da izbegneš opasnost ako nastavi radnju. Član 3 nalaže potrebne mere za izbegavanje opasnosti koju je izazvao drugi, ako time ne dovodiš sebe ili drugog u opasnost." };
+X[9589] = { ...(X[9589] || {}), x: "Pri uključivanju iz garaže kada su preglednost ili vidljivost nedovoljne, dužan si da to izvedeš uz pomoć lica na pogodnom mestu van vozila koje daje odgovarajuće znakove (ZOBS čl. 33). Ponuđeno postepeno pomeranje ne zamenjuje tu pomoć u opisanim uslovima. Propis određuje način uključivanja u tim uslovima; ne tvrdi da je obavezno koristiti baš taj izlaz." };
 X[9592] = { ...(X[9592] || {}), x: 'Traka je žutom bojom i natpisima obeležena kao traka za vozila javnog prevoza i taksi vozila, a moped odnosno motocikl u njih ne spada — krećeš se površinom koja nije namenjena vozilu kojim upravljaš. To što je reč o vozilu za osposobljavanje ne daje nikakvo dodatno pravo, pravila važe isto kao za sve. Ne pomaže ni pozivanje na desnu stranu kolovoza: desno se držiš unutar traka koje smeš da koristiš.' };
-X[9600] = { ...(X[9600] || {}), x: 'U naselju traku koja nije uz desnu ivicu smeš da koristiš samo dok time ne ometaš one iza sebe — čim ih usporavaš, dužan si da se pomeriš i propustiš ih promenom trake. Zato pada izgovor da vozi najvećom dozvoljenom brzinom: pravilo se vezuje za ometanje, a ne za brzinomer. Ni preticanje s desne strane nije tvoje rešenje, jer se pretiče s leve, a desno samo u posebnim, propisom određenim slučajevima.' };
+X[9600] = { ...(X[9600] || {}), x: "U naselju, na putu sa najmanje dve trake za isti smer, traku koja nije uz desnu ivicu smeš koristiti samo ako ne ometaš vozila iza sebe (čl. 35). Vozilo koje te na slici sprečava u bržem kretanju zato treba da te propusti promenom trake; vožnja najvećom dozvoljenom brzinom ne ukida tu obavezu. Ni mogućnost prolaska desnom trakom je ne ukida: u tim uslovima prolazak sa desne strane vozila koje nije u krajnjoj desnoj traci ne smatra se preticanjem (čl. 53)." };
 X[9615] = { ...(X[9615] || {}), x: 'Žuta putanja te preko dvostruke pune razdelne linije vodi na deo kolovoza namenjen suprotnom smeru, a takva linija se ne sme preći ni sa jedne strane. Zato je kretanje nepropisno iako si uključio levi pokazivač — znak najavljuje nameru, ali ne pretvara zabranjenu radnju u dozvoljenu. Na slici je preticanje putničkog automobila preko pune razdelne linije; to nije zakonski izuzetak od zabrane.' };
 X[9618] = { ...(X[9618] || {}), x: 'Razdelna linija je kombinovana: sa tvoje strane je puna, a isprekidana polovina okrenuta je suprotnom smeru. Za prikazano preticanje liniju sme da pređe onaj kome je bliža isprekidana strana, a to ovde nisi ti — izlazak u levu traku je nepropisan i sa uključenim pokazivačem. Ovde se pretiče putnički automobil. Zakonski izuzeci za obilaženje i preticanje posebno navedenih vrsta vozila ne čine ovu prikazanu radnju dozvoljenom.' };
-X[9621] = { ...(X[9621] || {}), x: 'Kolovozne trake su ovde fizički odvojene zelenim ostrvom, a plavi okrugli znak sa strelicom nadesno je obaveza da se prepreka obiđe s desne strane — tvoja kolovozna traka je ona desno. Ti si na levoj, namenjenoj suprotnom smeru, pa se krećeš nepropisno. Kad su smerovi razdvojeni, izlazak na kolovoznu traku suprotnog smera nije dozvoljen ni radi preticanja, jer izuzetka od te zabrane nema.' };
-X[9623] = { ...(X[9623] || {}), x: 'Crveni krug sa belom vodoravnom prečkom zabranjuje ulazak u ulicu iz tog smera, a postavljen je sa obe strane kolovoza, dakle važi za celu širinu — vozilo se jednosmernom ulicom kreće u zabranjenom smeru. Ta zabrana nema izuzetak po osnovu toga ko gde stanuje: do kuće u toj ulici stiže se iz smera u kojem je saobraćaj dozvoljen, makar to značilo duži put oko bloka.' };
-X[9626] = { ...(X[9626] || {}), x: 'Vozila levo od tebe ne mogu dalje svojom trakom, pa moraju u tvoju, a za taj slučaj važi naizmenično uključivanje: vozač u susednoj traci dužan je da omogući uključenje jednog vozila. Zato ne stoji ni da propuštaš sve redom, ni da imaš prvenstvo nad njima — kad bi ga imao, traka u kojoj je saobraćaj onemogućen nikada se ne bi ispraznila. Ti pustiš jedno, sledeće je na vozaču iza tebe.' };
-X[9628] = { ...(X[9628] || {}), x: 'Obavezu propuštanja imaš samo kad se susedna traka završava ili je u njoj saobraćaj onemogućen, i tada za jedno vozilo, i prema autobusu koji kreće sa stajališta u naselju. Ovde ti vozila pokazivačem samo najavljuju nameru da uđu u tvoju traku, a najava sama po sebi ne stvara tvoju obavezu — ni za jedno ni za oba. Pošto si ih uočio na vreme, propustićeš ih iz opreza i izbeći opasnu situaciju.' };
-X[9630] = { ...(X[9630] || {}), x: 'Pošto je krajnjom desnom trakom saobraćaj onemogućen, vozila iz nje moraju u tvoju traku, pa nije tačno da nemaš nikakvu obavezu. Ali je obaveza precizna: omogućavaš uključenje jednog vozila, ne oba i ne cele kolone, jer se uključivanje odvija naizmenično. Kad ti propustiš prvo, drugo je briga vozača koji dolazi iza tebe, i tako se zatvorena traka prazni bez zastoja.' };
-X[9633] = { ...(X[9633] || {}), x: 'Naglo usporavanje zabranjeno je kao način vožnje, ali ne i onda kad njime izbegavaš neposrednu opasnost — a dete koje sa biciklom ulazi na kolovoz ispred tebe upravo je takva opasnost. Zato smeš naglo da usporiš. Izbegavanje skretanjem je lošije rešenje: promenom pravca odlaziš ka suprotnom smeru ili ka parkiranim vozilima, pa umesto da staneš, sam biraš u šta ćeš da udariš.' };
-X[9635] = { ...(X[9635] || {}), x: 'U ogledalima vidiš autobus neposredno iza sebe, a ispred je raskrsnica — brzinu moraš smanjiti, ali tako da vozača iza sebe ne ugroziš niti ometeš, dakle rano i postepeno. Naglo kočenje bi bilo dozvoljeno samo radi izbegavanja neposredne opasnosti, a nje ovde nema. Zato ne stoji ni da brzinu ne treba menjati: raskrsnici se ne prilazi istom brzinom kao otvorenom delu puta.' };
+X[9621] = { ...(X[9621] || {}), x: "Kolovozne trake su fizički odvojene zelenim ostrvom. Plavi znak sa belom strelicom nadole udesno nalaže obilaženje sa desne strane, a tvoja kolovozna traka je desno od ostrva. Na slici si na levoj, namenjenoj suprotnom smeru, pa se krećeš nepropisno (ZOBS čl. 36). Ponuđeno preticanje ne dopušta takvo kretanje." };
+X[9623] = { ...(X[9623] || {}), x: "Crveni krug sa belom vodoravnom prečkom označava zabranu saobraćaja za vozila iz tog smera. Na slici je znak ponovljen sa obe strane, a vozilo ulazi iz zabranjenog smera. Stanovanje u toj ulici samo po sebi ne daje izuzetak: prilazi se iz dozvoljenog smera." };
+X[9626] = { ...(X[9626] || {}), x: "Vozila levo od tebe ne mogu dalje svojom trakom. Za taj slučaj ZOBS čl. 36 nalaže vozaču u susednoj traci da omogući uključenje jednog vozila. Zato ne propuštaš sva redom, niti je tačna ponuda da imaš prvenstvo nad svim vozilima iz zatvorene trake. Omogućavaš uključenje jednog; istu obavezu ima i vozač iza tebe." };
+X[9628] = { ...(X[9628] || {}), x: "Ovde se susedna traka nastavlja, a vozila pokazivačem najavljuju ulazak u tvoju traku. Sama najava ili započinjanje radnje ne daje im prvenstvo (čl. 32); ovo nije slučaj trake koja se završava ili je blokirana iz čl. 36. Pošto si nameru uočio na vreme, propuštaš ih da izbegneš opasnost ako nastave radnju. Član 3 nalaže potrebne mere za izbegavanje opasnosti koju je izazvao drugi, ako time ne dovodiš sebe ili drugog u opasnost." };
+X[9630] = { ...(X[9630] || {}), x: "Pošto je krajnjom desnom trakom saobraćaj onemogućen, ZOBS čl. 36 nalaže da omogućiš uključenje jednog vozila iz te trake. Nije tačno da nemaš obavezu, ali ne propuštaš oba vozila ili celu kolonu odjednom. Istu obavezu omogućavanja uključenja jednog vozila ima vozač iza tebe." };
+X[9633] = { ...(X[9633] || {}), x: "Dete sa biciklom ulazi na kolovoz ispred tebe i predstavlja neposrednu opasnost, radi čijeg izbegavanja smeš naglo da usporiš (ZOBS čl. 38). Zato je netačna ponuda koja naglo usporavanje zabranjuje i umesto toga nalaže skretanje. Sama fotografija ne određuje putanju izbegavanja niti neizbežan ishod bilo kog manevra." };
+X[9635] = { ...(X[9635] || {}), x: "Ispred je raskrsnica, a u ogledalima autobus neposredno iza. Vožnju prilagođavaš uslovima na raskrsnici, naročito brzini pri kojoj možeš stati i propustiti vozila sa prvenstvom (ZOBS čl. 48). Kada znatno smanjuješ brzinu, postupi tako da vozača iza sebe ne ugroziš niti ometeš; samo prilazak raskrsnici nije razlog za naglo usporavanje, koje je dopušteno radi izbegavanja neposredne opasnosti (čl. 38). Tačan odgovor opisuje bezbedan način usporavanja u prikazanoj situaciji; iz toga ne sledi da pri svakom prilasku raskrsnici moraš smanjiti već prilagođenu brzinu." };
 X[9640] = { ...(X[9640] || {}), x: 'Na prikazanoj slici važi opšte pravilo prestrojavanja: za skretanje udesno zauzimaš traku uz desnu ivicu kolovoza. To je ovde traka 1, ona uz ivičnjak. Traka 2 je uz razdelno ostrvo i iz nje se udesno ne skreće, pa pada i ponuda koja spaja obe trake.' };
 X[9644] = { ...(X[9644] || {}), x: 'Oba vozila skreću ulevo istovremeno, pa im se putanje ne smeju preseći: svako ulazi u traku koja odgovara onoj iz koje je krenulo. Žuto vozilo, iz leve trake, ostaje uz razdelno ostrvo i propisno se kreće putanjom 4, a crveno, iz desne trake, ulazi u traku odmah do njega, dakle putanjom 1. Putanja 3 bi žuto vozilo odvela u traku koja pripada crvenom, a putanja 2 je nepotreban zamah crvenog preko susedne trake, skroz do spoljne ivice kolovoza.' };
 X[9645] = { ...(X[9645] || {}), x: 'Vozilo 2 dolazi iz leve trake, pa i posle skretanja mora da ostane levo, uz razdelno ostrvo — to je putanja 4. Putanja 3 bi ga odvela u traku u koju ulazi vozilo iz desne trake, dakle preko tuđe putanje. Kad dva vozila skreću ulevo jedno pored drugog, jedini bezbedan raspored je onaj u kome zadržavaju redosled iz traka iz kojih su krenula.' };
@@ -5201,7 +5201,7 @@ X[9603] = { x: 'Drži se što bliže DESNOJ ivici kolovoza (ZOBS čl. 33) — le
 X[9612] = { x: 'Dvosmerni put sa ≥4 trake: ne prelazi na kolovoznu polovinu namenjenu suprotnom smeru — ni za preticanje (ZOBS čl. 34).' };
 X[9616] = { x: 'Zabrana je bezuslovna: na dvosmernom putu sa TRI trake ne smeš u traku uz LEVU ivicu puta u svom smeru (ZOBS čl. 36 st. 2). Zakon tu ne daje nijedan izuzetak, pa su obe ponude koje tu traku dozvoljavaju netačne — ni preticanje ni zastoj je ne otključavaju, jer je namenjena vozilima iz suprotnog smera. Odatle sledi i gde se pretiče: srednjom trakom, po opštim pravilima preticanja.' };
 X[9619] = { x: 'Fizički odvojene kolovozne trake: prelazak na suprotnu kolovoznu traku je apsolutno zabranjen (ZOBS čl. 34).' };
-X[9622] = { x: 'Jednosmerni put: vožnja u suprotnom smeru zabranjena — uključujući i kretanje unazad "samo malo".' };
+X[9622] = { ...(X[9622] || {}), x: "Na putu za saobraćaj vozila u jednom smeru ne smeš da se krećeš u zabranjenom smeru (ZOBS čl. 36). To ne dopušta ni odsustvo vozila iz suprotnog smera niti postojanje najmanje dve saobraćajne trake." };
 X[10454] = { x: 'U zastoju na putu sa odvojenim kolovoznim trakama pravi se slobodan prolaz za vozila POD PRATNJOM i SA PRAVOM PRVENSTVA (ZOBS čl. 104 st. 6) — "koridor spasa".' };
 // --- Pešaci (sub 145), tekstualna ---
 X[10244] = { x: 'Po opštem pravilu, pešak van naselja ide što bliže LEVOJ ivici kolovoza — u susret vozilima, da ih vidi (suprotno od vozila!).' };
@@ -5479,10 +5479,10 @@ X[8557] = { x: "Ovde su tačni: istekla dozvola i vožnja za vreme trajanja iskl
 X[8600] = { ...(X[8600] || {}), x: "Vanredni pregled vozila isključenog zbog neispravnosti po pravilu se vrši u objektu gde je obavljen kontrolni pregled; u DRUGOM objektu sme samo kada to DOZVOLI organ čiji je službenik uputio vozilo na kontrolni pregled, ako je to opravdano." };
 X[9531] = { ...(X[9531] || {}), x: "Odstojanje (napred-nazad) i rastojanje (bočno) drži tako da NE IZAZIVAŠ OPASNOST i NE OMETAŠ druge učesnike (ZOBS čl. 21) — oba uslova, bez propisanih brojki: zavisi od brzine i uslova." };
 X[9593] = { ...(X[9593] || {}), x: "Osnovno: vozilo se kreće DESNOM stranom kolovoza u smeru kretanja (ZOBS čl. 35)." };
-X[9603] = { ...(X[9603] || {}), x: "Drži se što bliže DESNOJ ivici kolovoza (ZOBS čl. 35) — leva strana je za preticanje i mimoilaženje, ne za krstarenje." };
+X[9603] = { ...(X[9603] || {}), x: "Vozilo se drži što bliže DESNOJ ivici kolovoza, na bezbednom odstojanju s obzirom na brzinu, saobraćajne prilike i stanje i osobine puta, tako da ne ugrožava druge ni sebe (ZOBS čl. 35). Zato opšte pravilo nije vožnja sredinom kolovozne trake niti što bliže razdelnoj liniji." };
 X[9612] = { ...(X[9612] || {}), x: "Dvosmerni put sa najmanje četiri trake: ne prelazi na kolovoznu traku namenjenu suprotnom smeru — ni za preticanje (ZOBS čl. 36 st. 1)." };
-X[9616] = { ...(X[9616] || {}), x: 'Zabrana je bezuslovna: na dvosmernom putu sa TRI trake ne smeš u traku uz LEVU ivicu puta u svom smeru (ZOBS čl. 36 st. 2). Zakon tu ne daje nijedan izuzetak, pa su obe ponude koje tu traku dozvoljavaju netačne — ni preticanje ni zastoj je ne otključavaju, jer je namenjena vozilima iz suprotnog smera. Odatle sledi i gde se pretiče: srednjom trakom, po opštim pravilima preticanja.' };
-X[9619] = { ...(X[9619] || {}), x: "Fizički odvojene kolovozne trake: kretanje trakom namenjenom za suprotni smer je apsolutno zabranjeno — bez izuzetka (ZOBS čl. 36)." };
+X[9616] = { ...(X[9616] || {}), x: "Na dvosmernom putu sa TRI saobraćajne trake ne smeš da se krećeš trakom uz LEVU ivicu puta u pravcu svog kretanja (ZOBS čl. 36 st. 2). Ni ponuđeno preticanje ili obilaženje ni zastoj ne dopuštaju korišćenje te trake. Iz toga ne sledi da je srednja traka uvek raspoloživa: njeno korišćenje zavisi od signalizacije, smerova i ostalih uslova za preticanje." };
+X[9619] = { ...(X[9619] || {}), x: "Na putu sa fizički odvojenim kolovoznim trakama ne smeš da se krećeš trakom namenjenom saobraćaju vozila iz suprotnog smera (ZOBS čl. 36). Ponuđeno preticanje, obilaženje ili zastoj ne dopuštaju prelazak na tu traku." };
 X[9639] = { ...(X[9639] || {}), x: "Skretanje UDESNO: iz krajnje desne trake, uz desnu ivicu kolovoza (ZOBS čl. 46) — bez \"sečenja\" iz srednje trake, osim ako signalizacija odredi drugačije." };
 X[10218] = { ...(X[10218] || {}), x: "Izuzetak iz ZOBS čl. 80: i vozilu zaustavljenom na KOLOVOZU poziciona/parkirna svetla ne moraju biti uključena ako stoji na posebno obeleženom mestu, na delu puta gde ga ulično osvetljenje čini dovoljno vidljivim. Van tog izuzetka, na kolovozu noću svetla su obavezna." };
 X[10271] = { ...(X[10271] || {}), x: "Organizovana kolona pešaka na kolovozu se NE preseca — čekaš da cela prođe (ZOBS čl. 99), bez izuzetka po sastavu kolone." };
@@ -6755,7 +6755,7 @@ out.cards['prvenstvo-prolaza'].h.c = out.cards['prvenstvo-prolaza'].h.c.replace(
 
 // Lokalno prevedi pregledane pristupačne opise; opšti toCyr štiti HTML tagove.
 // Novi opis u ovim karticama zahteva ponovni pregled oba pisma.
-for (const [key, expected] of [['brzine', 6], ['kategorije-vozila', 4], ['put-pojmovi', 1], ['vozilo-tehnika', 4], ['kaznene-klase', 13], ['preticanje', 3], ['skretanje', 2], ['iskljucenje', 3], ['oznake-kolovoz', 12], ['prvenstvo-prolaza', 9], ['pruga', 4], ['policajac-znaci', 6], ['parking-table', 9], ['pesaci-bicikli', 11], ['autoput', 2], ['dozvole', 3]]) {
+for (const [key, expected] of [['brzine', 6], ['kategorije-vozila', 4], ['put-pojmovi', 1], ['vozilo-tehnika', 4], ['kaznene-klase', 13], ['preticanje', 3], ['skretanje', 2], ['iskljucenje', 3], ['oznake-kolovoz', 12], ['prvenstvo-prolaza', 9], ['pruga', 4], ['policajac-znaci', 6], ['parking-table', 9], ['kretanje-po-putu', 19], ['pesaci-bicikli', 11], ['autoput', 2], ['dozvole', 3]]) {
   let count = 0;
   out.cards[key].h.c = out.cards[key].h.c.replace(/aria-label="([^"]*)"/g, (_, label) => {
     count++;
