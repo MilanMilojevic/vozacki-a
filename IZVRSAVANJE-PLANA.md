@@ -30,7 +30,7 @@
 | А3 Циљ и процена спремности | Завршено | v131: reload циља; v134: непознато градиво не добија позајмљену тачност; условни модел јасно означен |
 | А4 Телефон и приступачност | У току; корисничка проба остаје v165 | Развојне v169–171 поправљају табелу возила, ситне натписе паркирања и преливање дугих речи при увећању текста; раније тастатура/водич/контраст/увећање. Остали цртежи, читач екрана и стварни телефони остају у прегледу |
 | А5 Кеш и алати издавања | Делимично | v128/v137: издање/кеш; алати/CI проверени; v157: аутоматски отисци слика и провера бајтова у SW; ограничење старих кешева још отворено |
-| А6 Садржај 1.327 питања | У току | На v197: 956 питања reviewed, 0 in-progress, 70 needs-expert, 301 unreviewed; картице 25 reviewed, 14 unreviewed. Актуелни машински збир: [manifest.json](docs/revizija-sadrzaja/manifest.json). Започета и спорна питања нису урачуната у завршена |
+| А6 Садржај 1.327 питања | У току | На v198: 971 питање reviewed, 0 in-progress, 71 needs-expert, 285 unreviewed; картице 25 reviewed, 14 unreviewed. Актуелни машински збир: [manifest.json](docs/revizija-sadrzaja/manifest.json). Започета и спорна питања нису урачуната у завршена |
 | А7 Документација / права | У току | CONTRIBUTING, README, школска упутства и fork поступак допуњени; v147 поруке/метаподаци и v151 FAQ усклађени; преостаје одлука власника о лиценци |
 | Б1–Б3 Побољшања | Чека | После учвршћивања, пилот по пилот |
 | Навигација — накнадни захтев | Основни токови завршени; доградња одвојена | v146 Назад/Напред; v150 стварни линкови; v154 статистика; v158 лични спискови. v162 додаје преглед конкретног старог испита; то је доградња, не услов основне безбедности учења. v163 исправља копирани линк питања и повратак фокуса у појмовник |
@@ -596,3 +596,9 @@ Root Chromium16/16 kartica i96/96 pitanja; bez grešaka/prelivanja/sintetičkih 
 Dva potpuna pregleda20 pitanja/66 opcija/9 slikovnih referenci, cele karticeL/C i tri tabele. Pet EX ispravki i14 lokalnih kartičnih fragmenata kroz šest source operacija razjašnjavaju uslove vuče, uključena svetla, ukupne mase, signalnu tablu i određene radnike. Nasilnička vožnja nije isključena pri nižoj alkoholisanosti po drugim zakonskim osnovima; kartica i10713 su usklađeni. [Pojedinačni dokaz A6-057/060](docs/revizija-sadrzaja/grupe/057-razno-pravila.md).
 
 Root Chromium16/16 kartica i80/80 pitanja; bez grešaka/prelivanja/sintetičkih upisa. Stvarni pipeline350/11odeljaka,4NUL i ostali EX tačno očuvani.7924/7925 imaju završene sve zavisne kartice; ukupno956 reviewed,301 unreviewed,0 in-progress,70 needs-expert;25 reviewed kartica,14 unreviewed. `node tools/verify.mjs`:249/249 i tačna evidencija/verzija/sintaksa. Izolovana grana i oznaka v197 čuvaju celinu.
+
+### v198 — motocikl, putnici i teret
+
+Dva potpuna pregleda16 pitanja/56 opcija/dva originalna JPEG sa sedam ponuđenih prikaza. Deset EX ispravki kroz sedam postojećih izvornih literala čuva izuzetke za mirovanje i namensku prikolicu, broj putnika i homologovanu kacigu. Objašnjenje alkoholisanog putnika važi i za tricikl.10237 ima vidljivu ogradu zbog nedokazanog razloga odbacivanja prikaza4; sačuvani ključ2 ostaje. [Pojedinačni dokaz A6-066/067](docs/revizija-sadrzaja/grupe/066-motocikl-putnici-teret.md).
+
+Root integrisani Chromium128/128 i nezavisni64/64 mobilnih tokova; bez grešaka/prelivanja/sintetičkih upisa u tim proverama. Cela stara i konačna semantika generatora proverena,4NUL sačuvana; nema promena kartica, slika, CSS ili app.js. Ukupno971 reviewed,285 unreviewed,0 in-progress,71 needs-expert;25 reviewed kartica,14 unreviewed. `node tools/verify.mjs`:249/249, tačni otisci/verzija/sintaksa; dokaz066/root-verify-v198.log.
