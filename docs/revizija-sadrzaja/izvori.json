@@ -646,6 +646,15 @@
       "checkedOn": "2026-09-14",
       "revision": "3/2011; naveden na aktuelnoj ministarskoj listi",
       "contentHash": "e23cde5921c39700d9a604d6989837e6e8cd5cf4243af1ff200525e2fc6d0301"
+    },
+    {
+      "id": "signalizacija-svetlosne-pis-76-2026",
+      "url": "https://reg.pravno-informacioni-sistem.rs/api/viewdoc?doctype=reg&regactid=440491&uuid=2bd446cf-0965-4141-8323-d207a4216ed1",
+      "title": "Pravilnik o saobraćajnoj signalizaciji, PIS kroz76/2026",
+      "article": "2(21,25), 86(3–4), 87",
+      "checkedOn": "2026-09-14",
+      "revision": "76/2026",
+      "contentHash": "8f9b78ea7810a5d5028f3b2878773d37080cf9096a2239dc2a306101708c45d7"
     }
   ]
 }
