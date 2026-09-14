@@ -30,7 +30,7 @@
 | А3 Циљ и процена спремности | Завршено | v131: reload циља; v134: непознато градиво не добија позајмљену тачност; условни модел јасно означен |
 | А4 Телефон и приступачност | У току; корисничка проба остаје v165 | Развојне v169–171 поправљају табелу возила, ситне натписе паркирања и преливање дугих речи при увећању текста; раније тастатура/водич/контраст/увећање. Остали цртежи, читач екрана и стварни телефони остају у прегледу |
 | А5 Кеш и алати издавања | Делимично | v128/v137: издање/кеш; алати/CI проверени; v157: аутоматски отисци слика и провера бајтова у SW; ограничење старих кешева још отворено |
-| А6 Садржај 1.327 питања | У току | На v208: 1.191 питања reviewed, 0 in-progress, 76 needs-expert, 60 unreviewed; картице 35 reviewed, 4 unreviewed. Актуелни машински збир: [manifest.json](docs/revizija-sadrzaja/manifest.json). Започета и спорна питања нису урачуната у завршена |
+| А6 Садржај 1.327 питања | У току | На v209: 1.209 питања reviewed, 0 in-progress, 76 needs-expert, 42 unreviewed; картице 38 reviewed, 1 unreviewed. Актуелни машински збир: [manifest.json](docs/revizija-sadrzaja/manifest.json). Започета и спорна питања нису урачуната у завршена |
 | А7 Документација / права | У току | CONTRIBUTING, README, школска упутства и fork поступак допуњени; v147 поруке/метаподаци и v151 FAQ усклађени; преостаје одлука власника о лиценци |
 | Б1–Б3 Побољшања | Чека | После учвршћивања, пилот по пилот |
 | Навигација — накнадни захтев | Основни токови завршени; доградња одвојена | v146 Назад/Напред; v150 стварни линкови; v154 статистика; v158 лични спискови. v162 додаје преглед конкретног старог испита; то је доградња, не услов основне безбедности учења. v163 исправља копирани линк питања и повратак фокуса у појмовник |
@@ -662,3 +662,9 @@ Nezavisni i root integrisani browser svaki112 stvarnih odgovaranja/344 opcije/20
 Dva potpuna pregleda 26 pitanja/80 opcija/26 originalnih slika i jedne cele kartice sa četiri tabele. Prihvaćeno 18 EX i osam kartičnih fragmenata. Za 10916 sačuvan ključ i jasno navedeno neslaganje sa važećim pravilnikom; ostalih 25 pitanja reviewed. Nema promene simulacije, pitanja, opcija, ključeva, slika ili veza.
 
 Root na stvarnom v208:16 celih kartica,208 stvarnih odgovaranja,640 opcija,20 zoom/pan/fit; actual200 oba pisma/teme320/1280, bez prelivanja i grešaka. Nezavisni088:208 odgovaranja i32 autoritativna kartična stanja. Potvrđena341 zamrznuta datoteka i ceo generator;20 reverzibilnih source operacija,4NUL, ostali sadržaj jednak. Ukupno1191 reviewed,60 unreviewed,76 needs-expert;35 reviewed kartica,4 unreviewed. node tools/verify.mjs:249/249; dokaz output/revizija-20260911/079/root-verify-v208.log. [Detaljni dokaz](docs/revizija-sadrzaja/grupe/079-ostala-obavestenja.md).
+
+### v209 — parovi znakova, pregled obaveštenja i kazni
+
+Dva potpuna pregleda 18 pitanja/54 opcije/17 originalnih slika i tri cele kartice sa dve tabele. Prihvaćeno12 EX i19 uskih kartičnih operacija: tačnije značenje znakova, važeće boje, zakonske alternative kazni, prelom rombova/duge oznake/naslova na telefonu. Svih18 reviewed, bez novih expert; nema izmene banke ili simulacije.
+
+Root v209:48kartičnih konteksta,144stvarna odgovaranja,432opcije i12zoom-pan-fit, oba pisma/teme320/1280actual200. Nezavisni089 potvrđuje svoje144tokove i48kartica, plus12 izolovanih pre/posle/vrati layout provera.390zamrznutih dokaza i15 reverzibilnih source operacija sa4NUL. Početni root selektor runtime odeljaka ispravljen u mernom skriptu; proizvod nije menjan zbog toga. Ukupno1209 reviewed,42 unreviewed,76 needs-expert;38 reviewed kartica,1 unreviewed. node tools/verify.mjs:249/249; dokaz output/revizija-20260911/083/root-verify-v209.log. [Detaljni dokaz](docs/revizija-sadrzaja/grupe/083-parovi-obavestenja-kazne.md).
