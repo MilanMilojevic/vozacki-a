@@ -30,7 +30,7 @@
 | А3 Циљ и процена спремности | Завршено | v131: reload циља; v134: непознато градиво не добија позајмљену тачност; условни модел јасно означен |
 | А4 Телефон и приступачност | У току; корисничка проба остаје v165 | Развојне v169–171 поправљају табелу возила, ситне натписе паркирања и преливање дугих речи при увећању текста; раније тастатура/водич/контраст/увећање. Остали цртежи, читач екрана и стварни телефони остају у прегледу |
 | А5 Кеш и алати издавања | Делимично | v128/v137: издање/кеш; алати/CI проверени; v157: аутоматски отисци слика и провера бајтова у SW; ограничење старих кешева још отворено |
-| А6 Садржај 1.327 питања | У току | На v195: 912 питања reviewed, 4 in-progress, 70 needs-expert, 341 unreviewed; картице 23 reviewed, 16 unreviewed. Актуелни машински збир: [manifest.json](docs/revizija-sadrzaja/manifest.json). Започета и спорна питања нису урачуната у завршена |
+| А6 Садржај 1.327 питања | У току | На v196: 936 питања reviewed, 2 in-progress, 70 needs-expert, 319 unreviewed; картице 24 reviewed, 15 unreviewed. Актуелни машински збир: [manifest.json](docs/revizija-sadrzaja/manifest.json). Започета и спорна питања нису урачуната у завршена |
 | А7 Документација / права | У току | CONTRIBUTING, README, школска упутства и fork поступак допуњени; v147 поруке/метаподаци и v151 FAQ усклађени; преостаје одлука власника о лиценци |
 | Б1–Б3 Побољшања | Чека | После учвршћивања, пилот по пилот |
 | Навигација — накнадни захтев | Основни токови завршени; доградња одвојена | v146 Назад/Напред; v150 стварни линкови; v154 статистика; v158 лични спискови. v162 додаје преглед конкретног старог испита; то је доградња, не услов основне безбедности учења. v163 исправља копирани линк питања и повратак фокуса у појмовник |
@@ -584,3 +584,9 @@ Root Chromium16/16 kartica i40/40 pitanja, nezavisni dodatni8/8; bez grešaka/pr
 Dva potpuna pregleda46 pitanja/138 opcija/46 originalnih JPEG, cele L/C kartice i dve tabele.17 ciljanih EX ispravki i pet kartičnih fragmenata preciziraju metre do trake/raskrsnice, kilometražu do odredišta, boje i konkretne simbole. H/SOS ostaju latinični u oba pisma.10968 sada razlikuje dve strelice od Y račvanja;11064 ima tačan opis postojeće veze ka uslugama. [Pojedinačni dokaz A6-055/059](docs/revizija-sadrzaja/grupe/055-zn-ob-vodjenje.md).
 
 Root Chromium16/16 kartica i184/184 prikaza pitanja, nezavisni92 stvarna mobilna toka i četiri cele kartice sa46 atlas slika; nema grešaka/prelivanja/sintetičkih upisa u root pregledu. Stvarni pipeline600,19 source operacija i4NUL provereni, svi ostali EX nepromenjeni. Ukupno912 reviewed,341 unreviewed,4 in-progress,70 needs-expert;23 reviewed kartice,16 unreviewed. Završni `node tools/verify.mjs`:249/249, tačni otisci/sintaksa/verzija; dokaz055/root-verify-v195.log.
+
+### v196 — pešaci, puni uslovi i čitljivi crteži
+
+Dva potpuna pregleda24 pitanja/74 opcije/8 JPEG, cele L/C kartice, tri tabele i11 postojećih crteža. Šest EX ispravki i42 lokalna kartična fragmenta kroz osam source operacija čuvaju potpune uslove propuštanja/zaustavljanja, nameru stupanja, položaj policajca, upozorenje deci i zakonske izuzetke. Natpisi i važni simboli čitljivi su u obe teme, bez novih scena ili animacija. [Pojedinačni dokaz A6-056/061](docs/revizija-sadrzaja/grupe/056-pesaci-bicikli.md).
+
+Root Chromium16/16 kartica i96/96 pitanja; bez grešaka/prelivanja/sintetičkih upisa. Minimum SVG teksta13,718px; peer tekst5,016:1 i24 grafička para min3,062:1. Stvarni pipeline i ostali EX sačuvani. Zatvorene ranije zavisnosti9539/10550: ukupno936 reviewed,319 unreviewed,2 in-progress,70 needs-expert;24 reviewed kartice,15 unreviewed. `node tools/verify.mjs`:249/249 i tačna evidencija/verzija/sintaksa. Izolovana grana i oznaka v196 čuvaju celinu.

@@ -511,6 +511,33 @@
       "checkedOn": "2026-09-14",
       "revision": "Službeni glasnik RS zaključno sa 76/2026",
       "contentHash": "8f9b78ea7810a5d5028f3b2878773d37080cf9096a2239dc2a306101708c45d7"
+    },
+    {
+      "id": "zobs-pesaci-pis-19-2025",
+      "url": "https://reg.pravno-informacioni-sistem.rs/api/viewAct/8b57d1e9-9b34-4fa0-9693-7ceb6da65486?lawActId=438311",
+      "title": "Zakon o bezbednosti saobraćaja na putevima — važeća konsolidacija PIS",
+      "article": "23, 55, 59, 77, 81, 88, 89, 91, 93–99, 118, 163, 166",
+      "checkedOn": "2026-09-14",
+      "revision": "Službeni glasnik RS zaključno sa 19/2025",
+      "contentHash": "8796f6a1718bea08ea4fe1dedb3c9a71001b1c6c5245a93526f365a61e668d5d"
+    },
+    {
+      "id": "signalizacija-pesaci-pis-76-2026",
+      "url": "https://reg.pravno-informacioni-sistem.rs/api/viewdoc?doctype=reg&regactid=440491&uuid=2bd446cf-0965-4141-8323-d207a4216ed1",
+      "title": "Pravilnik o saobraćajnoj signalizaciji — konsolidacija sa 76/2026",
+      "article": "71–75, naročito 73: kružni crveni/žuti/zeleni svetlosni znakovi",
+      "checkedOn": "2026-09-14",
+      "revision": "Službeni glasnik RS zaključno sa 76/2026",
+      "contentHash": "8f9b78ea7810a5d5028f3b2878773d37080cf9096a2239dc2a306101708c45d7"
+    },
+    {
+      "id": "policija-pesaci-pis-56-2010",
+      "url": "https://reg.pravno-informacioni-sistem.rs/api/viewAct/21fba347-6f9f-430e-8bc5-40af04ecd3d8?lawActId=423487",
+      "title": "Pravilnik o znacima koje učesnicima u saobraćaju na putevima daju policijski službenici",
+      "article": "2 st. 1 tač. 8: normalan stav/odručene ruke, prsa i leđa naspram bokova",
+      "checkedOn": "2026-09-14",
+      "revision": "Službeni glasnik RS 56/2010",
+      "contentHash": "138e8a4584b602231114533de95a91c19a9bdff3ec3a408cb6386a5ab7a04131"
     }
   ]
 }

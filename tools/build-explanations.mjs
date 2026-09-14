@@ -2155,9 +2155,9 @@ CARDS['svetla'] = {
 CARDS['pesaci-bicikli'] = {
   title: 'Pešaci, bicikli i dvotočkaši u saobraćaju',
   html: `
-<p><b>Vozač prema pešacima (čl. 23):</b> pazi na pešake koji su na kolovozu, stupaju ili se vidi da nameravaju · pred pešačkim prelazom brzina takva da UVEK možeš da staneš · zona dece = naročita opreznost.</p>
-<p><b>Na prelazu:</b> pešaku na prelazu (i kad tek stupa) — propusti; zabranjeno je preticanje i obilaženje vozila koje se zaustavilo radi propuštanja pešaka.</p>
-<p><b>Za tebe kao vozača mopeda/motocikla:</b> kaciga OBAVEZNA (vozač i putnik) · svetla uvek · dete mlađe od 12 godina se ne prevozi · deca do 12 ne smeju upravljati biciklom na javnom putu.</p>
+<p><b>Vozač prema pešacima (čl. 23):</b> pazi na pešake koji su na kolovozu, stupaju ili se vidi da nameravaju · pred pešačkim prelazom brzina takva da u svakoj situaciji koju vidiš ili imaš razloga da predvidiš možeš bezbedno da staneš · zona dece = naročita opreznost.</p>
+<p><b>Na prelazu:</b> pešaku na prelazu (i kad tek stupa) — propusti; zabranjeno je preticanje i obilaženje vozila koje se približava pešačkom prelazu ili ga prelazi, kao i vozila koje se zaustavilo ili se zaustavlja radi propuštanja pešaka na prelazu.</p>
+<p><b>Za tebe kao vozača mopeda/motocikla:</b> vozač i putnik za vreme vožnje nose zakopčanu homologovanu zaštitnu kacigu, osim ako vozilo ima ugrađenu kabinu (čl. 91). Svetla su obavezna tokom vožnje (čl. 77); dete mlađe od 12 godina ne sme da se prevozi na mopedu ili motociklu (čl. 118). Za upravljanje biciklom na javnom putu opšta donja granica je 12 godina. Od navršenih 9 godina dozvoljeni su pešačka zona, zona usporenog saobraćaja, zona „30”, zona škole i nekategorisani put; mlađi od 9 mogu u pešačkoj zoni i zoni usporenog saobraćaja uz nadzor lica starijeg od 16 godina (čl. 88).</p>
 
 <!-- ==== dopuna 07.09.2026 (tura 4): crtež + isto to rečima ==== -->
 <!-- IZVORI (mapa tvrdnja -> broj pitanja; NE ulazi u karticu, brise se pri ubacivanju u build-explanations.mjs)
@@ -2197,15 +2197,16 @@ CARDS['pesaci-bicikli'] = {
 <tr><td>prelaz <b>NIJE REGULISAN</b> — nema ni semafora ni policajca</td><td><b>prilagodiš brzinu</b> tako da u svakoj situaciji koju vidiš ili imaš razloga da predvidiš možeš bezbedno da propustiš pešaka</td></tr>
 <tr><td>prelaz <b>nije regulisan</b>, a na njega je stupilo ili stupa <b>DETE</b></td><td><b>zaustaviš vozilo</b> i propustiš ga</td></tr>
 </table>
-<p class="mut">Obrati pažnju gde tačno stoji „zaustaviš vozilo" zbog deteta: u pitanjima su to <b>neregulisan prelaz</b> i <b>prelaz na ulazu u bočni put u koji skrećeš</b>. To su dva slučaja koja baza pita — ne pravi od toga pravilo za svaki prelaz.</p>
+<p><b>Ne čekaš obavezno prvi korak:</b> na neregulisanom prelazu i pri skretanju na regulisan prelaz bočnog puta propuštaš i pešaka koji pokazuje nameru da stupi na prelaz. Na regulisanom prelazu iz čl. 99 st. 1 propuštaš pešaka koji je stupio ili pokazuje nameru da stupi dok mu je prelaz bio dozvoljen.</p>
+<p class="mut"><b>Dete nije ograničeno na dva primera iz testa:</b> obavezno zaustavljanje i propuštanje iz čl. 99 st. 5 važi u svim slučajevima iz st. 1–4 — na regulisanom i neregulisanom prelazu, pri skretanju na bočni put sa prelazom i bez njega. Isto važi za nemoćna lica, slepe osobe sa belim štapom i/ili psom vodičem i osobe sa invaliditetom koje koriste kolica ili druga ortotičko-protetička pomagala.</p>
 <p><b>Ispred čega staješ kad ti je prolaz zabranjen.</b> Radnja je uvek ista: staješ pre nego što uđeš u prostor kojim pešak prelazi. Razlikuje se samo koju granicu tačan odgovor imenuje: u pitanjima koja su <b>samo tekst</b> glasi „zaustavi svoje vozilo ispred pešačkog prelaza", a u pitanju sa slikom, na raskrsnici kojom upravlja policijski službenik, glasi „zaustavite svoje vozilo ispred <b>linije zaustavljanja</b>".</p>
 <p>Četiri puta ista ulica, a četiri različite dužnosti — razlikuje se samo ono što stoji <i>iznad</i> kolovoza. Zato na svakom od sledeća četiri crteža prvo gledaj tamo: to je ono što odlučuje.</p>
 <div style="display:flex;justify-content:center;margin:8px 0">
 <svg viewBox="0 0 300 175" style="max-width:300px;width:100%" role="img" aria-label="semafor sa upaljenim crvenim svetlom pored pešačkog prelaza; vozilo stoji ispred prelaza dok pešak prelazi preko šara">
-<text x="150" y="14" text-anchor="middle" font-size="13" fill="currentColor">SVETLOSNI ZNAK: ZABRANJEN PROLAZ</text>
-<rect x="0" y="78" width="300" height="64" fill="#9aa7b4"/>
+<text x="150" y="18" text-anchor="middle" font-size="14" fill="currentColor">SVETLOSNI ZNAK: ZABRANJEN PROLAZ</text>
+<rect x="0" y="78" width="300" height="64" fill="#8795a3"/>
 <rect x="120" y="26" width="24" height="48" rx="5" fill="#2a333d"/>
-<circle cx="132" cy="38" r="6.5" fill="#c0392b"/>
+<circle cx="132" cy="38" r="6.5" fill="#ff4522"/>
 <circle cx="132" cy="50" r="6.5" fill="#5a4a22"/>
 <circle cx="132" cy="62" r="6.5" fill="#1f4a2e"/>
 <rect x="150" y="82" width="56" height="9" fill="#fff"/>
@@ -2213,22 +2214,22 @@ CARDS['pesaci-bicikli'] = {
 <rect x="150" y="110" width="56" height="9" fill="#fff"/>
 <rect x="150" y="124" width="56" height="9" fill="#fff"/>
 <g class="animPesakPrelazi">
-<circle cx="178" cy="86" r="6" fill="#2c6aa0"/>
-<path d="M178,94 L178,132 M172,126 L178,133 L184,126" fill="none" stroke="#2c6aa0" stroke-width="2"/>
+<circle cx="178" cy="86" r="6" fill="#0f3c61"/>
+<path d="M178,94 L178,132 M172,126 L178,133 L184,126" fill="none" stroke="#0f3c61" stroke-width="2"/>
 </g>
-<rect x="16" y="94" width="58" height="32" rx="6" fill="none" stroke="currentColor" stroke-width="2"/>
-<text x="45" y="115" text-anchor="middle" font-size="12" fill="currentColor">TI</text>
-<text x="52" y="50" text-anchor="middle" font-size="12" fill="#c0392b">STAJEŠ</text>
-<text x="52" y="67" text-anchor="middle" font-size="12" fill="#c0392b">ispred prelaza</text>
-<path d="M52,72 L52,90 M47,84 L52,91 L57,84" fill="none" stroke="#c0392b" stroke-width="2"/>
-<text x="178" y="160" text-anchor="middle" font-size="12" fill="currentColor">pešački prelaz</text>
+<rect x="16" y="94" width="58" height="32" rx="6" fill="none" stroke="#111" stroke-width="2"/>
+<text x="45" y="115" text-anchor="middle" font-size="14" fill="#111">TI</text>
+<text x="52" y="50" text-anchor="middle" font-size="14" fill="var(--bad)">STAJEŠ</text>
+<text x="52" y="67" text-anchor="middle" font-size="14" fill="var(--bad)">ispred prelaza</text>
+<path d="M52,72 L52,78" fill="none" stroke="var(--bad)" stroke-width="2"/><path d="M52,78 L52,90 M47,84 L52,91 L57,84" fill="none" stroke="#811b12" stroke-width="2"/>
+<text x="178" y="160" text-anchor="middle" font-size="14" fill="currentColor">pešački prelaz</text>
 </svg>
 </div>
 <p class="mut" style="text-align:center;font-size:var(--fs-sm)">na crtežu ti je svetlosnim znakom prolaz zabranjen (upaljeno crveno): zaustavljaš vozilo <b>ispred pešačkog prelaza</b> i čekaš, ceo prostor prelaza ostaje prazan za pešake · šare leže u smeru vožnje, a pešak ih gazi popreko</p>
 <div style="display:flex;justify-content:center;margin:8px 0">
 <svg viewBox="0 0 300 175" style="max-width:300px;width:100%" role="img" aria-label="policijski službenik okrenut prednjom stranom tela prema tebi stoji kraj kolovoza; vozilo stoji ispred bele linije zaustavljanja, a pešak prelazi preko šara">
-<text x="150" y="14" text-anchor="middle" font-size="13" fill="currentColor">POLICAJAC OKRENUT LICEM KA TEBI</text>
-<rect x="0" y="78" width="300" height="64" fill="#9aa7b4"/>
+<text x="150" y="18" text-anchor="middle" font-size="14" fill="currentColor">POLICAJAC OKRENUT LICEM KA TEBI</text>
+<rect x="0" y="78" width="300" height="64" fill="#8795a3"/>
 <circle cx="250" cy="32" r="8" fill="none" stroke="currentColor" stroke-width="2"/>
 <line x1="240" y1="27" x2="260" y2="27" stroke="currentColor" stroke-width="3"/>
 <circle cx="247" cy="33" r="1.5" fill="currentColor"/>
@@ -2242,115 +2243,110 @@ CARDS['pesaci-bicikli'] = {
 <rect x="150" y="110" width="56" height="9" fill="#fff"/>
 <rect x="150" y="124" width="56" height="9" fill="#fff"/>
 <g class="animPesakPrelazi">
-<circle cx="178" cy="86" r="6" fill="#2c6aa0"/>
-<path d="M178,94 L178,132 M172,126 L178,133 L184,126" fill="none" stroke="#2c6aa0" stroke-width="2"/>
+<circle cx="178" cy="86" r="6" fill="#0f3c61"/>
+<path d="M178,94 L178,132 M172,126 L178,133 L184,126" fill="none" stroke="#0f3c61" stroke-width="2"/>
 </g>
-<rect x="16" y="94" width="58" height="32" rx="6" fill="none" stroke="currentColor" stroke-width="2"/>
-<text x="45" y="115" text-anchor="middle" font-size="12" fill="currentColor">TI</text>
-<text x="52" y="50" text-anchor="middle" font-size="12" fill="#c0392b">STAJEŠ</text>
-<text x="52" y="67" text-anchor="middle" font-size="12" fill="#c0392b">ispred linije</text>
-<path d="M52,72 L52,90 M47,84 L52,91 L57,84" fill="none" stroke="#c0392b" stroke-width="2"/>
+<rect x="16" y="94" width="58" height="32" rx="6" fill="none" stroke="#111" stroke-width="2"/>
+<text x="45" y="115" text-anchor="middle" font-size="14" fill="#111">TI</text>
+<text x="52" y="50" text-anchor="middle" font-size="14" fill="var(--bad)">STAJEŠ</text>
+<text x="52" y="67" text-anchor="middle" font-size="14" fill="var(--bad)">ispred linije</text>
+<path d="M52,72 L52,78" fill="none" stroke="var(--bad)" stroke-width="2"/><path d="M52,78 L52,90 M47,84 L52,91 L57,84" fill="none" stroke="#811b12" stroke-width="2"/>
 <line x1="122" y1="146" x2="122" y2="152" stroke="currentColor" stroke-width="1"/>
-<text x="122" y="166" text-anchor="middle" font-size="12" fill="currentColor">linija zaustavljanja</text>
+<text x="122" y="166" text-anchor="middle" font-size="14" fill="currentColor">linija zaustavljanja</text>
 </svg>
 </div>
 <p class="mut" style="text-align:center;font-size:var(--fs-sm)">isti slučaj — prolaz ti je zabranjen — samo je znak dao policajac: tu tačan odgovor imenuje <b>liniju zaustavljanja</b>, pa staješ ispred nje</p>
 <div style="display:flex;justify-content:center;margin:8px 0">
 <svg viewBox="0 0 300 175" style="max-width:300px;width:100%" role="img" aria-label="semafor sa upaljenim zelenim svetlom; pešak prelazi preko šara, vozilo stoji i propušta ga, a zelena isprekidana strelica iza prelaza pokazuje da posle toga nastavlja">
-<text x="150" y="14" text-anchor="middle" font-size="13" fill="currentColor">SVETLOSNI ZNAK: DOZVOLJEN PROLAZ</text>
-<rect x="0" y="78" width="300" height="64" fill="#9aa7b4"/>
+<text x="150" y="18" text-anchor="middle" font-size="14" fill="currentColor">SVETLOSNI ZNAK: DOZVOLJEN PROLAZ</text>
+<rect x="0" y="78" width="300" height="64" fill="#8795a3"/>
 <rect x="120" y="26" width="24" height="48" rx="5" fill="#2a333d"/>
 <circle cx="132" cy="38" r="6.5" fill="#5a2a26"/>
 <circle cx="132" cy="50" r="6.5" fill="#5a4a22"/>
-<circle cx="132" cy="62" r="6.5" fill="#1f7a3f"/>
+<circle cx="132" cy="62" r="6.5" fill="#2ea44f"/>
 <rect x="150" y="82" width="56" height="9" fill="#fff"/>
 <rect x="150" y="96" width="56" height="9" fill="#fff"/>
 <rect x="150" y="110" width="56" height="9" fill="#fff"/>
 <rect x="150" y="124" width="56" height="9" fill="#fff"/>
 <g class="animPesakPrelazi">
-<circle cx="178" cy="86" r="6" fill="#2c6aa0"/>
-<path d="M178,94 L178,132 M172,126 L178,133 L184,126" fill="none" stroke="#2c6aa0" stroke-width="2"/>
+<circle cx="178" cy="86" r="6" fill="#0f3c61"/>
+<path d="M178,94 L178,132 M172,126 L178,133 L184,126" fill="none" stroke="#0f3c61" stroke-width="2"/>
 </g>
-<rect x="16" y="94" width="58" height="32" rx="6" fill="none" stroke="currentColor" stroke-width="2"/>
-<text x="45" y="115" text-anchor="middle" font-size="12" fill="currentColor">TI</text>
-<text x="52" y="50" text-anchor="middle" font-size="12" fill="#1f7a3f">PROPUŠTAŠ</text>
-<text x="52" y="67" text-anchor="middle" font-size="12" fill="#1f7a3f">pešaka</text>
-<path d="M214,110 L274,110" fill="none" stroke="#1f7a3f" stroke-width="2" stroke-dasharray="7 5"/>
-<path d="M272,104 L284,110 L272,116 Z" fill="#1f7a3f"/>
-<text x="246" y="160" text-anchor="middle" font-size="12" fill="#1f7a3f">pa nastavljaš</text>
+<rect x="16" y="94" width="58" height="32" rx="6" fill="none" stroke="#111" stroke-width="2"/>
+<text x="45" y="115" text-anchor="middle" font-size="14" fill="#111">TI</text>
+<text x="52" y="50" text-anchor="middle" font-size="14" fill="var(--ok)">PROPUŠTAŠ</text>
+<text x="52" y="67" text-anchor="middle" font-size="14" fill="var(--ok)">pešaka</text>
+<path d="M214,110 L274,110" fill="none" stroke="#0d4828" stroke-width="2" stroke-dasharray="7 5"/>
+<path d="M272,104 L284,110 L272,116 Z" fill="#0d4828"/>
+<text x="246" y="160" text-anchor="middle" font-size="14" fill="var(--ok)">pa nastavljaš</text>
 </svg>
 </div>
 <p class="mut" style="text-align:center;font-size:var(--fs-sm)">zeleno ti otvara put, ali ne kroz ljude na prelazu: pešaka koji prelazi <b>propuštaš</b>, pa tek onda nastavljaš — i kad ideš pravo i kad skrećeš</p>
 <div style="display:flex;justify-content:center;margin:8px 0">
 <svg viewBox="0 0 300 175" style="max-width:300px;width:100%" role="img" aria-label="prelaz na kome nema ni semafora ni policijskog službenika — oba su nacrtana i precrtana crvenim krstom; vozilo smanjuje brzinu pri nailasku na prelaz">
-<text x="150" y="14" text-anchor="middle" font-size="13" fill="currentColor">NEMA SEMAFORA NI POLICAJCA</text>
-<rect x="0" y="78" width="300" height="64" fill="#9aa7b4"/>
+<text x="150" y="18" text-anchor="middle" font-size="14" fill="currentColor">NEMA SEMAFORA NI POLICAJCA</text>
+<rect x="0" y="78" width="300" height="64" fill="#8795a3"/>
 <rect x="96" y="30" width="18" height="36" rx="3" fill="#2a333d"/>
 <circle cx="105" cy="38" r="4.5" fill="#5a6672"/>
 <circle cx="105" cy="48" r="4.5" fill="#5a6672"/>
 <circle cx="105" cy="58" r="4.5" fill="#5a6672"/>
-<path d="M92,26 L118,70 M118,26 L92,70" fill="none" stroke="#c0392b" stroke-width="3"/>
+<path d="M92,26 L118,70 M118,26 L92,70" fill="none" stroke="var(--bad)" stroke-width="3"/>
 <circle cx="170" cy="36" r="7" fill="none" stroke="currentColor" stroke-width="2"/>
 <path d="M161,48 L179,48 L182,70 L158,70 Z" fill="none" stroke="currentColor" stroke-width="2"/>
-<path d="M154,26 L186,72 M186,26 L154,72" fill="none" stroke="#c0392b" stroke-width="3"/>
+<path d="M154,26 L186,72 M186,26 L154,72" fill="none" stroke="var(--bad)" stroke-width="3"/>
 <rect x="150" y="82" width="56" height="9" fill="#fff"/>
 <rect x="150" y="96" width="56" height="9" fill="#fff"/>
 <rect x="150" y="110" width="56" height="9" fill="#fff"/>
 <rect x="150" y="124" width="56" height="9" fill="#fff"/>
-<rect x="16" y="94" width="58" height="32" rx="6" fill="none" stroke="currentColor" stroke-width="2"/>
-<text x="45" y="115" text-anchor="middle" font-size="12" fill="currentColor">TI</text>
+<rect x="16" y="94" width="58" height="32" rx="6" fill="none" stroke="#111" stroke-width="2"/>
+<text x="45" y="115" text-anchor="middle" font-size="14" fill="#111">TI</text>
 <rect x="86" y="102" width="6" height="24" fill="currentColor" opacity=".55"/>
 <rect x="98" y="110" width="6" height="16" fill="currentColor" opacity=".55"/>
 <rect x="110" y="118" width="6" height="8" fill="currentColor" opacity=".55"/>
-<text x="150" y="160" text-anchor="middle" font-size="12" fill="currentColor">PRILAGOĐAVAŠ BRZINU</text>
+<text x="150" y="160" text-anchor="middle" font-size="14" fill="currentColor">PRILAGOĐAVAŠ BRZINU</text>
 </svg>
 </div>
-<p class="mut" style="text-align:center;font-size:var(--fs-sm)">stubići koji se smanjuju = brzina koju spuštaš pri nailasku · pri nailasku na neregulisan prelaz obavezna je <b>prilagođena brzina</b>, ne zaustavljanje i ne truba — a ako je na prelaz stupilo ili stupa <b>dete</b>, zaustavljaš vozilo</p>
-<p><b>Policijski službenik na raskrsnici — dva pitanja sa slikom počinju gotovo isto</b> („na raskrsnici na kojoj saobraćaj reguliše policijski službenik"), a tačni odgovori su im suprotni. Razlikuje ih <b>ono što je u pitanju ponuđeno</b>:</p>
-<ul>
-<li>gde je ponuđeno <b>„zaustavite svoje vozilo ispred linije zaustavljanja"</b> — to je tačan odgovor: policajac stoji okrenut <b>prednjom stranom tela prema tebi</b>, a taj položaj za tvoj smer znači <b>zabranjen prolaz</b>; propuštanje pešaka tu nije dovoljan odgovor jer ionako ne smeš preko linije;</li>
-<li>gde tog odgovora <b>nema</b> u ponudi, biraš između „niste dužni da propustite", zvučnog znaka i propuštanja — i tačno je <b>da propustiš pešake</b>.</li>
-</ul>
-<p class="mut">Iz građe ovih pitanja izlazi samo jedno o položaju tela: prednja strana okrenuta prema tebi = tebi je prolaz zabranjen. Šta znače ostali položaji i znaci rukom, u njima ne piše — ne izvodi iz toga zaključak.</p>
+<p class="mut" style="text-align:center;font-size:var(--fs-sm)">stubići koji se smanjuju = brzina koju spuštaš pri nailasku · pri nailasku na neregulisan prelaz obavezna je <b>prilagođena brzina</b>, bez bezuslovne obaveze stajanja ili trube pri samom nailasku — a ako je na prelaz stupilo ili stupa <b>dete</b>, zaustavljaš vozilo</p>
+<p><b>Dve fotografije policajca razlikuje njegov položaj, ne ponuda odgovora.</b> U pitanju 10550 prema tebi su okrenuta prsa i ruke su odručene: prolaz ti je zabranjen, pa staješ ispred linije zaustavljanja. U pitanju 10255 policajca vidiš sa boka: prolaz ti je dozvoljen, ali pešake na prelazu propuštaš. U normalnom stojećem stavu i sa odručenim rukama prsa/leđa znače stani, a bokovi dozvoljen prolaz (Pravilnik o znacima policijskih službenika, čl. 2 st. 1 tač. 8; ZOBS čl. 99).</p>
 </div>
 
 <div class="kPodH"><b class="kPodNaslov">Skretanje na bočni put — tu presecaš pešaka</b>
 <div style="display:flex;justify-content:center;margin:8px 0">
 <svg viewBox="0 0 300 192" style="max-width:300px;width:100%" role="img" aria-label="skretanje udesno na bočni put na čijem ulazu postoji obeležen pešački prelaz: isprekidana putanja vozila preseca pešaka koji prelazi preko šara">
-<rect x="70" y="6" width="76" height="164" fill="#9aa7b4"/>
-<rect x="146" y="54" width="154" height="64" fill="#9aa7b4"/>
+<rect x="70" y="6" width="76" height="164" fill="#8795a3"/>
+<rect x="146" y="54" width="154" height="64" fill="#8795a3"/>
 <rect x="156" y="58" width="44" height="9" fill="#fff"/>
 <rect x="156" y="72" width="44" height="9" fill="#fff"/>
 <rect x="156" y="86" width="44" height="9" fill="#fff"/>
 <rect x="156" y="100" width="44" height="9" fill="#fff"/>
-<rect x="88" y="126" width="38" height="40" rx="5" fill="none" stroke="currentColor" stroke-width="2"/>
-<text x="107" y="150" text-anchor="middle" font-size="12" fill="currentColor">TI</text>
-<path class="animPutanjaSkretanja" d="M107,126 L107,98 Q107,82 132,82 L272,82" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="7 5"/>
-<path d="M270,76 L282,82 L270,88 Z" fill="currentColor"/>
-<circle cx="178" cy="62" r="6" fill="#2c6aa0"/>
-<path d="M178,70 L178,110 M172,104 L178,111 L184,104" fill="none" stroke="#2c6aa0" stroke-width="2"/>
-<circle cx="178" cy="82" r="13" fill="none" stroke="#c0392b" stroke-width="2.5"/>
-<text x="150" y="186" text-anchor="middle" font-size="13" fill="currentColor">SA OBELEŽENIM PRELAZOM</text>
+<rect x="88" y="126" width="38" height="40" rx="5" fill="none" stroke="#111" stroke-width="2"/>
+<text x="107" y="150" text-anchor="middle" font-size="14" fill="#111">TI</text>
+<path class="animPutanjaSkretanja" d="M107,126 L107,98 Q107,82 132,82 L272,82" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="7 5"/>
+<path d="M270,76 L282,82 L270,88 Z" fill="#fff"/>
+<circle cx="178" cy="62" r="6" fill="#0f3c61"/>
+<path d="M178,70 L178,110 M172,104 L178,111 L184,104" fill="none" stroke="#0f3c61" stroke-width="2"/>
+<circle cx="178" cy="82" r="13" fill="none" stroke="#811b12" stroke-width="2.5"/>
+<text x="150" y="186" text-anchor="middle" font-size="14" fill="currentColor">SA OBELEŽENIM PRELAZOM</text>
 </svg>
 </div>
 <div style="display:flex;justify-content:center;margin:8px 0">
 <svg viewBox="0 0 300 192" style="max-width:300px;width:100%" role="img" aria-label="skretanje udesno na bočni put na čijem ulazu nema obeleženog prelaza: pešak je već stupio na kolovoz, a isprekidana putanja vozila ga preseca">
-<rect x="70" y="6" width="76" height="164" fill="#9aa7b4"/>
-<rect x="146" y="54" width="154" height="64" fill="#9aa7b4"/>
-<rect x="88" y="126" width="38" height="40" rx="5" fill="none" stroke="currentColor" stroke-width="2"/>
-<text x="107" y="150" text-anchor="middle" font-size="12" fill="currentColor">TI</text>
-<path class="animPutanjaSkretanja" d="M107,126 L107,98 Q107,82 132,82 L272,82" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="7 5"/>
-<path d="M270,76 L282,82 L270,88 Z" fill="currentColor"/>
-<circle cx="178" cy="62" r="6" fill="#2c6aa0"/>
-<path d="M178,70 L178,110 M172,104 L178,111 L184,104" fill="none" stroke="#2c6aa0" stroke-width="2"/>
-<circle cx="178" cy="82" r="13" fill="none" stroke="#c0392b" stroke-width="2.5"/>
-<text x="150" y="186" text-anchor="middle" font-size="13" fill="currentColor">BEZ OBELEŽENOG PRELAZA</text>
+<rect x="70" y="6" width="76" height="164" fill="#8795a3"/>
+<rect x="146" y="54" width="154" height="64" fill="#8795a3"/>
+<rect x="88" y="126" width="38" height="40" rx="5" fill="none" stroke="#111" stroke-width="2"/>
+<text x="107" y="150" text-anchor="middle" font-size="14" fill="#111">TI</text>
+<path class="animPutanjaSkretanja" d="M107,126 L107,98 Q107,82 132,82 L272,82" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="7 5"/>
+<path d="M270,76 L282,82 L270,88 Z" fill="#fff"/>
+<circle cx="178" cy="62" r="6" fill="#0f3c61"/>
+<path d="M178,70 L178,110 M172,104 L178,111 L184,104" fill="none" stroke="#0f3c61" stroke-width="2"/>
+<circle cx="178" cy="82" r="13" fill="none" stroke="#811b12" stroke-width="2.5"/>
+<text x="150" y="186" text-anchor="middle" font-size="14" fill="currentColor">BEZ OBELEŽENOG PRELAZA</text>
 </svg>
 </div>
 <p class="mut" style="text-align:center;font-size:var(--fs-sm)">crveni krug = mesto gde tvoja putanja preseca pešaka · u oba crteža ga propuštaš — u donjem odlučuje to što je <b>već stupio na kolovoz</b></p>
 <p>Kad skrećeš na bočni put, tvoja putanja preseca pešake koji prelaze kolovoz tog puta. Njih propuštaš:</p>
 <ul>
-<li>i kad na ulazu u bočni put <b>nema obeleženog prelaza</b> — odlučuje to što su <b>već stupili na kolovoz</b>, a ne to kuda prelaze;</li>
+<li>i kad na ulazu u bočni put <b>nema obeleženog prelaza</b> — propuštaš pešake koji su <b>već stupili ili stupaju na kolovoz</b> tog puta;</li>
 <li>i kad ti je <b>prolaz dozvoljen</b> — svetlosnim saobraćajnim znakom ili znakom policijskog službenika; zeleno ti otvara put, ali ne kroz ljude koji su već na prelazu;</li>
 <li>a kad preko prelaza na ulazu u bočni put prelazi <b>dete</b>, i uz prolaz dozvoljen svetlosnim znakom <b>zaustavljaš vozilo</b> i propuštaš ga.</li>
 </ul>
@@ -2358,85 +2354,85 @@ CARDS['pesaci-bicikli'] = {
 
 <div class="kPodH"><b class="kPodNaslov">Deca, kolona pešaka i zvučni znak</b>
 <p><b>Dete na prelazu:</b> kad na pešački prelaz na kome nema ni semafora ni policajca stupa ili je već stupilo dete — zaustavljaš vozilo i propuštaš ga. Isto radiš i kad skrećeš na bočni put uz prolaz dozvoljen svetlosnim znakom, a preko prelaza na ulazu prelazi dete. Kod dece, nemoćnih i slepih lica nema procene „stići će da pređe" (ZOBS čl. 99).</p>
-<p><b>Prisustvo dece pored kolovoza:</b> voziš sa naročitom opreznošću, tako da možeš blagovremeno da zaustaviš vozilo <b>i</b> da upotrebiš zvučni znak upozorenja — deca ne prate kretanje vozila (čl. 59). Samo prilagođavanje brzine tu nije potpun odgovor, a nastavak istom brzinom uz trubu je obrnuto od onoga što se traži.</p>
+<p><b>Prisustvo dece pored kolovoza:</b> voziš sa naročitom opreznošću tako da možeš blagovremeno da zaustaviš vozilo (čl. 23). Ako se pored kolovoza nalazi dete koje ne obraća pažnju na kretanje vozila, dužan si i da upotrebiš zvučni znak upozorenja (čl. 59). U prikazanoj situaciji 10270 odgovor koji traži samo prilagođavanje brzine zato nije potpun.</p>
 <div style="display:flex;justify-content:center;margin:8px 0">
-<svg viewBox="0 0 300 178" style="max-width:300px;width:100%" role="img" aria-label="dvoje dece stoji pored kolovoza; vozilo daje zvučni znak i smanjuje brzinu, a pešački prelaz ispred njega je prazan">
-<text x="150" y="14" text-anchor="middle" font-size="13" fill="currentColor">DECA PORED KOLOVOZA</text>
-<rect x="0" y="70" width="300" height="60" fill="#9aa7b4"/>
-<rect x="16" y="84" width="58" height="32" rx="6" fill="none" stroke="currentColor" stroke-width="2"/>
-<text x="45" y="105" text-anchor="middle" font-size="12" fill="currentColor">TI</text>
-<path d="M80,92 Q88,100 80,108" fill="none" stroke="currentColor" stroke-width="1.6"/>
-<path d="M88,87 Q99,100 88,113" fill="none" stroke="currentColor" stroke-width="1.6"/>
-<path d="M96,82 Q110,100 96,118" fill="none" stroke="currentColor" stroke-width="1.6"/>
+<svg viewBox="0 0 300 178" style="max-width:300px;width:100%" role="img" aria-label="dvoje dece stoji pored kolovoza i ne obraća pažnju na vozila; vozilo daje zvučni znak i smanjuje brzinu, a pešački prelaz ispred njega je prazan">
+<text x="150" y="18" text-anchor="middle" font-size="14" fill="currentColor">DECA PORED KOLOVOZA</text>
+<rect x="0" y="70" width="300" height="60" fill="#8795a3"/>
+<rect x="16" y="84" width="58" height="32" rx="6" fill="none" stroke="#111" stroke-width="2"/>
+<text x="45" y="105" text-anchor="middle" font-size="14" fill="#111">TI</text>
+<path d="M80,92 Q88,100 80,108" fill="none" stroke="#1c2733" stroke-width="1.6"/>
+<path d="M88,87 Q99,100 88,113" fill="none" stroke="#1c2733" stroke-width="1.6"/>
+<path d="M96,82 Q110,100 96,118" fill="none" stroke="#1c2733" stroke-width="1.6"/>
 <rect x="112" y="92" width="6" height="24" fill="currentColor" opacity=".55"/>
 <rect x="124" y="100" width="6" height="16" fill="currentColor" opacity=".55"/>
 <rect x="136" y="108" width="6" height="8" fill="currentColor" opacity=".55"/>
-<circle cx="170" cy="44" r="5.5" fill="#2c6aa0"/>
-<line x1="170" y1="50" x2="170" y2="68" stroke="#2c6aa0" stroke-width="2"/>
-<circle cx="194" cy="48" r="5.5" fill="#2c6aa0"/>
-<line x1="194" y1="54" x2="194" y2="68" stroke="#2c6aa0" stroke-width="2"/>
+<circle cx="170" cy="44" r="5.5" fill="var(--blue)"/>
+<line x1="170" y1="50" x2="170" y2="68" stroke="var(--blue)" stroke-width="2"/>
+<circle cx="194" cy="48" r="5.5" fill="var(--blue)"/>
+<line x1="194" y1="54" x2="194" y2="68" stroke="var(--blue)" stroke-width="2"/>
 <rect x="230" y="74" width="56" height="9" fill="#fff"/>
 <rect x="230" y="88" width="56" height="9" fill="#fff"/>
 <rect x="230" y="102" width="56" height="9" fill="#fff"/>
 <rect x="230" y="116" width="56" height="9" fill="#fff"/>
-<text x="150" y="150" text-anchor="middle" font-size="12" fill="currentColor">USPORAVAŠ · spreman da staneš</text>
-<text x="150" y="168" text-anchor="middle" font-size="12" fill="currentColor">+ ZVUČNI ZNAK</text>
+<text x="150" y="150" text-anchor="middle" font-size="14" fill="currentColor">USPORAVAŠ · spreman da staneš</text>
+<text x="150" y="168" text-anchor="middle" font-size="14" fill="currentColor">+ ZVUČNI ZNAK</text>
 </svg>
 </div>
 <div style="display:flex;justify-content:center;margin:8px 0">
-<svg viewBox="0 0 300 194" style="max-width:300px;width:100%" role="img" aria-label="prelaz bez semafora i bez policijskog službenika — oba su nacrtana i precrtana crvenim krstom; dete je stupilo na šare, a vozilo staje ispred prelaza bez upotrebe zvučnog znaka">
-<text x="150" y="14" text-anchor="middle" font-size="13" fill="currentColor">DETE JE STUPILO NA PRELAZ</text>
+<svg viewBox="0 0 300 194" style="max-width:300px;width:100%" role="img" aria-label="prelaz bez semafora i bez policijskog službenika — oba su nacrtana i precrtana crvenim krstom; dete je stupilo na šare, a vozilo staje ispred prelaza; zvučni znak ne zamenjuje zaustavljanje">
+<text x="150" y="18" text-anchor="middle" font-size="14" fill="currentColor">DETE JE STUPILO NA PRELAZ</text>
 <rect x="200" y="30" width="18" height="36" rx="3" fill="#2a333d"/>
 <circle cx="209" cy="38" r="4.5" fill="#5a6672"/>
 <circle cx="209" cy="48" r="4.5" fill="#5a6672"/>
 <circle cx="209" cy="58" r="4.5" fill="#5a6672"/>
-<path d="M196,26 L222,70 M222,26 L196,70" fill="none" stroke="#c0392b" stroke-width="3"/>
+<path d="M196,26 L222,70 M222,26 L196,70" fill="none" stroke="var(--bad)" stroke-width="3"/>
 <circle cx="252" cy="38" r="7" fill="none" stroke="currentColor" stroke-width="2"/>
 <path d="M243,50 L261,50 L264,70 L240,70 Z" fill="none" stroke="currentColor" stroke-width="2"/>
-<path d="M236,26 L268,72 M268,26 L236,72" fill="none" stroke="#c0392b" stroke-width="3"/>
-<rect x="0" y="84" width="300" height="60" fill="#9aa7b4"/>
+<path d="M236,26 L268,72 M268,26 L236,72" fill="none" stroke="var(--bad)" stroke-width="3"/>
+<rect x="0" y="84" width="300" height="60" fill="#8795a3"/>
 <rect x="210" y="88" width="56" height="9" fill="#fff"/>
 <rect x="210" y="102" width="56" height="9" fill="#fff"/>
 <rect x="210" y="116" width="56" height="9" fill="#fff"/>
 <rect x="210" y="130" width="56" height="9" fill="#fff"/>
-<circle cx="238" cy="92" r="5" fill="#2c6aa0"/>
-<path d="M238,99 L238,134 M232,128 L238,135 L244,128" fill="none" stroke="#2c6aa0" stroke-width="2"/>
-<rect x="16" y="98" width="58" height="32" rx="6" fill="none" stroke="currentColor" stroke-width="2"/>
-<text x="45" y="119" text-anchor="middle" font-size="12" fill="currentColor">TI</text>
-<text x="46" y="76" text-anchor="middle" font-size="12" fill="#c0392b">STAJEŠ</text>
-<path d="M46,80 L46,94 M41,88 L46,95 L51,88" fill="none" stroke="#c0392b" stroke-width="2"/>
-<text x="150" y="166" text-anchor="middle" font-size="12" fill="currentColor">zaustavljaš i propuštaš ga</text>
-<text x="150" y="184" text-anchor="middle" font-size="12" fill="#c0392b">ZVUČNI ZNAK: NE</text>
+<circle cx="238" cy="92" r="5" fill="#0f3c61"/>
+<path d="M238,99 L238,134 M232,128 L238,135 L244,128" fill="none" stroke="#0f3c61" stroke-width="2"/>
+<rect x="16" y="98" width="58" height="32" rx="6" fill="none" stroke="#111" stroke-width="2"/>
+<text x="45" y="119" text-anchor="middle" font-size="14" fill="#111">TI</text>
+<text x="46" y="76" text-anchor="middle" font-size="14" fill="var(--bad)">STAJEŠ</text>
+<path d="M46,80 L46,84" fill="none" stroke="var(--bad)" stroke-width="2"/><path d="M46,84 L46,94 M41,88 L46,95 L51,88" fill="none" stroke="#811b12" stroke-width="2"/>
+<text x="150" y="166" text-anchor="middle" font-size="14" fill="currentColor">zaustavljaš i propuštaš ga</text>
+<text x="150" y="184" text-anchor="middle" font-size="14" fill="var(--bad)">TRUBA NE ZAMENJUJE STAJANJE</text>
 </svg>
 </div>
-<p class="mut" style="text-align:center;font-size:var(--fs-sm)">gore: na prelazu ispred tebe nema nikoga, deca su pored kolovoza — usporavaš, spreman da staneš, <b>i</b> trubiš · dole: precrtani semafor i policajac znače da prelaz nije regulisan, a dete je već na njemu — <b>zaustavljaš vozilo</b>, truba ne pomaže</p>
+<p class="mut" style="text-align:center;font-size:var(--fs-sm)">gore: na prelazu ispred tebe nema nikoga, deca su pored kolovoza i ne obraćaju pažnju na vozila — usporavaš, spreman da staneš, <b>i</b> daješ zvučni znak · dole: precrtani semafor i policajac znače da prelaz nije regulisan, a dete je već na njemu — <b>zaustavljaš vozilo</b>, truba ne zamenjuje zaustavljanje</p>
 <table>
-<tr><th>Situacija</th><th>Zvučni znak?</th></tr>
-<tr><td>pešak je stupio ili stupa <b>na pešački prelaz</b> ispred tebe — i onda kad ti je prolaz dozvoljen</td><td><b>NE</b> — propuštaš ga</td></tr>
-<tr><td><b>DETE</b> je stupilo ili stupa na prelaz koji <b>nije regulisan</b>, ili na prelaz na ulazu u bočni put u koji skrećeš uz prolaz dozvoljen svetlosnim znakom</td><td><b>NE</b> — zaustavljaš vozilo i propuštaš ga</td></tr>
-<tr><td>pešak je već <b>na kolovozu</b> ispred tebe, van obeleženog prelaza</td><td><b>NE</b> — propuštaš ga</td></tr>
-<tr><td>nailaziš na prelaz koji <b>nije regulisan</b> — pitanje pita šta si dužan pri samom nailasku</td><td><b>NE</b> — prilagođavaš brzinu tako da možeš bezbedno da propustiš pešaka</td></tr>
-<tr><td><b>prisustvo dece pored kolovoza</b>, niko nije stupio na prelaz ispred tebe</td><td><b>DA</b> — uz naročitu opreznost i blagovremeno zaustavljanje</td></tr>
+<tr><th>Situacija</th><th>Obaveza u opisanim uslovima</th></tr>
+<tr><td>pešak je stupio ili stupa <b>na pešački prelaz</b> ispred tebe — i onda kad ti je prolaz dozvoljen</td><td> propuštaš ga</td></tr>
+<tr><td><b>DETE</b> je stupilo ili stupa na prelaz koji <b>nije regulisan</b>, ili na prelaz na ulazu u bočni put u koji skrećeš uz prolaz dozvoljen svetlosnim znakom</td><td> zaustavljaš vozilo i propuštaš ga</td></tr>
+<tr><td>Skrećeš na bočni put bez obeleženog prelaza na ulazu, a pešak je već stupio ili stupa na njegov kolovoz</td><td>propuštaš ga</td></tr>
+<tr><td>nailaziš na prelaz koji <b>nije regulisan</b> — pitanje pita šta si dužan pri samom nailasku</td><td> prilagođavaš brzinu tako da možeš bezbedno da propustiš pešaka</td></tr>
+<tr><td><b>Dete pored kolovoza ne obraća pažnju na vozila</b>, niko nije stupio na prelaz ispred tebe</td><td>Zvučni znak uz naročitu opreznost i mogućnost blagovremenog zaustavljanja</td></tr>
 </table>
-<p class="mut">Pamtilica: truba je tačan odgovor samo tamo gde se pitanje vrti oko <b>prisustva dece</b> i naročite opreznosti. Čim je neko stupio na prelaz ili na kolovoz ispred tebe, trubljenje ne zamenjuje ni propuštanje ni zaustavljanje.</p>
+<p class="mut">Zvučni znak daješ kada to zahtevaju razlozi bezbednosti (čl. 59), posebno detetu pored kolovoza koje ne obraća pažnju na vozila. On nikada ne zamenjuje propisano propuštanje ili zaustavljanje.</p>
 <p><b>Organizovanu kolonu pešaka</b> koja se kreće po kolovozu <b>ne smeš da presecaš</b> — čekaš da cela pređe, pa tek onda krećeš; nema izuzetka ni kad su u koloni deca (ZOBS čl. 99). Ni u prazninu koja se otvori između dvoje njih ne uteruješ vozilo: kolona prolazi kao celina.</p>
 <div style="display:flex;justify-content:center;margin:8px 0">
 <svg viewBox="0 0 300 156" style="max-width:300px;width:100%" role="img" aria-label="organizovana kolona pešaka prelazi kolovoz u nizu; isprekidana putanja vozila vodi u prazninu između dvoje pešaka i tu je precrtana crvenim krstom">
-<rect x="0" y="44" width="300" height="68" fill="#9aa7b4"/>
-<rect x="14" y="71" width="54" height="32" rx="6" fill="none" stroke="currentColor" stroke-width="2"/>
-<text x="41" y="92" text-anchor="middle" font-size="12" fill="currentColor">TI</text>
+<rect x="0" y="44" width="300" height="68" fill="#8795a3"/>
+<rect x="14" y="71" width="54" height="32" rx="6" fill="none" stroke="#111" stroke-width="2"/>
+<text x="41" y="92" text-anchor="middle" font-size="14" fill="#111">TI</text>
 <g class="animKolonaPrelazi">
-<circle cx="186" cy="32" r="5" fill="#2c6aa0"/>
-<circle cx="186" cy="54" r="5" fill="#2c6aa0"/>
-<circle cx="186" cy="76" r="5" fill="#2c6aa0"/>
-<circle cx="186" cy="98" r="5" fill="#2c6aa0"/>
-<circle cx="186" cy="120" r="5" fill="#2c6aa0"/>
+<circle cx="186" cy="32" r="5" fill="var(--blue)"/>
+<circle cx="186" cy="54" r="5" fill="#0f3c61"/>
+<circle cx="186" cy="76" r="5" fill="#0f3c61"/>
+<circle cx="186" cy="98" r="5" fill="#0f3c61"/>
+<circle cx="186" cy="120" r="5" fill="var(--blue)"/>
 </g>
-<path d="M214,110 L214,50 M208,56 L214,49 L220,56" fill="none" stroke="#2c6aa0" stroke-width="2"/>
-<path d="M72,87 L172,87" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="7 5"/>
-<path d="M180,81 L192,93 M192,81 L180,93" fill="none" stroke="#c0392b" stroke-width="3"/>
-<text x="186" y="20" text-anchor="middle" font-size="13" fill="currentColor">ORGANIZOVANA KOLONA</text>
-<text x="150" y="142" text-anchor="middle" font-size="12" fill="#c0392b">ne presecaš je — čekaš da cela pređe</text>
+<path d="M214,110 L214,50 M208,56 L214,49 L220,56" fill="none" stroke="#0f3c61" stroke-width="2"/>
+<path d="M72,87 L172,87" fill="none" stroke="#1c2733" stroke-width="2" stroke-dasharray="7 5"/>
+<path d="M180,81 L192,93 M192,81 L180,93" fill="none" stroke="#811b12" stroke-width="3"/>
+<text x="186" y="20" text-anchor="middle" font-size="14" fill="currentColor">ORGANIZOVANA KOLONA</text>
+<text x="150" y="142" text-anchor="middle" font-size="14" fill="var(--bad)">ne presecaš je — čekaš da cela pređe</text>
 </svg>
 </div>
 <p class="mut" style="text-align:center;font-size:var(--fs-sm)">plava strelica = smer kretanja kolone · crveni krst stoji tačno u praznini između dvoje pešaka: ni tuda ne prolaziš</p>
@@ -2444,28 +2440,28 @@ CARDS['pesaci-bicikli'] = {
 
 <div class="kPodH"><b class="kPodNaslov">Pešak van naselja, koturaljke i autoput</b>
 <div style="display:flex;justify-content:center;margin:8px 0">
-<svg viewBox="0 0 300 118" style="max-width:300px;width:100%" role="img" aria-label="pešak van naselja ide uz levu ivicu kolovoza u smeru svog kretanja, a vozila mu tom istom stranom dolaze u susret">
-<rect x="0" y="40" width="300" height="64" fill="#9aa7b4"/>
+<svg viewBox="0 0 300 118" style="max-width:300px;width:100%" role="img" aria-label="pešak van naselja po opštem pravilu ide uz levu ivicu kolovoza u smeru svog kretanja, a vozila mu tom istom stranom dolaze u susret">
+<rect x="0" y="40" width="300" height="64" fill="#8795a3"/>
 <line x1="0" y1="72" x2="300" y2="72" stroke="#fff" stroke-width="3" stroke-dasharray="14 10"/>
-<circle cx="54" cy="50" r="6" fill="#2c6aa0"/>
-<path d="M64,50 L92,50 M86,45 L93,50 L86,55" fill="none" stroke="#2c6aa0" stroke-width="2"/>
-<line x1="54" y1="36" x2="54" y2="42" stroke="#2c6aa0" stroke-width="1.5"/>
-<text x="70" y="14" text-anchor="middle" font-size="12" fill="#2c6aa0">PEŠAK: uz LEVU</text>
-<text x="70" y="31" text-anchor="middle" font-size="12" fill="#2c6aa0">ivicu kolovoza</text>
+<circle cx="54" cy="50" r="6" fill="#0f3c61"/>
+<path d="M64,50 L92,50 M86,45 L93,50 L86,55" fill="none" stroke="#0f3c61" stroke-width="2"/>
+<line x1="54" y1="36" x2="54" y2="42" stroke="#0f3c61" stroke-width="1.5"/>
+<text x="70" y="18" text-anchor="middle" font-size="14" fill="var(--blue)">PEŠAK: uz LEVU</text>
+<text x="70" y="35" text-anchor="middle" font-size="14" fill="var(--blue)">ivicu kolovoza</text>
 <g class="animVoziloUSusret">
-<rect x="196" y="46" width="52" height="20" rx="4" fill="none" stroke="currentColor" stroke-width="2"/>
-<path d="M190,56 L162,56 M168,51 L161,56 L168,61" fill="none" stroke="currentColor" stroke-width="2"/>
+<rect x="196" y="46" width="52" height="20" rx="4" fill="none" stroke="#111" stroke-width="2"/>
+<path d="M190,56 L162,56 M168,51 L161,56 L168,61" fill="none" stroke="#1c2733" stroke-width="2"/>
 </g>
-<text x="222" y="32" text-anchor="middle" font-size="12" fill="currentColor">vozila u susret</text>
-<rect x="90" y="78" width="52" height="20" rx="4" fill="none" stroke="currentColor" stroke-width="2"/>
-<path d="M148,88 L176,88 M170,83 L177,88 L170,93" fill="none" stroke="currentColor" stroke-width="2"/>
+<text x="222" y="32" text-anchor="middle" font-size="14" fill="currentColor">vozila u susret</text>
+<rect x="90" y="78" width="52" height="20" rx="4" fill="none" stroke="#111" stroke-width="2"/>
+<path d="M148,88 L176,88 M170,83 L177,88 L170,93" fill="none" stroke="#1c2733" stroke-width="2"/>
 </svg>
 </div>
 <p class="mut" style="text-align:center;font-size:var(--fs-sm)">pešak gore ide udesno, a vozilo u toj istoj polovini kolovoza dolazi mu u susret — zato ga vidi na vreme · dole vozilo ide u istom smeru kao pešak</p>
-<p><b>Van naselja</b> pešak koji se kreće po kolovozu <b>mora</b> da ide što bliže <b>levoj</b> ivici kolovoza u smeru svog kretanja, tako da ne ometa i ne sprečava saobraćaj vozila. Nije „može levo ili desno" i nije desno — mora levo, suprotno od strane kojom idu vozila u njegovom smeru.</p>
+<p><b>Van naselja</b> pešak se po opštem pravilu kreće što bliže <b>levoj</b> ivici kolovoza u svom smeru, bez ometanja saobraćaja. Desnu ivicu može koristiti kada je to za njega bezbednije (npr. nepregledna krivina, provalija, usek ili odron). Pešak koji gura ručna kolica, bicikl, moped ili motocikl, kao i osoba u invalidskim kolicima, kreće se uz <b>desnu</b> ivicu (čl. 93 st. 2, 6 i 7). Na putu sa trotoarom ili drugom pogodnom površinom pešak je dužan da koristi tu površinu (čl. 94).</p>
 <div class="signRow">
   <div class="signCell">
-    <svg viewBox="0 0 78 70" role="img" aria-label="pešak na skejtbordu drži se za vozilo u pokretu, veza je precrtana crvenim krstom"><rect x="3" y="20" width="30" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M2,14 L14,14 M8,9 L1,14 L8,19" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="60" cy="20" r="5" fill="none" stroke="currentColor" stroke-width="2"/><line x1="60" y1="25" x2="60" y2="42" stroke="currentColor" stroke-width="2"/><line x1="60" y1="42" x2="53" y2="52" stroke="currentColor" stroke-width="2"/><line x1="60" y1="42" x2="67" y2="52" stroke="currentColor" stroke-width="2"/><rect x="47" y="53" width="26" height="4" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="52" cy="61" r="3" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="68" cy="61" r="3" fill="none" stroke="currentColor" stroke-width="2"/><line x1="56" y1="30" x2="35" y2="30" stroke="currentColor" stroke-width="2"/><path d="M39,24 L51,36 M51,24 L39,36" fill="none" stroke="#c0392b" stroke-width="3"/></svg>
+    <svg viewBox="0 0 78 70" role="img" aria-label="pešak na skejtbordu drži se za vozilo u pokretu, veza je precrtana crvenim krstom"><rect x="3" y="20" width="30" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M2,14 L14,14 M8,9 L1,14 L8,19" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="60" cy="20" r="5" fill="none" stroke="currentColor" stroke-width="2"/><line x1="60" y1="25" x2="60" y2="42" stroke="currentColor" stroke-width="2"/><line x1="60" y1="42" x2="53" y2="52" stroke="currentColor" stroke-width="2"/><line x1="60" y1="42" x2="67" y2="52" stroke="currentColor" stroke-width="2"/><rect x="47" y="53" width="26" height="4" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="52" cy="61" r="3" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="68" cy="61" r="3" fill="none" stroke="currentColor" stroke-width="2"/><line x1="56" y1="30" x2="35" y2="30" stroke="currentColor" stroke-width="2"/><path d="M39,24 L51,36 M51,24 L39,36" fill="none" stroke="var(--bad)" stroke-width="3"/></svg>
     <b>NE DRŽIŠ SE ZA VOZILO</b><span>kolica, koturaljke, skejtbord — ni kad vozilo ide brzinom hoda</span>
   </div>
 </div>
@@ -2475,7 +2471,7 @@ CARDS['pesaci-bicikli'] = {
 <tr><td>lice koje otklanja posledice saobraćajne nezgode ili neispravnosti na vozilu i teretu</td><td>vozača koji se zaustavio radi odmora</td></tr>
 <tr><td>vozača <b>prinudno</b> zaustavljenog vozila</td><td>vozača koji se zaustavio radi ulaska/izlaska putnika ili utovara/istovara tereta</td></tr>
 </table>
-<p class="mut">Pamtilica: izvela te <b>nevolja</b> iz vozila (nezgoda, kvar) — smeš da budeš pešak na autoputu; izašao si <b>svojom voljom</b> (odmor, putnici, teret) — ne smeš.</p>
+<p class="mut">U ponuđenim odgovorima 10248 izuzeci su otklanjanje posledica nezgode ili kvara i vozač prinudno zaustavljenog vozila. Član 98 propisuje i druge službene i interventne izuzetke; osobe i mesta rada moraju biti propisno obeleženi. Sam izlazak radi odmora, putnika ili tereta nije takav izuzetak.</p>
 </div>
 `,
 };
@@ -4871,12 +4867,12 @@ X[10142] = { ...(X[10142] || {}), x: "Na slici je znak zabrane saobraćaja za vo
 X[10187] = { ...(X[10187] || {}), x: 'Motorno vozilo uopšte ne sme da vuče motocikl, moped ni tricikl, pa prvi prikaz pada već po vrsti vučenog vozila, ma koliko uže bilo uredno vezano. U drugom se vuče putničko vozilo, i to krutom vezom, pa su i vrsta vozila i način vuče u redu. Zbog toga ne mogu biti ispravna oba prikaza.' };
 X[10226] = { ...(X[10226] || {}), x: 'Vođenje životinje sa vozila zabranjeno je bez ijednog izuzetka, a ovde vozač mopeda jednom rukom drži upravljač, a drugom povodac psa. Pas može da povuče, da stane ili da skrene, i tada nemaš pod kontrolom ni upravljanje ni kočenje. Brzina tu ništa ne menja: formulacija o kretanju brzinom pešaka pozajmljena je iz drugih pravila i na ovo se ne odnosi.' };
 X[10237] = { ...(X[10237] || {}), x: 'Propisno upravlja onaj ko sedi na sedištu, drži upravljač obema rukama i nosi kacigu, a to je drugi vozač na slici. Prvi je skrstio ruke i uopšte ne drži upravljač, treći nosi alat preko ramena koji ga ometa i može nekoga da zakači, a četvrti vozi teret toliko širok i visok da zaklanja i vozilo i pogled unazad.' };
-X[10255] = { ...(X[10255] || {}), x: 'To što raskrsnicom upravlja policijski službenik ne ukida tvoju obavezu prema pešacima: znak koji ti dozvoljava prolaz nikada ne znači i pravo da prođeš kroz ljude koji su već na obeleženom prelazu ispred tebe. Zato ih propuštaš. Zvučni znak nije rešenje — truba je za opasnost, a ne za rasterivanje pešaka koji propisno prelaze kolovoz.' };
+X[10255] = { ...(X[10255] || {}), x: 'Policajca vidiš sa boka, pa ti je prolaz dozvoljen, ali ostaje obaveza prema pešacima: znak koji ti dozvoljava prolaz nikada ne znači i pravo da prođeš kroz ljude koji su već na obeleženom prelazu ispred tebe. Zato ih propuštaš. Zvučni znak nije rešenje — truba je za opasnost, a ne za rasterivanje pešaka koji propisno prelaze kolovoz.' };
 X[10259] = { ...(X[10259] || {}), x: 'Zeleno svetlo ti otvara put, ali pešaci koji su već stupili na obeleženi prelaz ispred tebe imaju prednost, pa si dužan da ih propustiš i sačekaš da pređu. Pred pešačkim prelazom brzina mora biti takva da uvek možeš da staneš. Trubom ih ne teraš da požure: zvučni znak služi za upozorenje na opasnost, a ne za sticanje prolaza.' };
 X[10263] = { ...(X[10263] || {}), x: 'Kada skrećeš, presecaš put pešacima koji prelaze kolovoz u koji ulaziš, pa njih propuštaš bez obzira na to što tebi semafor pokazuje zeleno. Pešakinja je označena kod prelaza preko ulice u koju skrećeš, tačno tamo kuda te vodi tvoja putanja. Zvučni znak tu ne bi bio upozorenje na opasnost nego požurivanje, pa nije tačan odgovor.' };
 X[10266] = { ...(X[10266] || {}), x: 'Pešaka koji je već stupio na kolovoz dužan si da propustiš i kada ne prelazi obeleženim pešačkim prelazom — odlučuje to što je već na kolovozu ispred tebe, a ti tek počinješ skretanje udesno. Odsustvo obeleženog prelaza ne prebacuje obavezu na njega. Trubom ga ne teraš da se skloni: zvučni znak je upozorenje na opasnost, a ne način da sebi napraviš prolaz.' };
 X[10270] = { ...(X[10270] || {}), x: 'Prisustvo dece traži naročitu opreznost: brzinu prilagođavaš tako da možeš blagovremeno da zaustaviš vozilo, a uz to si dužan i da upotrebiš zvučni znak upozorenja, jer deca pored kolovoza i na njemu ne prate kretanje vozila. Zato odgovor koji traži samo prilagođavanje brzine nije potpun, a nastavak istom brzinom uz trubu je obrnuto od onoga što se traži.' };
-X[10273] = { ...(X[10273] || {}), x: 'Organizovana kolona pešaka prolazi kao celina i ne sme se presecati — čekaš da cela pređe, pa tek onda krećeš. Ovde preko ulice prelazi grupa dece pod nadzorom, u zoni škole, gde i najmanja greška najviše košta. Uterivanje vozila u prazninu između dvoje dece razbija kolonu i ostavlja onu decu koja su ostala iza tebe bez zaštite.' };
+X[10273] = { ...(X[10273] || {}), x: 'Organizovana kolona pešaka prolazi kao celina i ne sme se presecati — čekaš da cela pređe, pa tek onda krećeš. Ovde preko ulice prelazi grupa dece pod nadzorom. Uterivanje vozila u prazninu između dvoje dece razbija kolonu i ostavlja onu decu koja su ostala iza tebe bez zaštite.' };
 X[10304] = { ...(X[10304] || {}), x: 'Traka za uključivanje postoji da bi ubrzao do brzine saobraćaja na autoputu i koristi se do svog kraja, pa se tek onda ulivaš u krajnju desnu traku. Putanja 2 je napušta prerano, a putanja 1 seče čak do leve trake, tamo gde se vozila kreću najbrže i najmanje te očekuju. Ispravna je samo ona koja prati traku do kraja i uliva se u desnu.' };
 X[10322] = { ...(X[10322] || {}), x: 'Prolaz u razdelnom pojasu koji vidiš nije poziv da se okreneš: polukružno okretanje na autoputu zabranjeno je bez ijednog izuzetka, kao i vožnja unazad i zaustavljanje van uređenih mesta. Vozila iza tebe nailaze velikom brzinom i ne očekuju nikoga ko preseca kolovoz. Zato dodaci da se okretanje izvodi bez manevrisanja ili bez ugrožavanja drugih ništa ne menjaju, jer zabrana ne zavisi od tvoje procene.' };
 X[10323] = { ...(X[10323] || {}), x: 'Na motoputu važe ista posebna pravila kao na autoputu, pa i ovde okretanje u suprotan smer otpada bez izuzetka. Brzine su velike, a vozilo koje se okreće preseca ceo kolovoz i stvara prepreku koju onaj ko nailazi ne očekuje i ne stiže da izbegne. Uslovi da nema manevrisanja i da niko nije ugrožen su mamac, jer zabrana ne zavisi od procene vozača.' };
@@ -5208,9 +5204,9 @@ X[9619] = { x: 'Fizički odvojene kolovozne trake: prelazak na suprotnu kolovozn
 X[9622] = { x: 'Jednosmerni put: vožnja u suprotnom smeru zabranjena — uključujući i kretanje unazad "samo malo".' };
 X[10454] = { x: 'U zastoju na putu sa odvojenim kolovoznim trakama pravi se slobodan prolaz za vozila POD PRATNJOM i SA PRAVOM PRVENSTVA (ZOBS čl. 104 st. 6) — "koridor spasa".' };
 // --- Pešaci (sub 145), tekstualna ---
-X[10244] = { x: 'Pešak van naselja ide što bliže LEVOJ ivici kolovoza — u susret vozilima, da ih vidi (suprotno od vozila!).' };
-X[10245] = { x: 'Pridržavanje za vozilo u pokretu (kolica, romobil, sanke...) — zabranjeno: pad je pitanje trenutka.' };
-X[10248] = { x: 'Pešaci na autoputu su zabranjeni, ali zabrana NE važi za: lica koja otklanjaju posledice nezgode/kvara i vozača prinudno zaustavljenog vozila (oni tu moraju biti — sa prslukom).' };
+X[10244] = { x: 'Po opštem pravilu, pešak van naselja ide što bliže LEVOJ ivici kolovoza — u susret vozilima, da ih vidi (suprotno od vozila!).' };
+X[10245] = { x: 'Pridržavanje za vozilo u pokretu (kolica, romobil, sanke...) — zabranjeno je (ZOBS čl. 93 st. 3).' };
+X[10248] = { x: 'Pešaci na autoputu su zabranjeni, ali zabrana NE važi za: lica koja otklanjaju posledice nezgode/kvara i vozača prinudno zaustavljenog vozila (uz propisano obeležavanje lica i mesta na kojima preduzimaju radnje, čl. 98).' };
 const stopPrelaz = 'Kad ti je prolaz ZABRANJEN (semafor ili znak policajca), zaustavljaš se ISPRED pešačkog prelaza — prelaz ostaje slobodan za pešake (ZOBS čl. 99 st. 1).';
 X[10249] = { x: stopPrelaz };
 X[10250] = { x: stopPrelaz };
@@ -5511,7 +5507,7 @@ X[10588] = { ...(X[10588] || {}), x: "Vozila sa prvenstvom prolaza imaju prvenst
 X[8638] = { ...(X[8638] || {}), x: "Teret koji na teretnom ili priključnom vozilu prelazi najudaljeniju tačku na zadnjoj strani vozila označava se PROPISANOM TABLOM — kvadratnom, sa naizmeničnim kosim crveno-belim odsevnim prugama (tabla br. 1). Kod ostalih vozila teret se označava crvenom tkaninom, a u uslovima smanjene vidljivosti crvenim svetlom ili svetloodbojnom materijom crvene boje (ZOBS čl. 113)." };
 X[9878] = { ...(X[9878] || {}), x: "Znak „naselje” označava početak naselja. Ovde nije prikazan znak koji određuje drugačije ograničenje, pa važi opštih 50 km/h (ZOBS čl. 43)." };
 X[9948] = { ...(X[9948] || {}), x: "Znak na slici označava prestanak naselja — iza njega važi opšte ograničenje brzine van naselja (ZOBS čl. 44): 130 km/h na auto-putu, 100 km/h na motoputu, a na ostalim putevima 80 km/h. Prikazani put nije ni auto-put ni motoput, pa je najveća dozvoljena brzina 80 km/h." };
-X[10703] = { ...(X[10703] || {}), x: "Neregulisan pešački prelaz: vozač prilagođava brzinu tako da u svakoj situaciji koju vidi ili ima razloga da predvidi može bezbedno da propusti pešaka koji je stupio ili stupa na prelaz (ZOBS čl. 99 st. 3; slično i čl. 23 st. 2). Nije obavezno ni zaustavljanje ni zvučni znak — obavezna je brzina koja omogućava propuštanje." };
+X[10703] = { ...(X[10703] || {}), x: "Neregulisan pešački prelaz: vozač prilagođava brzinu tako da u svakoj situaciji koju vidi ili ima razloga da predvidi može bezbedno da propusti pešaka koji je stupio ili stupa na prelaz ili pokazuje nameru da će stupiti na njega (ZOBS čl. 99 st. 3; slično i čl. 23 st. 2). Pri samom nailasku zaustavljanje i zvučni znak nisu bezuslovna obaveza; dužan si da prilagodiš brzinu, a da staneš kada je to potrebno ili posebno propisano." };
 X[8688] = { ...(X[8688] || {}), x: "Najveća dozvoljena visina mopeda, motocikla, tricikla i četvorocikla iznosi 2,50 m. To je posebno, strože pravilo za ova vozila — opšta granica visine za ostala vozila je 4,00 m." };
 X[9755] = { ...(X[9755] || {}), x: "Zabranjeno je preticanje ili obilaženje kolone vozila i započinjanje radnje kada je vozač iza već otpočeo preticanje ili obilaženje (ZOBS čl. 55 st. 3 tač. 1 i 2). Skup vozila nije samim tim kolona, pa nije zabranjen samo zbog toga što je skup; opšti uslovi i druge zabrane i dalje važe. Sneg i poledica sami po sebi nisu posebna zabrana sa ove liste." };
 X[10480] = { ...(X[10480] || {}), x: "Preticanje i obilaženje su zabranjeni u tunelu i na prevoju, odnosno ispred i u nepreglednoj krivini — osim kada postoje najmanje dve saobraćajne trake za kretanje u istom smeru (ZOBS čl. 55 st. 3 tač. 7 i 8). Zamka: most, vijadukt, nadvožnjak i podvožnjak su zabranjeni za POLUKRUŽNO OKRETANJE (čl. 50), a ne za preticanje; opasan uspon/nizbrdica takođe nije na listi." };
@@ -6759,7 +6755,7 @@ out.cards['prvenstvo-prolaza'].h.c = out.cards['prvenstvo-prolaza'].h.c.replace(
 
 // Lokalno prevedi pregledane pristupačne opise; opšti toCyr štiti HTML tagove.
 // Novi opis u ovim karticama zahteva ponovni pregled oba pisma.
-for (const [key, expected] of [['brzine', 6], ['kategorije-vozila', 4], ['put-pojmovi', 1], ['vozilo-tehnika', 4], ['kaznene-klase', 13], ['preticanje', 3], ['skretanje', 2], ['iskljucenje', 3], ['oznake-kolovoz', 12], ['prvenstvo-prolaza', 9], ['pruga', 4], ['policajac-znaci', 6], ['parking-table', 9]]) {
+for (const [key, expected] of [['brzine', 6], ['kategorije-vozila', 4], ['put-pojmovi', 1], ['vozilo-tehnika', 4], ['kaznene-klase', 13], ['preticanje', 3], ['skretanje', 2], ['iskljucenje', 3], ['oznake-kolovoz', 12], ['prvenstvo-prolaza', 9], ['pruga', 4], ['policajac-znaci', 6], ['parking-table', 9], ['pesaci-bicikli', 11]]) {
   let count = 0;
   out.cards[key].h.c = out.cards[key].h.c.replace(/aria-label="([^"]*)"/g, (_, label) => {
     count++;
