@@ -30,7 +30,7 @@
 | А3 Циљ и процена спремности | Завршено | v131: reload циља; v134: непознато градиво не добија позајмљену тачност; условни модел јасно означен |
 | А4 Телефон и приступачност | У току; корисничка проба остаје v165 | Развојне v169–171 поправљају табелу возила, ситне натписе паркирања и преливање дугих речи при увећању текста; раније тастатура/водич/контраст/увећање. Остали цртежи, читач екрана и стварни телефони остају у прегледу |
 | А5 Кеш и алати издавања | Делимично | v128/v137: издање/кеш; алати/CI проверени; v157: аутоматски отисци слика и провера бајтова у SW; ограничење старих кешева још отворено |
-| А6 Садржај 1.327 питања | У току | На v213: 1.250 питања reviewed, 0 in-progress, 77 needs-expert, 0 unreviewed; картице 39 reviewed, 0 unreviewed. Актуелни машински збир: [manifest.json](docs/revizija-sadrzaja/manifest.json). Започета и спорна питања нису урачуната у завршена |
+| А6 Садржај 1.327 питања | У току | На v214: 1.250 питања reviewed, 0 in-progress, 77 needs-expert, 0 unreviewed; картице 39 reviewed, 0 unreviewed. Актуелни машински збир: [manifest.json](docs/revizija-sadrzaja/manifest.json). Започета и спорна питања нису урачуната у завршена |
 | А7 Документација / права | У току | CONTRIBUTING, README, школска упутства и fork поступак допуњени; v147 поруке/метаподаци и v151 FAQ усклађени; преостаје одлука власника о лиценци |
 | Б1–Б3 Побољшања | Чека | После учвршћивања, пилот по пилот |
 | Навигација — накнадни захтев | Основни токови завршени; доградња одвојена | v146 Назад/Напред; v150 стварни линкови; v154 статистика; v158 лични спискови. v162 додаје преглед конкретног старог испита; то је доградња, не услов основне безбедности учења. v163 исправља копирани линк питања и повратак фокуса у појмовник |
@@ -692,3 +692,9 @@ Root proverio sve tačne preimages, konačne kandidate, povratak operacija, iden
 Ispravljeni su isključivo razmaci/reč u četiri opcije pitanja 9365, 9973, 9974 i 10286, u oba pisma i njihovim izvorima. Ključevi, redosled, objašnjenja i slike ostaju isti. Kod 103 drugih pitanja promenio se samo hash zajedničke kartice zbog razmaka u izvedenom opisu 9973; njihove ranije revizije sačuvane su uz eksplicitan uski dokaz, uključujući dve nerazrešene stručne nedoumice.
 
 Nezavisna provera zamrznutog paketa092; root na stvarnoj v213:32 odgovora/88 opcija i8 izvedenih kartičnih opisa, oba pisma/teme,320/1280 i stvarno uvećan tekst200%. Proverene su tačne granice izmene i očuvani svi ostali ledger zapisi. Ukupno1250 reviewed,0 unreviewed,77 needs-expert;39 reviewed kartica,0 unreviewed. node tools/verify.mjs:249/249; dokaz output/revizija-20260911/092/root-verify-v213.log. [Detaljni dokaz](docs/revizija-sadrzaja/grupe/092-stamparske-korekcije.md).
+
+### v214 — tekstualno prepoznavanje odgovora u ugrađenom kvizu
+
+Umetak za sajtove auto-škola sada razlikuje tačnu opciju i pogrešan izbor i bez boje; poruka rezultata ima status ulogu. Tri uske izmene čuvaju banku, ključeve, originalne opcije, iframe protokol i ćirilični interfejs.
+
+Nezavisni kandidat56/56 funkcionalnih slučajeva; root18/18 grupa zamrznutih dokaza,12 stvarnih direktnih prikaza v214 i izvršen dopunjen blok postojeće browser regresije za oba ishoda. Nema horizontalnog prelivanja ili JavaScript grešaka u toj proveri. Ukupno1250 reviewed,0 unreviewed,77 needs-expert;39 reviewed kartica,0 unreviewed. node tools/verify.mjs:249/249; dokaz output/revizija-20260911/096-root/root-verify-v214.log. [Detaljni dokaz](docs/provere-ugradjenog-kviza.md).

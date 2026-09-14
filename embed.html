@@ -39,7 +39,7 @@
   <div class="mut">званична база питања · бесплатно</div>
   <div id="sadrzaj"><p class="mut" style="margin-top:14px">Учитавам питање…</p></div>
   <div class="row">
-    <span class="mut" id="odgovor"></span>
+    <span class="mut" id="odgovor" role="status"></span>
     <a class="cta" id="link" href="https://milanmilojevic.github.io/vozacki-a/" target="_blank" rel="noopener">Цела вежбаоница →</a>
   </div>
 </div>
@@ -73,10 +73,14 @@
           for (var i = 0; i < sva.length; i++) sva[i].disabled = true;
           for (var i = 0; i < sva.length; i++) {
             var t = izbori[i];
-            if (t.ok) sva[i].classList.add('ok');
-            else if (sva[i] === b) sva[i].classList.add('bad');
+            if (t.ok || sva[i] === b) {
+              sva[i].classList.add(t.ok ? 'ok' : 'bad');
+              var oznaka = document.createElement('strong');
+              oznaka.textContent = t.ok ? '✓ Тачан одговор. ' : '✗ Нетачан избор. ';
+              sva[i].insertBefore(oznaka, sva[i].firstChild);
+            }
           }
-          document.getElementById('odgovor').textContent = ch.ok ? '✓ Тачно' : '✗ Нетачно — тачан је означен зеленим';
+          document.getElementById('odgovor').textContent = ch.ok ? '✓ Тачно' : '✗ Нетачно — тачан одговор има ознаку ✓.';
           document.getElementById('link').textContent = 'Зашто? Види објашњење →';
           document.getElementById('link').href = OSNOVA + '#/p/' + q.id;
         });

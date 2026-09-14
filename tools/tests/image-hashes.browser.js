@@ -34,10 +34,19 @@ async(page)=>{
   const context=await browser.newContext({serviceWorkers:'block'});
   try{
     const hash='a'.repeat(64),remote='https://milanmilojevic.github.io/vozacki-a/';
-    await context.route(remote+'data.js',route=>route.fulfill({status:200,contentType:'text/javascript',body:`window.QUIZ={imageHashes:{1:'${hash}'},questions:[{id:1,img:1,req:1,t:{c:'Питање'},ch:[{id:1,ok:1,t:{c:'Одговор'}}]}]};`}));
+    await context.route(remote+'data.js',route=>route.fulfill({status:200,contentType:'text/javascript',body:`window.QUIZ={imageHashes:{1:'${hash}'},questions:[{id:1,img:1,req:1,t:{c:'Питање'},ch:[{id:1,ok:1,t:{c:'Одговор'}},{id:2,ok:0,t:{c:'Погрешан избор'}}]}]};`}));
     await context.route(remote+'img/**',route=>route.abort());
     const p=await context.newPage();await p.goto(control.origin+'/embed.html');await p.waitForSelector('img.qi');
     assert(await p.locator('img.qi').getAttribute('src')===remote+`img/1.jpg?h=${hash}`,'embed URL is not content-addressed');
+    for(const correct of [false,true]){
+      if(correct){await p.reload();await p.locator('button.opt').first().waitFor();}
+      await p.getByRole('button',{name:correct?'Одговор':'Погрешан избор',exact:true}).click();
+      assert(await p.locator('#odgovor').getAttribute('role')==='status','embed feedback must expose its status');
+      assert(await p.locator('button.opt.ok strong').textContent()==='✓ Тачан одговор. ','correct answer must have a text marker');
+      assert(await p.locator('button.opt.bad strong').count()===(correct?0:1),'wrong selection marker mismatch');
+      if(!correct)assert(await p.locator('button.opt.bad strong').textContent()==='✗ Нетачан избор. ','wrong answer must have a text marker');
+      assert(await p.locator('button.opt:enabled').count()===0,'answered embed options must remain disabled');
+    }
     results.push({mode:'embed',pass:true});
   }finally{await context.close();}
   return {passed:true,cases:results.length,results};
