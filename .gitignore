@@ -29,3 +29,6 @@ kredencijali*
 secrets*
 tools/q-dump.txt
 tools/*-dump.txt
+
+# alat za pregledač (Codex/agenti) — ne ide u izdanje
+.playwright-mcp/

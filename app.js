@@ -238,6 +238,11 @@
     fsMax: { l: 'Slova su već na najvećoj veličini', c: 'Слова су већ на највећој величини' },
     planNaslov: { l: 'Dnevni cilj', c: 'Дневни циљ' },
     planTacnost: { l: 'Tačnost danas', c: 'Тачност данас' },
+    podNaslov: { l: 'Moj tempo je najmanje ovo', c: 'Мој темпо је најмање ово' },
+    podOpis: { l: 'Uz „Cilj se sam računa": tvoji brojevi ispod važe kao DONJA granica — aplikacija sme da traži više ako do ispita ne stižeš, ali nikad manje. Bez ovoga auto sam bira i može da spusti sutrašnju kvotu kad danas uradiš više.', c: 'Уз „Циљ се сам рачуна": твоји бројеви испод важе као ДОЊА граница — апликација сме да тражи више ако до испита не стижеш, али никад мање. Без овога ауто сам бира и може да спусти сутрашњу квоту кад данас урадиш више.' },
+    podUkljucen: { l: 'Tvoji brojevi su sada donja granica — auto može samo da traži više.', c: 'Твоји бројеви су сада доња граница — ауто може само да тражи више.' },
+    podIskljucen: { l: 'Donja granica isključena — auto opet sam bira kvotu.', c: 'Доња граница искључена — ауто опет сам бира квоту.' },
+    autoPoljaPod: { l: 'Dok je „Cilj se sam računa" uključen, ovi brojevi važe kao donja granica (prekidač „Moj tempo je najmanje ovo"). Auto sme da traži više, nikad manje.', c: 'Док је „Циљ се сам рачуна" укључен, ови бројеви важе као доња граница (прекидач „Мој темпо је најмање ово"). Ауто сме да тражи више, никад мање.' },
     autoPoljaZakljucana: { l: 'Dok je „Cilj se sam računa do ispita" uključen, ovi brojevi se ne koriste — kvota se svakog dana računa iz onoga što je ostalo i broja dana do ispita. Isključi ga ako hoćeš svoj broj.', c: 'Док је „Циљ се сам рачуна до испита" укључен, ови бројеви се не користе — квота се сваког дана рачуна из онога што је остало и броја дана до испита. Искључи га ако хоћеш свој број.' },
     daniNaslov: { l: '📅 Po danima — koliko i kako je išlo', c: '📅 По данима — колико и како је ишло' },
     daniPrazno: { l: 'Ovde će stajati svaki dan u kome si nešto uradio: koliko novih pitanja, koliko ponavljanja i kolika je bila tačnost. Prvi red stiže sutra — današnji dan se upisuje kad pređe ponoć.', c: 'Овде ће стајати сваки дан у коме си нешто урадио: колико нових питања, колико понављања и колика је била тачност. Први ред стиже сутра — данашњи дан се уписује кад пређе поноћ.' },
@@ -525,8 +530,16 @@
         total: nInt(s.total, 0, 1000, 0),
         passed: !!s.passed,
         wrong: ids(s.wrong),
-        qs: Array.isArray(s.qs) ? s.qs.slice(0, 200).map((x) => (x && Number.isInteger(x.id) && byId.has(x.id)
-          ? { id: x.id, ch: ids(x.ch) } : null)).filter(Boolean) : undefined,
+        // `ch` su brojevi ODGOVORA, ne pitanja — proveravaju se prema ponudi tog pitanja.
+        // Ranije je išlo kroz ids() (spisak pitanja), pa je svaki sačuvani izbor posle učitavanja
+        // postajao prazan: pregled je za sve pisao „nije odgovoreno", a broj grešaka se nije
+        // slagao sa rezultatom.
+        qs: Array.isArray(s.qs) ? s.qs.slice(0, 200).map((x) => {
+          if (!x || !Number.isInteger(x.id) || !byId.has(x.id)) return null;
+          const ponuda = new Set(byId.get(x.id).ch.map((c) => c.id));
+          const ch = Array.isArray(x.ch) ? x.ch.filter((v) => Number.isInteger(v) && ponuda.has(v)).slice(0, 10) : [];
+          return { id: x.id, ch };
+        }).filter(Boolean) : undefined,
       };
     }).filter(Boolean);
 
@@ -564,11 +577,12 @@
         pon: nInt(obj.plan.pon, 1, 5000, null),
         auto: obj.plan.auto === 1 ? 1 : 0,   // kvota se računa svakog dana iz onoga što je ostalo
         prio: obj.plan.prio === 1 ? 1 : 0,   // nova pitanja idu redom po težini na ispitu
+        pod: obj.plan.pod === 1 ? 1 : 0,     // ručni brojevi su donja granica uz auto
       }
       : null;
     // Auto režim ne mora da ima upisane brojeve — njih računa planStanje() iz datuma ispita.
     // I sam prioritet je razlog da plan postoji: prekidač ne sme da nestane pri učitavanju.
-    const plan = planObj && (planObj.novih || planObj.pon || planObj.auto || planObj.prio) ? planObj : null;
+    const plan = planObj && (planObj.novih || planObj.pon || planObj.auto || planObj.prio || planObj.pod) ? planObj : null;
 
     return {
       script: obj.script === 'c' ? 'c' : 'l',
@@ -2607,6 +2621,7 @@
   //  · piše se preko postojećeg sadržaja pa se dužina skrati na kraju — prekid struje između
   //    upisa i zatvaranja ne ostavlja prazan fajl umesto kopije.
   let upisUToku = false;
+  let rezervaCeka = false;          // stigla je izmena dok upis traje — ide odmah posle njega
   let upozorenONeuspehuRezerve = false;
   async function upisiRezervu() {
     const tekst = JSON.stringify(S);
@@ -2619,7 +2634,8 @@
     if (!fsHandle) return;
     clearTimeout(backupTimer);
     backupTimer = setTimeout(async () => {
-      if (!fsHandle || upisUToku) return;
+      if (!fsHandle) return;
+      if (upisUToku) { rezervaCeka = true; return; }
       upisUToku = true;
       try {
         try {
@@ -2639,7 +2655,8 @@
           console.warn('Rezerva u fajl nije upisana:', e);
           trakaUpozorenja(L('rezervaNeuspeh'));
         }
-      } finally { upisUToku = false; }
+      } finally { upisUToku = false;
+        if (rezervaCeka) { rezervaCeka = false; scheduleBackup(); } }
     }, 800);
   }
   let povezivanjeUToku = false;
@@ -2852,10 +2869,13 @@
     const uNovih = d ? (d.novih || 0) : 0;
     const uPon = d ? (d.pon || 0) : 0;
     const auto = S.plan.auto ? autoKvota() : null;
-    const cNovih = auto ? auto.cNovih : (S.plan.novih || 0);
-    const cPon = auto ? auto.cPon : (S.plan.pon || 0);
+    // „Moj tempo je najmanje ovo": uz auto, ručni brojevi su DONJA granica — auto sme samo naviše.
+    const pod = !!(auto && S.plan.pod);
+    const cNovih = auto ? (pod ? Math.max(auto.cNovih, S.plan.novih || 0) : auto.cNovih) : (S.plan.novih || 0);
+    const cPon = auto ? (pod ? Math.max(auto.cPon, S.plan.pon || 0) : auto.cPon) : (S.plan.pon || 0);
     return {
       auto: !!auto,
+      pod,
       // uključen auto, a kvota nema od čega da se izračuna — razlog se razlikuje:
       // nema datuma / datum prošao / ispit je danas (tada niko ne planira kvote)
       autoBezDatuma: !!S.plan.auto && !auto && danaDoIspita() === null,
@@ -2968,7 +2988,7 @@
     }
     // Višak preko cilja se VIDI — u auto režimu on sam snižava sutrašnju kvotu.
     const visak = (p.cNovih > 0 && p.uNovih > p.cNovih)
-      ? `<div class="mut napomena">${L('viskDanas').split('@1').join(p.uNovih).split('@2').join(p.cNovih).split('@3').join(p.uNovih - p.cNovih)}${p.auto ? L('viskAuto') : ''}</div>` : '';
+      ? `<div class="mut napomena">${L('viskDanas').split('@1').join(p.uNovih).split('@2').join(p.cNovih).split('@3').join(p.uNovih - p.cNovih)}${p.auto && !p.pod ? L('viskAuto') : ''}</div>` : '';   // sa donjom granicom sutra NIJE manje
     // posle ispunjenog cilja ne kaže se „vidimo se sutra" dok istovremeno nešto čeka na redu
     const dno = ispunjen ? `<span class="mut">${naRedu ? L('planIspunjenJos').split('@1').join(nQ(naRedu)) : L('planIspunjen')}</span>${naRedu ? ` <button type="button" class="secondary sBtn" data-nav="drill">${L('drill')} ›</button>` : ''}`
       : !ima ? `<span class="mut">${L('planNemaDostupnih')}</span>`
@@ -3291,7 +3311,8 @@
     // dugmad unutra vezuju se po id-u odmah posle crtanja, pa moraju da postoje u DOM-u.
     // U auto režimu kvotu računa aplikacija, pa ručna polja tada NISU u igri — vidi se da su
     // zaključana i piše zašto. Ranije su primala broj, javljala „Sačuvano" i ništa se nije menjalo.
-    const autoUkljucen = !!(S.plan && S.plan.auto);
+    const autoUkljucen = !!(S.plan && S.plan.auto && !S.plan.pod);   // auto SA donjom granicom drži polja živa
+    const autoSaPodom = !!(S.plan && S.plan.auto && S.plan.pod);
     el('dataTools').innerHTML = `<button type="button" class="explCardBtn pojBtn" id="btnPodesavanja">${L('podesavanjaDugme')}</button>
       <div id="podesavanjaTelo" style="display:none">
       <div class="podGrupa">
@@ -3328,16 +3349,18 @@
         <div class="podDugmad">
           <button type="button" class="secondary prekidac" id="btnPlanAuto" aria-pressed="${S.plan && S.plan.auto ? 'true' : 'false'}">${L('autoNaslov')}</button>
           <button type="button" class="secondary prekidac" id="btnPlanPrio" aria-pressed="${S.plan && S.plan.prio ? 'true' : 'false'}">${L('prioNaslov')}</button>
+          <button type="button" class="secondary prekidac" id="btnPlanPod" aria-pressed="${S.plan && S.plan.pod ? 'true' : 'false'}">${L('podNaslov')}</button>
         </div>
         <div class="mut napomena">${L('autoOpis')}</div>
         <div class="mut napomena">${L('prioOpis')}</div>
+        <div class="mut napomena">${L('podOpis')}</div>
         <div class="planPolja">
           <label class="planPolje"><span class="mut">${L('planNovih')}</span>
             <input id="planNovih" type="text" inputmode="numeric" autocomplete="off"${autoUkljucen ? ' disabled' : ''} value="${S.plan && S.plan.novih ? S.plan.novih : ''}"></label>
           <label class="planPolje"><span class="mut">${L('planPon')}</span>
             <input id="planPon" type="text" inputmode="numeric" autocomplete="off"${autoUkljucen ? ' disabled' : ''} value="${S.plan && S.plan.pon ? S.plan.pon : ''}"></label>
         </div>
-        ${autoUkljucen ? `<div class="mut napomena">${L('autoPoljaZakljucana')}</div>` : ''}
+        ${autoUkljucen ? `<div class="mut napomena">${L('autoPoljaZakljucana')}</div>` : ''}${autoSaPodom ? `<div class="mut napomena">${L('autoPoljaPod')}</div>` : ''}
         <div class="podDugmad">
           <button type="button" class="secondary" id="btnPlanSave"${autoUkljucen ? ' disabled' : ''}>${L('planSacuvaj')}</button>
           <button type="button" class="secondary" id="btnPlanPredlog"${autoUkljucen ? ' disabled' : ''}>${L('planPredlozi')}</button>
@@ -3420,6 +3443,14 @@
         // poruka govori šta se STVARNO desilo: cilj je ugašen samo ako plana više nema
         poruci(bio ? (S.plan ? L('autoIskljucen') : L('planUgasen')) : L('autoNaslov'));
       });
+      el('btnPlanPod').addEventListener('click', () => {
+        const bio = !!(S.plan && S.plan.pod);
+        S.plan = { ...(S.plan || {}), pod: bio ? 0 : 1 };
+        if (!S.plan.auto && !S.plan.novih && !S.plan.pon && !S.plan.prio && !S.plan.pod) S.plan = null;
+        ponistiAutoKvotu();
+        save(); renderHome();
+        poruci(bio ? L('podIskljucen') : L('podUkljucen'));
+      });
       el('btnPlanPrio').addEventListener('click', () => {
         const bio = !!(S.plan && S.plan.prio);
         S.plan = { ...(S.plan || {}), prio: bio ? 0 : 1 };
@@ -3430,7 +3461,7 @@
       el('btnPlanSave').addEventListener('click', () => {
         if (prazno(pn) && prazno(pp)) {
           // brojevi se gase, ali prekidači (auto/prio) ostaju ako su uključeni
-          S.plan = (S.plan && (S.plan.auto || S.plan.prio)) ? { ...S.plan, novih: null, pon: null } : null;
+          S.plan = (S.plan && (S.plan.auto || S.plan.prio || S.plan.pod)) ? { ...S.plan, novih: null, pon: null } : null;
           ponistiAutoKvotu(); save(); renderHome(); kaziPosle(S.plan ? L('planBrojeviUgaseni') : L('planUgasen')); return;
         }
         let novih = null, pon = null;

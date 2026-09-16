@@ -24,6 +24,11 @@ async function proveraBodovanja() {
 }
 
 async function proveraBodovanja2() {
+  // Bez prve faze nema rezerve, a finally ispod bi tada OBRISAO pravi napredak. Prva faza
+  // upisuje ključ i kad je napredak prazan ('' a ne null) — null znači da nije ni pokrenuta.
+  if (sessionStorage.getItem('provera.backup') === null) {
+    return 'ODBIJENO: prvo pokreni proveraBodovanja() — bez rezerve bi provera obrisala pravi napredak.';
+  }
   const rez = [];
   const ok = (naziv, uslov) => rez.push((uslov ? 'PASS' : 'FAIL') + ' — ' + naziv);
   // NE setTimeout: sakriven tab (ugrađeni pregledač alata) prigušuje tajmere i do jednom u
@@ -704,6 +709,39 @@ async function proveraBodovanja2() {
       el2('btnPlanSave').click(); await cekaj(350);
       ok('cilj: ručni upis se odmah vidi u dnevnom cilju', planTekst().includes('/ 25') && planTekst().includes('/ 35'));
       ok('cilj: podešavanja ostaju otvorena i posle čuvanja', el2('podesavanjaTelo').style.display !== 'none');
+      document.querySelector('[data-nav="home"]').click(); await cekaj(150);
+    }
+
+    // ---- 2ai) SAČUVANA SIMULACIJA ČUVA IZBORE; DONJA GRANICA TEMPA ----
+    {
+      // izabrani odgovori su brojevi ODGOVORA — ranije su prolazili kroz proveru za PITANJA i nestajali
+      const NS2 = window.__dev.normalizeState;
+      const q7 = window.QUIZ.questions.find((x) => x.id === 7921);
+      const tacan7 = q7.ch.find((c) => c.ok).id;
+      const n7 = NS2({ q: {}, sims: [{ d: Date.now(), score: 3, total: 98, passed: false, wrong: [7921], qs: [{ id: 7921, ch: [tacan7, 999999] }] }] });
+      ok('simulacija: izabrani odgovor preživljava učitavanje (bio je brisan kao „nepoznato pitanje")',
+        n7.sims[0].qs[0].ch.length === 1 && n7.sims[0].qs[0].ch[0] === tacan7);
+
+      // donja granica: uz auto, ručni brojevi važe kao minimum; auto sme samo naviše
+      const S2 = S();
+      const dva4 = (n) => String(n).padStart(2, '0');
+      const za4 = new Date(); za4.setDate(za4.getDate() + 40);
+      S2.examDate = za4.getFullYear() + '-' + dva4(za4.getMonth() + 1) + '-' + dva4(za4.getDate());
+      S2.plan = { novih: 60, pon: 60, auto: 1, prio: 0, pod: 1 };
+      if (S2.day) { delete S2.day.autoN; delete S2.day.autoP; }
+      document.querySelector('[data-nav="home"]').click(); await cekaj(250);
+      const ps = window.__dev.planStanje();
+      ok('tempo: „Moj tempo je najmanje ovo" drži kvotu bar na ručnim brojevima', ps.pod && ps.cNovih >= 60 && ps.cPon >= 60);
+      ok('tempo: uz donju granicu polja ostaju otključana i u auto režimu', (() => {
+        const telo = el2('podesavanjaTelo'); if (telo.style.display === 'none') el2('btnPodesavanja').click();
+        return !el2('planNovih').disabled && el2('btnPlanPod') && el2('btnPlanPod').getAttribute('aria-pressed') === 'true';
+      })());
+      // višak preko donje granice ne kori „sutra manje"
+      S2.day = { ...(S2.day || {}), d: S2.day ? S2.day.d : null, novih: 65, n: Math.max(65, (S2.day && S2.day.n) || 0), ok: (S2.day && S2.day.ok) || 0, pon: (S2.day && S2.day.pon) || 0 };
+      document.querySelector('[data-nav="home"]').click(); await cekaj(250);
+      ok('tempo: sa donjom granicom višak ne javlja „sutrašnja kvota će biti manja"', !/Sutrašnja kvota|Сутрашња квота/.test(planTekst()));
+      ok('tempo: prekidač preživljava učitavanje', NS2({ q: {}, plan: { pod: 1 } }).plan && NS2({ q: {}, plan: { pod: 1 } }).plan.pod === 1);
+      S2.plan = null;
       document.querySelector('[data-nav="home"]').click(); await cekaj(150);
     }
 
