@@ -26,7 +26,7 @@
 }
 </script>
 <title>Возачки А — вежбање</title>
-<link rel="stylesheet" href="style.css?v=139">
+<link rel="stylesheet" href="style.css?v=140">
   <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#2c6aa0">
   <link rel="icon" href="icon-192.png">
@@ -80,6 +80,9 @@
       <button id="btnSimReport" class="secondary"></button>
       <button id="btnFinishSim" class="primary"></button>
     </div>
+    <!-- „ostalo je malo" je na ekranu samo boja tajmera; ovo isto kaže rečima za čitač ekrana.
+         Mora da stoji u statickom HTML-u: živa oblast koja se ubaci već popunjena se cesto ne objavi. -->
+    <p id="simNajava" class="samoZaCitace" role="status" aria-live="polite"></p>
     <div class="card" id="simQCard"></div>
     <div class="card" id="simReport" style="display:none"></div>
   </section>
@@ -114,9 +117,9 @@
 
 <footer id="podnozje"></footer>
 
-<script src="version.js?v=139"></script>
-<script src="data.js?v=139"></script>
-<script src="explanations.js?v=139"></script>
-<script src="app.js?v=139"></script>
+<script src="version.js?v=140"></script>
+<script src="data.js?v=140"></script>
+<script src="explanations.js?v=140"></script>
+<script src="app.js?v=140"></script>
 </body>
 </html>

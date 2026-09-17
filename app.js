@@ -319,6 +319,8 @@
     spremanSansa: { l: 'Procena bar @1% (sada @2%)', c: 'Процена бар @1% (сада @2%)' },
     spremanDa: { l: '✅ Sve četiri stavke stoje — ovo je samopouzdanje koje ima pokriće.', c: '✅ Све четири ставке стоје — ово је самопоуздање које има покриће.' },
     spremanNe: { l: 'Jedna položena simulacija nije dokaz: da ti je stvarna šansa 70%, tri zaredom bi ti se desile u trećini slučajeva. Zato ide i procena, i razmak od bar dan između simulacija.', c: 'Једна положена симулација није доказ: да ти је стварна шанса 70%, три заредом би ти се десиле у трећини случајева. Зато иде и процена, и размак од бар дан између симулација.' },
+    simNajavaMalo: { l: 'Ostalo je manje od pet minuta.', c: 'Остало је мање од пет минута.' },
+    simNajavaMinut: { l: 'Ostao je još jedan minut.', c: 'Остао је још један минут.' },
     simUcinak: { l: 'Položeno @1 od @2 · prosek @3', c: 'Положено @1 од @2 · просек @3' },
     prioOpis: { l: 'Nova pitanja idu redom od podoblasti koje ispit najviše nosi (preticanje 5 pitanja, brzine 3…), pa ono što se izostavi bude ono što se retko i pojavi.', c: 'Нова питања иду редом од подобласти које испит највише носи (претицање 5 питања, брзине 3…), па оно што се изостави буде оно што се ретко и појави.' },
     skociNaOblast: { l: 'Skoči na oblast', c: 'Скочи на област' },
@@ -1197,12 +1199,17 @@
         // Fokus ide na „dalje" zbog tastature, ali strana NE sme da skače: ako je dugme već na
         // ekranu, ne pomera se ništa (preventScroll); ako nije, pomeri se taman toliko da se vidi.
         // Ranije je `focus()` uvek doskrolovao do dugmeta, pa je ekran poskakivao na svaki odgovor.
-        const r = nextBtn.getBoundingClientRect();
-        const dn = el('donjaNav');
-        const dno = (window.innerHeight || 0) - (dn && getComputedStyle(dn).display !== 'none' ? dn.offsetHeight : 0);
-        const vidiSe = r.top >= 0 && r.bottom <= dno;
-        nextBtn.focus({ preventScroll: true });
-        if (!vidiSe) nextBtn.scrollIntoView({ block: 'nearest' });
+        // Ponovno crtanje zbog promene pisma NE sme da otme fokus dugmetu ЋИР|LAT — isto
+        // pravilo kao u show(): fokus se pomera samo ako je ostao „nigde".
+        const f0 = document.activeElement;
+        if (f0 === document.body || f0 === c || c.contains(f0)) {
+          const r = nextBtn.getBoundingClientRect();
+          const dn = el('donjaNav');
+          const dno = (window.innerHeight || 0) - (dn && getComputedStyle(dn).display !== 'none' ? dn.offsetHeight : 0);
+          const vidiSe = r.top >= 0 && r.bottom <= dno;
+          nextBtn.focus({ preventScroll: true });
+          if (!vidiSe) nextBtn.scrollIntoView({ block: 'nearest' });
+        }
       }
       if (opts.recordKey && opts.recordKey === lastRecordKey) {
         // isti prikaz istog pitanja (npr. ponovni render posle promene pisma) — ne beleži se dvaput
@@ -1979,6 +1986,16 @@
     const t = el('simTimer');
     t.textContent = mm + ':' + ss;
     t.classList.toggle('low', left < 300);
+    // „ostalo je malo" je do sada bila SAMO boja. Za čitača ekrana to ne postoji, pa se
+    // prelazak preko 5 minuta i preko 1 minuta objavljuje i rečima — jednom po pragu.
+    {
+      const prag = left <= 60 ? 1 : (left <= 300 ? 5 : 0);
+      if (prag && prag !== sim.najavljeno) {
+        sim.najavljeno = prag;
+        const n = el('simNajava');
+        if (n) n.textContent = L(prag === 1 ? 'simNajavaMinut' : 'simNajavaMalo');
+      }
+    }
     if (left <= 0) finishSim(true);
   }
   function renderSimQ() {
@@ -2052,10 +2069,10 @@
     const rp = el('simReport');
     rp.style.display = '';
     rp.innerHTML = `<h3>${L('report')}</h3>
-      <table class="stats"><thead><tr><th>${L('question')}</th><th class="num">${L('brojPoena')}</th><th class="num">${L('repAnswered')}</th><th class="num">${L('repMarked')}</th></tr></thead>
+      <div class="tblScroll"><table class="stats"><thead><tr><th>${L('question')}</th><th class="num">${L('brojPoena')}</th><th class="num">${L('repAnswered')}</th><th class="num">${L('repMarked')}</th></tr></thead>
       <tbody>${sim.qs.map((sq, idx) =>
         `<tr class="repRow" data-i="${idx}"><td><button type="button" class="repGo" data-i="${idx}">${L('question')} ${idx + 1}</button></td><td class="num">${sq.q.pts}</td><td class="num">${sq.chosen.size === sq.q.req ? '✓' : '—'}</td><td class="num">${sq.marked ? '🔖' : '—'}</td></tr>`).join('')}
-      </tbody></table>
+      </tbody></table></div>
       <div class="qActions" style="margin-top:12px"><button class="primary" id="btnRepBack">‹ ${L('backToTest')}</button></div>`;
     // Klik bilo gde u redu i dalje radi; tastatura ide kroz dugme u prvoj ćeliji, koje
     // Enter i razmak dobija od pregledača — bez ručnog osmatrača i bez fokusabilnog <tr>.

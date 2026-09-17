@@ -296,7 +296,10 @@ button.histBtn:hover { background: var(--optHover); }
 /* U dugačkom spisku naslov oblasti ostaje na vrhu dok skroluješ kroz nju — inače na pola dubine
    ne znaš gde si. Lepi se ISPOD gornje trake. */
 #browseList .grupaNaslov { position: sticky; top: 52px; z-index: 3; background: var(--card);
-  margin: 14px -18px 6px; padding: 8px 18px 5px; border-top: 1px solid var(--line); }
+  margin: 14px -18px 6px; padding: 8px 18px 5px; border-top: 1px solid var(--line);
+  /* naziv podoblasti iz baze ume da ima 869 znakova — lepljivi blok bi tada pojeo pola
+     ekrana. Najviše dva reda; pun naziv ostaje u title i na strani podoblasti. */
+  display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .skokRed { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 8px 0 10px; }
 .skokRed .mut { flex: 0 0 100%; font-size: var(--fs-xs); }
 #btnNaVrh { position: fixed; right: 14px; bottom: 14px; z-index: 1250; box-shadow: 0 4px 14px rgba(16,24,40,.25); }
@@ -563,6 +566,9 @@ body.uSimulaciji #podnozje { display: none; }
 /* naslov otklopljene kartice ostaje vidljiv ispod lepljive plave trake */
 .explCardBtn { scroll-margin-top: 74px; }
 .catRow { scroll-margin-top: 74px; }
+/* Fokusirani red ne sme da završi ispod gornje trake (52px) ni ispod lepljivog naslova. */
+.choice { scroll-margin-top: 74px; }
+#browseList .qRow { scroll-margin-top: 88px; }
 
 /* veće sličice za linije/oznake — natpisi su HTML, ne SVG tekst */
 .signRow.lineRow { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; }
@@ -708,7 +714,7 @@ button { transition: background-color .15s ease, border-color .15s ease, color .
 #qCard .qActions { flex-wrap: wrap; }
 /* Kad dugme „dalje" mora da se dovuče na ekran, ne sme da stane TAČNO na donju ivicu —
    tamo je fiksna navigacija koja bi ga prekrila. */
-@media (max-width: 700px) { .qActions button, .qActions .markBox input { scroll-margin-bottom: 78px; } }
+@media (max-width: 700px) { .qActions button, .qActions .markBox input, .choice, #browseList .qRow { scroll-margin-bottom: 78px; } }
 
 /* "Na ispitu: N" — koliko pitanja podoblast nosi na pravom ispitu */
 .subExam { display: inline-block; font-size: var(--fs-xs); font-weight: 600; color: var(--chipInk);
@@ -724,6 +730,8 @@ button { transition: background-color .15s ease, border-color .15s ease, color .
 @media (max-width: 700px) {
   #trakeDrzac, #iosHint { bottom: calc(12px + 66px); }
   #updBar { bottom: calc(14px + 66px); }
+  /* poslednji red podnožja je stajao ISPOD fiksne donje navigacije i nije se mogao pročitati */
+  #podnozje { padding-bottom: calc(34px + 66px); }
   #repoUpd { bottom: calc(16px + 66px); }
   body.uSimulaciji #trakeDrzac, body.uSimulaciji #iosHint { bottom: 12px; }
   body.uSimulaciji #updBar { bottom: 14px; }
