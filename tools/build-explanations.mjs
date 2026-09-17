@@ -4160,6 +4160,25 @@ CARDS['uredjaji-oprema'] = {
 <p class="mut">Razlikuj ih po polju i obodu: <b>kose crveno-žute pruge preko celog polja = TEŠKA</b> vozila (obod je tanak i žut), a <b>čisto žuto polje u širokom crvenom okviru = DUGA</b> vozila; jedina tabla u obliku trougla je ona za <b>spora</b> vozila.</p>
 
 <p class="mut"><b>Rezime mamaca u ovoj oblasti:</b> „najmanje" umesto „najviše" kod magle, 40 m umesto 10–50 m kod mopeda, „bela ili žuta" kod dnevnih svetala, „boju određuje proizvođač", „optička I zvučna", trouglasti katadiopteri, goli „1,6 mm" bez pominjanja TWI, i moped ubačen u spisak vozila koja moraju imati opremu prve pomoći.</p>
+
+<div class="kPodH"><b class="kPodNaslov">Teret i broj lica</b>
+<div class="kSek">
+<p><b>Teret se smešta i obezbeđuje tako da NE umanjuje stabilnost vozila</b> i ne otežava upravljanje, i tako da ne utiče na funkcionisanje i korišćenje sklopova i delova vozila. Odgovor je golo <b>„Ne"</b> — bez izuzetka (#8624). Zamka nudi izuzetak koji ne postoji: „osim kada je nadležni organ izdao posebnu dozvolu uz pratnju sa žutim rotacionim svetlom".</p>
+<svg viewBox="0 0 320 152" class="crtez" role="img" aria-label="Tabla za označavanje tereta koji prelazi najisturaniju tačku na zadnjoj strani vozila je crveno-bela, kosih pruga. Broj lica koji se prevozi je onaj upisan u saobraćajnoj dozvoli.">
+  <rect x="14" y="16" width="86" height="58" rx="4" fill="none" stroke="currentColor" stroke-width="2"/>
+  <g stroke="currentColor" stroke-width="7" opacity=".55">
+    <line x1="18" y1="70" x2="58" y2="20"/><line x1="44" y1="70" x2="84" y2="20"/><line x1="70" y1="70" x2="99" y2="34"/>
+  </g>
+  <text x="112" y="34" font-size="12" font-weight="bold" fill="currentColor">tabla za teret</text>
+  <text x="112" y="52" font-size="12" fill="currentColor">koji prelazi najisturaniju</text>
+  <text x="112" y="70" font-size="12" fill="currentColor">tačku pozadi (#8638)</text>
+  <text x="14" y="104" font-size="13" font-weight="bold" fill="currentColor">Koliko lica smeš da prevoziš?</text>
+  <text x="14" y="124" font-size="12" fill="currentColor">onoliko koliko je označeno u SAOBRAĆAJNOJ DOZVOLI,</text>
+  <text x="14" y="142" font-size="12" fill="currentColor">i to na mestima koja su za to predviđena (#8652)</text>
+</svg>
+<p><b>Broj lica (#8652):</b> mera nije „koliko ima mesta" ni „koliko stane dok ukupna masa ne pređe najveću dozvoljenu" — mera je <b>ono što piše u saobraćajnoj dozvoli</b>, i to na predviđenim mestima. Za tvoju kategoriju idu uz to i granice iz kartice <i>Kategorije vozila</i>: na motociklu, triciklu i četvorociklu ne prevozi se dete mlađe od 12 godina.</p>
+</div></div>
+
 `,
 };
 
@@ -5604,8 +5623,11 @@ BYSUB[118] = 'uredjaji-oprema';        // sklopovi, uređaji i oprema vozila
 BYSUB[103] = 'vozac-zdravlje-alkohol'; // psihofizički uslovi, umor, alkohol
 BYSUB[91] = 'razno-pravila';           // ko reguliše i ko kontroliše saobraćaj
 BYSUB[163] = 'svetlosne-oznake';       // svetlosne oznake na putu (smerokazi, štapovi, table)
-// BYSUB[168] — UKINUTO 04.09.2026: podoblast je o teretu i njegovom obeležavanju, a kartica
-// „Vozilo, registracija i tehnički pregled" o teretu nema nijednu reč (oba pitanja su bez nje).
+// BYSUB[168] je 04.09.2026 bio UKINUT jer kartica o teretu nije imala nijednu reč — po pravilu
+// „bolje nijedna kartica nego pogrešna". Sad taj sadržaj POSTOJI (odeljak „Teret i broj lica"
+// u kartici o uređajima i opremi), pa veza sme da se vrati; uz nju i 170, iz istog razloga.
+BYSUB[168] = 'uredjaji-oprema';        // teret: stabilnost vozila i tabla za obeležavanje
+BYSUB[170] = 'uredjaji-oprema';        // broj lica koji se prevozi — piše u saobraćajnoj dozvoli
 BYSUB[94] = 'slicni-pojmovi';         // opšti pojmovnik (vozač, pešak, kolona, mase...)
 BYSUB[139] = 'pokazivaci';            // zvučni i svetlosni znak upozorenja
 BYSUB[161] = 'oznake-kolovoz';

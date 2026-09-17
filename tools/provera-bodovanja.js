@@ -882,7 +882,13 @@ async function proveraBodovanja2() {
           const e = E4.byQ[q.id] || {};
           if (!e.card && !e.nocard && !E4.bySub[q.sub]) bezKartice.push(q.id);
         }
-        ok('pojmovnik: najviše 3 pitanja u celoj bazi bez ijedne kartice (bilo ih je 13)', bezKartice.length <= 3);
+        // 108 pitanja je SVESNO bez kartice (nocard — kartica im ne odgovara), ali svako ima
+        // svoje objašnjenje; ono što se meri je da nijedna PODOBLAST ne ostane bez kartice
+        const podoblastiBez = [...new Set(bezKartice.map((id) => window.QUIZ.questions.find((q) => q.id === id).sub))]
+          .filter((sub) => !E4.bySub[sub] && !window.QUIZ.questions.some((q) => q.sub === sub && E4.byQ[q.id] && E4.byQ[q.id].card));
+        const svesnoBez = window.QUIZ.questions.filter((q) => (E4.byQ[q.id] || {}).nocard);
+        ok('pojmovnik: nijedna podoblast nije bez kartice (' + svesnoBez.length + ' pitanja je SVESNO odvojeno, svako sa svojim objašnjenjem)',
+          podoblastiBez.length === 0 && bezKartice.length === 0 && svesnoBez.every((q) => (E4.byQ[q.id] || {}).x));
         ok('pojmovnik: podoblast 144 (moped/motocikl) ima svoju karticu',
           E4.bySub[144] === 'moped-motocikl-voznja' && !!E4.cards['moped-motocikl-voznja']);
         document.querySelector('[data-nav="home"]').click(); await cekaj(200);
