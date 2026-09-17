@@ -1182,6 +1182,16 @@ async function proveraBodovanja2() {
       }
       ok('baza: nijedno latinično slovo unutar ćirilične reči (bilo ih je 29)', uCir === 0);
       ok('baza: nijedno ćirilično slovo u latiničnom tekstu', uLat === 0);
+      // HTML entitet je TEKST u kom slova nose značenje: toCyr ga je transliterovao, pa je
+      // `&rarr;` postajalo `&рарр;` (ćirilično „р" izgleda kao latinično „p") i ispisivalo se
+      // doslovno umesto strelice. Isto i `&gt;` → `&гт;`.
+      {
+        const pokvareni = [];
+        const trazi = (h) => { for (const e of (h || '').match(/&[^\s;<>]{1,12};/g) || []) if (/[Ѐ-ӿ]/.test(e)) pokvareni.push(e); };
+        for (const c of Object.values(window.EXPLAIN.cards)) { trazi(c.h.l); trazi(c.h.c); trazi(c.t.l); trazi(c.t.c); }
+        for (const e of Object.values(window.EXPLAIN.byQ)) if (e.x) { trazi(e.x.l); trazi(e.x.c); }
+        ok('pisma: nijedan HTML entitet nije transliterovan (bilo ih je 2: &rarr; i &gt;)', pokvareni.length === 0);
+      }
       // oznaka na pneumatiku je latinična u OBA pisma — to je natpis sa gume, ne reč
       const q8829 = window.QUIZ.questions.find((q) => q.id === 8829);
       ok('baza: oznaka TWI ostaje latinična i u ćirilici', !!q8829 && q8829.t.c.includes('TWI'));

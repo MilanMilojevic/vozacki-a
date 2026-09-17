@@ -7144,7 +7144,9 @@ function toCyr(s) {
   const guards = [];
   // KOMENTAR IDE PRVI: /<[^>]+>/ staje na prvom „>", pa komentar koji u sebi ima strelicu
   // „->" ostane polurazbijen i njegov rep ode u transliteraciju (odatle „виеwБоx" u izlazu).
-  let t = s.replace(/<!--[\s\S]*?-->|<[^>]+>|file:\/\/|localhost|Clear browsing data|mg\/ml|km\/h|kW|cm³|\bkg\b|\bAM\b|\bA1\b|\bA2\b|\bB\b|(\d[,.]?\d*\s?)m\b/g, (m0) => {
+  // ENTITET IDE PRVI, uz komentar i tag: &rarr; i &gt; su TEKST u kom slova nose značenje,
+  // pa ih transliteracija pretvara u &рарр; i &гт; — a to više nisu entiteti nego doslovan ispis.
+  let t = s.replace(/&[a-zA-Z][a-zA-Z0-9]{1,9};|&#\d{1,6};|&#x[0-9a-fA-F]{1,6};|<!--[\s\S]*?-->|<[^>]+>|file:\/\/|localhost|Clear browsing data|mg\/ml|km\/h|kW|cm³|\bkg\b|\bAM\b|\bA1\b|\bA2\b|\bB\b|(\d[,.]?\d*\s?)m\b/g, (m0) => {
     guards.push(m0); return ` ${guards.length - 1} `;
   });
   t = t.replace(/DŽ|dž|Dž|LJ|lj|Lj|NJ|nj|Nj|[a-zA-ZčćđšžČĆĐŠŽ]/g, (ch) => MAP[ch] ?? ch);
@@ -7394,6 +7396,19 @@ const out = {
   }
   if (bad.size) console.log('⚠ UPOZORENJE — sumnjivi tokeni u ćirilici:', [...bad].join(', '));
   else console.log('skener pisma: čisto');
+  // HTML entitet sa ćiriličnim slovom nije entitet nego doslovan ispis („&рарр;" umesto strelice)
+  {
+    const pokvareni = new Set();
+    for (const c of Object.values(out.cards)) for (const h of [c.h.l, c.h.c]) {
+      for (const e of (h.match(/&[^\s;<>]{1,12};/g) || [])) if (/[\u0400-\u04FF]/.test(e)) pokvareni.add(e);
+    }
+    for (const e of Object.values(out.byQ)) if (e.x) for (const h of [e.x.l, e.x.c]) {
+      for (const m of (h.match(/&[^\s;<>]{1,12};/g) || [])) if (/[\u0400-\u04FF]/.test(m)) pokvareni.add(m);
+    }
+    if (pokvareni.size) { console.log('⚠ POKVARENI ENTITETI:', [...pokvareni].join(', ')); process.exitCode = 1; }
+    else console.log('entiteti: čisti');
+  }
+
 }
 
 await fs.writeFile('../explanations.js', 'window.EXPLAIN = ' + JSON.stringify(out) + ';\n');

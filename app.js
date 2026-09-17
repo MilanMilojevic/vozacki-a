@@ -414,6 +414,7 @@
     allPage: { l: 'Sva pitanja', c: 'Сва питања' },
     allPageSub: { l: 'redom, filteri, spisak', c: 'редом, филтери, списак' },
     nastaviOd: { l: 'Nastavi od @1. pitanja', c: 'Настави од @1. питања' },
+    odPocetka: { l: 'Kreni od prvog pitanja', c: 'Крени од првог питања' },
     fromStart: { l: 'Počni od 1.', c: 'Почни од 1.' },
     shuffleLbl: { l: 'Izmešaj redosled', c: 'Измешај редослед' },
     shuffled: { l: 'mešano', c: 'мешано' },
@@ -3297,7 +3298,12 @@
     el('mLearn').textContent = L('allPage');
     // redni broj, ne brojanje: „493 od 1327" je stajalo tik ispod „492 od 1327 odgovoreno",
     // a to su dve različite vrste broja koje se slučajno poklope
-    el('mLearnSub').textContent = `${L('nastaviOd').split('@1').join(Math.min(prviNeodgOd(S.seqPos) + 1, Q.length))} · ${L('allPageSub')}`;
+    {
+      // novom korisniku „Nastavi od 1. pitanja" nema šta da nastavi — tada piše da kreće od početka
+      const p0 = prviNeodgOd(S.seqPos);
+      el('mLearnSub').textContent = (p0 === 0 ? L('odPocetka') : L('nastaviOd').split('@1').join(Math.min(p0 + 1, Q.length)))
+        + ' · ' + L('allPageSub');
+    }
     el('mDrill').textContent = L('drill');
     {
       const osv = zaOsvezavanje().length;
