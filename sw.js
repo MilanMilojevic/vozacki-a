@@ -26,6 +26,15 @@ border:none;border-radius:8px;padding:11px 16px;min-height:44px;cursor:pointer}
 
 const RAZVOJ = self.location.hostname === 'localhost' || self.location.hostname === '127.0.0.1';
 
+// Ključ pod koji ide index.html pokupljen SA MREŽE, van instalacije. Nije „./" namerno:
+// „./" i „./index.html" piše install, i to zajedno sa svim ?v= fajlovima na koje taj HTML
+// pokazuje — to je jedini SAGLASAN par. Stari radnik i dalje otvara svoj va-core-vNNN (kopiju
+// version.js drži importScripts), pa bi nov index.html sleteo u STAR keš i zaklonio saglasnu
+// kopiju: offline bi ostala neoformljena ljuska koja traži pet fajlova kojih tamo nema.
+// Zato nov HTML ide u stranu i služi samo kao POSLEDNJA rezerva — za slučaj da install nikad
+// nije prošao, a strana je bar jednom potpuno učitana.
+const MREZNI_HTML = './?mreza';
+
 self.addEventListener('install', (e) => {
   if (RAZVOJ) { self.skipWaiting(); return; }   // na lokalu se keš ne koristi (vidi granu ?v= niže)
   e.waitUntil((async () => {
@@ -67,6 +76,10 @@ self.addEventListener('fetch', (e) => {
 
   // slike pitanja: keš prvi (ne menjaju se), mreža kao dopuna
   if (url.pathname.includes('/img/')) {
+    // Na lokalu keša nema — isto pravilo kao za ?v= granu i kao što piše na install.
+    // Slika se u projektu ne menja (download-images.mjs preskače postojeće), ali ko je ipak
+    // zameni, do sada je na localhostu gledao staru dok ne obriše keš ručno.
+    if (RAZVOJ) return;
     e.respondWith((async () => {
       const c = await caches.open(IMG);
       const hit = await c.match(req);
@@ -112,16 +125,21 @@ self.addEventListener('fetch', (e) => {
       const res = await fetch(req);
       // ?ts= nosi vreme, pa je svaki put DRUGA adresa: keširanje bi gomilalo unos po
       // proveri izdanja (na svakih 5 minuta) do sledećeg izdanja.
-      if (res.ok && !url.searchParams.has('ts')) c.put(req, res.clone());
+      if (res.ok && !url.searchParams.has('ts')) c.put(req.mode === 'navigate' ? MREZNI_HTML : req, res.clone());
       return res;
     } catch (err) {
       const hit = await c.match(req);
       if (hit) return hit;
       if (req.mode === 'navigate') {
-        const idx = (await c.match('./index.html')) || (await c.match('./'));
+        const idx = (await c.match('./index.html')) || (await c.match('./')) || (await c.match(MREZNI_HTML));
         if (idx) return idx;
+        // Strana koja se VIDI ide samo tamo gde se i prikazuje — u navigaciju.
+        return new Response(OFFLINE_HTML, { status: 503, headers: { 'Content-Type': 'text/html; charset=utf-8' } });
       }
-      return new Response(OFFLINE_HTML, { status: 503, headers: { 'Content-Type': 'text/html; charset=utf-8' } });
+      // Sve ostalo dobija isti prazan 504 kao grana za slike i ?v= grana. HTML poslat na
+      // mesto skripte (version.js?ts=…) pregledač IZVRŠI i baci SyntaxError na svakih pet
+      // minuta bez mreže — buka koja izgleda kao kvar aplikacije.
+      return new Response('', { status: 504 });
     }
   })());
 });

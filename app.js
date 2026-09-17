@@ -1251,8 +1251,6 @@
   let listMode = null; // {ids, i, titleFn, kind, secKey, origin}
   let runSeq = 0;              // raste sa svakim novim prolazom kroz pitanja
   let lastRecordKey = null;    // "prolaz|pozicija" poslednjeg zabeleženog odgovora
-  // Koliko pitanja podoblast nosi na PRAVOM ispitu — izmereno iz pet zvaničnih izvlačenja
-  // (fiksne vrednosti su bile identične u svih pet; "0–1" se smenjuju za slobodne slotove).
   // Koliko pitanja podoblast nosi na ispitu — IZVEDENO iz zvaničnog šablona (tezinaPodoblasti /
   // SIM_SLOTS), ne prepisano rukom: ručna tabela se već bila razišla sa šablonom (143 je pisalo
   // „1" a nosi trećinu; 147 i 155 su pisale „0–1" a u šablonu ih nema). Leže se računa pri prvom
@@ -1641,9 +1639,10 @@
   }
 
   // ---------- Situacije sa ispita ----------
-  // Od 704 slike u bazi, 311 su znakovi (atlas). Ostalih 334 prikazuju SITUACIJU na putu i
-  // vezane su za temu kartice — uz svaku ide njeno pitanje i tačan odgovor. Bez ovoga te
-  // slike vidi samo onaj ko naiđe baš na to pitanje.
+  // Slike koje NISU znak (atlas) prikazuju SITUACIJU na putu i vezane su za temu kartice —
+  // uz svaku ide njeno pitanje i tačan odgovor. Bez ovoga te slike vidi samo onaj ko naiđe
+  // baš na to pitanje. Koliko ih je, ne piše ovde: bild to ispisuje („situacije: N slika"),
+  // a broj raste sa svakom novom vezom podoblasti (334 iz v123 je do v135 postalo 344).
   function dodajSituacije(cd, kljuc) {
     const st = (EX.situacije || {})[kljuc];
     if (!cd || !st || !st.length) return;
@@ -2104,7 +2103,6 @@
     const total = sim.qs.reduce((a, sq) => a + sq.q.pts, 0);
     let score = 0;
     const wrong = [];
-    const perCat = {};
     for (const sq of sim.qs) {
       const okSet = new Set(sq.q.ch.filter((x) => x.ok).map((x) => x.id));
       const ok = sq.chosen.size === okSet.size && [...sq.chosen].every((id) => okSet.has(id));
@@ -2112,9 +2110,9 @@
       // neodgovoreno NIJE pogrešno: u rezultatu nosi 0 poena (to se ne dira), ali u napredak
       // ne sme da uđe kao greška — inače posle svakog ispita u red ulazi i ono što nisi video
       if (sq.chosen.size > 0) record(sq.q.id, ok);
-      const pc = perCat[sq.q.cat] || (perCat[sq.q.cat] = { n: 0, ok: 0, pts: 0, got: 0 });
-      pc.n++; pc.pts += sq.q.pts;
-      if (ok) { score += sq.q.pts; pc.ok++; pc.got += sq.q.pts; }
+      // zbir po oblastima se NE računa ovde: u zapis ide samo {id, ch}, pa ga renderSimReview
+      // gradi iznova — tako tabela „Po oblastima" radi i za ispite predate pre te tabele
+      if (ok) score += sq.q.pts;
       else wrong.push({ q: sq.q, chosen: new Set(sq.chosen) });
     }
     const threshold = prag(total);
