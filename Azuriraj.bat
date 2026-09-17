@@ -17,6 +17,9 @@ if errorlevel 1 (
 )
 echo.
 echo Napredak u ucenju NIJE diran - cuva se u pregledacu.
+echo.
+echo Da bi izmene videla i sama aplikacija: zatvori je, pokreni Pokreni.bat
+echo i osvezi stranicu sa Ctrl+F5 (bez toga se moze prikazati stara verzija iz kesa).
 pause
 exit /b
 

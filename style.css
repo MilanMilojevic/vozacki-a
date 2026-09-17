@@ -717,3 +717,8 @@ button { transition: background-color .15s ease, border-color .15s ease, color .
   body.uSimulaciji #updBar { bottom: 14px; }
   body.uSimulaciji #repoUpd { bottom: 16px; }
 }
+
+/* Prva ćelija reda izveštaja je DUGME (da Enter i razmak rade bez ručnog osmatrača), ali
+   mora da izgleda kao običan tekst ćelije. */
+.repGo { background: none; border: none; padding: 0; margin: 0; font: inherit; color: inherit;
+  text-align: left; cursor: pointer; border-radius: 4px; }

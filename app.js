@@ -224,7 +224,7 @@
     grupaNapredak: { l: 'Napredak', c: 'Напредак' },
     grupaAplikacija: { l: 'Aplikacija', c: 'Апликација' },
     grupaOprezno: { l: 'Oprezno', c: 'Опрезно' },
-    resetNapomena: { l: 'Briše sve na ovom uređaju: odgovore, obeležena pitanja, simulacije i dnevni cilj. Ne može da se poništi.', c: 'Брише све на овом уређају: одговоре, обележена питања, симулације и дневни циљ. Не може да се поништи.' },
+    resetNapomena: { l: 'Briše na ovom uređaju: odgovore, obeležena pitanja, simulacije, seriju dana, dnevni cilj i DATUM ISPITA, kao i vodič i odbijene podsetnike. Ostaju pismo, tema i veličina slova. Povezan fajl za automatsko čuvanje se odmah prepiše praznim stanjem — sačuvaj kopiju pre brisanja. Ne može da se poništi.', c: 'Брише на овом уређају: одговоре, обележена питања, симулације, серију дана, дневни циљ и ДАТУМ ИСПИТА, као и водич и одбијене подсетнике. Остају писмо, тема и величина слова. Повезан фајл за аутоматско чување се одмах препише празним стањем — сачувај копију пре брисања. Не може да се поништи.' },
     podnozjeOpis: { l: 'Besplatna vežbaonica za teorijski ispit, A kategorija. Bez reklama, bez naloga i bez plaćanja.', c: 'Бесплатна вежбаоница за теоријски испит, А категорија. Без реклама, без налога и без плаћања.' },
     podnozjeBaza: { l: 'Zvanična baza eUprave · @1 pitanja · izvučena @2 · poslednja provera @3 · verzija @4', c: 'Званична база еУправе · @1 питања · извучена @2 · последња провера @3 · верзија @4' },
     podnozjePrivatnost: { l: 'Napredak ostaje na tvom uređaju. Ništa se ne šalje i ništa se ne čuva kod nas.', c: 'Напредак остаје на твом уређају. Ништа се не шаље и ништа се не чува код нас.' },
@@ -255,7 +255,6 @@
     daniPon: { l: 'Ponavljanja', c: 'Понављања' },
     daniTacnost: { l: 'Tačnost', c: 'Тачност' },
     daniDanas: { l: 'danas, još traje', c: 'данас, још траје' },
-    daniProsek: { l: 'Prosek poslednjih 7 dana', c: 'Просек последњих 7 дана' },
     daniTrend: { l: 'Tačnost po danima — poslednjih @1', c: 'Тачност по данима — последњих @1' },
     daniPragLinija: { l: 'isprekidana linija = 85%, prag ispita · ispod svakog dana stoji koliko si pitanja uradio', c: 'испрекидана линија = 85%, праг испита · испод сваког дана стоји колико си питања урадио' },
     daniUkupno: { l: 'Ukupno u @1 dana: @2 odgovora, @3 tačnih (@4%)', c: 'Укупно у @1 дана: @2 одговора, @3 тачних (@4%)' },
@@ -1155,7 +1154,7 @@
           b.appendChild(w);
         }
       }
-      if (confirmBtn) confirmBtn.remove();
+      confirmBtn.remove();
       const v = document.createElement('div'); v.className = 'verdict ' + (ok ? 'ok' : 'bad'); v.setAttribute('role', 'status');
       v.textContent = ok ? L('correct') : L('wrong') + ' ' + L('correctIs');
       c.insertBefore(v, actions);
@@ -2018,13 +2017,13 @@
     rp.innerHTML = `<h3>${L('report')}</h3>
       <table class="stats"><thead><tr><th>${L('question')}</th><th class="num">${L('brojPoena')}</th><th class="num">${L('repAnswered')}</th><th class="num">${L('repMarked')}</th></tr></thead>
       <tbody>${sim.qs.map((sq, idx) =>
-        `<tr class="repRow" tabindex="0" data-i="${idx}"><td>${L('question')} ${idx + 1}</td><td class="num">${sq.q.pts}</td><td class="num">${sq.chosen.size === sq.q.req ? '✓' : '—'}</td><td class="num">${sq.marked ? '🔖' : '—'}</td></tr>`).join('')}
+        `<tr class="repRow" data-i="${idx}"><td><button type="button" class="repGo" data-i="${idx}">${L('question')} ${idx + 1}</button></td><td class="num">${sq.q.pts}</td><td class="num">${sq.chosen.size === sq.q.req ? '✓' : '—'}</td><td class="num">${sq.marked ? '🔖' : '—'}</td></tr>`).join('')}
       </tbody></table>
       <div class="qActions" style="margin-top:12px"><button class="primary" id="btnRepBack">‹ ${L('backToTest')}</button></div>`;
+    // Klik bilo gde u redu i dalje radi; tastatura ide kroz dugme u prvoj ćeliji, koje
+    // Enter i razmak dobija od pregledača — bez ručnog osmatrača i bez fokusabilnog <tr>.
     rp.querySelectorAll('.repRow').forEach((tr) => {
-      const go = () => { sim.i = +tr.dataset.i; renderSimQ(); };
-      tr.addEventListener('click', go);
-      tr.addEventListener('keydown', (ev) => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); go(); } });
+      tr.addEventListener('click', () => { sim.i = +tr.dataset.i; renderSimQ(); });
     });
     el('btnRepBack').addEventListener('click', renderSimQ);
     simSnimi();
@@ -2523,8 +2522,14 @@
       <div class="mut opisRed">${nQ(Q.length)} · ${seen} ${L('answered')}${acc !== null ? ` · ${L('thAcc').toLowerCase()}: <span class="${accClass(acc)}">${acc}%</span>` : ''} · ${inQ} ${L('inQueue')}${pomocHtml()}</div>
       ${pomocTekstHtml()}
       <div class="qActions">
-        <button class="primary" id="bCont" title="${escapeHtml(L('contTip'))}">${L('continueBtn')} (${Math.min(prviNeodgOd(S.seqPos) + 1, Q.length)}/${Q.length})</button>
-        <button class="secondary" id="bFrom1">${L('fromStart')}${sfx()}</button>
+        ${(() => {
+          // Novom korisniku je „Nastavi (1/1327)" isto što i „Počni od 1." — tada se nudi
+          // samo jedno dugme, kao i na strani oblasti. Mešanje ostaje dostupno preko bFrom1.
+          const p = prviNeodgOd(S.seqPos);
+          const pocetak = !shuffleOn && p === 0;
+          return `<button class="primary" id="bCont"${pocetak ? '' : ` title="${escapeHtml(L('contTip'))}"`}>${pocetak ? L('startBtn') + sfx() : `${L('continueBtn')} (${Math.min(p + 1, Q.length)}/${Q.length})`}</button>
+        ${pocetak ? '' : `<button class="secondary" id="bFrom1">${L('fromStart')}${sfx()}</button>`}`;
+        })()}
         ${wrongNow.length ? `<button class="secondary" id="bWrong">${L('onlyWrong')} (${wrongNow.length})${sfx()}</button>` : ''}
         ${unseen.length && unseen.length < Q.length ? `<button class="secondary" id="bUnseen">${L('onlyUnseen')} (${unseen.length})${sfx()}</button>` : ''}
         ${shuffleBoxHtml()}
@@ -2533,10 +2538,10 @@
     bindShuffleBox(head);
     veziPomoc(head);
     el('bCont').addEventListener('click', () => startLearn(prviNeodgOd(S.seqPos)));
-    el('bFrom1').addEventListener('click', () => {
+    { const bf1 = el('bFrom1'); if (bf1) bf1.addEventListener('click', () => {
       if (shuffleOn) startList(maybeShuffle(Q.map((q) => q.id)), shufTag(() => L('allPage')), null, 'filter', { origin: browseAll });
       else startLearn(0);
-    });
+    }); }
     const bu = el('bUnseen'); if (bu) bu.addEventListener('click', () => startList(maybeShuffle(unseen), shufTag(() => `${L('allPage')} — ${L('onlyUnseen').toLowerCase()}`), null, 'filter', { origin: browseAll }));
     const bw = el('bWrong'); if (bw) bw.addEventListener('click', () => startList(maybeShuffle(wrongNow), shufTag(() => `${L('allPage')} — ${L('onlyWrong').toLowerCase()}`), null, 'filter', { origin: browseAll }));
 
@@ -2809,7 +2814,6 @@
       clearSpot();
       const st = TOUR_STEPS[idx];
       let elx = document.querySelector(st.sel);
-      if (elx && st.card) elx = elx.closest('.card') || elx;
       if (!elx) { next(); return; }
       spot = elx; spot.classList.add('tourSpot');
       // visok element (kartica duža od ekrana) se poravnava na VRH — centriranje bi mu
