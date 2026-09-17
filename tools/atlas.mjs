@@ -87,9 +87,10 @@ export function napraviAtlas(X) {
     situacijaN++;
   }
   for (const l of Object.values(situacije)) l.sort((a, b) => a - b);
-  for (const [k, l] of Object.entries(situacije)) {
-    if (l.length < 3) { delete situacije[k]; situacijaN -= l.length; }
-  }
+  // За АТЛАС важи праг од три знака (два знака нису атлас). За СИТУАЦИЈЕ не важи: то су
+  // слике са испита уз ту тему, па је и једна вредна — заглавље јој каже шта је, а одељак
+  // је склопив. Због прага од три, слика #9189 („ОБИЛАЗАК") била је једина слика-знак коју
+  // појмовник нигде није показивао.
   // ---- ZAMKE: ponuđen NETAČAN odgovor koji je zvanično značenje nekog DRUGOG znaka ----
   // Ispit sam kaže šta se sa čim meša: mamac u pitanju „krivina nalevo" je doslovno značenje
   // znaka „krivina nadesno". Zato uz odgovoreno pitanje ide slika BAŠ tog znaka — čovek vidi

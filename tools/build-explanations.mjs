@@ -2,6 +2,7 @@
 // SI oznake ostaju latinicom kao u zvaničnoj bazi). Pokreni: node build-explanations.mjs
 import fs from 'node:fs/promises';
 import { napraviAtlas, SUB_KARTICA_SVE } from './atlas.mjs';
+import { tabelaObrazaca, brojeviMamci, procenat, meri, podoblastiObrasca, imePodoblasti, ukupnoPitanja } from './mere.mjs';
 
 // ---------------- IZVOR (latinica) ----------------
 const road = (w, h) => `<rect x="0" y="0" width="${w}" height="${h}" fill="#9aa7b4"/>`;
@@ -432,30 +433,62 @@ CARDS['brzine'] = {
 
 
 
+// ---- MERE ZA KARTICU „Zamke u ponuđenim odgovorima" ----
+// Ručno se bira ŠTA se posmatra; KOLIKO puta je ponuđeno i koliko puta tačno računa mere.mjs
+// iz data.js, pri svakom bildu. Tako brojka ne može da se raziđe sa bazom u tišini.
+const ZAMKE_OBRASCI = [
+  { opis: '"na kratkom delu puta"', re: /na kratkom delu puta/i },
+  { opis: '"raspoloživom vremenu" / "udobnost"', re: /raspoloživ\w* vremen|udobnost/i },
+  { opis: '"ako time ne ometa, odnosno ne ugrožava druge" (kao izgovor za zabranjeno)', re: /ako time ne ometa,?\s*odnosno ne ugrožava/i },
+  { opis: '"što pre (stigne)"', re: /što pre/i },
+  { opis: '"uz povećanu opreznost"', re: /uz povećanu opreznost/i },
+];
+const ZAMKE_BROJEVI = [
+  { tema: 'Brzina', vrednost: '120 km/h', re: /\b120\s*km\/?h/i },
+  { tema: 'Brzina', vrednost: '20 km/h', re: /\b20\s*km\/?h/i },
+  { tema: 'Rastojanje', vrednost: '250 m', re: /\b250\s*m(?!m)/i },
+  { tema: 'Rastojanje', vrednost: '1 m', re: /(^|[^0-9,.])1\s*m(etar)?\b/i },
+  { tema: 'Rastojanje', vrednost: '0,5 m', re: /\b0[,.]5\s*m\b/i },
+  { tema: 'Kazneni poeni', vrednost: '10 poena', re: /\b10\s*(kaznen\w*\s*)?poen/i },
+  { tema: 'Rokovi', vrednost: '24 sata/časa', re: /\b24\s*(sat|čas)/i },
+];
+const ZAMKE_TEKST = [
+  { naziv: 'potvrdu pravca kretanja posle prolaska raskrsnice', re: /potvrdu pravca kretanja posle prolaska raskrsnice/i },
+  { naziv: 'put sa jednosmernim saobraćajem (kao opis autoputa/motoputa)', re: /put sa jednosmernim saobraćajem/i },
+  { naziv: 'laki tricikl', re: /laki tricikl/i },
+  { naziv: 'imate prednost u odnosu na oba vozila', re: /imate prednost u odnosu na oba vozila/i },
+];
+const Z_TAB_OBRAZACA = tabelaObrazaca(ZAMKE_OBRASCI);
+const { tabMamci: Z_TAB_BROJEVA, tabIzuzeci: Z_TAB_IZUZETAKA } = brojeviMamci(ZAMKE_BROJEVI);
+const Z_ZABRANA = procenat(/nije dozvoljeno/i);
+const Z_DOZVOLA = procenat(/(^|[^e]\s)je dozvoljeno/i);
+const Z_TEKST = ZAMKE_TEKST.map((x) => {
+  const m = meri(x.re);
+  const sub = podoblastiObrasca(x.re);
+  const gde = sub.length === 1 ? ` — javlja se SAMO u podoblasti ${sub[0][0]} (${imePodoblasti(sub[0][0])})` : '';
+  const izuz = m.tacniId.length ? ` (i to u ${m.tacniId.map((i) => '#' + i).join(', ')} — <b>ne odbacuj ga naslepo</b>)` : '';
+  return `<li>"${x.naziv}" — ponuđen ${m.ponudjen}×, tačan ${m.tacan}×${izuz}${gde}.</li>`;
+}).join('\n');
+const Z_PRVI_IZUZETAK = (() => {
+  const p = ZAMKE_OBRASCI.map((r) => ({ opis: r.opis, ...meri(r.re) })).filter((x) => x.tacan > 0)[0];
+  return p ? `${p.opis} je ${p.tacan}× tačno` : 'izuzeci postoje';
+})();
+
 CARDS['zamke-odgovori'] = {
   title: 'Zamke u ponuđenim odgovorima',
   html: `
-<p><b>Zakon ne poznaje "malo sme".</b> Odgovori koji UBLAŽAVAJU obavezu su gotovo uvek netačni — izmereno na celoj bazi:</p>
-<table>
-<tr><th>Obrazac u odgovoru</th><th>Tačan u bazi</th></tr>
-<tr><td>"na kratkom delu puta"</td><td>0 od 3</td></tr>
-<tr><td>"raspoloživom vremenu" / "udobnost"</td><td>0 od 3</td></tr>
-<tr><td>"ako time ne ometa, odnosno ne ugrožava druge" (kao izgovor za zabranjeno)</td><td>0 od 3</td></tr>
-<tr><td>"što pre (stigne)"</td><td>1 od 9</td></tr>
-<tr><td>"uz povećanu opreznost"</td><td>2 od 16</td></tr>
-</table>
-<p><b>Zabrana naspram dozvole:</b> "nije dozvoljeno" je tačno u 84% svojih pojavljivanja, a "je dozvoljeno" u samo 22% — kad dvoumiš, zakon je verovatno STROŽIJI nego što misliš.</p>
-<p><b>Brojevi-mamci</b> — vrednosti koje se u ponuđenim odgovorima pojavljuju više puta, a NIJEDNOM nisu tačne (izmereno na celoj trenutnoj bazi):</p>
-<table>
-<tr><th>Tema</th><th>Mamac</th><th>Koliko puta ponuđen</th></tr>
-<tr><td>Brzina</td><td><b>120 km/h</b> · <b>20 km/h</b></td><td>7× · 4×</td></tr>
-<tr><td>Rastojanje</td><td><b>250 m</b> · <b>1 m</b> · <b>0,5 m</b></td><td>7× · 4× · 5×</td></tr>
-<tr><td>Novčane kazne</td><td><b>10.000</b> · <b>50.000 dinara</b></td><td>8× · 7×</td></tr>
-<tr><td>Kazneni poeni</td><td><b>10 poena</b></td><td>8×</td></tr>
-<tr><td>Rokovi</td><td><b>24 sata/časa</b></td><td>8×</td></tr>
-</table>
-<p><b>Večiti tekst-mamci</b> (nikad tačni u bazi): "potvrdu pravca kretanja posle prolaska raskrsnice" — mamac SAMO kod pitanja o POKAZIVAČIMA PRAVCA (11×: žmigavac se isključuje kad završiš radnju). Pažnja: znak obaveštenja „Potvrda pravca" POSTOJI — kod pitanja #9176 to je tačan odgovor · "put sa jednosmernim saobraćajem" kao opis autoputa/motoputa (10×) · "laki tricikl" (9×) · "imate prednost u odnosu na oba vozila" (5×).</p>
-<p class="mut"><b>Važno:</b> ovo su tendencije za proveru intuicije, NE pravila za slepo zaokruživanje — izuzeci postoje ("uz povećanu opreznost" je 2 puta tačno!). Prvo znanje, pa tek onda ovaj filter.</p>`,
+<p class="mut napomena">Svaki broj u ovoj kartici <b>izračunat je iz same baze</b> pri pravljenju aplikacije (${ukupnoPitanja()} pitanja) — ništa nije upisano rukom, pa ne može ni da zastari.</p>
+<p><b>Zakon ne poznaje "malo sme".</b> Odgovori koji UBLAŽAVAJU obavezu su gotovo uvek netačni:</p>
+${Z_TAB_OBRAZACA}
+<p><b>Zabrana naspram dozvole:</b> "nije dozvoljeno" je tačno u ${Z_ZABRANA.pct}% svojih pojavljivanja (${Z_ZABRANA.tacan} od ${Z_ZABRANA.ponudjen}), a "je dozvoljeno" u ${Z_DOZVOLA.pct}% (${Z_DOZVOLA.tacan} od ${Z_DOZVOLA.ponudjen}) — kad dvoumiš, zakon je verovatno STROŽIJI nego što misliš.</p>
+<p><b>Brojevi-mamci</b> — vrednosti koje se u ponuđenim odgovorima nude više puta, a <b>nijednom</b> nisu tačne:</p>
+${Z_TAB_BROJEVA}
+${Z_TAB_IZUZETAKA ? `<p><b>A ovi brojevi UMEJU da budu tačni</b> — izgledaju kao mamac, pa se lako odbace bez čitanja. Ne odbacuj ih:</p>\n${Z_TAB_IZUZETAKA}` : ''}
+<p><b>Večiti tekst-mamci</b> — koliko puta su ponuđeni i gde:</p>
+<ul>
+${Z_TEKST}
+</ul>
+<p class="mut"><b>Važno:</b> ovo su tendencije za proveru intuicije, NE pravila za slepo zaokruživanje — izuzeci postoje (${Z_PRVI_IZUZETAK}). Prvo znanje, pa tek onda ovaj filter.</p>`,
 };
 
 CARDS['nezgoda'] = {
@@ -466,8 +499,8 @@ CARDS['nezgoda'] = {
   <div class="vg" style="text-align:left">1. Zaustavi se i OSTANI do kraja uviđaja<br>2. Pomozi povređenima (po svom znanju i mogućnostima)<br>3. Obavesti policiju/hitnu pomoć<br>4. Obezbedi tragove (ako time ne ugrožavaš bezbednost), spreči nove nezgode, upozori druge<br>5. Vozila se NE pomeraju do uviđaja</div>
   <div class="vg" style="text-align:left">1. Skloni vozilo sa kolovoza ako smeta<br>2. Upozori ostale učesnike<br>3. Razmeni podatke sa drugim učesnikom<br>4. Popunite Evropski izveštaj o nezgodi<br>5. Ako oštećeni nije tu: ostavi podatke i obavesti policiju<br>6. Svako može tražiti da policija izađe na uviđaj</div>
 </div>
-<p><b>Udaljiti se sa mesta nezgode sa povređenima smeš SAMO:</b> ako je tebi neophodna hitna pomoć, radi prevoza povređenog do zdravstvene ustanove, ili da bi obavestio policiju — pa se vraćaš. (ZOBS čl. 167-172)</p>
-<p><b>Još tri činjenice koje test voli:</b> davanje krvi/urina na uviđaju je OBAVEZNO · fotografisanje na uviđaju bez poginulih/povređenih je obavezno · oduzete tablice se vraćaju kad dostaviš dokaz da je vozilo tehnički ispravno.</p>
+<p><b>Udaljiti se sa mesta nezgode sa povređenima smeš SAMO:</b> ako je tebi neophodna hitna medicinska pomoć ili radi prevoženja povređenog do najbliže zdravstvene ustanove — pa se vraćaš. Razloga je tačno DVA (#8539); „da bi obavestio policiju" nije jedan od njih. (ZOBS čl. 167-172)</p>
+<p><b>Još tri činjenice koje test voli:</b> davanje krvi/urina na uviđaju je OBAVEZNO · ispitivanje alkometrom, odnosno droga-testom na uviđaju bez poginulih i povređenih je obavezno (#8548) · oduzete tablice se vraćaju kad dostaviš dokaz da je vozilo tehnički ispravno.</p>
 
 <!-- ==== dopuna 07.09.2026 (tura 4): crtež + isto to rečima ==== -->
 <div class="kPodH"><b class="kPodNaslov">Sat nezgode — dokle šta važi</b>
@@ -605,15 +638,10 @@ CARDS['nezgoda'] = {
   - „ukloni vozilo ukoliko je u voznom stanju" ......................... #8550
   - „uzorak nije obavezan ako su korišćena sredstva" ................... #8543
 
-  PRIJAVA GRESKE U POSTOJECOJ KARTICI (STIL.md t.7)
-  Postojeći pasus glasi: „Udaljiti se sa mesta nezgode sa povređenima smeš
-  SAMO: ako je tebi neophodna hitna pomoć, radi prevoza povređenog do
-  zdravstvene ustanove, ili da bi obavestio policiju — pa se vraćaš."
-  Treći razlog („da bi obavestio policiju") nema oslonca u građi: #8539 ima
-  tačno dva tačna odgovora, a postojeće objašnjenje uz #8539 doslovno kaže
-  „samo iz dva razloga". Ovaj dodatak zato NIGDE ne broji razloge, da učenik
-  ne bi dobio dva različita brojanja na istom ekranu. Predlog ispravke
-  postojećeg teksta: obrisati „ili da bi obavestio policiju".
+  ISPRAVLJENO (v129): treći razlog za udaljavanje („da bi obavestio policiju")
+  obrisan je iz pasusa iznad — #8539 ima tačno dva tačna odgovora, a objašnjenje
+  uz to pitanje i ranije je govorilo „samo iz dva razloga". Dva brojanja na istom
+  ekranu više nema.
 ============================================================ -->
 `,
 };
@@ -838,7 +866,7 @@ CARDS['preticanje'] = {
   <div class="vg" style="text-align:left">kolonu (posebno pod pratnjom) · kad te neko već pretiče · kad je vozač ispred dao znak za preticanje · kad ne možeš da se vratiš u svoju traku · zaustavnom/sporom trakom · preko neisprekidane linije · prevoj i nepregledna krivina* · tunel* · neposredno ISPRED raskrsnice i na raskrsnici (bez prvenstva) · ispred kružnog toka · prelaz preko pruge · vozilo koje propušta pešake na prelazu · na autoputu/motoputu s desne strane</div>
   <div class="vg" style="text-align:left">podvožnjak i nadvožnjak · NA raskrsnici sa kružnim tokom · na raskrsnici kad si na putu SA prvenstvom (i to: vozilo koje skreće levo — s desne strane; bicikl/moped/motocikl; kad reguliše semafor ili policajac) · po snegu (sneg sam po sebi ne zabranjuje)<br><br>* prevoj/krivina/tunel su dozvoljeni ako ima ≥2 trake u tvom smeru</div>
 </div>
-<p><b>Dužnosti (čl. 54 i 56):</b> pretican NE SME da ubrzava i pomera se desno; ti se posle preticanja vraćaš u svoju traku bez ugrožavanja drugih.</p>
+<p><b>Dužnosti (čl. 54 i 56):</b> pretican NE SME da ubrzava, a kad mu je dat znak MORA da pomeri vozilo ka desnoj ivici kolovoza — usporavanje se NE traži (#9736: „uspori kretanje vozila" je mamac); ti se posle preticanja vraćaš u svoju traku bez ugrožavanja drugih.</p>
 <p class="mut">Pamćenje za kružni tok: "ISPRED — ne, NA njemu — da". Za tunele/prevoje: "jedna traka — ne, dve trake — da".</p>
 <p style="margin-top:10px"><b>Zamka koju baza vrti u oba smera (preticanje i obilaženje):</b> vozilo ispred tebe se zaustavilo — ili se tek zaustavlja — pred „zebrom" da propusti pešaka, a tebi se nudi da prođeš pored njega. Ne smeš <b>ni da ga pretičeš ni da ga obilaziš</b>; mamac „nije Vam dozvoljeno, osim na putu van naselja" je netačan — izuzetka nema, zabrana važi svuda.</p>
 <svg viewBox="0 0 220 170" role="img" style="max-width:250px;width:100%;display:block;margin:8px auto">
@@ -2487,7 +2515,7 @@ CARDS['pruga'] = {
   html: `
 <p><b>Gvozdeno pravilo (čl. 100):</b> šinsko vozilo UVEK propuštaš — voz ne može da stane.</p>
 <p><b>Približavanje prelazu:</b> brzina takva da možeš da staneš pred branikom/uređajem, odnosno pre pruge · spušten ili se spušta branik / crveno svetlo / zvučni signal = STOP · na prelazu je zabranjeno preticanje, obilaženje i zaustavljanje (+ 5 m zona za parkiranje).</p>
-<p><b>Prelaz bez branika i uredjaja:</b> zaustavi se, pogledaj oba smera, pređi tek kad si siguran da voz ne nailazi.</p>
+<p><b>Prelaz bez branika i uređaja:</b> zaustavi se, pogledaj oba smera, pređi tek kad si siguran da voz ne nailazi.</p>
 <p style="margin-top:10px"><b>Šta ćeš videti na putu</b> — prepoznaj svaki znak:</p>
 <div class="signRow lineRow">
   <div class="signCell">
@@ -4915,6 +4943,95 @@ X[10991] = { ...(X[10991] || {}), x: 'Poruka je data simbolom vozila, a simbol v
 X[10992] = { ...(X[10992] || {}), x: 'Trougao okrenut vrhom nadole obavezuje te da ustupiš prvenstvo prolaza, a tabla ispod njega crta oblik raskrsnice: debeli potez je put sa prvenstvom i pokazuje kuda se on pruža, dok su tanke crte sporedni krakovi. Tako unapred znaš odakle nailaze vozila kojima daješ prolaz. Strelica smera i oznaka slepog puta izgledaju drugačije.' };
 X[10993] = { ...(X[10993] || {}), x: 'Tekst na tabli ne uvodi nikakvo novo pravilo, već bliže određuje značenje znaka iznad nje tako što izuzima jednu grupu korisnika. Zabranu, ograničenje ili obavezu nosi sam znak, a tabla mu samo sužava dejstvo. Zato poruka table nikada nije nezavisna od znaka: bez znaka iznad sebe ovaj tekst ne bi imao nikakav smisao.' };
 
+
+CARDS['moped-motocikl-voznja'] = {
+  title: 'Vožnja mopeda i motocikla (tvoja kategorija)',
+  html: `
+<p><b>Zašto ova kartica postoji:</b> ovo je jedina podoblast koja govori o tome kako se vozi BAŠ tvoje vozilo — 10 pitanja po 2 poena, dakle <b>20 poena</b>. Skoro sva glase isto ("Vozač mopeda, odnosno motocikla, kada upravlja vozilom:") i traže <b>DVA</b> tačna odgovora, pa se lako pogreši žurbom. (ZOBS čl. 96 i 97)</p>
+
+<div class="kPodH"><b class="kPodNaslov">Ruke, noge i uši — šta se NE sme</b>
+<div class="kSek">
+<svg viewBox="0 0 320 168" class="crtez" role="img" aria-label="Obe ruke na upravljaču i obe noge na papučicama su obavezni; slušalice na oba uva su zabranjene, na jednom uvu nisu.">
+  <rect x="6" y="6" width="150" height="156" rx="8" fill="none" stroke="currentColor" stroke-opacity=".35"/>
+  <rect x="164" y="6" width="150" height="156" rx="8" fill="none" stroke="currentColor" stroke-opacity=".35"/>
+  <text x="81" y="26" text-anchor="middle" font-size="13" font-weight="bold" fill="currentColor">OBAVEZNO</text>
+  <text x="239" y="26" text-anchor="middle" font-size="13" font-weight="bold" fill="currentColor">ZABRANJENO</text>
+
+  <circle cx="30" cy="54" r="11" fill="none" stroke="currentColor" stroke-width="2"/>
+  <text x="30" y="59" text-anchor="middle" font-size="12" fill="currentColor">2</text>
+  <text x="48" y="51" font-size="12" fill="currentColor">ruke na</text>
+  <text x="48" y="65" font-size="12" fill="currentColor">upravljaču</text>
+
+  <circle cx="30" cy="96" r="11" fill="none" stroke="currentColor" stroke-width="2"/>
+  <text x="30" y="101" text-anchor="middle" font-size="12" fill="currentColor">2</text>
+  <text x="48" y="93" font-size="12" fill="currentColor">noge na</text>
+  <text x="48" y="107" font-size="12" fill="currentColor">papučicama</text>
+
+  <circle cx="30" cy="138" r="11" fill="none" stroke="currentColor" stroke-width="2"/>
+  <text x="30" y="143" text-anchor="middle" font-size="12" fill="currentColor">1</text>
+  <text x="48" y="135" font-size="12" fill="currentColor">slušalica na</text>
+  <text x="48" y="149" font-size="12" fill="currentColor">jednom uvu</text>
+
+  <text x="174" y="51" font-size="12" fill="currentColor">ispuštanje upravljača</text>
+  <text x="174" y="65" font-size="12" fill="currentColor">— i "samo na kratko"</text>
+  <text x="174" y="93" font-size="12" fill="currentColor">sklanjanje nogu</text>
+  <text x="174" y="107" font-size="12" fill="currentColor">sa papučica</text>
+  <text x="174" y="135" font-size="12" fill="currentColor">slušalice na</text>
+  <text x="174" y="149" font-size="12" fill="currentColor">OBA uva</text>
+</svg>
+<p><b>Zamka sa slušalicama:</b> zabranjene su <b>na oba uva</b>. Odgovor "ne sme ni na jednom uvu" je NETAČAN (#10236) — zakon zabranjuje da ti oba uva budu pokrivena, jedno sme.</p>
+<p><b>Zamka sa predmetima:</b> predmete SMEŠ da prevoziš — nije dozvoljeno prevoziti one <b>koji te ometaju</b> tokom upravljanja. Odgovor "ne sme prevoziti bilo kakve predmete" je netačan (#10236), a golo "ne sme da prevozi predmete" je mamac u #10234 i #10243.</p>
+</div></div>
+
+<div class="kPodH"><b class="kPodNaslov">Vuča, potiskivanje i pridržavanje</b>
+<div class="kSek">
+<svg viewBox="0 0 320 200" class="crtez" role="img" aria-label="Moped sme da vuče priključno vozilo sa dva točka za teret; ne sme da vuče drugi moped ni bicikl, ne sme da se pridržava za drugo vozilo, i ne sme da bude vučen ni potiskivan.">
+  <g stroke="currentColor" fill="none" stroke-width="2">
+    <circle cx="24" cy="36" r="8"/><circle cx="52" cy="36" r="8"/><line x1="24" y1="36" x2="52" y2="36"/>
+    <circle cx="84" cy="36" r="6"/><circle cx="102" cy="36" r="6"/><line x1="84" y1="36" x2="102" y2="36"/>
+    <line x1="60" y1="36" x2="76" y2="36" stroke-dasharray="3 3"/>
+  </g>
+  <text x="118" y="32" font-size="13" font-weight="bold" fill="currentColor">SME</text>
+  <text x="118" y="47" font-size="12" fill="currentColor">prikolica: 2 točka, za TERET</text>
+
+  <g stroke="currentColor" fill="none" stroke-width="2">
+    <circle cx="24" cy="94" r="8"/><circle cx="52" cy="94" r="8"/><line x1="24" y1="94" x2="52" y2="94"/>
+    <circle cx="84" cy="94" r="8"/><circle cx="112" cy="94" r="8"/><line x1="84" y1="94" x2="112" y2="94"/>
+    <line x1="60" y1="94" x2="76" y2="94"/>
+  </g>
+  <text x="128" y="90" font-size="13" font-weight="bold" fill="currentColor">NE SME</text>
+  <text x="128" y="105" font-size="12" fill="currentColor">vuča mopeda ili bicikla</text>
+
+  <g stroke="currentColor" fill="none" stroke-width="2">
+    <circle cx="24" cy="150" r="8"/><circle cx="52" cy="150" r="8"/><line x1="24" y1="150" x2="52" y2="150"/>
+    <rect x="76" y="136" width="36" height="26" rx="3"/>
+  </g>
+  <text x="128" y="146" font-size="13" font-weight="bold" fill="currentColor">NE SME</text>
+  <text x="128" y="161" font-size="12" fill="currentColor">pridržavanje za vozilo</text>
+
+  <text x="14" y="190" font-size="12" fill="currentColor">Ni da BUDE vučen, ni potiskivan — bez izuzetka.</text>
+</svg>
+<p>Mamci u #10235 su baš "izuzeci" kojih nema: <i>"samo kada vozilo ne može samo da se kreće"</i> i <i>"samo kada se kreće uz veliki nagib"</i>. Oba su netačna — zabrana je potpuna.</p>
+<p>Priključno vozilo (#10242): <b>dva točka, za TERET</b>. Mamci su "sa četiri točka" i "sa dva točka za prevoz LICA".</p>
+</div></div>
+
+<div class="kPodH"><b class="kPodNaslov">Kaciga i putnik</b>
+<div class="kSek">
+<table>
+<tr><th>Vozač kog vozila mora imati zakopčanu kacigu</th><th>Baza</th></tr>
+<tr><td>moped</td><td><b>DA</b> (#10546, #10547)</td></tr>
+<tr><td>motocikl</td><td><b>DA</b> (#10546, #10547)</td></tr>
+<tr><td>četvorocikl</td><td><b>DA</b> (#10546, #10547)</td></tr>
+<tr><td>traktor · traktor bez kabine ili rama</td><td>ne — mamac</td></tr>
+<tr><td>radna mašina</td><td>ne — mamac</td></tr>
+</table>
+<p class="mut">Kaciga se u bazi javlja i izvan ove podoblasti: policajac ISKLJUČUJE iz saobraćaja i vozača <b>tricikla</b> koji na glavi nema zakopčanu homologovanu kacigu, kao i onog koji prevozi lice bez nje (#10701) — svetloodbojni prsluk je tamo mamac.</p>
+<p><b>Putnik pod uticajem:</b> vozač mopeda, tricikla, odnosno motocikla <b>ne sme</b> da prevozi lice pod uticajem alkohola (#10240) ni pod uticajem psihoaktivnih supstanci (#10241). Mamac je oba puta isti: <i>"ukoliko svojim ponašanjem ne ometa vozača"</i> — takvog izuzetka nema.</p>
+</div></div>
+
+<p class="mut napomena"><b>Kako se ova podoblast rešava:</b> pitanja "Vozač mopeda, odnosno motocikla, kada upravlja vozilom:" traže DVA odgovora, a među ponuđenima je uvek bar jedan mamac koji UBLAŽAVA zabranu ("sme samo na kratko", "samo kada", "ukoliko ne ometa"). Pravilo iz kartice <i>Zamke u ponuđenim odgovorima</i> ovde radi savršeno: ublaženo = netačno.</p>`,
+};
+
 const BYSUB = {
   148: 'prvenstvo-prolaza',   // vozila pod pratnjom i sa pravom prvenstva (56 pitanja)
   136: 'prvenstvo-prolaza',   // prvenstvo prolaza
@@ -4994,6 +5111,18 @@ X[10691] = { x: 'Probna dozvola na AUTOPUTU: najviše 110 km/h (umesto 130) — 
 X[10692] = { x: "Probna dozvola na MOTOPUTU: najviše 90 km/h (umesto 100) — ZOBS čl. 182. Zamka: 110 km/h je ograničenje probne dozvole na AUTOPUTU, a na ostalim putevima važi 90% od brzine dozvoljene na tom delu puta (čl. 182)." };
 X[10693] = { x: "Probna dozvola na ostalim putevima: najviše 90% od ograničenja na tom delu puta (ZOBS čl. 182) — npr. gde važi 80, tebi važi 72. Ograničenje važi sve dok traje probna dozvola — ne samo do 18. godine. Period 23,00-06,00 je poseban mamac: tada vozač sa probnom dozvolom uopšte NE SME da upravlja (čl. 182), pa to nije \"prozor\" za ograničenje brzine." };
 BYSUB[172] = 'dozvole';
+// --- Saobraćaj mopeda, tricikla i motocikla (sub 144) ---
+BYSUB[144] = 'moped-motocikl-voznja';
+X[10234] = { x: 'Dve obaveze u jednoj rečenici (ZOBS čl. 96): noge ostaju na papučicama, a upravljač se NE ispušta iz ruku. Mamca "sme samo na kratko da ispusti upravljač" nema — nema "na kratko". Prevoz predmeta sam po sebi nije zabranjen, pa je i to mamac.' };
+X[10235] = { x: 'Moped, odnosno motocikl NE SME ni da bude vučen ni da bude potiskivan (ZOBS čl. 96) — bez "samo kada ne može sam da se kreće" i bez "samo uz veliki nagib". Oba ponuđena izuzetka su izmišljena.' };
+X[10236] = { x: 'Slušalice su zabranjene NA OBA UVA — jedno uvo sme, pa je "ni na jednom uvu" netačno. Predmeti se smeju prevoziti, osim onih koji ometaju upravljanje; "ne sme prevoziti bilo kakve predmete" je zato mamac.' };
+X[10237] = { x: 'Traži se vozač koji sedi propisno: obe noge na papučicama, obe ruke na upravljaču, bez pridržavanja za drugo vozilo. Uporedi sve četiri figure sa tim spiskom (ZOBS čl. 96).' };
+X[10240] = { x: 'Lice pod uticajem alkohola se NE prevozi na mopedu, triciklu ni motociklu (ZOBS čl. 97). Mamca "ukoliko svojim ponašanjem ne ometa vozača" nema u zakonu.' };
+X[10241] = { x: 'Isto pravilo kao za alkohol, samo za psihoaktivne supstance: prevoz takvog lica nije dozvoljen (ZOBS čl. 97), bez izuzetka "ako ne ometa vozača".' };
+X[10242] = { x: 'Priključno vozilo uz moped, odnosno motocikl: SA DVA TOČKA i NAMENJENO ZA TERET. Mamci su "četiri točka" i "dva točka za prevoz lica".' };
+X[10243] = { x: 'Dva tačna: ne sme da se pridržava za drugo vozilo i ne sme da vuče drugi moped, odnosno motocikl. "Sme da vuče bicikl" je mamac — vuča drugog vozila ovim vozilom nije dozvoljena.' };
+X[10546] = { x: 'Zakopčanu zaštitnu kacigu nose vozači mopeda, motocikla i ČETVOROCIKLA. Traktor i radna mašina su mamci.' };
+X[10547] = { x: 'Isto pitanje sa razbijenim odgovorima: moped, motocikl i četvorocikl — sva tri su tačna. "Traktor koji nema kabinu ili ram" i "radna mašina" su mamci.' };
 BYSUB[173] = 'dozvole';
 
 
@@ -5807,7 +5936,7 @@ opšti okvir trajanja: od 30 dana do jedne godine (Zakon o prekršajima čl. 58)
 <tr><td><b>SREDNJA</b><br>raspon</td><td>Sve ostalo među 89 pitanja o klasi — njih 48. Gornja tri reda nabrajaju svoje klase do kraja (nasilnička ima tačno jedno pitanje), pa: ako prekršaj nije naveden ni u jednom od njih, odgovor je <b>raspon</b>.</td></tr>
 </table>
 <p>Dva fiksna iznosa u istoj ponudi javljaju se samo dvaput. Jednom oblik sam razrešava (uz njih stoji i zatvorska opcija, i ona je tačna — noćna vožnja bez ijednog svetla). Drugi put su oba iznosa u lakšoj klasi i tačan je <b>manji</b> — „ne pomeriš se udesno dok te pretiču“ je sa najnižeg stepenika.</p>
-<p class="mut">Pamtilica 1: kad su ti ponuđena <b>dva raspona „od–do“</b> i nijedan odgovor nema zatvor, tačan je treći — onaj sa jednim iznosom. U bazi 16 od 16 takvih pitanja.<br>Pamtilica 2: odgovor sa <b>10 kaznenih poena</b> nudi se sedam puta i nijednom nije tačan — čist mamac.<br>Pamtilica 3: najstroži odgovor (zatvor ILI novčana + 14 poena) nudi se u <b>70 od 89</b> pitanja o klasi — skoro četiri petine — a tačan je 15 puta, dakle otprilike <b>jednom od pet</b> puta kad se ponudi. Ne biraj ga refleksno zato što zvuči ozbiljno.</p>
+<p class="mut">Pamtilica 1: kad su ti ponuđena <b>dva raspona „od–do“</b> i nijedan odgovor nema zatvor, tačan je treći — onaj sa jednim iznosom. U bazi 16 od 16 takvih pitanja.<br>Pamtilica 2: odgovor sa <b>10 kaznenih poena</b> nudi se sedam puta među pitanjima o klasi (i još jednom van njih, ukupno osam u celoj bazi) i nijednom nije tačan — čist mamac.<br>Pamtilica 3: najstroži odgovor (zatvor ILI novčana + 14 poena) nudi se u <b>70 od 89</b> pitanja o klasi — skoro četiri petine — a tačan je 15 puta, dakle otprilike <b>jednom od pet</b> puta kad se ponudi. Ne biraj ga refleksno zato što zvuči ozbiljno.</p>
 </div>
 
 <!-- CELINA 2 - izvor: #8224 (jedino pitanje o nasilnickoj voznji; tacan odgovor "kaznom zatvora od
@@ -5917,10 +6046,10 @@ opšti okvir trajanja: od 30 dana do jedne godine (Zakon o prekršajima čl. 58)
 <tr><th>Gde voziš</th><th>Dozvoljeno</th><th>Najteža klasa počinje na prekoračenju od</th></tr>
 <tr><td>naselje / van naselja</td><td>50 / 80</td><td><b>preko 70</b></td></tr>
 <tr><td>zona škole u naselju</td><td>30, od 7 do 21 č.</td><td><b>preko 60</b></td></tr>
-<tr><td>zona „30“</td><td>—</td><td><b>preko 60</b></td></tr>
-<tr><td>zona usporenog saobraćaja</td><td>10</td><td><b>preko 50</b></td></tr>
+<tr><td>zona „30“</td><td>30</td><td><b>preko 60</b> ✳</td></tr>
+<tr><td>zona usporenog saobraćaja</td><td>10</td><td><b>preko 50</b> ✳</td></tr>
 </table>
-<p class="mut">Za zonu „30“ baza navodi samo prag (preko 60), ne i sâmo ograničenje — zato je to polje prazno.<br>Pamtilica: pragovi idu <b>70 · 60 · 50</b> — što je zona osetljivija, to ti manje treba da upadneš u najtežu klasu.<br>Druga pamtilica, i pazi na ogradu: <b>na brzinskim tačkama koje baza pita</b> poeni i zabrana idu u paru — gde ima kaznenih poena, izriče se i zabrana; gde ih nema, ne izriče se. Van brzine to <b>ne</b> važi: dva prekršaja nose po 2 kaznena poena, a mera se ipak ne izriče — istekla registraciona nalepnica i vozačka dozvola istekla najviše šest meseci (oba su niže, među sličicama).</p>
+<p class="mut">✳ = <b>zakonski broj, baza ga ne pita</b> — isto značenje kao isprekidani procep sa „?" na crtežima iznad. Za zonu „30“ baza pita SAMO samo ograničenje (30 km/h, #8124 i #8125), a o kazni u zonama nema nijedno pitanje; prag „preko 70“ u prvom redu jedini se naslanja na građu.<br>Pamtilica: pragovi idu <b>70 · 60 · 50</b> — što je zona osetljivija, to ti manje treba da upadneš u najtežu klasu.<br>Druga pamtilica, i pazi na ogradu: <b>na brzinskim tačkama koje baza pita</b> poeni i zabrana idu u paru — gde ima kaznenih poena, izriče se i zabrana; gde ih nema, ne izriče se. Van brzine to <b>ne</b> važi: dva prekršaja nose po 2 kaznena poena, a mera se ipak ne izriče — istekla registraciona nalepnica i vozačka dozvola istekla najviše šest meseci (oba su niže, među sličicama).</p>
 </div>
 
 <!-- CELINA 4 - izvor: #8405 (0,30-0,50 mera se NE izrice, "kazna DA, zastitna mera NE"),

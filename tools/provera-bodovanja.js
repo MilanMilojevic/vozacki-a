@@ -846,6 +846,139 @@ async function proveraBodovanja2() {
       await naPocetnu();
     }
 
+    // ---- 2ak) REVIZIJA IZ ŠEST UGLOVA, drugi deo (v129) ----
+    {
+      const S4 = S();
+      const dva6 = (n) => String(n).padStart(2, '0');
+      const dan6 = (d) => d.getFullYear() + '-' + dva6(d.getMonth() + 1) + '-' + dva6(d.getDate());
+      const E4 = window.EXPLAIN;
+
+      // (1) SADRŽAJ: kartica ne sme da tvrdi ono čega u bazi nema
+      const svaHtml = Object.values(E4.cards).map((c) => c.h.l).join('\n');
+      ok('sadržaj: nijedna kartica ne pominje fotografisanje na uviđaju (u bazi ga nema)',
+        !/fotografis/i.test(svaHtml) && !window.QUIZ.questions.some((q) => /fotograf/i.test(JSON.stringify(q))));
+      ok('sadržaj: „Nezgoda" više ne navodi treći razlog za udaljavanje',
+        !/ili da bi obavestio policiju/i.test(svaHtml));
+      ok('sadržaj: „Preticanje" traži pomeranje udesno, ne usporavanje',
+        /desnoj ivici kolovoza/.test(E4.cards['preticanje'].h.l) && /usporavanje se NE traži|usporavanje se не/i.test(E4.cards['preticanje'].h.l));
+
+      // (2) MERENE TVRDNJE: brojevi u „Zamkama" moraju da se poklope sa bazom
+      {
+        const zam = E4.cards['zamke-odgovori'].h.l;
+        const meri = (re) => { let p = 0, tc = 0; for (const q of window.QUIZ.questions) for (const c of q.ch) if (re.test(c.t.l)) { p++; if (c.ok) tc++; } return { p, tc }; };
+        const m250 = meri(/\b250\s*m(?!m)/i);
+        ok('zamke: 250 m nije proglašen mamcem — u bazi JESTE tačan ' + m250.tc + '×',
+          m250.tc > 0 && /UMEJU da budu tačni/.test(zam) && /250 m/.test(zam));
+        const zab = meri(/nije dozvoljeno/i);
+        const pct = Math.round(100 * zab.tc / zab.p);
+        ok('zamke: procenat „nije dozvoljeno" je izmeren (' + pct + '%), ne prepisan', zam.includes(pct + '%'));
+        ok('zamke: nijedan iznos u dinarima', !/dinar/i.test(zam));
+      }
+
+      // (3) POKRIVENOST: svaka podoblast koja ima pitanja ima i karticu, i svaka kartica ima grupu
+      {
+        const bezKartice = [];
+        for (const q of window.QUIZ.questions) {
+          const e = E4.byQ[q.id] || {};
+          if (!e.card && !e.nocard && !E4.bySub[q.sub]) bezKartice.push(q.id);
+        }
+        ok('pojmovnik: najviše 3 pitanja u celoj bazi bez ijedne kartice (bilo ih je 13)', bezKartice.length <= 3);
+        ok('pojmovnik: podoblast 144 (moped/motocikl) ima svoju karticu',
+          E4.bySub[144] === 'moped-motocikl-voznja' && !!E4.cards['moped-motocikl-voznja']);
+        document.querySelector('[data-nav="home"]').click(); await cekaj(200);
+        const bp6 = el2('btnPojmovnik');
+        if (bp6.getAttribute('aria-expanded') !== 'true') { bp6.click(); await cekaj(300); }
+        const spisak = [...document.querySelectorAll('[data-poj]')];
+        // „faq" namerno nije u pojmovniku — ono je „O vežbaonici", ne pojam
+        ok('pojmovnik: sve kartice osim „faq" su u spisku (' + spisak.length + ')',
+          spisak.length === Object.keys(E4.cards).filter((k) => k !== 'faq').length);
+        // ni jedna kartica ne sme da visi ispod poslednje grupe bez svog naslova
+        const zadnjiNaslov = [...document.querySelectorAll('#pojTelo .grupaNaslov, .pojSpisak .grupaNaslov')].pop()
+          || [...document.querySelectorAll('.grupaNaslov')].pop();
+        const posle = zadnjiNaslov ? [...document.querySelectorAll('[data-poj]')].filter((b) => zadnjiNaslov.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING).length : -1;
+        ok('pojmovnik: iza poslednjeg naslova grupe stoje samo njene kartice', posle >= 0 && posle <= 8);
+      }
+
+      // (4) NAZIV PODOBLASTI: bez repa „; " iz baze
+      {
+        const sa = Object.values(window.QUIZ.subs).filter((v) => /[\s;,]$/.test(v.l)).length;
+        const q6 = window.QUIZ.questions.find((q) => /[\s;,]$/.test(window.QUIZ.subs[q.sub].l));
+        location.hash = '#/sek/s' + q6.sub; await cekaj(300);
+        const naslov6 = document.querySelector('#view-browse h3, #browseTitle, #view-browse .secTitle');
+        ok('naziv podoblasti: rep „; " iz baze se ne prikazuje (' + sa + ' takvih naziva)',
+          !!naslov6 && !/[;,]\s*$/.test(naslov6.textContent.trim()));
+        document.querySelector('[data-nav="home"]').click(); await cekaj(150);
+      }
+
+      // (5) TEMPO: jedan račun — dugme koje aplikacija nudi mora da ugasi sopstvenu presudu
+      {
+        const staroQ = S4.q, staroPlan = S4.plan, staroDatum = S4.examDate;
+        const za6 = new Date(); za6.setDate(za6.getDate() + 7);
+        S4.examDate = dan6(za6);
+        S4.q = {};
+        const QQ = window.QUIZ.questions;
+        for (let i = 0; i < 40; i++) S4.q[QQ[i].id] = { a: 1, w: i % 2, streak: i % 2 ? 0 : 1, due: Date.now() - 1000, last: Date.now() };
+        S4.plan = { novih: 10, pon: 20, auto: 0, prio: 0, pod: 0 };
+        if (S4.day) { delete S4.day.autoN; delete S4.day.autoP; }
+        await naPocetnu();
+        const ex6 = document.querySelector('#homeSummary .homeExtras');
+        ok('tempo: opomena o tempu stoji samo na JEDNOM mestu',
+          !!el2('btnLostTempo') && !el2('btnUskladiCilj') && !!ex6 && !/predlog:|предлог:/.test(ex6.textContent));
+        el2('btnLostTempo').click(); await cekaj(400);
+        ok('tempo: posle klika na ponuđeni tempo presuda kaže da stižeš',
+          !el2('btnLostTempo') && /stižeš|стижеш/.test(planTekst()));
+        // isti broj mora da da i „Predloži mi"
+        const posleDugmeta = { n: S4.plan.novih, p: S4.plan.pon };
+        S4.plan = { novih: 10, pon: 20, auto: 0, prio: 0, pod: 0 };
+        await naPocetnu();
+        el2('btnPlanPodesi').click(); await cekaj(250);
+        el2('btnPlanPredlog').click(); await cekaj(400);
+        ok('tempo: „Predloži mi" i „Podigni na…" upisuju ISTI cilj',
+          S4.plan.novih === posleDugmeta.n && S4.plan.pon === posleDugmeta.p);
+
+        // (6) „cilj-duh": uključen prekidač bez brojeva mora da se VIDI
+        S4.plan = { novih: null, pon: null, auto: 0, prio: 0, pod: 1 };
+        await naPocetnu();
+        const box6 = document.querySelector('#homeSummary .planBox');
+        ok('cilj: uključen prekidač bez brojeva se vidi na početnoj, a ne guši tiho podsetnike',
+          !!box6 && /radi samo uz|ради само уз/.test(box6.textContent));
+
+        S4.q = staroQ; S4.plan = staroPlan; S4.examDate = staroDatum;
+        await naPocetnu();
+      }
+    }
+
+    // ---- 2al) DVA NAJTEŽA NALAZA: Enter poštuje fokus; istekao prazan ispit se ne upisuje ----
+    {
+      const S5 = S();
+      const brSims = (S5.sims || []).length;
+      const brQ = Object.keys(S5.q || {}).length;
+      document.querySelector('[data-nav="home"]').click(); await cekaj(200);
+      document.querySelector('.menuBtn[data-nav="sim"]').click(); await cekaj(400);
+      const simRef = window.__dev.sim;
+      ok('ispit: simulacija je pokrenuta', !!simRef && Array.isArray(simRef.qs) && simRef.qs.length === 41);
+      const preI = simRef.i;
+      // Enter na dugmetu „Izveštaj" (van .qActions) ranije je davao SLEDEĆE PITANJE
+      const bi = el2('btnSimReport');
+      bi.focus();
+      document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }));
+      await cekaj(200);
+      ok('tastatura: Enter na fokusiranom dugmetu NE prebacuje pitanje', window.__dev.sim && window.__dev.sim.i === preI);
+      // Enter kad fokus nije ni na čemu i dalje radi glavno dugme
+      document.body.focus(); if (document.activeElement !== document.body) document.activeElement.blur();
+      document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }));
+      await cekaj(200);
+      ok('tastatura: Enter bez fokusa i dalje radi glavno dugme (sledeće pitanje)', window.__dev.sim && window.__dev.sim.i === preI + 1);
+
+      // istekao ispit BEZ ijednog odgovora se ne upisuje nigde
+      window.__dev.sim.deadline = Date.now() - 2000;
+      await cekaj(1500);
+      ok('ispit: istekao ispit bez ijednog odgovora se ne upisuje u istoriju', (S().sims || []).length === brSims);
+      ok('ispit: istekao prazan ispit ne upisuje 41 netačan odgovor u napredak', Object.keys(S().q || {}).length === brQ);
+      ok('ispit: posle isteka praznog ispita nema zaglavljenog ekrana', !window.__dev.sim && el2('view-home').classList.contains('active'));
+      document.querySelector('[data-nav="home"]').click(); await cekaj(150);
+    }
+
     // ---- 2b) ŠANSA DA POLOŽIŠ i pravilo o simulacijama ----
     {
       const sz = window.__dev.sansaZaProlaz;
