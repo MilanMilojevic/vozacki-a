@@ -1170,6 +1170,58 @@ async function proveraBodovanja2() {
         segmenata > 150 && bez.length === 0);
     }
 
+    // ---- 2ar) SRPSKI BROJ + IMENICA (v138) ----
+    // Devet mesta je pisalo „3 novih", „u 1 dana", „poslednjih 2", „nosi 2 znakova" — broj uz
+    // tvrdu reč. Sve ide kroz uzBroj(), pa se proverava na granicama 1 / 2 / 5.
+    {
+      const S8 = S();
+      const staro8 = { q: S8.q, plan: S8.plan, datum: S8.examDate, day: S8.day, dani: S8.dani };
+      const dva8 = (n) => String(n).padStart(2, '0');
+      const dan8 = (d) => d.getFullYear() + '-' + dva8(d.getMonth() + 1) + '-' + dva8(d.getDate());
+      const za8 = new Date(); za8.setDate(za8.getDate() + 7);
+      S8.examDate = dan8(za8);
+      const QQ8 = window.QUIZ.questions;
+      S8.q = {};
+      for (let i = 0; i < 40; i++) S8.q[QQ8[i].id] = { a: 1, w: i % 2, streak: i % 2 ? 0 : 1, due: Date.now() - 1000, last: Date.now() };
+      if (S8.day) { delete S8.day.autoN; delete S8.day.autoP; }
+      const oblici = [];
+      for (const n of [1, 2, 5]) {
+        S8.plan = { novih: n, pon: 20, auto: 0, prio: 0, pod: 0 };
+        await naPocetnu();
+        const m = planTekst().match(/uz (\d+) (nov\S+|нов\S+) dnevno|uz (\d+) (nov\S+|нов\S+) дневно/);
+        oblici.push(m ? m[0] : '(nema)');
+      }
+      ok('srpski: „uz 1 novo / 2 nova / 5 novih dnevno" u presudi o tempu (' + oblici.join(' · ') + ')',
+        /1 novo|1 ново/.test(oblici[0]) && /2 nova|2 нова/.test(oblici[1]) && /5 novih|5 нових/.test(oblici[2]));
+
+      // višak preko cilja: „3 nova", ne „3 novih"
+      S8.plan = { novih: 2, pon: 5, auto: 0, prio: 0, pod: 0 };
+      S8.day = { d: dan8(new Date()), n: 3, ok: 3, novih: 3, pon: 0 };
+      await naPocetnu();
+      ok('srpski: višak preko cilja poštuje paukal („3 nova", ne „3 novih")',
+        /uradio 3 nova[,\s]|урадио 3 нова[,\s]/.test(planTekst()));
+
+      // dnevnik: „u 1 danu" / „poslednja 2 dana" / „poslednjih 7 dana"
+      const napravi8 = (k) => { const a = []; for (let i = k; i >= 1; i--) { const d = new Date(); d.setDate(d.getDate() - i); a.push({ d: dan8(d), n: 10, ok: 8, novih: 5, pon: 5 }); } return a; };
+      const dnevnik = {};
+      for (const k of [1, 2, 7]) {
+        S8.dani = napravi8(k);
+        S8.day = { d: dan8(new Date()), n: 0, ok: 0, novih: 0, pon: 0 };
+        document.querySelector('[data-nav="stats"]').click(); await cekaj(300);
+        const bd = el2('btnDani');
+        if (bd.getAttribute('aria-expanded') !== 'true') { bd.click(); await cekaj(350); }
+        dnevnik[k] = el2('daniTelo').textContent.replace(/\s+/g, ' ');
+        bd.click(); await cekaj(120);
+      }
+      ok('srpski: dnevnik kaže „u 1 danu", „poslednja 2 dana", „poslednjih 7 dana"',
+        /Ukupno u 1 danu|Укупно у 1 дану/.test(dnevnik[1])
+        && /poslednja 2 dana|последња 2 дана/.test(dnevnik[2])
+        && /poslednjih 7 dana|последњих 7 дана/.test(dnevnik[7]));
+
+      S8.q = staro8.q; S8.plan = staro8.plan; S8.examDate = staro8.datum; S8.day = staro8.day; S8.dani = staro8.dani;
+      await naPocetnu();
+    }
+
     // ---- 2aq) SVAKI L('…') KLJUČ POSTOJI, I SVAKI CHIP IMA KONTRAST (v137) ----
     // Ovo je klasa kvara koju NIJEDNA provera kroz .click() ne vidi: izuzetak iz osluškivača
     // se ne prenosi pozivaocu, pa je obrisan ključ (v129: planUskladjen) preživeo 87 nalaza

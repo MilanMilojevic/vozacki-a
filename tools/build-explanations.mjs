@@ -4116,7 +4116,7 @@ CARDS['uredjaji-oprema'] = {
 </table>
 <p class="mut">Kod tablice je u bazi ispao znak za stepen, pa u odgovorima piše „300 prema gore" i „150 prema dole" — to su uglovi 30° i 15°. Redosled je zamka: veći ugao ide <b>nagore</b>.</p>
 
-<p><b>Oznaka pneumatika — razloži je jednom i pokrio si devet pitanja:</b></p>
+<p><b>Oznaka pneumatika — razloži je jednom i pokrio si deset pitanja</b> (devet se čita pravo iz tabele, a ono o dimenzijama je odmah ispod):</p>
 <table>
 <tr><th>Kod u oznaci <b>195/65 R 16 89 N</b></th><th>Šta znači</th><th>Kako to pitanje zove</th></tr>
 <tr><td><b>195</b></td><td>širina pneumatika</td><td>dimenzija</td></tr>
@@ -5394,7 +5394,15 @@ X[10993] = { ...(X[10993] || {}), x: 'Tekst na tabli ne uvodi nikakvo novo pravi
 CARDS['moped-motocikl-voznja'] = {
   title: 'Vožnja mopeda i motocikla (tvoja kategorija)',
   html: `
-<p><b>Zašto ova kartica postoji:</b> ovo je jedina podoblast koja govori o tome kako se vozi BAŠ tvoje vozilo — 10 pitanja po 2 poena, dakle <b>20 poena</b>. Skoro sva glase isto ("Vozač mopeda, odnosno motocikla, kada upravlja vozilom:") i traže <b>DVA</b> tačna odgovora, pa se lako pogreši žurbom. (ZOBS čl. 96 i 97)</p>
+<p><b>Zašto ova kartica postoji:</b> ovo je jedina podoblast koja govori o tome kako se vozi BAŠ tvoje vozilo — 10 pitanja po 2 poena, dakle <b>20 poena</b>. Četiri glase doslovno isto — „Vozač mopeda, odnosno motocikla, kada upravlja vozilom:" — i sva četiri traže <b>DVA</b> tačna odgovora (#10234, #10235, #10236, #10243). Ostalih šest se razlikuju: četiri traže jedan odgovor, a pitanje o kacigi ume da traži i <b>TRI</b> (#10547). Uvek pročitaj koliko se traži — ne pamti po izgledu pitanja. (ZOBS čl. 96 i 97)</p>
+<table>
+<tr><th>Pitanje</th><th>Koliko odgovora traži</th></tr>
+<tr><td>#10234 · #10235 · #10236 · #10243 — „Vozač mopeda, odnosno motocikla, kada upravlja vozilom:"</td><td><b>DVA</b></td></tr>
+<tr><td>#10546 — kaciga (moped i motocikl · četvorocikl)</td><td><b>DVA</b></td></tr>
+<tr><td>#10547 — kaciga razbijena na tri stavke</td><td><b>TRI</b></td></tr>
+<tr><td>#10237 · #10240 · #10241 · #10242</td><td>jedan</td></tr>
+</table>
+<p class="mut napomena">Aplikacija ti iznad ponuda uvek piše koliko se traži — ali na ispitu tog reda nema, pa je vredno znati da se baš u ovoj podoblasti broj menja od pitanja do pitanja.</p>
 
 <div class="kPodH"><b class="kPodNaslov">Ruke, noge i uši — šta se NE sme</b>
 <div class="kSek">
@@ -5476,7 +5484,7 @@ CARDS['moped-motocikl-voznja'] = {
 <p><b>Putnik pod uticajem:</b> vozač mopeda, tricikla, odnosno motocikla <b>ne sme</b> da prevozi lice pod uticajem alkohola (#10240) ni pod uticajem psihoaktivnih supstanci (#10241). Mamac je oba puta isti: <i>"ukoliko svojim ponašanjem ne ometa vozača"</i> — takvog izuzetka nema.</p>
 </div></div>
 
-<p class="mut napomena"><b>Kako se ova podoblast rešava:</b> pitanja "Vozač mopeda, odnosno motocikla, kada upravlja vozilom:" traže DVA odgovora, a među ponuđenima je uvek bar jedan mamac koji UBLAŽAVA zabranu ("sme samo na kratko", "samo kada", "ukoliko ne ometa"). Pravilo iz kartice <i>Zamke u ponuđenim odgovorima</i> ovde radi savršeno: ublaženo = netačno.</p>`,
+<p class="mut napomena"><b>Kako se ova podoblast rešava:</b> kod ona četiri pitanja „Vozač mopeda, odnosno motocikla, kada upravlja vozilom:" traže se DVA odgovora, a među ponuđenima je uvek bar jedan mamac koji UBLAŽAVA zabranu ("sme samo na kratko", "samo kada", "ukoliko ne ometa"). Pravilo iz kartice <i>Zamke u ponuđenim odgovorima</i> ovde radi savršeno: ublaženo = netačno.</p>`,
 };
 
 const BYSUB = {
@@ -6302,7 +6310,7 @@ CARDS['kaznene-klase'] = {
   title: 'Kaznene klase — logika umesto iznosa',
   html: `
 <p><b>Za ispit, prvo ovo:</b> u zvaničnom šablonu ispita za A kategoriju ova oblast
-<b>nema nijedno pitanje</b> (provereno na 4 zvanična izvlačenja). Uči je radi razumevanja posledica, ne radi bodova.</p>
+<b>nema nijedno pitanje</b> (provereno na zvaničnom šablonu testa). Uči je radi razumevanja posledica, ne radi bodova.</p>
 <p><b>Prekršaji su poređani u klase po težini</b> — ne pamti svaki iznos, prepoznaj klasu:</p>
 <table>
 <tr><th>Klasa</th><th>Kazna</th><th>Šta tu spada</th></tr>
@@ -6499,7 +6507,7 @@ opšti okvir trajanja: od 30 dana do jedne godine (Zakon o prekršajima čl. 58)
 <tr><td>zona „30“</td><td>30</td><td><b>preko 60</b> ✳</td></tr>
 <tr><td>zona usporenog saobraćaja</td><td>10</td><td><b>preko 50</b> ✳</td></tr>
 </table>
-<p class="mut">✳ = <b>zakonski broj, baza ga ne pita</b> — isto značenje kao isprekidani procep sa „?" na crtežima iznad. Za zonu „30“ baza pita SAMO samo ograničenje (30 km/h, #8124 i #8125), a o kazni u zonama nema nijedno pitanje; prag „preko 70“ u prvom redu jedini se naslanja na građu.<br>Pamtilica: pragovi idu <b>70 · 60 · 50</b> — što je zona osetljivija, to ti manje treba da upadneš u najtežu klasu.<br>Druga pamtilica, i pazi na ogradu: <b>na brzinskim tačkama koje baza pita</b> poeni i zabrana idu u paru — gde ima kaznenih poena, izriče se i zabrana; gde ih nema, ne izriče se. Van brzine to <b>ne</b> važi: dva prekršaja nose po 2 kaznena poena, a mera se ipak ne izriče — istekla registraciona nalepnica i vozačka dozvola istekla najviše šest meseci (oba su niže, među sličicama).</p>
+<p class="mut">✳ = <b>zakonski broj, baza ga ne pita</b> — isto značenje kao isprekidani procep sa „?" na crtežima iznad. Baza kaznu u zonama <b>pita</b>, ali preko TAČAKA, ne preko granica: zona usporenog na 80 km/h (#8239) i zona škole u naselju na 100 km/h u 14 č. (#8240) — oba su prekoračenje od 70 i oba daju najtežu klasu; zona škole u naselju na 85 km/h u 11 č. (#8272) je prekoračenje od 55 i daje srednju klasu; ista brzina u zoni škole <b>van naselja</b> (#8323) je prekoračenje od svega 5 i daje najnižu. Dakle prelaz je negde između +55 i +70, a tačna granica po zoni je zakonska — otud ✳. Za samu zonu „30“ baza pita samo ograničenje (30 km/h, #8124 i #8125), kaznu u njoj nijednom.<br>Pamtilica: pragovi idu <b>70 · 60 · 50</b> — što je zona osetljivija, to ti manje treba da upadneš u najtežu klasu.<br>Druga pamtilica, i pazi na ogradu: <b>na brzinskim tačkama koje baza pita</b> poeni i zabrana idu u paru — gde ima kaznenih poena, izriče se i zabrana; gde ih nema, ne izriče se. Van brzine to <b>ne</b> važi: dva prekršaja nose po 2 kaznena poena, a mera se ipak ne izriče — istekla registraciona nalepnica i vozačka dozvola istekla najviše šest meseci (oba su niže, među sličicama).</p>
 </div>
 
 <!-- CELINA 4 - izvor: #8405 (0,30-0,50 mera se NE izrice, "kazna DA, zastitna mera NE"),
