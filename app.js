@@ -263,6 +263,7 @@
     planSacuvaj: { l: 'Sačuvaj cilj', c: 'Сачувај циљ' },
     planIskljuci: { l: 'Ugasi cilj', c: 'Угаси циљ' },
     planPredlozi: { l: 'Predloži mi', c: 'Предложи ми' },
+    planUskladjen: { l: 'Cilj je podignut: @1 novih i @2 ponavljanja dnevno.', c: 'Циљ је подигнут: @1 нових и @2 понављања дневно.' },
     planSacuvan: { l: 'Dnevni cilj je sačuvan.', c: 'Дневни циљ је сачуван.' },
     planBrojeviUgaseni: { l: 'Brojevi cilja su obrisani; uključeni prekidači su ostali.', c: 'Бројеви циља су обрисани; укључени прекидачи су остали.' },
     autoIskljucen: { l: 'Cilj se više ne računa sam — važe upisani brojevi.', c: 'Циљ се више не рачуна сам — важе уписани бројеви.' },
@@ -687,7 +688,10 @@
   const PRAZAN = Object.freeze({ a: 0, w: 0, streak: 0, marked: 0 });
   const qr = (id) => S.q[id] || PRAZAN;
 
-  const L = (k) => STR[k][S.script];
+  // Ako ključa nema, poruka sme da izostane — ali NE SME da obori radnju i ostavi crvenu
+  // traku (tako je v129 srušio dugme „Podigni na…"). Promašaj hvata statička provera u
+  // tools/provera-bodovanja.js, koja poredi sve L('…') pozive sa ključevima u STR.
+  const L = (k) => (STR[k] ? STR[k][S.script] : '');
   const T = (obj) => obj[S.script];
   const el = (id) => document.getElementById(id);
   const catOf = (q) => T(catName.get(q.cat));
@@ -1638,9 +1642,6 @@
     if (!cd) return;
     cd.querySelectorAll('svg').forEach((s) => {
       if (s.dataset.zum) return;
-      // ukrasna sličica (bild joj upisuje aria-hidden) nije crtež za uvećanje: bila bi
-      // zaseban zastanak tastature i drugo čitanje istog podatka
-      if (s.getAttribute('aria-hidden') === 'true') return;
       // ukrasna sličica (bild joj upisuje aria-hidden) nije crtež za uvećanje: bila bi
       // zaseban zastanak tastature i drugo čitanje istog podatka
       if (s.getAttribute('aria-hidden') === 'true') return;
@@ -3078,7 +3079,7 @@
         }
         if (!(S.plan && S.plan.prio)) lostovi.push(`<button type="button" class="secondary sBtn" id="btnLostPrio">${L('lostPrio')}</button>`);
         const dugmad = lostovi.length ? `<div class="razmakG">${lostovi.join(' ')}</div>` : '';
-        if (!stigneGradivo && p.cNovih > 0) {
+        if (!stigneGradivo) {   // „cNovih > 0" je bilo suvišno: kad je sve odgovoreno, stigneGradivo je ionako tačno
           neStize = `<div class="mut napomena">${L('sudNeStize').split('@1').join(p.cNovih).split('@2').join(otvoriS).split('@3').join(neodg).split('@4').join(neodg - otvoriS)}</div>${dugmad}`;
         } else if (potrebnoPon > kapacitetPon) {
           neStize = neodg === 0

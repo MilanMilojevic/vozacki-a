@@ -1170,6 +1170,48 @@ async function proveraBodovanja2() {
         segmenata > 150 && bez.length === 0);
     }
 
+    // ---- 2aq) SVAKI L('…') KLJUČ POSTOJI, I SVAKI CHIP IMA KONTRAST (v137) ----
+    // Ovo je klasa kvara koju NIJEDNA provera kroz .click() ne vidi: izuzetak iz osluškivača
+    // se ne prenosi pozivaocu, pa je obrisan ključ (v129: planUskladjen) preživeo 87 nalaza
+    // i 179 stavki — a korisniku je ostavljao trajnu crvenu traku na dugmetu koje mu
+    // aplikacija sama nudi. Zato se ključevi porede STATIČKI, iz samog izvora.
+    {
+      const izvor = await fetch('/app.js?t=' + Date.now()).then((x) => x.text());
+      const i0 = izvor.indexOf('const STR');
+      const i1 = izvor.indexOf(String.fromCharCode(10) + '  };', i0);
+      const blok = izvor.slice(i0, i1);
+      const kljucevi = new Set([...blok.matchAll(/^\s{4}([a-zA-Z][a-zA-Z0-9_]*):\s*\{/gm)].map((m) => m[1]));
+      const pozvani = [...new Set([...izvor.matchAll(/[^a-zA-Z0-9_]L\('([a-zA-Z][a-zA-Z0-9_]*)'\)/g)].map((m) => m[1]))];
+      const fale = pozvani.filter((k) => !kljucevi.has(k));
+      ok('niske: svaki L() ključ postoji u STR (' + pozvani.length + ' poziva, ' + kljucevi.size + ' ključeva)' + (fale.length ? ' — FALE: ' + fale.join(', ') : ''),
+        kljucevi.size > 300 && pozvani.length > 300 && fale.length === 0);
+
+      // oznake „tvoj odgovor" su PILULE: boja je podloga, a ne tekst — kad se token menja
+      // zbog čitljivosti teksta, podloga ume da padne ispod praga a da to niko ne vidi
+      const uBroj = (x) => { const m = String(x).match(/rgba?\(([^)]+)\)/); if (!m) return null; const p = m[1].split(',').map(Number); return { r: p[0], g: p[1], b: p[2], a: p.length > 3 ? p[3] : 1 }; };
+      const svetlina = (c) => { const f = (v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); }; return 0.2126 * f(c.r) + 0.7152 * f(c.g) + 0.0722 * f(c.b); };
+      const odnos = (a1, b1) => { const l1 = svetlina(a1), l2 = svetlina(b1); return (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05); };
+      const probaj = document.createElement('div');
+      probaj.style.position = 'fixed'; probaj.style.left = '-9999px';
+      probaj.innerHTML = '<span class="chip chipYourOk">a</span><span class="chip chipYourBad">b</span><span class="chip chipOk">c</span>';
+      document.body.appendChild(probaj);
+      const bilaTamna2 = document.body.classList.contains('dark');
+      const losi = [];
+      for (const tamna of [false, true]) {
+        if (document.body.classList.contains('dark') !== tamna) { el2('btnTheme').click(); await cekaj(250); }
+        for (const sel of ['.chipYourOk', '.chipYourBad', '.chipOk']) {
+          const e = probaj.querySelector(sel);
+          const fg = uBroj(getComputedStyle(e).color), bg = uBroj(getComputedStyle(e).backgroundColor);
+          if (!fg || !bg || bg.a === 0) { losi.push(sel + (tamna ? ' (tamna): nema podlogu' : ' (svetla): nema podlogu')); continue; }
+          const k = Math.round(odnos(fg, bg) * 100) / 100;
+          if (k < 4.5) losi.push(sel + (tamna ? ' tamna ' : ' svetla ') + k + ':1');
+        }
+      }
+      if (document.body.classList.contains('dark') !== bilaTamna2) { el2('btnTheme').click(); await cekaj(250); }
+      probaj.remove();
+      ok('oznake uz odgovor: tekst na pilulama je iznad 4,5:1 u obe teme' + (losi.length ? ' — ' + losi.join(' · ') : ''), losi.length === 0);
+    }
+
     // ---- 2ap) ČISTOĆA PISAMA U BAZI I OPIS UVEĆANOG CRTEŽA (v134) ----
     {
       // latinično slovo NEPOSREDNO uz ćirilično = zaostatak iz izvora („Oсновне", „тешкe")
