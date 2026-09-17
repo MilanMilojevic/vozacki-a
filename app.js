@@ -849,9 +849,14 @@
     // podnožje se sklanja tokom ispita — pravi ispit ga nema
     document.body.classList.toggle('uSimulaciji', v === 'sim');
     let y = 0;
-    if (v === 'browse') { if (skrolSpisak && skrolSpisak.kljuc === skrolKljuc) y = skrolSpisak.y; skrolSpisak = null; }
-    else if (v !== 'question') skrolSpisak = null;   // otišao je nekud drugde — spisak se otvara od vrha
+    if (ponovniPrikaz && bio === v) y = window.scrollY;   // isti ekran, drugo pismo — ostani gde si
+    else if (v === 'browse') { if (skrolSpisak && skrolSpisak.kljuc === skrolKljuc) y = skrolSpisak.y; skrolSpisak = null; }
+    else if (v !== 'question' && !ponovniPrikaz) skrolSpisak = null;   // otišao je nekud drugde — spisak se otvara od vrha
     window.scrollTo(0, y);
+    // fokus ide na glavni deo strane, ne ostaje na <body>: čitač i tastatura tako počinju
+    // od sadržaja, a ne od vrha cele stranice
+    const g = el('glavni');
+    if (g && document.activeElement === document.body) g.focus({ preventScroll: true });
   }
   let current = { redraw: renderHome };
 
@@ -1230,7 +1235,8 @@
     if (i < 0 || i + 1 >= redosled.length) return null;
     const sledeci = redosled[i + 1];
     const istaOblast = Q.find((q) => q.sub === sada).cat === Q.find((q) => q.sub === sledeci).cat;
-    return { key: 's' + sledeci, ime: subShortName(sledeci), istaOblast };
+    const catSled = Q.find((q) => q.sub === sledeci).cat;
+    return { key: 's' + sledeci, ime: subShortName(sledeci), oblast: T(catName.get(catSled)), istaOblast };
   }
 
   // Bogat kraj spiska: pogrešna iz OVOG spiska → sledeća podoblast → red ponavljanja → simulacija.
@@ -1240,7 +1246,7 @@
     const spremno = queueSplit().ready.length;
     const dugmad = [];
     if (pogresna.length) dugmad.push('<button class="primary" id="bEndWrong">' + L('endWrongBtn').replace('#', pogresna.length) + '</button>');
-    if (dalje) dugmad.push('<button class="' + (pogresna.length ? 'secondary' : 'primary') + '" id="bEndNext">' + (dalje.istaOblast ? L('endNextSub') : L('endNextCat')).replace('#', escapeHtml(dalje.ime)) + ' ›</button>');
+    if (dalje) dugmad.push('<button class="' + (pogresna.length ? 'secondary' : 'primary') + '" id="bEndNext">' + (dalje.istaOblast ? L('endNextSub') : L('endNextCat')).replace('#', escapeHtml(dalje.istaOblast ? dalje.ime : dalje.oblast)) + ' ›</button>');
     if (spremno) dugmad.push('<button class="secondary" data-nav="drill">' + L('endQueue').replace('#', spremno) + '</button>');
     dugmad.push('<button class="secondary" data-nav="sim">' + L('endSimBtn') + '</button>');
     const br = m.ids.length;
@@ -1673,6 +1679,9 @@
   // renderHome() karticu pravi iznova pri svakoj izmeni, pa bi se bez ovoga zatvarala čim
   // nešto promeniš — a menjaš baš zato što si u njoj.
   let podesavanjaOtvorena = false;
+  // Isto pravilo kao za podešavanja: pojmovnik se pri svakom crtanju početne pravi iznova,
+  // pa bi se pri promeni pisma zatvorio baš dok ga čitaš. Pamti se i KOJA kartica je otvorena.
+  let pojmovnikOtvoren = false, pojKartica = null;
   // Jedina vrata u karticu podešavanja: pored prikaza PAMTE da je otvorena. Ranije su tri
   // mesta otvarala karticu mimo ove zastavice, pa bi je prvo sledeće crtanje sklopilo —
   // zajedno sa porukom koju je čovek upravo trebalo da pročita.
@@ -1829,6 +1838,13 @@
     // adresa već bila #/sim, pa bi rutiranje odvelo na pogrešnu poruku.
     if (s.deadline <= Date.now() && !s.qs.some((sq) => sq.chosen.size > 0)) {
       simObrisi();
+      if (curHash === '#/sim') {
+        // stigao je pravo na adresu ispita: vrati ga sam, sa SVOJOM porukom — inače
+        // rutiranje odmah preko nje napiše „Taj ispit više nije u toku." i objašnjenje nestane
+        setHash('#/'); renderHome(); show('home');
+        poruci(L('porSimPrazan'));
+        return true;
+      }
       poruci(L('porSimPrazan'));
       return false;   // rutiranje neka odvede gde je korisnik i pošao
     }
@@ -2287,7 +2303,7 @@
       <h3>${L('readyLoss')}</h3>
       <table class="stats"><tbody>${top.map((t) =>
         `<tr class="statLink" data-sub="${t.subs[0]}" tabindex="0" title="${escapeHtml(L('catOpen'))}"><td>${t.subs.map((s) => escapeHtml(subShortName(s))).join(' / ')}</td>
-         <td class="num accBad">−${t.pts.toFixed(1)} ${L('points')}</td></tr>`).join('')}
+         <td class="num accBad">−${t.pts.toFixed(1).replace('.', ',')} ${L('points')}</td></tr>`).join('')}
       </tbody></table>
       <p class="mut napomena">${L('readyNote').split('@1').join(prag(SIM_PTS_MIN))}</p>`;
     el('readyCard').querySelectorAll('.statLink').forEach((tr) => {
@@ -3349,7 +3365,7 @@
       pk.innerHTML = `<button type="button" class="explCardBtn pojBtn istaknuto" id="btnPojmovnik">${L('pojmovnikDugme').split('@1').join(cardKeys.length)}</button>
         <div class="mut napomena">${L('pojmovnikPod')}</div>
         <div id="pojmovnikTelo" style="display:none"></div>`;
-      sklopivo(el('btnPojmovnik'), null, el('pojmovnikTelo'), (cd) => {
+      const napuniPojmovnik = (cd) => {
         cd.innerHTML = html;
         // akordeon: otvaranje jedne kartice sklapa prethodno otvorenu
         cd.querySelectorAll('.explCardBtn').forEach((btn) => sklopivo(btn, cd, null, (c2) => {
@@ -3359,7 +3375,26 @@
           dodajSituacije(c2, btn.dataset.poj);
           oziviCrteze(c2);
         }));
+        cd.querySelectorAll('[data-poj]').forEach((btn) => btn.addEventListener('click', () => {
+          pojKartica = btn.getAttribute('aria-expanded') === 'true' ? btn.dataset.poj : null;
+        }));
+      };
+      sklopivo(el('btnPojmovnik'), null, el('pojmovnikTelo'), napuniPojmovnik);
+      el('btnPojmovnik').addEventListener('click', () => {
+        pojmovnikOtvoren = el('btnPojmovnik').getAttribute('aria-expanded') === 'true';
+        if (!pojmovnikOtvoren) pojKartica = null;
       });
+      // vraćanje zatečenog stanja posle ponovnog crtanja (promena pisma ili teme)
+      if (pojmovnikOtvoren) {
+        const telo = el('pojmovnikTelo');
+        napuniPojmovnik(telo);
+        telo.style.display = '';
+        el('btnPojmovnik').setAttribute('aria-expanded', 'true');
+        if (pojKartica) {
+          const b2 = telo.querySelector('[data-poj="' + pojKartica + '"]');
+          if (b2 && b2.getAttribute('aria-expanded') !== 'true') b2.click();
+        }
+      }
     }
 
     // Četiri imenovane grupe umesto jednog reda nabacanih dugmadi. Podaci o bazi i prijava
@@ -3698,13 +3733,25 @@
     // otvaranje, pa su se gomilali do kraja sesije.
     // Na telefonu je dugme Nazad prirodan potez za zatvaranje punog ekrana. Bez ovoga
     // ono promeni prikaz ispod, a uvećanje ostane da visi preko novog ekrana.
+    const zatvoriDodaci = [];
     const zatvori = () => {
+      zatvoriDodaci.forEach((f) => f());
       z.remove(); gore.remove(); dole.remove();
       document.removeEventListener('keydown', naEscape);
       window.removeEventListener('hashchange', zatvori);
       if (vracaFokus && vracaFokus.focus) vracaFokus.focus({ preventScroll: true });
     };
-    const naEscape = (e2) => { if (e2.key === 'Escape') { e2.preventDefault(); zatvori(); } };
+    // Tab kruži SAMO kroz dva dugmeta uvećanja. Bez toga je tasterom fokus odlazio na
+    // stranicu ispod, koja se ne vidi — čovek kuca „u prazno" i ne zna gde je.
+    const naEscape = (e2) => {
+      if (e2.key === 'Escape') { e2.preventDefault(); zatvori(); return; }
+      if (e2.key !== 'Tab') return;
+      e2.preventDefault();
+      const f = [bZatvori, bBlize];
+      const i = f.indexOf(document.activeElement);
+      const sled = e2.shiftKey ? (i <= 0 ? f.length - 1 : i - 1) : (i < 0 || i === f.length - 1 ? 0 : i + 1);
+      f[sled].focus({ preventScroll: true });
+    };
 
     // ✕ zatvori (gore desno) i +/− uvećanje (dole na sredini) — oba su dugmad, ne veze
     const gore = document.createElement('div'); gore.className = 'zoomAlat gore';
@@ -3734,7 +3781,15 @@
     z.addEventListener('click', zatvori);                                        // klik pored slike = zatvori
     document.addEventListener('keydown', naEscape);
     window.addEventListener('hashchange', zatvori);
+    z.setAttribute('role', 'dialog');
+    z.setAttribute('aria-modal', 'true');
+    z.setAttribute('aria-label', opisSlike || L('zoomVise'));
     document.body.append(z, gore, dole);
+    // sadržaj ispod se sklanja od čitača ekrana dok prekrivač stoji (alatke su braća
+    // elementa z, pa aria-modal na njemu samom ne bi bio dovoljan)
+    const ispod = [...document.body.children].filter((x) => x !== z && x !== gore && x !== dole && !x.hasAttribute('aria-hidden'));
+    ispod.forEach((x) => x.setAttribute('aria-hidden', 'true'));
+    zatvoriDodaci.push(() => ispod.forEach((x) => x.removeAttribute('aria-hidden')));
     // Na telefonu je slika u kartici već skoro preko cele širine, pa bi „koliko god stane" bilo
     // isto što i pre otvaranja — a to je i bila primedba („slika nije veća"). Zato se tu odmah
     // otvara drugi korak; na širokom ekranu prvi korak stvarno uvećava, pa ostaje.
@@ -3754,6 +3809,7 @@
   document.addEventListener('keydown', (e) => {
     if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
     if (e.ctrlKey || e.altKey || e.metaKey) return;
+    if (document.getElementById('imgZoom')) return;   // uvećanje je preko svega — prečice ne diraju pitanje ispod
     const qv = el('view-question').classList.contains('active');
     const sv = el('view-sim').classList.contains('active');
     if (!qv && !sv) return;
@@ -3797,8 +3853,13 @@
   el('btnScript').addEventListener('click', () => {
     S.script = S.script === 'l' ? 'c' : 'l'; save();
     applyScript();
+    // mesto na strani se pamti PRE crtanja: vraćanje otvorene kartice pojmovnika ide kroz
+    // sklopivo, koje samo pomera skrol da dugme ostane gde je bilo — a posle ponovnog
+    // crtanja to "gde je bilo" više ne važi
+    const yPre = window.scrollY;
     ponovniPrikaz = true;      // pitanje na ekranu zadržava redosled ponuda, izbor i dat odgovor
     try { current.redraw(); } finally { ponovniPrikaz = false; }   // ostani na istom ekranu, samo drugo pismo
+    window.scrollTo(0, yPre);
   });
   // Tema: podrazumevano prati sistem; prekidač pamti izbor. Simulacija je uvek svetla (CSS).
   function applyTheme() {
@@ -4016,7 +4077,7 @@
     const ds = fmtDatum(d);
     g.font = '400 38px "Segoe UI", Arial, sans-serif';
     g.fillStyle = 'rgba(255,255,255,.85)';
-    g.fillText(ds + '  ·  ' + SIM_N + ' ' + L('pitanjaMn') + '  ·  45 min', W / 2, 660);
+    g.fillText(ds + '  ·  ' + nQ(SIM_N) + '  ·  45 min', W / 2, 660);
 
     g.font = '600 34px "Segoe UI", Arial, sans-serif';
     g.fillStyle = 'rgba(255,255,255,.95)';

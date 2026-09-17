@@ -979,6 +979,102 @@ async function proveraBodovanja2() {
       document.querySelector('[data-nav="home"]').click(); await cekaj(150);
     }
 
+    // ---- 2am) PRISTUPAČNOST I IZGLED (v130) ----
+    {
+      // ---- kontrast se MERI, ne procenjuje ----
+      const uBroj = (s) => { const m = String(s).match(/rgba?\(([^)]+)\)/); if (!m) return null; const p = m[1].split(',').map(Number); return { r: p[0], g: p[1], b: p[2], a: p.length > 3 ? p[3] : 1 }; };
+      const spoji = (gore, dole) => ({ r: gore.r * gore.a + dole.r * (1 - gore.a), g: gore.g * gore.a + dole.g * (1 - gore.a), b: gore.b * gore.a + dole.b * (1 - gore.a), a: 1 });
+      const svetlina = (c) => { const f = (v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); }; return 0.2126 * f(c.r) + 0.7152 * f(c.g) + 0.0722 * f(c.b); };
+      const odnos = (a, b) => { const l1 = svetlina(a), l2 = svetlina(b); return (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05); };
+      const podloga = (e) => { let n = e, acc = null;
+        while (n && n !== document.documentElement) { const c = uBroj(getComputedStyle(n).backgroundColor);
+          if (c && c.a > 0) { acc = acc ? spoji(acc, c) : c; if (acc.a >= 1 || c.a >= 1) return { r: acc.r, g: acc.g, b: acc.b, a: 1 }; }
+          n = n.parentElement; }
+        return { r: 255, g: 255, b: 255, a: 1 }; };
+      const kontrast = (sel) => { const e = document.querySelector(sel); if (!e) return null;
+        const fg = uBroj(getComputedStyle(e).color); if (!fg) return null;
+        const bg = podloga(e); return Math.round(odnos(spoji(fg, bg), bg) * 100) / 100; };
+      const META = ['.pojBtn', '.mut', '.napomena', '.podnozjeRed.mut', '.ghost', '.segOff', '.grupaNaslov', '.menuBtn'];
+
+      const izmeri = async (tamna) => {
+        const jeTamna = document.body.classList.contains('dark');
+        if (jeTamna !== tamna) { el2('btnTheme').click(); await cekaj(300); }
+        await naPocetnu();
+        const bp7 = el2('btnPojmovnik');
+        if (bp7 && bp7.getAttribute('aria-expanded') !== 'true') { bp7.click(); await cekaj(300); }
+        return META.map((s) => ({ s, k: kontrast(s) })).filter((x) => x.k !== null);
+      };
+      const bilaTamna = document.body.classList.contains('dark');
+      for (const tamna of [false, true]) {
+        const m = await izmeri(tamna);
+        const losi = m.filter((x) => x.k < 4.5);
+        ok((tamna ? 'tamna' : 'svetla') + ' tema: nijedan glavni tekst ispod 4,5:1 (mereno ' + m.length + ', najlošiji ' + Math.min(...m.map((x) => x.k)) + ':1)',
+          m.length >= 6 && losi.length === 0);
+      }
+      if (document.body.classList.contains('dark') !== bilaTamna) { el2('btnTheme').click(); await cekaj(250); }
+
+      // ---- smiren prikaz gasi animacije, ne zamrzava ih ----
+      {
+        const pravilo = [...document.styleSheets].flatMap((ss) => { try { return [...ss.cssRules]; } catch (e) { return []; } })
+          .filter((r) => r.media && String(r.media.mediaText).includes('prefers-reduced-motion'))
+          .flatMap((r) => [...r.cssRules]).map((r) => r.style.cssText).join(' ');
+        ok('smiren prikaz: animacije se GASE (iteration-count 1), ne zamrzavaju u nasumičnoj fazi',
+          /animation-iteration-count:\s*1/.test(pravilo) && /animation-duration/.test(pravilo));
+      }
+
+      // ---- gornja traka: dugme „nazad" ne sme preko brenda ----
+      {
+        const najduzi = Object.entries(window.QUIZ.subs).sort((a, b) => b[1].l.length - a[1].l.length)[0][0];
+        location.hash = '#/sek/s' + najduzi; await cekaj(350);
+        const bn = el2('btnNazad'), brd = document.querySelector('.brand');
+        const a1 = bn.getBoundingClientRect(), b1 = brd.getBoundingClientRect();
+        ok('traka: dugme „nazad" sa najdužim nazivom ne prelazi preko brenda', a1.right <= b1.left + 1);
+        ok('traka: dugme „nazad" se skraćuje tačkicama, ne izlazi iz ekrana', a1.right <= window.innerWidth + 1);
+        await naPocetnu();
+      }
+
+      // ---- promena pisma ne gubi ni mesto ni otvorenu karticu ----
+      {
+        const bp8 = el2('btnPojmovnik');
+        if (bp8.getAttribute('aria-expanded') !== 'true') { bp8.click(); await cekaj(300); }
+        const prva = document.querySelector('[data-poj]');
+        if (prva.getAttribute('aria-expanded') !== 'true') { prva.click(); await cekaj(350); }
+        window.scrollTo(0, 400); await cekaj(120);
+        const kljuc = prva.dataset.poj, preY = window.scrollY;
+        el2('btnScript').click(); await cekaj(450);
+        const posle = document.querySelector('[data-poj="' + kljuc + '"]');
+        ok('pismo: promena pisma ne sklapa otvoren pojmovnik ni karticu',
+          el2('btnPojmovnik').getAttribute('aria-expanded') === 'true' && !!posle && posle.getAttribute('aria-expanded') === 'true');
+        ok('pismo: promena pisma ne baca na vrh strane', Math.abs(window.scrollY - preY) <= 4);
+        el2('btnScript').click(); await cekaj(400);
+        await naPocetnu();
+      }
+
+      // ---- uvećanje slike je pravi prekrivač ----
+      {
+        const q8 = window.QUIZ.questions.find((x) => x.img);
+        location.hash = '#/vezba/s' + q8.sub; await cekaj(300);
+        let dugme = document.querySelector('#qCard .qImgBtn');
+        for (let i = 0; i < 12 && !dugme; i++) { const d = document.querySelector('#qCard .qActions [data-uloga="dalje"]'); if (!d) break; d.click(); await cekaj(140); dugme = document.querySelector('#qCard .qImgBtn'); }
+        if (dugme) {
+          const preI = document.getElementById('qCard').dataset.qid;
+          dugme.click(); await cekaj(350);
+          const z = el2('imgZoom');
+          ok('uvećanje: prekrivač ima ulogu dijaloga', !!z && z.getAttribute('role') === 'dialog' && z.getAttribute('aria-modal') === 'true');
+          ok('uvećanje: sadržaj ispod je sklonjen od čitača ekrana', !!el2('glavni') && el2('glavni').getAttribute('aria-hidden') === 'true');
+          document.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }));
+          await cekaj(200);
+          ok('uvećanje: prečice ne menjaju pitanje ispod prekrivača', document.getElementById('qCard').dataset.qid === preI);
+          document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+          await cekaj(250);
+          ok('uvećanje: Escape zatvara i vraća sadržaj čitaču', !el2('imgZoom') && !el2('glavni').hasAttribute('aria-hidden'));
+        } else {
+          ok('uvećanje: nema slikovnog pitanja u ovoj podoblasti — provera preskočena', false);
+        }
+        await naPocetnu();
+      }
+    }
+
     // ---- 2b) ŠANSA DA POLOŽIŠ i pravilo o simulacijama ----
     {
       const sz = window.__dev.sansaZaProlaz;
