@@ -265,7 +265,7 @@
     autoPoljaPod: { l: 'Dok je „Cilj se sam računa" uključen, ovi brojevi važe kao donja granica (prekidač „Moj tempo je najmanje ovo"). Auto sme da traži više, nikad manje.', c: 'Док је „Циљ се сам рачуна" укључен, ови бројеви важе као доња граница (прекидач „Мој темпо је најмање ово"). Ауто сме да тражи више, никад мање.' },
     autoPoljaZakljucana: { l: 'Dok je „Cilj se sam računa do ispita" uključen, ovi brojevi se ne koriste — kvota se svakog dana računa iz onoga što je ostalo i broja dana do ispita. Isključi ga ako hoćeš svoj broj.', c: 'Док је „Циљ се сам рачуна до испита" укључен, ови бројеви се не користе — квота се сваког дана рачуна из онога што је остало и броја дана до испита. Искључи га ако хоћеш свој број.' },
     daniNaslov: { l: '📅 Po danima — koliko i kako je išlo', c: '📅 По данима — колико и како је ишло' },
-    daniPrazno: { l: 'Ovde će stajati svaki dan u kome si nešto uradio: koliko novih pitanja, koliko ponavljanja i kolika je bila tačnost. Prvi red stiže sutra — današnji dan se upisuje kad pređe ponoć.', c: 'Овде ће стајати сваки дан у коме си нешто урадио: колико нових питања, колико понављања и колика је била тачност. Први ред стиже сутра — данашњи дан се уписује кад пређе поноћ.' },
+    daniPrazno: { l: 'Ovde će stajati svaki dan u kome si nešto uradio: koliko novih pitanja, koliko ponavljanja i kolika je bila tačnost. Prvi red se upisuje čim odgovoriš prvo pitanje — današnji dan stoji na vrhu dok traje.', c: 'Овде ће стајати сваки дан у коме си нешто урадио: колико нових питања, колико понављања и колика је била тачност. Први ред се уписује чим одговориш прво питање — данашњи дан стоји на врху док траје.' },
     daniDatum: { l: 'Dan', c: 'Дан' },
     daniNovih: { l: 'Novih', c: 'Нових' },
     daniPon: { l: 'Ponavljanja', c: 'Понављања' },
@@ -321,6 +321,7 @@
     spremanNe: { l: 'Jedna položena simulacija nije dokaz: da ti je stvarna šansa 70%, tri zaredom bi ti se desile u trećini slučajeva. Zato ide i procena, i razmak od bar dan između simulacija.', c: 'Једна положена симулација није доказ: да ти је стварна шанса 70%, три заредом би ти се десиле у трећини случајева. Зато иде и процена, и размак од бар дан између симулација.' },
     simNajavaMalo: { l: 'Ostalo je manje od pet minuta.', c: 'Остало је мање од пет минута.' },
     simNajavaMinut: { l: 'Ostao je još jedan minut.', c: 'Остао је још један минут.' },
+    simOffline: { l: 'Nema interneta. Slika koju još nisi video ne može da se prikaže, a više od pola pitanja na ispitu ima sliku. Ipak pokreni ispit?', c: 'Нема интернета. Слика коју још ниси видео не може да се прикаже, а више од пола питања на испиту има слику. Ипак покрени испит?' },
     simUcinak: { l: 'Položeno @1 od @2 · prosek @3', c: 'Положено @1 од @2 · просек @3' },
     prioOpis: { l: 'Nova pitanja idu redom od podoblasti koje ispit najviše nosi (preticanje 5 pitanja, brzine 3…), pa ono što se izostavi bude ono što se retko i pojavi.', c: 'Нова питања иду редом од подобласти које испит највише носи (претицање 5 питања, брзине 3…), па оно што се изостави буде оно што се ретко и појави.' },
     skociNaOblast: { l: 'Skoči na oblast', c: 'Скочи на област' },
@@ -1073,6 +1074,9 @@
       prikazPitanja.set(opts.recordKey, { order: shuffled.map((x) => x.id), sel: [...sel], odgovoreno: odgovoreno || (zapamceno && zapamceno.odgovoreno) || null });
       if (prikazPitanja.size > 300) prikazPitanja.delete(prikazPitanja.keys().next().value);   // ne raste beskonačno
     };
+    // Red ponuda se pamti ODMAH, a ne tek na prvi klik: bez ovoga je promena pisma na još
+    // nedirnutom pitanju mešala ponude iznova, pa si isto pitanje čitao dvaput od nule.
+    zapamti();
 
     c.innerHTML = '';
     const meta = document.createElement('div'); meta.className = 'qMeta';
@@ -1950,6 +1954,9 @@
   }
 
   function startSim() {
+    // Bez mreže slika može da stigne samo ako si je već video (keš slika je trajan). Na pravom
+    // ispitu slika je uvek tu, pa se to kaže PRE početka — u toku ispita se ne menja ništa.
+    if (navigator.onLine === false && !confirm(L('simOffline'))) return;
     if (sim) { clearInterval(sim.timerId); sim = null; }   // defanzivno: nikad dva tajmera
     { const ub = document.getElementById('updBar'); if (ub) ub.remove(); }   // ekran ispita je čist, kao pravi
     const set = buildSimSet();
@@ -2238,6 +2245,9 @@
       if (okItems.length) {
         const ho = document.createElement('div'); ho.className = 'card';
         ho.innerHTML = `<h3>${L('correctOnesTitle')} (${okItems.length})</h3>`;
+        // 41/41 nema odeljak grešaka, pa bi bez ovoga jedini način da se pregleda ceo test
+        // bio 41 pojedinačan klik. Kad greške postoje, dugme već stoji gore — ne treba drugo.
+        if (!wrongItems.length) ho.appendChild(dugmeSve(wl));
         wl.appendChild(ho);
         for (const it of okItems) wl.appendChild(reviewCard(it.q, it.chosen));
       }
@@ -2367,14 +2377,14 @@
       <p class="mut napomena">${sp.brojOk && sp.daniOk && sp.nizOk && sp.sansaOk ? L('spremanDa') : L('spremanNe')}</p>
       <h3>${L('readyLoss')}</h3>
       <table class="stats"><tbody>${top.map((t) =>
-        `<tr class="statLink" data-sub="${t.subs[0]}" tabindex="0" title="${escapeHtml(L('catOpen'))}"><td>${t.subs.map((s) => escapeHtml(subShortName(s))).join(' / ')}</td>
+        `<tr class="statLink" data-sub="${t.subs[0]}"><td><button type="button" class="repGo" title="${escapeHtml(L('catOpen'))}">${t.subs.map((s) => escapeHtml(subShortName(s))).join(' / ')}</button></td>
          <td class="num accBad">−${t.pts.toFixed(1).replace('.', ',')} ${L('points')}</td></tr>`).join('')}
       </tbody></table>
       <p class="mut napomena">${L('readyNote').split('@1').join(prag(SIM_PTS_MIN))}</p>`;
+    // Klik bilo gde u redu i dalje radi; tastatura ide kroz dugme u prvoj ćeliji, koje
+    // Enter i razmak dobija od pregledača — bez ručnog osmatrača i bez fokusabilnog <tr>.
     el('readyCard').querySelectorAll('.statLink').forEach((tr) => {
-      const idi = () => browse('s' + tr.dataset.sub);
-      tr.addEventListener('click', idi);
-      tr.addEventListener('keydown', (ev) => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); idi(); } });
+      tr.addEventListener('click', () => browse('s' + tr.dataset.sub));
     });
   }
 
@@ -2647,7 +2657,9 @@
       veziNaVrh();
       return;
     }
-    el('browseList').hidden = false;
+    // Spisak prikazuje SAMO pitanja u redu. Kad je red prazan a ostala su samo pitanja za
+    // osvežavanje, kartica bi bila prazan beli pravougaonik sa legendom i ničim iznad nje.
+    el('browseList').hidden = !ids.length;
     const origin = () => browseSet(setKind);
     head.innerHTML = `<h3>${escapeHtml(title)}</h3>
       <div class="mut opisRed">${isWrong
@@ -3186,7 +3198,9 @@
       const dana = danaDoIspita();
       // datum u prošlosti: do sada se NIŠTA nije prikazivalo — ni „do ispita", ni upozorenje,
       // pa je čovek posle ispita zauvek nosio mrtav datum u stanju a da to nigde ne vidi
-      if (dana !== null && dana < 0) delovi.push(L('prosaoDatum').split('@1').join(fmtDatum(S.examDate)));
+      // Isto pravilo kao za predlog tempa ispod: kad plan sam računa kvotu, o datumu sudi
+      // blok „Dnevni cilj" — ista rečenica ne ide dvaput, jedna ispod druge.
+      if (dana !== null && dana < 0 && !(S.plan && S.plan.auto)) delovi.push(L('prosaoDatum').split('@1').join(fmtDatum(S.examDate)));
       if (dana !== null && dana >= 0) {
         // srpska jednina: „1 dan", ne „1 dana"; na sam dan ispita ne piše se „0 dana"
         if (dana === 0) delovi.push(L('examToday'));
@@ -3764,9 +3778,15 @@
     if (!qn || FILE_MODE) return;
     const adresa = location.origin + location.pathname + '#/p/' + qn.dataset.qid;
     const potvrdi = () => {
-      const staro = qn.textContent;
+      // Pravi broj se pamti u samom elementu, ne u zatvorenju: drugi klik pre isteka 1200 ms
+      // inače kao „staro" zapamti reč „kopirano ✓" i vrati nju — zauvek.
+      if (!qn.dataset.pravoIme) qn.dataset.pravoIme = qn.textContent;
+      clearTimeout(+qn.dataset.tajmerIme || 0);
       qn.textContent = L('linkCopied');
-      setTimeout(() => { qn.textContent = staro; }, 1200);
+      qn.dataset.tajmerIme = setTimeout(() => {
+        qn.textContent = qn.dataset.pravoIme;
+        delete qn.dataset.pravoIme; delete qn.dataset.tajmerIme;
+      }, 1200);
     };
     // tooltip obećava kopiranje — ako pregledač ne da (nema API-ja, odbijena dozvola),
     // adresa se pokaže u prozorčetu odakle može ručno da se prekopira
@@ -3944,13 +3964,21 @@
     window.scrollTo(0, yPre);
   });
   // Tema: podrazumevano prati sistem; prekidač pamti izbor. Simulacija je uvek svetla (CSS).
+  // Ime dugmeta teme na JEDNOM mestu: zove ga i applyTheme (promena teme) i applyScript
+  // (promena pisma). Ranije je applyScript upisivao opšte „Tamna ili svetla tema" i time
+  // brisao stanje koje je applyTheme postavio — posle klika na ЋИР|LAT čitač više nije znao
+  // koja je tema uključena, sve do sledeće promene teme.
+  function imeTeme() {
+    const dark = document.body.classList.contains('dark');
+    el('btnTheme').setAttribute('aria-pressed', dark ? 'true' : 'false');
+    el('btnTheme').setAttribute('aria-label', L(dark ? 'temaTamna' : 'temaSvetla'));
+  }
   function applyTheme() {
     const dark = S.theme === 'dark' || (S.theme == null && window.matchMedia('(prefers-color-scheme: dark)').matches);
     document.body.classList.toggle('dark', dark);
     el('btnTheme').textContent = dark ? '☀️' : '🌙';
     // prekidač mora da kaže u kom je stanju — inače čitač pročita samo „dugme, mesec"
-    el('btnTheme').setAttribute('aria-pressed', dark ? 'true' : 'false');
-    el('btnTheme').setAttribute('aria-label', L(dark ? 'temaTamna' : 'temaSvetla'));
+    imeTeme();
   }
   // dok korisnik NIJE sam izabrao temu, prati sistem i uživo — bez ovoga se prelaz
   // sistema na noćni režim video tek pri sledećem pokretanju
@@ -3998,7 +4026,7 @@
     el('brandTitle').textContent = L('brand');
     el('topbar').querySelector('.brand').title = L('home');
     el('topbar').querySelector('.brand').setAttribute('aria-label', L('home'));
-    el('btnTheme').title = L('temaLbl'); el('btnTheme').setAttribute('aria-label', L('temaLbl'));
+    el('btnTheme').title = L('temaLbl'); imeTeme();
     el('btnScript').title = L('pismoLbl');
     // ЋИР|LAT se vidi okom, ali čitaču treba rečenica: koje je pismo sada uključeno
     el('btnScript').setAttribute('aria-label', L('pismoLbl') + ': ' + L(S.script === 'c' ? 'pismoCir' : 'pismoLat'));
@@ -4055,7 +4083,9 @@
     sc.src = 'version.js?ts=' + Date.now();
     sc.onload = () => {
       sc.remove();
-      if (window.APP_V !== BOOT_V) prikaziTrakuOsvezi();
+      // ispit je mogao da počne dok se version.js preuzimao: traka PREKO ekrana ispita je
+      // isto što i traka pre njega — klik na nju osvežava stranu i gasi ispit
+      if (!sim && window.APP_V !== BOOT_V) prikaziTrakuOsvezi();
     };
     sc.onerror = () => sc.remove();
     document.head.appendChild(sc);
