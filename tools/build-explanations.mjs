@@ -485,6 +485,17 @@ ${Z_TAB_OBRAZACA}
 ${Z_TAB_BROJEVA}
 ${Z_TAB_IZUZETAKA ? `<p><b>A ovi brojevi UMEJU da budu tačni</b> — izgledaju kao mamac, pa se lako odbace bez čitanja. Ne odbacuj ih:</p>\n${Z_TAB_IZUZETAKA}` : ''}
 <p><b>Večiti tekst-mamci</b> — koliko puta su ponuđeni i gde:</p>
+<svg viewBox="0 0 320 132" class="crtez" role="img" aria-label="Pravilo cele kartice: odgovor koji ublažava obavezu je gotovo uvek netačan. Reči samo, ukoliko, na kratko i uz povećanu opreznost su znak da se obaveza ublažava.">
+  <rect x="6" y="10" width="140" height="56" rx="8" fill="none" stroke="currentColor" stroke-width="2"/>
+  <rect x="174" y="10" width="140" height="56" rx="8" fill="none" stroke="currentColor" stroke-width="2"/>
+  <text x="76" y="34" text-anchor="middle" font-size="13" font-weight="bold" fill="currentColor">UBLAŽENO</text>
+  <text x="76" y="56" text-anchor="middle" font-size="12" fill="currentColor">„samo…" „ukoliko…"</text>
+  <text x="244" y="34" text-anchor="middle" font-size="13" font-weight="bold" fill="currentColor">NETAČNO</text>
+  <text x="244" y="56" text-anchor="middle" font-size="12" fill="currentColor">gotovo uvek</text>
+  <text x="160" y="42" text-anchor="middle" font-size="18" font-weight="bold" fill="currentColor">→</text>
+  <text x="160" y="94" text-anchor="middle" font-size="13" font-weight="bold" fill="currentColor">Zakon ne poznaje „malo sme".</text>
+  <text x="160" y="120" text-anchor="middle" font-size="12" fill="currentColor">Ali prvo znanje, pa tek onda ovaj filter.</text>
+</svg>
 <ul>
 ${Z_TEKST}
 </ul>
@@ -983,6 +994,23 @@ CARDS['semafori'] = {
   <div class="vg" style="background:#15803d;color:#fff"><b>🟢 ZELENO trepćuće</b></div><div class="vg" style="text-align:left">najava prestanka zelenog — prolaz još uvek slobodan</div>
 </div>
 <p><b>Raspored (čl. 139):</b> vertikalno crveno GORE, žuto u sredini, zeleno DOLE; horizontalno (iznad trake): crveno LEVO, zeleno DESNO. <b>Kombinacije (čl. 141):</b> crveno i zeleno nikad zajedno; žuto sme uz crveno (pre zelenog).</p>
+<svg viewBox="0 0 320 178" class="crtez" role="img" aria-label="Uspravan semafor: crveno gore, žuto u sredini, zeleno dole. Vodoravan semafor iznad trake: crveno levo, zeleno desno. Crveno i zeleno nikad zajedno; žuto sme uz crveno pre zelenog.">
+  <rect x="26" y="14" width="44" height="104" rx="8" fill="none" stroke="currentColor" stroke-width="2"/>
+  <circle cx="48" cy="34" r="12" fill="currentColor" opacity=".75"/>
+  <circle cx="48" cy="66" r="12" fill="currentColor" opacity=".45"/>
+  <circle cx="48" cy="98" r="12" fill="currentColor" opacity=".2"/>
+  <text x="84" y="30" font-size="12" font-weight="bold" fill="currentColor">crveno GORE</text>
+  <text x="84" y="52" font-size="12" fill="currentColor">žuto u sredini</text>
+  <text x="84" y="74" font-size="12" fill="currentColor">zeleno DOLE</text>
+  <text x="84" y="104" font-size="12" font-weight="bold" fill="currentColor">uspravan semafor</text>
+  <rect x="26" y="130" width="104" height="40" rx="8" fill="none" stroke="currentColor" stroke-width="2"/>
+  <circle cx="50" cy="150" r="12" fill="currentColor" opacity=".75"/>
+  <circle cx="82" cy="150" r="12" fill="currentColor" opacity=".45"/>
+  <circle cx="112" cy="150" r="12" fill="currentColor" opacity=".2"/>
+  <text x="144" y="144" font-size="12" font-weight="bold" fill="currentColor">vodoravan (iznad trake):</text>
+  <text x="144" y="166" font-size="12" fill="currentColor">crveno LEVO, zeleno DESNO</text>
+</svg>
+<p class="mut napomena">Kombinacije (čl. 141): crveno i zeleno <b>nikad</b> zajedno; žuto <b>sme</b> uz crveno — to je najava zelenog. Strelica (direkcioni semafor, čl. 138) važi samo za smer koji pokazuje.</p>
 <p><b>Strelice (direkcioni semafor, čl. 138):</b> važi SAMO za smer koji strelica pokazuje. Zelena strelica u crnom krugu = slobodno samo u tom smeru.</p>
 <p style="margin-top:10px"><b>Posebne vrste semafora</b> — baza ih pita, prepoznaj oblik:</p>
 <div class="signRow wrapRow">
@@ -1254,6 +1282,23 @@ CARDS['skretanje'] = {
 <div class="kSek" data-sub="137">
 <p style="margin-top:18px"><b>PRILAZ RASKRSNICI I PROLAZAK KROZ NJU (čl. 48 i 49)</b></p>
 <p><b>Brzina na prilazu (čl. 48, stav 1):</b> vozač je dužan da <b>prilagodi vožnju uslovima saobraćaja na raskrsnici</b>, a naročito da vozi <b>brzinom pri kojoj može da se zaustavi i propusti</b> vozila koja na raskrsnici imaju prvenstvo prolaza.</p>
+<svg viewBox="0 0 320 162" class="crtez" role="img" aria-label="Zakonska rečenica ima dva dela i oba su tačna: prilagodi vožnju uslovima na raskrsnici I vozi brzinom pri kojoj možeš da staneš. Žurba nije kriterijum.">
+  <rect x="6" y="26" width="140" height="52" rx="8" fill="none" stroke="currentColor" stroke-width="2"/>
+  <rect x="174" y="26" width="140" height="52" rx="8" fill="none" stroke="currentColor" stroke-width="2"/>
+  <text x="160" y="60" text-anchor="middle" font-size="22" font-weight="bold" fill="currentColor">+</text>
+  <text x="76" y="16" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">1. deo — TAČAN</text>
+  <text x="244" y="16" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">2. deo — TAČAN</text>
+  <text x="76" y="48" text-anchor="middle" font-size="12" fill="currentColor">prilagodi vožnju</text>
+  <text x="76" y="64" text-anchor="middle" font-size="12" fill="currentColor">uslovima na raskrsnici</text>
+  <text x="244" y="48" text-anchor="middle" font-size="12" fill="currentColor">brzinom pri kojoj</text>
+  <text x="244" y="64" text-anchor="middle" font-size="12" fill="currentColor">možeš da staneš</text>
+  <text x="160" y="100" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">Pitanje traži OBA — jedan nije dovoljan.</text>
+  <text x="14" y="128" font-size="14" font-weight="bold" fill="currentColor">✗</text>
+  <text x="34" y="128" font-size="12" fill="currentColor">„kako bi što pre stigao na odredište"</text>
+  <text x="14" y="152" font-size="14" font-weight="bold" fill="currentColor">✗</text>
+  <text x="34" y="152" font-size="12" fill="currentColor">„da što pre prođe kroz raskrsnicu"</text>
+</svg>
+<p class="mut napomena">Dva ✗ su žurba. Ona nikad nije zakonski kriterijum ni u jednom pitanju ove podoblasti.</p>
 <p class="mut">Zamka: to pitanje traži <b>DVA</b> tačna odgovora, jer zakonska rečenica ima dva dela — „uslovima saobraćaja na raskrsnici" <b>i</b> „brzinom pri kojoj može da se zaustavi i propusti". Ako zaokružiš samo jedan, pitanje je netačno. Ponuđene zamke su „kako bi što pre stigao na odredište" i „da što pre prođe kroz raskrsnicu" — žurba nikad nije zakonski kriterijum.</p>
 <p><b>Prestrojavanje — zamka „neposredno pred raskrsnicom":</b> sva tri ponuđena odgovora zvuče razumno, razlika je u <b>jednoj sintagmi</b>.</p>
 <table>
@@ -1263,6 +1308,23 @@ CARDS['skretanje'] = {
 <tr><td>„dužan je da na <b>dovoljnom odstojanju</b> pred raskrsnicom izvrši prestrojavanje"</td><td><b>TAČNO</b> (čl. 48, stav 2)</td></tr>
 </table>
 <p><b>Ulazak na put sa prvenstvom prolaza:</b> propuštaš <b>SVA vozila</b> koja se kreću tim putem. Ne „samo ona zdesna", ne „samo ona sleva", ne „samo motorna". Tako glasi i sam znak <b>II-1 „ustupanje prvenstva prolaza"</b>: naredba vozaču da ustupi prvenstvo <b>vozilima koja se kreću putem na koji nailazi</b> (Pravilnik o saobraćajnoj signalizaciji, čl. 25).</p>
+<svg viewBox="0 0 320 182" class="crtez" role="img" aria-label="Dolaziš sporednim putem do znaka ustupanja prvenstva. Propuštaš vozila i sleva i zdesna — ceo put sa prvenstvom, ne samo jednu stranu.">
+  <rect x="0" y="52" width="320" height="56" fill="currentColor" opacity=".08"/>
+  <line x1="0" y1="80" x2="320" y2="80" stroke="currentColor" stroke-width="2" stroke-dasharray="10 8"/>
+  <rect x="140" y="108" width="40" height="74" fill="currentColor" opacity=".08"/>
+  <text x="160" y="24" text-anchor="middle" font-size="13" font-weight="bold" fill="currentColor">PUT SA PRVENSTVOM</text>
+  <g stroke="currentColor" stroke-width="2" fill="none">
+    <line x1="30" y1="66" x2="96" y2="66"/><polyline points="88,60 96,66 88,72"/>
+    <line x1="290" y1="94" x2="224" y2="94"/><polyline points="232,88 224,94 232,100"/>
+    <rect x="148" y="134" width="24" height="34" rx="4"/>
+    <line x1="160" y1="134" x2="160" y2="116"/><polyline points="154,122 160,116 166,122"/>
+  </g>
+  <text x="46" y="46" font-size="12" fill="currentColor">propuštaš</text>
+  <text x="234" y="122" font-size="12" fill="currentColor">propuštaš</text>
+  <text x="182" y="150" font-size="12" font-weight="bold" fill="currentColor">TI — znak II-1</text>
+  <text x="182" y="166" font-size="12" fill="currentColor">ustupanje prvenstva</text>
+</svg>
+<p class="mut napomena">Čim stoji znak II-1 ili II-2, prvenstvo JESTE regulisano — „pravilo desne strane" tu ne bira polovinu puta koju ćeš propustiti.</p>
 <p class="mut">Zašto ovde ne odlučuje „pravilo desne strane"? Zato što se ono primenjuje tek kad prvenstvo <b>nije regulisano na drugi način</b>. Pažnja: na raskrsnici koja jeste regulisana (znakom, semaforom ili policajcem) pravila desne strane i levog skretanja i dalje važe — ali samo za <b>međusobno</b> prvenstvo onih koji istovremeno dobiju pravo prolaza. Čim stoji znak II-1 ili II-2, prvenstvo <b>jeste</b> regulisano — i ti propuštaš ceo taj put, a ne polovinu.</p>
 </div>
 
@@ -1275,6 +1337,13 @@ CARDS['skretanje'] = {
 <tr><td>Raskrsnica sa kolonom vozila, pogled sa mopeda: u tvojoj traci <b>jedna strelica savijena ulevo</b>. Desno na stubu znak <b>ustupanje prvenstva prolaza</b> (trougao vrhom nadole) i semafor sa <b>zelenim</b> svetlom.</td><td>Skretanje ulevo <b>JESTE dozvoljeno</b> — stojiš u traci za levo.</td></tr>
 </table>
 <p><b>Zamka nad zamkama:</b> ista fotografija sa tri strelice pojavljuje se u <b>tri različita pitanja</b> — jednom te pitaju „šta možete", drugi put „da li vam je dozvoljeno ulevo", treći put „da li vam je dozvoljeno udesno". Ne pamti odgovor po slici, nego pročitaj <b>šta te pitaju</b>. I obrnuto: kod slike sa strelicom ulevo tačan odgovor je potvrdan („jeste dozvoljeno"), pa te navika da uvek odgovoriš „nije dozvoljeno" tu obara.</p>
+<table>
+<tr><th>Ista slika, ali te pitaju…</th><th>Odgovor zavisi od PITANJA</th></tr>
+<tr><td>„Šta možete da uradite?"</td><td>nabraja se ono što strelice dozvoljavaju</td></tr>
+<tr><td>„Da li vam je dozvoljeno ULEVO?"</td><td>zavisi od strelice u <b>tvojoj</b> traci</td></tr>
+<tr><td>„Da li vam je dozvoljeno UDESNO?"</td><td>opet zavisi od <b>tvoje</b> trake</td></tr>
+<tr><td>slika sa strelicom ULEVO</td><td><b>„jeste dozvoljeno"</b> — navika da uvek kažeš „nije" te ovde obara</td></tr>
+</table>
 <p class="mut">Još jedna zamka iz istog seta: „nastaviti kretanje u sva tri smera, ukoliko ne ometate ili ugrožavate bezbednost saobraćaja". Netačno — oznaka na kolovozu se ne poništava time što nikoga ne ometaš.</p>
 </div>
 
@@ -1325,6 +1394,22 @@ CARDS['skretanje'] = {
 </table>
 <p class="mut">Slikovne varijante su prepoznatljive: sa mopeda vidiš zebru tik ispred sebe, a iza nje kolonu koja stoji; ili je nacrtan pogled odozgo gde crveno vozilo ima <b>zeleno svetlo</b>, ali žuto vozilo odmah iza raskrsnice ne miče; ili crveno vozilo ide <b>putem sa prvenstvom prolaza</b> (žuti romb pored kolovoza), a ispred njega pešački prelaz i zaglavljena kolona. Situacija je različita, odgovor isti.</p>
 <p><b>Ključ za celu ovu podoblast:</b> na raskrsnici te uvek pitaju tri iste stvari — <b>možeš li da staneš</b> (brzina na prilazu), <b>jesi li u pravoj traci</b> (prestrojavanje i strelica), i <b>gde ćeš stati</b> (nikad u raskrsnici, nikad na zebri). Prvenstvo prolaza i zeleno svetlo daju ti <b>pravo da prođeš</b>, ali ti nikad ne daju <b>pravo da blokiraš</b>.</p>
+<svg viewBox="0 0 320 140" class="crtez" role="img" aria-label="Tri pitanja koja se na raskrsnici uvek ponavljaju: možeš li da staneš, jesi li u pravoj traci i gde ćeš stati. Zeleno svetlo daje pravo da prođeš, ne pravo da blokiraš.">
+  <rect x="6" y="10" width="96" height="60" rx="8" fill="none" stroke="currentColor" stroke-width="2"/>
+  <rect x="112" y="10" width="96" height="60" rx="8" fill="none" stroke="currentColor" stroke-width="2"/>
+  <rect x="218" y="10" width="96" height="60" rx="8" fill="none" stroke="currentColor" stroke-width="2"/>
+  <text x="54" y="30" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">1. Možeš li</text>
+  <text x="54" y="46" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">da staneš?</text>
+  <text x="54" y="63" text-anchor="middle" font-size="12" fill="currentColor">brzina na prilazu</text>
+  <text x="160" y="30" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">2. Jesi li u</text>
+  <text x="160" y="46" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">pravoj traci?</text>
+  <text x="160" y="63" text-anchor="middle" font-size="12" fill="currentColor">strelica je naredba</text>
+  <text x="266" y="30" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">3. Gde ćeš</text>
+  <text x="266" y="46" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">stati?</text>
+  <text x="266" y="63" text-anchor="middle" font-size="12" fill="currentColor">nikad u raskrsnici</text>
+  <text x="160" y="100" text-anchor="middle" font-size="13" font-weight="bold" fill="currentColor">zeleno = pravo da PROĐEŠ</text>
+  <text x="160" y="122" text-anchor="middle" font-size="13" font-weight="bold" fill="currentColor">nikad pravo da BLOKIRAŠ</text>
+</svg>
 </div>
 `,
 };
@@ -1471,6 +1556,20 @@ CARDS['parkiranje'] = {
 
 <div class="kPodH"><b class="kPodNaslov">Zaustavljanje i parkiranje idu zajedno</b>
 <p><b>Iznad svih spiskova:</b> tamo gde bi zaustavljeno ili parkirano vozilo ugrožavalo bezbednost drugih učesnika u saobraćaju ili bilo smetnja za normalno odvijanje saobraćaja i kretanje pešaka — ne smeš ni da zaustaviš ni da parkiraš, i onda kad to mesto nije ni na jednom spisku zabrana.</p>
+<svg viewBox="0 0 320 140" class="crtez" role="img" aria-label="Zaustavljanje i parkiranje idu zajedno: gde je jedno zabranjeno, zabranjeno je i drugo. Ponuda dozvoljeno zaustavljanje a nije parkiranje javlja se u šest pitanja i nijednom nije tačna.">
+  <rect x="6" y="14" width="140" height="48" rx="8" fill="none" stroke="currentColor" stroke-width="2"/>
+  <rect x="174" y="14" width="140" height="48" rx="8" fill="none" stroke="currentColor" stroke-width="2"/>
+  <text x="160" y="46" text-anchor="middle" font-size="20" font-weight="bold" fill="currentColor">=</text>
+  <text x="76" y="44" text-anchor="middle" font-size="13" font-weight="bold" fill="currentColor">ZAUSTAVLJANJE</text>
+  <text x="244" y="44" text-anchor="middle" font-size="13" font-weight="bold" fill="currentColor">PARKIRANJE</text>
+  <text x="14" y="88" font-size="14" font-weight="bold" fill="currentColor">✗</text>
+  <text x="34" y="88" font-size="12" fill="currentColor">„dozvoljeno zaustavljanje, a nije parkiranje"</text>
+  <text x="14" y="110" font-size="14" font-weight="bold" fill="currentColor">✗</text>
+  <text x="34" y="110" font-size="12" fill="currentColor">„sme da zaustavi najduže do 3 minuta"</text>
+  <text x="14" y="132" font-size="14" font-weight="bold" fill="currentColor">✗</text>
+  <text x="34" y="132" font-size="12" fill="currentColor">„samo vozilima auto-taksi prevoza"</text>
+</svg>
+<p class="mut napomena">Prva zamka se nudi u <b>šest</b> pitanja i ni u jednom nije tačna. Taksi nema nikakvu povlasticu.</p>
 <p><b>U ovoj podoblasti zabrana nikad ne deli ta dva pojma.</b> Ponuda "dozvoljeno je zaustavljanje, a nije dozvoljeno parkiranje" (i njen blizanac "sme da zaustavi, a ne sme da parkira") nudi se u <b>šest</b> pitanja i ni u jednom nije tačan odgovor. Isto pada i "sme da zaustavi vozilo najduže do 3 minuta", i "dozvoljeno je samo vozilima kojima se obavlja auto-taksi prevoz" — taksi nema nikakvu povlasticu, pravilo važi za sva vozila jednako.</p>
 </div>
 
@@ -2186,6 +2285,20 @@ CARDS['pesaci-bicikli'] = {
   title: 'Pešaci, bicikli i dvotočkaši u saobraćaju',
   html: `
 <p><b>Vozač prema pešacima (čl. 23):</b> pazi na pešake koji su na kolovozu, stupaju ili se vidi da nameravaju · pred pešačkim prelazom brzina takva da UVEK možeš da staneš · zona dece = naročita opreznost.</p>
+<table>
+<tr><th>Prema pešacima</th><th>Šta se traži</th></tr>
+<tr><td>pešak na kolovozu, stupa ili se vidi da namerava</td><td>pazi na njega</td></tr>
+<tr><td>pred pešačkim prelazom</td><td>brzina pri kojoj <b>UVEK</b> možeš da staneš</td></tr>
+<tr><td>zona dece</td><td>naročita opreznost</td></tr>
+<tr><td>vozilo stalo radi propuštanja pešaka</td><td>zabranjeno preticanje <b>i</b> obilaženje</td></tr>
+</table>
+<table>
+<tr><th>Za tebe, na mopedu i motociklu</th><th>Pravilo</th></tr>
+<tr><td>kaciga</td><td><b>obavezna</b> — i vozač i putnik</td></tr>
+<tr><td>svetla</td><td><b>uvek</b> uključena</td></tr>
+<tr><td>dete mlađe od 12 godina</td><td>ne prevozi se</td></tr>
+<tr><td>dete do 12 godina na biciklu</td><td>ne sme na javnom putu</td></tr>
+</table>
 <p><b>Na prelazu:</b> pešaku na prelazu (i kad tek stupa) — propusti; zabranjeno je preticanje i obilaženje vozila koje se zaustavilo radi propuštanja pešaka.</p>
 <p><b>Za tebe kao vozača mopeda/motocikla:</b> kaciga OBAVEZNA (vozač i putnik) · svetla uvek · dete mlađe od 12 godina se ne prevozi · deca do 12 ne smeju upravljati biciklom na javnom putu.</p>
 
@@ -2514,6 +2627,18 @@ CARDS['pruga'] = {
   title: 'Prelaz puta preko železničke pruge',
   html: `
 <p><b>Gvozdeno pravilo (čl. 100):</b> šinsko vozilo UVEK propuštaš — voz ne može da stane.</p>
+<svg viewBox="0 0 320 186" class="crtez" role="img" aria-label="Prilaz prelazu preko pruge: brzina pri kojoj možeš da staneš pre pruge. Spušten branik, crveno svetlo ili zvučni signal znače stop. Na prelazu bez branika i uređaja zaustavi se i pogledaj oba smera.">
+  <line x1="0" y1="52" x2="320" y2="52" stroke="currentColor" stroke-width="3"/>
+  <line x1="0" y1="66" x2="320" y2="66" stroke="currentColor" stroke-width="3"/>
+  <g stroke="currentColor" stroke-width="2"><line x1="40" y1="46" x2="40" y2="72"/><line x1="120" y1="46" x2="120" y2="72"/><line x1="200" y1="46" x2="200" y2="72"/><line x1="280" y1="46" x2="280" y2="72"/></g>
+  <text x="160" y="28" text-anchor="middle" font-size="13" font-weight="bold" fill="currentColor">ŠINSKO VOZILO UVEK PROPUŠTAŠ</text>
+  <text x="14" y="96" font-size="13" font-weight="bold" fill="currentColor">STOP znači bilo šta od:</text>
+  <text x="26" y="116" font-size="12" fill="currentColor">spušten branik · branik se spušta</text>
+  <text x="26" y="134" font-size="12" fill="currentColor">crveno svetlo · zvučni signal</text>
+  <text x="14" y="160" font-size="12" fill="currentColor">Bez branika i uređaja: stani, pogledaj OBA smera,</text>
+  <text x="14" y="180" font-size="12" fill="currentColor">pa pređi tek kad si siguran da voz ne nailazi.</text>
+</svg>
+<p class="mut napomena">Na samom prelazu zabranjeni su preticanje, obilaženje i zaustavljanje; za parkiranje važi i zona od 5 m.</p>
 <p><b>Približavanje prelazu:</b> brzina takva da možeš da staneš pred branikom/uređajem, odnosno pre pruge · spušten ili se spušta branik / crveno svetlo / zvučni signal = STOP · na prelazu je zabranjeno preticanje, obilaženje i zaustavljanje (+ 5 m zona za parkiranje).</p>
 <p><b>Prelaz bez branika i uređaja:</b> zaustavi se, pogledaj oba smera, pređi tek kad si siguran da voz ne nailazi.</p>
 <p style="margin-top:10px"><b>Šta ćeš videti na putu</b> — prepoznaj svaki znak:</p>
@@ -2608,6 +2733,20 @@ CARDS['put-pojmovi'] = {
 1) <b>Pešačka zona je jedina bez brojke.</b> Kad se traži brzina u pešačkoj zoni, ponuđeni „20 km/h" i „30 km/h" su mamci — tačan odgovor je „kretanja pešaka" i tu se staje. Brojku imaju usporena zona (10) i zona „30" (30).<br>
 2) <b>Brzina pešaka se javlja dva puta</b> — u pešačkoj zoni i u zoni usporenog saobraćaja — ali samo usporena zona ima i tavanicu: najviše 10 km/h.<br>
 3) <b>Dvojka je uvek mamac.</b> Kroz celu ovu podoblast, i kod zona i kod gašenja motora, „20 km/h" i „dva minuta" pojavljuju se isključivo kao netačni odgovori. Tačne brojke su 10, 30, 50, vreme 7,00-21,00, jedan minut i tri minuta.</p>
+<table>
+<tr><th>Zona</th><th>Brzina</th><th>Ima li tavanicu?</th></tr>
+<tr><td><b>pešačka zona</b></td><td>brzina <b>kretanja pešaka</b></td><td>NE — jedina bez brojke</td></tr>
+<tr><td><b>zona usporenog saobraćaja</b></td><td>brzina kretanja pešaka</td><td>DA — najviše <b>10 km/h</b></td></tr>
+<tr><td><b>zona „30"</b></td><td><b>30 km/h</b></td><td>brojka je sama tavanica</td></tr>
+<tr><td><b>zona škole</b></td><td><b>30 km/h</b>, od 7,00 do 21,00</td><td>brojka + vreme</td></tr>
+</table>
+<svg viewBox="0 0 320 112" class="crtez" role="img" aria-label="Brojevi koji su u ovoj podoblasti uvek tačni: 10, 30, 50, jedan minut, tri minuta i vreme od sedam do dvadeset jedan. Brojevi koji su uvek mamac: dvadeset kilometara na sat i dva minuta.">
+  <text x="14" y="22" font-size="13" font-weight="bold" fill="currentColor">TAČNE brojke ove podoblasti</text>
+  <text x="14" y="44" font-size="13" fill="currentColor">10 · 30 · 50 · 7,00–21,00 · 1 min · 3 min</text>
+  <text x="14" y="76" font-size="13" font-weight="bold" fill="currentColor">DVOJKA je uvek mamac</text>
+  <text x="14" y="98" font-size="13" fill="currentColor">„20 km/h" ✗ &#160; „dva minuta" ✗</text>
+</svg>
+<p class="mut napomena">Sve četiri zone moraju biti obeležene propisanom signalizacijom — nema zone koja se podrazumeva bez znaka.</p>
 <p class="mut">Sve četiri zone moraju biti obeležene propisanom saobraćajnom signalizacijom — nema zone koja se podrazumeva bez znaka.</p>
 <p><b>Kad se gasi motor (čl. 164)</b> — zakon nabraja tačno četiri situacije:</p>
 <table>
@@ -2618,7 +2757,29 @@ CARDS['put-pojmovi'] = {
 <tr><td>kad vozilo <b>stoji duže od tri minuta</b></td><td>ista granica kao u definiciji zaustavljanja gore</td></tr>
 </table>
 <p><b>Semafor NIJE razlog za gašenje motora.</b> Kao mamac se dva puta nudi „prekid kretanja radi postupanja po svetlosnom znaku zabrane prolaska koji daje semafor" — jednom sa dodatkom „duže od dva minuta", jednom bez njega. Ni jedno ni drugo nije u zakonu: crveno svetlo motor ne gasi, gasi ga tunel (jedan minut), stajanje (tri minuta), znak i službeno lice.</p>
+<svg viewBox="0 0 320 182" class="crtez" role="img" aria-label="Motor se gasi u tunelu posle jednog minuta, pri stajanju dužem od tri minuta, po saobraćajnom znaku i po naredbi službenog lica. Crveno svetlo na semaforu motor ne gasi.">
+  <text x="14" y="20" font-size="13" font-weight="bold" fill="currentColor">MOTOR SE GASI</text>
+  <text x="26" y="44" font-size="12" fill="currentColor">tunel — posle <tspan font-weight="bold">1 minuta</tspan></text>
+  <text x="26" y="64" font-size="12" fill="currentColor">stajanje duže od <tspan font-weight="bold">3 minuta</tspan></text>
+  <text x="26" y="84" font-size="12" fill="currentColor">saobraćajni znak</text>
+  <text x="26" y="104" font-size="12" fill="currentColor">naredba službenog lica</text>
+  <text x="14" y="132" font-size="13" font-weight="bold" fill="currentColor">NE GASI GA</text>
+  <text x="14" y="154" font-size="14" font-weight="bold" fill="currentColor">✗</text>
+  <text x="34" y="154" font-size="12" fill="currentColor">crveno svetlo na semaforu</text>
+  <text x="34" y="176" font-size="12" fill="currentColor">(nudi se i sa „duže od dva minuta" i bez toga)</text>
+</svg>
 <p><b>Otpad i buka (isti čl. 164):</b> ispuštanje, odnosno odlaganje materija i otpada kojima se ugrožava život i zdravlje ljudi, životinja, biljaka ili zagađuje životna sredina <b>nije dozvoljeno</b> — ni na putu ni pored njega, dakle nigde. Svako sužavanje te zabrane rečju „samo" („samo van naseljenog mesta", „samo tamo gde postoji znak") je mamac. Iz istog člana je i pravilo da vozilo u saobraćaju ne sme da prouzrokuje prekomernu buku — kod motocikla to praktično znači neprepravljan, propisan izduvni sistem.</p>
+<svg viewBox="0 0 320 140" class="crtez" role="img" aria-label="Zabrana odlaganja otpada važi i na putu i pored puta, dakle svuda. Svako sužavanje rečju samo je mamac. Iz istog člana je i zabrana prekomerne buke.">
+  <rect x="0" y="34" width="320" height="34" fill="currentColor" opacity=".08"/>
+  <text x="160" y="56" text-anchor="middle" font-size="13" font-weight="bold" fill="currentColor">NA PUTU — zabranjeno</text>
+  <text x="160" y="24" text-anchor="middle" font-size="13" font-weight="bold" fill="currentColor">PORED PUTA — zabranjeno</text>
+  <text x="160" y="88" text-anchor="middle" font-size="13" font-weight="bold" fill="currentColor">dakle: NIGDE</text>
+  <text x="14" y="114" font-size="14" font-weight="bold" fill="currentColor">✗</text>
+  <text x="34" y="114" font-size="12" fill="currentColor">„samo van naseljenog mesta"</text>
+  <text x="14" y="136" font-size="14" font-weight="bold" fill="currentColor">✗</text>
+  <text x="34" y="136" font-size="12" fill="currentColor">„samo tamo gde postoji znak"</text>
+</svg>
+<p class="mut napomena">Iz istog člana je i prekomerna buka — kod motocikla to praktično znači neprepravljan, propisan izduvni sistem.</p>
 </div>
 `,
 };
@@ -2627,6 +2788,18 @@ CARDS['autoput'] = {
   title: 'Autoput i motoput — posebna pravila',
   html: `
 <p><b>Kretanje (čl. 104):</b> krajnjom DESNOM trakom (osim kolone/preticanja) · zaustavnom trakom je ZABRANJENO kretanje (izuzetak: pod pratnjom/pravo prvenstva kad je gužva, održavanje) · preticanje s desne strane zabranjeno.</p>
+<svg viewBox="0 0 320 186" class="crtez" role="img" aria-label="Na autoputu se krećeš krajnjom desnom trakom, osim u koloni i pri preticanju. Zaustavnom trakom je zabranjeno kretanje. Kod kvara: zaustavna traka, trougao na sto metara, svi pokazivači i prsluk van vozila.">
+  <rect x="0" y="16" width="320" height="26" fill="currentColor" opacity=".08"/>
+  <rect x="0" y="46" width="320" height="26" fill="currentColor" opacity=".16"/>
+  <rect x="0" y="76" width="320" height="22" fill="currentColor" opacity=".3"/>
+  <text x="160" y="34" text-anchor="middle" font-size="12" fill="currentColor">leva traka — kolona i preticanje</text>
+  <text x="160" y="64" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">krajnja DESNA — pravilo</text>
+  <text x="160" y="92" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">zaustavna traka — kretanje ZABRANJENO</text>
+  <text x="14" y="122" font-size="13" font-weight="bold" fill="currentColor">Kod kvara (čl. 105):</text>
+  <text x="26" y="142" font-size="12" fill="currentColor">zaustavna traka · trougao na ≥ 100 m</text>
+  <text x="26" y="160" font-size="12" fill="currentColor">svi pokazivači · prsluk VAN vozila</text>
+  <text x="14" y="182" font-size="12" fill="currentColor">Zabranjeno i: polukružno okretanje, kretanje unazad.</text>
+</svg>
 <p><b>Zabranjeno na autoputu/motoputu (čl. 105):</b> zaustavljanje i parkiranje (osim uređenih mesta) · polukružno okretanje · kretanje unazad.</p>
 <p><b>Kvar (čl. 105):</b> zaustavi na zaustavnoj traci, sigurnosni trougao na ≥ 100 m, svi pokazivači, svetloodbojni prsluk van vozila — i ukloni vozilo što pre.</p>
 <p><b>Zastoj:</b> ostavlja se slobodan prolaz za vozila pod pratnjom/sa pravom prvenstva (čl. 104).</p>
@@ -2717,6 +2890,14 @@ CARDS['vozilo-tehnika'] = {
 </div>
 <div class="kSek" data-sub="127">
 <p><b>Tehnički pregled:</b> redovni — pre izdavanja registracione nalepnice · vozilo mora imati ispravne propisane uređaje (kočnice, upravljač, svetla, pneumatike...).</p>
+<table>
+<tr><th>Pneumatici — šta se traži</th><th>Broj</th></tr>
+<tr><td>na istoj osovini <b>ISTI</b> (dimenzija, vrsta)</td><td>—</td></tr>
+<tr><td>dubina šare dublja od <b>TWI</b> oznake</td><td>—</td></tr>
+<tr><td>bez TWI oznake — moped i motocikl</td><td>najmanje <b>1,6 mm</b></td></tr>
+<tr><td>zimska oprema</td><td>kad je propisana</td></tr>
+</table>
+<p class="mut napomena">Za motocikl se na testu traži ŠTA JE OBAVEZNA OPREMA: ogledala, svetla i kočnice na oba točka.</p>
 <p><b>Pneumatici:</b> na istoj osovini ISTI (dimenzija, vrsta) · dubina šare: dublja od TWI oznake, a bez TWI oznake NAJMANJE 1,6 mm (moped/motocikl) · zimska oprema kad je propisana.</p>
 <p><b>Za motocikl posebno:</b> ogledala, svetla i kočnice na oba točka su bezbednosno kritični — na testu se traži šta je OBAVEZNA oprema.</p>
 <p style="margin-top:18px"><b>REDOVNI · VANREDNI · KONTROLNI TEHNIČKI PREGLED</b></p>
@@ -2729,6 +2910,16 @@ CARDS['vozilo-tehnika'] = {
 </table>
 <p class="mut">Zamke po vrstama: kod redovnog nude „tromesečni" i „petogodišnji" (ne postoje) i „najkasnije jednu godinu nakon prethodnog pregleda" — tačan odgovor je vezan za <b>nalepnicu</b>, ne za datum prošlog pregleda. Kod vanrednog nude „radi kontrole od strane ovlašćenog lica MUP-a/inspektora" (to je kontrolni!) i „pre isteka roka od šest meseci od početka važenja nalepnice" (to miriše na šestomesečni redovni). Kod kontrolnog nude vozilo „kojem su u nezgodi oštećeni uređaji" — to ide na <b>vanredni</b>; na kontrolni se može uputiti vozilo <b>u voznom stanju</b>.</p>
 <p><b>Zajednička pravila za redovni i vanredni pregled:</b> vrše se samo na <b>čistom</b> vozilu koje je <b>u voznom stanju</b> i <b>neopterećeno</b> — zamka „na tehnički ispravnom vozilu" je besmislena, jer se ispravnost na pregledu tek utvrđuje. Lice koje je dovezlo vozilo kontroloru daje na uvid <b>saobraćajnu dozvolu i SVOJU ličnu kartu</b> (ne ličnu kartu vlasnika, ne vozačku dozvolu). Registrovano, neodjavljeno vozilo na redovnom pregledu mora imati <b>sve propisane registarske tablice, postavljene na predviđenim mestima</b> — „bar jedna tablica" nije dovoljna.</p>
+<svg viewBox="0 0 320 150" class="crtez" role="img" aria-label="Pregled se vrši na čistom vozilu u voznom stanju i neopterećenom. Kontroloru se daju saobraćajna dozvola i lična karta onoga ko je dovezao vozilo. Tablice moraju biti sve, na predviđenim mestima.">
+  <text x="14" y="20" font-size="13" font-weight="bold" fill="currentColor">VOZILO MORA BITI</text>
+  <text x="26" y="42" font-size="12" fill="currentColor">čisto · u voznom stanju · neopterećeno</text>
+  <text x="14" y="70" font-size="13" font-weight="bold" fill="currentColor">DAJEŠ NA UVID</text>
+  <text x="26" y="92" font-size="12" fill="currentColor">saobraćajnu dozvolu + SVOJU ličnu kartu</text>
+  <text x="14" y="120" font-size="14" font-weight="bold" fill="currentColor">✗</text>
+  <text x="34" y="120" font-size="12" fill="currentColor">„na tehnički ispravnom vozilu" — to se tek utvrđuje</text>
+  <text x="14" y="142" font-size="14" font-weight="bold" fill="currentColor">✗</text>
+  <text x="34" y="142" font-size="12" fill="currentColor">„bar jedna tablica" — moraju SVE, na svom mestu</text>
+</svg>
 </div>
 
 
@@ -2926,12 +3117,58 @@ CARDS['razno-pravila'] = {
   html: `
 <div class="kSek" data-sub="138">
 <p><b>Nasilnička vožnja (čl. 41):</b> 2+ prolaska kroz crveno u 10 minuta · preticanje kolone preko neisprekidane linije · vožnja u naselju 90+ km/h preko ograničenja · gruba nepažnja prema drugima.</p>
+<table>
+<tr><th>Šta baza pita kao nasilničku vožnju</th><th>Prag</th><th>Pitanje</th></tr>
+<tr><td>brzina <b>u naselju</b></td><td><b>preko 90 km/h</b> iznad dozvoljene</td><td>#10711</td></tr>
+<tr><td>brzina <b>van naselja</b></td><td><b>preko 100 km/h</b> iznad dozvoljene</td><td>#10712</td></tr>
+<tr><td>alkohol — <b>potpuna</b> alkoholisanost</td><td><b>preko 2,00 mg/ml</b></td><td>#10713</td></tr>
+<tr><td>dolaziš u susret <b>tuđom trakom</b> (preticanje kolone preko pune linije)</td><td>slika</td><td>#10025</td></tr>
+<tr><td>voziš <b>suprotnim smerom</b> pored znaka obaveznog smera</td><td>slika</td><td>#10027</td></tr>
+</table>
+<p class="mut napomena">Zamke kod brzine su uvek susedni broj (70 i 80 umesto 90; 80 i 90 umesto 100), a kod alkohola susedni stepen („veoma teška" 1,60–2,00 umesto „potpuna" preko 2,00). Ostalo iz čl. 41 — dva prolaska kroz crveno u 10 minuta i gruba nepažnja — baza ne pita.</p>
 </div>
 <div class="kSek" data-sub="141">
 <p><b>Vučenje vozila:</b> užetom (≥3 m), krutom vezom (rudom) ili oslanjanjem/podizanjem; noću i pri smanjenoj vidljivosti vučeno vozilo mora biti osvetljeno; brzina ograničena (40 km/h).</p>
+<svg viewBox="0 0 320 174" class="crtez" role="img" aria-label="Tri propisana načina vučenja: uže najmanje tri metra, kruta veza odnosno ruda, i oslanjanje ili podizanje. Moped, motocikl i tricikl se ne smeju vući.">
+  <g stroke="currentColor" stroke-width="2" fill="none">
+    <circle cx="24" cy="34" r="9"/><circle cx="52" cy="34" r="9"/><line x1="24" y1="34" x2="52" y2="34"/>
+    <line x1="61" y1="34" x2="97" y2="34" stroke-dasharray="4 4"/>
+    <circle cx="106" cy="34" r="9"/><circle cx="134" cy="34" r="9"/><line x1="106" y1="34" x2="134" y2="34"/>
+    <circle cx="24" cy="78" r="9"/><circle cx="52" cy="78" r="9"/><line x1="24" y1="78" x2="52" y2="78"/>
+    <line x1="61" y1="78" x2="97" y2="78"/>
+    <circle cx="106" cy="78" r="9"/><circle cx="134" cy="78" r="9"/><line x1="106" y1="78" x2="134" y2="78"/>
+    <circle cx="24" cy="122" r="9"/><circle cx="52" cy="122" r="9"/><line x1="24" y1="122" x2="52" y2="122"/>
+    <circle cx="106" cy="114" r="9"/><line x1="61" y1="118" x2="100" y2="116"/>
+    <line x1="106" y1="122" x2="134" y2="122"/><circle cx="134" cy="122" r="9"/>
+  </g>
+  <text x="150" y="30" font-size="12" font-weight="bold" fill="currentColor">uže</text>
+  <text x="150" y="46" font-size="12" fill="currentColor">najmanje 3 m ✳</text>
+  <text x="150" y="74" font-size="12" font-weight="bold" fill="currentColor">kruta veza (ruda)</text>
+  <text x="150" y="90" font-size="12" fill="currentColor">bez klaćenja</text>
+  <text x="150" y="118" font-size="12" font-weight="bold" fill="currentColor">oslanjanje / podizanje</text>
+  <text x="150" y="134" font-size="12" fill="currentColor">prednji točak gore</text>
+  <text x="14" y="152" font-size="12" fill="currentColor">najviše 40 km/h ✳</text>
+  <text x="14" y="170" font-size="12" fill="currentColor">noću vučeno vozilo mora biti osvetljeno ✳</text>
+</svg>
+<table>
+<tr><th>Motornim vozilom NIJE dozvoljeno vući (#10531)</th><th>a jeste</th></tr>
+<tr><td><b>moped</b> · <b>motocikl</b> · <b>laki i teški tricikl</b></td><td>putničko vozilo · teretno vozilo · laki i teški četvorocikl</td></tr>
+</table>
+<p class="mut napomena">✳ = zakonski broj, baza ga ne pita. Prva tri reda su ono što baza traži — i to baš tvoja kategorija: moped, motocikl i tricikl se ne vuku.</p>
 </div>
 <div class="kSek" data-sub="149">
 <p><b>Žuto rotaciono svetlo (čl. 111):</b> radovi na putu, vozila pomoći na putu, vanredni prevoz, traktor/radna mašina noću.</p>
+<svg viewBox="0 0 320 128" class="crtez" role="img" aria-label="Kad sretneš vozilo sa žutim rotacionim svetlom: povećaj opreznost i prilagodi brzinu. Nisi dužan da se zaustaviš ni da skloniš vozilo sa kolovoza.">
+  <circle cx="40" cy="36" r="16" fill="currentColor" opacity=".35"/>
+  <circle cx="40" cy="36" r="9" fill="currentColor" opacity=".7"/>
+  <text x="70" y="30" font-size="13" font-weight="bold" fill="currentColor">DUŽAN SI:</text>
+  <text x="70" y="48" font-size="12" fill="currentColor">povećaj opreznost + prilagodi brzinu</text>
+  <text x="14" y="82" font-size="14" font-weight="bold" fill="currentColor">✗</text>
+  <text x="34" y="82" font-size="12" fill="currentColor">„obavezno zaustavi vozilo"</text>
+  <text x="14" y="106" font-size="14" font-weight="bold" fill="currentColor">✗</text>
+  <text x="34" y="106" font-size="12" fill="currentColor">„obavezno pomeri vozilo sa kolovoza"</text>
+  <text x="14" y="124" font-size="12" fill="currentColor">#10400 — jedino pitanje ove podoblasti</text>
+</svg>
 </div>
 <div class="kSek" data-sub="165">
 <p><b>Prepreke na putu (čl. 112 i Pravilnik):</b> obeležavaju se propisanim znakovima/svetlima — noću crveno svetlo.</p>
@@ -2941,7 +3178,39 @@ CARDS['razno-pravila'] = {
 <div class="kSek" data-sub="143">
 <p style="margin-top:18px"><b>TRAMVAJ I ŽIVOTINJE (čl. 84 i 87)</b></p>
 <p><b>Tramvaj nije izvan zakona.</b> Odredbe ZOBS-a <b>shodno se primenjuju</b> i na saobraćaj tramvaja i drugih vozila koja se po putu kreću po šinama — <b>osim ako to ne isključuju konstrukcione osobine tih vozila ili način njihovog kretanja</b>. Ponuđene zamke su „ne primenjuju se" i „ne primenjuju se, osim odredaba o ograničenju brzine" — obe su netačne. Nije stvar u brzini: tramvaj jednostavno ne može da uradi sve što zakon traži od ostalih vozila (ne može da siđe sa šina, ne može da obiđe prepreku), pa zakon unapred priznaje samo taj tip izuzetka.</p>
+<svg viewBox="0 0 320 146" class="crtez" role="img" aria-label="ZOBS se primenjuje i na tramvaj. Jedini izuzetak su konstrukcione osobine i način kretanja — tramvaj ne može sa šina i ne može da obiđe prepreku. Ograničenje brzine nije izuzetak.">
+  <rect x="6" y="10" width="308" height="48" rx="8" fill="none" stroke="currentColor" stroke-width="2"/>
+  <text x="160" y="32" text-anchor="middle" font-size="13" font-weight="bold" fill="currentColor">ZOBS važi i za tramvaj</text>
+  <text x="160" y="50" text-anchor="middle" font-size="12" fill="currentColor">„shodno se primenjuju" — pravilo, ne izuzetak</text>
+  <text x="160" y="78" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">jedini izuzetak: šta tramvaj NE MOŽE</text>
+  <text x="160" y="96" text-anchor="middle" font-size="12" fill="currentColor">ne može da siđe sa šina · ne može da obiđe prepreku</text>
+  <text x="14" y="124" font-size="14" font-weight="bold" fill="currentColor">✗</text>
+  <text x="34" y="124" font-size="12" fill="currentColor">„ne primenjuju se"</text>
+  <text x="14" y="144" font-size="14" font-weight="bold" fill="currentColor">✗</text>
+  <text x="34" y="144" font-size="12" fill="currentColor">„…osim odredaba o ograničenju brzine"</text>
+</svg>
+<p class="mut napomena">Nije stvar u brzini — zato je druga zamka opasnija: zvuči kao da zakon pravi popust baš tamo gde ga ne pravi.</p>
 <p><b>Vođenje životinje iz vozila ili sa vozila je ZABRANJENO</b> — bez ijednog izuzetka. Domaće životinje smeju biti na putu samo u pratnji lica koje ih vodi i obezbeđuje tako da ne ugrožavaju bezbednost saobraćaja, a na autoput, motoput, državne puteve prvog reda i biciklističke staze im pristup uopšte nije dozvoljen.</p>
+<svg viewBox="0 0 320 150" class="crtez" role="img" aria-label="Vođenje životinje sa vozila je zabranjeno bez izuzetka, ma koliko sporo išao. Prevoz životinje U vozilu je dozvoljen ako ne ometa vozača.">
+  <rect x="6" y="6" width="150" height="138" rx="8" fill="none" stroke="currentColor" stroke-opacity=".35"/>
+  <rect x="164" y="6" width="150" height="138" rx="8" fill="none" stroke="currentColor" stroke-opacity=".35"/>
+  <text x="81" y="26" text-anchor="middle" font-size="13" font-weight="bold" fill="currentColor">ZABRANJENO</text>
+  <text x="239" y="26" text-anchor="middle" font-size="13" font-weight="bold" fill="currentColor">DOZVOLJENO</text>
+  <g stroke="currentColor" stroke-width="2" fill="none">
+    <circle cx="34" cy="62" r="9"/><circle cx="62" cy="62" r="9"/><line x1="34" y1="62" x2="62" y2="62"/>
+    <line x1="70" y1="62" x2="104" y2="76" stroke-dasharray="4 3"/>
+    <circle cx="112" cy="80" r="7"/>
+    <rect x="186" y="48" width="48" height="30" rx="5"/>
+    <circle cx="210" cy="63" r="7"/>
+  </g>
+  <text x="81" y="106" text-anchor="middle" font-size="12" fill="currentColor">pas na povocu pored vozila</text>
+  <text x="81" y="122" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">bez izuzetka</text>
+  <text x="81" y="138" text-anchor="middle" font-size="12" fill="currentColor">ma koliko sporo išao</text>
+  <text x="239" y="106" text-anchor="middle" font-size="12" fill="currentColor">životinja U vozilu</text>
+  <text x="239" y="122" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">ako ne ometa</text>
+  <text x="239" y="138" text-anchor="middle" font-size="12" fill="currentColor">vozača ni druge</text>
+</svg>
+<p class="mut napomena">Opasnija zamka je „dozvoljeno samo ako se vozilo kreće brzinom kretanja pešaka" — ta rečenica je pozajmljena iz pravila o pešačkoj zoni i ovde ne postoji.</p>
 <p class="mut">Zamke su „dozvoljeno je" i, opasnija, <b>„dozvoljeno je samo ako se vozilo kreće brzinom kretanja pešaka"</b> — ta formulacija je pozajmljena iz pravila o pešačkoj zoni i ovde ne postoji. Slikovno pitanje pokazuje vozača mopeda koji jednom rukom drži upravljač, a drugom povodac psa koji trči pored njega: nije dozvoljeno, ma koliko sporo išao. Ako se životinja <b>prevozi</b> u vozilu, to jeste dozvoljeno, ali samo tako da ne ugrožava i ne ometa vozača ni ostale učesnike.</p>
 
 </div>
@@ -2955,8 +3224,45 @@ CARDS['razno-pravila'] = {
 </table>
 <p class="mut">Pamti da je <b>svaka</b> poruka nošena <b>podignutom</b> zastavicom — nema „spuštena crvena znači slobodno". Zato su netačni svi odgovori tipa „regulisanje se vrši samo zastavicom crvene boje, podignuta zabranjuje a spuštena dozvoljava" i isto to sa zelenom. Na slikama radnik uvek drži <b>obe</b> zastavice: ona koju je podigao je poruka, ona koja mu visi niz nogu ne znači ništa.</p>
 <p><b>Znak radnika je OBAVEZUJUĆI za tebe.</b> Znaci i naredbe ovlašćenih lica <b>imaju prvenstvo u odnosu na saobraćajnu signalizaciju i propisana pravila saobraćaja</b>. U dva slikovna pitanja tačni odgovori zato glase „slobodan prolaz <b>i obavezujući je za Vas</b>" i „zabranjen prolaz <b>i obavezujući je za Vas</b>", a zamke su upravo one koje ti nude izgovor: „nije obavezujući za Vas" i „nije obavezujući ako prohodna saobraćajna traka nije zauzeta vozilima iz suprotnog smera". Prazna traka ispred tebe nije dozvola.</p>
+<table>
+<tr><th>Na slici radnik pokazuje…</th><th>Tačan odgovor</th><th>Zamka</th></tr>
+<tr><td>slobodan prolaz</td><td>„slobodan prolaz <b>i obavezujući je za Vas</b>"</td><td>„nije obavezujući za Vas"</td></tr>
+<tr><td>zabranjen prolaz</td><td>„zabranjen prolaz <b>i obavezujući je za Vas</b>"</td><td>„nije obavezujući ako prohodna traka nije zauzeta"</td></tr>
+</table>
+<p class="mut napomena">Prazna traka ispred tebe nije dozvola. Naredba ovlašćenog lica ide <b>ispred</b> signalizacije i ispred pravila saobraćaja — u oba pitanja tačan odgovor sadrži baš te dve reči: „obavezujući je".</p>
 <p><b>Dve dužnosti kod radova (pitanje traži DVA odgovora):</b> ne smeš da <b>ometaš radnika</b> koji obavlja radove na putu ili pored puta, i <b>dužan si da ukloniš svoje vozilo na zahtev izvođača radova</b> — a taj zahtev može biti dat i kao javni poziv. Zamka je „moram ukloniti vozilo samo na zahtev saobraćajne policije": izvođač radova je ovde dovoljan.</p>
+<svg viewBox="0 0 320 130" class="crtez" role="img" aria-label="Kod radova na putu imaš dve dužnosti: ne ometaj radnika i ukloni vozilo na zahtev izvođača radova. Zahtev sme biti i javni poziv, ne samo zahtev policije.">
+  <rect x="6" y="16" width="140" height="56" rx="8" fill="none" stroke="currentColor" stroke-width="2"/>
+  <rect x="174" y="16" width="140" height="56" rx="8" fill="none" stroke="currentColor" stroke-width="2"/>
+  <text x="160" y="50" text-anchor="middle" font-size="22" font-weight="bold" fill="currentColor">+</text>
+  <text x="76" y="40" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">ne ometaj</text>
+  <text x="76" y="58" text-anchor="middle" font-size="12" fill="currentColor">radnika na putu</text>
+  <text x="244" y="40" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">ukloni vozilo</text>
+  <text x="244" y="58" text-anchor="middle" font-size="12" fill="currentColor">na zahtev IZVOĐAČA</text>
+  <text x="14" y="98" font-size="14" font-weight="bold" fill="currentColor">✗</text>
+  <text x="34" y="98" font-size="12" fill="currentColor">„samo na zahtev saobraćajne policije"</text>
+  <text x="14" y="122" font-size="12" fill="currentColor">Zahtev izvođača sme biti dat i kao javni poziv.</text>
+</svg>
 <p><b>Signalna tabla</b> (tabla sa treptavim strelicama, obično na prikolici) postavlja se <b>na zadnji deo motornog vozila ili prikolice, kada je vozilo zaustavljeno</b>. Zamke se lako razdvajaju po nameni: „razdvajajuća ograda" skreće saobraćaj u stranu, a „čeoni branik" ograđuje radilište sa čeone strane — ni jedno ni drugo se ne kači na vozilo.</p>
+<svg viewBox="0 0 320 150" class="crtez" role="img" aria-label="Signalna tabla ide na zadnji deo zaustavljenog vozila. Razdvajajuća ograda skreće saobraćaj u stranu, a čeoni branik ograđuje radilište sa čeone strane — ni jedno ni drugo se ne kači na vozilo.">
+  <g stroke="currentColor" stroke-width="2" fill="none">
+    <rect x="14" y="20" width="54" height="26" rx="4"/><circle cx="26" cy="50" r="5"/><circle cx="56" cy="50" r="5"/>
+    <rect x="68" y="22" width="22" height="20" rx="3"/>
+  </g>
+  <text x="102" y="30" font-size="12" font-weight="bold" fill="currentColor">SIGNALNA TABLA</text>
+  <text x="102" y="46" font-size="12" fill="currentColor">zadnji deo ZAUSTAVLJENOG vozila</text>
+  <g stroke="currentColor" stroke-width="2" fill="none">
+    <line x1="14" y1="82" x2="80" y2="82"/><line x1="20" y1="76" x2="20" y2="88"/><line x1="44" y1="76" x2="44" y2="88"/><line x1="68" y1="76" x2="68" y2="88"/>
+  </g>
+  <text x="102" y="78" font-size="12" font-weight="bold" fill="currentColor">RAZDVAJAJUĆA OGRADA</text>
+  <text x="102" y="94" font-size="12" fill="currentColor">skreće saobraćaj u stranu</text>
+  <g stroke="currentColor" stroke-width="2" fill="none">
+    <rect x="14" y="118" width="66" height="18" rx="3"/><line x1="14" y1="118" x2="80" y2="136"/>
+  </g>
+  <text x="102" y="124" font-size="12" font-weight="bold" fill="currentColor">ČEONI BRANIK</text>
+  <text x="102" y="140" font-size="12" fill="currentColor">ograđuje radilište spreda</text>
+</svg>
+<p class="mut napomena">Samo se prva kači na vozilo — po tome se pitanje i rešava.</p>
 
 </div>
 <div class="kSek" data-sub="138">
@@ -2970,6 +3276,12 @@ CARDS['razno-pravila'] = {
 </table>
 <p class="mut">Merdevine za pamćenje: <b>90 u naselju, 100 van naselja</b> — veći broj ide tamo gde je i osnovno ograničenje veće. Kod alkohola pamti samo <b>najviši</b> stepen: teška i veoma teška alkoholisanost jesu teški prekršaji, ali <b>nisu</b> nasilnička vožnja; nasilnička je tek <b>potpuna</b>.</p>
 <p><b>Kako to izgleda na slici.</b> Dva slikovna pitanja gađaju isti ishod iz dva različita ugla. U prvom sa mopeda vidiš vozilo koje ti <b>dolazi u susret tvojom saobraćajnom trakom</b> jer pretiče kolonu preko neisprekidane linije. U drugom nema ni kolone ni preticanja: put je <b>fizički razdvojen ostrvom</b>, na ostrvu stoji znak obaveznog smera okrenut ka tebi, a ti se krećeš <b>suprotnim smerom</b>. U oba slučaja tačan odgovor je isti i doslovno glasi „nepropisno postupanje koje je <b>u gruboj suprotnosti sa pravilima saobraćaja (nasilnička vožnja)</b>".</p>
+<table>
+<tr><th>Šta vidiš</th><th>Zašto je to nasilnička vožnja</th><th>Pitanje</th></tr>
+<tr><td>vozilo ti dolazi <b>u susret tvojom trakom</b></td><td>pretiče kolonu preko neisprekidane linije</td><td>#10025</td></tr>
+<tr><td>put razdvojen <b>ostrvom</b>, znak obaveznog smera okrenut ka tebi</td><td>krećeš se suprotnim smerom</td><td>#10027</td></tr>
+</table>
+<p class="mut napomena">U oba pitanja tačan odgovor je doslovno isti: „nepropisno postupanje koje je u gruboj suprotnosti sa pravilima saobraćaja (nasilnička vožnja)". Procena da „stiže da se vrati" ne skida kvalifikaciju — puna linija stoji baš zato što se preglednost tu ne može proceniti.</p>
 <p class="mut">Zamka glasi: „nepropisno postupanje, <b>koje nije</b> u gruboj suprotnosti sa pravilima saobraćaja" (kod pitanja o preticanju kolone nastavlja se i sa „s obzirom da preticanje može izvesti bez ugrožavanja drugih učesnika u saobraćaju". Procena da „stiže da se vrati" ne skida kvalifikaciju — puna linija je tu upravo zato što se preglednost na tom mestu ne može proceniti.</p>
 
 </div>
@@ -2999,6 +3311,20 @@ CARDS['kazne'] = {
   html: `
 <p><b>⚠ Po izmerenom zvaničnom šablonu, ova oblast ne ulazi u ispitni test.</b> U bazi za učenje ipak postoji (111 pitanja) — pokrivena je, ali joj daj najniži prioritet i uči je radi razumevanja posledica.</p>
 <p><b>Lestvica sankcija, od lakše ka težoj:</b></p>
+<svg viewBox="0 0 320 192" class="crtez" role="img" aria-label="Lestvica sankcija od lakše ka težoj: novčana kazna, kazneni poeni, zabrana upravljanja, zatvor. Teži prekršaj nosi kombinaciju mera.">
+  <rect x="10" y="126" width="68" height="30" rx="6" fill="currentColor" opacity=".14"/>
+  <rect x="88" y="98" width="68" height="58" rx="6" fill="currentColor" opacity=".22"/>
+  <rect x="166" y="70" width="68" height="86" rx="6" fill="currentColor" opacity=".3"/>
+  <rect x="244" y="42" width="66" height="114" rx="6" fill="currentColor" opacity=".38"/>
+  <text x="44" y="146" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">novčana</text>
+  <text x="122" y="146" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">poeni</text>
+  <text x="200" y="146" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">zabrana</text>
+  <text x="277" y="146" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">zatvor</text>
+  <text x="160" y="24" text-anchor="middle" font-size="13" font-weight="bold" fill="currentColor">teži prekršaj = KOMBINACIJA mera</text>
+  <text x="14" y="172" font-size="12" fill="currentColor">Najteži nose i zatvor: alkohol, nasilnička vožnja,</text>
+  <text x="14" y="190" font-size="12" fill="currentColor">vožnja bez dozvole, izazivanje nezgode.</text>
+</svg>
+<p class="mut napomena">Iznosa ovde nema namerno — cifre se menjaju izmenama zakona. Kad pitanje traži iznos, nauči ga iz tačnog odgovora tog pitanja: baza je merodavna.</p>
 <div class="ladderRow">
 <span class="lchip" style="background:#2c6aa0">NOVČANA KAZNA</span><span class="lplus">+</span>
 <span class="lchip" style="background:#e0a030;color:#3a2d12">KAZNENI POENI</span><span class="lplus">+</span>
@@ -3017,6 +3343,18 @@ CARDS['faq'] = {
 U samom browseru, vezano za NAČIN otvaranja: aplikacija otvorena duplim klikom (file://) i preko adrese
 (npr. localhost) su za browser dva odvojena skladišta. Drži se JEDNOG načina otvaranja. Ako ti napredak
 "nestane" — najverovatnije je na onoj drugoj adresi: tamo klikni "Sačuvaj napredak", pa ovde "Učitaj napredak".</p>
+<svg viewBox="0 0 320 152" class="crtez" role="img" aria-label="Aplikacija otvorena duplim klikom i otvorena preko adrese su za pregledač dva odvojena skladišta. Drži se jednog načina otvaranja, a fajl za automatsko čuvanje veže napredak za disk.">
+  <rect x="6" y="14" width="140" height="62" rx="8" fill="none" stroke="currentColor" stroke-width="2"/>
+  <rect x="174" y="14" width="140" height="62" rx="8" fill="none" stroke="currentColor" stroke-width="2"/>
+  <text x="76" y="36" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">dupli klik</text>
+  <text x="76" y="56" text-anchor="middle" font-size="12" fill="currentColor">(file://)</text>
+  <text x="244" y="36" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">preko adrese</text>
+  <text x="244" y="56" text-anchor="middle" font-size="12" fill="currentColor">(sajt ili localhost)</text>
+  <text x="160" y="52" text-anchor="middle" font-size="16" font-weight="bold" fill="currentColor">≠</text>
+  <text x="160" y="100" text-anchor="middle" font-size="13" font-weight="bold" fill="currentColor">dva ODVOJENA skladišta</text>
+  <text x="160" y="124" text-anchor="middle" font-size="12" fill="currentColor">drži se JEDNOG načina otvaranja</text>
+  <text x="160" y="146" text-anchor="middle" font-size="12" fill="currentColor">a fajl za automatsko čuvanje veže napredak za disk</text>
+</svg>
 <p><b>Da li restart računara briše napredak?</b><br>
 Ne. Briše ga samo "brisanje podataka pregledanja" ("Clear browsing data") i slični alati za čišćenje. Zato jednom klikni
 "Poveži fajl za automatsko čuvanje" — od tada se svaka promena upisuje i u fajl na disku.</p>
@@ -3064,6 +3402,18 @@ CARDS['znakovi-opasnosti'] = {
   title: 'Znakovi opasnosti (trougao = najava, ne naredba)',
   html: `
 <p><b>Ključ za slikovna pitanja:</b> znak opasnosti UPOZORAVA unapred, pa je tačan odgovor uvek NAJAVA — počinje sa <b>„nailazak na...", „približavanje...", „blizina...", „udaljenost...", „mesto od koga počinje..."</b>. Ako ponuđeni odgovor zvuči kao naredba („moraju se kretati", „zabranjeno je") ili kao opis izgrađenog objekta („posebno izgrađena staza", „mesto na kome se nalazi...") — to je zamka iz druge porodice znakova.</p>
+<svg viewBox="0 0 320 168" class="crtez" role="img" aria-label="Znak opasnosti je jednakostranični trougao sa vrhom naviše, bela osnova, crveni okvir. Samo tri nisu trougao: jednostruki i dvostruki Andrejin krst i kosnici. Jedini trougao sa žutom osnovom je radovi na putu.">
+  <polygon points="44,16 76,70 12,70" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round"/>
+  <text x="44" y="62" text-anchor="middle" font-size="22" font-weight="bold" fill="currentColor">!</text>
+  <text x="92" y="34" font-size="12" font-weight="bold" fill="currentColor">trougao, vrh naviše</text>
+  <text x="92" y="54" font-size="12" fill="currentColor">bela osnova, crveni okvir</text>
+  <text x="92" y="74" font-size="12" fill="currentColor">(Pravilnik čl. 19 i 20)</text>
+  <text x="14" y="102" font-size="13" font-weight="bold" fill="currentColor">Tačan odgovor je uvek NAJAVA:</text>
+  <text x="26" y="122" font-size="12" fill="currentColor">„nailazak na…" „približavanje…" „blizina…"</text>
+  <text x="14" y="146" font-size="13" font-weight="bold" fill="currentColor">Tri koja NISU trougao:</text>
+  <text x="26" y="164" font-size="12" fill="currentColor">Andrejin krst (jednostruki i dvostruki) · kosnici</text>
+</svg>
+<p class="mut napomena">Ako ponuđeni odgovor zvuči kao naredba („moraju se kretati") ili kao opis izgrađenog objekta — to je zamka iz druge porodice znakova. Jedini trougao sa <b>žutom</b> osnovom je „radovi na putu".</p>
 <p><b>Oblik i boja:</b> jednakostranični trougao sa vrhom naviše, bela osnova, crveni okvir, crni simboli (Pravilnik čl. 19 i 20). Samo tri znaka opasnosti NISU trougao nego pravougaonik: <b>Andrejin krst</b> (jednostruki i dvostruki) i <b>kosnici</b>. Jedini trougao sa <b>ŽUTOM</b> osnovom je „radovi na putu".</p>
 
 <div class="kPodH"><b class="kPodNaslov">Postavljanje — brojke koje se pitaju</b>
@@ -3406,6 +3756,27 @@ CARDS['zn-ob-ostalo'] = {
 <tr><td>kamera</td><td>mesto na deonici od kojeg počinje <b>snimanje saobraćaja fiksnim tehničkim uređajima</b> — mamci: radarska kontrola, vozilo-presretač</td></tr>
 </table>
 <p style="margin-top:10px"><b>2. Tabla na granici:</b> plava tabla na kojoj je gore <b>zastava Srbije</b>, natpis „Srbija" i ovalna oznaka SRB, ispod nje <b>četiri reda</b> — crna silueta naselja, precrtana silueta naselja, <b>plavi</b> kvadrat sa automobilom (motoput) i <b>zeleni</b> kvadrat sa simbolom autoputa — i uz svaki red <b>ograničenje brzine u crvenom krugu</b> (50, 80, 100, 130), a na dnu <b>simbol svetlosnog snopa fara</b> sa oznakom „00-24".<!-- SVG: plava tabla sa zastavom, natpisom Srbija i oznakom SRB, ispod četiri bela reda sa siluetama i crvenim krugovima brzina, u dnu red sa simbolom fara i natpisom 00-24 --> Znači: <b>opšte ograničenje najveće dozvoljene brzine kretanja vozila prema kategoriji puta</b> i obaveza upotrebe <b>svetla</b> na teritoriji Republike Srbije. Mamci: „srednja brzina" i „preporučene brzine" — na tabli su opšta OGRANIČENJA, a brojevi stoje u crvenim krugovima, koji uvek znače zabranu.</p>
+<svg viewBox="0 0 320 196" class="crtez" role="img" aria-label="Plava tabla na granici: opšta ograničenja brzine po kategoriji puta — naselje pedeset, van naselja osamdeset, motoput sto, autoput sto trideset — i obaveza upotrebe svetla od nula do dvadeset četiri časa.">
+  <rect x="86" y="8" width="148" height="180" rx="8" fill="currentColor" opacity=".1" stroke="currentColor" stroke-width="2"/>
+  <text x="160" y="30" text-anchor="middle" font-size="13" font-weight="bold" fill="currentColor">SRBIJA · SRB</text>
+  <g stroke="currentColor" stroke-width="2" fill="none">
+    <circle cx="204" cy="56" r="15"/><circle cx="204" cy="92" r="15"/><circle cx="204" cy="128" r="15"/><circle cx="204" cy="164" r="15"/>
+  </g>
+  <text x="204" y="61" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">50</text>
+  <text x="204" y="97" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">80</text>
+  <text x="204" y="133" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">100</text>
+  <text x="204" y="169" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">130</text>
+  <text x="100" y="61" font-size="12" fill="currentColor">naselje</text>
+  <text x="100" y="97" font-size="12" fill="currentColor">van naselja</text>
+  <text x="100" y="133" font-size="12" fill="currentColor">motoput</text>
+  <text x="100" y="169" font-size="12" fill="currentColor">autoput</text>
+  <text x="14" y="56" font-size="12" font-weight="bold" fill="currentColor">crveni krug</text>
+  <text x="14" y="76" font-size="12" fill="currentColor">= ZABRANA,</text>
+  <text x="14" y="96" font-size="12" fill="currentColor">ne preporuka</text>
+  <text x="14" y="140" font-size="12" font-weight="bold" fill="currentColor">svetla</text>
+  <text x="14" y="160" font-size="12" fill="currentColor">00–24 h</text>
+</svg>
+<p class="mut napomena">Mamci su „srednja brzina" i „preporučene brzine". Na tabli su <b>opšta ograničenja</b>, a brojevi stoje u crvenim krugovima — a crveni krug uvek znači zabranu.</p>
 <p style="margin-top:10px"><b>3. Razdelno ostrvo i oštra krivina (žuto-crno / crno-belo):</b> tabla na vrhu razdelnog ostrva ima dve varijante, a od varijante zavisi koji se znak postavlja iznad nje (Pravilnik čl. 35):</p>
 <table>
 <tr><th>Varijanta table (uspravna, uska)</th><th>Šta ide IZNAD nje</th></tr>
@@ -3440,6 +3811,18 @@ CARDS['policajac-znaci'] = {
   title: 'Znaci i naredbe policijskog službenika',
   html: `
 <p><b>Ovo je najjači znak na putu.</b> Znaci i naredbe ovlašćenog lica <b>imaju prvenstvo u odnosu na saobraćajnu signalizaciju i propisana pravila saobraćaja</b> (ZOBS čl. 166). Zato na slikama iz ove oblasti namerno stoje i STOP znak i zeleno svetlo na semaforu — dok policajac reguliše, oni se ne gledaju. Isto važi i za pravilo desne strane: odgovor „mogu pravo kad propustim vozila sa puta koji se ukršta" je uvek mamac.</p>
+<svg viewBox="0 0 320 194" class="crtez" role="img" aria-label="Naredba ovlašćenog lica ide iznad signalizacije i iznad pravila saobraćaja. Znaci se daju rukama i položajem tela, svetlosnim i zvučnim uređajima i stop tablicom.">
+  <rect x="60" y="10" width="200" height="34" rx="8" fill="currentColor" opacity=".3" stroke="currentColor" stroke-width="2"/>
+  <rect x="40" y="56" width="240" height="32" rx="8" fill="currentColor" opacity=".16"/>
+  <rect x="20" y="100" width="280" height="32" rx="8" fill="currentColor" opacity=".08"/>
+  <text x="160" y="32" text-anchor="middle" font-size="13" font-weight="bold" fill="currentColor">1. ovlašćeno lice</text>
+  <text x="160" y="77" text-anchor="middle" font-size="12" fill="currentColor">2. saobraćajna signalizacija</text>
+  <text x="160" y="121" text-anchor="middle" font-size="12" fill="currentColor">3. pravila saobraćaja</text>
+  <text x="14" y="152" font-size="12" font-weight="bold" fill="currentColor">Znaci se daju:</text>
+  <text x="14" y="172" font-size="12" fill="currentColor">rukama i položajem tela · svetlosnim i zvučnim</text>
+  <text x="14" y="190" font-size="12" fill="currentColor">uređajima · „stop tablicom"</text>
+</svg>
+<p class="mut napomena">Zato na slikama namerno stoje i STOP znak i zeleno svetlo — dok policajac reguliše, oni se ne gledaju. Mamci: „zastavicom" (to su radnici na radovima), „usmeno" (usmeno se daju <b>naredbe</b>, ne znaci) i „znakovima sa izmenljivim sadržajem" (to je signalizacija).</p>
 
 <p><b>Čime se daju znaci:</b> rukama, odnosno <b>položajem tela</b>, uređajima za davanje svetlosnih i zvučnih znakova i <b>„stop tablicom"</b>. <span class="mut">Mamci: „zastavicom za regulisanje saobraćaja" — zastavice (crvena i zelena) idu uz regulisanje na mestu radova, gde saobraćaj regulišu najmanje dva radnika izvođača; „usmeno" — usmeno se daju <i>naredbe</i>, a ne znaci; „znakovima sa izmenljivim sadržajem poruka" — to je signalizacija na putu, ne znak policajca.</span></p>
 
@@ -3572,6 +3955,18 @@ CARDS['uredjaji-oprema'] = {
   title: 'Uređaji i oprema vozila',
   html: `
 <p><b>Ova oblast je čista memorija brojeva.</b> Svako pitanje nosi <b>2 poena</b>, a ponuđeni odgovori razlikuju se samo po cifri ili po jednoj reči („najmanje" naspram „najviše", „bela" naspram „bela ili žuta"). Bliže uslove — dimenzije, uređaje, sklopove i opremu — propisuje <b>Pravilnik o podeli motornih i priključnih vozila i tehničkim uslovima za vozila u saobraćaju na putevima</b>. <span class="mut">Mamci: „Zakonom o bezbednosti saobraćaja na putevima" i „Pravilnikom o tehničkom pregledu vozila".</span> ZOBS (čl. 246) daje samo okvir: vozilo mora imati ispravne sve propisane uređaje i opremu, a napred ne sme davati ni odbijati <b>crvenu</b>, pozadi <b>belu</b> svetlost, osim izuzetaka koje predviđa taj pravilnik.</p>
+<svg viewBox="0 0 320 168" class="crtez" role="img" aria-label="Bliže uslove o uređajima i opremi propisuje Pravilnik o podeli motornih i priključnih vozila. ZOBS daje samo okvir: napred se ne sme davati ni odbijati crvena, pozadi bela svetlost.">
+  <rect x="6" y="10" width="308" height="50" rx="8" fill="none" stroke="currentColor" stroke-width="2"/>
+  <text x="160" y="30" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">Bliže uslove propisuje:</text>
+  <text x="160" y="50" text-anchor="middle" font-size="12" fill="currentColor">Pravilnik o podeli motornih i priključnih vozila</text>
+  <text x="14" y="84" font-size="14" font-weight="bold" fill="currentColor">✗</text>
+  <text x="34" y="84" font-size="12" fill="currentColor">„Zakonom o bezbednosti saobraćaja na putevima"</text>
+  <text x="14" y="106" font-size="14" font-weight="bold" fill="currentColor">✗</text>
+  <text x="34" y="106" font-size="12" fill="currentColor">„Pravilnikom o tehničkom pregledu vozila"</text>
+  <text x="14" y="136" font-size="13" font-weight="bold" fill="currentColor">ZOBS daje samo okvir (čl. 246):</text>
+  <text x="26" y="158" font-size="12" fill="currentColor">napred nikad crvena · pozadi nikad bela svetlost</text>
+</svg>
+<p class="mut napomena">Svako pitanje nosi 2 poena, a ponude se razlikuju samo po cifri ili po jednoj reči („najmanje" naspram „najviše", „bela" naspram „bela ili žuta") — zato se ovde čita sporo.</p>
 
 <p><b>Dometi svetala — tabela koja nosi najviše pitanja:</b></p>
 <table>
@@ -3860,6 +4255,18 @@ CARDS['kretanje-po-putu'] = {
   html: `
 <p><b>Osnovno (čl. 35):</b> vozilo se kreće <b>desnom stranom kolovoza</b> i drži se <b>što bliže desnoj ivici</b> —
 toliko blizu da, s obzirom na brzinu i stanje puta, ne ugrožava druge ni sebe.</p>
+<svg viewBox="0 0 320 176" class="crtez" role="img" aria-label="Pravilo je desna strana i što bliže desnoj ivici. U naselju, kad za tvoj smer ima najmanje dve trake, smeš i levom trakom — ali samo ako ne ometaš one iza sebe. Teretno preko 3,5 tone, sporo vozilo i nemotorno vozilo ostaju desno.">
+  <rect x="0" y="18" width="320" height="30" fill="currentColor" opacity=".08"/>
+  <rect x="0" y="52" width="320" height="30" fill="currentColor" opacity=".14"/>
+  <line x1="0" y1="50" x2="320" y2="50" stroke="currentColor" stroke-width="2" stroke-dasharray="10 8"/>
+  <text x="160" y="38" text-anchor="middle" font-size="12" fill="currentColor">leva traka — samo ako ne ometaš one iza</text>
+  <text x="160" y="72" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">desna traka — pravilo</text>
+  <text x="14" y="104" font-size="13" font-weight="bold" fill="currentColor">Levom trakom smeš SAMO ako:</text>
+  <text x="26" y="124" font-size="12" fill="currentColor">si u naselju · za tvoj smer ima bar dve trake</text>
+  <text x="14" y="150" font-size="13" font-weight="bold" fill="currentColor">Uvek desno ostaju:</text>
+  <text x="26" y="170" font-size="12" fill="currentColor">teretno preko 3,5 t · sporije od 40 km/h · nemotorna</text>
+</svg>
+<p class="mut napomena">I ta tri izuzetka smeju levo pred raskrsnicom, pred skretanjem ulevo i pri preticanju.</p>
 <p><b>U naselju, kad za tvoj smer ima najmanje dve trake</b>, smeš i trakom koja nije uz desnu ivicu — ali samo
 ako time <b>ne ometaš one iza sebe</b>. To ne važi za teretno vozilo preko 3.500 kg, za vozilo koje na ravnom
 putu ne može preko 40 km/h i za vozila koja nisu motorna: oni ostaju desno, osim pred raskrsnicom, pred
@@ -3880,6 +4287,24 @@ skretanje, polukružno okretanje, obilaženje, preticanje, vožnja unazad, isklj
 smeju da počnu tek <b>kad se uveriš</b> da radnju možeš da izvedeš bezbedno i propisno. O nameri obaveštavaš
 <b>jasno i blagovremeno</b> pokazivačem pravca (ako ga nema — znakom rukom), znak daješ <b>sve vreme</b> radnje
 i prestaješ čim je završiš.</p>
+<svg viewBox="0 0 320 150" class="crtez" role="img" aria-label="Redosled je uvek isti: uveri se da radnju možeš bezbedno, najavi je pokazivačem pravca jasno i blagovremeno, drži znak sve vreme radnje i prestani čim je završiš. Naglo menjanje vožnje je dozvoljeno samo radi izbegavanja neposredne opasnosti.">
+  <rect x="6" y="14" width="70" height="52" rx="8" fill="none" stroke="currentColor" stroke-width="2"/>
+  <rect x="86" y="14" width="70" height="52" rx="8" fill="none" stroke="currentColor" stroke-width="2"/>
+  <rect x="166" y="14" width="70" height="52" rx="8" fill="none" stroke="currentColor" stroke-width="2"/>
+  <rect x="246" y="14" width="68" height="52" rx="8" fill="none" stroke="currentColor" stroke-width="2"/>
+  <text x="41" y="38" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">1. uveri</text>
+  <text x="41" y="54" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">se</text>
+  <text x="121" y="38" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">2. najavi</text>
+  <text x="121" y="54" text-anchor="middle" font-size="12" fill="currentColor">pokazivač</text>
+  <text x="201" y="38" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">3. izvedi</text>
+  <text x="201" y="54" text-anchor="middle" font-size="12" fill="currentColor">znak traje</text>
+  <text x="280" y="38" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">4. ugasi</text>
+  <text x="280" y="54" text-anchor="middle" font-size="12" fill="currentColor">znak</text>
+  <text x="14" y="96" font-size="13" font-weight="bold" fill="currentColor">Naglo kočenje, usporavanje, skretanje:</text>
+  <text x="26" y="116" font-size="12" fill="currentColor">samo radi izbegavanja NEPOSREDNE opasnosti</text>
+  <text x="14" y="144" font-size="12" fill="currentColor">„Nisam na vreme zauzeo položaj" nikad nije opravdanje.</text>
+</svg>
+<p class="mut napomena">Ako pokazivača nema — znak se daje rukom. A kad se uključuješ iz dvorišta ili garaže bez dovoljne preglednosti (čl. 33), potrebno je lice van vozila koje ti daje znakove.</p>
 <p><b>Naglo menjanje načina vožnje</b> (naglo kočenje, usporavanje, skretanje) dozvoljeno je <b>samo radi
 izbegavanja neposredne opasnosti</b>. Sve ostalo mora postepeno i predvidivo — zato „nisam na vreme zauzeo
 položaj" nikad nije opravdanje.</p>

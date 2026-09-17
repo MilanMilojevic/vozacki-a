@@ -1138,6 +1138,32 @@ async function proveraBodovanja2() {
       }
     }
 
+    // ---- 2ao) SVAKA TEMA IMA VIZUELNI PRILOG (v132) ----
+    // Milan: „bukvalno svaki i to svaki svaki pojam u pojmovniku može da se dodatno objasni
+    // i vizuelno — bar na neki način, sa nekom tabelom, grafikonom ili tako nečim."
+    // Tema je pasus-naslov u kartici (kPodNaslov); prilog je crtež, tabela ili mreža polja.
+    {
+      const VIZ = /<svg|<table|class="vgrid|class="signRow|class="znGrid/;
+      const bez = [];
+      let segmenata = 0;
+      for (const [k, c] of Object.entries(window.EXPLAIN.cards)) {
+        const h = c.h.l;
+        const re = /<[^>]*class="[^"]*kPodNaslov[^"]*"[^>]*>([\s\S]*?)<\/[a-z0-9]+>/gi;
+        const poz = []; let m;
+        while ((m = re.exec(h))) poz.push({ i: m.index, naslov: m[1].replace(/<[^>]+>/g, '').trim() });
+        const oceni = (seg, tema) => {
+          if (seg.length <= 400) return;          // dve rečenice nisu tema nego napomena
+          segmenata++;
+          if (!VIZ.test(seg)) bez.push(k + ' | ' + tema);
+        };
+        if (!poz.length) { oceni(h, '(cela kartica)'); continue; }
+        oceni(h.slice(0, poz[0].i), '(uvod)');
+        for (let i = 0; i < poz.length; i++) oceni(h.slice(poz[i].i, i + 1 < poz.length ? poz[i + 1].i : h.length), poz[i].naslov);
+      }
+      ok('pojmovnik: svaka tema ima vizuelni prilog (' + segmenata + ' tema' + (bez.length ? ', bez priloga: ' + bez.join('; ') : '') + ')',
+        segmenata > 150 && bez.length === 0);
+    }
+
     // ---- 2b) ŠANSA DA POLOŽIŠ i pravilo o simulacijama ----
     {
       const sz = window.__dev.sansaZaProlaz;
