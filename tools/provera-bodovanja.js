@@ -1170,6 +1170,40 @@ async function proveraBodovanja2() {
         segmenata > 150 && bez.length === 0);
     }
 
+    // ---- 2as) NEODGOVORENO NIJE POGREŠNO (v139) ----
+    // Ispit koji predaš sa neodgovorenim pitanjima nosi 0 poena za njih — to se ne dira.
+    // Ali u NAPREDAK ta pitanja nisu smela da uđu kao greška: red za ponavljanje je posle
+    // svakog ispita dobijao i ono što nisi stigao ni da pročitaš.
+    {
+      const S9 = S();
+      const staro9 = S9.q;
+      S9.q = {};
+      await naPocetnu();
+      document.querySelector('.menuBtn[data-nav="sim"]').click(); await cekaj(400);
+      const sim9 = window.__dev.sim;
+      const svi9 = sim9.qs.map((sq) => sq.q.id);
+      // odgovori TAČNO na prva tri, ostala 38 ostavi neodgovorena
+      // izbor se upisuje pravo u stanje ispita — finishSim čita sq.chosen, crtanje nije potrebno
+      for (let i = 0; i < 3; i++) {
+        const sq = sim9.qs[i];
+        const tacni = sq.q.ch.filter((c) => c.ok).map((c) => c.id);
+        sq.chosen = new Set(tacni.slice(0, sq.q.req));
+      }
+      // predaja: potvrda je window.confirm
+      const stariConfirm = window.confirm; window.confirm = () => true;
+      el2('btnFinishSim').click(); await cekaj(700);
+      window.confirm = stariConfirm;
+      const odgovoreni = svi9.slice(0, 3), neodgovoreni = svi9.slice(3);
+      const uNapretku = neodgovoreni.filter((id) => S9.q[id]);
+      ok('ispit: neodgovorena pitanja ne ulaze u napredak kao pogrešna (' + uNapretku.length + ' od ' + neodgovoreni.length + ')',
+        uNapretku.length === 0 && odgovoreni.every((id) => S9.q[id] && S9.q[id].a === 1));
+      const rec9 = (S9.sims || [])[(S9.sims || []).length - 1];   // novi ispit se dodaje na KRAJ
+      ok('ispit: neodgovorena pitanja i dalje stoje u pregledu rezultata',
+        !!rec9 && Array.isArray(rec9.wrong) && neodgovoreni.every((id) => rec9.wrong.includes(id)));
+      S9.q = staro9;
+      await naPocetnu();
+    }
+
     // ---- 2ar) SRPSKI BROJ + IMENICA (v138) ----
     // Devet mesta je pisalo „3 novih", „u 1 dana", „poslednjih 2", „nosi 2 znakova" — broj uz
     // tvrdu reč. Sve ide kroz uzBroj(), pa se proverava na granicama 1 / 2 / 5.

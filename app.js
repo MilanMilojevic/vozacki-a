@@ -1052,6 +1052,10 @@
     const c = opts.container;
     c.dataset.qid = q.id;
     const zapamceno = ponovniPrikaz && opts.recordKey ? prikazPitanja.get(opts.recordKey) : null;
+    // keš važi samo za prikaz koji je TRENUTNO na ekranu (promena pisma ga ponovo crta).
+    // Svaki NOV ulazak na istu poziciju kreće od nule — inače bi „dalje pa nazad" pokazalo
+    // stari odgovor i zabeležilo ga po drugi put.
+    if (!ponovniPrikaz && opts.recordKey) prikazPitanja.delete(opts.recordKey);
     let shuffled;
     if (zapamceno) {
       shuffled = zapamceno.order.map((id) => q.ch.find((x) => x.id === id)).filter(Boolean);
@@ -1154,6 +1158,10 @@
     markWrap.appendChild(cb); markWrap.appendChild(document.createTextNode(' ' + L('mark')));
     actions.appendChild(markWrap);
     c.appendChild(actions);
+    // posle prelaska na novo pitanje fokus mora da uđe U pitanje: čitač ekrana ga tada
+    // pročita, a Tab kreće odatle, a ne od vrha strane. Straža je ista kao u show():
+    // ako je fokus već negde (npr. na dugmetu pisma), ne otima se.
+    if (document.activeElement === document.body) { c.tabIndex = -1; c.focus({ preventScroll: true }); }
     // već odgovoreno u ovom prolazu: pokaži isti ishod (beleženje preskače lastRecordKey čuvar)
     if (zapamceno && zapamceno.odgovoreno) finish(shuffled.filter((ch) => zapamceno.odgovoreno.includes(ch.id)));
 
@@ -2006,7 +2014,10 @@
         // kartica se ponovo gradi, pa bi fokus pao na telo strane — tastatura bi
         // posle svakog izbora morala ispočetka. Vraća se na isti odgovor.
         const nov = el('simQCard').querySelectorAll('.choice')[redni];
-        if (nov && document.activeElement === document.body) nov.focus({ preventScroll: true });
+        // i sama kartica se sad fokusira posle crtanja (da čitač pročita novo pitanje),
+        // pa „fokus je na telu strane" više nije dovoljan uslov — gleda se i kartica
+        const f0 = document.activeElement;
+        if (nov && (f0 === document.body || f0 === el('simQCard'))) nov.focus({ preventScroll: true });
       });
       c.appendChild(b);
     });
@@ -2020,6 +2031,10 @@
     markWrap.appendChild(cb); markWrap.appendChild(document.createTextNode(' ' + L('markSim')));
     actions.appendChild(markWrap);
     c.appendChild(actions);
+    // posle prelaska na novo pitanje fokus mora da uđe U pitanje: čitač ekrana ga tada
+    // pročita, a Tab kreće odatle, a ne od vrha strane. Straža je ista kao u show():
+    // ako je fokus već negde (npr. na dugmetu pisma), ne otima se.
+    if (document.activeElement === document.body) { c.tabIndex = -1; c.focus({ preventScroll: true }); }
     simSnimi();        // JEDNO mesto: svaka promena pitanja/izbora prolazi kroz crtanje
   }
   // Kao na ispitu (SaveUserInput u ep.js): pitanje sa VIŠE odgovora ne može da se napusti dok
@@ -2077,7 +2092,9 @@
       const okSet = new Set(sq.q.ch.filter((x) => x.ok).map((x) => x.id));
       const ok = sq.chosen.size === okSet.size && [...sq.chosen].every((id) => okSet.has(id));
       if (sq.marked) qs(sq.q.id).marked = 1;   // obeleženo u simulaciji ostaje u tvojoj listi
-      record(sq.q.id, ok);
+      // neodgovoreno NIJE pogrešno: u rezultatu nosi 0 poena (to se ne dira), ali u napredak
+      // ne sme da uđe kao greška — inače posle svakog ispita u red ulazi i ono što nisi video
+      if (sq.chosen.size > 0) record(sq.q.id, ok);
       const pc = perCat[sq.q.cat] || (perCat[sq.q.cat] = { n: 0, ok: 0, pts: 0, got: 0 });
       pc.n++; pc.pts += sq.q.pts;
       if (ok) { score += sq.q.pts; pc.ok++; pc.got += sq.q.pts; }

@@ -484,6 +484,10 @@ body.uSimulaciji #podnozje { display: none; }
 .bcLink { color: var(--mut); text-decoration: none; border-bottom: 1px dotted var(--line);
   background: none; border-radius: 0; padding: 0; font: inherit; cursor: pointer; }
 .bcLink:hover { color: var(--blue); border-bottom-color: var(--blue); }
+/* Naziv podoblasti iz baze ume da ima i 840 znakova (podoblast 178). U mrvicama iznad
+   pitanja se zato seče tačkicama; ceo naziv ostaje u title i u aria-label. */
+.qMeta > span { min-width: 0; }
+.qMeta .bcLink { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; vertical-align: bottom; }
 .jumpBox { display: flex; gap: 5px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
 .jumpBox .unosPoruka { flex-basis: 100%; max-width: 20em; text-align: right; }
 .jumpBox input { width: 74px; padding: 5px 8px; border: 1px solid var(--line); border-radius: 6px; font: inherit; font-size: var(--fs-sm); background: var(--card); color: var(--ink); }
@@ -516,6 +520,11 @@ body.uSimulaciji #podnozje { display: none; }
 
 @media (max-width: 560px) {
   html { font-size: 15px; }
+  /* iOS Safari sam uveća CELU stranu kad fokusiraš polje manje od 16px — i ne vrati je
+     posle. Pod od 16px to sprečava, a podešavanje veličine slova (90–125%) i dalje radi. */
+  .searchBox, #examDate { font-size: max(16px, 1rem); }
+  .jumpBox input { font-size: max(16px, var(--fs-sm)); }
+  .planPolje input { font-size: max(16px, var(--fs-md)); }
   /* Na telefonu ime oblasti ide u svoj red, a traka napretka i brojač u sledeći.
      Ranije je ime imalo flex-basis:100% u redu koji se NE prelama, pa je traka
      bila stisnuta na 0px — napredak se prosto nije video. */
