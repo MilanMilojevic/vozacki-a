@@ -1439,6 +1439,77 @@ async function proveraBodovanja2() {
         const pt = document.querySelector('#homeSummary .planBox').textContent.replace(/\s+/g, ' ');
         ok('sve otvoreno: presuda kaže da zaostala ponavljanja ne staju', pt.includes('Sve gradivo je otvoreno') && pt.includes('ne staju'));
       }
+
+      // ---- 3c) VODIČ: tekst koraka mora da bude ŽIVO POLJE ----
+      // Čvor dijaloga ostaje isti kroz sve korake, pa se dijalog ne „otvara" iznova i fokus
+      // na „Dalje" pročita samo ime dugmeta. Bez živog polja tekst vodiča nema ko da čuje.
+      {
+        await naPocetnu();
+        S().tour = 0;
+        const bv = [...document.querySelectorAll('button')].find((b) => /Vodič|Водич/.test(b.textContent));
+        if (!bv) ok('vodič: dugme za ponovno pokretanje postoji', false);
+        else {
+          bv.click(); await cekaj(700);
+          const tip = el2('tourTip');
+          const tt = tip && tip.querySelector('.tourText');
+          ok('vodič: tekst koraka je živo polje koje čitač objavljuje',
+            !!tt && tt.getAttribute('role') === 'status' && tt.getAttribute('aria-live') === 'polite'
+            && tip.getAttribute('aria-describedby') === tt.id && tt.textContent.trim().length > 10);
+          const prvi = tt ? tt.textContent : '';
+          const dalje = el2('tourNext');
+          if (dalje) { dalje.click(); await cekaj(400); }
+          const tt2 = el2('tourTip') && el2('tourTip').querySelector('.tourText');
+          ok('vodič: sledeći korak menja ISTI čvor (inače promenu niko ne objavljuje)',
+            !!tt2 && tt2 === tt && tt2.textContent !== prvi);
+          const preskoci = el2('tourSkip');
+          if (preskoci) { preskoci.click(); await cekaj(250); }
+          S().tour = 1;
+        }
+      }
+
+      // ---- 3d) TRAKA PO OBLASTIMA: plavi deo mora da ima tekstualni parnjak ----
+      // Tri tona na svetloj kartici ne mogu svi da budu 3:1 jedan prema drugom (ceo raspon
+      // podloga → plavo je 4,8:1), pa boja ne sme da bude jedini nosilac podatka.
+      {
+        document.querySelector('[data-nav="stats"]').click(); await cekaj(400);
+        const trake = [...document.querySelectorAll('.catBar')];
+        const bez = trake.filter((b) => !(b.getAttribute('aria-label') || '').trim() || b.getAttribute('role') !== 'img');
+        ok('traka oblasti: svaka traka ima ime i ulogu slike (' + trake.length + ' traka, bez imena: ' + bez.length + ')',
+          trake.length > 5 && bez.length === 0);
+        await naPocetnu();
+      }
+
+      // ---- 3e) PODEŠAVANJA: čuvanje cilja ne sme da baci stranu na vrh ----
+      // Kartica je četvrti blok početne; skok na vrh je odnosio i potvrdu upisanu u nju.
+      {
+        // blok iznad ostavlja uključen auto-cilj, a tada je „Sačuvaj cilj" onemogućeno —
+        // klik bi tiho ništa ne uradio i provera bi merila prazno
+        S().plan = null;
+        await naPocetnu();
+        const bp = [...document.querySelectorAll('button')].find((b) => /Podešavanja|Подешавања/.test(b.textContent));
+        if (bp && bp.getAttribute('aria-expanded') !== 'true') { bp.click(); await cekaj(300); }
+        const pg = el2('planGrupa');
+        if (!pg || !el2('btnPlanSave')) ok('podešavanja: kartica cilja je otvorena', false);
+        else {
+          pg.scrollIntoView({ block: 'center' }); await cekaj(200);
+          const pre = Math.round(window.scrollY);
+          // „Nova pitanja" ume da bude ugašeno (sve odgovoreno) i da mu je gornja granica 1,
+          // pa se cilj upisuje kroz „Ponavljanja" — ono prima broj do veličine baze.
+          el2('planNovih').value = '';
+          el2('planPon').value = '20';
+          el2('btnPlanSave').click(); await cekaj(400);
+          const por = el2('planPoruka');
+          const r = por ? por.getBoundingClientRect() : null;
+          const dn = el2('donjaNav');
+          const dno = window.innerHeight - (dn && getComputedStyle(dn).display !== 'none' ? dn.offsetHeight : 0);
+          ok('podešavanja: čuvanje cilja ne baca stranu na vrh (bilo ' + pre + ', sad ' + Math.round(window.scrollY) + ')',
+            pre > 200 && window.scrollY > pre - 200);
+          ok('podešavanja: potvrda o sačuvanom cilju je u vidokrugu',
+            !!r && r.top >= 0 && r.bottom <= dno && (por.textContent || '').trim().length > 5);
+          S().plan = null;
+          await naPocetnu();
+        }
+      }
     }
 
   } catch (e) {

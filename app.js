@@ -364,6 +364,7 @@
     skokVanOpsega: { l: 'Ovaj spisak ima @3. Unesi broj od @1 do @2.', c: 'Овај списак има @3. Унеси број од @1 до @2.' },
     planMaxNovih: { l: 'Neodgovorenih je ostalo @2 — više od toga ne može stati u jedan dan.', c: 'Неодговорених је остало @2 — више од тога не може стати у један дан.' },
     officialBase: { l: 'zvanična baza pitanja', c: 'званична база питања' },
+    catBarOpis: { l: 'tačno poslednji put: @1', c: 'тачно последњи пут: @1' },
     naIspituTip: { l: 'Koliko pitanja iz ove podoblasti nosi svaki pravi ispit — izvedeno iz zvaničnog šablona testa.', c: 'Колико питања из ове подобласти носи сваки прави испит — изведено из званичног шаблона теста.' },
     qNumTip2: { l: 'Klik: kopiraj adresu ovog pitanja', c: 'Клик: копирај адресу овог питања' },
     uvecajSliku: { l: 'Uvećaj sliku', c: 'Увећај слику' },
@@ -869,6 +870,9 @@
     if (skrolKljuc === kljuc && el('view-browse').classList.contains('active')) skrolSpisak = { kljuc, y: window.scrollY };
     skrolKljuc = kljuc;
   }
+  // Kontrola u podešavanjima ponovo crta CELU početnu. Kartica je četvrti blok strane, pa
+  // je skok na vrh odnosio i potvrdu upisanu u samu karticu i mesto na kom si radio.
+  let cuvajSkrol = false;
   function show(v) {
     const bio = views.find((x) => el('view-' + x).classList.contains('active'));
     if (bio === 'browse' && v === 'question' && skrolKljuc) skrolSpisak = { kljuc: skrolKljuc, y: window.scrollY };
@@ -878,7 +882,8 @@
     // podnožje se sklanja tokom ispita — pravi ispit ga nema
     document.body.classList.toggle('uSimulaciji', v === 'sim');
     let y = 0;
-    if (ponovniPrikaz && bio === v) y = window.scrollY;   // isti ekran, drugo pismo — ostani gde si
+    if (cuvajSkrol && bio === v) y = window.scrollY;      // podešavanja: potvrda mora da ostane u vidokrugu
+    else if (ponovniPrikaz && bio === v) y = window.scrollY;   // isti ekran, drugo pismo — ostani gde si
     else if (v === 'browse') { if (skrolSpisak && skrolSpisak.kljuc === skrolKljuc) y = skrolSpisak.y; skrolSpisak = null; }
     else if (v !== 'question' && !ponovniPrikaz) skrolSpisak = null;   // otišao je nekud drugde — spisak se otvara od vrha
     window.scrollTo(0, y);
@@ -887,6 +892,8 @@
     const g = el('glavni');
     if (g && document.activeElement === document.body) g.focus({ preventScroll: true });
   }
+  // Ponovno crtanje početne IZ PODEŠAVANJA — isto kao renderHome(), samo bez skoka na vrh.
+  const osveziPodesavanja = () => { cuvajSkrol = true; try { renderHome(); } finally { cuvajSkrol = false; } };
   let current = { redraw: renderHome };
 
   // ---------- Hash rutiranje: strelice browsera napred/nazad + deep-link ----------
@@ -936,6 +943,9 @@
       return goHomeReplace('porNemaPregleda');
     }
     if (h === '#/sim') {
+      // Dok ispit traje, kapija u hashchange (jedan izlaz za sve puteve) ne pušta rutiranje
+      // ovamo, pa je `sim` ovde uvek null. Grana ostaje kao odbrana: ako se ikad pojavi put
+      // do routeTo sa živim ispitom, bolje je vratiti ga u ispit nego ga tiho izgubiti.
       if (sim) { show('sim'); sim.showReport ? renderSimReport() : renderSimQ(); return; }
       if (simNastavi()) return;              // ispit iz zapisa (npr. „nazad" posle vraćanja u aplikaciju)
       return goHomeReplace('porSimPrekinuta');
@@ -2869,6 +2879,12 @@
     const dim = document.createElement('div'); dim.id = 'tourDim';
     const tip = document.createElement('div'); tip.id = 'tourTip';
     tip.setAttribute('role', 'dialog'); tip.setAttribute('aria-modal', 'false'); tip.setAttribute('aria-label', L('tourReplay'));
+    // Tekst koraka je jedini razlog zbog kog vodič postoji, a čitaču ekrana do sada nije
+    // stizao: čvor dijaloga ostaje isti kroz sve korake, pa se ne „otvara" iznova, a fokus
+    // ide na dugme „Dalje" — pročita se samo ime dugmeta. Živo polje objavljuje svaki korak.
+    // Pravi se PRAZNO: živo polje objavljuje promenu, a ne ono što je u njemu zatečeno.
+    tip.innerHTML = '<div class="tourText" id="tourTekst" role="status" aria-live="polite"></div><div class="tourRow"></div>';
+    tip.setAttribute('aria-describedby', 'tourTekst');
     document.body.append(dim, tip);
     const clearSpot = () => { if (spot) { spot.classList.remove('tourSpot'); spot = null; } };
     const end = () => {
@@ -2887,11 +2903,11 @@
       // visok element (kartica duža od ekrana) se poravnava na VRH — centriranje bi mu
       // gurnulo početak iznad ekrana, pa korisnik gleda sredinu onoga što mu se objašnjava
       spot.scrollIntoView({ block: spot.offsetHeight > window.innerHeight * 0.6 ? 'start' : 'center' });
-      tip.innerHTML = `<div class="tourText">${escapeHtml(L(st.key))}</div>
-        <div class="tourRow"><span class="mut">${idx + 1} / ${TOUR_STEPS.length}</span>
+      tip.querySelector('.tourText').textContent = L(st.key);
+      tip.querySelector('.tourRow').innerHTML = `<span class="mut">${idx + 1} / ${TOUR_STEPS.length}</span>
         <span style="flex:1"></span>
         <button type="button" class="secondary sBtn" id="tourSkip">${escapeHtml(L('tourSkip'))}</button>
-        <button class="primary" id="tourNext">${escapeHtml(idx === TOUR_STEPS.length - 1 ? L('tourDone') : L('tourNext'))}</button></div>`;
+        <button class="primary" id="tourNext">${escapeHtml(idx === TOUR_STEPS.length - 1 ? L('tourDone') : L('tourNext'))}</button>`;
       requestAnimationFrame(() => {
         if (!spot || !tip.isConnected) return;
         const r = spot.getBoundingClientRect();
@@ -3234,7 +3250,7 @@
     };
     const accHtml = (st) => !opts.tacnost ? '' : `<span class="catAcc">${st.acc === null ? '—' : `<span class="${accClass(st.acc)}">${st.acc}%</span>`}</span>`;
     const redHtml = (labelHtml, st, tot, jak) => `<button type="button" class="catMain"><span class="catName">${jak ? '<b>' + labelHtml + '</b>' : labelHtml}</span>
-        <span class="catBar"><span class="seen" style="width:${tot ? 100 * st.seen / tot : 0}%"></span><span class="good" style="width:${tot ? 100 * st.good / tot : 0}%"></span></span>
+        <span class="catBar" role="img" title="${escapeHtml(L('catBarOpis').split('@1').join(st.good))}" aria-label="${escapeHtml(L('catBarOpis').split('@1').join(st.good))}"><span class="seen" style="width:${tot ? 100 * st.seen / tot : 0}%"></span><span class="good" style="width:${tot ? 100 * st.good / tot : 0}%"></span></span>
         <span class="catCnt">${jak ? '<b>' + st.seen + '/' + tot + '</b>' : st.seen + '/' + tot}</span>${accHtml(st)}</button>`;
     {
       const st = stat(Q);
@@ -3600,7 +3616,7 @@
       const inp = el('examDate');
       const v = inp.value;
       ocistiPoruku(inp);
-      if (v === '') { S.examDate = null; save(); renderHome(); return; }
+      if (v === '') { S.examDate = null; save(); osveziPodesavanja(); return; }
       if (!/^\d{4}-\d{2}-\d{2}$/.test(v)) { poruciUzPolje(inp, L('datumLos')); return; }
       const d = new Date(v + 'T00:00:00');
       const danas = new Date(); danas.setHours(0, 0, 0, 0);
@@ -3612,12 +3628,24 @@
       if (d < danas) { poruciUzPolje(inp, L('datumProslost')); return; }
       S.examDate = v;
       ponistiAutoKvotu();   // druga osnova računa — kvota za danas se računa iznova
-      save(); renderHome();
+      save(); osveziPodesavanja();
     });
     {
       const pn = el('planNovih'), pp = el('planPon');
       const neodg = neodgovorenih();
-      const kaziPosle = (t) => { const m = el('planPoruka'); if (m) m.textContent = t; };
+      // Potvrda se upisuje U KARTICU, ispod dugmadi — a tamo ume da bude ispod pregiba ili
+      // ispod donje trake, pa se odgovor na dodir ne vidi nigde. Strana se više ne baca na
+      // vrh (vidi osveziPodesavanja), a poruka se dovuče samo ako nije u vidokrugu.
+      const kaziPosle = (t) => {
+        const m = el('planPoruka');
+        if (!m) return;
+        m.textContent = t;
+        if (!t) return;
+        const r = m.getBoundingClientRect();
+        const dn = el('donjaNav');
+        const dno = (window.innerHeight || 0) - (dn && getComputedStyle(dn).display !== 'none' ? dn.offsetHeight : 0);
+        if (r.top < 0 || r.bottom > dno) m.scrollIntoView({ block: 'nearest' });
+      };
       const prazno = (x) => String(x.value || '').trim() === '';
       if (!neodg && !autoUkljucen) { pn.disabled = true; pn.value = ''; pn.placeholder = L('planSveOdgovoreno'); }
       [pn, pp].forEach((x) => x.addEventListener('input', () => { ocistiPoruku(x); kaziPosle(''); }));
@@ -3628,7 +3656,7 @@
         S.plan = { ...(S.plan || {}), auto: bio ? 0 : 1 };
         if (planPrazan(S.plan)) S.plan = null;
         ponistiAutoKvotu();
-        save(); renderHome();
+        save(); osveziPodesavanja();
         // poruka govori šta se STVARNO desilo: cilj je ugašen samo ako plana više nema
         poruci(bio ? (S.plan ? L('autoIskljucen') : L('planUgasen')) : (S.plan.pod ? L('autoUkljucenPod') : L('autoUkljucen')));
       });
@@ -3637,7 +3665,7 @@
         S.plan = { ...(S.plan || {}), pod: bio ? 0 : 1 };
         if (planPrazan(S.plan)) S.plan = null;
         ponistiAutoKvotu();
-        save(); renderHome();
+        save(); osveziPodesavanja();
         // uključena donja granica bez auto režima ne radi ništa — to se kaže odmah,
         // umesto da prekidač stoji upaljen i ćuti
         poruci(bio ? L('podIskljucen') : (S.plan && S.plan.auto ? L('podUkljucen') : L('podBezAuto')));
@@ -3646,14 +3674,14 @@
         const bio = !!(S.plan && S.plan.prio);
         S.plan = { ...(S.plan || {}), prio: bio ? 0 : 1 };
         if (planPrazan(S.plan)) S.plan = null;
-        save(); renderHome();
+        save(); osveziPodesavanja();
         poruci(bio ? (S.plan ? L('prioIskljucen') : L('planUgasen')) : L('lostPrioUkljucen'));
       });
       el('btnPlanSave').addEventListener('click', () => {
         if (prazno(pn) && prazno(pp)) {
           // brojevi se gase, ali prekidači (auto/prio) ostaju ako su uključeni
           S.plan = planPrazan({ ...(S.plan || {}), novih: null, pon: null }) ? null : { ...S.plan, novih: null, pon: null };
-          ponistiAutoKvotu(); save(); renderHome(); kaziPosle(S.plan ? L('planBrojeviUgaseni') : L('planUgasen')); return;
+          ponistiAutoKvotu(); save(); osveziPodesavanja(); kaziPosle(S.plan ? L('planBrojeviUgaseni') : L('planUgasen')); return;
         }
         let novih = null, pon = null;
         if (!prazno(pn)) {
@@ -3666,7 +3694,7 @@
         }
         // spread: ručni brojevi NE smeju tiho da ugase auto/prio prekidače
         S.plan = { ...(S.plan || {}), novih, pon };
-        ponistiAutoKvotu(); save(); renderHome();
+        ponistiAutoKvotu(); save(); osveziPodesavanja();
         // ne branimo veliki cilj, ali kažemo koliko je to stvarno vremena
         const dnevno = (novih || 0) + (pon || 0);
         kaziPosle(dnevno > 150 ? L('planPuno').replace('#', nQ(dnevno)) : L('planSacuvan'));
@@ -3682,13 +3710,13 @@
         // predlog se ODMAH čuva kao cilj — ranije je samo punio polja, pa je osvežavanje
         // strane vraćalo stare brojeve i izgledalo kao da se ništa nije desilo
         S.plan = { ...(S.plan || {}), novih, pon };
-        ponistiAutoKvotu(); save(); renderHome();
+        ponistiAutoKvotu(); save(); osveziPodesavanja();
         const brNovih = novih === null ? 0 : novih;
         kaziPosle((rezerva > 0 ? L('planPredlogGotov').replace('#', rezerva + ' ' + (one(rezerva) ? L('examDaysOne') : L('examDays'))) : L('planPredlogUsko'))
           .split('@1').join(brNovih + ' ' + novihPitanja(brNovih)).split('@2').join(pon));
       });
       const off = el('btnPlanOff');
-      if (off) off.addEventListener('click', () => { S.plan = null; save(); renderHome(); kaziPosle(L('planUgasen')); });
+      if (off) off.addEventListener('click', () => { S.plan = null; save(); osveziPodesavanja(); kaziPosle(L('planUgasen')); });
     }
     if (!S.tour && !window.__tourRan) {
       window.__tourRan = 1;
