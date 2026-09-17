@@ -29,6 +29,12 @@ async function proveraBodovanja2() {
   if (sessionStorage.getItem('provera.backup') === null) {
     return 'ODBIJENO: prvo pokreni proveraBodovanja() — bez rezerve bi provera obrisala pravi napredak.';
   }
+  // Deo provera MERI ono što je iscrtano (veličina slova u crtežima, sudari natpisa,
+  // animacije). U sakrivenom oknu pregledača innerWidth je 0 i sve mere su nule — tvrdnje
+  // tada padaju sa izmišljenim brojevima. Bolje odbiti rad nego prijaviti pogrešan razlog.
+  if (!window.innerWidth || !window.innerHeight) {
+    return 'ODBIJENO: okno pregledača je sakriveno (innerWidth=0) — mere iscrtanog bi bile nule. Prikaži okno pa pokreni ponovo.';
+  }
   const rez = [];
   const ok = (naziv, uslov) => rez.push((uslov ? 'PASS' : 'FAIL') + ' — ' + naziv);
   // NE setTimeout: sakriven tab (ugrađeni pregledač alata) prigušuje tajmere i do jednom u
@@ -743,6 +749,101 @@ async function proveraBodovanja2() {
       ok('tempo: prekidač preživljava učitavanje', NS2({ q: {}, plan: { pod: 1 } }).plan && NS2({ q: {}, plan: { pod: 1 } }).plan.pod === 1);
       S2.plan = null;
       document.querySelector('[data-nav="home"]').click(); await cekaj(150);
+    }
+
+    // ---- 2aj) ŠEST NALAZA REVIZIJE IZ ŠEST UGLOVA (v128) ----
+    {
+      const S3 = S();
+      const dva5 = (n) => String(n).padStart(2, '0');
+      const dan5 = (d) => d.getFullYear() + '-' + dva5(d.getMonth() + 1) + '-' + dva5(d.getDate());
+      const podOtvori = async () => { const tp = el2('podesavanjaTelo'); if (tp && tp.style.display === 'none') { el2('btnPodesavanja').click(); await cekaj(180); } };
+      const podZatvori = async () => { const tp = el2('podesavanjaTelo'); if (tp && tp.style.display !== 'none') { el2('btnPodesavanja').click(); await cekaj(180); } };
+
+      // (1) „Podesi cilj ›" pa „Sačuvaj cilj": potvrda mora da se VIDI, kartica da ostane otvorena
+      const za5 = new Date(); za5.setDate(za5.getDate() + 30);
+      S3.examDate = dan5(za5);
+      S3.plan = { novih: 10, pon: 10, auto: 0, prio: 0, pod: 0 };
+      if (S3.day) { delete S3.day.autoN; delete S3.day.autoP; }
+      await naPocetnu();
+      await podZatvori();
+      el2('btnPlanPodesi').click(); await cekaj(200);
+      ok('cilj: „Podesi cilj ›" otvara podešavanja', el2('podesavanjaTelo').style.display !== 'none');
+      el2('planNovih').value = '12'; el2('planPon').value = '14';
+      el2('btnPlanSave').click(); await cekaj(350);
+      const por = el2('planPoruka');
+      ok('cilj: potvrda o čuvanju se stvarno VIDI (kartica se ne sklapa pod nogama)',
+        !!por && /sačuvan|сачуван/i.test(por.textContent) && por.offsetParent !== null);
+      ok('cilj: posle „Podesi cilj ›" podešavanja ostaju otvorena', el2('podesavanjaTelo').style.display !== 'none');
+      await podZatvori();
+
+      // (2) „Po danima": jučerašnji dan se arhivira i bez ijednog današnjeg odgovora
+      const juce = new Date(); juce.setDate(juce.getDate() - 1);
+      const staraArhiva = Array.isArray(S3.dani) ? S3.dani.slice() : [];
+      S3.dani = [];
+      S3.day = { d: dan5(juce), n: 12, ok: 9, novih: 7, pon: 5 };
+      await naPocetnu();
+      ok('dnevnik: jučerašnji dan uđe u arhivu i pre prvog današnjeg odgovora',
+        Array.isArray(S3.dani) && S3.dani.some((x) => x.d === dan5(juce) && x.n === 12 && x.ok === 9));
+      ok('dnevnik: novi dan kreće od nule', S3.day.d === dan5(new Date()) && S3.day.n === 0);
+      S3.dani = staraArhiva;
+
+      // (3) auto bez datuma ne sme da javi i upozorenje i „cilj ispunjen"
+      S3.examDate = '';
+      S3.plan = { novih: null, pon: null, auto: 1, prio: 0, pod: 0 };
+      if (S3.day) { delete S3.day.autoN; delete S3.day.autoP; }
+      await naPocetnu();
+      ok('cilj: auto bez datuma kaže razlog', /bez datuma ispita|без датума испита/.test(planTekst()));
+      ok('cilj: auto bez datuma NE javlja „cilj je ispunjen"', !/ispunjen|испуњен/.test(planTekst()));
+      // isto na sam dan ispita
+      S3.examDate = dan5(new Date());
+      if (S3.day) { delete S3.day.autoN; delete S3.day.autoP; }
+      await naPocetnu();
+      ok('cilj: na dan ispita kvota se ne računa i to se kaže', /Ispit je danas|Испит је данас/.test(planTekst()));
+      ok('cilj: na dan ispita NE javlja „cilj je ispunjen"', !/ispunjen|испуњен/.test(planTekst()));
+
+      // (4) gašenje auta ne sme tiho da ponese „donju granicu"
+      S3.examDate = dan5(za5);
+      S3.plan = { novih: null, pon: null, auto: 1, prio: 0, pod: 1 };
+      await naPocetnu();
+      await podOtvori();
+      el2('btnPlanAuto').click(); await cekaj(300);
+      ok('cilj: gašenje auta ostavlja uključenu „donju granicu" (plan ne nestaje)',
+        !!S3.plan && !S3.plan.auto && !!S3.plan.pod);
+      await podOtvori();
+      ok('cilj: donja granica bez auta kaže da tako ništa ne radi',
+        /radi samo uz|ради само уз/.test(el2('podesavanjaTelo').textContent));
+      el2('btnPlanPod').click(); await cekaj(300);
+      ok('cilj: gašenje poslednjeg prekidača gasi ceo plan', !S3.plan);
+      await podZatvori();
+
+      // (5) podnožje javlja izdanje koje STVARNO radi, ne ono koje je provera zatekla na serveru
+      const pravaV = window.APP_V;
+      window.APP_V = 99999;
+      el2('btnScript').click(); await cekaj(200);      // applyLang -> renderPodnozje
+      const pod5 = el2('podnozje');
+      const verzijaOK = !!pod5 && !pod5.textContent.includes('99999') && pod5.textContent.includes(String(pravaV));
+      window.APP_V = pravaV;
+      el2('btnScript').click(); await cekaj(200);      // vrati pismo
+      ok('verzija: podnožje javlja izdanje koje radi, ne ono nađeno proverom ažuriranja', verzijaOK);
+
+      // (6) zapis bez vremena poslednjeg odgovora ne sme da ispiše „pre NaN dana"
+      const sub6 = (() => {
+        const broj = {};
+        for (const q of window.QUIZ.questions) broj[q.sub] = (broj[q.sub] || 0) + 1;
+        return Object.keys(broj).find((k) => broj[k] >= 3);
+      })();
+      location.hash = '#/vezba/s' + sub6; await cekaj(250);
+      const id6 = +el2('qCard').dataset.qid;
+      const staroQ = S3.q[id6];
+      S3.q[id6] = { a: 2, w: 1 };                      // bez polja last — staro stanje ili uvezen fajl
+      await naPocetnu();
+      location.hash = '#/vezba/s' + sub6; await cekaj(250);
+      const meta6 = document.querySelector('#qCard .qMeta');
+      ok('pitanje: zapis bez vremena ne ispisuje „pre NaN dana"',
+        !!meta6 && +el2('qCard').dataset.qid === id6 && !/NaN/.test(meta6.textContent) && /2× |1× /.test(meta6.textContent));
+      if (staroQ) S3.q[id6] = staroQ; else delete S3.q[id6];
+      S3.plan = null; S3.examDate = '';
+      await naPocetnu();
     }
 
     // ---- 2b) ŠANSA DA POLOŽIŠ i pravilo o simulacijama ----

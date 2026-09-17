@@ -281,6 +281,8 @@
     viskAuto: { l: ' Sutrašnja kvota će zato biti manja.', c: ' Сутрашња квота ће зато бити мања.' },
     autoNaslov: { l: 'Cilj se sam računa do ispita', c: 'Циљ се сам рачуна до испита' },
     autoOpis: { l: 'Kvota se svakog dana izvodi iz onoga što je ostalo i broja dana do ispita. Uradiš više danas — sutra ti traži manje.', c: 'Квота се сваког дана изводи из онога што је остало и броја дана до испита. Урадиш више данас — сутра ти тражи мање.' },
+    planIspitDanas: { l: 'Ispit je danas — dnevni cilj se više ne računa.', c: 'Испит је данас — дневни циљ се више не рачуна.' },
+    podBezAuto: { l: '⚠ „Moj tempo je najmanje ovo" radi samo uz „Cilj se sam računa" — bez njega tvoji brojevi ionako važe kao ceo cilj.', c: '⚠ „Мој темпо је најмање ово" ради само уз „Циљ се сам рачуна" — без њега твоји бројеви и онако важе као цео циљ.' },
     autoBezDatuma: { l: '⚠ Cilj se ne može sam računati bez datuma ispita — upiši ga iznad.', c: '⚠ Циљ се не може сам рачунати без датума испита — упиши га изнад.' },
     prosaoDatum: { l: '⚠ Upisani datum ispita (@1) je prošao. Upiši novi datum, pa će cilj i procene ponovo raditi.', c: '⚠ Уписани датум испита (@1) је прошао. Упиши нови датум, па ће циљ и процене поново радити.' },
     prioNaslov: { l: 'Prioritet po težini na ispitu', c: 'Приоритет по тежини на испиту' },
@@ -689,6 +691,8 @@
   const subOf = (q) => T({ l: D.subs[q.sub].l, c: D.subs[q.sub].c });
   function escapeHtml(s) { return s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c])); }
   function relTime(ts) {
+    // bez upotrebljivog vremena nema relativnog datuma: bolje ništa nego „pre NaN dana"
+    if (!Number.isFinite(ts)) return '';
     const sod = (t) => { const d = new Date(t); return new Date(d.getFullYear(), d.getMonth(), d.getDate()).getTime(); };
     const days = Math.round((sod(Date.now()) - sod(ts)) / DAY);
     if (days <= 0) return L('today');
@@ -850,6 +854,9 @@
   // ---------- Hash rutiranje: strelice browsera napred/nazad + deep-link ----------
   let curHash = null;
   const FILE_MODE = location.protocol === 'file:';
+  // Broj izdanja koje STVARNO radi u ovom prozoru. checkVersion() ponovo učitava version.js
+  // i time menja window.APP_V — zato se on ne sme čitati nigde osim u samoj proveri.
+  const BOOT_V = window.APP_V || 0;
   function setHash(h) {
     curHash = h;
     if (FILE_MODE) return;                   // file:// — adresa se ne dira (origin je "null")
@@ -1031,7 +1038,7 @@
     // Brojač: tačno i netačno ODVOJENO, ne ukupno+pogrešno. „2× odgovarano, 1× pogrešno"
     // tera čoveka da oduzima; „1× tačno · 1× netačno" se čita bez računanja.
     const hist = qr(q.id).a > 0
-      ? ` &nbsp;·&nbsp; <span class="qOk">${S.q[q.id].a - S.q[q.id].w}× ${L('tacnoLbl')}</span> · <span class="${S.q[q.id].w ? 'qBad' : 'mut'}">${S.q[q.id].w}× ${L('netacnoLbl')}</span> · ${relTime(S.q[q.id].last)}`
+      ? ` &nbsp;·&nbsp; <span class="qOk">${S.q[q.id].a - S.q[q.id].w}× ${L('tacnoLbl')}</span> · <span class="${S.q[q.id].w ? 'qBad' : 'mut'}">${S.q[q.id].w}× ${L('netacnoLbl')}</span>${relTime(S.q[q.id].last) ? ' · ' + relTime(S.q[q.id].last) : ''}`
       : '';
     meta.innerHTML = `<span><button type="button" class="bcLink" data-bc="c${q.cat}">${escapeHtml(catOf(q))}</button> › <button type="button" class="bcLink" data-bc="s${q.sub}" title="${escapeHtml(subOf(q))}">${escapeHtml(subShortName(q.sub))}</button></span>
       <span><span class="qNum" data-qid="${q.id}" title="${escapeHtml(FILE_MODE ? L('qNumTip') : L('qNumTip2'))}">#${q.id}</span> · ${poeni(q.pts)}${hist}</span>`;
@@ -1662,6 +1669,17 @@
   // renderHome() karticu pravi iznova pri svakoj izmeni, pa bi se bez ovoga zatvarala čim
   // nešto promeniš — a menjaš baš zato što si u njoj.
   let podesavanjaOtvorena = false;
+  // Jedina vrata u karticu podešavanja: pored prikaza PAMTE da je otvorena. Ranije su tri
+  // mesta otvarala karticu mimo ove zastavice, pa bi je prvo sledeće crtanje sklopilo —
+  // zajedno sa porukom koju je čovek upravo trebalo da pročita.
+  function otvoriPodesavanja() {
+    const telo = el('podesavanjaTelo'), bp = el('btnPodesavanja');
+    if (!telo || !bp) return false;
+    podesavanjaOtvorena = true;
+    telo.style.display = '';
+    bp.setAttribute('aria-expanded', 'true');
+    return true;
+  }
 
   // ---------- Sklapanje kartica — jedno ponašanje na svim mestima ----------
   // Ranije su vizuelno iste kartice imale tri različita ponašanja, a kartica pri dnu
@@ -2265,6 +2283,7 @@
 
   // ---------- Statistika ----------
   function renderStats() {
+    osveziDan();
     current = { redraw: renderStats };
     setHash('#/stats');
     renderReady();
@@ -2709,8 +2728,7 @@
       el('btnResumeBackup').addEventListener('click', resumeBackup);
       // initBackup stiže ASINHRONO posle crtanja početne — auto-otvaranje u renderHome tada
       // već nije okinulo, pa bi red ostao nevidljiv ispod sklopljenih podešavanja (pravilo v111)
-      const telo = el('podesavanjaTelo');
-      if (telo && telo.style.display === 'none') { telo.style.display = ''; const bp = el('btnPodesavanja'); if (bp) bp.setAttribute('aria-expanded', 'true'); }
+      otvoriPodesavanja();
       return;
     }
     slot.innerHTML = `<button type="button" class="secondary" id="btnConnectBackup">${L('backupConnect')}</button>`;
@@ -2858,6 +2876,13 @@
     S.day = { d: danas, n: 0, ok: 0, novih: 0, pon: 0 };
   }
 
+  // Ponoć je prošla, a dan u stanju je i dalje jučerašnji: arhiviraj ga ODMAH, ne tek kad
+  // stigne prvi odgovor. Inače statistika otvorena ujutru prećuti ceo jučerašnji dan.
+  function osveziDan() {
+    const danas = localDay();
+    if (S.day && S.day.d && S.day.d !== danas) { zapocniDan(danas); save(); }
+  }
+
   // Promena datuma ispita ili režima menja osnovu računa — zamrznuta kvota se tada baca,
   // pa se sledeće crtanje računa iznova (istog dana, iz tekućeg stanja).
   function ponistiAutoKvotu() {
@@ -2879,6 +2904,10 @@
       // uključen auto, a kvota nema od čega da se izračuna — razlog se razlikuje:
       // nema datuma / datum prošao / ispit je danas (tada niko ne planira kvote)
       autoBezDatuma: !!S.plan.auto && !auto && danaDoIspita() === null,
+      // auto je uključen, kvota nema od čega da se izračuna (nema datuma / datum prošao /
+      // ispit je danas), a ručnih brojeva nema: tada nema šta da bude „ispunjeno"
+      autoBezKvote: !!S.plan.auto && !auto && cNovih <= 0 && cPon <= 0,
+      ispitDanas: !!S.plan.auto && !auto && danaDoIspita() === 0,
       autoProsaoDatum: !!S.plan.auto && !auto && danaDoIspita() !== null && danaDoIspita() < 0,
       cNovih, uNovih, cPon, uPon,
       ostaloNovih: Math.max(0, cNovih - uNovih),
@@ -2888,6 +2917,10 @@
       nemaPon: !queueSplit().ready.length && !zaOsvezavanje().length,
     };
   }
+  // Plan više ne postoji tek kad NIJEDAN njegov deo nije uključen. Bez ovoga je gašenje
+  // jednog prekidača nosilo i ostale (npr. „donju granicu") sa sobom.
+  const planPrazan = (p) => !p || (!p.auto && !p.novih && !p.pon && !p.prio && !p.pod);
+
   function planIds() {
     const p = planStanje();
     if (!p) return [];
@@ -2940,7 +2973,7 @@
     const red = (lbl, u, c, nema, nemaLbl) => (c <= 0 ? '' : `<div class="planRed"><span class="planIme">${lbl}: <b>${u}</b> / ${c}${nema && u < c ? ` <span class="mut">(${nemaLbl})</span>` : (u < c ? ` <span class="mut">· ${L('planOstaje')} ${c - u}</span>` : '')}</span>
       <span class="planBar"><span style="width:${Math.min(100, Math.round(100 * u / c))}%"></span></span>
       <span class="mut">${u >= c || nema ? '✓' : ''}</span></div>`);
-    const ispunjen = (p.ostaloNovih === 0 || p.nemaNovih) && (p.ostaloPon === 0 || p.nemaPon);
+    const ispunjen = !p.autoBezKvote && (p.ostaloNovih === 0 || p.nemaNovih) && (p.ostaloPon === 0 || p.nemaPon);
     const ima = planIds().length;
     const naRedu = queueSplit().ready.length;
     // Ako je zaostalo više nego što staje u kvotu, kaže se ODAKLE dokle: dnevni cilj je kvota, ne dug,
@@ -2985,12 +3018,16 @@
       // datum prošao: kaže se to, a ne „nema datuma"; na sam dan ispita presuda ćuti —
       // red „ispit je danas — srećno!" iz homeExtras govori umesto nje
       if (p.autoProsaoDatum) neStize = `<div class="mut napomena">${L('prosaoDatum').split('@1').join(fmtDatum(S.examDate))}</div>`;
+      // na sam dan ispita kvota se ne računa — to se kaže umesto ćutanja, jer bi inače
+      // ostao prazan okvir sa naslovom „Dnevni cilj" i ničim u njemu
+      if (p.ispitDanas) neStize = `<div class="mut napomena">${L('planIspitDanas')}</div>`;
     }
     // Višak preko cilja se VIDI — u auto režimu on sam snižava sutrašnju kvotu.
     const visak = (p.cNovih > 0 && p.uNovih > p.cNovih)
       ? `<div class="mut napomena">${L('viskDanas').split('@1').join(p.uNovih).split('@2').join(p.cNovih).split('@3').join(p.uNovih - p.cNovih)}${p.auto && !p.pod ? L('viskAuto') : ''}</div>` : '';   // sa donjom granicom sutra NIJE manje
     // posle ispunjenog cilja ne kaže se „vidimo se sutra" dok istovremeno nešto čeka na redu
-    const dno = ispunjen ? `<span class="mut">${naRedu ? L('planIspunjenJos').split('@1').join(nQ(naRedu)) : L('planIspunjen')}</span>${naRedu ? ` <button type="button" class="secondary sBtn" data-nav="drill">${L('drill')} ›</button>` : ''}`
+    const dno = p.autoBezKvote ? ''
+      : ispunjen ? `<span class="mut">${naRedu ? L('planIspunjenJos').split('@1').join(nQ(naRedu)) : L('planIspunjen')}</span>${naRedu ? ` <button type="button" class="secondary sBtn" data-nav="drill">${L('drill')} ›</button>` : ''}`
       : !ima ? `<span class="mut">${L('planNemaDostupnih')}</span>`
         : `<button class="primary" id="btnPlanVezbaj">${L('planVezbaj')} (${ima})</button>`;
     return `<div class="planBox"><b>${L('planNaslov')}</b> &nbsp;<button type="button" class="bcLink" id="btnPlanPodesi">${L('planPodesi')} ›</button>
@@ -3108,6 +3145,7 @@
   }
 
   function renderHome() {
+    osveziDan();
     current = { redraw: renderHome };
     setHash('#/');
     const answeredCnt = Q.filter((q) => S.q[q.id] && S.q[q.id].a > 0).length;
@@ -3175,8 +3213,7 @@
       if (bpp) bpp.addEventListener('click', () => {
         // podešavanja su sklopljena (v111) — skrol i fokus u display:none ne rade NIŠTA,
         // pa se kartica prvo otvori, pa tek onda skače
-        const telo = el('podesavanjaTelo');
-        if (telo && telo.style.display === 'none') { telo.style.display = ''; el('btnPodesavanja').setAttribute('aria-expanded', 'true'); }
+        otvoriPodesavanja();
         const g = el('planGrupa');
         if (g) g.scrollIntoView({ block: 'start' });
         const pn = el('planNovih'); if (pn && !pn.disabled) pn.focus({ preventScroll: true });
@@ -3354,6 +3391,7 @@
         <div class="mut napomena">${L('autoOpis')}</div>
         <div class="mut napomena">${L('prioOpis')}</div>
         <div class="mut napomena">${L('podOpis')}</div>
+        ${S.plan && S.plan.pod && !S.plan.auto ? `<div class="mut napomena">${L('podBezAuto')}</div>` : ''}
         <div class="planPolja">
           <label class="planPolje"><span class="mut">${L('planNovih')}</span>
             <input id="planNovih" type="text" inputmode="numeric" autocomplete="off"${autoUkljucen ? ' disabled' : ''} value="${S.plan && S.plan.novih ? S.plan.novih : ''}"></label>
@@ -3385,7 +3423,7 @@
     renderBackupLine();
     // Prekinuta rezerva u fajl je jedina stvar iz podešavanja koja NE sme da čeka da je neko
     // otvori: tada se kartica otvara sama, da crveni red ne završi ispod sklopljenog dugmeta.
-    if (fsPending) { el('podesavanjaTelo').style.display = ''; el('btnPodesavanja').setAttribute('aria-expanded', 'true'); }
+    if (fsPending) otvoriPodesavanja();
     { const bp = el('btnPlanPomoc'); if (bp) sklopivo(bp, null, el('planPomocTekst')); }
     applyFont();   // dugmad i procenat veličine slova žive u ovoj kartici — crtaju se sa njom
     if (installEvt) { const bi = el('btnInstall'); if (bi) bi.style.display = ''; }
@@ -3437,7 +3475,7 @@
       el('btnPlanAuto').addEventListener('click', () => {
         const bio = !!(S.plan && S.plan.auto);
         S.plan = { ...(S.plan || {}), auto: bio ? 0 : 1 };
-        if (!S.plan.auto && !S.plan.novih && !S.plan.pon && !S.plan.prio) S.plan = null;
+        if (planPrazan(S.plan)) S.plan = null;
         ponistiAutoKvotu();
         save(); renderHome();
         // poruka govori šta se STVARNO desilo: cilj je ugašen samo ako plana više nema
@@ -3446,22 +3484,24 @@
       el('btnPlanPod').addEventListener('click', () => {
         const bio = !!(S.plan && S.plan.pod);
         S.plan = { ...(S.plan || {}), pod: bio ? 0 : 1 };
-        if (!S.plan.auto && !S.plan.novih && !S.plan.pon && !S.plan.prio && !S.plan.pod) S.plan = null;
+        if (planPrazan(S.plan)) S.plan = null;
         ponistiAutoKvotu();
         save(); renderHome();
-        poruci(bio ? L('podIskljucen') : L('podUkljucen'));
+        // uključena donja granica bez auto režima ne radi ništa — to se kaže odmah,
+        // umesto da prekidač stoji upaljen i ćuti
+        poruci(bio ? L('podIskljucen') : (S.plan && S.plan.auto ? L('podUkljucen') : L('podBezAuto')));
       });
       el('btnPlanPrio').addEventListener('click', () => {
         const bio = !!(S.plan && S.plan.prio);
         S.plan = { ...(S.plan || {}), prio: bio ? 0 : 1 };
-        if (!S.plan.auto && !S.plan.novih && !S.plan.pon && !S.plan.prio) S.plan = null;
+        if (planPrazan(S.plan)) S.plan = null;
         save(); renderHome();
         poruci(bio ? (S.plan ? L('prioIskljucen') : L('planUgasen')) : L('lostPrioUkljucen'));
       });
       el('btnPlanSave').addEventListener('click', () => {
         if (prazno(pn) && prazno(pp)) {
           // brojevi se gase, ali prekidači (auto/prio) ostaju ako su uključeni
-          S.plan = (S.plan && (S.plan.auto || S.plan.prio || S.plan.pod)) ? { ...S.plan, novih: null, pon: null } : null;
+          S.plan = planPrazan({ ...(S.plan || {}), novih: null, pon: null }) ? null : { ...S.plan, novih: null, pon: null };
           ponistiAutoKvotu(); save(); renderHome(); kaziPosle(S.plan ? L('planBrojeviUgaseni') : L('planUgasen')); return;
         }
         let novih = null, pon = null;
@@ -3799,7 +3839,7 @@
     const f = el('podnozje');
     if (!f) return;
     f.innerHTML = `<div class="podnozjeRed"><b>${escapeHtml(L('brand'))}</b> — ${L('podnozjeOpis')}</div>
-      <div class="podnozjeRed mut">${L('podnozjeBaza').split('@1').join(Q.length).split('@2').join(fmtDatum(D.generated)).split('@3').join(fmtDatum(BAZA_PROVERENA)).split('@4').join(window.APP_V || 0)}</div>
+      <div class="podnozjeRed mut">${L('podnozjeBaza').split('@1').join(Q.length).split('@2').join(fmtDatum(D.generated)).split('@3').join(fmtDatum(BAZA_PROVERENA)).split('@4').join(BOOT_V)}</div>
       <div class="podnozjeRed podnozjeAkcije">
         ${prijavaRadi() ? `<button type="button" class="secondary sBtn" id="btnFeedback">${L('feedback')}</button>` : ''}
         <a class="bcLink" href="${REPO}" target="_blank" rel="noopener">${L('podnozjeKod')}</a>
@@ -3810,7 +3850,6 @@
   }
 
   // Dugoživeći tab: na povratak u tab (i na ~5 min) proveri da li postoji nova verzija fajlova.
-  const BOOT_V = window.APP_V || 0;
   function checkVersion() {
     if (!BOOT_V || FILE_MODE || document.getElementById('updBar')) return;
     if (sim) return;   // usred ispita se traka ne pokazuje: klik na nju osvežava stranu i gasi ispit
@@ -4000,7 +4039,7 @@
 
   function otvoriPrijavu() {
     if (!prijavaRadi()) return;
-    const kontekst = 'verzija ' + (window.APP_V || '?') + ' · stranica ' + (curHash || '#/') +
+    const kontekst = 'verzija ' + (BOOT_V || '?') + ' · stranica ' + (curHash || '#/') +
       ' · baza ' + D.generated + ' · ' + (navigator.userAgent || '').slice(0, 120);
     const u = new URL(PRIJAVA.url);
     u.searchParams.set('usp', 'pp_url');
