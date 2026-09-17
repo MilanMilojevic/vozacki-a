@@ -113,6 +113,10 @@
     slovaLbl: { l: 'Veličina slova', c: 'Величина слова' },
     porVerzijaOK: { l: 'Imaš najnoviju verziju (@1).', c: 'Имаш најновију верзију (@1).' },
     temaLbl: { l: 'Tamna ili svetla tema', c: 'Тамна или светла тема' },
+    temaSvetla: { l: 'Tema: svetla — pređi na tamnu', c: 'Тема: светла — пређи на тамну' },
+    temaTamna: { l: 'Tema: tamna — pređi na svetlu', c: 'Тема: тамна — пређи на светлу' },
+    pismoCir: { l: 'ćirilica', c: 'ћирилица' },
+    pismoLat: { l: 'latinica', c: 'латиница' },
     pismoLbl: { l: 'Ćirilica ili latinica', c: 'Ћирилица или латиница' },
     navGlavna: { l: 'Glavna navigacija', c: 'Главна навигација' },
     preskoci: { l: 'Preskoči na sadržaj', c: 'Прескочи на садржај' },
@@ -181,7 +185,7 @@
     examDaysOne: { l: 'dan', c: 'дан' },
     examToday: { l: '📅 ispit je danas — srećno!', c: '📅 испит је данас — срећно!' },
     // [9] „u podešavanjima" — na ekranu ne postoji ništa tako nazvano; grupa se zove „Dnevni cilj"
-    examPlan: { l: 'predlog tempa: ~# @1 dnevno — „Predloži mi" u Podešavanjima (Dnevni cilj) ga upisuje kao cilj', c: 'предлог темпа: ~# @1 дневно — „Предложи ми" у Подешавањима („Дневни циљ" (доле) га уписује као циљ' },
+    examPlan: { l: 'predlog tempa: ~# @1 dnevno — „Predloži mi" u Podešavanjima (Dnevni cilj) ga upisuje kao cilj', c: 'предлог темпа: ~# @1 дневно — „Предложи ми" у Подешавањима (Дневни циљ) га уписује као циљ' },
     novoJd: { l: 'novo pitanje', c: 'ново питање' },
     novaPk: { l: 'nova pitanja', c: 'нова питања' },
     novihMn: { l: 'novih pitanja', c: 'нових питања' },
@@ -1050,7 +1054,9 @@
       ? ` &nbsp;·&nbsp; <span class="qOk">${S.q[q.id].a - S.q[q.id].w}× ${L('tacnoLbl')}</span> · <span class="${S.q[q.id].w ? 'qBad' : 'mut'}">${S.q[q.id].w}× ${L('netacnoLbl')}</span>${relTime(S.q[q.id].last) ? ' · ' + relTime(S.q[q.id].last) : ''}`
       : '';
     meta.innerHTML = `<span><button type="button" class="bcLink" data-bc="c${q.cat}">${escapeHtml(catOf(q))}</button> › <button type="button" class="bcLink" data-bc="s${q.sub}" title="${escapeHtml(subOf(q))}">${escapeHtml(subShortName(q.sub))}</button></span>
-      <span><span class="qNum" data-qid="${q.id}" title="${escapeHtml(FILE_MODE ? L('qNumTip') : L('qNumTip2'))}">#${q.id}</span> · ${poeni(q.pts)}${hist}</span>`;
+      <span>${FILE_MODE
+        ? `<span class="qNum" title="${escapeHtml(L('qNumTip'))}">#${q.id}</span>`
+        : `<button type="button" class="qNum" data-qid="${q.id}" title="${escapeHtml(L('qNumTip2'))}">#${q.id}</button>`} · ${poeni(q.pts)}${hist}</span>`;
     meta.querySelectorAll('.bcLink').forEach((b) => b.addEventListener('click', () => browse(b.dataset.bc)));
     c.appendChild(meta);
 
@@ -1327,7 +1333,7 @@
       onNext: m.jedno
         ? () => { lastRecordKey = null; startList(Q.filter((x) => x.sub === q.sub).map((x) => x.id), secTitleFn(kljuc), null, 'section', { secKey: kljuc, startAt: S.secPos[kljuc] || 0, origin: () => browse(kljuc) }); }
         : () => { lastRecordKey = null; m.i++; stepList(); },
-      nextLabel: m.jedno ? `${L('vezbajPodoblast')}: ${subShortName(q.sub)} ›` : null,
+      nextLabel: m.jedno ? `${L('vezbajPodoblast')} ›` : null,   // naziv već stoji u mrvicama iznad
       onPrev: m.i > 0 ? () => { lastRecordKey = null; m.i--; stepList(); } : null,
     });
   }
@@ -1631,6 +1637,12 @@
     if (!cd) return;
     cd.querySelectorAll('svg').forEach((s) => {
       if (s.dataset.zum) return;
+      // ukrasna sličica (bild joj upisuje aria-hidden) nije crtež za uvećanje: bila bi
+      // zaseban zastanak tastature i drugo čitanje istog podatka
+      if (s.getAttribute('aria-hidden') === 'true') return;
+      // ukrasna sličica (bild joj upisuje aria-hidden) nije crtež za uvećanje: bila bi
+      // zaseban zastanak tastature i drugo čitanje istog podatka
+      if (s.getAttribute('aria-hidden') === 'true') return;
       s.dataset.zum = '1';
       s.setAttribute('tabindex', '0');
       s.setAttribute('role', 'button');
@@ -2397,7 +2409,9 @@
   function secInfo(key) {
     const type = key[0], id = +key.slice(1);
     const ids = (type === 'c' ? Q.filter((q) => q.cat === id) : Q.filter((q) => q.sub === id)).map((q) => q.id);
-    const name = type === 'c' ? T(catName.get(id)) : subIme(id);
+    // nepoznat broj (stara ili ručno kucana adresa) sme da prođe do čuvara ispod — ranije
+    // je ovde pucalo čitanje nepostojećeg imena, pa se videla crvena traka umesto povratka
+    const name = type === 'c' ? (catName.has(id) ? T(catName.get(id)) : '') : (D.subs[id] ? subIme(id) : '');
     return { type, id, ids, name };
   }
   function secTitleFn(key) {
@@ -3156,7 +3170,7 @@
       const qq = Q.filter((q) => q.cat === c.id);
       const st = stat(qq);
       const row = document.createElement('div'); row.className = 'catRow';
-      row.innerHTML = `<button type="button" class="catChevBtn" aria-expanded="false" title="${escapeHtml(L('catExpand'))}" aria-label="${escapeHtml(L('catExpand'))}">▸</button>` + redHtml(escapeHtml(T(c)), st, qq.length, false);
+      row.innerHTML = `<button type="button" class="catChevBtn" aria-expanded="false" title="${escapeHtml(L('catExpand'))}" aria-label="${escapeHtml(L('catExpand'))}: ${escapeHtml(T(c))}">▸</button>` + redHtml(escapeHtml(T(c)), st, qq.length, false);
       row.querySelector('.catMain').setAttribute('title', L('catOpen'));
       row.querySelector('.catMain').addEventListener('click', () => browse('c' + c.id));
       row.querySelector('.catChevBtn').addEventListener('click', () => {
@@ -3866,7 +3880,13 @@
     const dark = S.theme === 'dark' || (S.theme == null && window.matchMedia('(prefers-color-scheme: dark)').matches);
     document.body.classList.toggle('dark', dark);
     el('btnTheme').textContent = dark ? '☀️' : '🌙';
+    // prekidač mora da kaže u kom je stanju — inače čitač pročita samo „dugme, mesec"
+    el('btnTheme').setAttribute('aria-pressed', dark ? 'true' : 'false');
+    el('btnTheme').setAttribute('aria-label', L(dark ? 'temaTamna' : 'temaSvetla'));
   }
+  // dok korisnik NIJE sam izabrao temu, prati sistem i uživo — bez ovoga se prelaz
+  // sistema na noćni režim video tek pri sledećem pokretanju
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { if (S.theme == null) applyTheme(); });
   el('btnTheme').addEventListener('click', () => {
     const dark = document.body.classList.contains('dark');
     S.theme = dark ? 'light' : 'dark'; save();
@@ -3911,7 +3931,9 @@
     el('topbar').querySelector('.brand').title = L('home');
     el('topbar').querySelector('.brand').setAttribute('aria-label', L('home'));
     el('btnTheme').title = L('temaLbl'); el('btnTheme').setAttribute('aria-label', L('temaLbl'));
-    el('btnScript').title = L('pismoLbl'); el('btnScript').setAttribute('aria-label', L('pismoLbl'));
+    el('btnScript').title = L('pismoLbl');
+    // ЋИР|LAT se vidi okom, ali čitaču treba rečenica: koje je pismo sada uključeno
+    el('btnScript').setAttribute('aria-label', L('pismoLbl') + ': ' + L(S.script === 'c' ? 'pismoCir' : 'pismoLat'));
     el('dnHome').textContent = L('home');
     el('dnLearn').textContent = L('navPitanja');
     el('dnDrill').textContent = L('navPonavljanje');
@@ -3921,6 +3943,8 @@
     el('btnFinishSim').textContent = L('finishSim');
     el('btnSimReport').textContent = L('report');
     { const os = el('offlineStrip'); if (os) os.textContent = L('offline'); }
+    // trake se ne crtaju iznova pri promeni pisma, pa im se tekst menja ovde
+    { const ub = el('updBar'); if (ub) { const s = ub.querySelector('span'); if (s) s.textContent = L('updNote'); const bt = el('updBtn'); if (bt) bt.textContent = L('updBtn'); } }
     document.title = L('brand') + ' — ' + (S.script === 'l' ? 'vežbanje' : 'вежбање');
     renderPodnozje();
   }
@@ -3944,6 +3968,18 @@
   }
 
   // Dugoživeći tab: na povratak u tab (i na ~5 min) proveri da li postoji nova verzija fajlova.
+  // Traka „Stigla je nova verzija · Osveži" — jedno mesto koje je pravi. Do sada je
+  // postojala samo unutar automatske provere, pa je ručno dugme u podešavanjima vodilo na
+  // uputstvo o ZIP-u, koje korisnik sa adrese ne može da izvrši.
+  function prikaziTrakuOsvezi() {
+    if (document.getElementById('updBar')) return;
+    const b = document.createElement('div');
+    b.id = 'updBar';
+    b.setAttribute('role', 'status');
+    b.innerHTML = `<span>${escapeHtml(L('updNote'))}</span><button class="primary" id="updBtn">${escapeHtml(L('updBtn'))}</button>`;
+    document.body.appendChild(b);
+    b.querySelector('#updBtn').addEventListener('click', () => location.reload());
+  }
   function checkVersion() {
     if (!BOOT_V || FILE_MODE || document.getElementById('updBar')) return;
     if (sim) return;   // usred ispita se traka ne pokazuje: klik na nju osvežava stranu i gasi ispit
@@ -3951,13 +3987,7 @@
     sc.src = 'version.js?ts=' + Date.now();
     sc.onload = () => {
       sc.remove();
-      if (window.APP_V !== BOOT_V && !document.getElementById('updBar')) {
-        const b = document.createElement('div');
-        b.id = 'updBar';
-        b.innerHTML = `<span>${escapeHtml(L('updNote'))}</span><button class="primary" id="updBtn">${escapeHtml(L('updBtn'))}</button>`;
-        document.body.appendChild(b);
-        b.querySelector('#updBtn').addEventListener('click', () => location.reload());
-      }
+      if (window.APP_V !== BOOT_V) prikaziTrakuOsvezi();
     };
     sc.onerror = () => sc.remove();
     document.head.appendChild(sc);
@@ -3979,6 +4009,10 @@
   }
 
   function prikaziNovuVerziju(nova, rucno) {
+    // Sa adrese se novo izdanje dobija OSVEŽAVANJEM. Uputstvo „preuzmi ZIP i prekopiraj
+    // preko fascikle" tamo niko ne može da izvrši, pa se umesto njega pokazuje ista traka
+    // koju daje i automatska provera.
+    if (!FILE_MODE) { prikaziTrakuOsvezi(); return; }
     if (document.getElementById('repoUpd')) return;
     const b = document.createElement('div');
     b.id = 'repoUpd';
@@ -3993,7 +4027,8 @@
     document.body.appendChild(b);
     const zatvori = () => { S.updSeen = nova; save(); b.remove(); };
     b.querySelector('#repoUpdLater').addEventListener('click', zatvori);
-    b.querySelector('#repoUpdOff').addEventListener('click', () => { S.noUpd = 1; zatvori(); renderHome(); });
+    // zatvori() već čuva stanje; renderHome() je usput menjao ekran na kom si bio
+    b.querySelector('#repoUpdOff').addEventListener('click', () => { S.noUpd = 1; zatvori(); });
   }
 
   let proveraUToku = false;
@@ -4016,6 +4051,9 @@
   // automatska provera najviše jednom dnevno, i to samo ako korisnik nije isključio
   function mozdaProveriRepo() {
     if (S.noUpd || !BOOT_V) return;
+    // sa adrese se ažurira osvežavanjem (checkVersion i traka „Osveži"); uputstvo o ZIP-u
+    // ima smisla samo onome ko aplikaciju drži u fascikli
+    if (!FILE_MODE) return;
     const dan = 24 * 60 * 60 * 1000;
     if (S.updAt && Date.now() - S.updAt < dan) return;
     S.updAt = Date.now(); save();

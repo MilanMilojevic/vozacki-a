@@ -1075,6 +1075,69 @@ async function proveraBodovanja2() {
       }
     }
 
+    // ---- 2an) OPISI, UKRASI I KEŠ (v131) ----
+    {
+      const E9 = window.EXPLAIN;
+      // opisi crteža moraju da prate PISMO — toCyr čuva sve unutar <…>, pa su aria-label,
+      // alt i title u ćirilici ostajali latinični (čitač ekrana bi ih čitao na latinici)
+      {
+        const lat = (E9.cards['preticanje'].h.l.match(/aria-label="([^"]+)"/) || [])[1] || '';
+        const cir = (E9.cards['preticanje'].h.c.match(/aria-label="([^"]+)"/) || [])[1] || '';
+        ok('opisi: aria-label se prevodi na ćirilicu kao i ostali tekst',
+          !!lat && !!cir && /[А-Яа-яЂЉЊЋЏђљњћџ]/.test(cir) && !/[a-z]{3}/.test(cir));
+      }
+      // svaki crtež je ili NOSILAC značenja (ima opis) ili UKRAS (sklonjen čitaču) — trećeg nema
+      {
+        let uk = 0, nosi = 0, ukras = 0;
+        for (const c of Object.values(E9.cards)) for (const g of (c.h.l.match(/<svg[^>]*>/g) || [])) {
+          uk++;
+          if (/aria-label=/.test(g)) nosi++;
+          else if (/aria-hidden="true"/.test(g)) ukras++;
+        }
+        ok('crteži: svaki je ili opisan ili sklonjen čitaču (' + nosi + ' opisanih, ' + ukras + ' ukrasnih od ' + uk + ')',
+          uk > 150 && nosi + ukras === uk);
+      }
+      // ukrasna sličica nije zastanak za tastaturu
+      {
+        await naPocetnu();
+        const bp9 = el2('btnPojmovnik');
+        if (bp9.getAttribute('aria-expanded') !== 'true') { bp9.click(); await cekaj(300); }
+        const b9 = [...document.querySelectorAll('[data-poj]')].find((b) => b.dataset.poj === 'znakovi-porodice');
+        if (b9) {
+          if (b9.getAttribute('aria-expanded') !== 'true') { b9.click(); await cekaj(350); }
+          const cd9 = b9.nextElementSibling;
+          const ukras9 = [...cd9.querySelectorAll('svg[aria-hidden="true"]')];
+          ok('crteži: ukrasna sličica nije dugme ni zastanak za tastaturu (' + ukras9.length + ')',
+            ukras9.length > 0 && ukras9.every((s) => !s.hasAttribute('tabindex') && s.getAttribute('role') !== 'button'));
+          b9.click(); await cekaj(120);
+        }
+        await naPocetnu();
+      }
+      // dugmad teme i pisma kažu čitaču u kom su stanju
+      {
+        const bt = el2('btnTheme'), bs = el2('btnScript');
+        ok('čitač: dugme teme izlaže stanje', bt.hasAttribute('aria-pressed') && /tema|тема/i.test(bt.getAttribute('aria-label') || ''));
+        ok('čitač: dugme pisma izlaže koje je pismo uključeno',
+          /(ćirilica|latinica|ћирилица|латиница)/i.test(bs.getAttribute('aria-label') || ''));
+      }
+      // strelica oblasti nosi ime svoje oblasti
+      {
+        const s9 = document.querySelector('.catChevBtn');
+        ok('čitač: strelica oblasti nosi ime te oblasti', !!s9 && (s9.getAttribute('aria-label') || '').includes(':'));
+      }
+      // service worker: instalacija puni keš spiskom PROČITANIM iz index.html
+      {
+        const sw = await fetch('/sw.js?t=' + Date.now()).then((x) => x.text());
+        ok('keš: instalacija puni keš pre nego što aktivacija obriše stari',
+          /addEventListener\('install'/.test(sw) && /caches\.open\(CORE\)/.test(sw) && /addAll/.test(sw));
+        ok('keš: spisak fajlova se čita iz index.html, ne prepisuje u sw.js',
+          /index\.html/.test(sw) && /src\|href/.test(sw));
+        ok('keš: provera izdanja (?ts=) se ne kešira', /searchParams\.has\('ts'\)/.test(sw));
+        ok('keš: poruka bez interneta je strana u oba pisma, ne gola rečenica',
+          /OFFLINE_HTML/.test(sw) && /Покушај поново/.test(sw) && /Pokušaj ponovo/.test(sw));
+      }
+    }
+
     // ---- 2b) ŠANSA DA POLOŽIŠ i pravilo o simulacijama ----
     {
       const sz = window.__dev.sansaZaProlaz;

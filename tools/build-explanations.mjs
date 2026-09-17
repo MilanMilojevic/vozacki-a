@@ -869,7 +869,7 @@ CARDS['preticanje'] = {
 <p><b>Dužnosti (čl. 54 i 56):</b> pretican NE SME da ubrzava, a kad mu je dat znak MORA da pomeri vozilo ka desnoj ivici kolovoza — usporavanje se NE traži (#9736: „uspori kretanje vozila" je mamac); ti se posle preticanja vraćaš u svoju traku bez ugrožavanja drugih.</p>
 <p class="mut">Pamćenje za kružni tok: "ISPRED — ne, NA njemu — da". Za tunele/prevoje: "jedna traka — ne, dve trake — da".</p>
 <p style="margin-top:10px"><b>Zamka koju baza vrti u oba smera (preticanje i obilaženje):</b> vozilo ispred tebe se zaustavilo — ili se tek zaustavlja — pred „zebrom" da propusti pešaka, a tebi se nudi da prođeš pored njega. Ne smeš <b>ni da ga pretičeš ni da ga obilaziš</b>; mamac „nije Vam dozvoljeno, osim na putu van naselja" je netačan — izuzetka nema, zabrana važi svuda.</p>
-<svg viewBox="0 0 220 170" role="img" style="max-width:250px;width:100%;display:block;margin:8px auto">
+<svg viewBox="0 0 220 170" role="img" aria-label="Preticanje kolone: pretičeš celu kolonu odjednom, a ne vozilo po vozilo — za to treba dovoljno pregledne deonice." style="max-width:250px;width:100%;display:block;margin:8px auto">
   <rect x="0" y="0" width="30" height="170" fill="#e8dcc2"/><rect x="190" y="0" width="30" height="170" fill="#e8dcc2"/>
   <rect x="30" y="0" width="160" height="170" fill="#9aa7b4"/>
   <line x1="110" y1="4" x2="110" y2="24" stroke="#fff" stroke-width="4" stroke-dasharray="14 10"/>
@@ -6682,6 +6682,14 @@ function toCyr(s) {
   // Natpisi koji i u ćiriličnom tekstu ostaju latinicom jer tako stoje na znaku/kolovozu/gumi
   const KEEP = [];
   s = s.replace(/\b(?:STOP|BUS|TWI)\b/g, (m) => { KEEP.push(m); return '\u0001' + (KEEP.length - 1) + '\u0001'; });
+  // aria-label, alt i title NISU kod nego tekst koji čovek ČUJE (čitač ekrana) ili vidi
+  // (oblačić). Zaštita tagova ispod čuva sve unutar <…>, pa bi ta tri atributa u ćiriličnom
+  // režimu ostala latinična. Zato se njihove VREDNOSTI vade pre zaštite i prevode posebno.
+  const opisi = [];
+  s = s.replace(/\s(aria-label|alt|title)="([^"]*)"/g, (m0, at, v) => {
+    opisi.push({ at, v });
+    return '\u0002' + (opisi.length - 1) + '\u0002';
+  });
   // zaštiti SI oznake i HTML tagove
   const guards = [];
   // KOMENTAR IDE PRVI: /<[^>]+>/ staje na prvom „>", pa komentar koji u sebi ima strelicu
@@ -6692,6 +6700,8 @@ function toCyr(s) {
   t = t.replace(/DŽ|dž|Dž|LJ|lj|Lj|NJ|nj|Nj|[a-zA-ZčćđšžČĆĐŠŽ]/g, (ch) => MAP[ch] ?? ch);
   t = t.replace(/ (\d+) /g, (_, i) => guards[+i]);
   t = t.replace(/\u0001(\d+)\u0001/g, (_, i) => KEEP[+i]);
+  // opisi se vraćaju POSLE vraćanja tagova: tada su placeholderi ponovo u tekstu
+  t = t.replace(/\u0002(\d+)\u0002/g, (_, i) => ' ' + opisi[+i].at + '="' + toCyr(opisi[+i].v) + '"');
   t = t.replace(/>П</g, '>P<');   // slovo P na znaku za parking ostaje latinično
   // "A" kao oznaka kategorije ostaje latinicom kroz guard; "ZOBS" -> ЗОБС je ok (naziv zakona na ćirilici)
   return t;
@@ -6885,6 +6895,22 @@ const { atlas: ATLAS, situacije: SITUACIJE, zamke: ZAMKE,
   ukupno: ATLAS_N, bezGrupe: ATLAS_VAN, vezaUkupno: ZAMKA_N, situacijaN: SIT_N } = napraviAtlas(X);
 for (const k of Object.keys(ATLAS)) if (!CARDS[k]) console.log('⚠ atlas: nema kartice', k);
 for (const k of Object.keys(SITUACIJE)) if (!CARDS[k]) console.log('⚠ situacije: nema kartice', k);
+
+// UKRASNI CRTEŽI: sličica znaka pored koje odmah stoji ime i opis rečima. Čitač ekrana ih
+// je do sada čitao kao zaseban „Uvećaj crtež", pa je ista stvar išla dvaput, a svaka je
+// bila i stanica za tastaturu. Crtež koji NOSI značenje ima aria-label (ili bar role="img")
+// — sve ostalo je ukras i sklanja se čitaču. Pravilo je u bildu, pa važi i za buduće crteže.
+{
+  let ukras = 0, nosi = 0;
+  for (const c of Object.values(CARDS)) {
+    c.html = c.html.replace(/<svg\b[^>]*>/g, (tag) => {
+      if (/aria-label=/.test(tag) || /role="img"/.test(tag)) { nosi++; return tag; }
+      ukras++;
+      return tag.replace(/^<svg/, '<svg aria-hidden="true" focusable="false"');
+    });
+  }
+  console.log('crteži: ' + nosi + ' nose značenje, ' + ukras + ' su ukras (sklonjeni čitaču)');
+}
 
 const out = {
   updated: new Date().toISOString().slice(0, 10),

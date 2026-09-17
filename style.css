@@ -21,7 +21,7 @@
   /* glavno dugme i traka na vrhu imaju SVOJU plavu: u tamnoj temi --blue posvetli (tekst),
      a bela slova na njoj ne bi prošla kontrast — zato ne nasleđuju --blue */
   --primaryBg: #2c6aa0; --primaryBgH: #1f4e78; --topbar: #2c6aa0;
-  --dot: #b6c2d0;                                /* tačkica neodgovorenog u spisku */
+  --dot: var(--mut);                                /* tačkica neodgovorenog u spisku */
   /* tekuća stavka donje navigacije: --blue na --optSel pada kontrast (3.80:1 svetla,
      2.51:1 tamna), pa tekuća stavka ima svoju boju — 5.20:1 odnosno 5.86:1 */
   --navNa: #1f4e78;
@@ -39,7 +39,7 @@ body.dark {
   --reqBg: #1d3348; --reqInk: #a8cdec;
   --vgSlow: #163826; --vgSlowInk: #7fd8a0; --vgFast: #1a2f4d; --vgFastInk: #9dc3ee;
   --btnOff: #4a5560; --barSeen: #5b7a99; --yourOk: #3b6fd9;
-  --topbar: #24587f; --dot: #56687a; --navNa: #a8cdec;
+  --topbar: #24587f; --dot: var(--mut); --navNa: #a8cdec;
   --chipBg: rgba(95,151,201,.22); --chipInk: #9cc3e5;
   --sjaj: rgba(74,134,189,.25); --halo: rgba(74,134,189,.45);
 }
@@ -158,15 +158,17 @@ main { max-width: 880px; width: 100%; margin: 0 auto; padding: 16px 12px 60px; f
 .catSubRow .catName { font-size: var(--fs-sm); color: var(--mut); padding-left: 24px; box-sizing: border-box;
   display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .catSubRow:hover .catName { color: var(--blue); }
-#tourDim { position: fixed; inset: 0; background: rgba(0,0,0,.55); z-index: 999; pointer-events: none; }
+/* sloj vodiča mora IZNAD donje navigacije (z-index 1300), a ispod uvećanja slike (1500) —
+   inače navigacija ostane svetla i klikabilna preko zatamnjenja */
+#tourDim { position: fixed; inset: 0; background: rgba(0,0,0,.55); z-index: 1410; pointer-events: none; }
 #tourTip { position: fixed; left: 50%; transform: translateX(-50%); width: min(440px, calc(100vw - 32px));
   background: var(--card); color: var(--ink); border: 1px solid var(--line); border-radius: 12px;
-  padding: 14px 16px; z-index: 1001; box-shadow: 0 8px 30px rgba(0,0,0,.35); }
+  padding: 14px 16px; z-index: 1412; box-shadow: 0 8px 30px rgba(0,0,0,.35); }
 .tourRow { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
 #updBar { position: fixed; bottom: 14px; left: 50%; transform: translateX(-50%); background: var(--card); color: var(--ink);
   border: 1px solid var(--blue); border-radius: 12px; padding: 10px 16px; display: flex; gap: 12px; align-items: center;
   z-index: 1200; box-shadow: 0 6px 24px rgba(0,0,0,.25); }
-.tourSpot { position: relative; z-index: 1000; box-shadow: 0 0 0 3px var(--blue), 0 0 0 8px var(--halo) !important; border-radius: 12px; }
+.tourSpot { position: relative; z-index: 1411; box-shadow: 0 0 0 3px var(--blue), 0 0 0 8px var(--halo) !important; border-radius: 12px; }
 
 /* Traka iznad pitanja: FIKSNA mreža — naslov (skraćen po potrebi) · brojač · Idi · prečice.
    Kontrole ostaju na istom mestu bez obzira na dužinu naziva podoblasti.
@@ -472,8 +474,10 @@ body.uSimulaciji #podnozje { display: none; }
 .lplus { color: var(--mut); font-weight: 800; font-size: var(--fs-lg); }
 .mut { color: var(--mut); }
 
-.qNum { color: var(--mut); font-size: var(--fs-sm); cursor: pointer; border-bottom: 1px dotted var(--mut);
-  display: inline-block; padding: 4px 2px; margin: -4px -2px; }
+/* kad aplikacija radi sa adrese, ovo je DUGME (kopira vezu do pitanja) — da bi radilo i
+   tastaturom; izgled mora da ostane isti kao kad je običan tekst */
+.qNum { color: var(--mut); font-size: var(--fs-sm); cursor: pointer; border: none; border-bottom: 1px dotted var(--mut);
+  background: none; font-family: inherit; display: inline-block; padding: 4px 2px; margin: -4px -2px; border-radius: 0; }
 .bcLink { color: var(--mut); text-decoration: none; border-bottom: 1px dotted var(--line);
   background: none; border-radius: 0; padding: 0; font: inherit; cursor: pointer; }
 .bcLink:hover { color: var(--blue); border-bottom-color: var(--blue); }
@@ -692,7 +696,7 @@ button { transition: background-color .15s ease, border-color .15s ease, color .
 #qCard .qActions { flex-wrap: wrap; }
 /* Kad dugme „dalje" mora da se dovuče na ekran, ne sme da stane TAČNO na donju ivicu —
    tamo je fiksna navigacija koja bi ga prekrila. */
-@media (max-width: 700px) { .qActions button { scroll-margin-bottom: 78px; } }
+@media (max-width: 700px) { .qActions button, .qActions .markBox input { scroll-margin-bottom: 78px; } }
 
 /* "Na ispitu: N" — koliko pitanja podoblast nosi na pravom ispitu */
 .subExam { display: inline-block; font-size: var(--fs-xs); font-weight: 600; color: var(--chipInk);
