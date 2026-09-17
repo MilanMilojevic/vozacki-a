@@ -1164,6 +1164,66 @@ async function proveraBodovanja2() {
         segmenata > 150 && bez.length === 0);
     }
 
+    // ---- 2ap) ČISTOĆA PISAMA U BAZI I OPIS UVEĆANOG CRTEŽA (v134) ----
+    {
+      // latinično slovo NEPOSREDNO uz ćirilično = zaostatak iz izvora („Oсновне", „тешкe")
+      const mesano = (s) => ((s || '').match(/(?<=[\u0400-\u04FF])[A-Za-z]|[A-Za-z](?=[\u0400-\u04FF])/g) || []).length;
+      let uCir = 0, uLat = 0;
+      for (const s of Object.values(window.QUIZ.subs)) { uCir += mesano(s.c); uLat += ((s.l || '').match(/[\u0400-\u04FF]/g) || []).length; }
+      for (const q of window.QUIZ.questions) {
+        uCir += mesano(q.t.c); uLat += ((q.t.l || '').match(/[\u0400-\u04FF]/g) || []).length;
+        for (const c of q.ch) { uCir += mesano(c.t.c); uLat += ((c.t.l || '').match(/[\u0400-\u04FF]/g) || []).length; }
+      }
+      ok('baza: nijedno latinično slovo unutar ćirilične reči (bilo ih je 29)', uCir === 0);
+      ok('baza: nijedno ćirilično slovo u latiničnom tekstu', uLat === 0);
+      // oznaka na pneumatiku je latinična u OBA pisma — to je natpis sa gume, ne reč
+      const q8829 = window.QUIZ.questions.find((q) => q.id === 8829);
+      ok('baza: oznaka TWI ostaje latinična i u ćirilici', !!q8829 && q8829.t.c.includes('TWI'));
+
+      // uvećan crtež nosi SVOJ opis, ne natpis dugmeta
+      {
+        await naPocetnu();
+        const bp10 = el2('btnPojmovnik');
+        if (bp10.getAttribute('aria-expanded') !== 'true') { bp10.click(); await cekaj(300); }
+        const b10 = [...document.querySelectorAll('[data-poj]')].find((x) => x.dataset.poj === 'preticanje');
+        if (b10.getAttribute('aria-expanded') !== 'true') { b10.click(); await cekaj(400); }
+        const cd10 = b10.nextElementSibling;
+        const s10 = [...cd10.querySelectorAll('svg[data-zum]')].find((x) => x.dataset.opis);
+        ok('crteži: crtež pamti svoj opis uz sebe (ne vadi se iz natpisa dugmeta)',
+          !!s10 && s10.dataset.opis.length > 10 && !/^Uvećaj|^Увећај/.test(s10.dataset.opis));
+        if (s10) {
+          s10.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+          await cekaj(400);
+          const im = el2('imgZoom') && el2('imgZoom').querySelector('img');
+          ok('crteži: uvećana slika dobija OPIS crteža, ne „Uvećaj crtež"',
+            !!im && im.alt === s10.dataset.opis);
+          document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+          await cekaj(250);
+        }
+        b10.click(); await cekaj(120);
+        await naPocetnu();
+      }
+
+      // pretraga radi u OBA pisma, ma koje bilo uključeno
+      {
+        location.hash = '#/sva'; await cekaj(400);
+        const polje = el2('qSearch');
+        if (polje) {
+          polje.value = 'семафор';
+          polje.dispatchEvent(new Event('input', { bubbles: true }));
+          await cekaj(300);
+          const vidljivih = [...document.querySelectorAll('#browseList .qRow')].filter((r) => r.offsetParent !== null).length;
+          ok('pretraga: ćirilični pojam nalazi pitanja i kad je uključena latinica (' + vidljivih + ')', vidljivih > 0);
+          polje.value = '';
+          polje.dispatchEvent(new Event('input', { bubbles: true }));
+          await cekaj(150);
+        } else {
+          ok('pretraga: polje za traženje postoji na strani „Sva pitanja"', false);
+        }
+        await naPocetnu();
+      }
+    }
+
     // ---- 2b) ŠANSA DA POLOŽIŠ i pravilo o simulacijama ----
     {
       const sz = window.__dev.sansaZaProlaz;

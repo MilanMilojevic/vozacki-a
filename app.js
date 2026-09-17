@@ -342,7 +342,7 @@
     skokVanOpsega: { l: 'Ovaj spisak ima @3. Unesi broj od @1 do @2.', c: 'Овај списак има @3. Унеси број од @1 до @2.' },
     planMaxNovih: { l: 'Neodgovorenih je ostalo @2 — više od toga ne može stati u jedan dan.', c: 'Неодговорених је остало @2 — више од тога не може стати у један дан.' },
     officialBase: { l: 'zvanična baza pitanja', c: 'званична база питања' },
-    naIspituTip: { l: 'Koliko pitanja iz ove podoblasti nosi svaki pravi ispit — izmereno iz pet zvaničnih izvlačenja simulacije.', c: 'Колико питања из ове подобласти носи сваки прави испит — измерено из пет званичних извлачења симулације.' },
+    naIspituTip: { l: 'Koliko pitanja iz ove podoblasti nosi svaki pravi ispit — izvedeno iz zvaničnog šablona testa.', c: 'Колико питања из ове подобласти носи сваки прави испит — изведено из званичног шаблона теста.' },
     qNumTip2: { l: 'Klik: kopiraj adresu ovog pitanja', c: 'Клик: копирај адресу овог питања' },
     uvecajSliku: { l: 'Uvećaj sliku', c: 'Увећај слику' },
     uvecajCrtez: { l: 'Uvećaj crtež', c: 'Увећај цртеж' },
@@ -1392,7 +1392,8 @@
       b.className = 'qRow';
       b.innerHTML = redPitanjaHtml(q, idx, r, opts.dodatak ? opts.dodatak(q, r) : '');
       b.addEventListener('click', () => opts.naKlik(idx, q));
-      b._search = (T(q.t) + ' ' + q.t.l + ' #' + q.id).toLowerCase();
+      // oba pisma u indeksu: traženje radi i kad je uključeno ono drugo
+      b._search = (q.t.l + ' ' + q.t.c + ' #' + q.id).toLowerCase();
       list.appendChild(b);
     });
   }
@@ -1645,7 +1646,8 @@
       s.dataset.zum = '1';
       s.setAttribute('tabindex', '0');
       s.setAttribute('role', 'button');
-      const opis = s.getAttribute('aria-label');
+      const opis = s.getAttribute('aria-label') || '';
+      if (opis) s.dataset.opis = opis;          // uvećana slika uzima OVO, ne obrnut prefiks
       s.setAttribute('aria-label', L('uvecajCrtez') + (opis ? ': ' + opis : ''));
     });
   }
@@ -2798,6 +2800,7 @@
   ];
   function tourStart() {
     if (document.getElementById('tourDim')) return;
+    const vracaFokus = document.activeElement;   // posle vodiča fokus se vraća odakle je pošao
     let idx = 0, spot = null;
     const dim = document.createElement('div'); dim.id = 'tourDim';
     const tip = document.createElement('div'); tip.id = 'tourTip';
@@ -2809,6 +2812,7 @@
       window.removeEventListener('hashchange', end);
       document.removeEventListener('keydown', onKey);
       S.tour = 1; save();
+      if (vracaFokus && vracaFokus.focus) vracaFokus.focus({ preventScroll: true });
     };
     const show = () => {
       clearSpot();
@@ -2840,9 +2844,12 @@
     const next = () => { idx++; if (idx >= TOUR_STEPS.length) end(); else show(); };
     const onKey = (ev) => {
       if (ev.key === 'Escape') { end(); return; }
-      // ako je fokus na dugmetu vodiča, pusti pregledač da ga aktivira (Enter/Space)
+      // → radi uvek, i kad je fokus u oblačiću (a tamo jeste, posle svakog koraka)
+      if (ev.key === 'ArrowRight') { ev.preventDefault(); next(); return; }
+      // Enter na dugmetu vodiča prepušta se pregledaču — inače bi „Preskoči" prelazio na
+      // sledeći korak umesto da ugasi vodič
       if (ev.target && ev.target.closest && ev.target.closest('#tourTip')) return;
-      if (ev.key === 'Enter' || ev.key === 'ArrowRight') next();
+      if (ev.key === 'Enter') { ev.preventDefault(); next(); }
     };
     window.addEventListener('hashchange', end, { once: true });
     document.addEventListener('keydown', onKey);
@@ -3730,7 +3737,7 @@
     let izvor = null, opisSlike = '';
     if (crtez) {
       izvor = crtezUSliku(crtez);
-      opisSlike = (crtez.getAttribute('aria-label') || '').replace(L('uvecajCrtez') + ': ', '');
+      opisSlike = crtez.dataset.opis || '';
     } else {
       const slika = meta.tagName === 'IMG' ? meta : meta.querySelector('img.qImg');
       if (!slika) return;

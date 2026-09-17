@@ -63,8 +63,9 @@ a granice su <b>45 km/h</b>, <b>50 cm³</b> (motor sa unutrašnjim sagorevanjem)
 <tr><td><b>laki tricikl</b></td><td>3</td><td>do 45 km/h; benzinski do 50 cm³, ostali motori do 4 kW</td></tr>
 <tr><td><b>teški tricikl</b></td><td>3 (simetrična)</td><td>preko 45 km/h, ili benzinski preko 50 cm³, ili ostali motori preko 4 kW</td></tr>
 <tr><td><b>laki četvorocikl</b></td><td>4</td><td>granice kao laki tricikl + masa praznog vozila do 350 kg (bez baterija)</td></tr>
-<tr><td><b>teški četvorocikl</b></td><td>4</td><td>ostali četvorocikli: masa praznog vozila do 400 kg (teretni 550 kg; bez baterija), snaga do 15 kW</td></tr>
+<tr><td><b>teški četvorocikl</b></td><td>4</td><td>ostali četvorocikli: masa praznog vozila do 400 kg (teretni 550 kg; bez baterija), snaga do 15 kW ✳</td></tr>
 </table>
+<p class="mut napomena">✳ = zakonski broj, <b>baza ga ne pita</b> — ne čekaš ga na ispitu, ali objašnjava sliku.</p>
 <p><b>Zamka:</b> granica od 50 cm³ kod mopeda i motocikla važi za SVAKI motor sa unutrašnjim sagorevanjem (i dizel!),
 a samo kod tricikala i četvorocikala isključivo za benzinski — ostali se tamo cene po snazi (4 kW).
 Moped sa motorom sa unutrašnjim sagorevanjem NEMA granicu snage: 5 kW efektivne, a i dalje je moped ako su brzina i kubikaža u granicama.</p>`,
@@ -701,7 +702,7 @@ CARDS['dozvole'] = {
 
 <div class="kPodH"><b class="kPodNaslov">Kad MUP oduzima dozvolu (čl. 197)</b>
 <div style="display:flex;justify-content:center;margin:6px 0">
-<svg viewBox="0 0 306 212" style="max-width:330px;width:100%" role="img" aria-label="četiri stanja vode do istog ishoda: najmanje osamnaest kaznenih poena, odnosno devet za probnu dozvolu; jedna pravnosnažna presuda za krivično delo protiv bezbednosti javnog saobraćaja sa smrtnom posledicom; više od jedne takve presude u pet godina za teške telesne povrede; više od jedne takve presude u tri godine za telesne povrede ili imovinsku štetu. U svakom od ta četiri slučaja MUP oduzima vozačku dozvolu.">
+<svg viewBox="0 0 306 212" style="max-width:330px;width:100%" role="img" aria-label="četiri stanja vode do istog ishoda: najmanje osamnaest kaznenih poena, odnosno devet ✳ za probnu dozvolu; jedna pravnosnažna presuda za krivično delo protiv bezbednosti javnog saobraćaja sa smrtnom posledicom; više od jedne takve presude u pet godina za teške telesne povrede; više od jedne takve presude u tri godine za telesne povrede ili imovinsku štetu. U svakom od ta četiri slučaja MUP oduzima vozačku dozvolu.">
 <rect x="6" y="4" width="294" height="28" rx="6" stroke="currentColor" fill="none"/>
 <text x="16" y="23" font-size="12" font-weight="600" fill="currentColor">KAZNENI POENI</text>
 <text x="290" y="23" font-size="12" text-anchor="end" fill="currentColor">najmanje 18 (probna: 9)</text>
@@ -729,6 +730,7 @@ CARDS['dozvole'] = {
 <tr><td>je za isto delo osuđen sa posledicom <b>telesne povrede ili imovinska šteta</b></td><td><b>više od jednom u 3 godine</b></td></tr>
 </table>
 <p><b>Šta sledi:</b> u sva četiri slučaja organizaciona jedinica MUP-a koja te vodi u evidenciji <b>oduzeće vozačku dozvolu</b> — neće ti „izreći odgovarajući broj kaznenih poena" ni „privremeno zabraniti upravljanje u trajanju do jedne godine". To su dve ponuđene zamke.</p>
+<p class="mut napomena">✳ = zakonski broj, <b>baza ga ne pita</b> — ne čekaš ga na ispitu, ali objašnjava sliku.</p>
 <p class="mut">Pamtilica: 5 godina ide uz TEŠKE povrede, 3 godine uz obične povrede i štetu, a za smrt se ne broji — dovoljna je jedna presuda. Prag poena je 18, a za probnu dozvolu upola manje — 9.</p>
 </div>
 
@@ -2796,10 +2798,11 @@ CARDS['autoput'] = {
   <text x="160" y="64" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">krajnja DESNA — pravilo</text>
   <text x="160" y="92" text-anchor="middle" font-size="12" font-weight="bold" fill="currentColor">zaustavna traka — kretanje ZABRANJENO</text>
   <text x="14" y="122" font-size="13" font-weight="bold" fill="currentColor">Kod kvara (čl. 105):</text>
-  <text x="26" y="142" font-size="12" fill="currentColor">zaustavna traka · trougao na ≥ 100 m</text>
+  <text x="26" y="142" font-size="12" fill="currentColor">zaustavna traka · trougao na ≥ 100 m ✳</text>
   <text x="26" y="160" font-size="12" fill="currentColor">svi pokazivači · prsluk VAN vozila</text>
   <text x="14" y="182" font-size="12" fill="currentColor">Zabranjeno i: polukružno okretanje, kretanje unazad.</text>
 </svg>
+<p class="mut napomena">✳ = zakonski broj, <b>baza ga ne pita</b> — ne čekaš ga na ispitu, ali objašnjava sliku.</p>
 <p><b>Zabranjeno na autoputu/motoputu (čl. 105):</b> zaustavljanje i parkiranje (osim uređenih mesta) · polukružno okretanje · kretanje unazad.</p>
 <p><b>Kvar (čl. 105):</b> zaustavi na zaustavnoj traci, sigurnosni trougao na ≥ 100 m, svi pokazivači, svetloodbojni prsluk van vozila — i ukloni vozilo što pre.</p>
 <p><b>Zastoj:</b> ostavlja se slobodan prolaz za vozila pod pratnjom/sa pravom prvenstva (čl. 104).</p>

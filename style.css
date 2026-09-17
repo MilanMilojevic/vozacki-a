@@ -221,8 +221,10 @@ main { max-width: 880px; width: 100%; margin: 0 auto; padding: 16px 12px 60px; f
 .simTop { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
 /* na telefonu tajmer i oba dugmeta staju u JEDAN red — na ispitu su takođe u jednom */
 @media (max-width: 560px) {
-  .simTop { gap: 8px; padding: 12px; }
-  .simTop .simTimer { font-size: 1.25rem; min-width: 74px; }
+  /* na 125% slova ćirilično „Крај испита" je padalo u drugi red i brend je preklapao
+     dugme teme — tajmer ima tabular-nums, pa mu rezerva širine ne treba */
+  .simTop { gap: 6px; padding: 12px; }
+  .simTop .simTimer { font-size: 1.25rem; min-width: 0; }
   .simTop button { padding: 10px 12px; }
 }
 /* „Broj potrebnih odgovora: 2" — kurziv i plavo, ispod teksta pitanja, kao na zvaničnoj strani */
