@@ -2,6 +2,7 @@
 // SI oznake ostaju latinicom kao u zvaničnoj bazi). Pokreni: node build-explanations.mjs
 import fs from 'node:fs/promises';
 import { napraviAtlas, SUB_KARTICA_SVE } from './atlas.mjs';
+import { blizanciIzBaze, PRAG as BLIZ_PRAG } from './blizanci.mjs';
 import { tabelaObrazaca, brojeviMamci, procenat, meri, podoblastiObrasca, imePodoblasti, ukupnoPitanja } from './mere.mjs';
 
 // ---------------- IZVOR (latinica) ----------------
@@ -7372,6 +7373,8 @@ for (const k of Object.keys(SITUACIJE)) if (!CARDS[k]) console.log('⚠ situacij
   console.log('crteži: ' + nosi + ' nose značenje, ' + ukras + ' su ukras (sklonjeni čitaču)');
 }
 
+const BLIZANCI = blizanciIzBaze();
+
 const out = {
   updated: new Date().toISOString().slice(0, 10),
   cards: Object.fromEntries(Object.entries(CARDS).map(([k, c]) => [k, { t: { l: c.title, c: toCyr(c.title) }, h: { l: c.html, c: toCyr(c.html) } }])),
@@ -7386,6 +7389,8 @@ const out = {
   atlas: ATLAS,
   situacije: SITUACIJE,
   zamke: ZAMKE,
+  // blizanci: tekstualna pitanja skoro istog teksta a DRUGOG tačnog odgovora (tools/blizanci.mjs)
+  blizanci: BLIZANCI,
 };
 
 // Automatski skener: mešani latinično-ćirilični tokeni i zaostali digrafi u ćiriličnom izlazu
@@ -7424,6 +7429,7 @@ console.log('explanations.js:', Object.keys(out.byQ).length, 'pitanja,', Object.
 console.log('atlas:', ATLAS_N, 'slika u', Object.keys(ATLAS).length, 'kartica' + (ATLAS_VAN ? ' (van grupa: ' + ATLAS_VAN + ')' : ''));
 console.log('situacije:', SIT_N, 'slika u', Object.keys(SITUACIJE).length, 'kartica');
 console.log('zamke:', ZAMKA_N, 'veza uz', Object.keys(ZAMKE).length, 'pitanja');
+console.log('blizanci:', Object.keys(BLIZANCI).length, 'pitanja ima blizanca (prag', BLIZ_PRAG + ')');
 console.log('proba ćirilice:', toCyr('Vozač ne sme (ZOBS čl. 187) — 0,20 mg/ml, kategorije AM, A1, A2 i A; 1,5 m; 45 km/h'));
 
 // Мерена покривеност — да број у документацији не може да застари.

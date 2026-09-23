@@ -234,6 +234,18 @@
     situacijeDugme: { l: '📷 Situacije sa ispita (@1)', c: '📷 Ситуације са испита (@1)' },
     situacijeNapomena: { l: 'Slikovna pitanja iz ove oblasti, sa tačnim odgovorom uz svaku sliku — iste slike te čekaju na ispitu. Dodirni sliku da je uvećaš.', c: 'Сликовна питања из ове области, са тачним одговором уз сваку слику — исте слике те чекају на испиту. Додирни слику да је увећаш.' },
     istoZnacenje: { l: 'isto značenje nosi @1 — svi su u „Slike iz baze"', c: 'исто значење носи @1 — сви су у „Слике из базе"' },
+    blizNaslov: { l: '⚠ Pazi — skoro isto pitanje, a DRUGI tačan odgovor', c: '⚠ Пази — скоро исто питање, а ДРУГИ тачан одговор' },
+    blizIsto: { l: '⚠ Isto pitanje dolazi i sa drugim ponudama', c: '⚠ Исто питање долази и са другим понудама' },
+    blizNap: { l: 'Označene su reči po kojima se razlikuju.', c: 'Означене су речи по којима се разликују.' },
+    blizTacno: { l: 'tačno:', c: 'тачно:' },
+    proslaGreska: { l: 'Prošli put si ovde izabrao:', c: 'Прошли пут си овде изабрао:' },
+    greskeNaslov: { l: 'Najčešće greške', c: 'Најчешће грешке' },
+    greskeOpis: { l: '@1 na kojima si pogrešio dvaput ili više — najviše puta na vrhu. Posle odgovora uz svako stoji objašnjenje i, gde postoji, skoro isto pitanje sa drugim tačnim odgovorom: to je najčešći razlog ponovljene greške.', c: '@1 на којима си погрешио двапут или више — највише пута на врху. После одговора уз свако стоји објашњење и, где постоји, скоро исто питање са другим тачним одговором: то је најчешћи разлог поновљене грешке.' },
+    greskeJednom: { l: '@1 na kojima si pogrešio bar jednom (nijedno još dvaput).', c: '@1 на којима си погрешио бар једном (ниједно још двапут).' },
+    greskePrazno: { l: 'Još nijedno pitanje nisi pogrešio. Ovde se skupljaju pitanja na kojima grešiš — ona koja si pogrešio najviše puta idu na vrh.', c: 'Још ниједно питање ниси погрешио. Овде се скупљају питања на којима грешиш — она која си погрешио највише пута иду на врх.' },
+    greskeVezbaj: { l: 'Vežbaj ih', c: 'Вежбај их' },
+    reviewIzgubljeno: { l: 'Tvoji izbori iz ovog ispita nisu sačuvani: stariji zapisi (pre 16.09.2026) su ih zbog kvara gubili pri učitavanju — kvar je ispravljen. Rezultat i spisak pogrešnih pitanja su ostali tačni, pa je iz njih vraćeno koje je pitanje bilo tačno, a koje ne.', c: 'Твоји избори из овог испита нису сачувани: старији записи (пре 16.09.2026) су их због квара губили при учитавању — квар је исправљен. Резултат и списак погрешних питања су остали тачни, па је из њих враћено које је питање било тачно, а које не.' },
+    izborNijeSacuvan: { l: 'Tvoj izbor ovde nije sačuvan (stariji zapis) — pitanje je bilo pogrešno.', c: 'Твој избор овде није сачуван (старији запис) — питање је било погрешно.' },
     zamkaNaslov: { l: 'Ponuđeni odgovori koji NISU tačni ovde su zvanično značenje ovih znakova:', c: 'Понуђени одговори који НИСУ тачни овде су званично значење ових знакова:' },
     atlasNapomena: { l: 'Slike su iz same baze pitanja — isti znak koji te čeka na ispitu, uz zvanično značenje (tačan odgovor na to pitanje). Dodirni sliku da je uvećaš.', c: 'Слике су из саме базе питања — исти знак који те чека на испиту, уз званично значење (тачан одговор на то питање). Додирни слику да је увећаш.' },
     statsTip: { l: 'Isti pregled kao na početnoj, uz tačnost: klik na naziv otvara spisak pitanja, strelica otklapa podoblasti. Boja tačnosti: zeleno od 85% (prag ispita), žuto 70–84%, crveno ispod 70%.', c: 'Исти преглед као на почетној, уз тачност: клик на назив отвара списак питања, стрелица отклапа подобласти. Боја тачности: зелено од 85% (праг испита), жуто 70–84%, црвено испод 70%.' },
@@ -544,6 +556,12 @@
       const last = nNum(r.last, 0, maxTs(), null);
       if (due !== null) rec.due = due;
       if (last !== null) rec.last = last;
+      // poslednji pogrešan izbor: samo brojevi ODGOVORA tog pitanja (isto pravilo kao ch u simulacijama)
+      if (Array.isArray(r.lw)) {
+        const ponuda = new Set(byId.get(+id).ch.map((c) => c.id));
+        const lw = r.lw.filter((v) => Number.isInteger(v) && ponuda.has(v)).slice(0, 10);
+        if (lw.length) rec.lw = lw;
+      }
       q[id] = rec;
     }
 
@@ -740,7 +758,7 @@
   // to je svesna odluka, potvrđena testom u tools/provera-bodovanja.js. Zbog nje pitanje
   // pogrešeno pa odmah ispravljeno može da se utvrdi u istoj sesiji. Ograničenje se ovde
   // NE uvodi bez dogovora, jer menja pravila učenja, a ne ispravlja kvar.
-  function record(id, ok) {
+  function record(id, ok, izbor) {
     const r = qs(id);
     const prviPut = !r.a;             // pre uvećanja: ovo pitanje se danas radi kao NOVO
     const sada = Date.now();
@@ -768,6 +786,10 @@
       else delete r.due;                                               // utvrđeno / izašlo iz reda
     } else {
       r.w++; r.streak = 0; r.due = Date.now();
+      // Koji je POGREŠAN odgovor izabran — do sada se nigde nije čuvalo, pa „stalno grešim na
+      // istim pitanjima" nije moglo da dobije odgovor „i to uvek biraš baš ovo". Čuva se samo
+      // poslednji pogrešan izbor (najviše deset odgovora), brojevi odgovora tog pitanja.
+      if (Array.isArray(izbor) && izbor.length) r.lw = izbor.slice(0, 10);
     }
     const today = localDay();
     if (!S.day || S.day.d !== today) zapocniDan(today);
@@ -813,6 +835,53 @@
     ready.sort((a, b) => k(a) - k(b));
     waiting.sort((a, b) => (S.q[a].due || 0) - (S.q[b].due || 0));
     return { ready, waiting };
+  }
+  // Pitanja na kojima si grešio VIŠE PUTA, najčešća na vrhu. Red za ponavljanje kaže šta je
+  // na redu; ovo kaže gde se greška PONAVLJA — a to su najčešće blizanci (vidi blizanci.mjs).
+  function greskeIds() {
+    const sa = (min) => Q.filter((q) => S.q[q.id] && S.q[q.id].w >= min)
+      .sort((a, b) => S.q[b.id].w - S.q[a.id].w || (S.q[b.id].w / S.q[b.id].a) - (S.q[a.id].w / S.q[a.id].a) || (S.q[b.id].last || 0) - (S.q[a.id].last || 0))
+      .map((q) => q.id);
+    const dvaput = sa(2);
+    return { ids: dvaput.length ? dvaput : sa(1), dvaput: dvaput.length > 0 };
+  }
+  function browseGreske() {
+    current = { redraw: browseGreske };
+    setHash('#/lista/greske');
+    pamtiSkrolSpiska('#/lista/greske');
+    const { ids, dvaput } = greskeIds();
+    const title = L('greskeNaslov');
+    const head = el('browseHead');
+    if (!ids.length) {
+      head.innerHTML = `<h3>${escapeHtml(title)}</h3><p class="qText" style="font-weight:normal">${escapeHtml(L('greskePrazno'))}</p>
+        <div class="qActions"><button type="button" class="primary" data-nav="learn">${L('krenimo')}</button></div>`;
+      bindNav(head);
+      el('browseList').innerHTML = '';
+      el('browseList').hidden = true;
+      show('browse');
+      veziNaVrh();
+      return;
+    }
+    const origin = () => browseGreske();
+    head.innerHTML = `<h3>${escapeHtml(title)}</h3>
+      <div class="mut opisRed">${escapeHtml(L(dvaput ? 'greskeOpis' : 'greskeJednom').split('@1').join(nQ(ids.length)))}</div>
+      <div class="qActions"><button class="primary" id="bGreske">${L('greskeVezbaj')} (${ids.length})${sfx()}</button>${shuffleBoxHtml()}</div>`;
+    bindNav(head);
+    bindShuffleBox(head);
+    el('bGreske').addEventListener('click', () => startList(maybeShuffle(ids), shufTag(() => title), null, 'filter', { origin }));
+    const list = el('browseList');
+    list.hidden = false;
+    list.innerHTML = pretragaHtml(ids.length) + legendHtml();
+    crtajRedove(list, ids, {
+      // broj grešaka već stoji u samom redu („1✓ 3✗") — drugi natpis bi ga samo ponovio
+      naKlik: (idx) => {
+        if (shuffleOn) rowStart(ids, idx, () => title, origin);
+        else startList(ids, () => title, null, 'filter', { startAt: idx, origin });
+      },
+    });
+    veziPretragu(list);
+    show('browse');
+    veziNaVrh();
   }
   function markedIds() { return Q.filter((q) => S.q[q.id] && S.q[q.id].marked).map((q) => q.id); }
 
@@ -930,6 +999,7 @@
     }
     if (h === '#/lista/wrong') return browseSet('wrong');
     if (h === '#/lista/marked') return browseSet('marked');
+    if (h === '#/lista/greske') return browseGreske();
     if (h === '#/stats') return renderStats();
     if (h === '#/uci') return startLearn();
     if (h.startsWith('#/p/')) {
@@ -1205,7 +1275,7 @@
       const v = document.createElement('div'); v.className = 'verdict ' + (ok ? 'ok' : 'bad'); v.setAttribute('role', 'status');
       v.textContent = ok ? L('correct') : L('wrong') + ' ' + L('correctIs');
       c.insertBefore(v, actions);
-      const ex = explNode(q);
+      const ex = explNode(q, { proslaGreska: true });
       if (ex) c.insertBefore(ex, actions);
       if (nextBtn) {
         nextBtn.className = 'primary';
@@ -1229,7 +1299,7 @@
         // isti prikaz istog pitanja (npr. ponovni render posle promene pisma) — ne beleži se dvaput
       } else {
         if (opts.recordKey) lastRecordKey = opts.recordKey;
-        opts.onAnswered(ok);
+        opts.onAnswered(ok, chosen.map((x) => x.id));
       }
     }
   }
@@ -1255,7 +1325,7 @@
     renderQuestion({
       container: el('qCard'), q,
       recordKey: 'L' + runSeq + '|' + S.seqPos,
-      onAnswered: (ok) => record(q.id, ok),
+      onAnswered: (ok, izbor) => record(q.id, ok, izbor),
       onNext: () => { lastRecordKey = null; S.seqPos++; save(); stepLearn(); },
       onPrev: S.seqPos > 0 ? () => { lastRecordKey = null; S.seqPos--; save(); stepLearn(); } : null,
     });
@@ -1378,7 +1448,7 @@
     renderQuestion({
       container: el('qCard'), q,
       recordKey: 'T' + runSeq + '|' + m.i,
-      onAnswered: (ok) => record(q.id, ok),
+      onAnswered: (ok, izbor) => record(q.id, ok, izbor),
       onNext: m.jedno
         ? () => { lastRecordKey = null; startList(Q.filter((x) => x.sub === q.sub).map((x) => x.id), secTitleFn(kljuc), null, 'section', { secKey: kljuc, startAt: S.secPos[kljuc] || 0, origin: () => browse(kljuc) }); }
         : () => { lastRecordKey = null; m.i++; stepList(); },
@@ -1538,7 +1608,51 @@
 
   // ---------- Objašnjenja (explanations.js, opciono prisutan) ----------
   const EX = window.EXPLAIN || { cards: {}, byQ: {}, bySub: {} };
-  function explNode(q) {
+  // Reči teksta koje NE postoje u drugom tekstu, označene. Mehanički i uvek istinito: nijedna
+  // rečenica o razlici se ne piše rukom — oko sam vidi „sme" naspram „ne sme", „60" naspram „82".
+  // Reči PO REDU: skup reči ne vidi razliku kad se ista reč javlja i na drugom mestu
+  // („180/60 … oznaka 180" naspram „180/60 … oznaka 60" — 180 postoji u oba teksta). Zato
+  // najduži zajednički podniz reči, pa se označi ono što u poravnanju ostane višak.
+  const RECI = /[0-9a-zčćžšđЀ-ӿ]+/gi;
+  function oznaciRazliku(tekst, protiv) {
+    tekst = String(tekst);
+    const tok = []; let m, k = 0;
+    RECI.lastIndex = 0;
+    while ((m = RECI.exec(tekst))) { tok.push({ od: m.index, do: m.index + m[0].length, n: m[0].toLowerCase() }); }
+    const b = (String(protiv).match(RECI) || []).map((x) => x.toLowerCase());
+    const n = tok.length, mm = b.length;
+    const L2 = Array.from({ length: n + 1 }, () => new Int16Array(mm + 1));
+    for (let i = n - 1; i >= 0; i--) for (let j = mm - 1; j >= 0; j--) {
+      L2[i][j] = tok[i].n === b[j] ? L2[i + 1][j + 1] + 1 : Math.max(L2[i + 1][j], L2[i][j + 1]);
+    }
+    const visak = new Set();
+    for (let i = 0, j = 0; i < n;) {
+      if (j < mm && tok[i].n === b[j]) { i++; j++; } else if (j < mm && L2[i][j + 1] > L2[i + 1][j]) { j++; } else { visak.add(i); i++; }
+    }
+    let html = '';
+    tok.forEach((w, i) => {
+      html += escapeHtml(tekst.slice(k, w.od));
+      const rec = escapeHtml(tekst.slice(w.od, w.do));
+      html += visak.has(i) ? '<mark class="blizRazl">' + rec + '</mark>' : rec;
+      k = w.do;
+    });
+    html += escapeHtml(tekst.slice(k));
+    return { html, ima: visak.size > 0 };
+  }
+  function blizanciHtml(q) {
+    const bl = ((EX.blizanci || {})[q.id] || []).map((id) => byId.get(id)).filter(Boolean);
+    if (!bl.length) return '';
+    return bl.map((b) => {
+      const r = oznaciRazliku(T(b.t), T(q.t));
+      const tacni = b.ch.filter((c) => c.ok).map((c) => `<li>${escapeHtml(T(c.t))}</li>`).join('');
+      return `<div class="blizBox"><div class="blizNaslov">${escapeHtml(L(r.ima ? 'blizNaslov' : 'blizIsto'))}</div>
+        <div class="blizTekst">${r.html}</div>
+        <div class="blizOdg"><span class="mut">${escapeHtml(L('blizTacno'))}</span><ul>${tacni}</ul></div>
+        ${r.ima ? `<div class="mut napomena">${escapeHtml(L('blizNap'))}</div>` : ''}</div>`;
+    }).join('');
+  }
+  function explNode(q, opcije) {
+    opcije = opcije || {};
     const e = EX.byQ[q.id];
     // Kartica se kači uz pitanje SAMO ako mu tema odgovara. Podoblasti su zvanično spojevi više
     // tema, pa pitanje sme da kaže: uzmi ovu karticu (card) ili nemoj nijednu (nocard). Bolje bez
@@ -1558,6 +1672,13 @@
       inner += `<div class="zamkaBox"><div class="mut napomena">${escapeHtml(L('zamkaNaslov'))}</div>`
         + `<div class="znGrid">${zam.map((id) => celijaZnaka(id, znacenjeZnaka(id), true)).join('')}</div></div>`;
     }
+    // Prošli pogrešan izbor na ovom pitanju — samo u učenju (opcije.proslaGreska), i samo ako
+    // je taj izbor i dalje pogrešan odgovor (zapis stariji od izmene baze ne sme da laže).
+    if (opcije.proslaGreska && S.q[q.id] && Array.isArray(S.q[q.id].lw)) {
+      const lw = S.q[q.id].lw.map((id) => q.ch.find((c) => c.id === id)).filter((c) => c && !c.ok);
+      if (lw.length) inner += `<div class="proslaGreska"><span class="mut">${escapeHtml(L('proslaGreska'))}</span> ${lw.map((c) => `<b>${escapeHtml(T(c.t))}</b>`).join(' · ')}</div>`;
+    }
+    inner += blizanciHtml(q);
     for (const k of cardKeys) {
       const c = EX.cards[k];
       inner += `<div><button class="explCardBtn pojBtn" data-card="${k}">📖 ${escapeHtml(T(c.t))}</button><div class="explCard" style="display:none">${T(c.h)}</div></div>`;
@@ -2126,7 +2247,7 @@
       if (sq.marked) qs(sq.q.id).marked = 1;   // obeleženo u simulaciji ostaje u tvojoj listi
       // neodgovoreno NIJE pogrešno: u rezultatu nosi 0 poena (to se ne dira), ali u napredak
       // ne sme da uđe kao greška — inače posle svakog ispita u red ulazi i ono što nisi video
-      if (sq.chosen.size > 0) record(sq.q.id, ok);
+      if (sq.chosen.size > 0) record(sq.q.id, ok, [...sq.chosen]);
       // zbir po oblastima se NE računa ovde: u zapis ide samo {id, ch}, pa ga renderSimReview
       // gradi iznova — tako tabela „Po oblastima" radi i za ispite predate pre te tabele
       if (ok) score += sq.q.pts;
@@ -2147,12 +2268,29 @@
   function renderSimReview(rec, fresh) {
     current = { redraw: () => renderSimReview(rec, fresh) };
     setHash('#/pregled/' + S.sims.indexOf(rec));
-    const items = (rec.qs || []).map((e) => ({ q: byId.get(e.id), chosen: new Set(e.ch) })).filter((x) => x.q);
-    const hasDetail = items.length > 0;
-    const isOk = (it) => {
-      const okSet = new Set(it.q.ch.filter((x) => x.ok).map((x) => x.id));
-      return it.chosen.size === okSet.size && [...it.chosen].every((id) => okSet.has(id));
-    };
+    // Zapisi pre v127 (16.09.2026): kvar pri učitavanju je brisao IZBORE (qs[].ch), a rezultat
+    // i spisak grešaka (wrong) su ostali tačni. Pregled je tada za 98/98 pisao „Pogrešna i
+    // neodgovorena pitanja (41)" i „0/19" po oblastima. Tačnost po pitanju se zato vraća iz
+    // spiska grešaka — ali SAMO ako se zbir poena pitanja van njega slaže sa rezultatom
+    // (mereno na Milanovih 8 od 8 takvih zapisa: slaže se svaki).
+    const bezIzbora = (rec.qs || []).length > 0 && rec.qs.every((e) => !e.ch || !e.ch.length);
+    const pogresna = new Set(rec.wrong || []);
+    const zbirVan = (rec.qs || []).reduce((a, e) => { const q0 = byId.get(e.id); return a + (q0 && !pogresna.has(e.id) ? q0.pts : 0); }, 0);
+    const izgubljeno = bezIzbora && rec.score > 0 && zbirVan === rec.score;
+    const items = (rec.qs || []).map((e) => {
+      const q0 = byId.get(e.id);
+      if (!q0) return null;
+      const okSet = new Set(q0.ch.filter((x) => x.ok).map((x) => x.id));
+      if (izgubljeno) {
+        const tacno = !pogresna.has(e.id);
+        return { q: q0, chosen: tacno ? okSet : null, ok: tacno, nepoznat: !tacno };
+      }
+      const chosen = new Set(e.ch);
+      return { q: q0, chosen, ok: chosen.size === okSet.size && [...chosen].every((id) => okSet.has(id)) };
+    }).filter(Boolean);
+    // bez izbora a sa poenima, a zbir se NE slaže: ništa se ne izmišlja — samo spisak grešaka
+    const hasDetail = items.length > 0 && !(bezIzbora && rec.score > 0 && !izgubljeno);
+    const isOk = (it) => it.ok;
     const perCat = {};
     for (const it of items) {
       const pc = perCat[it.q.cat] || (perCat[it.q.cat] = { n: 0, ok: 0, pts: 0, got: 0 });
@@ -2169,7 +2307,7 @@
       <table class="stats"><thead><tr><th>${L('thArea')}</th><th class="num">${L('thQ')}</th><th class="num">${L('thPts')}</th></tr></thead>
       <tbody>${Object.entries(perCat).map(([cid, pc]) =>
         `<tr><td>${escapeHtml(T(catName.get(+cid)))}</td><td class="num">${pc.ok}/${pc.n}</td><td class="num">${pc.got}/${pc.pts}</td></tr>`).join('')}
-      </tbody></table>` : `<p class="mut napomena">${L('reviewOldNote')}</p>`}
+      </tbody></table>${izgubljeno ? `<p class="mut napomena">${L('reviewIzgubljeno')}</p>` : ''}` : `<p class="mut napomena">${L('reviewOldNote')}</p>`}
       <div class="qActions">
         ${fresh ? `<button class="primary" id="btnSimAgain">${L('newSim')}</button>` : ''}
         <button class="secondary" id="btnShareRes">${L('shareBtn')}</button>
@@ -2183,7 +2321,7 @@
 
     const wl = el('simWrongList');
     wl.innerHTML = '';
-    const reviewCard = (q, chosen) => {
+    const reviewCard = (q, chosen, nepoznat) => {
       // Telo pregleda se pravi tek pri otvaranju: 41 sklopljeno pitanje je inače gradilo oko
       // 552.000 znakova skrivenog HTML-a i povlačilo ~1,3 MB slika koje se ne vide.
       const napraviTelo = () => {
@@ -2198,6 +2336,7 @@
           <div class="qText">${escapeHtml(T(q.t))}</div>
           ${q.req > 1 ? `<div class="reqNote">${L('requiresN').replace('#', q.req)}</div>` : ''}
           ${chosen && chosen.size === 0 ? `<div class="noAnsw">${L('notAnswered')}</div>` : ''}
+          ${nepoznat ? `<div class="noAnsw">${L('izborNijeSacuvan')}</div>` : ''}
           ${q.img ? `<button type="button" class="qImgBtn" aria-label="${escapeHtml(L('uvecajSliku'))}"><img class="qImg" loading="lazy" src="img/${q.id}.jpg" alt="${escapeHtml(L('imgAlt'))}"></button>` : ''}
           ${q.ch.map((ch) => `<div class="choice rev${ch.ok ? ' ok' : (chosen && chosen.has(ch.id) ? ' bad' : '')}">${escapeHtml(T(ch.t))}${chips(ch)}</div>`).join('')}`;
         { const im = card.querySelector('img.qImg'); if (im) pratiSliku(im); }
@@ -2210,11 +2349,11 @@
       const omot = document.createElement('div');
       omot.className = 'card pregledStavka';
       const dobro = chosen && (() => { const okSet = new Set(q.ch.filter((x) => x.ok).map((x) => x.id)); return chosen.size === okSet.size && [...chosen].every((id) => okSet.has(id)); })();
-      const znak = !chosen || chosen.size === 0 ? '•' : dobro ? '✓' : '✗';
+      const znak = nepoznat ? '✗' : !chosen || chosen.size === 0 ? '•' : dobro ? '✓' : '✗';
       const btn = document.createElement('button');
       btn.type = 'button';
       btn.className = 'explCardBtn pojBtn pregledNaslov';
-      btn.innerHTML = `<span class="pregZnak ${dobro ? 'qOk' : (!chosen || !chosen.size ? 'qDot' : 'qBad')}">${znak}</span> <span class="pregTekst">${escapeHtml(T(q.t))}</span>`;
+      btn.innerHTML = `<span class="pregZnak ${dobro ? 'qOk' : (nepoznat ? 'qBad' : (!chosen || !chosen.size ? 'qDot' : 'qBad'))}">${znak}</span> <span class="pregTekst">${escapeHtml(T(q.t))}</span>`;
       const telo = document.createElement('div');
       telo.className = 'explCard';
       telo.style.display = 'none';
@@ -2250,7 +2389,7 @@
         hw.innerHTML = `<h3>${L('simWrongTitle')} (${wrongItems.length})</h3>`;
         hw.appendChild(dugmeSve(wl));
         wl.appendChild(hw);
-        for (const it of wrongItems) wl.appendChild(reviewCard(it.q, it.chosen));
+        for (const it of wrongItems) wl.appendChild(reviewCard(it.q, it.chosen, it.nepoznat));
       }
       if (okItems.length) {
         const ho = document.createElement('div'); ho.className = 'card';
@@ -2259,7 +2398,7 @@
         // bio 41 pojedinačan klik. Kad greške postoje, dugme već stoji gore — ne treba drugo.
         if (!wrongItems.length) ho.appendChild(dugmeSve(wl));
         wl.appendChild(ho);
-        for (const it of okItems) wl.appendChild(reviewCard(it.q, it.chosen));
+        for (const it of okItems) wl.appendChild(reviewCard(it.q, it.chosen, it.nepoznat));
       }
     } else {
       for (const id of rec.wrong || []) {
@@ -2406,6 +2545,13 @@
     renderReady();
     el('statsCard').innerHTML = `<h3>${L('statsTitle')}</h3><p class="mut napomena">${L('statsTip')}</p><div id="statsBars"></div>`;
     nacrtajOblasti(el('statsBars'), { tacnost: true });
+    {
+      const g = greskeIds();
+      el('greskeCard').innerHTML = `<h3>${escapeHtml(L('greskeNaslov'))}</h3>
+        <p class="mut napomena">${escapeHtml(g.ids.length ? L(g.dvaput ? 'greskeOpis' : 'greskeJednom').split('@1').join(nQ(g.ids.length)) : L('greskePrazno'))}</p>
+        ${g.ids.length ? `<div class="qActions"><button type="button" class="secondary" id="btnGreske">${escapeHtml(L('greskeNaslov'))} (${g.ids.length}) ›</button></div>` : ''}`;
+      const bg = el('btnGreske'); if (bg) bg.addEventListener('click', browseGreske);
+    }
     el('daniCard').innerHTML = `<button type="button" class="explCardBtn pojBtn istaknuto" id="btnDani">${L('daniNaslov')}</button>
       <div class="explCard" id="daniTelo" style="display:none"></div>`;
     sklopivo(el('btnDani'), null, el('daniTelo'), (cd) => { cd.innerHTML = daniBlok(); oziviCrteze(cd); });
@@ -2680,7 +2826,8 @@
         ${isWrong
           ? `${ready.length ? `<button class="primary" id="bReady">${L('vezbajReady')} (${ready.length})${sfx()}</button>` : ''}
              ${waiting.length ? `<button class="secondary" id="bAll">${L('drillWaitingBtn')} (${ids.length})${sfx()}</button>` : ''}
-             ${stale.length ? `<button class="secondary" id="bStale" title="${escapeHtml(L('osveziTip'))}">${L('osveziBtn')} (${stale.length})${sfx()}</button>` : ''}`
+             ${stale.length ? `<button class="secondary" id="bStale" title="${escapeHtml(L('osveziTip'))}">${L('osveziBtn')} (${stale.length})${sfx()}</button>` : ''}
+             ${greskeIds().dvaput ? `<button class="secondary" id="bGreskeUl">${L('greskeNaslov')} ›</button>` : ''}`
           : `<button class="primary" id="bAllM">${L('vezbaj')} (${ids.length})${sfx()}</button>`}
         ${shuffleBoxHtml()}
       </div>
@@ -2690,6 +2837,7 @@
     veziPomoc(head);
     const br = el('bReady'); if (br) br.addEventListener('click', () => startList(maybeShuffle(queueSplit().ready), shufTag(() => L('drill')), () => L('drillEmpty'), shuffleOn ? 'drill-all' : 'drill', { origin }));
     const ba = el('bAll'); if (ba) ba.addEventListener('click', () => startList(maybeShuffle(ids), shufTag(() => L('drill')), null, 'drill-all', { origin }));
+    const bgu = el('bGreskeUl'); if (bgu) bgu.addEventListener('click', browseGreske);
     const bo = el('bStale'); if (bo) bo.addEventListener('click', () => startList(maybeShuffle(zaOsvezavanje()), shufTag(() => L('osveziTitle')), () => L('drillEmpty'), 'filter', { origin }));
     const bm = el('bAllM'); if (bm) bm.addEventListener('click', () => startList(maybeShuffle(ids), shufTag(() => L('marked')), null, 'filter', { origin }));
 

@@ -1510,6 +1510,92 @@ async function proveraBodovanja2() {
           await naPocetnu();
         }
       }
+
+      // ---- 3f) POGREŠAN IZBOR SE PAMTI (do v144 se nigde nije čuvao) ----
+      {
+        const NS2 = window.__dev.normalizeState;
+        const n = NS2({ q: { 8817: { a: 2, w: 1, streak: 0, lw: [28185, 999999, 'x', 28185.5] } } });
+        ok('normalizacija: poslednji pogrešan izbor zadržava samo odgovore TOG pitanja',
+          !!n && n.q[8817] && JSON.stringify(n.q[8817].lw) === '[28185]');
+        const n2 = NS2({ q: { 8817: { a: 1, w: 1, streak: 0, lw: [1, 2] } } });
+        ok('normalizacija: izbor sa tuđim brojevima odgovora se odbacuje ceo', !!n2 && n2.q[8817] && !('lw' in n2.q[8817]));
+        const bilo = S().q[8817] ? JSON.parse(JSON.stringify(S().q[8817])) : null;
+        delete S().q[8817];
+        location.hash = '#/p/8817'; await cekaj(400);
+        const q8817 = window.QUIZ.questions.find((x) => x.id === 8817);
+        const pogr = q8817.ch.find((c) => !c.ok);
+        const dugme = [...document.querySelectorAll('#qCard .choice')].find((d) => d.textContent.includes(pogr.t.l.slice(0, 12)) || d.textContent.includes(pogr.t.c.slice(0, 12)));
+        if (dugme) dugme.click(); await cekaj(120);
+        klikni('Odgovori', el2('qCard')) || klikni('Одговори', el2('qCard')); await cekaj(300);
+        ok('učenje: pogrešan izbor se upisuje uz pitanje (lw)', !!S().q[8817] && JSON.stringify(S().q[8817].lw) === JSON.stringify([pogr.id]));
+        // ---- 3g) BLIZANAC posle odgovora, sa označenom rečju koja menja odgovor ----
+        const bl = [...document.querySelectorAll('#qCard .blizBox')];
+        ok('blizanci: posle odgovora na #8817 stoji skoro isto pitanje (oznaka 180 umesto 60)',
+          bl.length >= 1 && bl.some((b) => [...b.querySelectorAll('mark')].map((m) => m.textContent).join(' ') === '180'));
+        // sledeći ulazak na isto pitanje pokazuje PROŠLI pogrešan izbor
+        location.hash = '#/'; await cekaj(150);
+        location.hash = '#/p/8817'; await cekaj(400);
+        const tacan = q8817.ch.find((c) => c.ok);
+        const dug2 = [...document.querySelectorAll('#qCard .choice')].find((d) => d.textContent.includes(tacan.t.l.slice(0, 12)) || d.textContent.includes(tacan.t.c.slice(0, 12)));
+        if (dug2) dug2.click(); await cekaj(120);
+        klikni('Odgovori', el2('qCard')) || klikni('Одговори', el2('qCard')); await cekaj(300);
+        const pg = el2('qCard').querySelector('.proslaGreska');
+        ok('učenje: uz pitanje stoji šta si prošli put pogrešno izabrao', !!pg && pg.textContent.includes(pogr.t.l.slice(0, 12)));
+        if (bilo) S().q[8817] = bilo; else delete S().q[8817];
+      }
+      {
+        const B = (window.EXPLAIN || {}).blizanci || {};
+        const byIdB = new Map(window.QUIZ.questions.map((q) => [q.id, q]));
+        const tacnoB = (q) => q.ch.filter((c) => c.ok).map((c) => c.t.l.trim().toLowerCase()).sort().join('|');
+        let losih = 0, veza = 0;
+        for (const [id, l] of Object.entries(B)) for (const b of l) {
+          veza++;
+          const a = byIdB.get(+id), c = byIdB.get(b);
+          if (!a || !c || a.img || c.img || tacnoB(a) === tacnoB(c)) losih++;
+        }
+        ok('blizanci: svaka veza je tekstualna i vodi na DRUGI tačan odgovor (' + Object.keys(B).length + ' pitanja, ' + veza + ' veza, loših ' + losih + ')',
+          Object.keys(B).length >= 200 && losih === 0);
+      }
+
+      // ---- 3h) STARI PREGLEDI: izbori izgubljeni kvarom pre v127, rezultat i greške tačni ----
+      {
+        const sims0 = S().sims;
+        const qs41 = window.QUIZ.questions.slice(0, 41);
+        const tot = qs41.reduce((a, q) => a + q.pts, 0);
+        const pogr3 = qs41.slice(0, 3).map((q) => q.id);
+        const sc = tot - qs41.slice(0, 3).reduce((a, q) => a + q.pts, 0);
+        S().sims = [{ d: Date.now() - 86400000, score: sc, total: tot, passed: false, wrong: pogr3, qs: qs41.map((q) => ({ id: q.id, ch: [] })) },
+          { d: Date.now() - 3600000, score: sc - 1, total: tot, passed: false, wrong: pogr3, qs: qs41.map((q) => ({ id: q.id, ch: [] })) }];
+        location.hash = '#/pregled/0'; await cekaj(500);
+        const v = el2('view-simresult');
+        const nasl = [...v.querySelectorAll('h3')].map((h) => h.textContent);
+        ok('stari pregled: tačnost po pitanju vraćena iz spiska grešaka (3 pogrešna, 38 tačnih)',
+          nasl.some((x) => /\(3\)/.test(x)) && nasl.some((x) => /\(38\)/.test(x)) && v.textContent.includes('nisu sačuvani'));
+        location.hash = '#/pregled/1'; await cekaj(500);
+        ok('stari pregled: kad se zbir NE slaže sa rezultatom, ništa se ne izmišlja (samo spisak grešaka)',
+          !v.querySelector('table.stats') && ![...v.querySelectorAll('h3')].some((h) => /\(38\)/.test(h.textContent)));
+        S().sims = sims0;
+        await naPocetnu();
+      }
+
+      // ---- 3i) NAJČEŠĆE GREŠKE: redosled po broju grešaka, pa pad na „bar jednom" ----
+      {
+        const q0 = S().q;
+        const [x1, x2, x3] = window.QUIZ.questions.slice(100, 103).map((q) => q.id);
+        S().q = { [x1]: { a: 3, w: 2, streak: 1, last: Date.now() - 1000 }, [x2]: { a: 5, w: 3, streak: 1, last: Date.now() - 2000 }, [x3]: { a: 1, w: 1, streak: 0, last: Date.now() } };
+        location.hash = '#/lista/greske'; await cekaj(400);
+        const redovi = [...document.querySelectorAll('#browseList .qRow')].map((r) => r.textContent);
+        const pocetak = (id) => { const q = window.QUIZ.questions.find((z) => z.id === id); return q.t.l.slice(0, 25); };
+        const tekst = el2('browseHead').textContent;
+        ok('najčešće greške: samo pitanja pogrešena 2+ puta, najviše grešaka na vrhu (' + redovi.length + ' reda)',
+          redovi.length === 2 && redovi[0].includes(pocetak(x2)) && redovi[1].includes(pocetak(x1)) && tekst.includes('dvaput ili više'));
+        S().q = { [x3]: { a: 1, w: 1, streak: 0, last: Date.now() } };
+        location.hash = '#/'; await cekaj(120);
+        location.hash = '#/lista/greske'; await cekaj(400);
+        ok('najčešće greške: bez dvostrukih grešaka pokazuje pogrešena bar jednom', document.querySelectorAll('#browseList .qRow').length === 1 && el2('browseHead').textContent.includes('bar jednom'));
+        S().q = q0;
+        await naPocetnu();
+      }
     }
 
   } catch (e) {
