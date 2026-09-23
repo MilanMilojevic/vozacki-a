@@ -32,3 +32,6 @@ tools/*-dump.txt
 
 # alat za pregledač (Codex/agenti) — ne ide u izdanje
 .playwright-mcp/
+
+# ogrebotine proverivača procene (kopije alata, dijagnostika) — ne idu u repo
+tools/procena/_*/

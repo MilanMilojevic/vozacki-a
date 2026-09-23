@@ -3,6 +3,7 @@
 import fs from 'node:fs/promises';
 import { napraviAtlas, SUB_KARTICA_SVE } from './atlas.mjs';
 import { blizanciIzBaze, PRAG as BLIZ_PRAG } from './blizanci.mjs';
+import { DOPUNE } from './tvrdoglava-dopune.mjs';
 import { tabelaObrazaca, brojeviMamci, procenat, meri, podoblastiObrasca, imePodoblasti, ukupnoPitanja } from './mere.mjs';
 
 // ---------------- IZVOR (latinica) ----------------
@@ -7375,6 +7376,13 @@ for (const k of Object.keys(SITUACIJE)) if (!CARDS[k]) console.log('⚠ situacij
 
 const BLIZANCI = blizanciIzBaze();
 
+// Dopune uz pitanja na kojima se greška ponavlja (tools/tvrdoglava-dopune.mjs): ključ, zamena
+// objašnjenja gde staro nije bilo dovoljno, blizanci sa proverenom rečenicom razlike.
+for (const [id, d] of Object.entries(DOPUNE)) {
+  if (!X[id]) { console.log('⚠ dopuna za nepoznato pitanje', id); process.exitCode = 1; continue; }
+  X[id] = { ...X[id], ...(d.x ? { x: d.x } : {}), ...(d.k ? { k: d.k } : {}), ...(d.bl ? { bl: d.bl } : {}) };
+}
+
 const out = {
   updated: new Date().toISOString().slice(0, 10),
   cards: Object.fromEntries(Object.entries(CARDS).map(([k, c]) => [k, { t: { l: c.title, c: toCyr(c.title) }, h: { l: c.html, c: toCyr(c.html) } }])),
@@ -7382,6 +7390,8 @@ const out = {
     ...(e.x ? { x: { l: e.x, c: toCyr(e.x) } } : {}),
     ...(e.card ? { card: e.card } : {}),
     ...(e.nocard ? { nocard: 1 } : {}),
+    ...(e.k ? { k: { l: e.k, c: toCyr(e.k) } } : {}),
+    ...(e.bl ? { bl: e.bl.map((b) => ({ id: b.id, r: { l: b.r, c: toCyr(b.r) } })) } : {}),
   }])),
   bySub: BYSUB,
   // Sve tri liste su SAMO brojevi pitanja: tekst (značenje, pitanje, tačan odgovor) stoji u
@@ -7397,7 +7407,7 @@ const out = {
 {
   const texts = [];
   for (const c of Object.values(out.cards)) { texts.push(c.t.c, c.h.c); }
-  for (const e of Object.values(out.byQ)) { if (e.x) texts.push(e.x.c); }
+  for (const e of Object.values(out.byQ)) { if (e.x) texts.push(e.x.c); if (e.k) texts.push(e.k.c); for (const b of e.bl || []) texts.push(b.r.c); }
   const bad = new Set();
   for (const t of texts) {
     const plain = t.replace(/<[^>]+>/g, ' ');

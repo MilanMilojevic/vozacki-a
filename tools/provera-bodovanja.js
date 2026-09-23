@@ -1397,6 +1397,48 @@ async function proveraBodovanja2() {
       const sp3 = window.__dev.spremnost();
       ok('pravilo: prolaz za dlaku ne računa se u niz', !sp3.nizOk);
       S().sims = staroSims;
+
+      // ---- 2b2) JEDNOKRATNA ISPRAVKA lažnih grešaka iz praznih ispita pre v139 ----
+      {
+        const NS3 = window.__dev.normalizeState;
+        const ids41 = window.QUIZ.questions.slice(0, 41).map((q) => q.id);
+        const ulaz = { q: {}, sims: [{ d: Date.UTC(2026, 8, 3), score: 0, total: 98, passed: false, wrong: ids41, qs: ids41.map((id) => ({ id, ch: [] })) }] };
+        ids41.forEach((id, i) => { ulaz.q[id] = i === 0 ? { a: 1, w: 1, streak: 0 } : { a: 3, w: 2, streak: 1 }; });
+        const n1 = NS3(ulaz);
+        ok('ispravka: prazan ispit pre v139 briše po jednu lažnu grešku (3/2 → 2/1, a samo lažno odgovoreno nestaje)',
+          !n1.q[ids41[0]] && n1.q[ids41[1]].a === 2 && n1.q[ids41[1]].w === 1 && n1.isp === 1);
+        const n2 = NS3(n1);
+        ok('ispravka: radi samo jednom (drugo učitavanje ništa ne dira)', n2.q[ids41[1]].a === 2 && n2.q[ids41[1]].w === 1);
+        const posle = { q: { [ids41[1]]: { a: 3, w: 2, streak: 1 } }, sims: [{ d: Date.UTC(2026, 8, 20), score: 0, total: 98, passed: false, wrong: ids41, qs: ids41.map((id) => ({ id, ch: [] })) }] };
+        ok('ispravka: prazan ispit POSLE v139 se ne dira (tada se neodgovoreno i ne upisuje)', NS3(posle).q[ids41[1]].w === 2);
+      }
+
+      // ---- 2c) PROCENA (procena.js, v145): pozitivne kontrole koje je stara formula padala ----
+      // Stara (Laplace +1/+2) je savršenom učeniku davala ≈65/98 i 0,5%, a početniku sa 40 tačnih 100%.
+      {
+        const q0 = S().q, s0 = S().sims, sad = Date.now(), dan = 86400000;
+        ok('procena: procena.js je učitan', !!window.VozackiProcena && typeof window.VozackiProcena.proceni === 'function');
+        S().sims = [];
+        S().q = {}; for (const q of window.QUIZ.questions) S().q[q.id] = { a: 1, w: 0, streak: 1, last: sad - 2 * dan, due: sad + dan };
+        const sav = window.__dev.spremnost();
+        ok('procena: savršen učenik (svako pitanje jednom tačno) → šansa ≥ 95% (stara: 0,5%) — ' + Math.round(100 * sav.sansa) + '%, ≈' + Math.round(sav.exp),
+          sav.sansa !== null && sav.sansa >= 0.95 && sav.exp >= 90);
+        S().q = {}; let i = 0; for (const q of window.QUIZ.questions) S().q[q.id] = (i++ % 2) ? { a: 2, w: 2, streak: 0, last: sad - dan, due: sad } : { a: 2, w: 1, streak: 1, last: sad - dan, due: sad + dan };
+        const pola = window.__dev.spremnost();
+        ok('procena: pola pogrešno → šansa ≤ 5% (i keš se osvežio posle promene stanja) — ' + Math.round(100 * pola.sansa) + '%', pola.sansa !== null && pola.sansa <= 0.05);
+        S().q = {}; for (const q of window.QUIZ.questions) S().q[q.id] = { a: 1, w: 0, streak: 1, last: sad - 3 * dan, due: sad + dan };
+        S().sims = [1, 2, 3, 4, 5].map((k) => ({ d: sad - (6 - k) * dan, score: 70, total: 98, passed: false, wrong: [], qs: [] }));
+        const sim70 = window.__dev.spremnost();
+        ok('procena: pet simulacija po 70/98 obara procenu i kad je sve jednom tačno — ' + Math.round(100 * sim70.sansa) + '%', sim70.sansa !== null && sim70.sansa < 0.2);
+        S().sims = [];
+        S().q = {}; for (const q of window.QUIZ.questions.slice(0, 40)) S().q[q.id] = { a: 1, w: 0, streak: 1, last: sad - dan, due: sad + 2 * dan };
+        const poc = window.__dev.spremnost();
+        document.querySelector('[data-nav="stats"]').click(); await cekaj(300);
+        ok('procena: početnik sa 40 tačnih bez simulacija ne dobija broj (stara: 100%), nego poruku šta fali',
+          poc.sansa === null && el2('readyCard').textContent.includes('još ne računam') && !!el2('readyCard').querySelector('[data-nav="sim"]'));
+        S().q = q0; S().sims = s0;
+        await naPocetnu();
+      }
     }
 
     // ---- 3) PRIORITET PO TEŽINI NA ISPITU ----
@@ -1555,6 +1597,30 @@ async function proveraBodovanja2() {
         }
         ok('blizanci: svaka veza je tekstualna i vodi na DRUGI tačan odgovor (' + Object.keys(B).length + ' pitanja, ' + veza + ' veza, loših ' + losih + ')',
           Object.keys(B).length >= 200 && losih === 0);
+      }
+
+      // ---- 3g2) KLJUČ i provereni blizanci uz pitanja na kojima se greška ponavlja ----
+      {
+        const BQ = window.EXPLAIN.byQ;
+        const saKljucem = Object.keys(BQ).filter((id) => BQ[id].k);
+        const saRazlikom = Object.keys(BQ).filter((id) => (BQ[id].bl || []).length);
+        ok('ključ: dopune stoje uz ' + saKljucem.length + ' pitanja, provereni blizanci uz ' + saRazlikom.length,
+          saKljucem.length >= 59 && saRazlikom.length >= 40 && saKljucem.every((id) => BQ[id].k.l && /[Ѐ-ӿ]/.test(BQ[id].k.c)));
+        ok('objašnjenja: #10470 više ne uči da je lista ista kao za preticanje, #8305 zna za semafor',
+          !/Ista lista/.test(BQ[10470].x.l) && /NIJE ista lista/.test(BQ[10470].x.l) && /#9850/.test(BQ[8305].x.l));
+        const b8553 = S().q[8553] ? JSON.parse(JSON.stringify(S().q[8553])) : null;
+        location.hash = '#/p/8553'; await cekaj(400);
+        const q8553 = window.QUIZ.questions.find((x) => x.id === 8553);
+        for (const c of q8553.ch.filter((x) => x.ok)) {
+          const d = [...document.querySelectorAll('#qCard .choice')].find((b) => b.textContent.includes(c.t.l.slice(0, 14)));
+          if (d) d.click(); await cekaj(60);
+        }
+        klikni('Odgovori', el2('qCard')); await cekaj(300);
+        const eb = el2('qCard').querySelector('.explBox');
+        ok('ključ: posle odgovora stoji NA VRHU objašnjenja, a blizanci imaju rečenicu razlike',
+          !!eb && eb.firstElementChild && eb.firstElementChild.classList.contains('kljucBox')
+          && eb.querySelectorAll('.blizBox .blizRazlika').length >= 2);
+        if (b8553) S().q[8553] = b8553; else delete S().q[8553];
       }
 
       // ---- 3h) STARI PREGLEDI: izbori izgubljeni kvarom pre v127, rezultat i greške tačni ----
