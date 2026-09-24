@@ -133,7 +133,22 @@ async function proveraBodovanja2() {
       S().plan = { novih: 10, pon: 10, auto: 1, prio: 0 };
       svezaKvota();
       await naPocetnu();
-      ok('tempo: u auto režimu višak snižava sutrašnju kvotu', /preko cilja/.test(planTekst()) && /sutrašnja kvota/i.test(planTekst()));
+      // v147: rečenica o sutrašnjoj kvoti stoji SAMO kad se kvota stvarno smanjuje, i sa brojem.
+      // Ovde je daleki datum i nijedno pitanje nije stvarno odgovoreno — sutra je ista kvota, pa ćuti.
+      ok('tempo: mali višak ne obećava manju sutrašnju kvotu kad je ona ista (revizija v146)', /preko cilja/.test(planTekst()) && !/Sutrašnja kvota/i.test(planTekst()));
+      {
+        // pravi višak: 600 pitanja urađeno, jutarnja (zamrznuta) kvota 60, ispit za 20 dana, rok za novo
+        // za 14 dana → sutra ceil(727 / 13) = 56 < 60
+        const za20 = new Date(danas.getTime() + 20 * 86400000);
+        S().examDate = za20.getFullYear() + '-' + String(za20.getMonth() + 1).padStart(2, '0') + '-' + String(za20.getDate()).padStart(2, '0');
+        const q0v = S().q;
+        S().q = {}; window.QUIZ.questions.slice(0, 600).forEach((q) => { S().q[q.id] = { a: 1, w: 0, streak: 1, last: Date.now(), due: Date.now() + 3 * 86400000 }; });
+        S().plan = { auto: 1, prio: 0 };
+        S().day = { d: danasStr, n: 120, ok: 100, novih: 120, pon: 0, autoN: 60, autoP: 80 };
+        await naPocetnu();
+        ok('tempo: pravi višak kaže koliko će sutra biti (56 < 60)', /Sutrašnja kvota novih će zato biti 56/.test(planTekst()));
+        S().q = q0v;
+      }
 
       // bez datuma ispita auto nema od čega da računa — i to kaže
       S().examDate = null;
@@ -1472,6 +1487,23 @@ async function proveraBodovanja2() {
         S().plan = bilo.plan;
         S().q = q0; S().sims = s0;
         await naPocetnu();
+      }
+
+      // ---- 2b4) TEMPO v147: pozitivna kontrola jednog modela (simulacija plana) ----
+      // „Predloži mi" na čistom stanju sa 30 dana: po istom modelu gradivo i sva potvrdiva ponavljanja
+      // staju — a ponDnevno je NAJMANJI broj uz koji je tako (jedan manje već ne staje).
+      {
+        const q0 = S().q, e0 = S().examDate, p0 = S().plan, d0 = S().day;
+        S().q = {}; S().plan = null; S().day = null;
+        const z = new Date(Date.now() + 30 * 86400000); const dv = (n) => String(n).padStart(2, '0');
+        S().examDate = z.getFullYear() + '-' + dv(z.getMonth() + 1) + '-' + dv(z.getDate());
+        const tp = window.__dev.predlogTempa(30, window.QUIZ.questions.length);
+        const sim = window.__dev.simulirajPlan(tp.novih, tp.pon, 30, 0, 0);
+        const manje = window.__dev.simulirajPlan(tp.novih, tp.pon - 1, 30, 0, 0);
+        ok('tempo v147: predlog (' + tp.novih + '/' + tp.pon + ') po istom modelu otvara sve i potvrđuje sve potvrdivo',
+          sim.neotvoreno === 0 && sim.nepotvrdjeno === 0 && sim.kasno === 0);
+        ok('tempo v147: ponavljanja su najmanji dovoljan broj (' + (tp.pon - 1) + ' već ne staje)', tp.pon === 15 || manje.nepotvrdjeno > 0);
+        S().q = q0; S().examDate = e0; S().plan = p0; S().day = d0;
       }
 
       // ---- 2c) PROCENA (procena.js, v145): pozitivne kontrole koje je stara formula padala ----
