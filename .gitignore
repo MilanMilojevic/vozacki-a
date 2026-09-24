@@ -37,3 +37,4 @@ tools/*-dump.txt
 tools/procena/_*/
 # radne fascikle revizije računica — ne idu u repo
 tools/_revizija_*/
+tools/plan/_*/

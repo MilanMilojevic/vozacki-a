@@ -11,8 +11,8 @@ if (!m) { console.log('FAIL: version.js bez broja'); process.exit(1); }
 const oldV = +m[1], newV = oldV + 1;
 let h = fs.readFileSync('../index.html', 'utf8');
 const cnt = h.split('?v=' + oldV).length - 1;
-// style.css, version.js, data.js, explanations.js, procena.js, app.js
-if (cnt !== 6) { console.log('FAIL: očekivano 6 markica ?v=' + oldV + ', nađeno ' + cnt); process.exit(1); }
+// style.css, version.js, data.js, explanations.js, procena.js, plan.js, app.js
+if (cnt !== 7) { console.log('FAIL: očekivano 7 markica ?v=' + oldV + ', nađeno ' + cnt); process.exit(1); }
 h = h.split('?v=' + oldV).join('?v=' + newV);
 fs.writeFileSync('../index.html', h);
 fs.writeFileSync('../version.js', 'self.APP_V = ' + newV + ';\n');
