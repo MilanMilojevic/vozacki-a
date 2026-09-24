@@ -151,6 +151,19 @@ function bazeniZa(Q, SIM_SLOTS) {
   return b;
 }
 
+// „Prava" simulacija = uzorak znanja: ima poene, nije prekinuta (najviše MAX_NEODG neodgovorenih).
+// JEDAN filter za celu aplikaciju — istorija, pravilo „spreman sam", opomena i predlog simulacije
+// ga uzimaju odavde, da se isti ispit ne broji na jednom mestu, a na drugom ne (revizija v146).
+function neodgovorenoSim(s) {
+  if (Number.isFinite(s.odg) && Array.isArray(s.qs)) return s.qs.length - s.odg;           // zapis od v145 nosi broj odgovorenih
+  if (!Array.isArray(s.qs) || !s.qs.length || s.qs.every((e) => !e.ch || !e.ch.length)) return 0;   // pre v127 izbori su brisani — ne zna se
+  return s.qs.filter((e) => !e.ch || !e.ch.length).length;
+}
+function pravaSimulacija(s, maxNeodg) {
+  return !!s && s.total > 0 && s.score > 0 && s.score <= s.total && Number.isFinite(s.d)
+    && neodgovorenoSim(s) <= (Number.isFinite(maxNeodg) ? maxNeodg : MAX_NEODG);
+}
+
 function proceni(S, ctx) {
   const { Q, SIM_SLOTS, sad, DAY } = ctx;
   const bazeni = bazeniZa(Q, SIM_SLOTS);
@@ -181,12 +194,7 @@ function proceni(S, ctx) {
     vidjeno.push(e); poId.set(q.id, e);
   }
   const maxNeodg = Number.isFinite(ctx._maxNeodg) ? ctx._maxNeodg : MAX_NEODG;
-  const neodgovoreno = (s) => {
-    if (Number.isFinite(s.odg) && Array.isArray(s.qs)) return s.qs.length - s.odg;           // zapis od v145 nosi broj odgovorenih
-    if (!Array.isArray(s.qs) || !s.qs.length || s.qs.every((e) => !e.ch || !e.ch.length)) return 0;   // pre v127 izbori su brisani — ne zna se
-    return s.qs.filter((e) => !e.ch || !e.ch.length).length;
-  };
-  const sims = (S.sims || []).filter((s) => s && s.total > 0 && s.score > 0 && s.score <= s.total && Number.isFinite(s.d) && s.d <= sad && neodgovoreno(s) <= maxNeodg)
+  const sims = (S.sims || []).filter((s) => pravaSimulacija(s, maxNeodg) && s.d <= sad)
     .sort((a, b) => a.d - b.d).slice(-K_SIM);
   const pokriveno = bazeni.reduce((a, b) => {
     const subs = new Set(b.pool.map((q) => q.sub)); let n = 0; for (const s of subs) n += fs[s] ? fs[s].n : 0;
@@ -363,5 +371,5 @@ function proceni(S, ctx) {
   return { sansa: Math.min(1, Math.max(0, sansa / wUk)), exp, slotovi };
 }
 
-self.VozackiProcena = { proceni };
+self.VozackiProcena = { proceni, pravaSimulacija };
 })();

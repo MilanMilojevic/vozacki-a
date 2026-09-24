@@ -35,3 +35,5 @@ tools/*-dump.txt
 
 # ogrebotine proverivača procene (kopije alata, dijagnostika) — ne idu u repo
 tools/procena/_*/
+# radne fascikle revizije računica — ne idu u repo
+tools/_revizija_*/

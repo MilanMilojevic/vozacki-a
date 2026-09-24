@@ -1406,11 +1406,72 @@ async function proveraBodovanja2() {
         ids41.forEach((id, i) => { ulaz.q[id] = i === 0 ? { a: 1, w: 1, streak: 0 } : { a: 3, w: 2, streak: 1 }; });
         const n1 = NS3(ulaz);
         ok('ispravka: prazan ispit pre v139 briše po jednu lažnu grešku (3/2 → 2/1, a samo lažno odgovoreno nestaje)',
-          !n1.q[ids41[0]] && n1.q[ids41[1]].a === 2 && n1.q[ids41[1]].w === 1 && n1.isp === 1);
+          !n1.q[ids41[0]] && n1.q[ids41[1]].a === 2 && n1.q[ids41[1]].w === 1 && (n1.isp & 1) === 1);
         const n2 = NS3(n1);
         ok('ispravka: radi samo jednom (drugo učitavanje ništa ne dira)', n2.q[ids41[1]].a === 2 && n2.q[ids41[1]].w === 1);
         const posle = { q: { [ids41[1]]: { a: 3, w: 2, streak: 1 } }, sims: [{ d: Date.UTC(2026, 8, 20), score: 0, total: 98, passed: false, wrong: ids41, qs: ids41.map((id) => ({ id, ch: [] })) }] };
         ok('ispravka: prazan ispit POSLE v139 se ne dira (tada se neodgovoreno i ne upisuje)', NS3(posle).q[ids41[1]].w === 2);
+      }
+
+      // ---- 2b3) REVIZIJA RAČUNICA v146: pozitivne kontrole za potvrđene nalaze ----
+      {
+        const q0 = JSON.parse(JSON.stringify(S().q)), s0 = S().sims, sad = Date.now(), dan = 86400000;
+        const qs41 = window.QUIZ.questions.slice(0, 41);
+        // (1) istorija: prazan 0/98 pre v139 ne ulazi u prosek; 90 i 94 → „2 od 2 · prosek 92"
+        S().sims = [
+          { d: Date.UTC(2026, 8, 3), score: 0, total: 98, passed: false, wrong: qs41.map((q) => q.id), qs: qs41.map((q) => ({ id: q.id, ch: [] })) },
+          { d: sad - 2 * dan, score: 90, total: 98, passed: true, wrong: [], qs: [] },
+          { d: sad - dan, score: 94, total: 98, passed: true, wrong: [], qs: [] },
+        ];
+        await naPocetnu();
+        const hist = el2('simHistory').textContent.replace(/\s+/g, ' ');
+        ok('revizija v146: istorija računa prosek samo pravih simulacija (2 od 2 · prosek 92, prazna se navodi)',
+          /Položeno 2 od 2/.test(hist) && /prosek 92/.test(hist) && /1 praznih ili prekinutih/.test(hist));
+        ok('revizija v146: pravilo „spreman" broji samo prave simulacije (2, ne 3)', window.__dev.spremnost().broj === 2);
+        S().sims = s0;
+        // (2) statistika: pitanje pogrešeno dvaput pa naučeno više ne vuče tačnost na 33%
+        const qA = window.QUIZ.questions.find((q) => q.cat === window.QUIZ.questions[0].cat);
+        S().q = { [qA.id]: { a: 3, w: 2, streak: 1, last: sad - dan } };
+        document.querySelector('[data-nav="stats"]').click(); await cekaj(300);
+        const redovi = [...el2('statsBars').querySelectorAll('.catMain')].map((b) => b.textContent.replace(/\s+/g, ' '));
+        ok('revizija v146: tačnost po oblastima je „poslednji put tačno" (100%, ne 33%)', redovi.some((x) => /100%/.test(x)) && !redovi.some((x) => /33%/.test(x)));
+        // (3) auto na dan ispita: stari ručni brojevi 60/40 se ne pojavljuju kao cilj
+        const bilo = { plan: S().plan, examDate: S().examDate };
+        const dd = new Date(); const dva = (n) => String(n).padStart(2, '0');
+        S().examDate = dd.getFullYear() + '-' + dva(dd.getMonth() + 1) + '-' + dva(dd.getDate());
+        S().plan = { novih: 60, pon: 40, auto: 1, prio: 0 };
+        const ps = window.__dev.planStanje();
+        ok('revizija v146: na dan ispita auto ne pokazuje stare ručne brojeve 60/40', !!ps && ps.cNovih === 0 && ps.cPon === 0);
+        S().plan = bilo.plan; S().examDate = bilo.examDate;
+        // (4) ispravka lažnih grešaka, bit 2: bez grešaka posle oduzimanja → nazad u red na jednu potvrdu
+        const NS4 = window.__dev.normalizeState;
+        const ids41 = qs41.map((q) => q.id);
+        const ul = { q: { [ids41[5]]: { a: 3, w: 1, streak: 2, last: sad - 3 * dan } }, sims: [{ d: Date.UTC(2026, 8, 3), score: 0, total: 98, passed: false, wrong: ids41, qs: ids41.map((id) => ({ id, ch: [] })) }] };
+        const iz = NS4(ul).q[ids41[5]];
+        ok('revizija v146: pitanje posle ispravke lažne greške nije „utvrđeno" bez potvrde (a2 w0 → streak 1, u redu)', !!iz && iz.w === 0 && iz.a === 2 && iz.streak === 1);
+        // (5) lw se briše posle tačnog odgovora
+        const q8817 = window.QUIZ.questions.find((x) => x.id === 8817);
+        S().q = { 8817: { a: 1, w: 1, streak: 0, lw: [q8817.ch.find((c) => !c.ok).id], last: sad - 2 * dan, due: sad - dan } };
+        window.__dev.record(8817, true, q8817.ch.filter((c) => c.ok).map((c) => c.id));
+        ok('revizija v146: posle tačnog odgovora nema „prošli put si izabrao"', !('lw' in S().q[8817]));
+        // (6) blizanac kome fale reči: naslov nije „isto pitanje", a reči koje fale su navedene
+        S().q = {};
+        location.hash = '#/p/8469'; await cekaj(400);
+        const q8469 = window.QUIZ.questions.find((x) => x.id === 8469);
+        for (const c of q8469.ch.filter((x) => x.ok)) { const d = [...document.querySelectorAll('#qCard .choice')].find((b) => b.textContent.includes(c.t.l.slice(0, 14))); if (d) d.click(); await cekaj(60); }
+        klikni('Odgovori', el2('qCard')); await cekaj(300);
+        const bb = [...el2('qCard').querySelectorAll('.blizBox')].find((x) => /Ovde nema reči/.test(x.textContent));
+        ok('revizija v146: blizanac kome fale reči dobija „drugi tačan odgovor" i spisak reči koje fale (#8469)',
+          !!bb && /DRUGI tačan odgovor/.test(bb.textContent) && /motornim/.test(bb.textContent));
+        // (7) tačnost danas 84,6% nije zelena i nema ✓
+        const dd2 = new Date(); S().day = { d: dd2.getFullYear() + '-' + dva(dd2.getMonth() + 1) + '-' + dva(dd2.getDate()), n: 13, ok: 11, novih: 0, pon: 0 };
+        S().plan = { novih: 5, pon: 5, auto: 0, prio: 0 };
+        await naPocetnu();
+        const tr = [...document.querySelectorAll('#homeSummary .planRed')].find((x) => /\(85%\)/.test(x.textContent));
+        ok('revizija v146: 84,6% tačnih danas ispisano je 85%, ali bez zelene boje i ✓', !!tr && !tr.querySelector('.barDobar') && !tr.textContent.includes('✓'));
+        S().plan = bilo.plan;
+        S().q = q0; S().sims = s0;
+        await naPocetnu();
       }
 
       // ---- 2c) PROCENA (procena.js, v145): pozitivne kontrole koje je stara formula padala ----

@@ -441,7 +441,7 @@ CARDS['brzine'] = {
 // iz data.js, pri svakom bildu. Tako brojka ne može da se raziđe sa bazom u tišini.
 const ZAMKE_OBRASCI = [
   { opis: '"na kratkom delu puta"', re: /na kratkom delu puta/i },
-  { opis: '"raspoloživom vremenu" / "udobnost"', re: /raspoloživ\w* vremen|udobnost/i },
+  { opis: '"raspoloživom vremenu" / "udobnost"', re: /raspoloživ\w* vremen|udobn/i },
   { opis: '"ako time ne ometa, odnosno ne ugrožava druge" (kao izgovor za zabranjeno)', re: /ako time ne ometa,?\s*odnosno ne ugrožava/i },
   { opis: '"što pre (stigne)"', re: /što pre/i },
   { opis: '"uz povećanu opreznost"', re: /uz povećanu opreznost/i },
@@ -673,7 +673,7 @@ CARDS['dozvole'] = {
 <tr><td>ostali putevi</td><td><b>najviše 90% ograničenja</b> na tom delu puta</td></tr>
 <tr><td>alkohol</td><td><b>0,00</b> (kao i svi vozači A kategorija)</td></tr>
 </table>
-<p class="mut">Pamćenje: probna skida "deseticu": 130→110 na autoputu, 100→90 na motoputu, ostalo −10%.</p>
+<p class="mut">Pamćenje: probna = 110 · 90 · 90% (autoput −20, motoput −10, ostalo −10%).</p>
 
 <!-- ==== dopuna 07.09.2026 (tura 4): crtež + isto to rečima ==== -->
 <div class="kPodH"><b class="kPodNaslov">A dozvola: šta smeš, a šta ne</b>
@@ -2760,7 +2760,7 @@ CARDS['put-pojmovi'] = {
 <tr><td>kad je vozilo zaustavljeno u <b>tunelu duže od jednog minuta</b></td><td>u tunelu je strože: izduvni gasovi nemaju kuda</td></tr>
 <tr><td>kad vozilo <b>stoji duže od tri minuta</b></td><td>ista granica kao u definiciji zaustavljanja gore</td></tr>
 </table>
-<p><b>Semafor NIJE razlog za gašenje motora.</b> Kao mamac se dva puta nudi „prekid kretanja radi postupanja po svetlosnom znaku zabrane prolaska koji daje semafor" — jednom sa dodatkom „duže od dva minuta", jednom bez njega. Ni jedno ni drugo nije u zakonu: crveno svetlo motor ne gasi, gasi ga tunel (jedan minut), stajanje (tri minuta), znak i službeno lice.</p>
+<p><b>Semafor NIJE razlog za gašenje motora.</b> U oba pitanja (#10609, #10610) kao mamac se nude obe varijante „prekida kretanja radi postupanja po svetlosnom znaku zabrane prolaska koji daje semafor" — sa dodatkom „duže od dva minuta" i bez njega. Ni jedno ni drugo nije u zakonu: crveno svetlo motor ne gasi, gasi ga tunel (jedan minut), stajanje (tri minuta), znak i službeno lice.</p>
 <svg viewBox="0 0 320 182" class="crtez" role="img" aria-label="Motor se gasi u tunelu posle jednog minuta, pri stajanju dužem od tri minuta, po saobraćajnom znaku i po naredbi službenog lica. Crveno svetlo na semaforu motor ne gasi.">
   <text x="14" y="20" font-size="13" font-weight="bold" fill="currentColor">MOTOR SE GASI</text>
   <text x="26" y="44" font-size="12" fill="currentColor">tunel — posle <tspan font-weight="bold">1 minuta</tspan></text>
@@ -6406,7 +6406,7 @@ opšti okvir trajanja: od 30 dana do jedne godine (Zakon o prekršajima čl. 58)
      Crtez: strelice na susretnim vozilima nose razliku prema obicnom preticanju - bez njih slika
      izgleda kao kolona u istom smeru. -->
 <div class="kPodH"><b class="kPodNaslov">Vrh lestvice: šta se vidi na toj jednoj slici</b>
-<p>Nasilnička vožnja je u bazi <b>jedno jedino pitanje</b>, i ono ima sliku. Isplati se da znaš šta se na njoj dešava, jer se po tome razlikuje od običnog nepropisnog preticanja (koje je srednja klasa).</p>
+<p>Među pitanjima o kazni nasilnička vožnja je <b>jedno jedino pitanje</b> (#8224), i ono ima sliku. Isplati se da znaš šta se na njoj dešava, jer se po tome razlikuje od običnog nepropisnog preticanja (koje je srednja klasa).</p>
 <div style="display:flex;justify-content:center;margin:8px 0">
 <svg viewBox="0 0 306 166" style="max-width:306px;width:100%" role="img" aria-label="Dvosmerni put odozgo: plavo vozilo je izašlo iz svoje trake u traku suprotnog smera i vozi udesno, a iz suprotnog smera dolaze dva vozila čije strelice pokazuju ulevo, pravo prema njemu. Isprekidana strelica pokazuje put kojim je plavo vozilo izašlo iz svoje trake. Kazna: zatvor od 30 do 60 dana i 15 kaznenih poena, izriču se zajedno.">
 <text x="78" y="14" font-size="12" text-anchor="middle" fill="currentColor">suprotan smer</text>
@@ -6509,7 +6509,7 @@ opšti okvir trajanja: od 30 dana do jedne godine (Zakon o prekršajima čl. 58)
 <tr><td>zona „30“</td><td>30</td><td><b>preko 60</b> ✳</td></tr>
 <tr><td>zona usporenog saobraćaja</td><td>10</td><td><b>preko 50</b> ✳</td></tr>
 </table>
-<p class="mut">✳ = <b>zakonski broj, baza ga ne pita</b> — isto značenje kao isprekidani procep sa „?" na crtežima iznad. Baza kaznu u zonama <b>pita</b>, ali preko TAČAKA, ne preko granica: zona usporenog na 80 km/h (#8239) i zona škole u naselju na 100 km/h u 14 č. (#8240) — oba su prekoračenje od 70 i oba daju najtežu klasu; zona škole u naselju na 85 km/h u 11 č. (#8272) je prekoračenje od 55 i daje srednju klasu; ista brzina u zoni škole <b>van naselja</b> (#8323) je prekoračenje od svega 5 i daje najnižu. Dakle prelaz je negde između +55 i +70, a tačna granica po zoni je zakonska — otud ✳. Za samu zonu „30“ baza pita samo ograničenje (30 km/h, #8124 i #8125), kaznu u njoj nijednom.<br>Pamtilica: pragovi idu <b>70 · 60 · 50</b> — što je zona osetljivija, to ti manje treba da upadneš u najtežu klasu.<br>Druga pamtilica, i pazi na ogradu: <b>na brzinskim tačkama koje baza pita</b> poeni i zabrana idu u paru — gde ima kaznenih poena, izriče se i zabrana; gde ih nema, ne izriče se. Van brzine to <b>ne</b> važi: dva prekršaja nose po 2 kaznena poena, a mera se ipak ne izriče — istekla registraciona nalepnica i vozačka dozvola istekla najviše šest meseci (oba su niže, među sličicama).</p>
+<p class="mut">✳ = <b>zakonski broj, baza ga ne pita</b> — isto značenje kao isprekidani procep sa „?" na crtežima iznad. Baza kaznu u zonama <b>pita</b>, ali preko TAČAKA, ne preko granica: zona usporenog na 80 km/h (#8239) i zona škole u naselju na 100 km/h u 14 č. (#8240) — oba su prekoračenje od 70 i oba daju najtežu klasu; zona škole u naselju na 85 km/h u 11 č. (#8272) je prekoračenje od 55 i daje srednju klasu; ista brzina u zoni škole <b>van naselja</b> (#8323), gde je ograničenje 50 km/h (#10607), je prekoračenje od 35 i daje takođe srednju klasu, sa manje poena (4 umesto 6). Dakle prelaz je negde između +55 i +70, a tačna granica po zoni je zakonska — otud ✳. Za samu zonu „30“ baza pita samo ograničenje (30 km/h, #8124 i #8125), kaznu u njoj nijednom.<br>Pamtilica: pragovi idu <b>70 · 60 · 50</b> — što je zona osetljivija, to ti manje treba da upadneš u najtežu klasu.<br>Druga pamtilica, i pazi na ogradu: <b>na brzinskim tačkama koje baza pita</b> poeni i zabrana idu u paru — gde ima kaznenih poena, izriče se i zabrana; gde ih nema, ne izriče se. Van brzine to <b>ne</b> važi: dva prekršaja nose po 2 kaznena poena, a mera se ipak ne izriče — istekla registraciona nalepnica i vozačka dozvola istekla najviše šest meseci (oba su niže, među sličicama).</p>
 </div>
 
 <!-- CELINA 4 - izvor: #8405 (0,30-0,50 mera se NE izrice, "kazna DA, zastitna mera NE"),

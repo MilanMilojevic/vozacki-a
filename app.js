@@ -239,6 +239,7 @@
     blizNap: { l: 'Označene su reči po kojima se razlikuju.', c: 'Означене су речи по којима се разликују.' },
     blizTacno: { l: 'tačno:', c: 'тачно:' },
     blizRazlikaLbl: { l: 'Razlika:', c: 'Разлика:' },
+    blizFali: { l: 'Ovde nema reči:', c: 'Овде нема речи:' },
     kljucLbl: { l: '🔑 Ključ:', c: '🔑 Кључ:' },
     proslaGreska: { l: 'Prošli put si ovde izabrao:', c: 'Прошли пут си овде изабрао:' },
     greskeNaslov: { l: 'Najčešće greške', c: 'Најчешће грешке' },
@@ -250,7 +251,7 @@
     izborNijeSacuvan: { l: 'Tvoj izbor ovde nije sačuvan (stariji zapis) — pitanje je bilo pogrešno.', c: 'Твој избор овде није сачуван (старији запис) — питање је било погрешно.' },
     zamkaNaslov: { l: 'Ponuđeni odgovori koji NISU tačni ovde su zvanično značenje ovih znakova:', c: 'Понуђени одговори који НИСУ тачни овде су званично значење ових знакова:' },
     atlasNapomena: { l: 'Slike su iz same baze pitanja — isti znak koji te čeka na ispitu, uz zvanično značenje (tačan odgovor na to pitanje). Dodirni sliku da je uvećaš.', c: 'Слике су из саме базе питања — исти знак који те чека на испиту, уз званично значење (тачан одговор на то питање). Додирни слику да је увећаш.' },
-    statsTip: { l: 'Isti pregled kao na početnoj, uz tačnost: klik na naziv otvara spisak pitanja, strelica otklapa podoblasti. Boja tačnosti: zeleno od 85% (prag ispita), žuto 70–84%, crveno ispod 70%.', c: 'Исти преглед као на почетној, уз тачност: клик на назив отвара списак питања, стрелица отклапа подобласти. Боја тачности: зелено од 85% (праг испита), жуто 70–84%, црвено испод 70%.' },
+    statsTip: { l: 'Isti pregled kao na početnoj, uz procenat pitanja koja si POSLEDNJI PUT odgovorio tačno (od onih koja si radio) — greška koju si posle ispravio više ne vuče broj naniže. Klik na naziv otvara spisak pitanja, strelica otklapa podoblasti. Boja: zeleno od 85% (prag ispita), žuto 70–84%, crveno ispod 70%.', c: 'Исти преглед као на почетној, уз проценат питања која си ПОСЛЕДЊИ ПУТ одговорио тачно (од оних која си радио) — грешка коју си после исправио више не вуче број наниже. Клик на назив отвара списак питања, стрелица отклапа подобласти. Боја: зелено од 85% (праг испита), жуто 70–84%, црвено испод 70%.' },
     grupaNapredak: { l: 'Napredak', c: 'Напредак' },
     grupaAplikacija: { l: 'Aplikacija', c: 'Апликација' },
     grupaOprezno: { l: 'Oprezno', c: 'Опрезно' },
@@ -285,11 +286,11 @@
     daniPon: { l: 'Ponavljanja', c: 'Понављања' },
     daniTacnost: { l: 'Tačnost', c: 'Тачност' },
     daniDanas: { l: 'danas, još traje', c: 'данас, још траје' },
-    daniTrend: { l: 'Tačnost po danima — poslednjih @1', c: 'Тачност по данима — последњих @1' },
+    daniTrend: { l: 'Tačnost po danima — poslednjih @1 sa vežbom', c: 'Тачност по данима — последњих @1 са вежбом' },
     daniTrendPk: { l: 'Tačnost po danima — poslednja @1', c: 'Тачност по данима — последња @1' },
     daniPragLinija: { l: 'isprekidana linija = 85%, prag ispita · ispod svakog dana stoji koliko si pitanja uradio', c: 'испрекидана линија = 85%, праг испита · испод сваког дана стоји колико си питања урадио' },
-    daniUkupno: { l: 'Ukupno u @1: @2 odgovora, @3 tačnih (@4%)', c: 'Укупно у @1: @2 одговора, @3 тачних (@4%)' },
-    daniUkupnoJd: { l: 'Ukupno u @1 danu: @2 odgovora, @3 tačnih (@4%)', c: 'Укупно у @1 дану: @2 одговора, @3 тачних (@4%)' },
+    daniUkupno: { l: 'Ukupno u @1: @2 pitanja, @3 tačnih (@4%)', c: 'Укупно у @1: @2 питања, @3 тачних (@4%)' },
+    daniUkupnoJd: { l: 'Ukupno u @1 danu: @2 pitanja, @3 tačnih (@4%)', c: 'Укупно у @1 дану: @2 питања, @3 тачних (@4%)' },
     planNovih: { l: 'novih pitanja dnevno', c: 'нових питања дневно' },
     planPon: { l: 'ponavljanja dnevno', c: 'понављања дневно' },
     planSacuvaj: { l: 'Sačuvaj cilj', c: 'Сачувај циљ' },
@@ -332,11 +333,12 @@
     spremanNiz: { l: 'Poslednje @1 položene, svaka sa bar @2 poena preko praga', c: 'Последње @1 положене, свака са бар @2 поена преко прага' },
     spremanSansa: { l: 'Procena bar @1% (sada @2%)', c: 'Процена бар @1% (сада @2%)' },
     spremanDa: { l: '✅ Sve četiri stavke stoje — ovo je samopouzdanje koje ima pokriće.', c: '✅ Све четири ставке стоје — ово је самопоуздање које има покриће.' },
-    spremanNe: { l: 'Jedna položena simulacija nije dokaz: da ti je stvarna šansa 70%, tri zaredom bi ti se desile u trećini slučajeva. Zato ide i procena, i razmak od bar dan između simulacija.', c: 'Једна положена симулација није доказ: да ти је стварна шанса 70%, три заредом би ти се десиле у трећини случајева. Зато иде и процена, и размак од бар дан између симулација.' },
+    spremanNe: { l: 'Jedna položena simulacija nije dokaz: da ti je stvarna šansa 70%, tri zaredom bi ti se desile u trećini slučajeva. Zato ide i procena, i simulacije u bar tri različita dana.', c: 'Једна положена симулација није доказ: да ти је стварна шанса 70%, три заредом би ти се десиле у трећини случајева. Зато иде и процена, и симулације у бар три различита дана.' },
     simNajavaMalo: { l: 'Ostalo je manje od pet minuta.', c: 'Остало је мање од пет минута.' },
     simNajavaMinut: { l: 'Ostao je još jedan minut.', c: 'Остао је још један минут.' },
     simOffline: { l: 'Nema interneta. Slika koju još nisi video ne može da se prikaže, a više od pola pitanja na ispitu ima sliku. Ipak pokreni ispit?', c: 'Нема интернета. Слика коју још ниси видео не може да се прикаже, а више од пола питања на испиту има слику. Ипак покрени испит?' },
     simUcinak: { l: 'Položeno @1 od @2 · prosek @3', c: 'Положено @1 од @2 · просек @3' },
+    simUcinakVan: { l: ' (@1 praznih ili prekinutih se ne računa)', c: ' (@1 празних или прекинутих се не рачуна)' },
     prioOpis: { l: 'Nova pitanja idu redom od podoblasti koje ispit najviše nosi (preticanje 5 pitanja, brzine 3…), pa ono što se izostavi bude ono što se retko i pojavi.', c: 'Нова питања иду редом од подобласти које испит највише носи (претицање 5 питања, брзине 3…), па оно што се изостави буде оно што се ретко и појави.' },
     skociNaOblast: { l: 'Skoči na oblast', c: 'Скочи на област' },
     naVrh: { l: 'Na vrh', c: 'На врх' },
@@ -618,6 +620,23 @@
       }
       isp |= 1;
     }
+    // Bit 2 (v146): lažna greška je pokvarila i niz tačnih i rok. Oduzimanje (bit 1) ne može da ih
+    // vrati, pa je pitanje umelo da ispadne iz reda kao „utvrđeno" bez prave potvrde (kod Milana
+    // najviše 13 pitanja u stanju w0/streak2). Za pitanja iz takvih ispita, ako grešaka više nema,
+    // pitanje se vraća u red na JEDNU potvrdu — jedna potvrda viška je jeftinija od pogrešnog izbacivanja.
+    if (!(isp & 2)) {
+      const V139b = Date.UTC(2026, 8, 17, 11, 10, 23);
+      for (const s of sims) {
+        const bezIzbora = !s.qs || s.qs.every((e) => !e.ch.length);
+        if (s.score !== 0 || s.d >= V139b || !bezIzbora || s.wrong.length < 41) continue;
+        for (const id of s.wrong) {
+          const r = q[id];
+          if (!r || r.w > 0 || !r.a) continue;
+          if (r.streak !== 1) { r.streak = 1; r.due = r.last ? r.last + 3 * DAY : 0; }
+        }
+      }
+      isp |= 2;
+    }
 
     // pozicije po oblastima: ključ mora biti postojeća oblast/podoblast
     const secPos = {};
@@ -807,6 +826,9 @@
     const vecBrojanoDanas = !!r.last && localDay(r.last) === localDay();
     if (preRoka && !r.due) r.due = dueOf(id);   // nasleđen zapis bez roka: zamrzni rok pre pomeranja r.last
     r.a++; r.last = sada;
+    // poslednji pogrešan izbor važi samo dok je poslednji odgovor bio pogrešan — posle tačnog bi
+    // „Prošli put si ovde izabrao: X" bilo netačno
+    if (ok) delete r.lw;
     if (preRoka) {
       // raspored ostaje netaknut
     } else if (ok) {
@@ -1659,6 +1681,7 @@
     for (let i = 0, j = 0; i < n;) {
       if (j < mm && tok[i].n === b[j]) { i++; j++; } else if (j < mm && L2[i][j + 1] > L2[i + 1][j]) { j++; } else { visak.add(i); i++; }
     }
+    const reci = [...visak].map((i) => tekst.slice(tok[i].od, tok[i].do));
     let html = '';
     tok.forEach((w, i) => {
       html += escapeHtml(tekst.slice(k, w.od));
@@ -1667,7 +1690,7 @@
       k = w.do;
     });
     html += escapeHtml(tekst.slice(k));
-    return { html, ima: visak.size > 0 };
+    return { html, ima: visak.size > 0, reci };
   }
   // Blizanci: najpre PROVERENI (uz rečenicu razlike, tools/tvrdoglava-dopune.mjs), pa mehanički
   // (tools/blizanci.mjs, samo tekstualni). Najviše četiri, bez ponavljanja istog pitanja.
@@ -1681,12 +1704,18 @@
     return svi.map((s) => {
       const b = byId.get(s.id);
       const r = oznaciRazliku(T(b.t), T(q.t));
+      // i obrnuto: reči koje OVO pitanje ima a blizanac nema — bez toga je par u kome je jedan tekst
+      // deo drugog dobijao naslov „isto pitanje", a razlika je baš u rečima koje fale
+      const fali = oznaciRazliku(T(q.t), T(b.t)).reci;
       const tacni = b.ch.filter((c) => c.ok).map((c) => `<li>${escapeHtml(T(c.t))}</li>`).join('');
       const slika = b.img ? `<img class="blizSlika" loading="lazy" src="img/${b.id}.jpg" alt="${escapeHtml(L('imgAlt'))}">` : '';
       const razlika = s.r
         ? `<div class="blizRazlika"><b>${escapeHtml(L('blizRazlikaLbl'))}</b> ${escapeHtml(T(s.r))}</div>`
         : (r.ima ? `<div class="mut napomena">${escapeHtml(L('blizNap'))}</div>` : '');
-      return `<div class="blizBox"><div class="blizNaslov">${escapeHtml(L(r.ima || b.img ? 'blizNaslov' : 'blizIsto'))}</div>
+      // samo kad blizanac NEMA svojih označenih reči (čisto brisanje): kod zamene (60 ↔ 180) oznaka u
+      // tekstu blizanca već kaže sve, a spisak reči koje fale bi bio šum
+      const faliHtml = fali.length && !r.ima ? `<div class="mut napomena">${escapeHtml(L('blizFali'))} <mark class="blizRazl">${escapeHtml(fali.join(' '))}</mark></div>` : '';
+      return `<div class="blizBox"><div class="blizNaslov">${escapeHtml(L(r.ima || fali.length || b.img ? 'blizNaslov' : 'blizIsto'))}</div>${faliHtml}
         <div class="blizTekst">${r.html}</div>${slika}
         <div class="blizOdg"><span class="mut">${escapeHtml(L('blizTacno'))}</span><ul>${tacni}</ul></div>${razlika}</div>`;
     }).join('');
@@ -2451,6 +2480,12 @@
     show('simresult');
   }
 
+  // „Prava" simulacija (uzorak znanja) — isti filter kao u proceni (procena.js), da se isti ispit
+  // ne broji na jednom mestu, a na drugom ne. Prazni 0/98 pre v139 i prekinuti ispiti ostaju u
+  // istoriji kao pokušaji, ali ne ulaze u prosek, pravilo „spreman sam" ni u opomene.
+  const pravaSim = (s) => (window.VozackiProcena && window.VozackiProcena.pravaSimulacija
+    ? window.VozackiProcena.pravaSimulacija(s) : !!s && s.score > 0);
+
   // ---------- Spremnost za ispit: očekivani poeni po zvaničnom šablonu ----------
   // PROCENA JE U procena.js (v145). Stara formula (Laplace +1/+2 po pitanju) je savršenom učeniku
   // davala ≈65/98 i 0,5% — isto kao Milanu, čije su poslednje simulacije bile 93–98. Nova je
@@ -2516,7 +2551,7 @@
   function spremnost() {
     const r = readiness();
     const s = r.sansa === null ? null : { sansa: r.sansa, prag: prag(SIM_PTS_MIN), ukupno: SIM_PTS_MIN };
-    const sims = S.sims || [];
+    const sims = (S.sims || []).filter(pravaSim);   // prekinut ili prazan ispit nije dokaz spremnosti
     const zadnje = sims.slice(-SIM_NIZ);
     const nizOk = zadnje.length === SIM_NIZ && zadnje.every((x) => x.score >= prag(x.total) + SIM_MARGINA);
     const dani = new Set(sims.map((x) => localDay(x.d)));
@@ -2557,7 +2592,7 @@
       <div class="bigScore ${pass ? 'pass' : 'fail'}">≈ ${e} / ${SIM_PTS_MIN}</div>
       <p><span class="pill ${pass ? 'pass' : 'fail'}">${pass ? L('passed') : L('failed')}</span>
       &nbsp;<span class="mut">${pragTekst(SIM_PTS_MIN)}</span>
-      </p>${(() => { const z = S.sims.filter((s) => s.score > 0).map((s) => s.d); return !z.length || Date.now() - Math.max(...z) > 7 * DAY ? `<p class="mut napomena">${L('readyZastarelo')}</p>` : ''; })()}
+      </p>${(() => { const z = S.sims.filter(pravaSim).map((s) => s.d); return !z.length || Date.now() - Math.max(...z) > 7 * DAY ? `<p class="mut napomena">${L('readyZastarelo')}</p>` : ''; })()}
       ${pct === null ? '' : `<h3>${L('sansaNaslov')}</h3>
       <div class="bigScore ${pct >= 85 ? 'pass' : 'fail'}">${pct}%</div>
       <p class="mut napomena">${L('sansaKako').split('@1').join(sp.ukupno).split('@2').join(sp.prag)}</p>`}
@@ -2730,9 +2765,9 @@
       for (const sid of subIds) {
         const sq = Q.filter((q) => q.sub === sid);
         const sSeen = sq.filter((q) => S.q[q.id] && S.q[q.id].a > 0).length;
-        let sAtt = 0, sWr = 0;
-        for (const q of sq) { const r = S.q[q.id]; if (r) { sAtt += r.a; sWr += r.w; } }
-        const sAcc = sAtt ? Math.round(100 * (sAtt - sWr) / sAtt) : null;
+        let sGood = 0;
+        for (const q of sq) { const r = S.q[q.id]; if (r && r.a && r.streak >= 1) sGood++; }
+        const sAcc = sSeen ? Math.round(100 * sGood / sSeen) : null;   // isto merilo kao u Statistici
         const b = document.createElement('button'); b.className = 'subRow skrijUPretrazi';
         b.title = subIme(sid);
         const naIsp = naIspitu(sid);
@@ -2890,7 +2925,10 @@
     crtajRedove(list, ids, {
       dodatak: (q, r) => {
         if (!isWrong || !r || (r.due || 0) <= now) return '';
-        const days = Math.ceil((r.due - now) / DAY);
+        // kalendarski dani od današnje ponoći (rok je lokalna ponoć) — ceil po satima je oko
+        // promene sata grešio za jedan dan
+        const d0 = new Date(now); d0.setHours(0, 0, 0, 0);
+        const days = Math.round((r.due - d0.getTime()) / DAY);
         return ` <span class="mut">(${days <= 1 ? L('dueTomorrow') : (one(days) ? L('dueDaysOne') : L('dueDays')).replace('#', days)})</span>`;
       },
       naKlik: (idx) => {
@@ -3136,7 +3174,7 @@
   // i simulacije. Rezerva je nedelja dana, ali nikad više od trećine preostalog vremena.
   // Koliko pitanja iz koje podoblasti PROSEČNO nosi jedan ispit — izvedeno iz zvaničnog šablona
   // (SIM_SLOTS): slot sa više mogućih podoblasti deli svoju jedinicu na njih. Podoblast 134
-  // (preticanje) tako nosi 5, a 91 nula. Ko nema vremena za sve, uči prvo ono što se i pojavljuje.
+  // (preticanje) tako nosi 5, a 91 samo pola (slot deli sa 94). Ko nema vremena za sve, uči prvo ono što se i pojavljuje.
   let _tezine = null;
   function tezinaPodoblasti() {
     if (_tezine) return _tezine;
@@ -3144,6 +3182,20 @@
     for (const slot of SIM_SLOTS) for (const s of slot.s) t[s] = (t[s] || 0) + 1 / slot.s.length;
     _tezine = t;
     return t;
+  }
+
+  // Očekivan broj pojavljivanja svakog pitanja na jednom ispitu: isti bazeni kao buildSimSet
+  // (podoblasti slota + isti broj poena), svaki slot bira jedno pitanje iz svog bazena.
+  let _pojava = null;
+  function verovatnocaPojave() {
+    if (_pojava) return _pojava;
+    const m = new Map();
+    for (const slot of SIM_SLOTS) {
+      const bazen = Q.filter((q) => slot.s.includes(q.sub) && q.pts === slot.p);
+      for (const q of bazen) m.set(q.id, (m.get(q.id) || 0) + 1 / bazen.length);
+    }
+    _pojava = m;
+    return m;
   }
 
   // Koliko ponavljanja dnevno treba do ispita — JEDAN račun za celu aplikaciju.
@@ -3236,8 +3288,11 @@
     const auto = S.plan.auto ? autoKvota() : null;
     // „Moj tempo je najmanje ovo": uz auto, ručni brojevi su DONJA granica — auto sme samo naviše.
     const pod = !!(auto && S.plan.pod);
-    const cNovih = auto ? (pod ? Math.max(auto.cNovih, S.plan.novih || 0) : auto.cNovih) : (S.plan.novih || 0);
-    const cPon = auto ? (pod ? Math.max(auto.cPon, S.plan.pon || 0) : auto.cPon) : (S.plan.pon || 0);
+    // auto uključen, a kvote nema (ispit danas/prošao, nema datuma): ručni brojevi se tada NE
+    // koriste (to i piše pri uključenju auta) — ranije su na dan ispita iskakali stari 60/40
+    const autoBezBrojeva = !!S.plan.auto && !auto && !S.plan.pod;
+    const cNovih = auto ? (pod ? Math.max(auto.cNovih, S.plan.novih || 0) : auto.cNovih) : (autoBezBrojeva ? 0 : (S.plan.novih || 0));
+    const cPon = auto ? (pod ? Math.max(auto.cPon, S.plan.pon || 0) : auto.cPon) : (autoBezBrojeva ? 0 : (S.plan.pon || 0));
     return {
       auto: !!auto,
       pod,
@@ -3267,9 +3322,13 @@
     let nova = [];
     if (S.plan && S.plan.prio) {
       // prvo ono što se na ispitu i pojavljuje: podoblast koja nosi 5 pitanja pre one koja nosi 0
-      const tez = tezinaPodoblasti();
+      // Po očekivanom broju pojavljivanja PITANJA na ispitu (zbir 1/veličina bazena preko slotova
+      // u koje ulazi), ne po težini podoblasti: podoblast koja nosi 1 slot na 147 pitanja nije isto
+      // što i ona koja nosi 1 slot na 12. Merenje revizije: za pokrivanje 20,5 pitanja ispita
+      // redosled po podoblasti traži 474 pitanja, a po pitanju 307.
+      const pp = verovatnocaPojave();
       nova = Q.filter((q) => !S.q[q.id] || !S.q[q.id].a)
-        .sort((a, b) => (tez[b.sub] || 0) - (tez[a.sub] || 0))
+        .sort((a, b) => (pp.get(b.id) || 0) - (pp.get(a.id) || 0))
         .slice(0, p.ostaloNovih).map((q) => q.id);
     } else {
       for (const q of Q) {
@@ -3288,10 +3347,11 @@
   function tacnostDanas() {
     const d = (S.day && S.day.d === localDay()) ? S.day : null;
     if (!d || !d.n) return '';
-    const pct = Math.round(100 * d.ok / d.n);
+    const tacno = 100 * d.ok / d.n;   // boja i ✓ iz NEzaokruženog: 84,6% ispisano je „85%", ali prag nije pređen
+    const pct = Math.round(tacno);
     return `<div class="planRed"><span class="planIme">${L('planTacnost')}: <b>${d.ok}</b> / ${d.n} <span class="mut">(${pct}%)</span></span>
-      <span class="planBar"><span class="${pct >= 85 ? 'barDobar' : (pct >= 70 ? 'barSrednji' : 'barLos')}" style="width:${pct}%"></span></span>
-      <span class="mut">${pct >= 85 ? '✓' : ''}</span></div>`;
+      <span class="planBar"><span class="${tacno >= 85 ? 'barDobar' : (tacno >= 70 ? 'barSrednji' : 'barLos')}" style="width:${pct}%"></span></span>
+      <span class="mut">${tacno >= 85 ? '✓' : ''}</span></div>`;
   }
 
   function planBlok() {
@@ -3390,9 +3450,12 @@
       // predlog simulacije: JEDNO pravilo za sažetak, vodič i turu — procena spremnosti
       // blizu praga (80+ od 98) i nijedna simulacija danas; u poslednjih 7 dana pred
       // ispit: po jedna dnevno.
-      const { exp, answered } = readiness();
-      const procena = answered >= 30 && exp !== null ? Math.round(exp) : null;
-      const zadnja = S.sims.length ? S.sims[S.sims.length - 1].d : 0;
+      // uslov prikaza je sama procena (null = nema dokaza), isti kao na kartici Statistike;
+      // a „poslednja simulacija" je poslednja PRAVA — prekinut ispit ne gasi dnevni podsetnik
+      const { exp } = readiness();
+      const procena = exp !== null ? Math.round(exp) : null;
+      const prave = S.sims.filter(pravaSim);
+      const zadnja = prave.length ? prave[prave.length - 1].d : 0;
       const simDanas = zadnja && new Date(zadnja).toDateString() === new Date().toDateString();
       const doIspita = danaDoIspita();
       if (doIspita !== null && doIspita >= 0 && doIspita <= 7) {
@@ -3437,7 +3500,11 @@
     const stat = (qq) => {
       let seen = 0, good = 0, att = 0, wr = 0;
       for (const q of qq) { const r = S.q[q.id]; if (r && r.a) { seen++; att += r.a; wr += r.w; if (r.streak >= 1) good++; } }
-      return { seen, good, att, wr, acc: att ? Math.round(100 * (att - wr) / att) : null };
+      // Procenat pitanja koja su POSLEDNJI PUT odgovorena tačno (od odgovorenih). Ranije je to bio
+      // udeo tačnih u SVIM odgovorima ikad, obojen prema pragu ispita: pitanje pogrešeno dvaput pa
+      // naučeno zauvek je stajalo na 67% i crveno, pa je 6 od 11 Milanovih oblasti izgledalo ispod
+      // prolaza dok procena na istom ekranu kaže ≈ 89/98.
+      return { seen, good, att, wr, acc: seen ? Math.round(100 * good / seen) : null };
     };
     const accHtml = (st) => !opts.tacnost ? '' : `<span class="catAcc">${st.acc === null ? '—' : `<span class="${accClass(st.acc)}">${st.acc}%</span>`}</span>`;
     const redHtml = (labelHtml, st, tot, jak) => `<button type="button" class="catMain"><span class="catName">${jak ? '<b>' + labelHtml + '</b>' : labelHtml}</span>
@@ -3587,7 +3654,7 @@
     {
       // procena stoji uz dugme za ispit — tamo je i odluka „hoću li danas na simulaciju"
       const sp = spremnost();
-      const pct = sp.odgovoreno >= 30 && sp.sansa !== null ? Math.round(sp.sansa * 100) : null;
+      const pct = sp.sansa !== null ? Math.round(sp.sansa * 100) : null;   // isti uslov kao kartica Statistike
       el('mSimSub').textContent = L('simSub') + (pct === null ? '' : ` · ${L('sansaNaslov').toLowerCase()} ${pct}%`);
     }
     el('mStats').textContent = L('stats');
@@ -3608,9 +3675,13 @@
             <span class="histArrow mut">›</span></button>`;
       });
       // učinak u jednom redu — istorija bez sabiranja u glavi
-      const polozeno = S.sims.filter((x) => x.passed).length;
-      const prosek = Math.round(S.sims.reduce((a, x) => a + x.score, 0) / S.sims.length);
-      const ucinak = `<p class="mut napomena">${L('simUcinak').split('@1').join(polozeno).split('@2').join(S.sims.length).split('@3').join(poeni(prosek))}</p>`;
+      // Prosek i „od M" samo preko PRAVIH simulacija. Ranije su dva prazna 0/98 iz starog kvara
+      // obarala Milanov prosek na 71 (ispod praga), a stvarnih osam je u proseku 89.
+      const prave = S.sims.filter(pravaSim);
+      const polozeno = prave.filter((x) => x.passed).length;
+      const prosek = prave.length ? Math.round(prave.reduce((a, x) => a + x.score, 0) / prave.length) : 0;
+      const van = S.sims.length - prave.length;
+      const ucinak = prave.length ? `<p class="mut napomena">${L('simUcinak').split('@1').join(polozeno).split('@2').join(prave.length).split('@3').join(poeni(prosek))}${van ? L('simUcinakVan').split('@1').join(van) : ''}</p>` : '';
       sh.innerHTML = `<h3>${L('history')}</h3>${ucinak}<p class="mut napomena">${L('historyTip')}</p>` + redovi.slice(0, NOVIJIH).join('')
         + (redovi.length > NOVIJIH ? `<div><button type="button" class="pojBtn" id="btnHistOlder">${L('historyOlder').split('@1').join(redovi.length - NOVIJIH)}</button><div id="histOlder" style="display:none">${redovi.slice(NOVIJIH).join('')}</div></div>` : '');
       const bho = el('btnHistOlder'); if (bho) sklopivo(bho);
