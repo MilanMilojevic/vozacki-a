@@ -160,6 +160,7 @@ mark.blizRazl { background: var(--mark-bg); color: var(--ink); padding: 0 2px; b
 .blizOdg { margin-top: 6px; }
 .blizOdg ul { margin: 4px 0 0; padding-left: 20px; }
 .blizSlika { display: block; max-width: 100%; height: auto; margin: 6px 0; border-radius: 6px; }
+.blizSlikaBtn { width: auto; max-width: 100%; }
 .blizRazlika { margin-top: 6px; }
 /* ključ: kratko pravilo koje čini tačan odgovor sigurnim — prvo što se vidi posle odgovora */
 .kljucBox { margin: 0 0 10px; padding: 8px 10px; border-left: 3px solid var(--ok); background: var(--ok-bg); color: var(--ink); border-radius: 0 8px 8px 0; }
@@ -262,6 +263,8 @@ table.stats td.num, table.stats th.num { text-align: right; font-variant-numeric
 .zatvoriX:hover { background: var(--btn2h); }
 .pill { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: var(--fs-sm); font-weight: 600; }
 .pill.pass { background: var(--ok-bg); color: var(--ok); } .pill.fail { background: var(--bad-bg); color: var(--bad); }
+/* procena iznad praga, ali šansa ispod 85% — ni zeleno ni crveno (v148) */
+.pill.tesno { color: var(--mark); border: 1px solid currentColor; } .bigScore.tesno { color: var(--mark); }
 .histRow { display: grid; grid-template-columns: 9.5em 5em 1fr 3.5em 1em; gap: 10px; align-items: center;
   padding: 6px 0; border-bottom: 1px solid var(--line); font-size: var(--fs-md); }
 .histScore { text-align: right; font-variant-numeric: tabular-nums; }
@@ -376,6 +379,7 @@ body.uSimulaciji #podnozje { display: none; }
 @media (max-width: 700px) {
   .explCard table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
 }
+.tblJos { margin: -10px 0 12px; font-size: var(--fs-sm); }
 /* poruka uz polje za unos — mora da se vidi i mora da kaže šta JESTE dozvoljeno */
 .unosPoruka { color: var(--bad); font-size: var(--fs-sm); font-weight: 600; margin-top: 4px; max-width: 34em; }
 /* Сажетак почетне: сваки број у свом реду, име испред броја. Обичан ток текста, не flex:

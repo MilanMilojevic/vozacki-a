@@ -1281,7 +1281,7 @@ CARDS['skretanje'] = {
 <p><b>Ne ulazi u raskrsnicu (čl. 49)</b> — ni kad imaš zeleno/prvenstvo — ako bi zbog gužve ostao na raskrsnici ili pešačkom prelazu i blokirao druge.</p>
 </div>
 <div class="kSek" data-sub="133">
-<p><b>Polukružno okretanje ZABRANJENO (čl. 50):</b> tunel, most, vijadukt, podvožnjak, nadvožnjak, smanjena vidljivost, nedovoljna preglednost, nedovoljna širina puta. (Prepoznaješ listu? Skoro ista kao za preticanje — "opasna mesta".)</p>
+<p><b>Polukružno okretanje ZABRANJENO (čl. 50):</b> tunel, most, vijadukt, podvožnjak, nadvožnjak, smanjena vidljivost, nedovoljna preglednost, nedovoljna širina puta. (Pazi: ovo NIJE lista za preticanje. Na mostu, vijaduktu, nadvožnjaku i u podvožnjaku polukružno okretanje je zabranjeno, a preticanje NIJE (#9795, #10480) — od ovih objekata preticanje zabranjuje samo tunel.)</p>
 </div>
 <div class="kSek" data-sub="137">
 <p style="margin-top:18px"><b>PRILAZ RASKRSNICI I PROLAZAK KROZ NJU (čl. 48 i 49)</b></p>
@@ -1539,7 +1539,7 @@ CARDS['parkiranje'] = {
   <text x="215" y="108" text-anchor="middle" font-size="11" fill="currentColor" opacity=".75">zona oko</text>
   <text x="215" y="122" text-anchor="middle" font-size="11" fill="currentColor" opacity=".75">stajališta</text>
 </svg>
-<p class="mut">Pamćenje: "5 - 5 - 5 - 15 - 3": prelazi i raskrsnica po 5 m, stajalište 15 m, prolaz 3 m. Lista "opasnih mesta" (tunel/most/prevoj/krivina) ista je kao kod preticanja i polukružnog.</p>
+<p class="mut">Pamćenje: "5 - 5 - 5 - 15 - 3": prelazi i raskrsnica po 5 m, stajalište 15 m, prolaz 3 m. Tunel, most, podvožnjak i nadvožnjak zabranjuju i zaustavljanje i polukružno okretanje — ali NE i preticanje: na mostu, vijaduktu, nadvožnjaku i u podvožnjaku preticanje je dozvoljeno (#9795), od tih objekata zabranjuje ga samo tunel (#10480).</p>
 
 <!-- ==== dopuna 07.09.2026 (tura 4): crtež + isto to rečima ==== -->
 <!-- IZVORI po temama (brojevi pitanja podoblasti 140 — sve tvrdnje se oslanjaju na tacne odgovore i postojeca objasnjenja tih pitanja):
@@ -1848,7 +1848,7 @@ CARDS['parkiranje'] = {
   <text x="100" y="140" text-anchor="middle" font-size="12" fill="#c0392b">ne zaustavlja se ni parkira</text>
 </svg>
 <p>Sam <b>uspon</b>, sama <b>nizbrdica</b> i <b>put van naselja</b> nisu na spisku zabranjenih mesta, pa te tri ponude nisu tačni odgovori. To ipak nije dozvola: iznad svih spiskova ostaje pravilo da se ne staje tamo gde vozilo ugrožava ili ometa, a van naselja se vozilo sklanja van kolovoza kad god za to postoji mogućnost (čl. 64 st. 1).</p>
-<p class="mut">Vrh prevoja i nepregledna krivina su ista "opasna mesta" kao kod preticanja i polukružnog okretanja. Ovo nije ceo spisak zabrana — mesta sa metrima (5-5-5-15-3) i ostale zabrane su u tabeli ove kartice i u temama iznad.</p>
+<p class="mut">Vrh prevoja i nepregledna krivina su na sve tri liste: zaustavljanje, preticanje (#10480) i polukružno okretanje (tamo kao „nedovoljna preglednost"). Most, vijadukt, nadvožnjak i podvožnjak to NISU — preticanje je tamo dozvoljeno (#9795). Ovo nije ceo spisak zabrana — mesta sa metrima (5-5-5-15-3) i ostale zabrane su u tabeli ove kartice i u temama iznad.</p>
 </div>
 
 <div class="kPodH"><b class="kPodNaslov">Kad odlaziš od vozila i kad staneš u kvaru</b>
@@ -5573,7 +5573,6 @@ BYSUB[144] = 'moped-motocikl-voznja';
 X[10234] = { x: 'Dve obaveze u jednoj rečenici (ZOBS čl. 96): noge ostaju na papučicama, a upravljač se NE ispušta iz ruku. Mamca "sme samo na kratko da ispusti upravljač" nema — nema "na kratko". Prevoz predmeta sam po sebi nije zabranjen, pa je i to mamac.' };
 X[10235] = { x: 'Moped, odnosno motocikl NE SME ni da bude vučen ni da bude potiskivan (ZOBS čl. 96) — bez "samo kada ne može sam da se kreće" i bez "samo uz veliki nagib". Oba ponuđena izuzetka su izmišljena.' };
 X[10236] = { x: 'Slušalice su zabranjene NA OBA UVA — jedno uvo sme, pa je "ni na jednom uvu" netačno. Predmeti se smeju prevoziti, osim onih koji ometaju upravljanje; "ne sme prevoziti bilo kakve predmete" je zato mamac.' };
-X[10237] = { x: 'Traži se vozač koji sedi propisno: obe noge na papučicama, obe ruke na upravljaču, bez pridržavanja za drugo vozilo. Uporedi sve četiri figure sa tim spiskom (ZOBS čl. 96).' };
 X[10240] = { x: 'Lice pod uticajem alkohola se NE prevozi na mopedu, triciklu ni motociklu (ZOBS čl. 97). Mamca "ukoliko svojim ponašanjem ne ometa vozača" nema u zakonu.' };
 X[10241] = { x: 'Isto pravilo kao za alkohol, samo za psihoaktivne supstance: prevoz takvog lica nije dozvoljen (ZOBS čl. 97), bez izuzetka "ako ne ometa vozača".' };
 X[10242] = { x: 'Priključno vozilo uz moped, odnosno motocikl: SA DVA TOČKA i NAMENJENO ZA TERET. Mamci su "četiri točka" i "dva točka za prevoz lica".' };
@@ -5770,14 +5769,14 @@ X[10117] = { x: "Pešačka staza = površina za pešake: nema zaustavljanja ni p
 X[10120] = { x: 'Deo trotoara za lica sa posebnim potrebama (taktilne staze, rampe): zabrana bez izuzetka — blokiranje znači potpuno onemogućavanje kretanja tim licima.' };
 X[10141] = { x: 'Gde je signalizacijom zabranjen SAOBRAĆAJ vozila, zabranjeno je i zaustavljanje i parkiranje — jače pravilo uključuje slabije.' };
 X[10499] = { x: 'Vozilo u kvaru na ŠINAMA: ukloni ga ODMAH; ako ne možeš — odmah preduzmi mere da vozači šinskih vozila budu na vreme upozoreni (ZOBS čl. 63 st. 2).' };
-X[10500] = { x: 'Vrh prevoja i nepregledna krivina: zabrana zaustavljanja i parkiranja (ZOBS čl. 66) — ista "opasna mesta" kao kod preticanja i polukružnog okretanja.' };
+X[10500] = { x: 'Vrh prevoja i nepregledna krivina: zabrana zaustavljanja i parkiranja (ZOBS čl. 66). Ta dva mesta zabranjuju i preticanje (#10480) — ali most, vijadukt, nadvožnjak i podvožnjak ne: tamo je preticanje dozvoljeno (#9795).' };
 X[10507] = { x: 'Trg, pešačka zona i protivpožarni put: zabranjeno — protivpožarni put mora biti prohodan za intervencije u svakom trenutku.' };
 X[10528] = { x: 'Pre napuštanja vozila: preduzmi mere da se vozilo ne pokrene samo (ručna kočnica, brzina, točkovi ka ivičnjaku na nagibu).' };
 // --- Skretanje i mimoilaženje (sub 133), tekstualna ---
 X[9639] = { x: 'Skretanje UDESNO: iz krajnje desne trake, uz desnu ivicu kolovoza (ZOBS čl. 48) — bez "sečenja" iz srednje trake.' };
 X[9643] = { x: 'Na JEDNOSMERNOM putu skretanje ulevo vrši se iz krajnje LEVE trake uz LEVU ivicu kolovoza — nema saobraćaja iz suprotnog smera pa je leva ivica tvoja.' };
 X[10463] = { x: 'Skretanje ULEVO na dvosmernom putu: iz krajnje leve trake SVOJE kolovozne trake — uz razdelnu liniju, ne preko nje (ZOBS čl. 48).' };
-const poluList = 'Polukružno okretanje je zabranjeno (ZOBS čl. 50): tunel, most, vijadukt, podvožnjak, nadvožnjak, smanjena vidljivost, nedovoljna preglednost, nedovoljna širina puta. Ista lista "opasnih mesta" kao za preticanje — nauči je jednom.';
+const poluList = 'Polukružno okretanje je zabranjeno (ZOBS čl. 50): tunel, most, vijadukt, podvožnjak, nadvožnjak, smanjena vidljivost, nedovoljna preglednost, nedovoljna širina puta. Ovo NIJE lista za preticanje: na mostu, vijaduktu, nadvožnjaku i u podvožnjaku preticanje je dozvoljeno (#9795), a polukružno okretanje nije.';
 X[9673] = { x: poluList };
 X[10470] = { x: poluList };
 X[9689] = { x: 'Mimoilaženje (ZOBS čl. 51): po potrebi pomeri vozilo ka DESNOJ ivici i ostavi dovoljno bočno rastojanje sa svoje leve strane.' };
@@ -7383,6 +7382,30 @@ for (const [id, d] of Object.entries(DOPUNE)) {
   X[id] = { ...X[id], ...(d.x ? { x: d.x } : {}), ...(d.k ? { k: d.k } : {}), ...(d.bl ? { bl: d.bl } : {}) };
 }
 
+// Dimenzije slika blizanaca: slika bez width/height zauzme mesto tek kad stigne, pa gurne
+// dugme „Sledeće" ispod ekrana (revizija v148). Čitaju se iz JPEG zaglavlja (SOF0–SOF3).
+const DIM = {};
+{
+  const jpegDim = (b) => {
+    let i = 2;
+    while (i + 9 < b.length) {
+      if (b[i] !== 0xFF) { i++; continue; }
+      const m = b[i + 1];
+      if (m >= 0xC0 && m <= 0xC3) return [b.readUInt16BE(i + 7), b.readUInt16BE(i + 5)];
+      i += 2 + b.readUInt16BE(i + 2);
+    }
+    return null;
+  };
+  const ids = new Set();
+  for (const v of Object.values(BLIZANCI)) for (const id of v) ids.add(+id);
+  for (const e of Object.values(X)) for (const b of e.bl || []) ids.add(+b.id);
+  for (const id of ids) {
+    let b; try { b = await fs.readFile('../img/' + id + '.jpg'); } catch (e) { continue; }
+    const d = jpegDim(b); if (d) DIM[id] = d;
+  }
+  console.log('dimenzije slika blizanaca:', Object.keys(DIM).length);
+}
+
 const out = {
   updated: new Date().toISOString().slice(0, 10),
   cards: Object.fromEntries(Object.entries(CARDS).map(([k, c]) => [k, { t: { l: c.title, c: toCyr(c.title) }, h: { l: c.html, c: toCyr(c.html) } }])),
@@ -7401,6 +7424,7 @@ const out = {
   zamke: ZAMKE,
   // blizanci: tekstualna pitanja skoro istog teksta a DRUGOG tačnog odgovora (tools/blizanci.mjs)
   blizanci: BLIZANCI,
+  dim: DIM,
 };
 
 // Automatski skener: mešani latinično-ćirilični tokeni i zaostali digrafi u ćiriličnom izlazu

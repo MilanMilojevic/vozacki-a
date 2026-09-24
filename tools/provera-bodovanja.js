@@ -991,13 +991,40 @@ async function proveraBodovanja2() {
       await cekaj(200);
       ok('tastatura: Enter bez fokusa i dalje radi glavno dugme (sledeće pitanje)', window.__dev.sim && window.__dev.sim.i === preI + 1);
 
-      // istekao ispit BEZ ijednog odgovora se ne upisuje nigde
+      // istekao ispit BEZ ijednog odgovora se ne upisuje nigde. Rok se menja i u zapisu toka — isto
+      // kao kad vreme stvarno istekne (v148: ispit čiji zapis nosi DRUGI rok je ispit iz drugog prozora).
       window.__dev.sim.deadline = Date.now() - 2000;
+      { const zt = JSON.parse(localStorage.getItem('vozackiA.sim') || 'null'); if (zt) { zt.d = window.__dev.sim.deadline; localStorage.setItem('vozackiA.sim', JSON.stringify(zt)); } }
       await cekaj(1500);
       ok('ispit: istekao ispit bez ijednog odgovora se ne upisuje u istoriju', (S().sims || []).length === brSims);
       ok('ispit: istekao prazan ispit ne upisuje 41 netačan odgovor u napredak', Object.keys(S().q || {}).length === brQ);
       ok('ispit: posle isteka praznog ispita nema zaglavljenog ekrana', !window.__dev.sim && el2('view-home').classList.contains('active'));
       document.querySelector('[data-nav="home"]').click(); await cekaj(150);
+
+      // v148: ispit koji je DRUGI prozor već završio (zapis toka obrisan) ovaj prozor ne upisuje —
+      // save() bi inače prepisao napredak iz drugog prozora. Kontrola: isti ispit sa netaknutim
+      // zapisom (samo mu je isteklo vreme) se upisuje.
+      for (const drugi of [true, false]) {
+        const bilo = JSON.stringify({ q: S().q, sims: S().sims, day: S().day, dani: S().dani, sd: S().streakD, sn: S().streakN });
+        document.querySelector('.menuBtn[data-nav="sim"]').click(); await cekaj(400);
+        const sv = window.__dev.sim;
+        if (!sv) { ok('ispit v148: simulacija je pokrenuta', false); break; }
+        sv.qs[0].chosen.add(sv.qs[0].q.ch[0].id);
+        const br0 = (S().sims || []).length;
+        sv.deadline = Date.now() - 1000;
+        if (drugi) localStorage.removeItem('vozackiA.sim');
+        else { const zt = JSON.parse(localStorage.getItem('vozackiA.sim') || 'null'); if (zt) { zt.d = sv.deadline; localStorage.setItem('vozackiA.sim', JSON.stringify(zt)); } }
+        await cekaj(1500);
+        if (drugi) {
+          ok('ispit v148: ispit završen u drugom prozoru se ovde NE upisuje, uz poruku',
+            (S().sims || []).length === br0 && !window.__dev.sim && /drugom prozoru|другом прозору/.test((el2('trakeDrzac') || document.body).textContent));
+        } else {
+          ok('ispit v148: kontrola — isti ispit sa netaknutim zapisom se upisuje', (S().sims || []).length === br0 + 1 && !window.__dev.sim);
+        }
+        const b = JSON.parse(bilo);
+        S().q = b.q; S().sims = b.sims; S().day = b.day; S().dani = b.dani; S().streakD = b.sd; S().streakN = b.sn;
+        document.querySelector('[data-nav="home"]').click(); await cekaj(150);
+      }
     }
 
     // ---- 2am) PRISTUPAČNOST I IZGLED (v130) ----
@@ -1441,7 +1468,7 @@ async function proveraBodovanja2() {
         await naPocetnu();
         const hist = el2('simHistory').textContent.replace(/\s+/g, ' ');
         ok('revizija v146: istorija računa prosek samo pravih simulacija (2 od 2 · prosek 92, prazna se navodi)',
-          /Položeno 2 od 2/.test(hist) && /prosek 92/.test(hist) && /1 praznih ili prekinutih/.test(hist));
+          /Položeno 2 od 2/.test(hist) && /prosek 92/.test(hist) && /ne računa se: 1 — prazne, prekinute ili sa više od 5 neodgovorenih/.test(hist));
         ok('revizija v146: pravilo „spreman" broji samo prave simulacije (2, ne 3)', window.__dev.spremnost().broj === 2);
         S().sims = s0;
         // (2) statistika: pitanje pogrešeno dvaput pa naučeno više ne vuče tačnost na 33%
@@ -1504,6 +1531,139 @@ async function proveraBodovanja2() {
           sim.neotvoreno === 0 && sim.nepotvrdjeno === 0 && sim.kasno === 0);
         ok('tempo v147: ponavljanja su najmanji dovoljan broj (' + (tp.pon - 1) + ' već ne staje)', tp.pon === 15 || manje.nepotvrdjeno > 0);
         S().q = q0; S().examDate = e0; S().plan = p0; S().day = d0;
+      }
+
+      // ---- 2b5) REVIZIJA STVARNOG KORIŠĆENJA v148: pozitivne kontrole ----
+      {
+        const b0 = JSON.stringify({ q: S().q, sims: S().sims, day: S().day, dani: S().dani, sd: S().streakD, sn: S().streakN, seq: S().seqPos, ex: S().examDate, plan: S().plan });
+        const dan = 86400000, sad = Date.now();
+        const ld = (ts) => { const d = new Date(ts); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
+        const QQ = window.QUIZ.questions;
+        // odgovori na pitanje na ekranu: q.req ponuda, pogrešne prve (da odgovor sigurno bude netačan)
+        // Fokus se prvo skida (kao posle dodira na telefonu): .click() ga ne pomera, pa bi ostao na
+        // dugmetu iz prethodne provere — a skrol posle odgovora namerno ne dira stranu kad je fokus
+        // van pitanja (npr. na ЋИР/LAT).
+        const odgovori = async (q) => {
+          if (document.activeElement && document.activeElement !== document.body) document.activeElement.blur();
+          const red = [...q.ch.filter((c) => !c.ok), ...q.ch.filter((c) => c.ok)].slice(0, q.req);
+          for (const c of red) {
+            const d = [...document.querySelectorAll('#qCard .choice')].find((x) => x.textContent.includes(c.t.l.slice(0, 14)) || x.textContent.includes(c.t.c.slice(0, 14)));
+            if (d) d.click(); await cekaj(60);
+          }
+          klikni('Odgovori', el2('qCard')) || klikni('Одговори', el2('qCard')); await cekaj(400);
+        };
+
+        // (a) ista tačnost na strani oblasti i na statistici: dvaput pogrešeno pa naučeno = 100%, ne 33%
+        {
+          const qa = QQ[0];
+          S().q = { [qa.id]: { a: 3, w: 2, streak: 1, last: sad - dan, due: sad + dan } };
+          location.hash = '#/sek/c' + qa.cat; await cekaj(350);
+          const zag = el2('browseHead').textContent.replace(/\s+/g, ' ');
+          ok('tačnost v148: zaglavlje oblasti meri „poslednji put tačno" kao statistika (100%, ne 33%)', /poslednji put tačno: 100%|последњи пут тачно: 100%/.test(zag) && !/33%/.test(zag));
+          location.hash = '#/sva'; await cekaj(350);
+          ok('tačnost v148: isto i na „Sva pitanja"', /poslednji put tačno: 100%|последњи пут тачно: 100%/.test(el2('browseHead').textContent));
+        }
+
+        // (b) kraj „Učenja redom": pogrešno za sutra se ne nudi u krug; neodgovorena se nude
+        {
+          const [q1, q2, q3] = QQ;
+          S().q = {
+            [q1.id]: { a: 2, w: 1, streak: 1, last: sad - 3600e3, due: sad + dan },    // pogrešno, rok sutra
+            [q2.id]: { a: 1, w: 1, streak: 0, last: sad - 3600e3, due: sad - 1000 },   // pogrešno, na redu
+            [q3.id]: { a: 1, w: 0, streak: 2, last: sad - dan },
+          };
+          S().seqPos = QQ.length;
+          location.hash = '#/uci'; await cekaj(400);
+          const kraj = el2('qCard');
+          const bw = kraj.querySelector('#bEndWrong'), bu = kraj.querySelector('#bEndUnseen');
+          ok('kraj spiska v148: „Ponovi pogrešna" broji samo ono što je na redu (1, ne 2)', !!bw && /\(1\)/.test(bw.textContent));
+          ok('kraj spiska v148: nude se i neodgovorena (' + (QQ.length - 3) + '), bez ✅', !!bu && bu.textContent.includes('(' + (QQ.length - 3) + ')') && !/✅/.test(kraj.querySelector('.qText').textContent));
+          ok('kraj spiska v148: piše da se pogrešno za kasnije vraća samo', /vraćaju se sama|враћају се сама/.test(kraj.textContent));
+          // kontrola: kad ni jedno pogrešno nije na redu, dugmeta nema
+          S().q[q2.id].due = sad + dan; S().q[q2.id].streak = 1;
+          location.hash = '#/'; await cekaj(150);
+          location.hash = '#/uci'; await cekaj(400);
+          ok('kraj spiska v148: kad ništa nije na redu, „Ponovi pogrešna" ne postoji', !el2('qCard').querySelector('#bEndWrong'));
+          await naPocetnu();
+          // „Nastavi" posle kraja vodi na prvo NEOTVORENO pitanje, ne na kraj spiska
+          ok('nastavi v148: posle kraja spiska „Nastavi od 4." (prvo neotvoreno), ne od ' + QQ.length + '.', /(Nastavi od|Настави од) 4\./.test(el2('mLearnSub').textContent));
+        }
+
+        // (c) odgovor upisan naknadno (istekao ispit) ide u SVOJ dan, ne u današnji
+        {
+          const q = QQ[5], juce = sad - dan;
+          delete S().q[q.id];
+          const n0 = S().day && S().day.d === ld(sad) ? S().day.n : 0;
+          window.__dev.record(q.id, false, [q.ch.find((c) => !c.ok).id], juce);
+          const r = S().q[q.id];
+          const danas = S().day && S().day.d === ld(sad) ? S().day.n : 0;
+          ok('ispit v148: odgovor iz isteklog ispita nosi vreme roka i upisuje se u taj dan (ne u današnji)',
+            r.last === juce && r.due === juce && danas === n0 && (S().dani || []).some((x) => x.d === ld(juce) && x.n >= 1));
+        }
+
+        // (d) ispravka lažnih grešaka ne sme drugi put, ni kad stara kopija izbaci „isp"
+        {
+          const NS4 = window.__dev.normalizeState;
+          const ids41 = QQ.slice(0, 41).map((q) => q.id);
+          const ulaz = { q: {}, sims: [{ d: Date.UTC(2026, 8, 3), score: 0, total: 98, passed: false, wrong: ids41, qs: ids41.map((id) => ({ id, ch: [] })) }] };
+          ids41.forEach((id) => { ulaz.q[id] = { a: 3, w: 2, streak: 1 }; });
+          const n1 = NS4(ulaz);
+          const bezIsp = JSON.parse(JSON.stringify(n1)); delete bezIsp.isp;
+          const n2 = NS4(bezIsp);
+          ok('ispravka v148: posle gubitka polja isp nema drugog oduzimanja (3/2 → 2/1 i ostaje 2/1)',
+            n1.q[ids41[1]].a === 2 && n2.q[ids41[1]].a === 2 && n2.q[ids41[1]].w === 1 && n1.sims[0].wrong.length === 0);
+        }
+
+        // (e) na dan ispita nema „poslednja nedelja"; tri dana pre ima (kontrola)
+        {
+          S().sims = []; S().plan = null;
+          S().examDate = ld(sad); await naPocetnu();
+          const naDan = document.querySelector('.homeExtras') ? document.querySelector('.homeExtras').textContent : '';
+          S().examDate = ld(sad + 3 * dan); await naPocetnu();
+          const pre = document.querySelector('.homeExtras') ? document.querySelector('.homeExtras').textContent : '';
+          ok('početna v148: na dan ispita nema „poslednja nedelja", tri dana pre ima', !/poslednja nedelja|последња недеља/.test(naDan) && /poslednja nedelja|последња недеља/.test(pre));
+        }
+
+        // (f) „na kojem" za jedno pitanje
+        {
+          S().q = { [QQ[0].id]: { a: 1, w: 1, streak: 0, last: sad - 1000, due: sad - 1000 } };
+          location.hash = '#/stats'; await cekaj(400);
+          const g = el2('greskeCard').textContent;
+          ok('množina v148: „1 pitanje na kojem", ne „na kojima"', /1 pitanje na kojem|1 питање на којем/.test(g) && !/na kojima|на којима/.test(g));
+          ok('spremnost v148: procena nigde ne piše „POLOŽIO"', !/POLOŽIO|ПОЛОЖИО/.test(el2('readyCard').textContent));
+        }
+
+        // (g) slika blizanca: dimenzije unapred i dugme za uvećanje
+        {
+          const BQ = window.EXPLAIN.byQ, dim = window.EXPLAIN.dim || {};
+          const byIdT = new Map(QQ.map((q) => [q.id, q]));
+          const id = Object.keys(BQ).find((k) => (BQ[k].bl || []).some((b) => byIdT.get(b.id) && byIdT.get(b.id).img));
+          if (id) {
+            delete S().q[id];
+            location.hash = '#/p/' + id; await cekaj(400);
+            await odgovori(byIdT.get(+id));
+            const im = el2('qCard').querySelector('.blizBox .qImgBtn img.blizSlika');
+            ok('blizanci v148: slika blizanca ima dimenzije unapred i dugme za uvećanje (#' + id + ', ' + Object.keys(dim).length + ' dimenzija)',
+              !!im && +im.getAttribute('width') > 0 && +im.getAttribute('height') > 0);
+          } else ok('blizanci v148: postoji pitanje sa blizancem koji ima sliku', false);
+        }
+
+        // (h) posle odgovora presuda ostaje na ekranu (dugo objašnjenje sa ključem)
+        {
+          delete S().q[9673];
+          location.hash = '#/p/9673'; await cekaj(400);
+          window.scrollTo(0, 0);
+          await odgovori(QQ.find((q) => q.id === 9673));
+          const v = el2('qCard').querySelector('.verdict');
+          const tb = el2('topbar').getBoundingClientRect().bottom;
+          const vr = v ? v.getBoundingClientRect() : null;
+          ok('skrol v148: posle odgovora presuda je na ekranu (vrh ' + (vr ? Math.round(vr.top) : '—') + ' px, traka ' + Math.round(tb) + ' px, ekran ' + window.innerWidth + ' px)',
+            !!vr && vr.top >= tb - 1 && vr.top < window.innerHeight);
+        }
+
+        const b = JSON.parse(b0);
+        S().q = b.q; S().sims = b.sims; S().day = b.day; S().dani = b.dani; S().streakD = b.sd; S().streakN = b.sn; S().seqPos = b.seq; S().examDate = b.ex; S().plan = b.plan;
+        await naPocetnu();
       }
 
       // ---- 2c) PROCENA (procena.js, v145): pozitivne kontrole koje je stara formula padala ----
@@ -1676,6 +1836,23 @@ async function proveraBodovanja2() {
         klikni('Odgovori', el2('qCard')) || klikni('Одговори', el2('qCard')); await cekaj(300);
         const pg = el2('qCard').querySelector('.proslaGreska');
         ok('učenje: uz pitanje stoji šta si prošli put pogrešno izabrao', !!pg && pg.textContent.includes(pogr.t.l.slice(0, 12)));
+        // v148: tačan odgovor je obrisao lw, ali prikaz ISTOG pokušaja posle ЋИР/LAT i dalje
+        // pokazuje prošlu grešku (snimak pre odgovora)
+        el2('btnScript').click(); await cekaj(350);
+        const pgC = el2('qCard').querySelector('.proslaGreska');
+        ok('ЋИР/LAT v148: posle tačnog odgovora „prošli put" ostaje i u drugom pismu', !!pgC && pgC.textContent.includes(pogr.t.c.slice(0, 10)));
+        el2('btnScript').click(); await cekaj(350);
+        // i obrnuto: pogrešan odgovor BEZ ranije greške ne sme posle ЋИР/LAT da postane „prošli put"
+        location.hash = '#/'; await cekaj(150);
+        location.hash = '#/p/8817'; await cekaj(400);
+        const dug3 = [...document.querySelectorAll('#qCard .choice')].find((d) => d.textContent.includes(pogr.t.l.slice(0, 12)) || d.textContent.includes(pogr.t.c.slice(0, 12)));
+        if (dug3) dug3.click(); await cekaj(120);
+        klikni('Odgovori', el2('qCard')) || klikni('Одговори', el2('qCard')); await cekaj(300);
+        const pre3 = !!el2('qCard').querySelector('.proslaGreska');
+        el2('btnScript').click(); await cekaj(350);
+        const posle3 = !!el2('qCard').querySelector('.proslaGreska');
+        el2('btnScript').click(); await cekaj(350);
+        ok('ЋИР/LAT v148: odgovor dat pre par sekundi ne postaje „prošli put" (pre i posle promene pisma: ' + pre3 + '/' + posle3 + ')', !pre3 && !posle3);
         if (bilo) S().q[8817] = bilo; else delete S().q[8817];
       }
       {
