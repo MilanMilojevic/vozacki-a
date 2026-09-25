@@ -393,7 +393,7 @@ body.uSimulaciji #podnozje { display: none; }
 #homeSummary .pomocBtn2 { margin-top: 8px; }
 .planBox { margin-top: 10px; }
 .planBox h3.planNaslov { display: inline; font-size: inherit; margin: 0; }
-.planPozivRed { margin: 8px 0; } .planPozivRed input { margin-left: 6px; }
+.planPozivRed { margin: 8px 0; } .planPozivRed input { margin-left: 6px; min-height: 40px; }
 /* izbor načina (dva dugmeta jedan pored drugog): izabrano se vidi i bojom i kvačicom */
 .segment .prekidac[aria-pressed="true"]::before { content: "✓ "; }
 /* staza traka (plan, oblasti) je prema kartici imala 1,2:1 — tanak obrub je vidi u obe teme */
@@ -539,7 +539,7 @@ body.uSimulaciji #podnozje { display: none; }
 .subRow { display: grid; grid-template-columns: 1fr 5.5em 4em; gap: 10px; align-items: center;
   width: 100%; text-align: left; background: none; border: none; border-bottom: 1px dashed var(--line);
   border-radius: 0; padding: 7px 4px; font-size: var(--fs-sm); cursor: pointer; }
-.subRow .subName { color: var(--blue); }
+.subRow .subName { color: var(--blue); min-width: 0; }
 .subRow .subCnt, .subRow .subAcc { text-align: right; color: var(--mut); font-variant-numeric: tabular-nums; white-space: nowrap; }
 .subRow:hover { background: var(--optHover); }
 #btnScript .segOn { font-weight: 800; color: #fff; }
@@ -786,9 +786,9 @@ button { transition: background-color .15s ease, border-color .15s ease, color .
 .planZadatak { font-weight: 600; margin: 2px 0 6px; }
 .od10 { display: flex; gap: 4px; margin: 2px 0 4px; }
 .od10 span { width: 18px; height: 18px; border-radius: 4px; }
-.od10 .od10Da { background: var(--ok); } .od10 .od10Ne { background: var(--line); }
+.od10 .od10Da { background: var(--ok); } .od10 .od10Ne { background: transparent; box-shadow: inset 0 0 0 1.5px var(--mut); }
 
-.verdict .korak { font-weight: 400; font-size: var(--fs-sm); margin-top: 4px; opacity: .9; }
+.verdict .korak { font-weight: 400; font-size: var(--fs-sm); margin-top: 4px; }
 .korakTacke { letter-spacing: 2px; }
 
 /* dodirne površine na telefonu: najmanje 44 px, bez menjanja izgleda (revizija v149) */
@@ -810,14 +810,26 @@ body.uskoKrupno #brandTitle { display: none; }
 .planBar > span.pbLista { background: var(--blue); opacity: .35; }
 .planBar > span.pbSim { background: var(--mark); opacity: .55; }
 .planDelovi { margin-top: 2px; }
-.subExamNula { opacity: .75; font-style: italic; }
+.subExamNula { opacity: .75; font-style: italic; white-space: normal; }
 .daniPrag { stroke: var(--ok); }
 
 .rezerva { position: relative; margin: 8px 0 2px; }
 .rzTraka { display: flex; height: 14px; border-radius: 7px; overflow: hidden; background: var(--bar); box-shadow: inset 0 0 0 1px var(--mut); }
 .rzTraka > span { flex: none; height: 100%; }
-.rzZna { background: var(--ok); } .rzGub { background: var(--bad); } .rzOst { background: var(--mut); opacity: .45; }
+.rzZna { background: var(--ok); } .rzGub { background: var(--bad); } .rzOst { background: repeating-linear-gradient(135deg, var(--mut) 0 3px, transparent 3px 6px); }
 .rzPrag { position: absolute; top: -4px; width: 2px; height: 22px; background: var(--ink); transform: translateX(-1px); }
 .pojIsp { font-weight: 400; font-size: var(--fs-sm); }
 
 .qRef { background: none; border: 0; padding: 0 2px; font: inherit; color: var(--blue); text-decoration: underline dotted; cursor: pointer; }
+
+/* v150: putanja, pokrivenost, „šta ako" */
+.skala .ptPojas { fill: var(--blue); opacity: .15; }
+.skala .ptBez { fill: none; stroke: var(--mut); stroke-width: 1.5; stroke-dasharray: 4 4; }
+.skala.nepouzdano .skLinija { stroke: var(--mut); }
+.pokr { display: flex; height: 14px; border-radius: 7px; overflow: hidden; margin: 10px 0 2px; box-shadow: inset 0 0 0 1px var(--mut); }
+.pokr > span { flex: none; height: 100%; }
+.pkVid { background: var(--blue); } .pkStize { background: var(--blue); opacity: .45; } .pkRetka { background: var(--mark); opacity: .7; } .pkVan { background: var(--bar); }
+.stoTvoj .planIme { font-weight: 700; }
+
+/* v150: uz plan po tempu okvir plana stoji PRVI na početnoj — crta ga odvaja od sažetka ispod */
+#homeSummary > .planBox:first-child { margin-top: 0; padding-bottom: 14px; margin-bottom: 14px; border-bottom: 1px solid var(--line); }

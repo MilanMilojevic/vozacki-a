@@ -107,7 +107,7 @@ async function proveraBodovanja2() {
       await naPocetnu();
       const pt0 = planTekst();
       ok('plan v149: bez istorije traži 60 dnevno i kaže da tempo još ne zna', /Danas urađeno: 0 \/ 60/.test(pt0) && /Tvoj tempo još ne znam/.test(pt0));
-      ok('plan v149: bez dokaza nema presude (ni ✅ ni ⛔), nego kaže šta fali', /Šansu još ne računam/.test(pt0) && !/✅ Stižeš|⛔/.test(pt0));
+      ok('plan v149: bez dokaza nema presude (ni ✅ ni ⛔), nego kaže šta fali', /Šansu računam kad pokriješ/.test(pt0) && !/✅|⛔|⚠/.test(pt0));
       ok('plan v149: lista za danas ima tačno 60 pitanja', /\(60\)/.test((el2('btnPlanVezbaj') || {}).textContent || ''));
       ok('plan v149: zahtev dana se pamti (sutra se iz njega meri da li je stignut)', !!(S().plan.prognoza && S().plan.prognoza.tr[danasStr] && S().plan.prognoza.tr[danasStr].k === 60));
       // cilj dana stoji dok radiš; lista se smanjuje za jedan. Proba ide na POSLEDNJE pitanje baze.
@@ -142,14 +142,14 @@ async function proveraBodovanja2() {
         S().day = { d: danasStr, n: 0, ok: 0, novih: 0, pon: 0 };
         S().plan = { auto: 1, prio: 0, prognoza: { tr: { [dd(3)]: { n0: 0, k: 100, t: Date.now() - 3 * 86400000 }, [dd(2)]: { n0: 0, k: 100, t: Date.now() - 2 * 86400000 }, [dd(1)]: { n0: 0, k: 100, t: Date.now() - 86400000 } } } };
         await naPocetnu();
-        ok('plan v149: tražio 100, a urađeno 80/85/90 → sutra traži 80 (koliko stigneš u 4 od 5 dana)', /Danas urađeno: 0 \/ 80/.test(planTekst()) && /~80 pitanja dnevno/.test(planTekst()) && /4 od 5 dana/.test(planTekst()));
+        ok('plan v149: tražio 100, a urađeno 80/85/90 → sutra traži 80 (koliko stigneš u 4 od 5 dana)', /Danas urađeno: 0 \/ 80/.test(planTekst()) && /oko 80 pitanja/.test(planTekst()) && /4 od 5 dana/.test(planTekst()));
         S().plan = { auto: 1, prio: 0 };
         await naPocetnu();
-        ok('plan v149: kontrola — isti dani bez zapisa plana daju medijanu tvojih dana (85)', /Danas urađeno: 0 \/ 85/.test(planTekst()) && /poslednjih dana: ~85/.test(planTekst()));
+        ok('plan v149: kontrola — isti dani bez zapisa plana daju medijanu tvojih dana (85)', /Danas urađeno: 0 \/ 85/.test(planTekst()) && /poslednjim danima: oko 85/.test(planTekst()));
         // kad uradiš koliko obično stižeš: dan je urađen, a „još 20" nastavlja istim redom
         S().day = { d: danasStr, n: 90, ok: 80, novih: 50, pon: 40 };
         await naPocetnu();
-        ok('plan v149: posle urađenog dana piše da je urađen i nudi „Još 20" istim redom', /Plan za danas je urađen/.test(planTekst()) && !!el2('btnPlanJos') && /Danas si već uradio/.test(planTekst()));
+        ok('plan v149: posle urađenog dana piše da je urađen i nudi „Još 20" istim redom', /Za danas si uradio koliko je plan tražio/.test(planTekst()) && !!el2('btnPlanJos') && /Danas urađeno: 90 \/ 90/.test(planTekst()));
         S().dani = dani1;
         S().day = { d: danasStr, n: 0, ok: 0, novih: 0, pon: 0 };
       }
@@ -1704,13 +1704,13 @@ async function proveraBodovanja2() {
         S().examDate = danasStr;
         await naPocetnu();
         const isp = planT();
-        ok('plan v149: na dan ispita lista ima najviše 30 pitanja, bez simulacije', /\(30\)/.test((el2('btnPlanVezbaj') || {}).textContent || '') && /najviše 30/.test(isp) && /Danas urađeno: 0 \/ 30\b/.test(isp) && !/Uz to simulacija/.test(isp) && !el2('homeSummary').querySelector('.planBox [data-nav="sim"]'));
+        ok('plan v149: na dan ispita lista ima najviše 30 pitanja, bez simulacije', /\(30\)/.test((el2('btnPlanVezbaj') || {}).textContent || '') && /[Nn]ajviše 30/.test(isp) && /Pre ispita/.test(isp) && /Danas urađeno: 0 \/ 30\b/.test(isp) && !/Uz to simulacija/.test(isp) && !el2('homeSummary').querySelector('.planBox [data-nav="sim"]'));
         // (c) ništa na redu: sve odgovoreno i utvrđeno — ni ✅ „urađeno", ni „još 20"
         S().sims = []; S().examDate = ld(sad + 10 * dan);
         window.QUIZ.questions.forEach((q) => { S().q[q.id] = { a: 3, w: 0, streak: 3, last: sad - dan }; });
         await naPocetnu();
         const nista = planT();
-        ok('plan v149: kad ništa nije na redu, to i piše (bez „Plan za danas je urađen", bez „Još 20" i bez cilja na traci)', /nema ničega na redu/.test(nista) && !/Plan za danas je urađen/.test(nista) && !el2('btnPlanJos') && !/Danas urađeno: \d+ \//.test(nista));
+        ok('plan v149: kad ništa nije na redu, to i piše (bez „Plan za danas je urađen", bez „Još 20" i bez cilja na traci)', /sve naučeno je još sveže/.test(nista) && !/Za danas si uradio/.test(nista) && !el2('btnPlanJos') && !/Danas urađeno: \d+ \//.test(nista));
         // (d) spor učenik koji uredno stiže 20 (sedam dana plana, svi stignuti): zahtev raste postepeno (23), ne skače na 60 (N1)
         S().q = {}; S().sims = [];
         S().dani = [7, 6, 5, 4, 3, 2, 1].map((k) => ({ d: dd(k), n: 20, ok: 16, novih: 10, pon: 10 }));
@@ -1793,6 +1793,156 @@ async function proveraBodovanja2() {
         await naPocetnu();
       }
 
+      // ---- 2b8) PLAN v150: zapis dana, putanja, pokrivenost, „šta ako" ----
+      {
+        const b3 = JSON.stringify({ q: S().q, sims: S().sims, day: S().day, dani: S().dani, ex: S().examDate, plan: S().plan });
+        const dva = (n) => String(n).padStart(2, '0');
+        const ld = (x) => { const d = new Date(x); return d.getFullYear() + '-' + dva(d.getMonth() + 1) + '-' + dva(d.getDate()); };
+        const sad = Date.now(), dan = 86400000, QQ = window.QUIZ.questions, NS = window.__dev.normalizeState;
+        // (a) zapis dana preživi učitavanje sa svim poljima; smeće se odbacuje (pozitivna kontrola: isti ulaz bez polja ih nema)
+        const d1 = ld(sad - dan);
+        const tr = NS({ q: {}, plan: { auto: 1, prognoza: { tr: { [d1]: { n0: 5, k: 70, t: sad - dan, kap: 90, dosta: 1, r: 1, s: 0, ids: [1, 2, 'x', -3, 2.5], u: 3 } } } } });
+        const z1 = tr && tr.plan && tr.plan.prognoza && tr.plan.prognoza.tr[d1];
+        ok('plan v150: zapis dana čuva kap, dosta, r, s, ids (samo cele pozitivne) i u',
+          !!z1 && z1.kap === 90 && z1.dosta === 1 && z1.r === 1 && z1.s === 0 && JSON.stringify(z1.ids) === '[1,2]' && z1.u === 3);
+        const tr2 = NS({ q: {}, plan: { auto: 1, prognoza: { tr: { [d1]: { n0: 5, k: 70, t: sad - dan, kap: -4, dosta: 2, r: 7, s: 'da', ids: 'x', u: 9999 } } } } });
+        const z2 = tr2 && tr2.plan && tr2.plan.prognoza && tr2.plan.prognoza.tr[d1];
+        ok('plan v150: neispravna polja zapisa se odbacuju, a osnovni zapis ostaje',
+          !!z2 && z2.k === 70 && !('kap' in z2) && !('dosta' in z2) && !('r' in z2) && !('s' in z2) && !('ids' in z2) && !('u' in z2));
+        S().plan = { auto: 1 }; S().examDate = ld(sad + 20 * dan); S().q = {}; S().sims = []; S().dani = [];
+        await naPocetnu();
+        ok('plan v150: bez dokaza nema putanje ni poena (ranije: 0 odgovora → „danas ≈ 74 poena")',
+          !!el2('planDetaljiTelo') && !el2('planDetaljiTelo').querySelector('svg.putanja') && !!el2('planDetaljiTelo').querySelector('.pokr'));
+        // (b) okvir plana sa dokazima: u „Zašto" su putanja (sa opisom rečima) i pokrivenost koja se sabira na sva pitanja
+        S().plan = { auto: 1 }; S().examDate = ld(sad + 13 * dan); S().q = {};
+        QQ.slice(0, 600).forEach((q, i) => { S().q[q.id] = { a: 1, w: 0, streak: 2, last: sad - (1 + (i % 9)) * dan }; });
+        S().sims = [3, 2, 1].map((k) => ({ d: sad - k * dan, score: 88, total: 98, passed: true, wrong: [], odg: 41, dn: 41, qs: [] }));
+        S().dani = [3, 2, 1].map((k) => ({ d: ld(sad - k * dan), n: 100, ok: 85, novih: 50, pon: 50 }));
+        await naPocetnu();
+        el2('btnPlanDetalji').click(); await cekaj(250);
+        const telo = el2('planDetaljiTelo');
+        const put = telo.querySelector('svg.putanja');
+        ok('plan v150: u „Zašto" je putanja do ispita sa opisom rečima (danas ≈, na dan ispita ≈, prag)',
+          !!put && /danas ≈ \d+.*na dan ispita ≈ \d+.*prag 84|данас ≈ \d+.*на дан испита ≈ \d+.*праг 84/.test(put.getAttribute('aria-label') || ''));
+        const pk = telo.querySelector('.pokr');
+        const brojevi = pk ? (pk.getAttribute('aria-label').match(/\d+/g) || []).slice(0, 4).map(Number) : [];
+        ok('plan v150: pokrivenost ima četiri dela koja se sabiraju na sva pitanja (' + brojevi.join('+') + ')',
+          !!pk && brojevi.length === 4 && brojevi.reduce((s, x) => s + x, 0) === QQ.length && brojevi[0] === 600);
+        // (c) „šta ako" na zahtev: redovi rastu po obimu, jedan je „tvoj tempo", šansa ne pada sa većim obimom
+        const bsa = el2('btnStoAko');
+        ok('plan v150: dugme „Šta ako radim više ili manje?" postoji tek u detaljima', !!bsa);
+        if (bsa) { bsa.click(); await cekaj(400); }
+        const redovi = [...el2('stoAkoTelo').querySelectorAll('.planRed')];
+        const dn = redovi.map((r) => Number((r.querySelector('.planIme').textContent.match(/\d+/) || [])[0]));
+        const pc = redovi.map((r) => { const m = r.lastElementChild.textContent.match(/\d+/); return m ? Number(m[0]) : null; });
+        ok('plan v150: „šta ako" ima bar tri obima, poređana, sa oznakom „tvoj tempo" (' + dn.join('/') + ')',
+          redovi.length >= 3 && dn.every((x, i) => i === 0 || x > dn[i - 1]) && redovi.some((r) => /tvoj tempo|твој темпо/.test(r.textContent)));
+        ok('plan v150: u „šta ako" šansa ne pada kad se radi više (' + pc.join('/') + ')',
+          pc.every((x, i) => i === 0 || x === null || pc[i - 1] === null || x >= pc[i - 1]));
+        const b = JSON.parse(b3);
+        S().q = b.q; S().sims = b.sims; S().day = b.day; S().dani = b.dani; S().examDate = b.ex; S().plan = b.plan;
+        await naPocetnu();
+      }
+
+      // ---- 2b9) REVIZIJA APLIKACIJE v150: nalazi i njihove kontrole ----
+      {
+        const b4 = JSON.stringify({ q: S().q, sims: S().sims, day: S().day, dani: S().dani, ex: S().examDate, plan: S().plan, planNe: S().planNe, fs: S().fs });
+        const dva = (n) => String(n).padStart(2, '0');
+        const ld = (x) => { const d = new Date(x); return d.getFullYear() + '-' + dva(d.getMonth() + 1) + '-' + dva(d.getDate()); };
+        const sad = Date.now(), dan = 86400000, QQ = window.QUIZ.questions, EXP = window.EXPLAIN;
+        // B2: „#9795" u objašnjenju je dugme koje otvara to pitanje (regex je bio pokvaren, 0 dugmadi)
+        const saRef = QQ.find((q) => { const e = EXP.byQ[q.id]; const s = e ? JSON.stringify([e.x, e.k]) : ''; const m = s.match(/#(\d{4,5})\b/); return m && QQ.some((x) => x.id === +m[1]); });
+        let brRef = 0, cilj = null;
+        if (saRef) {
+          delete S().q[saRef.id];
+          location.hash = '#/p/' + saRef.id; await cekaj(400);
+          const chs = [...document.querySelectorAll('#qCard .choice')].slice(0, saRef.req || 1);
+          for (const ch of chs) { ch.click(); await cekaj(60); }
+          klikni('Odgovori', el2('qCard')) || klikni('Одговори', el2('qCard')); await cekaj(450);
+          const refs = [...document.querySelectorAll('#qCard .qRef')];
+          brRef = refs.length;
+          if (refs[0]) { cilj = refs[0].dataset.q; refs[0].click(); await cekaj(400); }
+        }
+        ok('objašnjenje v150: broj pitanja u tekstu je dugme koje otvara to pitanje (' + brRef + ' dugmadi)', !!saRef && brRef > 0 && !!cilj && location.hash === '#/p/' + cilj);
+        // B1: strana oblasti ne sme da se pomera levo-desno (oznaka „na ispitu: 0 …" se prelama)
+        S().q = {};
+        const bez = [];
+        for (const sek of ['c30', 'c32', 'c33', 'c34', 'c38']) {
+          location.hash = '#/sek/' + sek; await cekaj(350);
+          if (document.documentElement.scrollWidth > window.innerWidth + 1) bez.push(sek + ':' + (document.documentElement.scrollWidth - window.innerWidth));
+        }
+        ok('oblasti v150: nijedna strana oblasti nema vodoravni skrol na telefonu (' + (bez.join(', ') || 'sve u redu') + ')', window.innerWidth <= 420 && !bez.length);
+        // S7: podoblast sa 2 odgovora nema „0%" nego crticu, i to se vidi i čuje
+        const sq2 = QQ.filter((q) => q.sub === QQ[0].sub).slice(0, 2);
+        S().q = {}; sq2.forEach((q) => { S().q[q.id] = { a: 1, w: 1, streak: 0, last: sad - 1000, due: sad - 1000 }; });
+        location.hash = '#/sek/c' + (QQ[0].cat || '').toString().replace(/^c/, ''); await cekaj(350);
+        const redovi = [...document.querySelectorAll('.subRow')].filter((r) => /^2\//.test((r.querySelector('.subCnt') || {}).textContent || ''));
+        ok('oblasti v150: podoblast sa 2 odgovora ima „—" (ne „0%"), uz objašnjenje za čitač',
+          redovi.length > 0 && redovi.every((r) => !/%/.test(r.querySelector('.subAcc').textContent.replace(/procenat|проценат/g, '')) && /—/.test(r.querySelector('.subAcc').textContent)));
+        // S1: „Po mom tempu" bez datuma kaže da plan ne može da računa (ne „Za predlog…")
+        S().plan = { auto: 1 }; S().examDate = null; await naPocetnu();
+        const bp = [...document.querySelectorAll('button')].find((b) => /Podešavanja|Подешавања/.test(b.textContent));
+        if (bp && bp.getAttribute('aria-expanded') !== 'true') { bp.click(); await cekaj(300); }
+        const podTxt = (el2('podesavanjaTelo') || document.body).textContent;
+        ok('podešavanja v150: plan po tempu bez datuma kaže da ne može da računa', /bez datuma ispita ne može da računa|без датума испита не може да рачуна/.test(podTxt) && !/Za predlog prvo unesi|За предлог прво унеси/.test(podTxt));
+        ok('podešavanja v150: nigde se ne pominje staro dugme „Cilj se sam računa"', !/Cilj se sam računa|Циљ се сам рачуна/.test(document.body.textContent));
+        // S3: na dan ispita zadatak je gore, skala nema „na dan ispita", nema „šta ako"
+        S().examDate = ld(sad);
+        QQ.slice(0, 600).forEach((q, i) => { S().q[q.id] = { a: 1, w: 0, streak: 2, last: sad - (1 + (i % 9)) * dan }; });
+        S().sims = [3, 2, 1].map((k) => ({ d: sad - k * dan, score: 88, total: 98, passed: true, wrong: [], odg: 41, dn: 41, qs: [] }));
+        S().dani = [3, 2, 1].map((k) => ({ d: ld(sad - k * dan), n: 100, ok: 85, novih: 50, pon: 50 }));
+        await naPocetnu();
+        const box = document.querySelector('#homeSummary .planBox');
+        const zad = box && box.querySelector('.planZadatak');
+        const sk = box && box.querySelector('svg.skala');
+        ok('plan v150: na dan ispita je uputa gore, a skala ne crta poseban „dan ispita"',
+          !!zad && /Pre ispita|Danas ništa ne moraš|Пре испита|Данас ништа не мораш/.test(zad.textContent) && !!sk && !/na dan ispita|на дан испита/.test(sk.getAttribute('aria-label') || '') && !el2('btnStoAko'));
+        ok('plan v150: okvir plana po tempu se zove „Dnevni plan" i stoji prvi na početnoj',
+          !!box && /Dnevni plan|Дневни план/.test(box.querySelector('.planNaslov').textContent) && el2('homeSummary').firstElementChild === box);
+        // S4: nijedan natpis na skalama ne pada preko drugog (ni „danas ≈N" preko „84")
+        S().examDate = ld(sad + 13 * dan); await naPocetnu();
+        const preklop = [];
+        for (const s of document.querySelectorAll('svg.skala')) {
+          const tx = [...s.querySelectorAll('text')].map((e) => e.getBoundingClientRect()).filter((r) => r.width > 0);
+          for (let i = 0; i < tx.length; i++) for (let j = i + 1; j < tx.length; j++) {
+            const a = tx[i], b = tx[j];
+            if (a.left < b.right - 1 && b.left < a.right - 1 && a.top < b.bottom - 1 && b.top < a.bottom - 1) preklop.push(i + '×' + j);
+          }
+        }
+        ok('skale v150: nijedan natpis ne pada preko drugog (' + (preklop.join(', ') || '0 sudara') + ')', !preklop.length && document.querySelectorAll('svg.skala').length > 0);
+        // S2: lista za danas urađena → nema rečenice „daje prednost novim pitanjima"
+        S().day = { d: ld(sad), n: 400, ok: 380 };
+        QQ.slice(0, 30).forEach((q) => { S().q[q.id] = { a: 1, w: 1, streak: 0, last: sad - 2 * dan, due: sad - dan }; });
+        await naPocetnu();
+        const hs = el2('homeSummary').textContent;
+        ok('početna v150: kad je lista za danas urađena, nema „prednost novim pitanjima"', !/prednost novim|предност новим/.test(hs) && !el2('btnPlanVezbaj'));
+        // S6: držač poruka postoji u samoj strani (živo polje mora da postoji pre prve poruke)
+        const ih = await (await fetch('index.html', { cache: 'no-store' })).text();
+        ok('poruke v150: držač poruka je u index.html kao role=status', /id="trakeDrzac" role="status" aria-live="polite"/.test(ih));
+        // sitno 1: broj uz „poen" ima oblik (1 poen, 21 poen, 11 poena)
+        const pt = window.__dev.poenTxt;
+        ok('tekst v150: 1 poen, 21 poen, 11 poena, 2 poena', !!pt && pt(1) === '1 poen' && pt(21) === '21 poen' && pt(11) === '11 poena' && pt(2) === '2 poena');
+        // sitno 3: brojač vodiča ne preskače korake kojih nema (bez okvira plana)
+        S().plan = null; S().planNe = 1; S().tour = 0; await naPocetnu();
+        const bv = [...document.querySelectorAll('button')].find((b) => /Vodič|Водич/.test(b.textContent));
+        const brojaci = [];
+        if (bv) {
+          bv.click(); await cekaj(700);
+          for (let k = 0; k < 12 && el2('tourTip'); k++) {
+            const m = (el2('tourTip').querySelector('.tourRow .mut') || {}).textContent || '';
+            brojaci.push(m.trim());
+            const d = el2('tourNext'); if (!d) break; d.click(); await cekaj(300);
+          }
+          if (el2('tourSkip')) el2('tourSkip').click();
+        }
+        const redom = brojaci.every((m, i) => m === (i + 1) + ' / ' + brojaci.length);
+        ok('vodič v150: brojač ide redom bez preskakanja (' + brojaci.join(', ') + ')', brojaci.length >= 5 && redom);
+        S().tour = 1;
+        const b = JSON.parse(b4);
+        S().q = b.q; S().sims = b.sims; S().day = b.day; S().dani = b.dani; S().examDate = b.ex; S().plan = b.plan; S().planNe = b.planNe || 0;
+        await naPocetnu();
+      }
+
       // ---- 2c) PROCENA (procena.js, v145): pozitivne kontrole koje je stara formula padala ----
       // Stara (Laplace +1/+2) je savršenom učeniku davala ≈65/98 i 0,5%, a početniku sa 40 tačnih 100%.
       {
@@ -1859,7 +2009,7 @@ async function proveraBodovanja2() {
         document.querySelector('[data-nav="home"]').click();
         await cekaj(200);
         const pt = document.querySelector('#homeSummary .planBox').textContent.replace(/\s+/g, ' ');
-        ok('sve otvoreno v149: plan nudi samo ponavljanja i kaže da si video sva pitanja', /\(\d+ ponavljanja, 0 novih\)/.test(pt) && /vidiš sva pitanja/.test(pt));
+        ok('sve otvoreno v149: plan nudi samo ponavljanja i kaže da si video sva pitanja', /Danas: \d+ pitanja, sva ponavljanja/.test(pt) && /Sva pitanja koja se izvlače već si video/.test(pt));
       }
 
       // ---- 3c) VODIČ: tekst koraka mora da bude ŽIVO POLJE ----
@@ -1910,6 +2060,7 @@ async function proveraBodovanja2() {
         await naPocetnu();
         const bp = [...document.querySelectorAll('button')].find((b) => /Podešavanja|Подешавања/.test(b.textContent));
         if (bp && bp.getAttribute('aria-expanded') !== 'true') { bp.click(); await cekaj(300); }
+        if (el2('btnPlanRucno')) { el2('btnPlanRucno').click(); await cekaj(250); }
         const pg = el2('planGrupa');
         if (!pg || !el2('btnPlanSave')) ok('podešavanja: kartica cilja je otvorena', false);
         else {
