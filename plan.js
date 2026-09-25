@@ -567,11 +567,12 @@ function planDanas(api, ctx) {
   const Estop = sidro(stop.E);
   const ocene = (r) => { const E = sidro(r.E); const sd = Math.hypot(sd0, NESIG_TEMPO * Math.max(0, E - Estop)); return { E, P: sansa(slotovi, E, sd, prag) }; };
   const cLo = Math.max(1, Math.round(0.8 * tempo)), cHi = Math.min(TEMPO_MAX, Math.max(cLo + 1, Math.round(1.2 * tempo)));
-  const loR = scenC(cLo, true), hiR = scenC(cHi, true);
-  const b = ocene(baza), lo = ocene(loR), hi = ocene(hiR), so = ocene(stop);
+  const imaVise = cHi > tempo;   // završni pregled v150: iznad ~250 dnevno „više" (najviše 300) ume da bude MANJE od tempa
+  const loR = scenC(cLo, true), hiR = imaVise ? scenC(cHi, true) : baza;
+  const b = ocene(baza), lo = ocene(loR), hi = imaVise ? ocene(hiR) : { ...b }, so = ocene(stop);
   // D10: projekcija ume da da par desetih poena MANJE uz više rada (usrednjavanje kohorti) — to je šum modela, ne
   // savet. Šanse uz manje/više rada se zato slažu po obimu (manje ≤ ovim tempom ≤ više), kao i stoAko ispod.
-  lo.P = Math.min(lo.P, b.P); lo.E = Math.min(lo.E, b.E); hi.P = Math.max(hi.P, b.P); hi.E = Math.max(hi.E, b.E);
+  lo.P = Math.min(lo.P, b.P); lo.E = Math.min(lo.E, b.E); if (imaVise) { hi.P = Math.max(hi.P, b.P); hi.E = Math.max(hi.E, b.E); }
   // D7: režim pauze se odlučuje SAMO iz dana pre danas — isti je ceo dan, i posle prvog odgovora (ranije se
   // presuda prevrtala posle jednog odgovora, jer je osnova prelazila sa „bez rada" na „ovim tempom").
   const uPauzi = ist.prazno != null && ist.prazno >= PAUZA;
@@ -586,7 +587,7 @@ function planDanas(api, ctx) {
   const potrebanNedostizan = false, dodatnoDana = null;   // D2: ne tvrdi se (vidi zaglavlje)
   if (!danIspita && imaDokaza) {
     // D10: i tvoj tempo je poznata tačka (šansa „ovim tempom" iz presude) — potreban broj ne sme da ga preskoči
-    const memo = new Map([[0, so.P], [cLo, lo.P], [cHi, hi.P]]);
+    const memo = new Map([[0, so.P], [cLo, lo.P], ...(imaVise ? [[cHi, hi.P]] : [])]);
     if (!memo.has(tempo) && tempo <= TEMPO_MAX) memo.set(tempo, b.P);
     const Pc = (c) => { if (!memo.has(c)) memo.set(c, ocene(scenC(c)).P); return memo.get(c); };
     if (so.P >= PRAG_OK) { potrebanTempo = 0; pTempo = so.P; }
@@ -648,12 +649,20 @@ function planDanas(api, ctx) {
   const ptTxt = potrebanTempo;                     // već zaokružen: polje = izgovoreni broj
   const znak = ocena === 'ok' ? '✅' : ocena === 'upozorenje' ? '⚠' : '⛔';
   const pauzaTxt = uPauzi ? ist.prazno + ' dana' : '';   // genitiv: „posle 30 dana pauze"; D6: dani bez rada, bez danas
+  const polaNovo = !imaDokaza && !danIspita && kap.izvor !== 'nema' && dIsp > 0 && nevSab > 0 && Math.round(pokrivenost.retkaNaIspitu) > K.nSim / 2;
+  const trebaDnevno = D > 0 ? 2 * nevSab / D : 0;
+  const kazeTreba = !imaDokaza && !danIspita && dIsp > 0 && nevSab > 0 && Math.round(pokrivenost.retkaNaIspitu) > 0 && tempo < trebaDnevno;
   let glavno;
-  if (danIspita) glavno = ocena === 'nema' ? 'Ispit je danas. Samo kratko ponavljanje, bez simulacije.' : `${znak} Ispit je danas: procena oko ${Etx} od ${uk} poena (prag ${prag}).`;
+  if (danIspita) glavno = ocena === 'nema' ? 'Ispit je danas: najviše ' + ISPIT_DAN_NAJVISE + ' pitanja, bez simulacije.' : `${znak} Ispit je danas: procena oko ${Etx} od ${uk} poena (prag ${prag}).`;
   else if (!imaDokaza) {
     const nPrvi = Math.round(pokrivenost.retkaNaIspitu);
     const ovim = kap.izvor === 'nema' ? `sa ${tempo} dnevno` : 'ovim tempom';
-    glavno = nPrvi > 0 ? `Prva procena: ${ovim}, na ispitu bi oko ${nPrvi} od ${K.nSim} ${oblik(nPrvi, 'bilo novo', 'bila nova', 'bilo novo')}.`
+    // v150 (Milanov primer „jedno pitanje dnevno"): kad izmereni tempo ne stiže ni do pola ispita, to stoji GORE,
+    // brojevima koji se mogu izbrojati (koliko pitanja ispita bi bilo novo, koliko dnevno treba da svako vidiš i
+    // jednom ponoviš) — bez šanse, jer bez dokaza šanse nema. Ranije: „Prva procena: …36 od 41…" 29 dana zaredom,
+    // a broj koji treba stajao je iza „Zašto".
+    glavno = polaNovo ? `Ovim tempom ne vidiš ni pola ispita: na ispitu bi oko ${nPrvi} od ${K.nSim} ${oblik(nPrvi, 'bilo novo', 'bila nova', 'bilo novo')}. Da svako vidiš i jednom ponoviš: ${dnevnoTxt(2 * nevSab / D)}.`
+      : nPrvi > 0 ? `Prva procena: ${ovim}, na ispitu bi oko ${nPrvi} od ${K.nSim} ${oblik(nPrvi, 'bilo novo', 'bila nova', 'bilo novo')}.${kazeTreba ? ` Da svako vidiš i jednom ponoviš: ${dnevnoTxt(trebaDnevno)}.` : ''}`
       : `Prva procena: ${ovim} do ispita vidiš ${pokrivenost.retka ? 'skoro sva' : 'sva'} pitanja koja se izvlače.`;
   }
   // P4: malo dokaza — poeni bez znaka i bez šanse, uz rok kad će biti pouzdanije
@@ -661,8 +670,8 @@ function planDanas(api, ctx) {
   // Provera v150, B2: šansa „bez vežbe" je optimistična (plan-proba: obećano 76%, stvarno 72%), pa se ne izgovara
   // kao broj uz ✅; kaže se šansa ako nastaviš, i da znanje bledi.
   else if (uPauzi) glavno = ocena === 'ok' ? `✅ Posle ${pauzaTxt} pauze znanje ti je još dobro; ako nastaviš, šansa ${pr(b.P)}.`
-    : ocena === 'upozorenje' ? `⚠ Posle ${pauzaTxt} pauze, bez vežbe si na ivici (šansa ${pr(so.P)}).`
-    : `⛔ Posle ${pauzaTxt} pauze, bez vežbe ne stižeš (šansa ${pr(so.P)}).`;
+    : ocena === 'upozorenje' ? `⚠ Posle ${pauzaTxt} pauze: bez vežbe si na ivici; ako nastaviš, šansa ${pr(b.P)}.`
+    : `⛔ Posle ${pauzaTxt} pauze: bez vežbe ne stižeš; ako nastaviš, šansa ${pr(b.P)}.`;
   else if (ocena === 'ok') glavno = `✅ Ovim tempom stižeš: oko ${Etx} od ${uk} poena, šansa ${pr(b.P)}.`;
   else if (ptTxt == null && sa300 != null) glavno = `${znak} ${ocena === 'upozorenje' ? 'Na ivici' : 'Ovim tempom ne stižeš'} (šansa ${pr(b.P)}): svaki dan vežbe je podiže.`;
   else if (ptTxt == null) glavno = ocena === 'upozorenje' ? `⚠ Na ivici: šansa za sada ${prOko(b.P)}.` : `⛔ Ovim tempom ne stižeš: šansa za sada ${prOko(b.P)}.`;
@@ -672,7 +681,7 @@ function planDanas(api, ctx) {
   const ucimTempo = kap.izvor === 'nema' || kap.izvor === 'proba' || kap.izvor === 'slobodno' || kap.izvor === 'pauza';
   let zadatak;
   const sastav = nPon && nNov ? ` (${br(nPon, 'ponavljanje', 'ponavljanja', 'ponavljanja')}, ${br(nNov, 'novo', 'nova', 'novih')})` : nNov ? (nNov === 1 ? ', novo' : ', sva nova') : (nPon === 1 ? ', ponavljanje' : ', sva ponavljanja');
-  if (danIspita) zadatak = osnovni.length ? `Pre ispita: kratko ponavljanje, ${pit(osnovni.length)}, bez simulacije.` : 'Danas ništa ne moraš: odmori se pred ispit.';
+  if (danIspita) zadatak = osnovni.length ? `Pre ispita: ${pit(osnovni.length)}${sastav}, bez simulacije.` : 'Danas ništa ne moraš: odmori se pred ispit.';
   else if (osnovni.length) zadatak = `Danas${(dan.n || 0) > 0 ? ' još' : ''}: ${pit(osnovni.length)}${sastav}${imaSim ? ', pa simulacija' : ''}.`;
   else if ((dan.n || 0) > 0 && (traziP === 0 || nVredno > 0)) zadatak = rezerva ? 'Lista za danas je urađena — ostaje još simulacija.'
     : ucimTempo ? 'Za danas si uradio koliko je plan tražio.'
@@ -686,7 +695,7 @@ function planDanas(api, ctx) {
   if (!danIspita) {
     if (!imaDokaza) {
       det.push(`Šansu računam kad pokriješ bar trećinu ispita${pro && Number.isFinite(pro.pokriveno) ? ` (sada ${Math.round(100 * pro.pokriveno)}%)` : ''} ili posle jedne simulacije (${pit(K.nSim)}).`);
-      if (nevSab > 0 && dIsp > 0) det.push(`Sa ispita je još ${br(nevSab, 'neviđeno pitanje', 'neviđena pitanja', 'neviđenih pitanja')}: da svako vidiš i jednom ponoviš do ispita, to je ${dnevnoTxt(2 * nevSab / D)}${kap.izvor !== 'nema' ? ` (sada oko ${tempo})` : ''}.`);
+      if (nevSab > 0 && dIsp > 0 && !polaNovo && !kazeTreba) det.push(`Sa ispita je još ${br(nevSab, 'neviđeno pitanje', 'neviđena pitanja', 'neviđenih pitanja')}: da svako vidiš i jednom ponoviš do ispita, to je ${dnevnoTxt(2 * nevSab / D)}${kap.izvor !== 'nema' ? ` (sada oko ${tempo})` : ''}.`);
     }
     else if (tanko) {
       det.push(`Za sada malo znam o tome koliko brzo učiš i zaboravljaš: tek ${br(st.ponovljeno, 'ponovljen odgovor', 'ponovljena odgovora', 'ponovljenih odgovora')}.`);
@@ -711,7 +720,7 @@ function planDanas(api, ctx) {
   if (!uPauzi && !danIspita && dIsp >= 7 && imaDokaza && !tanko && skoroSve && so.P < PRAG_OK && b.P - so.P >= 0.1)
     det.push('Ako sada potpuno staneš, do ispita znanje izbledi i šansa pada ispod 70%. Svaki dan ponavljanja to koči.');
   // tempo: P1/P2/P8 — broj u tekstu je isti broj sa kojim računa presuda
-  const aktTxt = preskace ? `; radiš oko ${Math.round(uc.akt * 7)} od 7 dana` : '';
+  const aktTxt = preskace ? `; vežbaš otprilike ${br(Math.max(1, Math.round(uc.akt * 7)), 'dan', 'dana', 'dana')} u nedelji` : '';
   // D5: „danas plan traži X" samo kad lista stvarno toliko ima (ne uz listu od 1 pitanja jer vrednijeg nema)
   const probaVise = kap.est > tempo && !dostaDanas && (dan.n || 0) + osnovni.length > tempo;
   const sSim = uc.sim > 0 ? ' sa simulacijom' : '';
@@ -723,12 +732,14 @@ function planDanas(api, ctx) {
     ? `Posle duže pauze kreće se iznova: plan računa sa oko ${pitGen(tempo)} dnevno${kap.pre > tempo ? ` (pre pauze oko ${kap.pre})` : ''} i posle par dana ravna se po tebi.`
     : kap.izvor === 'slobodno'
     ? (probaVise
-      ? `Tvoji poslednji dani: oko ${pit(tempo)} dnevno, s tim računam. Danas plan traži ${kap.est}, da vidi možeš li više.`
-      : `Plan računa sa tvojim poslednjim danima: oko ${pit(tempo)} dnevno${sSim}${aktTxt}.`)
+      ? `Obično uradiš oko ${pit(tempo)} dnevno, s tim računam. Danas plan traži ${kap.est}, da vidi možeš li više.`
+      : `Plan računa sa onim što obično uradiš: oko ${pit(tempo)} dnevno${sSim}${aktTxt}.`)
     : kap.izvor === 'proba'
     ? `Sve što je plan tražio si stigao, pa probno računa sa malo više: oko ${pit(tempo)} dnevno${sSim}${aktTxt}.`
-    : kap.izvor === 'delimicno' || kap.izvor === 'pauzaKratka'
-    ? `Plan računa sa tempom od oko ${pitGen(tempo)} dnevno${sSim}: toliko si stizao, a tempo se još meri${aktTxt}.`
+    : kap.izvor === 'pauzaKratka'
+    ? `Plan računa sa tempom od oko ${pitGen(tempo)} dnevno${sSim}: toliko si obično stizao pre pauze${aktTxt}.`
+    : kap.izvor === 'delimicno'
+    ? `Plan računa sa tempom od oko ${pitGen(tempo)} dnevno${sSim}; tempo se još meri${aktTxt}.`
     : kap.izvor === 'ranije'
     ? `Plan računa sa oko ${pitGen(tempo)} dnevno${sSim}: najviše što si uradio poslednjih dana${aktTxt}.${probaVise ? ` Danas traži ${kap.est}, da vidi možeš li više.` : ''}`
     : `Plan računa da dnevno uradiš oko ${pit(tempo)}${sSim} — toliko stigneš u 4 od 5 dana${aktTxt}.`);
@@ -739,7 +750,7 @@ function planDanas(api, ctx) {
   if (!danIspita && uc.sim > 0) {
     const N = Math.round(1 / uc.sim);
     // D8: „kao poslednjih dana" samo kad iza toga stoji bar SIM_MIN_DANA aktivnih dana (ne jedna probna simulacija)
-    const kao = uc.simDana >= SIM_MIN_DANA ? ', kao poslednjih dana' : '';
+    const kao = uc.simDana >= SIM_MIN_DANA && !uPauzi ? ', kao poslednjih dana' : '';
     det.push(uc.sim >= 0.85 ? 'Računam da radiš simulaciju svaki dan — poslednjih dana jesi.'
       : N <= 1 ? `Računam sa simulacijom skoro svaki dan${kao}.`
       : N >= 2 && N <= 7 ? `Računam sa simulacijom otprilike svaki ${REDNI[N]} dan${kao}.`
@@ -760,9 +771,9 @@ function planDanas(api, ctx) {
       : `Neviđeno ostaje ${br(pokrivenost.retka, 'pitanje koje se izvlači', 'pitanja koja se izvlače', 'pitanja koja se izvlače')}: na ispitu u proseku oko ${Math.round(h)} od ${K.nSim}, oko ${br(Math.round(wP), 'poen', 'poena', 'poena')}${neIzvl}.`);
     else if (vanS) det.push(`Neviđeno ostaje samo ${br(vanS, 'pitanje koje se na ispitu ne izvlači', 'pitanja koja se na ispitu ne izvlače', 'pitanja koja se na ispitu ne izvlače')}.`);
   }
-  if (dIsp > 0 && !uPauzi && imaDokaza && !tanko && Math.abs(hi.P - lo.P) >= 0.05) det.push(`Sa manje rada (oko ${cLo} dnevno) šansa je ${prOko(lo.P)}, sa više (oko ${cHi}) ${prOko(hi.P)}.`);
+  if (dIsp > 0 && !uPauzi && imaDokaza && !tanko && Math.abs(hi.P - lo.P) >= 0.05) det.push(imaVise ? `Sa manje rada (oko ${cLo} dnevno) šansa je ${prOko(lo.P)}, sa više (oko ${cHi}) ${prOko(hi.P)}.` : `Sa manje rada (oko ${cLo} dnevno) šansa je ${prOko(lo.P)}.`);
   if (!danIspita && !rezerva && uc.sim > 0 && !simDanas && osnovni.length) det.push('Ako danas radiš i simulaciju, uradi je pre liste — lista se onda sama skrati.');
-  if (danIspita) det.push(`Najviše ${ISPIT_DAN_NAJVISE} pitanja i bez simulacije: umor pred ispit košta više nego što ponavljanje donese.`);
+  if (danIspita) det.push(`Najviše ${ISPIT_DAN_NAJVISE} pitanja i bez simulacije: umor pred ispit košta više nego što vežba donese.`);
 
   const proj = { D, kapacitet: kap.est, tempo, izvor: kap.izvor, aktivnost: uc.akt, simulacija: uc.sim, poeni: pres.E, sansa: pres.P, poeniNastavak: b.E, sansaNastavak: b.P, sansaManje: lo.P, sansaVise: hi.P, sansaStop: so.P, poeniBezRada: so.E,
     nevidjeno: nevSab - stize + vanS, ponavljanja: baza.pon, novih: baza.novih, trazi, poeniSad: pro ? pro.exp : null, poeniStop: Estop, nesigurnost: sd0, izbledelo, pauza: ist.pauza, prazno: ist.prazno, uPauzi, sansaPotreban: pTempo, nedostizanModel, sansaSa300: sa300, tanko };
@@ -780,7 +791,7 @@ function planDanas(api, ctx) {
     if (potrebanTempo > 0) v.add(potrebanTempo);
     // D9: sićušni obimi se ne nude kao opcija (osim tvog tempa)
     for (const f of [0.5, 1.5, 2, 0.75, 3, 0.25]) { if (v.size >= 6) break; const c = Math.min(TEMPO_MAX, Math.max(1, lepo(f * tempo))); if (c >= MALO_DNEVNO) v.add(c); }
-    stoAko = [...v].sort((x, y) => x - y).map((c) => { const r = ocene(scenC(c)); return { dnevno: c, P: imaDokaza ? r.P : null, E: Math.round(10 * r.E) / 10, ...(c === tempo ? { tvoj: true } : {}), ...(c === potrebanTempo ? { potreban: true } : {}) }; });
+    stoAko = [...v].sort((x, y) => x - y).map((c) => { const r = c === tempo ? b : ocene(scenC(c)); return { dnevno: c, P: imaDokaza ? r.P : null, E: Math.round(10 * r.E) / 10, ...(c === tempo ? { tvoj: true } : {}), ...(c === potrebanTempo ? { potreban: true } : {}) }; });
     // D10: više rada ne sme da pokaže manju šansu (šum projekcije) — slaže se naviše po obimu
     for (let k = 1; k < stoAko.length; k++) { const a = stoAko[k - 1], z = stoAko[k]; if (z.P != null && a.P != null && z.P < a.P) z.P = a.P; if (z.E < a.E) z.E = a.E; }
   }
@@ -795,5 +806,5 @@ function planDanas(api, ctx) {
     cilj: ukupnoDanas > 0 ? ukupnoDanas : null };
 }
 
-self.VozackiPlan = { planDanas, uCir, RAST };
+self.VozackiPlan = { planDanas, uCir, RAST, pr };
 })();

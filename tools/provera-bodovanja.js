@@ -145,7 +145,7 @@ async function proveraBodovanja2() {
         ok('plan v149: tražio 100, a urađeno 80/85/90 → sutra traži 80 (koliko stigneš u 4 od 5 dana)', /Danas urađeno: 0 \/ 80/.test(planTekst()) && /oko 80 pitanja/.test(planTekst()) && /4 od 5 dana/.test(planTekst()));
         S().plan = { auto: 1, prio: 0 };
         await naPocetnu();
-        ok('plan v149: kontrola — isti dani bez zapisa plana daju medijanu tvojih dana (85)', /Danas urađeno: 0 \/ 85/.test(planTekst()) && /poslednjim danima: oko 85/.test(planTekst()));
+        ok('plan v149: kontrola — isti dani bez zapisa plana daju medijanu tvojih dana (85)', /Danas urađeno: 0 \/ 85/.test(planTekst()) && /obično uradiš: oko 85/.test(planTekst()));
         // kad uradiš koliko obično stižeš: dan je urađen, a „još 20" nastavlja istim redom
         S().day = { d: danasStr, n: 90, ok: 80, novih: 50, pon: 40 };
         await naPocetnu();
@@ -1828,6 +1828,13 @@ async function proveraBodovanja2() {
         const brojevi = pk ? (pk.getAttribute('aria-label').match(/\d+/g) || []).slice(0, 4).map(Number) : [];
         ok('plan v150: pokrivenost ima četiri dela koja se sabiraju na sva pitanja (' + brojevi.join('+') + ')',
           !!pk && brojevi.length === 4 && brojevi.reduce((s, x) => s + x, 0) === QQ.length && brojevi[0] === 600);
+        {
+          const skA = (el2('homeSummary').querySelector('.planBox svg.skala:not(.putanja)') || { getAttribute: () => '' }).getAttribute('aria-label') || '';
+          const puA = put ? put.getAttribute('aria-label') || '' : '';
+          const nS = (skA.match(/na dan ispita, ovim tempom, ≈ (\d+)/) || [])[1], nP = (puA.match(/na dan ispita ≈ (\d+)/) || [])[1];
+          const dS = (skA.match(/Danas ≈ (\d+)/) || [])[1], dP = (puA.match(/danas ≈ (\d+)/) || [])[1];
+          ok('plan v150: isti broj na skali i na putanji (ispit ' + nS + '/' + nP + ', danas ' + dS + '/' + dP + ')', !!nS && nS === nP && !!dS && dS === dP);
+        }
         // (c) „šta ako" na zahtev: redovi rastu po obimu, jedan je „tvoj tempo", šansa ne pada sa većim obimom
         const bsa = el2('btnStoAko');
         ok('plan v150: dugme „Šta ako radim više ili manje?" postoji tek u detaljima', !!bsa);
@@ -1837,6 +1844,12 @@ async function proveraBodovanja2() {
         const pc = redovi.map((r) => { const m = r.lastElementChild.textContent.match(/\d+/); return m ? Number(m[0]) : null; });
         ok('plan v150: „šta ako" ima bar tri obima, poređana, sa oznakom „tvoj tempo" (' + dn.join('/') + ')',
           redovi.length >= 3 && dn.every((x, i) => i === 0 || x > dn[i - 1]) && redovi.some((r) => /tvoj tempo|твој темпо/.test(r.textContent)));
+        {
+          const tv = redovi.find((r) => /tvoj tempo|твој темпо/.test(r.textContent));
+          const pTv = tv ? tv.lastElementChild.textContent.trim() : '';
+          const pPr = ((el2('homeSummary').querySelector('.planPresuda') || {}).textContent || '').match(/šansa (?:preko |ispod )?(\d+)%/);
+          ok('plan v150: red „tvoj tempo" u „šta ako" ima istu šansu kao presuda (' + pTv + ' / ' + (pPr ? pPr[1] + '%' : '—') + ')', !!pPr && pTv.replace(/[<>]/g, '') === pPr[1] + '%');
+        }
         ok('plan v150: u „šta ako" šansa ne pada kad se radi više (' + pc.join('/') + ')',
           pc.every((x, i) => i === 0 || x === null || pc[i - 1] === null || x >= pc[i - 1]));
         const b = JSON.parse(b3);
@@ -1919,6 +1932,35 @@ async function proveraBodovanja2() {
         // S6: držač poruka postoji u samoj strani (živo polje mora da postoji pre prve poruke)
         const ih = await (await fetch('index.html', { cache: 'no-store' })).text();
         ok('poruke v150: držač poruka je u index.html kao role=status', /id="trakeDrzac" role="status" aria-live="polite"/.test(ih));
+        // Milanov primer: jedno-dva pitanja dnevno — plan to kaže GORE, brojevima koji se mogu izbrojati
+        S().q = {}; S().sims = []; S().examDate = ld(sad + 25 * dan); S().plan = { auto: 1 }; S().day = { d: ld(sad), n: 0, ok: 0 };
+        S().dani = [3, 2, 1].map((k) => ({ d: ld(sad - k * dan), n: 2, ok: 2, novih: 2, pon: 0 }));
+        S().plan.prognoza = { tr: Object.fromEntries([3, 2, 1].map((k) => [ld(sad - k * dan), { n0: 0, k: 60, t: sad - k * dan }])) };
+        QQ.slice(0, 6).forEach((q, i) => { S().q[q.id] = { a: 1, w: 0, streak: 1, last: sad - (1 + (i % 3)) * dan, due: sad + dan }; });
+        await naPocetnu();
+        const pr1 = (document.querySelector('#homeSummary .planPresuda') || {}).textContent || '';
+        ok('plan v150: uz jedno-dva pitanja dnevno presuda gore kaže da ne vidiš ni pola ispita i koliko dnevno treba (' + pr1.slice(0, 60) + '…)',
+          /ne vidiš ni pola ispita/.test(pr1) && /od 41/.test(pr1) && /jednom ponoviš: oko \d+ dnevno/.test(pr1));
+        // kontrola: redovan tempo (100 dnevno) istu rečenicu NE dobija
+        S().dani = [3, 2, 1].map((k) => ({ d: ld(sad - k * dan), n: 100, ok: 90, novih: 60, pon: 40 }));
+        S().plan = { auto: 1 };
+        await naPocetnu();
+        const pr2 = (document.querySelector('#homeSummary .planPresuda') || {}).textContent || '';
+        ok('plan v150: kontrola — uz 100 dnevno te rečenice nema', !!pr2 && !/ne vidiš ni pola ispita/.test(pr2));
+        // završni pregled v150: posle pauze presuda kaže „bez vežbe" REČIMA, a jedini broj je šansa ako nastaviš —
+        // isti broj kao na Statistici (ranije: 18% gore, 26% na Statistici)
+        S().q = {}; QQ.slice(0, 500).forEach((q, i) => { S().q[q.id] = { a: 1 + (i % 2), w: i % 5 === 0 ? 1 : 0, streak: i % 5 === 0 ? 0 : 1, last: sad - (12 + (i % 3)) * dan, due: sad - 10 * dan }; });
+        S().sims = [13, 12].map((k) => ({ d: sad - k * dan, score: 80, total: 98, passed: false, wrong: [], odg: 41, dn: 41, qs: [] }));
+        S().dani = [14, 13, 12].map((k) => ({ d: ld(sad - k * dan), n: 120, ok: 100, novih: 80, pon: 40 }));
+        S().examDate = ld(sad + 12 * dan); S().plan = { auto: 1 }; S().day = { d: ld(sad), n: 0, ok: 0 };
+        await naPocetnu();
+        const pz = (document.querySelector('#homeSummary .planPresuda') || {}).textContent || '';
+        const pzBroj = (pz.match(/ako nastaviš, šansa (?:preko |ispod )?(\d+)%/) || [])[1];
+        document.querySelector('[data-nav="stats"]').click(); await cekaj(400);
+        const stBroj = ((el2('readyCard').textContent || '').match(/ako nastaviš ovim tempom: ≈ \d+ poen\S*, šansa (?:više od |preko |ispod )?(\d+)%/) || [])[1];
+        ok('plan v150: posle pauze presuda kaže „bez vežbe" rečima, a broj je šansa ako nastaviš — isti kao na Statistici (' + pzBroj + ' / ' + stBroj + ')',
+          /Posle \d+ dana pauze/.test(pz) && /bez vežbe|znanje ti je još dobro/.test(pz) && !!pzBroj && pzBroj === stBroj && (pz.match(/\d+%/g) || []).length === 1);
+        await naPocetnu();
         // sitno 1: broj uz „poen" ima oblik (1 poen, 21 poen, 11 poena)
         const pt = window.__dev.poenTxt;
         ok('tekst v150: 1 poen, 21 poen, 11 poena, 2 poena', !!pt && pt(1) === '1 poen' && pt(21) === '21 poen' && pt(11) === '11 poena' && pt(2) === '2 poena');
@@ -1953,6 +1995,13 @@ async function proveraBodovanja2() {
         const sav = window.__dev.spremnost();
         ok('procena: savršen učenik (svako pitanje jednom tačno) → šansa ≥ 95% (stara: 0,5%) — ' + Math.round(100 * sav.sansa) + '%, ≈' + Math.round(sav.exp),
           sav.sansa !== null && sav.sansa >= 0.95 && sav.exp >= 90);
+        document.querySelector('[data-nav="stats"]').click(); await cekaj(350);
+        {
+          const big = (el2('readyCard').querySelectorAll('.bigScore')[1] || {}).textContent || '';
+          const pune = el2('readyCard').querySelectorAll('.od10Da').length;
+          ok('procena v150: šansa preko 99% se piše „više od 99%" i crta 9 kvadrata, ne „100%" i 10 (' + big + ', ' + pune + ')', sav.sansa <= 0.99 || (/više od 99%/.test(big) && pune === 9));
+        }
+        await naPocetnu();
         S().q = {}; let i = 0; for (const q of window.QUIZ.questions) S().q[q.id] = (i++ % 2) ? { a: 2, w: 2, streak: 0, last: sad - dan, due: sad } : { a: 2, w: 1, streak: 1, last: sad - dan, due: sad + dan };
         const pola = window.__dev.spremnost();
         ok('procena: pola pogrešno → šansa ≤ 5% (i keš se osvežio posle promene stanja) — ' + Math.round(100 * pola.sansa) + '%', pola.sansa !== null && pola.sansa <= 0.05);

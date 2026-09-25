@@ -833,3 +833,12 @@ body.uskoKrupno #brandTitle { display: none; }
 
 /* v150: uz plan po tempu okvir plana stoji PRVI na početnoj — crta ga odvaja od sažetka ispod */
 #homeSummary > .planBox:first-child { margin-top: 0; padding-bottom: 14px; margin-bottom: 14px; border-bottom: 1px solid var(--line); }
+
+/* završni pregled v150: kolona procenta u „Šta ako" (">99%" je izlazilo iz kartice), legenda trake pokrivenosti,
+   tamna tema i za polja pregledača (datum je bio beo) */
+.planRed.stoRed { grid-template-columns: minmax(0, auto) minmax(60px, 1fr) 3.4em; }
+.planRed.stoRed > span:last-child { text-align: right; white-space: nowrap; }
+.pkStavka { white-space: nowrap; margin-right: 8px; }
+.pkSw { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 4px; vertical-align: -1px; box-shadow: inset 0 0 0 1px var(--mut); }
+body.dark { color-scheme: dark; }
+.planPozivRed input { background: var(--card); color: var(--ink); border: 1px solid var(--line); border-radius: 8px; padding: 4px 8px; font: inherit; }
