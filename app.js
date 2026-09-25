@@ -261,6 +261,7 @@
     blizRazlikaLbl: { l: 'Razlika:', c: 'Разлика:' },
     blizFali: { l: 'Ovde nema reči:', c: 'Овде нема речи:' },
     kljucLbl: { l: '🔑 Ključ:', c: '🔑 Кључ:' },
+    otvoriPitanje: { l: 'Otvori to pitanje', c: 'Отвори то питање' },
     proslaGreska: { l: 'Prošli put si ovde izabrao:', c: 'Прошли пут си овде изабрао:' },
     greskeNaslov: { l: 'Najčešće greške', c: 'Најчешће грешке' },
     greskeOpis: { l: '@1 @2 si pogrešio dvaput ili više — najviše puta na vrhu. Posle odgovora uz svako stoji objašnjenje i, gde postoji, skoro isto pitanje sa drugim tačnim odgovorom: to je najčešći razlog ponovljene greške.', c: '@1 @2 си погрешио двапут или више — највише пута на врху. После одговора уз свако стоји објашњење и, где постоји, скоро исто питање са другим тачним одговором: то је најчешћи разлог поновљене грешке.' },
@@ -469,6 +470,7 @@
       <li><b>Radnje vozilom.</b> <i>Skretanje i prestrojavanje</i>, <i>Preticanje i obilaženje</i>, <i>Zaustavljanje i parkiranje</i>, <i>Pokazivači pravca</i>, <i>Upotreba svetala</i>.</li>
       <li><b>Posebne situacije.</b> <i>Pešaci i dvotočkaši</i>, <i>Prelaz preko pruge</i>, <i>Autoput i motoput</i>, <i>Vozila pod pratnjom</i>, <i>Postupak kod nezgode</i>.</li>
       <li><b>Tek onda pitanja.</b> Kreni na <i>Sva pitanja</i> i idi redom — posle svakog odgovora pročitaj objašnjenje, i kad pogrešiš i kad pogodiš.</li>
+      <li><b>Uključi dnevni plan.</b> Na početnoj upiši kad polažeš i uključi <i>Dnevni plan</i>: on meri koliko pitanja dnevno stižeš i svaki dan ti da listu onih koja najviše vrede na ispitu.</li>
       <li><b>Pusti aplikaciju da te vodi.</b> U <i>Ponavljanje</i> se sama vraćaju pogrešna pitanja (odmah, pa sutradan, pa za tri dana) — ali i pitanja tačna iz prve, jednom posle tri dana: jedan pogodak još nije zapamćeno.</li>
       <li><b>Simulacije na kraju.</b> Kad se u Statistici procena približi pragu (80 i više od 98 poena), radi <i>Simulaciju ispita</i> — 41 pitanje, 45 minuta, kao pravi ispit. Posle svake pregledaj greške. Ranija simulacija nije greška — to je merenje, ne presuda; samo odgovori na sva pitanja.</li>
     </ol>
@@ -479,6 +481,7 @@
       <li><b>Радње возилом.</b> <i>Скретање и престројавање</i>, <i>Претицање и обилажење</i>, <i>Заустављање и паркирање</i>, <i>Показивачи правца</i>, <i>Употреба светала</i>.</li>
       <li><b>Посебне ситуације.</b> <i>Пешаци и двоточкаши</i>, <i>Прелаз преко пруге</i>, <i>Аутопут и мотопут</i>, <i>Возила под пратњом</i>, <i>Поступак код незгоде</i>.</li>
       <li><b>Тек онда питања.</b> Крени на <i>Сва питања</i> и иди редом — после сваког одговора прочитај објашњење, и кад погрешиш и кад погодиш.</li>
+      <li><b>Укључи дневни план.</b> На почетној упиши кад полажеш и укључи <i>Дневни план</i>: он мери колико питања дневно стижеш и сваки дан ти да листу оних која највише вреде на испиту.</li>
       <li><b>Пусти апликацију да те води.</b> У <i>Понављање</i> се сама враћају погрешна питања (одмах, па сутрадан, па за три дана) — али и питања тачна из прве, једном после три дана: један погодак још није запамћено.</li>
       <li><b>Симулације на крају.</b> Кад се у Статистици процена приближи прагу (80 и више од 98 поена), ради <i>Симулацију испита</i> — 41 питање, 45 минута, као прави испит. После сваке прегледај грешке. Ранија симулација није грешка — то је мерење, не пресуда; само одговори на сва питања.</li>
     </ol>
@@ -1966,8 +1969,10 @@
     box.className = 'explBox';
     let inner = '';
     // ključ ide NA VRH: jedna-dve rečenice koje čine tačan odgovor sigurnim (tvrdoglava-dopune.mjs)
-    if (e && e.k) inner += `<div class="kljucBox"><b>${escapeHtml(L('kljucLbl'))}</b> ${escapeHtml(T(e.k))}</div>`;
-    if (e && e.x) inner += `<div class="explHead">${L('explTitle')} <span class="mut explSmall">(${L('explNote')})</span></div><p>${escapeHtml(T(e.x))}</p>`;
+    // „#9878" u tekstu je bio običan broj: sada je dugme koje otvara to pitanje (revizija v149)
+    const qRefs = (h) => h.replace(/#(d{4,5})/g, (m0, id) => (byId.has(+id) ? `<button type="button" class="qRef" data-q="${id}" title="${escapeHtml(L('otvoriPitanje'))}">#${id}</button>` : m0));
+    if (e && e.k) inner += `<div class="kljucBox"><b>${escapeHtml(L('kljucLbl'))}</b> ${qRefs(escapeHtml(T(e.k)))}</div>`;
+    if (e && e.x) inner += `<div class="explHead">${L('explTitle')} <span class="mut explSmall">(${L('explNote')})</span></div><p>${qRefs(escapeHtml(T(e.x)))}</p>`;
     // Zamke: ponuđen netačan odgovor koji je DOSLOVNO zvanično značenje nekog drugog znaka —
     // svaki sa svojom slikom. Ispit sam kaže šta se sa čim meša, pa se ništa ne pogađa.
     // Stoji samo tu gde i objašnjenje: POSLE odgovora (u simulaciji objašnjenja i nema).
@@ -1988,6 +1993,7 @@
       inner += `<div><button class="explCardBtn pojBtn" data-card="${k}">📖 ${escapeHtml(T(c.t))}</button><div class="explCard" style="display:none">${T(c.h)}</div></div>`;
     }
     box.innerHTML = inner;
+    box.querySelectorAll('.qRef').forEach((b) => b.addEventListener('click', () => { location.hash = '#/p/' + b.dataset.q; }));
     box.querySelectorAll('.explCardBtn').forEach((btn) => {
       oziviSekcije(btn.nextElementSibling);
       dodajAtlas(btn.nextElementSibling, btn.dataset.card);
