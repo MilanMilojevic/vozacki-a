@@ -2314,9 +2314,11 @@
   // Finiji nalaz (3 zvanična izvlačenja, 2026-08-21): test je FIKSNA LISTA od 41 slota —
   // na svakoj poziciji uvek ista podoblast i poeni (37/41), a 4 pozicije rotiraju podoblast
   // unutar malog skupa. Redosled tema u testu je uvek isti; nasumično je samo konkretno pitanje.
+  // Osmo zvanično izvlačenje (20.10.2026): na 6. poziciji je došla i podoblast 163 (svetlosne oznake
+  // na putu, #11057) — taj slot rotira {156, 163, 165}. Ostalih 40 pozicija se poklopilo sa šablonom.
   const SIM_SLOTS = [
     { p: 1, s: [91, 94] },
-    { p: 2, s: [146] }, { p: 2, s: [148] }, { p: 3, s: [103] }, { p: 2, s: [139, 142, 143] }, { p: 2, s: [156, 165] },
+    { p: 2, s: [146] }, { p: 2, s: [148] }, { p: 3, s: [103] }, { p: 2, s: [139, 142, 143] }, { p: 2, s: [156, 163, 165] },
     { p: 3, s: [157] }, { p: 3, s: [157] }, { p: 3, s: [158] }, { p: 3, s: [158] }, { p: 2, s: [159] }, { p: 2, s: [160] },
     { p: 2, s: [161] }, { p: 2, s: [161] }, { p: 2, s: [133] }, { p: 3, s: [162] }, { p: 3, s: [162] }, { p: 3, s: [166] }, { p: 3, s: [166] },
     { p: 2, s: [170] }, { p: 2, s: [172] }, { p: 2, s: [178] }, { p: 2, s: [175] }, { p: 2, s: [109, 115] }, { p: 2, s: [126, 127] }, { p: 2, s: [118] },
