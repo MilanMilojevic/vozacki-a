@@ -278,6 +278,7 @@
     piK1: { l: 'Najrizičnija pitanja', c: 'Најризичнија питања' },
     piK1Opis: { l: 'Sva na kojima si poslednji put pogrešio (@1), plus pitanja koja na ispitu najčešće dolaze i nose najviše poena.', c: 'Сва на којима си последњи пут погрешио (@1), плус питања која на испиту најчешће долазе и носе највише поена.' },
     piK1OpisDanas: { l: '@2 pitanja koja na ispitu nose najviše poena (od toga @1 na kojima si poslednji put pogrešio).', c: '@2 питања која на испиту носе највише поена (од тога @1 на којима си последњи пут погрешио).' },
+    piBlizanci: { l: 'Uz njih i blizanci (@1): skoro isto pitanje sa drugim tačnim odgovorom, odmah posle svog para — da ih ne pobrkaš.', c: 'Уз њих и близанци (@1): скоро исто питање са другим тачним одговором, одмах после свог пара — да их не побркаш.' },
     piUradjeno: { l: 'Urađeno danas: @1 / @2', c: 'Урађено данас: @1 / @2' },
     piVezbaj: { l: '▶ Vežbaj najrizičnija', c: '▶ Вежбај најризичнија' },
     piJos: { l: 'još @1', c: 'још @1' },
@@ -292,7 +293,7 @@
     piSimDanas: { l: 'Danas urađeno: @1.', c: 'Данас урађено: @1.' },
     piK3Danas: { l: 'Danas bez simulacije: umor pred ispit košta više nego što donese.', c: 'Данас без симулације: умор пред испит кошта више него што донесе.' },
     piK4: { l: 'Sutra ujutru', c: 'Сутра ујутру' },
-    piK4Opis: { l: 'Samo kratko: najviše 20 najvažnijih pitanja ovde (umesto dnevnog plana), bez simulacije. Ništa novo.', c: 'Само кратко: највише 20 најважнијих питања овде (уместо дневног плана), без симулације. Ништа ново.' },
+    piK4Opis: { l: 'Samo kratko: 20 najvažnijih pitanja ovde (uz njihove blizance), umesto dnevnog plana, bez simulacije. Ništa novo.', c: 'Само кратко: 20 најважнијих питања овде (уз њихове близанце), уместо дневног плана, без симулације. Ништа ново.' },
     piVezbajNaslov: { l: 'Pred ispit — najrizičnija pitanja', c: 'Пред испит — најризичнија питања' },
     piPonoviNaslov: { l: 'Pred ispit — pogrešena danas', c: 'Пред испит — погрешена данас' },
     piPrazno: { l: 'Nema rizičnih pitanja za danas.', c: 'Нема ризичних питања за данас.' },
@@ -888,7 +889,8 @@
       // v152 „Pred ispit": spisak najrizičnijih pitanja zamrznut za jedan dan (da „urađeno X od N" ima smisla)
       predIspit: obj.predIspit && typeof obj.predIspit === 'object' && typeof obj.predIspit.d === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(obj.predIspit.d) && Array.isArray(obj.predIspit.ids)
         ? { d: obj.predIspit.d, za: Number.isInteger(obj.predIspit.za) && obj.predIspit.za >= 0 && obj.predIspit.za <= 9 ? obj.predIspit.za : null,
-          ids: [...new Set(obj.predIspit.ids.filter((x) => Number.isInteger(x) && byId.has(x)))].slice(0, 80) } : null,
+          ids: [...new Set(obj.predIspit.ids.filter((x) => Number.isInteger(x) && byId.has(x)))].slice(0, 80),
+          bl: Array.isArray(obj.predIspit.bl) ? [...new Set(obj.predIspit.bl.filter((x) => Number.isInteger(x) && byId.has(x)))].slice(0, 80) : null } : null,
       streakD: typeof obj.streakD === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(obj.streakD) ? obj.streakD : null,
       streakN: nInt(obj.streakN, 0, 10000, 0),
       examDate: typeof obj.examDate === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(obj.examDate) ? obj.examDate : null,
@@ -3609,6 +3611,25 @@
     _piRang = { kljuc, red };
     return red;
   }
+  // blizanci pitanja: isti izvor kao okvir „Blizanac" ispod pitanja (provereni parovi + automatski nađeni)
+  const blizanciOd = (id) => { const e = EX.byQ[id] || {}; return [...new Set([...(e.bl || []).map((b) => b.id), ...((EX.blizanci || {})[id] || [])])].filter((x) => byId.has(x)); };
+  // svaki blizanac koji se izvlači ide ODMAH posle svog para (rešavaju se jedno za drugim, da se vidi razlika);
+  // blizanac koji je i sam rizičan pomera se do para. imaVec: pitanja koja su već u spisku (ne dodaju se ponovo).
+  // Kad nema mesta, prvo otpadaju blizanci, nikad rizična pitanja.
+  function dodajBlizance(ids, imaVec, max) {
+    const pp = verovatnocaPojave(), uListi = new Set(ids), vec = new Set(imaVec || []), out = [], bl = [];
+    for (const id of ids) {
+      if (vec.has(id)) continue;
+      out.push(id); vec.add(id);
+      for (const b of blizanciOd(id)) {
+        if (vec.has(b)) continue;
+        if (uListi.has(b)) { out.push(b); vec.add(b); }
+        else if (pp.get(b)) { out.push(b); vec.add(b); bl.push(b); }
+      }
+    }
+    while (out.length > max && bl.length) { const x = bl.pop(); out.splice(out.lastIndexOf(x), 1); }
+    return { ids: out.slice(0, max), bl };
+  }
   function predIspitSpisak(dana) {
     const danas = localDay();
     if (!(S.predIspit && S.predIspit.d === danas && S.predIspit.za === dana && S.predIspit.ids.length)) {
@@ -3618,17 +3639,26 @@
       const cilj = dana === 0 ? 20 : Math.min(60, Math.max(40, obavezna.length + 20));
       const izbor = new Set(obavezna.slice(0, PI_MAX).map((x) => x.id));
       for (const x of red) { if (izbor.size >= cilj) break; izbor.add(x.id); }
-      S.predIspit = { d: danas, za: dana, ids: red.map((x) => x.id).filter((id) => izbor.has(id)).slice(0, PI_MAX) };
+      const sa = dodajBlizance(red.map((x) => x.id).filter((id) => izbor.has(id)), [], PI_MAX);
+      S.predIspit = { d: danas, za: dana, ids: sa.ids, bl: sa.bl };
       save();
       return S.predIspit.ids;
     }
-    let ids = S.predIspit.ids.filter((id) => byId.has(id));
-    // greška napravljena POSLE pravljenja spiska (npr. na simulaciji) ulazi u spisak — osim na dan ispita
+    let ids = S.predIspit.ids.filter((id) => byId.has(id)), bl = S.predIspit.bl, menjano = false;
+    // spisak napravljen pre v153 (bez blizanaca) dopuni se jednom, ništa se ne briše
+    if (!Array.isArray(bl)) { const sa = dodajBlizance(ids, [], PI_MAX); ids = sa.ids; bl = sa.bl; menjano = true; }
+    // greška napravljena POSLE pravljenja spiska (npr. na simulaciji) ulazi u spisak, sa svojim blizancima — osim na dan ispita
     if (dana > 0 && ids.length < PI_MAX) {
       const pp = verovatnocaPojave();
       const nova = Q.filter((q) => pp.get(q.id) && piPogresno(q.id) && !ids.includes(q.id)).map((q) => q.id);
-      if (nova.length) { ids = [...ids, ...nova].slice(0, PI_MAX); S.predIspit = { d: danas, za: dana, ids }; save(); }
+      if (nova.length) {
+        const sa = dodajBlizance(nova, ids, PI_MAX - ids.length);
+        ids = [...ids, ...sa.ids];
+        bl = [...bl, ...sa.bl];
+        menjano = true;
+      }
     }
+    if (menjano) { S.predIspit = { d: danas, za: dana, ids, bl }; save(); }
     return ids;
   }
   function predIspitKartice(ids) {
@@ -3672,7 +3702,9 @@
     if (ids.length && !sviOdgovoreni) dugme = `<button type="button" class="primary" id="btnPiVezbaj">${escapeHtml(L('piVezbaj'))} (${uradjeno ? escapeHtml(L('piJos').split('@1').join(ostalo)) : ids.length})</button>`;
     else if (pogresnaSad.length) dugme = `<button type="button" class="primary" id="btnPiPonovi">${escapeHtml(L('piPonovi').split('@1').join(pogresnaSad.length))}</button>`;
     else if (ids.length) dugme = `<button type="button" class="secondary" id="btnPiVezbaj">${escapeHtml(L('piJosJednom').split('@1').join(ids.length))}</button>`;
-    const opis = dana === 0 ? L('piK1OpisDanas').split('@1').join(pogresnaSad.length).split('@2').join(ids.length) : L('piK1Opis').split('@1').join(pogresnaSad.length);
+    const brBl = ((S.predIspit && S.predIspit.bl) || []).filter((x) => ids.includes(x)).length;
+    const opis = (dana === 0 ? L('piK1OpisDanas').split('@1').join(pogresnaSad.length).split('@2').join(ids.length - brBl) : L('piK1Opis').split('@1').join(pogresnaSad.length))
+      + (brBl ? ' ' + L('piBlizanci').split('@1').join(brBl) : '');
     const k1 = korak(sviOdgovoreni && !pogresnaSad.length ? '✅' : '○', L('piK1'), red(opis)
       + `<div class="planRed"><span class="planIme">${escapeHtml(L('piUradjeno').split('@1').join(uradjeno).split('@2').join(ids.length))}</span><span class="planBar"><span style="width:${ids.length ? (100 * uradjeno / ids.length).toFixed(1) : 0}%"></span></span><span></span></div>`
       + (dugme ? `<div class="razmakG">${dugme}</div>` : ''));

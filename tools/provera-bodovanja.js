@@ -1997,6 +1997,9 @@ async function proveraBodovanja2() {
         const n2 = NS({ q: {}, predIspit: { d: 'sutra', ids: [QQ[0].id] } });
         ok('pred ispit: zapis spiska čuva samo postojeća pitanja (bez duplikata), loš datum odbacuje',
           !!n1 && n1.predIspit && n1.predIspit.ids.join(',') === QQ[0].id + ',' + QQ[1].id && !!n2 && n2.predIspit === null);
+        const n3 = NS({ q: {}, predIspit: { d: '2026-10-21', ids: [QQ[0].id, QQ[1].id], bl: [QQ[1].id, 'x', 99999999, QQ[1].id] } });
+        ok('pred ispit: zapis čuva blizance (samo postojeća pitanja, bez duplikata); stari zapis bez blizanaca ostaje „nepoznato" (null)',
+          !!n3 && n3.predIspit && JSON.stringify(n3.predIspit.bl) === JSON.stringify([QQ[1].id]) && n1.predIspit.bl === null);
         // stanje: 600 odgovorenih, 25 sa poslednjim pogrešnim, 3 simulacije
         const pripremi = (za) => {
           S().q = {}; S().predIspit = null; S().plan = { auto: 1 };
@@ -2015,8 +2018,10 @@ async function proveraBodovanja2() {
         const pogresnaIzv = pogresna.filter((id) => izvlace.size === 0 || izvlace.has(id));
         ok('pred ispit: dan pred ispit okvir stoji prvi na početnoj i kaže „sutra"',
           !!pi && el2('homeSummary').firstElementChild === pi && /sutra|сутра/.test(pi.querySelector('.piNaslov').textContent));
-        ok('pred ispit: spisak (' + ids.length + ') ima sva pitanja kojima je poslednji odgovor pogrešan, a koja se izvlače (' + pogresnaIzv.length + ')',
-          ids.length >= 40 && ids.length <= 60 && pogresnaIzv.every((id) => ids.includes(id)) && S().predIspit.d === ld(sad));
+        const blB = (S().predIspit && S().predIspit.bl) || [];
+        const jezB = ids.filter((x) => !blB.includes(x));
+        ok('pred ispit: spisak (' + jezB.length + ' rizičnih + ' + blB.length + ' blizanaca) ima sva pitanja kojima je poslednji odgovor pogrešan, a koja se izvlače (' + pogresnaIzv.length + ')',
+          jezB.length >= 40 && jezB.length <= 60 && Array.isArray(S().predIspit.bl) && pogresnaIzv.every((id) => ids.includes(id)) && S().predIspit.d === ld(sad));
         const dugme = el2('btnPiVezbaj');
         ok('pred ispit: dugme kaže koliko pitanja, isto koliko u spisku', !!dugme && dugme.textContent.includes('(' + ids.length + ')'));
         ok('pred ispit: šansa i dozvoljeni gubitak su napisani (bilo koja 4 pitanja), uz odnos prema dnevnom planu', /pogrešiš bilo koja 4 pitanja|погрешиш било која 4 питања/.test(pi.textContent) && /ne moraš oba|не мораш оба/.test(pi.textContent));
@@ -2050,13 +2055,49 @@ async function proveraBodovanja2() {
         S().q[S().predIspit.ids[0]] = { a: 3, w: 1, streak: 0, last: Date.now(), due: Date.now() };
         await naPocetnu();
         ok('pred ispit: kad je sve odgovoreno a nešto pogrešno, nudi „Ponovi pogrešena (1)"', !!el2('btnPiPonovi') && el2('btnPiPonovi').textContent.includes('(1)'));
+        // (e5) v153 blizanci: uz rizično pitanje ide i njegov blizanac koji se izvlači, ODMAH posle njega
+        const EXb = window.EXPLAIN, twOd = (id) => [...new Set([...(((EXb.byQ || {})[id] || {}).bl || []).map((y) => y.id), ...((EXb.blizanci || {})[id] || [])])];
+        pripremi(1);
+        const parovi = Object.keys(EXb.blizanci || {}).map(Number).filter((x) => izvlace.has(x) && !S().q[x])
+          .flatMap((x) => twOd(x).filter((y) => izvlace.has(y) && !S().q[y]).map((y) => [x, y]));
+        const [ta, tb] = parovi[0] || [];
+        if (ta) { S().q[ta] = { a: 2, w: 2, streak: 0, last: sad - dan, due: sad - 1000 }; S().q[tb] = { a: 6, w: 0, streak: 5, last: sad - dan }; }
+        await naPocetnu();
+        const pi5 = S().predIspit, ia = pi5.ids.indexOf(ta), ib = pi5.ids.indexOf(tb);
+        const t5 = el2('homeSummary').querySelector('.predIspit').textContent, m5 = t5.match(/blizanci \((\d+)\)|близанци \((\d+)\)/);
+        ok('pred ispit: blizanac (#' + tb + ') rizičnog pitanja (#' + ta + ') stoji odmah posle njega',
+          parovi.length > 0 && ia >= 0 && ib > ia && pi5.ids.slice(ia + 1, ib).every((x) => twOd(ta).includes(x)) && pi5.bl.includes(tb));
+        ok('pred ispit: blizanaca u spisku ' + pi5.bl.length + ' — svi se izvlače, svaki je blizanac nekog rizičnog, tekst kaže isti broj',
+          pi5.bl.length > 0 && pi5.bl.every((x) => izvlace.has(x) && pi5.ids.includes(x) && pi5.ids.some((y) => !pi5.bl.includes(y) && twOd(y).includes(x)))
+          && !!m5 && Number(m5[1] || m5[2]) === pi5.bl.length && el2('btnPiVezbaj').textContent.includes('(' + pi5.ids.length + ')'));
+        // (e6) spisak zamrznut u v152 (bez blizanaca) dopuni se jednom, ništa ne ispada
+        const jez5 = pi5.ids.filter((x) => !pi5.bl.includes(x));
+        S().predIspit = { d: ld(sad), za: 1, ids: jez5.slice() };
+        await naPocetnu();
+        const pi6 = JSON.stringify(S().predIspit);
+        await naPocetnu();
+        ok('pred ispit: stari spisak bez blizanaca dobije ih (' + S().predIspit.bl.length + '), sva rizična pitanja ostaju, a dopuna je jednokratna',
+          Array.isArray(S().predIspit.bl) && jez5.every((x) => S().predIspit.ids.includes(x)) && S().predIspit.ids.length === pi5.ids.length
+          && S().predIspit.bl.length === pi5.bl.length && S().predIspit.ids.indexOf(tb) > S().predIspit.ids.indexOf(ta)
+          && S().predIspit.ids.slice(S().predIspit.ids.indexOf(ta) + 1, S().predIspit.ids.indexOf(tb)).every((x) => twOd(ta).includes(x)) && JSON.stringify(S().predIspit) === pi6);
+        // (e7) pun spisak: kad nema mesta (80), otpadaju blizanci, nikad rizično pitanje
+        pripremi(1);
+        // 77 rizičnih → za blizance ostaju 3 mesta; spisak mora da bude pun (80), a otpali su samo blizanci
+        const riz7 = (x) => !!(S().q[x] && S().q[x].w > 0 && S().q[x].streak === 0);
+        const vec7 = [...izvlace].filter(riz7).length;
+        [...izvlace].filter((x) => !S().q[x]).slice(0, Math.max(0, 77 - vec7)).forEach((x) => { S().q[x] = { a: 2, w: 2, streak: 0, last: sad - dan, due: sad - 1000 }; });
+        const rizicna7 = [...izvlace].filter(riz7);
+        await naPocetnu();
+        const pi7 = S().predIspit;
+        ok('pred ispit: pun spisak (' + pi7.ids.length + '/80): svih ' + rizicna7.length + ' rizičnih je tu, blizanaca samo ' + pi7.bl.length + ' (koliko stane)',
+          rizicna7.length === 77 && pi7.ids.length === 80 && new Set(pi7.ids).size === 80 && rizicna7.every((x) => pi7.ids.includes(x)) && pi7.bl.length === 3);
         // (f) ispit za 10 dana: nema okvira; ispit danas (promena datuma istog dana → nov spisak): kratko, bez simulacije
         pripremi(10); await naPocetnu();
         ok('pred ispit: 10 dana pred ispit okvira nema', !el2('homeSummary').querySelector('.predIspit'));
         pripremi(0); await naPocetnu();
         const pi0 = el2('homeSummary').querySelector('.predIspit');
-        ok('pred ispit: na dan ispita najviše 20 pitanja, bez dugmeta za simulaciju i bez „sutra ujutru"',
-          !!pi0 && S().predIspit.ids.length <= 20 && !pi0.querySelector('[data-nav="sim"]') && !/Sutra ujutru|Сутра ујутру/.test(pi0.textContent) && /Ispit je danas|Испит је данас/.test(pi0.textContent));
+        ok('pred ispit: na dan ispita najviše 20 najvažnijih (+ ' + ((S().predIspit && S().predIspit.bl) || []).length + ' blizanaca), bez dugmeta za simulaciju i bez „sutra ujutru"',
+          !!pi0 && S().predIspit.ids.filter((x) => !(S().predIspit.bl || []).includes(x)).length <= 20 && !pi0.querySelector('[data-nav="sim"]') && !/Sutra ujutru|Сутра ујутру/.test(pi0.textContent) && /Ispit je danas|Испит је данас/.test(pi0.textContent));
         // (g) procena: opcija po pitanju ne menja šansu ni poene
         const P = window.VozackiProcena, cx = { Q: QQ, byId: new Map(QQ.map((q) => [q.id, q])), SIM_SLOTS: window.__dev.SIM_SLOTS, prag: (x) => Math.ceil(0.85 * x), sad: Date.now(), DAY: dan };
         const r1 = P.proceni(S(), cx), r2 = P.proceni(S(), { ...cx, poPitanju: true });
