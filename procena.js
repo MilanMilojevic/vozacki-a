@@ -366,9 +366,27 @@ function proceni(S, ctx) {
     const pg = dZaGranu(g, clamp(g.E + g.bMean, 0.05, ukupno - 0.05)); for (let i = 0; i < pg.length; i++) pSlot[i] += g.w * pg[i];
   }
   if (ctx._dbg) ctx._dbg({ par: { th, sd, gC, gW }, mu, m, posleGreske, pokriveno, varNevidjeno, grane: grane.map((g) => ({ T: +g.T.toFixed(1), E: +g.E.toFixed(1), b: +g.bMean.toFixed(2), rep: +g.komp[g.komp.length - 1].w.toFixed(3) })) });
+  // „Pred ispit" (v152): verovatnoća tačnog PO PITANJU, istim modelom i istim pomakom grane kao mesto na testu —
+  // samo kad se traži (ctx.poPitanju); podrazumevani račun i izlaz se ne menjaju. Služi za RANG rizičnih pitanja.
+  let poPitanju = null;
+  if (ctx.poPitanju) {
+    poPitanju = new Map();
+    const dG = grane.map((g) => { const lp = g.slotovi.map((s) => lg(clamp(s.p, 1e-4, 1 - 1e-4))); const cilj = clamp(g.E + g.bMean, 0.05, ukupno - 0.05); let lo = -12, hi = 12; for (let i = 0; i < 36; i++) { const mid = (lo + hi) / 2; if (g.slotovi.reduce((a, s, j) => a + s.pts * sg(lp[j] + mid), 0) < cilj) lo = mid; else hi = mid; } return (lo + hi) / 2; });
+    for (const b of bazeni) for (const q of b.pool) {
+      if (poPitanju.has(q.id)) continue;
+      const e = poId.get(q.id); const stn = e ? stanjeU(e, sad) : null;
+      const raw = TGRANE.map(([T], k) => {
+        if (!stn) return pNovo(q.sub);
+        const [o, dt] = stn; let tbs = o.tb && o.tb.get(q.sub);
+        if (!tbs) { if (!o.tb) o.tb = new Map(); tbs = TGRANE.map(([T2]) => napraviTabelu(T2, q.sub, o)); o.tb.set(q.sub, tbs); }
+        return pTab(tbs[k], T, dt);
+      });
+      poPitanju.set(q.id, grane.reduce((a, g, k) => a + g.w * sg(lg(clamp(raw[k], 1e-4, 1 - 1e-4)) + dG[k]), 0));
+    }
+  }
   const slotovi = bazeni.map((b, i) => ({ pts: b.pts, subs: b.subs, p: pSlot[i] }));
   exp = slotovi.reduce((a, s) => a + s.pts * s.p, 0);   // uvek u [0, ukupno] — isto što i zbir tabele gubitaka
-  return { sansa: Math.min(1, Math.max(0, sansa / wUk)), exp, slotovi };
+  return { sansa: Math.min(1, Math.max(0, sansa / wUk)), exp, slotovi, ...(poPitanju ? { poPitanju } : {}) };
 }
 
 self.VozackiProcena = { proceni, pravaSimulacija };

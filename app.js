@@ -266,6 +266,36 @@
     otvoriPitanje: { l: 'Otvori to pitanje', c: 'Отвори то питање' },
     proslaGreska: { l: 'Prošli put si ovde izabrao:', c: 'Прошли пут си овде изабрао:' },
     greskeNaslov: { l: 'Najčešće greške', c: 'Најчешће грешке' },
+    piNaslovSutra: { l: '🎯 Pred ispit — ispit je sutra', c: '🎯 Пред испит — испит је сутра' },
+    piNaslovZa: { l: '🎯 Pred ispit — ispit je za @1 dana', c: '🎯 Пред испит — испит је за @1 дана' },
+    piNaslovDanas: { l: '🎯 Ispit je danas', c: '🎯 Испит је данас' },
+    piNiz: { l: 'Poslednjih @1 simulacija: položeno @2, najslabija @3 (prag @4).', c: 'Последњих @1 симулација: положено @2, најслабија @3 (праг @4).' },
+    piNiz24: { l: 'Poslednje @1 simulacije: položeno @2, najslabija @3 (prag @4).', c: 'Последње @1 симулације: положено @2, најслабија @3 (праг @4).' },
+    piNiz1: { l: 'Poslednja simulacija: @3 od 98 (prag @4).', c: 'Последња симулација: @3 од 98 (праг @4).' },
+    piSansa: { l: 'Da je ispit danas: šansa @1 (oko @2 od @3 poena). Možeš da pogrešiš bilo koja @4 pitanja i opet položiš.', c: 'Да је испит данас: шанса @1 (око @2 од @3 поена). Можеш да погрешиш било која @4 питања и опет положиш.' },
+    piOdnos: { l: 'Ovo je današnji plan. Dnevni plan ispod je samo za višak snage — ne moraš oba.', c: 'Ово је данашњи план. Дневни план испод је само за вишак снаге — не мораш оба.' },
+    piOdnosDanas: { l: 'Danas umesto dnevnog plana: samo ovih nekoliko pitanja, bez simulacije. Ništa novo.', c: 'Данас уместо дневног плана: само ових неколико питања, без симулације. Ништа ново.' },
+    piK1: { l: 'Najrizičnija pitanja', c: 'Најризичнија питања' },
+    piK1Opis: { l: 'Sva na kojima si poslednji put pogrešio (@1), plus pitanja koja na ispitu najčešće dolaze i nose najviše poena.', c: 'Сва на којима си последњи пут погрешио (@1), плус питања која на испиту најчешће долазе и носе највише поена.' },
+    piK1OpisDanas: { l: '@2 pitanja koja na ispitu nose najviše poena (od toga @1 na kojima si poslednji put pogrešio).', c: '@2 питања која на испиту носе највише поена (од тога @1 на којима си последњи пут погрешио).' },
+    piUradjeno: { l: 'Urađeno danas: @1 / @2', c: 'Урађено данас: @1 / @2' },
+    piVezbaj: { l: '▶ Vežbaj najrizičnija', c: '▶ Вежбај најризичнија' },
+    piJos: { l: 'još @1', c: 'још @1' },
+    piPonovi: { l: '▶ Ponovi pogrešena (@1)', c: '▶ Понови погрешена (@1)' },
+    piJosJednom: { l: '▶ Prođi ih još jednom (@1)', c: '▶ Прођи их још једном (@1)' },
+    piK2: { l: 'Kartice za osveženje', c: 'Картице за освежење' },
+    piK2Opis: { l: 'Pročitaj jednom — tu su pojmovi iza tvojih najskupljih grešaka.', c: 'Прочитај једном — ту су појмови иза твојих најскупљих грешака.' },
+    piKartPitanja: { l: '@1 pitanja', c: '@1 питања' },
+    piKartPitanje: { l: '@1 pitanje', c: '@1 питање' },
+    piK3: { l: 'Simulacija', c: 'Симулација' },
+    piK3Opis: { l: 'Jedna, najviše dve — kad završiš rizična pitanja. Simulacija proverava; znanje podiže ponavljanje.', c: 'Једна, највише две — кад завршиш ризична питања. Симулација проверава; знање подиже понављање.' },
+    piSimDanas: { l: 'Danas urađeno: @1.', c: 'Данас урађено: @1.' },
+    piK3Danas: { l: 'Danas bez simulacije: umor pred ispit košta više nego što donese.', c: 'Данас без симулације: умор пред испит кошта више него што донесе.' },
+    piK4: { l: 'Sutra ujutru', c: 'Сутра ујутру' },
+    piK4Opis: { l: 'Samo kratko: najviše 20 najvažnijih pitanja ovde (umesto dnevnog plana), bez simulacije. Ništa novo.', c: 'Само кратко: највише 20 најважнијих питања овде (уместо дневног плана), без симулације. Ништа ново.' },
+    piVezbajNaslov: { l: 'Pred ispit — najrizičnija pitanja', c: 'Пред испит — најризичнија питања' },
+    piPonoviNaslov: { l: 'Pred ispit — pogrešena danas', c: 'Пред испит — погрешена данас' },
+    piPrazno: { l: 'Nema rizičnih pitanja za danas.', c: 'Нема ризичних питања за данас.' },
     greskeOpis: { l: '@1 @2 si pogrešio dvaput ili više — najviše puta na vrhu. Posle odgovora uz svako stoji objašnjenje i, gde postoji, skoro isto pitanje sa drugim tačnim odgovorom: to je najčešći razlog ponovljene greške.', c: '@1 @2 си погрешио двапут или више — највише пута на врху. После одговора уз свако стоји објашњење и, где постоји, скоро исто питање са другим тачним одговором: то је најчешћи разлог поновљене грешке.' },
     greskeJednom: { l: '@1 @2 si pogrešio bar jednom (nijedno još dvaput).', c: '@1 @2 си погрешио бар једном (ниједно још двапут).' },
     naKojem: { l: 'na kojem', c: 'на којем' },
@@ -855,6 +885,10 @@
       noUpd: obj.noUpd === 1 ? 1 : 0,
       iosSeen: obj.iosSeen === 1 ? 1 : 0,
       planNe: obj.planNe === 1 ? 1 : 0,   // v150: sklonio je poziv za dnevni plan sa početne
+      // v152 „Pred ispit": spisak najrizičnijih pitanja zamrznut za jedan dan (da „urađeno X od N" ima smisla)
+      predIspit: obj.predIspit && typeof obj.predIspit === 'object' && typeof obj.predIspit.d === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(obj.predIspit.d) && Array.isArray(obj.predIspit.ids)
+        ? { d: obj.predIspit.d, za: Number.isInteger(obj.predIspit.za) && obj.predIspit.za >= 0 && obj.predIspit.za <= 9 ? obj.predIspit.za : null,
+          ids: [...new Set(obj.predIspit.ids.filter((x) => Number.isInteger(x) && byId.has(x)))].slice(0, 80) } : null,
       streakD: typeof obj.streakD === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(obj.streakD) ? obj.streakD : null,
       streakN: nInt(obj.streakN, 0, 10000, 0),
       examDate: typeof obj.examDate === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(obj.examDate) ? obj.examDate : null,
@@ -3542,6 +3576,136 @@
   // Očekivan broj pojavljivanja svakog pitanja na jednom ispitu: isti bazeni kao buildSimSet
   // (podoblasti slota + isti broj poena), svaki slot bira jedno pitanje iz svog bazena.
   let _pojava = null;
+  // ---------- Pred ispit (v152) ----------
+  // Dan-dva pred ispit jedno mesto sa onim što još vredi uraditi. Najrizičnija pitanja = očekivani gubitak
+  // poena na ispitu: koliko puta pitanje u proseku dođe na ispit (šablon) × poeni × verovatnoća promašaja
+  // (procena.js, po pitanju), plus SVAKO pitanje kome je poslednji odgovor bio pogrešan (i ono pogrešeno
+  // posle pravljenja spiska, npr. na simulaciji). Merenje 20.10. (Milanovo stanje): gubitak je razmazan, pa
+  // ovaj rang i dnevni plan donose isto kad se sve tačno odgovori (+0,63 / +0,59) — zato okvir kaže da je ON
+  // današnji plan, a dnevni plan samo za višak snage (nezavisni pregled: dva spiska bez redosleda = 101 pitanje).
+  const PRED_ISPIT_DANA = 2, PI_MAX = 80;
+  const piPogresno = (id) => !!(S.q[id] && S.q[id].w > 0 && S.q[id].streak === 0);
+  function predIspitVidljiv() { const d = danaDoIspita(); return d !== null && d >= 0 && d <= PRED_ISPIT_DANA; }
+  let _piRang = null;
+  function predIspitRang() {
+    const kljuc = verzijaStanja + '|' + localDay() + '|' + S.sims.length;
+    if (_piRang && _piRang.kljuc === kljuc) return _piRang.red;
+    const pp = verovatnocaPojave();
+    let po = null;
+    try {
+      const r = window.VozackiProcena ? window.VozackiProcena.proceni(S, { Q, byId, SIM_SLOTS, prag, sad: Date.now(), DAY, poPitanju: true }) : null;
+      po = r && r.poPitanju ? r.poPitanju : null;
+    } catch (err) { po = null; }
+    const red = [];
+    for (const q of Q) {
+      const n = pp.get(q.id) || 0;
+      if (!n) continue;                       // ne izvlači se — ne košta ništa
+      const r = S.q[q.id];
+      // bez procene po pitanju: učestalost tačnih uz blagi početak (Laplace), neviđeno pola-pola
+      const pt = po && po.has(q.id) ? po.get(q.id) : (r && r.a ? (r.a - r.w + 1) / (r.a + 2) : 0.5);
+      red.push({ id: q.id, gubitak: n * q.pts * (1 - pt), pogresno: piPogresno(q.id) });
+    }
+    red.sort((x, y) => y.gubitak - x.gubitak);
+    _piRang = { kljuc, red };
+    return red;
+  }
+  function predIspitSpisak(dana) {
+    const danas = localDay();
+    if (!(S.predIspit && S.predIspit.d === danas && S.predIspit.za === dana && S.predIspit.ids.length)) {
+      const red = predIspitRang();
+      // dan pred ispit: sva sa poslednjim pogrešnim + 20 najskupljih ostalih (40–60); na dan ispita samo 20 najskupljih
+      const obavezna = dana === 0 ? [] : red.filter((x) => x.pogresno);
+      const cilj = dana === 0 ? 20 : Math.min(60, Math.max(40, obavezna.length + 20));
+      const izbor = new Set(obavezna.slice(0, PI_MAX).map((x) => x.id));
+      for (const x of red) { if (izbor.size >= cilj) break; izbor.add(x.id); }
+      S.predIspit = { d: danas, za: dana, ids: red.map((x) => x.id).filter((id) => izbor.has(id)).slice(0, PI_MAX) };
+      save();
+      return S.predIspit.ids;
+    }
+    let ids = S.predIspit.ids.filter((id) => byId.has(id));
+    // greška napravljena POSLE pravljenja spiska (npr. na simulaciji) ulazi u spisak — osim na dan ispita
+    if (dana > 0 && ids.length < PI_MAX) {
+      const pp = verovatnocaPojave();
+      const nova = Q.filter((q) => pp.get(q.id) && piPogresno(q.id) && !ids.includes(q.id)).map((q) => q.id);
+      if (nova.length) { ids = [...ids, ...nova].slice(0, PI_MAX); S.predIspit = { d: danas, za: dana, ids }; save(); }
+    }
+    return ids;
+  }
+  function predIspitKartice(ids) {
+    const gub = new Map(predIspitRang().map((x) => [x.id, x.gubitak]));
+    const m = new Map();
+    for (const id of ids) {
+      const q = byId.get(id), e = EX.byQ[id] || {};
+      if (!q || e.nocard) continue;
+      const k = e.card || EX.bySub[q.sub];
+      if (!k || !EX.cards[k]) continue;
+      const v = m.get(k) || { n: 0, g: 0 }; v.n++; v.g += gub.get(id) || 0; m.set(k, v);
+    }
+    // po poenima koje pokrivaju (ne po broju pitanja) — kartica je duga, pa najviše tri
+    return [...m.entries()].sort((x, y) => y[1].g - x[1].g).slice(0, 3);
+  }
+  function predIspitBlok() {
+    if (!predIspitVidljiv()) return '';
+    const dana = danaDoIspita();
+    const ids = predIspitSpisak(dana);
+    const danas = localDay();
+    const danasId = (id) => !!(S.q[id] && S.q[id].last && localDay(S.q[id].last) === danas);
+    const uradjeno = ids.filter(danasId).length, ostalo = ids.length - uradjeno;
+    const pogresnaSad = ids.filter(piPogresno);
+    const sviOdgovoreni = ids.length > 0 && uradjeno >= ids.length;
+    const prave = S.sims.filter(pravaSim);
+    const simDanas = prave.filter((s) => localDay(s.d) === danas).length;
+    const posl = prave.slice(-12);
+    const rd = readiness();
+    const dozv = SIM_PTS_MIN - prag(SIM_PTS_MIN), maxPts = Math.max(...SIM_SLOTS.map((s) => s.p));
+    const naslov = dana === 0 ? L('piNaslovDanas') : dana === 1 ? L('piNaslovSutra') : L('piNaslovZa').split('@1').join(dana);
+    const red = (tekst) => `<div class="mut napomena">${escapeHtml(tekst)}</div>`;
+    // gore: najjači podatak (simulacije), šansa, pa odnos prema dnevnom planu
+    const najsl = posl.length ? Math.min(...posl.map((s) => Math.round(s.score * SIM_PTS_MIN / s.total))) : null;
+    const nizKljuc = posl.length === 1 ? 'piNiz1' : few(posl.length) ? 'piNiz24' : 'piNiz';
+    const gore = (posl.length ? `<div class="piNiz">${escapeHtml(L(nizKljuc).split('@1').join(posl.length).split('@2').join(posl.filter((s) => s.passed).length).split('@3').join(najsl).split('@4').join(prag(SIM_PTS_MIN)))}</div>` : '')
+      + (rd.sansa == null ? '' : red(L('piSansa').split('@1').join(rd.sansa > 0.99 ? L('visheOd99') : Math.round(100 * rd.sansa) + '%').split('@2').join(Math.round(rd.exp)).split('@3').join(SIM_PTS_MIN).split('@4').join(Math.floor(dozv / maxPts))))
+      + red(L(dana === 0 ? 'piOdnosDanas' : 'piOdnos'));
+    const korak = (znak, naslovK, telo) => `<div class="piKorak"><div class="piKorakNaslov">${znak ? znak + ' ' : ''}<b>${escapeHtml(naslovK)}</b></div>${telo}</div>`;
+    // korak 1: dugme kaže koliko JOŠ; kad su sva odgovorena, a neka pogrešno — ponovi baš ta
+    let dugme = '';
+    if (ids.length && !sviOdgovoreni) dugme = `<button type="button" class="primary" id="btnPiVezbaj">${escapeHtml(L('piVezbaj'))} (${uradjeno ? escapeHtml(L('piJos').split('@1').join(ostalo)) : ids.length})</button>`;
+    else if (pogresnaSad.length) dugme = `<button type="button" class="primary" id="btnPiPonovi">${escapeHtml(L('piPonovi').split('@1').join(pogresnaSad.length))}</button>`;
+    else if (ids.length) dugme = `<button type="button" class="secondary" id="btnPiVezbaj">${escapeHtml(L('piJosJednom').split('@1').join(ids.length))}</button>`;
+    const opis = dana === 0 ? L('piK1OpisDanas').split('@1').join(pogresnaSad.length).split('@2').join(ids.length) : L('piK1Opis').split('@1').join(pogresnaSad.length);
+    const k1 = korak(sviOdgovoreni && !pogresnaSad.length ? '✅' : '○', L('piK1'), red(opis)
+      + `<div class="planRed"><span class="planIme">${escapeHtml(L('piUradjeno').split('@1').join(uradjeno).split('@2').join(ids.length))}</span><span class="planBar"><span style="width:${ids.length ? (100 * uradjeno / ids.length).toFixed(1) : 0}%"></span></span><span></span></div>`
+      + (dugme ? `<div class="razmakG">${dugme}</div>` : ''));
+    const kartice = dana > 0 ? predIspitKartice(ids) : [];
+    const k2 = kartice.length ? korak('📖', L('piK2'), red(L('piK2Opis'))
+      + `<div id="piKartice">${kartice.map(([k, v]) => `<div><button type="button" class="explCardBtn pojBtn" data-pikart="${escapeHtml(k)}">${escapeHtml(T(EX.cards[k].t))} <span class="mut pojIsp">· ${escapeHtml(L(one(v.n) ? 'piKartPitanje' : 'piKartPitanja').split('@1').join(v.n))}</span></button><div class="explCard" style="display:none"></div></div>`).join('')}</div>`) : '';
+    const k3 = dana === 0 ? korak('', L('piK3'), red(L('piK3Danas')))
+      : korak(simDanas >= 1 ? '✅' : '○', L('piK3'), red(L('piK3Opis') + ' ' + L('piSimDanas').split('@1').join(simDanas))
+        + `<div class="razmakG"><button type="button" class="secondary" data-nav="sim">${L('sim')}</button></div>`);
+    const k4 = dana > 0 ? korak('🌅', L('piK4'), red(L('piK4Opis'))) : '';
+    return `<div class="predIspit"><h3 class="piNaslov">${escapeHtml(naslov)}</h3>${gore}${k1}${k2}${k3}${k4}</div>`;
+  }
+  function predIspitVezi() {
+    const danas = localDay();
+    const nijeDanas = (id) => !(S.q[id] && S.q[id].last && localDay(S.q[id].last) === danas);
+    const b = el('btnPiVezbaj');
+    if (b) b.addEventListener('click', () => {
+      const ids = (S.predIspit && S.predIspit.ids) || [];
+      // prvo ona koja danas još nisu rađena, pa ostala (da nastavak ne kreće od početka)
+      startList([...ids.filter(nijeDanas), ...ids.filter((id) => !nijeDanas(id))], () => L('piVezbajNaslov'), () => L('piPrazno'), 'filter', { origin: () => renderHome() });
+    });
+    const bp = el('btnPiPonovi');
+    if (bp) bp.addEventListener('click', () => {
+      const ids = ((S.predIspit && S.predIspit.ids) || []).filter(piPogresno);
+      startList(ids, () => L('piPonoviNaslov'), () => L('piPrazno'), 'filter', { origin: () => renderHome() });
+    });
+    const kont = el('piKartice');
+    if (kont) kont.querySelectorAll('[data-pikart]').forEach((btn) => sklopivo(btn, kont, null, (c2) => {
+      const k = btn.dataset.pikart;
+      c2.innerHTML = T(EX.cards[k].h);
+      oziviSekcije(c2); dodajAtlas(c2, k); dodajSituacije(c2, k); oziviCrteze(c2);
+    }));
+  }
   function verovatnocaPojave() {
     if (_pojava) return _pojava;
     const m = new Map();
@@ -3941,7 +4105,7 @@
       + (dana > 0 ? (r.ocena !== 'nema' || r.tanko ? putanjaSvg(r.putanja, { danas: rd.exp, ispit: nast.E }) : '') + pokrivenostHtml(r.pokrivenost) + tempoSvg(r.projekcija && Number.isFinite(r.projekcija.tempo) ? r.projekcija.tempo : r.kap) : '')
       + (dana > 0 && r.ocena !== 'nema' ? `<div class="razmakG"><button type="button" class="secondary sBtn" id="btnStoAko">${L('stoAkoDugme')}</button><div id="stoAkoTelo"></div></div>` : '');
     const ima = r.ids.length;
-    const dno = ima ? `<button class="primary" id="btnPlanVezbaj">${L('planVezbaj')} (${ima})</button>`
+    const dno = ima ? `<button class="${predIspitVidljiv() ? 'secondary' : 'primary'}" id="btnPlanVezbaj">${L('planVezbaj')} (${ima})</button>`
       : r.nemaNaRedu ? '' // tekst plana već kaže da danas nema ničega na redu — ni ✅ ni „još 20"
       : (r.rezerva ? `<button type="button" class="primary" data-nav="sim">${L('endSimBtn')}</button> ` : `<span class="mut">${L('planAutoGotovo')}</span> `)
         + `<button type="button" class="secondary sBtn" id="btnPlanJos">${L('planJos')}</button>`;
@@ -4090,7 +4254,7 @@
     const dno = p.autoBezKvote ? ''
       : ispunjen ? `<span class="mut">${naRedu ? L('planIspunjenJos').split('@1').join(nQ(naRedu)) : L('planIspunjen')}</span>${naRedu ? ` <button type="button" class="secondary sBtn" data-nav="drill">${L('drill')} ›</button>` : ''}`
       : !ima ? `<span class="mut">${L('planNemaDostupnih')}</span>`
-        : `<button class="primary" id="btnPlanVezbaj">${L('planVezbaj')} (${ima})</button>`;
+        : `<button class="${predIspitVidljiv() ? 'secondary' : 'primary'}" id="btnPlanVezbaj">${L('planVezbaj')} (${ima})</button>`;
     return `<div class="planBox"><h3 class="planNaslov">${L('planNaslov')}</h3> &nbsp;<button type="button" class="bcLink" id="btnPlanPodesi">${L('planPodesi')} ›</button>
       ${red(L('novihLbl'), p.uNovih, p.cNovih, p.nemaNovih, L('planSveOdgovoreno'))}${red(L('ponLbl'), p.uPon, p.cPon, p.nemaPon, L('planNemaPon'))}${tacnostDanas()}
       ${visak}${neStize}<div class="razmakG">${dno}</div></div>`;
@@ -4254,12 +4418,13 @@
       mk ? brRed(L('brObelezeno'), `<b>${mk}</b>`) : '',
     ].filter(Boolean).join('');
     const planGore = !!(S.plan && S.plan.auto);
-    el('homeSummary').innerHTML = (planGore ? planBlok() : '') + redovi
+    el('homeSummary').innerHTML = predIspitBlok() + (planGore ? planBlok() : '') + redovi
       + `<div><button type="button" class="pomocBtn2 bcLink" id="btnBrojevi">${L('brKakoSeRacuna')}</button>
          <div class="pomocTekst mut napomena" id="brojeviTekst" style="display:none">${L('brojeviTip')}<br><br>${L('queueTip')}</div></div>`
       + lastChip + homeExtras() + (planGore ? '' : planBlok());
     sklopivo(el('btnBrojevi'), null, el('brojeviTekst'));
     bindNav(el('homeSummary'));
+    predIspitVezi();
     {
       // Lostovi iz presude: podigni tempo na izračunat, ili uči prvo ono što ispit nosi.
       const bt = el('btnLostTempo');
@@ -5371,6 +5536,8 @@
       spremnost,
       planStanje,
       poenTxt,
+      SIM_SLOTS,
+      get listMode() { return listMode; },
     };
   }
 })();

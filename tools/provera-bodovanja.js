@@ -23,6 +23,7 @@ async function proveraBodovanja() {
   }
 }
 
+function byIdTacni(id) { const q = window.QUIZ.questions.find((x) => x.id === id); return q ? q.ch.filter((c) => c.ok).map((c) => c.id) : []; }
 async function proveraBodovanja2() {
   // Bez prve faze nema rezerve, a finally ispod bi tada OBRISAO pravi napredak. Prva faza
   // upisuje ključ i kad je napredak prazan ('' a ne null) — null znači da nije ni pokrenuta.
@@ -1911,7 +1912,7 @@ async function proveraBodovanja2() {
         ok('plan v150: na dan ispita je uputa gore, a skala ne crta poseban „dan ispita"',
           !!zad && /Pre ispita|Danas ništa ne moraš|Пре испита|Данас ништа не мораш/.test(zad.textContent) && !!sk && !/na dan ispita|на дан испита/.test(sk.getAttribute('aria-label') || '') && !el2('btnStoAko'));
         ok('plan v150: okvir plana po tempu se zove „Dnevni plan" i stoji prvi na početnoj',
-          !!box && /Dnevni plan|Дневни план/.test(box.querySelector('.planNaslov').textContent) && el2('homeSummary').firstElementChild === box);
+          !!box && /Dnevni plan|Дневни план/.test(box.querySelector('.planNaslov').textContent) && (el2('homeSummary').firstElementChild === box || (el2('homeSummary').firstElementChild.classList.contains('predIspit') && el2('homeSummary').children[1] === box)));
         // S4: nijedan natpis na skalama ne pada preko drugog (ni „danas ≈N" preko „84")
         S().examDate = ld(sad + 13 * dan); await naPocetnu();
         const preklop = [];
@@ -1982,6 +1983,86 @@ async function proveraBodovanja2() {
         S().tour = 1;
         const b = JSON.parse(b4);
         S().q = b.q; S().sims = b.sims; S().day = b.day; S().dani = b.dani; S().examDate = b.ex; S().plan = b.plan; S().planNe = b.planNe || 0;
+        await naPocetnu();
+      }
+
+      // ---- 2b10) PRED ISPIT (v152): okvir dan-dva pred ispit ----
+      {
+        const b5 = JSON.stringify({ q: S().q, sims: S().sims, day: S().day, dani: S().dani, ex: S().examDate, plan: S().plan, pi: S().predIspit });
+        const dva = (n) => String(n).padStart(2, '0');
+        const ld = (x) => { const d = new Date(x); return d.getFullYear() + '-' + dva(d.getMonth() + 1) + '-' + dva(d.getDate()); };
+        const sad = Date.now(), dan = 86400000, QQ = window.QUIZ.questions, NS = window.__dev.normalizeState;
+        // (a) zapis spiska: ispravan se čuva, nepoznata pitanja i loš datum se odbacuju
+        const n1 = NS({ q: {}, predIspit: { d: '2026-10-21', ids: [QQ[0].id, 'x', -5, 99999999, QQ[1].id, QQ[0].id] } });
+        const n2 = NS({ q: {}, predIspit: { d: 'sutra', ids: [QQ[0].id] } });
+        ok('pred ispit: zapis spiska čuva samo postojeća pitanja (bez duplikata), loš datum odbacuje',
+          !!n1 && n1.predIspit && n1.predIspit.ids.join(',') === QQ[0].id + ',' + QQ[1].id && !!n2 && n2.predIspit === null);
+        // stanje: 600 odgovorenih, 25 sa poslednjim pogrešnim, 3 simulacije
+        const pripremi = (za) => {
+          S().q = {}; S().predIspit = null; S().plan = { auto: 1 };
+          QQ.slice(0, 600).forEach((q, i) => { S().q[q.id] = i % 24 === 0 ? { a: 3, w: 2, streak: 0, last: sad - dan, due: sad - 1000 } : { a: 2, w: 0, streak: 2, last: sad - (1 + (i % 6)) * dan }; });
+          S().sims = [3, 2, 1].map((k) => ({ d: sad - k * dan, score: 92, total: 98, passed: true, wrong: [], odg: 41, dn: 41, qs: [] }));
+          S().dani = [3, 2, 1].map((k) => ({ d: ld(sad - k * dan), n: 100, ok: 90, novih: 40, pon: 60 }));
+          S().day = { d: ld(sad), n: 0, ok: 0 };
+          S().examDate = ld(sad + za * dan);
+        };
+        // (b) ispit sutra: okvir je PRVI na početnoj, sa spiskom koji sadrži sva pitanja sa poslednjim pogrešnim (koja se izvlače)
+        pripremi(1); await naPocetnu();
+        const pi = el2('homeSummary').querySelector('.predIspit');
+        const ids = (S().predIspit && S().predIspit.ids) || [];
+        const pogresna = QQ.slice(0, 600).filter((q, i) => i % 24 === 0).map((q) => q.id);
+        const izvlace = new Set(); for (const s of window.__dev.SIM_SLOTS || []) for (const q of QQ) if (s.s.includes(q.sub) && q.pts === s.p) izvlace.add(q.id);
+        const pogresnaIzv = pogresna.filter((id) => izvlace.size === 0 || izvlace.has(id));
+        ok('pred ispit: dan pred ispit okvir stoji prvi na početnoj i kaže „sutra"',
+          !!pi && el2('homeSummary').firstElementChild === pi && /sutra|сутра/.test(pi.querySelector('.piNaslov').textContent));
+        ok('pred ispit: spisak (' + ids.length + ') ima sva pitanja kojima je poslednji odgovor pogrešan, a koja se izvlače (' + pogresnaIzv.length + ')',
+          ids.length >= 40 && ids.length <= 60 && pogresnaIzv.every((id) => ids.includes(id)) && S().predIspit.d === ld(sad));
+        const dugme = el2('btnPiVezbaj');
+        ok('pred ispit: dugme kaže koliko pitanja, isto koliko u spisku', !!dugme && dugme.textContent.includes('(' + ids.length + ')'));
+        ok('pred ispit: šansa i dozvoljeni gubitak su napisani (bilo koja 4 pitanja), uz odnos prema dnevnom planu', /pogrešiš bilo koja 4 pitanja|погрешиш било која 4 питања/.test(pi.textContent) && /ne moraš oba|не мораш оба/.test(pi.textContent));
+        ok('pred ispit: preporuka simulacija i „sutra ujutru" postoje, sa dugmetom za simulaciju', !!pi.querySelector('[data-nav="sim"]') && /Sutra ujutru|Сутра ујутру/.test(pi.textContent));
+        // (c) kartice: najviše 5, otvaranje puni sadržaj
+        const kb = [...pi.querySelectorAll('[data-pikart]')];
+        if (kb[0]) { kb[0].click(); await cekaj(300); }
+        ok('pred ispit: kartice za osveženje (' + kb.length + ') se otvaraju na licu mesta', kb.length >= 1 && kb.length <= 3 && (kb[0].nextElementSibling.textContent || '').trim().length > 50);
+        // (d) spisak se zamrzne za dan: posle tačnog odgovora na prvo pitanje isti spisak, „urađeno 1"
+        const prvi = ids[0];
+        window.__dev.record(prvi, true, byIdTacni(prvi), Date.now());
+        await naPocetnu();
+        ok('pred ispit: spisak je isti ceo dan, a „urađeno" raste', JSON.stringify(S().predIspit.ids) === JSON.stringify(ids) && /Urađeno danas: 1 \/|Урађено данас: 1 \//.test(el2('homeSummary').querySelector('.predIspit').textContent) && el2('btnPiVezbaj').textContent.includes('(još ' + (ids.length - 1) + ')'));
+        // (e) dugme pokreće vežbanje: prvo pitanje je nerađeno danas iz spiska
+        el2('btnPiVezbaj').click(); await cekaj(400);
+        const lm = window.__dev.listMode;
+        const qid = lm && lm.ids ? lm.ids[lm.i] : null;
+        ok('pred ispit: „Vežbaj najrizičnija" otvara pitanje sa spiska (danas još nerađeno, urađeno ide na kraj) — #' + qid,
+          !!lm && lm.ids.length === ids.length && ids.includes(qid) && qid !== prvi && lm.ids[lm.ids.length - 1] === prvi);
+        // (e2) dok je okvir na ekranu, dugme dnevnog plana je sporedno (jedna glavna radnja)
+        await naPocetnu();
+        const bpv = el2('btnPlanVezbaj');
+        ok('pred ispit: dugme dnevnog plana je sporedno dok je okvir na ekranu', !!bpv && bpv.classList.contains('secondary') && !bpv.classList.contains('primary'));
+        // (e3) greška napravljena POSLE pravljenja spiska (npr. na simulaciji) ulazi u spisak
+        const van = [...izvlace].find((id) => !S().predIspit.ids.includes(id));
+        const losOdg = QQ.find((q) => q.id === van).ch.filter((c) => !c.ok).map((c) => c.id).slice(0, 1);
+        window.__dev.record(van, false, losOdg, Date.now()); await naPocetnu();
+        ok('pred ispit: nova greška posle pravljenja spiska ulazi u spisak (#' + van + ')', S().predIspit.ids.includes(van));
+        // (e4) sva odgovorena, jedno pogrešno → „Ponovi pogrešena (1)"
+        S().predIspit.ids.forEach((id) => { S().q[id] = { a: 2, w: 0, streak: 1, last: Date.now(), due: Date.now() + dan }; });
+        S().q[S().predIspit.ids[0]] = { a: 3, w: 1, streak: 0, last: Date.now(), due: Date.now() };
+        await naPocetnu();
+        ok('pred ispit: kad je sve odgovoreno a nešto pogrešno, nudi „Ponovi pogrešena (1)"', !!el2('btnPiPonovi') && el2('btnPiPonovi').textContent.includes('(1)'));
+        // (f) ispit za 10 dana: nema okvira; ispit danas (promena datuma istog dana → nov spisak): kratko, bez simulacije
+        pripremi(10); await naPocetnu();
+        ok('pred ispit: 10 dana pred ispit okvira nema', !el2('homeSummary').querySelector('.predIspit'));
+        pripremi(0); await naPocetnu();
+        const pi0 = el2('homeSummary').querySelector('.predIspit');
+        ok('pred ispit: na dan ispita najviše 20 pitanja, bez dugmeta za simulaciju i bez „sutra ujutru"',
+          !!pi0 && S().predIspit.ids.length <= 20 && !pi0.querySelector('[data-nav="sim"]') && !/Sutra ujutru|Сутра ујутру/.test(pi0.textContent) && /Ispit je danas|Испит је данас/.test(pi0.textContent));
+        // (g) procena: opcija po pitanju ne menja šansu ni poene
+        const P = window.VozackiProcena, cx = { Q: QQ, byId: new Map(QQ.map((q) => [q.id, q])), SIM_SLOTS: window.__dev.SIM_SLOTS, prag: (x) => Math.ceil(0.85 * x), sad: Date.now(), DAY: dan };
+        const r1 = P.proceni(S(), cx), r2 = P.proceni(S(), { ...cx, poPitanju: true });
+        ok('pred ispit: procena po pitanju ne menja šansu ni poene (' + (r1.sansa != null ? r1.sansa.toFixed(4) : '—') + ')', r1.sansa === r2.sansa && r1.exp === r2.exp && r2.poPitanju instanceof Map && r2.poPitanju.size > 1000 && !('poPitanju' in r1));
+        const b = JSON.parse(b5);
+        S().q = b.q; S().sims = b.sims; S().day = b.day; S().dani = b.dani; S().examDate = b.ex; S().plan = b.plan; S().predIspit = b.pi || null;
         await naPocetnu();
       }
 
